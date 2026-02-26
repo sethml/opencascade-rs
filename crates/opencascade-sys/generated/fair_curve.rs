@@ -96,8 +96,10 @@ impl Batten {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_Batten_ctor_pnt2d2_real2(P1, P2, Height, Slope) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -136,10 +138,12 @@ impl Batten {
     /// satisfy the equilibrium of the batten.
     pub fn set_free_sliding(&mut self, FreeSliding: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_Batten_set_free_sliding(self as *mut Self, FreeSliding)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -157,13 +161,15 @@ impl Batten {
     /// resistance of the material the actual physical batten is made of.
     pub fn set_constraint_order1(&mut self, ConstraintOrder: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_Batten_set_constraint_order1(
                     self as *mut Self,
                     ConstraintOrder,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -182,13 +188,15 @@ impl Batten {
     /// resistance of the material the actual physical batten is made of.
     pub fn set_constraint_order2(&mut self, ConstraintOrder: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_Batten_set_constraint_order2(
                     self as *mut Self,
                     ConstraintOrder,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -205,8 +213,10 @@ impl Batten {
     /// gp_Pnt2d::IsEqual tests to see if this is the case.
     pub fn set_p1(&mut self, P1: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::FairCurve_Batten_set_p1(self as *mut Self, P1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FairCurve_Batten_set_p1(self as *mut Self, P1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -223,8 +233,10 @@ impl Batten {
     /// gp_Pnt2d::IsEqual tests to see if this is the case.
     pub fn set_p2(&mut self, P2: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::FairCurve_Batten_set_p2(self as *mut Self, P2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FairCurve_Batten_set_p2(self as *mut Self, P2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -233,8 +245,11 @@ impl Batten {
     /// P1. The default setting is 0.
     pub fn set_angle1(&mut self, Angle1: f64) {
         {
-            unsafe { crate::ffi::FairCurve_Batten_set_angle1(self as *mut Self, Angle1) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FairCurve_Batten_set_angle1(self as *mut Self, Angle1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -243,8 +258,11 @@ impl Batten {
     /// point, P2. The default setting is 0.
     pub fn set_angle2(&mut self, Angle2: f64) {
         {
-            unsafe { crate::ffi::FairCurve_Batten_set_angle2(self as *mut Self, Angle2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FairCurve_Batten_set_angle2(self as *mut Self, Angle2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -254,8 +272,11 @@ impl Batten {
     /// if  Height <= 0
     pub fn set_height(&mut self, Height: f64) {
         {
-            unsafe { crate::ffi::FairCurve_Batten_set_height(self as *mut Self, Height) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FairCurve_Batten_set_height(self as *mut Self, Height) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -263,8 +284,10 @@ impl Batten {
     /// Allows you to set the slope value, Slope.
     pub fn set_slope(&mut self, Slope: f64) {
         {
-            unsafe { crate::ffi::FairCurve_Batten_set_slope(self as *mut Self, Slope) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FairCurve_Batten_set_slope(self as *mut Self, Slope) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -281,10 +304,12 @@ impl Batten {
     /// SlidingFactor is initialized with the default setting of 1.
     pub fn set_sliding_factor(&mut self, SlidingFactor: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_Batten_set_sliding_factor(self as *mut Self, SlidingFactor)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -315,8 +340,11 @@ impl Batten {
                     Tolerance,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         };
         *Code = crate::fair_curve::AnalysisCode::try_from(Code_i32_).unwrap();
         result_
@@ -333,8 +361,11 @@ impl Batten {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_Batten_sliding_of_reference(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -348,8 +379,11 @@ impl Batten {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_Batten_get_free_sliding(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -359,8 +393,11 @@ impl Batten {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_Batten_get_constraint_order1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -370,8 +407,11 @@ impl Batten {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_Batten_get_constraint_order2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -380,8 +420,11 @@ impl Batten {
     pub fn get_p1(&self) -> &crate::gp::Pnt2d {
         {
             let __result = unsafe { crate::ffi::FairCurve_Batten_get_p1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -390,8 +433,11 @@ impl Batten {
     pub fn get_p2(&self) -> &crate::gp::Pnt2d {
         {
             let __result = unsafe { crate::ffi::FairCurve_Batten_get_p2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -400,8 +446,11 @@ impl Batten {
     pub fn get_angle1(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::FairCurve_Batten_get_angle1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -410,8 +459,11 @@ impl Batten {
     pub fn get_angle2(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::FairCurve_Batten_get_angle2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -420,8 +472,11 @@ impl Batten {
     pub fn get_height(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::FairCurve_Batten_get_height(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -430,8 +485,11 @@ impl Batten {
     pub fn get_slope(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::FairCurve_Batten_get_slope(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -441,8 +499,11 @@ impl Batten {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_Batten_get_sliding_factor(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -451,8 +512,11 @@ impl Batten {
     pub fn curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
         {
             let __result = unsafe { crate::ffi::FairCurve_Batten_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -463,8 +527,10 @@ impl Batten {
     /// Private methodes  --------------------------------------
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::FairCurve_Batten_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FairCurve_Batten_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -493,8 +559,10 @@ impl BattenLaw {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_BattenLaw_ctor_real3(Heigth, Slope, Sliding) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -502,8 +570,11 @@ impl BattenLaw {
     /// Change the value of sliding
     pub fn set_sliding(&mut self, Sliding: f64) {
         {
-            unsafe { crate::ffi::FairCurve_BattenLaw_set_sliding(self as *mut Self, Sliding) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FairCurve_BattenLaw_set_sliding(self as *mut Self, Sliding) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -511,8 +582,11 @@ impl BattenLaw {
     /// Change the value of Heigth at the middle point.
     pub fn set_heigth(&mut self, Heigth: f64) {
         {
-            unsafe { crate::ffi::FairCurve_BattenLaw_set_heigth(self as *mut Self, Heigth) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FairCurve_BattenLaw_set_heigth(self as *mut Self, Heigth) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -520,8 +594,11 @@ impl BattenLaw {
     /// Change the value of the geometric slope.
     pub fn set_slope(&mut self, Slope: f64) {
         {
-            unsafe { crate::ffi::FairCurve_BattenLaw_set_slope(self as *mut Self, Slope) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FairCurve_BattenLaw_set_slope(self as *mut Self, Slope) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -532,29 +609,32 @@ impl BattenLaw {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_BattenLaw_value(self as *mut Self, T, THeigth) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        {
-            let __result =
-                unsafe { crate::ffi::FairCurve_BattenLaw_as_math_Function(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::FairCurve_BattenLaw_as_math_Function(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        {
-            let __result =
-                unsafe { crate::ffi::FairCurve_BattenLaw_as_math_Function_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::FairCurve_BattenLaw_as_math_Function_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
@@ -563,8 +643,11 @@ impl BattenLaw {
             let __result = unsafe {
                 crate::ffi::FairCurve_BattenLaw_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -591,8 +674,11 @@ impl DistributionOfEnergy {
             let __result = unsafe {
                 crate::ffi::FairCurve_DistributionOfEnergy_nb_variables(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -603,46 +689,49 @@ impl DistributionOfEnergy {
             let __result = unsafe {
                 crate::ffi::FairCurve_DistributionOfEnergy_nb_equations(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `FairCurve_DistributionOfEnergy.hxx`:41 - `FairCurve_DistributionOfEnergy::SetDerivativeOrder()`
     pub fn set_derivative_order(&mut self, DerivativeOrder: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_DistributionOfEnergy_set_derivative_order(
                     self as *mut Self,
                     DerivativeOrder,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_DistributionOfEnergy_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_DistributionOfEnergy_as_math_FunctionSet(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_DistributionOfEnergy_as_math_FunctionSet_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_DistributionOfEnergy_as_math_FunctionSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:43 - `math_FunctionSet::Value()`
@@ -651,8 +740,11 @@ impl DistributionOfEnergy {
             let __result = unsafe {
                 crate::ffi::FairCurve_DistributionOfEnergy_inherited_Value(self as *mut Self, X, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -664,8 +756,11 @@ impl DistributionOfEnergy {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -698,8 +793,10 @@ impl DistributionOfJerk {
             let __result = unsafe {
                 crate::ffi::FairCurve_DistributionOfJerk_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw_int(BSplOrder, FlatKnots, Poles, DerivativeOrder, Law, NbValAux)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -730,57 +827,60 @@ impl DistributionOfJerk {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_DistributionOfJerk_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to FairCurve_DistributionOfEnergy
     pub fn as_distribution_of_energy(&self) -> &DistributionOfEnergy {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_DistributionOfJerk_as_FairCurve_DistributionOfEnergy(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_DistributionOfJerk_as_FairCurve_DistributionOfEnergy(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to FairCurve_DistributionOfEnergy (mutable)
     pub fn as_distribution_of_energy_mut(&mut self) -> &mut DistributionOfEnergy {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_DistributionOfJerk_as_FairCurve_DistributionOfEnergy_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_DistributionOfJerk_as_FairCurve_DistributionOfEnergy_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_DistributionOfJerk_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_DistributionOfJerk_as_math_FunctionSet(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_DistributionOfJerk_as_math_FunctionSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_DistributionOfJerk_as_math_FunctionSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `FairCurve_DistributionOfEnergy.hxx`:36 - `FairCurve_DistributionOfEnergy::NbVariables()`
@@ -789,8 +889,11 @@ impl DistributionOfJerk {
             let __result = unsafe {
                 crate::ffi::FairCurve_DistributionOfJerk_inherited_NbVariables(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -800,21 +903,26 @@ impl DistributionOfJerk {
             let __result = unsafe {
                 crate::ffi::FairCurve_DistributionOfJerk_inherited_NbEquations(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `FairCurve_DistributionOfEnergy.hxx`:41 - `FairCurve_DistributionOfEnergy::SetDerivativeOrder()`
     pub fn set_derivative_order(&mut self, DerivativeOrder: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_DistributionOfJerk_inherited_SetDerivativeOrder(
                     self as *mut Self,
                     DerivativeOrder,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -824,8 +932,11 @@ impl DistributionOfJerk {
             let __result = unsafe {
                 crate::ffi::FairCurve_DistributionOfJerk_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -858,8 +969,10 @@ impl DistributionOfSagging {
             let __result = unsafe {
                 crate::ffi::FairCurve_DistributionOfSagging_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw_int(BSplOrder, FlatKnots, Poles, DerivativeOrder, Law, NbValAux)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -891,59 +1004,60 @@ impl DistributionOfSagging {
             let __result = unsafe {
                 crate::ffi::FairCurve_DistributionOfSagging_value(self as *mut Self, X, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to FairCurve_DistributionOfEnergy
     pub fn as_distribution_of_energy(&self) -> &DistributionOfEnergy {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_DistributionOfSagging_as_FairCurve_DistributionOfEnergy(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_DistributionOfSagging_as_FairCurve_DistributionOfEnergy(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to FairCurve_DistributionOfEnergy (mutable)
     pub fn as_distribution_of_energy_mut(&mut self) -> &mut DistributionOfEnergy {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_DistributionOfSagging_as_FairCurve_DistributionOfEnergy_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_DistributionOfSagging_as_FairCurve_DistributionOfEnergy_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_DistributionOfSagging_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_DistributionOfSagging_as_math_FunctionSet(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_DistributionOfSagging_as_math_FunctionSet_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_DistributionOfSagging_as_math_FunctionSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `FairCurve_DistributionOfEnergy.hxx`:36 - `FairCurve_DistributionOfEnergy::NbVariables()`
@@ -954,8 +1068,11 @@ impl DistributionOfSagging {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -967,21 +1084,26 @@ impl DistributionOfSagging {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `FairCurve_DistributionOfEnergy.hxx`:41 - `FairCurve_DistributionOfEnergy::SetDerivativeOrder()`
     pub fn set_derivative_order(&mut self, DerivativeOrder: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_DistributionOfSagging_inherited_SetDerivativeOrder(
                     self as *mut Self,
                     DerivativeOrder,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -993,8 +1115,11 @@ impl DistributionOfSagging {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1029,8 +1154,10 @@ impl DistributionOfTension {
             let __result = unsafe {
                 crate::ffi::FairCurve_DistributionOfTension_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_real_battenlaw_int_bool(BSplOrder, FlatKnots, Poles, DerivativeOrder, LengthSliding, Law, NbValAux, Uniform)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1063,13 +1190,15 @@ impl DistributionOfTension {
     /// change the length sliding
     pub fn set_length_sliding(&mut self, LengthSliding: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_DistributionOfTension_set_length_sliding(
                     self as *mut Self,
                     LengthSliding,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1083,59 +1212,60 @@ impl DistributionOfTension {
             let __result = unsafe {
                 crate::ffi::FairCurve_DistributionOfTension_value(self as *mut Self, X, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to FairCurve_DistributionOfEnergy
     pub fn as_distribution_of_energy(&self) -> &DistributionOfEnergy {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_DistributionOfTension_as_FairCurve_DistributionOfEnergy(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_DistributionOfTension_as_FairCurve_DistributionOfEnergy(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to FairCurve_DistributionOfEnergy (mutable)
     pub fn as_distribution_of_energy_mut(&mut self) -> &mut DistributionOfEnergy {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_DistributionOfTension_as_FairCurve_DistributionOfEnergy_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_DistributionOfTension_as_FairCurve_DistributionOfEnergy_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_DistributionOfTension_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_DistributionOfTension_as_math_FunctionSet(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_DistributionOfTension_as_math_FunctionSet_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_DistributionOfTension_as_math_FunctionSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `FairCurve_DistributionOfEnergy.hxx`:36 - `FairCurve_DistributionOfEnergy::NbVariables()`
@@ -1146,8 +1276,11 @@ impl DistributionOfTension {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1159,21 +1292,26 @@ impl DistributionOfTension {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `FairCurve_DistributionOfEnergy.hxx`:41 - `FairCurve_DistributionOfEnergy::SetDerivativeOrder()`
     pub fn set_derivative_order(&mut self, DerivativeOrder: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_DistributionOfTension_inherited_SetDerivativeOrder(
                     self as *mut Self,
                     DerivativeOrder,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1185,8 +1323,11 @@ impl DistributionOfTension {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1212,8 +1353,11 @@ impl Energy {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_Energy_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1225,8 +1369,11 @@ impl Energy {
     pub fn value(&mut self, X: &crate::ffi::math_Vector, E: &mut f64) -> bool {
         {
             let __result = unsafe { crate::ffi::FairCurve_Energy_value(self as *mut Self, X, E) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1243,8 +1390,11 @@ impl Energy {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_Energy_gradient(self as *mut Self, X, G) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1263,8 +1413,11 @@ impl Energy {
             let __result = unsafe {
                 crate::ffi::FairCurve_Energy_values_vector_real_vector(self as *mut Self, X, E, G)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1290,8 +1443,11 @@ impl Energy {
                     H,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1300,8 +1456,11 @@ impl Energy {
     pub fn variable(&self, X: &mut crate::ffi::math_Vector) -> bool {
         {
             let __result = unsafe { crate::ffi::FairCurve_Energy_variable(self as *const Self, X) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1310,8 +1469,11 @@ impl Energy {
     pub fn poles(&self) -> &crate::ffi::HandleTColgpHArray1OfPnt2d {
         {
             let __result = unsafe { crate::ffi::FairCurve_Energy_poles(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1319,82 +1481,80 @@ impl Energy {
     pub fn as_math_multiple_var_function_with_hessian(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithHessian {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_Energy_as_math_MultipleVarFunctionWithHessian(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_Energy_as_math_MultipleVarFunctionWithHessian(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithHessian (mutable)
     pub fn as_math_multiple_var_function_with_hessian_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithHessian {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_Energy_as_math_MultipleVarFunctionWithHessian_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_Energy_as_math_MultipleVarFunctionWithHessian_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_Energy_as_math_MultipleVarFunctionWithGradient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_Energy_as_math_MultipleVarFunctionWithGradient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_Energy_as_math_MultipleVarFunctionWithGradient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_Energy_as_math_MultipleVarFunctionWithGradient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_Energy_as_math_MultipleVarFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_Energy_as_math_MultipleVarFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_Energy_as_math_MultipleVarFunction_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_Energy_as_math_MultipleVarFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
@@ -1402,8 +1562,11 @@ impl Energy {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_Energy_inherited_GetStateNumber(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1441,8 +1604,10 @@ impl EnergyOfBatten {
             let __result = unsafe {
                 crate::ffi::FairCurve_EnergyOfBatten_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real_bool_real2(BSplOrder, FlatKnots, Poles, ContrOrder1, ContrOrder2, Law, LengthSliding, FreeSliding, Angle1, Angle2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1497,8 +1662,11 @@ impl EnergyOfBatten {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_EnergyOfBatten_length_sliding(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1508,8 +1676,11 @@ impl EnergyOfBatten {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_EnergyOfBatten_status(self as *const Self) };
-            crate::check_exception();
-            crate::fair_curve::AnalysisCode::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::fair_curve::AnalysisCode::try_from(__val).unwrap()
         }
     }
 
@@ -1519,117 +1690,116 @@ impl EnergyOfBatten {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_EnergyOfBatten_variable(self as *const Self, X) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to FairCurve_Energy
     pub fn as_energy(&self) -> &Energy {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_EnergyOfBatten_as_FairCurve_Energy(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_EnergyOfBatten_as_FairCurve_Energy(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to FairCurve_Energy (mutable)
     pub fn as_energy_mut(&mut self) -> &mut Energy {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_EnergyOfBatten_as_FairCurve_Energy_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_EnergyOfBatten_as_FairCurve_Energy_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithHessian
     pub fn as_math_multiple_var_function_with_hessian(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithHessian {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunctionWithHessian(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunctionWithHessian(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithHessian (mutable)
     pub fn as_math_multiple_var_function_with_hessian_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithHessian {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunctionWithHessian_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunctionWithHessian_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunctionWithGradient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunctionWithGradient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunctionWithGradient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunctionWithGradient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunction(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunction_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `FairCurve_Energy.hxx`:39 - `FairCurve_Energy::NbVariables()`
@@ -1638,8 +1808,11 @@ impl EnergyOfBatten {
             let __result = unsafe {
                 crate::ffi::FairCurve_EnergyOfBatten_inherited_NbVariables(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1649,8 +1822,11 @@ impl EnergyOfBatten {
             let __result = unsafe {
                 crate::ffi::FairCurve_EnergyOfBatten_inherited_Value(self as *mut Self, X, E)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1664,8 +1840,11 @@ impl EnergyOfBatten {
             let __result = unsafe {
                 crate::ffi::FairCurve_EnergyOfBatten_inherited_Gradient(self as *mut Self, X, G)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1680,8 +1859,11 @@ impl EnergyOfBatten {
             let __result = unsafe {
                 crate::ffi::FairCurve_EnergyOfBatten_inherited_Values(self as *mut Self, X, E, G)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1691,8 +1873,11 @@ impl EnergyOfBatten {
             let __result = unsafe {
                 crate::ffi::FairCurve_EnergyOfBatten_inherited_Poles(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1702,8 +1887,11 @@ impl EnergyOfBatten {
             let __result = unsafe {
                 crate::ffi::FairCurve_EnergyOfBatten_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1744,8 +1932,10 @@ impl EnergyOfMVC {
             let __result = unsafe {
                 crate::ffi::FairCurve_EnergyOfMVC_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2_bool_real4(BSplOrder, FlatKnots, Poles, ContrOrder1, ContrOrder2, Law, PhysicalRatio, LengthSliding, FreeSliding, Angle1, Angle2, Curvature1, Curvature2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1840,8 +2030,11 @@ impl EnergyOfMVC {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_EnergyOfMVC_length_sliding(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1850,8 +2043,11 @@ impl EnergyOfMVC {
     pub fn status(&self) -> crate::fair_curve::AnalysisCode {
         {
             let __result = unsafe { crate::ffi::FairCurve_EnergyOfMVC_status(self as *const Self) };
-            crate::check_exception();
-            crate::fair_curve::AnalysisCode::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::fair_curve::AnalysisCode::try_from(__val).unwrap()
         }
     }
 
@@ -1861,113 +2057,114 @@ impl EnergyOfMVC {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_EnergyOfMVC_variable(self as *const Self, X) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to FairCurve_Energy
     pub fn as_energy(&self) -> &Energy {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_EnergyOfMVC_as_FairCurve_Energy(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::FairCurve_EnergyOfMVC_as_FairCurve_Energy(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to FairCurve_Energy (mutable)
     pub fn as_energy_mut(&mut self) -> &mut Energy {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_EnergyOfMVC_as_FairCurve_Energy_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::FairCurve_EnergyOfMVC_as_FairCurve_Energy_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithHessian
     pub fn as_math_multiple_var_function_with_hessian(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithHessian {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunctionWithHessian(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunctionWithHessian(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithHessian (mutable)
     pub fn as_math_multiple_var_function_with_hessian_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithHessian {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunctionWithHessian_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunctionWithHessian_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunctionWithGradient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunctionWithGradient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunctionWithGradient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunctionWithGradient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunction_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `FairCurve_Energy.hxx`:39 - `FairCurve_Energy::NbVariables()`
@@ -1976,8 +2173,11 @@ impl EnergyOfMVC {
             let __result = unsafe {
                 crate::ffi::FairCurve_EnergyOfMVC_inherited_NbVariables(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1987,8 +2187,11 @@ impl EnergyOfMVC {
             let __result = unsafe {
                 crate::ffi::FairCurve_EnergyOfMVC_inherited_Value(self as *mut Self, X, E)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2002,8 +2205,11 @@ impl EnergyOfMVC {
             let __result = unsafe {
                 crate::ffi::FairCurve_EnergyOfMVC_inherited_Gradient(self as *mut Self, X, G)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2018,8 +2224,11 @@ impl EnergyOfMVC {
             let __result = unsafe {
                 crate::ffi::FairCurve_EnergyOfMVC_inherited_Values(self as *mut Self, X, E, G)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2028,8 +2237,11 @@ impl EnergyOfMVC {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_EnergyOfMVC_inherited_Poles(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2039,8 +2251,11 @@ impl EnergyOfMVC {
             let __result = unsafe {
                 crate::ffi::FairCurve_EnergyOfMVC_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2111,8 +2326,10 @@ impl MinimalVariation {
                     PhysicalRatio,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2193,10 +2410,12 @@ impl MinimalVariation {
     /// Allows you to set a new constraint on curvature at the first point.
     pub fn set_curvature1(&mut self, Curvature: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_set_curvature1(self as *mut Self, Curvature)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2204,10 +2423,12 @@ impl MinimalVariation {
     /// Allows you to set a new constraint on curvature at the second point.
     pub fn set_curvature2(&mut self, Curvature: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_set_curvature2(self as *mut Self, Curvature)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2220,10 +2441,12 @@ impl MinimalVariation {
     /// Raises  DomainError if Ratio < 0 or Ratio > 1
     pub fn set_physical_ratio(&mut self, Ratio: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_set_physical_ratio(self as *mut Self, Ratio)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2248,8 +2471,11 @@ impl MinimalVariation {
                     Tolerance,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         };
         *ACode = crate::fair_curve::AnalysisCode::try_from(ACode_i32_).unwrap();
         result_
@@ -2262,8 +2488,11 @@ impl MinimalVariation {
             let __result = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_get_curvature1(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2274,8 +2503,11 @@ impl MinimalVariation {
             let __result = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_get_curvature2(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2286,8 +2518,11 @@ impl MinimalVariation {
             let __result = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_get_physical_ratio(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2297,151 +2532,174 @@ impl MinimalVariation {
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::FairCurve_MinimalVariation_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FairCurve_MinimalVariation_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to FairCurve_Batten
     pub fn as_batten(&self) -> &Batten {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_MinimalVariation_as_FairCurve_Batten(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_MinimalVariation_as_FairCurve_Batten(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to FairCurve_Batten (mutable)
     pub fn as_batten_mut(&mut self) -> &mut Batten {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_MinimalVariation_as_FairCurve_Batten_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::FairCurve_MinimalVariation_as_FairCurve_Batten_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:73 - `FairCurve_Batten::SetFreeSliding()`
     pub fn set_free_sliding(&mut self, FreeSliding: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_inherited_SetFreeSliding(
                     self as *mut Self,
                     FreeSliding,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:86 - `FairCurve_Batten::SetConstraintOrder1()`
     pub fn set_constraint_order1(&mut self, ConstraintOrder: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_inherited_SetConstraintOrder1(
                     self as *mut Self,
                     ConstraintOrder,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:100 - `FairCurve_Batten::SetConstraintOrder2()`
     pub fn set_constraint_order2(&mut self, ConstraintOrder: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_inherited_SetConstraintOrder2(
                     self as *mut Self,
                     ConstraintOrder,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:112 - `FairCurve_Batten::SetP1()`
     pub fn set_p1(&mut self, P1: &crate::gp::Pnt2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_inherited_SetP1(self as *mut Self, P1)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:124 - `FairCurve_Batten::SetP2()`
     pub fn set_p2(&mut self, P2: &crate::gp::Pnt2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_inherited_SetP2(self as *mut Self, P2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:128 - `FairCurve_Batten::SetAngle1()`
     pub fn set_angle1(&mut self, Angle1: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_inherited_SetAngle1(
                     self as *mut Self,
                     Angle1,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:132 - `FairCurve_Batten::SetAngle2()`
     pub fn set_angle2(&mut self, Angle2: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_inherited_SetAngle2(
                     self as *mut Self,
                     Angle2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:137 - `FairCurve_Batten::SetHeight()`
     pub fn set_height(&mut self, Height: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_inherited_SetHeight(
                     self as *mut Self,
                     Height,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:140 - `FairCurve_Batten::SetSlope()`
     pub fn set_slope(&mut self, Slope: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_inherited_SetSlope(self as *mut Self, Slope)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:152 - `FairCurve_Batten::SetSlidingFactor()`
     pub fn set_sliding_factor(&mut self, SlidingFactor: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_inherited_SetSlidingFactor(
                     self as *mut Self,
                     SlidingFactor,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2453,8 +2711,11 @@ impl MinimalVariation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2464,8 +2725,11 @@ impl MinimalVariation {
             let __result = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_inherited_GetFreeSliding(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2477,8 +2741,11 @@ impl MinimalVariation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2490,8 +2757,11 @@ impl MinimalVariation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2501,8 +2771,11 @@ impl MinimalVariation {
             let __result = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_inherited_GetP1(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2512,8 +2785,11 @@ impl MinimalVariation {
             let __result = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_inherited_GetP2(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2523,8 +2799,11 @@ impl MinimalVariation {
             let __result = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_inherited_GetAngle1(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2534,8 +2813,11 @@ impl MinimalVariation {
             let __result = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_inherited_GetAngle2(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2545,8 +2827,11 @@ impl MinimalVariation {
             let __result = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_inherited_GetHeight(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2556,8 +2841,11 @@ impl MinimalVariation {
             let __result = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_inherited_GetSlope(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2569,8 +2857,11 @@ impl MinimalVariation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2580,8 +2871,11 @@ impl MinimalVariation {
             let __result = unsafe {
                 crate::ffi::FairCurve_MinimalVariation_inherited_Curve(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -2626,8 +2920,10 @@ impl Newton {
                     theWithSingularity,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2747,30 +3043,32 @@ impl Newton {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_Newton_is_converged(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_NewtonMinimum
     pub fn as_math_newton_minimum(&self) -> &crate::math::NewtonMinimum {
-        {
-            let __result =
-                unsafe { crate::ffi::FairCurve_Newton_as_math_NewtonMinimum(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::FairCurve_Newton_as_math_NewtonMinimum(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_NewtonMinimum (mutable)
     pub fn as_math_newton_minimum_mut(&mut self) -> &mut crate::math::NewtonMinimum {
-        {
-            let __result = unsafe {
-                crate::ffi::FairCurve_Newton_as_math_NewtonMinimum_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::FairCurve_Newton_as_math_NewtonMinimum_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_NewtonMinimum.hxx`:48 - `math_NewtonMinimum::Perform()`
@@ -2780,14 +3078,16 @@ impl Newton {
         theStartingPoint: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_Newton_inherited_Perform(
                     self as *mut Self,
                     theFunction,
                     theStartingPoint,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2796,8 +3096,11 @@ impl Newton {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_Newton_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2806,8 +3109,11 @@ impl Newton {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_Newton_inherited_IsConvex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2816,8 +3122,11 @@ impl Newton {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_Newton_inherited_Location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2828,14 +3137,16 @@ impl Newton {
         theRightBorder: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FairCurve_Newton_inherited_SetBoundary(
                     self as *mut Self,
                     theLeftBorder,
                     theRightBorder,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2844,8 +3155,11 @@ impl Newton {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_Newton_inherited_Minimum(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2854,8 +3168,11 @@ impl Newton {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_Newton_inherited_Gradient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2864,8 +3181,11 @@ impl Newton {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_Newton_inherited_NbIterations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2874,16 +3194,22 @@ impl Newton {
         {
             let __result =
                 unsafe { crate::ffi::FairCurve_Newton_inherited_GetStatus(self as *const Self) };
-            crate::check_exception();
-            crate::math::Status::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::math::Status::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `math_NewtonMinimum.hxx`:106 - `math_NewtonMinimum::Dump()`
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::FairCurve_Newton_inherited_Dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FairCurve_Newton_inherited_Dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

@@ -33,8 +33,10 @@ impl MakeAxis1Placement {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeAxis1Placement_ctor_ax1_factors(A, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -47,8 +49,10 @@ impl MakeAxis1Placement {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeAxis1Placement_ctor_ax2d_factors(A, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -64,8 +68,10 @@ impl MakeAxis1Placement {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -81,8 +87,10 @@ impl MakeAxis1Placement {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -91,31 +99,34 @@ impl MakeAxis1Placement {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeAxis1Placement_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeAxis1Placement_as_GeomToStep_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeAxis1Placement_as_GeomToStep_Root(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeAxis1Placement_as_GeomToStep_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeAxis1Placement_as_GeomToStep_Root_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -124,8 +135,11 @@ impl MakeAxis1Placement {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeAxis1Placement_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -157,8 +171,10 @@ impl MakeAxis2Placement2d {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeAxis2Placement2d_ctor_ax2_factors(A, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -171,8 +187,10 @@ impl MakeAxis2Placement2d {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeAxis2Placement2d_ctor_ax22d_factors(A, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -181,33 +199,34 @@ impl MakeAxis2Placement2d {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeAxis2Placement2d_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeAxis2Placement2d_as_GeomToStep_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeAxis2Placement2d_as_GeomToStep_Root(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeAxis2Placement2d_as_GeomToStep_Root_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeAxis2Placement2d_as_GeomToStep_Root_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -216,8 +235,11 @@ impl MakeAxis2Placement2d {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeAxis2Placement2d_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -246,8 +268,10 @@ impl MakeAxis2Placement3d {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeAxis2Placement3d_ctor_factors(theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -260,8 +284,10 @@ impl MakeAxis2Placement3d {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeAxis2Placement3d_ctor_ax2_factors(A, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -274,8 +300,10 @@ impl MakeAxis2Placement3d {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeAxis2Placement3d_ctor_ax3_factors(A, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -288,8 +316,10 @@ impl MakeAxis2Placement3d {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeAxis2Placement3d_ctor_trsf_factors(T, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -305,8 +335,10 @@ impl MakeAxis2Placement3d {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -315,33 +347,34 @@ impl MakeAxis2Placement3d {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeAxis2Placement3d_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeAxis2Placement3d_as_GeomToStep_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeAxis2Placement3d_as_GeomToStep_Root(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeAxis2Placement3d_as_GeomToStep_Root_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeAxis2Placement3d_as_GeomToStep_Root_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -350,8 +383,11 @@ impl MakeAxis2Placement3d {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeAxis2Placement3d_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -387,8 +423,10 @@ impl MakeBSplineCurveWithKnots {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -401,8 +439,10 @@ impl MakeBSplineCurveWithKnots {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeBSplineCurveWithKnots_ctor_handlegeom2dbsplinecurve_factors(Bsplin, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -412,35 +452,36 @@ impl MakeBSplineCurveWithKnots {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeBSplineCurveWithKnots_value(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeBSplineCurveWithKnots_as_GeomToStep_Root(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeBSplineCurveWithKnots_as_GeomToStep_Root(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeBSplineCurveWithKnots_as_GeomToStep_Root_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeBSplineCurveWithKnots_as_GeomToStep_Root_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -451,8 +492,11 @@ impl MakeBSplineCurveWithKnots {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -485,8 +529,10 @@ impl MakeBSplineCurveWithKnotsAndRationalBSplineCurve {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve_ctor_handlegeombsplinecurve_factors(Bsplin, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -499,8 +545,10 @@ impl MakeBSplineCurveWithKnotsAndRationalBSplineCurve {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve_ctor_handlegeom2dbsplinecurve_factors(Bsplin, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -512,31 +560,34 @@ impl MakeBSplineCurveWithKnotsAndRationalBSplineCurve {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve_as_GeomToStep_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve_as_GeomToStep_Root(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve_as_GeomToStep_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve_as_GeomToStep_Root_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -545,8 +596,11 @@ impl MakeBSplineCurveWithKnotsAndRationalBSplineCurve {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -579,8 +633,10 @@ impl MakeBSplineSurfaceWithKnots {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeBSplineSurfaceWithKnots_ctor_handlegeombsplinesurface_factors(Bsplin, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -590,35 +646,38 @@ impl MakeBSplineSurfaceWithKnots {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeBSplineSurfaceWithKnots_value(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeBSplineSurfaceWithKnots_as_GeomToStep_Root(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeBSplineSurfaceWithKnots_as_GeomToStep_Root(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeBSplineSurfaceWithKnots_as_GeomToStep_Root_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeBSplineSurfaceWithKnots_as_GeomToStep_Root_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -629,8 +688,11 @@ impl MakeBSplineSurfaceWithKnots {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -663,8 +725,10 @@ impl MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface_ctor_handlegeombsplinesurface_factors(Bsplin, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -678,31 +742,34 @@ impl MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface_as_GeomToStep_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface_as_GeomToStep_Root(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface_as_GeomToStep_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface_as_GeomToStep_Root_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -711,8 +778,11 @@ impl MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -748,8 +818,10 @@ impl MakeBoundedCurve {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -765,8 +837,10 @@ impl MakeBoundedCurve {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -775,31 +849,34 @@ impl MakeBoundedCurve {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeBoundedCurve_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeBoundedCurve_as_GeomToStep_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeBoundedCurve_as_GeomToStep_Root(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeBoundedCurve_as_GeomToStep_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeBoundedCurve_as_GeomToStep_Root_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -808,8 +885,11 @@ impl MakeBoundedCurve {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeBoundedCurve_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -845,8 +925,10 @@ impl MakeBoundedSurface {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -855,31 +937,34 @@ impl MakeBoundedSurface {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeBoundedSurface_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeBoundedSurface_as_GeomToStep_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeBoundedSurface_as_GeomToStep_Root(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeBoundedSurface_as_GeomToStep_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeBoundedSurface_as_GeomToStep_Root_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -888,8 +973,11 @@ impl MakeBoundedSurface {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeBoundedSurface_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -917,8 +1005,10 @@ impl MakeCartesianPoint {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeCartesianPoint_ctor_pnt_real(P, aFactor) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -927,8 +1017,10 @@ impl MakeCartesianPoint {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeCartesianPoint_ctor_pnt2d_real(P, aFactor) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -943,8 +1035,10 @@ impl MakeCartesianPoint {
                     P, aFactor,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -956,8 +1050,10 @@ impl MakeCartesianPoint {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeCartesianPoint_ctor_handlegeom2dcartesianpoint(P)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -966,31 +1062,34 @@ impl MakeCartesianPoint {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeCartesianPoint_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeCartesianPoint_as_GeomToStep_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeCartesianPoint_as_GeomToStep_Root(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeCartesianPoint_as_GeomToStep_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeCartesianPoint_as_GeomToStep_Root_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -999,8 +1098,11 @@ impl MakeCartesianPoint {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeCartesianPoint_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1031,8 +1133,10 @@ impl MakeCircle {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeCircle_ctor_circ_factors(C, theLocalFactors) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1045,8 +1149,10 @@ impl MakeCircle {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeCircle_ctor_handlegeomcircle_factors(C, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1062,8 +1168,10 @@ impl MakeCircle {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1071,31 +1179,32 @@ impl MakeCircle {
     pub fn value(&self) -> &crate::ffi::HandleStepGeomCircle {
         {
             let __result = unsafe { crate::ffi::GeomToStep_MakeCircle_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeCircle_as_GeomToStep_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::GeomToStep_MakeCircle_as_GeomToStep_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeCircle_as_GeomToStep_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::GeomToStep_MakeCircle_as_GeomToStep_Root_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -1103,8 +1212,11 @@ impl MakeCircle {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeCircle_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1136,8 +1248,10 @@ impl MakeConic {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeConic_ctor_handlegeomconic_factors(C, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1150,8 +1264,10 @@ impl MakeConic {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeConic_ctor_handlegeom2dconic_factors(C, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1159,30 +1275,32 @@ impl MakeConic {
     pub fn value(&self) -> &crate::ffi::HandleStepGeomConic {
         {
             let __result = unsafe { crate::ffi::GeomToStep_MakeConic_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomToStep_MakeConic_as_GeomToStep_Root(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::GeomToStep_MakeConic_as_GeomToStep_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeConic_as_GeomToStep_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::GeomToStep_MakeConic_as_GeomToStep_Root_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -1190,8 +1308,11 @@ impl MakeConic {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeConic_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1226,8 +1347,10 @@ impl MakeConicalSurface {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1236,31 +1359,34 @@ impl MakeConicalSurface {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeConicalSurface_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeConicalSurface_as_GeomToStep_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeConicalSurface_as_GeomToStep_Root(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeConicalSurface_as_GeomToStep_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeConicalSurface_as_GeomToStep_Root_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -1269,8 +1395,11 @@ impl MakeConicalSurface {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeConicalSurface_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1302,8 +1431,10 @@ impl MakeCurve {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeCurve_ctor_handlegeomcurve_factors(C, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1316,8 +1447,10 @@ impl MakeCurve {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeCurve_ctor_handlegeom2dcurve_factors(C, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1325,30 +1458,32 @@ impl MakeCurve {
     pub fn value(&self) -> &crate::ffi::HandleStepGeomCurve {
         {
             let __result = unsafe { crate::ffi::GeomToStep_MakeCurve_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomToStep_MakeCurve_as_GeomToStep_Root(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::GeomToStep_MakeCurve_as_GeomToStep_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeCurve_as_GeomToStep_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::GeomToStep_MakeCurve_as_GeomToStep_Root_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -1356,8 +1491,11 @@ impl MakeCurve {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeCurve_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1389,8 +1527,10 @@ impl MakeCylindricalSurface {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeCylindricalSurface_ctor_handlegeomcylindricalsurface_factors(CSurf, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1399,35 +1539,34 @@ impl MakeCylindricalSurface {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeCylindricalSurface_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeCylindricalSurface_as_GeomToStep_Root(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeCylindricalSurface_as_GeomToStep_Root(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeCylindricalSurface_as_GeomToStep_Root_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeCylindricalSurface_as_GeomToStep_Root_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -1436,8 +1575,11 @@ impl MakeCylindricalSurface {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeCylindricalSurface_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1464,8 +1606,10 @@ impl MakeDirection {
     pub fn new_dir(D: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomToStep_MakeDirection_ctor_dir(D) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1473,8 +1617,10 @@ impl MakeDirection {
     pub fn new_dir2d(D: &crate::gp::Dir2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomToStep_MakeDirection_ctor_dir2d(D) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1483,8 +1629,10 @@ impl MakeDirection {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeDirection_ctor_handlegeomdirection(D) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1495,8 +1643,10 @@ impl MakeDirection {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeDirection_ctor_handlegeom2ddirection(D) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1505,31 +1655,33 @@ impl MakeDirection {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeDirection_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeDirection_as_GeomToStep_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::GeomToStep_MakeDirection_as_GeomToStep_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeDirection_as_GeomToStep_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeDirection_as_GeomToStep_Root_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -1538,8 +1690,11 @@ impl MakeDirection {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeDirection_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1572,8 +1727,10 @@ impl MakeElementarySurface {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeElementarySurface_ctor_handlegeomelementarysurface_factors(S, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1582,33 +1739,34 @@ impl MakeElementarySurface {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeElementarySurface_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeElementarySurface_as_GeomToStep_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeElementarySurface_as_GeomToStep_Root(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeElementarySurface_as_GeomToStep_Root_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeElementarySurface_as_GeomToStep_Root_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -1617,8 +1775,11 @@ impl MakeElementarySurface {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeElementarySurface_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1650,8 +1811,10 @@ impl MakeEllipse {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeEllipse_ctor_elips_factors(C, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1667,8 +1830,10 @@ impl MakeEllipse {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1684,8 +1849,10 @@ impl MakeEllipse {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1693,31 +1860,32 @@ impl MakeEllipse {
     pub fn value(&self) -> &crate::ffi::HandleStepGeomEllipse {
         {
             let __result = unsafe { crate::ffi::GeomToStep_MakeEllipse_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeEllipse_as_GeomToStep_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::GeomToStep_MakeEllipse_as_GeomToStep_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeEllipse_as_GeomToStep_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::GeomToStep_MakeEllipse_as_GeomToStep_Root_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -1725,8 +1893,11 @@ impl MakeEllipse {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeEllipse_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1760,8 +1931,10 @@ impl MakeHyperbola {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1777,8 +1950,10 @@ impl MakeHyperbola {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1787,31 +1962,33 @@ impl MakeHyperbola {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeHyperbola_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeHyperbola_as_GeomToStep_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::GeomToStep_MakeHyperbola_as_GeomToStep_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeHyperbola_as_GeomToStep_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeHyperbola_as_GeomToStep_Root_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -1820,8 +1997,11 @@ impl MakeHyperbola {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeHyperbola_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1852,8 +2032,10 @@ impl MakeLine {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeLine_ctor_lin_factors(L, theLocalFactors) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1865,8 +2047,10 @@ impl MakeLine {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeLine_ctor_lin2d_factors(L, theLocalFactors) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1879,8 +2063,10 @@ impl MakeLine {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeLine_ctor_handlegeomline_factors(C, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1893,8 +2079,10 @@ impl MakeLine {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeLine_ctor_handlegeom2dline_factors(C, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1902,30 +2090,32 @@ impl MakeLine {
     pub fn value(&self) -> &crate::ffi::HandleStepGeomLine {
         {
             let __result = unsafe { crate::ffi::GeomToStep_MakeLine_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomToStep_MakeLine_as_GeomToStep_Root(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::GeomToStep_MakeLine_as_GeomToStep_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeLine_as_GeomToStep_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::GeomToStep_MakeLine_as_GeomToStep_Root_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -1933,8 +2123,11 @@ impl MakeLine {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeLine_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1968,8 +2161,10 @@ impl MakeParabola {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1985,8 +2180,10 @@ impl MakeParabola {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1995,31 +2192,33 @@ impl MakeParabola {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeParabola_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeParabola_as_GeomToStep_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::GeomToStep_MakeParabola_as_GeomToStep_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeParabola_as_GeomToStep_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeParabola_as_GeomToStep_Root_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -2028,8 +2227,11 @@ impl MakeParabola {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeParabola_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2060,8 +2262,10 @@ impl MakePlane {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakePlane_ctor_pln_factors(P, theLocalFactors) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2074,8 +2278,10 @@ impl MakePlane {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakePlane_ctor_handlegeomplane_factors(P, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2083,30 +2289,32 @@ impl MakePlane {
     pub fn value(&self) -> &crate::ffi::HandleStepGeomPlane {
         {
             let __result = unsafe { crate::ffi::GeomToStep_MakePlane_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomToStep_MakePlane_as_GeomToStep_Root(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::GeomToStep_MakePlane_as_GeomToStep_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakePlane_as_GeomToStep_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::GeomToStep_MakePlane_as_GeomToStep_Root_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -2114,8 +2322,11 @@ impl MakePlane {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakePlane_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2145,8 +2356,10 @@ impl MakePolyline {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakePolyline_ctor_array1ofpnt_factors(P, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2159,8 +2372,10 @@ impl MakePolyline {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakePolyline_ctor_array1ofpnt2d_factors(P, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2169,31 +2384,33 @@ impl MakePolyline {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakePolyline_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakePolyline_as_GeomToStep_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::GeomToStep_MakePolyline_as_GeomToStep_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakePolyline_as_GeomToStep_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakePolyline_as_GeomToStep_Root_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -2202,8 +2419,11 @@ impl MakePolyline {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakePolyline_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2236,8 +2456,10 @@ impl MakeRectangularTrimmedSurface {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeRectangularTrimmedSurface_ctor_handlegeomrectangulartrimmedsurface_factors(RTSurf, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2247,35 +2469,38 @@ impl MakeRectangularTrimmedSurface {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeRectangularTrimmedSurface_value(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeRectangularTrimmedSurface_as_GeomToStep_Root(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeRectangularTrimmedSurface_as_GeomToStep_Root(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeRectangularTrimmedSurface_as_GeomToStep_Root_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeRectangularTrimmedSurface_as_GeomToStep_Root_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -2286,8 +2511,11 @@ impl MakeRectangularTrimmedSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2322,8 +2550,10 @@ impl MakeSphericalSurface {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2332,33 +2562,34 @@ impl MakeSphericalSurface {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeSphericalSurface_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeSphericalSurface_as_GeomToStep_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeSphericalSurface_as_GeomToStep_Root(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeSphericalSurface_as_GeomToStep_Root_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeSphericalSurface_as_GeomToStep_Root_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -2367,8 +2598,11 @@ impl MakeSphericalSurface {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeSphericalSurface_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2403,8 +2637,10 @@ impl MakeSurface {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2412,31 +2648,32 @@ impl MakeSurface {
     pub fn value(&self) -> &crate::ffi::HandleStepGeomSurface {
         {
             let __result = unsafe { crate::ffi::GeomToStep_MakeSurface_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeSurface_as_GeomToStep_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::GeomToStep_MakeSurface_as_GeomToStep_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeSurface_as_GeomToStep_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::GeomToStep_MakeSurface_as_GeomToStep_Root_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -2444,8 +2681,11 @@ impl MakeSurface {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeSurface_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2477,8 +2717,10 @@ impl MakeSurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeSurfaceOfLinearExtrusion_ctor_handlegeomsurfaceoflinearextrusion_factors(CSurf, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2488,35 +2730,38 @@ impl MakeSurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeSurfaceOfLinearExtrusion_value(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeSurfaceOfLinearExtrusion_as_GeomToStep_Root(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeSurfaceOfLinearExtrusion_as_GeomToStep_Root(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeSurfaceOfLinearExtrusion_as_GeomToStep_Root_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeSurfaceOfLinearExtrusion_as_GeomToStep_Root_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -2527,8 +2772,11 @@ impl MakeSurfaceOfLinearExtrusion {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2560,8 +2808,10 @@ impl MakeSurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeSurfaceOfRevolution_ctor_handlegeomsurfaceofrevolution_factors(RevSurf, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2571,35 +2821,34 @@ impl MakeSurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeSurfaceOfRevolution_value(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeSurfaceOfRevolution_as_GeomToStep_Root(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeSurfaceOfRevolution_as_GeomToStep_Root(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeSurfaceOfRevolution_as_GeomToStep_Root_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeSurfaceOfRevolution_as_GeomToStep_Root_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -2608,8 +2857,11 @@ impl MakeSurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeSurfaceOfRevolution_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2645,8 +2897,10 @@ impl MakeSweptSurface {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2655,31 +2909,34 @@ impl MakeSweptSurface {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeSweptSurface_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeSweptSurface_as_GeomToStep_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeSweptSurface_as_GeomToStep_Root(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeSweptSurface_as_GeomToStep_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeSweptSurface_as_GeomToStep_Root_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -2688,8 +2945,11 @@ impl MakeSweptSurface {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeSweptSurface_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2724,8 +2984,10 @@ impl MakeToroidalSurface {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2734,31 +2996,34 @@ impl MakeToroidalSurface {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeToroidalSurface_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeToroidalSurface_as_GeomToStep_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeToroidalSurface_as_GeomToStep_Root(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeToroidalSurface_as_GeomToStep_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToStep_MakeToroidalSurface_as_GeomToStep_Root_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -2767,8 +3032,11 @@ impl MakeToroidalSurface {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeToroidalSurface_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2799,8 +3067,10 @@ impl MakeVector {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeVector_ctor_vec_factors(V, theLocalFactors) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2812,8 +3082,10 @@ impl MakeVector {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeVector_ctor_vec2d_factors(V, theLocalFactors) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2826,8 +3098,10 @@ impl MakeVector {
             let __result = unsafe {
                 crate::ffi::GeomToStep_MakeVector_ctor_handlegeomvector_factors(V, theLocalFactors)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2843,8 +3117,10 @@ impl MakeVector {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2852,31 +3128,32 @@ impl MakeVector {
     pub fn value(&self) -> &crate::ffi::HandleStepGeomVector {
         {
             let __result = unsafe { crate::ffi::GeomToStep_MakeVector_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomToStep_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeVector_as_GeomToStep_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::GeomToStep_MakeVector_as_GeomToStep_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToStep_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToStep_MakeVector_as_GeomToStep_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::GeomToStep_MakeVector_as_GeomToStep_Root_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToStep_Root.hxx`:34 - `GeomToStep_Root::IsDone()`
@@ -2884,8 +3161,11 @@ impl MakeVector {
         {
             let __result =
                 unsafe { crate::ffi::GeomToStep_MakeVector_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2911,8 +3191,10 @@ impl Root {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomToStep_Root_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2920,8 +3202,11 @@ impl Root {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::GeomToStep_Root_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

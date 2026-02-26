@@ -43,8 +43,10 @@ impl CurveTransition {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopTrans_CurveTransition_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -53,7 +55,7 @@ impl CurveTransition {
     /// of a Curve.
     pub fn reset_dir2_real(&mut self, Tgt: &crate::gp::Dir, Norm: &crate::gp::Dir, Curv: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTrans_CurveTransition_reset_dir2_real(
                     self as *mut Self,
                     Tgt,
@@ -61,7 +63,9 @@ impl CurveTransition {
                     Curv,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -69,8 +73,11 @@ impl CurveTransition {
     /// Initialize a Transition with the local description of a straight line.
     pub fn reset_dir(&mut self, Tgt: &crate::gp::Dir) {
         {
-            unsafe { crate::ffi::TopTrans_CurveTransition_reset_dir(self as *mut Self, Tgt) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopTrans_CurveTransition_reset_dir(self as *mut Self, Tgt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -90,7 +97,7 @@ impl CurveTransition {
         Or: crate::top_abs::Orientation,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTrans_CurveTransition_compare(
                     self as *mut Self,
                     Tole,
@@ -101,7 +108,9 @@ impl CurveTransition {
                     Or.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -114,8 +123,11 @@ impl CurveTransition {
         {
             let __result =
                 unsafe { crate::ffi::TopTrans_CurveTransition_state_before(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -128,8 +140,11 @@ impl CurveTransition {
         {
             let __result =
                 unsafe { crate::ffi::TopTrans_CurveTransition_state_after(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 }
@@ -174,8 +189,10 @@ impl SurfaceTransition {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopTrans_SurfaceTransition_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -194,7 +211,7 @@ impl SurfaceTransition {
         MinCurv: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTrans_SurfaceTransition_reset_dir4_real2(
                     self as *mut Self,
                     Tgt,
@@ -205,7 +222,9 @@ impl SurfaceTransition {
                     MinCurv,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -214,10 +233,12 @@ impl SurfaceTransition {
     /// description of a straight line.
     pub fn reset_dir2(&mut self, Tgt: &crate::gp::Dir, Norm: &crate::gp::Dir) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTrans_SurfaceTransition_reset_dir2(self as *mut Self, Tgt, Norm)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -248,7 +269,7 @@ impl SurfaceTransition {
         O: crate::top_abs::Orientation,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTrans_SurfaceTransition_compare_real_dir3_real2_orientation2(
                     self as *mut Self,
                     Tole,
@@ -261,7 +282,9 @@ impl SurfaceTransition {
                     O.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -275,7 +298,7 @@ impl SurfaceTransition {
         O: crate::top_abs::Orientation,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTrans_SurfaceTransition_compare_real_dir_orientation2(
                     self as *mut Self,
                     Tole,
@@ -284,7 +307,9 @@ impl SurfaceTransition {
                     O.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -297,8 +322,11 @@ impl SurfaceTransition {
         {
             let __result =
                 unsafe { crate::ffi::TopTrans_SurfaceTransition_state_before(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -311,8 +339,11 @@ impl SurfaceTransition {
         {
             let __result =
                 unsafe { crate::ffi::TopTrans_SurfaceTransition_state_after(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -321,8 +352,11 @@ impl SurfaceTransition {
         {
             let __result =
                 unsafe { crate::ffi::TopTrans_SurfaceTransition_get_before(Tran.into()) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -330,8 +364,11 @@ impl SurfaceTransition {
     pub fn get_after(Tran: crate::top_abs::Orientation) -> crate::top_abs::State {
         {
             let __result = unsafe { crate::ffi::TopTrans_SurfaceTransition_get_after(Tran.into()) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 }

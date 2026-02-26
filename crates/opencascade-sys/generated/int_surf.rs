@@ -23,8 +23,12 @@ pub fn make_transition(
     TSecond: &mut Transition,
 ) {
     {
-        unsafe { crate::ffi::IntSurf_make_transition(TgFirst, TgSecond, Normal, TFirst, TSecond) };
-        crate::check_exception();
+        let __exc = unsafe {
+            crate::ffi::IntSurf_make_transition(TgFirst, TgSecond, Normal, TFirst, TSecond)
+        };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `IntSurf.hxx`:56 - `IntSurf::SetPeriod`
@@ -42,10 +46,12 @@ pub fn set_period(
     theArrOfPeriod: &mut [f64; 4],
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::IntSurf_set_period(theFirstSurf, theSecondSurf, theArrOfPeriod.as_mut_ptr())
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 
@@ -129,8 +135,10 @@ impl Couple {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntSurf_Couple_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -138,8 +146,10 @@ impl Couple {
     pub fn new_int2(Index1: i32, Index2: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntSurf_Couple_ctor_int2(Index1, Index2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -148,8 +158,11 @@ impl Couple {
     pub fn first(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntSurf_Couple_first(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -158,8 +171,11 @@ impl Couple {
     pub fn second(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntSurf_Couple_second(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -188,8 +204,10 @@ impl InteriorPoint {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntSurf_InteriorPoint_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -205,8 +223,10 @@ impl InteriorPoint {
             let __result = unsafe {
                 crate::ffi::IntSurf_InteriorPoint_ctor_pnt_real2_vec_vec2d(P, U, V, Direc, Direc2d)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -220,7 +240,7 @@ impl InteriorPoint {
         Direc2d: &crate::gp::Vec2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntSurf_InteriorPoint_set_value(
                     self as *mut Self,
                     P,
@@ -230,7 +250,9 @@ impl InteriorPoint {
                     Direc2d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -239,8 +261,11 @@ impl InteriorPoint {
     pub fn value(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::IntSurf_InteriorPoint_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -249,8 +274,11 @@ impl InteriorPoint {
     /// parametric surface.
     pub fn parameters(&self, U: &mut f64, V: &mut f64) {
         {
-            unsafe { crate::ffi::IntSurf_InteriorPoint_parameters(self as *const Self, U, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntSurf_InteriorPoint_parameters(self as *const Self, U, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -261,8 +289,11 @@ impl InteriorPoint {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_InteriorPoint_u_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -273,8 +304,11 @@ impl InteriorPoint {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_InteriorPoint_v_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -285,8 +319,11 @@ impl InteriorPoint {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_InteriorPoint_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -297,8 +334,11 @@ impl InteriorPoint {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_InteriorPoint_direction2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -325,8 +365,10 @@ impl InteriorPointTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntSurf_InteriorPointTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -335,8 +377,11 @@ impl InteriorPointTool {
     pub fn value3d(PStart: &InteriorPoint) -> crate::OwnedPtr<crate::gp::Pnt> {
         {
             let __result = unsafe { crate::ffi::IntSurf_InteriorPointTool_value3d(PStart) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -346,8 +391,10 @@ impl InteriorPointTool {
     /// it's the parameters which start the marching algorithm
     pub fn value2d(PStart: &InteriorPoint, U: &mut f64, V: &mut f64) {
         {
-            unsafe { crate::ffi::IntSurf_InteriorPointTool_value2d(PStart, U, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntSurf_InteriorPointTool_value2d(PStart, U, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -357,8 +404,11 @@ impl InteriorPointTool {
     pub fn direction3d(PStart: &InteriorPoint) -> crate::OwnedPtr<crate::gp::Vec> {
         {
             let __result = unsafe { crate::ffi::IntSurf_InteriorPointTool_direction3d(PStart) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -369,8 +419,11 @@ impl InteriorPointTool {
     pub fn direction2d(PStart: &InteriorPoint) -> crate::OwnedPtr<crate::gp::Dir2d> {
         {
             let __result = unsafe { crate::ffi::IntSurf_InteriorPointTool_direction2d(PStart) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -397,8 +450,10 @@ impl LineOn2S {
             let __result = unsafe {
                 crate::ffi::IntSurf_LineOn2S_ctor_handlencollectionbaseallocator(theAllocator)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -406,8 +461,10 @@ impl LineOn2S {
     /// Adds a point in the line.
     pub fn add(&mut self, P: &PntOn2S) {
         {
-            unsafe { crate::ffi::IntSurf_LineOn2S_add(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntSurf_LineOn2S_add(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -416,8 +473,11 @@ impl LineOn2S {
     pub fn nb_points(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntSurf_LineOn2S_nb_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -427,8 +487,11 @@ impl LineOn2S {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_LineOn2S_value_int(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -436,8 +499,10 @@ impl LineOn2S {
     /// Reverses the order of points of the line.
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::IntSurf_LineOn2S_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntSurf_LineOn2S_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -447,8 +512,11 @@ impl LineOn2S {
     pub fn split(&mut self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleIntSurfLineOn2S> {
         {
             let __result = unsafe { crate::ffi::IntSurf_LineOn2S_split(self as *mut Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -456,8 +524,12 @@ impl LineOn2S {
     /// Replaces the point of range Index in the line.
     pub fn value_int_pnton2s(&mut self, Index: i32, P: &PntOn2S) {
         {
-            unsafe { crate::ffi::IntSurf_LineOn2S_value_int_pnton2s(self as *mut Self, Index, P) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntSurf_LineOn2S_value_int_pnton2s(self as *mut Self, Index, P)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -465,8 +537,11 @@ impl LineOn2S {
     /// Sets the 3D point of the Index-th PntOn2S
     pub fn set_point(&mut self, Index: i32, thePnt: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::IntSurf_LineOn2S_set_point(self as *mut Self, Index, thePnt) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntSurf_LineOn2S_set_point(self as *mut Self, Index, thePnt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -475,32 +550,43 @@ impl LineOn2S {
     /// of the point of range Index in the line.
     pub fn set_uv(&mut self, Index: i32, OnFirst: bool, U: f64, V: f64) {
         {
-            unsafe { crate::ffi::IntSurf_LineOn2S_set_uv(self as *mut Self, Index, OnFirst, U, V) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntSurf_LineOn2S_set_uv(self as *mut Self, Index, OnFirst, U, V)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:69 - `IntSurf_LineOn2S::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::IntSurf_LineOn2S_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntSurf_LineOn2S_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:71 - `IntSurf_LineOn2S::InsertBefore()`
     pub fn insert_before(&mut self, I: i32, P: &PntOn2S) {
         {
-            unsafe { crate::ffi::IntSurf_LineOn2S_insert_before(self as *mut Self, I, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntSurf_LineOn2S_insert_before(self as *mut Self, I, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntSurf_LineOn2S.hxx`:73 - `IntSurf_LineOn2S::RemovePoint()`
     pub fn remove_point(&mut self, I: i32) {
         {
-            unsafe { crate::ffi::IntSurf_LineOn2S_remove_point(self as *mut Self, I) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntSurf_LineOn2S_remove_point(self as *mut Self, I) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -511,8 +597,11 @@ impl LineOn2S {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_LineOn2S_is_out_surf1_box(self as *mut Self, theP) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -523,8 +612,11 @@ impl LineOn2S {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_LineOn2S_is_out_surf2_box(self as *mut Self, theP) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -534,8 +626,11 @@ impl LineOn2S {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_LineOn2S_is_out_box(self as *mut Self, theP) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -544,8 +639,11 @@ impl LineOn2S {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_LineOn2S_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -553,8 +651,11 @@ impl LineOn2S {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IntSurf_LineOn2S_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -562,41 +663,43 @@ impl LineOn2S {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IntSurf_LineOn2S_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::IntSurf_LineOn2S_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IntSurf_LineOn2S_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IntSurf_LineOn2S_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IntSurf_LineOn2S_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIntSurfLineOn2S> {
-        {
-            let __result = unsafe { crate::ffi::IntSurf_LineOn2S_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IntSurf_LineOn2S_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -605,8 +708,11 @@ impl LineOn2S {
             let __result = unsafe {
                 crate::ffi::IntSurf_LineOn2S_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -616,8 +722,11 @@ impl LineOn2S {
             let __result = unsafe {
                 crate::ffi::IntSurf_LineOn2S_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -626,11 +735,14 @@ impl LineOn2S {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_LineOn2S_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -640,18 +752,23 @@ impl LineOn2S {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_LineOn2S_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntSurf_LineOn2S_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -661,16 +778,22 @@ impl LineOn2S {
             let __result = unsafe {
                 crate::ffi::IntSurf_LineOn2S_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IntSurf_LineOn2S_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntSurf_LineOn2S_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -686,31 +809,31 @@ unsafe impl crate::CppDeletable for HandleIntSurfLineOn2S {
 impl HandleIntSurfLineOn2S {
     /// Dereference this Handle to access the underlying IntSurf_LineOn2S
     pub fn get(&self) -> &crate::ffi::IntSurf_LineOn2S {
-        {
-            let __result = unsafe { crate::ffi::HandleIntSurfLineOn2S_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIntSurfLineOn2S_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IntSurf_LineOn2S
     pub fn get_mut(&mut self) -> &mut crate::ffi::IntSurf_LineOn2S {
-        {
-            let __result = unsafe { crate::ffi::HandleIntSurfLineOn2S_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleIntSurfLineOn2S_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IntSurf_LineOn2S> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIntSurfLineOn2S_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIntSurfLineOn2S_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -732,8 +855,10 @@ impl PathPoint {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntSurf_PathPoint_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -741,48 +866,64 @@ impl PathPoint {
     pub fn new_pnt_real2(P: &crate::gp::Pnt, U: f64, V: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntSurf_PathPoint_ctor_pnt_real2(P, U, V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `IntSurf_PathPoint.hxx`:39 - `IntSurf_PathPoint::SetValue()`
     pub fn set_value(&mut self, P: &crate::gp::Pnt, U: f64, V: f64) {
         {
-            unsafe { crate::ffi::IntSurf_PathPoint_set_value(self as *mut Self, P, U, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntSurf_PathPoint_set_value(self as *mut Self, P, U, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntSurf_PathPoint.hxx`:41 - `IntSurf_PathPoint::AddUV()`
     pub fn add_uv(&mut self, U: f64, V: f64) {
         {
-            unsafe { crate::ffi::IntSurf_PathPoint_add_uv(self as *mut Self, U, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntSurf_PathPoint_add_uv(self as *mut Self, U, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntSurf_PathPoint.hxx`:43 - `IntSurf_PathPoint::SetDirections()`
     pub fn set_directions(&mut self, V: &crate::gp::Vec, D: &crate::gp::Dir2d) {
         {
-            unsafe { crate::ffi::IntSurf_PathPoint_set_directions(self as *mut Self, V, D) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntSurf_PathPoint_set_directions(self as *mut Self, V, D) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntSurf_PathPoint.hxx`:45 - `IntSurf_PathPoint::SetTangency()`
     pub fn set_tangency(&mut self, Tang: bool) {
         {
-            unsafe { crate::ffi::IntSurf_PathPoint_set_tangency(self as *mut Self, Tang) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntSurf_PathPoint_set_tangency(self as *mut Self, Tang) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntSurf_PathPoint.hxx`:47 - `IntSurf_PathPoint::SetPassing()`
     pub fn set_passing(&mut self, Pass: bool) {
         {
-            unsafe { crate::ffi::IntSurf_PathPoint_set_passing(self as *mut Self, Pass) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntSurf_PathPoint_set_passing(self as *mut Self, Pass) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -790,16 +931,21 @@ impl PathPoint {
     pub fn value(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::IntSurf_PathPoint_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `IntSurf_PathPoint.hxx`:51 - `IntSurf_PathPoint::Value2d()`
     pub fn value2d(&self, U: &mut f64, V: &mut f64) {
         {
-            unsafe { crate::ffi::IntSurf_PathPoint_value2d(self as *const Self, U, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntSurf_PathPoint_value2d(self as *const Self, U, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -808,8 +954,11 @@ impl PathPoint {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_PathPoint_is_passing_pnt(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -817,8 +966,11 @@ impl PathPoint {
     pub fn is_tangent(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::IntSurf_PathPoint_is_tangent(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -827,8 +979,11 @@ impl PathPoint {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_PathPoint_direction3d(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -837,8 +992,11 @@ impl PathPoint {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_PathPoint_direction2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -847,16 +1005,23 @@ impl PathPoint {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_PathPoint_multiplicity(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `IntSurf_PathPoint.hxx`:63 - `IntSurf_PathPoint::Parameters()`
     pub fn parameters(&self, Index: i32, U: &mut f64, V: &mut f64) {
         {
-            unsafe { crate::ffi::IntSurf_PathPoint_parameters(self as *const Self, Index, U, V) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntSurf_PathPoint_parameters(self as *const Self, Index, U, V)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -880,8 +1045,10 @@ impl PathPointTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntSurf_PathPointTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -890,8 +1057,11 @@ impl PathPointTool {
     pub fn value3d(PStart: &PathPoint) -> crate::OwnedPtr<crate::gp::Pnt> {
         {
             let __result = unsafe { crate::ffi::IntSurf_PathPointTool_value3d(PStart) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -901,8 +1071,10 @@ impl PathPointTool {
     /// it's the parameters which start the marching algorithm
     pub fn value2d(PStart: &PathPoint, U: &mut f64, V: &mut f64) {
         {
-            unsafe { crate::ffi::IntSurf_PathPointTool_value2d(PStart, U, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntSurf_PathPointTool_value2d(PStart, U, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -914,8 +1086,11 @@ impl PathPointTool {
     pub fn is_passing_pnt(PStart: &PathPoint) -> bool {
         {
             let __result = unsafe { crate::ffi::IntSurf_PathPointTool_is_passing_pnt(PStart) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -927,8 +1102,11 @@ impl PathPointTool {
     pub fn is_tangent(PStart: &PathPoint) -> bool {
         {
             let __result = unsafe { crate::ffi::IntSurf_PathPointTool_is_tangent(PStart) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -939,8 +1117,11 @@ impl PathPointTool {
     pub fn direction3d(PStart: &PathPoint) -> crate::OwnedPtr<crate::gp::Vec> {
         {
             let __result = unsafe { crate::ffi::IntSurf_PathPointTool_direction3d(PStart) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -954,8 +1135,11 @@ impl PathPointTool {
     pub fn direction2d(PStart: &PathPoint) -> crate::OwnedPtr<crate::gp::Dir2d> {
         {
             let __result = unsafe { crate::ffi::IntSurf_PathPointTool_direction2d(PStart) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -966,8 +1150,11 @@ impl PathPointTool {
     pub fn multiplicity(PStart: &PathPoint) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntSurf_PathPointTool_multiplicity(PStart) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -976,8 +1163,10 @@ impl PathPointTool {
     /// An exception is raised if Mult<=0 or Mult>multiplicity.
     pub fn parameters(PStart: &PathPoint, Mult: i32, U: &mut f64, V: &mut f64) {
         {
-            unsafe { crate::ffi::IntSurf_PathPointTool_parameters(PStart, Mult, U, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntSurf_PathPointTool_parameters(PStart, Mult, U, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1005,8 +1194,10 @@ impl PntOn2S {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntSurf_PntOn2S_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1014,8 +1205,10 @@ impl PntOn2S {
     /// Sets the value of the point in 3d space.
     pub fn set_value_pnt(&mut self, Pt: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::IntSurf_PntOn2S_set_value_pnt(self as *mut Self, Pt) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntSurf_PntOn2S_set_value_pnt(self as *mut Self, Pt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1024,7 +1217,7 @@ impl PntOn2S {
     /// in the parametric space of one of the surface.
     pub fn set_value_pnt_bool_real2(&mut self, Pt: &crate::gp::Pnt, OnFirst: bool, U: f64, V: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntSurf_PntOn2S_set_value_pnt_bool_real2(
                     self as *mut Self,
                     Pt,
@@ -1033,7 +1226,9 @@ impl PntOn2S {
                     V,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1042,7 +1237,7 @@ impl PntOn2S {
     /// in the parametric space of each surface.
     pub fn set_value_pnt_real4(&mut self, Pt: &crate::gp::Pnt, U1: f64, V1: f64, U2: f64, V2: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntSurf_PntOn2S_set_value_pnt_real4(
                     self as *mut Self,
                     Pt,
@@ -1052,7 +1247,9 @@ impl PntOn2S {
                     V2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1061,10 +1258,12 @@ impl PntOn2S {
     /// space of one of the surface.
     pub fn set_value_bool_real2(&mut self, OnFirst: bool, U: f64, V: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntSurf_PntOn2S_set_value_bool_real2(self as *mut Self, OnFirst, U, V)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1073,10 +1272,12 @@ impl PntOn2S {
     /// space of one of the surface.
     pub fn set_value_real4(&mut self, U1: f64, V1: f64, U2: f64, V2: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntSurf_PntOn2S_set_value_real4(self as *mut Self, U1, V1, U2, V2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1085,8 +1286,11 @@ impl PntOn2S {
     pub fn value(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::IntSurf_PntOn2S_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1097,8 +1301,11 @@ impl PntOn2S {
             let __result = unsafe {
                 crate::ffi::IntSurf_PntOn2S_value_on_surface(self as *const Self, OnFirst)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1106,8 +1313,12 @@ impl PntOn2S {
     /// Returns the parameters of the point on the first surface.
     pub fn parameters_on_s1(&self, U1: &mut f64, V1: &mut f64) {
         {
-            unsafe { crate::ffi::IntSurf_PntOn2S_parameters_on_s1(self as *const Self, U1, V1) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntSurf_PntOn2S_parameters_on_s1(self as *const Self, U1, V1)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1115,8 +1326,12 @@ impl PntOn2S {
     /// Returns the parameters of the point on the second surface.
     pub fn parameters_on_s2(&self, U2: &mut f64, V2: &mut f64) {
         {
-            unsafe { crate::ffi::IntSurf_PntOn2S_parameters_on_s2(self as *const Self, U2, V2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntSurf_PntOn2S_parameters_on_s2(self as *const Self, U2, V2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1125,7 +1340,7 @@ impl PntOn2S {
     /// parametric space of one of the surface.
     pub fn parameters_on_surface(&self, OnFirst: bool, U: &mut f64, V: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntSurf_PntOn2S_parameters_on_surface(
                     self as *const Self,
                     OnFirst,
@@ -1133,7 +1348,9 @@ impl PntOn2S {
                     V,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1141,8 +1358,12 @@ impl PntOn2S {
     /// Returns the parameters of the point on both surfaces.
     pub fn parameters(&self, U1: &mut f64, V1: &mut f64, U2: &mut f64, V2: &mut f64) {
         {
-            unsafe { crate::ffi::IntSurf_PntOn2S_parameters(self as *const Self, U1, V1, U2, V2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntSurf_PntOn2S_parameters(self as *const Self, U1, V1, U2, V2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1160,8 +1381,11 @@ impl PntOn2S {
                     theTol2D,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1184,8 +1408,10 @@ impl Quadric {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntSurf_Quadric_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1193,8 +1419,10 @@ impl Quadric {
     pub fn new_pln(P: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntSurf_Quadric_ctor_pln(P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1202,8 +1430,10 @@ impl Quadric {
     pub fn new_cylinder(C: &crate::gp::Cylinder) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntSurf_Quadric_ctor_cylinder(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1211,8 +1441,10 @@ impl Quadric {
     pub fn new_sphere(S: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntSurf_Quadric_ctor_sphere(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1220,8 +1452,10 @@ impl Quadric {
     pub fn new_cone(C: &crate::gp::Cone) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntSurf_Quadric_ctor_cone(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1229,48 +1463,63 @@ impl Quadric {
     pub fn new_torus(T: &crate::gp::Torus) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntSurf_Quadric_ctor_torus(T) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:57 - `IntSurf_Quadric::SetValue()`
     pub fn set_value_pln(&mut self, P: &crate::gp::Pln) {
         {
-            unsafe { crate::ffi::IntSurf_Quadric_set_value_pln(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntSurf_Quadric_set_value_pln(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:59 - `IntSurf_Quadric::SetValue()`
     pub fn set_value_cylinder(&mut self, C: &crate::gp::Cylinder) {
         {
-            unsafe { crate::ffi::IntSurf_Quadric_set_value_cylinder(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntSurf_Quadric_set_value_cylinder(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:61 - `IntSurf_Quadric::SetValue()`
     pub fn set_value_sphere(&mut self, S: &crate::gp::Sphere) {
         {
-            unsafe { crate::ffi::IntSurf_Quadric_set_value_sphere(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntSurf_Quadric_set_value_sphere(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:63 - `IntSurf_Quadric::SetValue()`
     pub fn set_value_cone(&mut self, C: &crate::gp::Cone) {
         {
-            unsafe { crate::ffi::IntSurf_Quadric_set_value_cone(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntSurf_Quadric_set_value_cone(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:65 - `IntSurf_Quadric::SetValue()`
     pub fn set_value_torus(&mut self, T: &crate::gp::Torus) {
         {
-            unsafe { crate::ffi::IntSurf_Quadric_set_value_torus(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntSurf_Quadric_set_value_torus(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1278,8 +1527,11 @@ impl Quadric {
     pub fn distance(&self, P: &crate::gp::Pnt) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntSurf_Quadric_distance(self as *const Self, P) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1287,16 +1539,23 @@ impl Quadric {
     pub fn gradient(&self, P: &crate::gp::Pnt) -> crate::OwnedPtr<crate::gp::Vec> {
         {
             let __result = unsafe { crate::ffi::IntSurf_Quadric_gradient(self as *const Self, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:71 - `IntSurf_Quadric::ValAndGrad()`
     pub fn val_and_grad(&self, P: &crate::gp::Pnt, Dist: &mut f64, Grad: &mut crate::gp::Vec) {
         {
-            unsafe { crate::ffi::IntSurf_Quadric_val_and_grad(self as *const Self, P, Dist, Grad) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntSurf_Quadric_val_and_grad(self as *const Self, P, Dist, Grad)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1304,8 +1563,11 @@ impl Quadric {
     pub fn type_quadric(&self) -> crate::geom_abs::SurfaceType {
         {
             let __result = unsafe { crate::ffi::IntSurf_Quadric_type_quadric(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::SurfaceType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::SurfaceType::try_from(__val).unwrap()
         }
     }
 
@@ -1313,8 +1575,11 @@ impl Quadric {
     pub fn plane(&self) -> crate::OwnedPtr<crate::gp::Pln> {
         {
             let __result = unsafe { crate::ffi::IntSurf_Quadric_plane(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1322,8 +1587,11 @@ impl Quadric {
     pub fn sphere(&self) -> crate::OwnedPtr<crate::gp::Sphere> {
         {
             let __result = unsafe { crate::ffi::IntSurf_Quadric_sphere(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1331,8 +1599,11 @@ impl Quadric {
     pub fn cylinder(&self) -> crate::OwnedPtr<crate::gp::Cylinder> {
         {
             let __result = unsafe { crate::ffi::IntSurf_Quadric_cylinder(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1340,8 +1611,11 @@ impl Quadric {
     pub fn cone(&self) -> crate::OwnedPtr<crate::gp::Cone> {
         {
             let __result = unsafe { crate::ffi::IntSurf_Quadric_cone(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1349,8 +1623,11 @@ impl Quadric {
     pub fn torus(&self) -> crate::OwnedPtr<crate::gp::Torus> {
         {
             let __result = unsafe { crate::ffi::IntSurf_Quadric_torus(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1358,8 +1635,11 @@ impl Quadric {
     pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         {
             let __result = unsafe { crate::ffi::IntSurf_Quadric_value(self as *const Self, U, V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1373,8 +1653,11 @@ impl Quadric {
         D1V: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::IntSurf_Quadric_d1(self as *const Self, U, V, P, D1U, D1V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntSurf_Quadric_d1(self as *const Self, U, V, P, D1U, D1V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1383,8 +1666,11 @@ impl Quadric {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_Quadric_dn(self as *const Self, U, V, Nu, Nv) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1393,16 +1679,22 @@ impl Quadric {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_Quadric_normale_real2(self as *const Self, U, V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `IntSurf_Quadric.hxx`:100 - `IntSurf_Quadric::Parameters()`
     pub fn parameters(&self, P: &crate::gp::Pnt, U: &mut f64, V: &mut f64) {
         {
-            unsafe { crate::ffi::IntSurf_Quadric_parameters(self as *const Self, P, U, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntSurf_Quadric_parameters(self as *const Self, P, U, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1411,8 +1703,11 @@ impl Quadric {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_Quadric_normale_pnt(self as *const Self, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -1440,8 +1735,10 @@ impl QuadricTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntSurf_QuadricTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1450,8 +1747,11 @@ impl QuadricTool {
     pub fn value(Quad: &Quadric, X: f64, Y: f64, Z: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntSurf_QuadricTool_value(Quad, X, Y, Z) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1459,8 +1759,10 @@ impl QuadricTool {
     /// Returns the gradient of the function.
     pub fn gradient(Quad: &Quadric, X: f64, Y: f64, Z: f64, V: &mut crate::gp::Vec) {
         {
-            unsafe { crate::ffi::IntSurf_QuadricTool_gradient(Quad, X, Y, Z, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntSurf_QuadricTool_gradient(Quad, X, Y, Z, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1475,8 +1777,12 @@ impl QuadricTool {
         Grad: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::IntSurf_QuadricTool_value_and_gradient(Quad, X, Y, Z, Val, Grad) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntSurf_QuadricTool_value_and_gradient(Quad, X, Y, Z, Val, Grad)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1485,8 +1791,11 @@ impl QuadricTool {
     pub fn tolerance(Quad: &Quadric) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntSurf_QuadricTool_tolerance(Quad) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1513,8 +1822,10 @@ impl Transition {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntSurf_Transition_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1527,8 +1838,10 @@ impl Transition {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_Transition_ctor_bool_typetrans(Tangent, Type.into()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1543,8 +1856,10 @@ impl Transition {
             let __result = unsafe {
                 crate::ffi::IntSurf_Transition_ctor_bool_situation_bool(Tangent, Situ.into(), Oppos)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1552,14 +1867,16 @@ impl Transition {
     /// Set the values of an IN or OUT transition.
     pub fn set_value_bool_typetrans(&mut self, Tangent: bool, Type: crate::int_surf::TypeTrans) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntSurf_Transition_set_value_bool_typetrans(
                     self as *mut Self,
                     Tangent,
                     Type.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1572,7 +1889,7 @@ impl Transition {
         Oppos: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntSurf_Transition_set_value_bool_situation_bool(
                     self as *mut Self,
                     Tangent,
@@ -1580,7 +1897,9 @@ impl Transition {
                     Oppos,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1588,8 +1907,10 @@ impl Transition {
     /// Set the values of an UNDECIDED transition.
     pub fn set_value(&mut self) {
         {
-            unsafe { crate::ffi::IntSurf_Transition_set_value(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntSurf_Transition_set_value(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1604,8 +1925,11 @@ impl Transition {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_Transition_transition_type(self as *const Self) };
-            crate::check_exception();
-            crate::int_surf::TypeTrans::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_surf::TypeTrans::try_from(__val).unwrap()
         }
     }
 
@@ -1617,8 +1941,11 @@ impl Transition {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_Transition_is_tangent(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1633,8 +1960,11 @@ impl Transition {
     pub fn situation(&self) -> crate::int_surf::Situation {
         {
             let __result = unsafe { crate::ffi::IntSurf_Transition_situation(self as *const Self) };
-            crate::check_exception();
-            crate::int_surf::Situation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_surf::Situation::try_from(__val).unwrap()
         }
     }
 
@@ -1650,8 +1980,11 @@ impl Transition {
         {
             let __result =
                 unsafe { crate::ffi::IntSurf_Transition_is_opposite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

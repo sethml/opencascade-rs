@@ -42,8 +42,10 @@ impl Curve2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -52,8 +54,11 @@ impl Curve2d {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_Curve2d_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -63,8 +68,11 @@ impl Curve2d {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_Curve2d_shallow_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -73,8 +81,11 @@ impl Curve2d {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_Curve2d_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -83,8 +94,11 @@ impl Curve2d {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_Curve2d_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -92,8 +106,11 @@ impl Curve2d {
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -106,8 +123,11 @@ impl Curve2d {
             let __result = unsafe {
                 crate::ffi::Adaptor2d_Curve2d_nb_intervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -119,8 +139,12 @@ impl Curve2d {
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe { crate::ffi::Adaptor2d_Curve2d_intervals(self as *const Self, T, S.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Adaptor2d_Curve2d_intervals(self as *const Self, T, S.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -139,8 +163,11 @@ impl Curve2d {
             let __result = unsafe {
                 crate::ffi::Adaptor2d_Curve2d_trim(self as *const Self, First, Last, Tol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -148,8 +175,11 @@ impl Curve2d {
     pub fn is_closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -158,8 +188,11 @@ impl Curve2d {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_Curve2d_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -167,8 +200,11 @@ impl Curve2d {
     pub fn period(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -177,8 +213,11 @@ impl Curve2d {
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_value(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -186,8 +225,10 @@ impl Curve2d {
     /// Computes the point of parameter U on the curve.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Adaptor2d_Curve2d_d0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Adaptor2d_Curve2d_d0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -198,8 +239,10 @@ impl Curve2d {
     /// is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V: &mut crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Adaptor2d_Curve2d_d1(self as *const Self, U, P, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Adaptor2d_Curve2d_d1(self as *const Self, U, P, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -216,8 +259,11 @@ impl Curve2d {
         V2: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Adaptor2d_Curve2d_d2(self as *const Self, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Adaptor2d_Curve2d_d2(self as *const Self, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -235,8 +281,11 @@ impl Curve2d {
         V3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Adaptor2d_Curve2d_d3(self as *const Self, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Adaptor2d_Curve2d_d3(self as *const Self, U, P, V1, V2, V3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -249,8 +298,11 @@ impl Curve2d {
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_dn(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -261,8 +313,11 @@ impl Curve2d {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_Curve2d_resolution(self as *const Self, R3d) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -273,8 +328,11 @@ impl Curve2d {
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_get_type(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
@@ -282,8 +340,11 @@ impl Curve2d {
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_line(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -291,8 +352,11 @@ impl Curve2d {
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_circle(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -300,8 +364,11 @@ impl Curve2d {
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_ellipse(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -309,8 +376,11 @@ impl Curve2d {
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_hyperbola(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -318,8 +388,11 @@ impl Curve2d {
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_parabola(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -327,8 +400,11 @@ impl Curve2d {
     pub fn degree(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -337,8 +413,11 @@ impl Curve2d {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_Curve2d_is_rational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -346,8 +425,11 @@ impl Curve2d {
     pub fn nb_poles(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_nb_poles(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -355,8 +437,11 @@ impl Curve2d {
     pub fn nb_knots(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_nb_knots(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -364,8 +449,11 @@ impl Curve2d {
     pub fn nb_samples(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_nb_samples(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -373,8 +461,11 @@ impl Curve2d {
     pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_bezier(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -382,8 +473,11 @@ impl Curve2d {
     pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_b_spline(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -391,8 +485,11 @@ impl Curve2d {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -400,41 +497,43 @@ impl Curve2d {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Adaptor2d_Curve2d_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Adaptor2d_Curve2d_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Adaptor2d_Curve2d_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Adaptor2d_Curve2d_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
-        {
-            let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Adaptor2d_Curve2d_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -443,8 +542,11 @@ impl Curve2d {
             let __result = unsafe {
                 crate::ffi::Adaptor2d_Curve2d_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -454,8 +556,11 @@ impl Curve2d {
             let __result = unsafe {
                 crate::ffi::Adaptor2d_Curve2d_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -464,11 +569,14 @@ impl Curve2d {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_Curve2d_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -478,18 +586,23 @@ impl Curve2d {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_Curve2d_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Adaptor2d_Curve2d_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -499,16 +612,22 @@ impl Curve2d {
             let __result = unsafe {
                 crate::ffi::Adaptor2d_Curve2d_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Adaptor2d_Curve2d_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Adaptor2d_Curve2d_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -524,47 +643,49 @@ unsafe impl crate::CppDeletable for HandleAdaptor2dCurve2d {
 impl HandleAdaptor2dCurve2d {
     /// Dereference this Handle to access the underlying Adaptor2d_Curve2d
     pub fn get(&self) -> &crate::ffi::Adaptor2d_Curve2d {
-        {
-            let __result = unsafe { crate::ffi::HandleAdaptor2dCurve2d_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleAdaptor2dCurve2d_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Adaptor2d_Curve2d
     pub fn get_mut(&mut self) -> &mut crate::ffi::Adaptor2d_Curve2d {
-        {
-            let __result = unsafe { crate::ffi::HandleAdaptor2dCurve2d_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleAdaptor2dCurve2d_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Adaptor2d_Curve2d> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAdaptor2dCurve2d_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAdaptor2dCurve2d_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Adaptor2d_Curve2d> to Handle<Adaptor2d_Line2d>
     ///
     /// Returns `None` if the handle does not point to a `Adaptor2d_Line2d` (or subclass).
     pub fn downcast_to_line2d(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleAdaptor2dLine2d>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleAdaptor2dCurve2d_downcast_to_HandleAdaptor2dLine2d(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -574,16 +695,18 @@ impl HandleAdaptor2dCurve2d {
     pub fn downcast_to_offset_curve(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleAdaptor2dOffsetCurve>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleAdaptor2dCurve2d_downcast_to_HandleAdaptor2dOffsetCurve(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -593,16 +716,18 @@ impl HandleAdaptor2dCurve2d {
     pub fn downcast_to_curve2d(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepAdaptorCurve2d>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleAdaptor2dCurve2d_downcast_to_HandleBRepAdaptorCurve2d(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -612,16 +737,18 @@ impl HandleAdaptor2dCurve2d {
     pub fn downcast_to_curve(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dAdaptorCurve>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleAdaptor2dCurve2d_downcast_to_HandleGeom2dAdaptorCurve(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -631,16 +758,18 @@ impl HandleAdaptor2dCurve2d {
     pub fn downcast_to_comp_projected_curve(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleProjLibCompProjectedCurve>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleAdaptor2dCurve2d_downcast_to_HandleProjLibCompProjectedCurve(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -650,16 +779,18 @@ impl HandleAdaptor2dCurve2d {
     pub fn downcast_to_projected_curve(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleProjLibProjectedCurve>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleAdaptor2dCurve2d_downcast_to_HandleProjLibProjectedCurve(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -683,8 +814,10 @@ impl Line2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Line2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -698,8 +831,10 @@ impl Line2d {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_Line2d_ctor_pnt2d_dir2d_real2(P, D, UFirst, ULast) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -708,8 +843,11 @@ impl Line2d {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_Line2d_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -719,26 +857,33 @@ impl Line2d {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_Line2d_shallow_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `Adaptor2d_Line2d.hxx`:57 - `Adaptor2d_Line2d::Load()`
     pub fn load_lin2d(&mut self, L: &crate::gp::Lin2d) {
         {
-            unsafe { crate::ffi::Adaptor2d_Line2d_load_lin2d(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Adaptor2d_Line2d_load_lin2d(self as *mut Self, L) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Adaptor2d_Line2d.hxx`:59 - `Adaptor2d_Line2d::Load()`
     pub fn load_lin2d_real2(&mut self, L: &crate::gp::Lin2d, UFirst: f64, ULast: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Adaptor2d_Line2d_load_lin2d_real2(self as *mut Self, L, UFirst, ULast)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -747,8 +892,11 @@ impl Line2d {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_Line2d_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -757,8 +905,11 @@ impl Line2d {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_Line2d_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -766,8 +917,11 @@ impl Line2d {
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Line2d_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -779,8 +933,11 @@ impl Line2d {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_Line2d_nb_intervals(self as *const Self, S.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -792,8 +949,11 @@ impl Line2d {
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe { crate::ffi::Adaptor2d_Line2d_intervals(self as *const Self, T, S.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Adaptor2d_Line2d_intervals(self as *const Self, T, S.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -811,8 +971,11 @@ impl Line2d {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_Line2d_trim(self as *const Self, First, Last, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -820,8 +983,11 @@ impl Line2d {
     pub fn is_closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Line2d_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -829,8 +995,11 @@ impl Line2d {
     pub fn is_periodic(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Line2d_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -838,8 +1007,11 @@ impl Line2d {
     pub fn period(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Line2d_period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -847,24 +1019,31 @@ impl Line2d {
     pub fn value(&self, X: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Line2d_value(self as *const Self, X) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `Adaptor2d_Line2d.hxx`:98 - `Adaptor2d_Line2d::D0()`
     pub fn d0(&self, X: f64, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Adaptor2d_Line2d_d0(self as *const Self, X, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Adaptor2d_Line2d_d0(self as *const Self, X, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Adaptor2d_Line2d.hxx`:100 - `Adaptor2d_Line2d::D1()`
     pub fn d1(&self, X: f64, P: &mut crate::gp::Pnt2d, V: &mut crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Adaptor2d_Line2d_d1(self as *const Self, X, P, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Adaptor2d_Line2d_d1(self as *const Self, X, P, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -877,8 +1056,11 @@ impl Line2d {
         V2: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Adaptor2d_Line2d_d2(self as *const Self, X, P, V1, V2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Adaptor2d_Line2d_d2(self as *const Self, X, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -892,8 +1074,11 @@ impl Line2d {
         V3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Adaptor2d_Line2d_d3(self as *const Self, X, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Adaptor2d_Line2d_d3(self as *const Self, X, P, V1, V2, V3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -901,8 +1086,11 @@ impl Line2d {
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Line2d_dn(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -911,8 +1099,11 @@ impl Line2d {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_Line2d_resolution(self as *const Self, R3d) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -920,8 +1111,11 @@ impl Line2d {
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Line2d_get_type(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
@@ -929,8 +1123,11 @@ impl Line2d {
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Line2d_line(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -938,8 +1135,11 @@ impl Line2d {
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Line2d_circle(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -947,8 +1147,11 @@ impl Line2d {
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Line2d_ellipse(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -956,8 +1159,11 @@ impl Line2d {
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Line2d_hyperbola(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -965,8 +1171,11 @@ impl Line2d {
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Line2d_parabola(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -974,8 +1183,11 @@ impl Line2d {
     pub fn degree(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Line2d_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -983,8 +1195,11 @@ impl Line2d {
     pub fn is_rational(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Line2d_is_rational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -992,8 +1207,11 @@ impl Line2d {
     pub fn nb_poles(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Line2d_nb_poles(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1001,8 +1219,11 @@ impl Line2d {
     pub fn nb_knots(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Line2d_nb_knots(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1010,8 +1231,11 @@ impl Line2d {
     pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Line2d_bezier(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1019,8 +1243,11 @@ impl Line2d {
     pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Line2d_b_spline(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1028,8 +1255,11 @@ impl Line2d {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Line2d_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1037,61 +1267,63 @@ impl Line2d {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_Line2d_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Adaptor2d_Curve2d
     pub fn as_curve2d(&self) -> &Curve2d {
-        {
-            let __result =
-                unsafe { crate::ffi::Adaptor2d_Line2d_as_Adaptor2d_Curve2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Adaptor2d_Line2d_as_Adaptor2d_Curve2d(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Adaptor2d_Curve2d (mutable)
     pub fn as_curve2d_mut(&mut self) -> &mut Curve2d {
-        {
-            let __result =
-                unsafe { crate::ffi::Adaptor2d_Line2d_as_Adaptor2d_Curve2d_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Adaptor2d_Line2d_as_Adaptor2d_Curve2d_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Adaptor2d_Line2d_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Adaptor2d_Line2d_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Adaptor2d_Line2d_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Adaptor2d_Line2d_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dLine2d> {
-        {
-            let __result = unsafe { crate::ffi::Adaptor2d_Line2d_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Adaptor2d_Line2d_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:154 - `Adaptor2d_Curve2d::NbSamples()`
@@ -1099,8 +1331,11 @@ impl Line2d {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_Line2d_inherited_NbSamples(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1110,8 +1345,11 @@ impl Line2d {
             let __result = unsafe {
                 crate::ffi::Adaptor2d_Line2d_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1121,8 +1359,11 @@ impl Line2d {
             let __result = unsafe {
                 crate::ffi::Adaptor2d_Line2d_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1131,11 +1372,14 @@ impl Line2d {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_Line2d_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1145,18 +1389,23 @@ impl Line2d {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_Line2d_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Adaptor2d_Line2d_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1166,16 +1415,22 @@ impl Line2d {
             let __result = unsafe {
                 crate::ffi::Adaptor2d_Line2d_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Adaptor2d_Line2d_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Adaptor2d_Line2d_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1191,42 +1446,42 @@ unsafe impl crate::CppDeletable for HandleAdaptor2dLine2d {
 impl HandleAdaptor2dLine2d {
     /// Dereference this Handle to access the underlying Adaptor2d_Line2d
     pub fn get(&self) -> &crate::ffi::Adaptor2d_Line2d {
-        {
-            let __result = unsafe { crate::ffi::HandleAdaptor2dLine2d_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleAdaptor2dLine2d_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Adaptor2d_Line2d
     pub fn get_mut(&mut self) -> &mut crate::ffi::Adaptor2d_Line2d {
-        {
-            let __result = unsafe { crate::ffi::HandleAdaptor2dLine2d_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleAdaptor2dLine2d_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Adaptor2d_Line2d> to Handle<Adaptor2d_Curve2d>
     pub fn to_handle_curve2d(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAdaptor2dLine2d_to_HandleAdaptor2dCurve2d(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAdaptor2dLine2d_to_HandleAdaptor2dCurve2d(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Adaptor2d_Line2d> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAdaptor2dLine2d_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAdaptor2dLine2d_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1250,8 +1505,10 @@ impl OffsetCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_OffsetCurve_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1263,8 +1520,10 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_OffsetCurve_ctor_handleadaptor2dcurve2d(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1279,8 +1538,10 @@ impl OffsetCurve {
             let __result = unsafe {
                 crate::ffi::Adaptor2d_OffsetCurve_ctor_handleadaptor2dcurve2d_real(C, Offset)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1299,8 +1560,10 @@ impl OffsetCurve {
                     C, Offset, WFirst, WLast,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1309,8 +1572,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_OffsetCurve_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1320,8 +1586,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_OffsetCurve_shallow_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1329,10 +1598,12 @@ impl OffsetCurve {
     /// Changes  the curve.  The Offset is reset to 0.
     pub fn load_handleadaptor2dcurve2d(&mut self, S: &crate::ffi::HandleAdaptor2dCurve2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Adaptor2d_OffsetCurve_load_handleadaptor2dcurve2d(self as *mut Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1340,8 +1611,11 @@ impl OffsetCurve {
     /// Changes the Offset on the current Curve.
     pub fn load_real(&mut self, Offset: f64) {
         {
-            unsafe { crate::ffi::Adaptor2d_OffsetCurve_load_real(self as *mut Self, Offset) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Adaptor2d_OffsetCurve_load_real(self as *mut Self, Offset) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1349,7 +1623,7 @@ impl OffsetCurve {
     /// Changes the Offset Curve on the current Curve.
     pub fn load_real3(&mut self, Offset: f64, WFirst: f64, WLast: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Adaptor2d_OffsetCurve_load_real3(
                     self as *mut Self,
                     Offset,
@@ -1357,7 +1631,9 @@ impl OffsetCurve {
                     WLast,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1365,8 +1641,11 @@ impl OffsetCurve {
     pub fn curve(&self) -> &crate::ffi::HandleAdaptor2dCurve2d {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_OffsetCurve_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1374,8 +1653,11 @@ impl OffsetCurve {
     pub fn offset(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_OffsetCurve_offset(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1384,8 +1666,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_OffsetCurve_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1394,8 +1679,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_OffsetCurve_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1404,8 +1692,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_OffsetCurve_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -1418,8 +1709,11 @@ impl OffsetCurve {
             let __result = unsafe {
                 crate::ffi::Adaptor2d_OffsetCurve_nb_intervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1431,10 +1725,12 @@ impl OffsetCurve {
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Adaptor2d_OffsetCurve_intervals(self as *const Self, T, S.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1453,8 +1749,11 @@ impl OffsetCurve {
             let __result = unsafe {
                 crate::ffi::Adaptor2d_OffsetCurve_trim(self as *const Self, First, Last, Tol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1463,8 +1762,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_OffsetCurve_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1473,8 +1775,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_OffsetCurve_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1482,8 +1787,11 @@ impl OffsetCurve {
     pub fn period(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_OffsetCurve_period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1493,8 +1801,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_OffsetCurve_value(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1502,8 +1813,10 @@ impl OffsetCurve {
     /// Computes the point of parameter U on the curve.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Adaptor2d_OffsetCurve_d0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Adaptor2d_OffsetCurve_d0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1514,8 +1827,11 @@ impl OffsetCurve {
     /// is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V: &mut crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Adaptor2d_OffsetCurve_d1(self as *const Self, U, P, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Adaptor2d_OffsetCurve_d1(self as *const Self, U, P, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1532,8 +1848,11 @@ impl OffsetCurve {
         V2: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Adaptor2d_OffsetCurve_d2(self as *const Self, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Adaptor2d_OffsetCurve_d2(self as *const Self, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1551,8 +1870,12 @@ impl OffsetCurve {
         V3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Adaptor2d_OffsetCurve_d3(self as *const Self, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Adaptor2d_OffsetCurve_d3(self as *const Self, U, P, V1, V2, V3)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1566,8 +1889,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_OffsetCurve_dn(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1578,8 +1904,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_OffsetCurve_resolution(self as *const Self, R3d) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1591,8 +1920,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_OffsetCurve_get_type(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
@@ -1600,8 +1932,11 @@ impl OffsetCurve {
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_OffsetCurve_line(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1609,8 +1944,11 @@ impl OffsetCurve {
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_OffsetCurve_circle(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1619,8 +1957,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_OffsetCurve_ellipse(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1629,8 +1970,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_OffsetCurve_hyperbola(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1639,8 +1983,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_OffsetCurve_parabola(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1648,8 +1995,11 @@ impl OffsetCurve {
     pub fn degree(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_OffsetCurve_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1658,8 +2008,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_OffsetCurve_is_rational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1668,8 +2021,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_OffsetCurve_nb_poles(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1678,8 +2034,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_OffsetCurve_nb_knots(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1687,8 +2046,11 @@ impl OffsetCurve {
     pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_OffsetCurve_bezier(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1697,8 +2059,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_OffsetCurve_b_spline(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1707,8 +2072,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_OffsetCurve_nb_samples(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1716,8 +2084,11 @@ impl OffsetCurve {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_OffsetCurve_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1725,64 +2096,65 @@ impl OffsetCurve {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Adaptor2d_OffsetCurve_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Adaptor2d_Curve2d
     pub fn as_curve2d(&self) -> &Curve2d {
-        {
-            let __result = unsafe {
-                crate::ffi::Adaptor2d_OffsetCurve_as_Adaptor2d_Curve2d(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Adaptor2d_OffsetCurve_as_Adaptor2d_Curve2d(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Adaptor2d_Curve2d (mutable)
     pub fn as_curve2d_mut(&mut self) -> &mut Curve2d {
-        {
-            let __result = unsafe {
-                crate::ffi::Adaptor2d_OffsetCurve_as_Adaptor2d_Curve2d_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Adaptor2d_OffsetCurve_as_Adaptor2d_Curve2d_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Adaptor2d_OffsetCurve_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Adaptor2d_OffsetCurve_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Adaptor2d_OffsetCurve_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Adaptor2d_OffsetCurve_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dOffsetCurve> {
-        {
-            let __result = unsafe { crate::ffi::Adaptor2d_OffsetCurve_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Adaptor2d_OffsetCurve_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1791,8 +2163,11 @@ impl OffsetCurve {
             let __result = unsafe {
                 crate::ffi::Adaptor2d_OffsetCurve_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1802,8 +2177,11 @@ impl OffsetCurve {
             let __result = unsafe {
                 crate::ffi::Adaptor2d_OffsetCurve_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1812,11 +2190,14 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Adaptor2d_OffsetCurve_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1827,18 +2208,23 @@ impl OffsetCurve {
             let __result = unsafe {
                 crate::ffi::Adaptor2d_OffsetCurve_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Adaptor2d_OffsetCurve_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1848,16 +2234,22 @@ impl OffsetCurve {
             let __result = unsafe {
                 crate::ffi::Adaptor2d_OffsetCurve_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Adaptor2d_OffsetCurve_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Adaptor2d_OffsetCurve_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1873,47 +2265,41 @@ unsafe impl crate::CppDeletable for HandleAdaptor2dOffsetCurve {
 impl HandleAdaptor2dOffsetCurve {
     /// Dereference this Handle to access the underlying Adaptor2d_OffsetCurve
     pub fn get(&self) -> &crate::ffi::Adaptor2d_OffsetCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleAdaptor2dOffsetCurve_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleAdaptor2dOffsetCurve_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Adaptor2d_OffsetCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::Adaptor2d_OffsetCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleAdaptor2dOffsetCurve_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleAdaptor2dOffsetCurve_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Adaptor2d_OffsetCurve> to Handle<Adaptor2d_Curve2d>
     pub fn to_handle_curve2d(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAdaptor2dOffsetCurve_to_HandleAdaptor2dCurve2d(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAdaptor2dOffsetCurve_to_HandleAdaptor2dCurve2d(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Adaptor2d_OffsetCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAdaptor2dOffsetCurve_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAdaptor2dOffsetCurve_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

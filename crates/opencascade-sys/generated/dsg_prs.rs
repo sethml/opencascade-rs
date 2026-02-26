@@ -20,7 +20,7 @@ pub fn compute_symbol(
     drawFromCenter: bool,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::DsgPrs_compute_symbol(
                 aPresentation,
                 anAspect,
@@ -32,7 +32,9 @@ pub fn compute_symbol(
                 drawFromCenter,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `DsgPrs.hxx`:46 - `DsgPrs::ComputePlanarFacesLengthPresentation`
@@ -49,7 +51,7 @@ pub fn compute_planar_faces_length_presentation(
     DirOfArrow1: &mut crate::gp::Dir,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::DsgPrs_compute_planar_faces_length_presentation(
                 FirstArrowLength,
                 SecondArrowLength,
@@ -63,7 +65,9 @@ pub fn compute_planar_faces_length_presentation(
                 DirOfArrow1,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `DsgPrs.hxx`:58 - `DsgPrs::ComputeCurvilinearFacesLengthPresentation`
@@ -84,7 +88,7 @@ pub fn compute_curvilinear_faces_length_presentation(
     deltaV: &mut f64,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::DsgPrs_compute_curvilinear_faces_length_presentation(
                 FirstArrowLength,
                 SecondArrowLength,
@@ -102,7 +106,9 @@ pub fn compute_curvilinear_faces_length_presentation(
                 deltaV,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `DsgPrs.hxx`:74 - `DsgPrs::ComputeFacesAnglePresentation`
@@ -131,7 +137,7 @@ pub fn compute_faces_angle_presentation(
     LastParAttachCirc: &mut f64,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::DsgPrs_compute_faces_angle_presentation(
                 ArrowLength,
                 Value,
@@ -157,7 +163,9 @@ pub fn compute_faces_angle_presentation(
                 LastParAttachCirc,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `DsgPrs.hxx`:97 - `DsgPrs::ComputeRadiusLine`
@@ -170,7 +178,7 @@ pub fn compute_radius_line(
     aRadLineEnd: &mut crate::gp::Pnt,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::DsgPrs_compute_radius_line(
                 aCenter,
                 anEndOfArrow,
@@ -180,7 +188,9 @@ pub fn compute_radius_line(
                 aRadLineEnd,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `DsgPrs.hxx`:108 - `DsgPrs::ComputeFilletRadiusPresentation`
@@ -207,7 +217,7 @@ pub fn compute_fillet_radius_presentation(
     DrawPosition: &mut crate::gp::Pnt,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::DsgPrs_compute_fillet_radius_presentation(
                 ArrowLength,
                 Value,
@@ -227,7 +237,9 @@ pub fn compute_fillet_radius_presentation(
                 DrawPosition,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `DsgPrs.hxx`:126 - `DsgPrs::DistanceFromApex`
@@ -235,8 +247,11 @@ pub fn compute_fillet_radius_presentation(
 pub fn distance_from_apex(elips: &crate::gp::Elips, Apex: &crate::gp::Pnt, par: f64) -> f64 {
     {
         let __result = unsafe { crate::ffi::DsgPrs_distance_from_apex(elips, Apex, par) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 
@@ -302,8 +317,10 @@ impl AnglePresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_AnglePresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -325,10 +342,12 @@ impl AnglePresentation {
         aArrowSize: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_AnglePresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_circ_pnt2_circ2_real(aPresentation, aDrawer, aVal, aText, aCircle, aPosition, Apex, VminCircle, VmaxCircle, aArrowSize)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -349,10 +368,12 @@ impl AnglePresentation {
         OffsetPoint: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_AnglePresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_pnt3_dir2_pnt(aPresentation, aDrawer, theval, CenterPoint, AttachmentPoint1, AttachmentPoint2, dir1, dir2, OffsetPoint)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -372,10 +393,12 @@ impl AnglePresentation {
         OffsetPoint: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_AnglePresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_pnt3_dir2_pnt(aPresentation, aDrawer, theval, thevalstring, CenterPoint, AttachmentPoint1, AttachmentPoint2, dir1, dir2, OffsetPoint)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -396,10 +419,12 @@ impl AnglePresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_AnglePresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_pnt3_dir2_pnt_arrowside(aPresentation, aDrawer, theval, thevalstring, CenterPoint, AttachmentPoint1, AttachmentPoint2, dir1, dir2, OffsetPoint, ArrowSide.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -420,10 +445,12 @@ impl AnglePresentation {
         OffsetPoint: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_AnglePresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_pnt3_dir3_pnt(aPresentation, aDrawer, theval, thevalstring, CenterPoint, AttachmentPoint1, AttachmentPoint2, dir1, dir2, axisdir, OffsetPoint)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -447,10 +474,12 @@ impl AnglePresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_AnglePresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_pnt3_dir3_bool_ax1_pnt_arrowside(aPresentation, aDrawer, theval, thevalstring, CenterPoint, AttachmentPoint1, AttachmentPoint2, dir1, dir2, axisdir, isPlane, AxisOfSurf, OffsetPoint, ArrowSide.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -470,10 +499,12 @@ impl AnglePresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_AnglePresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_pnt2_ax1_arrowside(aPresentation, aDrawer, theval, theCenter, AttachmentPoint1, theAxe, ArrowSide.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -498,8 +529,10 @@ impl Chamf2dPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_Chamf2dPresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -518,10 +551,12 @@ impl Chamf2dPresentation {
         aText: &crate::t_collection::ExtendedString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_Chamf2dPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_extendedstring(aPresentation, aDrawer, aPntAttach, aPntEnd, aText)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -544,10 +579,12 @@ impl Chamf2dPresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_Chamf2dPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_extendedstring_arrowside(aPresentation, aDrawer, aPntAttach, aPntEnd, aText, ArrowSide.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -572,8 +609,10 @@ impl ConcentricPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_ConcentricPresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -594,7 +633,7 @@ impl ConcentricPresentation {
         aPoint: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_ConcentricPresentation_add(
                     aPresentation,
                     aDrawer,
@@ -604,7 +643,9 @@ impl ConcentricPresentation {
                     aPoint,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -629,8 +670,10 @@ impl DatumPrs {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_DatumPrs_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -651,8 +694,11 @@ impl DatumPrs {
         theDrawer: &crate::ffi::HandlePrs3dDrawer,
     ) {
         {
-            unsafe { crate::ffi::DsgPrs_DatumPrs_add(thePresentation, theDatum, theDrawer) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::DsgPrs_DatumPrs_add(thePresentation, theDatum, theDrawer) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -677,8 +723,10 @@ impl DiameterPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_DiameterPresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -701,10 +749,12 @@ impl DiameterPresentation {
         IsDiamSymbol: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_DiameterPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt_circ_arrowside_bool(aPresentation, aDrawer, aText, AttachmentPoint, aCircle, ArrowSide.into(), IsDiamSymbol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -730,10 +780,12 @@ impl DiameterPresentation {
         IsDiamSymbol: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_DiameterPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt_circ_real2_arrowside_bool(aPresentation, aDrawer, aText, AttachmentPoint, aCircle, uFirst, uLast, ArrowSide.into(), IsDiamSymbol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -757,8 +809,10 @@ impl EllipseRadiusPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_EllipseRadiusPresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -777,10 +831,12 @@ impl EllipseRadiusPresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_EllipseRadiusPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_pnt3_bool_arrowside(aPresentation, aDrawer, theval, aText, AttachmentPoint, anEndOfArrow, aCenter, IsMaxRadius, ArrowSide.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -802,10 +858,12 @@ impl EllipseRadiusPresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_EllipseRadiusPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_elips_pnt3_real_bool2_arrowside(aPresentation, aDrawer, theval, aText, anEllipse, AttachmentPoint, anEndOfArrow, aCenter, uFirst, IsInDomain, IsMaxRadius, ArrowSide.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -827,10 +885,12 @@ impl EllipseRadiusPresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_EllipseRadiusPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_handlegeomoffsetcurve_pnt3_real_bool2_arrowside(aPresentation, aDrawer, theval, aText, aCurve, AttachmentPoint, anEndOfArrow, aCenter, uFirst, IsInDomain, IsMaxRadius, ArrowSide.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -857,8 +917,10 @@ impl EqualDistancePresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_EqualDistancePresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -878,7 +940,7 @@ impl EqualDistancePresentation {
         Plane: &crate::ffi::HandleGeomPlane,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_EqualDistancePresentation_add(
                     aPresentation,
                     aDrawer,
@@ -889,7 +951,9 @@ impl EqualDistancePresentation {
                     Plane,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -908,7 +972,7 @@ impl EqualDistancePresentation {
         anExtremePnt2: &mut crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_EqualDistancePresentation_add_interval(
                     aPresentation,
                     aDrawer,
@@ -921,7 +985,9 @@ impl EqualDistancePresentation {
                     anExtremePnt2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -940,7 +1006,7 @@ impl EqualDistancePresentation {
         anArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_EqualDistancePresentation_add_interval_between_two_arcs(
                     aPresentation,
                     aDrawer,
@@ -953,7 +1019,9 @@ impl EqualDistancePresentation {
                     anArrowSide.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -978,8 +1046,10 @@ impl EqualRadiusPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_EqualRadiusPresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1002,7 +1072,7 @@ impl EqualRadiusPresentation {
         Plane: &crate::ffi::HandleGeomPlane,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_EqualRadiusPresentation_add(
                     aPresentation,
                     aDrawer,
@@ -1013,7 +1083,9 @@ impl EqualRadiusPresentation {
                     Plane,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1038,8 +1110,10 @@ impl FilletRadiusPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_FilletRadiusPresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1067,7 +1141,7 @@ impl FilletRadiusPresentation {
         HasCircle: &mut bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_FilletRadiusPresentation_add(
                     aPresentation,
                     aDrawer,
@@ -1087,7 +1161,9 @@ impl FilletRadiusPresentation {
                     HasCircle,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1112,8 +1188,10 @@ impl FixPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_FixPresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1132,7 +1210,7 @@ impl FixPresentation {
         aSymbSize: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_FixPresentation_add(
                     aPresentation,
                     aDrawer,
@@ -1142,7 +1220,9 @@ impl FixPresentation {
                     aSymbSize,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1166,8 +1246,10 @@ impl IdenticPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_IdenticPresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1182,10 +1264,12 @@ impl IdenticPresentation {
         aPntOffset: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_IdenticPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2(aPresentation, aDrawer, aText, aPntAttach, aPntOffset)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1204,10 +1288,12 @@ impl IdenticPresentation {
         aPntOffset: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_IdenticPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt3(aPresentation, aDrawer, aText, aFAttach, aSAttach, aPntOffset)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1229,10 +1315,12 @@ impl IdenticPresentation {
         aPntOffset: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_IdenticPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_ax2_pnt4(aPresentation, aDrawer, aText, aAx2, aCenter, aFAttach, aSAttach, aPntOffset)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1254,10 +1342,12 @@ impl IdenticPresentation {
         aPntOnCirc: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_IdenticPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_ax2_pnt5(aPresentation, aDrawer, aText, aAx2, aCenter, aFAttach, aSAttach, aPntOffset, aPntOnCirc)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1277,10 +1367,12 @@ impl IdenticPresentation {
         aPntOnElli: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_IdenticPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_elips_pnt4(aPresentation, aDrawer, aText, anEllipse, aFAttach, aSAttach, aPntOffset, aPntOnElli)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1308,8 +1400,10 @@ impl LengthPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_LengthPresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1331,10 +1425,12 @@ impl LengthPresentation {
         OffsetPoint: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_LengthPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2_dir_pnt(aPresentation, aDrawer, aText, AttachmentPoint1, AttachmentPoint2, aDirection, OffsetPoint)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1360,10 +1456,12 @@ impl LengthPresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_LengthPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2_dir_pnt_arrowside(aPresentation, aDrawer, aText, AttachmentPoint1, AttachmentPoint2, aDirection, OffsetPoint, ArrowSide.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1391,10 +1489,12 @@ impl LengthPresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_LengthPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2_pln_dir_pnt_arrowside(aPresentation, aDrawer, aText, AttachmentPoint1, AttachmentPoint2, PlaneOfFaces, aDirection, OffsetPoint, ArrowSide.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1422,10 +1522,12 @@ impl LengthPresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_LengthPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_handlegeomsurface_pnt2_dir_pnt_arrowside(aPresentation, aDrawer, aText, SecondSurf, AttachmentPoint1, AttachmentPoint2, aDirection, OffsetPoint, ArrowSide.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1445,10 +1547,12 @@ impl LengthPresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_LengthPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_arrowside(aPresentation, aDrawer, Pt1, Pt2, ArrowSide.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1472,8 +1576,10 @@ impl MidPointPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_MidPointPresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1490,10 +1596,12 @@ impl MidPointPresentation {
         first: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_MidPointPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_ax2_pnt3_bool(aPresentation, aDrawer, theAxe, MidPoint, Position, AttachPoint, first)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1512,10 +1620,12 @@ impl MidPointPresentation {
         first: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_MidPointPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_ax2_pnt5_bool(aPresentation, aDrawer, theAxe, MidPoint, Position, AttachPoint, Point1, Point2, first)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1534,10 +1644,12 @@ impl MidPointPresentation {
         first: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_MidPointPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_circ_pnt5_bool(aPresentation, aDrawer, aCircle, MidPoint, Position, AttachPoint, Point1, Point2, first)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1556,10 +1668,12 @@ impl MidPointPresentation {
         first: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_MidPointPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_elips_pnt5_bool(aPresentation, aDrawer, anElips, MidPoint, Position, AttachPoint, Point1, Point2, first)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1584,8 +1698,10 @@ impl OffsetPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_OffsetPresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1608,7 +1724,7 @@ impl OffsetPresentation {
         OffsetPoint: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_OffsetPresentation_add(
                     aPresentation,
                     aDrawer,
@@ -1620,7 +1736,9 @@ impl OffsetPresentation {
                     OffsetPoint,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1640,7 +1758,7 @@ impl OffsetPresentation {
         OffsetPoint: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_OffsetPresentation_add_axes(
                     aPresentation,
                     aDrawer,
@@ -1652,7 +1770,9 @@ impl OffsetPresentation {
                     OffsetPoint,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1677,8 +1797,10 @@ impl ParalPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_ParalPresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1701,10 +1823,12 @@ impl ParalPresentation {
         OffsetPoint: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_ParalPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2_dir_pnt(aPresentation, aDrawer, aText, AttachmentPoint1, AttachmentPoint2, aDirection, OffsetPoint)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1729,10 +1853,12 @@ impl ParalPresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_ParalPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2_dir_pnt_arrowside(aPresentation, aDrawer, aText, AttachmentPoint1, AttachmentPoint2, aDirection, OffsetPoint, ArrowSide.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1758,8 +1884,10 @@ impl PerpenPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_PerpenPresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1784,7 +1912,7 @@ impl PerpenPresentation {
         intOut2: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_PerpenPresentation_add(
                     aPresentation,
                     aDrawer,
@@ -1797,7 +1925,9 @@ impl PerpenPresentation {
                     intOut2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1822,8 +1952,10 @@ impl RadiusPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_RadiusPresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1849,10 +1981,12 @@ impl RadiusPresentation {
         reverseArrow: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_RadiusPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt_circ_real2_bool2(aPresentation, aDrawer, aText, AttachmentPoint, aCircle, firstparam, lastparam, drawFromCenter, reverseArrow)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1882,10 +2016,12 @@ impl RadiusPresentation {
         reverseArrow: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_RadiusPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt_circ_real2_arrowside_bool2(aPresentation, aDrawer, aText, AttachmentPoint, aCircle, firstparam, lastparam, ArrowSide.into(), drawFromCenter, reverseArrow)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1914,10 +2050,12 @@ impl RadiusPresentation {
         reverseArrow: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_RadiusPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt3_arrowside_bool2(aPresentation, aDrawer, aText, AttachmentPoint, Center, EndOfArrow, ArrowSide.into(), drawFromCenter, reverseArrow)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1942,8 +2080,10 @@ impl ShadedPlanePresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_ShadedPlanePresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1960,7 +2100,7 @@ impl ShadedPlanePresentation {
         aPt3: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_ShadedPlanePresentation_add(
                     aPresentation,
                     aDrawer,
@@ -1969,7 +2109,9 @@ impl ShadedPlanePresentation {
                     aPt3,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1995,8 +2137,10 @@ impl ShapeDirPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_ShapeDirPresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2015,8 +2159,11 @@ impl ShapeDirPresentation {
         mode: i32,
     ) {
         {
-            unsafe { crate::ffi::DsgPrs_ShapeDirPresentation_add(prs, aDrawer, shape, mode) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::DsgPrs_ShapeDirPresentation_add(prs, aDrawer, shape, mode) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2041,8 +2188,10 @@ impl SymbPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_SymbPresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2058,10 +2207,12 @@ impl SymbPresentation {
         OffsetPoint: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_SymbPresentation_add(aPresentation, aDrawer, aText, OffsetPoint)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2086,8 +2237,10 @@ impl SymmetricPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_SymmetricPresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2108,10 +2261,12 @@ impl SymmetricPresentation {
         OffsetPoint: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_SymmetricPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_dir_lin_pnt(aPresentation, aDrawer, AttachmentPoint1, AttachmentPoint2, aDirection1, aAxis, OffsetPoint)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2133,10 +2288,12 @@ impl SymmetricPresentation {
         OffsetPoint: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_SymmetricPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_circ_lin_pnt(aPresentation, aDrawer, AttachmentPoint1, AttachmentPoint2, aCircle1, aAxis, OffsetPoint)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2156,10 +2313,12 @@ impl SymmetricPresentation {
         OffsetPoint: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_SymmetricPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_lin_pnt(aPresentation, aDrawer, AttachmentPoint1, AttachmentPoint2, aAxis, OffsetPoint)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2184,8 +2343,10 @@ impl TangentPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_TangentPresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2202,7 +2363,7 @@ impl TangentPresentation {
         aLength: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_TangentPresentation_add(
                     aPresentation,
                     aDrawer,
@@ -2211,7 +2372,9 @@ impl TangentPresentation {
                     aLength,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2236,8 +2399,10 @@ impl XYZAxisPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_XYZAxisPresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2262,10 +2427,12 @@ impl XYZAxisPresentation {
     ) {
         let c_aText = std::ffi::CString::new(aText).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_XYZAxisPresentation_add_handlegraphic3dstructure_handleprs3dlineaspect_dir_real_charptr_pnt2(aPresentation, anLineAspect, aDir, aVal, c_aText.as_ptr(), aPfirst, aPlast)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2284,10 +2451,12 @@ impl XYZAxisPresentation {
     ) {
         let c_aText = std::ffi::CString::new(aText).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_XYZAxisPresentation_add_handlegraphic3dstructure_handleprs3dlineaspect_handleprs3darrowaspect_handleprs3dtextaspect_dir_real_charptr_pnt2(aPresentation, aLineAspect, anArrowAspect, aTextAspect, aDir, aVal, c_aText.as_ptr(), aPfirst, aPlast)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2312,8 +2481,10 @@ impl XYZPlanePresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DsgPrs_XYZPlanePresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2330,7 +2501,7 @@ impl XYZPlanePresentation {
         aPt3: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DsgPrs_XYZPlanePresentation_add(
                     aPresentation,
                     aDrawer,
@@ -2339,7 +2510,9 @@ impl XYZPlanePresentation {
                     aPt3,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

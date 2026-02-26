@@ -111,8 +111,10 @@ impl CCLocFOfLocECC {
     pub fn new_real(thetol: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_CCLocFOfLocECC_ctor_real(thetol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -125,8 +127,10 @@ impl CCLocFOfLocECC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_CCLocFOfLocECC_ctor_curve2_real(C1, C2, thetol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -146,16 +150,24 @@ impl CCLocFOfLocECC {
     /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:50 - `Extrema_CCLocFOfLocECC::SetCurve()`
     pub fn set_curve(&mut self, theRank: i32, C1: &crate::adaptor3d::Curve) {
         {
-            unsafe { crate::ffi::Extrema_CCLocFOfLocECC_set_curve(self as *mut Self, theRank, C1) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC_set_curve(self as *mut Self, theRank, C1)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC.hxx`:52 - `Extrema_CCLocFOfLocECC::SetTolerance()`
     pub fn set_tolerance(&mut self, theTol: f64) {
         {
-            unsafe { crate::ffi::Extrema_CCLocFOfLocECC_set_tolerance(self as *mut Self, theTol) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC_set_tolerance(self as *mut Self, theTol)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -164,8 +176,11 @@ impl CCLocFOfLocECC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_CCLocFOfLocECC_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -174,8 +189,11 @@ impl CCLocFOfLocECC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_CCLocFOfLocECC_nb_equations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -185,8 +203,11 @@ impl CCLocFOfLocECC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_CCLocFOfLocECC_value(self as *mut Self, UV, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -201,8 +222,11 @@ impl CCLocFOfLocECC {
             let __result = unsafe {
                 crate::ffi::Extrema_CCLocFOfLocECC_derivatives(self as *mut Self, UV, DF)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -217,8 +241,11 @@ impl CCLocFOfLocECC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_CCLocFOfLocECC_values(self as *mut Self, UV, F, DF) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -228,8 +255,11 @@ impl CCLocFOfLocECC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_CCLocFOfLocECC_get_state_number(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -239,8 +269,11 @@ impl CCLocFOfLocECC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_CCLocFOfLocECC_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -251,8 +284,11 @@ impl CCLocFOfLocECC {
             let __result = unsafe {
                 crate::ffi::Extrema_CCLocFOfLocECC_square_distance(self as *const Self, N)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -260,8 +296,12 @@ impl CCLocFOfLocECC {
     /// Return the points of the Nth extreme distance.
     pub fn points(&self, N: i32, P1: &mut POnCurv, P2: &mut POnCurv) {
         {
-            unsafe { crate::ffi::Extrema_CCLocFOfLocECC_points(self as *const Self, N, P1, P2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC_points(self as *const Self, N, P1, P2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -273,8 +313,11 @@ impl CCLocFOfLocECC {
             let __result = unsafe {
                 crate::ffi::Extrema_CCLocFOfLocECC_curve_ptr(self as *const Self, theRank)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -285,8 +328,11 @@ impl CCLocFOfLocECC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_CCLocFOfLocECC_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -298,14 +344,16 @@ impl CCLocFOfLocECC {
         theUlast: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_CCLocFOfLocECC_sub_interval_initialize(
                     self as *mut Self,
                     theUfirst,
                     theUlast,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -317,8 +365,11 @@ impl CCLocFOfLocECC {
             let __result = unsafe {
                 crate::ffi::Extrema_CCLocFOfLocECC_search_of_tolerance(self as *mut Self, C)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -326,52 +377,51 @@ impl CCLocFOfLocECC {
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSet(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_CCLocFOfLocECC_as_math_FunctionSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 }
 
@@ -393,8 +443,10 @@ impl CCLocFOfLocECC2d {
     pub fn new_real(thetol: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_ctor_real(thetol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -407,8 +459,10 @@ impl CCLocFOfLocECC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_ctor_curve2d2_real(C1, C2, thetol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -428,20 +482,24 @@ impl CCLocFOfLocECC2d {
     /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:50 - `Extrema_CCLocFOfLocECC2d::SetCurve()`
     pub fn set_curve(&mut self, theRank: i32, C1: &crate::adaptor2d::Curve2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_CCLocFOfLocECC2d_set_curve(self as *mut Self, theRank, C1)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_CCLocFOfLocECC2d.hxx`:52 - `Extrema_CCLocFOfLocECC2d::SetTolerance()`
     pub fn set_tolerance(&mut self, theTol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_CCLocFOfLocECC2d_set_tolerance(self as *mut Self, theTol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -450,8 +508,11 @@ impl CCLocFOfLocECC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -460,8 +521,11 @@ impl CCLocFOfLocECC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_nb_equations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -471,8 +535,11 @@ impl CCLocFOfLocECC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_value(self as *mut Self, UV, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -487,8 +554,11 @@ impl CCLocFOfLocECC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_CCLocFOfLocECC2d_derivatives(self as *mut Self, UV, DF)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -504,8 +574,11 @@ impl CCLocFOfLocECC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_CCLocFOfLocECC2d_values(self as *mut Self, UV, F, DF)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -515,8 +588,11 @@ impl CCLocFOfLocECC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_get_state_number(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -526,8 +602,11 @@ impl CCLocFOfLocECC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -538,8 +617,11 @@ impl CCLocFOfLocECC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_CCLocFOfLocECC2d_square_distance(self as *const Self, N)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -547,8 +629,12 @@ impl CCLocFOfLocECC2d {
     /// Return the points of the Nth extreme distance.
     pub fn points(&self, N: i32, P1: &mut POnCurv2d, P2: &mut POnCurv2d) {
         {
-            unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_points(self as *const Self, N, P1, P2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_CCLocFOfLocECC2d_points(self as *const Self, N, P1, P2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -560,8 +646,11 @@ impl CCLocFOfLocECC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_CCLocFOfLocECC2d_curve_ptr(self as *const Self, theRank)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -572,8 +661,11 @@ impl CCLocFOfLocECC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_CCLocFOfLocECC2d_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -585,14 +677,16 @@ impl CCLocFOfLocECC2d {
         theUlast: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_CCLocFOfLocECC2d_sub_interval_initialize(
                     self as *mut Self,
                     theUfirst,
                     theUlast,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -604,8 +698,11 @@ impl CCLocFOfLocECC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_CCLocFOfLocECC2d_search_of_tolerance(self as *mut Self, C)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -613,52 +710,52 @@ impl CCLocFOfLocECC2d {
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSet(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_CCLocFOfLocECC2d_as_math_FunctionSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 }
 
@@ -681,8 +778,10 @@ impl Curve2dTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -690,8 +789,11 @@ impl Curve2dTool {
     pub fn first_parameter(C: &crate::adaptor2d::Curve2d) -> f64 {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_first_parameter(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -699,8 +801,11 @@ impl Curve2dTool {
     pub fn last_parameter(C: &crate::adaptor2d::Curve2d) -> f64 {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_last_parameter(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -708,8 +813,11 @@ impl Curve2dTool {
     pub fn continuity(C: &crate::adaptor2d::Curve2d) -> crate::geom_abs::Shape {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_continuity(C) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -720,8 +828,11 @@ impl Curve2dTool {
     pub fn nb_intervals(C: &crate::adaptor2d::Curve2d, S: crate::geom_abs::Shape) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_nb_intervals(C, S.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -734,8 +845,10 @@ impl Curve2dTool {
         S: crate::geom_abs::Shape,
     ) {
         {
-            unsafe { crate::ffi::Extrema_Curve2dTool_intervals(C, T, S.into()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_Curve2dTool_intervals(C, T, S.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -747,8 +860,11 @@ impl Curve2dTool {
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_defl_curv_intervals(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -756,8 +872,11 @@ impl Curve2dTool {
     pub fn is_closed(C: &crate::adaptor2d::Curve2d) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_is_closed(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -765,8 +884,11 @@ impl Curve2dTool {
     pub fn is_periodic(C: &crate::adaptor2d::Curve2d) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_is_periodic(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -774,8 +896,11 @@ impl Curve2dTool {
     pub fn period(C: &crate::adaptor2d::Curve2d) -> f64 {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_period(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -784,8 +909,11 @@ impl Curve2dTool {
     pub fn value(C: &crate::adaptor2d::Curve2d, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_value(C, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -793,8 +921,10 @@ impl Curve2dTool {
     /// Computes the point of parameter U on the curve.
     pub fn d0(C: &crate::adaptor2d::Curve2d, U: f64, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Extrema_Curve2dTool_d0(C, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_Curve2dTool_d0(C, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -808,8 +938,10 @@ impl Curve2dTool {
         V: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Extrema_Curve2dTool_d1(C, U, P, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_Curve2dTool_d1(C, U, P, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -824,8 +956,10 @@ impl Curve2dTool {
         V2: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Extrema_Curve2dTool_d2(C, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_Curve2dTool_d2(C, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -841,8 +975,10 @@ impl Curve2dTool {
         V3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Extrema_Curve2dTool_d3(C, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_Curve2dTool_d3(C, U, P, V1, V2, V3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -852,8 +988,11 @@ impl Curve2dTool {
     pub fn dn(C: &crate::adaptor2d::Curve2d, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_dn(C, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -863,8 +1002,11 @@ impl Curve2dTool {
     pub fn resolution(C: &crate::adaptor2d::Curve2d, R3d: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_resolution(C, R3d) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -875,8 +1017,11 @@ impl Curve2dTool {
     pub fn get_type(C: &crate::adaptor2d::Curve2d) -> crate::geom_abs::CurveType {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_get_type(C) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
@@ -884,8 +1029,11 @@ impl Curve2dTool {
     pub fn line(C: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Lin2d> {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_line(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -893,8 +1041,11 @@ impl Curve2dTool {
     pub fn circle(C: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Circ2d> {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_circle(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -902,8 +1053,11 @@ impl Curve2dTool {
     pub fn ellipse(C: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Elips2d> {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_ellipse(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -911,8 +1065,11 @@ impl Curve2dTool {
     pub fn hyperbola(C: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_hyperbola(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -920,8 +1077,11 @@ impl Curve2dTool {
     pub fn parabola(C: &crate::adaptor2d::Curve2d) -> crate::OwnedPtr<crate::gp::Parab2d> {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_parabola(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -929,8 +1089,11 @@ impl Curve2dTool {
     pub fn degree(C: &crate::adaptor2d::Curve2d) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_degree(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -938,8 +1101,11 @@ impl Curve2dTool {
     pub fn is_rational(C: &crate::adaptor2d::Curve2d) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_is_rational(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -947,8 +1113,11 @@ impl Curve2dTool {
     pub fn nb_poles(C: &crate::adaptor2d::Curve2d) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_nb_poles(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -956,8 +1125,11 @@ impl Curve2dTool {
     pub fn nb_knots(C: &crate::adaptor2d::Curve2d) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_nb_knots(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -967,8 +1139,11 @@ impl Curve2dTool {
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_bezier(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -978,8 +1153,11 @@ impl Curve2dTool {
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
         {
             let __result = unsafe { crate::ffi::Extrema_Curve2dTool_b_spline(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -1003,8 +1181,10 @@ impl CurveTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1012,8 +1192,11 @@ impl CurveTool {
     pub fn first_parameter(C: &crate::adaptor3d::Curve) -> f64 {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_first_parameter(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1021,8 +1204,11 @@ impl CurveTool {
     pub fn last_parameter(C: &crate::adaptor3d::Curve) -> f64 {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_last_parameter(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1030,8 +1216,11 @@ impl CurveTool {
     pub fn continuity(C: &crate::adaptor3d::Curve) -> crate::geom_abs::Shape {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_continuity(C) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -1041,8 +1230,11 @@ impl CurveTool {
     pub fn nb_intervals(C: &mut crate::adaptor3d::Curve, S: crate::geom_abs::Shape) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_nb_intervals(C, S.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1058,8 +1250,10 @@ impl CurveTool {
         S: crate::geom_abs::Shape,
     ) {
         {
-            unsafe { crate::ffi::Extrema_CurveTool_intervals(C, T, S.into()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_CurveTool_intervals(C, T, S.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1071,8 +1265,11 @@ impl CurveTool {
     ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_defl_curv_intervals(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1080,8 +1277,11 @@ impl CurveTool {
     pub fn is_periodic(C: &crate::adaptor3d::Curve) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_is_periodic(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1089,8 +1289,11 @@ impl CurveTool {
     pub fn period(C: &crate::adaptor3d::Curve) -> f64 {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_period(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1098,8 +1301,11 @@ impl CurveTool {
     pub fn resolution(C: &crate::adaptor3d::Curve, R3d: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_resolution(C, R3d) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1107,8 +1313,11 @@ impl CurveTool {
     pub fn get_type(C: &crate::adaptor3d::Curve) -> crate::geom_abs::CurveType {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_get_type(C) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
@@ -1116,24 +1325,31 @@ impl CurveTool {
     pub fn value(C: &crate::adaptor3d::Curve, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_value(C, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:79 - `Extrema_CurveTool::D0()`
     pub fn d0(C: &crate::adaptor3d::Curve, U: f64, P: &mut crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Extrema_CurveTool_d0(C, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_CurveTool_d0(C, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_CurveTool.hxx`:81 - `Extrema_CurveTool::D1()`
     pub fn d1(C: &crate::adaptor3d::Curve, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         {
-            unsafe { crate::ffi::Extrema_CurveTool_d1(C, U, P, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_CurveTool_d1(C, U, P, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1146,8 +1362,10 @@ impl CurveTool {
         V2: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::Extrema_CurveTool_d2(C, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_CurveTool_d2(C, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1161,8 +1379,10 @@ impl CurveTool {
         V3: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::Extrema_CurveTool_d3(C, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_CurveTool_d3(C, U, P, V1, V2, V3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1170,8 +1390,11 @@ impl CurveTool {
     pub fn dn(C: &crate::adaptor3d::Curve, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_dn(C, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1179,8 +1402,11 @@ impl CurveTool {
     pub fn line(C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<crate::gp::Lin> {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_line(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1188,8 +1414,11 @@ impl CurveTool {
     pub fn circle(C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<crate::gp::Circ> {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_circle(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1197,8 +1426,11 @@ impl CurveTool {
     pub fn ellipse(C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<crate::gp::Elips> {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_ellipse(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1206,8 +1438,11 @@ impl CurveTool {
     pub fn hyperbola(C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<crate::gp::Hypr> {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_hyperbola(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1215,8 +1450,11 @@ impl CurveTool {
     pub fn parabola(C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<crate::gp::Parab> {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_parabola(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1224,8 +1462,11 @@ impl CurveTool {
     pub fn degree(C: &crate::adaptor3d::Curve) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_degree(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1233,8 +1474,11 @@ impl CurveTool {
     pub fn is_rational(C: &crate::adaptor3d::Curve) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_is_rational(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1242,8 +1486,11 @@ impl CurveTool {
     pub fn nb_poles(C: &crate::adaptor3d::Curve) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_nb_poles(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1251,8 +1498,11 @@ impl CurveTool {
     pub fn nb_knots(C: &crate::adaptor3d::Curve) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_nb_knots(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1262,8 +1512,11 @@ impl CurveTool {
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_bezier(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1273,8 +1526,11 @@ impl CurveTool {
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
         {
             let __result = unsafe { crate::ffi::Extrema_CurveTool_b_spline(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -1300,8 +1556,10 @@ impl ECC {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ECC_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1316,8 +1574,10 @@ impl ECC {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ECC_ctor_curve2(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1337,8 +1597,10 @@ impl ECC {
             let __result = unsafe {
                 crate::ffi::Extrema_ECC_ctor_curve2_real4(C1, C2, Uinf, Usup, Vinf, Vsup)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1354,7 +1616,7 @@ impl ECC {
         Vsup: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ECC_set_params(
                     self as *mut Self,
                     C1,
@@ -1365,15 +1627,19 @@ impl ECC {
                     Vsup,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ECC.hxx`:68 - `Extrema_ECC::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol: f64) {
         {
-            unsafe { crate::ffi::Extrema_ECC_set_tolerance(self as *mut Self, Tol) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_ECC_set_tolerance(self as *mut Self, Tol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1381,13 +1647,15 @@ impl ECC {
     /// Set flag for single extrema computation. Works on parametric solver only.
     pub fn set_single_solution_flag(&mut self, theSingleSolutionFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ECC_set_single_solution_flag(
                     self as *mut Self,
                     theSingleSolutionFlag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1397,8 +1665,11 @@ impl ECC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ECC_get_single_solution_flag(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1406,8 +1677,10 @@ impl ECC {
     /// Performs calculations.
     pub fn perform(&mut self) {
         {
-            unsafe { crate::ffi::Extrema_ECC_perform(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_ECC_perform(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1416,8 +1689,11 @@ impl ECC {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ECC_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1426,8 +1702,11 @@ impl ECC {
     pub fn is_parallel(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ECC_is_parallel(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1436,8 +1715,11 @@ impl ECC {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_ECC_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1447,8 +1729,11 @@ impl ECC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ECC_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1457,8 +1742,10 @@ impl ECC {
     /// P1 is on the first curve, P2 on the second one.
     pub fn points(&self, N: i32, P1: &mut POnCurv, P2: &mut POnCurv) {
         {
-            unsafe { crate::ffi::Extrema_ECC_points(self as *const Self, N, P1, P2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_ECC_points(self as *const Self, N, P1, P2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1484,8 +1771,10 @@ impl ECC2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ECC2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1500,8 +1789,10 @@ impl ECC2d {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ECC2d_ctor_curve2d2(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1521,8 +1812,10 @@ impl ECC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_ECC2d_ctor_curve2d2_real4(C1, C2, Uinf, Usup, Vinf, Vsup)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1538,7 +1831,7 @@ impl ECC2d {
         Vsup: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ECC2d_set_params(
                     self as *mut Self,
                     C1,
@@ -1549,15 +1842,19 @@ impl ECC2d {
                     Vsup,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ECC2d.hxx`:66 - `Extrema_ECC2d::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol: f64) {
         {
-            unsafe { crate::ffi::Extrema_ECC2d_set_tolerance(self as *mut Self, Tol) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_ECC2d_set_tolerance(self as *mut Self, Tol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1565,13 +1862,15 @@ impl ECC2d {
     /// Set flag for single extrema computation. Works on parametric solver only.
     pub fn set_single_solution_flag(&mut self, theSingleSolutionFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ECC2d_set_single_solution_flag(
                     self as *mut Self,
                     theSingleSolutionFlag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1581,8 +1880,11 @@ impl ECC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ECC2d_get_single_solution_flag(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1590,8 +1892,10 @@ impl ECC2d {
     /// Performs calculations.
     pub fn perform(&mut self) {
         {
-            unsafe { crate::ffi::Extrema_ECC2d_perform(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_ECC2d_perform(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1600,8 +1904,11 @@ impl ECC2d {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ECC2d_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1610,8 +1917,11 @@ impl ECC2d {
     pub fn is_parallel(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ECC2d_is_parallel(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1620,8 +1930,11 @@ impl ECC2d {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_ECC2d_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1631,8 +1944,11 @@ impl ECC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ECC2d_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1641,8 +1957,10 @@ impl ECC2d {
     /// P1 is on the first curve, P2 on the second one.
     pub fn points(&self, N: i32, P1: &mut POnCurv2d, P2: &mut POnCurv2d) {
         {
-            unsafe { crate::ffi::Extrema_ECC2d_points(self as *const Self, N, P1, P2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_ECC2d_points(self as *const Self, N, P1, P2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1665,8 +1983,10 @@ impl ELPCOfLocateExtPC {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1691,8 +2011,10 @@ impl ELPCOfLocateExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_ELPCOfLocateExtPC_ctor_pnt_curve_real3(P, C, Uinf, Usup, TolF)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1713,8 +2035,10 @@ impl ELPCOfLocateExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC_ctor_pnt_curve_real(P, C, TolF) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1754,7 +2078,7 @@ impl ELPCOfLocateExtPC {
     /// initializes the fields of the algorithm.
     pub fn initialize(&mut self, C: &crate::adaptor3d::Curve, Uinf: f64, Usup: f64, TolF: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ELPCOfLocateExtPC_initialize(
                     self as *mut Self,
                     C,
@@ -1763,7 +2087,9 @@ impl ELPCOfLocateExtPC {
                     TolF,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1772,8 +2098,11 @@ impl ELPCOfLocateExtPC {
     /// initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC_perform(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC_perform(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1783,8 +2112,11 @@ impl ELPCOfLocateExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1795,8 +2127,11 @@ impl ELPCOfLocateExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_ELPCOfLocateExtPC_square_distance(self as *const Self, N)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1806,8 +2141,11 @@ impl ELPCOfLocateExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1818,8 +2156,11 @@ impl ELPCOfLocateExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC_is_min(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1829,8 +2170,11 @@ impl ELPCOfLocateExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC_point(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1848,7 +2192,7 @@ impl ELPCOfLocateExtPC {
         P2: &mut crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ELPCOfLocateExtPC_trimmed_square_distances(
                     self as *const Self,
                     dist1,
@@ -1857,7 +2201,9 @@ impl ELPCOfLocateExtPC {
                     P2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1880,8 +2226,10 @@ impl ELPCOfLocateExtPC2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1908,8 +2256,10 @@ impl ELPCOfLocateExtPC2d {
                     P, C, Uinf, Usup, TolF,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1931,8 +2281,10 @@ impl ELPCOfLocateExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_ELPCOfLocateExtPC2d_ctor_pnt2d_curve2d_real(P, C, TolF)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1975,7 +2327,7 @@ impl ELPCOfLocateExtPC2d {
     /// initializes the fields of the algorithm.
     pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d, Uinf: f64, Usup: f64, TolF: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ELPCOfLocateExtPC2d_initialize(
                     self as *mut Self,
                     C,
@@ -1984,7 +2336,9 @@ impl ELPCOfLocateExtPC2d {
                     TolF,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1993,8 +2347,11 @@ impl ELPCOfLocateExtPC2d {
     /// initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC2d_perform(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC2d_perform(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2004,8 +2361,11 @@ impl ELPCOfLocateExtPC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC2d_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2016,8 +2376,11 @@ impl ELPCOfLocateExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_ELPCOfLocateExtPC2d_square_distance(self as *const Self, N)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2027,8 +2390,11 @@ impl ELPCOfLocateExtPC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC2d_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2039,8 +2405,11 @@ impl ELPCOfLocateExtPC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC2d_is_min(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2050,8 +2419,11 @@ impl ELPCOfLocateExtPC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ELPCOfLocateExtPC2d_point(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2069,7 +2441,7 @@ impl ELPCOfLocateExtPC2d {
         P2: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ELPCOfLocateExtPC2d_trimmed_square_distances(
                     self as *const Self,
                     dist1,
@@ -2078,7 +2450,9 @@ impl ELPCOfLocateExtPC2d {
                     P2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2101,8 +2475,10 @@ impl EPCOfELPCOfLocateExtPC {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2130,8 +2506,10 @@ impl EPCOfELPCOfLocateExtPC {
                     P, C, NbU, TolU, TolF,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2162,8 +2540,10 @@ impl EPCOfELPCOfLocateExtPC {
                     P, C, NbU, Umin, Usup, TolU, TolF,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2177,7 +2557,7 @@ impl EPCOfELPCOfLocateExtPC {
         TolF: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_initialize_curve_int_real2(
                     self as *mut Self,
                     C,
@@ -2186,7 +2566,9 @@ impl EPCOfELPCOfLocateExtPC {
                     TolF,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2202,7 +2584,7 @@ impl EPCOfELPCOfLocateExtPC {
         TolF: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_initialize_curve_int_real4(
                     self as *mut Self,
                     C,
@@ -2213,7 +2595,9 @@ impl EPCOfELPCOfLocateExtPC {
                     TolF,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2221,10 +2605,12 @@ impl EPCOfELPCOfLocateExtPC {
     /// sets the fields of the algorithm.
     pub fn initialize_curve(&mut self, C: &crate::adaptor3d::Curve) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_initialize_curve(self as *mut Self, C)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2232,7 +2618,7 @@ impl EPCOfELPCOfLocateExtPC {
     /// sets the fields of the algorithm.
     pub fn initialize_int_real4(&mut self, NbU: i32, Umin: f64, Usup: f64, TolU: f64, TolF: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_initialize_int_real4(
                     self as *mut Self,
                     NbU,
@@ -2242,7 +2628,9 @@ impl EPCOfELPCOfLocateExtPC {
                     TolF,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2252,8 +2640,11 @@ impl EPCOfELPCOfLocateExtPC {
     /// been initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_perform(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_perform(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2263,8 +2654,11 @@ impl EPCOfELPCOfLocateExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2274,8 +2668,11 @@ impl EPCOfELPCOfLocateExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2286,8 +2683,11 @@ impl EPCOfELPCOfLocateExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_square_distance(self as *const Self, N)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2299,8 +2699,11 @@ impl EPCOfELPCOfLocateExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_is_min(self as *const Self, N)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2310,8 +2713,11 @@ impl EPCOfELPCOfLocateExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC_point(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -2334,8 +2740,10 @@ impl EPCOfELPCOfLocateExtPC2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2363,8 +2771,10 @@ impl EPCOfELPCOfLocateExtPC2d {
                     P, C, NbU, TolU, TolF,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2395,8 +2805,10 @@ impl EPCOfELPCOfLocateExtPC2d {
                     P, C, NbU, Umin, Usup, TolU, TolF,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2410,7 +2822,7 @@ impl EPCOfELPCOfLocateExtPC2d {
         TolF: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_initialize_curve2d_int_real2(
                     self as *mut Self,
                     C,
@@ -2419,7 +2831,9 @@ impl EPCOfELPCOfLocateExtPC2d {
                     TolF,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2435,7 +2849,7 @@ impl EPCOfELPCOfLocateExtPC2d {
         TolF: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_initialize_curve2d_int_real4(
                     self as *mut Self,
                     C,
@@ -2446,7 +2860,9 @@ impl EPCOfELPCOfLocateExtPC2d {
                     TolF,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2454,13 +2870,15 @@ impl EPCOfELPCOfLocateExtPC2d {
     /// sets the fields of the algorithm.
     pub fn initialize_curve2d(&mut self, C: &crate::adaptor2d::Curve2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_initialize_curve2d(
                     self as *mut Self,
                     C,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2468,7 +2886,7 @@ impl EPCOfELPCOfLocateExtPC2d {
     /// sets the fields of the algorithm.
     pub fn initialize_int_real4(&mut self, NbU: i32, Umin: f64, Usup: f64, TolU: f64, TolF: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_initialize_int_real4(
                     self as *mut Self,
                     NbU,
@@ -2478,7 +2896,9 @@ impl EPCOfELPCOfLocateExtPC2d {
                     TolF,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2488,8 +2908,12 @@ impl EPCOfELPCOfLocateExtPC2d {
     /// been initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_perform(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_perform(self as *mut Self, P)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2500,8 +2924,11 @@ impl EPCOfELPCOfLocateExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_is_done(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2511,8 +2938,11 @@ impl EPCOfELPCOfLocateExtPC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2523,8 +2953,11 @@ impl EPCOfELPCOfLocateExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_square_distance(self as *const Self, N)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2536,8 +2969,11 @@ impl EPCOfELPCOfLocateExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_is_min(self as *const Self, N)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2548,8 +2984,11 @@ impl EPCOfELPCOfLocateExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_EPCOfELPCOfLocateExtPC2d_point(self as *const Self, N)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -2572,8 +3011,10 @@ impl EPCOfExtPC {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_EPCOfExtPC_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2599,8 +3040,10 @@ impl EPCOfExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_EPCOfExtPC_ctor_pnt_curve_int_real2(P, C, NbU, TolU, TolF)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2631,8 +3074,10 @@ impl EPCOfExtPC {
                     P, C, NbU, Umin, Usup, TolU, TolF,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2646,7 +3091,7 @@ impl EPCOfExtPC {
         TolF: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_EPCOfExtPC_initialize_curve_int_real2(
                     self as *mut Self,
                     C,
@@ -2655,7 +3100,9 @@ impl EPCOfExtPC {
                     TolF,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2671,7 +3118,7 @@ impl EPCOfExtPC {
         TolF: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_EPCOfExtPC_initialize_curve_int_real4(
                     self as *mut Self,
                     C,
@@ -2682,7 +3129,9 @@ impl EPCOfExtPC {
                     TolF,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2690,8 +3139,11 @@ impl EPCOfExtPC {
     /// sets the fields of the algorithm.
     pub fn initialize_curve(&mut self, C: &crate::adaptor3d::Curve) {
         {
-            unsafe { crate::ffi::Extrema_EPCOfExtPC_initialize_curve(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_EPCOfExtPC_initialize_curve(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2699,7 +3151,7 @@ impl EPCOfExtPC {
     /// sets the fields of the algorithm.
     pub fn initialize_int_real4(&mut self, NbU: i32, Umin: f64, Usup: f64, TolU: f64, TolF: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_EPCOfExtPC_initialize_int_real4(
                     self as *mut Self,
                     NbU,
@@ -2709,7 +3161,9 @@ impl EPCOfExtPC {
                     TolF,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2719,8 +3173,10 @@ impl EPCOfExtPC {
     /// been initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Extrema_EPCOfExtPC_perform(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_EPCOfExtPC_perform(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2729,8 +3185,11 @@ impl EPCOfExtPC {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_EPCOfExtPC_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2739,8 +3198,11 @@ impl EPCOfExtPC {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_EPCOfExtPC_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2750,8 +3212,11 @@ impl EPCOfExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_EPCOfExtPC_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2761,8 +3226,11 @@ impl EPCOfExtPC {
     pub fn is_min(&self, N: i32) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_EPCOfExtPC_is_min(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2771,8 +3239,11 @@ impl EPCOfExtPC {
     pub fn point(&self, N: i32) -> &POnCurv {
         {
             let __result = unsafe { crate::ffi::Extrema_EPCOfExtPC_point(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -2795,8 +3266,10 @@ impl EPCOfExtPC2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_EPCOfExtPC2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2822,8 +3295,10 @@ impl EPCOfExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_EPCOfExtPC2d_ctor_pnt2d_curve2d_int_real2(P, C, NbU, TolU, TolF)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2854,8 +3329,10 @@ impl EPCOfExtPC2d {
                     P, C, NbU, Umin, Usup, TolU, TolF,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2869,7 +3346,7 @@ impl EPCOfExtPC2d {
         TolF: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_EPCOfExtPC2d_initialize_curve2d_int_real2(
                     self as *mut Self,
                     C,
@@ -2878,7 +3355,9 @@ impl EPCOfExtPC2d {
                     TolF,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2894,7 +3373,7 @@ impl EPCOfExtPC2d {
         TolF: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_EPCOfExtPC2d_initialize_curve2d_int_real4(
                     self as *mut Self,
                     C,
@@ -2905,7 +3384,9 @@ impl EPCOfExtPC2d {
                     TolF,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2913,8 +3394,12 @@ impl EPCOfExtPC2d {
     /// sets the fields of the algorithm.
     pub fn initialize_curve2d(&mut self, C: &crate::adaptor2d::Curve2d) {
         {
-            unsafe { crate::ffi::Extrema_EPCOfExtPC2d_initialize_curve2d(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_EPCOfExtPC2d_initialize_curve2d(self as *mut Self, C)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2922,7 +3407,7 @@ impl EPCOfExtPC2d {
     /// sets the fields of the algorithm.
     pub fn initialize_int_real4(&mut self, NbU: i32, Umin: f64, Usup: f64, TolU: f64, TolF: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_EPCOfExtPC2d_initialize_int_real4(
                     self as *mut Self,
                     NbU,
@@ -2932,7 +3417,9 @@ impl EPCOfExtPC2d {
                     TolF,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2942,8 +3429,10 @@ impl EPCOfExtPC2d {
     /// been initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Extrema_EPCOfExtPC2d_perform(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_EPCOfExtPC2d_perform(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2952,8 +3441,11 @@ impl EPCOfExtPC2d {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_EPCOfExtPC2d_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2962,8 +3454,11 @@ impl EPCOfExtPC2d {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_EPCOfExtPC2d_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2973,8 +3468,11 @@ impl EPCOfExtPC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_EPCOfExtPC2d_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2985,8 +3483,11 @@ impl EPCOfExtPC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_EPCOfExtPC2d_is_min(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2996,8 +3497,11 @@ impl EPCOfExtPC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_EPCOfExtPC2d_point(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -3022,8 +3526,10 @@ impl ExtCC {
     pub fn new_real2(TolC1: f64, TolC2: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtCC_ctor_real2(TolC1, TolC2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3038,8 +3544,10 @@ impl ExtCC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtCC_ctor_curve2_real2(C1, C2, TolC1, TolC2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3059,8 +3567,10 @@ impl ExtCC {
             let __result = unsafe {
                 crate::ffi::Extrema_ExtCC_ctor_curve2_real6(C1, C2, U1, U2, V1, V2, TolC1, TolC2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3130,7 +3640,7 @@ impl ExtCC {
         TolC2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtCC_initialize_curve2_real2(
                     self as *mut Self,
                     C1,
@@ -3139,7 +3649,9 @@ impl ExtCC {
                     TolC2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3157,7 +3669,7 @@ impl ExtCC {
         TolC2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtCC_initialize_curve2_real6(
                     self as *mut Self,
                     C1,
@@ -3170,15 +3682,21 @@ impl ExtCC {
                     TolC2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtCC.hxx`:74 - `Extrema_ExtCC::SetCurve()`
     pub fn set_curve_int_curve(&mut self, theRank: i32, C: &crate::adaptor3d::Curve) {
         {
-            unsafe { crate::ffi::Extrema_ExtCC_set_curve_int_curve(self as *mut Self, theRank, C) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_ExtCC_set_curve_int_curve(self as *mut Self, theRank, C)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3191,7 +3709,7 @@ impl ExtCC {
         Usup: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtCC_set_curve_int_curve_real2(
                     self as *mut Self,
                     theRank,
@@ -3200,31 +3718,42 @@ impl ExtCC {
                     Usup,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtCC.hxx`:81 - `Extrema_ExtCC::SetRange()`
     pub fn set_range(&mut self, theRank: i32, Uinf: f64, Usup: f64) {
         {
-            unsafe { crate::ffi::Extrema_ExtCC_set_range(self as *mut Self, theRank, Uinf, Usup) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_ExtCC_set_range(self as *mut Self, theRank, Uinf, Usup)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtCC.hxx`:85 - `Extrema_ExtCC::SetTolerance()`
     pub fn set_tolerance(&mut self, theRank: i32, Tol: f64) {
         {
-            unsafe { crate::ffi::Extrema_ExtCC_set_tolerance(self as *mut Self, theRank, Tol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ExtCC_set_tolerance(self as *mut Self, theRank, Tol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtCC.hxx`:87 - `Extrema_ExtCC::Perform()`
     pub fn perform(&mut self) {
         {
-            unsafe { crate::ffi::Extrema_ExtCC_perform(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_ExtCC_perform(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3233,8 +3762,11 @@ impl ExtCC {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtCC_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3243,8 +3775,11 @@ impl ExtCC {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtCC_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3253,8 +3788,11 @@ impl ExtCC {
     pub fn is_parallel(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtCC_is_parallel(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3264,8 +3802,11 @@ impl ExtCC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtCC_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3274,8 +3815,10 @@ impl ExtCC {
     /// P1 is on the first curve, P2 on the second one.
     pub fn points(&self, N: i32, P1: &mut POnCurv, P2: &mut POnCurv) {
         {
-            unsafe { crate::ffi::Extrema_ExtCC_points(self as *const Self, N, P1, P2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_ExtCC_points(self as *const Self, N, P1, P2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3296,7 +3839,7 @@ impl ExtCC {
         P22: &mut crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtCC_trimmed_square_distances(
                     self as *const Self,
                     dist11,
@@ -3309,7 +3852,9 @@ impl ExtCC {
                     P22,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3317,13 +3862,15 @@ impl ExtCC {
     /// Set flag for single extrema computation. Works on parametric solver only.
     pub fn set_single_solution_flag(&mut self, theSingleSolutionFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtCC_set_single_solution_flag(
                     self as *mut Self,
                     theSingleSolutionFlag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3333,8 +3880,11 @@ impl ExtCC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtCC_get_single_solution_flag(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3359,8 +3909,10 @@ impl ExtCC2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtCC2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3375,8 +3927,10 @@ impl ExtCC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtCC2d_ctor_curve2d2_real2(C1, C2, TolC1, TolC2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3398,8 +3952,10 @@ impl ExtCC2d {
                     C1, C2, U1, U2, V1, V2, TolC1, TolC2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3460,18 +4016,23 @@ impl ExtCC2d {
         TolC2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtCC2d_initialize(self as *mut Self, C2, V1, V2, TolC1, TolC2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtCC2d.hxx`:65 - `Extrema_ExtCC2d::Perform()`
     pub fn perform(&mut self, C1: &crate::adaptor2d::Curve2d, U1: f64, U2: f64) {
         {
-            unsafe { crate::ffi::Extrema_ExtCC2d_perform(self as *mut Self, C1, U1, U2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ExtCC2d_perform(self as *mut Self, C1, U1, U2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3480,8 +4041,11 @@ impl ExtCC2d {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtCC2d_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3490,8 +4054,11 @@ impl ExtCC2d {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtCC2d_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3500,8 +4067,11 @@ impl ExtCC2d {
     pub fn is_parallel(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtCC2d_is_parallel(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3511,8 +4081,11 @@ impl ExtCC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtCC2d_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3521,8 +4094,11 @@ impl ExtCC2d {
     /// P1 is on the first curve, P2 on the second one.
     pub fn points(&self, N: i32, P1: &mut POnCurv2d, P2: &mut POnCurv2d) {
         {
-            unsafe { crate::ffi::Extrema_ExtCC2d_points(self as *const Self, N, P1, P2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ExtCC2d_points(self as *const Self, N, P1, P2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3543,7 +4119,7 @@ impl ExtCC2d {
         P22: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtCC2d_trimmed_square_distances(
                     self as *const Self,
                     dist11,
@@ -3556,7 +4132,9 @@ impl ExtCC2d {
                     P22,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3564,13 +4142,15 @@ impl ExtCC2d {
     /// Set flag for single extrema computation. Works on parametric solver only.
     pub fn set_single_solution_flag(&mut self, theSingleSolutionFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtCC2d_set_single_solution_flag(
                     self as *mut Self,
                     theSingleSolutionFlag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3581,8 +4161,11 @@ impl ExtCC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_ExtCC2d_get_single_solution_flag(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3608,8 +4191,10 @@ impl ExtCS {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtCS_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3624,8 +4209,10 @@ impl ExtCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtCS_ctor_curve_surface_real2(C, S, TolC, TolS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3651,8 +4238,10 @@ impl ExtCS {
                     C, S, UCinf, UCsup, Uinf, Usup, Vinf, Vsup, TolC, TolS,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3665,10 +4254,12 @@ impl ExtCS {
         TolS: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtCS_initialize_surface_real2(self as *mut Self, S, TolC, TolS)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3685,7 +4276,7 @@ impl ExtCS {
         TolS: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtCS_initialize_surface_real6(
                     self as *mut Self,
                     S,
@@ -3697,7 +4288,9 @@ impl ExtCS {
                     TolS,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3707,8 +4300,11 @@ impl ExtCS {
     /// initialized.
     pub fn perform(&mut self, C: &crate::adaptor3d::Curve, Uinf: f64, Usup: f64) {
         {
-            unsafe { crate::ffi::Extrema_ExtCS_perform(self as *mut Self, C, Uinf, Usup) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ExtCS_perform(self as *mut Self, C, Uinf, Usup) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3717,8 +4313,11 @@ impl ExtCS {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtCS_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3727,8 +4326,11 @@ impl ExtCS {
     pub fn is_parallel(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtCS_is_parallel(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3737,8 +4339,11 @@ impl ExtCS {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtCS_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3748,8 +4353,11 @@ impl ExtCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtCS_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3757,8 +4365,10 @@ impl ExtCS {
     /// Returns the point of the Nth resulting distance.
     pub fn points(&self, N: i32, P1: &mut POnCurv, P2: &mut POnSurf) {
         {
-            unsafe { crate::ffi::Extrema_ExtCS_points(self as *const Self, N, P1, P2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_ExtCS_points(self as *const Self, N, P1, P2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3784,8 +4394,10 @@ impl ExtElC {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3800,8 +4412,10 @@ impl ExtElC {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC_ctor_lin2_real(C1, C2, AngTol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3815,8 +4429,10 @@ impl ExtElC {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC_ctor_lin_circ_real(C1, C2, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3826,8 +4442,10 @@ impl ExtElC {
     pub fn new_lin_elips(C1: &crate::gp::Lin, C2: &crate::gp::Elips) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC_ctor_lin_elips(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3837,8 +4455,10 @@ impl ExtElC {
     pub fn new_lin_hypr(C1: &crate::gp::Lin, C2: &crate::gp::Hypr) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC_ctor_lin_hypr(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3848,8 +4468,10 @@ impl ExtElC {
     pub fn new_lin_parab(C1: &crate::gp::Lin, C2: &crate::gp::Parab) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC_ctor_lin_parab(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3859,8 +4481,10 @@ impl ExtElC {
     pub fn new_circ2(C1: &crate::gp::Circ, C2: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC_ctor_circ2(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3869,8 +4493,11 @@ impl ExtElC {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3879,8 +4506,11 @@ impl ExtElC {
     pub fn is_parallel(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC_is_parallel(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3889,8 +4519,11 @@ impl ExtElC {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3900,8 +4533,11 @@ impl ExtElC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtElC_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3910,8 +4546,11 @@ impl ExtElC {
     /// P1 is on the first curve, P2 on the second one.
     pub fn points(&self, N: i32, P1: &mut POnCurv, P2: &mut POnCurv) {
         {
-            unsafe { crate::ffi::Extrema_ExtElC_points(self as *const Self, N, P1, P2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ExtElC_points(self as *const Self, N, P1, P2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3937,8 +4576,10 @@ impl ExtElC2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3953,8 +4594,10 @@ impl ExtElC2d {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC2d_ctor_lin2d2_real(C1, C2, AngTol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3969,8 +4612,10 @@ impl ExtElC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtElC2d_ctor_lin2d_circ2d_real(C1, C2, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3983,8 +4628,10 @@ impl ExtElC2d {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC2d_ctor_lin2d_elips2d(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3997,8 +4644,10 @@ impl ExtElC2d {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC2d_ctor_lin2d_hypr2d(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4011,8 +4660,10 @@ impl ExtElC2d {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC2d_ctor_lin2d_parab2d(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4022,8 +4673,10 @@ impl ExtElC2d {
     pub fn new_circ2d2(C1: &crate::gp::Circ2d, C2: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC2d_ctor_circ2d2(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4036,8 +4689,10 @@ impl ExtElC2d {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC2d_ctor_circ2d_elips2d(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4050,8 +4705,10 @@ impl ExtElC2d {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC2d_ctor_circ2d_hypr2d(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4064,8 +4721,10 @@ impl ExtElC2d {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC2d_ctor_circ2d_parab2d(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4074,8 +4733,11 @@ impl ExtElC2d {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC2d_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4084,8 +4746,11 @@ impl ExtElC2d {
     pub fn is_parallel(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC2d_is_parallel(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4094,8 +4759,11 @@ impl ExtElC2d {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElC2d_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4105,8 +4773,11 @@ impl ExtElC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtElC2d_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4115,8 +4786,11 @@ impl ExtElC2d {
     /// P1 is on the first curve, P2 on the second one.
     pub fn points(&self, N: i32, P1: &mut POnCurv2d, P2: &mut POnCurv2d) {
         {
-            unsafe { crate::ffi::Extrema_ExtElC2d_points(self as *const Self, N, P1, P2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ExtElC2d_points(self as *const Self, N, P1, P2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4142,8 +4816,10 @@ impl ExtElCS {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4154,8 +4830,10 @@ impl ExtElCS {
     pub fn new_lin_pln(C: &crate::gp::Lin, S: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_lin_pln(C, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4165,8 +4843,10 @@ impl ExtElCS {
     pub fn new_lin_cylinder(C: &crate::gp::Lin, S: &crate::gp::Cylinder) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_lin_cylinder(C, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4175,8 +4855,10 @@ impl ExtElCS {
     pub fn new_lin_cone(C: &crate::gp::Lin, S: &crate::gp::Cone) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_lin_cone(C, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4186,8 +4868,10 @@ impl ExtElCS {
     pub fn new_lin_sphere(C: &crate::gp::Lin, S: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_lin_sphere(C, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4197,8 +4881,10 @@ impl ExtElCS {
     pub fn new_lin_torus(C: &crate::gp::Lin, S: &crate::gp::Torus) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_lin_torus(C, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4208,8 +4894,10 @@ impl ExtElCS {
     pub fn new_circ_pln(C: &crate::gp::Circ, S: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_circ_pln(C, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4222,8 +4910,10 @@ impl ExtElCS {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_circ_cylinder(C, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4233,8 +4923,10 @@ impl ExtElCS {
     pub fn new_circ_cone(C: &crate::gp::Circ, S: &crate::gp::Cone) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_circ_cone(C, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4244,8 +4936,10 @@ impl ExtElCS {
     pub fn new_circ_sphere(C: &crate::gp::Circ, S: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_circ_sphere(C, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4255,8 +4949,10 @@ impl ExtElCS {
     pub fn new_circ_torus(C: &crate::gp::Circ, S: &crate::gp::Torus) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_circ_torus(C, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4266,96 +4962,133 @@ impl ExtElCS {
     pub fn new_hypr_pln(C: &crate::gp::Hypr, S: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElCS_ctor_hypr_pln(C, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:55 - `Extrema_ExtElCS::Perform()`
     pub fn perform_lin_pln(&mut self, C: &crate::gp::Lin, S: &crate::gp::Pln) {
         {
-            unsafe { crate::ffi::Extrema_ExtElCS_perform_lin_pln(self as *mut Self, C, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ExtElCS_perform_lin_pln(self as *mut Self, C, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:61 - `Extrema_ExtElCS::Perform()`
     pub fn perform_lin_cylinder(&mut self, C: &crate::gp::Lin, S: &crate::gp::Cylinder) {
         {
-            unsafe { crate::ffi::Extrema_ExtElCS_perform_lin_cylinder(self as *mut Self, C, S) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_ExtElCS_perform_lin_cylinder(self as *mut Self, C, S)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:66 - `Extrema_ExtElCS::Perform()`
     pub fn perform_lin_cone(&mut self, C: &crate::gp::Lin, S: &crate::gp::Cone) {
         {
-            unsafe { crate::ffi::Extrema_ExtElCS_perform_lin_cone(self as *mut Self, C, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ExtElCS_perform_lin_cone(self as *mut Self, C, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:72 - `Extrema_ExtElCS::Perform()`
     pub fn perform_lin_sphere(&mut self, C: &crate::gp::Lin, S: &crate::gp::Sphere) {
         {
-            unsafe { crate::ffi::Extrema_ExtElCS_perform_lin_sphere(self as *mut Self, C, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ExtElCS_perform_lin_sphere(self as *mut Self, C, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:78 - `Extrema_ExtElCS::Perform()`
     pub fn perform_lin_torus(&mut self, C: &crate::gp::Lin, S: &crate::gp::Torus) {
         {
-            unsafe { crate::ffi::Extrema_ExtElCS_perform_lin_torus(self as *mut Self, C, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ExtElCS_perform_lin_torus(self as *mut Self, C, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:84 - `Extrema_ExtElCS::Perform()`
     pub fn perform_circ_pln(&mut self, C: &crate::gp::Circ, S: &crate::gp::Pln) {
         {
-            unsafe { crate::ffi::Extrema_ExtElCS_perform_circ_pln(self as *mut Self, C, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ExtElCS_perform_circ_pln(self as *mut Self, C, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:90 - `Extrema_ExtElCS::Perform()`
     pub fn perform_circ_cylinder(&mut self, C: &crate::gp::Circ, S: &crate::gp::Cylinder) {
         {
-            unsafe { crate::ffi::Extrema_ExtElCS_perform_circ_cylinder(self as *mut Self, C, S) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_ExtElCS_perform_circ_cylinder(self as *mut Self, C, S)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:96 - `Extrema_ExtElCS::Perform()`
     pub fn perform_circ_cone(&mut self, C: &crate::gp::Circ, S: &crate::gp::Cone) {
         {
-            unsafe { crate::ffi::Extrema_ExtElCS_perform_circ_cone(self as *mut Self, C, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ExtElCS_perform_circ_cone(self as *mut Self, C, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:102 - `Extrema_ExtElCS::Perform()`
     pub fn perform_circ_sphere(&mut self, C: &crate::gp::Circ, S: &crate::gp::Sphere) {
         {
-            unsafe { crate::ffi::Extrema_ExtElCS_perform_circ_sphere(self as *mut Self, C, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ExtElCS_perform_circ_sphere(self as *mut Self, C, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:108 - `Extrema_ExtElCS::Perform()`
     pub fn perform_circ_torus(&mut self, C: &crate::gp::Circ, S: &crate::gp::Torus) {
         {
-            unsafe { crate::ffi::Extrema_ExtElCS_perform_circ_torus(self as *mut Self, C, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ExtElCS_perform_circ_torus(self as *mut Self, C, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtElCS.hxx`:114 - `Extrema_ExtElCS::Perform()`
     pub fn perform_hypr_pln(&mut self, C: &crate::gp::Hypr, S: &crate::gp::Pln) {
         {
-            unsafe { crate::ffi::Extrema_ExtElCS_perform_hypr_pln(self as *mut Self, C, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ExtElCS_perform_hypr_pln(self as *mut Self, C, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4364,8 +5097,11 @@ impl ExtElCS {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElCS_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4374,8 +5110,11 @@ impl ExtElCS {
     pub fn is_parallel(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElCS_is_parallel(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4384,8 +5123,11 @@ impl ExtElCS {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElCS_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4395,8 +5137,11 @@ impl ExtElCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtElCS_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4405,8 +5150,11 @@ impl ExtElCS {
     /// P1 is on the curve, P2 on the surface.
     pub fn points(&self, N: i32, P1: &mut POnCurv, P2: &mut POnSurf) {
         {
-            unsafe { crate::ffi::Extrema_ExtElCS_points(self as *const Self, N, P1, P2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ExtElCS_points(self as *const Self, N, P1, P2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4432,8 +5180,10 @@ impl ExtElSS {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElSS_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4443,8 +5193,10 @@ impl ExtElSS {
     pub fn new_pln2(S1: &crate::gp::Pln, S2: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElSS_ctor_pln2(S1, S2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4454,8 +5206,10 @@ impl ExtElSS {
     pub fn new_pln_sphere(S1: &crate::gp::Pln, S2: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElSS_ctor_pln_sphere(S1, S2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4465,8 +5219,10 @@ impl ExtElSS {
     pub fn new_sphere2(S1: &crate::gp::Sphere, S2: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElSS_ctor_sphere2(S1, S2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4479,8 +5235,10 @@ impl ExtElSS {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElSS_ctor_sphere_cylinder(S1, S2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4490,8 +5248,10 @@ impl ExtElSS {
     pub fn new_sphere_cone(S1: &crate::gp::Sphere, S2: &crate::gp::Cone) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElSS_ctor_sphere_cone(S1, S2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4504,58 +5264,80 @@ impl ExtElSS {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElSS_ctor_sphere_torus(S1, S2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:51 - `Extrema_ExtElSS::Perform()`
     pub fn perform_pln2(&mut self, S1: &crate::gp::Pln, S2: &crate::gp::Pln) {
         {
-            unsafe { crate::ffi::Extrema_ExtElSS_perform_pln2(self as *mut Self, S1, S2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ExtElSS_perform_pln2(self as *mut Self, S1, S2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:57 - `Extrema_ExtElSS::Perform()`
     pub fn perform_pln_sphere(&mut self, S1: &crate::gp::Pln, S2: &crate::gp::Sphere) {
         {
-            unsafe { crate::ffi::Extrema_ExtElSS_perform_pln_sphere(self as *mut Self, S1, S2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_ExtElSS_perform_pln_sphere(self as *mut Self, S1, S2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:63 - `Extrema_ExtElSS::Perform()`
     pub fn perform_sphere2(&mut self, S1: &crate::gp::Sphere, S2: &crate::gp::Sphere) {
         {
-            unsafe { crate::ffi::Extrema_ExtElSS_perform_sphere2(self as *mut Self, S1, S2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ExtElSS_perform_sphere2(self as *mut Self, S1, S2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:69 - `Extrema_ExtElSS::Perform()`
     pub fn perform_sphere_cylinder(&mut self, S1: &crate::gp::Sphere, S2: &crate::gp::Cylinder) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtElSS_perform_sphere_cylinder(self as *mut Self, S1, S2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:75 - `Extrema_ExtElSS::Perform()`
     pub fn perform_sphere_cone(&mut self, S1: &crate::gp::Sphere, S2: &crate::gp::Cone) {
         {
-            unsafe { crate::ffi::Extrema_ExtElSS_perform_sphere_cone(self as *mut Self, S1, S2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_ExtElSS_perform_sphere_cone(self as *mut Self, S1, S2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtElSS.hxx`:81 - `Extrema_ExtElSS::Perform()`
     pub fn perform_sphere_torus(&mut self, S1: &crate::gp::Sphere, S2: &crate::gp::Torus) {
         {
-            unsafe { crate::ffi::Extrema_ExtElSS_perform_sphere_torus(self as *mut Self, S1, S2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_ExtElSS_perform_sphere_torus(self as *mut Self, S1, S2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4564,8 +5346,11 @@ impl ExtElSS {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElSS_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4574,8 +5359,11 @@ impl ExtElSS {
     pub fn is_parallel(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElSS_is_parallel(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4584,8 +5372,11 @@ impl ExtElSS {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtElSS_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4595,8 +5386,11 @@ impl ExtElSS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtElSS_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4605,8 +5399,11 @@ impl ExtElSS {
     /// P1 is on the first surface, P2 on the second one.
     pub fn points(&self, N: i32, P1: &mut POnSurf, P2: &mut POnSurf) {
         {
-            unsafe { crate::ffi::Extrema_ExtElSS_points(self as *const Self, N, P1, P2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ExtElSS_points(self as *const Self, N, P1, P2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4629,8 +5426,10 @@ impl ExtPC {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPC_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4654,8 +5453,10 @@ impl ExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtPC_ctor_pnt_curve_real3(P, C, Uinf, Usup, TolF) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4675,8 +5476,10 @@ impl ExtPC {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPC_ctor_pnt_curve_real(P, C, TolF) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4716,8 +5519,12 @@ impl ExtPC {
     /// initializes the fields of the algorithm.
     pub fn initialize(&mut self, C: &crate::adaptor3d::Curve, Uinf: f64, Usup: f64, TolF: f64) {
         {
-            unsafe { crate::ffi::Extrema_ExtPC_initialize(self as *mut Self, C, Uinf, Usup, TolF) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_ExtPC_initialize(self as *mut Self, C, Uinf, Usup, TolF)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4726,8 +5533,10 @@ impl ExtPC {
     /// initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Extrema_ExtPC_perform(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_ExtPC_perform(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4736,8 +5545,11 @@ impl ExtPC {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPC_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4747,8 +5559,11 @@ impl ExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtPC_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4757,8 +5572,11 @@ impl ExtPC {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPC_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4768,8 +5586,11 @@ impl ExtPC {
     pub fn is_min(&self, N: i32) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPC_is_min(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4778,8 +5599,11 @@ impl ExtPC {
     pub fn point(&self, N: i32) -> &POnCurv {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPC_point(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4797,7 +5621,7 @@ impl ExtPC {
         P2: &mut crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPC_trimmed_square_distances(
                     self as *const Self,
                     dist1,
@@ -4806,7 +5630,9 @@ impl ExtPC {
                     P2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4829,8 +5655,10 @@ impl ExtPC2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPC2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4855,8 +5683,10 @@ impl ExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_ExtPC2d_ctor_pnt2d_curve2d_real3(P, C, Uinf, Usup, TolF)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4877,8 +5707,10 @@ impl ExtPC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtPC2d_ctor_pnt2d_curve2d_real(P, C, TolF) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4921,10 +5753,12 @@ impl ExtPC2d {
     /// initializes the fields of the algorithm.
     pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d, Uinf: f64, Usup: f64, TolF: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPC2d_initialize(self as *mut Self, C, Uinf, Usup, TolF)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4933,8 +5767,10 @@ impl ExtPC2d {
     /// initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Extrema_ExtPC2d_perform(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_ExtPC2d_perform(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4943,8 +5779,11 @@ impl ExtPC2d {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPC2d_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4954,8 +5793,11 @@ impl ExtPC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtPC2d_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4964,8 +5806,11 @@ impl ExtPC2d {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPC2d_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4975,8 +5820,11 @@ impl ExtPC2d {
     pub fn is_min(&self, N: i32) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPC2d_is_min(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4985,8 +5833,11 @@ impl ExtPC2d {
     pub fn point(&self, N: i32) -> &POnCurv2d {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPC2d_point(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5004,7 +5855,7 @@ impl ExtPC2d {
         P2: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPC2d_trimmed_square_distances(
                     self as *const Self,
                     dist1,
@@ -5013,7 +5864,9 @@ impl ExtPC2d {
                     P2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5039,8 +5892,10 @@ impl ExtPElC {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPElC_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5057,8 +5912,10 @@ impl ExtPElC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtPElC_ctor_pnt_lin_real3(P, C, Tol, Uinf, Usup) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5084,8 +5941,10 @@ impl ExtPElC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtPElC_ctor_pnt_circ_real3(P, C, Tol, Uinf, Usup) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5112,8 +5971,10 @@ impl ExtPElC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtPElC_ctor_pnt_elips_real3(P, C, Tol, Uinf, Usup) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5134,8 +5995,10 @@ impl ExtPElC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtPElC_ctor_pnt_hypr_real3(P, C, Tol, Uinf, Usup) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5156,8 +6019,10 @@ impl ExtPElC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtPElC_ctor_pnt_parab_real3(P, C, Tol, Uinf, Usup) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5171,7 +6036,7 @@ impl ExtPElC {
         Usup: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPElC_perform_pnt_lin_real3(
                     self as *mut Self,
                     P,
@@ -5181,7 +6046,9 @@ impl ExtPElC {
                     Usup,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5195,7 +6062,7 @@ impl ExtPElC {
         Usup: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPElC_perform_pnt_circ_real3(
                     self as *mut Self,
                     P,
@@ -5205,7 +6072,9 @@ impl ExtPElC {
                     Usup,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5219,7 +6088,7 @@ impl ExtPElC {
         Usup: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPElC_perform_pnt_elips_real3(
                     self as *mut Self,
                     P,
@@ -5229,7 +6098,9 @@ impl ExtPElC {
                     Usup,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5243,7 +6114,7 @@ impl ExtPElC {
         Usup: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPElC_perform_pnt_hypr_real3(
                     self as *mut Self,
                     P,
@@ -5253,7 +6124,9 @@ impl ExtPElC {
                     Usup,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5267,7 +6140,7 @@ impl ExtPElC {
         Usup: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPElC_perform_pnt_parab_real3(
                     self as *mut Self,
                     P,
@@ -5277,7 +6150,9 @@ impl ExtPElC {
                     Usup,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5286,8 +6161,11 @@ impl ExtPElC {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPElC_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5296,8 +6174,11 @@ impl ExtPElC {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPElC_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5307,8 +6188,11 @@ impl ExtPElC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtPElC_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5318,8 +6202,11 @@ impl ExtPElC {
     pub fn is_min(&self, N: i32) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPElC_is_min(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5328,8 +6215,11 @@ impl ExtPElC {
     pub fn point(&self, N: i32) -> &POnCurv {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPElC_point(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -5355,8 +6245,10 @@ impl ExtPElC2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPElC2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5374,8 +6266,10 @@ impl ExtPElC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_ExtPElC2d_ctor_pnt2d_lin2d_real3(P, C, Tol, Uinf, Usup)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5402,8 +6296,10 @@ impl ExtPElC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_ExtPElC2d_ctor_pnt2d_circ2d_real3(P, C, Tol, Uinf, Usup)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5431,8 +6327,10 @@ impl ExtPElC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_ExtPElC2d_ctor_pnt2d_elips2d_real3(P, C, Tol, Uinf, Usup)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5454,8 +6352,10 @@ impl ExtPElC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_ExtPElC2d_ctor_pnt2d_hypr2d_real3(P, C, Tol, Uinf, Usup)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5477,8 +6377,10 @@ impl ExtPElC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_ExtPElC2d_ctor_pnt2d_parab2d_real3(P, C, Tol, Uinf, Usup)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5492,7 +6394,7 @@ impl ExtPElC2d {
         Usup: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPElC2d_perform_pnt2d_lin2d_real3(
                     self as *mut Self,
                     P,
@@ -5502,7 +6404,9 @@ impl ExtPElC2d {
                     Usup,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5516,7 +6420,7 @@ impl ExtPElC2d {
         Usup: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPElC2d_perform_pnt2d_circ2d_real3(
                     self as *mut Self,
                     P,
@@ -5526,7 +6430,9 @@ impl ExtPElC2d {
                     Usup,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5540,7 +6446,7 @@ impl ExtPElC2d {
         Usup: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPElC2d_perform_pnt2d_elips2d_real3(
                     self as *mut Self,
                     P,
@@ -5550,7 +6456,9 @@ impl ExtPElC2d {
                     Usup,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5564,7 +6472,7 @@ impl ExtPElC2d {
         Usup: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPElC2d_perform_pnt2d_hypr2d_real3(
                     self as *mut Self,
                     P,
@@ -5574,7 +6482,9 @@ impl ExtPElC2d {
                     Usup,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5588,7 +6498,7 @@ impl ExtPElC2d {
         Usup: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPElC2d_perform_pnt2d_parab2d_real3(
                     self as *mut Self,
                     P,
@@ -5598,7 +6508,9 @@ impl ExtPElC2d {
                     Usup,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5607,8 +6519,11 @@ impl ExtPElC2d {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPElC2d_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5617,8 +6532,11 @@ impl ExtPElC2d {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPElC2d_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5628,8 +6546,11 @@ impl ExtPElC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtPElC2d_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5639,8 +6560,11 @@ impl ExtPElC2d {
     pub fn is_min(&self, N: i32) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPElC2d_is_min(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5649,8 +6573,11 @@ impl ExtPElC2d {
     pub fn point(&self, N: i32) -> &POnCurv2d {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPElC2d_point(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -5676,8 +6603,10 @@ impl ExtPElS {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPElS_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5692,8 +6621,10 @@ impl ExtPElS {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPElS_ctor_pnt_cylinder_real(P, S, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5708,8 +6639,10 @@ impl ExtPElS {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPElS_ctor_pnt_pln_real(P, S, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5725,8 +6658,10 @@ impl ExtPElS {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPElS_ctor_pnt_cone_real(P, S, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5741,8 +6676,10 @@ impl ExtPElS {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPElS_ctor_pnt_torus_real(P, S, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5757,8 +6694,10 @@ impl ExtPElS {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPElS_ctor_pnt_sphere_real(P, S, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5770,50 +6709,60 @@ impl ExtPElS {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPElS_perform_pnt_cylinder_real(self as *mut Self, P, S, Tol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtPElS.hxx`:54 - `Extrema_ExtPElS::Perform()`
     pub fn perform_pnt_pln_real(&mut self, P: &crate::gp::Pnt, S: &crate::gp::Pln, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPElS_perform_pnt_pln_real(self as *mut Self, P, S, Tol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtPElS.hxx`:62 - `Extrema_ExtPElS::Perform()`
     pub fn perform_pnt_cone_real(&mut self, P: &crate::gp::Pnt, S: &crate::gp::Cone, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPElS_perform_pnt_cone_real(self as *mut Self, P, S, Tol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtPElS.hxx`:69 - `Extrema_ExtPElS::Perform()`
     pub fn perform_pnt_torus_real(&mut self, P: &crate::gp::Pnt, S: &crate::gp::Torus, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPElS_perform_pnt_torus_real(self as *mut Self, P, S, Tol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtPElS.hxx`:76 - `Extrema_ExtPElS::Perform()`
     pub fn perform_pnt_sphere_real(&mut self, P: &crate::gp::Pnt, S: &crate::gp::Sphere, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPElS_perform_pnt_sphere_real(self as *mut Self, P, S, Tol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5822,8 +6771,11 @@ impl ExtPElS {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPElS_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5832,8 +6784,11 @@ impl ExtPElS {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPElS_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5843,8 +6798,11 @@ impl ExtPElS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtPElS_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5853,8 +6811,11 @@ impl ExtPElS {
     pub fn point(&self, N: i32) -> &POnSurf {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPElS_point(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -5880,8 +6841,10 @@ impl ExtPExtS {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPExtS_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5902,8 +6865,10 @@ impl ExtPExtS {
             let __result = unsafe {
                 crate::ffi::Extrema_ExtPExtS_ctor_pnt_handlegeomadaptorsurfaceoflinearextrusion_real6(P, S, Umin, Usup, Vmin, Vsup, TolU, TolV)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5920,8 +6885,10 @@ impl ExtPExtS {
             let __result = unsafe {
                 crate::ffi::Extrema_ExtPExtS_ctor_pnt_handlegeomadaptorsurfaceoflinearextrusion_real2(P, S, TolU, TolV)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5938,7 +6905,7 @@ impl ExtPExtS {
         TolV: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPExtS_initialize(
                     self as *mut Self,
                     S,
@@ -5950,15 +6917,19 @@ impl ExtPExtS {
                     TolV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtPExtS.hxx`:65 - `Extrema_ExtPExtS::Perform()`
     pub fn perform(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Extrema_ExtPExtS_perform(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_ExtPExtS_perform(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5967,8 +6938,11 @@ impl ExtPExtS {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPExtS_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5977,8 +6951,11 @@ impl ExtPExtS {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPExtS_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5988,8 +6965,11 @@ impl ExtPExtS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtPExtS_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5998,8 +6978,11 @@ impl ExtPExtS {
     pub fn point(&self, N: i32) -> &POnSurf {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPExtS_point(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6008,8 +6991,11 @@ impl ExtPExtS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtPExtS_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6017,8 +7003,11 @@ impl ExtPExtS {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPExtS_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6026,41 +7015,43 @@ impl ExtPExtS {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPExtS_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Extrema_ExtPExtS_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Extrema_ExtPExtS_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_ExtPExtS_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Extrema_ExtPExtS_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleExtremaExtPExtS> {
-        {
-            let __result = unsafe { crate::ffi::Extrema_ExtPExtS_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Extrema_ExtPExtS_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -6069,8 +7060,11 @@ impl ExtPExtS {
             let __result = unsafe {
                 crate::ffi::Extrema_ExtPExtS_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6080,8 +7074,11 @@ impl ExtPExtS {
             let __result = unsafe {
                 crate::ffi::Extrema_ExtPExtS_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6090,11 +7087,14 @@ impl ExtPExtS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtPExtS_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6104,18 +7104,23 @@ impl ExtPExtS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtPExtS_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPExtS_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6125,16 +7130,22 @@ impl ExtPExtS {
             let __result = unsafe {
                 crate::ffi::Extrema_ExtPExtS_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Extrema_ExtPExtS_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ExtPExtS_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6150,31 +7161,31 @@ unsafe impl crate::CppDeletable for HandleExtremaExtPExtS {
 impl HandleExtremaExtPExtS {
     /// Dereference this Handle to access the underlying Extrema_ExtPExtS
     pub fn get(&self) -> &crate::ffi::Extrema_ExtPExtS {
-        {
-            let __result = unsafe { crate::ffi::HandleExtremaExtPExtS_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleExtremaExtPExtS_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Extrema_ExtPExtS
     pub fn get_mut(&mut self) -> &mut crate::ffi::Extrema_ExtPExtS {
-        {
-            let __result = unsafe { crate::ffi::HandleExtremaExtPExtS_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleExtremaExtPExtS_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Extrema_ExtPExtS> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleExtremaExtPExtS_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleExtremaExtPExtS_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6199,8 +7210,10 @@ impl ExtPRevS {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPRevS_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6223,8 +7236,10 @@ impl ExtPRevS {
                     P, S, Umin, Usup, Vmin, Vsup, TolU, TolV,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6243,8 +7258,10 @@ impl ExtPRevS {
                     P, S, TolU, TolV,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6260,7 +7277,7 @@ impl ExtPRevS {
         TolV: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPRevS_initialize(
                     self as *mut Self,
                     S,
@@ -6272,15 +7289,19 @@ impl ExtPRevS {
                     TolV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtPRevS.hxx`:62 - `Extrema_ExtPRevS::Perform()`
     pub fn perform(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Extrema_ExtPRevS_perform(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_ExtPRevS_perform(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6289,8 +7310,11 @@ impl ExtPRevS {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPRevS_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6299,8 +7323,11 @@ impl ExtPRevS {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPRevS_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6310,8 +7337,11 @@ impl ExtPRevS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtPRevS_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6320,8 +7350,11 @@ impl ExtPRevS {
     pub fn point(&self, N: i32) -> &POnSurf {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPRevS_point(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6330,8 +7363,11 @@ impl ExtPRevS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtPRevS_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6339,8 +7375,11 @@ impl ExtPRevS {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPRevS_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6348,41 +7387,43 @@ impl ExtPRevS {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPRevS_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Extrema_ExtPRevS_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Extrema_ExtPRevS_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_ExtPRevS_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Extrema_ExtPRevS_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleExtremaExtPRevS> {
-        {
-            let __result = unsafe { crate::ffi::Extrema_ExtPRevS_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Extrema_ExtPRevS_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -6391,8 +7432,11 @@ impl ExtPRevS {
             let __result = unsafe {
                 crate::ffi::Extrema_ExtPRevS_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6402,8 +7446,11 @@ impl ExtPRevS {
             let __result = unsafe {
                 crate::ffi::Extrema_ExtPRevS_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6412,11 +7459,14 @@ impl ExtPRevS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtPRevS_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6426,18 +7476,23 @@ impl ExtPRevS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtPRevS_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPRevS_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6447,16 +7502,22 @@ impl ExtPRevS {
             let __result = unsafe {
                 crate::ffi::Extrema_ExtPRevS_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Extrema_ExtPRevS_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_ExtPRevS_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6472,31 +7533,31 @@ unsafe impl crate::CppDeletable for HandleExtremaExtPRevS {
 impl HandleExtremaExtPRevS {
     /// Dereference this Handle to access the underlying Extrema_ExtPRevS
     pub fn get(&self) -> &crate::ffi::Extrema_ExtPRevS {
-        {
-            let __result = unsafe { crate::ffi::HandleExtremaExtPRevS_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleExtremaExtPRevS_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Extrema_ExtPRevS
     pub fn get_mut(&mut self) -> &mut crate::ffi::Extrema_ExtPRevS {
-        {
-            let __result = unsafe { crate::ffi::HandleExtremaExtPRevS_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleExtremaExtPRevS_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Extrema_ExtPRevS> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleExtremaExtPRevS_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleExtremaExtPRevS_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6521,8 +7582,10 @@ impl ExtPS {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPS_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6554,8 +7617,10 @@ impl ExtPS {
                     A.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6595,8 +7660,10 @@ impl ExtPS {
                     A.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6613,7 +7680,7 @@ impl ExtPS {
         TolV: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPS_initialize(
                     self as *mut Self,
                     S,
@@ -6625,7 +7692,9 @@ impl ExtPS {
                     TolV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6635,8 +7704,10 @@ impl ExtPS {
     /// initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Extrema_ExtPS_perform(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_ExtPS_perform(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6645,8 +7716,11 @@ impl ExtPS {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPS_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6655,8 +7729,11 @@ impl ExtPS {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPS_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6666,8 +7743,11 @@ impl ExtPS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtPS_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6676,8 +7756,11 @@ impl ExtPS {
     pub fn point(&self, N: i32) -> &POnSurf {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtPS_point(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6703,7 +7786,7 @@ impl ExtPS {
         PUlVl: &mut crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtPS_trimmed_square_distances(
                     self as *const Self,
                     dUfVf,
@@ -6716,23 +7799,29 @@ impl ExtPS {
                     PUlVl,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtPS.hxx`:126 - `Extrema_ExtPS::SetFlag()`
     pub fn set_flag(&mut self, F: i32) {
         {
-            unsafe { crate::ffi::Extrema_ExtPS_set_flag(self as *mut Self, F) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_ExtPS_set_flag(self as *mut Self, F) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_ExtPS.hxx`:128 - `Extrema_ExtPS::SetAlgo()`
     pub fn set_algo(&mut self, A: crate::extrema::ExtAlgo) {
         {
-            unsafe { crate::ffi::Extrema_ExtPS_set_algo(self as *mut Self, A.into()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_ExtPS_set_algo(self as *mut Self, A.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6758,8 +7847,10 @@ impl ExtSS {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtSS_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6774,8 +7865,10 @@ impl ExtSS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtSS_ctor_surface2_real2(S1, S2, TolS1, TolS2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6801,8 +7894,10 @@ impl ExtSS {
                     S1, S2, Uinf1, Usup1, Vinf1, Vsup1, Uinf2, Usup2, Vinf2, Vsup2, TolS1, TolS2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6818,7 +7913,7 @@ impl ExtSS {
         TolS1: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtSS_initialize(
                     self as *mut Self,
                     S2,
@@ -6829,7 +7924,9 @@ impl ExtSS {
                     TolS1,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6847,7 +7944,7 @@ impl ExtSS {
         TolS1: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_ExtSS_perform(
                     self as *mut Self,
                     S1,
@@ -6858,7 +7955,9 @@ impl ExtSS {
                     TolS1,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6867,8 +7966,11 @@ impl ExtSS {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtSS_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6877,8 +7979,11 @@ impl ExtSS {
     pub fn is_parallel(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtSS_is_parallel(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6887,8 +7992,11 @@ impl ExtSS {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_ExtSS_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6898,8 +8006,11 @@ impl ExtSS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_ExtSS_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6907,8 +8018,10 @@ impl ExtSS {
     /// Returns the point of the Nth resulting distance.
     pub fn points(&self, N: i32, P1: &mut POnSurf, P2: &mut POnSurf) {
         {
-            unsafe { crate::ffi::Extrema_ExtSS_points(self as *const Self, N, P1, P2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_ExtSS_points(self as *const Self, N, P1, P2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6933,8 +8046,10 @@ impl FuncExtCS {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_FuncExtCS_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6945,8 +8060,10 @@ impl FuncExtCS {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_FuncExtCS_ctor_curve_surface(C, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6954,8 +8071,11 @@ impl FuncExtCS {
     /// sets the field mysurf of the function.
     pub fn initialize(&mut self, C: &crate::adaptor3d::Curve, S: &crate::adaptor3d::Surface) {
         {
-            unsafe { crate::ffi::Extrema_FuncExtCS_initialize(self as *mut Self, C, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_FuncExtCS_initialize(self as *mut Self, C, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6964,8 +8084,11 @@ impl FuncExtCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncExtCS_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6974,8 +8097,11 @@ impl FuncExtCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncExtCS_nb_equations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6984,8 +8110,11 @@ impl FuncExtCS {
     pub fn value(&mut self, UV: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_FuncExtCS_value(self as *mut Self, UV, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6999,8 +8128,11 @@ impl FuncExtCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncExtCS_derivatives(self as *mut Self, UV, DF) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7015,8 +8147,11 @@ impl FuncExtCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncExtCS_values(self as *mut Self, UV, F, DF) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7026,8 +8161,11 @@ impl FuncExtCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncExtCS_get_state_number(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7036,8 +8174,11 @@ impl FuncExtCS {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_FuncExtCS_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7047,8 +8188,11 @@ impl FuncExtCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncExtCS_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7058,8 +8202,11 @@ impl FuncExtCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncExtCS_point_on_curve(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7069,8 +8216,11 @@ impl FuncExtCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncExtCS_point_on_surface(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7080,8 +8230,11 @@ impl FuncExtCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncExtCS_square_distances(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7091,8 +8244,11 @@ impl FuncExtCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncExtCS_points_on_curve(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7102,8 +8258,11 @@ impl FuncExtCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncExtCS_points_on_surf(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7111,50 +8270,46 @@ impl FuncExtCS {
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_FuncExtCS_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_FuncExtCS_as_math_FunctionSetWithDerivatives(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_FuncExtCS_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_FuncExtCS_as_math_FunctionSetWithDerivatives_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result =
-                unsafe { crate::ffi::Extrema_FuncExtCS_as_math_FunctionSet(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Extrema_FuncExtCS_as_math_FunctionSet(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result =
-                unsafe { crate::ffi::Extrema_FuncExtCS_as_math_FunctionSet_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Extrema_FuncExtCS_as_math_FunctionSet_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 }
 
@@ -7178,8 +8333,10 @@ impl FuncExtSS {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_FuncExtSS_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7190,8 +8347,10 @@ impl FuncExtSS {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_FuncExtSS_ctor_surface2(S1, S2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7199,8 +8358,11 @@ impl FuncExtSS {
     /// sets the field mysurf of the function.
     pub fn initialize(&mut self, S1: &crate::adaptor3d::Surface, S2: &crate::adaptor3d::Surface) {
         {
-            unsafe { crate::ffi::Extrema_FuncExtSS_initialize(self as *mut Self, S1, S2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_FuncExtSS_initialize(self as *mut Self, S1, S2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7209,8 +8371,11 @@ impl FuncExtSS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncExtSS_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7219,8 +8384,11 @@ impl FuncExtSS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncExtSS_nb_equations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7229,8 +8397,11 @@ impl FuncExtSS {
     pub fn value(&mut self, UV: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_FuncExtSS_value(self as *mut Self, UV, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7244,8 +8415,11 @@ impl FuncExtSS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncExtSS_derivatives(self as *mut Self, UV, DF) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7260,8 +8434,11 @@ impl FuncExtSS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncExtSS_values(self as *mut Self, UV, F, DF) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7271,8 +8448,11 @@ impl FuncExtSS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncExtSS_get_state_number(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7281,8 +8461,11 @@ impl FuncExtSS {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_FuncExtSS_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7292,8 +8475,11 @@ impl FuncExtSS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncExtSS_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7303,8 +8489,11 @@ impl FuncExtSS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncExtSS_point_on_s1(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7314,8 +8503,11 @@ impl FuncExtSS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncExtSS_point_on_s2(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7323,50 +8515,46 @@ impl FuncExtSS {
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_FuncExtSS_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_FuncExtSS_as_math_FunctionSetWithDerivatives(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_FuncExtSS_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_FuncExtSS_as_math_FunctionSetWithDerivatives_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result =
-                unsafe { crate::ffi::Extrema_FuncExtSS_as_math_FunctionSet(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Extrema_FuncExtSS_as_math_FunctionSet(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result =
-                unsafe { crate::ffi::Extrema_FuncExtSS_as_math_FunctionSet_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Extrema_FuncExtSS_as_math_FunctionSet_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 }
 
@@ -7406,8 +8594,10 @@ impl FuncPSDist {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_FuncPSDist_ctor_surface_pnt(theS, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7417,8 +8607,11 @@ impl FuncPSDist {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncPSDist_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7427,8 +8620,11 @@ impl FuncPSDist {
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_FuncPSDist_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7442,8 +8638,11 @@ impl FuncPSDist {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncPSDist_gradient(self as *mut Self, X, G) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7458,8 +8657,11 @@ impl FuncPSDist {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncPSDist_values(self as *mut Self, X, F, G) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7467,52 +8669,52 @@ impl FuncPSDist {
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunctionWithGradient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunctionWithGradient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunctionWithGradient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunctionWithGradient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunction_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_FuncPSDist_as_math_MultipleVarFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
@@ -7521,8 +8723,11 @@ impl FuncPSDist {
             let __result = unsafe {
                 crate::ffi::Extrema_FuncPSDist_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -7565,8 +8770,10 @@ impl FuncPSNorm {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_FuncPSNorm_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7577,8 +8784,10 @@ impl FuncPSNorm {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_FuncPSNorm_ctor_pnt_surface(P, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7586,8 +8795,10 @@ impl FuncPSNorm {
     /// sets the field mysurf of the function.
     pub fn initialize(&mut self, S: &crate::adaptor3d::Surface) {
         {
-            unsafe { crate::ffi::Extrema_FuncPSNorm_initialize(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_FuncPSNorm_initialize(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7595,8 +8806,10 @@ impl FuncPSNorm {
     /// sets the field mysurf of the function.
     pub fn set_point(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Extrema_FuncPSNorm_set_point(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_FuncPSNorm_set_point(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7605,8 +8818,11 @@ impl FuncPSNorm {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncPSNorm_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7615,8 +8831,11 @@ impl FuncPSNorm {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncPSNorm_nb_equations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7626,8 +8845,11 @@ impl FuncPSNorm {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncPSNorm_value(self as *mut Self, UV, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7641,8 +8863,11 @@ impl FuncPSNorm {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncPSNorm_derivatives(self as *mut Self, UV, DF) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7657,8 +8882,11 @@ impl FuncPSNorm {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncPSNorm_values(self as *mut Self, UV, F, DF) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7668,8 +8896,11 @@ impl FuncPSNorm {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncPSNorm_get_state_number(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7678,8 +8909,11 @@ impl FuncPSNorm {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_FuncPSNorm_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7689,8 +8923,11 @@ impl FuncPSNorm {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_FuncPSNorm_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7699,8 +8936,11 @@ impl FuncPSNorm {
     pub fn point(&self, N: i32) -> &POnSurf {
         {
             let __result = unsafe { crate::ffi::Extrema_FuncPSNorm_point(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7708,51 +8948,46 @@ impl FuncPSNorm {
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSetWithDerivatives(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSetWithDerivatives_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result =
-                unsafe { crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSet(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSet(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Extrema_FuncPSNorm_as_math_FunctionSet_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 }
 
@@ -7778,8 +9013,10 @@ impl GenExtCS {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_GenExtCS_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7806,8 +9043,10 @@ impl GenExtCS {
                     C, S, NbT, NbU, NbV, Tol1, Tol2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7840,8 +9079,10 @@ impl GenExtCS {
                     C, S, NbT, NbU, NbV, tmin, tsup, Umin, Usup, Vmin, Vsup, Tol1, Tol2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7854,7 +9095,7 @@ impl GenExtCS {
         Tol2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_GenExtCS_initialize_surface_int2_real(
                     self as *mut Self,
                     S,
@@ -7863,7 +9104,9 @@ impl GenExtCS {
                     Tol2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7880,7 +9123,7 @@ impl GenExtCS {
         Tol2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_GenExtCS_initialize_surface_int2_real5(
                     self as *mut Self,
                     S,
@@ -7893,7 +9136,9 @@ impl GenExtCS {
                     Tol2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7903,10 +9148,12 @@ impl GenExtCS {
     /// been initialized.
     pub fn perform_curve_int_real(&mut self, C: &crate::adaptor3d::Curve, NbT: i32, Tol1: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_GenExtCS_perform_curve_int_real(self as *mut Self, C, NbT, Tol1)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7923,7 +9170,7 @@ impl GenExtCS {
         Tol1: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_GenExtCS_perform_curve_int_real3(
                     self as *mut Self,
                     C,
@@ -7933,7 +9180,9 @@ impl GenExtCS {
                     Tol1,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7942,8 +9191,11 @@ impl GenExtCS {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_GenExtCS_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7952,8 +9204,11 @@ impl GenExtCS {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_GenExtCS_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7963,8 +9218,11 @@ impl GenExtCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GenExtCS_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7974,8 +9232,11 @@ impl GenExtCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GenExtCS_point_on_curve(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7985,8 +9246,11 @@ impl GenExtCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GenExtCS_point_on_surface(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -8013,8 +9277,10 @@ impl GenExtPS {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_GenExtPS_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8054,8 +9320,10 @@ impl GenExtPS {
                     A.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8103,8 +9371,10 @@ impl GenExtPS {
                     A.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8118,7 +9388,7 @@ impl GenExtPS {
         TolV: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_GenExtPS_initialize_surface_int2_real2(
                     self as *mut Self,
                     S,
@@ -8128,7 +9398,9 @@ impl GenExtPS {
                     TolV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8146,7 +9418,7 @@ impl GenExtPS {
         TolV: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_GenExtPS_initialize_surface_int2_real6(
                     self as *mut Self,
                     S,
@@ -8160,7 +9432,9 @@ impl GenExtPS {
                     TolV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8170,24 +9444,31 @@ impl GenExtPS {
     /// been initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Extrema_GenExtPS_perform(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_GenExtPS_perform(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_GenExtPS.hxx`:112 - `Extrema_GenExtPS::SetFlag()`
     pub fn set_flag(&mut self, F: i32) {
         {
-            unsafe { crate::ffi::Extrema_GenExtPS_set_flag(self as *mut Self, F) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_GenExtPS_set_flag(self as *mut Self, F) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_GenExtPS.hxx`:114 - `Extrema_GenExtPS::SetAlgo()`
     pub fn set_algo(&mut self, A: crate::extrema::ExtAlgo) {
         {
-            unsafe { crate::ffi::Extrema_GenExtPS_set_algo(self as *mut Self, A.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_GenExtPS_set_algo(self as *mut Self, A.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8196,8 +9477,11 @@ impl GenExtPS {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_GenExtPS_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8206,8 +9490,11 @@ impl GenExtPS {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_GenExtPS_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8217,8 +9504,11 @@ impl GenExtPS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GenExtPS_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8227,8 +9517,11 @@ impl GenExtPS {
     pub fn point(&self, N: i32) -> &POnSurf {
         {
             let __result = unsafe { crate::ffi::Extrema_GenExtPS_point(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -8255,8 +9548,10 @@ impl GenExtSS {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_GenExtSS_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8280,8 +9575,10 @@ impl GenExtSS {
             let __result = unsafe {
                 crate::ffi::Extrema_GenExtSS_ctor_surface2_int2_real2(S1, S2, NbU, NbV, Tol1, Tol2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8316,8 +9613,10 @@ impl GenExtSS {
                     Tol2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8330,7 +9629,7 @@ impl GenExtSS {
         Tol2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_GenExtSS_initialize_surface_int2_real(
                     self as *mut Self,
                     S2,
@@ -8339,7 +9638,9 @@ impl GenExtSS {
                     Tol2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8356,7 +9657,7 @@ impl GenExtSS {
         Tol2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_GenExtSS_initialize_surface_int2_real5(
                     self as *mut Self,
                     S2,
@@ -8369,7 +9670,9 @@ impl GenExtSS {
                     Tol2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8379,10 +9682,12 @@ impl GenExtSS {
     /// been initialized.
     pub fn perform_surface_real(&mut self, S1: &crate::adaptor3d::Surface, Tol1: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_GenExtSS_perform_surface_real(self as *mut Self, S1, Tol1)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8400,7 +9705,7 @@ impl GenExtSS {
         Tol1: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_GenExtSS_perform_surface_real5(
                     self as *mut Self,
                     S1,
@@ -8411,7 +9716,9 @@ impl GenExtSS {
                     Tol1,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8420,8 +9727,11 @@ impl GenExtSS {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_GenExtSS_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8430,8 +9740,11 @@ impl GenExtSS {
     pub fn nb_ext(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Extrema_GenExtSS_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8441,8 +9754,11 @@ impl GenExtSS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GenExtSS_square_distance(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8452,8 +9768,11 @@ impl GenExtSS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GenExtSS_point_on_s1(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8463,8 +9782,11 @@ impl GenExtSS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GenExtSS_point_on_s2(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -8490,8 +9812,10 @@ impl GenLocateExtCS {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_GenLocateExtCS_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8517,8 +9841,10 @@ impl GenLocateExtCS {
                     C, S, T, U, V, Tol1, Tol2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8534,7 +9860,7 @@ impl GenLocateExtCS {
         Tol2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_GenLocateExtCS_perform(
                     self as *mut Self,
                     C,
@@ -8546,7 +9872,9 @@ impl GenLocateExtCS {
                     Tol2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8556,8 +9884,11 @@ impl GenLocateExtCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GenLocateExtCS_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8567,8 +9898,11 @@ impl GenLocateExtCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GenLocateExtCS_square_distance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8578,8 +9912,11 @@ impl GenLocateExtCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GenLocateExtCS_point_on_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8589,8 +9926,11 @@ impl GenLocateExtCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GenLocateExtCS_point_on_surface(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -8623,8 +9963,10 @@ impl GenLocateExtPS {
             let __result = unsafe {
                 crate::ffi::Extrema_GenLocateExtPS_ctor_surface_real2(theS, theTolU, theTolV)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8642,7 +9984,7 @@ impl GenLocateExtPS {
         isDistanceCriteria: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_GenLocateExtPS_perform(
                     self as *mut Self,
                     theP,
@@ -8651,7 +9993,9 @@ impl GenLocateExtPS {
                     isDistanceCriteria,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8661,8 +10005,11 @@ impl GenLocateExtPS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GenLocateExtPS_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8672,8 +10019,11 @@ impl GenLocateExtPS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GenLocateExtPS_square_distance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8682,8 +10032,11 @@ impl GenLocateExtPS {
     pub fn point(&self) -> &POnSurf {
         {
             let __result = unsafe { crate::ffi::Extrema_GenLocateExtPS_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8699,8 +10052,11 @@ impl GenLocateExtPS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GenLocateExtPS_is_min_dist(theP, theS, theU0, theV0) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -8726,8 +10082,10 @@ impl GenLocateExtSS {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_GenLocateExtSS_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8754,8 +10112,10 @@ impl GenLocateExtSS {
                     S1, S2, U1, V1, U2, V2, Tol1, Tol2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8772,7 +10132,7 @@ impl GenLocateExtSS {
         Tol2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_GenLocateExtSS_perform(
                     self as *mut Self,
                     S1,
@@ -8785,7 +10145,9 @@ impl GenLocateExtSS {
                     Tol2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8795,8 +10157,11 @@ impl GenLocateExtSS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GenLocateExtSS_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8806,8 +10171,11 @@ impl GenLocateExtSS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GenLocateExtSS_square_distance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8817,8 +10185,11 @@ impl GenLocateExtSS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GenLocateExtSS_point_on_s1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8828,8 +10199,11 @@ impl GenLocateExtSS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GenLocateExtSS_point_on_s2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -8857,8 +10231,10 @@ impl GlobOptFuncCCC0 {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_GlobOptFuncCCC0_ctor_curve2(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8869,8 +10245,10 @@ impl GlobOptFuncCCC0 {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_GlobOptFuncCCC0_ctor_curve2d2(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8879,8 +10257,11 @@ impl GlobOptFuncCCC0 {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GlobOptFuncCCC0_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8889,33 +10270,34 @@ impl GlobOptFuncCCC0 {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GlobOptFuncCCC0_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncCCC0_as_math_MultipleVarFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncCCC0_as_math_MultipleVarFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncCCC0_as_math_MultipleVarFunction_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncCCC0_as_math_MultipleVarFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
@@ -8924,8 +10306,11 @@ impl GlobOptFuncCCC0 {
             let __result = unsafe {
                 crate::ffi::Extrema_GlobOptFuncCCC0_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -8949,8 +10334,10 @@ impl GlobOptFuncCCC1 {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_ctor_curve2(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8961,8 +10348,10 @@ impl GlobOptFuncCCC1 {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_ctor_curve2d2(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8971,8 +10360,11 @@ impl GlobOptFuncCCC1 {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8981,8 +10373,11 @@ impl GlobOptFuncCCC1 {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8995,8 +10390,11 @@ impl GlobOptFuncCCC1 {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_gradient(self as *mut Self, X, G) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9010,8 +10408,11 @@ impl GlobOptFuncCCC1 {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GlobOptFuncCCC1_values(self as *mut Self, X, F, G) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9019,54 +10420,52 @@ impl GlobOptFuncCCC1 {
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunctionWithGradient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunctionWithGradient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunctionWithGradient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunctionWithGradient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunction_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncCCC1_as_math_MultipleVarFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
@@ -9075,8 +10474,11 @@ impl GlobOptFuncCCC1 {
             let __result = unsafe {
                 crate::ffi::Extrema_GlobOptFuncCCC1_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -9100,8 +10502,10 @@ impl GlobOptFuncCCC2 {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_GlobOptFuncCCC2_ctor_curve2(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9112,8 +10516,10 @@ impl GlobOptFuncCCC2 {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_GlobOptFuncCCC2_ctor_curve2d2(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9122,8 +10528,11 @@ impl GlobOptFuncCCC2 {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GlobOptFuncCCC2_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9132,8 +10541,11 @@ impl GlobOptFuncCCC2 {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GlobOptFuncCCC2_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9146,8 +10558,11 @@ impl GlobOptFuncCCC2 {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GlobOptFuncCCC2_gradient(self as *mut Self, X, G) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9167,8 +10582,11 @@ impl GlobOptFuncCCC2 {
                     G,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9190,8 +10608,11 @@ impl GlobOptFuncCCC2 {
                     H,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9199,84 +10620,82 @@ impl GlobOptFuncCCC2 {
     pub fn as_math_multiple_var_function_with_hessian(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithHessian {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithHessian(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithHessian(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithHessian (mutable)
     pub fn as_math_multiple_var_function_with_hessian_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithHessian {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithHessian_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithHessian_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithGradient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithGradient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithGradient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunctionWithGradient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunction_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncCCC2_as_math_MultipleVarFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
@@ -9285,8 +10704,11 @@ impl GlobOptFuncCCC2 {
             let __result = unsafe {
                 crate::ffi::Extrema_GlobOptFuncCCC2_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -9313,8 +10735,10 @@ impl GlobOptFuncCQuadric {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GlobOptFuncCQuadric_ctor_curveptr(C as *const _) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9332,8 +10756,10 @@ impl GlobOptFuncCQuadric {
                     theTl,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9349,8 +10775,10 @@ impl GlobOptFuncCQuadric {
                     S as *const _,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9364,7 +10792,7 @@ impl GlobOptFuncCQuadric {
         theVl: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_GlobOptFuncCQuadric_load_quad(
                     self as *mut Self,
                     S as *const _,
@@ -9374,7 +10802,9 @@ impl GlobOptFuncCQuadric {
                     theVl,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9384,8 +10814,11 @@ impl GlobOptFuncCQuadric {
             let __result = unsafe {
                 crate::ffi::Extrema_GlobOptFuncCQuadric_nb_variables(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9395,8 +10828,11 @@ impl GlobOptFuncCQuadric {
             let __result = unsafe {
                 crate::ffi::Extrema_GlobOptFuncCQuadric_value(self as *mut Self, theX, theF)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9408,41 +10844,41 @@ impl GlobOptFuncCQuadric {
         theUV: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_GlobOptFuncCQuadric_quadric_parameters(
                     self as *const Self,
                     theCT,
                     theUV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncCQuadric_as_math_MultipleVarFunction(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncCQuadric_as_math_MultipleVarFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncCQuadric_as_math_MultipleVarFunction_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncCQuadric_as_math_MultipleVarFunction_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
@@ -9451,8 +10887,11 @@ impl GlobOptFuncCQuadric {
             let __result = unsafe {
                 crate::ffi::Extrema_GlobOptFuncCQuadric_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -9486,8 +10925,10 @@ impl GlobOptFuncCS {
                     S as *const _,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9496,8 +10937,11 @@ impl GlobOptFuncCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GlobOptFuncCS_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9506,8 +10950,11 @@ impl GlobOptFuncCS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GlobOptFuncCS_value(self as *mut Self, theX, theF) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9521,8 +10968,11 @@ impl GlobOptFuncCS {
             let __result = unsafe {
                 crate::ffi::Extrema_GlobOptFuncCS_gradient(self as *mut Self, theX, theG)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9542,8 +10992,11 @@ impl GlobOptFuncCS {
                     theG,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9565,8 +11018,11 @@ impl GlobOptFuncCS {
                     theH,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9574,82 +11030,82 @@ impl GlobOptFuncCS {
     pub fn as_math_multiple_var_function_with_hessian(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithHessian {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithHessian(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithHessian(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithHessian (mutable)
     pub fn as_math_multiple_var_function_with_hessian_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithHessian {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithHessian_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithHessian_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithGradient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithGradient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithGradient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunctionWithGradient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunction_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncCS_as_math_MultipleVarFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
@@ -9658,8 +11114,11 @@ impl GlobOptFuncCS {
             let __result = unsafe {
                 crate::ffi::Extrema_GlobOptFuncCS_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -9693,8 +11152,10 @@ impl GlobOptFuncConicS {
                     S as *const _,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9703,8 +11164,10 @@ impl GlobOptFuncConicS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GlobOptFuncConicS_ctor_surfaceptr(S as *const _) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9726,15 +11189,17 @@ impl GlobOptFuncConicS {
                     theVl,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `Extrema_GlobOptFuncConicS.hxx`:43 - `Extrema_GlobOptFuncConicS::LoadConic()`
     pub fn load_conic(&mut self, S: &crate::adaptor3d::Curve, theTf: f64, theTl: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_GlobOptFuncConicS_load_conic(
                     self as *mut Self,
                     S as *const _,
@@ -9742,7 +11207,9 @@ impl GlobOptFuncConicS {
                     theTl,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9751,8 +11218,11 @@ impl GlobOptFuncConicS {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_GlobOptFuncConicS_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9762,8 +11232,11 @@ impl GlobOptFuncConicS {
             let __result = unsafe {
                 crate::ffi::Extrema_GlobOptFuncConicS_value(self as *mut Self, theX, theF)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9774,35 +11247,34 @@ impl GlobOptFuncConicS {
             let __result = unsafe {
                 crate::ffi::Extrema_GlobOptFuncConicS_conic_parameter(self as *const Self, theUV)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncConicS_as_math_MultipleVarFunction(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncConicS_as_math_MultipleVarFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_GlobOptFuncConicS_as_math_MultipleVarFunction_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_GlobOptFuncConicS_as_math_MultipleVarFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
@@ -9811,8 +11283,11 @@ impl GlobOptFuncConicS {
             let __result = unsafe {
                 crate::ffi::Extrema_GlobOptFuncConicS_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -9835,8 +11310,10 @@ impl HArray1OfPOnCurv {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9845,8 +11322,10 @@ impl HArray1OfPOnCurv {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_ctor_int2(theLower, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9860,8 +11339,10 @@ impl HArray1OfPOnCurv {
             let __result = unsafe {
                 crate::ffi::Extrema_HArray1OfPOnCurv_ctor_int2_poncurv(theLower, theUpper, theValue)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9878,8 +11359,10 @@ impl HArray1OfPOnCurv {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9890,8 +11373,10 @@ impl HArray1OfPOnCurv {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_ctor_array1ofponcurv(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9900,8 +11385,11 @@ impl HArray1OfPOnCurv {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9910,8 +11398,11 @@ impl HArray1OfPOnCurv {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_change_array1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -9920,8 +11411,11 @@ impl HArray1OfPOnCurv {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9929,8 +11423,11 @@ impl HArray1OfPOnCurv {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -9938,43 +11435,45 @@ impl HArray1OfPOnCurv {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_HArray1OfPOnCurv_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_HArray1OfPOnCurv_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_HArray1OfPOnCurv_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_HArray1OfPOnCurv_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleExtremaHArray1OfPOnCurv> {
-        {
-            let __result =
-                unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -9986,8 +11485,11 @@ impl HArray1OfPOnCurv {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9997,8 +11499,11 @@ impl HArray1OfPOnCurv {
             let __result = unsafe {
                 crate::ffi::Extrema_HArray1OfPOnCurv_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10007,11 +11512,14 @@ impl HArray1OfPOnCurv {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -10022,20 +11530,25 @@ impl HArray1OfPOnCurv {
             let __result = unsafe {
                 crate::ffi::Extrema_HArray1OfPOnCurv_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_HArray1OfPOnCurv_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10047,16 +11560,23 @@ impl HArray1OfPOnCurv {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Extrema_HArray1OfPOnCurv_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnCurv_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -10072,35 +11592,35 @@ unsafe impl crate::CppDeletable for HandleExtremaHArray1OfPOnCurv {
 impl HandleExtremaHArray1OfPOnCurv {
     /// Dereference this Handle to access the underlying Extrema_HArray1OfPOnCurv
     pub fn get(&self) -> &crate::ffi::Extrema_HArray1OfPOnCurv {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleExtremaHArray1OfPOnCurv_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleExtremaHArray1OfPOnCurv_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Extrema_HArray1OfPOnCurv
     pub fn get_mut(&mut self) -> &mut crate::ffi::Extrema_HArray1OfPOnCurv {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleExtremaHArray1OfPOnCurv_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleExtremaHArray1OfPOnCurv_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Extrema_HArray1OfPOnCurv> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleExtremaHArray1OfPOnCurv_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleExtremaHArray1OfPOnCurv_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -10122,8 +11642,10 @@ impl HArray1OfPOnCurv2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10132,8 +11654,10 @@ impl HArray1OfPOnCurv2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor_int2(theLower, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10149,8 +11673,10 @@ impl HArray1OfPOnCurv2d {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10167,8 +11693,10 @@ impl HArray1OfPOnCurv2d {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10179,8 +11707,10 @@ impl HArray1OfPOnCurv2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_ctor_array1ofponcurv2d(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10189,8 +11719,11 @@ impl HArray1OfPOnCurv2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10199,8 +11732,11 @@ impl HArray1OfPOnCurv2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_change_array1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -10209,8 +11745,11 @@ impl HArray1OfPOnCurv2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10218,8 +11757,11 @@ impl HArray1OfPOnCurv2d {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -10227,43 +11769,45 @@ impl HArray1OfPOnCurv2d {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_HArray1OfPOnCurv2d_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_HArray1OfPOnCurv2d_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_HArray1OfPOnCurv2d_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_HArray1OfPOnCurv2d_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleExtremaHArray1OfPOnCurv2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -10275,8 +11819,11 @@ impl HArray1OfPOnCurv2d {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10289,8 +11836,11 @@ impl HArray1OfPOnCurv2d {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10300,11 +11850,14 @@ impl HArray1OfPOnCurv2d {
             let __result = unsafe {
                 crate::ffi::Extrema_HArray1OfPOnCurv2d_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -10315,20 +11868,25 @@ impl HArray1OfPOnCurv2d {
             let __result = unsafe {
                 crate::ffi::Extrema_HArray1OfPOnCurv2d_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_HArray1OfPOnCurv2d_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10340,16 +11898,23 @@ impl HArray1OfPOnCurv2d {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Extrema_HArray1OfPOnCurv2d_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnCurv2d_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -10365,35 +11930,35 @@ unsafe impl crate::CppDeletable for HandleExtremaHArray1OfPOnCurv2d {
 impl HandleExtremaHArray1OfPOnCurv2d {
     /// Dereference this Handle to access the underlying Extrema_HArray1OfPOnCurv2d
     pub fn get(&self) -> &crate::ffi::Extrema_HArray1OfPOnCurv2d {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleExtremaHArray1OfPOnCurv2d_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleExtremaHArray1OfPOnCurv2d_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Extrema_HArray1OfPOnCurv2d
     pub fn get_mut(&mut self) -> &mut crate::ffi::Extrema_HArray1OfPOnCurv2d {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleExtremaHArray1OfPOnCurv2d_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleExtremaHArray1OfPOnCurv2d_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Extrema_HArray1OfPOnCurv2d> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleExtremaHArray1OfPOnCurv2d_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleExtremaHArray1OfPOnCurv2d_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -10415,8 +11980,10 @@ impl HArray1OfPOnSurf {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10425,8 +11992,10 @@ impl HArray1OfPOnSurf {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_ctor_int2(theLower, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10440,8 +12009,10 @@ impl HArray1OfPOnSurf {
             let __result = unsafe {
                 crate::ffi::Extrema_HArray1OfPOnSurf_ctor_int2_ponsurf(theLower, theUpper, theValue)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10458,8 +12029,10 @@ impl HArray1OfPOnSurf {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10470,8 +12043,10 @@ impl HArray1OfPOnSurf {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_ctor_array1ofponsurf(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10480,8 +12055,11 @@ impl HArray1OfPOnSurf {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10490,8 +12068,11 @@ impl HArray1OfPOnSurf {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_change_array1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -10500,8 +12081,11 @@ impl HArray1OfPOnSurf {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10509,8 +12093,11 @@ impl HArray1OfPOnSurf {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -10518,43 +12105,45 @@ impl HArray1OfPOnSurf {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_HArray1OfPOnSurf_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_HArray1OfPOnSurf_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_HArray1OfPOnSurf_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_HArray1OfPOnSurf_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleExtremaHArray1OfPOnSurf> {
-        {
-            let __result =
-                unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -10566,8 +12155,11 @@ impl HArray1OfPOnSurf {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10577,8 +12169,11 @@ impl HArray1OfPOnSurf {
             let __result = unsafe {
                 crate::ffi::Extrema_HArray1OfPOnSurf_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10587,11 +12182,14 @@ impl HArray1OfPOnSurf {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -10602,20 +12200,25 @@ impl HArray1OfPOnSurf {
             let __result = unsafe {
                 crate::ffi::Extrema_HArray1OfPOnSurf_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_HArray1OfPOnSurf_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10627,16 +12230,23 @@ impl HArray1OfPOnSurf {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Extrema_HArray1OfPOnSurf_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_HArray1OfPOnSurf_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -10652,35 +12262,35 @@ unsafe impl crate::CppDeletable for HandleExtremaHArray1OfPOnSurf {
 impl HandleExtremaHArray1OfPOnSurf {
     /// Dereference this Handle to access the underlying Extrema_HArray1OfPOnSurf
     pub fn get(&self) -> &crate::ffi::Extrema_HArray1OfPOnSurf {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleExtremaHArray1OfPOnSurf_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleExtremaHArray1OfPOnSurf_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Extrema_HArray1OfPOnSurf
     pub fn get_mut(&mut self) -> &mut crate::ffi::Extrema_HArray1OfPOnSurf {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleExtremaHArray1OfPOnSurf_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleExtremaHArray1OfPOnSurf_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Extrema_HArray1OfPOnSurf> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleExtremaHArray1OfPOnSurf_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleExtremaHArray1OfPOnSurf_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -10711,8 +12321,10 @@ impl HArray2OfPOnCurv {
                     theRowLow, theRowUpp, theColLow, theColUpp,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10730,8 +12342,10 @@ impl HArray2OfPOnCurv {
                     theRowLow, theRowUpp, theColLow, theColUpp, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10742,8 +12356,10 @@ impl HArray2OfPOnCurv {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray2OfPOnCurv_ctor_array2ofponcurv(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10752,8 +12368,11 @@ impl HArray2OfPOnCurv {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray2OfPOnCurv_array2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10762,8 +12381,11 @@ impl HArray2OfPOnCurv {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray2OfPOnCurv_change_array2(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -10772,8 +12394,11 @@ impl HArray2OfPOnCurv {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray2OfPOnCurv_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10781,8 +12406,11 @@ impl HArray2OfPOnCurv {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Extrema_HArray2OfPOnCurv_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -10790,43 +12418,45 @@ impl HArray2OfPOnCurv {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Extrema_HArray2OfPOnCurv_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_HArray2OfPOnCurv_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_HArray2OfPOnCurv_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_HArray2OfPOnCurv_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_HArray2OfPOnCurv_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleExtremaHArray2OfPOnCurv> {
-        {
-            let __result =
-                unsafe { crate::ffi::Extrema_HArray2OfPOnCurv_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Extrema_HArray2OfPOnCurv_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -10838,8 +12468,11 @@ impl HArray2OfPOnCurv {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10849,8 +12482,11 @@ impl HArray2OfPOnCurv {
             let __result = unsafe {
                 crate::ffi::Extrema_HArray2OfPOnCurv_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10859,11 +12495,14 @@ impl HArray2OfPOnCurv {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray2OfPOnCurv_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -10874,20 +12513,25 @@ impl HArray2OfPOnCurv {
             let __result = unsafe {
                 crate::ffi::Extrema_HArray2OfPOnCurv_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_HArray2OfPOnCurv_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10899,16 +12543,23 @@ impl HArray2OfPOnCurv {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Extrema_HArray2OfPOnCurv_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnCurv_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -10924,35 +12575,35 @@ unsafe impl crate::CppDeletable for HandleExtremaHArray2OfPOnCurv {
 impl HandleExtremaHArray2OfPOnCurv {
     /// Dereference this Handle to access the underlying Extrema_HArray2OfPOnCurv
     pub fn get(&self) -> &crate::ffi::Extrema_HArray2OfPOnCurv {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleExtremaHArray2OfPOnCurv_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleExtremaHArray2OfPOnCurv_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Extrema_HArray2OfPOnCurv
     pub fn get_mut(&mut self) -> &mut crate::ffi::Extrema_HArray2OfPOnCurv {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleExtremaHArray2OfPOnCurv_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleExtremaHArray2OfPOnCurv_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Extrema_HArray2OfPOnCurv> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleExtremaHArray2OfPOnCurv_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleExtremaHArray2OfPOnCurv_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -10983,8 +12634,10 @@ impl HArray2OfPOnCurv2d {
                     theRowLow, theRowUpp, theColLow, theColUpp,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11002,8 +12655,10 @@ impl HArray2OfPOnCurv2d {
                     theRowLow, theRowUpp, theColLow, theColUpp, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11014,8 +12669,10 @@ impl HArray2OfPOnCurv2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray2OfPOnCurv2d_ctor_array2ofponcurv2d(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11024,8 +12681,11 @@ impl HArray2OfPOnCurv2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray2OfPOnCurv2d_array2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11034,8 +12694,11 @@ impl HArray2OfPOnCurv2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray2OfPOnCurv2d_change_array2(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -11044,8 +12707,11 @@ impl HArray2OfPOnCurv2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray2OfPOnCurv2d_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11053,8 +12719,11 @@ impl HArray2OfPOnCurv2d {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Extrema_HArray2OfPOnCurv2d_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -11062,43 +12731,45 @@ impl HArray2OfPOnCurv2d {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Extrema_HArray2OfPOnCurv2d_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_HArray2OfPOnCurv2d_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_HArray2OfPOnCurv2d_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_HArray2OfPOnCurv2d_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_HArray2OfPOnCurv2d_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleExtremaHArray2OfPOnCurv2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::Extrema_HArray2OfPOnCurv2d_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Extrema_HArray2OfPOnCurv2d_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -11110,8 +12781,11 @@ impl HArray2OfPOnCurv2d {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11124,8 +12798,11 @@ impl HArray2OfPOnCurv2d {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11135,11 +12812,14 @@ impl HArray2OfPOnCurv2d {
             let __result = unsafe {
                 crate::ffi::Extrema_HArray2OfPOnCurv2d_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -11150,20 +12830,25 @@ impl HArray2OfPOnCurv2d {
             let __result = unsafe {
                 crate::ffi::Extrema_HArray2OfPOnCurv2d_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_HArray2OfPOnCurv2d_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11175,16 +12860,23 @@ impl HArray2OfPOnCurv2d {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Extrema_HArray2OfPOnCurv2d_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnCurv2d_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -11200,35 +12892,35 @@ unsafe impl crate::CppDeletable for HandleExtremaHArray2OfPOnCurv2d {
 impl HandleExtremaHArray2OfPOnCurv2d {
     /// Dereference this Handle to access the underlying Extrema_HArray2OfPOnCurv2d
     pub fn get(&self) -> &crate::ffi::Extrema_HArray2OfPOnCurv2d {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleExtremaHArray2OfPOnCurv2d_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleExtremaHArray2OfPOnCurv2d_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Extrema_HArray2OfPOnCurv2d
     pub fn get_mut(&mut self) -> &mut crate::ffi::Extrema_HArray2OfPOnCurv2d {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleExtremaHArray2OfPOnCurv2d_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleExtremaHArray2OfPOnCurv2d_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Extrema_HArray2OfPOnCurv2d> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleExtremaHArray2OfPOnCurv2d_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleExtremaHArray2OfPOnCurv2d_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -11259,8 +12951,10 @@ impl HArray2OfPOnSurf {
                     theRowLow, theRowUpp, theColLow, theColUpp,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11278,8 +12972,10 @@ impl HArray2OfPOnSurf {
                     theRowLow, theRowUpp, theColLow, theColUpp, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11290,8 +12986,10 @@ impl HArray2OfPOnSurf {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray2OfPOnSurf_ctor_array2ofponsurf(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11300,8 +12998,11 @@ impl HArray2OfPOnSurf {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray2OfPOnSurf_array2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11310,8 +13011,11 @@ impl HArray2OfPOnSurf {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray2OfPOnSurf_change_array2(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -11320,8 +13024,11 @@ impl HArray2OfPOnSurf {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray2OfPOnSurf_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11329,8 +13036,11 @@ impl HArray2OfPOnSurf {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Extrema_HArray2OfPOnSurf_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -11338,43 +13048,45 @@ impl HArray2OfPOnSurf {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Extrema_HArray2OfPOnSurf_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_HArray2OfPOnSurf_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_HArray2OfPOnSurf_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_HArray2OfPOnSurf_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_HArray2OfPOnSurf_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleExtremaHArray2OfPOnSurf> {
-        {
-            let __result =
-                unsafe { crate::ffi::Extrema_HArray2OfPOnSurf_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Extrema_HArray2OfPOnSurf_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -11386,8 +13098,11 @@ impl HArray2OfPOnSurf {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11397,8 +13112,11 @@ impl HArray2OfPOnSurf {
             let __result = unsafe {
                 crate::ffi::Extrema_HArray2OfPOnSurf_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11407,11 +13125,14 @@ impl HArray2OfPOnSurf {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_HArray2OfPOnSurf_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -11422,20 +13143,25 @@ impl HArray2OfPOnSurf {
             let __result = unsafe {
                 crate::ffi::Extrema_HArray2OfPOnSurf_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_HArray2OfPOnSurf_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11447,16 +13173,23 @@ impl HArray2OfPOnSurf {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Extrema_HArray2OfPOnSurf_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_HArray2OfPOnSurf_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -11472,35 +13205,35 @@ unsafe impl crate::CppDeletable for HandleExtremaHArray2OfPOnSurf {
 impl HandleExtremaHArray2OfPOnSurf {
     /// Dereference this Handle to access the underlying Extrema_HArray2OfPOnSurf
     pub fn get(&self) -> &crate::ffi::Extrema_HArray2OfPOnSurf {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleExtremaHArray2OfPOnSurf_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleExtremaHArray2OfPOnSurf_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Extrema_HArray2OfPOnSurf
     pub fn get_mut(&mut self) -> &mut crate::ffi::Extrema_HArray2OfPOnSurf {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleExtremaHArray2OfPOnSurf_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleExtremaHArray2OfPOnSurf_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Extrema_HArray2OfPOnSurf> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleExtremaHArray2OfPOnSurf_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleExtremaHArray2OfPOnSurf_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -11536,8 +13269,10 @@ impl LocECC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_LocECC_ctor_curve2_real4(C1, C2, U0, V0, TolU, TolV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11546,8 +13281,11 @@ impl LocECC {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_LocECC_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11557,8 +13295,11 @@ impl LocECC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_LocECC_square_distance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11567,8 +13308,10 @@ impl LocECC {
     /// P1 is on the first curve, P2 on the second one.
     pub fn point(&self, P1: &mut POnCurv, P2: &mut POnCurv) {
         {
-            unsafe { crate::ffi::Extrema_LocECC_point(self as *const Self, P1, P2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_LocECC_point(self as *const Self, P1, P2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -11606,8 +13349,10 @@ impl LocECC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_LocECC2d_ctor_curve2d2_real4(C1, C2, U0, V0, TolU, TolV)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11616,8 +13361,11 @@ impl LocECC2d {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_LocECC2d_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11627,8 +13375,11 @@ impl LocECC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_LocECC2d_square_distance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11637,8 +13388,10 @@ impl LocECC2d {
     /// P1 is on the first curve, P2 on the second one.
     pub fn point(&self, P1: &mut POnCurv2d, P2: &mut POnCurv2d) {
         {
-            unsafe { crate::ffi::Extrema_LocECC2d_point(self as *const Self, P1, P2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_LocECC2d_point(self as *const Self, P1, P2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -11661,8 +13414,10 @@ impl LocEPCOfLocateExtPC {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11686,8 +13441,10 @@ impl LocEPCOfLocateExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_LocEPCOfLocateExtPC_ctor_pnt_curve_real2(P, C, U0, TolU)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11716,8 +13473,10 @@ impl LocEPCOfLocateExtPC {
                     P, C, U0, Umin, Usup, TolU,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11725,7 +13484,7 @@ impl LocEPCOfLocateExtPC {
     /// sets the fields of the algorithm.
     pub fn initialize(&mut self, C: &crate::adaptor3d::Curve, Umin: f64, Usup: f64, TolU: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_LocEPCOfLocateExtPC_initialize(
                     self as *mut Self,
                     C,
@@ -11734,7 +13493,9 @@ impl LocEPCOfLocateExtPC {
                     TolU,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11744,8 +13505,12 @@ impl LocEPCOfLocateExtPC {
     /// been initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt, U0: f64) {
         {
-            unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC_perform(self as *mut Self, P, U0) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_LocEPCOfLocateExtPC_perform(self as *mut Self, P, U0)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11755,8 +13520,11 @@ impl LocEPCOfLocateExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11767,8 +13535,11 @@ impl LocEPCOfLocateExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_LocEPCOfLocateExtPC_square_distance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11778,8 +13549,11 @@ impl LocEPCOfLocateExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC_is_min(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11789,8 +13563,11 @@ impl LocEPCOfLocateExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -11813,8 +13590,10 @@ impl LocEPCOfLocateExtPC2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11838,8 +13617,10 @@ impl LocEPCOfLocateExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_LocEPCOfLocateExtPC2d_ctor_pnt2d_curve2d_real2(P, C, U0, TolU)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11868,8 +13649,10 @@ impl LocEPCOfLocateExtPC2d {
                     P, C, U0, Umin, Usup, TolU,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11877,7 +13660,7 @@ impl LocEPCOfLocateExtPC2d {
     /// sets the fields of the algorithm.
     pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d, Umin: f64, Usup: f64, TolU: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_LocEPCOfLocateExtPC2d_initialize(
                     self as *mut Self,
                     C,
@@ -11886,7 +13669,9 @@ impl LocEPCOfLocateExtPC2d {
                     TolU,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11896,8 +13681,12 @@ impl LocEPCOfLocateExtPC2d {
     /// been initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt2d, U0: f64) {
         {
-            unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC2d_perform(self as *mut Self, P, U0) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Extrema_LocEPCOfLocateExtPC2d_perform(self as *mut Self, P, U0)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11907,8 +13696,11 @@ impl LocEPCOfLocateExtPC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC2d_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11919,8 +13711,11 @@ impl LocEPCOfLocateExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_LocEPCOfLocateExtPC2d_square_distance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11930,8 +13725,11 @@ impl LocEPCOfLocateExtPC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC2d_is_min(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11941,8 +13739,11 @@ impl LocEPCOfLocateExtPC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_LocEPCOfLocateExtPC2d_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -11980,8 +13781,10 @@ impl LocateExtCC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_LocateExtCC_ctor_curve2_real2(C1, C2, U0, V0) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11990,8 +13793,11 @@ impl LocateExtCC {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_LocateExtCC_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12001,8 +13807,11 @@ impl LocateExtCC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_LocateExtCC_square_distance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12011,8 +13820,11 @@ impl LocateExtCC {
     /// P1 is on the first curve, P2 on the second one.
     pub fn point(&self, P1: &mut POnCurv, P2: &mut POnCurv) {
         {
-            unsafe { crate::ffi::Extrema_LocateExtCC_point(self as *const Self, P1, P2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_LocateExtCC_point(self as *const Self, P1, P2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -12050,8 +13862,10 @@ impl LocateExtCC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_LocateExtCC2d_ctor_curve2d2_real2(C1, C2, U0, V0) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12061,8 +13875,11 @@ impl LocateExtCC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_LocateExtCC2d_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12072,8 +13889,11 @@ impl LocateExtCC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_LocateExtCC2d_square_distance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12082,8 +13902,11 @@ impl LocateExtCC2d {
     /// P1 is on the first curve, P2 on the second one.
     pub fn point(&self, P1: &mut POnCurv2d, P2: &mut POnCurv2d) {
         {
-            unsafe { crate::ffi::Extrema_LocateExtCC2d_point(self as *const Self, P1, P2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_LocateExtCC2d_point(self as *const Self, P1, P2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -12106,8 +13929,10 @@ impl LocateExtPC {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_LocateExtPC_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12130,8 +13955,10 @@ impl LocateExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_LocateExtPC_ctor_pnt_curve_real2(P, C, U0, TolF) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12158,8 +13985,10 @@ impl LocateExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_LocateExtPC_ctor_pnt_curve_real4(P, C, U0, Umin, Usup, TolF)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12167,18 +13996,23 @@ impl LocateExtPC {
     /// sets the fields of the algorithm.
     pub fn initialize(&mut self, C: &crate::adaptor3d::Curve, Umin: f64, Usup: f64, TolF: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_LocateExtPC_initialize(self as *mut Self, C, Umin, Usup, TolF)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_LocateExtPC.hxx`:84 - `Extrema_LocateExtPC::Perform()`
     pub fn perform(&mut self, P: &crate::gp::Pnt, U0: f64) {
         {
-            unsafe { crate::ffi::Extrema_LocateExtPC_perform(self as *mut Self, P, U0) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_LocateExtPC_perform(self as *mut Self, P, U0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12187,8 +14021,11 @@ impl LocateExtPC {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_LocateExtPC_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12198,8 +14035,11 @@ impl LocateExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_LocateExtPC_square_distance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12208,8 +14048,11 @@ impl LocateExtPC {
     pub fn is_min(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_LocateExtPC_is_min(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12218,8 +14061,11 @@ impl LocateExtPC {
     pub fn point(&self) -> &POnCurv {
         {
             let __result = unsafe { crate::ffi::Extrema_LocateExtPC_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -12242,8 +14088,10 @@ impl LocateExtPC2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_LocateExtPC2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12267,8 +14115,10 @@ impl LocateExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_LocateExtPC2d_ctor_pnt2d_curve2d_real2(P, C, U0, TolF)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12297,8 +14147,10 @@ impl LocateExtPC2d {
                     P, C, U0, Umin, Usup, TolF,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12306,18 +14158,23 @@ impl LocateExtPC2d {
     /// sets the fields of the algorithm.
     pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d, Umin: f64, Usup: f64, TolF: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_LocateExtPC2d_initialize(self as *mut Self, C, Umin, Usup, TolF)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Extrema_LocateExtPC2d.hxx`:86 - `Extrema_LocateExtPC2d::Perform()`
     pub fn perform(&mut self, P: &crate::gp::Pnt2d, U0: f64) {
         {
-            unsafe { crate::ffi::Extrema_LocateExtPC2d_perform(self as *mut Self, P, U0) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_LocateExtPC2d_perform(self as *mut Self, P, U0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12327,8 +14184,11 @@ impl LocateExtPC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_LocateExtPC2d_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12338,8 +14198,11 @@ impl LocateExtPC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_LocateExtPC2d_square_distance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12348,8 +14211,11 @@ impl LocateExtPC2d {
     pub fn is_min(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Extrema_LocateExtPC2d_is_min(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12358,8 +14224,11 @@ impl LocateExtPC2d {
     pub fn point(&self) -> &POnCurv2d {
         {
             let __result = unsafe { crate::ffi::Extrema_LocateExtPC2d_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -12382,8 +14251,10 @@ impl PCFOfEPCOfELPCOfLocateExtPC {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12392,8 +14263,10 @@ impl PCFOfEPCOfELPCOfLocateExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_ctor_pnt_curve(P, C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12401,10 +14274,12 @@ impl PCFOfEPCOfELPCOfLocateExtPC {
     /// sets the field mycurve of the function.
     pub fn initialize(&mut self, C: &crate::adaptor3d::Curve) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_initialize(self as *mut Self, C)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12412,10 +14287,12 @@ impl PCFOfEPCOfELPCOfLocateExtPC {
     /// sets the field P of the function.
     pub fn set_point(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_set_point(self as *mut Self, P)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12426,8 +14303,11 @@ impl PCFOfEPCOfELPCOfLocateExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_value(self as *mut Self, U, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12438,8 +14318,11 @@ impl PCFOfEPCOfELPCOfLocateExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_derivative(self as *mut Self, U, DF)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12450,8 +14333,11 @@ impl PCFOfEPCOfELPCOfLocateExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_values(self as *mut Self, U, F, DF)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12462,8 +14348,11 @@ impl PCFOfEPCOfELPCOfLocateExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_get_state_number(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12474,8 +14363,11 @@ impl PCFOfEPCOfELPCOfLocateExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_nb_ext(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12489,8 +14381,11 @@ impl PCFOfEPCOfELPCOfLocateExtPC {
                     N,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12501,8 +14396,11 @@ impl PCFOfEPCOfELPCOfLocateExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_is_min(self as *const Self, N)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12513,8 +14411,11 @@ impl PCFOfEPCOfELPCOfLocateExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_point(self as *const Self, N)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -12522,14 +14423,16 @@ impl PCFOfEPCOfELPCOfLocateExtPC {
     /// Determines boundaries of subinterval for find of root.
     pub fn sub_interval_initialize(&mut self, theUfirst: f64, theUlast: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_sub_interval_initialize(
                     self as *mut Self,
                     theUfirst,
                     theUlast,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12543,63 +14446,62 @@ impl PCFOfEPCOfELPCOfLocateExtPC {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_FunctionWithDerivative(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_FunctionWithDerivative(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_FunctionWithDerivative_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_FunctionWithDerivative_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_Function(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_Function(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_Function_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC_as_math_Function_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 }
 
@@ -12621,8 +14523,10 @@ impl PCFOfEPCOfELPCOfLocateExtPC2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12635,8 +14539,10 @@ impl PCFOfEPCOfELPCOfLocateExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_ctor_pnt2d_curve2d(P, C)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12644,10 +14550,12 @@ impl PCFOfEPCOfELPCOfLocateExtPC2d {
     /// sets the field mycurve of the function.
     pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_initialize(self as *mut Self, C)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12655,10 +14563,12 @@ impl PCFOfEPCOfELPCOfLocateExtPC2d {
     /// sets the field P of the function.
     pub fn set_point(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_set_point(self as *mut Self, P)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12669,8 +14579,11 @@ impl PCFOfEPCOfELPCOfLocateExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_value(self as *mut Self, U, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12685,8 +14598,11 @@ impl PCFOfEPCOfELPCOfLocateExtPC2d {
                     DF,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12702,8 +14618,11 @@ impl PCFOfEPCOfELPCOfLocateExtPC2d {
                     DF,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12716,8 +14635,11 @@ impl PCFOfEPCOfELPCOfLocateExtPC2d {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12728,8 +14650,11 @@ impl PCFOfEPCOfELPCOfLocateExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_nb_ext(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12743,8 +14668,11 @@ impl PCFOfEPCOfELPCOfLocateExtPC2d {
                     N,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12755,8 +14683,11 @@ impl PCFOfEPCOfELPCOfLocateExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_is_min(self as *const Self, N)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12767,8 +14698,11 @@ impl PCFOfEPCOfELPCOfLocateExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_point(self as *const Self, N)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -12776,14 +14710,16 @@ impl PCFOfEPCOfELPCOfLocateExtPC2d {
     /// Determines boundaries of subinterval for find of root.
     pub fn sub_interval_initialize(&mut self, theUfirst: f64, theUlast: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_sub_interval_initialize(
                     self as *mut Self,
                     theUfirst,
                     theUlast,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12797,63 +14733,64 @@ impl PCFOfEPCOfELPCOfLocateExtPC2d {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_FunctionWithDerivative(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_FunctionWithDerivative(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_FunctionWithDerivative_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_FunctionWithDerivative_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_Function(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_Function(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_Function_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_PCFOfEPCOfELPCOfLocateExtPC2d_as_math_Function_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 }
 
@@ -12875,8 +14812,10 @@ impl PCFOfEPCOfExtPC {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12884,8 +14823,10 @@ impl PCFOfEPCOfExtPC {
     pub fn new_pnt_curve(P: &crate::gp::Pnt, C: &crate::adaptor3d::Curve) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_ctor_pnt_curve(P, C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12893,8 +14834,11 @@ impl PCFOfEPCOfExtPC {
     /// sets the field mycurve of the function.
     pub fn initialize(&mut self, C: &crate::adaptor3d::Curve) {
         {
-            unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_initialize(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_initialize(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12902,8 +14846,11 @@ impl PCFOfEPCOfExtPC {
     /// sets the field P of the function.
     pub fn set_point(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_set_point(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_set_point(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12913,8 +14860,11 @@ impl PCFOfEPCOfExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_value(self as *mut Self, U, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12924,8 +14874,11 @@ impl PCFOfEPCOfExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_derivative(self as *mut Self, U, DF) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12935,8 +14888,11 @@ impl PCFOfEPCOfExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_values(self as *mut Self, U, F, DF) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12946,8 +14902,11 @@ impl PCFOfEPCOfExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_get_state_number(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12957,8 +14916,11 @@ impl PCFOfEPCOfExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12969,8 +14931,11 @@ impl PCFOfEPCOfExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfExtPC_square_distance(self as *const Self, N)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12980,8 +14945,11 @@ impl PCFOfEPCOfExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_is_min(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12991,8 +14959,11 @@ impl PCFOfEPCOfExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_point(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13000,14 +14971,16 @@ impl PCFOfEPCOfExtPC {
     /// Determines boundaries of subinterval for find of root.
     pub fn sub_interval_initialize(&mut self, theUfirst: f64, theUlast: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfExtPC_sub_interval_initialize(
                     self as *mut Self,
                     theUfirst,
                     theUlast,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13019,59 +14992,58 @@ impl PCFOfEPCOfExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfExtPC_search_of_tolerance(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_FunctionWithDerivative_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_Function(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_Function(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_Function_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC_as_math_Function_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 }
 
@@ -13093,8 +15065,10 @@ impl PCFOfEPCOfExtPC2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13106,8 +15080,10 @@ impl PCFOfEPCOfExtPC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_ctor_pnt2d_curve2d(P, C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13115,8 +15091,11 @@ impl PCFOfEPCOfExtPC2d {
     /// sets the field mycurve of the function.
     pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d) {
         {
-            unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_initialize(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_initialize(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13124,8 +15103,11 @@ impl PCFOfEPCOfExtPC2d {
     /// sets the field P of the function.
     pub fn set_point(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_set_point(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_set_point(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13135,8 +15117,11 @@ impl PCFOfEPCOfExtPC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_value(self as *mut Self, U, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13147,8 +15132,11 @@ impl PCFOfEPCOfExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfExtPC2d_derivative(self as *mut Self, U, DF)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13159,8 +15147,11 @@ impl PCFOfEPCOfExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfExtPC2d_values(self as *mut Self, U, F, DF)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13171,8 +15162,11 @@ impl PCFOfEPCOfExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfExtPC2d_get_state_number(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13182,8 +15176,11 @@ impl PCFOfEPCOfExtPC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_nb_ext(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13194,8 +15191,11 @@ impl PCFOfEPCOfExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfExtPC2d_square_distance(self as *const Self, N)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13205,8 +15205,11 @@ impl PCFOfEPCOfExtPC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_is_min(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13216,8 +15219,11 @@ impl PCFOfEPCOfExtPC2d {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_point(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13225,14 +15231,16 @@ impl PCFOfEPCOfExtPC2d {
     /// Determines boundaries of subinterval for find of root.
     pub fn sub_interval_initialize(&mut self, theUfirst: f64, theUlast: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfExtPC2d_sub_interval_initialize(
                     self as *mut Self,
                     theUfirst,
                     theUlast,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13244,59 +15252,61 @@ impl PCFOfEPCOfExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_PCFOfEPCOfExtPC2d_search_of_tolerance(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_FunctionWithDerivative(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_FunctionWithDerivative(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_FunctionWithDerivative_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_FunctionWithDerivative_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_Function(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_Function(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_Function_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_PCFOfEPCOfExtPC2d_as_math_Function_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 }
 
@@ -13318,8 +15328,10 @@ impl PCLocFOfLocEPCOfLocateExtPC {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13328,8 +15340,10 @@ impl PCLocFOfLocEPCOfLocateExtPC {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_ctor_pnt_curve(P, C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13337,10 +15351,12 @@ impl PCLocFOfLocEPCOfLocateExtPC {
     /// sets the field mycurve of the function.
     pub fn initialize(&mut self, C: &crate::adaptor3d::Curve) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_initialize(self as *mut Self, C)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13348,10 +15364,12 @@ impl PCLocFOfLocEPCOfLocateExtPC {
     /// sets the field P of the function.
     pub fn set_point(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_set_point(self as *mut Self, P)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13362,8 +15380,11 @@ impl PCLocFOfLocEPCOfLocateExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_value(self as *mut Self, U, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13374,8 +15395,11 @@ impl PCLocFOfLocEPCOfLocateExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_derivative(self as *mut Self, U, DF)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13386,8 +15410,11 @@ impl PCLocFOfLocEPCOfLocateExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_values(self as *mut Self, U, F, DF)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13398,8 +15425,11 @@ impl PCLocFOfLocEPCOfLocateExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_get_state_number(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13410,8 +15440,11 @@ impl PCLocFOfLocEPCOfLocateExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_nb_ext(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13425,8 +15458,11 @@ impl PCLocFOfLocEPCOfLocateExtPC {
                     N,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13437,8 +15473,11 @@ impl PCLocFOfLocEPCOfLocateExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_is_min(self as *const Self, N)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13449,8 +15488,11 @@ impl PCLocFOfLocEPCOfLocateExtPC {
             let __result = unsafe {
                 crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_point(self as *const Self, N)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13458,14 +15500,16 @@ impl PCLocFOfLocEPCOfLocateExtPC {
     /// Determines boundaries of subinterval for find of root.
     pub fn sub_interval_initialize(&mut self, theUfirst: f64, theUlast: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_sub_interval_initialize(
                     self as *mut Self,
                     theUfirst,
                     theUlast,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13479,63 +15523,62 @@ impl PCLocFOfLocEPCOfLocateExtPC {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_FunctionWithDerivative(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_FunctionWithDerivative(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_FunctionWithDerivative_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_FunctionWithDerivative_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_Function(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_Function(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_Function_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC_as_math_Function_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 }
 
@@ -13557,8 +15600,10 @@ impl PCLocFOfLocEPCOfLocateExtPC2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13571,8 +15616,10 @@ impl PCLocFOfLocEPCOfLocateExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_ctor_pnt2d_curve2d(P, C)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13580,10 +15627,12 @@ impl PCLocFOfLocEPCOfLocateExtPC2d {
     /// sets the field mycurve of the function.
     pub fn initialize(&mut self, C: &crate::adaptor2d::Curve2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_initialize(self as *mut Self, C)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13591,10 +15640,12 @@ impl PCLocFOfLocEPCOfLocateExtPC2d {
     /// sets the field P of the function.
     pub fn set_point(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_set_point(self as *mut Self, P)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13605,8 +15656,11 @@ impl PCLocFOfLocEPCOfLocateExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_value(self as *mut Self, U, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13621,8 +15675,11 @@ impl PCLocFOfLocEPCOfLocateExtPC2d {
                     DF,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13638,8 +15695,11 @@ impl PCLocFOfLocEPCOfLocateExtPC2d {
                     DF,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13652,8 +15712,11 @@ impl PCLocFOfLocEPCOfLocateExtPC2d {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13664,8 +15727,11 @@ impl PCLocFOfLocEPCOfLocateExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_nb_ext(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13679,8 +15745,11 @@ impl PCLocFOfLocEPCOfLocateExtPC2d {
                     N,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13691,8 +15760,11 @@ impl PCLocFOfLocEPCOfLocateExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_is_min(self as *const Self, N)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13703,8 +15775,11 @@ impl PCLocFOfLocEPCOfLocateExtPC2d {
             let __result = unsafe {
                 crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_point(self as *const Self, N)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13712,14 +15787,16 @@ impl PCLocFOfLocEPCOfLocateExtPC2d {
     /// Determines boundaries of subinterval for find of root.
     pub fn sub_interval_initialize(&mut self, theUfirst: f64, theUlast: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_sub_interval_initialize(
                     self as *mut Self,
                     theUfirst,
                     theUlast,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13733,63 +15810,64 @@ impl PCLocFOfLocEPCOfLocateExtPC2d {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_FunctionWithDerivative(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_FunctionWithDerivative(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_FunctionWithDerivative_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_FunctionWithDerivative_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_Function(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_Function(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_Function_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Extrema_PCLocFOfLocEPCOfLocateExtPC2d_as_math_Function_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 }
 
@@ -13812,8 +15890,10 @@ impl POnCurv {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_POnCurv_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13823,8 +15903,10 @@ impl POnCurv {
     pub fn new_real_pnt(U: f64, P: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_POnCurv_ctor_real_pnt(U, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13832,8 +15914,10 @@ impl POnCurv {
     /// sets the point and parameter values.
     pub fn set_values(&mut self, U: f64, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Extrema_POnCurv_set_values(self as *mut Self, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_POnCurv_set_values(self as *mut Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13842,8 +15926,11 @@ impl POnCurv {
     pub fn value(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Extrema_POnCurv_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13852,8 +15939,11 @@ impl POnCurv {
     pub fn parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Extrema_POnCurv_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -13877,8 +15967,10 @@ impl POnCurv2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_POnCurv2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13888,8 +15980,10 @@ impl POnCurv2d {
     pub fn new_real_pnt2d(U: f64, P: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_POnCurv2d_ctor_real_pnt2d(U, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13897,8 +15991,11 @@ impl POnCurv2d {
     /// sets the point and parameter values.
     pub fn set_values(&mut self, U: f64, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Extrema_POnCurv2d_set_values(self as *mut Self, U, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Extrema_POnCurv2d_set_values(self as *mut Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13907,8 +16004,11 @@ impl POnCurv2d {
     pub fn value(&self) -> &crate::gp::Pnt2d {
         {
             let __result = unsafe { crate::ffi::Extrema_POnCurv2d_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13917,8 +16017,11 @@ impl POnCurv2d {
     pub fn parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Extrema_POnCurv2d_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -13943,8 +16046,10 @@ impl POnSurf {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_POnSurf_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13954,8 +16059,10 @@ impl POnSurf {
     pub fn new_real2_pnt(U: f64, V: f64, P: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_POnSurf_ctor_real2_pnt(U, V, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13964,8 +16071,11 @@ impl POnSurf {
     pub fn value(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Extrema_POnSurf_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13974,10 +16084,12 @@ impl POnSurf {
     /// (e.g. to the point to be projected).
     pub fn set_parameters(&mut self, theU: f64, theV: f64, thePnt: &crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_POnSurf_set_parameters(self as *mut Self, theU, theV, thePnt)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13985,8 +16097,10 @@ impl POnSurf {
     /// Returns the parameter values on the surface.
     pub fn parameter(&self, U: &mut f64, V: &mut f64) {
         {
-            unsafe { crate::ffi::Extrema_POnSurf_parameter(self as *const Self, U, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Extrema_POnSurf_parameter(self as *const Self, U, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -14013,8 +16127,10 @@ impl POnSurfParams {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Extrema_POnSurfParams_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -14025,8 +16141,10 @@ impl POnSurfParams {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_POnSurfParams_ctor_real2_pnt(theU, theV, thePnt) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -14035,13 +16153,15 @@ impl POnSurfParams {
     /// (e.g. to the point to be projected).
     pub fn set_sqr_distance(&mut self, theSqrDistance: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_POnSurfParams_set_sqr_distance(
                     self as *mut Self,
                     theSqrDistance,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14051,8 +16171,11 @@ impl POnSurfParams {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_POnSurfParams_get_sqr_distance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14060,13 +16183,15 @@ impl POnSurfParams {
     /// Sets the element type on which this point is situated.
     pub fn set_element_type(&mut self, theElementType: crate::extrema::ElementType) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_POnSurfParams_set_element_type(
                     self as *mut Self,
                     theElementType.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14076,8 +16201,11 @@ impl POnSurfParams {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_POnSurfParams_get_element_type(self as *const Self) };
-            crate::check_exception();
-            crate::extrema::ElementType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::extrema::ElementType::try_from(__val).unwrap()
         }
     }
 
@@ -14086,14 +16214,16 @@ impl POnSurfParams {
     /// this point.
     pub fn set_indices(&mut self, theIndexU: i32, theIndexV: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_POnSurfParams_set_indices(
                     self as *mut Self,
                     theIndexU,
                     theIndexV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14102,37 +16232,37 @@ impl POnSurfParams {
     /// this point.
     pub fn get_indices(&self, theIndexU: &mut i32, theIndexV: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_POnSurfParams_get_indices(
                     self as *const Self,
                     theIndexU,
                     theIndexV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to Extrema_POnSurf
     pub fn as_p_on_surf(&self) -> &POnSurf {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_POnSurfParams_as_Extrema_POnSurf(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Extrema_POnSurfParams_as_Extrema_POnSurf(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Extrema_POnSurf (mutable)
     pub fn as_p_on_surf_mut(&mut self) -> &mut POnSurf {
-        {
-            let __result = unsafe {
-                crate::ffi::Extrema_POnSurfParams_as_Extrema_POnSurf_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Extrema_POnSurfParams_as_Extrema_POnSurf_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Extrema_POnSurf.hxx`:40 - `Extrema_POnSurf::Value()`
@@ -14140,15 +16270,18 @@ impl POnSurfParams {
         {
             let __result =
                 unsafe { crate::ffi::Extrema_POnSurfParams_inherited_Value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Extrema_POnSurf.hxx`:44 - `Extrema_POnSurf::SetParameters()`
     pub fn set_parameters(&mut self, theU: f64, theV: f64, thePnt: &crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_POnSurfParams_inherited_SetParameters(
                     self as *mut Self,
                     theU,
@@ -14156,17 +16289,21 @@ impl POnSurfParams {
                     thePnt,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Extrema_POnSurf.hxx`:47 - `Extrema_POnSurf::Parameter()`
     pub fn parameter(&self, U: &mut f64, V: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Extrema_POnSurfParams_inherited_Parameter(self as *const Self, U, V)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

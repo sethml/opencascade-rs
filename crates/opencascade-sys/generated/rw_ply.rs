@@ -30,8 +30,10 @@ impl CafWriter {
     pub fn new_asciistring(theFile: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::RWPly_CafWriter_ctor_asciistring(theFile) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -39,8 +41,11 @@ impl CafWriter {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::RWPly_CafWriter_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -51,8 +56,11 @@ impl CafWriter {
             let __result = unsafe {
                 crate::ffi::RWPly_CafWriter_coordinate_system_converter(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -65,8 +73,11 @@ impl CafWriter {
             let __result = unsafe {
                 crate::ffi::RWPly_CafWriter_change_coordinate_system_converter(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -77,13 +88,15 @@ impl CafWriter {
         theConverter: &crate::rw_mesh::CoordinateSystemConverter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::RWPly_CafWriter_set_coordinate_system_converter(
                     self as *mut Self,
                     theConverter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -93,8 +106,11 @@ impl CafWriter {
         {
             let __result =
                 unsafe { crate::ffi::RWPly_CafWriter_default_style(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -102,8 +118,12 @@ impl CafWriter {
     /// Set default material definition to be used for nodes with only color defined.
     pub fn set_default_style(&mut self, theStyle: &crate::xcaf_prs::Style) {
         {
-            unsafe { crate::ffi::RWPly_CafWriter_set_default_style(self as *mut Self, theStyle) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::RWPly_CafWriter_set_default_style(self as *mut Self, theStyle)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -114,8 +134,11 @@ impl CafWriter {
         {
             let __result =
                 unsafe { crate::ffi::RWPly_CafWriter_is_double_precision(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -123,10 +146,12 @@ impl CafWriter {
     /// Set if vertex position should be stored with double floating point precision.
     pub fn set_double_precision(&mut self, theDoublePrec: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::RWPly_CafWriter_set_double_precision(self as *mut Self, theDoublePrec)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -135,8 +160,11 @@ impl CafWriter {
     pub fn has_normals(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::RWPly_CafWriter_has_normals(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -144,8 +172,12 @@ impl CafWriter {
     /// Set if normals are defined.
     pub fn set_normals(&mut self, theHasNormals: bool) {
         {
-            unsafe { crate::ffi::RWPly_CafWriter_set_normals(self as *mut Self, theHasNormals) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::RWPly_CafWriter_set_normals(self as *mut Self, theHasNormals)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -155,8 +187,11 @@ impl CafWriter {
         {
             let __result =
                 unsafe { crate::ffi::RWPly_CafWriter_has_tex_coords(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -164,10 +199,12 @@ impl CafWriter {
     /// Set if UV / texture coordinates should be written.
     pub fn set_tex_coords(&mut self, theHasTexCoords: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::RWPly_CafWriter_set_tex_coords(self as *mut Self, theHasTexCoords)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -176,8 +213,11 @@ impl CafWriter {
     pub fn has_colors(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::RWPly_CafWriter_has_colors(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -185,8 +225,11 @@ impl CafWriter {
     /// Set if point colors should be written.
     pub fn set_colors(&mut self, theToWrite: bool) {
         {
-            unsafe { crate::ffi::RWPly_CafWriter_set_colors(self as *mut Self, theToWrite) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::RWPly_CafWriter_set_colors(self as *mut Self, theToWrite) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -195,8 +238,11 @@ impl CafWriter {
     pub fn has_part_id(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::RWPly_CafWriter_has_part_id(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -205,8 +251,11 @@ impl CafWriter {
     /// Cannot be combined with HasFaceId().
     pub fn set_part_id(&mut self, theSurfId: bool) {
         {
-            unsafe { crate::ffi::RWPly_CafWriter_set_part_id(self as *mut Self, theSurfId) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::RWPly_CafWriter_set_part_id(self as *mut Self, theSurfId) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -215,8 +264,11 @@ impl CafWriter {
     pub fn has_face_id(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::RWPly_CafWriter_has_face_id(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -225,8 +277,11 @@ impl CafWriter {
     /// Cannot be combined with HasPartId().
     pub fn set_face_id(&mut self, theSurfId: bool) {
         {
-            unsafe { crate::ffi::RWPly_CafWriter_set_face_id(self as *mut Self, theSurfId) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::RWPly_CafWriter_set_face_id(self as *mut Self, theSurfId) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -254,8 +309,11 @@ impl CafWriter {
             let __result = unsafe {
                 crate::ffi::RWPly_CafWriter_perform_handletdocstddocument_labelsequence_mapofasciistringptr_indexeddatamapofstringstring_progressrange(self as *mut Self, theDocument, theRootLabels, theLabelFilter as *const _, theFileInfo, theProgress)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -276,8 +334,11 @@ impl CafWriter {
             let __result = unsafe {
                 crate::ffi::RWPly_CafWriter_perform_handletdocstddocument_indexeddatamapofstringstring_progressrange(self as *mut Self, theDocument, theFileInfo, theProgress)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -285,8 +346,11 @@ impl CafWriter {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::RWPly_CafWriter_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -294,40 +358,43 @@ impl CafWriter {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::RWPly_CafWriter_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::RWPly_CafWriter_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::RWPly_CafWriter_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::RWPly_CafWriter_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::RWPly_CafWriter_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleRWPlyCafWriter> {
-        {
-            let __result = unsafe { crate::ffi::RWPly_CafWriter_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::RWPly_CafWriter_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -336,8 +403,11 @@ impl CafWriter {
             let __result = unsafe {
                 crate::ffi::RWPly_CafWriter_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -347,8 +417,11 @@ impl CafWriter {
             let __result = unsafe {
                 crate::ffi::RWPly_CafWriter_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -357,11 +430,14 @@ impl CafWriter {
         {
             let __result =
                 unsafe { crate::ffi::RWPly_CafWriter_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -371,16 +447,23 @@ impl CafWriter {
         {
             let __result =
                 unsafe { crate::ffi::RWPly_CafWriter_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::RWPly_CafWriter_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::RWPly_CafWriter_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -390,16 +473,22 @@ impl CafWriter {
             let __result = unsafe {
                 crate::ffi::RWPly_CafWriter_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::RWPly_CafWriter_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::RWPly_CafWriter_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -415,31 +504,31 @@ unsafe impl crate::CppDeletable for HandleRWPlyCafWriter {
 impl HandleRWPlyCafWriter {
     /// Dereference this Handle to access the underlying RWPly_CafWriter
     pub fn get(&self) -> &crate::ffi::RWPly_CafWriter {
-        {
-            let __result = unsafe { crate::ffi::HandleRWPlyCafWriter_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleRWPlyCafWriter_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying RWPly_CafWriter
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWPly_CafWriter {
-        {
-            let __result = unsafe { crate::ffi::HandleRWPlyCafWriter_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleRWPlyCafWriter_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<RWPly_CafWriter> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleRWPlyCafWriter_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleRWPlyCafWriter_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -463,8 +552,10 @@ impl PlyWriterContext {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::RWPly_PlyWriterContext_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -477,8 +568,11 @@ impl PlyWriterContext {
             let __result = unsafe {
                 crate::ffi::RWPly_PlyWriterContext_is_double_precision(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -486,13 +580,15 @@ impl PlyWriterContext {
     /// Set if vertex position should be stored with double floating point precision.
     pub fn set_double_precision(&mut self, theDoublePrec: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::RWPly_PlyWriterContext_set_double_precision(
                     self as *mut Self,
                     theDoublePrec,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -502,8 +598,11 @@ impl PlyWriterContext {
         {
             let __result =
                 unsafe { crate::ffi::RWPly_PlyWriterContext_has_normals(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -511,10 +610,12 @@ impl PlyWriterContext {
     /// Set if normals should be written.
     pub fn set_normals(&mut self, theHasNormals: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::RWPly_PlyWriterContext_set_normals(self as *mut Self, theHasNormals)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -525,8 +626,11 @@ impl PlyWriterContext {
         {
             let __result =
                 unsafe { crate::ffi::RWPly_PlyWriterContext_has_tex_coords(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -534,13 +638,15 @@ impl PlyWriterContext {
     /// Set if UV / texture coordinates should be written.
     pub fn set_tex_coords(&mut self, theHasTexCoords: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::RWPly_PlyWriterContext_set_tex_coords(
                     self as *mut Self,
                     theHasTexCoords,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -550,8 +656,11 @@ impl PlyWriterContext {
         {
             let __result =
                 unsafe { crate::ffi::RWPly_PlyWriterContext_has_colors(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -559,8 +668,12 @@ impl PlyWriterContext {
     /// Set if point colors should be written.
     pub fn set_colors(&mut self, theToWrite: bool) {
         {
-            unsafe { crate::ffi::RWPly_PlyWriterContext_set_colors(self as *mut Self, theToWrite) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::RWPly_PlyWriterContext_set_colors(self as *mut Self, theToWrite)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -571,8 +684,11 @@ impl PlyWriterContext {
         {
             let __result =
                 unsafe { crate::ffi::RWPly_PlyWriterContext_has_surface_id(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -580,10 +696,12 @@ impl PlyWriterContext {
     /// Set if surface Id should be written as element attribute; FALSE by default.
     pub fn set_surface_id_bool(&mut self, theSurfId: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::RWPly_PlyWriterContext_set_surface_id_bool(self as *mut Self, theSurfId)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -594,8 +712,11 @@ impl PlyWriterContext {
         {
             let __result =
                 unsafe { crate::ffi::RWPly_PlyWriterContext_is_opened(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -610,8 +731,11 @@ impl PlyWriterContext {
             let __result = unsafe {
                 crate::ffi::RWPly_PlyWriterContext_open(self as *mut Self, theName, theStream)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -635,8 +759,11 @@ impl PlyWriterContext {
                     theFileInfo,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -663,8 +790,11 @@ impl PlyWriterContext {
                     theColor,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -675,8 +805,11 @@ impl PlyWriterContext {
             let __result = unsafe {
                 crate::ffi::RWPly_PlyWriterContext_nb_written_vertices(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -686,8 +819,11 @@ impl PlyWriterContext {
         {
             let __result =
                 unsafe { crate::ffi::RWPly_PlyWriterContext_vertex_offset(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -695,10 +831,12 @@ impl PlyWriterContext {
     /// Set vertex offset to be applied to element indices.
     pub fn set_vertex_offset(&mut self, theOffset: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::RWPly_PlyWriterContext_set_vertex_offset(self as *mut Self, theOffset)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -708,8 +846,11 @@ impl PlyWriterContext {
         {
             let __result =
                 unsafe { crate::ffi::RWPly_PlyWriterContext_surface_id(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -717,10 +858,12 @@ impl PlyWriterContext {
     /// Set surface id to write with element.
     pub fn set_surface_id_int(&mut self, theSurfId: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::RWPly_PlyWriterContext_set_surface_id_int(self as *mut Self, theSurfId)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -731,8 +874,11 @@ impl PlyWriterContext {
             let __result = unsafe {
                 crate::ffi::RWPly_PlyWriterContext_write_triangle(self as *mut Self, theTri)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -743,8 +889,11 @@ impl PlyWriterContext {
             let __result = unsafe {
                 crate::ffi::RWPly_PlyWriterContext_write_quad(self as *mut Self, theQuad)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -755,8 +904,11 @@ impl PlyWriterContext {
             let __result = unsafe {
                 crate::ffi::RWPly_PlyWriterContext_nb_written_elements(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -768,8 +920,11 @@ impl PlyWriterContext {
             let __result = unsafe {
                 crate::ffi::RWPly_PlyWriterContext_close(self as *mut Self, theIsAborted)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

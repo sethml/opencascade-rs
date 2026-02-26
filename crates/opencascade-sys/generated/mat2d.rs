@@ -28,8 +28,10 @@ impl BiInt {
     pub fn new_int2(I1: i32, I2: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MAT2d_BiInt_ctor_int2(I1, I2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -37,8 +39,11 @@ impl BiInt {
     pub fn first_index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT2d_BiInt_first_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -46,24 +51,31 @@ impl BiInt {
     pub fn second_index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT2d_BiInt_second_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `MAT2d_BiInt.hxx`:39 - `MAT2d_BiInt::FirstIndex()`
     pub fn first_index_int(&mut self, I1: i32) {
         {
-            unsafe { crate::ffi::MAT2d_BiInt_first_index_int(self as *mut Self, I1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT2d_BiInt_first_index_int(self as *mut Self, I1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT2d_BiInt.hxx`:41 - `MAT2d_BiInt::SecondIndex()`
     pub fn second_index_int(&mut self, I2: i32) {
         {
-            unsafe { crate::ffi::MAT2d_BiInt_second_index_int(self as *mut Self, I2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT2d_BiInt_second_index_int(self as *mut Self, I2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -71,8 +83,11 @@ impl BiInt {
     pub fn is_equal(&self, B: &BiInt) -> bool {
         {
             let __result = unsafe { crate::ffi::MAT2d_BiInt_is_equal(self as *const Self, B) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -103,8 +118,10 @@ impl Circuit {
             let __result = unsafe {
                 crate::ffi::MAT2d_Circuit_ctor_jointype_bool(aJoinType.into(), IsOpenResult)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -122,7 +139,7 @@ impl Circuit {
         Trigo: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT2d_Circuit_perform(
                     self as *mut Self,
                     aFigure,
@@ -131,7 +148,9 @@ impl Circuit {
                     Trigo,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -141,8 +160,11 @@ impl Circuit {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_Circuit_number_of_items(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -151,8 +173,11 @@ impl Circuit {
     pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         {
             let __result = unsafe { crate::ffi::MAT2d_Circuit_value(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -162,8 +187,11 @@ impl Circuit {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_Circuit_line_length(self as *const Self, IndexLine) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -180,8 +208,11 @@ impl Circuit {
             let __result = unsafe {
                 crate::ffi::MAT2d_Circuit_ref_to_equi(self as *const Self, IndLine, IndCurve)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -191,8 +222,11 @@ impl Circuit {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_Circuit_connexion(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -203,8 +237,11 @@ impl Circuit {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_Circuit_connexion_on(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -212,8 +249,11 @@ impl Circuit {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT2d_Circuit_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -221,8 +261,11 @@ impl Circuit {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MAT2d_Circuit_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -230,40 +273,43 @@ impl Circuit {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT2d_Circuit_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT2d_Circuit_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::MAT2d_Circuit_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT2d_Circuit_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::MAT2d_Circuit_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMAT2dCircuit> {
-        {
-            let __result = unsafe { crate::ffi::MAT2d_Circuit_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MAT2d_Circuit_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -272,8 +318,11 @@ impl Circuit {
             let __result = unsafe {
                 crate::ffi::MAT2d_Circuit_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -282,8 +331,11 @@ impl Circuit {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_Circuit_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -291,11 +343,14 @@ impl Circuit {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::MAT2d_Circuit_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -305,16 +360,23 @@ impl Circuit {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_Circuit_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::MAT2d_Circuit_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MAT2d_Circuit_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -324,16 +386,21 @@ impl Circuit {
             let __result = unsafe {
                 crate::ffi::MAT2d_Circuit_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::MAT2d_Circuit_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT2d_Circuit_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -349,31 +416,31 @@ unsafe impl crate::CppDeletable for HandleMAT2dCircuit {
 impl HandleMAT2dCircuit {
     /// Dereference this Handle to access the underlying MAT2d_Circuit
     pub fn get(&self) -> &crate::ffi::MAT2d_Circuit {
-        {
-            let __result = unsafe { crate::ffi::HandleMAT2dCircuit_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleMAT2dCircuit_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MAT2d_Circuit
     pub fn get_mut(&mut self) -> &mut crate::ffi::MAT2d_Circuit {
-        {
-            let __result = unsafe { crate::ffi::HandleMAT2dCircuit_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleMAT2dCircuit_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MAT2d_Circuit> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMAT2dCircuit_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleMAT2dCircuit_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -399,8 +466,10 @@ impl Connexion {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MAT2d_Connexion_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -430,8 +499,10 @@ impl Connexion {
                     PointB,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -441,8 +512,11 @@ impl Connexion {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_Connexion_index_first_line(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -452,8 +526,11 @@ impl Connexion {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_Connexion_index_second_line(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -463,8 +540,11 @@ impl Connexion {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_Connexion_index_item_on_first(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -474,8 +554,11 @@ impl Connexion {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_Connexion_index_item_on_second(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -485,8 +568,11 @@ impl Connexion {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_Connexion_parameter_on_first(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -496,8 +582,11 @@ impl Connexion {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_Connexion_parameter_on_second(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -507,8 +596,11 @@ impl Connexion {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_Connexion_point_on_first(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -518,8 +610,11 @@ impl Connexion {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_Connexion_point_on_second(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -528,90 +623,118 @@ impl Connexion {
     pub fn distance(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::MAT2d_Connexion_distance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:77 - `MAT2d_Connexion::IndexFirstLine()`
     pub fn index_first_line_int(&mut self, anIndex: i32) {
         {
-            unsafe { crate::ffi::MAT2d_Connexion_index_first_line_int(self as *mut Self, anIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MAT2d_Connexion_index_first_line_int(self as *mut Self, anIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:79 - `MAT2d_Connexion::IndexSecondLine()`
     pub fn index_second_line_int(&mut self, anIndex: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT2d_Connexion_index_second_line_int(self as *mut Self, anIndex)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:81 - `MAT2d_Connexion::IndexItemOnFirst()`
     pub fn index_item_on_first_int(&mut self, anIndex: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT2d_Connexion_index_item_on_first_int(self as *mut Self, anIndex)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:83 - `MAT2d_Connexion::IndexItemOnSecond()`
     pub fn index_item_on_second_int(&mut self, anIndex: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT2d_Connexion_index_item_on_second_int(self as *mut Self, anIndex)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:85 - `MAT2d_Connexion::ParameterOnFirst()`
     pub fn parameter_on_first_real(&mut self, aParameter: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT2d_Connexion_parameter_on_first_real(self as *mut Self, aParameter)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:87 - `MAT2d_Connexion::ParameterOnSecond()`
     pub fn parameter_on_second_real(&mut self, aParameter: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT2d_Connexion_parameter_on_second_real(self as *mut Self, aParameter)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:89 - `MAT2d_Connexion::PointOnFirst()`
     pub fn point_on_first_pnt2d(&mut self, aPoint: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::MAT2d_Connexion_point_on_first_pnt2d(self as *mut Self, aPoint) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MAT2d_Connexion_point_on_first_pnt2d(self as *mut Self, aPoint)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:91 - `MAT2d_Connexion::PointOnSecond()`
     pub fn point_on_second_pnt2d(&mut self, aPoint: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::MAT2d_Connexion_point_on_second_pnt2d(self as *mut Self, aPoint) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MAT2d_Connexion_point_on_second_pnt2d(self as *mut Self, aPoint)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:93 - `MAT2d_Connexion::Distance()`
     pub fn distance_real(&mut self, aDistance: f64) {
         {
-            unsafe { crate::ffi::MAT2d_Connexion_distance_real(self as *mut Self, aDistance) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT2d_Connexion_distance_real(self as *mut Self, aDistance) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -622,8 +745,11 @@ impl Connexion {
     pub fn reverse(&self) -> crate::OwnedPtr<crate::ffi::HandleMAT2dConnexion> {
         {
             let __result = unsafe { crate::ffi::MAT2d_Connexion_reverse(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -638,8 +764,11 @@ impl Connexion {
             let __result = unsafe {
                 crate::ffi::MAT2d_Connexion_is_after(self as *const Self, aConnexion, aSense)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -647,8 +776,11 @@ impl Connexion {
     /// Print <me>.
     pub fn dump(&self, Deep: i32, Offset: i32) {
         {
-            unsafe { crate::ffi::MAT2d_Connexion_dump(self as *const Self, Deep, Offset) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT2d_Connexion_dump(self as *const Self, Deep, Offset) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -656,8 +788,11 @@ impl Connexion {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT2d_Connexion_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -665,8 +800,11 @@ impl Connexion {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MAT2d_Connexion_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -674,40 +812,43 @@ impl Connexion {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT2d_Connexion_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT2d_Connexion_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::MAT2d_Connexion_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT2d_Connexion_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::MAT2d_Connexion_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMAT2dConnexion> {
-        {
-            let __result = unsafe { crate::ffi::MAT2d_Connexion_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MAT2d_Connexion_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -716,8 +857,11 @@ impl Connexion {
             let __result = unsafe {
                 crate::ffi::MAT2d_Connexion_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -727,8 +871,11 @@ impl Connexion {
             let __result = unsafe {
                 crate::ffi::MAT2d_Connexion_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -737,11 +884,14 @@ impl Connexion {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_Connexion_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -751,16 +901,23 @@ impl Connexion {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_Connexion_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::MAT2d_Connexion_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MAT2d_Connexion_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -770,16 +927,22 @@ impl Connexion {
             let __result = unsafe {
                 crate::ffi::MAT2d_Connexion_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::MAT2d_Connexion_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT2d_Connexion_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -795,31 +958,31 @@ unsafe impl crate::CppDeletable for HandleMAT2dConnexion {
 impl HandleMAT2dConnexion {
     /// Dereference this Handle to access the underlying MAT2d_Connexion
     pub fn get(&self) -> &crate::ffi::MAT2d_Connexion {
-        {
-            let __result = unsafe { crate::ffi::HandleMAT2dConnexion_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleMAT2dConnexion_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MAT2d_Connexion
     pub fn get_mut(&mut self) -> &mut crate::ffi::MAT2d_Connexion {
-        {
-            let __result = unsafe { crate::ffi::HandleMAT2dConnexion_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleMAT2dConnexion_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MAT2d_Connexion> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMAT2dConnexion_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleMAT2dConnexion_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -844,8 +1007,10 @@ impl CutCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MAT2d_CutCurve_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -853,8 +1018,10 @@ impl CutCurve {
     pub fn new_handlegeom2dcurve(C: &crate::ffi::HandleGeom2dCurve) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MAT2d_CutCurve_ctor_handlegeom2dcurve(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -863,8 +1030,12 @@ impl CutCurve {
     /// and at the inflections.
     pub fn perform_handlegeom2dcurve(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
         {
-            unsafe { crate::ffi::MAT2d_CutCurve_perform_handlegeom2dcurve(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MAT2d_CutCurve_perform_handlegeom2dcurve(self as *mut Self, C)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -877,14 +1048,16 @@ impl CutCurve {
         aSide: crate::mat::Side,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT2d_CutCurve_perform_handlegeom2dcurve_side(
                     self as *mut Self,
                     C,
                     aSide.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -892,8 +1065,10 @@ impl CutCurve {
     /// Cuts a curve at the inflections.
     pub fn perform_inf(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
         {
-            unsafe { crate::ffi::MAT2d_CutCurve_perform_inf(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT2d_CutCurve_perform_inf(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -902,8 +1077,11 @@ impl CutCurve {
     pub fn un_modified(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::MAT2d_CutCurve_un_modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -915,8 +1093,11 @@ impl CutCurve {
     pub fn nb_curves(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT2d_CutCurve_nb_curves(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -926,8 +1107,11 @@ impl CutCurve {
     pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleGeom2dTrimmedCurve> {
         {
             let __result = unsafe { crate::ffi::MAT2d_CutCurve_value(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -953,8 +1137,10 @@ impl Mat2d {
     pub fn new_bool(IsOpenResult: bool) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MAT2d_Mat2d_ctor_bool(IsOpenResult) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -968,8 +1154,10 @@ impl Mat2d {
     /// Algorithm of computation of the bisecting locus.
     pub fn create_mat(&mut self, aTool: &mut Tool2d) {
         {
-            unsafe { crate::ffi::MAT2d_Mat2d_create_mat(self as *mut Self, aTool) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT2d_Mat2d_create_mat(self as *mut Self, aTool) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -978,8 +1166,11 @@ impl Mat2d {
     /// open wire.
     pub fn create_mat_open(&mut self, aTool: &mut Tool2d) {
         {
-            unsafe { crate::ffi::MAT2d_Mat2d_create_mat_open(self as *mut Self, aTool) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT2d_Mat2d_create_mat_open(self as *mut Self, aTool) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -988,8 +1179,11 @@ impl Mat2d {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::MAT2d_Mat2d_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -998,8 +1192,10 @@ impl Mat2d {
     /// of the trees of bisectors.
     pub fn init(&mut self) {
         {
-            unsafe { crate::ffi::MAT2d_Mat2d_init(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT2d_Mat2d_init(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1008,8 +1204,11 @@ impl Mat2d {
     pub fn more(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::MAT2d_Mat2d_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1017,8 +1216,10 @@ impl Mat2d {
     /// Move to the next root.
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::MAT2d_Mat2d_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT2d_Mat2d_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1027,8 +1228,11 @@ impl Mat2d {
     pub fn bisector(&self) -> crate::OwnedPtr<crate::ffi::HandleMATBisector> {
         {
             let __result = unsafe { crate::ffi::MAT2d_Mat2d_bisector(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1038,8 +1242,11 @@ impl Mat2d {
     pub fn semi_infinite(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::MAT2d_Mat2d_semi_infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1049,8 +1256,11 @@ impl Mat2d {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_Mat2d_number_of_bisectors(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1086,8 +1296,10 @@ impl MiniPath {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MAT2d_MiniPath_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1103,10 +1315,12 @@ impl MiniPath {
         Sense: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT2d_MiniPath_perform(self as *mut Self, Figure, IndStart, Sense)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1125,8 +1339,10 @@ impl MiniPath {
     /// E->F, F->E, E->A.
     pub fn run_on_connexions(&mut self) {
         {
-            unsafe { crate::ffi::MAT2d_MiniPath_run_on_connexions(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT2d_MiniPath_run_on_connexions(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1136,8 +1352,11 @@ impl MiniPath {
     pub fn path(&self) -> &crate::ffi::MAT2d_SequenceOfConnexion {
         {
             let __result = unsafe { crate::ffi::MAT2d_MiniPath_path(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1149,8 +1368,11 @@ impl MiniPath {
             let __result = unsafe {
                 crate::ffi::MAT2d_MiniPath_is_connexions_from(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1161,8 +1383,11 @@ impl MiniPath {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_MiniPath_connexions_from(self as *mut Self, Index) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1173,8 +1398,11 @@ impl MiniPath {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_MiniPath_is_root(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1184,8 +1412,11 @@ impl MiniPath {
     pub fn father(&mut self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleMAT2dConnexion> {
         {
             let __result = unsafe { crate::ffi::MAT2d_MiniPath_father(self as *mut Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -1211,8 +1442,10 @@ impl Tool2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MAT2d_Tool2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1220,16 +1453,22 @@ impl Tool2d {
     /// <aSide> defines the side of the computation of the map.
     pub fn sense(&mut self, aside: crate::mat::Side) {
         {
-            unsafe { crate::ffi::MAT2d_Tool2d_sense(self as *mut Self, aside.into()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT2d_Tool2d_sense(self as *mut Self, aside.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT2d_Tool2d.hxx`:51 - `MAT2d_Tool2d::SetJoinType()`
     pub fn set_join_type(&mut self, aJoinType: crate::geom_abs::JoinType) {
         {
-            unsafe { crate::ffi::MAT2d_Tool2d_set_join_type(self as *mut Self, aJoinType.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MAT2d_Tool2d_set_join_type(self as *mut Self, aJoinType.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1239,8 +1478,10 @@ impl Tool2d {
     /// the BasicElts from MAT.
     pub fn init_items(&mut self, aCircuit: &crate::ffi::HandleMAT2dCircuit) {
         {
-            unsafe { crate::ffi::MAT2d_Tool2d_init_items(self as *mut Self, aCircuit) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT2d_Tool2d_init_items(self as *mut Self, aCircuit) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1249,8 +1490,11 @@ impl Tool2d {
     pub fn number_of_items(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT2d_Tool2d_number_of_items(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1260,8 +1504,11 @@ impl Tool2d {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_Tool2d_tolerance_of_confusion(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1274,8 +1521,11 @@ impl Tool2d {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_Tool2d_first_point(self as *mut Self, anitem, dist) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1288,8 +1538,11 @@ impl Tool2d {
             let __result = unsafe {
                 crate::ffi::MAT2d_Tool2d_tangent_before(self as *mut Self, anitem, IsOpenResult)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1302,8 +1555,11 @@ impl Tool2d {
             let __result = unsafe {
                 crate::ffi::MAT2d_Tool2d_tangent_after(self as *mut Self, anitem, IsOpenResult)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1314,8 +1570,11 @@ impl Tool2d {
     pub fn tangent(&mut self, bisector: i32) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT2d_Tool2d_tangent(self as *mut Self, bisector) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1323,8 +1582,11 @@ impl Tool2d {
     /// Creates the geometric bisector defined by <abisector>.
     pub fn create_bisector(&mut self, abisector: &crate::ffi::HandleMATBisector) {
         {
-            unsafe { crate::ffi::MAT2d_Tool2d_create_bisector(self as *mut Self, abisector) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT2d_Tool2d_create_bisector(self as *mut Self, abisector) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1344,8 +1606,11 @@ impl Tool2d {
                     abisector,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1367,8 +1632,11 @@ impl Tool2d {
                     apoint,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1394,8 +1662,11 @@ impl Tool2d {
                     intpnt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1412,8 +1683,11 @@ impl Tool2d {
             let __result = unsafe {
                 crate::ffi::MAT2d_Tool2d_distance(self as *const Self, abisector, param1, param2)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1422,8 +1696,11 @@ impl Tool2d {
     /// <bisector>.
     pub fn dump(&self, bisector: i32, erease: i32) {
         {
-            unsafe { crate::ffi::MAT2d_Tool2d_dump(self as *const Self, bisector, erease) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT2d_Tool2d_dump(self as *const Self, bisector, erease) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1433,8 +1710,11 @@ impl Tool2d {
     pub fn geom_bis(&self, Index: i32) -> &crate::bisector::Bisec {
         {
             let __result = unsafe { crate::ffi::MAT2d_Tool2d_geom_bis(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1443,8 +1723,11 @@ impl Tool2d {
     pub fn geom_elt(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         {
             let __result = unsafe { crate::ffi::MAT2d_Tool2d_geom_elt(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1453,8 +1736,11 @@ impl Tool2d {
     pub fn geom_pnt(&self, Index: i32) -> &crate::gp::Pnt2d {
         {
             let __result = unsafe { crate::ffi::MAT2d_Tool2d_geom_pnt(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1464,8 +1750,11 @@ impl Tool2d {
     pub fn geom_vec(&self, Index: i32) -> &crate::gp::Vec2d {
         {
             let __result = unsafe { crate::ffi::MAT2d_Tool2d_geom_vec(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1473,16 +1762,22 @@ impl Tool2d {
     pub fn circuit(&self) -> crate::OwnedPtr<crate::ffi::HandleMAT2dCircuit> {
         {
             let __result = unsafe { crate::ffi::MAT2d_Tool2d_circuit(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `MAT2d_Tool2d.hxx`:139 - `MAT2d_Tool2d::BisecFusion()`
     pub fn bisec_fusion(&mut self, Index1: i32, Index2: i32) {
         {
-            unsafe { crate::ffi::MAT2d_Tool2d_bisec_fusion(self as *mut Self, Index1, Index2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT2d_Tool2d_bisec_fusion(self as *mut Self, Index1, Index2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1493,8 +1788,11 @@ impl Tool2d {
         {
             let __result =
                 unsafe { crate::ffi::MAT2d_Tool2d_change_geom_bis(self as *mut Self, Index) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 }

@@ -1517,8 +1517,10 @@ impl AspectFillAreaDefinitionError {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_AspectFillAreaDefinitionError_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1529,8 +1531,10 @@ impl AspectFillAreaDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_AspectFillAreaDefinitionError_ctor_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1545,8 +1549,10 @@ impl AspectFillAreaDefinitionError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1556,8 +1562,11 @@ impl AspectFillAreaDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_AspectFillAreaDefinitionError_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1565,20 +1574,26 @@ impl AspectFillAreaDefinitionError {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_AspectFillAreaDefinitionError_raise_charptr(
                     c_theMessage.as_ptr(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Aspect_AspectFillAreaDefinitionError.hxx`:34 - `Aspect_AspectFillAreaDefinitionError::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::Aspect_AspectFillAreaDefinitionError_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Aspect_AspectFillAreaDefinitionError_raise_sstream(theMessage)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1593,8 +1608,11 @@ impl AspectFillAreaDefinitionError {
                     c_theMessage.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1612,8 +1630,11 @@ impl AspectFillAreaDefinitionError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1622,8 +1643,11 @@ impl AspectFillAreaDefinitionError {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_AspectFillAreaDefinitionError_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1632,186 +1656,194 @@ impl AspectFillAreaDefinitionError {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_AspectFillAreaDefinitionError_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_OutOfRange
     pub fn as_standard_out_of_range(&self) -> &crate::standard::OutOfRange {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectFillAreaDefinitionError_as_Standard_OutOfRange(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectFillAreaDefinitionError_as_Standard_OutOfRange(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_OutOfRange (mutable)
     pub fn as_standard_out_of_range_mut(&mut self) -> &mut crate::standard::OutOfRange {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectFillAreaDefinitionError_as_Standard_OutOfRange_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectFillAreaDefinitionError_as_Standard_OutOfRange_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_RangeError
     pub fn as_standard_range_error(&self) -> &crate::standard::RangeError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectFillAreaDefinitionError_as_Standard_RangeError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectFillAreaDefinitionError_as_Standard_RangeError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_RangeError (mutable)
     pub fn as_standard_range_error_mut(&mut self) -> &mut crate::standard::RangeError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectFillAreaDefinitionError_as_Standard_RangeError_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectFillAreaDefinitionError_as_Standard_RangeError_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectFillAreaDefinitionError_as_Standard_DomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectFillAreaDefinitionError_as_Standard_DomainError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectFillAreaDefinitionError_as_Standard_DomainError_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectFillAreaDefinitionError_as_Standard_DomainError_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectFillAreaDefinitionError_as_Standard_Failure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectFillAreaDefinitionError_as_Standard_Failure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectFillAreaDefinitionError_as_Standard_Failure_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectFillAreaDefinitionError_as_Standard_Failure_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectFillAreaDefinitionError_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectFillAreaDefinitionError_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectFillAreaDefinitionError_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectFillAreaDefinitionError_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAspectAspectFillAreaDefinitionError> {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectFillAreaDefinitionError_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::Aspect_AspectFillAreaDefinitionError_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_AspectFillAreaDefinitionError_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_AspectFillAreaDefinitionError_inherited_Reraise(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_AspectFillAreaDefinitionError_inherited_Jump(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1824,8 +1856,11 @@ impl AspectFillAreaDefinitionError {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1838,8 +1873,11 @@ impl AspectFillAreaDefinitionError {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1849,11 +1887,14 @@ impl AspectFillAreaDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_AspectFillAreaDefinitionError_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1866,20 +1907,25 @@ impl AspectFillAreaDefinitionError {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_AspectFillAreaDefinitionError_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1891,20 +1937,25 @@ impl AspectFillAreaDefinitionError {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_AspectFillAreaDefinitionError_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1920,89 +1971,89 @@ unsafe impl crate::CppDeletable for HandleAspectAspectFillAreaDefinitionError {
 impl HandleAspectAspectFillAreaDefinitionError {
     /// Dereference this Handle to access the underlying Aspect_AspectFillAreaDefinitionError
     pub fn get(&self) -> &crate::ffi::Aspect_AspectFillAreaDefinitionError {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectAspectFillAreaDefinitionError_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleAspectAspectFillAreaDefinitionError_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Aspect_AspectFillAreaDefinitionError
     pub fn get_mut(&mut self) -> &mut crate::ffi::Aspect_AspectFillAreaDefinitionError {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectAspectFillAreaDefinitionError_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleAspectAspectFillAreaDefinitionError_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Aspect_AspectFillAreaDefinitionError> to Handle<Standard_OutOfRange>
     pub fn to_handle_out_of_range(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardOutOfRange> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectAspectFillAreaDefinitionError_to_HandleStandardOutOfRange(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectAspectFillAreaDefinitionError_to_HandleStandardOutOfRange(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_AspectFillAreaDefinitionError> to Handle<Standard_RangeError>
     pub fn to_handle_range_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardRangeError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectAspectFillAreaDefinitionError_to_HandleStandardRangeError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectAspectFillAreaDefinitionError_to_HandleStandardRangeError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_AspectFillAreaDefinitionError> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectAspectFillAreaDefinitionError_to_HandleStandardDomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectAspectFillAreaDefinitionError_to_HandleStandardDomainError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_AspectFillAreaDefinitionError> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectAspectFillAreaDefinitionError_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectAspectFillAreaDefinitionError_to_HandleStandardFailure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_AspectFillAreaDefinitionError> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectAspectFillAreaDefinitionError_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectAspectFillAreaDefinitionError_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2024,8 +2075,10 @@ impl AspectLineDefinitionError {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_AspectLineDefinitionError_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2036,8 +2089,10 @@ impl AspectLineDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_AspectLineDefinitionError_ctor_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2052,8 +2107,10 @@ impl AspectLineDefinitionError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2063,8 +2120,11 @@ impl AspectLineDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_AspectLineDefinitionError_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2072,18 +2132,23 @@ impl AspectLineDefinitionError {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_AspectLineDefinitionError_raise_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Aspect_AspectLineDefinitionError.hxx`:34 - `Aspect_AspectLineDefinitionError::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::Aspect_AspectLineDefinitionError_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_AspectLineDefinitionError_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2098,8 +2163,11 @@ impl AspectLineDefinitionError {
                     c_theMessage.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2117,8 +2185,11 @@ impl AspectLineDefinitionError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2126,8 +2197,11 @@ impl AspectLineDefinitionError {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Aspect_AspectLineDefinitionError_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2136,183 +2210,182 @@ impl AspectLineDefinitionError {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_AspectLineDefinitionError_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_OutOfRange
     pub fn as_standard_out_of_range(&self) -> &crate::standard::OutOfRange {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectLineDefinitionError_as_Standard_OutOfRange(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectLineDefinitionError_as_Standard_OutOfRange(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_OutOfRange (mutable)
     pub fn as_standard_out_of_range_mut(&mut self) -> &mut crate::standard::OutOfRange {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectLineDefinitionError_as_Standard_OutOfRange_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectLineDefinitionError_as_Standard_OutOfRange_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_RangeError
     pub fn as_standard_range_error(&self) -> &crate::standard::RangeError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectLineDefinitionError_as_Standard_RangeError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectLineDefinitionError_as_Standard_RangeError(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_RangeError (mutable)
     pub fn as_standard_range_error_mut(&mut self) -> &mut crate::standard::RangeError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectLineDefinitionError_as_Standard_RangeError_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectLineDefinitionError_as_Standard_RangeError_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectLineDefinitionError_as_Standard_DomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectLineDefinitionError_as_Standard_DomainError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectLineDefinitionError_as_Standard_DomainError_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectLineDefinitionError_as_Standard_DomainError_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectLineDefinitionError_as_Standard_Failure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectLineDefinitionError_as_Standard_Failure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectLineDefinitionError_as_Standard_Failure_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectLineDefinitionError_as_Standard_Failure_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectLineDefinitionError_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectLineDefinitionError_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectLineDefinitionError_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectLineDefinitionError_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAspectAspectLineDefinitionError> {
-        {
-            let __result =
-                unsafe { crate::ffi::Aspect_AspectLineDefinitionError_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::Aspect_AspectLineDefinitionError_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_AspectLineDefinitionError_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_AspectLineDefinitionError_inherited_Reraise(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_AspectLineDefinitionError_inherited_Jump(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2325,8 +2398,11 @@ impl AspectLineDefinitionError {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2339,8 +2415,11 @@ impl AspectLineDefinitionError {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2350,11 +2429,14 @@ impl AspectLineDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_AspectLineDefinitionError_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2367,20 +2449,25 @@ impl AspectLineDefinitionError {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_AspectLineDefinitionError_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2392,18 +2479,23 @@ impl AspectLineDefinitionError {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_AspectLineDefinitionError_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2419,89 +2511,87 @@ unsafe impl crate::CppDeletable for HandleAspectAspectLineDefinitionError {
 impl HandleAspectAspectLineDefinitionError {
     /// Dereference this Handle to access the underlying Aspect_AspectLineDefinitionError
     pub fn get(&self) -> &crate::ffi::Aspect_AspectLineDefinitionError {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectAspectLineDefinitionError_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleAspectAspectLineDefinitionError_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Aspect_AspectLineDefinitionError
     pub fn get_mut(&mut self) -> &mut crate::ffi::Aspect_AspectLineDefinitionError {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectAspectLineDefinitionError_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleAspectAspectLineDefinitionError_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Aspect_AspectLineDefinitionError> to Handle<Standard_OutOfRange>
     pub fn to_handle_out_of_range(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardOutOfRange> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectAspectLineDefinitionError_to_HandleStandardOutOfRange(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectAspectLineDefinitionError_to_HandleStandardOutOfRange(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_AspectLineDefinitionError> to Handle<Standard_RangeError>
     pub fn to_handle_range_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardRangeError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectAspectLineDefinitionError_to_HandleStandardRangeError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectAspectLineDefinitionError_to_HandleStandardRangeError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_AspectLineDefinitionError> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectAspectLineDefinitionError_to_HandleStandardDomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectAspectLineDefinitionError_to_HandleStandardDomainError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_AspectLineDefinitionError> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectAspectLineDefinitionError_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectAspectLineDefinitionError_to_HandleStandardFailure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_AspectLineDefinitionError> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectAspectLineDefinitionError_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectAspectLineDefinitionError_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2523,8 +2613,10 @@ impl AspectMarkerDefinitionError {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_AspectMarkerDefinitionError_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2535,8 +2627,10 @@ impl AspectMarkerDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_AspectMarkerDefinitionError_ctor_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2551,8 +2645,10 @@ impl AspectMarkerDefinitionError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2562,8 +2658,11 @@ impl AspectMarkerDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_AspectMarkerDefinitionError_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2571,18 +2670,23 @@ impl AspectMarkerDefinitionError {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_AspectMarkerDefinitionError_raise_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Aspect_AspectMarkerDefinitionError.hxx`:34 - `Aspect_AspectMarkerDefinitionError::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::Aspect_AspectMarkerDefinitionError_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_AspectMarkerDefinitionError_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2597,8 +2701,11 @@ impl AspectMarkerDefinitionError {
                     c_theMessage.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2616,8 +2723,11 @@ impl AspectMarkerDefinitionError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2626,8 +2736,11 @@ impl AspectMarkerDefinitionError {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_AspectMarkerDefinitionError_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2636,183 +2749,190 @@ impl AspectMarkerDefinitionError {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_AspectMarkerDefinitionError_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_OutOfRange
     pub fn as_standard_out_of_range(&self) -> &crate::standard::OutOfRange {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectMarkerDefinitionError_as_Standard_OutOfRange(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectMarkerDefinitionError_as_Standard_OutOfRange(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_OutOfRange (mutable)
     pub fn as_standard_out_of_range_mut(&mut self) -> &mut crate::standard::OutOfRange {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectMarkerDefinitionError_as_Standard_OutOfRange_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectMarkerDefinitionError_as_Standard_OutOfRange_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_RangeError
     pub fn as_standard_range_error(&self) -> &crate::standard::RangeError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectMarkerDefinitionError_as_Standard_RangeError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectMarkerDefinitionError_as_Standard_RangeError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_RangeError (mutable)
     pub fn as_standard_range_error_mut(&mut self) -> &mut crate::standard::RangeError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectMarkerDefinitionError_as_Standard_RangeError_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectMarkerDefinitionError_as_Standard_RangeError_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectMarkerDefinitionError_as_Standard_DomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectMarkerDefinitionError_as_Standard_DomainError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectMarkerDefinitionError_as_Standard_DomainError_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectMarkerDefinitionError_as_Standard_DomainError_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectMarkerDefinitionError_as_Standard_Failure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectMarkerDefinitionError_as_Standard_Failure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectMarkerDefinitionError_as_Standard_Failure_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectMarkerDefinitionError_as_Standard_Failure_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectMarkerDefinitionError_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectMarkerDefinitionError_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_AspectMarkerDefinitionError_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_AspectMarkerDefinitionError_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAspectAspectMarkerDefinitionError> {
-        {
-            let __result =
-                unsafe { crate::ffi::Aspect_AspectMarkerDefinitionError_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::Aspect_AspectMarkerDefinitionError_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_AspectMarkerDefinitionError_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_AspectMarkerDefinitionError_inherited_Reraise(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_AspectMarkerDefinitionError_inherited_Jump(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2825,8 +2945,11 @@ impl AspectMarkerDefinitionError {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2839,8 +2962,11 @@ impl AspectMarkerDefinitionError {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2850,11 +2976,14 @@ impl AspectMarkerDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_AspectMarkerDefinitionError_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2867,20 +2996,25 @@ impl AspectMarkerDefinitionError {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_AspectMarkerDefinitionError_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2892,18 +3026,23 @@ impl AspectMarkerDefinitionError {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_AspectMarkerDefinitionError_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2919,89 +3058,88 @@ unsafe impl crate::CppDeletable for HandleAspectAspectMarkerDefinitionError {
 impl HandleAspectAspectMarkerDefinitionError {
     /// Dereference this Handle to access the underlying Aspect_AspectMarkerDefinitionError
     pub fn get(&self) -> &crate::ffi::Aspect_AspectMarkerDefinitionError {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectAspectMarkerDefinitionError_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleAspectAspectMarkerDefinitionError_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Aspect_AspectMarkerDefinitionError
     pub fn get_mut(&mut self) -> &mut crate::ffi::Aspect_AspectMarkerDefinitionError {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectAspectMarkerDefinitionError_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleAspectAspectMarkerDefinitionError_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Aspect_AspectMarkerDefinitionError> to Handle<Standard_OutOfRange>
     pub fn to_handle_out_of_range(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardOutOfRange> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectAspectMarkerDefinitionError_to_HandleStandardOutOfRange(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectAspectMarkerDefinitionError_to_HandleStandardOutOfRange(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_AspectMarkerDefinitionError> to Handle<Standard_RangeError>
     pub fn to_handle_range_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardRangeError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectAspectMarkerDefinitionError_to_HandleStandardRangeError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectAspectMarkerDefinitionError_to_HandleStandardRangeError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_AspectMarkerDefinitionError> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectAspectMarkerDefinitionError_to_HandleStandardDomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectAspectMarkerDefinitionError_to_HandleStandardDomainError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_AspectMarkerDefinitionError> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectAspectMarkerDefinitionError_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectAspectMarkerDefinitionError_to_HandleStandardFailure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_AspectMarkerDefinitionError> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectAspectMarkerDefinitionError_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectAspectMarkerDefinitionError_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3027,8 +3165,10 @@ impl Background {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_Background_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3037,8 +3177,10 @@ impl Background {
     pub fn new_color(AColor: &crate::quantity::Color) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_Background_ctor_color(AColor) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3046,8 +3188,11 @@ impl Background {
     /// Modifies the colour of the window background <me>.
     pub fn set_color(&mut self, AColor: &crate::quantity::Color) {
         {
-            unsafe { crate::ffi::Aspect_Background_set_color(self as *mut Self, AColor) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_Background_set_color(self as *mut Self, AColor) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3056,8 +3201,11 @@ impl Background {
     pub fn color(&self) -> crate::OwnedPtr<crate::quantity::Color> {
         {
             let __result = unsafe { crate::ffi::Aspect_Background_color(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -3081,8 +3229,11 @@ impl CircularGrid {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_CircularGrid_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3090,8 +3241,12 @@ impl CircularGrid {
     /// defines the x step of the grid.
     pub fn set_radius_step(&mut self, aStep: f64) {
         {
-            unsafe { crate::ffi::Aspect_CircularGrid_set_radius_step(self as *mut Self, aStep) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Aspect_CircularGrid_set_radius_step(self as *mut Self, aStep)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3099,10 +3254,12 @@ impl CircularGrid {
     /// defines the step of the grid.
     pub fn set_division_number(&mut self, aNumber: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_CircularGrid_set_division_number(self as *mut Self, aNumber)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3116,7 +3273,7 @@ impl CircularGrid {
         RotationAngle: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_CircularGrid_set_grid_values(
                     self as *mut Self,
                     XOrigin,
@@ -3126,7 +3283,9 @@ impl CircularGrid {
                     RotationAngle,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3134,10 +3293,12 @@ impl CircularGrid {
     /// returns the point of the grid the closest to the point X,Y
     pub fn compute(&self, X: f64, Y: f64, gridX: &mut f64, gridY: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_CircularGrid_compute(self as *const Self, X, Y, gridX, gridY)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3147,8 +3308,11 @@ impl CircularGrid {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_CircularGrid_radius_step(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3158,16 +3322,21 @@ impl CircularGrid {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_CircularGrid_division_number(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Aspect_CircularGrid.hxx`:59 - `Aspect_CircularGrid::Init()`
     pub fn init(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_CircularGrid_init(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_CircularGrid_init(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3175,8 +3344,11 @@ impl CircularGrid {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Aspect_CircularGrid_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3184,101 +3356,114 @@ impl CircularGrid {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Aspect_CircularGrid_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Aspect_Grid
     pub fn as_grid(&self) -> &Grid {
-        {
-            let __result =
-                unsafe { crate::ffi::Aspect_CircularGrid_as_Aspect_Grid(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_CircularGrid_as_Aspect_Grid(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Aspect_Grid (mutable)
     pub fn as_grid_mut(&mut self) -> &mut Grid {
-        {
-            let __result =
-                unsafe { crate::ffi::Aspect_CircularGrid_as_Aspect_Grid_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_CircularGrid_as_Aspect_Grid_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_CircularGrid_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_CircularGrid_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_CircularGrid_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_CircularGrid_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:31 - `Aspect_Grid::SetXOrigin()`
     pub fn set_x_origin(&mut self, anOrigin: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_CircularGrid_inherited_SetXOrigin(self as *mut Self, anOrigin)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:34 - `Aspect_Grid::SetYOrigin()`
     pub fn set_y_origin(&mut self, anOrigin: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_CircularGrid_inherited_SetYOrigin(self as *mut Self, anOrigin)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:37 - `Aspect_Grid::SetRotationAngle()`
     pub fn set_rotation_angle(&mut self, anAngle: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_CircularGrid_inherited_SetRotationAngle(
                     self as *mut Self,
                     anAngle,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:40 - `Aspect_Grid::Rotate()`
     pub fn rotate(&mut self, anAngle: f64) {
         {
-            unsafe { crate::ffi::Aspect_CircularGrid_inherited_Rotate(self as *mut Self, anAngle) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Aspect_CircularGrid_inherited_Rotate(self as *mut Self, anAngle)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:43 - `Aspect_Grid::Translate()`
     pub fn translate(&mut self, aDx: f64, aDy: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_CircularGrid_inherited_Translate(self as *mut Self, aDx, aDy)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3289,21 +3474,23 @@ impl CircularGrid {
         aTenthColor: &crate::quantity::Color,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_CircularGrid_inherited_SetColors(
                     self as *mut Self,
                     aColor,
                     aTenthColor,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:52 - `Aspect_Grid::Hit()`
     pub fn hit(&self, X: f64, Y: f64, gridX: &mut f64, gridY: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_CircularGrid_inherited_Hit(
                     self as *const Self,
                     X,
@@ -3312,23 +3499,31 @@ impl CircularGrid {
                     gridY,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:66 - `Aspect_Grid::Activate()`
     pub fn activate(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_CircularGrid_inherited_Activate(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_CircularGrid_inherited_Activate(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:70 - `Aspect_Grid::Deactivate()`
     pub fn deactivate(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_CircularGrid_inherited_Deactivate(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_CircularGrid_inherited_Deactivate(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3337,8 +3532,11 @@ impl CircularGrid {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_CircularGrid_inherited_XOrigin(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3347,8 +3545,11 @@ impl CircularGrid {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_CircularGrid_inherited_YOrigin(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3358,8 +3559,11 @@ impl CircularGrid {
             let __result = unsafe {
                 crate::ffi::Aspect_CircularGrid_inherited_RotationAngle(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3368,8 +3572,11 @@ impl CircularGrid {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_CircularGrid_inherited_IsActive(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3380,27 +3587,31 @@ impl CircularGrid {
         aTenthColor: &mut crate::quantity::Color,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_CircularGrid_inherited_Colors(
                     self as *const Self,
                     aColor,
                     aTenthColor,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:88 - `Aspect_Grid::SetDrawMode()`
     pub fn set_draw_mode(&mut self, aDrawMode: crate::aspect::GridDrawMode) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_CircularGrid_inherited_SetDrawMode(
                     self as *mut Self,
                     aDrawMode.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3409,24 +3620,33 @@ impl CircularGrid {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_CircularGrid_inherited_DrawMode(self as *const Self) };
-            crate::check_exception();
-            crate::aspect::GridDrawMode::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::aspect::GridDrawMode::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:94 - `Aspect_Grid::Display()`
     pub fn display(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_CircularGrid_inherited_Display(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_CircularGrid_inherited_Display(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:97 - `Aspect_Grid::Erase()`
     pub fn erase(&self) {
         {
-            unsafe { crate::ffi::Aspect_CircularGrid_inherited_Erase(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_CircularGrid_inherited_Erase(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3436,8 +3656,11 @@ impl CircularGrid {
             let __result = unsafe {
                 crate::ffi::Aspect_CircularGrid_inherited_IsDisplayed(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3447,8 +3670,11 @@ impl CircularGrid {
             let __result = unsafe {
                 crate::ffi::Aspect_CircularGrid_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3458,8 +3684,11 @@ impl CircularGrid {
             let __result = unsafe {
                 crate::ffi::Aspect_CircularGrid_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3468,11 +3697,14 @@ impl CircularGrid {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_CircularGrid_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3483,18 +3715,23 @@ impl CircularGrid {
             let __result = unsafe {
                 crate::ffi::Aspect_CircularGrid_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_CircularGrid_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3504,16 +3741,22 @@ impl CircularGrid {
             let __result = unsafe {
                 crate::ffi::Aspect_CircularGrid_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Aspect_CircularGrid_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_CircularGrid_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3529,43 +3772,42 @@ unsafe impl crate::CppDeletable for HandleAspectCircularGrid {
 impl HandleAspectCircularGrid {
     /// Dereference this Handle to access the underlying Aspect_CircularGrid
     pub fn get(&self) -> &crate::ffi::Aspect_CircularGrid {
-        {
-            let __result = unsafe { crate::ffi::HandleAspectCircularGrid_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleAspectCircularGrid_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Aspect_CircularGrid
     pub fn get_mut(&mut self) -> &mut crate::ffi::Aspect_CircularGrid {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleAspectCircularGrid_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleAspectCircularGrid_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Aspect_CircularGrid> to Handle<Aspect_Grid>
     pub fn to_handle_grid(&self) -> crate::OwnedPtr<crate::ffi::HandleAspectGrid> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectCircularGrid_to_HandleAspectGrid(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectCircularGrid_to_HandleAspectGrid(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_CircularGrid> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectCircularGrid_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectCircularGrid_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Aspect_CircularGrid> to Handle<V3d_CircularGrid>
@@ -3574,16 +3816,18 @@ impl HandleAspectCircularGrid {
     pub fn downcast_to_circular_grid(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dCircularGrid>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleAspectCircularGrid_downcast_to_HandleV3dCircularGrid(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -3612,8 +3856,10 @@ impl DisplayConnection {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_DisplayConnection_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3629,8 +3875,10 @@ impl DisplayConnection {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_DisplayConnection_ctor_asciistring(theDisplayName) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3639,8 +3887,11 @@ impl DisplayConnection {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_DisplayConnection_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3650,8 +3901,11 @@ impl DisplayConnection {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_DisplayConnection_is_own_display(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3663,8 +3917,11 @@ impl DisplayConnection {
             let __result = unsafe {
                 crate::ffi::Aspect_DisplayConnection_get_atom(self as *const Self, theAtom.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3674,8 +3931,11 @@ impl DisplayConnection {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_DisplayConnection_get_display_name(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3683,8 +3943,11 @@ impl DisplayConnection {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Aspect_DisplayConnection_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3692,43 +3955,45 @@ impl DisplayConnection {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Aspect_DisplayConnection_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_DisplayConnection_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_DisplayConnection_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_DisplayConnection_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_DisplayConnection_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAspectDisplayConnection> {
-        {
-            let __result =
-                unsafe { crate::ffi::Aspect_DisplayConnection_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Aspect_DisplayConnection_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3740,8 +4005,11 @@ impl DisplayConnection {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3751,8 +4019,11 @@ impl DisplayConnection {
             let __result = unsafe {
                 crate::ffi::Aspect_DisplayConnection_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3761,11 +4032,14 @@ impl DisplayConnection {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_DisplayConnection_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3776,20 +4050,25 @@ impl DisplayConnection {
             let __result = unsafe {
                 crate::ffi::Aspect_DisplayConnection_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_DisplayConnection_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3801,16 +4080,23 @@ impl DisplayConnection {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Aspect_DisplayConnection_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Aspect_DisplayConnection_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3826,35 +4112,35 @@ unsafe impl crate::CppDeletable for HandleAspectDisplayConnection {
 impl HandleAspectDisplayConnection {
     /// Dereference this Handle to access the underlying Aspect_DisplayConnection
     pub fn get(&self) -> &crate::ffi::Aspect_DisplayConnection {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleAspectDisplayConnection_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleAspectDisplayConnection_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Aspect_DisplayConnection
     pub fn get_mut(&mut self) -> &mut crate::ffi::Aspect_DisplayConnection {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleAspectDisplayConnection_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleAspectDisplayConnection_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Aspect_DisplayConnection> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectDisplayConnection_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectDisplayConnection_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3912,8 +4198,10 @@ impl DisplayConnectionDefinitionError {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_DisplayConnectionDefinitionError_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3926,8 +4214,10 @@ impl DisplayConnectionDefinitionError {
                     c_theMessage.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3942,8 +4232,10 @@ impl DisplayConnectionDefinitionError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3955,8 +4247,11 @@ impl DisplayConnectionDefinitionError {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3964,22 +4259,26 @@ impl DisplayConnectionDefinitionError {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_DisplayConnectionDefinitionError_raise_charptr(
                     c_theMessage.as_ptr(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Aspect_DisplayConnectionDefinitionError.hxx`:35 - `Aspect_DisplayConnectionDefinitionError::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_DisplayConnectionDefinitionError_raise_sstream(theMessage)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3994,8 +4293,11 @@ impl DisplayConnectionDefinitionError {
                     c_theMessage.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4013,8 +4315,11 @@ impl DisplayConnectionDefinitionError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4023,8 +4328,11 @@ impl DisplayConnectionDefinitionError {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_DisplayConnectionDefinitionError_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4034,188 +4342,197 @@ impl DisplayConnectionDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_DisplayConnectionDefinitionError_get_type_descriptor()
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_OutOfRange
     pub fn as_standard_out_of_range(&self) -> &crate::standard::OutOfRange {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_DisplayConnectionDefinitionError_as_Standard_OutOfRange(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_DisplayConnectionDefinitionError_as_Standard_OutOfRange(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_OutOfRange (mutable)
     pub fn as_standard_out_of_range_mut(&mut self) -> &mut crate::standard::OutOfRange {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_DisplayConnectionDefinitionError_as_Standard_OutOfRange_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_DisplayConnectionDefinitionError_as_Standard_OutOfRange_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_RangeError
     pub fn as_standard_range_error(&self) -> &crate::standard::RangeError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_DisplayConnectionDefinitionError_as_Standard_RangeError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_DisplayConnectionDefinitionError_as_Standard_RangeError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_RangeError (mutable)
     pub fn as_standard_range_error_mut(&mut self) -> &mut crate::standard::RangeError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_DisplayConnectionDefinitionError_as_Standard_RangeError_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_DisplayConnectionDefinitionError_as_Standard_RangeError_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_DisplayConnectionDefinitionError_as_Standard_DomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_DisplayConnectionDefinitionError_as_Standard_DomainError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_DisplayConnectionDefinitionError_as_Standard_DomainError_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_DisplayConnectionDefinitionError_as_Standard_DomainError_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_DisplayConnectionDefinitionError_as_Standard_Failure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_DisplayConnectionDefinitionError_as_Standard_Failure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_DisplayConnectionDefinitionError_as_Standard_Failure_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_DisplayConnectionDefinitionError_as_Standard_Failure_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_DisplayConnectionDefinitionError_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_DisplayConnectionDefinitionError_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_DisplayConnectionDefinitionError_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_DisplayConnectionDefinitionError_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAspectDisplayConnectionDefinitionError> {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_DisplayConnectionDefinitionError_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::Aspect_DisplayConnectionDefinitionError_to_handle(obj.into_raw())
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_DisplayConnectionDefinitionError_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_DisplayConnectionDefinitionError_inherited_Reraise(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_DisplayConnectionDefinitionError_inherited_Jump(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4228,8 +4545,11 @@ impl DisplayConnectionDefinitionError {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4242,8 +4562,11 @@ impl DisplayConnectionDefinitionError {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4255,11 +4578,14 @@ impl DisplayConnectionDefinitionError {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4272,20 +4598,25 @@ impl DisplayConnectionDefinitionError {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_DisplayConnectionDefinitionError_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4297,20 +4628,25 @@ impl DisplayConnectionDefinitionError {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_DisplayConnectionDefinitionError_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4326,87 +4662,89 @@ unsafe impl crate::CppDeletable for HandleAspectDisplayConnectionDefinitionError
 impl HandleAspectDisplayConnectionDefinitionError {
     /// Dereference this Handle to access the underlying Aspect_DisplayConnectionDefinitionError
     pub fn get(&self) -> &crate::ffi::Aspect_DisplayConnectionDefinitionError {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectDisplayConnectionDefinitionError_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleAspectDisplayConnectionDefinitionError_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Aspect_DisplayConnectionDefinitionError
     pub fn get_mut(&mut self) -> &mut crate::ffi::Aspect_DisplayConnectionDefinitionError {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectDisplayConnectionDefinitionError_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleAspectDisplayConnectionDefinitionError_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Aspect_DisplayConnectionDefinitionError> to Handle<Standard_OutOfRange>
     pub fn to_handle_out_of_range(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardOutOfRange> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectDisplayConnectionDefinitionError_to_HandleStandardOutOfRange(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectDisplayConnectionDefinitionError_to_HandleStandardOutOfRange(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_DisplayConnectionDefinitionError> to Handle<Standard_RangeError>
     pub fn to_handle_range_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardRangeError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectDisplayConnectionDefinitionError_to_HandleStandardRangeError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectDisplayConnectionDefinitionError_to_HandleStandardRangeError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_DisplayConnectionDefinitionError> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectDisplayConnectionDefinitionError_to_HandleStandardDomainError(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectDisplayConnectionDefinitionError_to_HandleStandardDomainError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_DisplayConnectionDefinitionError> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectDisplayConnectionDefinitionError_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectDisplayConnectionDefinitionError_to_HandleStandardFailure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_DisplayConnectionDefinitionError> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectDisplayConnectionDefinitionError_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectDisplayConnectionDefinitionError_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4431,8 +4769,10 @@ impl GenId {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_GenId_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4442,8 +4782,10 @@ impl GenId {
     pub fn new_int2(theLow: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_GenId_ctor_int2(theLow, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4451,8 +4793,10 @@ impl GenId {
     /// Free all identifiers - make the whole range available again.
     pub fn free(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_GenId_free(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_GenId_free(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4460,8 +4804,10 @@ impl GenId {
     /// Free specified identifier. Warning - method has no protection against double-freeing!
     pub fn free_int(&mut self, theId: i32) {
         {
-            unsafe { crate::ffi::Aspect_GenId_free_int(self as *mut Self, theId) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_GenId_free_int(self as *mut Self, theId) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4470,8 +4816,11 @@ impl GenId {
     pub fn has_free(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Aspect_GenId_has_free(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4480,8 +4829,11 @@ impl GenId {
     pub fn available(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Aspect_GenId_available(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4490,8 +4842,11 @@ impl GenId {
     pub fn lower(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Aspect_GenId_lower(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4501,8 +4856,11 @@ impl GenId {
     pub fn next(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Aspect_GenId_next(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4513,8 +4871,11 @@ impl GenId {
     pub fn next_int(&mut self, theId: &mut i32) -> bool {
         {
             let __result = unsafe { crate::ffi::Aspect_GenId_next_int(self as *mut Self, theId) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4523,8 +4884,11 @@ impl GenId {
     pub fn upper(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Aspect_GenId_upper(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -4551,8 +4915,10 @@ impl GradientBackground {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_GradientBackground_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4571,8 +4937,10 @@ impl GradientBackground {
                     theMethod.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4585,7 +4953,7 @@ impl GradientBackground {
         theMethod: crate::aspect::GradientFillMethod,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_GradientBackground_set_colors(
                     self as *mut Self,
                     theColor1,
@@ -4593,7 +4961,9 @@ impl GradientBackground {
                     theMethod.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4605,14 +4975,16 @@ impl GradientBackground {
         theColor2: &mut crate::quantity::Color,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_GradientBackground_colors(
                     self as *const Self,
                     theColor1,
                     theColor2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4623,40 +4995,45 @@ impl GradientBackground {
             let __result = unsafe {
                 crate::ffi::Aspect_GradientBackground_bg_gradient_fill_method(self as *const Self)
             };
-            crate::check_exception();
-            crate::aspect::GradientFillMethod::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::aspect::GradientFillMethod::try_from(__val).unwrap()
         }
     }
 
     /// Upcast to Aspect_Background
     pub fn as_background(&self) -> &Background {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_GradientBackground_as_Aspect_Background(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_GradientBackground_as_Aspect_Background(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Aspect_Background (mutable)
     pub fn as_background_mut(&mut self) -> &mut Background {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_GradientBackground_as_Aspect_Background_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_GradientBackground_as_Aspect_Background_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Aspect_Background.hxx`:41 - `Aspect_Background::SetColor()`
     pub fn set_color(&mut self, AColor: &crate::quantity::Color) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_GradientBackground_inherited_SetColor(self as *mut Self, AColor)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4666,8 +5043,11 @@ impl GradientBackground {
             let __result = unsafe {
                 crate::ffi::Aspect_GradientBackground_inherited_Color(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -4690,8 +5070,10 @@ impl GraphicDeviceDefinitionError {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_GraphicDeviceDefinitionError_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4702,8 +5084,10 @@ impl GraphicDeviceDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_GraphicDeviceDefinitionError_ctor_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4718,8 +5102,10 @@ impl GraphicDeviceDefinitionError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4729,8 +5115,11 @@ impl GraphicDeviceDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_GraphicDeviceDefinitionError_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4738,18 +5127,24 @@ impl GraphicDeviceDefinitionError {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_GraphicDeviceDefinitionError_raise_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Aspect_GraphicDeviceDefinitionError.hxx`:35 - `Aspect_GraphicDeviceDefinitionError::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::Aspect_GraphicDeviceDefinitionError_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Aspect_GraphicDeviceDefinitionError_raise_sstream(theMessage)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4764,8 +5159,11 @@ impl GraphicDeviceDefinitionError {
                     c_theMessage.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4783,8 +5181,11 @@ impl GraphicDeviceDefinitionError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4793,8 +5194,11 @@ impl GraphicDeviceDefinitionError {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_GraphicDeviceDefinitionError_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4803,184 +5207,190 @@ impl GraphicDeviceDefinitionError {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_GraphicDeviceDefinitionError_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_OutOfRange
     pub fn as_standard_out_of_range(&self) -> &crate::standard::OutOfRange {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_GraphicDeviceDefinitionError_as_Standard_OutOfRange(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_GraphicDeviceDefinitionError_as_Standard_OutOfRange(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_OutOfRange (mutable)
     pub fn as_standard_out_of_range_mut(&mut self) -> &mut crate::standard::OutOfRange {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_GraphicDeviceDefinitionError_as_Standard_OutOfRange_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_GraphicDeviceDefinitionError_as_Standard_OutOfRange_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_RangeError
     pub fn as_standard_range_error(&self) -> &crate::standard::RangeError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_GraphicDeviceDefinitionError_as_Standard_RangeError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_GraphicDeviceDefinitionError_as_Standard_RangeError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_RangeError (mutable)
     pub fn as_standard_range_error_mut(&mut self) -> &mut crate::standard::RangeError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_GraphicDeviceDefinitionError_as_Standard_RangeError_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_GraphicDeviceDefinitionError_as_Standard_RangeError_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_GraphicDeviceDefinitionError_as_Standard_DomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_GraphicDeviceDefinitionError_as_Standard_DomainError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_GraphicDeviceDefinitionError_as_Standard_DomainError_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_GraphicDeviceDefinitionError_as_Standard_DomainError_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_GraphicDeviceDefinitionError_as_Standard_Failure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_GraphicDeviceDefinitionError_as_Standard_Failure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_GraphicDeviceDefinitionError_as_Standard_Failure_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_GraphicDeviceDefinitionError_as_Standard_Failure_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_GraphicDeviceDefinitionError_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_GraphicDeviceDefinitionError_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_GraphicDeviceDefinitionError_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_GraphicDeviceDefinitionError_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAspectGraphicDeviceDefinitionError> {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_GraphicDeviceDefinitionError_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::Aspect_GraphicDeviceDefinitionError_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_GraphicDeviceDefinitionError_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_GraphicDeviceDefinitionError_inherited_Reraise(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_GraphicDeviceDefinitionError_inherited_Jump(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4993,8 +5403,11 @@ impl GraphicDeviceDefinitionError {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5007,8 +5420,11 @@ impl GraphicDeviceDefinitionError {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5018,11 +5434,14 @@ impl GraphicDeviceDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_GraphicDeviceDefinitionError_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5035,20 +5454,25 @@ impl GraphicDeviceDefinitionError {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_GraphicDeviceDefinitionError_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5060,20 +5484,25 @@ impl GraphicDeviceDefinitionError {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_GraphicDeviceDefinitionError_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5089,89 +5518,89 @@ unsafe impl crate::CppDeletable for HandleAspectGraphicDeviceDefinitionError {
 impl HandleAspectGraphicDeviceDefinitionError {
     /// Dereference this Handle to access the underlying Aspect_GraphicDeviceDefinitionError
     pub fn get(&self) -> &crate::ffi::Aspect_GraphicDeviceDefinitionError {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectGraphicDeviceDefinitionError_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleAspectGraphicDeviceDefinitionError_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Aspect_GraphicDeviceDefinitionError
     pub fn get_mut(&mut self) -> &mut crate::ffi::Aspect_GraphicDeviceDefinitionError {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectGraphicDeviceDefinitionError_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleAspectGraphicDeviceDefinitionError_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Aspect_GraphicDeviceDefinitionError> to Handle<Standard_OutOfRange>
     pub fn to_handle_out_of_range(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardOutOfRange> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectGraphicDeviceDefinitionError_to_HandleStandardOutOfRange(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectGraphicDeviceDefinitionError_to_HandleStandardOutOfRange(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_GraphicDeviceDefinitionError> to Handle<Standard_RangeError>
     pub fn to_handle_range_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardRangeError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectGraphicDeviceDefinitionError_to_HandleStandardRangeError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectGraphicDeviceDefinitionError_to_HandleStandardRangeError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_GraphicDeviceDefinitionError> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectGraphicDeviceDefinitionError_to_HandleStandardDomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectGraphicDeviceDefinitionError_to_HandleStandardDomainError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_GraphicDeviceDefinitionError> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectGraphicDeviceDefinitionError_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectGraphicDeviceDefinitionError_to_HandleStandardFailure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_GraphicDeviceDefinitionError> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectGraphicDeviceDefinitionError_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectGraphicDeviceDefinitionError_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5193,8 +5622,11 @@ impl Grid {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Aspect_Grid_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5202,8 +5634,11 @@ impl Grid {
     /// defines the x Origin of the grid.
     pub fn set_x_origin(&mut self, anOrigin: f64) {
         {
-            unsafe { crate::ffi::Aspect_Grid_set_x_origin(self as *mut Self, anOrigin) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_Grid_set_x_origin(self as *mut Self, anOrigin) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5211,8 +5646,11 @@ impl Grid {
     /// defines the y Origin of the grid.
     pub fn set_y_origin(&mut self, anOrigin: f64) {
         {
-            unsafe { crate::ffi::Aspect_Grid_set_y_origin(self as *mut Self, anOrigin) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_Grid_set_y_origin(self as *mut Self, anOrigin) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5220,8 +5658,11 @@ impl Grid {
     /// defines the orientation of the grid.
     pub fn set_rotation_angle(&mut self, anAngle: f64) {
         {
-            unsafe { crate::ffi::Aspect_Grid_set_rotation_angle(self as *mut Self, anAngle) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_Grid_set_rotation_angle(self as *mut Self, anAngle) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5229,8 +5670,10 @@ impl Grid {
     /// Rotate the grid from a relative angle.
     pub fn rotate(&mut self, anAngle: f64) {
         {
-            unsafe { crate::ffi::Aspect_Grid_rotate(self as *mut Self, anAngle) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_Grid_rotate(self as *mut Self, anAngle) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5238,8 +5681,10 @@ impl Grid {
     /// Translate the grid from a relative distance.
     pub fn translate(&mut self, aDx: f64, aDy: f64) {
         {
-            unsafe { crate::ffi::Aspect_Grid_translate(self as *mut Self, aDx, aDy) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_Grid_translate(self as *mut Self, aDx, aDy) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5251,8 +5696,12 @@ impl Grid {
         aTenthColor: &crate::quantity::Color,
     ) {
         {
-            unsafe { crate::ffi::Aspect_Grid_set_colors(self as *mut Self, aColor, aTenthColor) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Aspect_Grid_set_colors(self as *mut Self, aColor, aTenthColor)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5262,8 +5711,11 @@ impl Grid {
     /// X,Y.
     pub fn hit(&self, X: f64, Y: f64, gridX: &mut f64, gridY: &mut f64) {
         {
-            unsafe { crate::ffi::Aspect_Grid_hit(self as *const Self, X, Y, gridX, gridY) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_Grid_hit(self as *const Self, X, Y, gridX, gridY) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5271,8 +5723,11 @@ impl Grid {
     /// returns the point of the grid the closest to the point X,Y
     pub fn compute(&self, X: f64, Y: f64, gridX: &mut f64, gridY: &mut f64) {
         {
-            unsafe { crate::ffi::Aspect_Grid_compute(self as *const Self, X, Y, gridX, gridY) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_Grid_compute(self as *const Self, X, Y, gridX, gridY) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5282,8 +5737,10 @@ impl Grid {
     /// of the grid.
     pub fn activate(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_Grid_activate(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_Grid_activate(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5292,8 +5749,10 @@ impl Grid {
     /// gridx and gridx as the enter value X & Y.
     pub fn deactivate(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_Grid_deactivate(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_Grid_deactivate(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5302,8 +5761,11 @@ impl Grid {
     pub fn x_origin(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Aspect_Grid_x_origin(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5312,8 +5774,11 @@ impl Grid {
     pub fn y_origin(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Aspect_Grid_y_origin(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5322,8 +5787,11 @@ impl Grid {
     pub fn rotation_angle(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Aspect_Grid_rotation_angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5332,8 +5800,11 @@ impl Grid {
     pub fn is_active(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Aspect_Grid_is_active(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5345,8 +5816,11 @@ impl Grid {
         aTenthColor: &mut crate::quantity::Color,
     ) {
         {
-            unsafe { crate::ffi::Aspect_Grid_colors(self as *const Self, aColor, aTenthColor) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_Grid_colors(self as *const Self, aColor, aTenthColor) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5354,8 +5828,12 @@ impl Grid {
     /// Change the grid aspect.
     pub fn set_draw_mode(&mut self, aDrawMode: crate::aspect::GridDrawMode) {
         {
-            unsafe { crate::ffi::Aspect_Grid_set_draw_mode(self as *mut Self, aDrawMode.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Aspect_Grid_set_draw_mode(self as *mut Self, aDrawMode.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5364,8 +5842,11 @@ impl Grid {
     pub fn draw_mode(&self) -> crate::aspect::GridDrawMode {
         {
             let __result = unsafe { crate::ffi::Aspect_Grid_draw_mode(self as *const Self) };
-            crate::check_exception();
-            crate::aspect::GridDrawMode::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::aspect::GridDrawMode::try_from(__val).unwrap()
         }
     }
 
@@ -5373,8 +5854,10 @@ impl Grid {
     /// Display the grid at screen.
     pub fn display(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_Grid_display(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_Grid_display(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5382,8 +5865,10 @@ impl Grid {
     /// Erase the grid from screen.
     pub fn erase(&self) {
         {
-            unsafe { crate::ffi::Aspect_Grid_erase(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_Grid_erase(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5392,16 +5877,21 @@ impl Grid {
     pub fn is_displayed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Aspect_Grid_is_displayed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Aspect_Grid.hxx`:102 - `Aspect_Grid::Init()`
     pub fn init(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_Grid_init(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_Grid_init(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5409,8 +5899,11 @@ impl Grid {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Aspect_Grid_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5418,29 +5911,32 @@ impl Grid {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Aspect_Grid_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Aspect_Grid_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_Grid_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Aspect_Grid_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_Grid_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -5449,8 +5945,11 @@ impl Grid {
             let __result = unsafe {
                 crate::ffi::Aspect_Grid_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5459,8 +5958,11 @@ impl Grid {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_Grid_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5468,11 +5970,14 @@ impl Grid {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::Aspect_Grid_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5482,16 +5987,22 @@ impl Grid {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_Grid_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_Grid_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_Grid_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5500,16 +6011,21 @@ impl Grid {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_Grid_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Aspect_Grid_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_Grid_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5525,31 +6041,30 @@ unsafe impl crate::CppDeletable for HandleAspectGrid {
 impl HandleAspectGrid {
     /// Dereference this Handle to access the underlying Aspect_Grid
     pub fn get(&self) -> &crate::ffi::Aspect_Grid {
-        {
-            let __result = unsafe { crate::ffi::HandleAspectGrid_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleAspectGrid_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Aspect_Grid
     pub fn get_mut(&mut self) -> &mut crate::ffi::Aspect_Grid {
-        {
-            let __result = unsafe { crate::ffi::HandleAspectGrid_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleAspectGrid_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Aspect_Grid> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectGrid_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleAspectGrid_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Aspect_Grid> to Handle<Aspect_CircularGrid>
@@ -5558,14 +6073,16 @@ impl HandleAspectGrid {
     pub fn downcast_to_aspect_circular_grid(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectCircularGrid>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleAspectGrid_downcast_to_HandleAspectCircularGrid(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -5575,16 +6092,18 @@ impl HandleAspectGrid {
     pub fn downcast_to_aspect_rectangular_grid(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectRectangularGrid>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleAspectGrid_downcast_to_HandleAspectRectangularGrid(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -5594,14 +6113,16 @@ impl HandleAspectGrid {
     pub fn downcast_to_v3d_circular_grid(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dCircularGrid>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleAspectGrid_downcast_to_HandleV3dCircularGrid(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -5611,14 +6132,16 @@ impl HandleAspectGrid {
     pub fn downcast_to_v3d_rectangular_grid(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dRectangularGrid>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleAspectGrid_downcast_to_HandleV3dRectangularGrid(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -5641,8 +6164,10 @@ impl IdentDefinitionError {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_IdentDefinitionError_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5653,8 +6178,10 @@ impl IdentDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_IdentDefinitionError_ctor_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5669,8 +6196,10 @@ impl IdentDefinitionError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5680,8 +6209,11 @@ impl IdentDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_IdentDefinitionError_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5689,16 +6221,23 @@ impl IdentDefinitionError {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::Aspect_IdentDefinitionError_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Aspect_IdentDefinitionError_raise_charptr(c_theMessage.as_ptr())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Aspect_IdentDefinitionError.hxx`:35 - `Aspect_IdentDefinitionError::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::Aspect_IdentDefinitionError_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_IdentDefinitionError_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5711,8 +6250,11 @@ impl IdentDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_IdentDefinitionError_new_instance_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5730,8 +6272,11 @@ impl IdentDefinitionError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5739,8 +6284,11 @@ impl IdentDefinitionError {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Aspect_IdentDefinitionError_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5748,165 +6296,171 @@ impl IdentDefinitionError {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Aspect_IdentDefinitionError_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_OutOfRange
     pub fn as_standard_out_of_range(&self) -> &crate::standard::OutOfRange {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_IdentDefinitionError_as_Standard_OutOfRange(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_IdentDefinitionError_as_Standard_OutOfRange(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_OutOfRange (mutable)
     pub fn as_standard_out_of_range_mut(&mut self) -> &mut crate::standard::OutOfRange {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_IdentDefinitionError_as_Standard_OutOfRange_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_IdentDefinitionError_as_Standard_OutOfRange_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_RangeError
     pub fn as_standard_range_error(&self) -> &crate::standard::RangeError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_IdentDefinitionError_as_Standard_RangeError(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_IdentDefinitionError_as_Standard_RangeError(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_RangeError (mutable)
     pub fn as_standard_range_error_mut(&mut self) -> &mut crate::standard::RangeError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_IdentDefinitionError_as_Standard_RangeError_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_IdentDefinitionError_as_Standard_RangeError_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_IdentDefinitionError_as_Standard_DomainError(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_IdentDefinitionError_as_Standard_DomainError(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_IdentDefinitionError_as_Standard_DomainError_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_IdentDefinitionError_as_Standard_DomainError_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_IdentDefinitionError_as_Standard_Failure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_IdentDefinitionError_as_Standard_Failure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_IdentDefinitionError_as_Standard_Failure_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_IdentDefinitionError_as_Standard_Failure_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_IdentDefinitionError_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_IdentDefinitionError_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_IdentDefinitionError_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_IdentDefinitionError_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAspectIdentDefinitionError> {
-        {
-            let __result =
-                unsafe { crate::ffi::Aspect_IdentDefinitionError_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Aspect_IdentDefinitionError_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_IdentDefinitionError_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_IdentDefinitionError_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Aspect_IdentDefinitionError_inherited_Reraise(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_IdentDefinitionError_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Aspect_IdentDefinitionError_inherited_Jump(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5919,8 +6473,11 @@ impl IdentDefinitionError {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5933,8 +6490,11 @@ impl IdentDefinitionError {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5944,11 +6504,14 @@ impl IdentDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_IdentDefinitionError_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5959,20 +6522,25 @@ impl IdentDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_IdentDefinitionError_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_IdentDefinitionError_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5984,18 +6552,23 @@ impl IdentDefinitionError {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_IdentDefinitionError_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6011,87 +6584,87 @@ unsafe impl crate::CppDeletable for HandleAspectIdentDefinitionError {
 impl HandleAspectIdentDefinitionError {
     /// Dereference this Handle to access the underlying Aspect_IdentDefinitionError
     pub fn get(&self) -> &crate::ffi::Aspect_IdentDefinitionError {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleAspectIdentDefinitionError_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleAspectIdentDefinitionError_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Aspect_IdentDefinitionError
     pub fn get_mut(&mut self) -> &mut crate::ffi::Aspect_IdentDefinitionError {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleAspectIdentDefinitionError_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleAspectIdentDefinitionError_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Aspect_IdentDefinitionError> to Handle<Standard_OutOfRange>
     pub fn to_handle_out_of_range(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardOutOfRange> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectIdentDefinitionError_to_HandleStandardOutOfRange(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectIdentDefinitionError_to_HandleStandardOutOfRange(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_IdentDefinitionError> to Handle<Standard_RangeError>
     pub fn to_handle_range_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardRangeError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectIdentDefinitionError_to_HandleStandardRangeError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectIdentDefinitionError_to_HandleStandardRangeError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_IdentDefinitionError> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectIdentDefinitionError_to_HandleStandardDomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectIdentDefinitionError_to_HandleStandardDomainError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_IdentDefinitionError> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectIdentDefinitionError_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectIdentDefinitionError_to_HandleStandardFailure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_IdentDefinitionError> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectIdentDefinitionError_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectIdentDefinitionError_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6120,8 +6693,10 @@ impl NeutralWindow {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_NeutralWindow_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6130,8 +6705,11 @@ impl NeutralWindow {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_NeutralWindow_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6141,8 +6719,11 @@ impl NeutralWindow {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_NeutralWindow_native_handle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6153,8 +6734,11 @@ impl NeutralWindow {
             let __result = unsafe {
                 crate::ffi::Aspect_NeutralWindow_native_parent_handle(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6166,8 +6750,11 @@ impl NeutralWindow {
             let __result = unsafe {
                 crate::ffi::Aspect_NeutralWindow_set_native_handle(self as *mut Self, theWindow)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6177,8 +6764,11 @@ impl NeutralWindow {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_NeutralWindow_is_mapped(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6186,8 +6776,10 @@ impl NeutralWindow {
     /// Change window mapped flag to TRUE.
     pub fn map(&self) {
         {
-            unsafe { crate::ffi::Aspect_NeutralWindow_map(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_NeutralWindow_map(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6195,8 +6787,10 @@ impl NeutralWindow {
     /// Change window mapped flag to FALSE.
     pub fn unmap(&self) {
         {
-            unsafe { crate::ffi::Aspect_NeutralWindow_unmap(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_NeutralWindow_unmap(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6205,8 +6799,11 @@ impl NeutralWindow {
     pub fn do_resize(&mut self) -> crate::aspect::TypeOfResize {
         {
             let __result = unsafe { crate::ffi::Aspect_NeutralWindow_do_resize(self as *mut Self) };
-            crate::check_exception();
-            crate::aspect::TypeOfResize::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::aspect::TypeOfResize::try_from(__val).unwrap()
         }
     }
 
@@ -6216,8 +6813,11 @@ impl NeutralWindow {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_NeutralWindow_do_mapping(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6226,8 +6826,11 @@ impl NeutralWindow {
     pub fn ratio(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Aspect_NeutralWindow_ratio(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6235,7 +6838,7 @@ impl NeutralWindow {
     /// Return the window position.
     pub fn position(&self, theX1: &mut i32, theY1: &mut i32, theX2: &mut i32, theY2: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_NeutralWindow_position(
                     self as *const Self,
                     theX1,
@@ -6244,7 +6847,9 @@ impl NeutralWindow {
                     theY2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6256,8 +6861,11 @@ impl NeutralWindow {
             let __result = unsafe {
                 crate::ffi::Aspect_NeutralWindow_set_position_int2(self as *mut Self, theX1, theY1)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6275,8 +6883,11 @@ impl NeutralWindow {
                     theY2,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6284,10 +6895,12 @@ impl NeutralWindow {
     /// Return the window size.
     pub fn size(&self, theWidth: &mut i32, theHeight: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_NeutralWindow_size(self as *const Self, theWidth, theHeight)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6299,8 +6912,11 @@ impl NeutralWindow {
             let __result = unsafe {
                 crate::ffi::Aspect_NeutralWindow_set_size(self as *mut Self, theWidth, theHeight)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6308,8 +6924,11 @@ impl NeutralWindow {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Aspect_NeutralWindow_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6317,62 +6936,64 @@ impl NeutralWindow {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Aspect_NeutralWindow_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Aspect_Window
     pub fn as_window(&self) -> &Window {
-        {
-            let __result =
-                unsafe { crate::ffi::Aspect_NeutralWindow_as_Aspect_Window(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_NeutralWindow_as_Aspect_Window(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Aspect_Window (mutable)
     pub fn as_window_mut(&mut self) -> &mut Window {
-        {
-            let __result =
-                unsafe { crate::ffi::Aspect_NeutralWindow_as_Aspect_Window_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_NeutralWindow_as_Aspect_Window_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_NeutralWindow_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_NeutralWindow_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_NeutralWindow_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_NeutralWindow_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAspectNeutralWindow> {
-        {
-            let __result = unsafe { crate::ffi::Aspect_NeutralWindow_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Aspect_NeutralWindow_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Aspect_Window.hxx`:43 - `Aspect_Window::IsVirtual()`
@@ -6381,18 +7002,23 @@ impl NeutralWindow {
             let __result = unsafe {
                 crate::ffi::Aspect_NeutralWindow_inherited_IsVirtual(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Aspect_Window.hxx`:46 - `Aspect_Window::SetVirtual()`
     pub fn set_virtual(&mut self, theVirtual: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_NeutralWindow_inherited_SetVirtual(self as *mut Self, theVirtual)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6401,8 +7027,11 @@ impl NeutralWindow {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_NeutralWindow_inherited_TopLeft(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6412,8 +7041,11 @@ impl NeutralWindow {
             let __result = unsafe {
                 crate::ffi::Aspect_NeutralWindow_inherited_Dimensions(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6423,8 +7055,11 @@ impl NeutralWindow {
             let __result = unsafe {
                 crate::ffi::Aspect_NeutralWindow_inherited_DisplayConnection(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6434,8 +7069,11 @@ impl NeutralWindow {
             let __result = unsafe {
                 crate::ffi::Aspect_NeutralWindow_inherited_Background(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6445,8 +7083,11 @@ impl NeutralWindow {
             let __result = unsafe {
                 crate::ffi::Aspect_NeutralWindow_inherited_BackgroundFillMethod(self as *const Self)
             };
-            crate::check_exception();
-            crate::aspect::FillMethod::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::aspect::FillMethod::try_from(__val).unwrap()
         }
     }
 
@@ -6456,41 +7097,50 @@ impl NeutralWindow {
             let __result = unsafe {
                 crate::ffi::Aspect_NeutralWindow_inherited_GradientBackground(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Aspect_Window.hxx`:77 - `Aspect_Window::SetBackground()`
     pub fn set_background(&mut self, theBack: &Background) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_NeutralWindow_inherited_SetBackground(self as *mut Self, theBack)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Aspect_Window.hxx`:131 - `Aspect_Window::SetTitle()`
     pub fn set_title(&mut self, theTitle: &crate::t_collection::AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_NeutralWindow_inherited_SetTitle(self as *mut Self, theTitle)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Aspect_Window.hxx`:141 - `Aspect_Window::InvalidateContent()`
     pub fn invalidate_content(&mut self, theDisp: &crate::ffi::HandleAspectDisplayConnection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_NeutralWindow_inherited_InvalidateContent(
                     self as *mut Self,
                     theDisp,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6500,8 +7150,11 @@ impl NeutralWindow {
             let __result = unsafe {
                 crate::ffi::Aspect_NeutralWindow_inherited_DevicePixelRatio(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6517,8 +7170,11 @@ impl NeutralWindow {
                     thePnt,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6534,8 +7190,11 @@ impl NeutralWindow {
                     thePnt,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6545,8 +7204,11 @@ impl NeutralWindow {
             let __result = unsafe {
                 crate::ffi::Aspect_NeutralWindow_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6556,8 +7218,11 @@ impl NeutralWindow {
             let __result = unsafe {
                 crate::ffi::Aspect_NeutralWindow_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6566,11 +7231,14 @@ impl NeutralWindow {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_NeutralWindow_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6581,18 +7249,23 @@ impl NeutralWindow {
             let __result = unsafe {
                 crate::ffi::Aspect_NeutralWindow_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_NeutralWindow_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6602,16 +7275,22 @@ impl NeutralWindow {
             let __result = unsafe {
                 crate::ffi::Aspect_NeutralWindow_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Aspect_NeutralWindow_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_NeutralWindow_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6627,46 +7306,42 @@ unsafe impl crate::CppDeletable for HandleAspectNeutralWindow {
 impl HandleAspectNeutralWindow {
     /// Dereference this Handle to access the underlying Aspect_NeutralWindow
     pub fn get(&self) -> &crate::ffi::Aspect_NeutralWindow {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleAspectNeutralWindow_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleAspectNeutralWindow_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Aspect_NeutralWindow
     pub fn get_mut(&mut self) -> &mut crate::ffi::Aspect_NeutralWindow {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleAspectNeutralWindow_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleAspectNeutralWindow_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Aspect_NeutralWindow> to Handle<Aspect_Window>
     pub fn to_handle_window(&self) -> crate::OwnedPtr<crate::ffi::HandleAspectWindow> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectNeutralWindow_to_HandleAspectWindow(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectNeutralWindow_to_HandleAspectWindow(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_NeutralWindow> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectNeutralWindow_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectNeutralWindow_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6703,8 +7378,10 @@ impl OpenVRSession {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_OpenVRSession_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6713,8 +7390,11 @@ impl OpenVRSession {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_OpenVRSession_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6723,8 +7403,11 @@ impl OpenVRSession {
     pub fn is_open(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Aspect_OpenVRSession_is_open(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6733,8 +7416,11 @@ impl OpenVRSession {
     pub fn open(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::Aspect_OpenVRSession_open(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6742,8 +7428,10 @@ impl OpenVRSession {
     /// Release session.
     pub fn close(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_OpenVRSession_close(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_OpenVRSession_close(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6753,8 +7441,11 @@ impl OpenVRSession {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_OpenVRSession_wait_poses(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6765,8 +7456,11 @@ impl OpenVRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_OpenVRSession_recommended_viewport(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6784,8 +7478,11 @@ impl OpenVRSession {
                     theEye.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6806,8 +7503,11 @@ impl OpenVRSession {
                     theZFar,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6818,8 +7518,11 @@ impl OpenVRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_OpenVRSession_has_projection_frustums(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6827,8 +7530,11 @@ impl OpenVRSession {
     /// Receive XR events.
     pub fn process_events(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_OpenVRSession_process_events(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_OpenVRSession_process_events(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6858,8 +7564,11 @@ impl OpenVRSession {
                     theEye.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6873,8 +7582,11 @@ impl OpenVRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_OpenVRSession_get_string(self as *const Self, theInfo)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6888,8 +7600,11 @@ impl OpenVRSession {
                     theDevice.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6906,8 +7621,11 @@ impl OpenVRSession {
                     theAction,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6924,8 +7642,11 @@ impl OpenVRSession {
                     theAction,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6942,8 +7663,11 @@ impl OpenVRSession {
                     theAction,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6954,10 +7678,12 @@ impl OpenVRSession {
         theOrigin: &crate::ffi::Aspect_XRSession_TrackingUniverseOrigin,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_OpenVRSession_set_tracking_origin(self as *mut Self, theOrigin)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6965,8 +7691,11 @@ impl OpenVRSession {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Aspect_OpenVRSession_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6974,8 +7703,11 @@ impl OpenVRSession {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Aspect_OpenVRSession_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6985,64 +7717,64 @@ impl OpenVRSession {
     pub fn is_hmd_present() -> bool {
         {
             let __result = unsafe { crate::ffi::Aspect_OpenVRSession_is_hmd_present() };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to Aspect_XRSession
     pub fn as_xr_session(&self) -> &XRSession {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_OpenVRSession_as_Aspect_XRSession(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_OpenVRSession_as_Aspect_XRSession(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Aspect_XRSession (mutable)
     pub fn as_xr_session_mut(&mut self) -> &mut XRSession {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_OpenVRSession_as_Aspect_XRSession_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_OpenVRSession_as_Aspect_XRSession_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_OpenVRSession_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_OpenVRSession_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_OpenVRSession_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_OpenVRSession_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAspectOpenVRSession> {
-        {
-            let __result = unsafe { crate::ffi::Aspect_OpenVRSession_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Aspect_OpenVRSession_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Aspect_XRSession.hxx`:68 - `Aspect_XRSession::HeadToEyeTransform()`
@@ -7057,8 +7789,11 @@ impl OpenVRSession {
                     theEye.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7068,21 +7803,26 @@ impl OpenVRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_OpenVRSession_inherited_UnitFactor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Aspect_XRSession.hxx`:104 - `Aspect_XRSession::SetUnitFactor()`
     pub fn set_unit_factor(&mut self, theFactor: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_OpenVRSession_inherited_SetUnitFactor(
                     self as *mut Self,
                     theFactor,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7091,8 +7831,11 @@ impl OpenVRSession {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_OpenVRSession_inherited_Aspect(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7102,8 +7845,11 @@ impl OpenVRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_OpenVRSession_inherited_FieldOfView(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7112,8 +7858,11 @@ impl OpenVRSession {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_OpenVRSession_inherited_IOD(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7123,8 +7872,11 @@ impl OpenVRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_OpenVRSession_inherited_DisplayFrequency(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7140,8 +7892,11 @@ impl OpenVRSession {
                     theEye.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7150,8 +7905,11 @@ impl OpenVRSession {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_OpenVRSession_inherited_HeadPose(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7161,8 +7919,11 @@ impl OpenVRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_OpenVRSession_inherited_LeftHandPose(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7172,8 +7933,11 @@ impl OpenVRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_OpenVRSession_inherited_RightHandPose(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7183,8 +7947,11 @@ impl OpenVRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_OpenVRSession_inherited_TrackedPoses(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7197,8 +7964,11 @@ impl OpenVRSession {
                     theDevice,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7216,8 +7986,11 @@ impl OpenVRSession {
                     theTexture,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7228,27 +8001,31 @@ impl OpenVRSession {
         theParams: &XRHapticActionData,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_OpenVRSession_inherited_TriggerHapticVibrationAction(
                     self as *mut Self,
                     theAction,
                     theParams,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Aspect_XRSession.hxx`:202 - `Aspect_XRSession::AbortHapticVibrationAction()`
     pub fn abort_haptic_vibration_action(&mut self, theAction: &crate::ffi::HandleAspectXRAction) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_OpenVRSession_inherited_AbortHapticVibrationAction(
                     self as *mut Self,
                     theAction,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7260,8 +8037,11 @@ impl OpenVRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_OpenVRSession_inherited_TrackingOrigin(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7279,8 +8059,11 @@ impl OpenVRSession {
                     theAction.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7290,8 +8073,11 @@ impl OpenVRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_OpenVRSession_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7301,8 +8087,11 @@ impl OpenVRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_OpenVRSession_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7311,11 +8100,14 @@ impl OpenVRSession {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_OpenVRSession_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7326,18 +8118,23 @@ impl OpenVRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_OpenVRSession_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_OpenVRSession_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7347,16 +8144,22 @@ impl OpenVRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_OpenVRSession_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Aspect_OpenVRSession_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_OpenVRSession_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7372,46 +8175,42 @@ unsafe impl crate::CppDeletable for HandleAspectOpenVRSession {
 impl HandleAspectOpenVRSession {
     /// Dereference this Handle to access the underlying Aspect_OpenVRSession
     pub fn get(&self) -> &crate::ffi::Aspect_OpenVRSession {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleAspectOpenVRSession_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleAspectOpenVRSession_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Aspect_OpenVRSession
     pub fn get_mut(&mut self) -> &mut crate::ffi::Aspect_OpenVRSession {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleAspectOpenVRSession_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleAspectOpenVRSession_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Aspect_OpenVRSession> to Handle<Aspect_XRSession>
     pub fn to_handle_xr_session(&self) -> crate::OwnedPtr<crate::ffi::HandleAspectXRSession> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectOpenVRSession_to_HandleAspectXRSession(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectOpenVRSession_to_HandleAspectXRSession(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_OpenVRSession> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectOpenVRSession_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectOpenVRSession_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -7434,8 +8233,11 @@ impl RectangularGrid {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_RectangularGrid_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7443,8 +8245,11 @@ impl RectangularGrid {
     /// defines the x step of the grid.
     pub fn set_x_step(&mut self, aStep: f64) {
         {
-            unsafe { crate::ffi::Aspect_RectangularGrid_set_x_step(self as *mut Self, aStep) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_RectangularGrid_set_x_step(self as *mut Self, aStep) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7452,8 +8257,11 @@ impl RectangularGrid {
     /// defines the y step of the grid.
     pub fn set_y_step(&mut self, aStep: f64) {
         {
-            unsafe { crate::ffi::Aspect_RectangularGrid_set_y_step(self as *mut Self, aStep) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_RectangularGrid_set_y_step(self as *mut Self, aStep) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7463,10 +8271,12 @@ impl RectangularGrid {
     /// the second angle is given relatively to the vertical.
     pub fn set_angle(&mut self, anAngle1: f64, anAngle2: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_RectangularGrid_set_angle(self as *mut Self, anAngle1, anAngle2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7480,7 +8290,7 @@ impl RectangularGrid {
         RotationAngle: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_RectangularGrid_set_grid_values(
                     self as *mut Self,
                     XOrigin,
@@ -7490,7 +8300,9 @@ impl RectangularGrid {
                     RotationAngle,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7498,10 +8310,12 @@ impl RectangularGrid {
     /// returns the point of the grid the closest to the point X,Y
     pub fn compute(&self, X: f64, Y: f64, gridX: &mut f64, gridY: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_RectangularGrid_compute(self as *const Self, X, Y, gridX, gridY)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7511,8 +8325,11 @@ impl RectangularGrid {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_RectangularGrid_x_step(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7522,8 +8339,11 @@ impl RectangularGrid {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_RectangularGrid_y_step(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7533,8 +8353,11 @@ impl RectangularGrid {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_RectangularGrid_first_angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7544,16 +8367,21 @@ impl RectangularGrid {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_RectangularGrid_second_angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Aspect_RectangularGrid.hxx`:75 - `Aspect_RectangularGrid::Init()`
     pub fn init(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_RectangularGrid_init(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_RectangularGrid_init(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7561,8 +8389,11 @@ impl RectangularGrid {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Aspect_RectangularGrid_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -7570,103 +8401,116 @@ impl RectangularGrid {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Aspect_RectangularGrid_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Aspect_Grid
     pub fn as_grid(&self) -> &Grid {
-        {
-            let __result =
-                unsafe { crate::ffi::Aspect_RectangularGrid_as_Aspect_Grid(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_RectangularGrid_as_Aspect_Grid(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Aspect_Grid (mutable)
     pub fn as_grid_mut(&mut self) -> &mut Grid {
-        {
-            let __result =
-                unsafe { crate::ffi::Aspect_RectangularGrid_as_Aspect_Grid_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_RectangularGrid_as_Aspect_Grid_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_RectangularGrid_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_RectangularGrid_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_RectangularGrid_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_RectangularGrid_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:31 - `Aspect_Grid::SetXOrigin()`
     pub fn set_x_origin(&mut self, anOrigin: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_RectangularGrid_inherited_SetXOrigin(self as *mut Self, anOrigin)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:34 - `Aspect_Grid::SetYOrigin()`
     pub fn set_y_origin(&mut self, anOrigin: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_RectangularGrid_inherited_SetYOrigin(self as *mut Self, anOrigin)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:37 - `Aspect_Grid::SetRotationAngle()`
     pub fn set_rotation_angle(&mut self, anAngle: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_RectangularGrid_inherited_SetRotationAngle(
                     self as *mut Self,
                     anAngle,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:40 - `Aspect_Grid::Rotate()`
     pub fn rotate(&mut self, anAngle: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_RectangularGrid_inherited_Rotate(self as *mut Self, anAngle)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:43 - `Aspect_Grid::Translate()`
     pub fn translate(&mut self, aDx: f64, aDy: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_RectangularGrid_inherited_Translate(self as *mut Self, aDx, aDy)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7677,21 +8521,23 @@ impl RectangularGrid {
         aTenthColor: &crate::quantity::Color,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_RectangularGrid_inherited_SetColors(
                     self as *mut Self,
                     aColor,
                     aTenthColor,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:52 - `Aspect_Grid::Hit()`
     pub fn hit(&self, X: f64, Y: f64, gridX: &mut f64, gridY: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_RectangularGrid_inherited_Hit(
                     self as *const Self,
                     X,
@@ -7700,23 +8546,32 @@ impl RectangularGrid {
                     gridY,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:66 - `Aspect_Grid::Activate()`
     pub fn activate(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_RectangularGrid_inherited_Activate(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_RectangularGrid_inherited_Activate(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:70 - `Aspect_Grid::Deactivate()`
     pub fn deactivate(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_RectangularGrid_inherited_Deactivate(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Aspect_RectangularGrid_inherited_Deactivate(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7726,8 +8581,11 @@ impl RectangularGrid {
             let __result = unsafe {
                 crate::ffi::Aspect_RectangularGrid_inherited_XOrigin(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7737,8 +8595,11 @@ impl RectangularGrid {
             let __result = unsafe {
                 crate::ffi::Aspect_RectangularGrid_inherited_YOrigin(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7748,8 +8609,11 @@ impl RectangularGrid {
             let __result = unsafe {
                 crate::ffi::Aspect_RectangularGrid_inherited_RotationAngle(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7759,8 +8623,11 @@ impl RectangularGrid {
             let __result = unsafe {
                 crate::ffi::Aspect_RectangularGrid_inherited_IsActive(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7771,27 +8638,31 @@ impl RectangularGrid {
         aTenthColor: &mut crate::quantity::Color,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_RectangularGrid_inherited_Colors(
                     self as *const Self,
                     aColor,
                     aTenthColor,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:88 - `Aspect_Grid::SetDrawMode()`
     pub fn set_draw_mode(&mut self, aDrawMode: crate::aspect::GridDrawMode) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_RectangularGrid_inherited_SetDrawMode(
                     self as *mut Self,
                     aDrawMode.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7801,24 +8672,33 @@ impl RectangularGrid {
             let __result = unsafe {
                 crate::ffi::Aspect_RectangularGrid_inherited_DrawMode(self as *const Self)
             };
-            crate::check_exception();
-            crate::aspect::GridDrawMode::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::aspect::GridDrawMode::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:94 - `Aspect_Grid::Display()`
     pub fn display(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_RectangularGrid_inherited_Display(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_RectangularGrid_inherited_Display(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:97 - `Aspect_Grid::Erase()`
     pub fn erase(&self) {
         {
-            unsafe { crate::ffi::Aspect_RectangularGrid_inherited_Erase(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_RectangularGrid_inherited_Erase(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7828,8 +8708,11 @@ impl RectangularGrid {
             let __result = unsafe {
                 crate::ffi::Aspect_RectangularGrid_inherited_IsDisplayed(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7842,8 +8725,11 @@ impl RectangularGrid {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7853,8 +8739,11 @@ impl RectangularGrid {
             let __result = unsafe {
                 crate::ffi::Aspect_RectangularGrid_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7863,11 +8752,14 @@ impl RectangularGrid {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_RectangularGrid_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7878,18 +8770,23 @@ impl RectangularGrid {
             let __result = unsafe {
                 crate::ffi::Aspect_RectangularGrid_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_RectangularGrid_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7899,16 +8796,22 @@ impl RectangularGrid {
             let __result = unsafe {
                 crate::ffi::Aspect_RectangularGrid_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Aspect_RectangularGrid_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_RectangularGrid_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7924,46 +8827,43 @@ unsafe impl crate::CppDeletable for HandleAspectRectangularGrid {
 impl HandleAspectRectangularGrid {
     /// Dereference this Handle to access the underlying Aspect_RectangularGrid
     pub fn get(&self) -> &crate::ffi::Aspect_RectangularGrid {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleAspectRectangularGrid_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleAspectRectangularGrid_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Aspect_RectangularGrid
     pub fn get_mut(&mut self) -> &mut crate::ffi::Aspect_RectangularGrid {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleAspectRectangularGrid_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleAspectRectangularGrid_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Aspect_RectangularGrid> to Handle<Aspect_Grid>
     pub fn to_handle_grid(&self) -> crate::OwnedPtr<crate::ffi::HandleAspectGrid> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectRectangularGrid_to_HandleAspectGrid(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectRectangularGrid_to_HandleAspectGrid(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_RectangularGrid> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectRectangularGrid_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectRectangularGrid_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Aspect_RectangularGrid> to Handle<V3d_RectangularGrid>
@@ -7972,16 +8872,18 @@ impl HandleAspectRectangularGrid {
     pub fn downcast_to_rectangular_grid(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dRectangularGrid>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleAspectRectangularGrid_downcast_to_HandleV3dRectangularGrid(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -8006,8 +8908,10 @@ impl ScrollDelta {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_ScrollDelta_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8022,8 +8926,10 @@ impl ScrollDelta {
             let __result = unsafe {
                 crate::ffi::Aspect_ScrollDelta_ctor_vec2i_real_uint(thePnt, theValue, theFlags)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8033,8 +8939,10 @@ impl ScrollDelta {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_ScrollDelta_ctor_real_uint(theValue, theFlags) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8043,8 +8951,11 @@ impl ScrollDelta {
     pub fn has_point(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Aspect_ScrollDelta_has_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8052,8 +8963,10 @@ impl ScrollDelta {
     /// Reset at point.
     pub fn reset_point(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_ScrollDelta_reset_point(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_ScrollDelta_reset_point(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8080,8 +8993,10 @@ impl SkydomeBackground {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_SkydomeBackground_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8112,8 +9027,10 @@ impl SkydomeBackground {
                     theSize,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8124,8 +9041,11 @@ impl SkydomeBackground {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_SkydomeBackground_sun_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8136,8 +9056,11 @@ impl SkydomeBackground {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_SkydomeBackground_cloudiness(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8148,8 +9071,11 @@ impl SkydomeBackground {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_SkydomeBackground_time_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8160,8 +9086,11 @@ impl SkydomeBackground {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_SkydomeBackground_fogginess(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8171,8 +9100,11 @@ impl SkydomeBackground {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_SkydomeBackground_size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8181,13 +9113,15 @@ impl SkydomeBackground {
     /// Sun direction with negative Y component represents moon with (-X, -Y, -Z) direction.
     pub fn set_sun_direction(&mut self, theSunDirection: &crate::gp::Dir) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_SkydomeBackground_set_sun_direction(
                     self as *mut Self,
                     theSunDirection,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8196,13 +9130,15 @@ impl SkydomeBackground {
     /// 0.0 means no clouds at all and 1.0 - high clody.
     pub fn set_cloudiness(&mut self, theCloudiness: f32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_SkydomeBackground_set_cloudiness(
                     self as *mut Self,
                     theCloudiness,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8211,10 +9147,12 @@ impl SkydomeBackground {
     /// This value might be tweaked to slightly change appearance of clouds.
     pub fn set_time_parameter(&mut self, theTime: f32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_SkydomeBackground_set_time_parameter(self as *mut Self, theTime)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8223,10 +9161,12 @@ impl SkydomeBackground {
     /// 0.0 means no fog and 1.0 - high fogginess
     pub fn set_fogginess(&mut self, theFogginess: f32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_SkydomeBackground_set_fogginess(self as *mut Self, theFogginess)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8234,8 +9174,12 @@ impl SkydomeBackground {
     /// Set size of cubemap. By default this value is 512
     pub fn set_size(&mut self, theSize: i32) {
         {
-            unsafe { crate::ffi::Aspect_SkydomeBackground_set_size(self as *mut Self, theSize) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Aspect_SkydomeBackground_set_size(self as *mut Self, theSize)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8260,8 +9204,10 @@ impl Touch {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_Touch_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8274,8 +9220,10 @@ impl Touch {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_Touch_ctor_vec2d_bool(thePnt, theIsPreciseDevice) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8285,8 +9233,10 @@ impl Touch {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_Touch_ctor_real2_bool(theX, theY, theIsPreciseDevice) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8295,8 +9245,11 @@ impl Touch {
     pub fn delta(&self) -> crate::OwnedPtr<crate::ffi::Graphic3d_Vec2d> {
         {
             let __result = unsafe { crate::ffi::Aspect_Touch_delta(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -8321,8 +9274,10 @@ impl TrackedDevicePose {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_TrackedDevicePose_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -8347,8 +9302,10 @@ impl VKeySet {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_VKeySet_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8356,8 +9313,11 @@ impl VKeySet {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Aspect_VKeySet_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8366,8 +9326,11 @@ impl VKeySet {
     pub fn modifiers(&self) -> u32 {
         {
             let __result = unsafe { crate::ffi::Aspect_VKeySet_modifiers(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8377,8 +9340,11 @@ impl VKeySet {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_VKeySet_down_time(self as *const Self, theKey) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8388,8 +9354,11 @@ impl VKeySet {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_VKeySet_time_up(self as *const Self, theKey) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8399,8 +9368,11 @@ impl VKeySet {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_VKeySet_is_free_key(self as *const Self, theKey) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8410,8 +9382,11 @@ impl VKeySet {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_VKeySet_is_key_down(self as *const Self, theKey) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8422,8 +9397,11 @@ impl VKeySet {
     pub fn mutex(&mut self) -> &mut crate::standard::Mutex {
         {
             let __result = unsafe { crate::ffi::Aspect_VKeySet_mutex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -8431,8 +9409,10 @@ impl VKeySet {
     /// Reset the key state into unpressed state.
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_VKeySet_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_VKeySet_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8442,10 +9422,12 @@ impl VKeySet {
     /// @param theTime event timestamp
     pub fn key_down(&mut self, theKey: u32, theTime: f64, thePressure: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_VKeySet_key_down(self as *mut Self, theKey, theTime, thePressure)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8455,8 +9437,11 @@ impl VKeySet {
     /// @param theTime event timestamp
     pub fn key_up(&mut self, theKey: u32, theTime: f64) {
         {
-            unsafe { crate::ffi::Aspect_VKeySet_key_up(self as *mut Self, theKey, theTime) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_VKeySet_key_up(self as *mut Self, theKey, theTime) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8470,7 +9455,7 @@ impl VKeySet {
         thePressure: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_VKeySet_key_from_axis(
                     self as *mut Self,
                     theNegative,
@@ -8479,7 +9464,9 @@ impl VKeySet {
                     thePressure,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8504,8 +9491,11 @@ impl VKeySet {
                     theDuration,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8533,8 +9523,11 @@ impl VKeySet {
                     thePressure,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8542,8 +9535,11 @@ impl VKeySet {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Aspect_VKeySet_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8551,40 +9547,43 @@ impl VKeySet {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Aspect_VKeySet_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Aspect_VKeySet_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_VKeySet_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Aspect_VKeySet_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_VKeySet_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAspectVKeySet> {
-        {
-            let __result = unsafe { crate::ffi::Aspect_VKeySet_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Aspect_VKeySet_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -8593,8 +9592,11 @@ impl VKeySet {
             let __result = unsafe {
                 crate::ffi::Aspect_VKeySet_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8604,8 +9606,11 @@ impl VKeySet {
             let __result = unsafe {
                 crate::ffi::Aspect_VKeySet_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8614,11 +9619,14 @@ impl VKeySet {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_VKeySet_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -8628,16 +9636,23 @@ impl VKeySet {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_VKeySet_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_VKeySet_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Aspect_VKeySet_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8647,16 +9662,21 @@ impl VKeySet {
             let __result = unsafe {
                 crate::ffi::Aspect_VKeySet_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Aspect_VKeySet_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_VKeySet_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8672,31 +9692,31 @@ unsafe impl crate::CppDeletable for HandleAspectVKeySet {
 impl HandleAspectVKeySet {
     /// Dereference this Handle to access the underlying Aspect_VKeySet
     pub fn get(&self) -> &crate::ffi::Aspect_VKeySet {
-        {
-            let __result = unsafe { crate::ffi::HandleAspectVKeySet_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleAspectVKeySet_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Aspect_VKeySet
     pub fn get_mut(&mut self) -> &mut crate::ffi::Aspect_VKeySet {
-        {
-            let __result = unsafe { crate::ffi::HandleAspectVKeySet_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleAspectVKeySet_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Aspect_VKeySet> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectVKeySet_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectVKeySet_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -8719,8 +9739,11 @@ impl Window {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Aspect_Window_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8729,8 +9752,11 @@ impl Window {
     pub fn is_virtual(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Aspect_Window_is_virtual(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8738,8 +9764,11 @@ impl Window {
     /// Setup the virtual state
     pub fn set_virtual(&mut self, theVirtual: bool) {
         {
-            unsafe { crate::ffi::Aspect_Window_set_virtual(self as *mut Self, theVirtual) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_Window_set_virtual(self as *mut Self, theVirtual) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8748,8 +9777,11 @@ impl Window {
     pub fn top_left(&self) -> crate::OwnedPtr<crate::ffi::Graphic3d_Vec2i> {
         {
             let __result = unsafe { crate::ffi::Aspect_Window_top_left(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8758,8 +9790,11 @@ impl Window {
     pub fn dimensions(&self) -> crate::OwnedPtr<crate::ffi::Graphic3d_Vec2i> {
         {
             let __result = unsafe { crate::ffi::Aspect_Window_dimensions(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8769,8 +9804,11 @@ impl Window {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_Window_display_connection(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8779,8 +9817,11 @@ impl Window {
     pub fn background(&self) -> crate::OwnedPtr<Background> {
         {
             let __result = unsafe { crate::ffi::Aspect_Window_background(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8790,8 +9831,11 @@ impl Window {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_Window_background_fill_method(self as *const Self) };
-            crate::check_exception();
-            crate::aspect::FillMethod::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::aspect::FillMethod::try_from(__val).unwrap()
         }
     }
 
@@ -8801,8 +9845,11 @@ impl Window {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_Window_gradient_background(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8810,10 +9857,12 @@ impl Window {
     /// Modifies the window background.
     pub fn set_background_background(&mut self, theBack: &Background) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_Window_set_background_background(self as *mut Self, theBack)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8821,8 +9870,12 @@ impl Window {
     /// Modifies the window background.
     pub fn set_background_color(&mut self, theColor: &crate::quantity::Color) {
         {
-            unsafe { crate::ffi::Aspect_Window_set_background_color(self as *mut Self, theColor) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Aspect_Window_set_background_color(self as *mut Self, theColor)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8830,13 +9883,15 @@ impl Window {
     /// Modifies the window gradient background.
     pub fn set_background_gradientbackground(&mut self, theBackground: &GradientBackground) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_Window_set_background_gradientbackground(
                     self as *mut Self,
                     theBackground,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8849,7 +9904,7 @@ impl Window {
         theFillMethod: crate::aspect::GradientFillMethod,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_Window_set_background_color2_gradientfillmethod(
                     self as *mut Self,
                     theFirstColor,
@@ -8857,7 +9912,9 @@ impl Window {
                     theFillMethod.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8867,8 +9924,11 @@ impl Window {
     pub fn is_mapped(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Aspect_Window_is_mapped(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8876,8 +9936,10 @@ impl Window {
     /// Opens the window <me>.
     pub fn map(&self) {
         {
-            unsafe { crate::ffi::Aspect_Window_map(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_Window_map(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8885,8 +9947,10 @@ impl Window {
     /// Closes the window <me>.
     pub fn unmap(&self) {
         {
-            unsafe { crate::ffi::Aspect_Window_unmap(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_Window_unmap(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8895,8 +9959,11 @@ impl Window {
     pub fn do_resize(&mut self) -> crate::aspect::TypeOfResize {
         {
             let __result = unsafe { crate::ffi::Aspect_Window_do_resize(self as *mut Self) };
-            crate::check_exception();
-            crate::aspect::TypeOfResize::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::aspect::TypeOfResize::try_from(__val).unwrap()
         }
     }
 
@@ -8906,8 +9973,11 @@ impl Window {
     pub fn do_mapping(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Aspect_Window_do_mapping(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8917,8 +9987,11 @@ impl Window {
     pub fn ratio(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Aspect_Window_ratio(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8926,8 +9999,11 @@ impl Window {
     /// Returns The Window POSITION in PIXEL
     pub fn position(&self, X1: &mut i32, Y1: &mut i32, X2: &mut i32, Y2: &mut i32) {
         {
-            unsafe { crate::ffi::Aspect_Window_position(self as *const Self, X1, Y1, X2, Y2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_Window_position(self as *const Self, X1, Y1, X2, Y2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8935,8 +10011,11 @@ impl Window {
     /// Returns The Window SIZE in PIXEL
     pub fn size(&self, Width: &mut i32, Height: &mut i32) {
         {
-            unsafe { crate::ffi::Aspect_Window_size(self as *const Self, Width, Height) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_Window_size(self as *const Self, Width, Height) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8945,8 +10024,11 @@ impl Window {
     pub fn native_handle(&self) -> std::ffi::c_ulong {
         {
             let __result = unsafe { crate::ffi::Aspect_Window_native_handle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8956,8 +10038,11 @@ impl Window {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_Window_native_parent_handle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8965,8 +10050,10 @@ impl Window {
     /// Sets window title.
     pub fn set_title(&mut self, theTitle: &crate::t_collection::AsciiString) {
         {
-            unsafe { crate::ffi::Aspect_Window_set_title(self as *mut Self, theTitle) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_Window_set_title(self as *mut Self, theTitle) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8981,8 +10068,11 @@ impl Window {
     /// NULL can be passed instead otherwise.
     pub fn invalidate_content(&mut self, theDisp: &crate::ffi::HandleAspectDisplayConnection) {
         {
-            unsafe { crate::ffi::Aspect_Window_invalidate_content(self as *mut Self, theDisp) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_Window_invalidate_content(self as *mut Self, theDisp) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8992,8 +10082,11 @@ impl Window {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_Window_device_pixel_ratio(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9007,8 +10100,11 @@ impl Window {
             let __result = unsafe {
                 crate::ffi::Aspect_Window_convert_point_to_backing(self as *const Self, thePnt)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9022,8 +10118,11 @@ impl Window {
             let __result = unsafe {
                 crate::ffi::Aspect_Window_convert_point_from_backing(self as *const Self, thePnt)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9031,8 +10130,11 @@ impl Window {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Aspect_Window_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -9040,29 +10142,32 @@ impl Window {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Aspect_Window_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Aspect_Window_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_Window_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Aspect_Window_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_Window_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -9071,8 +10176,11 @@ impl Window {
             let __result = unsafe {
                 crate::ffi::Aspect_Window_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9081,8 +10189,11 @@ impl Window {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_Window_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9090,11 +10201,14 @@ impl Window {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::Aspect_Window_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -9104,16 +10218,23 @@ impl Window {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_Window_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_Window_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Aspect_Window_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9123,16 +10244,21 @@ impl Window {
             let __result = unsafe {
                 crate::ffi::Aspect_Window_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Aspect_Window_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_Window_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -9148,31 +10274,31 @@ unsafe impl crate::CppDeletable for HandleAspectWindow {
 impl HandleAspectWindow {
     /// Dereference this Handle to access the underlying Aspect_Window
     pub fn get(&self) -> &crate::ffi::Aspect_Window {
-        {
-            let __result = unsafe { crate::ffi::HandleAspectWindow_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleAspectWindow_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Aspect_Window
     pub fn get_mut(&mut self) -> &mut crate::ffi::Aspect_Window {
-        {
-            let __result = unsafe { crate::ffi::HandleAspectWindow_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleAspectWindow_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Aspect_Window> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectWindow_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectWindow_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Aspect_Window> to Handle<Aspect_NeutralWindow>
@@ -9181,16 +10307,18 @@ impl HandleAspectWindow {
     pub fn downcast_to_neutral_window(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectNeutralWindow>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleAspectWindow_downcast_to_HandleAspectNeutralWindow(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -9220,8 +10348,10 @@ impl WindowDefinitionError {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_WindowDefinitionError_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9232,8 +10362,10 @@ impl WindowDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_WindowDefinitionError_ctor_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9248,8 +10380,10 @@ impl WindowDefinitionError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9259,8 +10393,11 @@ impl WindowDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_WindowDefinitionError_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9268,18 +10405,23 @@ impl WindowDefinitionError {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_WindowDefinitionError_raise_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Aspect_WindowDefinitionError.hxx`:35 - `Aspect_WindowDefinitionError::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::Aspect_WindowDefinitionError_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_WindowDefinitionError_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9292,8 +10434,11 @@ impl WindowDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_WindowDefinitionError_new_instance_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9311,8 +10456,11 @@ impl WindowDefinitionError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9320,8 +10468,11 @@ impl WindowDefinitionError {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Aspect_WindowDefinitionError_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -9330,171 +10481,172 @@ impl WindowDefinitionError {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_WindowDefinitionError_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_OutOfRange
     pub fn as_standard_out_of_range(&self) -> &crate::standard::OutOfRange {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_WindowDefinitionError_as_Standard_OutOfRange(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_WindowDefinitionError_as_Standard_OutOfRange(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_OutOfRange (mutable)
     pub fn as_standard_out_of_range_mut(&mut self) -> &mut crate::standard::OutOfRange {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_WindowDefinitionError_as_Standard_OutOfRange_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_WindowDefinitionError_as_Standard_OutOfRange_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_RangeError
     pub fn as_standard_range_error(&self) -> &crate::standard::RangeError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_WindowDefinitionError_as_Standard_RangeError(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_WindowDefinitionError_as_Standard_RangeError(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_RangeError (mutable)
     pub fn as_standard_range_error_mut(&mut self) -> &mut crate::standard::RangeError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_WindowDefinitionError_as_Standard_RangeError_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_WindowDefinitionError_as_Standard_RangeError_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_WindowDefinitionError_as_Standard_DomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_WindowDefinitionError_as_Standard_DomainError(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_WindowDefinitionError_as_Standard_DomainError_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_WindowDefinitionError_as_Standard_DomainError_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_WindowDefinitionError_as_Standard_Failure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_WindowDefinitionError_as_Standard_Failure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_WindowDefinitionError_as_Standard_Failure_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_WindowDefinitionError_as_Standard_Failure_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_WindowDefinitionError_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_WindowDefinitionError_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_WindowDefinitionError_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_WindowDefinitionError_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAspectWindowDefinitionError> {
-        {
-            let __result =
-                unsafe { crate::ffi::Aspect_WindowDefinitionError_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::Aspect_WindowDefinitionError_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_WindowDefinitionError_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_WindowDefinitionError_inherited_Reraise(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_WindowDefinitionError_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Aspect_WindowDefinitionError_inherited_Jump(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9507,8 +10659,11 @@ impl WindowDefinitionError {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9521,8 +10676,11 @@ impl WindowDefinitionError {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9532,11 +10690,14 @@ impl WindowDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_WindowDefinitionError_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -9547,20 +10708,25 @@ impl WindowDefinitionError {
             let __result = unsafe {
                 crate::ffi::Aspect_WindowDefinitionError_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_WindowDefinitionError_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9572,18 +10738,23 @@ impl WindowDefinitionError {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_WindowDefinitionError_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -9599,87 +10770,87 @@ unsafe impl crate::CppDeletable for HandleAspectWindowDefinitionError {
 impl HandleAspectWindowDefinitionError {
     /// Dereference this Handle to access the underlying Aspect_WindowDefinitionError
     pub fn get(&self) -> &crate::ffi::Aspect_WindowDefinitionError {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleAspectWindowDefinitionError_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleAspectWindowDefinitionError_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Aspect_WindowDefinitionError
     pub fn get_mut(&mut self) -> &mut crate::ffi::Aspect_WindowDefinitionError {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleAspectWindowDefinitionError_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleAspectWindowDefinitionError_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Aspect_WindowDefinitionError> to Handle<Standard_OutOfRange>
     pub fn to_handle_out_of_range(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardOutOfRange> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectWindowDefinitionError_to_HandleStandardOutOfRange(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectWindowDefinitionError_to_HandleStandardOutOfRange(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_WindowDefinitionError> to Handle<Standard_RangeError>
     pub fn to_handle_range_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardRangeError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectWindowDefinitionError_to_HandleStandardRangeError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectWindowDefinitionError_to_HandleStandardRangeError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_WindowDefinitionError> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectWindowDefinitionError_to_HandleStandardDomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectWindowDefinitionError_to_HandleStandardDomainError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_WindowDefinitionError> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectWindowDefinitionError_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectWindowDefinitionError_to_HandleStandardFailure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_WindowDefinitionError> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectWindowDefinitionError_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectWindowDefinitionError_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -9701,8 +10872,10 @@ impl WindowError {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_WindowError_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9712,8 +10885,10 @@ impl WindowError {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_WindowError_ctor_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9728,8 +10903,10 @@ impl WindowError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9738,8 +10915,11 @@ impl WindowError {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_WindowError_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9747,16 +10927,21 @@ impl WindowError {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::Aspect_WindowError_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_WindowError_raise_charptr(c_theMessage.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Aspect_WindowError.hxx`:35 - `Aspect_WindowError::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::Aspect_WindowError_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_WindowError_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9769,8 +10954,11 @@ impl WindowError {
             let __result = unsafe {
                 crate::ffi::Aspect_WindowError_new_instance_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9788,8 +10976,11 @@ impl WindowError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9797,8 +10988,11 @@ impl WindowError {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Aspect_WindowError_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -9806,154 +11000,156 @@ impl WindowError {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Aspect_WindowError_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_OutOfRange
     pub fn as_standard_out_of_range(&self) -> &crate::standard::OutOfRange {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_WindowError_as_Standard_OutOfRange(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_WindowError_as_Standard_OutOfRange(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_OutOfRange (mutable)
     pub fn as_standard_out_of_range_mut(&mut self) -> &mut crate::standard::OutOfRange {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_WindowError_as_Standard_OutOfRange_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_WindowError_as_Standard_OutOfRange_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_RangeError
     pub fn as_standard_range_error(&self) -> &crate::standard::RangeError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_WindowError_as_Standard_RangeError(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_WindowError_as_Standard_RangeError(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_RangeError (mutable)
     pub fn as_standard_range_error_mut(&mut self) -> &mut crate::standard::RangeError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_WindowError_as_Standard_RangeError_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_WindowError_as_Standard_RangeError_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_WindowError_as_Standard_DomainError(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_WindowError_as_Standard_DomainError(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_WindowError_as_Standard_DomainError_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Aspect_WindowError_as_Standard_DomainError_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::Aspect_WindowError_as_Standard_Failure(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_WindowError_as_Standard_Failure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_WindowError_as_Standard_Failure_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_WindowError_as_Standard_Failure_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_WindowError_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_WindowError_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_WindowError_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_WindowError_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAspectWindowError> {
-        {
-            let __result = unsafe { crate::ffi::Aspect_WindowError_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Aspect_WindowError_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_WindowError_inherited_Print(self as *const Self, theStream)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_WindowError_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_WindowError_inherited_Reraise(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_WindowError_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_WindowError_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9963,8 +11159,11 @@ impl WindowError {
             let __result = unsafe {
                 crate::ffi::Aspect_WindowError_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9974,8 +11173,11 @@ impl WindowError {
             let __result = unsafe {
                 crate::ffi::Aspect_WindowError_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9984,11 +11186,14 @@ impl WindowError {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_WindowError_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -9999,18 +11204,23 @@ impl WindowError {
             let __result = unsafe {
                 crate::ffi::Aspect_WindowError_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_WindowError_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10020,16 +11230,22 @@ impl WindowError {
             let __result = unsafe {
                 crate::ffi::Aspect_WindowError_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Aspect_WindowError_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_WindowError_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -10045,78 +11261,75 @@ unsafe impl crate::CppDeletable for HandleAspectWindowError {
 impl HandleAspectWindowError {
     /// Dereference this Handle to access the underlying Aspect_WindowError
     pub fn get(&self) -> &crate::ffi::Aspect_WindowError {
-        {
-            let __result = unsafe { crate::ffi::HandleAspectWindowError_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleAspectWindowError_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Aspect_WindowError
     pub fn get_mut(&mut self) -> &mut crate::ffi::Aspect_WindowError {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleAspectWindowError_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleAspectWindowError_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Aspect_WindowError> to Handle<Standard_OutOfRange>
     pub fn to_handle_out_of_range(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardOutOfRange> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectWindowError_to_HandleStandardOutOfRange(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectWindowError_to_HandleStandardOutOfRange(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_WindowError> to Handle<Standard_RangeError>
     pub fn to_handle_range_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardRangeError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectWindowError_to_HandleStandardRangeError(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectWindowError_to_HandleStandardRangeError(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_WindowError> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectWindowError_to_HandleStandardDomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectWindowError_to_HandleStandardDomainError(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_WindowError> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectWindowError_to_HandleStandardFailure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectWindowError_to_HandleStandardFailure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Aspect_WindowError> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectWindowError_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectWindowError_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -10141,8 +11354,11 @@ impl WindowInputListener {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_WindowInputListener_event_time(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10150,8 +11366,11 @@ impl WindowInputListener {
     /// Handle expose event (window content has been invalidation and should be redrawn).
     pub fn process_expose(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_WindowInputListener_process_expose(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_WindowInputListener_process_expose(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10159,13 +11378,15 @@ impl WindowInputListener {
     /// Handle window resize event.
     pub fn process_configure(&mut self, theIsResized: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_WindowInputListener_process_configure(
                     self as *mut Self,
                     theIsResized,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10173,8 +11394,11 @@ impl WindowInputListener {
     /// Handle window input event immediately (flush input buffer or ignore).
     pub fn process_input(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_WindowInputListener_process_input(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_WindowInputListener_process_input(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10182,13 +11406,15 @@ impl WindowInputListener {
     /// Handle focus event.
     pub fn process_focus(&mut self, theIsActivated: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_WindowInputListener_process_focus(
                     self as *mut Self,
                     theIsActivated,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10196,8 +11422,11 @@ impl WindowInputListener {
     /// Handle window close event.
     pub fn process_close(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_WindowInputListener_process_close(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_WindowInputListener_process_close(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10208,8 +11437,11 @@ impl WindowInputListener {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_WindowInputListener_keys(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10219,8 +11451,11 @@ impl WindowInputListener {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_WindowInputListener_change_keys(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -10231,7 +11466,7 @@ impl WindowInputListener {
     /// @param theTime event timestamp
     pub fn key_down(&mut self, theKey: u32, theTime: f64, thePressure: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_WindowInputListener_key_down(
                     self as *mut Self,
                     theKey,
@@ -10239,7 +11474,9 @@ impl WindowInputListener {
                     thePressure,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10250,10 +11487,12 @@ impl WindowInputListener {
     /// @param theTime event timestamp
     pub fn key_up(&mut self, theKey: u32, theTime: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_WindowInputListener_key_up(self as *mut Self, theKey, theTime)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10268,7 +11507,7 @@ impl WindowInputListener {
         thePressure: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_WindowInputListener_key_from_axis(
                     self as *mut Self,
                     theNegative,
@@ -10277,7 +11516,9 @@ impl WindowInputListener {
                     thePressure,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10295,8 +11536,11 @@ impl WindowInputListener {
                     theDelta,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10326,8 +11570,11 @@ impl WindowInputListener {
                     theIsEmulated,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10358,8 +11605,11 @@ impl WindowInputListener {
                     theIsEmulated,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10390,8 +11640,11 @@ impl WindowInputListener {
                     theIsEmulated,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10422,8 +11675,11 @@ impl WindowInputListener {
                     theIsEmulated,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10434,8 +11690,11 @@ impl WindowInputListener {
             let __result = unsafe {
                 crate::ffi::Aspect_WindowInputListener_pressed_mouse_buttons(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10446,8 +11705,11 @@ impl WindowInputListener {
             let __result = unsafe {
                 crate::ffi::Aspect_WindowInputListener_last_mouse_flags(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10458,8 +11720,11 @@ impl WindowInputListener {
             let __result = unsafe {
                 crate::ffi::Aspect_WindowInputListener_last_mouse_position(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10471,8 +11736,11 @@ impl WindowInputListener {
             let __result = unsafe {
                 crate::ffi::Aspect_WindowInputListener_has_touch_points(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10482,8 +11750,11 @@ impl WindowInputListener {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_WindowInputListener_touch_points(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10500,7 +11771,7 @@ impl WindowInputListener {
         theClearBefore: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_WindowInputListener_add_touch_point(
                     self as *mut Self,
                     theId,
@@ -10508,7 +11779,9 @@ impl WindowInputListener {
                     theClearBefore,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10527,8 +11800,11 @@ impl WindowInputListener {
                     theClearSelectPnts,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10540,14 +11816,16 @@ impl WindowInputListener {
     /// @param thePnt touch coordinates
     pub fn update_touch_point(&mut self, theId: usize, thePnt: &crate::ffi::Graphic3d_Vec2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_WindowInputListener_update_touch_point(
                     self as *mut Self,
                     theId,
                     thePnt,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10561,8 +11839,11 @@ impl WindowInputListener {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10570,13 +11851,15 @@ impl WindowInputListener {
     /// Set acceleration ratio for translation event.
     pub fn set3d_mouse_translation_scale(&mut self, theScale: f32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_WindowInputListener_set3d_mouse_translation_scale(
                     self as *mut Self,
                     theScale,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10589,8 +11872,11 @@ impl WindowInputListener {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10598,13 +11884,15 @@ impl WindowInputListener {
     /// Set acceleration ratio for rotation event.
     pub fn set3d_mouse_rotation_scale(&mut self, theScale: f32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_WindowInputListener_set3d_mouse_rotation_scale(
                     self as *mut Self,
                     theScale,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10615,8 +11903,11 @@ impl WindowInputListener {
             let __result = unsafe {
                 crate::ffi::Aspect_WindowInputListener_to3d_mouse_precise_input(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10624,13 +11915,15 @@ impl WindowInputListener {
     /// Set quadric acceleration flag.
     pub fn set3d_mouse_precise_input(&mut self, theIsQuadric: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_WindowInputListener_set3d_mouse_precise_input(
                     self as *mut Self,
                     theIsQuadric,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10641,8 +11934,11 @@ impl WindowInputListener {
             let __result = unsafe {
                 crate::ffi::Aspect_WindowInputListener_get3d_mouse_is_no_rotate(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10655,8 +11951,11 @@ impl WindowInputListener {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -10667,8 +11966,11 @@ impl WindowInputListener {
             let __result = unsafe {
                 crate::ffi::Aspect_WindowInputListener_get3d_mouse_to_reverse(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10679,8 +11981,11 @@ impl WindowInputListener {
             let __result = unsafe {
                 crate::ffi::Aspect_WindowInputListener_change3d_mouse_to_reverse(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 }
@@ -10732,8 +12037,10 @@ impl XRAction {
             let __result = unsafe {
                 crate::ffi::Aspect_XRAction_ctor_asciistring_xractiontype(theId, theType.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10741,8 +12048,11 @@ impl XRAction {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Aspect_XRAction_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10751,8 +12061,11 @@ impl XRAction {
     pub fn id(&self) -> &crate::t_collection::AsciiString {
         {
             let __result = unsafe { crate::ffi::Aspect_XRAction_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10761,8 +12074,11 @@ impl XRAction {
     pub fn type_(&self) -> crate::aspect::XRActionType {
         {
             let __result = unsafe { crate::ffi::Aspect_XRAction_type_(self as *const Self) };
-            crate::check_exception();
-            crate::aspect::XRActionType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::aspect::XRActionType::try_from(__val).unwrap()
         }
     }
 
@@ -10771,8 +12087,11 @@ impl XRAction {
     pub fn is_valid(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Aspect_XRAction_is_valid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10781,8 +12100,11 @@ impl XRAction {
     pub fn raw_handle(&self) -> u64 {
         {
             let __result = unsafe { crate::ffi::Aspect_XRAction_raw_handle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10790,8 +12112,11 @@ impl XRAction {
     /// Set action handle.
     pub fn set_raw_handle(&mut self, theHande: u64) {
         {
-            unsafe { crate::ffi::Aspect_XRAction_set_raw_handle(self as *mut Self, theHande) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_XRAction_set_raw_handle(self as *mut Self, theHande) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10799,8 +12124,11 @@ impl XRAction {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Aspect_XRAction_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -10808,40 +12136,43 @@ impl XRAction {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Aspect_XRAction_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Aspect_XRAction_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_XRAction_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Aspect_XRAction_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_XRAction_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAspectXRAction> {
-        {
-            let __result = unsafe { crate::ffi::Aspect_XRAction_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Aspect_XRAction_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -10850,8 +12181,11 @@ impl XRAction {
             let __result = unsafe {
                 crate::ffi::Aspect_XRAction_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10861,8 +12195,11 @@ impl XRAction {
             let __result = unsafe {
                 crate::ffi::Aspect_XRAction_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10871,11 +12208,14 @@ impl XRAction {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_XRAction_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -10885,16 +12225,23 @@ impl XRAction {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_XRAction_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_XRAction_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Aspect_XRAction_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10904,16 +12251,22 @@ impl XRAction {
             let __result = unsafe {
                 crate::ffi::Aspect_XRAction_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Aspect_XRAction_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_XRAction_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -10929,31 +12282,31 @@ unsafe impl crate::CppDeletable for HandleAspectXRAction {
 impl HandleAspectXRAction {
     /// Dereference this Handle to access the underlying Aspect_XRAction
     pub fn get(&self) -> &crate::ffi::Aspect_XRAction {
-        {
-            let __result = unsafe { crate::ffi::HandleAspectXRAction_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleAspectXRAction_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Aspect_XRAction
     pub fn get_mut(&mut self) -> &mut crate::ffi::Aspect_XRAction {
-        {
-            let __result = unsafe { crate::ffi::HandleAspectXRAction_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleAspectXRAction_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Aspect_XRAction> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectXRAction_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectXRAction_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -10977,8 +12330,10 @@ impl XRActionSet {
     pub fn new_asciistring(theId: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_XRActionSet_ctor_asciistring(theId) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10987,8 +12342,11 @@ impl XRActionSet {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_XRActionSet_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10997,8 +12355,11 @@ impl XRActionSet {
     pub fn id(&self) -> &crate::t_collection::AsciiString {
         {
             let __result = unsafe { crate::ffi::Aspect_XRActionSet_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11008,8 +12369,11 @@ impl XRActionSet {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_XRActionSet_raw_handle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11017,8 +12381,12 @@ impl XRActionSet {
     /// Set action handle.
     pub fn set_raw_handle(&mut self, theHande: u64) {
         {
-            unsafe { crate::ffi::Aspect_XRActionSet_set_raw_handle(self as *mut Self, theHande) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Aspect_XRActionSet_set_raw_handle(self as *mut Self, theHande)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11026,8 +12394,11 @@ impl XRActionSet {
     /// Add action.
     pub fn add_action(&mut self, theAction: &crate::ffi::HandleAspectXRAction) {
         {
-            unsafe { crate::ffi::Aspect_XRActionSet_add_action(self as *mut Self, theAction) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_XRActionSet_add_action(self as *mut Self, theAction) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11036,8 +12407,11 @@ impl XRActionSet {
     pub fn actions(&self) -> &crate::ffi::Aspect_XRActionMap {
         {
             let __result = unsafe { crate::ffi::Aspect_XRActionSet_actions(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11045,8 +12419,11 @@ impl XRActionSet {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Aspect_XRActionSet_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -11054,42 +12431,43 @@ impl XRActionSet {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Aspect_XRActionSet_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_XRActionSet_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_XRActionSet_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_XRActionSet_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_XRActionSet_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAspectXRActionSet> {
-        {
-            let __result = unsafe { crate::ffi::Aspect_XRActionSet_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Aspect_XRActionSet_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -11098,8 +12476,11 @@ impl XRActionSet {
             let __result = unsafe {
                 crate::ffi::Aspect_XRActionSet_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11109,8 +12490,11 @@ impl XRActionSet {
             let __result = unsafe {
                 crate::ffi::Aspect_XRActionSet_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11119,11 +12503,14 @@ impl XRActionSet {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_XRActionSet_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -11134,18 +12521,23 @@ impl XRActionSet {
             let __result = unsafe {
                 crate::ffi::Aspect_XRActionSet_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_XRActionSet_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11155,16 +12547,22 @@ impl XRActionSet {
             let __result = unsafe {
                 crate::ffi::Aspect_XRActionSet_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Aspect_XRActionSet_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_XRActionSet_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -11180,32 +12578,31 @@ unsafe impl crate::CppDeletable for HandleAspectXRActionSet {
 impl HandleAspectXRActionSet {
     /// Dereference this Handle to access the underlying Aspect_XRActionSet
     pub fn get(&self) -> &crate::ffi::Aspect_XRActionSet {
-        {
-            let __result = unsafe { crate::ffi::HandleAspectXRActionSet_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleAspectXRActionSet_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Aspect_XRActionSet
     pub fn get_mut(&mut self) -> &mut crate::ffi::Aspect_XRActionSet {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleAspectXRActionSet_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleAspectXRActionSet_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Aspect_XRActionSet> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectXRActionSet_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectXRActionSet_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -11229,8 +12626,10 @@ impl XRAnalogActionData {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_XRAnalogActionData_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11240,8 +12639,11 @@ impl XRAnalogActionData {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_XRAnalogActionData_is_changed(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -11294,8 +12696,10 @@ impl XRPoseActionData {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Aspect_XRPoseActionData_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -11320,8 +12724,11 @@ impl XRSession {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_XRSession_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11330,8 +12737,11 @@ impl XRSession {
     pub fn is_open(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Aspect_XRSession_is_open(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11340,8 +12750,11 @@ impl XRSession {
     pub fn open(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::Aspect_XRSession_open(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11349,8 +12762,10 @@ impl XRSession {
     /// Release session.
     pub fn close(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_XRSession_close(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_XRSession_close(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11359,8 +12774,11 @@ impl XRSession {
     pub fn wait_poses(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::Aspect_XRSession_wait_poses(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11370,8 +12788,11 @@ impl XRSession {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_XRSession_recommended_viewport(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11388,8 +12809,11 @@ impl XRSession {
                     theEye.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11406,8 +12830,11 @@ impl XRSession {
                     theEye.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11428,8 +12855,11 @@ impl XRSession {
                     theZFar,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11441,8 +12871,11 @@ impl XRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_XRSession_has_projection_frustums(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11450,8 +12883,10 @@ impl XRSession {
     /// Receive XR events.
     pub fn process_events(&mut self) {
         {
-            unsafe { crate::ffi::Aspect_XRSession_process_events(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Aspect_XRSession_process_events(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11481,8 +12916,11 @@ impl XRSession {
                     theEye.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11491,8 +12929,11 @@ impl XRSession {
     pub fn unit_factor(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Aspect_XRSession_unit_factor(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11500,8 +12941,12 @@ impl XRSession {
     /// Set unit scale factor.
     pub fn set_unit_factor(&mut self, theFactor: f64) {
         {
-            unsafe { crate::ffi::Aspect_XRSession_set_unit_factor(self as *mut Self, theFactor) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Aspect_XRSession_set_unit_factor(self as *mut Self, theFactor)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11510,8 +12955,11 @@ impl XRSession {
     pub fn aspect(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Aspect_XRSession_aspect(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11521,8 +12969,11 @@ impl XRSession {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_XRSession_field_of_view(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11532,8 +12983,11 @@ impl XRSession {
     pub fn iod(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Aspect_XRSession_iod(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11543,8 +12997,11 @@ impl XRSession {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_XRSession_display_frequency(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11559,8 +13016,11 @@ impl XRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_XRSession_projection_frustum(self as *const Self, theEye.into())
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11573,8 +13033,11 @@ impl XRSession {
     pub fn head_pose(&self) -> &crate::gp::Trsf {
         {
             let __result = unsafe { crate::ffi::Aspect_XRSession_head_pose(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11584,8 +13047,11 @@ impl XRSession {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_XRSession_left_hand_pose(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11595,8 +13061,11 @@ impl XRSession {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_XRSession_right_hand_pose(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11606,8 +13075,11 @@ impl XRSession {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_XRSession_tracked_poses(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11618,8 +13090,11 @@ impl XRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_XRSession_has_tracked_pose(self as *const Self, theDevice)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11633,8 +13108,11 @@ impl XRSession {
                     theDevice.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11656,8 +13134,11 @@ impl XRSession {
                     theTexture,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11682,8 +13163,11 @@ impl XRSession {
                     theTexture,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11698,8 +13182,11 @@ impl XRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_XRSession_get_digital_action_data(self as *const Self, theAction)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11714,8 +13201,11 @@ impl XRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_XRSession_get_analog_action_data(self as *const Self, theAction)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11734,8 +13224,11 @@ impl XRSession {
                     theAction,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11747,14 +13240,16 @@ impl XRSession {
         theParams: &XRHapticActionData,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_XRSession_trigger_haptic_vibration_action(
                     self as *mut Self,
                     theAction,
                     theParams,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11762,13 +13257,15 @@ impl XRSession {
     /// Abort vibration.
     pub fn abort_haptic_vibration_action(&mut self, theAction: &crate::ffi::HandleAspectXRAction) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_XRSession_abort_haptic_vibration_action(
                     self as *mut Self,
                     theAction,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11780,8 +13277,11 @@ impl XRSession {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_XRSession_tracking_origin(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11792,10 +13292,12 @@ impl XRSession {
         theOrigin: &crate::ffi::Aspect_XRSession_TrackingUniverseOrigin,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_XRSession_set_tracking_origin(self as *mut Self, theOrigin)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11814,8 +13316,11 @@ impl XRSession {
                     theAction.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11828,8 +13333,11 @@ impl XRSession {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_XRSession_get_string(self as *const Self, theInfo) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11837,8 +13345,11 @@ impl XRSession {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Aspect_XRSession_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -11846,30 +13357,32 @@ impl XRSession {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Aspect_XRSession_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Aspect_XRSession_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_XRSession_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Aspect_XRSession_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Aspect_XRSession_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -11878,8 +13391,11 @@ impl XRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_XRSession_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11889,8 +13405,11 @@ impl XRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_XRSession_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11899,11 +13418,14 @@ impl XRSession {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_XRSession_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -11913,18 +13435,23 @@ impl XRSession {
         {
             let __result =
                 unsafe { crate::ffi::Aspect_XRSession_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Aspect_XRSession_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11934,16 +13461,22 @@ impl XRSession {
             let __result = unsafe {
                 crate::ffi::Aspect_XRSession_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Aspect_XRSession_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Aspect_XRSession_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -11959,31 +13492,31 @@ unsafe impl crate::CppDeletable for HandleAspectXRSession {
 impl HandleAspectXRSession {
     /// Dereference this Handle to access the underlying Aspect_XRSession
     pub fn get(&self) -> &crate::ffi::Aspect_XRSession {
-        {
-            let __result = unsafe { crate::ffi::HandleAspectXRSession_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleAspectXRSession_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Aspect_XRSession
     pub fn get_mut(&mut self) -> &mut crate::ffi::Aspect_XRSession {
-        {
-            let __result = unsafe { crate::ffi::HandleAspectXRSession_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleAspectXRSession_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Aspect_XRSession> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAspectXRSession_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAspectXRSession_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Aspect_XRSession> to Handle<Aspect_OpenVRSession>
@@ -11992,16 +13525,18 @@ impl HandleAspectXRSession {
     pub fn downcast_to_open_vr_session(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleAspectOpenVRSession>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleAspectXRSession_downcast_to_HandleAspectOpenVRSession(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }

@@ -11,8 +11,11 @@
 pub fn id_string() -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
     {
         let __result = unsafe { crate::ffi::XmlObjMgt_id_string() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `XmlObjMgt.hxx`:43 - `XmlObjMgt::SetExtendedString`
@@ -23,8 +26,11 @@ pub fn set_extended_string(
 ) -> bool {
     {
         let __result = unsafe { crate::ffi::XmlObjMgt_set_extended_string(theElement, theString) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `XmlObjMgt.hxx`:48 - `XmlObjMgt::GetExtendedString`
@@ -35,8 +41,11 @@ pub fn get_extended_string(
 ) -> bool {
     {
         let __result = unsafe { crate::ffi::XmlObjMgt_get_extended_string(theElement, theString) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `XmlObjMgt.hxx`:52 - `XmlObjMgt::GetStringValue`
@@ -46,8 +55,11 @@ pub fn get_string_value(
 ) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
     {
         let __result = unsafe { crate::ffi::XmlObjMgt_get_string_value(theElement) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `XmlObjMgt.hxx`:58 - `XmlObjMgt::SetStringValue`
@@ -61,8 +73,11 @@ pub fn set_string_value(
     isClearText: bool,
 ) {
     {
-        unsafe { crate::ffi::XmlObjMgt_set_string_value(theElement, theData, isClearText) };
-        crate::check_exception();
+        let __exc =
+            unsafe { crate::ffi::XmlObjMgt_set_string_value(theElement, theData, isClearText) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `XmlObjMgt.hxx`:64 - `XmlObjMgt::GetTagEntryString`
@@ -75,8 +90,11 @@ pub fn get_tag_entry_string(
     {
         let __result =
             unsafe { crate::ffi::XmlObjMgt_get_tag_entry_string(theTarget, theTagEntry) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `XmlObjMgt.hxx`:69 - `XmlObjMgt::SetTagEntryString`
@@ -87,8 +105,10 @@ pub fn set_tag_entry_string(
     theTagEntry: &crate::t_collection::AsciiString,
 ) {
     {
-        unsafe { crate::ffi::XmlObjMgt_set_tag_entry_string(theSource, theTagEntry) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::XmlObjMgt_set_tag_entry_string(theSource, theTagEntry) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `XmlObjMgt.hxx`:72 - `XmlObjMgt::FindChildElement`
@@ -98,8 +118,11 @@ pub fn find_child_element(
 ) -> crate::OwnedPtr<crate::ldom::Element> {
     {
         let __result = unsafe { crate::ffi::XmlObjMgt_find_child_element(theSource, theObjId) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `XmlObjMgt.hxx`:75 - `XmlObjMgt::FindChildByRef`
@@ -109,8 +132,11 @@ pub fn find_child_by_ref(
 ) -> crate::OwnedPtr<crate::ldom::Element> {
     {
         let __result = unsafe { crate::ffi::XmlObjMgt_find_child_by_ref(theSource, theRefName) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `XmlObjMgt.hxx`:78 - `XmlObjMgt::FindChildByName`
@@ -120,8 +146,11 @@ pub fn find_child_by_name(
 ) -> crate::OwnedPtr<crate::ldom::Element> {
     {
         let __result = unsafe { crate::ffi::XmlObjMgt_find_child_by_name(theSource, theName) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 
@@ -153,8 +182,10 @@ impl Array1 {
     pub fn new_int2(Low: i32, Up: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XmlObjMgt_Array1_ctor_int2(Low, Up) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -170,8 +201,10 @@ impl Array1 {
         {
             let __result =
                 unsafe { crate::ffi::XmlObjMgt_Array1_ctor_element_ldomstring(theParent, theName) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -183,14 +216,16 @@ impl Array1 {
         theName: &crate::ldom_string::LDOMString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XmlObjMgt_Array1_create_array_element(
                     self as *mut Self,
                     theParent,
                     theName,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -199,8 +234,11 @@ impl Array1 {
     pub fn element(&self) -> &crate::ldom::Element {
         {
             let __result = unsafe { crate::ffi::XmlObjMgt_Array1_element(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -209,8 +247,11 @@ impl Array1 {
     pub fn length(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::XmlObjMgt_Array1_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -219,8 +260,11 @@ impl Array1 {
     pub fn lower(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::XmlObjMgt_Array1_lower(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -229,8 +273,11 @@ impl Array1 {
     pub fn upper(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::XmlObjMgt_Array1_upper(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -238,8 +285,11 @@ impl Array1 {
     /// Set the <Index>th element of the array to <Value>.
     pub fn set_value(&mut self, Index: i32, Value: &mut crate::ldom::Element) {
         {
-            unsafe { crate::ffi::XmlObjMgt_Array1_set_value(self as *mut Self, Index, Value) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XmlObjMgt_Array1_set_value(self as *mut Self, Index, Value) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -249,8 +299,11 @@ impl Array1 {
         {
             let __result =
                 unsafe { crate::ffi::XmlObjMgt_Array1_value(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -275,8 +328,10 @@ impl GP {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XmlObjMgt_GP_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -286,8 +341,11 @@ impl GP {
     ) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         {
             let __result = unsafe { crate::ffi::XmlObjMgt_GP_translate_trsf(aTrsf) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -295,8 +353,11 @@ impl GP {
     pub fn translate_mat(aMat: &crate::gp::Mat) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         {
             let __result = unsafe { crate::ffi::XmlObjMgt_GP_translate_mat(aMat) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -306,8 +367,11 @@ impl GP {
     ) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         {
             let __result = unsafe { crate::ffi::XmlObjMgt_GP_translate_xyz(anXYZ) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -318,8 +382,11 @@ impl GP {
     ) -> bool {
         {
             let __result = unsafe { crate::ffi::XmlObjMgt_GP_translate_ldomstring_trsf(aStr, T) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -330,8 +397,11 @@ impl GP {
     ) -> bool {
         {
             let __result = unsafe { crate::ffi::XmlObjMgt_GP_translate_ldomstring_mat(aStr, T) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -342,8 +412,11 @@ impl GP {
     ) -> bool {
         {
             let __result = unsafe { crate::ffi::XmlObjMgt_GP_translate_ldomstring_xyz(aStr, T) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -368,8 +441,10 @@ impl Persistent {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XmlObjMgt_Persistent_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -378,8 +453,10 @@ impl Persistent {
     pub fn new_element(theElement: &crate::ldom::Element) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XmlObjMgt_Persistent_ctor_element(theElement) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -393,8 +470,10 @@ impl Persistent {
             let __result = unsafe {
                 crate::ffi::XmlObjMgt_Persistent_ctor_element_ldomstring(theElement, theRef)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -407,7 +486,7 @@ impl Persistent {
         theID: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XmlObjMgt_Persistent_create_element(
                     self as *mut Self,
                     theParent,
@@ -415,15 +494,20 @@ impl Persistent {
                     theID,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `XmlObjMgt_Persistent.hxx`:47 - `XmlObjMgt_Persistent::SetId()`
     pub fn set_id(&mut self, theId: i32) {
         {
-            unsafe { crate::ffi::XmlObjMgt_Persistent_set_id(self as *mut Self, theId) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XmlObjMgt_Persistent_set_id(self as *mut Self, theId) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -432,8 +516,11 @@ impl Persistent {
     pub fn element(&self) -> &crate::ldom::Element {
         {
             let __result = unsafe { crate::ffi::XmlObjMgt_Persistent_element(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -443,8 +530,11 @@ impl Persistent {
         {
             let __result =
                 unsafe { crate::ffi::XmlObjMgt_Persistent_element_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -452,8 +542,11 @@ impl Persistent {
     pub fn id(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::XmlObjMgt_Persistent_id(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -481,8 +574,10 @@ impl RRelocationTable {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XmlObjMgt_RRelocationTable_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -493,8 +588,11 @@ impl RRelocationTable {
             let __result = unsafe {
                 crate::ffi::XmlObjMgt_RRelocationTable_get_header_data(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -504,23 +602,27 @@ impl RRelocationTable {
     /// @param theHeaderData header data of the file that is begin read
     pub fn set_header_data(&mut self, theHeaderData: &crate::ffi::HandleStorageHeaderData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XmlObjMgt_RRelocationTable_set_header_data(
                     self as *mut Self,
                     theHeaderData,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `XmlObjMgt_RRelocationTable.hxx`:38 - `XmlObjMgt_RRelocationTable::Clear()`
     pub fn clear(&mut self, doReleaseMemory: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XmlObjMgt_RRelocationTable_clear(self as *mut Self, doReleaseMemory)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -548,8 +650,10 @@ impl SRelocationTable {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XmlObjMgt_SRelocationTable_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -560,8 +664,11 @@ impl SRelocationTable {
             let __result = unsafe {
                 crate::ffi::XmlObjMgt_SRelocationTable_get_header_data(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -571,23 +678,27 @@ impl SRelocationTable {
     /// @param theHeaderData header data of the file that is begin read
     pub fn set_header_data(&mut self, theHeaderData: &crate::ffi::HandleStorageHeaderData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XmlObjMgt_SRelocationTable_set_header_data(
                     self as *mut Self,
                     theHeaderData,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `XmlObjMgt_SRelocationTable.hxx`:37 - `XmlObjMgt_SRelocationTable::Clear()`
     pub fn clear(&mut self, doReleaseMemory: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XmlObjMgt_SRelocationTable_clear(self as *mut Self, doReleaseMemory)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

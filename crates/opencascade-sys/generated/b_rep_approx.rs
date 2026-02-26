@@ -27,8 +27,10 @@ impl Approx {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepApprox_Approx_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -45,7 +47,7 @@ impl Approx {
         indicemax: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_Approx_perform_surface2_handlebrepapproxapproxline_bool3_int2(
                     self as *mut Self,
                     Surf1,
@@ -58,7 +60,9 @@ impl Approx {
                     indicemax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -73,7 +77,7 @@ impl Approx {
         indicemax: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_Approx_perform_handlebrepapproxapproxline_bool3_int2(
                     self as *mut Self,
                     aLine,
@@ -84,7 +88,9 @@ impl Approx {
                     indicemax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -101,7 +107,7 @@ impl Approx {
         Parametrization: crate::approx::ParametrizationType,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_Approx_set_parameters(
                     self as *mut Self,
                     Tol3d,
@@ -114,15 +120,19 @@ impl Approx {
                     Parametrization.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepApprox_Approx.hxx`:113 - `BRepApprox_Approx::Perform()`
     pub fn perform(&mut self) {
         {
-            unsafe { crate::ffi::BRepApprox_Approx_perform(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepApprox_Approx_perform(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -131,8 +141,11 @@ impl Approx {
         {
             let __result =
                 unsafe { crate::ffi::BRepApprox_Approx_tol_reached3d(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -141,8 +154,11 @@ impl Approx {
         {
             let __result =
                 unsafe { crate::ffi::BRepApprox_Approx_tol_reached2d(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -150,8 +166,11 @@ impl Approx {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepApprox_Approx_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -160,8 +179,11 @@ impl Approx {
         {
             let __result =
                 unsafe { crate::ffi::BRepApprox_Approx_nb_multi_curves(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -170,8 +192,11 @@ impl Approx {
         {
             let __result =
                 unsafe { crate::ffi::BRepApprox_Approx_value(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -184,7 +209,7 @@ impl Approx {
         TheParameters: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_Approx_parameters(
                     Line,
                     firstP,
@@ -193,7 +218,9 @@ impl Approx {
                     TheParameters,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -222,8 +249,10 @@ impl ApproxLine {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ApproxLine_ctor_handlegeombsplinecurve_handlegeom2dbsplinecurve2(CurveXYZ, CurveUV1, CurveUV2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -238,8 +267,10 @@ impl ApproxLine {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ApproxLine_ctor_handleintsurflineon2s_bool(lin, theTang)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -257,8 +288,11 @@ impl ApproxLine {
         {
             let __result =
                 unsafe { crate::ffi::BRepApprox_ApproxLine_nb_pnts(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -267,8 +301,11 @@ impl ApproxLine {
         {
             let __result =
                 unsafe { crate::ffi::BRepApprox_ApproxLine_point(self as *mut Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -277,8 +314,11 @@ impl ApproxLine {
         {
             let __result =
                 unsafe { crate::ffi::BRepApprox_ApproxLine_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -286,8 +326,11 @@ impl ApproxLine {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::BRepApprox_ApproxLine_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -295,42 +338,44 @@ impl ApproxLine {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepApprox_ApproxLine_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_ApproxLine_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepApprox_ApproxLine_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_ApproxLine_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_ApproxLine_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepApproxApproxLine> {
-        {
-            let __result = unsafe { crate::ffi::BRepApprox_ApproxLine_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::BRepApprox_ApproxLine_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -339,8 +384,11 @@ impl ApproxLine {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ApproxLine_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -350,8 +398,11 @@ impl ApproxLine {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ApproxLine_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -360,11 +411,14 @@ impl ApproxLine {
         {
             let __result =
                 unsafe { crate::ffi::BRepApprox_ApproxLine_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -375,18 +429,23 @@ impl ApproxLine {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ApproxLine_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_ApproxLine_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -396,16 +455,22 @@ impl ApproxLine {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ApproxLine_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::BRepApprox_ApproxLine_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepApprox_ApproxLine_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -421,35 +486,31 @@ unsafe impl crate::CppDeletable for HandleBRepApproxApproxLine {
 impl HandleBRepApproxApproxLine {
     /// Dereference this Handle to access the underlying BRepApprox_ApproxLine
     pub fn get(&self) -> &crate::ffi::BRepApprox_ApproxLine {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleBRepApproxApproxLine_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBRepApproxApproxLine_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepApprox_ApproxLine
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepApprox_ApproxLine {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleBRepApproxApproxLine_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleBRepApproxApproxLine_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepApprox_ApproxLine> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepApproxApproxLine_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepApproxApproxLine_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -482,8 +543,10 @@ impl BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -514,31 +577,34 @@ impl BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_is_solution_reached(self as *const Self, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_BFGS
     pub fn as_math_bfgs(&self) -> &crate::math::BFGS {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_as_math_BFGS(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_as_math_BFGS(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_BFGS (mutable)
     pub fn as_math_bfgs_mut(&mut self) -> &mut crate::math::BFGS {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_as_math_BFGS_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_as_math_BFGS_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:58 - `math_BFGS::SetBoundary()`
@@ -548,10 +614,12 @@ impl BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox {
         theRightBorder: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_SetBoundary(self as *mut Self, theLeftBorder, theRightBorder)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -562,10 +630,12 @@ impl BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox {
         StartingPoint: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Perform(self as *mut Self, F, StartingPoint)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -575,8 +645,11 @@ impl BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -586,8 +659,11 @@ impl BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Location(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -597,8 +673,11 @@ impl BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Minimum(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -608,8 +687,11 @@ impl BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Gradient(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -619,18 +701,23 @@ impl BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_NbIterations(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Dump(self as *const Self, o)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -668,8 +755,10 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, NbPol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -681,8 +770,11 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_nb_variables(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -700,8 +792,11 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
                     F,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -717,8 +812,11 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_gradient(self as *mut Self, X, G)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -740,8 +838,11 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
                     G,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -752,8 +853,11 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_new_parameters(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -765,8 +869,11 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_curve_value(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -782,8 +889,11 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
                     CurveIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -795,8 +905,11 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_max_error3d(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -808,8 +921,11 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_max_error2d(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -821,8 +937,11 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_function_matrix(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -834,8 +953,11 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_derivative_function_matrix(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -851,8 +973,11 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -866,8 +991,11 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_first_constraint(self as *const Self, TheConstraints, FirstPoint)
             };
-            crate::check_exception();
-            crate::app_par_curves::Constraint::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::app_par_curves::Constraint::try_from(__val).unwrap()
         }
     }
 
@@ -881,28 +1009,35 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_last_constraint(self as *const Self, TheConstraints, LastPoint)
             };
-            crate::check_exception();
-            crate::app_par_curves::Constraint::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::app_par_curves::Constraint::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:119 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::SetFirstLambda()`
     pub fn set_first_lambda(&mut self, l1: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_set_first_lambda(self as *mut Self, l1)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:121 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::SetLastLambda()`
     pub fn set_last_lambda(&mut self, l2: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_set_last_lambda(self as *mut Self, l2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -910,48 +1045,48 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_as_math_MultipleVarFunctionWithGradient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_as_math_MultipleVarFunctionWithGradient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_as_math_MultipleVarFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_as_math_MultipleVarFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_as_math_MultipleVarFunction_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_as_math_MultipleVarFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
@@ -960,8 +1095,11 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1012,8 +1150,10 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1031,8 +1171,10 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1067,8 +1209,10 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1088,8 +1232,10 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1098,10 +1244,12 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     /// The case "CurvaturePoint" is not treated in this method.
     pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_perform_vector(self as *mut Self, Parameters)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1109,10 +1257,12 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     /// Is used after having initialized the fields.
     pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_perform_vector_real2(self as *mut Self, Parameters, l1, l2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1129,10 +1279,12 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
         l2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_perform_vector3_real2(self as *mut Self, Parameters, V1t, V2t, l1, l2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1153,10 +1305,12 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
         l2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_perform_vector5_real2(self as *mut Self, Parameters, V1t, V2t, V1c, V2c, l1, l2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1167,8 +1321,11 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_is_done(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1181,8 +1338,11 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_bezier_value(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1195,8 +1355,11 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_b_spline_value(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1208,8 +1371,11 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_function_matrix(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1221,8 +1387,11 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_derivative_function_matrix(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1239,10 +1408,12 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
         MaxE2d: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_error_gradient(self as *mut Self, Grad, F, MaxE3d, MaxE2d)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1254,8 +1425,11 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_distance(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1265,10 +1439,12 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     /// distances.
     pub fn error(&mut self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_error(self as *mut Self, F, MaxE3d, MaxE2d)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1280,8 +1456,11 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_first_lambda(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1293,8 +1472,11 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_last_lambda(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1305,8 +1487,11 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_points(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1317,8 +1502,11 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_poles(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1332,8 +1520,11 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_k_index(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -1367,8 +1558,10 @@ impl Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1399,31 +1592,34 @@ impl Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_is_solution_reached(self as *const Self, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_BFGS
     pub fn as_math_bfgs(&self) -> &crate::math::BFGS {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_as_math_BFGS(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_as_math_BFGS(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_BFGS (mutable)
     pub fn as_math_bfgs_mut(&mut self) -> &mut crate::math::BFGS {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_as_math_BFGS_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_as_math_BFGS_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:58 - `math_BFGS::SetBoundary()`
@@ -1433,10 +1629,12 @@ impl Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox {
         theRightBorder: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_SetBoundary(self as *mut Self, theLeftBorder, theRightBorder)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1447,10 +1645,12 @@ impl Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox {
         StartingPoint: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Perform(self as *mut Self, F, StartingPoint)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1460,8 +1660,11 @@ impl Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1471,8 +1674,11 @@ impl Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Location(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1482,8 +1688,11 @@ impl Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Minimum(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1493,8 +1702,11 @@ impl Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Gradient(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1504,18 +1716,23 @@ impl Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_NbIterations(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Dump(self as *const Self, o)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1547,8 +1764,10 @@ impl Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1579,31 +1798,36 @@ impl Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_is_solution_reached(self as *const Self, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_BFGS
     pub fn as_math_bfgs(&self) -> &crate::math::BFGS {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_as_math_BFGS(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_as_math_BFGS(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_BFGS (mutable)
     pub fn as_math_bfgs_mut(&mut self) -> &mut crate::math::BFGS {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_as_math_BFGS_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_as_math_BFGS_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:58 - `math_BFGS::SetBoundary()`
@@ -1613,10 +1837,12 @@ impl Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox {
         theRightBorder: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_SetBoundary(self as *mut Self, theLeftBorder, theRightBorder)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1627,10 +1853,12 @@ impl Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox {
         StartingPoint: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Perform(self as *mut Self, F, StartingPoint)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1640,8 +1868,11 @@ impl Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1651,8 +1882,11 @@ impl Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Location(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1662,8 +1896,11 @@ impl Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Minimum(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1673,8 +1910,11 @@ impl Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Gradient(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1684,18 +1924,23 @@ impl Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_NbIterations(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Dump(self as *const Self, o)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1738,8 +1983,10 @@ impl MyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, Deg, Tol3d, Tol2d, NbIterations)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1769,8 +2016,10 @@ impl MyBSplGradientOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int_real2(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, Deg, Tol3d, Tol2d, NbIterations, lambda1, lambda2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1805,8 +2054,11 @@ impl MyBSplGradientOfTheComputeLineOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1820,8 +2072,11 @@ impl MyBSplGradientOfTheComputeLineOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1838,8 +2093,11 @@ impl MyBSplGradientOfTheComputeLineOfApprox {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1853,8 +2111,11 @@ impl MyBSplGradientOfTheComputeLineOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1868,8 +2129,11 @@ impl MyBSplGradientOfTheComputeLineOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1883,8 +2147,11 @@ impl MyBSplGradientOfTheComputeLineOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1925,8 +2192,10 @@ impl MyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1959,8 +2228,11 @@ impl MyGradientOfTheComputeLineBezierOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1974,8 +2246,11 @@ impl MyGradientOfTheComputeLineBezierOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1992,8 +2267,11 @@ impl MyGradientOfTheComputeLineBezierOfApprox {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2007,8 +2285,11 @@ impl MyGradientOfTheComputeLineBezierOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2022,8 +2303,11 @@ impl MyGradientOfTheComputeLineBezierOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2037,8 +2321,11 @@ impl MyGradientOfTheComputeLineBezierOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2079,8 +2366,10 @@ impl MyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_MyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2113,8 +2402,11 @@ impl MyGradientbisOfTheComputeLineOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2128,8 +2420,11 @@ impl MyGradientbisOfTheComputeLineOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2146,8 +2441,11 @@ impl MyGradientbisOfTheComputeLineOfApprox {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2161,8 +2459,11 @@ impl MyGradientbisOfTheComputeLineOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2176,8 +2477,11 @@ impl MyGradientbisOfTheComputeLineOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2191,8 +2495,11 @@ impl MyGradientbisOfTheComputeLineOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2228,8 +2535,10 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2241,8 +2550,11 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_nb_variables(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2260,8 +2572,11 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
                     F,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2277,8 +2592,11 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_gradient(self as *mut Self, X, G)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2300,8 +2618,11 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
                     G,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2312,8 +2633,11 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_new_parameters(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2325,8 +2649,11 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_curve_value(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2342,8 +2669,11 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
                     CurveIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2355,8 +2685,11 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_max_error3d(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2368,8 +2701,11 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_max_error2d(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2383,8 +2719,11 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_first_constraint(self as *const Self, TheConstraints, FirstPoint)
             };
-            crate::check_exception();
-            crate::app_par_curves::Constraint::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::app_par_curves::Constraint::try_from(__val).unwrap()
         }
     }
 
@@ -2398,8 +2737,11 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_last_constraint(self as *const Self, TheConstraints, LastPoint)
             };
-            crate::check_exception();
-            crate::app_par_curves::Constraint::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::app_par_curves::Constraint::try_from(__val).unwrap()
         }
     }
 
@@ -2407,48 +2749,48 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_as_math_MultipleVarFunctionWithGradient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_as_math_MultipleVarFunctionWithGradient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_as_math_MultipleVarFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_as_math_MultipleVarFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_as_math_MultipleVarFunction_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_as_math_MultipleVarFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
@@ -2457,8 +2799,11 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2492,8 +2837,10 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2505,8 +2852,11 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_nb_variables(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2524,8 +2874,11 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
                     F,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2545,8 +2898,11 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
                     G,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2568,8 +2924,11 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
                     G,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2580,8 +2939,11 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_new_parameters(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2593,8 +2955,11 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_curve_value(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2610,8 +2975,11 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
                     CurveIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2623,8 +2991,11 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_max_error3d(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2636,8 +3007,11 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_max_error2d(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2651,8 +3025,11 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_first_constraint(self as *const Self, TheConstraints, FirstPoint)
             };
-            crate::check_exception();
-            crate::app_par_curves::Constraint::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::app_par_curves::Constraint::try_from(__val).unwrap()
         }
     }
 
@@ -2666,8 +3043,11 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_last_constraint(self as *const Self, TheConstraints, LastPoint)
             };
-            crate::check_exception();
-            crate::app_par_curves::Constraint::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::app_par_curves::Constraint::try_from(__val).unwrap()
         }
     }
 
@@ -2675,48 +3055,48 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_as_math_MultipleVarFunctionWithGradient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_as_math_MultipleVarFunctionWithGradient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_as_math_MultipleVarFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_as_math_MultipleVarFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_as_math_MultipleVarFunction_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_as_math_MultipleVarFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
@@ -2725,8 +3105,11 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2777,8 +3160,10 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2796,8 +3181,10 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2832,8 +3219,10 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2853,8 +3242,10 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2863,10 +3254,12 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     /// The case "CurvaturePoint" is not treated in this method.
     pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_perform_vector(self as *mut Self, Parameters)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2874,10 +3267,12 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     /// Is used after having initialized the fields.
     pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_perform_vector_real2(self as *mut Self, Parameters, l1, l2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2894,10 +3289,12 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
         l2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_perform_vector3_real2(self as *mut Self, Parameters, V1t, V2t, l1, l2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2918,10 +3315,12 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
         l2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_perform_vector5_real2(self as *mut Self, Parameters, V1t, V2t, V1c, V2c, l1, l2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2932,8 +3331,11 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_is_done(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2946,8 +3348,11 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_bezier_value(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2960,8 +3365,11 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_b_spline_value(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2973,8 +3381,11 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_function_matrix(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2986,8 +3397,11 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_derivative_function_matrix(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3004,10 +3418,12 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
         MaxE2d: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_error_gradient(self as *mut Self, Grad, F, MaxE3d, MaxE2d)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3019,8 +3435,11 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_distance(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3030,10 +3449,12 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     /// distances.
     pub fn error(&mut self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_error(self as *mut Self, F, MaxE3d, MaxE2d)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3045,8 +3466,11 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_first_lambda(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3058,8 +3482,11 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_last_lambda(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3070,8 +3497,11 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_points(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3082,8 +3512,11 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_poles(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3097,8 +3530,11 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_k_index(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -3149,8 +3585,10 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3168,8 +3606,10 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3204,8 +3644,10 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3225,8 +3667,10 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3235,10 +3679,12 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     /// The case "CurvaturePoint" is not treated in this method.
     pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_perform_vector(self as *mut Self, Parameters)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3246,10 +3692,12 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     /// Is used after having initialized the fields.
     pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_perform_vector_real2(self as *mut Self, Parameters, l1, l2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3266,10 +3714,12 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
         l2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_perform_vector3_real2(self as *mut Self, Parameters, V1t, V2t, l1, l2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3290,10 +3740,12 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
         l2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_perform_vector5_real2(self as *mut Self, Parameters, V1t, V2t, V1c, V2c, l1, l2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3306,8 +3758,11 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3320,8 +3775,11 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_bezier_value(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3334,8 +3792,11 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_b_spline_value(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3347,8 +3808,11 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_function_matrix(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3360,8 +3824,11 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_derivative_function_matrix(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3378,10 +3845,12 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
         MaxE2d: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_error_gradient(self as *mut Self, Grad, F, MaxE3d, MaxE2d)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3393,8 +3862,11 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_distance(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3404,7 +3876,7 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     /// distances.
     pub fn error(&mut self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_error(
                     self as *mut Self,
                     F,
@@ -3412,7 +3884,9 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
                     MaxE2d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3424,8 +3898,11 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_first_lambda(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3437,8 +3914,11 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_last_lambda(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3451,8 +3931,11 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3465,8 +3948,11 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3482,8 +3968,11 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -3529,8 +4018,10 @@ impl ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3564,8 +4055,11 @@ impl ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_is_done(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3579,8 +4073,11 @@ impl ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3590,8 +4087,11 @@ impl ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_constraint_matrix(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3604,8 +4104,11 @@ impl ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3628,8 +4131,11 @@ impl ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_constraint_derivative(self as *mut Self, SSP, Parameters, Deg, DA)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3641,8 +4147,11 @@ impl ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_inverse_matrix(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -3686,8 +4195,10 @@ impl ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3723,8 +4234,11 @@ impl ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3738,8 +4252,11 @@ impl ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3749,8 +4266,11 @@ impl ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_constraint_matrix(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3763,8 +4283,11 @@ impl ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3787,8 +4310,11 @@ impl ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_constraint_derivative(self as *mut Self, SSP, Parameters, Deg, DA)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3800,8 +4326,11 @@ impl ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_inverse_matrix(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -3825,8 +4354,10 @@ impl SurfaceTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3834,8 +4365,11 @@ impl SurfaceTool {
     pub fn first_u_parameter(S: &crate::b_rep_adaptor::Surface) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_first_u_parameter(S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3843,8 +4377,11 @@ impl SurfaceTool {
     pub fn first_v_parameter(S: &crate::b_rep_adaptor::Surface) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_first_v_parameter(S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3852,8 +4389,11 @@ impl SurfaceTool {
     pub fn last_u_parameter(S: &crate::b_rep_adaptor::Surface) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_last_u_parameter(S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3861,8 +4401,11 @@ impl SurfaceTool {
     pub fn last_v_parameter(S: &crate::b_rep_adaptor::Surface) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_last_v_parameter(S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3871,8 +4414,11 @@ impl SurfaceTool {
         {
             let __result =
                 unsafe { crate::ffi::BRepApprox_SurfaceTool_nb_u_intervals(S, Sh.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3881,8 +4427,11 @@ impl SurfaceTool {
         {
             let __result =
                 unsafe { crate::ffi::BRepApprox_SurfaceTool_nb_v_intervals(S, Sh.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3893,8 +4442,10 @@ impl SurfaceTool {
         Sh: crate::geom_abs::Shape,
     ) {
         {
-            unsafe { crate::ffi::BRepApprox_SurfaceTool_u_intervals(S, T, Sh.into()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepApprox_SurfaceTool_u_intervals(S, T, Sh.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3905,8 +4456,10 @@ impl SurfaceTool {
         Sh: crate::geom_abs::Shape,
     ) {
         {
-            unsafe { crate::ffi::BRepApprox_SurfaceTool_v_intervals(S, T, Sh.into()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepApprox_SurfaceTool_v_intervals(S, T, Sh.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3921,8 +4474,11 @@ impl SurfaceTool {
         {
             let __result =
                 unsafe { crate::ffi::BRepApprox_SurfaceTool_u_trim(S, First, Last, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3937,8 +4493,11 @@ impl SurfaceTool {
         {
             let __result =
                 unsafe { crate::ffi::BRepApprox_SurfaceTool_v_trim(S, First, Last, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3946,8 +4505,11 @@ impl SurfaceTool {
     pub fn is_u_closed(S: &crate::b_rep_adaptor::Surface) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_is_u_closed(S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3955,8 +4517,11 @@ impl SurfaceTool {
     pub fn is_v_closed(S: &crate::b_rep_adaptor::Surface) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_is_v_closed(S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3964,8 +4529,11 @@ impl SurfaceTool {
     pub fn is_u_periodic(S: &crate::b_rep_adaptor::Surface) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_is_u_periodic(S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3973,8 +4541,11 @@ impl SurfaceTool {
     pub fn u_period(S: &crate::b_rep_adaptor::Surface) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_u_period(S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3982,8 +4553,11 @@ impl SurfaceTool {
     pub fn is_v_periodic(S: &crate::b_rep_adaptor::Surface) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_is_v_periodic(S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3991,8 +4565,11 @@ impl SurfaceTool {
     pub fn v_period(S: &crate::b_rep_adaptor::Surface) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_v_period(S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4004,16 +4581,21 @@ impl SurfaceTool {
     ) -> crate::OwnedPtr<crate::gp::Pnt> {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_value(S, u, v) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:88 - `BRepApprox_SurfaceTool::D0()`
     pub fn d0(S: &crate::b_rep_adaptor::Surface, u: f64, v: f64, P: &mut crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::BRepApprox_SurfaceTool_d0(S, u, v, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepApprox_SurfaceTool_d0(S, u, v, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4027,8 +4609,10 @@ impl SurfaceTool {
         D1v: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::BRepApprox_SurfaceTool_d1(S, u, v, P, D1u, D1v) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepApprox_SurfaceTool_d1(S, u, v, P, D1u, D1v) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4045,8 +4629,12 @@ impl SurfaceTool {
         D2UV: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::BRepApprox_SurfaceTool_d2(S, u, v, P, D1U, D1V, D2U, D2V, D2UV) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepApprox_SurfaceTool_d2(S, u, v, P, D1U, D1V, D2U, D2V, D2UV)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4067,12 +4655,14 @@ impl SurfaceTool {
         D3UVV: &mut crate::gp::Vec,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_SurfaceTool_d3(
                     S, u, v, P, D1U, D1V, D2U, D2V, D2UV, D3U, D3V, D3UUV, D3UVV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4086,8 +4676,11 @@ impl SurfaceTool {
     ) -> crate::OwnedPtr<crate::gp::Vec> {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_dn(S, u, v, Nu, Nv) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4095,8 +4688,11 @@ impl SurfaceTool {
     pub fn u_resolution(S: &crate::b_rep_adaptor::Surface, R3d: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_u_resolution(S, R3d) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4104,8 +4700,11 @@ impl SurfaceTool {
     pub fn v_resolution(S: &crate::b_rep_adaptor::Surface, R3d: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_v_resolution(S, R3d) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4113,8 +4712,11 @@ impl SurfaceTool {
     pub fn get_type(S: &crate::b_rep_adaptor::Surface) -> crate::geom_abs::SurfaceType {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_get_type(S) };
-            crate::check_exception();
-            crate::geom_abs::SurfaceType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::SurfaceType::try_from(__val).unwrap()
         }
     }
 
@@ -4122,8 +4724,11 @@ impl SurfaceTool {
     pub fn plane(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Pln> {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_plane(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4131,8 +4736,11 @@ impl SurfaceTool {
     pub fn cylinder(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Cylinder> {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_cylinder(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4140,8 +4748,11 @@ impl SurfaceTool {
     pub fn cone(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Cone> {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_cone(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4149,8 +4760,11 @@ impl SurfaceTool {
     pub fn torus(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Torus> {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_torus(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4158,8 +4772,11 @@ impl SurfaceTool {
     pub fn sphere(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Sphere> {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_sphere(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4169,8 +4786,11 @@ impl SurfaceTool {
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierSurface> {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_bezier(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4180,8 +4800,11 @@ impl SurfaceTool {
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_b_spline(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4189,8 +4812,11 @@ impl SurfaceTool {
     pub fn axe_of_revolution(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Ax1> {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_axe_of_revolution(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4198,8 +4824,11 @@ impl SurfaceTool {
     pub fn direction(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Dir> {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_direction(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4209,8 +4838,11 @@ impl SurfaceTool {
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_basis_curve(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4218,8 +4850,11 @@ impl SurfaceTool {
     pub fn nb_samples_u_surface(S: &crate::b_rep_adaptor::Surface) -> i32 {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_nb_samples_u_surface(S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4227,8 +4862,11 @@ impl SurfaceTool {
     pub fn nb_samples_v_surface(S: &crate::b_rep_adaptor::Surface) -> i32 {
         {
             let __result = unsafe { crate::ffi::BRepApprox_SurfaceTool_nb_samples_v_surface(S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4237,8 +4875,11 @@ impl SurfaceTool {
         {
             let __result =
                 unsafe { crate::ffi::BRepApprox_SurfaceTool_nb_samples_u_surface_real2(S, u1, u2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4247,8 +4888,11 @@ impl SurfaceTool {
         {
             let __result =
                 unsafe { crate::ffi::BRepApprox_SurfaceTool_nb_samples_v_surface_real2(S, v1, v2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -4289,8 +4933,10 @@ impl TheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_real2_int_bool_parametrizationtype_bool(Line, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4316,8 +4962,10 @@ impl TheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_ctor_themultilineofapprox_vector_int2_real2_int_bool2(Line, Parameters, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, Squares)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4346,8 +4994,10 @@ impl TheComputeLineBezierOfApprox {
                     Squares,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4367,8 +5017,10 @@ impl TheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_ctor_int2_real2_int_bool_parametrizationtype_bool(degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4719,7 +5371,7 @@ impl TheComputeLineBezierOfApprox {
         Squares: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_init(
                     self as *mut Self,
                     degreemin,
@@ -4732,7 +5384,9 @@ impl TheComputeLineBezierOfApprox {
                     Squares,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4740,10 +5394,12 @@ impl TheComputeLineBezierOfApprox {
     /// runs the algorithm after having initialized the fields.
     pub fn perform(&mut self, Line: &TheMultiLineOfApprox) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_perform(self as *mut Self, Line)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4751,14 +5407,16 @@ impl TheComputeLineBezierOfApprox {
     /// changes the degrees of the approximation.
     pub fn set_degrees(&mut self, degreemin: i32, degreemax: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_set_degrees(
                     self as *mut Self,
                     degreemin,
                     degreemax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4766,14 +5424,16 @@ impl TheComputeLineBezierOfApprox {
     /// Changes the tolerances of the approximation.
     pub fn set_tolerances(&mut self, Tolerance3d: f64, Tolerance2d: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_set_tolerances(
                     self as *mut Self,
                     Tolerance3d,
                     Tolerance2d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4785,14 +5445,16 @@ impl TheComputeLineBezierOfApprox {
         lastC: crate::app_par_curves::Constraint,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_set_constraints(
                     self as *mut Self,
                     firstC.into(),
                     lastC.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4807,8 +5469,11 @@ impl TheComputeLineBezierOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4821,8 +5486,11 @@ impl TheComputeLineBezierOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4830,7 +5498,7 @@ impl TheComputeLineBezierOfApprox {
     /// returns the tolerances 2d and 3d of the <Index> MultiCurve.
     pub fn error(&self, Index: i32, tol3d: &mut f64, tol2d: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_error(
                     self as *const Self,
                     Index,
@@ -4838,7 +5506,9 @@ impl TheComputeLineBezierOfApprox {
                     tol2d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4852,8 +5522,11 @@ impl TheComputeLineBezierOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4867,8 +5540,11 @@ impl TheComputeLineBezierOfApprox {
                     Index,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4882,8 +5558,11 @@ impl TheComputeLineBezierOfApprox {
                     Index,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4894,8 +5573,11 @@ impl TheComputeLineBezierOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_spline_value(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4908,8 +5590,11 @@ impl TheComputeLineBezierOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            crate::approx::ParametrizationType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::approx::ParametrizationType::try_from(__val).unwrap()
         }
     }
 
@@ -4924,8 +5609,11 @@ impl TheComputeLineBezierOfApprox {
                     Index,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -4969,8 +5657,10 @@ impl TheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineOfApprox_ctor_themultilineofapprox_int2_real2_int_bool_parametrizationtype_bool(Line, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4996,8 +5686,10 @@ impl TheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineOfApprox_ctor_themultilineofapprox_vector_int2_real2_int_bool2(Line, Parameters, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, Squares)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5026,8 +5718,10 @@ impl TheComputeLineOfApprox {
                     Squares,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5047,8 +5741,10 @@ impl TheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineOfApprox_ctor_int2_real2_int_bool_parametrizationtype_bool(degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5393,10 +6089,12 @@ impl TheComputeLineOfApprox {
     /// The result will be a C2 curve of degree 3.
     pub fn interpol(&mut self, Line: &TheMultiLineOfApprox) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineOfApprox_interpol(self as *mut Self, Line)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5414,7 +6112,7 @@ impl TheComputeLineOfApprox {
         Squares: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineOfApprox_init(
                     self as *mut Self,
                     degreemin,
@@ -5427,7 +6125,9 @@ impl TheComputeLineOfApprox {
                     Squares,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5435,10 +6135,12 @@ impl TheComputeLineOfApprox {
     /// runs the algorithm after having initialized the fields.
     pub fn perform(&mut self, Line: &TheMultiLineOfApprox) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineOfApprox_perform(self as *mut Self, Line)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5447,13 +6149,15 @@ impl TheComputeLineOfApprox {
     /// set of  parameters <ThePar>.
     pub fn set_parameters(&mut self, ThePar: &crate::ffi::math_Vector) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineOfApprox_set_parameters(
                     self as *mut Self,
                     ThePar,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5463,10 +6167,12 @@ impl TheComputeLineOfApprox {
     /// with the degree and the desired continuity.
     pub fn set_knots(&mut self, Knots: &crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineOfApprox_set_knots(self as *mut Self, Knots)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5479,14 +6185,16 @@ impl TheComputeLineOfApprox {
         Mults: &crate::ffi::TColStd_Array1OfInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineOfApprox_set_knots_and_multiplicities(
                     self as *mut Self,
                     Knots,
                     Mults,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5494,14 +6202,16 @@ impl TheComputeLineOfApprox {
     /// changes the degrees of the approximation.
     pub fn set_degrees(&mut self, degreemin: i32, degreemax: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineOfApprox_set_degrees(
                     self as *mut Self,
                     degreemin,
                     degreemax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5509,14 +6219,16 @@ impl TheComputeLineOfApprox {
     /// Changes the tolerances of the approximation.
     pub fn set_tolerances(&mut self, Tolerance3d: f64, Tolerance2d: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineOfApprox_set_tolerances(
                     self as *mut Self,
                     Tolerance3d,
                     Tolerance2d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5525,10 +6237,12 @@ impl TheComputeLineOfApprox {
     /// if C = 2, the spline will be C2.
     pub fn set_continuity(&mut self, C: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineOfApprox_set_continuity(self as *mut Self, C)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5540,14 +6254,16 @@ impl TheComputeLineOfApprox {
         lastC: crate::app_par_curves::Constraint,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineOfApprox_set_constraints(
                     self as *mut Self,
                     firstC.into(),
                     lastC.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5558,13 +6274,15 @@ impl TheComputeLineOfApprox {
     /// Multiline must be closed.
     pub fn set_periodic(&mut self, thePeriodic: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineOfApprox_set_periodic(
                     self as *mut Self,
                     thePeriodic,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5579,8 +6297,11 @@ impl TheComputeLineOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5593,8 +6314,11 @@ impl TheComputeLineOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5602,14 +6326,16 @@ impl TheComputeLineOfApprox {
     /// returns the tolerances 2d and 3d of the MultiBSpCurve.
     pub fn error(&self, tol3d: &mut f64, tol2d: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineOfApprox_error(
                     self as *const Self,
                     tol3d,
                     tol2d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5619,8 +6345,11 @@ impl TheComputeLineOfApprox {
         {
             let __result =
                 unsafe { crate::ffi::BRepApprox_TheComputeLineOfApprox_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5631,8 +6360,11 @@ impl TheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineOfApprox_change_value(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5644,8 +6376,11 @@ impl TheComputeLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheComputeLineOfApprox_parameters(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -5673,8 +6408,10 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_ctor_surface2(S1, S2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5684,8 +6421,11 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_nb_variables(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5695,8 +6435,11 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_nb_equations(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5710,8 +6453,11 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
                     F,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5725,8 +6471,11 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_derivatives(self as *mut Self, X, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5746,8 +6495,11 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
                     D,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5762,10 +6514,12 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
         Tolerance: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_compute_parameters(self as *mut Self, ChoixIso.into(), Param, UVap, BornInf, BornSup, Tolerance)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5778,8 +6532,11 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5791,8 +6548,11 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5813,8 +6573,11 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
                     &mut BestChoix_i32_,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         };
         *BestChoix = crate::int_imp::ConstIsoparametric::try_from(BestChoix_i32_).unwrap();
         result_
@@ -5828,8 +6591,11 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5839,8 +6605,11 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_direction_on_s1(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5850,8 +6619,11 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_direction_on_s2(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5861,8 +6633,11 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_auxillar_surface1(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5872,8 +6647,11 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_auxillar_surface2(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5881,48 +6659,48 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_as_math_FunctionSetWithDerivatives(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_as_math_FunctionSetWithDerivatives(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_as_math_FunctionSetWithDerivatives_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_as_math_FunctionSetWithDerivatives_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_as_math_FunctionSet(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_as_math_FunctionSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_as_math_FunctionSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
@@ -5931,8 +6709,11 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -5962,8 +6743,10 @@ impl TheImpPrmSvSurfacesOfApprox {
                     Surf1, Surf2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5978,8 +6761,10 @@ impl TheImpPrmSvSurfacesOfApprox {
                     Surf1, Surf2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6010,15 +6795,18 @@ impl TheImpPrmSvSurfacesOfApprox {
                     Tguv2,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepApprox_TheImpPrmSvSurfacesOfApprox.hxx`:62 - `BRepApprox_TheImpPrmSvSurfacesOfApprox::Pnt()`
     pub fn pnt(&mut self, u1: f64, v1: f64, u2: f64, v2: f64, P: &mut crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox_pnt(
                     self as *mut Self,
                     u1,
@@ -6028,7 +6816,9 @@ impl TheImpPrmSvSurfacesOfApprox {
                     P,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6052,8 +6842,11 @@ impl TheImpPrmSvSurfacesOfApprox {
                     Point,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6077,8 +6870,11 @@ impl TheImpPrmSvSurfacesOfApprox {
                     Tg,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6102,8 +6898,11 @@ impl TheImpPrmSvSurfacesOfApprox {
                     Tg,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6127,8 +6926,11 @@ impl TheImpPrmSvSurfacesOfApprox {
                     Tg,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6164,47 +6966,52 @@ impl TheImpPrmSvSurfacesOfApprox {
                     TranslationV,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to ApproxInt_SvSurfaces
     pub fn as_approx_int_sv_surfaces(&self) -> &crate::approx_int::SvSurfaces {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox_as_ApproxInt_SvSurfaces(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox_as_ApproxInt_SvSurfaces(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ApproxInt_SvSurfaces (mutable)
     pub fn as_approx_int_sv_surfaces_mut(&mut self) -> &mut crate::approx_int::SvSurfaces {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox_as_ApproxInt_SvSurfaces_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox_as_ApproxInt_SvSurfaces_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `ApproxInt_SvSurfaces.hxx`:93 - `ApproxInt_SvSurfaces::SetUseSolver()`
     pub fn set_use_solver(&mut self, theUseSol: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox_inherited_SetUseSolver(
                     self as *mut Self,
                     theUseSol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6216,8 +7023,11 @@ impl TheImpPrmSvSurfacesOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -6248,8 +7058,10 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_ctor_array1ofreal_surface2_real(Param, S1, S2, TolTangency)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6277,8 +7089,10 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
                     TolTangency,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6297,8 +7111,11 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_perform_array1ofreal_functionsetroot(self as *mut Self, Param, Rsnld)
             };
-            crate::check_exception();
-            crate::int_imp::ConstIsoparametric::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_imp::ConstIsoparametric::try_from(__val).unwrap()
         }
     }
 
@@ -6318,8 +7135,11 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_perform_array1ofreal_functionsetroot_constisoparametric(self as *mut Self, Param, Rsnld, ChoixIso.into())
             };
-            crate::check_exception();
-            crate::int_imp::ConstIsoparametric::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_imp::ConstIsoparametric::try_from(__val).unwrap()
         }
     }
 
@@ -6332,8 +7152,11 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6346,8 +7169,11 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6360,8 +7186,11 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6375,8 +7204,11 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6389,8 +7221,11 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6404,8 +7239,11 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6419,8 +7257,11 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6434,8 +7275,11 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -6449,8 +7293,11 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 }
@@ -6473,8 +7320,10 @@ impl TheMultiLineOfApprox {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepApprox_TheMultiLineOfApprox_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6507,8 +7356,10 @@ impl TheMultiLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheMultiLineOfApprox_ctor_handlebrepapproxapproxline_address_int2_bool2_real7_bool_int2(line, PtrSvSurfaces, NbP3d, NbP2d, ApproxU1V1, ApproxU2V2, xo, yo, zo, u1o, v1o, u2o, v2o, P2DOnFirst, IndMin, IndMax)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6535,8 +7386,10 @@ impl TheMultiLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheMultiLineOfApprox_ctor_handlebrepapproxapproxline_int2_bool2_real7_bool_int2(line, NbP3d, NbP2d, ApproxU1V1, ApproxU2V2, xo, yo, zo, u1o, v1o, u2o, v2o, P2DOnFirst, IndMin, IndMax)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6680,8 +7533,11 @@ impl TheMultiLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheMultiLineOfApprox_first_point(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6691,8 +7547,11 @@ impl TheMultiLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheMultiLineOfApprox_last_point(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6702,8 +7561,11 @@ impl TheMultiLineOfApprox {
         {
             let __result =
                 unsafe { crate::ffi::BRepApprox_TheMultiLineOfApprox_nb_p2d(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6713,8 +7575,11 @@ impl TheMultiLineOfApprox {
         {
             let __result =
                 unsafe { crate::ffi::BRepApprox_TheMultiLineOfApprox_nb_p3d(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6724,8 +7589,11 @@ impl TheMultiLineOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheMultiLineOfApprox_what_status(self as *const Self)
             };
-            crate::check_exception();
-            crate::approx::Status::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::approx::Status::try_from(__val).unwrap()
         }
     }
 
@@ -6737,14 +7605,16 @@ impl TheMultiLineOfApprox {
         tabPt: &mut crate::ffi::TColgp_Array1OfPnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheMultiLineOfApprox_value_int_array1ofpnt(
                     self as *const Self,
                     MPointIndex,
                     tabPt,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6756,14 +7626,16 @@ impl TheMultiLineOfApprox {
         tabPt2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheMultiLineOfApprox_value_int_array1ofpnt2d(
                     self as *const Self,
                     MPointIndex,
                     tabPt2d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6776,7 +7648,7 @@ impl TheMultiLineOfApprox {
         tabPt2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheMultiLineOfApprox_value_int_array1ofpnt_array1ofpnt2d(
                     self as *const Self,
                     MPointIndex,
@@ -6784,7 +7656,9 @@ impl TheMultiLineOfApprox {
                     tabPt2d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6803,8 +7677,11 @@ impl TheMultiLineOfApprox {
                     tabV,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6823,8 +7700,11 @@ impl TheMultiLineOfApprox {
                     tabV2d,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6845,8 +7725,11 @@ impl TheMultiLineOfApprox {
                     tabV2d,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6868,8 +7751,11 @@ impl TheMultiLineOfApprox {
                     NbPointsToInsert,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6893,8 +7779,11 @@ impl TheMultiLineOfApprox {
                     OtherLine,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6902,8 +7791,11 @@ impl TheMultiLineOfApprox {
     /// Dump of the current multi-line.
     pub fn dump(&self) {
         {
-            unsafe { crate::ffi::BRepApprox_TheMultiLineOfApprox_dump(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepApprox_TheMultiLineOfApprox_dump(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6927,8 +7819,10 @@ impl TheMultiLineToolOfApprox {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepApprox_TheMultiLineToolOfApprox_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6938,8 +7832,11 @@ impl TheMultiLineToolOfApprox {
         {
             let __result =
                 unsafe { crate::ffi::BRepApprox_TheMultiLineToolOfApprox_first_point(ML) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6949,8 +7846,11 @@ impl TheMultiLineToolOfApprox {
         {
             let __result =
                 unsafe { crate::ffi::BRepApprox_TheMultiLineToolOfApprox_last_point(ML) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6959,8 +7859,11 @@ impl TheMultiLineToolOfApprox {
     pub fn nb_p2d(ML: &TheMultiLineOfApprox) -> i32 {
         {
             let __result = unsafe { crate::ffi::BRepApprox_TheMultiLineToolOfApprox_nb_p2d(ML) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6969,8 +7872,11 @@ impl TheMultiLineToolOfApprox {
     pub fn nb_p3d(ML: &TheMultiLineOfApprox) -> i32 {
         {
             let __result = unsafe { crate::ffi::BRepApprox_TheMultiLineToolOfApprox_nb_p3d(ML) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6983,10 +7889,12 @@ impl TheMultiLineToolOfApprox {
         tabPt: &mut crate::ffi::TColgp_Array1OfPnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheMultiLineToolOfApprox_value_themultilineofapprox_int_array1ofpnt(ML, MPointIndex, tabPt)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6999,10 +7907,12 @@ impl TheMultiLineToolOfApprox {
         tabPt2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheMultiLineToolOfApprox_value_themultilineofapprox_int_array1ofpnt2d(ML, MPointIndex, tabPt2d)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7016,10 +7926,12 @@ impl TheMultiLineToolOfApprox {
         tabPt2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheMultiLineToolOfApprox_value_themultilineofapprox_int_array1ofpnt_array1ofpnt2d(ML, MPointIndex, tabPt, tabPt2d)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7035,8 +7947,11 @@ impl TheMultiLineToolOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheMultiLineToolOfApprox_tangency_themultilineofapprox_int_array1ofvec(ML, MPointIndex, tabV)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7052,8 +7967,11 @@ impl TheMultiLineToolOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheMultiLineToolOfApprox_tangency_themultilineofapprox_int_array1ofvec2d(ML, MPointIndex, tabV2d)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7070,8 +7988,11 @@ impl TheMultiLineToolOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheMultiLineToolOfApprox_tangency_themultilineofapprox_int_array1ofvec_array1ofvec2d(ML, MPointIndex, tabV, tabV2d)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7087,8 +8008,11 @@ impl TheMultiLineToolOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheMultiLineToolOfApprox_curvature_themultilineofapprox_int_array1ofvec(ML, MPointIndex, tabV)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7104,8 +8028,11 @@ impl TheMultiLineToolOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheMultiLineToolOfApprox_curvature_themultilineofapprox_int_array1ofvec2d(ML, MPointIndex, tabV2d)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7122,8 +8049,11 @@ impl TheMultiLineToolOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheMultiLineToolOfApprox_curvature_themultilineofapprox_int_array1ofvec_array1ofvec2d(ML, MPointIndex, tabV, tabV2d)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7139,8 +8069,11 @@ impl TheMultiLineToolOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheMultiLineToolOfApprox_make_ml_between(ML, I1, I2, NbPMin)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7159,8 +8092,11 @@ impl TheMultiLineToolOfApprox {
                     ML, I1, I2, indbad, OtherLine,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7169,8 +8105,11 @@ impl TheMultiLineToolOfApprox {
         {
             let __result =
                 unsafe { crate::ffi::BRepApprox_TheMultiLineToolOfApprox_what_status(ML, I1, I2) };
-            crate::check_exception();
-            crate::approx::Status::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::approx::Status::try_from(__val).unwrap()
         }
     }
 
@@ -7178,8 +8117,10 @@ impl TheMultiLineToolOfApprox {
     /// Dump of the current multi-line.
     pub fn dump(ML: &TheMultiLineOfApprox) {
         {
-            unsafe { crate::ffi::BRepApprox_TheMultiLineToolOfApprox_dump(ML) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepApprox_TheMultiLineToolOfApprox_dump(ML) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7207,8 +8148,10 @@ impl ThePrmPrmSvSurfacesOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_ThePrmPrmSvSurfacesOfApprox_ctor_surface2(Surf1, Surf2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7239,15 +8182,18 @@ impl ThePrmPrmSvSurfacesOfApprox {
                     Tguv2,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepApprox_ThePrmPrmSvSurfacesOfApprox.hxx`:58 - `BRepApprox_ThePrmPrmSvSurfacesOfApprox::Pnt()`
     pub fn pnt(&mut self, u1: f64, v1: f64, u2: f64, v2: f64, P: &mut crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_ThePrmPrmSvSurfacesOfApprox_pnt(
                     self as *mut Self,
                     u1,
@@ -7257,7 +8203,9 @@ impl ThePrmPrmSvSurfacesOfApprox {
                     P,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7281,8 +8229,11 @@ impl ThePrmPrmSvSurfacesOfApprox {
                     Point,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7306,8 +8257,11 @@ impl ThePrmPrmSvSurfacesOfApprox {
                     Tg,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7331,8 +8285,11 @@ impl ThePrmPrmSvSurfacesOfApprox {
                     Tg,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7356,47 +8313,52 @@ impl ThePrmPrmSvSurfacesOfApprox {
                     Tg,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to ApproxInt_SvSurfaces
     pub fn as_approx_int_sv_surfaces(&self) -> &crate::approx_int::SvSurfaces {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_ThePrmPrmSvSurfacesOfApprox_as_ApproxInt_SvSurfaces(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_ThePrmPrmSvSurfacesOfApprox_as_ApproxInt_SvSurfaces(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ApproxInt_SvSurfaces (mutable)
     pub fn as_approx_int_sv_surfaces_mut(&mut self) -> &mut crate::approx_int::SvSurfaces {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_ThePrmPrmSvSurfacesOfApprox_as_ApproxInt_SvSurfaces_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_ThePrmPrmSvSurfacesOfApprox_as_ApproxInt_SvSurfaces_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `ApproxInt_SvSurfaces.hxx`:93 - `ApproxInt_SvSurfaces::SetUseSolver()`
     pub fn set_use_solver(&mut self, theUseSol: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_ThePrmPrmSvSurfacesOfApprox_inherited_SetUseSolver(
                     self as *mut Self,
                     theUseSol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7408,8 +8370,11 @@ impl ThePrmPrmSvSurfacesOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -7433,8 +8398,10 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
         {
             let __result =
                 unsafe { crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7447,8 +8414,10 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_ctor_surface_quadric(PS, IS)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7458,44 +8427,52 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_ctor_quadric(IS)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:51 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Set()`
     pub fn set_surface(&mut self, PS: &crate::b_rep_adaptor::Surface) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_set_surface(
                     self as *mut Self,
                     PS,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:53 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::SetImplicitSurface()`
     pub fn set_implicit_surface(&mut self, IS: &crate::int_surf::Quadric) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_set_implicit_surface(self as *mut Self, IS)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:55 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Set()`
     pub fn set_real(&mut self, Tolerance: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_set_real(
                     self as *mut Self,
                     Tolerance,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7507,8 +8484,11 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7520,8 +8500,11 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7535,8 +8518,11 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
                     F,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7554,8 +8540,11 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
                     D,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7575,8 +8564,11 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
                     D,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7588,8 +8580,11 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7603,8 +8598,11 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7616,8 +8614,11 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7629,8 +8630,11 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7642,8 +8646,11 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7655,8 +8662,11 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7668,8 +8678,11 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7681,8 +8694,11 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7690,48 +8706,50 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_as_math_FunctionSetWithDerivatives(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_as_math_FunctionSetWithDerivatives(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_as_math_FunctionSetWithDerivatives_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_as_math_FunctionSetWithDerivatives_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_as_math_FunctionSet(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_as_math_FunctionSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_as_math_FunctionSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
@@ -7740,8 +8758,11 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
             let __result = unsafe {
                 crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

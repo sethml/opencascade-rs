@@ -49,8 +49,10 @@ impl Circ2d2TanOn {
                     Qualified1, Qualified2, OnLine, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -70,8 +72,10 @@ impl Circ2d2TanOn {
                     Qualified1, Qualified2, OnLine, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -91,8 +95,10 @@ impl Circ2d2TanOn {
                     Qualified1, Qualified2, OnLine, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -112,8 +118,10 @@ impl Circ2d2TanOn {
                     Qualified1, Point2, OnLine, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -133,8 +141,10 @@ impl Circ2d2TanOn {
                     Qualified1, Point2, OnLine, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -154,8 +164,10 @@ impl Circ2d2TanOn {
                     Point1, Point2, OnLine, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -175,8 +187,10 @@ impl Circ2d2TanOn {
                     Qualified1, Qualified2, OnCirc, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -196,8 +210,10 @@ impl Circ2d2TanOn {
                     Qualified1, Qualified2, OnCirc, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -217,8 +233,10 @@ impl Circ2d2TanOn {
                     Qualified1, Point2, OnCirc, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -238,8 +256,10 @@ impl Circ2d2TanOn {
                     Qualified1, Qualified2, OnCirc, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -259,8 +279,10 @@ impl Circ2d2TanOn {
                     Qualified1, Point2, OnCirc, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -280,8 +302,10 @@ impl Circ2d2TanOn {
                     Point1, Point2, OnCirc, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -293,8 +317,11 @@ impl Circ2d2TanOn {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::GccAna_Circ2d2TanOn_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -307,8 +334,11 @@ impl Circ2d2TanOn {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Circ2d2TanOn_nb_solutions(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -327,8 +357,11 @@ impl Circ2d2TanOn {
             let __result = unsafe {
                 crate::ffi::GccAna_Circ2d2TanOn_this_solution(self as *const Self, Index)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -357,7 +390,7 @@ impl Circ2d2TanOn {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Circ2d2TanOn_which_qualifier(
                     self as *const Self,
                     Index,
@@ -365,7 +398,9 @@ impl Circ2d2TanOn {
                     &mut Qualif2_i32_,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
         *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
@@ -387,7 +422,7 @@ impl Circ2d2TanOn {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Circ2d2TanOn_tangency1(
                     self as *const Self,
                     Index,
@@ -396,7 +431,9 @@ impl Circ2d2TanOn {
                     PntSol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -416,7 +453,7 @@ impl Circ2d2TanOn {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Circ2d2TanOn_tangency2(
                     self as *const Self,
                     Index,
@@ -425,7 +462,9 @@ impl Circ2d2TanOn {
                     PntSol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -440,7 +479,7 @@ impl Circ2d2TanOn {
     /// StdFail_NotDone if the construction fails.
     pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntArg: &mut crate::gp::Pnt2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Circ2d2TanOn_center_on3(
                     self as *const Self,
                     Index,
@@ -448,7 +487,9 @@ impl Circ2d2TanOn {
                     PntArg,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -466,8 +507,11 @@ impl Circ2d2TanOn {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Circ2d2TanOn_is_the_same1(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -485,8 +529,11 @@ impl Circ2d2TanOn {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Circ2d2TanOn_is_the_same2(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -543,8 +590,10 @@ impl Circ2d2TanRad {
                     Qualified1, Qualified2, Radius, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -565,8 +614,10 @@ impl Circ2d2TanRad {
                     Qualified1, Qualified2, Radius, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -587,8 +638,10 @@ impl Circ2d2TanRad {
                     Qualified1, Point2, Radius, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -609,8 +662,10 @@ impl Circ2d2TanRad {
                     Qualified1, Point2, Radius, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -631,8 +686,10 @@ impl Circ2d2TanRad {
                     Qualified1, Qualified2, Radius, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -653,8 +710,10 @@ impl Circ2d2TanRad {
                     Point1, Point2, Radius, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -665,8 +724,11 @@ impl Circ2d2TanRad {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::GccAna_Circ2d2TanRad_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -678,8 +740,11 @@ impl Circ2d2TanRad {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Circ2d2TanRad_nb_solutions(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -696,8 +761,11 @@ impl Circ2d2TanRad {
             let __result = unsafe {
                 crate::ffi::GccAna_Circ2d2TanRad_this_solution(self as *const Self, Index)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -716,7 +784,7 @@ impl Circ2d2TanRad {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Circ2d2TanRad_which_qualifier(
                     self as *const Self,
                     Index,
@@ -724,7 +792,9 @@ impl Circ2d2TanRad {
                     &mut Qualif2_i32_,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
         *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
@@ -746,7 +816,7 @@ impl Circ2d2TanRad {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Circ2d2TanRad_tangency1(
                     self as *const Self,
                     Index,
@@ -755,7 +825,9 @@ impl Circ2d2TanRad {
                     PntSol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -776,7 +848,7 @@ impl Circ2d2TanRad {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Circ2d2TanRad_tangency2(
                     self as *const Self,
                     Index,
@@ -785,7 +857,9 @@ impl Circ2d2TanRad {
                     PntSol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -800,8 +874,11 @@ impl Circ2d2TanRad {
             let __result = unsafe {
                 crate::ffi::GccAna_Circ2d2TanRad_is_the_same1(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -815,8 +892,11 @@ impl Circ2d2TanRad {
             let __result = unsafe {
                 crate::ffi::GccAna_Circ2d2TanRad_is_the_same2(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -871,8 +951,10 @@ impl Circ2d3Tan {
                     Qualified1, Qualified2, Qualified3, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -893,8 +975,10 @@ impl Circ2d3Tan {
                     Qualified1, Qualified2, Qualified3, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -915,8 +999,10 @@ impl Circ2d3Tan {
                     Qualified1, Qualified2, Qualified3, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -937,8 +1023,10 @@ impl Circ2d3Tan {
                     Qualified1, Qualified2, Qualified3, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -959,8 +1047,10 @@ impl Circ2d3Tan {
                     Qualified1, Qualified2, Point3, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -982,8 +1072,10 @@ impl Circ2d3Tan {
                     Qualified1, Qualified2, Point3, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1004,8 +1096,10 @@ impl Circ2d3Tan {
                     Qualified1, Qualified2, Point3, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1027,8 +1121,10 @@ impl Circ2d3Tan {
                     Qualified1, Point2, Point3, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1050,8 +1146,10 @@ impl Circ2d3Tan {
                     Qualified1, Point2, Point3, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1070,8 +1168,10 @@ impl Circ2d3Tan {
             let __result = unsafe {
                 crate::ffi::GccAna_Circ2d3Tan_ctor_pnt2d3_real(Point1, Point2, Point3, Tolerance)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1084,8 +1184,11 @@ impl Circ2d3Tan {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::GccAna_Circ2d3Tan_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1096,8 +1199,11 @@ impl Circ2d3Tan {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Circ2d3Tan_nb_solutions(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1115,8 +1221,11 @@ impl Circ2d3Tan {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Circ2d3Tan_this_solution(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1138,7 +1247,7 @@ impl Circ2d3Tan {
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
         let mut Qualif3_i32_: i32 = (*Qualif3).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Circ2d3Tan_which_qualifier(
                     self as *const Self,
                     Index,
@@ -1147,7 +1256,9 @@ impl Circ2d3Tan {
                     &mut Qualif3_i32_,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
         *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
@@ -1171,7 +1282,7 @@ impl Circ2d3Tan {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Circ2d3Tan_tangency1(
                     self as *const Self,
                     Index,
@@ -1180,7 +1291,9 @@ impl Circ2d3Tan {
                     PntSol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1201,7 +1314,7 @@ impl Circ2d3Tan {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Circ2d3Tan_tangency2(
                     self as *const Self,
                     Index,
@@ -1210,7 +1323,9 @@ impl Circ2d3Tan {
                     PntSol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1231,7 +1346,7 @@ impl Circ2d3Tan {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Circ2d3Tan_tangency3(
                     self as *const Self,
                     Index,
@@ -1240,7 +1355,9 @@ impl Circ2d3Tan {
                     PntSol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1253,8 +1370,11 @@ impl Circ2d3Tan {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Circ2d3Tan_is_the_same1(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1267,8 +1387,11 @@ impl Circ2d3Tan {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Circ2d3Tan_is_the_same2(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1281,8 +1404,11 @@ impl Circ2d3Tan {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Circ2d3Tan_is_the_same3(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1319,8 +1445,10 @@ impl Circ2dBisec {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GccAna_Circ2dBisec_ctor_circ2d2(Circ1, Circ2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1329,8 +1457,11 @@ impl Circ2dBisec {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::GccAna_Circ2dBisec_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1341,8 +1472,11 @@ impl Circ2dBisec {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Circ2dBisec_nb_solutions(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1356,8 +1490,11 @@ impl Circ2dBisec {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Circ2dBisec_this_solution(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -1408,8 +1545,10 @@ impl Circ2dTanCen {
                     Qualified1, Pcenter, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1424,8 +1563,10 @@ impl Circ2dTanCen {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Circ2dTanCen_ctor_lin2d_pnt2d(Linetan, Pcenter) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1450,8 +1591,10 @@ impl Circ2dTanCen {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GccAna_Circ2dTanCen_ctor_pnt2d2(Point1, Pcenter) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1464,8 +1607,11 @@ impl Circ2dTanCen {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::GccAna_Circ2dTanCen_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1477,8 +1623,11 @@ impl Circ2dTanCen {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Circ2dTanCen_nb_solutions(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1496,8 +1645,11 @@ impl Circ2dTanCen {
             let __result = unsafe {
                 crate::ffi::GccAna_Circ2dTanCen_this_solution(self as *const Self, Index)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1513,14 +1665,16 @@ impl Circ2dTanCen {
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Circ2dTanCen_which_qualifier(
                     self as *const Self,
                     Index,
                     &mut Qualif1_i32_,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
@@ -1544,7 +1698,7 @@ impl Circ2dTanCen {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Circ2dTanCen_tangency1(
                     self as *const Self,
                     Index,
@@ -1553,7 +1707,9 @@ impl Circ2dTanCen {
                     PntSol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1568,8 +1724,11 @@ impl Circ2dTanCen {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Circ2dTanCen_is_the_same1(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1631,8 +1790,10 @@ impl Circ2dTanOnRad {
                     Qualified1, OnLine, Radius, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1654,8 +1815,10 @@ impl Circ2dTanOnRad {
                     Qualified1, OnLine, Radius, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1676,8 +1839,10 @@ impl Circ2dTanOnRad {
                     Point1, OnLine, Radius, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1699,8 +1864,10 @@ impl Circ2dTanOnRad {
                     Qualified1, OnCirc, Radius, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1722,8 +1889,10 @@ impl Circ2dTanOnRad {
                     Qualified1, OnCirc, Radius, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1745,8 +1914,10 @@ impl Circ2dTanOnRad {
                     Point1, OnCirc, Radius, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1760,8 +1931,11 @@ impl Circ2dTanOnRad {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Circ2dTanOnRad_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1772,8 +1946,11 @@ impl Circ2dTanOnRad {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Circ2dTanOnRad_nb_solutions(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1791,8 +1968,11 @@ impl Circ2dTanOnRad {
             let __result = unsafe {
                 crate::ffi::GccAna_Circ2dTanOnRad_this_solution(self as *const Self, Index)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1814,14 +1994,16 @@ impl Circ2dTanOnRad {
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Circ2dTanOnRad_which_qualifier(
                     self as *const Self,
                     Index,
                     &mut Qualif1_i32_,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
@@ -1846,7 +2028,7 @@ impl Circ2dTanOnRad {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Circ2dTanOnRad_tangency1(
                     self as *const Self,
                     Index,
@@ -1855,7 +2037,9 @@ impl Circ2dTanOnRad {
                     PntSol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1870,7 +2054,7 @@ impl Circ2dTanOnRad {
     /// number of solutions.
     pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Circ2dTanOnRad_center_on3(
                     self as *const Self,
                     Index,
@@ -1878,7 +2062,9 @@ impl Circ2dTanOnRad {
                     PntSol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1893,8 +2079,11 @@ impl Circ2dTanOnRad {
             let __result = unsafe {
                 crate::ffi::GccAna_Circ2dTanOnRad_is_the_same1(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1932,8 +2121,10 @@ impl CircLin2dBisec {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_CircLin2dBisec_ctor_circ2d_lin2d(Circle, Line) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1943,8 +2134,11 @@ impl CircLin2dBisec {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_CircLin2dBisec_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1954,8 +2148,11 @@ impl CircLin2dBisec {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_CircLin2dBisec_nb_solutions(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1970,8 +2167,11 @@ impl CircLin2dBisec {
             let __result = unsafe {
                 crate::ffi::GccAna_CircLin2dBisec_this_solution(self as *const Self, Index)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -2011,8 +2211,10 @@ impl CircPnt2dBisec {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_CircPnt2dBisec_ctor_circ2d_pnt2d(Circle1, Point2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2028,8 +2230,10 @@ impl CircPnt2dBisec {
             let __result = unsafe {
                 crate::ffi::GccAna_CircPnt2dBisec_ctor_circ2d_pnt2d_real(Circle1, Point2, Tolerance)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2039,8 +2243,11 @@ impl CircPnt2dBisec {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_CircPnt2dBisec_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2050,8 +2257,11 @@ impl CircPnt2dBisec {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_CircPnt2dBisec_nb_solutions(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2066,8 +2276,11 @@ impl CircPnt2dBisec {
             let __result = unsafe {
                 crate::ffi::GccAna_CircPnt2dBisec_this_solution(self as *const Self, Index)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -2115,8 +2328,10 @@ impl Lin2d2Tan {
             let __result = unsafe {
                 crate::ffi::GccAna_Lin2d2Tan_ctor_pnt2d2_real(ThePoint1, ThePoint2, Tolerance)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2140,8 +2355,10 @@ impl Lin2d2Tan {
                     Qualified1, ThePoint, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2161,8 +2378,10 @@ impl Lin2d2Tan {
                     Qualified1, Qualified2, Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2172,8 +2391,11 @@ impl Lin2d2Tan {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::GccAna_Lin2d2Tan_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2184,8 +2406,11 @@ impl Lin2d2Tan {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Lin2d2Tan_nb_solutions(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2201,8 +2426,11 @@ impl Lin2d2Tan {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Lin2d2Tan_this_solution(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2231,7 +2459,7 @@ impl Lin2d2Tan {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Lin2d2Tan_which_qualifier(
                     self as *const Self,
                     Index,
@@ -2239,7 +2467,9 @@ impl Lin2d2Tan {
                     &mut Qualif2_i32_,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
         *Qualif2 = crate::gcc_ent::Position::try_from(Qualif2_i32_).unwrap();
@@ -2262,7 +2492,7 @@ impl Lin2d2Tan {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Lin2d2Tan_tangency1(
                     self as *const Self,
                     Index,
@@ -2271,7 +2501,9 @@ impl Lin2d2Tan {
                     PntSol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2292,7 +2524,7 @@ impl Lin2d2Tan {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Lin2d2Tan_tangency2(
                     self as *const Self,
                     Index,
@@ -2301,7 +2533,9 @@ impl Lin2d2Tan {
                     PntSol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2343,8 +2577,10 @@ impl Lin2dBisec {
     pub fn new_lin2d2(Lin1: &crate::gp::Lin2d, Lin2: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GccAna_Lin2dBisec_ctor_lin2d2(Lin1, Lin2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2353,8 +2589,11 @@ impl Lin2dBisec {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::GccAna_Lin2dBisec_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2365,8 +2604,11 @@ impl Lin2dBisec {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Lin2dBisec_nb_solutions(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2386,8 +2628,11 @@ impl Lin2dBisec {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Lin2dBisec_this_solution(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2405,7 +2650,7 @@ impl Lin2dBisec {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Lin2dBisec_intersection1(
                     self as *const Self,
                     Index,
@@ -2414,7 +2659,9 @@ impl Lin2dBisec {
                     PntSol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2433,7 +2680,7 @@ impl Lin2dBisec {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Lin2dBisec_intersection2(
                     self as *const Self,
                     Index,
@@ -2442,7 +2689,9 @@ impl Lin2dBisec {
                     PntSol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2482,8 +2731,10 @@ impl Lin2dTanObl {
             let __result = unsafe {
                 crate::ffi::GccAna_Lin2dTanObl_ctor_pnt2d_lin2d_real(ThePoint, TheLine, TheAngle)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2505,8 +2756,10 @@ impl Lin2dTanObl {
                     Qualified1, TheLine, TheAngle,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2518,8 +2771,11 @@ impl Lin2dTanObl {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::GccAna_Lin2dTanObl_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2530,8 +2786,11 @@ impl Lin2dTanObl {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Lin2dTanObl_nb_solutions(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2546,8 +2805,11 @@ impl Lin2dTanObl {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Lin2dTanObl_this_solution(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2569,14 +2831,16 @@ impl Lin2dTanObl {
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Lin2dTanObl_which_qualifier(
                     self as *const Self,
                     Index,
                     &mut Qualif1_i32_,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
@@ -2598,7 +2862,7 @@ impl Lin2dTanObl {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Lin2dTanObl_tangency1(
                     self as *const Self,
                     Index,
@@ -2607,7 +2871,9 @@ impl Lin2dTanObl {
                     PntSol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2624,7 +2890,7 @@ impl Lin2dTanObl {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Lin2dTanObl_intersection2(
                     self as *const Self,
                     Index,
@@ -2633,7 +2899,9 @@ impl Lin2dTanObl {
                     PntSol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2674,8 +2942,10 @@ impl Lin2dTanPar {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Lin2dTanPar_ctor_pnt2d_lin2d(ThePoint, Lin1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2694,8 +2964,10 @@ impl Lin2dTanPar {
             let __result = unsafe {
                 crate::ffi::GccAna_Lin2dTanPar_ctor_qualifiedcirc_lin2d(Qualified1, Lin1)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2704,8 +2976,11 @@ impl Lin2dTanPar {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::GccAna_Lin2dTanPar_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2716,8 +2991,11 @@ impl Lin2dTanPar {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Lin2dTanPar_nb_solutions(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2735,8 +3013,11 @@ impl Lin2dTanPar {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Lin2dTanPar_this_solution(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2753,14 +3034,16 @@ impl Lin2dTanPar {
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Lin2dTanPar_which_qualifier(
                     self as *const Self,
                     Index,
                     &mut Qualif1_i32_,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
@@ -2785,7 +3068,7 @@ impl Lin2dTanPar {
         Pnt: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Lin2dTanPar_tangency1(
                     self as *const Self,
                     Index,
@@ -2794,7 +3077,9 @@ impl Lin2dTanPar {
                     Pnt,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2835,8 +3120,10 @@ impl Lin2dTanPer {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Lin2dTanPer_ctor_pnt2d_lin2d(ThePnt, TheLin) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2851,8 +3138,10 @@ impl Lin2dTanPer {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Lin2dTanPer_ctor_pnt2d_circ2d(ThePnt, TheCircle) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2868,8 +3157,10 @@ impl Lin2dTanPer {
             let __result = unsafe {
                 crate::ffi::GccAna_Lin2dTanPer_ctor_qualifiedcirc_lin2d(Qualified1, TheLin)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2885,8 +3176,10 @@ impl Lin2dTanPer {
             let __result = unsafe {
                 crate::ffi::GccAna_Lin2dTanPer_ctor_qualifiedcirc_circ2d(Qualified1, TheCircle)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2895,8 +3188,11 @@ impl Lin2dTanPer {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::GccAna_Lin2dTanPer_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2907,8 +3203,11 @@ impl Lin2dTanPer {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Lin2dTanPer_nb_solutions(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2930,14 +3229,16 @@ impl Lin2dTanPer {
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Lin2dTanPer_which_qualifier(
                     self as *const Self,
                     Index,
                     &mut Qualif1_i32_,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *Qualif1 = crate::gcc_ent::Position::try_from(Qualif1_i32_).unwrap();
     }
@@ -2956,8 +3257,11 @@ impl Lin2dTanPer {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Lin2dTanPer_this_solution(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2980,7 +3284,7 @@ impl Lin2dTanPer {
         Pnt: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Lin2dTanPer_tangency1(
                     self as *const Self,
                     Index,
@@ -2989,7 +3293,9 @@ impl Lin2dTanPer {
                     Pnt,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3013,7 +3319,7 @@ impl Lin2dTanPer {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_Lin2dTanPer_intersection2(
                     self as *const Self,
                     Index,
@@ -3022,7 +3328,9 @@ impl Lin2dTanPer {
                     PntSol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3060,8 +3368,10 @@ impl LinPnt2dBisec {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_LinPnt2dBisec_ctor_lin2d_pnt2d(Line1, Point2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3070,8 +3380,11 @@ impl LinPnt2dBisec {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::GccAna_LinPnt2dBisec_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3082,8 +3395,11 @@ impl LinPnt2dBisec {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_LinPnt2dBisec_this_solution(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -3106,8 +3422,10 @@ impl NoSolution {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GccAna_NoSolution_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3117,8 +3435,10 @@ impl NoSolution {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_NoSolution_ctor_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3133,8 +3453,10 @@ impl NoSolution {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3143,8 +3465,11 @@ impl NoSolution {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_NoSolution_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3152,16 +3477,21 @@ impl NoSolution {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::GccAna_NoSolution_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::GccAna_NoSolution_raise_charptr(c_theMessage.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::GccAna_NoSolution_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::GccAna_NoSolution_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3174,8 +3504,11 @@ impl NoSolution {
             let __result = unsafe {
                 crate::ffi::GccAna_NoSolution_new_instance_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3193,8 +3526,11 @@ impl NoSolution {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3202,8 +3538,11 @@ impl NoSolution {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::GccAna_NoSolution_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3211,86 +3550,95 @@ impl NoSolution {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::GccAna_NoSolution_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::GccAna_NoSolution_as_Standard_Failure(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::GccAna_NoSolution_as_Standard_Failure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::GccAna_NoSolution_as_Standard_Failure_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::GccAna_NoSolution_as_Standard_Failure_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::GccAna_NoSolution_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::GccAna_NoSolution_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::GccAna_NoSolution_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::GccAna_NoSolution_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGccAnaNoSolution> {
-        {
-            let __result = unsafe { crate::ffi::GccAna_NoSolution_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::GccAna_NoSolution_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_NoSolution_inherited_Print(self as *const Self, theStream)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::GccAna_NoSolution_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::GccAna_NoSolution_inherited_Reraise(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::GccAna_NoSolution_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::GccAna_NoSolution_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3300,8 +3648,11 @@ impl NoSolution {
             let __result = unsafe {
                 crate::ffi::GccAna_NoSolution_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3311,8 +3662,11 @@ impl NoSolution {
             let __result = unsafe {
                 crate::ffi::GccAna_NoSolution_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3321,11 +3675,14 @@ impl NoSolution {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_NoSolution_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3335,18 +3692,23 @@ impl NoSolution {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_NoSolution_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GccAna_NoSolution_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3356,16 +3718,22 @@ impl NoSolution {
             let __result = unsafe {
                 crate::ffi::GccAna_NoSolution_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::GccAna_NoSolution_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::GccAna_NoSolution_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3381,42 +3749,42 @@ unsafe impl crate::CppDeletable for HandleGccAnaNoSolution {
 impl HandleGccAnaNoSolution {
     /// Dereference this Handle to access the underlying GccAna_NoSolution
     pub fn get(&self) -> &crate::ffi::GccAna_NoSolution {
-        {
-            let __result = unsafe { crate::ffi::HandleGccAnaNoSolution_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGccAnaNoSolution_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying GccAna_NoSolution
     pub fn get_mut(&mut self) -> &mut crate::ffi::GccAna_NoSolution {
-        {
-            let __result = unsafe { crate::ffi::HandleGccAnaNoSolution_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGccAnaNoSolution_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<GccAna_NoSolution> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGccAnaNoSolution_to_HandleStandardFailure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGccAnaNoSolution_to_HandleStandardFailure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<GccAna_NoSolution> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGccAnaNoSolution_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGccAnaNoSolution_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3451,8 +3819,10 @@ impl Pnt2dBisec {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GccAna_Pnt2dBisec_ctor_pnt2d2(Point1, Point2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3461,8 +3831,11 @@ impl Pnt2dBisec {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::GccAna_Pnt2dBisec_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3473,8 +3846,11 @@ impl Pnt2dBisec {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Pnt2dBisec_has_solution(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3484,8 +3860,11 @@ impl Pnt2dBisec {
         {
             let __result =
                 unsafe { crate::ffi::GccAna_Pnt2dBisec_this_solution(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }

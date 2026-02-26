@@ -29,8 +29,10 @@ impl NoteObject {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XCAFNoteObjects_NoteObject_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -43,8 +45,10 @@ impl NoteObject {
             let __result = unsafe {
                 crate::ffi::XCAFNoteObjects_NoteObject_ctor_handlexcafnoteobjectsnoteobject(theObj)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -53,8 +57,11 @@ impl NoteObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFNoteObjects_NoteObject_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -64,8 +71,11 @@ impl NoteObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFNoteObjects_NoteObject_has_plane(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -75,8 +85,11 @@ impl NoteObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFNoteObjects_NoteObject_get_plane(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -84,10 +97,12 @@ impl NoteObject {
     /// Sets a right-handed coordinate system of the plane
     pub fn set_plane(&mut self, thePlane: &crate::gp::Ax2) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFNoteObjects_NoteObject_set_plane(self as *mut Self, thePlane)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -97,8 +112,11 @@ impl NoteObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFNoteObjects_NoteObject_has_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -108,8 +126,11 @@ impl NoteObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFNoteObjects_NoteObject_get_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -117,8 +138,12 @@ impl NoteObject {
     /// Sets the anchor point on the annotated object
     pub fn set_point(&mut self, thePnt: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::XCAFNoteObjects_NoteObject_set_point(self as *mut Self, thePnt) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XCAFNoteObjects_NoteObject_set_point(self as *mut Self, thePnt)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -129,8 +154,11 @@ impl NoteObject {
             let __result = unsafe {
                 crate::ffi::XCAFNoteObjects_NoteObject_has_point_text(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -141,8 +169,11 @@ impl NoteObject {
             let __result = unsafe {
                 crate::ffi::XCAFNoteObjects_NoteObject_get_point_text(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -150,10 +181,12 @@ impl NoteObject {
     /// Sets the text position
     pub fn set_point_text(&mut self, thePnt: &crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFNoteObjects_NoteObject_set_point_text(self as *mut Self, thePnt)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -164,8 +197,11 @@ impl NoteObject {
             let __result = unsafe {
                 crate::ffi::XCAFNoteObjects_NoteObject_get_presentation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -173,13 +209,15 @@ impl NoteObject {
     /// Sets a tessellated annotation
     pub fn set_presentation(&mut self, thePresentation: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFNoteObjects_NoteObject_set_presentation(
                     self as *mut Self,
                     thePresentation,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -187,8 +225,10 @@ impl NoteObject {
     /// Resets data to the state after calling the default constructor
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::XCAFNoteObjects_NoteObject_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::XCAFNoteObjects_NoteObject_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -196,8 +236,11 @@ impl NoteObject {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::XCAFNoteObjects_NoteObject_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -205,43 +248,45 @@ impl NoteObject {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::XCAFNoteObjects_NoteObject_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFNoteObjects_NoteObject_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::XCAFNoteObjects_NoteObject_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFNoteObjects_NoteObject_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::XCAFNoteObjects_NoteObject_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleXCAFNoteObjectsNoteObject> {
-        {
-            let __result =
-                unsafe { crate::ffi::XCAFNoteObjects_NoteObject_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::XCAFNoteObjects_NoteObject_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -253,8 +298,11 @@ impl NoteObject {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -267,8 +315,11 @@ impl NoteObject {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -278,11 +329,14 @@ impl NoteObject {
             let __result = unsafe {
                 crate::ffi::XCAFNoteObjects_NoteObject_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -293,20 +347,25 @@ impl NoteObject {
             let __result = unsafe {
                 crate::ffi::XCAFNoteObjects_NoteObject_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFNoteObjects_NoteObject_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -318,16 +377,23 @@ impl NoteObject {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::XCAFNoteObjects_NoteObject_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XCAFNoteObjects_NoteObject_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -343,34 +409,34 @@ unsafe impl crate::CppDeletable for HandleXCAFNoteObjectsNoteObject {
 impl HandleXCAFNoteObjectsNoteObject {
     /// Dereference this Handle to access the underlying XCAFNoteObjects_NoteObject
     pub fn get(&self) -> &crate::ffi::XCAFNoteObjects_NoteObject {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleXCAFNoteObjectsNoteObject_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleXCAFNoteObjectsNoteObject_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying XCAFNoteObjects_NoteObject
     pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFNoteObjects_NoteObject {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleXCAFNoteObjectsNoteObject_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleXCAFNoteObjectsNoteObject_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<XCAFNoteObjects_NoteObject> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXCAFNoteObjectsNoteObject_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXCAFNoteObjectsNoteObject_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

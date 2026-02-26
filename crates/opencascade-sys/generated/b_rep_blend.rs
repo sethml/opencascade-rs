@@ -38,8 +38,10 @@ impl AppFunc {
                     Line, Func, Tol3d, Tol2d,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -52,18 +54,22 @@ impl AppFunc {
         Pnt: &mut crate::blend::Point,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFunc_point(self as *const Self, Func, Param, Sol, Pnt)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_AppFunc.hxx`:49 - `BRepBlend_AppFunc::Vec()`
     pub fn vec(&self, Sol: &mut crate::ffi::math_Vector, Pnt: &crate::blend::Point) {
         {
-            unsafe { crate::ffi::BRepBlend_AppFunc_vec(self as *const Self, Sol, Pnt) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepBlend_AppFunc_vec(self as *const Self, Sol, Pnt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -72,8 +78,11 @@ impl AppFunc {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppFunc_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -81,8 +90,11 @@ impl AppFunc {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::BRepBlend_AppFunc_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -90,85 +102,84 @@ impl AppFunc {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepBlend_AppFunc_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to BRepBlend_AppFuncRoot
     pub fn as_app_func_root(&self) -> &AppFuncRoot {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppFunc_as_BRepBlend_AppFuncRoot(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepBlend_AppFunc_as_BRepBlend_AppFuncRoot(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBlend_AppFuncRoot (mutable)
     pub fn as_app_func_root_mut(&mut self) -> &mut AppFuncRoot {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppFunc_as_BRepBlend_AppFuncRoot_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_AppFunc_as_BRepBlend_AppFuncRoot_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Approx_SweepFunction
     pub fn as_approx_sweep_function(&self) -> &crate::approx::SweepFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppFunc_as_Approx_SweepFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepBlend_AppFunc_as_Approx_SweepFunction(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Approx_SweepFunction (mutable)
     pub fn as_approx_sweep_function_mut(&mut self) -> &mut crate::approx::SweepFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppFunc_as_Approx_SweepFunction_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepBlend_AppFunc_as_Approx_SweepFunction_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepBlend_AppFunc_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepBlend_AppFunc_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppFunc_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepBlend_AppFunc_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFunc> {
-        {
-            let __result = unsafe { crate::ffi::BRepBlend_AppFunc_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::BRepBlend_AppFunc_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:47 - `BRepBlend_AppFuncRoot::D0()`
@@ -193,8 +204,11 @@ impl AppFunc {
                     Weigths,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -226,8 +240,11 @@ impl AppFunc {
                     DWeigths,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -265,8 +282,11 @@ impl AppFunc {
                     D2Weigths,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -275,15 +295,18 @@ impl AppFunc {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppFunc_inherited_Nb2dCurves(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:85 - `BRepBlend_AppFuncRoot::SectionShape()`
     pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFunc_inherited_SectionShape(
                     self as *const Self,
                     NbPoles,
@@ -291,23 +314,33 @@ impl AppFunc {
                     Degree,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:90 - `BRepBlend_AppFuncRoot::Knots()`
     pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::BRepBlend_AppFunc_inherited_Knots(self as *const Self, TKnots) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepBlend_AppFunc_inherited_Knots(self as *const Self, TKnots)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:93 - `BRepBlend_AppFuncRoot::Mults()`
     pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
         {
-            unsafe { crate::ffi::BRepBlend_AppFunc_inherited_Mults(self as *const Self, TMults) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepBlend_AppFunc_inherited_Mults(self as *const Self, TMults)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -316,8 +349,11 @@ impl AppFunc {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppFunc_inherited_IsRational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -327,35 +363,42 @@ impl AppFunc {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFunc_inherited_NbIntervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:108 - `BRepBlend_AppFuncRoot::Intervals()`
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFunc_inherited_Intervals(self as *const Self, T, S.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:115 - `BRepBlend_AppFuncRoot::SetInterval()`
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFunc_inherited_SetInterval(self as *mut Self, First, Last)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:121 - `BRepBlend_AppFuncRoot::Resolution()`
     pub fn resolution(&self, Index: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFunc_inherited_Resolution(
                     self as *const Self,
                     Index,
@@ -364,7 +407,9 @@ impl AppFunc {
                     TolV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -377,7 +422,7 @@ impl AppFunc {
         Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFunc_inherited_GetTolerance(
                     self as *const Self,
                     BoundTol,
@@ -386,21 +431,25 @@ impl AppFunc {
                     Tol3d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:138 - `BRepBlend_AppFuncRoot::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFunc_inherited_SetTolerance(
                     self as *mut Self,
                     Tol3d,
                     Tol2d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -410,8 +459,11 @@ impl AppFunc {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFunc_inherited_BarycentreOfSurf(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -421,21 +473,26 @@ impl AppFunc {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFunc_inherited_MaximalSection(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:154 - `BRepBlend_AppFuncRoot::GetMinimalWeight()`
     pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFunc_inherited_GetMinimalWeight(
                     self as *const Self,
                     Weigths,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -445,8 +502,11 @@ impl AppFunc {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFunc_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -456,8 +516,11 @@ impl AppFunc {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFunc_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -466,11 +529,14 @@ impl AppFunc {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppFunc_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -480,18 +546,23 @@ impl AppFunc {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppFunc_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFunc_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -501,16 +572,22 @@ impl AppFunc {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFunc_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::BRepBlend_AppFunc_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_AppFunc_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -526,59 +603,57 @@ unsafe impl crate::CppDeletable for HandleBRepBlendAppFunc {
 impl HandleBRepBlendAppFunc {
     /// Dereference this Handle to access the underlying BRepBlend_AppFunc
     pub fn get(&self) -> &crate::ffi::BRepBlend_AppFunc {
-        {
-            let __result = unsafe { crate::ffi::HandleBRepBlendAppFunc_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBRepBlendAppFunc_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepBlend_AppFunc
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepBlend_AppFunc {
-        {
-            let __result = unsafe { crate::ffi::HandleBRepBlendAppFunc_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleBRepBlendAppFunc_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepBlend_AppFunc> to Handle<BRepBlend_AppFuncRoot>
     pub fn to_handle_app_func_root(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRoot> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepBlendAppFunc_to_HandleBRepBlendAppFuncRoot(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepBlendAppFunc_to_HandleBRepBlendAppFuncRoot(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepBlend_AppFunc> to Handle<Approx_SweepFunction>
     pub fn to_handle_sweep_function(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleApproxSweepFunction> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepBlendAppFunc_to_HandleApproxSweepFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepBlendAppFunc_to_HandleApproxSweepFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepBlend_AppFunc> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepBlendAppFunc_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepBlendAppFunc_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -620,8 +695,11 @@ impl AppFuncRoot {
                     Weigths,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -655,8 +733,11 @@ impl AppFuncRoot {
                     DWeigths,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -696,8 +777,11 @@ impl AppFuncRoot {
                     D2Weigths,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -707,8 +791,11 @@ impl AppFuncRoot {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppFuncRoot_nb2d_curves(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -716,7 +803,7 @@ impl AppFuncRoot {
     /// get the format of an  section
     pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRoot_section_shape(
                     self as *const Self,
                     NbPoles,
@@ -724,7 +811,9 @@ impl AppFuncRoot {
                     Degree,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -732,8 +821,11 @@ impl AppFuncRoot {
     /// get the Knots of the section
     pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::BRepBlend_AppFuncRoot_knots(self as *const Self, TKnots) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_AppFuncRoot_knots(self as *const Self, TKnots) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -741,8 +833,11 @@ impl AppFuncRoot {
     /// get the Multplicities of the section
     pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
         {
-            unsafe { crate::ffi::BRepBlend_AppFuncRoot_mults(self as *const Self, TMults) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_AppFuncRoot_mults(self as *const Self, TMults) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -752,8 +847,11 @@ impl AppFuncRoot {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppFuncRoot_is_rational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -765,8 +863,11 @@ impl AppFuncRoot {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFuncRoot_nb_intervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -778,10 +879,12 @@ impl AppFuncRoot {
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRoot_intervals(self as *const Self, T, S.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -792,10 +895,12 @@ impl AppFuncRoot {
     /// function is not Cn.
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRoot_set_interval(self as *mut Self, First, Last)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -805,7 +910,7 @@ impl AppFuncRoot {
     /// 2d approximation
     pub fn resolution(&self, Index: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRoot_resolution(
                     self as *const Self,
                     Index,
@@ -814,7 +919,9 @@ impl AppFuncRoot {
                     TolV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -832,7 +939,7 @@ impl AppFuncRoot {
         Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRoot_get_tolerance(
                     self as *const Self,
                     BoundTol,
@@ -841,7 +948,9 @@ impl AppFuncRoot {
                     Tol3d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -850,10 +959,12 @@ impl AppFuncRoot {
     /// algorithme to perform D0, D1 or D2
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRoot_set_tolerance(self as *mut Self, Tol3d, Tol2d)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -866,8 +977,11 @@ impl AppFuncRoot {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFuncRoot_barycentre_of_surf(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -879,8 +993,11 @@ impl AppFuncRoot {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppFuncRoot_maximal_section(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -890,10 +1007,12 @@ impl AppFuncRoot {
     /// perform well conditioned rational approximation.
     pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRoot_get_minimal_weight(self as *const Self, Weigths)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -906,18 +1025,23 @@ impl AppFuncRoot {
         Pnt: &mut crate::blend::Point,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRoot_point(self as *const Self, Func, Param, Sol, Pnt)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_AppFuncRoot.hxx`:162 - `BRepBlend_AppFuncRoot::Vec()`
     pub fn vec(&self, Sol: &mut crate::ffi::math_Vector, Pnt: &crate::blend::Point) {
         {
-            unsafe { crate::ffi::BRepBlend_AppFuncRoot_vec(self as *const Self, Sol, Pnt) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_AppFuncRoot_vec(self as *const Self, Sol, Pnt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -926,8 +1050,11 @@ impl AppFuncRoot {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppFuncRoot_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -935,8 +1062,11 @@ impl AppFuncRoot {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::BRepBlend_AppFuncRoot_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -944,53 +1074,55 @@ impl AppFuncRoot {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepBlend_AppFuncRoot_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Approx_SweepFunction
     pub fn as_approx_sweep_function(&self) -> &crate::approx::SweepFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppFuncRoot_as_Approx_SweepFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_AppFuncRoot_as_Approx_SweepFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Approx_SweepFunction (mutable)
     pub fn as_approx_sweep_function_mut(&mut self) -> &mut crate::approx::SweepFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppFuncRoot_as_Approx_SweepFunction_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_AppFuncRoot_as_Approx_SweepFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppFuncRoot_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepBlend_AppFuncRoot_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppFuncRoot_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_AppFuncRoot_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -999,8 +1131,11 @@ impl AppFuncRoot {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFuncRoot_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1010,8 +1145,11 @@ impl AppFuncRoot {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFuncRoot_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1020,11 +1158,14 @@ impl AppFuncRoot {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppFuncRoot_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1035,18 +1176,23 @@ impl AppFuncRoot {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFuncRoot_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRoot_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1056,16 +1202,22 @@ impl AppFuncRoot {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFuncRoot_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::BRepBlend_AppFuncRoot_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_AppFuncRoot_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1081,50 +1233,44 @@ unsafe impl crate::CppDeletable for HandleBRepBlendAppFuncRoot {
 impl HandleBRepBlendAppFuncRoot {
     /// Dereference this Handle to access the underlying BRepBlend_AppFuncRoot
     pub fn get(&self) -> &crate::ffi::BRepBlend_AppFuncRoot {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleBRepBlendAppFuncRoot_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBRepBlendAppFuncRoot_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepBlend_AppFuncRoot
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepBlend_AppFuncRoot {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleBRepBlendAppFuncRoot_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleBRepBlendAppFuncRoot_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepBlend_AppFuncRoot> to Handle<Approx_SweepFunction>
     pub fn to_handle_sweep_function(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleApproxSweepFunction> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepBlendAppFuncRoot_to_HandleApproxSweepFunction(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepBlendAppFuncRoot_to_HandleApproxSweepFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepBlend_AppFuncRoot> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepBlendAppFuncRoot_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepBlendAppFuncRoot_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<BRepBlend_AppFuncRoot> to Handle<BRepBlend_AppFunc>
@@ -1133,16 +1279,18 @@ impl HandleBRepBlendAppFuncRoot {
     pub fn downcast_to_app_func(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFunc>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleBRepBlendAppFuncRoot_downcast_to_HandleBRepBlendAppFunc(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1152,16 +1300,18 @@ impl HandleBRepBlendAppFuncRoot {
     pub fn downcast_to_app_func_rst(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRst>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleBRepBlendAppFuncRoot_downcast_to_HandleBRepBlendAppFuncRst(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1171,16 +1321,18 @@ impl HandleBRepBlendAppFuncRoot {
     pub fn downcast_to_app_func_rst_rst(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRstRst>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleBRepBlendAppFuncRoot_downcast_to_HandleBRepBlendAppFuncRstRst(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -1213,8 +1365,10 @@ impl AppFuncRst {
                     Line, Func, Tol3d, Tol2d,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1227,18 +1381,23 @@ impl AppFuncRst {
         Pnt: &mut crate::blend::Point,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRst_point(self as *const Self, Func, Param, Sol, Pnt)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_AppFuncRst.hxx`:48 - `BRepBlend_AppFuncRst::Vec()`
     pub fn vec(&self, Sol: &mut crate::ffi::math_Vector, Pnt: &crate::blend::Point) {
         {
-            unsafe { crate::ffi::BRepBlend_AppFuncRst_vec(self as *const Self, Sol, Pnt) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_AppFuncRst_vec(self as *const Self, Sol, Pnt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1247,8 +1406,11 @@ impl AppFuncRst {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppFuncRst_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1256,8 +1418,11 @@ impl AppFuncRst {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::BRepBlend_AppFuncRst_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1265,86 +1430,88 @@ impl AppFuncRst {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepBlend_AppFuncRst_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to BRepBlend_AppFuncRoot
     pub fn as_app_func_root(&self) -> &AppFuncRoot {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppFuncRst_as_BRepBlend_AppFuncRoot(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_AppFuncRst_as_BRepBlend_AppFuncRoot(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBlend_AppFuncRoot (mutable)
     pub fn as_app_func_root_mut(&mut self) -> &mut AppFuncRoot {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppFuncRst_as_BRepBlend_AppFuncRoot_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_AppFuncRst_as_BRepBlend_AppFuncRoot_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Approx_SweepFunction
     pub fn as_approx_sweep_function(&self) -> &crate::approx::SweepFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppFuncRst_as_Approx_SweepFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_AppFuncRst_as_Approx_SweepFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Approx_SweepFunction (mutable)
     pub fn as_approx_sweep_function_mut(&mut self) -> &mut crate::approx::SweepFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppFuncRst_as_Approx_SweepFunction_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_AppFuncRst_as_Approx_SweepFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppFuncRst_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepBlend_AppFuncRst_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppFuncRst_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_AppFuncRst_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRst> {
-        {
-            let __result = unsafe { crate::ffi::BRepBlend_AppFuncRst_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::BRepBlend_AppFuncRst_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:47 - `BRepBlend_AppFuncRoot::D0()`
@@ -1369,8 +1536,11 @@ impl AppFuncRst {
                     Weigths,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1402,8 +1572,11 @@ impl AppFuncRst {
                     DWeigths,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1441,8 +1614,11 @@ impl AppFuncRst {
                     D2Weigths,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1452,15 +1628,18 @@ impl AppFuncRst {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFuncRst_inherited_Nb2dCurves(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:85 - `BRepBlend_AppFuncRoot::SectionShape()`
     pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRst_inherited_SectionShape(
                     self as *const Self,
                     NbPoles,
@@ -1468,27 +1647,33 @@ impl AppFuncRst {
                     Degree,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:90 - `BRepBlend_AppFuncRoot::Knots()`
     pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRst_inherited_Knots(self as *const Self, TKnots)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:93 - `BRepBlend_AppFuncRoot::Mults()`
     pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRst_inherited_Mults(self as *const Self, TMults)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1498,8 +1683,11 @@ impl AppFuncRst {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFuncRst_inherited_IsRational(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1512,43 +1700,50 @@ impl AppFuncRst {
                     S.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:108 - `BRepBlend_AppFuncRoot::Intervals()`
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRst_inherited_Intervals(
                     self as *const Self,
                     T,
                     S.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:115 - `BRepBlend_AppFuncRoot::SetInterval()`
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRst_inherited_SetInterval(
                     self as *mut Self,
                     First,
                     Last,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:121 - `BRepBlend_AppFuncRoot::Resolution()`
     pub fn resolution(&self, Index: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRst_inherited_Resolution(
                     self as *const Self,
                     Index,
@@ -1557,7 +1752,9 @@ impl AppFuncRst {
                     TolV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1570,7 +1767,7 @@ impl AppFuncRst {
         Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRst_inherited_GetTolerance(
                     self as *const Self,
                     BoundTol,
@@ -1579,21 +1776,25 @@ impl AppFuncRst {
                     Tol3d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:138 - `BRepBlend_AppFuncRoot::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRst_inherited_SetTolerance(
                     self as *mut Self,
                     Tol3d,
                     Tol2d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1603,8 +1804,11 @@ impl AppFuncRst {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFuncRst_inherited_BarycentreOfSurf(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1614,21 +1818,26 @@ impl AppFuncRst {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFuncRst_inherited_MaximalSection(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:154 - `BRepBlend_AppFuncRoot::GetMinimalWeight()`
     pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRst_inherited_GetMinimalWeight(
                     self as *const Self,
                     Weigths,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1638,8 +1847,11 @@ impl AppFuncRst {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFuncRst_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1649,8 +1861,11 @@ impl AppFuncRst {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFuncRst_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1659,11 +1874,14 @@ impl AppFuncRst {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppFuncRst_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1674,18 +1892,23 @@ impl AppFuncRst {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFuncRst_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRst_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1695,16 +1918,22 @@ impl AppFuncRst {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFuncRst_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::BRepBlend_AppFuncRst_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_AppFuncRst_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1720,65 +1949,57 @@ unsafe impl crate::CppDeletable for HandleBRepBlendAppFuncRst {
 impl HandleBRepBlendAppFuncRst {
     /// Dereference this Handle to access the underlying BRepBlend_AppFuncRst
     pub fn get(&self) -> &crate::ffi::BRepBlend_AppFuncRst {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleBRepBlendAppFuncRst_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBRepBlendAppFuncRst_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepBlend_AppFuncRst
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepBlend_AppFuncRst {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleBRepBlendAppFuncRst_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleBRepBlendAppFuncRst_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepBlend_AppFuncRst> to Handle<BRepBlend_AppFuncRoot>
     pub fn to_handle_app_func_root(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRoot> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepBlendAppFuncRst_to_HandleBRepBlendAppFuncRoot(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepBlendAppFuncRst_to_HandleBRepBlendAppFuncRoot(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepBlend_AppFuncRst> to Handle<Approx_SweepFunction>
     pub fn to_handle_sweep_function(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleApproxSweepFunction> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepBlendAppFuncRst_to_HandleApproxSweepFunction(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepBlendAppFuncRst_to_HandleApproxSweepFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepBlend_AppFuncRst> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepBlendAppFuncRst_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepBlendAppFuncRst_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1810,8 +2031,10 @@ impl AppFuncRstRst {
                     Line, Func, Tol3d, Tol2d,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1824,7 +2047,7 @@ impl AppFuncRstRst {
         Pnt: &mut crate::blend::Point,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRstRst_point(
                     self as *const Self,
                     Func,
@@ -1833,15 +2056,20 @@ impl AppFuncRstRst {
                     Pnt,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:48 - `BRepBlend_AppFuncRstRst::Vec()`
     pub fn vec(&self, Sol: &mut crate::ffi::math_Vector, Pnt: &crate::blend::Point) {
         {
-            unsafe { crate::ffi::BRepBlend_AppFuncRstRst_vec(self as *const Self, Sol, Pnt) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_AppFuncRstRst_vec(self as *const Self, Sol, Pnt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1850,8 +2078,11 @@ impl AppFuncRstRst {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppFuncRstRst_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1859,8 +2090,11 @@ impl AppFuncRstRst {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::BRepBlend_AppFuncRstRst_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1868,86 +2102,89 @@ impl AppFuncRstRst {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepBlend_AppFuncRstRst_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to BRepBlend_AppFuncRoot
     pub fn as_app_func_root(&self) -> &AppFuncRoot {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppFuncRstRst_as_BRepBlend_AppFuncRoot(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_as_BRepBlend_AppFuncRoot(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBlend_AppFuncRoot (mutable)
     pub fn as_app_func_root_mut(&mut self) -> &mut AppFuncRoot {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppFuncRstRst_as_BRepBlend_AppFuncRoot_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_as_BRepBlend_AppFuncRoot_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Approx_SweepFunction
     pub fn as_approx_sweep_function(&self) -> &crate::approx::SweepFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppFuncRstRst_as_Approx_SweepFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_as_Approx_SweepFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Approx_SweepFunction (mutable)
     pub fn as_approx_sweep_function_mut(&mut self) -> &mut crate::approx::SweepFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppFuncRstRst_as_Approx_SweepFunction_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_as_Approx_SweepFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppFuncRstRst_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppFuncRstRst_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_AppFuncRstRst_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRstRst> {
-        {
-            let __result = unsafe { crate::ffi::BRepBlend_AppFuncRstRst_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::BRepBlend_AppFuncRstRst_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:47 - `BRepBlend_AppFuncRoot::D0()`
@@ -1972,8 +2209,11 @@ impl AppFuncRstRst {
                     Weigths,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2005,8 +2245,11 @@ impl AppFuncRstRst {
                     DWeigths,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2044,8 +2287,11 @@ impl AppFuncRstRst {
                     D2Weigths,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2055,15 +2301,18 @@ impl AppFuncRstRst {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFuncRstRst_inherited_Nb2dCurves(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:85 - `BRepBlend_AppFuncRoot::SectionShape()`
     pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRstRst_inherited_SectionShape(
                     self as *const Self,
                     NbPoles,
@@ -2071,27 +2320,33 @@ impl AppFuncRstRst {
                     Degree,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:90 - `BRepBlend_AppFuncRoot::Knots()`
     pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRstRst_inherited_Knots(self as *const Self, TKnots)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:93 - `BRepBlend_AppFuncRoot::Mults()`
     pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRstRst_inherited_Mults(self as *const Self, TMults)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2101,8 +2356,11 @@ impl AppFuncRstRst {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFuncRstRst_inherited_IsRational(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2115,43 +2373,50 @@ impl AppFuncRstRst {
                     S.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:108 - `BRepBlend_AppFuncRoot::Intervals()`
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRstRst_inherited_Intervals(
                     self as *const Self,
                     T,
                     S.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:115 - `BRepBlend_AppFuncRoot::SetInterval()`
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRstRst_inherited_SetInterval(
                     self as *mut Self,
                     First,
                     Last,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:121 - `BRepBlend_AppFuncRoot::Resolution()`
     pub fn resolution(&self, Index: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRstRst_inherited_Resolution(
                     self as *const Self,
                     Index,
@@ -2160,7 +2425,9 @@ impl AppFuncRstRst {
                     TolV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2173,7 +2440,7 @@ impl AppFuncRstRst {
         Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRstRst_inherited_GetTolerance(
                     self as *const Self,
                     BoundTol,
@@ -2182,21 +2449,25 @@ impl AppFuncRstRst {
                     Tol3d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:138 - `BRepBlend_AppFuncRoot::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRstRst_inherited_SetTolerance(
                     self as *mut Self,
                     Tol3d,
                     Tol2d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2206,8 +2477,11 @@ impl AppFuncRstRst {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFuncRstRst_inherited_BarycentreOfSurf(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2217,21 +2491,26 @@ impl AppFuncRstRst {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFuncRstRst_inherited_MaximalSection(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:154 - `BRepBlend_AppFuncRoot::GetMinimalWeight()`
     pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRstRst_inherited_GetMinimalWeight(
                     self as *const Self,
                     Weigths,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2244,8 +2523,11 @@ impl AppFuncRstRst {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2255,8 +2537,11 @@ impl AppFuncRstRst {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFuncRstRst_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2265,11 +2550,14 @@ impl AppFuncRstRst {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppFuncRstRst_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2280,18 +2568,23 @@ impl AppFuncRstRst {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFuncRstRst_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppFuncRstRst_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2301,16 +2594,23 @@ impl AppFuncRstRst {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppFuncRstRst_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::BRepBlend_AppFuncRstRst_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepBlend_AppFuncRstRst_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2326,65 +2626,62 @@ unsafe impl crate::CppDeletable for HandleBRepBlendAppFuncRstRst {
 impl HandleBRepBlendAppFuncRstRst {
     /// Dereference this Handle to access the underlying BRepBlend_AppFuncRstRst
     pub fn get(&self) -> &crate::ffi::BRepBlend_AppFuncRstRst {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleBRepBlendAppFuncRstRst_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBRepBlendAppFuncRstRst_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepBlend_AppFuncRstRst
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepBlend_AppFuncRstRst {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleBRepBlendAppFuncRstRst_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleBRepBlendAppFuncRstRst_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepBlend_AppFuncRstRst> to Handle<BRepBlend_AppFuncRoot>
     pub fn to_handle_app_func_root(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRoot> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepBlendAppFuncRstRst_to_HandleBRepBlendAppFuncRoot(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepBlendAppFuncRstRst_to_HandleBRepBlendAppFuncRoot(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepBlend_AppFuncRstRst> to Handle<Approx_SweepFunction>
     pub fn to_handle_sweep_function(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleApproxSweepFunction> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepBlendAppFuncRstRst_to_HandleApproxSweepFunction(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepBlendAppFuncRstRst_to_HandleApproxSweepFunction(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepBlend_AppFuncRstRst> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepBlendAppFuncRstRst_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepBlendAppFuncRstRst_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2406,8 +2703,10 @@ impl AppSurf {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_AppSurf_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2431,8 +2730,10 @@ impl AppSurf {
                     KnownParameters,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2458,7 +2759,7 @@ impl AppSurf {
         KnownParameters: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppSurf_init(
                     self as *mut Self,
                     Degmin,
@@ -2469,7 +2770,9 @@ impl AppSurf {
                     KnownParameters,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2477,10 +2780,12 @@ impl AppSurf {
     /// Define the type of parametrization used in the approximation
     pub fn set_par_type(&mut self, ParType: crate::approx::ParametrizationType) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppSurf_set_par_type(self as *mut Self, ParType.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2488,8 +2793,12 @@ impl AppSurf {
     /// Define the Continuity used in the approximation
     pub fn set_continuity(&mut self, C: crate::geom_abs::Shape) {
         {
-            unsafe { crate::ffi::BRepBlend_AppSurf_set_continuity(self as *mut Self, C.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepBlend_AppSurf_set_continuity(self as *mut Self, C.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2500,10 +2809,12 @@ impl AppSurf {
     /// if Wi <= 0
     pub fn set_criterium_weight(&mut self, W1: f64, W2: f64, W3: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppSurf_set_criterium_weight(self as *mut Self, W1, W2, W3)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2512,8 +2823,11 @@ impl AppSurf {
     pub fn par_type(&self) -> crate::approx::ParametrizationType {
         {
             let __result = unsafe { crate::ffi::BRepBlend_AppSurf_par_type(self as *const Self) };
-            crate::check_exception();
-            crate::approx::ParametrizationType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::approx::ParametrizationType::try_from(__val).unwrap()
         }
     }
 
@@ -2522,8 +2836,11 @@ impl AppSurf {
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         {
             let __result = unsafe { crate::ffi::BRepBlend_AppSurf_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -2532,10 +2849,12 @@ impl AppSurf {
     /// the  optimization.
     pub fn criterium_weight(&self, W1: &mut f64, W2: &mut f64, W3: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppSurf_criterium_weight(self as *const Self, W1, W2, W3)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2547,7 +2866,7 @@ impl AppSurf {
         SpApprox: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppSurf_perform_handlebrepblendline_appfunction_bool(
                     self as *mut Self,
                     Lin,
@@ -2555,7 +2874,9 @@ impl AppSurf {
                     SpApprox,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2566,10 +2887,12 @@ impl AppSurf {
         SecGen: &mut crate::blend::AppFunction,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppSurf_perform_smoothing(self as *mut Self, Lin, SecGen)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2581,7 +2904,7 @@ impl AppSurf {
         NbMaxP: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppSurf_perform_handlebrepblendline_appfunction_int(
                     self as *mut Self,
                     Lin,
@@ -2589,7 +2912,9 @@ impl AppSurf {
                     NbMaxP,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2597,8 +2922,11 @@ impl AppSurf {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepBlend_AppSurf_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2613,7 +2941,7 @@ impl AppSurf {
         NbVKnots: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppSurf_surf_shape(
                     self as *const Self,
                     UDegree,
@@ -2624,7 +2952,9 @@ impl AppSurf {
                     NbVKnots,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2639,7 +2969,7 @@ impl AppSurf {
         TVMults: &mut crate::ffi::TColStd_Array1OfInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppSurf_surface(
                     self as *const Self,
                     TPoles,
@@ -2650,7 +2980,9 @@ impl AppSurf {
                     TVMults,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2658,8 +2990,11 @@ impl AppSurf {
     pub fn u_degree(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BRepBlend_AppSurf_u_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2667,8 +3002,11 @@ impl AppSurf {
     pub fn v_degree(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BRepBlend_AppSurf_v_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2676,8 +3014,11 @@ impl AppSurf {
     pub fn surf_poles(&self) -> &crate::ffi::TColgp_Array2OfPnt {
         {
             let __result = unsafe { crate::ffi::BRepBlend_AppSurf_surf_poles(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2686,8 +3027,11 @@ impl AppSurf {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurf_surf_weights(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2696,8 +3040,11 @@ impl AppSurf {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurf_surf_u_knots(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2706,8 +3053,11 @@ impl AppSurf {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurf_surf_v_knots(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2716,8 +3066,11 @@ impl AppSurf {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurf_surf_u_mults(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2726,8 +3079,11 @@ impl AppSurf {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurf_surf_v_mults(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2736,15 +3092,18 @@ impl AppSurf {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurf_nb_curves2d(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepBlend_AppSurf.hxx`:138 - `BRepBlend_AppSurf::Curves2dShape()`
     pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppSurf_curves2d_shape(
                     self as *const Self,
                     Degree,
@@ -2752,7 +3111,9 @@ impl AppSurf {
                     NbKnots,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2765,7 +3126,7 @@ impl AppSurf {
         TMults: &mut crate::ffi::TColStd_Array1OfInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppSurf_curve2d(
                     self as *const Self,
                     Index,
@@ -2774,7 +3135,9 @@ impl AppSurf {
                     TMults,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2783,8 +3146,11 @@ impl AppSurf {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurf_curves2d_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2793,8 +3159,11 @@ impl AppSurf {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurf_curve2d_poles(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2803,8 +3172,11 @@ impl AppSurf {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurf_curves2d_knots(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2813,16 +3185,23 @@ impl AppSurf {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurf_curves2d_mults(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `BRepBlend_AppSurf.hxx`:155 - `BRepBlend_AppSurf::TolReached()`
     pub fn tol_reached(&self, Tol3d: &mut f64, Tol2d: &mut f64) {
         {
-            unsafe { crate::ffi::BRepBlend_AppSurf_tol_reached(self as *const Self, Tol3d, Tol2d) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepBlend_AppSurf_tol_reached(self as *const Self, Tol3d, Tol2d)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2832,29 +3211,32 @@ impl AppSurf {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppSurf_tol_curve_on_surf(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to AppBlend_Approx
     pub fn as_app_blend_approx(&self) -> &crate::app_blend::Approx {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepBlend_AppSurf_as_AppBlend_Approx(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepBlend_AppSurf_as_AppBlend_Approx(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to AppBlend_Approx (mutable)
     pub fn as_app_blend_approx_mut(&mut self) -> &mut crate::app_blend::Approx {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepBlend_AppSurf_as_AppBlend_Approx_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepBlend_AppSurf_as_AppBlend_Approx_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 }
 
@@ -2906,8 +3288,10 @@ impl AppSurface {
                     Segmax,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2960,8 +3344,11 @@ impl AppSurface {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepBlend_AppSurface_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2976,7 +3363,7 @@ impl AppSurface {
         NbVKnots: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppSurface_surf_shape(
                     self as *const Self,
                     UDegree,
@@ -2987,7 +3374,9 @@ impl AppSurface {
                     NbVKnots,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3002,7 +3391,7 @@ impl AppSurface {
         TVMults: &mut crate::ffi::TColStd_Array1OfInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppSurface_surface(
                     self as *const Self,
                     TPoles,
@@ -3013,7 +3402,9 @@ impl AppSurface {
                     TVMults,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3022,8 +3413,11 @@ impl AppSurface {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurface_u_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3032,8 +3426,11 @@ impl AppSurface {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurface_v_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3042,8 +3439,11 @@ impl AppSurface {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurface_surf_poles(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3052,8 +3452,11 @@ impl AppSurface {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurface_surf_weights(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3062,8 +3465,11 @@ impl AppSurface {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurface_surf_u_knots(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3072,8 +3478,11 @@ impl AppSurface {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurface_surf_v_knots(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3082,8 +3491,11 @@ impl AppSurface {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurface_surf_u_mults(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3092,8 +3504,11 @@ impl AppSurface {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurface_surf_v_mults(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3103,8 +3518,11 @@ impl AppSurface {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurface_max_error_on_surf(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3113,15 +3531,18 @@ impl AppSurface {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurface_nb_curves2d(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepBlend_AppSurface.hxx`:96 - `BRepBlend_AppSurface::Curves2dShape()`
     pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppSurface_curves2d_shape(
                     self as *const Self,
                     Degree,
@@ -3129,7 +3550,9 @@ impl AppSurface {
                     NbKnots,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3142,7 +3565,7 @@ impl AppSurface {
         TMults: &mut crate::ffi::TColStd_Array1OfInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppSurface_curve2d(
                     self as *const Self,
                     Index,
@@ -3151,7 +3574,9 @@ impl AppSurface {
                     TMults,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3160,8 +3585,11 @@ impl AppSurface {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurface_curves2d_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3171,8 +3599,11 @@ impl AppSurface {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppSurface_curve2d_poles(self as *const Self, Index)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3181,8 +3612,11 @@ impl AppSurface {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurface_curves2d_knots(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3191,18 +3625,23 @@ impl AppSurface {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurface_curves2d_mults(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `BRepBlend_AppSurface.hxx`:113 - `BRepBlend_AppSurface::TolReached()`
     pub fn tol_reached(&self, Tol3d: &mut f64, Tol2d: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_AppSurface_tol_reached(self as *const Self, Tol3d, Tol2d)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3212,8 +3651,11 @@ impl AppSurface {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_AppSurface_max2d_error(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3223,8 +3665,11 @@ impl AppSurface {
             let __result = unsafe {
                 crate::ffi::BRepBlend_AppSurface_tol_curve_on_surf(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3232,30 +3677,31 @@ impl AppSurface {
     /// display information on approximation.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::BRepBlend_AppSurface_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepBlend_AppSurface_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to AppBlend_Approx
     pub fn as_app_blend_approx(&self) -> &crate::app_blend::Approx {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepBlend_AppSurface_as_AppBlend_Approx(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepBlend_AppSurface_as_AppBlend_Approx(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to AppBlend_Approx (mutable)
     pub fn as_app_blend_approx_mut(&mut self) -> &mut crate::app_blend::Approx {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_AppSurface_as_AppBlend_Approx_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepBlend_AppSurface_as_AppBlend_Approx_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 }
 
@@ -3278,8 +3724,10 @@ impl BlendTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_BlendTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3301,8 +3749,11 @@ impl BlendTool {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_BlendTool_project(P, S, C, Paramproj, Dist) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3318,8 +3769,11 @@ impl BlendTool {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_BlendTool_inters(P1, P2, S, C, Param, Dist) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3331,8 +3785,11 @@ impl BlendTool {
     ) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepBlend_BlendTool_parameter(V, A) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3347,8 +3804,11 @@ impl BlendTool {
     ) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepBlend_BlendTool_tolerance(V, A) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3356,8 +3816,11 @@ impl BlendTool {
     pub fn singular_on_u_min(S: &crate::ffi::HandleAdaptor3dSurface) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepBlend_BlendTool_singular_on_u_min(S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3365,8 +3828,11 @@ impl BlendTool {
     pub fn singular_on_u_max(S: &crate::ffi::HandleAdaptor3dSurface) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepBlend_BlendTool_singular_on_u_max(S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3374,8 +3840,11 @@ impl BlendTool {
     pub fn singular_on_v_min(S: &crate::ffi::HandleAdaptor3dSurface) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepBlend_BlendTool_singular_on_v_min(S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3383,8 +3852,11 @@ impl BlendTool {
     pub fn singular_on_v_max(S: &crate::ffi::HandleAdaptor3dSurface) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepBlend_BlendTool_singular_on_v_max(S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3392,8 +3864,11 @@ impl BlendTool {
     pub fn nb_samples_u(S: &crate::ffi::HandleAdaptor3dSurface, u1: f64, u2: f64) -> i32 {
         {
             let __result = unsafe { crate::ffi::BRepBlend_BlendTool_nb_samples_u(S, u1, u2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3401,8 +3876,11 @@ impl BlendTool {
     pub fn nb_samples_v(S: &crate::ffi::HandleAdaptor3dSurface, v1: f64, v2: f64) -> i32 {
         {
             let __result = unsafe { crate::ffi::BRepBlend_BlendTool_nb_samples_v(S, v1, v2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3413,8 +3891,10 @@ impl BlendTool {
     /// or a bounding box for an infinite arc.
     pub fn bounds(C: &crate::ffi::HandleAdaptor2dCurve2d, Ufirst: &mut f64, Ulast: &mut f64) {
         {
-            unsafe { crate::ffi::BRepBlend_BlendTool_bounds(C, Ufirst, Ulast) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepBlend_BlendTool_bounds(C, Ufirst, Ulast) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3425,8 +3905,11 @@ impl BlendTool {
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_BlendTool_curve_on_surf(C, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -3455,8 +3938,10 @@ impl CSWalking {
             let __result = unsafe {
                 crate::ffi::BRepBlend_CSWalking_ctor_handleadaptor3dcurve_handleadaptor3dsurface_handleadaptor3dtopoltool(Curv, Surf, Domain)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3474,7 +3959,7 @@ impl CSWalking {
         Appro: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_CSWalking_perform(
                     self as *mut Self,
                     F,
@@ -3488,7 +3973,9 @@ impl CSWalking {
                     Appro,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3497,8 +3984,11 @@ impl CSWalking {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_CSWalking_complete(self as *mut Self, F, Pmin) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3506,8 +3996,11 @@ impl CSWalking {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepBlend_CSWalking_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3515,8 +4008,11 @@ impl CSWalking {
     pub fn line(&self) -> &crate::ffi::HandleBRepBlendLine {
         {
             let __result = unsafe { crate::ffi::BRepBlend_CSWalking_line(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -3553,16 +4049,21 @@ impl CurvPointRadInv {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_CurvPointRadInv_ctor_handleadaptor3dcurve2(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BRepBlend_CurvPointRadInv.hxx`:49 - `BRepBlend_CurvPointRadInv::Set()`
     pub fn set_int(&mut self, Choix: i32) {
         {
-            unsafe { crate::ffi::BRepBlend_CurvPointRadInv_set_int(self as *mut Self, Choix) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_CurvPointRadInv_set_int(self as *mut Self, Choix) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3572,8 +4073,11 @@ impl CurvPointRadInv {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_CurvPointRadInv_nb_equations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3586,8 +4090,11 @@ impl CurvPointRadInv {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_CurvPointRadInv_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3605,8 +4112,11 @@ impl CurvPointRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_CurvPointRadInv_derivatives(self as *mut Self, X, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3624,8 +4134,11 @@ impl CurvPointRadInv {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_CurvPointRadInv_values(self as *mut Self, X, F, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3633,8 +4146,11 @@ impl CurvPointRadInv {
     /// Set the Point on which a solution has to be found.
     pub fn set_pnt(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::BRepBlend_CurvPointRadInv_set_pnt(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_CurvPointRadInv_set_pnt(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3644,14 +4160,16 @@ impl CurvPointRadInv {
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_CurvPointRadInv_get_tolerance(
                     self as *const Self,
                     Tolerance,
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3666,14 +4184,16 @@ impl CurvPointRadInv {
         SupBound: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_CurvPointRadInv_get_bounds(
                     self as *const Self,
                     InfBound,
                     SupBound,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3685,85 +4205,86 @@ impl CurvPointRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_CurvPointRadInv_is_solution(self as *mut Self, Sol, Tol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to Blend_CurvPointFuncInv
     pub fn as_blend_curv_point_func_inv(&self) -> &crate::blend::CurvPointFuncInv {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_CurvPointRadInv_as_Blend_CurvPointFuncInv(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_CurvPointRadInv_as_Blend_CurvPointFuncInv(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Blend_CurvPointFuncInv (mutable)
     pub fn as_blend_curv_point_func_inv_mut(&mut self) -> &mut crate::blend::CurvPointFuncInv {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_CurvPointRadInv_as_Blend_CurvPointFuncInv_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_CurvPointRadInv_as_Blend_CurvPointFuncInv_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_CurvPointRadInv_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_CurvPointRadInv_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_CurvPointRadInv_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_CurvPointRadInv_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_CurvPointRadInv_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_CurvPointRadInv_as_math_FunctionSet(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_CurvPointRadInv_as_math_FunctionSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_CurvPointRadInv_as_math_FunctionSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Blend_CurvPointFuncInv.hxx`:45 - `Blend_CurvPointFuncInv::NbVariables()`
@@ -3772,8 +4293,11 @@ impl CurvPointRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_CurvPointRadInv_inherited_NbVariables(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3783,8 +4307,11 @@ impl CurvPointRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_CurvPointRadInv_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3807,8 +4334,10 @@ impl Extremity {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_Extremity_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3824,8 +4353,10 @@ impl Extremity {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_Extremity_ctor_pnt_real4(P, U, V, Param, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3846,8 +4377,10 @@ impl Extremity {
                     P, U, V, Param, Tol, Vtx,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3862,8 +4395,10 @@ impl Extremity {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_Extremity_ctor_pnt_real3(P, W, Param, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3878,7 +4413,7 @@ impl Extremity {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_Extremity_set_value_pnt_real4(
                     self as *mut Self,
                     P,
@@ -3888,7 +4423,9 @@ impl Extremity {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3905,7 +4442,7 @@ impl Extremity {
         Vtx: &crate::ffi::HandleAdaptor3dHVertex,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_Extremity_set_value_pnt_real4_handleadaptor3dhvertex(
                     self as *mut Self,
                     P,
@@ -3916,7 +4453,9 @@ impl Extremity {
                     Vtx,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3924,7 +4463,7 @@ impl Extremity {
     /// Set the values for an extremity on curve.
     pub fn set_value_pnt_real3(&mut self, P: &crate::gp::Pnt, W: f64, Param: f64, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_Extremity_set_value_pnt_real3(
                     self as *mut Self,
                     P,
@@ -3933,7 +4472,9 @@ impl Extremity {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3942,8 +4483,11 @@ impl Extremity {
     pub fn value(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::BRepBlend_Extremity_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3952,8 +4496,11 @@ impl Extremity {
     /// surface.
     pub fn set_tangent(&mut self, Tangent: &crate::gp::Vec) {
         {
-            unsafe { crate::ffi::BRepBlend_Extremity_set_tangent(self as *mut Self, Tangent) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_Extremity_set_tangent(self as *mut Self, Tangent) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3963,8 +4510,11 @@ impl Extremity {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_Extremity_has_tangent(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3974,8 +4524,11 @@ impl Extremity {
     pub fn tangent(&self) -> &crate::gp::Vec {
         {
             let __result = unsafe { crate::ffi::BRepBlend_Extremity_tangent(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3986,8 +4539,11 @@ impl Extremity {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_Extremity_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3995,8 +4551,10 @@ impl Extremity {
     /// Set the values for an extremity on a curve.
     pub fn set_vertex(&mut self, V: &crate::ffi::HandleAdaptor3dHVertex) {
         {
-            unsafe { crate::ffi::BRepBlend_Extremity_set_vertex(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepBlend_Extremity_set_vertex(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4011,10 +4569,12 @@ impl Extremity {
         TArc: &crate::int_surf::Transition,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_Extremity_add_arc(self as *mut Self, A, Param, TLine, TArc)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4023,8 +4583,11 @@ impl Extremity {
     /// on the concerned surface.
     pub fn parameters(&self, U: &mut f64, V: &mut f64) {
         {
-            unsafe { crate::ffi::BRepBlend_Extremity_parameters(self as *const Self, U, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_Extremity_parameters(self as *const Self, U, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4035,8 +4598,11 @@ impl Extremity {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_Extremity_is_vertex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4045,8 +4611,11 @@ impl Extremity {
     pub fn vertex(&self) -> &crate::ffi::HandleAdaptor3dHVertex {
         {
             let __result = unsafe { crate::ffi::BRepBlend_Extremity_vertex(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4062,8 +4631,11 @@ impl Extremity {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_Extremity_nb_point_on_rst(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4072,8 +4644,11 @@ impl Extremity {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_Extremity_point_on_rst(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4082,8 +4657,11 @@ impl Extremity {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_Extremity_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4092,8 +4670,11 @@ impl Extremity {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_Extremity_parameter_on_guide(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -4117,8 +4698,10 @@ impl HCurve2dTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurve2dTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4126,8 +4709,11 @@ impl HCurve2dTool {
     pub fn first_parameter(C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurve2dTool_first_parameter(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4135,8 +4721,11 @@ impl HCurve2dTool {
     pub fn last_parameter(C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurve2dTool_last_parameter(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4144,8 +4733,11 @@ impl HCurve2dTool {
     pub fn continuity(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::geom_abs::Shape {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurve2dTool_continuity(C) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -4155,8 +4747,11 @@ impl HCurve2dTool {
     pub fn nb_intervals(C: &crate::ffi::HandleAdaptor2dCurve2d, S: crate::geom_abs::Shape) -> i32 {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurve2dTool_nb_intervals(C, S.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4172,8 +4767,10 @@ impl HCurve2dTool {
         S: crate::geom_abs::Shape,
     ) {
         {
-            unsafe { crate::ffi::BRepBlend_HCurve2dTool_intervals(C, T, S.into()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepBlend_HCurve2dTool_intervals(C, T, S.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4181,8 +4778,11 @@ impl HCurve2dTool {
     pub fn is_closed(C: &crate::ffi::HandleAdaptor2dCurve2d) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurve2dTool_is_closed(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4190,8 +4790,11 @@ impl HCurve2dTool {
     pub fn is_periodic(C: &crate::ffi::HandleAdaptor2dCurve2d) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurve2dTool_is_periodic(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4199,8 +4802,11 @@ impl HCurve2dTool {
     pub fn period(C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurve2dTool_period(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4212,8 +4818,11 @@ impl HCurve2dTool {
     ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurve2dTool_value(C, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4221,8 +4830,10 @@ impl HCurve2dTool {
     /// Computes the point of parameter U on the curve.
     pub fn d0(C: &crate::ffi::HandleAdaptor2dCurve2d, U: f64, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::BRepBlend_HCurve2dTool_d0(C, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepBlend_HCurve2dTool_d0(C, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4238,8 +4849,10 @@ impl HCurve2dTool {
         V: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::BRepBlend_HCurve2dTool_d1(C, U, P, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepBlend_HCurve2dTool_d1(C, U, P, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4256,8 +4869,10 @@ impl HCurve2dTool {
         V2: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::BRepBlend_HCurve2dTool_d2(C, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepBlend_HCurve2dTool_d2(C, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4275,8 +4890,10 @@ impl HCurve2dTool {
         V3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::BRepBlend_HCurve2dTool_d3(C, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepBlend_HCurve2dTool_d3(C, U, P, V1, V2, V3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4293,8 +4910,11 @@ impl HCurve2dTool {
     ) -> crate::OwnedPtr<crate::gp::Vec2d> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurve2dTool_dn(C, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4304,8 +4924,11 @@ impl HCurve2dTool {
     pub fn resolution(C: &crate::ffi::HandleAdaptor2dCurve2d, R3d: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurve2dTool_resolution(C, R3d) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4316,8 +4939,11 @@ impl HCurve2dTool {
     pub fn get_type(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::geom_abs::CurveType {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurve2dTool_get_type(C) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
@@ -4325,8 +4951,11 @@ impl HCurve2dTool {
     pub fn line(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Lin2d> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurve2dTool_line(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4334,8 +4963,11 @@ impl HCurve2dTool {
     pub fn circle(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Circ2d> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurve2dTool_circle(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4343,8 +4975,11 @@ impl HCurve2dTool {
     pub fn ellipse(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Elips2d> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurve2dTool_ellipse(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4352,8 +4987,11 @@ impl HCurve2dTool {
     pub fn hyperbola(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurve2dTool_hyperbola(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4361,8 +4999,11 @@ impl HCurve2dTool {
     pub fn parabola(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Parab2d> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurve2dTool_parabola(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4372,8 +5013,11 @@ impl HCurve2dTool {
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurve2dTool_bezier(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4383,8 +5027,11 @@ impl HCurve2dTool {
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurve2dTool_b_spline(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4392,8 +5039,11 @@ impl HCurve2dTool {
     pub fn nb_samples(C: &crate::ffi::HandleAdaptor2dCurve2d, U0: f64, U1: f64) -> i32 {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurve2dTool_nb_samples(C, U0, U1) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -4417,8 +5067,10 @@ impl HCurveTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurveTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4426,8 +5078,11 @@ impl HCurveTool {
     pub fn first_parameter(C: &crate::ffi::HandleAdaptor3dCurve) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurveTool_first_parameter(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4435,8 +5090,11 @@ impl HCurveTool {
     pub fn last_parameter(C: &crate::ffi::HandleAdaptor3dCurve) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurveTool_last_parameter(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4444,8 +5102,11 @@ impl HCurveTool {
     pub fn continuity(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::geom_abs::Shape {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurveTool_continuity(C) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -4455,8 +5116,11 @@ impl HCurveTool {
     pub fn nb_intervals(C: &crate::ffi::HandleAdaptor3dCurve, S: crate::geom_abs::Shape) -> i32 {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurveTool_nb_intervals(C, S.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4472,8 +5136,10 @@ impl HCurveTool {
         S: crate::geom_abs::Shape,
     ) {
         {
-            unsafe { crate::ffi::BRepBlend_HCurveTool_intervals(C, T, S.into()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepBlend_HCurveTool_intervals(C, T, S.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4481,8 +5147,11 @@ impl HCurveTool {
     pub fn is_closed(C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurveTool_is_closed(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4490,8 +5159,11 @@ impl HCurveTool {
     pub fn is_periodic(C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurveTool_is_periodic(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4499,8 +5171,11 @@ impl HCurveTool {
     pub fn period(C: &crate::ffi::HandleAdaptor3dCurve) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurveTool_period(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4509,8 +5184,11 @@ impl HCurveTool {
     pub fn value(C: &crate::ffi::HandleAdaptor3dCurve, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurveTool_value(C, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4518,8 +5196,10 @@ impl HCurveTool {
     /// Computes the point of parameter U on the curve.
     pub fn d0(C: &crate::ffi::HandleAdaptor3dCurve, U: f64, P: &mut crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::BRepBlend_HCurveTool_d0(C, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepBlend_HCurveTool_d0(C, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4535,8 +5215,10 @@ impl HCurveTool {
         V: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::BRepBlend_HCurveTool_d1(C, U, P, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepBlend_HCurveTool_d1(C, U, P, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4553,8 +5235,10 @@ impl HCurveTool {
         V2: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::BRepBlend_HCurveTool_d2(C, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepBlend_HCurveTool_d2(C, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4572,8 +5256,10 @@ impl HCurveTool {
         V3: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::BRepBlend_HCurveTool_d3(C, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepBlend_HCurveTool_d3(C, U, P, V1, V2, V3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4590,8 +5276,11 @@ impl HCurveTool {
     ) -> crate::OwnedPtr<crate::gp::Vec> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurveTool_dn(C, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4601,8 +5290,11 @@ impl HCurveTool {
     pub fn resolution(C: &crate::ffi::HandleAdaptor3dCurve, R3d: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurveTool_resolution(C, R3d) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4613,8 +5305,11 @@ impl HCurveTool {
     pub fn get_type(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::geom_abs::CurveType {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurveTool_get_type(C) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
@@ -4622,8 +5317,11 @@ impl HCurveTool {
     pub fn line(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Lin> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurveTool_line(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4631,8 +5329,11 @@ impl HCurveTool {
     pub fn circle(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Circ> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurveTool_circle(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4640,8 +5341,11 @@ impl HCurveTool {
     pub fn ellipse(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Elips> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurveTool_ellipse(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4649,8 +5353,11 @@ impl HCurveTool {
     pub fn hyperbola(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Hypr> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurveTool_hyperbola(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4658,8 +5365,11 @@ impl HCurveTool {
     pub fn parabola(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Parab> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurveTool_parabola(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4669,8 +5379,11 @@ impl HCurveTool {
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurveTool_bezier(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4680,8 +5393,11 @@ impl HCurveTool {
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurveTool_b_spline(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4689,8 +5405,11 @@ impl HCurveTool {
     pub fn nb_samples(C: &crate::ffi::HandleAdaptor3dCurve, U0: f64, U1: f64) -> i32 {
         {
             let __result = unsafe { crate::ffi::BRepBlend_HCurveTool_nb_samples(C, U0, U1) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -4713,8 +5432,10 @@ impl Line {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_Line_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4722,8 +5443,10 @@ impl Line {
     /// Clears the content of the line.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::BRepBlend_Line_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepBlend_Line_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4731,8 +5454,10 @@ impl Line {
     /// Adds a point in the line.
     pub fn append(&mut self, P: &crate::blend::Point) {
         {
-            unsafe { crate::ffi::BRepBlend_Line_append(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepBlend_Line_append(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4740,8 +5465,10 @@ impl Line {
     /// Adds a point in the line at the first place.
     pub fn prepend(&mut self, P: &crate::blend::Point) {
         {
-            unsafe { crate::ffi::BRepBlend_Line_prepend(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepBlend_Line_prepend(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4749,8 +5476,11 @@ impl Line {
     /// Adds a point in the line at the first place.
     pub fn insert_before(&mut self, Index: i32, P: &crate::blend::Point) {
         {
-            unsafe { crate::ffi::BRepBlend_Line_insert_before(self as *mut Self, Index, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_Line_insert_before(self as *mut Self, Index, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4760,8 +5490,11 @@ impl Line {
     /// Raises an exception if the indices are out of bounds.
     pub fn remove(&mut self, FromIndex: i32, ToIndex: i32) {
         {
-            unsafe { crate::ffi::BRepBlend_Line_remove(self as *mut Self, FromIndex, ToIndex) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_Line_remove(self as *mut Self, FromIndex, ToIndex) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4774,14 +5507,16 @@ impl Line {
         TranS2: crate::int_surf::TypeTrans,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_Line_set_typetrans2(
                     self as *mut Self,
                     TranS1.into(),
                     TranS2.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4789,8 +5524,12 @@ impl Line {
     /// Sets the value of the transition of the line on a surface
     pub fn set_typetrans(&mut self, Trans: crate::int_surf::TypeTrans) {
         {
-            unsafe { crate::ffi::BRepBlend_Line_set_typetrans(self as *mut Self, Trans.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepBlend_Line_set_typetrans(self as *mut Self, Trans.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4798,10 +5537,12 @@ impl Line {
     /// Sets the values of the start points for the line.
     pub fn set_start_points(&mut self, StartPt1: &Extremity, StartPt2: &Extremity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_Line_set_start_points(self as *mut Self, StartPt1, StartPt2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4809,8 +5550,12 @@ impl Line {
     /// Sets tne values of the end points for the line.
     pub fn set_end_points(&mut self, EndPt1: &Extremity, EndPt2: &Extremity) {
         {
-            unsafe { crate::ffi::BRepBlend_Line_set_end_points(self as *mut Self, EndPt1, EndPt2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepBlend_Line_set_end_points(self as *mut Self, EndPt1, EndPt2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4819,8 +5564,11 @@ impl Line {
     pub fn nb_points(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BRepBlend_Line_nb_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4829,8 +5577,11 @@ impl Line {
     pub fn point(&self, Index: i32) -> &crate::blend::Point {
         {
             let __result = unsafe { crate::ffi::BRepBlend_Line_point(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4851,8 +5602,11 @@ impl Line {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_Line_transition_on_s1(self as *const Self) };
-            crate::check_exception();
-            crate::int_surf::TypeTrans::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_surf::TypeTrans::try_from(__val).unwrap()
         }
     }
 
@@ -4864,8 +5618,11 @@ impl Line {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_Line_transition_on_s2(self as *const Self) };
-            crate::check_exception();
-            crate::int_surf::TypeTrans::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_surf::TypeTrans::try_from(__val).unwrap()
         }
     }
 
@@ -4875,8 +5632,11 @@ impl Line {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_Line_start_point_on_first(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4886,8 +5646,11 @@ impl Line {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_Line_start_point_on_second(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4897,8 +5660,11 @@ impl Line {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_Line_end_point_on_first(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4908,8 +5674,11 @@ impl Line {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_Line_end_point_on_second(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4920,8 +5689,11 @@ impl Line {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_Line_transition_on_s(self as *const Self) };
-            crate::check_exception();
-            crate::int_surf::TypeTrans::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_surf::TypeTrans::try_from(__val).unwrap()
         }
     }
 
@@ -4929,8 +5701,11 @@ impl Line {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepBlend_Line_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4938,8 +5713,11 @@ impl Line {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::BRepBlend_Line_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4947,40 +5725,43 @@ impl Line {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepBlend_Line_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepBlend_Line_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepBlend_Line_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepBlend_Line_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepBlend_Line_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepBlendLine> {
-        {
-            let __result = unsafe { crate::ffi::BRepBlend_Line_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::BRepBlend_Line_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -4989,8 +5770,11 @@ impl Line {
             let __result = unsafe {
                 crate::ffi::BRepBlend_Line_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5000,8 +5784,11 @@ impl Line {
             let __result = unsafe {
                 crate::ffi::BRepBlend_Line_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5010,11 +5797,14 @@ impl Line {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_Line_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5024,16 +5814,23 @@ impl Line {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_Line_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::BRepBlend_Line_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepBlend_Line_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5043,16 +5840,21 @@ impl Line {
             let __result = unsafe {
                 crate::ffi::BRepBlend_Line_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::BRepBlend_Line_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepBlend_Line_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5068,31 +5870,31 @@ unsafe impl crate::CppDeletable for HandleBRepBlendLine {
 impl HandleBRepBlendLine {
     /// Dereference this Handle to access the underlying BRepBlend_Line
     pub fn get(&self) -> &crate::ffi::BRepBlend_Line {
-        {
-            let __result = unsafe { crate::ffi::HandleBRepBlendLine_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBRepBlendLine_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepBlend_Line
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepBlend_Line {
-        {
-            let __result = unsafe { crate::ffi::HandleBRepBlendLine_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleBRepBlendLine_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepBlend_Line> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepBlendLine_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepBlendLine_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5119,8 +5921,10 @@ impl PointOnRst {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepBlend_PointOnRst_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5140,8 +5944,10 @@ impl PointOnRst {
                     A, Param, TLine, TArc,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5156,10 +5962,12 @@ impl PointOnRst {
         TArc: &crate::int_surf::Transition,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_PointOnRst_set_arc(self as *mut Self, A, Param, TLine, TArc)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5169,8 +5977,11 @@ impl PointOnRst {
     pub fn arc(&self) -> &crate::ffi::HandleAdaptor2dCurve2d {
         {
             let __result = unsafe { crate::ffi::BRepBlend_PointOnRst_arc(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5181,8 +5992,11 @@ impl PointOnRst {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_PointOnRst_transition_on_line(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5193,8 +6007,11 @@ impl PointOnRst {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_PointOnRst_transition_on_arc(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5205,8 +6022,11 @@ impl PointOnRst {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_PointOnRst_parameter_on_arc(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -5239,8 +6059,10 @@ impl RstRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_ctor_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dcurve(Surf1, Rst1, Surf2, Rst2, CGuide)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5250,8 +6072,11 @@ impl RstRstConstRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstConstRad_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5261,8 +6086,11 @@ impl RstRstConstRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstConstRad_nb_equations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5275,8 +6103,11 @@ impl RstRstConstRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstConstRad_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5294,8 +6125,11 @@ impl RstRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_derivatives(self as *mut Self, X, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5313,8 +6147,11 @@ impl RstRstConstRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstConstRad_values(self as *mut Self, X, F, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5327,18 +6164,23 @@ impl RstRstConstRad {
         RstRef2: &crate::ffi::HandleAdaptor2dCurve2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_set_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d(self as *mut Self, SurfRef1, RstRef1, SurfRef2, RstRef2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:88 - `BRepBlend_RstRstConstRad::Set()`
     pub fn set_real(&mut self, Param: f64) {
         {
-            unsafe { crate::ffi::BRepBlend_RstRstConstRad_set_real(self as *mut Self, Param) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_RstRstConstRad_set_real(self as *mut Self, Param) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5349,24 +6191,28 @@ impl RstRstConstRad {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_set_real2(self as *mut Self, First, Last)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:96 - `BRepBlend_RstRstConstRad::GetTolerance()`
     pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_get_tolerance_vector_real(
                     self as *const Self,
                     Tolerance,
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5377,14 +6223,16 @@ impl RstRstConstRad {
         SupBound: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_get_bounds(
                     self as *const Self,
                     InfBound,
                     SupBound,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5394,8 +6242,11 @@ impl RstRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_is_solution(self as *mut Self, Sol, Tol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5407,8 +6258,11 @@ impl RstRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_get_minimal_distance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5417,8 +6271,11 @@ impl RstRstConstRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstConstRad_point_on_rst1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5427,8 +6284,11 @@ impl RstRstConstRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstConstRad_point_on_rst2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5438,8 +6298,11 @@ impl RstRstConstRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstConstRad_pnt2d_on_rst1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5450,8 +6313,11 @@ impl RstRstConstRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstConstRad_pnt2d_on_rst2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5462,8 +6328,11 @@ impl RstRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_parameter_on_rst1(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5474,8 +6343,11 @@ impl RstRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_parameter_on_rst2(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5485,8 +6357,11 @@ impl RstRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_is_tangency_point(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5496,8 +6371,11 @@ impl RstRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_tangent_on_rst1(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5507,8 +6385,11 @@ impl RstRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_tangent2d_on_rst1(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5518,8 +6399,11 @@ impl RstRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_tangent_on_rst2(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5529,8 +6413,11 @@ impl RstRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_tangent2d_on_rst2(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5556,18 +6443,23 @@ impl RstRstConstRad {
                     TgRst2,
                 )
             };
-            crate::check_exception();
-            crate::blend::DecrochStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::blend::DecrochStatus::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:144 - `BRepBlend_RstRstConstRad::Set()`
     pub fn set_real_int(&mut self, Radius: f64, Choix: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_set_real_int(self as *mut Self, Radius, Choix)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5576,13 +6468,15 @@ impl RstRstConstRad {
     /// approximations.
     pub fn set_sectionshape(&mut self, TypeSection: crate::blend_func::SectionShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_set_sectionshape(
                     self as *mut Self,
                     TypeSection.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5608,8 +6502,11 @@ impl RstRstConstRad {
                     VdMed,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5624,7 +6521,7 @@ impl RstRstConstRad {
         C: &mut crate::gp::Circ,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_section_real5_circ(
                     self as *mut Self,
                     Param,
@@ -5635,7 +6532,9 @@ impl RstRstConstRad {
                     C,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5645,8 +6544,11 @@ impl RstRstConstRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstConstRad_is_rational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5657,8 +6559,11 @@ impl RstRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_get_section_size(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5667,13 +6572,15 @@ impl RstRstConstRad {
     /// of all sections.
     pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_get_minimal_weight(
                     self as *const Self,
                     Weigths,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5685,8 +6592,11 @@ impl RstRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_nb_intervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5697,10 +6607,12 @@ impl RstRstConstRad {
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_intervals(self as *const Self, T, S.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5713,7 +6625,7 @@ impl RstRstConstRad {
         NbPoles2d: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_get_shape(
                     self as *mut Self,
                     NbPoles,
@@ -5722,7 +6634,9 @@ impl RstRstConstRad {
                     NbPoles2d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5741,7 +6655,7 @@ impl RstRstConstRad {
         Tol1D: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_get_tolerance_real3_vector2(
                     self as *const Self,
                     BoundTol,
@@ -5751,23 +6665,31 @@ impl RstRstConstRad {
                     Tol1D,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:202 - `BRepBlend_RstRstConstRad::Knots()`
     pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::BRepBlend_RstRstConstRad_knots(self as *mut Self, TKnots) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_RstRstConstRad_knots(self as *mut Self, TKnots) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:204 - `BRepBlend_RstRstConstRad::Mults()`
     pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
         {
-            unsafe { crate::ffi::BRepBlend_RstRstConstRad_mults(self as *mut Self, TMults) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_RstRstConstRad_mults(self as *mut Self, TMults) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5787,8 +6709,11 @@ impl RstRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5801,10 +6726,12 @@ impl RstRstConstRad {
         Weigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5829,15 +6756,18 @@ impl RstRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:234 - `BRepBlend_RstRstConstRad::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_resolution(
                     self as *const Self,
                     IC2d,
@@ -5846,104 +6776,106 @@ impl RstRstConstRad {
                     TolV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to Blend_RstRstFunction
     pub fn as_blend_rst_rst_function(&self) -> &crate::blend::RstRstFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_RstRstConstRad_as_Blend_RstRstFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_as_Blend_RstRstFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Blend_RstRstFunction (mutable)
     pub fn as_blend_rst_rst_function_mut(&mut self) -> &mut crate::blend::RstRstFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_RstRstConstRad_as_Blend_RstRstFunction_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_as_Blend_RstRstFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Blend_AppFunction
     pub fn as_blend_app_function(&self) -> &crate::blend::AppFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_RstRstConstRad_as_Blend_AppFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_as_Blend_AppFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Blend_AppFunction (mutable)
     pub fn as_blend_app_function_mut(&mut self) -> &mut crate::blend::AppFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_RstRstConstRad_as_Blend_AppFunction_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_as_Blend_AppFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_RstRstConstRad_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_RstRstConstRad_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_RstRstConstRad_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_as_math_FunctionSet(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_RstRstConstRad_as_math_FunctionSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_RstRstConstRad_as_math_FunctionSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Blend_RstRstFunction.hxx`:112 - `Blend_RstRstFunction::Pnt1()`
@@ -5951,8 +6883,11 @@ impl RstRstConstRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstConstRad_inherited_Pnt1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5961,8 +6896,11 @@ impl RstRstConstRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstConstRad_inherited_Pnt2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5972,8 +6910,11 @@ impl RstRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_inherited_Parameter(self as *const Self, P)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5983,8 +6924,11 @@ impl RstRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstConstRad_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -6018,8 +6962,10 @@ impl RstRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_ctor_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dcurve_handlelawfunction(Surf1, Rst1, Surf2, Rst2, CGuide, Evol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6029,8 +6975,11 @@ impl RstRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstEvolRad_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6040,8 +6989,11 @@ impl RstRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstEvolRad_nb_equations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6054,8 +7006,11 @@ impl RstRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstEvolRad_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6072,8 +7027,11 @@ impl RstRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstEvolRad_derivatives(self as *mut Self, X, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6091,8 +7049,11 @@ impl RstRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstEvolRad_values(self as *mut Self, X, F, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6105,18 +7066,23 @@ impl RstRstEvolRad {
         RstRef2: &crate::ffi::HandleAdaptor2dCurve2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_set_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d(self as *mut Self, SurfRef1, RstRef1, SurfRef2, RstRef2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:90 - `BRepBlend_RstRstEvolRad::Set()`
     pub fn set_real(&mut self, Param: f64) {
         {
-            unsafe { crate::ffi::BRepBlend_RstRstEvolRad_set_real(self as *mut Self, Param) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_RstRstEvolRad_set_real(self as *mut Self, Param) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6127,24 +7093,28 @@ impl RstRstEvolRad {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_set_real2(self as *mut Self, First, Last)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:98 - `BRepBlend_RstRstEvolRad::GetTolerance()`
     pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_get_tolerance_vector_real(
                     self as *const Self,
                     Tolerance,
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6155,14 +7125,16 @@ impl RstRstEvolRad {
         SupBound: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_get_bounds(
                     self as *const Self,
                     InfBound,
                     SupBound,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6172,8 +7144,11 @@ impl RstRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_is_solution(self as *mut Self, Sol, Tol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6185,8 +7160,11 @@ impl RstRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_get_minimal_distance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6195,8 +7173,11 @@ impl RstRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstEvolRad_point_on_rst1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6205,8 +7186,11 @@ impl RstRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstEvolRad_point_on_rst2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6216,8 +7200,11 @@ impl RstRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstEvolRad_pnt2d_on_rst1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6228,8 +7215,11 @@ impl RstRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstEvolRad_pnt2d_on_rst2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6240,8 +7230,11 @@ impl RstRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_parameter_on_rst1(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6252,8 +7245,11 @@ impl RstRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_parameter_on_rst2(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6263,8 +7259,11 @@ impl RstRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_is_tangency_point(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6273,8 +7272,11 @@ impl RstRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstEvolRad_tangent_on_rst1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6284,8 +7286,11 @@ impl RstRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_tangent2d_on_rst1(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6294,8 +7299,11 @@ impl RstRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstEvolRad_tangent_on_rst2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6305,8 +7313,11 @@ impl RstRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_tangent2d_on_rst2(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6332,16 +7343,22 @@ impl RstRstEvolRad {
                     TgRst2,
                 )
             };
-            crate::check_exception();
-            crate::blend::DecrochStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::blend::DecrochStatus::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:146 - `BRepBlend_RstRstEvolRad::Set()`
     pub fn set_int(&mut self, Choix: i32) {
         {
-            unsafe { crate::ffi::BRepBlend_RstRstEvolRad_set_int(self as *mut Self, Choix) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_RstRstEvolRad_set_int(self as *mut Self, Choix) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6350,13 +7367,15 @@ impl RstRstEvolRad {
     /// approximations.
     pub fn set_sectionshape(&mut self, TypeSection: crate::blend_func::SectionShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_set_sectionshape(
                     self as *mut Self,
                     TypeSection.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6382,8 +7401,11 @@ impl RstRstEvolRad {
                     VdMed,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6398,7 +7420,7 @@ impl RstRstEvolRad {
         C: &mut crate::gp::Circ,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_section_real5_circ(
                     self as *mut Self,
                     Param,
@@ -6409,7 +7431,9 @@ impl RstRstEvolRad {
                     C,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6419,8 +7443,11 @@ impl RstRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstEvolRad_is_rational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6431,8 +7458,11 @@ impl RstRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_get_section_size(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6441,10 +7471,12 @@ impl RstRstEvolRad {
     /// of all sections.
     pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_get_minimal_weight(self as *const Self, Weigths)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6456,8 +7488,11 @@ impl RstRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_nb_intervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6468,10 +7503,12 @@ impl RstRstEvolRad {
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_intervals(self as *const Self, T, S.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6484,7 +7521,7 @@ impl RstRstEvolRad {
         NbPoles2d: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_get_shape(
                     self as *mut Self,
                     NbPoles,
@@ -6493,7 +7530,9 @@ impl RstRstEvolRad {
                     NbPoles2d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6512,7 +7551,7 @@ impl RstRstEvolRad {
         Tol1D: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_get_tolerance_real3_vector2(
                     self as *const Self,
                     BoundTol,
@@ -6522,23 +7561,31 @@ impl RstRstEvolRad {
                     Tol1D,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:204 - `BRepBlend_RstRstEvolRad::Knots()`
     pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::BRepBlend_RstRstEvolRad_knots(self as *mut Self, TKnots) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_RstRstEvolRad_knots(self as *mut Self, TKnots) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:206 - `BRepBlend_RstRstEvolRad::Mults()`
     pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
         {
-            unsafe { crate::ffi::BRepBlend_RstRstEvolRad_mults(self as *mut Self, TMults) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_RstRstEvolRad_mults(self as *mut Self, TMults) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6558,8 +7605,11 @@ impl RstRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6572,10 +7622,12 @@ impl RstRstEvolRad {
         Weigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6600,15 +7652,18 @@ impl RstRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:236 - `BRepBlend_RstRstEvolRad::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_resolution(
                     self as *const Self,
                     IC2d,
@@ -6617,104 +7672,105 @@ impl RstRstEvolRad {
                     TolV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to Blend_RstRstFunction
     pub fn as_blend_rst_rst_function(&self) -> &crate::blend::RstRstFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_RstRstEvolRad_as_Blend_RstRstFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_RstRstEvolRad_as_Blend_RstRstFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Blend_RstRstFunction (mutable)
     pub fn as_blend_rst_rst_function_mut(&mut self) -> &mut crate::blend::RstRstFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_RstRstEvolRad_as_Blend_RstRstFunction_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_RstRstEvolRad_as_Blend_RstRstFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Blend_AppFunction
     pub fn as_blend_app_function(&self) -> &crate::blend::AppFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_RstRstEvolRad_as_Blend_AppFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_RstRstEvolRad_as_Blend_AppFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Blend_AppFunction (mutable)
     pub fn as_blend_app_function_mut(&mut self) -> &mut crate::blend::AppFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_RstRstEvolRad_as_Blend_AppFunction_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_RstRstEvolRad_as_Blend_AppFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_RstRstEvolRad_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_RstRstEvolRad_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_RstRstEvolRad_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_RstRstEvolRad_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_RstRstEvolRad_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepBlend_RstRstEvolRad_as_math_FunctionSet(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_RstRstEvolRad_as_math_FunctionSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_RstRstEvolRad_as_math_FunctionSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Blend_RstRstFunction.hxx`:112 - `Blend_RstRstFunction::Pnt1()`
@@ -6722,8 +7778,11 @@ impl RstRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstEvolRad_inherited_Pnt1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6732,8 +7791,11 @@ impl RstRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstEvolRad_inherited_Pnt2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6743,8 +7805,11 @@ impl RstRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_inherited_Parameter(self as *const Self, P)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6754,8 +7819,11 @@ impl RstRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstEvolRad_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -6816,8 +7884,10 @@ impl RstRstLineBuilder {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstLineBuilder_ctor_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dtopoltool(Surf1, Rst1, Domain1, Surf2, Rst2, Domain2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6839,7 +7909,7 @@ impl RstRstLineBuilder {
         Appro: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_RstRstLineBuilder_perform(
                     self as *mut Self,
                     Func,
@@ -6857,7 +7927,9 @@ impl RstRstLineBuilder {
                     Appro,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6903,8 +7975,11 @@ impl RstRstLineBuilder {
                     ParSol,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6930,8 +8005,11 @@ impl RstRstLineBuilder {
                     Pmin,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6940,8 +8018,11 @@ impl RstRstLineBuilder {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstLineBuilder_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6950,8 +8031,11 @@ impl RstRstLineBuilder {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_RstRstLineBuilder_line(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6961,8 +8045,11 @@ impl RstRstLineBuilder {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstLineBuilder_decroch1_start(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6972,8 +8059,11 @@ impl RstRstLineBuilder {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstLineBuilder_decroch1_end(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6983,8 +8073,11 @@ impl RstRstLineBuilder {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstLineBuilder_decroch2_start(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6994,8 +8087,11 @@ impl RstRstLineBuilder {
             let __result = unsafe {
                 crate::ffi::BRepBlend_RstRstLineBuilder_decroch2_end(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -7035,18 +8131,22 @@ impl SurfCurvConstRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfCurvConstRadInv_ctor_handleadaptor3dsurface_handleadaptor3dcurve2(S, C, Cg)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:46 - `BRepBlend_SurfCurvConstRadInv::Set()`
     pub fn set_real_int(&mut self, R: f64, Choix: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfCurvConstRadInv_set_real_int(self as *mut Self, R, Choix)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7057,8 +8157,11 @@ impl SurfCurvConstRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfCurvConstRadInv_nb_equations(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7071,8 +8174,11 @@ impl SurfCurvConstRadInv {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfCurvConstRadInv_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7090,8 +8196,11 @@ impl SurfCurvConstRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfCurvConstRadInv_derivatives(self as *mut Self, X, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7110,8 +8219,11 @@ impl SurfCurvConstRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfCurvConstRadInv_values(self as *mut Self, X, F, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7119,13 +8231,15 @@ impl SurfCurvConstRadInv {
     /// Set the restriction on which a solution has to be found.
     pub fn set_handleadaptor2dcurve2d(&mut self, Rst: &crate::ffi::HandleAdaptor2dCurve2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfCurvConstRadInv_set_handleadaptor2dcurve2d(
                     self as *mut Self,
                     Rst,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7135,14 +8249,16 @@ impl SurfCurvConstRadInv {
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfCurvConstRadInv_get_tolerance(
                     self as *const Self,
                     Tolerance,
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7157,14 +8273,16 @@ impl SurfCurvConstRadInv {
         SupBound: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfCurvConstRadInv_get_bounds(
                     self as *const Self,
                     InfBound,
                     SupBound,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7176,87 +8294,88 @@ impl SurfCurvConstRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfCurvConstRadInv_is_solution(self as *mut Self, Sol, Tol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to Blend_SurfCurvFuncInv
     pub fn as_blend_surf_curv_func_inv(&self) -> &crate::blend::SurfCurvFuncInv {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfCurvConstRadInv_as_Blend_SurfCurvFuncInv(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfCurvConstRadInv_as_Blend_SurfCurvFuncInv(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Blend_SurfCurvFuncInv (mutable)
     pub fn as_blend_surf_curv_func_inv_mut(&mut self) -> &mut crate::blend::SurfCurvFuncInv {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfCurvConstRadInv_as_Blend_SurfCurvFuncInv_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfCurvConstRadInv_as_Blend_SurfCurvFuncInv_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfCurvConstRadInv_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfCurvConstRadInv_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfCurvConstRadInv_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfCurvConstRadInv_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfCurvConstRadInv_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfCurvConstRadInv_as_math_FunctionSet(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfCurvConstRadInv_as_math_FunctionSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfCurvConstRadInv_as_math_FunctionSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Blend_SurfCurvFuncInv.hxx`:46 - `Blend_SurfCurvFuncInv::NbVariables()`
@@ -7265,8 +8384,11 @@ impl SurfCurvConstRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfCurvConstRadInv_inherited_NbVariables(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7278,8 +8400,11 @@ impl SurfCurvConstRadInv {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -7320,16 +8445,22 @@ impl SurfCurvEvolRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfCurvEvolRadInv_ctor_handleadaptor3dsurface_handleadaptor3dcurve2_handlelawfunction(S, C, Cg, Evol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:48 - `BRepBlend_SurfCurvEvolRadInv::Set()`
     pub fn set_int(&mut self, Choix: i32) {
         {
-            unsafe { crate::ffi::BRepBlend_SurfCurvEvolRadInv_set_int(self as *mut Self, Choix) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepBlend_SurfCurvEvolRadInv_set_int(self as *mut Self, Choix)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7340,8 +8471,11 @@ impl SurfCurvEvolRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfCurvEvolRadInv_nb_equations(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7354,8 +8488,11 @@ impl SurfCurvEvolRadInv {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfCurvEvolRadInv_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7373,8 +8510,11 @@ impl SurfCurvEvolRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfCurvEvolRadInv_derivatives(self as *mut Self, X, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7393,8 +8533,11 @@ impl SurfCurvEvolRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfCurvEvolRadInv_values(self as *mut Self, X, F, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7402,13 +8545,15 @@ impl SurfCurvEvolRadInv {
     /// Set the restriction on which a solution has to be found.
     pub fn set_handleadaptor2dcurve2d(&mut self, Rst: &crate::ffi::HandleAdaptor2dCurve2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfCurvEvolRadInv_set_handleadaptor2dcurve2d(
                     self as *mut Self,
                     Rst,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7418,14 +8563,16 @@ impl SurfCurvEvolRadInv {
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfCurvEvolRadInv_get_tolerance(
                     self as *const Self,
                     Tolerance,
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7440,14 +8587,16 @@ impl SurfCurvEvolRadInv {
         SupBound: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfCurvEvolRadInv_get_bounds(
                     self as *const Self,
                     InfBound,
                     SupBound,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7459,87 +8608,86 @@ impl SurfCurvEvolRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfCurvEvolRadInv_is_solution(self as *mut Self, Sol, Tol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to Blend_SurfCurvFuncInv
     pub fn as_blend_surf_curv_func_inv(&self) -> &crate::blend::SurfCurvFuncInv {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_Blend_SurfCurvFuncInv(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_Blend_SurfCurvFuncInv(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Blend_SurfCurvFuncInv (mutable)
     pub fn as_blend_surf_curv_func_inv_mut(&mut self) -> &mut crate::blend::SurfCurvFuncInv {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_Blend_SurfCurvFuncInv_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_Blend_SurfCurvFuncInv_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_math_FunctionSet(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_math_FunctionSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_math_FunctionSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Blend_SurfCurvFuncInv.hxx`:46 - `Blend_SurfCurvFuncInv::NbVariables()`
@@ -7548,8 +8696,11 @@ impl SurfCurvEvolRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfCurvEvolRadInv_inherited_NbVariables(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7559,8 +8710,11 @@ impl SurfCurvEvolRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfCurvEvolRadInv_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -7597,18 +8751,22 @@ impl SurfPointConstRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfPointConstRadInv_ctor_handleadaptor3dsurface_handleadaptor3dcurve(S, C)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:44 - `BRepBlend_SurfPointConstRadInv::Set()`
     pub fn set_real_int(&mut self, R: f64, Choix: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfPointConstRadInv_set_real_int(self as *mut Self, R, Choix)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7619,8 +8777,11 @@ impl SurfPointConstRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfPointConstRadInv_nb_equations(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7634,8 +8795,11 @@ impl SurfPointConstRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfPointConstRadInv_value(self as *mut Self, X, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7653,8 +8817,11 @@ impl SurfPointConstRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfPointConstRadInv_derivatives(self as *mut Self, X, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7673,8 +8840,11 @@ impl SurfPointConstRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfPointConstRadInv_values(self as *mut Self, X, F, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7682,8 +8852,11 @@ impl SurfPointConstRadInv {
     /// Set the Point on which a solution has to be found.
     pub fn set_pnt(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::BRepBlend_SurfPointConstRadInv_set_pnt(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_SurfPointConstRadInv_set_pnt(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7693,14 +8866,16 @@ impl SurfPointConstRadInv {
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfPointConstRadInv_get_tolerance(
                     self as *const Self,
                     Tolerance,
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7715,14 +8890,16 @@ impl SurfPointConstRadInv {
         SupBound: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfPointConstRadInv_get_bounds(
                     self as *const Self,
                     InfBound,
                     SupBound,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7734,89 +8911,90 @@ impl SurfPointConstRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfPointConstRadInv_is_solution(self as *mut Self, Sol, Tol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to Blend_SurfPointFuncInv
     pub fn as_blend_surf_point_func_inv(&self) -> &crate::blend::SurfPointFuncInv {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfPointConstRadInv_as_Blend_SurfPointFuncInv(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfPointConstRadInv_as_Blend_SurfPointFuncInv(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Blend_SurfPointFuncInv (mutable)
     pub fn as_blend_surf_point_func_inv_mut(&mut self) -> &mut crate::blend::SurfPointFuncInv {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfPointConstRadInv_as_Blend_SurfPointFuncInv_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfPointConstRadInv_as_Blend_SurfPointFuncInv_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfPointConstRadInv_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfPointConstRadInv_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfPointConstRadInv_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfPointConstRadInv_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfPointConstRadInv_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfPointConstRadInv_as_math_FunctionSet(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfPointConstRadInv_as_math_FunctionSet_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfPointConstRadInv_as_math_FunctionSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Blend_SurfPointFuncInv.hxx`:46 - `Blend_SurfPointFuncInv::NbVariables()`
@@ -7827,8 +9005,11 @@ impl SurfPointConstRadInv {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7840,8 +9021,11 @@ impl SurfPointConstRadInv {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -7879,16 +9063,22 @@ impl SurfPointEvolRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfPointEvolRadInv_ctor_handleadaptor3dsurface_handleadaptor3dcurve_handlelawfunction(S, C, Evol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:46 - `BRepBlend_SurfPointEvolRadInv::Set()`
     pub fn set_int(&mut self, Choix: i32) {
         {
-            unsafe { crate::ffi::BRepBlend_SurfPointEvolRadInv_set_int(self as *mut Self, Choix) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepBlend_SurfPointEvolRadInv_set_int(self as *mut Self, Choix)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7899,8 +9089,11 @@ impl SurfPointEvolRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfPointEvolRadInv_nb_equations(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7913,8 +9106,11 @@ impl SurfPointEvolRadInv {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfPointEvolRadInv_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7932,8 +9128,11 @@ impl SurfPointEvolRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfPointEvolRadInv_derivatives(self as *mut Self, X, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7952,8 +9151,11 @@ impl SurfPointEvolRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfPointEvolRadInv_values(self as *mut Self, X, F, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7961,8 +9163,11 @@ impl SurfPointEvolRadInv {
     /// Set the Point on which a solution has to be found.
     pub fn set_pnt(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::BRepBlend_SurfPointEvolRadInv_set_pnt(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_SurfPointEvolRadInv_set_pnt(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7972,14 +9177,16 @@ impl SurfPointEvolRadInv {
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfPointEvolRadInv_get_tolerance(
                     self as *const Self,
                     Tolerance,
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7994,14 +9201,16 @@ impl SurfPointEvolRadInv {
         SupBound: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfPointEvolRadInv_get_bounds(
                     self as *const Self,
                     InfBound,
                     SupBound,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8013,87 +9222,88 @@ impl SurfPointEvolRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfPointEvolRadInv_is_solution(self as *mut Self, Sol, Tol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to Blend_SurfPointFuncInv
     pub fn as_blend_surf_point_func_inv(&self) -> &crate::blend::SurfPointFuncInv {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfPointEvolRadInv_as_Blend_SurfPointFuncInv(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfPointEvolRadInv_as_Blend_SurfPointFuncInv(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Blend_SurfPointFuncInv (mutable)
     pub fn as_blend_surf_point_func_inv_mut(&mut self) -> &mut crate::blend::SurfPointFuncInv {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfPointEvolRadInv_as_Blend_SurfPointFuncInv_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfPointEvolRadInv_as_Blend_SurfPointFuncInv_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfPointEvolRadInv_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfPointEvolRadInv_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfPointEvolRadInv_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfPointEvolRadInv_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfPointEvolRadInv_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfPointEvolRadInv_as_math_FunctionSet(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfPointEvolRadInv_as_math_FunctionSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfPointEvolRadInv_as_math_FunctionSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Blend_SurfPointFuncInv.hxx`:46 - `Blend_SurfPointFuncInv::NbVariables()`
@@ -8102,8 +9312,11 @@ impl SurfPointEvolRadInv {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfPointEvolRadInv_inherited_NbVariables(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8115,8 +9328,11 @@ impl SurfPointEvolRadInv {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -8148,8 +9364,10 @@ impl SurfRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_ctor_handleadaptor3dsurface2_handleadaptor2dcurve2d_handleadaptor3dcurve(Surf, SurfRst, Rst, CGuide)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8159,8 +9377,11 @@ impl SurfRstConstRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstConstRad_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8170,8 +9391,11 @@ impl SurfRstConstRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstConstRad_nb_equations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8184,8 +9408,11 @@ impl SurfRstConstRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstConstRad_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8203,8 +9430,11 @@ impl SurfRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_derivatives(self as *mut Self, X, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8222,8 +9452,11 @@ impl SurfRstConstRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstConstRad_values(self as *mut Self, X, F, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8234,18 +9467,23 @@ impl SurfRstConstRad {
         RstRef: &crate::ffi::HandleAdaptor2dCurve2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_set_handleadaptor3dsurface_handleadaptor2dcurve2d(self as *mut Self, SurfRef, RstRef)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:84 - `BRepBlend_SurfRstConstRad::Set()`
     pub fn set_real(&mut self, Param: f64) {
         {
-            unsafe { crate::ffi::BRepBlend_SurfRstConstRad_set_real(self as *mut Self, Param) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_SurfRstConstRad_set_real(self as *mut Self, Param) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8256,24 +9494,28 @@ impl SurfRstConstRad {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_set_real2(self as *mut Self, First, Last)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:92 - `BRepBlend_SurfRstConstRad::GetTolerance()`
     pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_get_tolerance_vector_real(
                     self as *const Self,
                     Tolerance,
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8284,14 +9526,16 @@ impl SurfRstConstRad {
         SupBound: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_get_bounds(
                     self as *const Self,
                     InfBound,
                     SupBound,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8301,8 +9545,11 @@ impl SurfRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_is_solution(self as *mut Self, Sol, Tol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8314,8 +9561,11 @@ impl SurfRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_get_minimal_distance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8324,8 +9574,11 @@ impl SurfRstConstRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstConstRad_point_on_s(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8334,8 +9587,11 @@ impl SurfRstConstRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstConstRad_point_on_rst(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8345,8 +9601,11 @@ impl SurfRstConstRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstConstRad_pnt2d_on_s(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8357,8 +9616,11 @@ impl SurfRstConstRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstConstRad_pnt2d_on_rst(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8369,8 +9631,11 @@ impl SurfRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_parameter_on_rst(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8380,8 +9645,11 @@ impl SurfRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_is_tangency_point(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8390,8 +9658,11 @@ impl SurfRstConstRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstConstRad_tangent_on_s(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8401,8 +9672,11 @@ impl SurfRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_tangent2d_on_s(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8412,8 +9686,11 @@ impl SurfRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_tangent_on_rst(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8423,8 +9700,11 @@ impl SurfRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_tangent2d_on_rst(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8443,18 +9723,23 @@ impl SurfRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_decroch(self as *const Self, Sol, NS, TgS)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:137 - `BRepBlend_SurfRstConstRad::Set()`
     pub fn set_real_int(&mut self, Radius: f64, Choix: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_set_real_int(self as *mut Self, Radius, Choix)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8463,13 +9748,15 @@ impl SurfRstConstRad {
     /// approximations.
     pub fn set_sectionshape(&mut self, TypeSection: crate::blend_func::SectionShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_set_sectionshape(
                     self as *mut Self,
                     TypeSection.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8485,7 +9772,7 @@ impl SurfRstConstRad {
         C: &mut crate::gp::Circ,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_section_real6_circ(
                     self as *mut Self,
                     Param,
@@ -8497,7 +9784,9 @@ impl SurfRstConstRad {
                     C,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8507,8 +9796,11 @@ impl SurfRstConstRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstConstRad_is_rational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8519,8 +9811,11 @@ impl SurfRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_get_section_size(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8529,13 +9824,15 @@ impl SurfRstConstRad {
     /// of all sections.
     pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_get_minimal_weight(
                     self as *const Self,
                     Weigths,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8547,8 +9844,11 @@ impl SurfRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_nb_intervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8559,10 +9859,12 @@ impl SurfRstConstRad {
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_intervals(self as *const Self, T, S.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8575,7 +9877,7 @@ impl SurfRstConstRad {
         NbPoles2d: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_get_shape(
                     self as *mut Self,
                     NbPoles,
@@ -8584,7 +9886,9 @@ impl SurfRstConstRad {
                     NbPoles2d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8603,7 +9907,7 @@ impl SurfRstConstRad {
         Tol1D: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_get_tolerance_real3_vector2(
                     self as *const Self,
                     BoundTol,
@@ -8613,23 +9917,31 @@ impl SurfRstConstRad {
                     Tol1D,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:188 - `BRepBlend_SurfRstConstRad::Knots()`
     pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::BRepBlend_SurfRstConstRad_knots(self as *mut Self, TKnots) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_SurfRstConstRad_knots(self as *mut Self, TKnots) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:190 - `BRepBlend_SurfRstConstRad::Mults()`
     pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
         {
-            unsafe { crate::ffi::BRepBlend_SurfRstConstRad_mults(self as *mut Self, TMults) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_SurfRstConstRad_mults(self as *mut Self, TMults) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8649,8 +9961,11 @@ impl SurfRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8675,8 +9990,11 @@ impl SurfRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8689,17 +10007,19 @@ impl SurfRstConstRad {
         Weigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:220 - `BRepBlend_SurfRstConstRad::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_resolution(
                     self as *const Self,
                     IC2d,
@@ -8708,106 +10028,106 @@ impl SurfRstConstRad {
                     TolV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to Blend_SurfRstFunction
     pub fn as_blend_surf_rst_function(&self) -> &crate::blend::SurfRstFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfRstConstRad_as_Blend_SurfRstFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfRstConstRad_as_Blend_SurfRstFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Blend_SurfRstFunction (mutable)
     pub fn as_blend_surf_rst_function_mut(&mut self) -> &mut crate::blend::SurfRstFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfRstConstRad_as_Blend_SurfRstFunction_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfRstConstRad_as_Blend_SurfRstFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Blend_AppFunction
     pub fn as_blend_app_function(&self) -> &crate::blend::AppFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfRstConstRad_as_Blend_AppFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfRstConstRad_as_Blend_AppFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Blend_AppFunction (mutable)
     pub fn as_blend_app_function_mut(&mut self) -> &mut crate::blend::AppFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfRstConstRad_as_Blend_AppFunction_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfRstConstRad_as_Blend_AppFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfRstConstRad_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfRstConstRad_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfRstConstRad_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfRstConstRad_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfRstConstRad_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfRstConstRad_as_math_FunctionSet(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfRstConstRad_as_math_FunctionSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfRstConstRad_as_math_FunctionSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Blend_SurfRstFunction.hxx`:111 - `Blend_SurfRstFunction::Pnt1()`
@@ -8816,8 +10136,11 @@ impl SurfRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_inherited_Pnt1(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8827,8 +10150,11 @@ impl SurfRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_inherited_Pnt2(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8838,8 +10164,11 @@ impl SurfRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_inherited_Parameter(self as *const Self, P)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8849,8 +10178,11 @@ impl SurfRstConstRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstConstRad_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -8883,8 +10215,10 @@ impl SurfRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_ctor_handleadaptor3dsurface2_handleadaptor2dcurve2d_handleadaptor3dcurve_handlelawfunction(Surf, SurfRst, Rst, CGuide, Evol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8894,8 +10228,11 @@ impl SurfRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8905,8 +10242,11 @@ impl SurfRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_nb_equations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8919,8 +10259,11 @@ impl SurfRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8938,8 +10281,11 @@ impl SurfRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_derivatives(self as *mut Self, X, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8957,8 +10303,11 @@ impl SurfRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_values(self as *mut Self, X, F, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8969,18 +10318,23 @@ impl SurfRstEvolRad {
         RstRef: &crate::ffi::HandleAdaptor2dCurve2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_set_handleadaptor3dsurface_handleadaptor2dcurve2d(self as *mut Self, SurfRef, RstRef)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:86 - `BRepBlend_SurfRstEvolRad::Set()`
     pub fn set_real(&mut self, Param: f64) {
         {
-            unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_set_real(self as *mut Self, Param) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_set_real(self as *mut Self, Param) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8991,24 +10345,28 @@ impl SurfRstEvolRad {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_set_real2(self as *mut Self, First, Last)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:94 - `BRepBlend_SurfRstEvolRad::GetTolerance()`
     pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_get_tolerance_vector_real(
                     self as *const Self,
                     Tolerance,
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9019,14 +10377,16 @@ impl SurfRstEvolRad {
         SupBound: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_get_bounds(
                     self as *const Self,
                     InfBound,
                     SupBound,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9036,8 +10396,11 @@ impl SurfRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_is_solution(self as *mut Self, Sol, Tol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9049,8 +10412,11 @@ impl SurfRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_get_minimal_distance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9059,8 +10425,11 @@ impl SurfRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_point_on_s(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9069,8 +10438,11 @@ impl SurfRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_point_on_rst(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9080,8 +10452,11 @@ impl SurfRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_pnt2d_on_s(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9092,8 +10467,11 @@ impl SurfRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_pnt2d_on_rst(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9104,8 +10482,11 @@ impl SurfRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_parameter_on_rst(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9115,8 +10496,11 @@ impl SurfRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_is_tangency_point(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9125,8 +10509,11 @@ impl SurfRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_tangent_on_s(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9135,8 +10522,11 @@ impl SurfRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_tangent2d_on_s(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9145,8 +10535,11 @@ impl SurfRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_tangent_on_rst(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9156,8 +10549,11 @@ impl SurfRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_tangent2d_on_rst(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9174,16 +10570,22 @@ impl SurfRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_decroch(self as *const Self, Sol, NS, TgS)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:137 - `BRepBlend_SurfRstEvolRad::Set()`
     pub fn set_int(&mut self, Choix: i32) {
         {
-            unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_set_int(self as *mut Self, Choix) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_set_int(self as *mut Self, Choix) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9192,13 +10594,15 @@ impl SurfRstEvolRad {
     /// approximations.
     pub fn set_sectionshape(&mut self, TypeSection: crate::blend_func::SectionShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_set_sectionshape(
                     self as *mut Self,
                     TypeSection.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9214,7 +10618,7 @@ impl SurfRstEvolRad {
         C: &mut crate::gp::Circ,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_section_real6_circ(
                     self as *mut Self,
                     Param,
@@ -9226,7 +10630,9 @@ impl SurfRstEvolRad {
                     C,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9236,8 +10642,11 @@ impl SurfRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_is_rational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9248,8 +10657,11 @@ impl SurfRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_get_section_size(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9258,13 +10670,15 @@ impl SurfRstEvolRad {
     /// of all sections.
     pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_get_minimal_weight(
                     self as *const Self,
                     Weigths,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9276,8 +10690,11 @@ impl SurfRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_nb_intervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9288,10 +10705,12 @@ impl SurfRstEvolRad {
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_intervals(self as *const Self, T, S.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9304,7 +10723,7 @@ impl SurfRstEvolRad {
         NbPoles2d: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_get_shape(
                     self as *mut Self,
                     NbPoles,
@@ -9313,7 +10732,9 @@ impl SurfRstEvolRad {
                     NbPoles2d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9332,7 +10753,7 @@ impl SurfRstEvolRad {
         Tol1D: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_get_tolerance_real3_vector2(
                     self as *const Self,
                     BoundTol,
@@ -9342,23 +10763,31 @@ impl SurfRstEvolRad {
                     Tol1D,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:188 - `BRepBlend_SurfRstEvolRad::Knots()`
     pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_knots(self as *mut Self, TKnots) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_knots(self as *mut Self, TKnots) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:190 - `BRepBlend_SurfRstEvolRad::Mults()`
     pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
         {
-            unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_mults(self as *mut Self, TMults) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_mults(self as *mut Self, TMults) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9378,8 +10807,11 @@ impl SurfRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9404,8 +10836,11 @@ impl SurfRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9418,17 +10853,19 @@ impl SurfRstEvolRad {
         Weigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:220 - `BRepBlend_SurfRstEvolRad::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_resolution(
                     self as *const Self,
                     IC2d,
@@ -9437,104 +10874,106 @@ impl SurfRstEvolRad {
                     TolV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to Blend_SurfRstFunction
     pub fn as_blend_surf_rst_function(&self) -> &crate::blend::SurfRstFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfRstEvolRad_as_Blend_SurfRstFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfRstEvolRad_as_Blend_SurfRstFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Blend_SurfRstFunction (mutable)
     pub fn as_blend_surf_rst_function_mut(&mut self) -> &mut crate::blend::SurfRstFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfRstEvolRad_as_Blend_SurfRstFunction_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfRstEvolRad_as_Blend_SurfRstFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Blend_AppFunction
     pub fn as_blend_app_function(&self) -> &crate::blend::AppFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfRstEvolRad_as_Blend_AppFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfRstEvolRad_as_Blend_AppFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Blend_AppFunction (mutable)
     pub fn as_blend_app_function_mut(&mut self) -> &mut crate::blend::AppFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfRstEvolRad_as_Blend_AppFunction_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfRstEvolRad_as_Blend_AppFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfRstEvolRad_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfRstEvolRad_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfRstEvolRad_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfRstEvolRad_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfRstEvolRad_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfRstEvolRad_as_math_FunctionSet(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepBlend_SurfRstEvolRad_as_math_FunctionSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepBlend_SurfRstEvolRad_as_math_FunctionSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Blend_SurfRstFunction.hxx`:111 - `Blend_SurfRstFunction::Pnt1()`
@@ -9542,8 +10981,11 @@ impl SurfRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_inherited_Pnt1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9552,8 +10994,11 @@ impl SurfRstEvolRad {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstEvolRad_inherited_Pnt2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9563,8 +11008,11 @@ impl SurfRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_inherited_Parameter(self as *const Self, P)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9574,8 +11022,11 @@ impl SurfRstEvolRad {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstEvolRad_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -9634,8 +11085,10 @@ impl SurfRstLineBuilder {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstLineBuilder_ctor_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dtopoltool(Surf1, Domain1, Surf2, Rst, Domain2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9657,7 +11110,7 @@ impl SurfRstLineBuilder {
         Appro: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_SurfRstLineBuilder_perform(
                     self as *mut Self,
                     Func,
@@ -9675,7 +11128,9 @@ impl SurfRstLineBuilder {
                     Appro,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9719,8 +11174,11 @@ impl SurfRstLineBuilder {
                     ParSol,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9744,8 +11202,11 @@ impl SurfRstLineBuilder {
                     Pmin,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9769,8 +11230,11 @@ impl SurfRstLineBuilder {
                     ponarc,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9779,8 +11243,11 @@ impl SurfRstLineBuilder {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstLineBuilder_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9789,8 +11256,11 @@ impl SurfRstLineBuilder {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_SurfRstLineBuilder_line(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9800,8 +11270,11 @@ impl SurfRstLineBuilder {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstLineBuilder_decroch_start(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9811,8 +11284,11 @@ impl SurfRstLineBuilder {
             let __result = unsafe {
                 crate::ffi::BRepBlend_SurfRstLineBuilder_decroch_end(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -9843,8 +11319,10 @@ impl Walking {
             let __result = unsafe {
                 crate::ffi::BRepBlend_Walking_ctor_handleadaptor3dsurface2_handleadaptor3dtopoltool2_handlechfidselspine(Surf1, Surf2, Domain1, Domain2, HGuide)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9856,14 +11334,16 @@ impl Walking {
         RecDomain2: &crate::ffi::HandleAdaptor3dTopolTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_Walking_set_domains_to_recadre(
                     self as *mut Self,
                     RecDomain1,
                     RecDomain2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9871,8 +11351,11 @@ impl Walking {
     /// To define singular points computed before walking.
     pub fn add_singular_point(&mut self, P: &crate::blend::Point) {
         {
-            unsafe { crate::ffi::BRepBlend_Walking_add_singular_point(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_Walking_add_singular_point(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9891,7 +11374,7 @@ impl Walking {
         Appro: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepBlend_Walking_perform(
                     self as *mut Self,
                     F,
@@ -9906,7 +11389,9 @@ impl Walking {
                     Appro,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9927,8 +11412,11 @@ impl Walking {
             let __result = unsafe {
                 crate::ffi::BRepBlend_Walking_perform_first_section_function_real_vector_real2_state2(self as *mut Self, F, Pdep, ParDep, Tol3d, TolGuide, &mut Pos1_i32_, &mut Pos2_i32_)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         };
         *Pos1 = crate::top_abs::State::try_from(Pos1_i32_).unwrap();
         *Pos2 = crate::top_abs::State::try_from(Pos2_i32_).unwrap();
@@ -9954,8 +11442,11 @@ impl Walking {
             let __result = unsafe {
                 crate::ffi::BRepBlend_Walking_perform_first_section_function_funcinv_real2_vector_real2_bool2_real_vector(self as *mut Self, F, FInv, Pdep, Pmax, ParDep, Tol3d, TolGuide, RecOnS1, RecOnS2, Psol, ParSol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9975,8 +11466,11 @@ impl Walking {
                     P,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9998,8 +11492,11 @@ impl Walking {
                     OnS1,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10013,40 +11510,53 @@ impl Walking {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_Walking_complete(self as *mut Self, F, FInv, Pmin) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepBlend_Walking.hxx`:107 - `BRepBlend_Walking::ClassificationOnS1()`
     pub fn classification_on_s1(&mut self, C: bool) {
         {
-            unsafe { crate::ffi::BRepBlend_Walking_classification_on_s1(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_Walking_classification_on_s1(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_Walking.hxx`:109 - `BRepBlend_Walking::ClassificationOnS2()`
     pub fn classification_on_s2(&mut self, C: bool) {
         {
-            unsafe { crate::ffi::BRepBlend_Walking_classification_on_s2(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepBlend_Walking_classification_on_s2(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_Walking.hxx`:111 - `BRepBlend_Walking::Check2d()`
     pub fn check2d(&mut self, C: bool) {
         {
-            unsafe { crate::ffi::BRepBlend_Walking_check2d(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepBlend_Walking_check2d(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepBlend_Walking.hxx`:113 - `BRepBlend_Walking::Check()`
     pub fn check(&mut self, C: bool) {
         {
-            unsafe { crate::ffi::BRepBlend_Walking_check(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepBlend_Walking_check(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10055,8 +11565,11 @@ impl Walking {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_Walking_twist_on_s1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10065,8 +11578,11 @@ impl Walking {
         {
             let __result =
                 unsafe { crate::ffi::BRepBlend_Walking_twist_on_s2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10074,8 +11590,11 @@ impl Walking {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepBlend_Walking_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10083,8 +11602,11 @@ impl Walking {
     pub fn line(&self) -> &crate::ffi::HandleBRepBlendLine {
         {
             let __result = unsafe { crate::ffi::BRepBlend_Walking_line(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }

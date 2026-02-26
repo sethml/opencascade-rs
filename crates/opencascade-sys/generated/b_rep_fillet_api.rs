@@ -26,8 +26,11 @@ impl LocalOperation {
     /// contour  of tangent edges).
     pub fn add(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_LocalOperation_add(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepFilletAPI_LocalOperation_add(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -36,10 +39,12 @@ impl LocalOperation {
     /// information in the contour.
     pub fn reset_contour(&mut self, IC: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_LocalOperation_reset_contour(self as *mut Self, IC)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -50,8 +55,11 @@ impl LocalOperation {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_LocalOperation_nb_contours(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -62,8 +70,11 @@ impl LocalOperation {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_LocalOperation_contour(self as *const Self, E) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -74,8 +85,11 @@ impl LocalOperation {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_LocalOperation_nb_edges(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -85,8 +99,11 @@ impl LocalOperation {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_LocalOperation_edge(self as *const Self, I, J) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -94,8 +111,11 @@ impl LocalOperation {
     /// remove the contour containing the Edge E.
     pub fn remove(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_LocalOperation_remove(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepFilletAPI_LocalOperation_remove(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -105,8 +125,11 @@ impl LocalOperation {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_LocalOperation_length(self as *const Self, IC) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -117,8 +140,11 @@ impl LocalOperation {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_LocalOperation_first_vertex(self as *const Self, IC)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -129,8 +155,11 @@ impl LocalOperation {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_LocalOperation_last_vertex(self as *const Self, IC)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -142,8 +171,11 @@ impl LocalOperation {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_LocalOperation_abscissa(self as *const Self, IC, V)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -159,8 +191,11 @@ impl LocalOperation {
                     V,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -172,8 +207,11 @@ impl LocalOperation {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_LocalOperation_closed_and_tangent(self as *const Self, IC)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -183,8 +221,11 @@ impl LocalOperation {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_LocalOperation_closed(self as *const Self, IC) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -195,16 +236,22 @@ impl LocalOperation {
     /// modifications  to build the result another time.
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_LocalOperation_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepFilletAPI_LocalOperation_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepFilletAPI_LocalOperation.hxx`:93 - `BRepFilletAPI_LocalOperation::Simulate()`
     pub fn simulate(&mut self, IC: i32) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_LocalOperation_simulate(self as *mut Self, IC) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepFilletAPI_LocalOperation_simulate(self as *mut Self, IC) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -214,8 +261,11 @@ impl LocalOperation {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_LocalOperation_nb_surf(self as *const Self, IC)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -225,75 +275,78 @@ impl LocalOperation {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_LocalOperation_sect(self as *const Self, IC, IS)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_MakeShape_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_Command(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_Command(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_Command_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepFilletAPI_LocalOperation_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_LocalOperation_inherited_Build(
                     self as *mut Self,
                     theRange,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -303,8 +356,11 @@ impl LocalOperation {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_LocalOperation_inherited_Shape(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -314,8 +370,11 @@ impl LocalOperation {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_LocalOperation_inherited_IsDeleted(self as *mut Self, S)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -325,18 +384,23 @@ impl LocalOperation {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_LocalOperation_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_LocalOperation_inherited_Check(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -368,8 +432,10 @@ impl MakeChamfer {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_ctor_shape(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -379,8 +445,11 @@ impl MakeChamfer {
     /// of the chamfer must be set after the
     pub fn add_edge(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_add_edge(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_add_edge(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -399,10 +468,12 @@ impl MakeChamfer {
     /// Nothing is done if edge E or the face F does not belong to the initial shape.
     pub fn add_real_edge(&mut self, Dis: f64, E: &crate::topo_ds::Edge) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeChamfer_add_real_edge(self as *mut Self, Dis, E)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -417,18 +488,24 @@ impl MakeChamfer {
     /// does not belong to the initial shape.
     pub fn set_dist(&mut self, Dis: f64, IC: i32, F: &crate::topo_ds::Face) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeChamfer_set_dist(self as *mut Self, Dis, IC, F)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:84 - `BRepFilletAPI_MakeChamfer::GetDist()`
     pub fn get_dist(&self, IC: i32, Dis: &mut f64) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_get_dist(self as *const Self, IC, Dis) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepFilletAPI_MakeChamfer_get_dist(self as *const Self, IC, Dis)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -454,7 +531,7 @@ impl MakeChamfer {
         F: &crate::topo_ds::Face,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeChamfer_add_real2_edge_face(
                     self as *mut Self,
                     Dis1,
@@ -463,7 +540,9 @@ impl MakeChamfer {
                     F,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -478,7 +557,7 @@ impl MakeChamfer {
     /// does not belong to the initial shape.
     pub fn set_dists(&mut self, Dis1: f64, Dis2: f64, IC: i32, F: &crate::topo_ds::Face) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeChamfer_set_dists(
                     self as *mut Self,
                     Dis1,
@@ -487,7 +566,9 @@ impl MakeChamfer {
                     F,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -499,10 +580,12 @@ impl MakeChamfer {
     /// -1. is returned if IC is outside the bounds of the table of contours.
     pub fn dists(&self, IC: i32, Dis1: &mut f64, Dis2: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeChamfer_dists(self as *const Self, IC, Dis1, Dis2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -518,10 +601,12 @@ impl MakeChamfer {
         F: &crate::topo_ds::Face,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeChamfer_add_da(self as *mut Self, Dis, Angle, E, F)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -532,7 +617,7 @@ impl MakeChamfer {
     /// of an edge of the contour <IC>
     pub fn set_dist_angle(&mut self, Dis: f64, Angle: f64, IC: i32, F: &crate::topo_ds::Face) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeChamfer_set_dist_angle(
                     self as *mut Self,
                     Dis,
@@ -541,7 +626,9 @@ impl MakeChamfer {
                     F,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -550,7 +637,7 @@ impl MakeChamfer {
     /// contour of index <IC> in the DS
     pub fn get_dist_angle(&self, IC: i32, Dis: &mut f64, Angle: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeChamfer_get_dist_angle(
                     self as *const Self,
                     IC,
@@ -558,7 +645,9 @@ impl MakeChamfer {
                     Angle,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -566,10 +655,12 @@ impl MakeChamfer {
     /// Sets the mode of chamfer
     pub fn set_mode(&mut self, theMode: crate::ch_fi_ds::ChamfMode) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeChamfer_set_mode(self as *mut Self, theMode.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -580,8 +671,11 @@ impl MakeChamfer {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeChamfer_is_symetric(self as *const Self, IC)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -592,8 +686,11 @@ impl MakeChamfer {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeChamfer_is_two_distances(self as *const Self, IC)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -604,8 +701,11 @@ impl MakeChamfer {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeChamfer_is_distance_angle(self as *const Self, IC)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -617,8 +717,12 @@ impl MakeChamfer {
     /// Nothing is done if IC is outside the bounds of the table of contours.
     pub fn reset_contour(&mut self, IC: i32) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_reset_contour(self as *mut Self, IC) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepFilletAPI_MakeChamfer_reset_contour(self as *mut Self, IC)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -629,8 +733,11 @@ impl MakeChamfer {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_nb_contours(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -645,8 +752,11 @@ impl MakeChamfer {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_contour(self as *const Self, E) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -659,8 +769,11 @@ impl MakeChamfer {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_nb_edges(self as *const Self, I) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -675,8 +788,11 @@ impl MakeChamfer {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_edge(self as *const Self, I, J) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -688,8 +804,11 @@ impl MakeChamfer {
     /// contour in the internal data structure of this algorithm.
     pub fn remove(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_remove(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_remove(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -702,8 +821,11 @@ impl MakeChamfer {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_length(self as *const Self, IC) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -717,8 +839,11 @@ impl MakeChamfer {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeChamfer_first_vertex(self as *const Self, IC)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -732,8 +857,11 @@ impl MakeChamfer {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeChamfer_last_vertex(self as *const Self, IC)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -749,8 +877,11 @@ impl MakeChamfer {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeChamfer_abscissa(self as *const Self, IC, V)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -767,8 +898,11 @@ impl MakeChamfer {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeChamfer_relative_abscissa(self as *const Self, IC, V)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -782,8 +916,11 @@ impl MakeChamfer {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeChamfer_closed_and_tangent(self as *const Self, IC)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -796,8 +933,11 @@ impl MakeChamfer {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_closed(self as *const Self, IC) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -822,8 +962,11 @@ impl MakeChamfer {
     /// limits the contour is not fully contained in this face.
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_build(self as *mut Self, theRange) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_build(self as *mut Self, theRange) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -833,8 +976,10 @@ impl MakeChamfer {
     /// contours and chamfer parameters in order to rebuild the shape.
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -844,8 +989,11 @@ impl MakeChamfer {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_builder(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -865,8 +1013,11 @@ impl MakeChamfer {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_generated(self as *mut Self, EorV) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -886,8 +1037,11 @@ impl MakeChamfer {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_modified(self as *mut Self, F) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -896,16 +1050,22 @@ impl MakeChamfer {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_is_deleted(self as *mut Self, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepFilletAPI_MakeChamfer.hxx`:293 - `BRepFilletAPI_MakeChamfer::Simulate()`
     pub fn simulate(&mut self, IC: i32) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_simulate(self as *mut Self, IC) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_simulate(self as *mut Self, IC) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -914,8 +1074,11 @@ impl MakeChamfer {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_nb_surf(self as *const Self, IC) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -924,87 +1087,84 @@ impl MakeChamfer {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_sect(self as *const Self, IC, IS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to BRepFilletAPI_LocalOperation
     pub fn as_local_operation(&self) -> &LocalOperation {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepFilletAPI_LocalOperation (mutable)
     pub fn as_local_operation_mut(&mut self) -> &mut LocalOperation {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepFilletAPI_MakeChamfer_as_BRepFilletAPI_LocalOperation_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_MakeShape(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_MakeShape(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepFilletAPI_MakeChamfer_as_BRepBuilderAPI_Command_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
@@ -1012,8 +1172,11 @@ impl MakeChamfer {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_inherited_Shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1023,16 +1186,23 @@ impl MakeChamfer {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeChamfer_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_MakeChamfer_inherited_Check(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepFilletAPI_MakeChamfer_inherited_Check(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1074,8 +1244,10 @@ impl MakeFillet {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_ctor_shape_filletshape(S, FShape.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1090,7 +1262,7 @@ impl MakeFillet {
         Fleche: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_set_params(
                     self as *mut Self,
                     Tang,
@@ -1101,7 +1273,9 @@ impl MakeFillet {
                     Fleche,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1118,14 +1292,16 @@ impl MakeFillet {
         AngularTolerance: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_set_continuity(
                     self as *mut Self,
                     InternalContinuity.into(),
                     AngularTolerance,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1135,8 +1311,11 @@ impl MakeFillet {
     /// The Radius must be set after.
     pub fn add_edge(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_MakeFillet_add_edge(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepFilletAPI_MakeFillet_add_edge(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1146,10 +1325,12 @@ impl MakeFillet {
     /// - sets the radius.
     pub fn add_real_edge(&mut self, Radius: f64, E: &crate::topo_ds::Edge) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_add_real_edge(self as *mut Self, Radius, E)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1160,10 +1341,12 @@ impl MakeFillet {
     /// the first and last vertex of the spine.
     pub fn add_real2_edge(&mut self, R1: f64, R2: f64, E: &crate::topo_ds::Edge) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_add_real2_edge(self as *mut Self, R1, R2, E)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1177,14 +1360,16 @@ impl MakeFillet {
         E: &crate::topo_ds::Edge,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_add_handlelawfunction_edge(
                     self as *mut Self,
                     L,
                     E,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1202,14 +1387,16 @@ impl MakeFillet {
         E: &crate::topo_ds::Edge,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_add_array1ofpnt2d_edge(
                     self as *mut Self,
                     UandR,
                     E,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1220,7 +1407,7 @@ impl MakeFillet {
     /// this algorithm, where Radius is the radius of the fillet.
     pub fn set_radius_real_int2(&mut self, Radius: f64, IC: i32, IinC: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_set_radius_real_int2(
                     self as *mut Self,
                     Radius,
@@ -1228,7 +1415,9 @@ impl MakeFillet {
                     IinC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1240,7 +1429,7 @@ impl MakeFillet {
     /// from R1 to R2, between the first and last vertices of the contour of index IC.
     pub fn set_radius_real2_int2(&mut self, R1: f64, R2: f64, IC: i32, IinC: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_set_radius_real2_int2(
                     self as *mut Self,
                     R1,
@@ -1249,7 +1438,9 @@ impl MakeFillet {
                     IinC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1266,7 +1457,7 @@ impl MakeFillet {
         IinC: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_set_radius_handlelawfunction_int2(
                     self as *mut Self,
                     L,
@@ -1274,7 +1465,9 @@ impl MakeFillet {
                     IinC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1297,7 +1490,7 @@ impl MakeFillet {
         IinC: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_set_radius_array1ofpnt2d_int2(
                     self as *mut Self,
                     UandR,
@@ -1305,7 +1498,9 @@ impl MakeFillet {
                     IinC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1317,8 +1512,12 @@ impl MakeFillet {
     /// Nothing is done if IC is outside the bounds of the table of contours.
     pub fn reset_contour(&mut self, IC: i32) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_MakeFillet_reset_contour(self as *mut Self, IC) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepFilletAPI_MakeFillet_reset_contour(self as *mut Self, IC)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1333,8 +1532,11 @@ impl MakeFillet {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_is_constant_int(self as *mut Self, IC)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1349,8 +1551,11 @@ impl MakeFillet {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet_radius_int(self as *mut Self, IC) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1366,8 +1571,11 @@ impl MakeFillet {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_is_constant_int_edge(self as *mut Self, IC, E)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1383,8 +1591,11 @@ impl MakeFillet {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_radius_int_edge(self as *mut Self, IC, E)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1392,7 +1603,7 @@ impl MakeFillet {
     /// Assigns Radius as the radius of the fillet on the edge E
     pub fn set_radius_real_int_edge(&mut self, Radius: f64, IC: i32, E: &crate::topo_ds::Edge) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_set_radius_real_int_edge(
                     self as *mut Self,
                     Radius,
@@ -1400,14 +1611,16 @@ impl MakeFillet {
                     E,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:195 - `BRepFilletAPI_MakeFillet::SetRadius()`
     pub fn set_radius_real_int_vertex(&mut self, Radius: f64, IC: i32, V: &crate::topo_ds::Vertex) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_set_radius_real_int_vertex(
                     self as *mut Self,
                     Radius,
@@ -1415,7 +1628,9 @@ impl MakeFillet {
                     V,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1431,8 +1646,11 @@ impl MakeFillet {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_get_bounds(self as *mut Self, IC, E, F, L)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1445,8 +1663,11 @@ impl MakeFillet {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet_get_law(self as *mut Self, IC, E) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1458,8 +1679,12 @@ impl MakeFillet {
         L: &crate::ffi::HandleLawFunction,
     ) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_MakeFillet_set_law(self as *mut Self, IC, E, L) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepFilletAPI_MakeFillet_set_law(self as *mut Self, IC, E, L)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1467,13 +1692,15 @@ impl MakeFillet {
     /// Assigns FShape as the type of fillet shape built by this algorithm.
     pub fn set_fillet_shape(&mut self, FShape: crate::ch_fi3d::FilletShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_set_fillet_shape(
                     self as *mut Self,
                     FShape.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1484,8 +1711,11 @@ impl MakeFillet {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_get_fillet_shape(self as *const Self)
             };
-            crate::check_exception();
-            crate::ch_fi3d::FilletShape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi3d::FilletShape::try_from(__val).unwrap()
         }
     }
 
@@ -1496,8 +1726,11 @@ impl MakeFillet {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet_nb_contours(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1512,8 +1745,11 @@ impl MakeFillet {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet_contour(self as *const Self, E) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1526,8 +1762,11 @@ impl MakeFillet {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet_nb_edges(self as *const Self, I) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1542,8 +1781,11 @@ impl MakeFillet {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet_edge(self as *const Self, I, J) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1555,8 +1797,11 @@ impl MakeFillet {
     /// contour in the internal data structure of this algorithm.
     pub fn remove(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_MakeFillet_remove(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepFilletAPI_MakeFillet_remove(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1569,8 +1814,11 @@ impl MakeFillet {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet_length(self as *const Self, IC) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1584,8 +1832,11 @@ impl MakeFillet {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_first_vertex(self as *const Self, IC)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1599,8 +1850,11 @@ impl MakeFillet {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_last_vertex(self as *const Self, IC)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1616,8 +1870,11 @@ impl MakeFillet {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_abscissa(self as *const Self, IC, V)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1634,8 +1891,11 @@ impl MakeFillet {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_relative_abscissa(self as *const Self, IC, V)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1650,8 +1910,11 @@ impl MakeFillet {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_closed_and_tangent(self as *const Self, IC)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1664,8 +1927,11 @@ impl MakeFillet {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet_closed(self as *const Self, IC) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1690,8 +1956,11 @@ impl MakeFillet {
     /// the contour is not fully contained in this face.
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_MakeFillet_build(self as *mut Self, theRange) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepFilletAPI_MakeFillet_build(self as *mut Self, theRange) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1701,8 +1970,10 @@ impl MakeFillet {
     /// contours and fillet parameters in order to rebuild the shape.
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_MakeFillet_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepFilletAPI_MakeFillet_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1712,8 +1983,11 @@ impl MakeFillet {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet_builder(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1733,8 +2007,11 @@ impl MakeFillet {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet_generated(self as *mut Self, EorV) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1754,8 +2031,11 @@ impl MakeFillet {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet_modified(self as *mut Self, F) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1764,8 +2044,11 @@ impl MakeFillet {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet_is_deleted(self as *mut Self, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1776,8 +2059,11 @@ impl MakeFillet {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet_nb_surfaces(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1787,16 +2073,22 @@ impl MakeFillet {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet_new_faces(self as *mut Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `BRepFilletAPI_MakeFillet.hxx`:349 - `BRepFilletAPI_MakeFillet::Simulate()`
     pub fn simulate(&mut self, IC: i32) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_MakeFillet_simulate(self as *mut Self, IC) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepFilletAPI_MakeFillet_simulate(self as *mut Self, IC) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1805,8 +2097,11 @@ impl MakeFillet {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet_nb_surf(self as *const Self, IC) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1815,8 +2110,11 @@ impl MakeFillet {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet_sect(self as *const Self, IC, IS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1828,8 +2126,11 @@ impl MakeFillet {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_nb_faulty_contours(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1843,8 +2144,11 @@ impl MakeFillet {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_faulty_contour(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1856,8 +2160,11 @@ impl MakeFillet {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_nb_computed_surfaces(self as *const Self, IC)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1872,8 +2179,11 @@ impl MakeFillet {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_computed_surface(self as *const Self, IC, IS)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1884,8 +2194,11 @@ impl MakeFillet {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_nb_faulty_vertices(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1896,8 +2209,11 @@ impl MakeFillet {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_faulty_vertex(self as *const Self, IV)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1908,8 +2224,11 @@ impl MakeFillet {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet_has_result(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1919,8 +2238,11 @@ impl MakeFillet {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet_bad_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1938,87 +2260,84 @@ impl MakeFillet {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_stripe_status(self as *const Self, IC)
             };
-            crate::check_exception();
-            crate::ch_fi_ds::ErrorStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::ErrorStatus::try_from(__val).unwrap()
         }
     }
 
     /// Upcast to BRepFilletAPI_LocalOperation
     pub fn as_local_operation(&self) -> &LocalOperation {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepFilletAPI_LocalOperation (mutable)
     pub fn as_local_operation_mut(&mut self) -> &mut LocalOperation {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepFilletAPI_MakeFillet_as_BRepFilletAPI_LocalOperation_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_MakeShape(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_MakeShape(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepFilletAPI_MakeFillet_as_BRepBuilderAPI_Command_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
@@ -2026,8 +2345,11 @@ impl MakeFillet {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet_inherited_Shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2037,16 +2359,23 @@ impl MakeFillet {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_MakeFillet_inherited_Check(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepFilletAPI_MakeFillet_inherited_Check(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2092,8 +2421,10 @@ impl MakeFillet2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2110,8 +2441,10 @@ impl MakeFillet2d {
     pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_ctor_face(F) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2126,8 +2459,11 @@ impl MakeFillet2d {
     /// -   ChFi2d_NoFace if F is a null face.
     pub fn init_face(&mut self, F: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_init_face(self as *mut Self, F) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_init_face(self as *mut Self, F) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2137,14 +2473,16 @@ impl MakeFillet2d {
     /// This  is useful to modify a fillet or a chamfer already created on ModFace.
     pub fn init_face2(&mut self, RefFace: &crate::topo_ds::Face, ModFace: &crate::topo_ds::Face) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet2d_init_face2(
                     self as *mut Self,
                     RefFace,
                     ModFace,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2176,8 +2514,11 @@ impl MakeFillet2d {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet2d_add_fillet(self as *mut Self, V, Radius)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2210,8 +2551,11 @@ impl MakeFillet2d {
                     Radius,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2233,8 +2577,11 @@ impl MakeFillet2d {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet2d_remove_fillet(self as *mut Self, Fillet)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2266,8 +2613,11 @@ impl MakeFillet2d {
                     D2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2316,8 +2666,11 @@ impl MakeFillet2d {
                     Ang,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2346,8 +2699,11 @@ impl MakeFillet2d {
                     D2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2396,8 +2752,11 @@ impl MakeFillet2d {
                     Ang,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2419,8 +2778,11 @@ impl MakeFillet2d {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet2d_remove_chamfer(self as *mut Self, Chamfer)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2434,8 +2796,11 @@ impl MakeFillet2d {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet2d_is_modified(self as *const Self, E)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2445,8 +2810,11 @@ impl MakeFillet2d {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_fillet_edges(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2456,8 +2824,11 @@ impl MakeFillet2d {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_nb_fillet(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2468,8 +2839,11 @@ impl MakeFillet2d {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet2d_chamfer_edges(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2479,8 +2853,11 @@ impl MakeFillet2d {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_nb_chamfer(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2500,8 +2877,11 @@ impl MakeFillet2d {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_modified(self as *mut Self, S) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2512,8 +2892,11 @@ impl MakeFillet2d {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_nb_curves(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2523,8 +2906,11 @@ impl MakeFillet2d {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_new_edges(self as *mut Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2534,8 +2920,11 @@ impl MakeFillet2d {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet2d_has_descendant(self as *const Self, E)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2557,8 +2946,11 @@ impl MakeFillet2d {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet2d_descendant_edge(self as *const Self, E)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2579,8 +2971,11 @@ impl MakeFillet2d {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet2d_basis_edge(self as *const Self, E)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2589,8 +2984,11 @@ impl MakeFillet2d {
         {
             let __result =
                 unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_status(self as *const Self) };
-            crate::check_exception();
-            crate::ch_fi2d::ConstructionError::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi2d::ConstructionError::try_from(__val).unwrap()
         }
     }
 
@@ -2598,63 +2996,61 @@ impl MakeFillet2d {
     /// Update the result and set the Done flag
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_build(self as *mut Self, theRange) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepFilletAPI_MakeFillet2d_build(self as *mut Self, theRange)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_MakeShape(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_MakeShape(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_MakeShape_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_Command(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_Command(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_Command_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepFilletAPI_MakeFillet2d_as_BRepBuilderAPI_Command_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
@@ -2663,8 +3059,11 @@ impl MakeFillet2d {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_Shape(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2674,8 +3073,11 @@ impl MakeFillet2d {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_IsDeleted(self as *mut Self, S)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2685,16 +3087,23 @@ impl MakeFillet2d {
             let __result = unsafe {
                 crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         {
-            unsafe { crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_Check(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepFilletAPI_MakeFillet2d_inherited_Check(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

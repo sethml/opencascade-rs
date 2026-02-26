@@ -33,8 +33,10 @@ impl Datum3D {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopLoc_Datum3D_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -44,8 +46,10 @@ impl Datum3D {
     pub fn new_trsf(T: &crate::gp::Trsf) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopLoc_Datum3D_ctor_trsf(T) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -55,8 +59,11 @@ impl Datum3D {
         {
             let __result =
                 unsafe { crate::ffi::TopLoc_Datum3D_transformation(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -65,8 +72,11 @@ impl Datum3D {
     pub fn trsf(&self) -> &crate::gp::Trsf {
         {
             let __result = unsafe { crate::ffi::TopLoc_Datum3D_trsf(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -75,8 +85,11 @@ impl Datum3D {
     pub fn form(&self) -> crate::gp::TrsfForm {
         {
             let __result = unsafe { crate::ffi::TopLoc_Datum3D_form(self as *const Self) };
-            crate::check_exception();
-            crate::gp::TrsfForm::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::gp::TrsfForm::try_from(__val).unwrap()
         }
     }
 
@@ -84,8 +97,10 @@ impl Datum3D {
     /// Writes the contents of this Datum3D to the stream S.
     pub fn shallow_dump(&self, S: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::TopLoc_Datum3D_shallow_dump(self as *const Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopLoc_Datum3D_shallow_dump(self as *const Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -93,8 +108,11 @@ impl Datum3D {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopLoc_Datum3D_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -102,8 +120,11 @@ impl Datum3D {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopLoc_Datum3D_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -111,40 +132,43 @@ impl Datum3D {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopLoc_Datum3D_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TopLoc_Datum3D_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopLoc_Datum3D_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TopLoc_Datum3D_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopLoc_Datum3D_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopLocDatum3D> {
-        {
-            let __result = unsafe { crate::ffi::TopLoc_Datum3D_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopLoc_Datum3D_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -153,8 +177,11 @@ impl Datum3D {
             let __result = unsafe {
                 crate::ffi::TopLoc_Datum3D_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -164,8 +191,11 @@ impl Datum3D {
             let __result = unsafe {
                 crate::ffi::TopLoc_Datum3D_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -174,11 +204,14 @@ impl Datum3D {
         {
             let __result =
                 unsafe { crate::ffi::TopLoc_Datum3D_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -188,16 +221,23 @@ impl Datum3D {
         {
             let __result =
                 unsafe { crate::ffi::TopLoc_Datum3D_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::TopLoc_Datum3D_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopLoc_Datum3D_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -207,16 +247,21 @@ impl Datum3D {
             let __result = unsafe {
                 crate::ffi::TopLoc_Datum3D_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopLoc_Datum3D_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopLoc_Datum3D_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -232,31 +277,31 @@ unsafe impl crate::CppDeletable for HandleTopLocDatum3D {
 impl HandleTopLocDatum3D {
     /// Dereference this Handle to access the underlying TopLoc_Datum3D
     pub fn get(&self) -> &crate::ffi::TopLoc_Datum3D {
-        {
-            let __result = unsafe { crate::ffi::HandleTopLocDatum3D_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopLocDatum3D_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopLoc_Datum3D
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopLoc_Datum3D {
-        {
-            let __result = unsafe { crate::ffi::HandleTopLocDatum3D_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTopLocDatum3D_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopLoc_Datum3D> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopLocDatum3D_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopLocDatum3D_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -294,18 +339,20 @@ impl ItemLocation {
         {
             let __result =
                 unsafe { crate::ffi::TopLoc_ItemLocation_ctor_handletoplocdatum3d_int(D, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopLoc_ItemLocation_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopLoc_ItemLocation_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -333,8 +380,10 @@ impl Location {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopLoc_Location_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -344,8 +393,10 @@ impl Location {
     pub fn new_trsf(T: &crate::gp::Trsf) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopLoc_Location_ctor_trsf(T) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -357,8 +408,10 @@ impl Location {
     pub fn new_handletoplocdatum3d(D: &crate::ffi::HandleTopLocDatum3D) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopLoc_Location_ctor_handletoplocdatum3d(D) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -367,8 +420,11 @@ impl Location {
     pub fn is_identity(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopLoc_Location_is_identity(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -376,8 +432,10 @@ impl Location {
     /// Resets this location to the Identity transformation.
     pub fn identity(&mut self) {
         {
-            unsafe { crate::ffi::TopLoc_Location_identity(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopLoc_Location_identity(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -390,8 +448,11 @@ impl Location {
     pub fn first_datum(&self) -> &crate::ffi::HandleTopLocDatum3D {
         {
             let __result = unsafe { crate::ffi::TopLoc_Location_first_datum(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -403,8 +464,11 @@ impl Location {
     pub fn first_power(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TopLoc_Location_first_power(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -419,8 +483,11 @@ impl Location {
         {
             let __result =
                 unsafe { crate::ffi::TopLoc_Location_next_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -431,8 +498,11 @@ impl Location {
         {
             let __result =
                 unsafe { crate::ffi::TopLoc_Location_transformation(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -443,8 +513,11 @@ impl Location {
     pub fn inverted(&self) -> crate::OwnedPtr<Location> {
         {
             let __result = unsafe { crate::ffi::TopLoc_Location_inverted(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -455,8 +528,11 @@ impl Location {
         {
             let __result =
                 unsafe { crate::ffi::TopLoc_Location_multiplied(self as *const Self, Other) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -466,8 +542,11 @@ impl Location {
         {
             let __result =
                 unsafe { crate::ffi::TopLoc_Location_divided(self as *const Self, Other) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -477,8 +556,11 @@ impl Location {
         {
             let __result =
                 unsafe { crate::ffi::TopLoc_Location_predivided(self as *const Self, Other) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -489,8 +571,11 @@ impl Location {
     pub fn powered(&self, pwr: i32) -> crate::OwnedPtr<Location> {
         {
             let __result = unsafe { crate::ffi::TopLoc_Location_powered(self as *const Self, pwr) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -501,8 +586,11 @@ impl Location {
     pub fn hash_code(&self) -> usize {
         {
             let __result = unsafe { crate::ffi::TopLoc_Location_hash_code(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -515,8 +603,11 @@ impl Location {
         {
             let __result =
                 unsafe { crate::ffi::TopLoc_Location_is_equal(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -529,8 +620,11 @@ impl Location {
         {
             let __result =
                 unsafe { crate::ffi::TopLoc_Location_is_different(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -538,8 +632,10 @@ impl Location {
     /// Prints the contents of <me> on the stream <s>.
     pub fn shallow_dump(&self, S: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::TopLoc_Location_shallow_dump(self as *const Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopLoc_Location_shallow_dump(self as *const Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -547,8 +643,10 @@ impl Location {
     /// Clear myItems
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::TopLoc_Location_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopLoc_Location_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -556,18 +654,21 @@ impl Location {
     pub fn scale_prec() -> f64 {
         {
             let __result = unsafe { crate::ffi::TopLoc_Location_scale_prec() };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopLoc_Location_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopLoc_Location_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -596,8 +697,10 @@ impl SListNodeOfItemLocation {
                     I, aTail,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -606,8 +709,11 @@ impl SListNodeOfItemLocation {
         {
             let __result =
                 unsafe { crate::ffi::TopLoc_SListNodeOfItemLocation_tail(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -616,8 +722,11 @@ impl SListNodeOfItemLocation {
         {
             let __result =
                 unsafe { crate::ffi::TopLoc_SListNodeOfItemLocation_value(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -627,8 +736,11 @@ impl SListNodeOfItemLocation {
             let __result = unsafe {
                 crate::ffi::TopLoc_SListNodeOfItemLocation_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -636,8 +748,11 @@ impl SListNodeOfItemLocation {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopLoc_SListNodeOfItemLocation_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -646,47 +761,46 @@ impl SListNodeOfItemLocation {
         {
             let __result =
                 unsafe { crate::ffi::TopLoc_SListNodeOfItemLocation_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopLoc_SListNodeOfItemLocation_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopLoc_SListNodeOfItemLocation_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopLoc_SListNodeOfItemLocation_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopLoc_SListNodeOfItemLocation_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopLocSListNodeOfItemLocation> {
-        {
-            let __result =
-                unsafe { crate::ffi::TopLoc_SListNodeOfItemLocation_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::TopLoc_SListNodeOfItemLocation_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -698,8 +812,11 @@ impl SListNodeOfItemLocation {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -712,8 +829,11 @@ impl SListNodeOfItemLocation {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -723,11 +843,14 @@ impl SListNodeOfItemLocation {
             let __result = unsafe {
                 crate::ffi::TopLoc_SListNodeOfItemLocation_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -740,20 +863,25 @@ impl SListNodeOfItemLocation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopLoc_SListNodeOfItemLocation_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -765,18 +893,23 @@ impl SListNodeOfItemLocation {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopLoc_SListNodeOfItemLocation_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -792,36 +925,35 @@ unsafe impl crate::CppDeletable for HandleTopLocSListNodeOfItemLocation {
 impl HandleTopLocSListNodeOfItemLocation {
     /// Dereference this Handle to access the underlying TopLoc_SListNodeOfItemLocation
     pub fn get(&self) -> &crate::ffi::TopLoc_SListNodeOfItemLocation {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopLocSListNodeOfItemLocation_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleTopLocSListNodeOfItemLocation_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopLoc_SListNodeOfItemLocation
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopLoc_SListNodeOfItemLocation {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopLocSListNodeOfItemLocation_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTopLocSListNodeOfItemLocation_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopLoc_SListNodeOfItemLocation> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopLocSListNodeOfItemLocation_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopLocSListNodeOfItemLocation_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -859,8 +991,10 @@ impl SListOfItemLocation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopLoc_SListOfItemLocation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -876,8 +1010,10 @@ impl SListOfItemLocation {
                     anItem, aTail,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -894,8 +1030,11 @@ impl SListOfItemLocation {
         {
             let __result =
                 unsafe { crate::ffi::TopLoc_SListOfItemLocation_assign(self as *mut Self, Other) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -905,8 +1044,11 @@ impl SListOfItemLocation {
         {
             let __result =
                 unsafe { crate::ffi::TopLoc_SListOfItemLocation_is_empty(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -914,8 +1056,10 @@ impl SListOfItemLocation {
     /// Sets the list to be empty.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::TopLoc_SListOfItemLocation_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopLoc_SListOfItemLocation_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -926,8 +1070,11 @@ impl SListOfItemLocation {
         {
             let __result =
                 unsafe { crate::ffi::TopLoc_SListOfItemLocation_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -938,8 +1085,11 @@ impl SListOfItemLocation {
         {
             let __result =
                 unsafe { crate::ffi::TopLoc_SListOfItemLocation_tail(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -948,8 +1098,12 @@ impl SListOfItemLocation {
     /// and the  list <me> as  tail.
     pub fn construct(&mut self, anItem: &ItemLocation) {
         {
-            unsafe { crate::ffi::TopLoc_SListOfItemLocation_construct(self as *mut Self, anItem) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopLoc_SListOfItemLocation_construct(self as *mut Self, anItem)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -957,8 +1111,11 @@ impl SListOfItemLocation {
     /// Replaces the list <me> by its tail.
     pub fn to_tail(&mut self) {
         {
-            unsafe { crate::ffi::TopLoc_SListOfItemLocation_to_tail(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopLoc_SListOfItemLocation_to_tail(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -969,8 +1126,11 @@ impl SListOfItemLocation {
         {
             let __result =
                 unsafe { crate::ffi::TopLoc_SListOfItemLocation_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -979,18 +1139,20 @@ impl SListOfItemLocation {
     /// If the iterator is empty it will  stay empty. This is ToTail()
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TopLoc_SListOfItemLocation_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopLoc_SListOfItemLocation_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::TopLoc_SListOfItemLocation_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::TopLoc_SListOfItemLocation_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

@@ -82,8 +82,10 @@ impl AttrList {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MoniTool_AttrList_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -93,10 +95,12 @@ impl AttrList {
     pub fn set_attribute(&mut self, name: &str, val: &crate::ffi::HandleStandardTransient) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_AttrList_set_attribute(self as *mut Self, c_name.as_ptr(), val)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -109,8 +113,11 @@ impl AttrList {
             let __result = unsafe {
                 crate::ffi::MoniTool_AttrList_remove_attribute(self as *mut Self, c_name.as_ptr())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -135,8 +142,11 @@ impl AttrList {
                     val,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -152,8 +162,11 @@ impl AttrList {
             let __result = unsafe {
                 crate::ffi::MoniTool_AttrList_attribute(self as *const Self, c_name.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -167,8 +180,11 @@ impl AttrList {
             let __result = unsafe {
                 crate::ffi::MoniTool_AttrList_attribute_type(self as *const Self, c_name.as_ptr())
             };
-            crate::check_exception();
-            crate::moni_tool::ValueType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::moni_tool::ValueType::try_from(__val).unwrap()
         }
     }
 
@@ -177,14 +193,16 @@ impl AttrList {
     pub fn set_integer_attribute(&mut self, name: &str, val: i32) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_AttrList_set_integer_attribute(
                     self as *mut Self,
                     c_name.as_ptr(),
                     val,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -203,8 +221,11 @@ impl AttrList {
                     val,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -219,8 +240,11 @@ impl AttrList {
                     c_name.as_ptr(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -229,14 +253,16 @@ impl AttrList {
     pub fn set_real_attribute(&mut self, name: &str, val: f64) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_AttrList_set_real_attribute(
                     self as *mut Self,
                     c_name.as_ptr(),
                     val,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -255,8 +281,11 @@ impl AttrList {
                     val,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -268,8 +297,11 @@ impl AttrList {
             let __result = unsafe {
                 crate::ffi::MoniTool_AttrList_real_attribute(self as *const Self, c_name.as_ptr())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -279,14 +311,16 @@ impl AttrList {
         let c_name = std::ffi::CString::new(name).unwrap();
         let c_val = std::ffi::CString::new(val).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_AttrList_set_string_attribute(
                     self as *mut Self,
                     c_name.as_ptr(),
                     c_val.as_ptr(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -305,8 +339,11 @@ impl AttrList {
                     val,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -318,8 +355,11 @@ impl AttrList {
             let __result = unsafe {
                 crate::ffi::MoniTool_AttrList_string_attribute(self as *const Self, c_name.as_ptr())
             };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -328,8 +368,11 @@ impl AttrList {
     pub fn attr_list(&self) -> &crate::ffi::XSControl_WorkSessionMap {
         {
             let __result = unsafe { crate::ffi::MoniTool_AttrList_attr_list(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -340,8 +383,11 @@ impl AttrList {
     /// The former list of attributes of <me> is dropped
     pub fn same_attributes(&mut self, other: &AttrList) {
         {
-            unsafe { crate::ffi::MoniTool_AttrList_same_attributes(self as *mut Self, other) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MoniTool_AttrList_same_attributes(self as *mut Self, other) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -360,7 +406,7 @@ impl AttrList {
     pub fn get_attributes(&mut self, other: &AttrList, fromname: &str, copied: bool) {
         let c_fromname = std::ffi::CString::new(fromname).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_AttrList_get_attributes(
                     self as *mut Self,
                     other,
@@ -368,17 +414,19 @@ impl AttrList {
                     copied,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::MoniTool_AttrList_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MoniTool_AttrList_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -438,8 +486,10 @@ impl CaseData {
             let __result = unsafe {
                 crate::ffi::MoniTool_CaseData_ctor_charptr2(c_caseid.as_ptr(), c_name.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -448,10 +498,12 @@ impl CaseData {
     pub fn set_case_id(&mut self, caseid: &str) {
         let c_caseid = std::ffi::CString::new(caseid).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_CaseData_set_case_id(self as *mut Self, c_caseid.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -460,8 +512,12 @@ impl CaseData {
     pub fn set_name(&mut self, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe { crate::ffi::MoniTool_CaseData_set_name(self as *mut Self, c_name.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MoniTool_CaseData_set_name(self as *mut Self, c_name.as_ptr())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -470,8 +526,11 @@ impl CaseData {
     pub fn case_id(&self) -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MoniTool_CaseData_case_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -480,8 +539,11 @@ impl CaseData {
     pub fn name(&self) -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MoniTool_CaseData_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -490,8 +552,11 @@ impl CaseData {
     pub fn is_check(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::MoniTool_CaseData_is_check(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -500,8 +565,11 @@ impl CaseData {
     pub fn is_warning(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::MoniTool_CaseData_is_warning(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -510,8 +578,11 @@ impl CaseData {
     pub fn is_fail(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::MoniTool_CaseData_is_fail(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -519,8 +590,10 @@ impl CaseData {
     /// Resets Check Status, i.e. sets <me> as Info
     pub fn reset_check(&mut self) {
         {
-            unsafe { crate::ffi::MoniTool_CaseData_reset_check(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_CaseData_reset_check(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -528,8 +601,10 @@ impl CaseData {
     /// Sets <me> as Warning
     pub fn set_warning(&mut self) {
         {
-            unsafe { crate::ffi::MoniTool_CaseData_set_warning(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_CaseData_set_warning(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -537,8 +612,10 @@ impl CaseData {
     /// Sets <me> as Fail
     pub fn set_fail(&mut self) {
         {
-            unsafe { crate::ffi::MoniTool_CaseData_set_fail(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_CaseData_set_fail(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -549,8 +626,10 @@ impl CaseData {
     /// Reset by next Add... , whatever <num> is correct or not
     pub fn set_change(&mut self) {
         {
-            unsafe { crate::ffi::MoniTool_CaseData_set_change(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_CaseData_set_change(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -560,8 +639,11 @@ impl CaseData {
     /// Reset by next Add... , whatever <num> is correct or not
     pub fn set_replace(&mut self, num: i32) {
         {
-            unsafe { crate::ffi::MoniTool_CaseData_set_replace(self as *mut Self, num) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MoniTool_CaseData_set_replace(self as *mut Self, num) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -570,7 +652,7 @@ impl CaseData {
     pub fn add_data(&mut self, val: &crate::ffi::HandleStandardTransient, kind: i32, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_CaseData_add_data(
                     self as *mut Self,
                     val,
@@ -578,7 +660,9 @@ impl CaseData {
                     c_name.as_ptr(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -587,14 +671,16 @@ impl CaseData {
     pub fn add_raised(&mut self, theException: &crate::ffi::HandleStandardFailure, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_CaseData_add_raised(
                     self as *mut Self,
                     theException,
                     c_name.as_ptr(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -603,10 +689,12 @@ impl CaseData {
     pub fn add_shape(&mut self, sh: &crate::topo_ds::Shape, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_CaseData_add_shape(self as *mut Self, sh, c_name.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -615,10 +703,12 @@ impl CaseData {
     pub fn add_xyz(&mut self, aXYZ: &crate::gp::XYZ, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_CaseData_add_xyz(self as *mut Self, aXYZ, c_name.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -627,10 +717,12 @@ impl CaseData {
     pub fn add_xy(&mut self, aXY: &crate::gp::XY, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_CaseData_add_xy(self as *mut Self, aXY, c_name.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -639,10 +731,12 @@ impl CaseData {
     pub fn add_real(&mut self, val: f64, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_CaseData_add_real(self as *mut Self, val, c_name.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -651,10 +745,12 @@ impl CaseData {
     pub fn add_reals(&mut self, v1: f64, v2: f64, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_CaseData_add_reals(self as *mut Self, v1, v2, c_name.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -667,7 +763,7 @@ impl CaseData {
     pub fn add_cpu(&mut self, lastCPU: f64, curCPU: f64, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_CaseData_add_cpu(
                     self as *mut Self,
                     lastCPU,
@@ -675,7 +771,9 @@ impl CaseData {
                     c_name.as_ptr(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -686,8 +784,11 @@ impl CaseData {
     pub fn get_cpu(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::MoniTool_CaseData_get_cpu(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -707,8 +808,11 @@ impl CaseData {
                     curCPU,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -717,10 +821,12 @@ impl CaseData {
     pub fn add_geom(&mut self, geom: &crate::ffi::HandleStandardTransient, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_CaseData_add_geom(self as *mut Self, geom, c_name.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -730,10 +836,12 @@ impl CaseData {
     pub fn add_entity(&mut self, ent: &crate::ffi::HandleStandardTransient, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_CaseData_add_entity(self as *mut Self, ent, c_name.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -743,14 +851,16 @@ impl CaseData {
         let c_text = std::ffi::CString::new(text).unwrap();
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_CaseData_add_text(
                     self as *mut Self,
                     c_text.as_ptr(),
                     c_name.as_ptr(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -759,10 +869,12 @@ impl CaseData {
     pub fn add_integer(&mut self, val: i32, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_CaseData_add_integer(self as *mut Self, val, c_name.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -771,10 +883,12 @@ impl CaseData {
     pub fn add_any(&mut self, val: &crate::ffi::HandleStandardTransient, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_CaseData_add_any(self as *mut Self, val, c_name.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -782,8 +896,11 @@ impl CaseData {
     /// Removes a Data from its rank. Does nothing if out of range
     pub fn remove_data(&mut self, num: i32) {
         {
-            unsafe { crate::ffi::MoniTool_CaseData_remove_data(self as *mut Self, num) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MoniTool_CaseData_remove_data(self as *mut Self, num) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -792,8 +909,11 @@ impl CaseData {
     pub fn nb_data(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MoniTool_CaseData_nb_data(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -802,8 +922,11 @@ impl CaseData {
     pub fn data(&self, nd: i32) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
         {
             let __result = unsafe { crate::ffi::MoniTool_CaseData_data(self as *const Self, nd) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -822,8 +945,11 @@ impl CaseData {
             let __result = unsafe {
                 crate::ffi::MoniTool_CaseData_get_data(self as *const Self, nd, type_, val)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -848,8 +974,11 @@ impl CaseData {
     pub fn kind(&self, nd: i32) -> i32 {
         {
             let __result = unsafe { crate::ffi::MoniTool_CaseData_kind(self as *const Self, nd) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -860,8 +989,11 @@ impl CaseData {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_CaseData_name_int(self as *const Self, nd) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -879,8 +1011,11 @@ impl CaseData {
             let __result = unsafe {
                 crate::ffi::MoniTool_CaseData_name_num(self as *const Self, c_name.as_ptr())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -889,8 +1024,11 @@ impl CaseData {
     pub fn shape(&self, nd: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::MoniTool_CaseData_shape(self as *const Self, nd) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -901,8 +1039,11 @@ impl CaseData {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_CaseData_xyz(self as *const Self, nd, val) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -913,8 +1054,11 @@ impl CaseData {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_CaseData_xy(self as *const Self, nd, val) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -924,8 +1068,11 @@ impl CaseData {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_CaseData_reals(self as *const Self, nd, v1, v2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -936,8 +1083,11 @@ impl CaseData {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_CaseData_real(self as *const Self, nd, val) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -947,8 +1097,11 @@ impl CaseData {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_CaseData_text(self as *const Self, nd, text) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -958,8 +1111,11 @@ impl CaseData {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_CaseData_integer(self as *const Self, nd, val) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -973,8 +1129,11 @@ impl CaseData {
     pub fn msg(&self) -> crate::OwnedPtr<crate::message::Msg> {
         {
             let __result = unsafe { crate::ffi::MoniTool_CaseData_msg(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -983,8 +1142,11 @@ impl CaseData {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_CaseData_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -993,8 +1155,10 @@ impl CaseData {
     pub fn set_def_warning(acode: &str) {
         let c_acode = std::ffi::CString::new(acode).unwrap();
         {
-            unsafe { crate::ffi::MoniTool_CaseData_set_def_warning(c_acode.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_CaseData_set_def_warning(c_acode.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1003,8 +1167,10 @@ impl CaseData {
     pub fn set_def_fail(acode: &str) {
         let c_acode = std::ffi::CString::new(acode).unwrap();
         {
-            unsafe { crate::ffi::MoniTool_CaseData_set_def_fail(c_acode.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_CaseData_set_def_fail(c_acode.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1019,8 +1185,11 @@ impl CaseData {
         let c_acode = std::ffi::CString::new(acode).unwrap();
         {
             let __result = unsafe { crate::ffi::MoniTool_CaseData_def_check(c_acode.as_ptr()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1033,10 +1202,12 @@ impl CaseData {
         let c_casecode = std::ffi::CString::new(casecode).unwrap();
         let c_mesdef = std::ffi::CString::new(mesdef).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_CaseData_set_def_msg(c_casecode.as_ptr(), c_mesdef.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1047,8 +1218,11 @@ impl CaseData {
         let c_casecode = std::ffi::CString::new(casecode).unwrap();
         {
             let __result = unsafe { crate::ffi::MoniTool_CaseData_def_msg(c_casecode.as_ptr()) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1056,8 +1230,11 @@ impl CaseData {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MoniTool_CaseData_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1065,41 +1242,43 @@ impl CaseData {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MoniTool_CaseData_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MoniTool_CaseData_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::MoniTool_CaseData_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::MoniTool_CaseData_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::MoniTool_CaseData_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMoniToolCaseData> {
-        {
-            let __result = unsafe { crate::ffi::MoniTool_CaseData_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MoniTool_CaseData_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1108,8 +1287,11 @@ impl CaseData {
             let __result = unsafe {
                 crate::ffi::MoniTool_CaseData_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1119,8 +1301,11 @@ impl CaseData {
             let __result = unsafe {
                 crate::ffi::MoniTool_CaseData_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1129,11 +1314,14 @@ impl CaseData {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_CaseData_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1143,18 +1331,23 @@ impl CaseData {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_CaseData_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_CaseData_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1164,16 +1357,22 @@ impl CaseData {
             let __result = unsafe {
                 crate::ffi::MoniTool_CaseData_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::MoniTool_CaseData_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MoniTool_CaseData_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1189,31 +1388,31 @@ unsafe impl crate::CppDeletable for HandleMoniToolCaseData {
 impl HandleMoniToolCaseData {
     /// Dereference this Handle to access the underlying MoniTool_CaseData
     pub fn get(&self) -> &crate::ffi::MoniTool_CaseData {
-        {
-            let __result = unsafe { crate::ffi::HandleMoniToolCaseData_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleMoniToolCaseData_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MoniTool_CaseData
     pub fn get_mut(&mut self) -> &mut crate::ffi::MoniTool_CaseData {
-        {
-            let __result = unsafe { crate::ffi::HandleMoniToolCaseData_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleMoniToolCaseData_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MoniTool_CaseData> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMoniToolCaseData_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleMoniToolCaseData_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1239,8 +1438,10 @@ impl DataInfo {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MoniTool_DataInfo_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1252,8 +1453,11 @@ impl DataInfo {
     ) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
         {
             let __result = unsafe { crate::ffi::MoniTool_DataInfo_type_(ent) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1263,8 +1467,11 @@ impl DataInfo {
     pub fn type_name(ent: &crate::ffi::HandleStandardTransient) -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MoniTool_DataInfo_type_name(ent) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 }
@@ -1296,8 +1503,11 @@ impl Element {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_Element_get_hash_code(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1309,8 +1519,11 @@ impl Element {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_Element_equates(self as *const Self, other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1320,8 +1533,11 @@ impl Element {
     pub fn value_type(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
         {
             let __result = unsafe { crate::ffi::MoniTool_Element_value_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1332,8 +1548,11 @@ impl Element {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_Element_value_type_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1342,8 +1561,11 @@ impl Element {
     pub fn list_attr(&self) -> &AttrList {
         {
             let __result = unsafe { crate::ffi::MoniTool_Element_list_attr(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1352,8 +1574,11 @@ impl Element {
     pub fn change_attr(&mut self) -> &mut AttrList {
         {
             let __result = unsafe { crate::ffi::MoniTool_Element_change_attr(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1362,8 +1587,11 @@ impl Element {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_Element_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1371,8 +1599,11 @@ impl Element {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MoniTool_Element_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1380,30 +1611,32 @@ impl Element {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MoniTool_Element_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MoniTool_Element_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::MoniTool_Element_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::MoniTool_Element_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::MoniTool_Element_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1412,8 +1645,11 @@ impl Element {
             let __result = unsafe {
                 crate::ffi::MoniTool_Element_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1423,8 +1659,11 @@ impl Element {
             let __result = unsafe {
                 crate::ffi::MoniTool_Element_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1433,11 +1672,14 @@ impl Element {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_Element_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1447,18 +1689,23 @@ impl Element {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_Element_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_Element_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1468,16 +1715,22 @@ impl Element {
             let __result = unsafe {
                 crate::ffi::MoniTool_Element_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::MoniTool_Element_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MoniTool_Element_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1493,31 +1746,31 @@ unsafe impl crate::CppDeletable for HandleMoniToolElement {
 impl HandleMoniToolElement {
     /// Dereference this Handle to access the underlying MoniTool_Element
     pub fn get(&self) -> &crate::ffi::MoniTool_Element {
-        {
-            let __result = unsafe { crate::ffi::HandleMoniToolElement_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleMoniToolElement_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MoniTool_Element
     pub fn get_mut(&mut self) -> &mut crate::ffi::MoniTool_Element {
-        {
-            let __result = unsafe { crate::ffi::HandleMoniToolElement_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleMoniToolElement_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MoniTool_Element> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMoniToolElement_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleMoniToolElement_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<MoniTool_Element> to Handle<MoniTool_TransientElem>
@@ -1526,16 +1779,18 @@ impl HandleMoniToolElement {
     pub fn downcast_to_transient_elem(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleMoniToolTransientElem>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleMoniToolElement_downcast_to_HandleMoniToolTransientElem(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -1558,8 +1813,10 @@ impl HSequenceOfElement {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MoniTool_HSequenceOfElement_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1570,8 +1827,10 @@ impl HSequenceOfElement {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_HSequenceOfElement_ctor_sequenceofelement(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1580,21 +1839,26 @@ impl HSequenceOfElement {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_HSequenceOfElement_sequence(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `MoniTool_HSequenceOfElement.hxx`:24 - `MoniTool_HSequenceOfElement::Append()`
     pub fn append_handlemonitoolelement(&mut self, theItem: &crate::ffi::HandleMoniToolElement) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_HSequenceOfElement_append_handlemonitoolelement(
                     self as *mut Self,
                     theItem,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1604,13 +1868,15 @@ impl HSequenceOfElement {
         theSequence: &mut crate::ffi::MoniTool_SequenceOfElement,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_HSequenceOfElement_append_sequenceofelement(
                     self as *mut Self,
                     theSequence,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1620,8 +1886,11 @@ impl HSequenceOfElement {
             let __result = unsafe {
                 crate::ffi::MoniTool_HSequenceOfElement_change_sequence(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1631,8 +1900,11 @@ impl HSequenceOfElement {
             let __result = unsafe {
                 crate::ffi::MoniTool_HSequenceOfElement_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1640,8 +1912,11 @@ impl HSequenceOfElement {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MoniTool_HSequenceOfElement_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1649,43 +1924,45 @@ impl HSequenceOfElement {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MoniTool_HSequenceOfElement_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::MoniTool_HSequenceOfElement_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::MoniTool_HSequenceOfElement_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::MoniTool_HSequenceOfElement_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::MoniTool_HSequenceOfElement_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMoniToolHSequenceOfElement> {
-        {
-            let __result =
-                unsafe { crate::ffi::MoniTool_HSequenceOfElement_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MoniTool_HSequenceOfElement_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1697,8 +1974,11 @@ impl HSequenceOfElement {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1711,8 +1991,11 @@ impl HSequenceOfElement {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1722,11 +2005,14 @@ impl HSequenceOfElement {
             let __result = unsafe {
                 crate::ffi::MoniTool_HSequenceOfElement_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1737,20 +2023,25 @@ impl HSequenceOfElement {
             let __result = unsafe {
                 crate::ffi::MoniTool_HSequenceOfElement_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_HSequenceOfElement_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1762,18 +2053,23 @@ impl HSequenceOfElement {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_HSequenceOfElement_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1789,35 +2085,35 @@ unsafe impl crate::CppDeletable for HandleMoniToolHSequenceOfElement {
 impl HandleMoniToolHSequenceOfElement {
     /// Dereference this Handle to access the underlying MoniTool_HSequenceOfElement
     pub fn get(&self) -> &crate::ffi::MoniTool_HSequenceOfElement {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleMoniToolHSequenceOfElement_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleMoniToolHSequenceOfElement_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MoniTool_HSequenceOfElement
     pub fn get_mut(&mut self) -> &mut crate::ffi::MoniTool_HSequenceOfElement {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleMoniToolHSequenceOfElement_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleMoniToolHSequenceOfElement_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MoniTool_HSequenceOfElement> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMoniToolHSequenceOfElement_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleMoniToolHSequenceOfElement_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1840,8 +2136,10 @@ impl IntVal {
     pub fn new_int(val: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MoniTool_IntVal_ctor_int(val) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1854,8 +2152,11 @@ impl IntVal {
     pub fn value(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MoniTool_IntVal_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1863,8 +2164,11 @@ impl IntVal {
     pub fn c_value(&mut self) -> &mut i32 {
         {
             let __result = unsafe { crate::ffi::MoniTool_IntVal_c_value(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1872,8 +2176,11 @@ impl IntVal {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MoniTool_IntVal_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1881,8 +2188,11 @@ impl IntVal {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MoniTool_IntVal_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1890,40 +2200,43 @@ impl IntVal {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MoniTool_IntVal_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MoniTool_IntVal_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::MoniTool_IntVal_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MoniTool_IntVal_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::MoniTool_IntVal_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMoniToolIntVal> {
-        {
-            let __result = unsafe { crate::ffi::MoniTool_IntVal_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MoniTool_IntVal_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1932,8 +2245,11 @@ impl IntVal {
             let __result = unsafe {
                 crate::ffi::MoniTool_IntVal_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1943,8 +2259,11 @@ impl IntVal {
             let __result = unsafe {
                 crate::ffi::MoniTool_IntVal_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1953,11 +2272,14 @@ impl IntVal {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_IntVal_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1967,16 +2289,23 @@ impl IntVal {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_IntVal_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::MoniTool_IntVal_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MoniTool_IntVal_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1986,16 +2315,22 @@ impl IntVal {
             let __result = unsafe {
                 crate::ffi::MoniTool_IntVal_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::MoniTool_IntVal_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MoniTool_IntVal_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2011,31 +2346,31 @@ unsafe impl crate::CppDeletable for HandleMoniToolIntVal {
 impl HandleMoniToolIntVal {
     /// Dereference this Handle to access the underlying MoniTool_IntVal
     pub fn get(&self) -> &crate::ffi::MoniTool_IntVal {
-        {
-            let __result = unsafe { crate::ffi::HandleMoniToolIntVal_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleMoniToolIntVal_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MoniTool_IntVal
     pub fn get_mut(&mut self) -> &mut crate::ffi::MoniTool_IntVal {
-        {
-            let __result = unsafe { crate::ffi::HandleMoniToolIntVal_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleMoniToolIntVal_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MoniTool_IntVal> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMoniToolIntVal_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleMoniToolIntVal_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2058,8 +2393,10 @@ impl RealVal {
     pub fn new_real(val: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MoniTool_RealVal_ctor_real(val) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2072,8 +2409,11 @@ impl RealVal {
     pub fn value(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::MoniTool_RealVal_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2081,8 +2421,11 @@ impl RealVal {
     pub fn c_value(&mut self) -> &mut f64 {
         {
             let __result = unsafe { crate::ffi::MoniTool_RealVal_c_value(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2091,8 +2434,11 @@ impl RealVal {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_RealVal_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2100,8 +2446,11 @@ impl RealVal {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MoniTool_RealVal_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2109,41 +2458,43 @@ impl RealVal {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MoniTool_RealVal_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MoniTool_RealVal_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::MoniTool_RealVal_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::MoniTool_RealVal_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::MoniTool_RealVal_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMoniToolRealVal> {
-        {
-            let __result = unsafe { crate::ffi::MoniTool_RealVal_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MoniTool_RealVal_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2152,8 +2503,11 @@ impl RealVal {
             let __result = unsafe {
                 crate::ffi::MoniTool_RealVal_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2163,8 +2517,11 @@ impl RealVal {
             let __result = unsafe {
                 crate::ffi::MoniTool_RealVal_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2173,11 +2530,14 @@ impl RealVal {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_RealVal_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2187,18 +2547,23 @@ impl RealVal {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_RealVal_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_RealVal_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2208,16 +2573,22 @@ impl RealVal {
             let __result = unsafe {
                 crate::ffi::MoniTool_RealVal_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::MoniTool_RealVal_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MoniTool_RealVal_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2233,31 +2604,31 @@ unsafe impl crate::CppDeletable for HandleMoniToolRealVal {
 impl HandleMoniToolRealVal {
     /// Dereference this Handle to access the underlying MoniTool_RealVal
     pub fn get(&self) -> &crate::ffi::MoniTool_RealVal {
-        {
-            let __result = unsafe { crate::ffi::HandleMoniToolRealVal_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleMoniToolRealVal_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MoniTool_RealVal
     pub fn get_mut(&mut self) -> &mut crate::ffi::MoniTool_RealVal {
-        {
-            let __result = unsafe { crate::ffi::HandleMoniToolRealVal_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleMoniToolRealVal_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MoniTool_RealVal> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMoniToolRealVal_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleMoniToolRealVal_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2281,8 +2652,10 @@ impl SignShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MoniTool_SignShape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2291,8 +2664,11 @@ impl SignShape {
     pub fn name(&self) -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MoniTool_SignShape_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2307,8 +2683,11 @@ impl SignShape {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_SignShape_text(self as *const Self, ent, context) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2317,8 +2696,11 @@ impl SignShape {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_SignShape_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2326,8 +2708,11 @@ impl SignShape {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MoniTool_SignShape_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2335,63 +2720,63 @@ impl SignShape {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MoniTool_SignShape_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to MoniTool_SignText
     pub fn as_sign_text(&self) -> &SignText {
-        {
-            let __result =
-                unsafe { crate::ffi::MoniTool_SignShape_as_MoniTool_SignText(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::MoniTool_SignShape_as_MoniTool_SignText(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to MoniTool_SignText (mutable)
     pub fn as_sign_text_mut(&mut self) -> &mut SignText {
-        {
-            let __result = unsafe {
-                crate::ffi::MoniTool_SignShape_as_MoniTool_SignText_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::MoniTool_SignShape_as_MoniTool_SignText_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::MoniTool_SignShape_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::MoniTool_SignShape_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::MoniTool_SignShape_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::MoniTool_SignShape_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMoniToolSignShape> {
-        {
-            let __result = unsafe { crate::ffi::MoniTool_SignShape_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MoniTool_SignShape_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `MoniTool_SignText.hxx`:46 - `MoniTool_SignText::TextAlone()`
@@ -2403,8 +2788,11 @@ impl SignShape {
             let __result = unsafe {
                 crate::ffi::MoniTool_SignShape_inherited_TextAlone(self as *const Self, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2414,8 +2802,11 @@ impl SignShape {
             let __result = unsafe {
                 crate::ffi::MoniTool_SignShape_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2425,8 +2816,11 @@ impl SignShape {
             let __result = unsafe {
                 crate::ffi::MoniTool_SignShape_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2435,11 +2829,14 @@ impl SignShape {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_SignShape_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2450,18 +2847,23 @@ impl SignShape {
             let __result = unsafe {
                 crate::ffi::MoniTool_SignShape_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_SignShape_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2471,16 +2873,22 @@ impl SignShape {
             let __result = unsafe {
                 crate::ffi::MoniTool_SignShape_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::MoniTool_SignShape_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MoniTool_SignShape_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2496,43 +2904,42 @@ unsafe impl crate::CppDeletable for HandleMoniToolSignShape {
 impl HandleMoniToolSignShape {
     /// Dereference this Handle to access the underlying MoniTool_SignShape
     pub fn get(&self) -> &crate::ffi::MoniTool_SignShape {
-        {
-            let __result = unsafe { crate::ffi::HandleMoniToolSignShape_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleMoniToolSignShape_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MoniTool_SignShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::MoniTool_SignShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleMoniToolSignShape_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleMoniToolSignShape_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MoniTool_SignShape> to Handle<MoniTool_SignText>
     pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi::HandleMoniToolSignText> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMoniToolSignShape_to_HandleMoniToolSignText(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleMoniToolSignShape_to_HandleMoniToolSignText(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MoniTool_SignShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMoniToolSignShape_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleMoniToolSignShape_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2561,8 +2968,11 @@ impl SignText {
     pub fn name(&self) -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MoniTool_SignText_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2578,8 +2988,11 @@ impl SignText {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_SignText_text_alone(self as *const Self, ent) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2596,8 +3009,11 @@ impl SignText {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_SignText_text(self as *const Self, ent, context) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2606,8 +3022,11 @@ impl SignText {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_SignText_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2615,8 +3034,11 @@ impl SignText {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MoniTool_SignText_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2624,30 +3046,32 @@ impl SignText {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MoniTool_SignText_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MoniTool_SignText_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::MoniTool_SignText_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::MoniTool_SignText_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::MoniTool_SignText_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2656,8 +3080,11 @@ impl SignText {
             let __result = unsafe {
                 crate::ffi::MoniTool_SignText_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2667,8 +3094,11 @@ impl SignText {
             let __result = unsafe {
                 crate::ffi::MoniTool_SignText_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2677,11 +3107,14 @@ impl SignText {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_SignText_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2691,18 +3124,23 @@ impl SignText {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_SignText_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_SignText_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2712,16 +3150,22 @@ impl SignText {
             let __result = unsafe {
                 crate::ffi::MoniTool_SignText_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::MoniTool_SignText_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MoniTool_SignText_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2737,31 +3181,31 @@ unsafe impl crate::CppDeletable for HandleMoniToolSignText {
 impl HandleMoniToolSignText {
     /// Dereference this Handle to access the underlying MoniTool_SignText
     pub fn get(&self) -> &crate::ffi::MoniTool_SignText {
-        {
-            let __result = unsafe { crate::ffi::HandleMoniToolSignText_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleMoniToolSignText_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MoniTool_SignText
     pub fn get_mut(&mut self) -> &mut crate::ffi::MoniTool_SignText {
-        {
-            let __result = unsafe { crate::ffi::HandleMoniToolSignText_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleMoniToolSignText_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MoniTool_SignText> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMoniToolSignText_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleMoniToolSignText_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<MoniTool_SignText> to Handle<IFSelect_SignAncestor>
@@ -2770,16 +3214,18 @@ impl HandleMoniToolSignText {
     pub fn downcast_to_sign_ancestor(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignAncestor>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleMoniToolSignText_downcast_to_HandleIFSelectSignAncestor(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2789,16 +3235,18 @@ impl HandleMoniToolSignText {
     pub fn downcast_to_sign_category(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignCategory>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleMoniToolSignText_downcast_to_HandleIFSelectSignCategory(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2808,16 +3256,18 @@ impl HandleMoniToolSignText {
     pub fn downcast_to_sign_multiple(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignMultiple>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleMoniToolSignText_downcast_to_HandleIFSelectSignMultiple(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2827,16 +3277,18 @@ impl HandleMoniToolSignText {
     pub fn downcast_to_sign_type(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignType>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleMoniToolSignText_downcast_to_HandleIFSelectSignType(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2846,16 +3298,18 @@ impl HandleMoniToolSignText {
     pub fn downcast_to_sign_validity(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignValidity>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleMoniToolSignText_downcast_to_HandleIFSelectSignValidity(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2865,16 +3319,18 @@ impl HandleMoniToolSignText {
     pub fn downcast_to_signature(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIFSelectSignature>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleMoniToolSignText_downcast_to_HandleIFSelectSignature(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2884,16 +3340,18 @@ impl HandleMoniToolSignText {
     pub fn downcast_to_iges_name(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectIGESName>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleMoniToolSignText_downcast_to_HandleIGESSelectIGESName(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2903,16 +3361,18 @@ impl HandleMoniToolSignText {
     pub fn downcast_to_iges_type_form(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectIGESTypeForm>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleMoniToolSignText_downcast_to_HandleIGESSelectIGESTypeForm(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2922,16 +3382,18 @@ impl HandleMoniToolSignText {
     pub fn downcast_to_sign_color(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSignColor>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleMoniToolSignText_downcast_to_HandleIGESSelectSignColor(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2941,16 +3403,18 @@ impl HandleMoniToolSignText {
     pub fn downcast_to_sign_level_number(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSignLevelNumber>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleMoniToolSignText_downcast_to_HandleIGESSelectSignLevelNumber(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2960,16 +3424,18 @@ impl HandleMoniToolSignText {
     pub fn downcast_to_sign_status(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSignStatus>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleMoniToolSignText_downcast_to_HandleIGESSelectSignStatus(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2979,16 +3445,18 @@ impl HandleMoniToolSignText {
     pub fn downcast_to_sign_label(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceSignLabel>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleMoniToolSignText_downcast_to_HandleInterfaceSignLabel(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2998,16 +3466,18 @@ impl HandleMoniToolSignText {
     pub fn downcast_to_sign_shape(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleMoniToolSignShape>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleMoniToolSignText_downcast_to_HandleMoniToolSignShape(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3017,16 +3487,18 @@ impl HandleMoniToolSignText {
     pub fn downcast_to_select_derived(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectDerived>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleMoniToolSignText_downcast_to_HandleSTEPSelectionsSelectDerived(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3036,16 +3508,18 @@ impl HandleMoniToolSignText {
     pub fn downcast_to_step_type(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepSelectStepType>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleMoniToolSignText_downcast_to_HandleStepSelectStepType(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3055,16 +3529,18 @@ impl HandleMoniToolSignText {
     pub fn downcast_to_sign_transfer_status(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXSControlSignTransferStatus>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleMoniToolSignText_downcast_to_HandleXSControlSignTransferStatus(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -3126,8 +3602,10 @@ impl Stat {
         let c_title = std::ffi::CString::new(title).unwrap();
         {
             let __result = unsafe { crate::ffi::MoniTool_Stat_ctor_charptr(c_title.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3136,8 +3614,11 @@ impl Stat {
     pub fn open(&mut self, nb: i32) -> i32 {
         {
             let __result = unsafe { crate::ffi::MoniTool_Stat_open(self as *mut Self, nb) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3145,8 +3626,10 @@ impl Stat {
     /// Adds more items to be counted by Add... on current level
     pub fn open_more(&mut self, id: i32, nb: i32) {
         {
-            unsafe { crate::ffi::MoniTool_Stat_open_more(self as *mut Self, id, nb) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_Stat_open_more(self as *mut Self, id, nb) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3154,8 +3637,10 @@ impl Stat {
     /// Directly adds items
     pub fn add(&mut self, nb: i32) {
         {
-            unsafe { crate::ffi::MoniTool_Stat_add(self as *mut Self, nb) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_Stat_add(self as *mut Self, nb) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3165,8 +3650,10 @@ impl Stat {
     /// the percent of current level
     pub fn add_sub(&mut self, nb: i32) {
         {
-            unsafe { crate::ffi::MoniTool_Stat_add_sub(self as *mut Self, nb) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_Stat_add_sub(self as *mut Self, nb) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3174,16 +3661,20 @@ impl Stat {
     /// Ends the AddSub and cumulates the sub-count to current level
     pub fn add_end(&mut self) {
         {
-            unsafe { crate::ffi::MoniTool_Stat_add_end(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_Stat_add_end(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MoniTool_Stat.hxx`:96 - `MoniTool_Stat::Close()`
     pub fn close(&mut self, id: i32) {
         {
-            unsafe { crate::ffi::MoniTool_Stat_close(self as *mut Self, id) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_Stat_close(self as *mut Self, id) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3191,8 +3682,11 @@ impl Stat {
     pub fn level(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MoniTool_Stat_level(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3201,8 +3695,11 @@ impl Stat {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_Stat_percent(self as *const Self, fromlev) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3210,18 +3707,21 @@ impl Stat {
     pub fn current() -> &'static mut Stat {
         {
             let __result = unsafe { crate::ffi::MoniTool_Stat_current() };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::MoniTool_Stat_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MoniTool_Stat_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3251,8 +3751,10 @@ impl Timer {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MoniTool_Timer_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3260,8 +3762,11 @@ impl Timer {
     pub fn timer(&self) -> &crate::osd::Timer {
         {
             let __result = unsafe { crate::ffi::MoniTool_Timer_timer(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3270,24 +3775,31 @@ impl Timer {
     pub fn timer_mut(&mut self) -> &mut crate::osd::Timer {
         {
             let __result = unsafe { crate::ffi::MoniTool_Timer_timer_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// **Source:** `MoniTool_Timer.hxx`:51 - `MoniTool_Timer::Start()`
     pub fn start(&mut self) {
         {
-            unsafe { crate::ffi::MoniTool_Timer_start(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_Timer_start(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MoniTool_Timer.hxx`:53 - `MoniTool_Timer::Stop()`
     pub fn stop(&mut self) {
         {
-            unsafe { crate::ffi::MoniTool_Timer_stop(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_Timer_stop(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3297,8 +3809,10 @@ impl Timer {
     /// manage also counter of hits
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::MoniTool_Timer_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_Timer_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3307,8 +3821,11 @@ impl Timer {
     pub fn count(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MoniTool_Timer_count(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3317,8 +3834,11 @@ impl Timer {
     pub fn is_running(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MoniTool_Timer_is_running(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3327,8 +3847,11 @@ impl Timer {
     pub fn cpu(&mut self) -> f64 {
         {
             let __result = unsafe { crate::ffi::MoniTool_Timer_cpu(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3337,8 +3860,11 @@ impl Timer {
     pub fn amend(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::MoniTool_Timer_amend(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3346,8 +3872,10 @@ impl Timer {
     /// Dumps current state of a timer shortly (one-line output)
     pub fn dump(&mut self, ostr: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::MoniTool_Timer_dump(self as *mut Self, ostr) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_Timer_dump(self as *mut Self, ostr) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3355,8 +3883,11 @@ impl Timer {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MoniTool_Timer_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3367,8 +3898,11 @@ impl Timer {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
             let __result = unsafe { crate::ffi::MoniTool_Timer_timer_charptr(c_name.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3376,8 +3910,10 @@ impl Timer {
     pub fn start_charptr(name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe { crate::ffi::MoniTool_Timer_start_charptr(c_name.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_Timer_start_charptr(c_name.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3387,8 +3923,10 @@ impl Timer {
     pub fn stop_charptr(name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe { crate::ffi::MoniTool_Timer_stop_charptr(c_name.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_Timer_stop_charptr(c_name.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3397,8 +3935,11 @@ impl Timer {
     pub fn dictionary() -> &'static mut crate::ffi::MoniTool_DataMapOfTimer {
         {
             let __result = unsafe { crate::ffi::MoniTool_Timer_dictionary() };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3406,8 +3947,10 @@ impl Timer {
     /// Clears map of timers
     pub fn clear_timers() {
         {
-            unsafe { crate::ffi::MoniTool_Timer_clear_timers() };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_Timer_clear_timers() };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3415,8 +3958,10 @@ impl Timer {
     /// Dumps contents of the whole dictionary
     pub fn dump_timers(ostr: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::MoniTool_Timer_dump_timers(ostr) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_Timer_dump_timers(ostr) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3426,8 +3971,10 @@ impl Timer {
     /// second-order error measured by 10 nested timers
     pub fn compute_amendments() {
         {
-            unsafe { crate::ffi::MoniTool_Timer_compute_amendments() };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_Timer_compute_amendments() };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3440,10 +3987,12 @@ impl Timer {
         Error10: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_Timer_get_amendments(Access, Internal, External, Error10)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3451,8 +4000,11 @@ impl Timer {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MoniTool_Timer_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3460,40 +4012,43 @@ impl Timer {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MoniTool_Timer_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MoniTool_Timer_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::MoniTool_Timer_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MoniTool_Timer_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::MoniTool_Timer_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMoniToolTimer> {
-        {
-            let __result = unsafe { crate::ffi::MoniTool_Timer_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MoniTool_Timer_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3502,8 +4057,11 @@ impl Timer {
             let __result = unsafe {
                 crate::ffi::MoniTool_Timer_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3513,8 +4071,11 @@ impl Timer {
             let __result = unsafe {
                 crate::ffi::MoniTool_Timer_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3523,11 +4084,14 @@ impl Timer {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_Timer_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3537,16 +4101,23 @@ impl Timer {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_Timer_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::MoniTool_Timer_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MoniTool_Timer_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3556,16 +4127,21 @@ impl Timer {
             let __result = unsafe {
                 crate::ffi::MoniTool_Timer_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::MoniTool_Timer_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_Timer_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3581,31 +4157,31 @@ unsafe impl crate::CppDeletable for HandleMoniToolTimer {
 impl HandleMoniToolTimer {
     /// Dereference this Handle to access the underlying MoniTool_Timer
     pub fn get(&self) -> &crate::ffi::MoniTool_Timer {
-        {
-            let __result = unsafe { crate::ffi::HandleMoniToolTimer_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleMoniToolTimer_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MoniTool_Timer
     pub fn get_mut(&mut self) -> &mut crate::ffi::MoniTool_Timer {
-        {
-            let __result = unsafe { crate::ffi::HandleMoniToolTimer_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleMoniToolTimer_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MoniTool_Timer> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMoniToolTimer_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleMoniToolTimer_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3636,8 +4212,10 @@ impl TimerSentry {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TimerSentry_ctor_charptr(c_cname.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3649,8 +4227,10 @@ impl TimerSentry {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TimerSentry_ctor_handlemonitooltimer(timer) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3658,8 +4238,11 @@ impl TimerSentry {
     pub fn timer(&self) -> crate::OwnedPtr<crate::ffi::HandleMoniToolTimer> {
         {
             let __result = unsafe { crate::ffi::MoniTool_TimerSentry_timer(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3667,8 +4250,10 @@ impl TimerSentry {
     /// Manually stops the timer
     pub fn stop(&mut self) {
         {
-            unsafe { crate::ffi::MoniTool_TimerSentry_stop(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_TimerSentry_stop(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3705,8 +4290,10 @@ impl TransientElem {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TransientElem_ctor_handlestandardtransient(akey) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3715,8 +4302,11 @@ impl TransientElem {
     pub fn value(&self) -> &crate::ffi::HandleStandardTransient {
         {
             let __result = unsafe { crate::ffi::MoniTool_TransientElem_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3728,8 +4318,11 @@ impl TransientElem {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TransientElem_equates(self as *const Self, other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3740,8 +4333,11 @@ impl TransientElem {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TransientElem_value_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3752,8 +4348,11 @@ impl TransientElem {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TransientElem_value_type_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3762,8 +4361,11 @@ impl TransientElem {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TransientElem_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3771,8 +4373,11 @@ impl TransientElem {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MoniTool_TransientElem_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3780,64 +4385,66 @@ impl TransientElem {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MoniTool_TransientElem_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to MoniTool_Element
     pub fn as_element(&self) -> &Element {
-        {
-            let __result = unsafe {
-                crate::ffi::MoniTool_TransientElem_as_MoniTool_Element(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::MoniTool_TransientElem_as_MoniTool_Element(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to MoniTool_Element (mutable)
     pub fn as_element_mut(&mut self) -> &mut Element {
-        {
-            let __result = unsafe {
-                crate::ffi::MoniTool_TransientElem_as_MoniTool_Element_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::MoniTool_TransientElem_as_MoniTool_Element_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::MoniTool_TransientElem_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::MoniTool_TransientElem_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::MoniTool_TransientElem_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::MoniTool_TransientElem_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMoniToolTransientElem> {
-        {
-            let __result = unsafe { crate::ffi::MoniTool_TransientElem_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MoniTool_TransientElem_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `MoniTool_Element.hxx`:45 - `MoniTool_Element::GetHashCode()`
@@ -3846,8 +4453,11 @@ impl TransientElem {
             let __result = unsafe {
                 crate::ffi::MoniTool_TransientElem_inherited_GetHashCode(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3857,8 +4467,11 @@ impl TransientElem {
             let __result = unsafe {
                 crate::ffi::MoniTool_TransientElem_inherited_ListAttr(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3868,8 +4481,11 @@ impl TransientElem {
             let __result = unsafe {
                 crate::ffi::MoniTool_TransientElem_inherited_ChangeAttr(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3882,8 +4498,11 @@ impl TransientElem {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3893,8 +4512,11 @@ impl TransientElem {
             let __result = unsafe {
                 crate::ffi::MoniTool_TransientElem_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3903,11 +4525,14 @@ impl TransientElem {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TransientElem_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3918,18 +4543,23 @@ impl TransientElem {
             let __result = unsafe {
                 crate::ffi::MoniTool_TransientElem_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_TransientElem_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3939,16 +4569,22 @@ impl TransientElem {
             let __result = unsafe {
                 crate::ffi::MoniTool_TransientElem_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::MoniTool_TransientElem_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MoniTool_TransientElem_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3964,48 +4600,43 @@ unsafe impl crate::CppDeletable for HandleMoniToolTransientElem {
 impl HandleMoniToolTransientElem {
     /// Dereference this Handle to access the underlying MoniTool_TransientElem
     pub fn get(&self) -> &crate::ffi::MoniTool_TransientElem {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleMoniToolTransientElem_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleMoniToolTransientElem_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MoniTool_TransientElem
     pub fn get_mut(&mut self) -> &mut crate::ffi::MoniTool_TransientElem {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleMoniToolTransientElem_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleMoniToolTransientElem_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MoniTool_TransientElem> to Handle<MoniTool_Element>
     pub fn to_handle_element(&self) -> crate::OwnedPtr<crate::ffi::HandleMoniToolElement> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMoniToolTransientElem_to_HandleMoniToolElement(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleMoniToolTransientElem_to_HandleMoniToolElement(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<MoniTool_TransientElem> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMoniToolTransientElem_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleMoniToolTransientElem_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4060,8 +4691,10 @@ impl TypedValue {
                     c_init.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4073,8 +4706,10 @@ impl TypedValue {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TypedValue_ctor_handlemonitooltypedvalue(other) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4088,7 +4723,7 @@ impl TypedValue {
         enums: &mut crate::ffi::TColStd_DataMapOfAsciiStringInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_TypedValue_internals(
                     self as *const Self,
                     interp,
@@ -4097,7 +4732,9 @@ impl TypedValue {
                     enums,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4106,8 +4743,11 @@ impl TypedValue {
     pub fn name(&self) -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MoniTool_TypedValue_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4117,8 +4757,11 @@ impl TypedValue {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TypedValue_value_type(self as *const Self) };
-            crate::check_exception();
-            crate::moni_tool::ValueType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::moni_tool::ValueType::try_from(__val).unwrap()
         }
     }
 
@@ -4130,8 +4773,11 @@ impl TypedValue {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TypedValue_definition(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4140,13 +4786,15 @@ impl TypedValue {
     pub fn set_definition(&mut self, deftext: &str) {
         let c_deftext = std::ffi::CString::new(deftext).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_TypedValue_set_definition(
                     self as *mut Self,
                     c_deftext.as_ptr(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4154,8 +4802,10 @@ impl TypedValue {
     /// Prints definition, specification, and actual status and value
     pub fn print(&self, S: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::MoniTool_TypedValue_print(self as *const Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_TypedValue_print(self as *const Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4163,8 +4813,11 @@ impl TypedValue {
     /// Prints only the Value
     pub fn print_value(&self, S: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::MoniTool_TypedValue_print_value(self as *const Self, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MoniTool_TypedValue_print_value(self as *const Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4189,8 +4842,11 @@ impl TypedValue {
             let __result = unsafe {
                 crate::ffi::MoniTool_TypedValue_add_def(self as *mut Self, c_initext.as_ptr())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4199,10 +4855,12 @@ impl TypedValue {
     pub fn set_label(&mut self, label: &str) {
         let c_label = std::ffi::CString::new(label).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_TypedValue_set_label(self as *mut Self, c_label.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4211,8 +4869,11 @@ impl TypedValue {
     pub fn label(&self) -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MoniTool_TypedValue_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4220,8 +4881,11 @@ impl TypedValue {
     /// Sets a maximum length for a text (active only for a free text)
     pub fn set_max_length(&mut self, max: i32) {
         {
-            unsafe { crate::ffi::MoniTool_TypedValue_set_max_length(self as *mut Self, max) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MoniTool_TypedValue_set_max_length(self as *mut Self, max) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4231,8 +4895,11 @@ impl TypedValue {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TypedValue_max_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4241,10 +4908,12 @@ impl TypedValue {
     /// if <max> is True, the lower limit if <max> is False
     pub fn set_integer_limit(&mut self, max: bool, val: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_TypedValue_set_integer_limit(self as *mut Self, max, val)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4257,8 +4926,11 @@ impl TypedValue {
             let __result = unsafe {
                 crate::ffi::MoniTool_TypedValue_integer_limit(self as *const Self, max, val)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4267,8 +4939,12 @@ impl TypedValue {
     /// if <max> is True, the lower limit if <max> is False
     pub fn set_real_limit(&mut self, max: bool, val: f64) {
         {
-            unsafe { crate::ffi::MoniTool_TypedValue_set_real_limit(self as *mut Self, max, val) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MoniTool_TypedValue_set_real_limit(self as *mut Self, max, val)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4281,8 +4957,11 @@ impl TypedValue {
             let __result = unsafe {
                 crate::ffi::MoniTool_TypedValue_real_limit(self as *const Self, max, val)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4293,10 +4972,12 @@ impl TypedValue {
     pub fn set_unit_def(&mut self, def: &str) {
         let c_def = std::ffi::CString::new(def).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_TypedValue_set_unit_def(self as *mut Self, c_def.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4305,8 +4986,11 @@ impl TypedValue {
     pub fn unit_def(&self) -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MoniTool_TypedValue_unit_def(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4318,8 +5002,12 @@ impl TypedValue {
     /// (empty value remains allowed)
     pub fn start_enum(&mut self, start: i32, match_: bool) {
         {
-            unsafe { crate::ffi::MoniTool_TypedValue_start_enum(self as *mut Self, start, match_) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MoniTool_TypedValue_start_enum(self as *mut Self, start, match_)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4349,7 +5037,7 @@ impl TypedValue {
         let c_v9 = std::ffi::CString::new(v9).unwrap();
         let c_v10 = std::ffi::CString::new(v10).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_TypedValue_add_enum(
                     self as *mut Self,
                     c_v1.as_ptr(),
@@ -4364,7 +5052,9 @@ impl TypedValue {
                     c_v10.as_ptr(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4376,14 +5066,16 @@ impl TypedValue {
     pub fn add_enum_value(&mut self, val: &str, num: i32) {
         let c_val = std::ffi::CString::new(val).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_TypedValue_add_enum_value(
                     self as *mut Self,
                     c_val.as_ptr(),
                     num,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4400,8 +5092,11 @@ impl TypedValue {
                     match_,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4412,8 +5107,11 @@ impl TypedValue {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TypedValue_enum_val(self as *const Self, num) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4427,8 +5125,11 @@ impl TypedValue {
             let __result = unsafe {
                 crate::ffi::MoniTool_TypedValue_enum_case(self as *const Self, c_val.as_ptr())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4437,8 +5138,11 @@ impl TypedValue {
     /// Error for a TypedValue not an Object (Entity)
     pub fn set_object_type(&mut self, typ: &crate::ffi::HandleStandardType) {
         {
-            unsafe { crate::ffi::MoniTool_TypedValue_set_object_type(self as *mut Self, typ) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MoniTool_TypedValue_set_object_type(self as *mut Self, typ) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4450,8 +5154,11 @@ impl TypedValue {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TypedValue_object_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4459,8 +5166,11 @@ impl TypedValue {
     /// Sets a specific Interpret function
     pub fn set_interpret(&mut self, func: &crate::ffi::MoniTool_ValueInterpret) {
         {
-            unsafe { crate::ffi::MoniTool_TypedValue_set_interpret(self as *mut Self, func) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MoniTool_TypedValue_set_interpret(self as *mut Self, func) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4470,8 +5180,11 @@ impl TypedValue {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TypedValue_has_interpret(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4483,14 +5196,16 @@ impl TypedValue {
     pub fn set_satisfies(&mut self, func: &crate::ffi::MoniTool_ValueSatisfies, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_TypedValue_set_satisfies(
                     self as *mut Self,
                     func,
                     c_name.as_ptr(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4500,8 +5215,11 @@ impl TypedValue {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TypedValue_satisfies_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4511,8 +5229,11 @@ impl TypedValue {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TypedValue_is_set_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4522,8 +5243,11 @@ impl TypedValue {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TypedValue_c_string_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4534,8 +5258,11 @@ impl TypedValue {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TypedValue_h_string_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4558,8 +5285,11 @@ impl TypedValue {
             let __result = unsafe {
                 crate::ffi::MoniTool_TypedValue_interpret(self as *const Self, hval, native)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4571,8 +5301,11 @@ impl TypedValue {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TypedValue_satisfies(self as *const Self, hval) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4580,8 +5313,10 @@ impl TypedValue {
     /// Clears the recorded Value : it is now unset
     pub fn clear_value(&mut self) {
         {
-            unsafe { crate::ffi::MoniTool_TypedValue_clear_value(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MoniTool_TypedValue_clear_value(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4599,8 +5334,11 @@ impl TypedValue {
                     c_val.as_ptr(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4619,8 +5357,11 @@ impl TypedValue {
             let __result = unsafe {
                 crate::ffi::MoniTool_TypedValue_set_h_string_value(self as *mut Self, hval)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4634,8 +5375,11 @@ impl TypedValue {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TypedValue_integer_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4646,8 +5390,11 @@ impl TypedValue {
             let __result = unsafe {
                 crate::ffi::MoniTool_TypedValue_set_integer_value(self as *mut Self, ival)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4658,8 +5405,11 @@ impl TypedValue {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TypedValue_real_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4669,8 +5419,11 @@ impl TypedValue {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TypedValue_set_real_value(self as *mut Self, rval) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4682,8 +5435,11 @@ impl TypedValue {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TypedValue_object_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4693,8 +5449,12 @@ impl TypedValue {
     /// with the definition of ObjectType ! Otherwise, big trouble
     pub fn get_object_value(&self, val: &mut crate::ffi::HandleStandardTransient) {
         {
-            unsafe { crate::ffi::MoniTool_TypedValue_get_object_value(self as *const Self, val) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MoniTool_TypedValue_get_object_value(self as *const Self, val)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4706,8 +5466,11 @@ impl TypedValue {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TypedValue_set_object_value(self as *mut Self, obj) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4718,8 +5481,11 @@ impl TypedValue {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TypedValue_object_type_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4728,8 +5494,11 @@ impl TypedValue {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TypedValue_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4747,8 +5516,11 @@ impl TypedValue {
         let c_def = std::ffi::CString::new(def).unwrap();
         {
             let __result = unsafe { crate::ffi::MoniTool_TypedValue_add_lib(tv, c_def.as_ptr()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4760,8 +5532,11 @@ impl TypedValue {
         let c_def = std::ffi::CString::new(def).unwrap();
         {
             let __result = unsafe { crate::ffi::MoniTool_TypedValue_lib(c_def.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4772,8 +5547,11 @@ impl TypedValue {
         let c_def = std::ffi::CString::new(def).unwrap();
         {
             let __result = unsafe { crate::ffi::MoniTool_TypedValue_from_lib(c_def.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4785,8 +5563,11 @@ impl TypedValue {
     pub fn lib_list() -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
         {
             let __result = unsafe { crate::ffi::MoniTool_TypedValue_lib_list() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4796,8 +5577,11 @@ impl TypedValue {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
             let __result = unsafe { crate::ffi::MoniTool_TypedValue_static_value(c_name.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4805,8 +5589,11 @@ impl TypedValue {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MoniTool_TypedValue_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4814,42 +5601,43 @@ impl TypedValue {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MoniTool_TypedValue_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::MoniTool_TypedValue_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::MoniTool_TypedValue_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::MoniTool_TypedValue_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::MoniTool_TypedValue_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMoniToolTypedValue> {
-        {
-            let __result = unsafe { crate::ffi::MoniTool_TypedValue_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MoniTool_TypedValue_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -4858,8 +5646,11 @@ impl TypedValue {
             let __result = unsafe {
                 crate::ffi::MoniTool_TypedValue_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4869,8 +5660,11 @@ impl TypedValue {
             let __result = unsafe {
                 crate::ffi::MoniTool_TypedValue_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4879,11 +5673,14 @@ impl TypedValue {
         {
             let __result =
                 unsafe { crate::ffi::MoniTool_TypedValue_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4894,18 +5691,23 @@ impl TypedValue {
             let __result = unsafe {
                 crate::ffi::MoniTool_TypedValue_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MoniTool_TypedValue_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4915,16 +5717,22 @@ impl TypedValue {
             let __result = unsafe {
                 crate::ffi::MoniTool_TypedValue_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::MoniTool_TypedValue_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MoniTool_TypedValue_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4940,48 +5748,49 @@ unsafe impl crate::CppDeletable for HandleMoniToolTypedValue {
 impl HandleMoniToolTypedValue {
     /// Dereference this Handle to access the underlying MoniTool_TypedValue
     pub fn get(&self) -> &crate::ffi::MoniTool_TypedValue {
-        {
-            let __result = unsafe { crate::ffi::HandleMoniToolTypedValue_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleMoniToolTypedValue_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MoniTool_TypedValue
     pub fn get_mut(&mut self) -> &mut crate::ffi::MoniTool_TypedValue {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleMoniToolTypedValue_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleMoniToolTypedValue_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MoniTool_TypedValue> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMoniToolTypedValue_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleMoniToolTypedValue_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<MoniTool_TypedValue> to Handle<Interface_Static>
     ///
     /// Returns `None` if the handle does not point to a `Interface_Static` (or subclass).
     pub fn downcast_to_static(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceStatic>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleMoniToolTypedValue_downcast_to_HandleInterfaceStatic(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4991,16 +5800,18 @@ impl HandleMoniToolTypedValue {
     pub fn downcast_to_typed_value(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleInterfaceTypedValue>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleMoniToolTypedValue_downcast_to_HandleInterfaceTypedValue(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }

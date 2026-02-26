@@ -21,55 +21,57 @@ impl Algo {
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::BRepAlgoAPI_Algo_shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Algo_as_BRepBuilderAPI_MakeShape(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Algo_as_BRepBuilderAPI_MakeShape(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Algo_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Algo_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Algo_as_BRepBuilderAPI_Command(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgoAPI_Algo_as_BRepBuilderAPI_Command(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Algo_as_BRepBuilderAPI_Command_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Algo_as_BRepBuilderAPI_Command_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 }
 
@@ -115,8 +117,10 @@ impl BooleanOperation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepAlgoAPI_BooleanOperation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -126,8 +130,10 @@ impl BooleanOperation {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_BooleanOperation_ctor_pavefiller(thePF) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -139,8 +145,11 @@ impl BooleanOperation {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_BooleanOperation_shape1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -151,8 +160,11 @@ impl BooleanOperation {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_BooleanOperation_shape2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -160,8 +172,12 @@ impl BooleanOperation {
     /// Sets the Tool arguments
     pub fn set_tools(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_BooleanOperation_set_tools(self as *mut Self, theLS) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepAlgoAPI_BooleanOperation_set_tools(self as *mut Self, theLS)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -171,8 +187,11 @@ impl BooleanOperation {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_BooleanOperation_tools(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -181,13 +200,15 @@ impl BooleanOperation {
     /// Sets the type of Boolean operation
     pub fn set_operation(&mut self, theBOP: crate::bop_algo::Operation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_BooleanOperation_set_operation(
                     self as *mut Self,
                     theBOP.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -197,8 +218,11 @@ impl BooleanOperation {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_BooleanOperation_operation(self as *const Self) };
-            crate::check_exception();
-            crate::bop_algo::Operation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::bop_algo::Operation::try_from(__val).unwrap()
         }
     }
 
@@ -207,123 +231,125 @@ impl BooleanOperation {
     /// Performs the Boolean operation.
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_BooleanOperation_build(self as *mut Self, theRange) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepAlgoAPI_BooleanOperation_build(self as *mut Self, theRange)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to BRepAlgoAPI_BuilderAlgo
     pub fn as_builder_algo(&self) -> &BuilderAlgo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepAlgoAPI_BuilderAlgo(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepAlgoAPI_BuilderAlgo(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_BuilderAlgo (mutable)
     pub fn as_builder_algo_mut(&mut self) -> &mut BuilderAlgo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepAlgoAPI_BuilderAlgo_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepAlgoAPI_BuilderAlgo_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_Algo
     pub fn as_algo(&self) -> &Algo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepAlgoAPI_Algo(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepAlgoAPI_Algo(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_Algo (mutable)
     pub fn as_algo_mut(&mut self) -> &mut Algo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepAlgoAPI_Algo_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepAlgoAPI_Algo_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_MakeShape(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_MakeShape(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_MakeShape_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_Command(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_Command(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_Command_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_BooleanOperation_as_BRepBuilderAPI_Command_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
     pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SetArguments(
                     self as *mut Self,
                     theLS,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -333,21 +359,26 @@ impl BooleanOperation {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_Arguments(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
     pub fn set_non_destructive(&mut self, theFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SetNonDestructive(
                     self as *mut Self,
                     theFlag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -359,21 +390,26 @@ impl BooleanOperation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:94 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SetGlue(
                     self as *mut Self,
                     theGlue.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -383,21 +419,26 @@ impl BooleanOperation {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_Glue(self as *const Self)
             };
-            crate::check_exception();
-            crate::bop_algo::GlueEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::bop_algo::GlueEnum::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:100 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SetCheckInverted(
                     self as *mut Self,
                     theCheck,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -409,8 +450,11 @@ impl BooleanOperation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -422,7 +466,7 @@ impl BooleanOperation {
         theAngularTol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SimplifyResult(
                     self as *mut Self,
                     theUnifyEdges,
@@ -430,7 +474,9 @@ impl BooleanOperation {
                     theAngularTol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -440,8 +486,11 @@ impl BooleanOperation {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_IsDeleted(self as *mut Self, aS)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -451,8 +500,11 @@ impl BooleanOperation {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_HasModified(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -462,8 +514,11 @@ impl BooleanOperation {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_HasGenerated(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -473,21 +528,26 @@ impl BooleanOperation {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_HasDeleted(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SetToFillHistory(
                     self as *mut Self,
                     theHistFlag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -497,8 +557,11 @@ impl BooleanOperation {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_HasHistory(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -508,8 +571,11 @@ impl BooleanOperation {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_SectionEdges(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -519,8 +585,11 @@ impl BooleanOperation {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_History(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -530,8 +599,11 @@ impl BooleanOperation {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_Shape(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -541,18 +613,23 @@ impl BooleanOperation {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_BooleanOperation_inherited_Check(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -605,8 +682,10 @@ impl BuilderAlgo {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -615,8 +694,10 @@ impl BuilderAlgo {
     pub fn new_pavefiller(thePF: &crate::bop_algo::PaveFiller) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_ctor_pavefiller(thePF) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -625,8 +706,12 @@ impl BuilderAlgo {
     /// Sets the arguments
     pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_set_arguments(self as *mut Self, theLS) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepAlgoAPI_BuilderAlgo_set_arguments(self as *mut Self, theLS)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -636,8 +721,11 @@ impl BuilderAlgo {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_arguments(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -648,10 +736,12 @@ impl BuilderAlgo {
     /// a copy of a sub-shape is created in the result if it is needed to be updated.
     pub fn set_non_destructive(&mut self, theFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_BuilderAlgo_set_non_destructive(self as *mut Self, theFlag)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -663,8 +753,11 @@ impl BuilderAlgo {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_non_destructive(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -674,10 +767,12 @@ impl BuilderAlgo {
     /// of the input shapes.
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_BuilderAlgo_set_glue(self as *mut Self, theGlue.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -686,8 +781,11 @@ impl BuilderAlgo {
     pub fn glue(&self) -> crate::bop_algo::GlueEnum {
         {
             let __result = unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_glue(self as *const Self) };
-            crate::check_exception();
-            crate::bop_algo::GlueEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::bop_algo::GlueEnum::try_from(__val).unwrap()
         }
     }
 
@@ -695,10 +793,12 @@ impl BuilderAlgo {
     /// Enables/Disables the check of the input solids for inverted status
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_BuilderAlgo_set_check_inverted(self as *mut Self, theCheck)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -709,8 +809,11 @@ impl BuilderAlgo {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_check_inverted(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -719,8 +822,11 @@ impl BuilderAlgo {
     /// Performs the algorithm
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_build(self as *mut Self, theRange) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_build(self as *mut Self, theRange) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -756,7 +862,7 @@ impl BuilderAlgo {
         theAngularTol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_BuilderAlgo_simplify_result(
                     self as *mut Self,
                     theUnifyEdges,
@@ -764,7 +870,9 @@ impl BuilderAlgo {
                     theAngularTol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -786,8 +894,11 @@ impl BuilderAlgo {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_modified(self as *mut Self, theS) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -811,8 +922,11 @@ impl BuilderAlgo {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_generated(self as *mut Self, theS) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -824,8 +938,11 @@ impl BuilderAlgo {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_is_deleted(self as *mut Self, aS) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -835,8 +952,11 @@ impl BuilderAlgo {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_has_modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -846,8 +966,11 @@ impl BuilderAlgo {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_has_generated(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -859,8 +982,11 @@ impl BuilderAlgo {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_has_deleted(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -869,13 +995,15 @@ impl BuilderAlgo {
     /// Allows disabling the history collection
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_BuilderAlgo_set_to_fill_history(
                     self as *mut Self,
                     theHistFlag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -885,8 +1013,11 @@ impl BuilderAlgo {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_has_history(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -898,8 +1029,11 @@ impl BuilderAlgo {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_section_edges(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -910,8 +1044,11 @@ impl BuilderAlgo {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_ds_filler(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -921,8 +1058,11 @@ impl BuilderAlgo {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_builder(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -932,79 +1072,79 @@ impl BuilderAlgo {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_history(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to BRepAlgoAPI_Algo
     pub fn as_algo(&self) -> &Algo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_BuilderAlgo_as_BRepAlgoAPI_Algo(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_as_BRepAlgoAPI_Algo(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_Algo (mutable)
     pub fn as_algo_mut(&mut self) -> &mut Algo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_BuilderAlgo_as_BRepAlgoAPI_Algo_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_BuilderAlgo_as_BRepAlgoAPI_Algo_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_MakeShape(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_MakeShape(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_Command(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_Command(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_Command_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_BuilderAlgo_as_BRepBuilderAPI_Command_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_Algo.hxx`:37 - `BRepAlgoAPI_Algo::Shape()`
@@ -1012,8 +1152,11 @@ impl BuilderAlgo {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_inherited_Shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1023,16 +1166,22 @@ impl BuilderAlgo {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_BuilderAlgo_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_inherited_Check(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgoAPI_BuilderAlgo_inherited_Check(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1074,8 +1223,10 @@ impl Check {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepAlgoAPI_Check_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1100,8 +1251,10 @@ impl Check {
                     theS, bTestSE, bTestSI, theRange,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1139,8 +1292,10 @@ impl Check {
                     theRange,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1160,7 +1315,7 @@ impl Check {
         bTestSI: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Check_set_data_shape_bool2(
                     self as *mut Self,
                     theS,
@@ -1168,7 +1323,9 @@ impl Check {
                     bTestSI,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1195,7 +1352,7 @@ impl Check {
         bTestSI: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Check_set_data_shape2_operation_bool2(
                     self as *mut Self,
                     theS1,
@@ -1205,7 +1362,9 @@ impl Check {
                     bTestSI,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1214,8 +1373,11 @@ impl Check {
     /// Performs the check.
     pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Check_perform(self as *mut Self, theRange) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgoAPI_Check_perform(self as *mut Self, theRange) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1225,8 +1387,11 @@ impl Check {
     pub fn is_valid(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepAlgoAPI_Check_is_valid(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1235,29 +1400,32 @@ impl Check {
     pub fn result(&mut self) -> &crate::ffi::BOPAlgo_ListOfCheckResult {
         {
             let __result = unsafe { crate::ffi::BRepAlgoAPI_Check_result(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to BOPAlgo_Options
     pub fn as_bop_algo_options(&self) -> &crate::bop_algo::Options {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAlgoAPI_Check_as_BOPAlgo_Options(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgoAPI_Check_as_BOPAlgo_Options(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BOPAlgo_Options (mutable)
     pub fn as_bop_algo_options_mut(&mut self) -> &mut crate::bop_algo::Options {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAlgoAPI_Check_as_BOPAlgo_Options_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgoAPI_Check_as_BOPAlgo_Options_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:51 - `BOPAlgo_Options::Allocator()`
@@ -1265,36 +1433,45 @@ impl Check {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_Allocator(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:55 - `BOPAlgo_Options::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_Clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_Clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:61 - `BOPAlgo_Options::AddError()`
     pub fn add_error(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Check_inherited_AddError(self as *mut Self, theAlert)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:67 - `BOPAlgo_Options::AddWarning()`
     pub fn add_warning(&mut self, theAlert: &crate::ffi::HandleMessageAlert) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Check_inherited_AddWarning(self as *mut Self, theAlert)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1303,8 +1480,11 @@ impl Check {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_HasErrors(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1314,8 +1494,11 @@ impl Check {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Check_inherited_HasError(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1324,8 +1507,11 @@ impl Check {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_HasWarnings(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1335,8 +1521,11 @@ impl Check {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Check_inherited_HasWarning(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1345,46 +1534,58 @@ impl Check {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_GetReport(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:94 - `BOPAlgo_Options::DumpErrors()`
     pub fn dump_errors(&self, theOS: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Check_inherited_DumpErrors(self as *const Self, theOS)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:97 - `BOPAlgo_Options::DumpWarnings()`
     pub fn dump_warnings(&self, theOS: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Check_inherited_DumpWarnings(self as *const Self, theOS)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:100 - `BOPAlgo_Options::ClearWarnings()`
     pub fn clear_warnings(&mut self) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_ClearWarnings(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_ClearWarnings(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:114 - `BOPAlgo_Options::SetRunParallel()`
     pub fn set_run_parallel(&mut self, theFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Check_inherited_SetRunParallel(self as *mut Self, theFlag)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1393,18 +1594,23 @@ impl Check {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_RunParallel(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:123 - `BOPAlgo_Options::SetFuzzyValue()`
     pub fn set_fuzzy_value(&mut self, theFuzz: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Check_inherited_SetFuzzyValue(self as *mut Self, theFuzz)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1413,18 +1619,23 @@ impl Check {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_FuzzyValue(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BOPAlgo_Options.hxx`:132 - `BOPAlgo_Options::SetUseOBB()`
     pub fn set_use_obb(&mut self, theUseOBB: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Check_inherited_SetUseOBB(self as *mut Self, theUseOBB)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1433,8 +1644,11 @@ impl Check {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Check_inherited_UseOBB(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1460,8 +1674,10 @@ impl Common {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepAlgoAPI_Common_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1471,8 +1687,10 @@ impl Common {
     pub fn new_pavefiller(PF: &crate::bop_algo::PaveFiller) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepAlgoAPI_Common_ctor_pavefiller(PF) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1491,8 +1709,10 @@ impl Common {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Common_ctor_shape2_progressrange(S1, S2, theRange)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1515,122 +1735,121 @@ impl Common {
                     S1, S2, PF, theRange,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to BRepAlgoAPI_BooleanOperation
     pub fn as_boolean_operation(&self) -> &BooleanOperation {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Common_as_BRepAlgoAPI_BooleanOperation(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Common_as_BRepAlgoAPI_BooleanOperation(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_BooleanOperation (mutable)
     pub fn as_boolean_operation_mut(&mut self) -> &mut BooleanOperation {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Common_as_BRepAlgoAPI_BooleanOperation_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Common_as_BRepAlgoAPI_BooleanOperation_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_BuilderAlgo
     pub fn as_builder_algo(&self) -> &BuilderAlgo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Common_as_BRepAlgoAPI_BuilderAlgo(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Common_as_BRepAlgoAPI_BuilderAlgo(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_BuilderAlgo (mutable)
     pub fn as_builder_algo_mut(&mut self) -> &mut BuilderAlgo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Common_as_BRepAlgoAPI_BuilderAlgo_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Common_as_BRepAlgoAPI_BuilderAlgo_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_Algo
     pub fn as_algo(&self) -> &Algo {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAlgoAPI_Common_as_BRepAlgoAPI_Algo(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgoAPI_Common_as_BRepAlgoAPI_Algo(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_Algo (mutable)
     pub fn as_algo_mut(&mut self) -> &mut Algo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Common_as_BRepAlgoAPI_Algo_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgoAPI_Common_as_BRepAlgoAPI_Algo_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Common_as_BRepBuilderAPI_MakeShape(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Common_as_BRepBuilderAPI_MakeShape(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Common_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Common_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Common_as_BRepBuilderAPI_Command(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Common_as_BRepBuilderAPI_Command(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Common_as_BRepBuilderAPI_Command_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Common_as_BRepBuilderAPI_Command_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:66 - `BRepAlgoAPI_BooleanOperation::Shape1()`
@@ -1638,8 +1857,11 @@ impl Common {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_Shape1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1648,16 +1870,23 @@ impl Common {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_Shape2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:73 - `BRepAlgoAPI_BooleanOperation::SetTools()`
     pub fn set_tools(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_SetTools(self as *mut Self, theLS) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepAlgoAPI_Common_inherited_SetTools(self as *mut Self, theLS)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1666,21 +1895,26 @@ impl Common {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_Tools(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:80 - `BRepAlgoAPI_BooleanOperation::SetOperation()`
     pub fn set_operation(&mut self, theBOP: crate::bop_algo::Operation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Common_inherited_SetOperation(
                     self as *mut Self,
                     theBOP.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1689,26 +1923,35 @@ impl Common {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_Operation(self as *const Self) };
-            crate::check_exception();
-            crate::bop_algo::Operation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::bop_algo::Operation::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:87 - `BRepAlgoAPI_BooleanOperation::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_Build(self as *mut Self, theRange) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepAlgoAPI_Common_inherited_Build(self as *mut Self, theRange)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
     pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Common_inherited_SetArguments(self as *mut Self, theLS)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1717,21 +1960,26 @@ impl Common {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_Arguments(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
     pub fn set_non_destructive(&mut self, theFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Common_inherited_SetNonDestructive(
                     self as *mut Self,
                     theFlag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1741,18 +1989,23 @@ impl Common {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Common_inherited_NonDestructive(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:94 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Common_inherited_SetGlue(self as *mut Self, theGlue.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1761,21 +2014,26 @@ impl Common {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_Glue(self as *const Self) };
-            crate::check_exception();
-            crate::bop_algo::GlueEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::bop_algo::GlueEnum::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:100 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Common_inherited_SetCheckInverted(
                     self as *mut Self,
                     theCheck,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1785,8 +2043,11 @@ impl Common {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Common_inherited_CheckInverted(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1798,7 +2059,7 @@ impl Common {
         theAngularTol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Common_inherited_SimplifyResult(
                     self as *mut Self,
                     theUnifyEdges,
@@ -1806,7 +2067,9 @@ impl Common {
                     theAngularTol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1816,8 +2079,11 @@ impl Common {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Common_inherited_IsDeleted(self as *mut Self, aS)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1827,8 +2093,11 @@ impl Common {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Common_inherited_HasModified(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1838,8 +2107,11 @@ impl Common {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Common_inherited_HasGenerated(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1848,21 +2120,26 @@ impl Common {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_HasDeleted(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Common_inherited_SetToFillHistory(
                     self as *mut Self,
                     theHistFlag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1871,8 +2148,11 @@ impl Common {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_HasHistory(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1881,8 +2161,11 @@ impl Common {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_SectionEdges(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1891,8 +2174,11 @@ impl Common {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_History(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1901,8 +2187,11 @@ impl Common {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_Shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1911,16 +2200,22 @@ impl Common {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_Check(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgoAPI_Common_inherited_Check(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1946,8 +2241,10 @@ impl Cut {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepAlgoAPI_Cut_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1957,8 +2254,10 @@ impl Cut {
     pub fn new_pavefiller(PF: &crate::bop_algo::PaveFiller) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepAlgoAPI_Cut_ctor_pavefiller(PF) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1976,8 +2275,10 @@ impl Cut {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Cut_ctor_shape2_progressrange(S1, S2, theRange) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2001,119 +2302,117 @@ impl Cut {
                     S1, S2, aDSF, bFWD, theRange,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to BRepAlgoAPI_BooleanOperation
     pub fn as_boolean_operation(&self) -> &BooleanOperation {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Cut_as_BRepAlgoAPI_BooleanOperation(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Cut_as_BRepAlgoAPI_BooleanOperation(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_BooleanOperation (mutable)
     pub fn as_boolean_operation_mut(&mut self) -> &mut BooleanOperation {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Cut_as_BRepAlgoAPI_BooleanOperation_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Cut_as_BRepAlgoAPI_BooleanOperation_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_BuilderAlgo
     pub fn as_builder_algo(&self) -> &BuilderAlgo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Cut_as_BRepAlgoAPI_BuilderAlgo(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgoAPI_Cut_as_BRepAlgoAPI_BuilderAlgo(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_BuilderAlgo (mutable)
     pub fn as_builder_algo_mut(&mut self) -> &mut BuilderAlgo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Cut_as_BRepAlgoAPI_BuilderAlgo_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Cut_as_BRepAlgoAPI_BuilderAlgo_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_Algo
     pub fn as_algo(&self) -> &Algo {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAlgoAPI_Cut_as_BRepAlgoAPI_Algo(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgoAPI_Cut_as_BRepAlgoAPI_Algo(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_Algo (mutable)
     pub fn as_algo_mut(&mut self) -> &mut Algo {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAlgoAPI_Cut_as_BRepAlgoAPI_Algo_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgoAPI_Cut_as_BRepAlgoAPI_Algo_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Cut_as_BRepBuilderAPI_MakeShape(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgoAPI_Cut_as_BRepBuilderAPI_MakeShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Cut_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Cut_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Cut_as_BRepBuilderAPI_Command(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgoAPI_Cut_as_BRepBuilderAPI_Command(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Cut_as_BRepBuilderAPI_Command_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgoAPI_Cut_as_BRepBuilderAPI_Command_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:66 - `BRepAlgoAPI_BooleanOperation::Shape1()`
@@ -2121,8 +2420,11 @@ impl Cut {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_Shape1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2131,16 +2433,22 @@ impl Cut {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_Shape2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:73 - `BRepAlgoAPI_BooleanOperation::SetTools()`
     pub fn set_tools(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_SetTools(self as *mut Self, theLS) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_SetTools(self as *mut Self, theLS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2149,18 +2457,23 @@ impl Cut {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_Tools(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:80 - `BRepAlgoAPI_BooleanOperation::SetOperation()`
     pub fn set_operation(&mut self, theBOP: crate::bop_algo::Operation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Cut_inherited_SetOperation(self as *mut Self, theBOP.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2169,24 +2482,34 @@ impl Cut {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_Operation(self as *const Self) };
-            crate::check_exception();
-            crate::bop_algo::Operation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::bop_algo::Operation::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:87 - `BRepAlgoAPI_BooleanOperation::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_Build(self as *mut Self, theRange) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_Build(self as *mut Self, theRange) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
     pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_SetArguments(self as *mut Self, theLS) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepAlgoAPI_Cut_inherited_SetArguments(self as *mut Self, theLS)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2195,18 +2518,23 @@ impl Cut {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_Arguments(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
     pub fn set_non_destructive(&mut self, theFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Cut_inherited_SetNonDestructive(self as *mut Self, theFlag)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2216,18 +2544,23 @@ impl Cut {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Cut_inherited_NonDestructive(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:94 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Cut_inherited_SetGlue(self as *mut Self, theGlue.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2236,18 +2569,23 @@ impl Cut {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_Glue(self as *const Self) };
-            crate::check_exception();
-            crate::bop_algo::GlueEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::bop_algo::GlueEnum::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:100 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Cut_inherited_SetCheckInverted(self as *mut Self, theCheck)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2256,8 +2594,11 @@ impl Cut {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_CheckInverted(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2269,7 +2610,7 @@ impl Cut {
         theAngularTol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Cut_inherited_SimplifyResult(
                     self as *mut Self,
                     theUnifyEdges,
@@ -2277,7 +2618,9 @@ impl Cut {
                     theAngularTol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2286,8 +2629,11 @@ impl Cut {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_IsDeleted(self as *mut Self, aS) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2296,8 +2642,11 @@ impl Cut {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_HasModified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2306,8 +2655,11 @@ impl Cut {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_HasGenerated(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2316,21 +2668,26 @@ impl Cut {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_HasDeleted(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Cut_inherited_SetToFillHistory(
                     self as *mut Self,
                     theHistFlag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2339,8 +2696,11 @@ impl Cut {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_HasHistory(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2349,8 +2709,11 @@ impl Cut {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_SectionEdges(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2359,8 +2722,11 @@ impl Cut {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_History(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2369,8 +2735,11 @@ impl Cut {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_Shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2379,16 +2748,21 @@ impl Cut {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_Check(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgoAPI_Cut_inherited_Check(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2487,8 +2861,10 @@ impl Defeaturing {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2499,8 +2875,12 @@ impl Defeaturing {
     /// It should either be the SOLID, COMPSOLID or COMPOUND of Solids.
     pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_set_shape(self as *mut Self, theShape) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepAlgoAPI_Defeaturing_set_shape(self as *mut Self, theShape)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2510,8 +2890,11 @@ impl Defeaturing {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_input_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2520,10 +2903,12 @@ impl Defeaturing {
     /// @param[in] theFace  The shape to extract the faces for removal.
     pub fn add_face_to_remove(&mut self, theFace: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Defeaturing_add_face_to_remove(self as *mut Self, theFace)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2532,10 +2917,12 @@ impl Defeaturing {
     /// @param[in] theFaces  The list of shapes to extract the faces for removal.
     pub fn add_faces_to_remove(&mut self, theFaces: &crate::ffi::TopTools_ListOfShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Defeaturing_add_faces_to_remove(self as *mut Self, theFaces)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2546,8 +2933,11 @@ impl Defeaturing {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_faces_to_remove(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2556,8 +2946,11 @@ impl Defeaturing {
     /// Performs the operation
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_build(self as *mut Self, theRange) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_build(self as *mut Self, theRange) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2566,10 +2959,12 @@ impl Defeaturing {
     /// Defines whether to track the modification of the shapes or not.
     pub fn set_to_fill_history(&mut self, theFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Defeaturing_set_to_fill_history(self as *mut Self, theFlag)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2579,8 +2974,11 @@ impl Defeaturing {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_has_history(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2599,8 +2997,11 @@ impl Defeaturing {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_modified(self as *mut Self, theS) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2619,8 +3020,11 @@ impl Defeaturing {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_generated(self as *mut Self, theS) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2632,8 +3036,11 @@ impl Defeaturing {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_is_deleted(self as *mut Self, theS) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2643,8 +3050,11 @@ impl Defeaturing {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_has_modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2654,8 +3064,11 @@ impl Defeaturing {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_has_generated(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2665,8 +3078,11 @@ impl Defeaturing {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_has_deleted(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2676,79 +3092,79 @@ impl Defeaturing {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_history(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to BRepAlgoAPI_Algo
     pub fn as_algo(&self) -> &Algo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Defeaturing_as_BRepAlgoAPI_Algo(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_as_BRepAlgoAPI_Algo(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_Algo (mutable)
     pub fn as_algo_mut(&mut self) -> &mut Algo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Defeaturing_as_BRepAlgoAPI_Algo_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Defeaturing_as_BRepAlgoAPI_Algo_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Defeaturing_as_BRepBuilderAPI_MakeShape(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Defeaturing_as_BRepBuilderAPI_MakeShape(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Defeaturing_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Defeaturing_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Defeaturing_as_BRepBuilderAPI_Command(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Defeaturing_as_BRepBuilderAPI_Command(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Defeaturing_as_BRepBuilderAPI_Command_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Defeaturing_as_BRepBuilderAPI_Command_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_Algo.hxx`:37 - `BRepAlgoAPI_Algo::Shape()`
@@ -2756,8 +3172,11 @@ impl Defeaturing {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_inherited_Shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2767,16 +3186,22 @@ impl Defeaturing {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Defeaturing_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_inherited_Check(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgoAPI_Defeaturing_inherited_Check(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2802,8 +3227,10 @@ impl Fuse {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepAlgoAPI_Fuse_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2813,8 +3240,10 @@ impl Fuse {
     pub fn new_pavefiller(PF: &crate::bop_algo::PaveFiller) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepAlgoAPI_Fuse_ctor_pavefiller(PF) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2832,8 +3261,10 @@ impl Fuse {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Fuse_ctor_shape2_progressrange(S1, S2, theRange) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2856,119 +3287,119 @@ impl Fuse {
                     S1, S2, aDSF, theRange,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to BRepAlgoAPI_BooleanOperation
     pub fn as_boolean_operation(&self) -> &BooleanOperation {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Fuse_as_BRepAlgoAPI_BooleanOperation(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Fuse_as_BRepAlgoAPI_BooleanOperation(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_BooleanOperation (mutable)
     pub fn as_boolean_operation_mut(&mut self) -> &mut BooleanOperation {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Fuse_as_BRepAlgoAPI_BooleanOperation_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Fuse_as_BRepAlgoAPI_BooleanOperation_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_BuilderAlgo
     pub fn as_builder_algo(&self) -> &BuilderAlgo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Fuse_as_BRepAlgoAPI_BuilderAlgo(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgoAPI_Fuse_as_BRepAlgoAPI_BuilderAlgo(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_BuilderAlgo (mutable)
     pub fn as_builder_algo_mut(&mut self) -> &mut BuilderAlgo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Fuse_as_BRepAlgoAPI_BuilderAlgo_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Fuse_as_BRepAlgoAPI_BuilderAlgo_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_Algo
     pub fn as_algo(&self) -> &Algo {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAlgoAPI_Fuse_as_BRepAlgoAPI_Algo(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgoAPI_Fuse_as_BRepAlgoAPI_Algo(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_Algo (mutable)
     pub fn as_algo_mut(&mut self) -> &mut Algo {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAlgoAPI_Fuse_as_BRepAlgoAPI_Algo_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgoAPI_Fuse_as_BRepAlgoAPI_Algo_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Fuse_as_BRepBuilderAPI_MakeShape(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Fuse_as_BRepBuilderAPI_MakeShape(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Fuse_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Fuse_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Fuse_as_BRepBuilderAPI_Command(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgoAPI_Fuse_as_BRepBuilderAPI_Command(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Fuse_as_BRepBuilderAPI_Command_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Fuse_as_BRepBuilderAPI_Command_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:66 - `BRepAlgoAPI_BooleanOperation::Shape1()`
@@ -2976,8 +3407,11 @@ impl Fuse {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_Shape1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2986,16 +3420,23 @@ impl Fuse {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_Shape2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:73 - `BRepAlgoAPI_BooleanOperation::SetTools()`
     pub fn set_tools(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_SetTools(self as *mut Self, theLS) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepAlgoAPI_Fuse_inherited_SetTools(self as *mut Self, theLS)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3004,21 +3445,26 @@ impl Fuse {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_Tools(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:80 - `BRepAlgoAPI_BooleanOperation::SetOperation()`
     pub fn set_operation(&mut self, theBOP: crate::bop_algo::Operation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Fuse_inherited_SetOperation(
                     self as *mut Self,
                     theBOP.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3027,26 +3473,35 @@ impl Fuse {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_Operation(self as *const Self) };
-            crate::check_exception();
-            crate::bop_algo::Operation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::bop_algo::Operation::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:87 - `BRepAlgoAPI_BooleanOperation::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_Build(self as *mut Self, theRange) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepAlgoAPI_Fuse_inherited_Build(self as *mut Self, theRange)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
     pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Fuse_inherited_SetArguments(self as *mut Self, theLS)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3055,18 +3510,23 @@ impl Fuse {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_Arguments(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
     pub fn set_non_destructive(&mut self, theFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Fuse_inherited_SetNonDestructive(self as *mut Self, theFlag)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3076,18 +3536,23 @@ impl Fuse {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Fuse_inherited_NonDestructive(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:94 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Fuse_inherited_SetGlue(self as *mut Self, theGlue.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3096,18 +3561,23 @@ impl Fuse {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_Glue(self as *const Self) };
-            crate::check_exception();
-            crate::bop_algo::GlueEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::bop_algo::GlueEnum::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:100 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Fuse_inherited_SetCheckInverted(self as *mut Self, theCheck)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3117,8 +3587,11 @@ impl Fuse {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Fuse_inherited_CheckInverted(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3130,7 +3603,7 @@ impl Fuse {
         theAngularTol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Fuse_inherited_SimplifyResult(
                     self as *mut Self,
                     theUnifyEdges,
@@ -3138,7 +3611,9 @@ impl Fuse {
                     theAngularTol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3147,8 +3622,11 @@ impl Fuse {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_IsDeleted(self as *mut Self, aS) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3157,8 +3635,11 @@ impl Fuse {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_HasModified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3167,8 +3648,11 @@ impl Fuse {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_HasGenerated(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3177,21 +3661,26 @@ impl Fuse {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_HasDeleted(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Fuse_inherited_SetToFillHistory(
                     self as *mut Self,
                     theHistFlag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3200,8 +3689,11 @@ impl Fuse {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_HasHistory(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3210,8 +3702,11 @@ impl Fuse {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_SectionEdges(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3220,8 +3715,11 @@ impl Fuse {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_History(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3230,8 +3728,11 @@ impl Fuse {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_Shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3240,16 +3741,22 @@ impl Fuse {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_Check(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgoAPI_Fuse_inherited_Check(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3280,8 +3787,10 @@ impl Section {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepAlgoAPI_Section_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3291,8 +3800,10 @@ impl Section {
     pub fn new_pavefiller(PF: &crate::bop_algo::PaveFiller) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepAlgoAPI_Section_ctor_pavefiller(PF) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3311,8 +3822,10 @@ impl Section {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Section_ctor_shape2_bool(S1, S2, PerformNow) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3336,8 +3849,10 @@ impl Section {
                     S1, S2, aDSF, PerformNow,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3356,8 +3871,10 @@ impl Section {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Section_ctor_shape_pln_bool(S1, Pl, PerformNow) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3379,8 +3896,10 @@ impl Section {
                     S1, Sf, PerformNow,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3402,8 +3921,10 @@ impl Section {
                     Sf, S2, PerformNow,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3423,8 +3944,10 @@ impl Section {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Section_ctor_handlegeomsurface2_bool(Sf1, Sf2, PerformNow)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3517,8 +4040,11 @@ impl Section {
     /// Obsolete
     pub fn init1_shape(&mut self, S1: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Section_init1_shape(self as *mut Self, S1) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgoAPI_Section_init1_shape(self as *mut Self, S1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3528,8 +4054,10 @@ impl Section {
     /// Obsolete
     pub fn init1_pln(&mut self, Pl: &crate::gp::Pln) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Section_init1_pln(self as *mut Self, Pl) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgoAPI_Section_init1_pln(self as *mut Self, Pl) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3539,10 +4067,12 @@ impl Section {
     /// Obsolete
     pub fn init1_handlegeomsurface(&mut self, Sf: &crate::ffi::HandleGeomSurface) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Section_init1_handlegeomsurface(self as *mut Self, Sf)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3552,8 +4082,11 @@ impl Section {
     /// Obsolete
     pub fn init2_shape(&mut self, S2: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Section_init2_shape(self as *mut Self, S2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgoAPI_Section_init2_shape(self as *mut Self, S2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3563,8 +4096,10 @@ impl Section {
     /// Obsolete
     pub fn init2_pln(&mut self, Pl: &crate::gp::Pln) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Section_init2_pln(self as *mut Self, Pl) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgoAPI_Section_init2_pln(self as *mut Self, Pl) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3574,18 +4109,23 @@ impl Section {
     /// Obsolete
     pub fn init2_handlegeomsurface(&mut self, Sf: &crate::ffi::HandleGeomSurface) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Section_init2_handlegeomsurface(self as *mut Self, Sf)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepAlgoAPI_Section.hxx`:143 - `BRepAlgoAPI_Section::Approximation()`
     pub fn approximation(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Section_approximation(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgoAPI_Section_approximation(self as *mut Self, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3600,8 +4140,12 @@ impl Section {
     /// Obsolete
     pub fn compute_p_curve_on1(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Section_compute_p_curve_on1(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepAlgoAPI_Section_compute_p_curve_on1(self as *mut Self, B)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3616,8 +4160,12 @@ impl Section {
     /// Obsolete
     pub fn compute_p_curve_on2(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Section_compute_p_curve_on2(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepAlgoAPI_Section_compute_p_curve_on2(self as *mut Self, B)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3627,8 +4175,11 @@ impl Section {
     /// Building the result of the operation.
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Section_build(self as *mut Self, theRange) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgoAPI_Section_build(self as *mut Self, theRange) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3650,8 +4201,11 @@ impl Section {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Section_has_ancestor_face_on1(self as *const Self, E, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3684,122 +4238,122 @@ impl Section {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Section_has_ancestor_face_on2(self as *const Self, E, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to BRepAlgoAPI_BooleanOperation
     pub fn as_boolean_operation(&self) -> &BooleanOperation {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Section_as_BRepAlgoAPI_BooleanOperation(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Section_as_BRepAlgoAPI_BooleanOperation(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_BooleanOperation (mutable)
     pub fn as_boolean_operation_mut(&mut self) -> &mut BooleanOperation {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Section_as_BRepAlgoAPI_BooleanOperation_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Section_as_BRepAlgoAPI_BooleanOperation_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_BuilderAlgo
     pub fn as_builder_algo(&self) -> &BuilderAlgo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Section_as_BRepAlgoAPI_BuilderAlgo(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Section_as_BRepAlgoAPI_BuilderAlgo(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_BuilderAlgo (mutable)
     pub fn as_builder_algo_mut(&mut self) -> &mut BuilderAlgo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Section_as_BRepAlgoAPI_BuilderAlgo_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Section_as_BRepAlgoAPI_BuilderAlgo_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_Algo
     pub fn as_algo(&self) -> &Algo {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAlgoAPI_Section_as_BRepAlgoAPI_Algo(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgoAPI_Section_as_BRepAlgoAPI_Algo(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_Algo (mutable)
     pub fn as_algo_mut(&mut self) -> &mut Algo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Section_as_BRepAlgoAPI_Algo_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgoAPI_Section_as_BRepAlgoAPI_Algo_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Section_as_BRepBuilderAPI_MakeShape(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Section_as_BRepBuilderAPI_MakeShape(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Section_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Section_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Section_as_BRepBuilderAPI_Command(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Section_as_BRepBuilderAPI_Command(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Section_as_BRepBuilderAPI_Command_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Section_as_BRepBuilderAPI_Command_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:66 - `BRepAlgoAPI_BooleanOperation::Shape1()`
@@ -3807,8 +4361,11 @@ impl Section {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_Shape1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3817,16 +4374,23 @@ impl Section {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_Shape2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:73 - `BRepAlgoAPI_BooleanOperation::SetTools()`
     pub fn set_tools(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_SetTools(self as *mut Self, theLS) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepAlgoAPI_Section_inherited_SetTools(self as *mut Self, theLS)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3835,21 +4399,26 @@ impl Section {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_Tools(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BooleanOperation.hxx`:80 - `BRepAlgoAPI_BooleanOperation::SetOperation()`
     pub fn set_operation(&mut self, theBOP: crate::bop_algo::Operation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Section_inherited_SetOperation(
                     self as *mut Self,
                     theBOP.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3858,18 +4427,23 @@ impl Section {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_Operation(self as *const Self) };
-            crate::check_exception();
-            crate::bop_algo::Operation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::bop_algo::Operation::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
     pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Section_inherited_SetArguments(self as *mut Self, theLS)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3878,21 +4452,26 @@ impl Section {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_Arguments(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
     pub fn set_non_destructive(&mut self, theFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Section_inherited_SetNonDestructive(
                     self as *mut Self,
                     theFlag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3902,18 +4481,23 @@ impl Section {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Section_inherited_NonDestructive(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:94 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Section_inherited_SetGlue(self as *mut Self, theGlue.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3922,21 +4506,26 @@ impl Section {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_Glue(self as *const Self) };
-            crate::check_exception();
-            crate::bop_algo::GlueEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::bop_algo::GlueEnum::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:100 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Section_inherited_SetCheckInverted(
                     self as *mut Self,
                     theCheck,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3946,8 +4535,11 @@ impl Section {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Section_inherited_CheckInverted(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3959,7 +4551,7 @@ impl Section {
         theAngularTol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Section_inherited_SimplifyResult(
                     self as *mut Self,
                     theUnifyEdges,
@@ -3967,7 +4559,9 @@ impl Section {
                     theAngularTol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3977,8 +4571,11 @@ impl Section {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Section_inherited_IsDeleted(self as *mut Self, aS)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3988,8 +4585,11 @@ impl Section {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Section_inherited_HasModified(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3999,8 +4599,11 @@ impl Section {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Section_inherited_HasGenerated(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4010,21 +4613,26 @@ impl Section {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Section_inherited_HasDeleted(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Section_inherited_SetToFillHistory(
                     self as *mut Self,
                     theHistFlag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4034,8 +4642,11 @@ impl Section {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Section_inherited_HasHistory(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4045,8 +4656,11 @@ impl Section {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Section_inherited_SectionEdges(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4055,8 +4669,11 @@ impl Section {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_History(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4065,8 +4682,11 @@ impl Section {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_Shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4075,16 +4695,22 @@ impl Section {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_Check(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgoAPI_Section_inherited_Check(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4136,8 +4762,10 @@ impl Splitter {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepAlgoAPI_Splitter_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4146,8 +4774,10 @@ impl Splitter {
     pub fn new_pavefiller(thePF: &crate::bop_algo::PaveFiller) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepAlgoAPI_Splitter_ctor_pavefiller(thePF) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4156,8 +4786,11 @@ impl Splitter {
     /// Sets the Tool arguments
     pub fn set_tools(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Splitter_set_tools(self as *mut Self, theLS) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgoAPI_Splitter_set_tools(self as *mut Self, theLS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4166,8 +4799,11 @@ impl Splitter {
     pub fn tools(&self) -> &crate::ffi::TopTools_ListOfShape {
         {
             let __result = unsafe { crate::ffi::BRepAlgoAPI_Splitter_tools(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4178,108 +4814,111 @@ impl Splitter {
     /// and splits objects by the tools.
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Splitter_build(self as *mut Self, theRange) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgoAPI_Splitter_build(self as *mut Self, theRange) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to BRepAlgoAPI_BuilderAlgo
     pub fn as_builder_algo(&self) -> &BuilderAlgo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Splitter_as_BRepAlgoAPI_BuilderAlgo(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Splitter_as_BRepAlgoAPI_BuilderAlgo(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_BuilderAlgo (mutable)
     pub fn as_builder_algo_mut(&mut self) -> &mut BuilderAlgo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Splitter_as_BRepAlgoAPI_BuilderAlgo_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Splitter_as_BRepAlgoAPI_BuilderAlgo_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_Algo
     pub fn as_algo(&self) -> &Algo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Splitter_as_BRepAlgoAPI_Algo(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgoAPI_Splitter_as_BRepAlgoAPI_Algo(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepAlgoAPI_Algo (mutable)
     pub fn as_algo_mut(&mut self) -> &mut Algo {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Splitter_as_BRepAlgoAPI_Algo_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgoAPI_Splitter_as_BRepAlgoAPI_Algo_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Splitter_as_BRepBuilderAPI_MakeShape(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Splitter_as_BRepBuilderAPI_MakeShape(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_b_rep_builder_api_make_shape_mut(
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Splitter_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Splitter_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Splitter_as_BRepBuilderAPI_Command(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Splitter_as_BRepBuilderAPI_Command(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepAlgoAPI_Splitter_as_BRepBuilderAPI_Command_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepAlgoAPI_Splitter_as_BRepBuilderAPI_Command_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:75 - `BRepAlgoAPI_BuilderAlgo::SetArguments()`
     pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Splitter_inherited_SetArguments(self as *mut Self, theLS)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4289,21 +4928,26 @@ impl Splitter {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Splitter_inherited_Arguments(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:84 - `BRepAlgoAPI_BuilderAlgo::SetNonDestructive()`
     pub fn set_non_destructive(&mut self, theFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Splitter_inherited_SetNonDestructive(
                     self as *mut Self,
                     theFlag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4313,21 +4957,26 @@ impl Splitter {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Splitter_inherited_NonDestructive(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:94 - `BRepAlgoAPI_BuilderAlgo::SetGlue()`
     pub fn set_glue(&mut self, theGlue: crate::bop_algo::GlueEnum) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Splitter_inherited_SetGlue(
                     self as *mut Self,
                     theGlue.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4336,21 +4985,26 @@ impl Splitter {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Splitter_inherited_Glue(self as *const Self) };
-            crate::check_exception();
-            crate::bop_algo::GlueEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::bop_algo::GlueEnum::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:100 - `BRepAlgoAPI_BuilderAlgo::SetCheckInverted()`
     pub fn set_check_inverted(&mut self, theCheck: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Splitter_inherited_SetCheckInverted(
                     self as *mut Self,
                     theCheck,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4360,8 +5014,11 @@ impl Splitter {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Splitter_inherited_CheckInverted(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4373,7 +5030,7 @@ impl Splitter {
         theAngularTol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Splitter_inherited_SimplifyResult(
                     self as *mut Self,
                     theUnifyEdges,
@@ -4381,7 +5038,9 @@ impl Splitter {
                     theAngularTol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4391,8 +5050,11 @@ impl Splitter {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Splitter_inherited_IsDeleted(self as *mut Self, aS)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4402,8 +5064,11 @@ impl Splitter {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Splitter_inherited_HasModified(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4413,8 +5078,11 @@ impl Splitter {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Splitter_inherited_HasGenerated(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4424,21 +5092,26 @@ impl Splitter {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Splitter_inherited_HasDeleted(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepAlgoAPI_BuilderAlgo.hxx`:173 - `BRepAlgoAPI_BuilderAlgo::SetToFillHistory()`
     pub fn set_to_fill_history(&mut self, theHistFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgoAPI_Splitter_inherited_SetToFillHistory(
                     self as *mut Self,
                     theHistFlag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4448,8 +5121,11 @@ impl Splitter {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Splitter_inherited_HasHistory(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4459,8 +5135,11 @@ impl Splitter {
             let __result = unsafe {
                 crate::ffi::BRepAlgoAPI_Splitter_inherited_SectionEdges(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4469,8 +5148,11 @@ impl Splitter {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Splitter_inherited_History(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4479,8 +5161,11 @@ impl Splitter {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Splitter_inherited_Shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4489,16 +5174,22 @@ impl Splitter {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgoAPI_Splitter_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         {
-            unsafe { crate::ffi::BRepAlgoAPI_Splitter_inherited_Check(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgoAPI_Splitter_inherited_Check(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

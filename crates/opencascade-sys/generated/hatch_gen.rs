@@ -90,8 +90,10 @@ impl Domain {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HatchGen_Domain_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -103,8 +105,10 @@ impl Domain {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HatchGen_Domain_ctor_pointonhatching2(P1, P2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -116,8 +120,10 @@ impl Domain {
         {
             let __result =
                 unsafe { crate::ffi::HatchGen_Domain_ctor_pointonhatching_bool(P, First) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -125,10 +131,12 @@ impl Domain {
     /// Sets the first and the second points of the domain.
     pub fn set_points_pointonhatching2(&mut self, P1: &PointOnHatching, P2: &PointOnHatching) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_Domain_set_points_pointonhatching2(self as *mut Self, P1, P2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -137,8 +145,10 @@ impl Domain {
     /// as the infinite.
     pub fn set_points(&mut self) {
         {
-            unsafe { crate::ffi::HatchGen_Domain_set_points(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HatchGen_Domain_set_points(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -146,10 +156,12 @@ impl Domain {
     /// Sets the first point of the domain.
     pub fn set_first_point_pointonhatching(&mut self, P: &PointOnHatching) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_Domain_set_first_point_pointonhatching(self as *mut Self, P)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -158,8 +170,10 @@ impl Domain {
     /// infinite.
     pub fn set_first_point(&mut self) {
         {
-            unsafe { crate::ffi::HatchGen_Domain_set_first_point(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HatchGen_Domain_set_first_point(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -167,10 +181,12 @@ impl Domain {
     /// Sets the second point of the domain.
     pub fn set_second_point_pointonhatching(&mut self, P: &PointOnHatching) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_Domain_set_second_point_pointonhatching(self as *mut Self, P)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -179,8 +195,10 @@ impl Domain {
     /// infinite.
     pub fn set_second_point(&mut self) {
         {
-            unsafe { crate::ffi::HatchGen_Domain_set_second_point(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HatchGen_Domain_set_second_point(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -190,8 +208,11 @@ impl Domain {
         {
             let __result =
                 unsafe { crate::ffi::HatchGen_Domain_has_first_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -202,8 +223,11 @@ impl Domain {
     pub fn first_point(&self) -> &PointOnHatching {
         {
             let __result = unsafe { crate::ffi::HatchGen_Domain_first_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -213,8 +237,11 @@ impl Domain {
         {
             let __result =
                 unsafe { crate::ffi::HatchGen_Domain_has_second_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -225,8 +252,11 @@ impl Domain {
     pub fn second_point(&self) -> &PointOnHatching {
         {
             let __result = unsafe { crate::ffi::HatchGen_Domain_second_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -234,8 +264,10 @@ impl Domain {
     /// Dump of the domain.
     pub fn dump(&self, Index: i32) {
         {
-            unsafe { crate::ffi::HatchGen_Domain_dump(self as *const Self, Index) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HatchGen_Domain_dump(self as *const Self, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -252,8 +284,12 @@ impl IntersectionPoint {
     /// Sets the index of the supporting curve.
     pub fn set_index(&mut self, Index: i32) {
         {
-            unsafe { crate::ffi::HatchGen_IntersectionPoint_set_index(self as *mut Self, Index) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::HatchGen_IntersectionPoint_set_index(self as *mut Self, Index)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -263,8 +299,11 @@ impl IntersectionPoint {
         {
             let __result =
                 unsafe { crate::ffi::HatchGen_IntersectionPoint_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -272,10 +311,12 @@ impl IntersectionPoint {
     /// Sets the parameter on the curve.
     pub fn set_parameter(&mut self, Parameter: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_IntersectionPoint_set_parameter(self as *mut Self, Parameter)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -285,8 +326,11 @@ impl IntersectionPoint {
         {
             let __result =
                 unsafe { crate::ffi::HatchGen_IntersectionPoint_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -294,13 +338,15 @@ impl IntersectionPoint {
     /// Sets the position of the point on the curve.
     pub fn set_position(&mut self, Position: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_IntersectionPoint_set_position(
                     self as *mut Self,
                     Position.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -310,8 +356,11 @@ impl IntersectionPoint {
         {
             let __result =
                 unsafe { crate::ffi::HatchGen_IntersectionPoint_position(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -319,13 +368,15 @@ impl IntersectionPoint {
     /// Sets the transition state before the intersection.
     pub fn set_state_before(&mut self, State: crate::top_abs::State) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_IntersectionPoint_set_state_before(
                     self as *mut Self,
                     State.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -335,8 +386,11 @@ impl IntersectionPoint {
         {
             let __result =
                 unsafe { crate::ffi::HatchGen_IntersectionPoint_state_before(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -344,13 +398,15 @@ impl IntersectionPoint {
     /// Sets the transition state after the intersection.
     pub fn set_state_after(&mut self, State: crate::top_abs::State) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_IntersectionPoint_set_state_after(
                     self as *mut Self,
                     State.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -360,8 +416,11 @@ impl IntersectionPoint {
         {
             let __result =
                 unsafe { crate::ffi::HatchGen_IntersectionPoint_state_after(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -369,13 +428,15 @@ impl IntersectionPoint {
     /// Sets the flag that the point is the beginning of a segment.
     pub fn set_segment_beginning(&mut self, State: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_IntersectionPoint_set_segment_beginning(
                     self as *mut Self,
                     State,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -386,8 +447,11 @@ impl IntersectionPoint {
             let __result = unsafe {
                 crate::ffi::HatchGen_IntersectionPoint_segment_beginning(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -395,10 +459,12 @@ impl IntersectionPoint {
     /// Sets the flag that the point is the end of a segment.
     pub fn set_segment_end(&mut self, State: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_IntersectionPoint_set_segment_end(self as *mut Self, State)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -408,8 +474,11 @@ impl IntersectionPoint {
         {
             let __result =
                 unsafe { crate::ffi::HatchGen_IntersectionPoint_segment_end(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -417,8 +486,11 @@ impl IntersectionPoint {
     /// Dump of the point on element.
     pub fn dump(&self, Index: i32) {
         {
-            unsafe { crate::ffi::HatchGen_IntersectionPoint_dump(self as *const Self, Index) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HatchGen_IntersectionPoint_dump(self as *const Self, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -442,8 +514,10 @@ impl PointOnElement {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HatchGen_PointOnElement_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -455,8 +529,10 @@ impl PointOnElement {
         {
             let __result =
                 unsafe { crate::ffi::HatchGen_PointOnElement_ctor_intersectionpoint(Point) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -464,13 +540,15 @@ impl PointOnElement {
     /// Sets the intersection type at this point.
     pub fn set_intersection_type(&mut self, Type: crate::hatch_gen::IntersectionType) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_PointOnElement_set_intersection_type(
                     self as *mut Self,
                     Type.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -481,8 +559,11 @@ impl PointOnElement {
             let __result = unsafe {
                 crate::ffi::HatchGen_PointOnElement_intersection_type(self as *const Self)
             };
-            crate::check_exception();
-            crate::hatch_gen::IntersectionType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::hatch_gen::IntersectionType::try_from(__val).unwrap()
         }
     }
 
@@ -506,8 +587,11 @@ impl PointOnElement {
                     Confusion,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -522,8 +606,11 @@ impl PointOnElement {
                     Confusion,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -531,44 +618,45 @@ impl PointOnElement {
     /// Dump of the point on element.
     pub fn dump(&self, Index: i32) {
         {
-            unsafe { crate::ffi::HatchGen_PointOnElement_dump(self as *const Self, Index) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HatchGen_PointOnElement_dump(self as *const Self, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to HatchGen_IntersectionPoint
     pub fn as_intersection_point(&self) -> &IntersectionPoint {
-        {
-            let __result = unsafe {
-                crate::ffi::HatchGen_PointOnElement_as_HatchGen_IntersectionPoint(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HatchGen_PointOnElement_as_HatchGen_IntersectionPoint(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to HatchGen_IntersectionPoint (mutable)
     pub fn as_intersection_point_mut(&mut self) -> &mut IntersectionPoint {
-        {
-            let __result = unsafe {
-                crate::ffi::HatchGen_PointOnElement_as_HatchGen_IntersectionPoint_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HatchGen_PointOnElement_as_HatchGen_IntersectionPoint_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:35 - `HatchGen_IntersectionPoint::SetIndex()`
     pub fn set_index(&mut self, Index: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_PointOnElement_inherited_SetIndex(self as *mut Self, Index)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -577,21 +665,26 @@ impl PointOnElement {
         {
             let __result =
                 unsafe { crate::ffi::HatchGen_PointOnElement_inherited_Index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:41 - `HatchGen_IntersectionPoint::SetParameter()`
     pub fn set_parameter(&mut self, Parameter: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_PointOnElement_inherited_SetParameter(
                     self as *mut Self,
                     Parameter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -601,21 +694,26 @@ impl PointOnElement {
             let __result = unsafe {
                 crate::ffi::HatchGen_PointOnElement_inherited_Parameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:47 - `HatchGen_IntersectionPoint::SetPosition()`
     pub fn set_position(&mut self, Position: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_PointOnElement_inherited_SetPosition(
                     self as *mut Self,
                     Position.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -625,21 +723,26 @@ impl PointOnElement {
             let __result = unsafe {
                 crate::ffi::HatchGen_PointOnElement_inherited_Position(self as *const Self)
             };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:53 - `HatchGen_IntersectionPoint::SetStateBefore()`
     pub fn set_state_before(&mut self, State: crate::top_abs::State) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_PointOnElement_inherited_SetStateBefore(
                     self as *mut Self,
                     State.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -649,21 +752,26 @@ impl PointOnElement {
             let __result = unsafe {
                 crate::ffi::HatchGen_PointOnElement_inherited_StateBefore(self as *const Self)
             };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:59 - `HatchGen_IntersectionPoint::SetStateAfter()`
     pub fn set_state_after(&mut self, State: crate::top_abs::State) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_PointOnElement_inherited_SetStateAfter(
                     self as *mut Self,
                     State.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -673,21 +781,26 @@ impl PointOnElement {
             let __result = unsafe {
                 crate::ffi::HatchGen_PointOnElement_inherited_StateAfter(self as *const Self)
             };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:65 - `HatchGen_IntersectionPoint::SetSegmentBeginning()`
     pub fn set_segment_beginning(&mut self, State: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_PointOnElement_inherited_SetSegmentBeginning(
                     self as *mut Self,
                     State,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -697,21 +810,26 @@ impl PointOnElement {
             let __result = unsafe {
                 crate::ffi::HatchGen_PointOnElement_inherited_SegmentBeginning(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:71 - `HatchGen_IntersectionPoint::SetSegmentEnd()`
     pub fn set_segment_end(&mut self, State: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_PointOnElement_inherited_SetSegmentEnd(
                     self as *mut Self,
                     State,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -721,8 +839,11 @@ impl PointOnElement {
             let __result = unsafe {
                 crate::ffi::HatchGen_PointOnElement_inherited_SegmentEnd(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -746,8 +867,10 @@ impl PointOnHatching {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HatchGen_PointOnHatching_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -759,8 +882,10 @@ impl PointOnHatching {
         {
             let __result =
                 unsafe { crate::ffi::HatchGen_PointOnHatching_ctor_intersectionpoint(Point) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -768,10 +893,12 @@ impl PointOnHatching {
     /// Adds a point on element to the point.
     pub fn add_point(&mut self, Point: &PointOnElement, Confusion: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_PointOnHatching_add_point(self as *mut Self, Point, Confusion)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -782,8 +909,11 @@ impl PointOnHatching {
         {
             let __result =
                 unsafe { crate::ffi::HatchGen_PointOnHatching_nb_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -795,8 +925,11 @@ impl PointOnHatching {
         {
             let __result =
                 unsafe { crate::ffi::HatchGen_PointOnHatching_point(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -806,8 +939,11 @@ impl PointOnHatching {
     /// Index > NbPoints.
     pub fn rem_point(&mut self, Index: i32) {
         {
-            unsafe { crate::ffi::HatchGen_PointOnHatching_rem_point(self as *mut Self, Index) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HatchGen_PointOnHatching_rem_point(self as *mut Self, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -815,8 +951,11 @@ impl PointOnHatching {
     /// Removes all the points on element of the point.
     pub fn clr_points(&mut self) {
         {
-            unsafe { crate::ffi::HatchGen_PointOnHatching_clr_points(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HatchGen_PointOnHatching_clr_points(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -830,8 +969,11 @@ impl PointOnHatching {
             let __result = unsafe {
                 crate::ffi::HatchGen_PointOnHatching_is_lower(self as *const Self, Point, Confusion)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -845,8 +987,11 @@ impl PointOnHatching {
             let __result = unsafe {
                 crate::ffi::HatchGen_PointOnHatching_is_equal(self as *const Self, Point, Confusion)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -864,8 +1009,11 @@ impl PointOnHatching {
                     Confusion,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -873,44 +1021,47 @@ impl PointOnHatching {
     /// Dump of the point.
     pub fn dump(&self, Index: i32) {
         {
-            unsafe { crate::ffi::HatchGen_PointOnHatching_dump(self as *const Self, Index) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HatchGen_PointOnHatching_dump(self as *const Self, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to HatchGen_IntersectionPoint
     pub fn as_intersection_point(&self) -> &IntersectionPoint {
-        {
-            let __result = unsafe {
-                crate::ffi::HatchGen_PointOnHatching_as_HatchGen_IntersectionPoint(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HatchGen_PointOnHatching_as_HatchGen_IntersectionPoint(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to HatchGen_IntersectionPoint (mutable)
     pub fn as_intersection_point_mut(&mut self) -> &mut IntersectionPoint {
-        {
-            let __result = unsafe {
-                crate::ffi::HatchGen_PointOnHatching_as_HatchGen_IntersectionPoint_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HatchGen_PointOnHatching_as_HatchGen_IntersectionPoint_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:35 - `HatchGen_IntersectionPoint::SetIndex()`
     pub fn set_index(&mut self, Index: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_PointOnHatching_inherited_SetIndex(self as *mut Self, Index)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -920,21 +1071,26 @@ impl PointOnHatching {
             let __result = unsafe {
                 crate::ffi::HatchGen_PointOnHatching_inherited_Index(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:41 - `HatchGen_IntersectionPoint::SetParameter()`
     pub fn set_parameter(&mut self, Parameter: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_PointOnHatching_inherited_SetParameter(
                     self as *mut Self,
                     Parameter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -944,21 +1100,26 @@ impl PointOnHatching {
             let __result = unsafe {
                 crate::ffi::HatchGen_PointOnHatching_inherited_Parameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:47 - `HatchGen_IntersectionPoint::SetPosition()`
     pub fn set_position(&mut self, Position: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_PointOnHatching_inherited_SetPosition(
                     self as *mut Self,
                     Position.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -968,21 +1129,26 @@ impl PointOnHatching {
             let __result = unsafe {
                 crate::ffi::HatchGen_PointOnHatching_inherited_Position(self as *const Self)
             };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:53 - `HatchGen_IntersectionPoint::SetStateBefore()`
     pub fn set_state_before(&mut self, State: crate::top_abs::State) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_PointOnHatching_inherited_SetStateBefore(
                     self as *mut Self,
                     State.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -992,21 +1158,26 @@ impl PointOnHatching {
             let __result = unsafe {
                 crate::ffi::HatchGen_PointOnHatching_inherited_StateBefore(self as *const Self)
             };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:59 - `HatchGen_IntersectionPoint::SetStateAfter()`
     pub fn set_state_after(&mut self, State: crate::top_abs::State) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_PointOnHatching_inherited_SetStateAfter(
                     self as *mut Self,
                     State.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1016,21 +1187,26 @@ impl PointOnHatching {
             let __result = unsafe {
                 crate::ffi::HatchGen_PointOnHatching_inherited_StateAfter(self as *const Self)
             };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:65 - `HatchGen_IntersectionPoint::SetSegmentBeginning()`
     pub fn set_segment_beginning(&mut self, State: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_PointOnHatching_inherited_SetSegmentBeginning(
                     self as *mut Self,
                     State,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1040,21 +1216,26 @@ impl PointOnHatching {
             let __result = unsafe {
                 crate::ffi::HatchGen_PointOnHatching_inherited_SegmentBeginning(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:71 - `HatchGen_IntersectionPoint::SetSegmentEnd()`
     pub fn set_segment_end(&mut self, State: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HatchGen_PointOnHatching_inherited_SetSegmentEnd(
                     self as *mut Self,
                     State,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1064,8 +1245,11 @@ impl PointOnHatching {
             let __result = unsafe {
                 crate::ffi::HatchGen_PointOnHatching_inherited_SegmentEnd(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

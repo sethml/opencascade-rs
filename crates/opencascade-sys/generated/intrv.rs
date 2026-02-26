@@ -86,8 +86,10 @@ impl Interval {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Intrv_Interval_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -95,8 +97,10 @@ impl Interval {
     pub fn new_real2(Start: f64, End: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Intrv_Interval_ctor_real2(Start, End) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -111,8 +115,10 @@ impl Interval {
             let __result = unsafe {
                 crate::ffi::Intrv_Interval_ctor_real_float_real_float(Start, TolStart, End, TolEnd)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -120,8 +126,11 @@ impl Interval {
     pub fn start(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Intrv_Interval_start(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -129,8 +138,11 @@ impl Interval {
     pub fn end(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Intrv_Interval_end(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -138,8 +150,11 @@ impl Interval {
     pub fn tol_start(&self) -> f32 {
         {
             let __result = unsafe { crate::ffi::Intrv_Interval_tol_start(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -147,26 +162,34 @@ impl Interval {
     pub fn tol_end(&self) -> f32 {
         {
             let __result = unsafe { crate::ffi::Intrv_Interval_tol_end(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Intrv_Interval.hxx`:63 - `Intrv_Interval::Bounds()`
     pub fn bounds(&self, Start: &mut f64, TolStart: &mut f32, End: &mut f64, TolEnd: &mut f32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Intrv_Interval_bounds(self as *const Self, Start, TolStart, End, TolEnd)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Intrv_Interval.hxx`:68 - `Intrv_Interval::SetStart()`
     pub fn set_start(&mut self, Start: f64, TolStart: f32) {
         {
-            unsafe { crate::ffi::Intrv_Interval_set_start(self as *mut Self, Start, TolStart) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Intrv_Interval_set_start(self as *mut Self, Start, TolStart) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -177,8 +200,12 @@ impl Interval {
     /// ****+****------------------------>      result
     pub fn fuse_at_start(&mut self, Start: f64, TolStart: f32) {
         {
-            unsafe { crate::ffi::Intrv_Interval_fuse_at_start(self as *mut Self, Start, TolStart) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Intrv_Interval_fuse_at_start(self as *mut Self, Start, TolStart)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -189,16 +216,23 @@ impl Interval {
     /// ****+****----------->      result
     pub fn cut_at_start(&mut self, Start: f64, TolStart: f32) {
         {
-            unsafe { crate::ffi::Intrv_Interval_cut_at_start(self as *mut Self, Start, TolStart) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Intrv_Interval_cut_at_start(self as *mut Self, Start, TolStart)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Intrv_Interval.hxx`:82 - `Intrv_Interval::SetEnd()`
     pub fn set_end(&mut self, End: f64, TolEnd: f32) {
         {
-            unsafe { crate::ffi::Intrv_Interval_set_end(self as *mut Self, End, TolEnd) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Intrv_Interval_set_end(self as *mut Self, End, TolEnd) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -209,8 +243,11 @@ impl Interval {
     /// <---------------------****+****      result
     pub fn fuse_at_end(&mut self, End: f64, TolEnd: f32) {
         {
-            unsafe { crate::ffi::Intrv_Interval_fuse_at_end(self as *mut Self, End, TolEnd) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Intrv_Interval_fuse_at_end(self as *mut Self, End, TolEnd) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -221,8 +258,11 @@ impl Interval {
     /// <-----****+****                      result
     pub fn cut_at_end(&mut self, End: f64, TolEnd: f32) {
         {
-            unsafe { crate::ffi::Intrv_Interval_cut_at_end(self as *mut Self, End, TolEnd) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Intrv_Interval_cut_at_end(self as *mut Self, End, TolEnd) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -233,8 +273,11 @@ impl Interval {
         {
             let __result =
                 unsafe { crate::ffi::Intrv_Interval_is_probably_empty(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -258,8 +301,11 @@ impl Interval {
         {
             let __result =
                 unsafe { crate::ffi::Intrv_Interval_position(self as *const Self, Other) };
-            crate::check_exception();
-            crate::intrv::Position::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::intrv::Position::try_from(__val).unwrap()
         }
     }
 
@@ -271,8 +317,11 @@ impl Interval {
         {
             let __result =
                 unsafe { crate::ffi::Intrv_Interval_is_before(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -284,8 +333,11 @@ impl Interval {
         {
             let __result =
                 unsafe { crate::ffi::Intrv_Interval_is_after(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -297,8 +349,11 @@ impl Interval {
         {
             let __result =
                 unsafe { crate::ffi::Intrv_Interval_is_inside(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -310,8 +365,11 @@ impl Interval {
         {
             let __result =
                 unsafe { crate::ffi::Intrv_Interval_is_enclosing(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -324,8 +382,11 @@ impl Interval {
             let __result = unsafe {
                 crate::ffi::Intrv_Interval_is_just_enclosing_at_start(self as *const Self, Other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -338,8 +399,11 @@ impl Interval {
             let __result = unsafe {
                 crate::ffi::Intrv_Interval_is_just_enclosing_at_end(self as *const Self, Other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -351,8 +415,11 @@ impl Interval {
         {
             let __result =
                 unsafe { crate::ffi::Intrv_Interval_is_just_before(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -364,8 +431,11 @@ impl Interval {
         {
             let __result =
                 unsafe { crate::ffi::Intrv_Interval_is_just_after(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -378,8 +448,11 @@ impl Interval {
             let __result = unsafe {
                 crate::ffi::Intrv_Interval_is_overlapping_at_start(self as *const Self, Other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -392,8 +465,11 @@ impl Interval {
             let __result = unsafe {
                 crate::ffi::Intrv_Interval_is_overlapping_at_end(self as *const Self, Other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -406,8 +482,11 @@ impl Interval {
             let __result = unsafe {
                 crate::ffi::Intrv_Interval_is_just_overlapping_at_start(self as *const Self, Other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -420,8 +499,11 @@ impl Interval {
             let __result = unsafe {
                 crate::ffi::Intrv_Interval_is_just_overlapping_at_end(self as *const Self, Other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -433,8 +515,11 @@ impl Interval {
         {
             let __result =
                 unsafe { crate::ffi::Intrv_Interval_is_similar(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -460,8 +545,10 @@ impl Intervals {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Intrv_Intervals_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -470,8 +557,10 @@ impl Intervals {
     pub fn new_interval(Int: &Interval) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Intrv_Intervals_ctor_interval(Int) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -479,8 +568,11 @@ impl Intervals {
     /// Intersects the intervals with the interval <Tool>.
     pub fn intersect_interval(&mut self, Tool: &Interval) {
         {
-            unsafe { crate::ffi::Intrv_Intervals_intersect_interval(self as *mut Self, Tool) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Intrv_Intervals_intersect_interval(self as *mut Self, Tool) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -489,56 +581,77 @@ impl Intervals {
     /// sequence  <Tool>.
     pub fn intersect_intervals(&mut self, Tool: &Intervals) {
         {
-            unsafe { crate::ffi::Intrv_Intervals_intersect_intervals(self as *mut Self, Tool) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Intrv_Intervals_intersect_intervals(self as *mut Self, Tool) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Intrv_Intervals.hxx`:47 - `Intrv_Intervals::Subtract()`
     pub fn subtract_interval(&mut self, Tool: &Interval) {
         {
-            unsafe { crate::ffi::Intrv_Intervals_subtract_interval(self as *mut Self, Tool) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Intrv_Intervals_subtract_interval(self as *mut Self, Tool) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Intrv_Intervals.hxx`:49 - `Intrv_Intervals::Subtract()`
     pub fn subtract_intervals(&mut self, Tool: &Intervals) {
         {
-            unsafe { crate::ffi::Intrv_Intervals_subtract_intervals(self as *mut Self, Tool) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Intrv_Intervals_subtract_intervals(self as *mut Self, Tool) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Intrv_Intervals.hxx`:51 - `Intrv_Intervals::Unite()`
     pub fn unite_interval(&mut self, Tool: &Interval) {
         {
-            unsafe { crate::ffi::Intrv_Intervals_unite_interval(self as *mut Self, Tool) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Intrv_Intervals_unite_interval(self as *mut Self, Tool) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Intrv_Intervals.hxx`:53 - `Intrv_Intervals::Unite()`
     pub fn unite_intervals(&mut self, Tool: &Intervals) {
         {
-            unsafe { crate::ffi::Intrv_Intervals_unite_intervals(self as *mut Self, Tool) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Intrv_Intervals_unite_intervals(self as *mut Self, Tool) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Intrv_Intervals.hxx`:55 - `Intrv_Intervals::XUnite()`
     pub fn x_unite_interval(&mut self, Tool: &Interval) {
         {
-            unsafe { crate::ffi::Intrv_Intervals_x_unite_interval(self as *mut Self, Tool) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Intrv_Intervals_x_unite_interval(self as *mut Self, Tool) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Intrv_Intervals.hxx`:57 - `Intrv_Intervals::XUnite()`
     pub fn x_unite_intervals(&mut self, Tool: &Intervals) {
         {
-            unsafe { crate::ffi::Intrv_Intervals_x_unite_intervals(self as *mut Self, Tool) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Intrv_Intervals_x_unite_intervals(self as *mut Self, Tool) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -546,8 +659,11 @@ impl Intervals {
     pub fn nb_intervals(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Intrv_Intervals_nb_intervals(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -555,8 +671,11 @@ impl Intervals {
     pub fn value(&self, Index: i32) -> &Interval {
         {
             let __result = unsafe { crate::ffi::Intrv_Intervals_value(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }

@@ -18,8 +18,11 @@ pub fn define_connect_type(
     {
         let __result =
             unsafe { crate::ffi::ChFi3d_define_connect_type(E, F1, F2, SinTol, CorrectPoint) };
-        crate::check_exception();
-        crate::ch_fi_ds::TypeOfConcavity::try_from(__result).unwrap()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        crate::ch_fi_ds::TypeOfConcavity::try_from(__val).unwrap()
     }
 }
 /// **Source:** `ChFi3d.hxx`:47 - `ChFi3d::IsTangentFaces`
@@ -34,8 +37,11 @@ pub fn is_tangent_faces(
         let __result = unsafe {
             crate::ffi::ChFi3d_is_tangent_faces(theEdge, theFace1, theFace2, Order.into())
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `ChFi3d.hxx`:86 - `ChFi3d::SameSide`
@@ -59,8 +65,11 @@ pub fn same_side(
                 OrFace2.into(),
             )
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 
@@ -129,7 +138,7 @@ impl Builder {
         Fleche: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi3d_Builder_set_params(
                     self as *mut Self,
                     Tang,
@@ -140,7 +149,9 @@ impl Builder {
                     Fleche,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -151,14 +162,16 @@ impl Builder {
         AngularTolerance: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi3d_Builder_set_continuity(
                     self as *mut Self,
                     InternalContinuity.into(),
                     AngularTolerance,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -166,8 +179,10 @@ impl Builder {
     /// extracts from  the list the contour containing edge E.
     pub fn remove(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ChFi3d_Builder_remove(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFi3d_Builder_remove(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -178,8 +193,11 @@ impl Builder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_Builder_contains_edge(self as *const Self, E) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -192,8 +210,11 @@ impl Builder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_Builder_contains_edge_int(self as *const Self, E, IndexInSpine)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -203,8 +224,11 @@ impl Builder {
     pub fn nb_elements(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFi3d_Builder_nb_elements(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -214,8 +238,11 @@ impl Builder {
     pub fn value(&self, I: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSpine> {
         {
             let __result = unsafe { crate::ffi::ChFi3d_Builder_value(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -224,8 +251,11 @@ impl Builder {
     pub fn length(&self, IC: i32) -> f64 {
         {
             let __result = unsafe { crate::ffi::ChFi3d_Builder_length(self as *const Self, IC) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -236,8 +266,11 @@ impl Builder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_Builder_first_vertex(self as *const Self, IC) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -248,8 +281,11 @@ impl Builder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_Builder_last_vertex(self as *const Self, IC) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -260,8 +296,11 @@ impl Builder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_Builder_abscissa(self as *const Self, IC, V) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -272,8 +311,11 @@ impl Builder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_Builder_relative_abscissa(self as *const Self, IC, V) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -284,8 +326,11 @@ impl Builder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_Builder_closed_and_tangent(self as *const Self, IC) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -294,8 +339,11 @@ impl Builder {
     pub fn closed(&self, IC: i32) -> bool {
         {
             let __result = unsafe { crate::ffi::ChFi3d_Builder_closed(self as *const Self, IC) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -304,8 +352,10 @@ impl Builder {
     /// topologic reconstruction.
     pub fn compute(&mut self) {
         {
-            unsafe { crate::ffi::ChFi3d_Builder_compute(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFi3d_Builder_compute(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -314,8 +364,11 @@ impl Builder {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::ChFi3d_Builder_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -325,8 +378,11 @@ impl Builder {
     pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::ChFi3d_Builder_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -344,8 +400,11 @@ impl Builder {
     ) -> &crate::ffi::TopTools_ListOfShape {
         {
             let __result = unsafe { crate::ffi::ChFi3d_Builder_generated(self as *mut Self, EouV) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -356,8 +415,11 @@ impl Builder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_Builder_nb_faulty_contours(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -368,8 +430,11 @@ impl Builder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_Builder_faulty_contour(self as *const Self, I) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -379,8 +444,11 @@ impl Builder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_Builder_nb_computed_surfaces(self as *const Self, IC) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -394,8 +462,11 @@ impl Builder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_Builder_computed_surface(self as *const Self, IC, IS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -406,8 +477,11 @@ impl Builder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_Builder_nb_faulty_vertices(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -417,8 +491,11 @@ impl Builder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_Builder_faulty_vertex(self as *const Self, IV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -427,8 +504,11 @@ impl Builder {
     pub fn has_result(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::ChFi3d_Builder_has_result(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -438,8 +518,11 @@ impl Builder {
     pub fn bad_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::ChFi3d_Builder_bad_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -450,8 +533,11 @@ impl Builder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_Builder_stripe_status(self as *const Self, IC) };
-            crate::check_exception();
-            crate::ch_fi_ds::ErrorStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::ErrorStatus::try_from(__val).unwrap()
         }
     }
 
@@ -460,8 +546,10 @@ impl Builder {
     /// in the state of the last acquisition to enable modification of contours or areas.
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::ChFi3d_Builder_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFi3d_Builder_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -470,8 +558,11 @@ impl Builder {
     pub fn builder(&self) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepBuildHBuilder> {
         {
             let __result = unsafe { crate::ffi::ChFi3d_Builder_builder(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -508,8 +599,11 @@ impl Builder {
                     Intl,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -519,8 +613,11 @@ impl Builder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_Builder_perform_two_cornerby_inter(self as *mut Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -546,8 +643,10 @@ impl ChBuilder {
     pub fn new_shape_real(S: &crate::topo_ds::Shape, Ta: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFi3d_ChBuilder_ctor_shape_real(S, Ta) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -566,8 +665,10 @@ impl ChBuilder {
     /// if the edge <E> has more than 2 adjacent faces
     pub fn add_edge(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ChFi3d_ChBuilder_add_edge(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFi3d_ChBuilder_add_edge(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -578,8 +679,11 @@ impl ChBuilder {
     /// if the edge <E> has more than 2 adjacent faces
     pub fn add_real_edge(&mut self, Dis: f64, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ChFi3d_ChBuilder_add_real_edge(self as *mut Self, Dis, E) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFi3d_ChBuilder_add_real_edge(self as *mut Self, Dis, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -590,8 +694,11 @@ impl ChBuilder {
     /// of an edge of the contour <IC>
     pub fn set_dist(&mut self, Dis: f64, IC: i32, F: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::ChFi3d_ChBuilder_set_dist(self as *mut Self, Dis, IC, F) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFi3d_ChBuilder_set_dist(self as *mut Self, Dis, IC, F) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -600,8 +707,11 @@ impl ChBuilder {
     /// contour of index <IC> in the DS
     pub fn get_dist(&self, IC: i32, Dis: &mut f64) {
         {
-            unsafe { crate::ffi::ChFi3d_ChBuilder_get_dist(self as *const Self, IC, Dis) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFi3d_ChBuilder_get_dist(self as *const Self, IC, Dis) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -618,7 +728,7 @@ impl ChBuilder {
         F: &crate::topo_ds::Face,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_add_real2_edge_face(
                     self as *mut Self,
                     Dis1,
@@ -627,7 +737,9 @@ impl ChBuilder {
                     F,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -638,8 +750,12 @@ impl ChBuilder {
     /// of an edge of the contour <IC>
     pub fn set_dists(&mut self, Dis1: f64, Dis2: f64, IC: i32, F: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::ChFi3d_ChBuilder_set_dists(self as *mut Self, Dis1, Dis2, IC, F) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFi3d_ChBuilder_set_dists(self as *mut Self, Dis1, Dis2, IC, F)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -648,8 +764,11 @@ impl ChBuilder {
     /// contour of index <IC> in the DS
     pub fn dists(&self, IC: i32, Dis1: &mut f64, Dis2: &mut f64) {
         {
-            unsafe { crate::ffi::ChFi3d_ChBuilder_dists(self as *const Self, IC, Dis1, Dis2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFi3d_ChBuilder_dists(self as *const Self, IC, Dis1, Dis2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -666,8 +785,11 @@ impl ChBuilder {
         F: &crate::topo_ds::Face,
     ) {
         {
-            unsafe { crate::ffi::ChFi3d_ChBuilder_add_da(self as *mut Self, Dis, Angle, E, F) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFi3d_ChBuilder_add_da(self as *mut Self, Dis, Angle, E, F) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -678,10 +800,12 @@ impl ChBuilder {
     /// of an edge of the contour <IC>
     pub fn set_dist_angle(&mut self, Dis: f64, Angle: f64, IC: i32, F: &crate::topo_ds::Face) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_set_dist_angle(self as *mut Self, Dis, Angle, IC, F)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -690,10 +814,12 @@ impl ChBuilder {
     /// contour of index <IC> in the DS
     pub fn get_dist_angle(&self, IC: i32, Dis: &mut f64, Angle: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_get_dist_angle(self as *const Self, IC, Dis, Angle)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -701,8 +827,11 @@ impl ChBuilder {
     /// set the mode of shamfer
     pub fn set_mode(&mut self, theMode: crate::ch_fi_ds::ChamfMode) {
         {
-            unsafe { crate::ffi::ChFi3d_ChBuilder_set_mode(self as *mut Self, theMode.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFi3d_ChBuilder_set_mode(self as *mut Self, theMode.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -712,8 +841,11 @@ impl ChBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_ChBuilder_is_chamfer(self as *const Self, IC) };
-            crate::check_exception();
-            crate::ch_fi_ds::ChamfMethod::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::ChamfMethod::try_from(__val).unwrap()
         }
     }
 
@@ -722,8 +854,11 @@ impl ChBuilder {
     pub fn mode(&self) -> crate::ch_fi_ds::ChamfMode {
         {
             let __result = unsafe { crate::ffi::ChFi3d_ChBuilder_mode(self as *const Self) };
-            crate::check_exception();
-            crate::ch_fi_ds::ChamfMode::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::ChamfMode::try_from(__val).unwrap()
         }
     }
 
@@ -731,16 +866,21 @@ impl ChBuilder {
     /// Reset tous rayons du contour IC.
     pub fn reset_contour(&mut self, IC: i32) {
         {
-            unsafe { crate::ffi::ChFi3d_ChBuilder_reset_contour(self as *mut Self, IC) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFi3d_ChBuilder_reset_contour(self as *mut Self, IC) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFi3d_ChBuilder.hxx`:136 - `ChFi3d_ChBuilder::Simulate()`
     pub fn simulate(&mut self, IC: i32) {
         {
-            unsafe { crate::ffi::ChFi3d_ChBuilder_simulate(self as *mut Self, IC) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFi3d_ChBuilder_simulate(self as *mut Self, IC) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -748,8 +888,11 @@ impl ChBuilder {
     pub fn nb_surf(&self, IC: i32) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFi3d_ChBuilder_nb_surf(self as *const Self, IC) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -758,8 +901,11 @@ impl ChBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_ChBuilder_sect(self as *const Self, IC, IS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -792,10 +938,12 @@ impl ChBuilder {
         Soldep: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_simul_surf_handlechfidssurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_real4_bool6_vector(self as *mut Self, Data, Guide, Spine, Choix, S1, I1, PC1, Sref1, PCref1, Decroch1, S2, I2, Or2.into(), Fleche, TolGuide, First, Last, Inside, Appro, Forward, RecP, RecS, RecRst, Soldep)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -828,10 +976,12 @@ impl ChBuilder {
         Soldep: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_simul_surf_handlechfidssurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_real4_bool6_vector(self as *mut Self, Data, Guide, Spine, Choix, S1, I1, Or1.into(), S2, I2, PC2, Sref2, PCref2, Decroch2, Fleche, TolGuide, First, Last, Inside, Appro, Forward, RecP, RecS, RecRst, Soldep)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -870,10 +1020,12 @@ impl ChBuilder {
         Soldep: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_simul_surf_handlechfidssurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_real4_bool7_vector(self as *mut Self, Data, Guide, Spine, Choix, S1, I1, PC1, Sref1, PCref1, Decroch1, Or1.into(), S2, I2, PC2, Sref2, PCref2, Decroch2, Or2.into(), Fleche, TolGuide, First, Last, Inside, Appro, Forward, RecP1, RecRst1, RecP2, RecRst2, Soldep)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -909,8 +1061,11 @@ impl ChBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorsurface_handleadaptor3dtopoltool_real5_bool5_vector_int2(self as *mut Self, Data, Guide, Spine, Choix, S1, I1, S2, I2, MaxStep, Fleche, TolGuide, First, Last, Inside, Appro, Forward, RecOnS1, RecOnS2, Soldep, Intf, Intl)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -947,10 +1102,12 @@ impl ChBuilder {
         Soldep: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_real5_bool6_vector(self as *mut Self, Data, Guide, Spine, Choix, S1, I1, PC1, Sref1, PCref1, Decroch1, S2, I2, Or2.into(), MaxStep, Fleche, TolGuide, First, Last, Inside, Appro, Forward, RecP, RecS, RecRst, Soldep)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -987,10 +1144,12 @@ impl ChBuilder {
         Soldep: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_real5_bool6_vector(self as *mut Self, Data, Guide, Spine, Choix, S1, I1, Or1.into(), S2, I2, PC2, Sref2, PCref2, Decroch2, MaxStep, Fleche, TolGuide, First, Last, Inside, Appro, Forward, RecP, RecS, RecRst, Soldep)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1033,31 +1192,33 @@ impl ChBuilder {
         Soldep: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_perform_surf_sequenceofsurfdata_handlechfidselspine_handlechfidsspine_int_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_handlebrepadaptorsurface_handleadaptor3dtopoltool_handlebrepadaptorcurve2d_handlebrepadaptorsurface_handlebrepadaptorcurve2d_bool_orientation_real5_bool7_vector(self as *mut Self, Data, Guide, Spine, Choix, S1, I1, PC1, Sref1, PCref1, Decroch1, Or1.into(), S2, I2, PC2, Sref2, PCref2, Decroch2, Or2.into(), MaxStep, Fleche, TolGuide, First, Last, Inside, Appro, Forward, RecP1, RecRst1, RecP2, RecRst2, Soldep)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to ChFi3d_Builder
     pub fn as_builder(&self) -> &Builder {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFi3d_ChBuilder_as_ChFi3d_Builder(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ChFi3d_ChBuilder_as_ChFi3d_Builder(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ChFi3d_Builder (mutable)
     pub fn as_builder_mut(&mut self) -> &mut Builder {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFi3d_ChBuilder_as_ChFi3d_Builder_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ChFi3d_ChBuilder_as_ChFi3d_Builder_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:71 - `ChFi3d_Builder::SetParams()`
@@ -1071,7 +1232,7 @@ impl ChBuilder {
         Fleche: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_inherited_SetParams(
                     self as *mut Self,
                     Tang,
@@ -1082,7 +1243,9 @@ impl ChBuilder {
                     Fleche,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1093,22 +1256,27 @@ impl ChBuilder {
         AngularTolerance: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_inherited_SetContinuity(
                     self as *mut Self,
                     InternalContinuity.into(),
                     AngularTolerance,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:82 - `ChFi3d_Builder::Remove()`
     pub fn remove(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Remove(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Remove(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1117,8 +1285,11 @@ impl ChBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Contains(self as *const Self, E) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1127,8 +1298,11 @@ impl ChBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_NbElements(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1137,8 +1311,11 @@ impl ChBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Value(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1147,8 +1324,11 @@ impl ChBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Length(self as *const Self, IC) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1158,8 +1338,11 @@ impl ChBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_inherited_FirstVertex(self as *const Self, IC)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1169,8 +1352,11 @@ impl ChBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_inherited_LastVertex(self as *const Self, IC)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1180,8 +1366,11 @@ impl ChBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_inherited_Abscissa(self as *const Self, IC, V)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1191,8 +1380,11 @@ impl ChBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_inherited_RelativeAbscissa(self as *const Self, IC, V)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1202,8 +1394,11 @@ impl ChBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_inherited_ClosedAndTangent(self as *const Self, IC)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1212,16 +1407,22 @@ impl ChBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Closed(self as *const Self, IC) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:131 - `ChFi3d_Builder::Compute()`
     pub fn compute(&mut self) {
         {
-            unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Compute(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Compute(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1230,8 +1431,11 @@ impl ChBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1240,8 +1444,11 @@ impl ChBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1251,8 +1458,11 @@ impl ChBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_inherited_NbFaultyContours(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1262,8 +1472,11 @@ impl ChBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_inherited_FaultyContour(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1273,8 +1486,11 @@ impl ChBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_inherited_NbComputedSurfaces(self as *const Self, IC)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1288,8 +1504,11 @@ impl ChBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_inherited_ComputedSurface(self as *const Self, IC, IS)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1299,8 +1518,11 @@ impl ChBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_inherited_NbFaultyVertices(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1310,8 +1532,11 @@ impl ChBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_inherited_FaultyVertex(self as *const Self, IV)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1320,8 +1545,11 @@ impl ChBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_HasResult(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1330,8 +1558,11 @@ impl ChBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_BadShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1341,16 +1572,21 @@ impl ChBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_ChBuilder_inherited_StripeStatus(self as *const Self, IC)
             };
-            crate::check_exception();
-            crate::ch_fi_ds::ErrorStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::ErrorStatus::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:178 - `ChFi3d_Builder::Reset()`
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1359,8 +1595,11 @@ impl ChBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_ChBuilder_inherited_Builder(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1394,8 +1633,11 @@ impl ChBuilder {
                     Intl,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1408,8 +1650,11 @@ impl ChBuilder {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1439,8 +1684,10 @@ impl FilBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_ctor_shape_filletshape_real(S, FShape.into(), Ta)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1456,10 +1703,12 @@ impl FilBuilder {
     /// Sets the type of fillet surface.
     pub fn set_fillet_shape(&mut self, FShape: crate::ch_fi3d::FilletShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_set_fillet_shape(self as *mut Self, FShape.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1469,8 +1718,11 @@ impl FilBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_FilBuilder_get_fillet_shape(self as *const Self) };
-            crate::check_exception();
-            crate::ch_fi3d::FilletShape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi3d::FilletShape::try_from(__val).unwrap()
         }
     }
 
@@ -1480,8 +1732,10 @@ impl FilBuilder {
     /// Attention, you  need  to start  with  SetRadius.
     pub fn add_edge(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ChFi3d_FilBuilder_add_edge(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFi3d_FilBuilder_add_edge(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1489,8 +1743,12 @@ impl FilBuilder {
     /// initialisation of the constant vector the corresponding  1st  edge.
     pub fn add_real_edge(&mut self, Radius: f64, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ChFi3d_FilBuilder_add_real_edge(self as *mut Self, Radius, E) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFi3d_FilBuilder_add_real_edge(self as *mut Self, Radius, E)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1503,7 +1761,7 @@ impl FilBuilder {
         IinC: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_set_radius_handlelawfunction_int2(
                     self as *mut Self,
                     C,
@@ -1511,7 +1769,9 @@ impl FilBuilder {
                     IinC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1521,8 +1781,11 @@ impl FilBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_FilBuilder_is_constant_int(self as *mut Self, IC) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1533,8 +1796,11 @@ impl FilBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_FilBuilder_radius_int(self as *mut Self, IC) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1542,8 +1808,11 @@ impl FilBuilder {
     /// Reset all vectors of contour IC.
     pub fn reset_contour(&mut self, IC: i32) {
         {
-            unsafe { crate::ffi::ChFi3d_FilBuilder_reset_contour(self as *mut Self, IC) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFi3d_FilBuilder_reset_contour(self as *mut Self, IC) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1552,7 +1821,7 @@ impl FilBuilder {
     /// index IC. Since  then  E is flagged as constant.
     pub fn set_radius_real_int_edge(&mut self, Radius: f64, IC: i32, E: &crate::topo_ds::Edge) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_set_radius_real_int_edge(
                     self as *mut Self,
                     Radius,
@@ -1560,7 +1829,9 @@ impl FilBuilder {
                     E,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1568,8 +1839,11 @@ impl FilBuilder {
     /// Extracts the flag constant and the vector of edge E.
     pub fn un_set_int_edge(&mut self, IC: i32, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ChFi3d_FilBuilder_un_set_int_edge(self as *mut Self, IC, E) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFi3d_FilBuilder_un_set_int_edge(self as *mut Self, IC, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1577,7 +1851,7 @@ impl FilBuilder {
     /// Set a vector on vertex  V of  the contour of index IC.
     pub fn set_radius_real_int_vertex(&mut self, Radius: f64, IC: i32, V: &crate::topo_ds::Vertex) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_set_radius_real_int_vertex(
                     self as *mut Self,
                     Radius,
@@ -1585,7 +1859,9 @@ impl FilBuilder {
                     V,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1593,8 +1869,12 @@ impl FilBuilder {
     /// Extracts the vector of  the vertex V.
     pub fn un_set_int_vertex(&mut self, IC: i32, V: &crate::topo_ds::Vertex) {
         {
-            unsafe { crate::ffi::ChFi3d_FilBuilder_un_set_int_vertex(self as *mut Self, IC, V) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFi3d_FilBuilder_un_set_int_vertex(self as *mut Self, IC, V)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1603,10 +1883,12 @@ impl FilBuilder {
     /// of  the contour of index IC
     pub fn set_radius_xy_int2(&mut self, UandR: &crate::gp::XY, IC: i32, IinC: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_set_radius_xy_int2(self as *mut Self, UandR, IC, IinC)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1617,8 +1899,11 @@ impl FilBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_is_constant_int_edge(self as *mut Self, IC, E)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1628,8 +1913,11 @@ impl FilBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_FilBuilder_radius_int_edge(self as *mut Self, IC, E) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1648,8 +1936,11 @@ impl FilBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_get_bounds(self as *mut Self, IC, E, First, Last)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1665,8 +1956,11 @@ impl FilBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_FilBuilder_get_law(self as *mut Self, IC, E) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1680,16 +1974,21 @@ impl FilBuilder {
         L: &crate::ffi::HandleLawFunction,
     ) {
         {
-            unsafe { crate::ffi::ChFi3d_FilBuilder_set_law(self as *mut Self, IC, E, L) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFi3d_FilBuilder_set_law(self as *mut Self, IC, E, L) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFi3d_FilBuilder.hxx`:130 - `ChFi3d_FilBuilder::Simulate()`
     pub fn simulate(&mut self, IC: i32) {
         {
-            unsafe { crate::ffi::ChFi3d_FilBuilder_simulate(self as *mut Self, IC) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFi3d_FilBuilder_simulate(self as *mut Self, IC) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1698,8 +1997,11 @@ impl FilBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_FilBuilder_nb_surf(self as *const Self, IC) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1708,29 +2010,32 @@ impl FilBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_FilBuilder_sect(self as *const Self, IC, IS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to ChFi3d_Builder
     pub fn as_builder(&self) -> &Builder {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFi3d_FilBuilder_as_ChFi3d_Builder(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ChFi3d_FilBuilder_as_ChFi3d_Builder(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ChFi3d_Builder (mutable)
     pub fn as_builder_mut(&mut self) -> &mut Builder {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFi3d_FilBuilder_as_ChFi3d_Builder_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ChFi3d_FilBuilder_as_ChFi3d_Builder_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:71 - `ChFi3d_Builder::SetParams()`
@@ -1744,7 +2049,7 @@ impl FilBuilder {
         Fleche: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_inherited_SetParams(
                     self as *mut Self,
                     Tang,
@@ -1755,7 +2060,9 @@ impl FilBuilder {
                     Fleche,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1766,22 +2073,27 @@ impl FilBuilder {
         AngularTolerance: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_inherited_SetContinuity(
                     self as *mut Self,
                     InternalContinuity.into(),
                     AngularTolerance,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:82 - `ChFi3d_Builder::Remove()`
     pub fn remove(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Remove(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Remove(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1790,8 +2102,11 @@ impl FilBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Contains(self as *const Self, E) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1800,8 +2115,11 @@ impl FilBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_NbElements(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1810,8 +2128,11 @@ impl FilBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Value(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1820,8 +2141,11 @@ impl FilBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Length(self as *const Self, IC) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1831,8 +2155,11 @@ impl FilBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_inherited_FirstVertex(self as *const Self, IC)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1842,8 +2169,11 @@ impl FilBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_inherited_LastVertex(self as *const Self, IC)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1853,8 +2183,11 @@ impl FilBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_inherited_Abscissa(self as *const Self, IC, V)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1864,8 +2197,11 @@ impl FilBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_inherited_RelativeAbscissa(self as *const Self, IC, V)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1875,8 +2211,11 @@ impl FilBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_inherited_ClosedAndTangent(self as *const Self, IC)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1885,16 +2224,22 @@ impl FilBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Closed(self as *const Self, IC) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:131 - `ChFi3d_Builder::Compute()`
     pub fn compute(&mut self) {
         {
-            unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Compute(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Compute(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1903,8 +2248,11 @@ impl FilBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1913,8 +2261,11 @@ impl FilBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1924,8 +2275,11 @@ impl FilBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_inherited_NbFaultyContours(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1935,8 +2289,11 @@ impl FilBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_inherited_FaultyContour(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1946,8 +2303,11 @@ impl FilBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_inherited_NbComputedSurfaces(self as *const Self, IC)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1961,8 +2321,11 @@ impl FilBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_inherited_ComputedSurface(self as *const Self, IC, IS)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1972,8 +2335,11 @@ impl FilBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_inherited_NbFaultyVertices(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1983,8 +2349,11 @@ impl FilBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_inherited_FaultyVertex(self as *const Self, IV)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1993,8 +2362,11 @@ impl FilBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_HasResult(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2003,8 +2375,11 @@ impl FilBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_BadShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2014,16 +2389,21 @@ impl FilBuilder {
             let __result = unsafe {
                 crate::ffi::ChFi3d_FilBuilder_inherited_StripeStatus(self as *const Self, IC)
             };
-            crate::check_exception();
-            crate::ch_fi_ds::ErrorStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::ErrorStatus::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `ChFi3d_Builder.hxx`:178 - `ChFi3d_Builder::Reset()`
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2032,8 +2412,11 @@ impl FilBuilder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_FilBuilder_inherited_Builder(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2067,8 +2450,11 @@ impl FilBuilder {
                     Intl,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2081,8 +2467,11 @@ impl FilBuilder {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2110,8 +2499,10 @@ impl SearchSing {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFi3d_SearchSing_ctor_handlegeomcurve2(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2123,8 +2514,11 @@ impl SearchSing {
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         {
             let __result = unsafe { crate::ffi::ChFi3d_SearchSing_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2137,8 +2531,11 @@ impl SearchSing {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_SearchSing_derivative(self as *mut Self, X, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2151,53 +2548,56 @@ impl SearchSing {
         {
             let __result =
                 unsafe { crate::ffi::ChFi3d_SearchSing_values(self as *mut Self, X, F, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::ChFi3d_SearchSing_as_math_FunctionWithDerivative(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ChFi3d_SearchSing_as_math_FunctionWithDerivative(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::ChFi3d_SearchSing_as_math_FunctionWithDerivative_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ChFi3d_SearchSing_as_math_FunctionWithDerivative_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFi3d_SearchSing_as_math_Function(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ChFi3d_SearchSing_as_math_Function(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFi3d_SearchSing_as_math_Function_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ChFi3d_SearchSing_as_math_Function_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
@@ -2206,8 +2606,11 @@ impl SearchSing {
             let __result = unsafe {
                 crate::ffi::ChFi3d_SearchSing_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

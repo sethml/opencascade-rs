@@ -186,28 +186,26 @@ fn generate_function_wrappers(
             // Determine return pattern from pre-computed return type binding
             if let Some(ref rt) = func.return_type {
                 let ret_type_cpp = rt.ffi_cpp_return_type();
-                let return_stmt = rt.format_cpp_return_stmt(&call, false);
+                let expr = rt.format_cpp_return_expr(&call);
                 writeln!(
                     output,
-                    "extern \"C\" {} {}({}) {{",
+                    "extern \"C\" OcctResult<{}> {}({}) {{",
                     ret_type_cpp, wrapper_name, params_str
                 ).unwrap();
-                writeln!(output, "    try {{ {} }}", return_stmt).unwrap();
-                writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
-                if let Some(default) = super::bindings::cpp_error_return_value(&ret_type_cpp) {
-                    writeln!(output, "    return {};", default).unwrap();
-                }
+                writeln!(output, "    try {{ return {{{}, nullptr}}; }}", expr).unwrap();
+                writeln!(output, "    OCCT_CATCH_RETURN").unwrap();
                 writeln!(output, "}}").unwrap();
             } else {
                 writeln!(
                     output,
-                    "extern \"C\" void {}({}) {{",
+                    "extern \"C\" const char* {}({}) {{",
                     wrapper_name, params_str
                 ).unwrap();
-                writeln!(output, "    try {{ {}; }}", call).unwrap();
-                writeln!(output, "    OCCT_CATCH_AND_STORE").unwrap();
+                writeln!(output, "    try {{ {}; return nullptr; }}", call).unwrap();
+                writeln!(output, "    OCCT_CATCH_RETURN_VOID").unwrap();
                 writeln!(output, "}}").unwrap();
             }
+
         }
         writeln!(output).unwrap();
     }
@@ -291,8 +289,8 @@ pub fn generate_wrappers(
     }
     writeln!(output).unwrap();
 
-    // Exception handling infrastructure.
-    // Thread-local storage for C++ exception info, checked by Rust after each FFI call.
+    // Exception handling: OcctResult<T> template with null-terminated exc string.
+    // Non-void wrappers return OcctResult<T>, void wrappers return const char*.
     output.push_str(r#"
 // ========================
 // Exception handling
@@ -300,66 +298,50 @@ pub fn generate_wrappers(
 
 #include <cxxabi.h>
 
-namespace {
-struct OcctExceptionInfo {
-    bool pending = false;
-    char message[2048] = {};
-    char type_name[256] = {};
+template<typename T>
+struct OcctResult {
+    T ret;
+    const char* exc;
 };
-thread_local OcctExceptionInfo occt_last_exception;
-}
 
-static void occt_store_exception(const char* msg, const char* type_name) {
-    auto& ex = occt_last_exception;
-    ex.pending = true;
-    if (msg) {
-        std::strncpy(ex.message, msg, sizeof(ex.message) - 1);
-        ex.message[sizeof(ex.message) - 1] = '\0';
-    } else {
-        ex.message[0] = '\0';
-    }
-    // Demangle C++ type name for readable panic messages
+template<>
+struct OcctResult<void> {
+    const char* exc;
+};
+
+extern "C" const char* occt_alloc_exception(const char* ptr, size_t len);
+
+static const char* occt_make_exception(const char* type_name, const char* message) {
+    std::string combined;
     if (type_name) {
         int status = 0;
         char* demangled = abi::__cxa_demangle(type_name, nullptr, nullptr, &status);
         if (status == 0 && demangled) {
-            std::strncpy(ex.type_name, demangled, sizeof(ex.type_name) - 1);
-            ex.type_name[sizeof(ex.type_name) - 1] = '\0';
+            combined = demangled;
             std::free(demangled);
         } else {
-            std::strncpy(ex.type_name, type_name, sizeof(ex.type_name) - 1);
-            ex.type_name[sizeof(ex.type_name) - 1] = '\0';
+            combined = type_name;
             std::free(demangled);
         }
     } else {
-        ex.type_name[0] = '\0';
+        combined = "<unknown>";
     }
-}
-
-extern "C" bool occt_has_pending_exception() {
-    return occt_last_exception.pending;
-}
-
-extern "C" const char* occt_pending_exception_message() {
-    return occt_last_exception.message;
-}
-
-extern "C" const char* occt_pending_exception_type() {
-    return occt_last_exception.type_name;
-}
-
-extern "C" void occt_clear_exception() {
-    occt_last_exception.pending = false;
-}
-
-#define OCCT_CATCH_AND_STORE \
-    catch (const Standard_Failure& e) { \
-        occt_store_exception(e.GetMessageString(), typeid(e).name()); \
-    } catch (const std::exception& e) { \
-        occt_store_exception(e.what(), typeid(e).name()); \
-    } catch (...) { \
-        occt_store_exception("unknown C++ exception", "unknown"); \
+    if (message && message[0] != '\0') {
+        combined += ": ";
+        combined += message;
     }
+    return occt_alloc_exception(combined.data(), combined.size());
+}
+
+#define OCCT_CATCH_RETURN \
+    catch (const Standard_Failure& e) { return {{}, occt_make_exception(typeid(e).name(), e.GetMessageString())}; } \
+    catch (const std::exception& e) { return {{}, occt_make_exception(typeid(e).name(), e.what())}; } \
+    catch (...) { return {{}, occt_make_exception(nullptr, "unknown C++ exception")}; }
+
+#define OCCT_CATCH_RETURN_VOID \
+    catch (const Standard_Failure& e) { return occt_make_exception(typeid(e).name(), e.GetMessageString()); } \
+    catch (const std::exception& e) { return occt_make_exception(typeid(e).name(), e.what()); } \
+    catch (...) { return occt_make_exception(nullptr, "unknown C++ exception"); }
 
 "#);
 

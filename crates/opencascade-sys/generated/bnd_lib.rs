@@ -18,8 +18,10 @@
 /// infinite real numbers, or two positive infinite real numbers.
 pub fn add_lin_real3_box(L: &crate::gp::Lin, P1: f64, P2: f64, Tol: f64, B: &mut crate::bnd::Box) {
     {
-        unsafe { crate::ffi::BndLib_add_lin_real3_box(L, P1, P2, Tol, B) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BndLib_add_lin_real3_box(L, P1, P2, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BndLib.hxx`:80 - `BndLib::Add`
@@ -31,15 +33,19 @@ pub fn add_lin2d_real3_box2d(
     B: &mut crate::bnd::Box2d,
 ) {
     {
-        unsafe { crate::ffi::BndLib_add_lin2d_real3_box2d(L, P1, P2, Tol, B) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BndLib_add_lin2d_real3_box2d(L, P1, P2, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BndLib.hxx`:86 - `BndLib::Add`
 pub fn add_circ_real_box(C: &crate::gp::Circ, Tol: f64, B: &mut crate::bnd::Box) {
     {
-        unsafe { crate::ffi::BndLib_add_circ_real_box(C, Tol, B) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BndLib_add_circ_real_box(C, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BndLib.hxx`:89 - `BndLib::Add`
@@ -52,15 +58,19 @@ pub fn add_circ_real3_box(
     B: &mut crate::bnd::Box,
 ) {
     {
-        unsafe { crate::ffi::BndLib_add_circ_real3_box(C, P1, P2, Tol, B) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BndLib_add_circ_real3_box(C, P1, P2, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BndLib.hxx`:95 - `BndLib::Add`
 pub fn add_circ2d_real_box2d(C: &crate::gp::Circ2d, Tol: f64, B: &mut crate::bnd::Box2d) {
     {
-        unsafe { crate::ffi::BndLib_add_circ2d_real_box2d(C, Tol, B) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BndLib_add_circ2d_real_box2d(C, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BndLib.hxx`:101 - `BndLib::Add`
@@ -76,15 +86,19 @@ pub fn add_circ2d_real3_box2d(
     B: &mut crate::bnd::Box2d,
 ) {
     {
-        unsafe { crate::ffi::BndLib_add_circ2d_real3_box2d(C, P1, P2, Tol, B) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BndLib_add_circ2d_real3_box2d(C, P1, P2, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BndLib.hxx`:107 - `BndLib::Add`
 pub fn add_elips_real_box(C: &crate::gp::Elips, Tol: f64, B: &mut crate::bnd::Box) {
     {
-        unsafe { crate::ffi::BndLib_add_elips_real_box(C, Tol, B) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BndLib_add_elips_real_box(C, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BndLib.hxx`:110 - `BndLib::Add`
@@ -97,15 +111,19 @@ pub fn add_elips_real3_box(
     B: &mut crate::bnd::Box,
 ) {
     {
-        unsafe { crate::ffi::BndLib_add_elips_real3_box(C, P1, P2, Tol, B) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BndLib_add_elips_real3_box(C, P1, P2, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BndLib.hxx`:116 - `BndLib::Add`
 pub fn add_elips2d_real_box2d(C: &crate::gp::Elips2d, Tol: f64, B: &mut crate::bnd::Box2d) {
     {
-        unsafe { crate::ffi::BndLib_add_elips2d_real_box2d(C, Tol, B) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BndLib_add_elips2d_real_box2d(C, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BndLib.hxx`:122 - `BndLib::Add`
@@ -121,8 +139,10 @@ pub fn add_elips2d_real3_box2d(
     B: &mut crate::bnd::Box2d,
 ) {
     {
-        unsafe { crate::ffi::BndLib_add_elips2d_real3_box2d(C, P1, P2, Tol, B) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BndLib_add_elips2d_real3_box2d(C, P1, P2, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BndLib.hxx`:128 - `BndLib::Add`
@@ -134,8 +154,10 @@ pub fn add_parab_real3_box(
     B: &mut crate::bnd::Box,
 ) {
     {
-        unsafe { crate::ffi::BndLib_add_parab_real3_box(P, P1, P2, Tol, B) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BndLib_add_parab_real3_box(P, P1, P2, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BndLib.hxx`:141 - `BndLib::Add`
@@ -154,8 +176,10 @@ pub fn add_parab2d_real3_box2d(
     B: &mut crate::bnd::Box2d,
 ) {
     {
-        unsafe { crate::ffi::BndLib_add_parab2d_real3_box2d(P, P1, P2, Tol, B) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BndLib_add_parab2d_real3_box2d(P, P1, P2, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BndLib.hxx`:147 - `BndLib::Add`
@@ -167,8 +191,10 @@ pub fn add_hypr_real3_box(
     B: &mut crate::bnd::Box,
 ) {
     {
-        unsafe { crate::ffi::BndLib_add_hypr_real3_box(H, P1, P2, Tol, B) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BndLib_add_hypr_real3_box(H, P1, P2, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BndLib.hxx`:160 - `BndLib::Add`
@@ -187,8 +213,10 @@ pub fn add_hypr2d_real3_box2d(
     B: &mut crate::bnd::Box2d,
 ) {
     {
-        unsafe { crate::ffi::BndLib_add_hypr2d_real3_box2d(H, P1, P2, Tol, B) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BndLib_add_hypr2d_real3_box2d(H, P1, P2, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BndLib.hxx`:167 - `BndLib::Add`
@@ -203,8 +231,11 @@ pub fn add_cylinder_real5_box(
     B: &mut crate::bnd::Box,
 ) {
     {
-        unsafe { crate::ffi::BndLib_add_cylinder_real5_box(S, UMin, UMax, VMin, VMax, Tol, B) };
-        crate::check_exception();
+        let __exc =
+            unsafe { crate::ffi::BndLib_add_cylinder_real5_box(S, UMin, UMax, VMin, VMax, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BndLib.hxx`:185 - `BndLib::Add`
@@ -226,8 +257,10 @@ pub fn add_cylinder_real3_box(
     B: &mut crate::bnd::Box,
 ) {
     {
-        unsafe { crate::ffi::BndLib_add_cylinder_real3_box(S, VMin, VMax, Tol, B) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BndLib_add_cylinder_real3_box(S, VMin, VMax, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BndLib.hxx`:192 - `BndLib::Add`
@@ -242,8 +275,11 @@ pub fn add_cone_real5_box(
     B: &mut crate::bnd::Box,
 ) {
     {
-        unsafe { crate::ffi::BndLib_add_cone_real5_box(S, UMin, UMax, VMin, VMax, Tol, B) };
-        crate::check_exception();
+        let __exc =
+            unsafe { crate::ffi::BndLib_add_cone_real5_box(S, UMin, UMax, VMin, VMax, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BndLib.hxx`:210 - `BndLib::Add`
@@ -265,15 +301,19 @@ pub fn add_cone_real3_box(
     B: &mut crate::bnd::Box,
 ) {
     {
-        unsafe { crate::ffi::BndLib_add_cone_real3_box(S, VMin, VMax, Tol, B) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BndLib_add_cone_real3_box(S, VMin, VMax, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BndLib.hxx`:216 - `BndLib::Add`
 pub fn add_sphere_real_box(S: &crate::gp::Sphere, Tol: f64, B: &mut crate::bnd::Box) {
     {
-        unsafe { crate::ffi::BndLib_add_sphere_real_box(S, Tol, B) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BndLib_add_sphere_real_box(S, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BndLib.hxx`:226 - `BndLib::Add`
@@ -295,15 +335,20 @@ pub fn add_sphere_real5_box(
     B: &mut crate::bnd::Box,
 ) {
     {
-        unsafe { crate::ffi::BndLib_add_sphere_real5_box(S, UMin, UMax, VMin, VMax, Tol, B) };
-        crate::check_exception();
+        let __exc =
+            unsafe { crate::ffi::BndLib_add_sphere_real5_box(S, UMin, UMax, VMin, VMax, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BndLib.hxx`:234 - `BndLib::Add`
 pub fn add_torus_real_box(P: &crate::gp::Torus, Tol: f64, B: &mut crate::bnd::Box) {
     {
-        unsafe { crate::ffi::BndLib_add_torus_real_box(P, Tol, B) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BndLib_add_torus_real_box(P, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BndLib.hxx`:245 - `BndLib::Add`
@@ -326,8 +371,11 @@ pub fn add_torus_real5_box(
     B: &mut crate::bnd::Box,
 ) {
     {
-        unsafe { crate::ffi::BndLib_add_torus_real5_box(P, UMin, UMax, VMin, VMax, Tol, B) };
-        crate::check_exception();
+        let __exc =
+            unsafe { crate::ffi::BndLib_add_torus_real5_box(P, UMin, UMax, VMin, VMax, Tol, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 
@@ -353,8 +401,10 @@ impl Add2dCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BndLib_Add2dCurve_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -392,8 +442,10 @@ impl Add2dCurve {
         B: &mut crate::bnd::Box2d,
     ) {
         {
-            unsafe { crate::ffi::BndLib_Add2dCurve_add_curve2d_real_box2d(C, Tol, B) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BndLib_Add2dCurve_add_curve2d_real_box2d(C, Tol, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -434,8 +486,11 @@ impl Add2dCurve {
         B: &mut crate::bnd::Box2d,
     ) {
         {
-            unsafe { crate::ffi::BndLib_Add2dCurve_add_curve2d_real3_box2d(C, U1, U2, Tol, B) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BndLib_Add2dCurve_add_curve2d_real3_box2d(C, U1, U2, Tol, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -453,8 +508,12 @@ impl Add2dCurve {
         Box: &mut crate::bnd::Box2d,
     ) {
         {
-            unsafe { crate::ffi::BndLib_Add2dCurve_add_handlegeom2dcurve_real_box2d(C, Tol, Box) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BndLib_Add2dCurve_add_handlegeom2dcurve_real_box2d(C, Tol, Box)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -475,10 +534,12 @@ impl Add2dCurve {
         B: &mut crate::bnd::Box2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BndLib_Add2dCurve_add_handlegeom2dcurve_real3_box2d(C, U1, U2, Tol, B)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -500,8 +561,10 @@ impl Add2dCurve {
         B: &mut crate::bnd::Box2d,
     ) {
         {
-            unsafe { crate::ffi::BndLib_Add2dCurve_add_optimal(C, U1, U2, Tol, B) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BndLib_Add2dCurve_add_optimal(C, U1, U2, Tol, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -528,8 +591,10 @@ impl Add3dCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BndLib_Add3dCurve_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -562,8 +627,10 @@ impl Add3dCurve {
     /// numbers, or two positive infinite real numbers.
     pub fn add_curve_real_box(C: &crate::adaptor3d::Curve, Tol: f64, B: &mut crate::bnd::Box) {
         {
-            unsafe { crate::ffi::BndLib_Add3dCurve_add_curve_real_box(C, Tol, B) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BndLib_Add3dCurve_add_curve_real_box(C, Tol, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -602,8 +669,11 @@ impl Add3dCurve {
         B: &mut crate::bnd::Box,
     ) {
         {
-            unsafe { crate::ffi::BndLib_Add3dCurve_add_curve_real3_box(C, U1, U2, Tol, B) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BndLib_Add3dCurve_add_curve_real3_box(C, U1, U2, Tol, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -617,8 +687,11 @@ impl Add3dCurve {
         B: &mut crate::bnd::Box,
     ) {
         {
-            unsafe { crate::ffi::BndLib_Add3dCurve_add_optimal_curve_real_box(C, Tol, B) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BndLib_Add3dCurve_add_optimal_curve_real_box(C, Tol, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -631,8 +704,12 @@ impl Add3dCurve {
         B: &mut crate::bnd::Box,
     ) {
         {
-            unsafe { crate::ffi::BndLib_Add3dCurve_add_optimal_curve_real3_box(C, U1, U2, Tol, B) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BndLib_Add3dCurve_add_optimal_curve_real3_box(C, U1, U2, Tol, B)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -649,8 +726,11 @@ impl Add3dCurve {
         B: &mut crate::bnd::Box,
     ) {
         {
-            unsafe { crate::ffi::BndLib_Add3dCurve_add_gen_curv(C, UMin, UMax, Tol, B) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BndLib_Add3dCurve_add_gen_curv(C, UMin, UMax, Tol, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -677,8 +757,10 @@ impl AddSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BndLib_AddSurface_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -713,8 +795,10 @@ impl AddSurface {
     /// AddSurface::Add ( S, Tol, B );
     pub fn add_surface_real_box(S: &crate::adaptor3d::Surface, Tol: f64, B: &mut crate::bnd::Box) {
         {
-            unsafe { crate::ffi::BndLib_AddSurface_add_surface_real_box(S, Tol, B) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BndLib_AddSurface_add_surface_real_box(S, Tol, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -760,12 +844,14 @@ impl AddSurface {
         B: &mut crate::bnd::Box,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BndLib_AddSurface_add_surface_real5_box(
                     S, UMin, UMax, VMin, VMax, Tol, B,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -778,8 +864,11 @@ impl AddSurface {
         B: &mut crate::bnd::Box,
     ) {
         {
-            unsafe { crate::ffi::BndLib_AddSurface_add_optimal_surface_real_box(S, Tol, B) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BndLib_AddSurface_add_optimal_surface_real_box(S, Tol, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -794,12 +883,14 @@ impl AddSurface {
         B: &mut crate::bnd::Box,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BndLib_AddSurface_add_optimal_surface_real5_box(
                     S, UMin, UMax, VMin, VMax, Tol, B,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -818,10 +909,12 @@ impl AddSurface {
         B: &mut crate::bnd::Box,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BndLib_AddSurface_add_gen_surf(S, UMin, UMax, VMin, VMax, Tol, B)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

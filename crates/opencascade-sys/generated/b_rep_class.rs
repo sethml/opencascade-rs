@@ -27,8 +27,10 @@ impl Edge {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepClass_Edge_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -39,8 +41,10 @@ impl Edge {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepClass_Edge_ctor_edge_face(E, F) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -49,8 +53,11 @@ impl Edge {
     pub fn edge_mut(&mut self) -> &mut crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::BRepClass_Edge_edge_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -58,8 +65,11 @@ impl Edge {
     pub fn edge(&self) -> &crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::BRepClass_Edge_edge(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -68,8 +78,11 @@ impl Edge {
     pub fn face_mut(&mut self) -> &mut crate::topo_ds::Face {
         {
             let __result = unsafe { crate::ffi::BRepClass_Edge_face_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -77,8 +90,11 @@ impl Edge {
     pub fn face(&self) -> &crate::topo_ds::Face {
         {
             let __result = unsafe { crate::ffi::BRepClass_Edge_face(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -87,8 +103,11 @@ impl Edge {
     pub fn next_edge(&self) -> &crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::BRepClass_Edge_next_edge(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -99,8 +118,11 @@ impl Edge {
         theMapVE: &crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
     ) {
         {
-            unsafe { crate::ffi::BRepClass_Edge_set_next_edge(self as *mut Self, theMapVE) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepClass_Edge_set_next_edge(self as *mut Self, theMapVE) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -109,8 +131,11 @@ impl Edge {
     pub fn max_tolerance(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepClass_Edge_max_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -119,8 +144,12 @@ impl Edge {
     /// which to start checking in the intersector
     pub fn set_max_tolerance(&mut self, theValue: f64) {
         {
-            unsafe { crate::ffi::BRepClass_Edge_set_max_tolerance(self as *mut Self, theValue) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepClass_Edge_set_max_tolerance(self as *mut Self, theValue)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -130,8 +159,11 @@ impl Edge {
     pub fn use_bnd_box(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepClass_Edge_use_bnd_box(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -140,8 +172,11 @@ impl Edge {
     /// using boxes or not
     pub fn set_use_bnd_box(&mut self, theValue: bool) {
         {
-            unsafe { crate::ffi::BRepClass_Edge_set_use_bnd_box(self as *mut Self, theValue) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepClass_Edge_set_use_bnd_box(self as *mut Self, theValue) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -165,8 +200,10 @@ impl FClass2dOfFClassifier {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepClass_FClass2dOfFClassifier_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -178,10 +215,12 @@ impl FClass2dOfFClassifier {
     /// attached to the line segment in intersections.
     pub fn reset(&mut self, L: &crate::gp::Lin2d, P: f64, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepClass_FClass2dOfFClassifier_reset(self as *mut Self, L, P, Tol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -190,10 +229,12 @@ impl FClass2dOfFClassifier {
     /// <E> from the boundary.
     pub fn compare(&mut self, E: &Edge, Or: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepClass_FClass2dOfFClassifier_compare(self as *mut Self, E, Or.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -204,8 +245,11 @@ impl FClass2dOfFClassifier {
             let __result = unsafe {
                 crate::ffi::BRepClass_FClass2dOfFClassifier_parameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -216,8 +260,11 @@ impl FClass2dOfFClassifier {
             let __result = unsafe {
                 crate::ffi::BRepClass_FClass2dOfFClassifier_intersector(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -233,8 +280,11 @@ impl FClass2dOfFClassifier {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -244,8 +294,11 @@ impl FClass2dOfFClassifier {
         {
             let __result =
                 unsafe { crate::ffi::BRepClass_FClass2dOfFClassifier_state(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -258,8 +311,11 @@ impl FClass2dOfFClassifier {
             let __result = unsafe {
                 crate::ffi::BRepClass_FClass2dOfFClassifier_is_head_or_end(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -283,8 +339,10 @@ impl FClassifier {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepClass_FClassifier_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -300,8 +358,10 @@ impl FClassifier {
             let __result = unsafe {
                 crate::ffi::BRepClass_FClassifier_ctor_faceexplorer_pnt2d_real(F, P, Tol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -310,8 +370,11 @@ impl FClassifier {
     /// face described by <F>.
     pub fn perform(&mut self, F: &mut FaceExplorer, P: &crate::gp::Pnt2d, Tol: f64) {
         {
-            unsafe { crate::ffi::BRepClass_FClassifier_perform(self as *mut Self, F, P, Tol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepClass_FClassifier_perform(self as *mut Self, F, P, Tol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -320,8 +383,11 @@ impl FClassifier {
     pub fn state(&self) -> crate::top_abs::State {
         {
             let __result = unsafe { crate::ffi::BRepClass_FClassifier_state(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -332,8 +398,11 @@ impl FClassifier {
         {
             let __result =
                 unsafe { crate::ffi::BRepClass_FClassifier_rejected(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -344,8 +413,11 @@ impl FClassifier {
         {
             let __result =
                 unsafe { crate::ffi::BRepClass_FClassifier_no_wires(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -356,8 +428,11 @@ impl FClassifier {
     pub fn edge(&self) -> &Edge {
         {
             let __result = unsafe { crate::ffi::BRepClass_FClassifier_edge(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -368,8 +443,11 @@ impl FClassifier {
         {
             let __result =
                 unsafe { crate::ffi::BRepClass_FClassifier_edge_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -380,8 +458,11 @@ impl FClassifier {
         {
             let __result =
                 unsafe { crate::ffi::BRepClass_FClassifier_position(self as *const Self) };
-            crate::check_exception();
-            crate::int_res2d::Position::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_res2d::Position::try_from(__val).unwrap()
         }
     }
 }
@@ -406,8 +487,10 @@ impl FaceClassifier {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepClass_FaceClassifier_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -423,8 +506,10 @@ impl FaceClassifier {
             let __result = unsafe {
                 crate::ffi::BRepClass_FaceClassifier_ctor_faceexplorer_pnt2d_real(F, P, Tol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -450,8 +535,10 @@ impl FaceClassifier {
                     theGapCheckTol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -477,8 +564,10 @@ impl FaceClassifier {
                     theGapCheckTol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -550,7 +639,7 @@ impl FaceClassifier {
         theGapCheckTol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepClass_FaceClassifier_perform_face_pnt2d_real_bool_real(
                     self as *mut Self,
                     theF,
@@ -560,7 +649,9 @@ impl FaceClassifier {
                     theGapCheckTol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -578,7 +669,7 @@ impl FaceClassifier {
         theGapCheckTol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepClass_FaceClassifier_perform_face_pnt_real_bool_real(
                     self as *mut Self,
                     theF,
@@ -588,30 +679,32 @@ impl FaceClassifier {
                     theGapCheckTol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to BRepClass_FClassifier
     pub fn as_f_classifier(&self) -> &FClassifier {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_FaceClassifier_as_BRepClass_FClassifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepClass_FaceClassifier_as_BRepClass_FClassifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepClass_FClassifier (mutable)
     pub fn as_f_classifier_mut(&mut self) -> &mut FClassifier {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_FaceClassifier_as_BRepClass_FClassifier_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepClass_FaceClassifier_as_BRepClass_FClassifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:55 - `BRepClass_FClassifier::State()`
@@ -620,8 +713,11 @@ impl FaceClassifier {
             let __result = unsafe {
                 crate::ffi::BRepClass_FaceClassifier_inherited_State(self as *const Self)
             };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -631,8 +727,11 @@ impl FaceClassifier {
             let __result = unsafe {
                 crate::ffi::BRepClass_FaceClassifier_inherited_Rejected(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -642,8 +741,11 @@ impl FaceClassifier {
             let __result = unsafe {
                 crate::ffi::BRepClass_FaceClassifier_inherited_NoWires(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -652,8 +754,11 @@ impl FaceClassifier {
         {
             let __result =
                 unsafe { crate::ffi::BRepClass_FaceClassifier_inherited_Edge(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -663,8 +768,11 @@ impl FaceClassifier {
             let __result = unsafe {
                 crate::ffi::BRepClass_FaceClassifier_inherited_EdgeParameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -674,8 +782,11 @@ impl FaceClassifier {
             let __result = unsafe {
                 crate::ffi::BRepClass_FaceClassifier_inherited_Position(self as *const Self)
             };
-            crate::check_exception();
-            crate::int_res2d::Position::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_res2d::Position::try_from(__val).unwrap()
         }
     }
 }
@@ -700,8 +811,10 @@ impl FaceExplorer {
     pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepClass_FaceExplorer_ctor_face(F) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -715,8 +828,11 @@ impl FaceExplorer {
             let __result = unsafe {
                 crate::ffi::BRepClass_FaceExplorer_check_point(self as *mut Self, thePoint)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -727,8 +843,11 @@ impl FaceExplorer {
         {
             let __result =
                 unsafe { crate::ffi::BRepClass_FaceExplorer_reject(self as *const Self, P) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -745,8 +864,11 @@ impl FaceExplorer {
         {
             let __result =
                 unsafe { crate::ffi::BRepClass_FaceExplorer_segment(self as *mut Self, P, L, Par) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -764,8 +886,11 @@ impl FaceExplorer {
             let __result = unsafe {
                 crate::ffi::BRepClass_FaceExplorer_other_segment(self as *mut Self, P, L, Par)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -773,8 +898,10 @@ impl FaceExplorer {
     /// Starts an exploration of the wires.
     pub fn init_wires(&mut self) {
         {
-            unsafe { crate::ffi::BRepClass_FaceExplorer_init_wires(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepClass_FaceExplorer_init_wires(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -784,8 +911,11 @@ impl FaceExplorer {
         {
             let __result =
                 unsafe { crate::ffi::BRepClass_FaceExplorer_more_wires(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -793,8 +923,10 @@ impl FaceExplorer {
     /// Sets the explorer  to the  next  wire.
     pub fn next_wire(&mut self) {
         {
-            unsafe { crate::ffi::BRepClass_FaceExplorer_next_wire(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepClass_FaceExplorer_next_wire(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -806,8 +938,11 @@ impl FaceExplorer {
             let __result = unsafe {
                 crate::ffi::BRepClass_FaceExplorer_reject_wire(self as *const Self, L, Par)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -816,8 +951,10 @@ impl FaceExplorer {
     /// wire.
     pub fn init_edges(&mut self) {
         {
-            unsafe { crate::ffi::BRepClass_FaceExplorer_init_edges(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepClass_FaceExplorer_init_edges(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -827,8 +964,11 @@ impl FaceExplorer {
         {
             let __result =
                 unsafe { crate::ffi::BRepClass_FaceExplorer_more_edges(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -836,8 +976,10 @@ impl FaceExplorer {
     /// Sets the explorer  to the  next  edge.
     pub fn next_edge(&mut self) {
         {
-            unsafe { crate::ffi::BRepClass_FaceExplorer_next_edge(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepClass_FaceExplorer_next_edge(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -849,8 +991,11 @@ impl FaceExplorer {
             let __result = unsafe {
                 crate::ffi::BRepClass_FaceExplorer_reject_edge(self as *const Self, L, Par)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -859,14 +1004,16 @@ impl FaceExplorer {
     pub fn current_edge(&self, E: &mut Edge, Or: &mut crate::top_abs::Orientation) {
         let mut Or_i32_: i32 = (*Or).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepClass_FaceExplorer_current_edge(
                     self as *const Self,
                     E,
                     &mut Or_i32_,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
     }
@@ -877,8 +1024,11 @@ impl FaceExplorer {
         {
             let __result =
                 unsafe { crate::ffi::BRepClass_FaceExplorer_max_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -887,10 +1037,12 @@ impl FaceExplorer {
     /// which to start checking in the intersector
     pub fn set_max_tolerance(&mut self, theValue: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepClass_FaceExplorer_set_max_tolerance(self as *mut Self, theValue)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -901,8 +1053,11 @@ impl FaceExplorer {
         {
             let __result =
                 unsafe { crate::ffi::BRepClass_FaceExplorer_use_bnd_box(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -911,10 +1066,12 @@ impl FaceExplorer {
     /// using boxes or not
     pub fn set_use_bnd_box(&mut self, theValue: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepClass_FaceExplorer_set_use_bnd_box(self as *mut Self, theValue)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -938,8 +1095,10 @@ impl FacePassiveClassifier {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepClass_FacePassiveClassifier_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -951,10 +1110,12 @@ impl FacePassiveClassifier {
     /// attached to the line segment in intersections.
     pub fn reset(&mut self, L: &crate::gp::Lin2d, P: f64, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepClass_FacePassiveClassifier_reset(self as *mut Self, L, P, Tol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -963,10 +1124,12 @@ impl FacePassiveClassifier {
     /// <E> from the boundary.
     pub fn compare(&mut self, E: &Edge, Or: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepClass_FacePassiveClassifier_compare(self as *mut Self, E, Or.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -977,8 +1140,11 @@ impl FacePassiveClassifier {
             let __result = unsafe {
                 crate::ffi::BRepClass_FacePassiveClassifier_parameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -989,8 +1155,11 @@ impl FacePassiveClassifier {
             let __result = unsafe {
                 crate::ffi::BRepClass_FacePassiveClassifier_intersector(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1006,8 +1175,11 @@ impl FacePassiveClassifier {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1017,8 +1189,11 @@ impl FacePassiveClassifier {
         {
             let __result =
                 unsafe { crate::ffi::BRepClass_FacePassiveClassifier_state(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -1031,8 +1206,11 @@ impl FacePassiveClassifier {
             let __result = unsafe {
                 crate::ffi::BRepClass_FacePassiveClassifier_is_head_or_end(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1057,8 +1235,10 @@ impl Intersector {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepClass_Intersector_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1066,8 +1246,12 @@ impl Intersector {
     /// Intersect the line segment and the edge.
     pub fn perform(&mut self, L: &crate::gp::Lin2d, P: f64, Tol: f64, E: &Edge) {
         {
-            unsafe { crate::ffi::BRepClass_Intersector_perform(self as *mut Self, L, P, Tol, E) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepClass_Intersector_perform(self as *mut Self, L, P, Tol, E)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1084,10 +1268,12 @@ impl Intersector {
         C: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepClass_Intersector_local_geometry(self as *const Self, E, U, T, N, C)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1095,52 +1281,52 @@ impl Intersector {
     pub fn as_geom2d_int_int_conic_curve_of_g_inter(
         &self,
     ) -> &crate::geom2d_int::IntConicCurveOfGInter {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_Intersector_as_Geom2dInt_IntConicCurveOfGInter(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepClass_Intersector_as_Geom2dInt_IntConicCurveOfGInter(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2dInt_IntConicCurveOfGInter (mutable)
     pub fn as_geom2d_int_int_conic_curve_of_g_inter_mut(
         &mut self,
     ) -> &mut crate::geom2d_int::IntConicCurveOfGInter {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_Intersector_as_Geom2dInt_IntConicCurveOfGInter_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepClass_Intersector_as_Geom2dInt_IntConicCurveOfGInter_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_Intersector_as_IntRes2d_Intersection(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepClass_Intersector_as_IntRes2d_Intersection(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IntRes2d_Intersection (mutable)
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepClass_Intersector_as_IntRes2d_Intersection_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepClass_Intersector_as_IntRes2d_Intersection_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
@@ -1148,8 +1334,11 @@ impl Intersector {
         {
             let __result =
                 unsafe { crate::ffi::BRepClass_Intersector_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1158,8 +1347,11 @@ impl Intersector {
         {
             let __result =
                 unsafe { crate::ffi::BRepClass_Intersector_inherited_IsEmpty(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1169,8 +1361,11 @@ impl Intersector {
             let __result = unsafe {
                 crate::ffi::BRepClass_Intersector_inherited_NbPoints(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1180,8 +1375,11 @@ impl Intersector {
             let __result = unsafe {
                 crate::ffi::BRepClass_Intersector_inherited_Point(self as *const Self, N)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1191,8 +1389,11 @@ impl Intersector {
             let __result = unsafe {
                 crate::ffi::BRepClass_Intersector_inherited_NbSegments(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1202,21 +1403,26 @@ impl Intersector {
             let __result = unsafe {
                 crate::ffi::BRepClass_Intersector_inherited_Segment(self as *const Self, N)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepClass_Intersector_inherited_SetReversedParameters(
                     self as *mut Self,
                     Reverseflag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

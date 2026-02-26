@@ -125,8 +125,10 @@ impl Domain {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntRes2d_Domain_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -146,8 +148,10 @@ impl Domain {
                     Pnt1, Par1, Tol1, Pnt2, Par2, Tol2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -164,8 +168,10 @@ impl Domain {
         {
             let __result =
                 unsafe { crate::ffi::IntRes2d_Domain_ctor_pnt2d_real2_bool(Pnt, Par, Tol, First) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -181,7 +187,7 @@ impl Domain {
         Tol2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntRes2d_Domain_set_values_pnt2d_real2_pnt2d_real2(
                     self as *mut Self,
                     Pnt1,
@@ -192,7 +198,9 @@ impl Domain {
                     Tol2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -200,8 +208,10 @@ impl Domain {
     /// Sets the values for an infinite domain.
     pub fn set_values(&mut self) {
         {
-            unsafe { crate::ffi::IntRes2d_Domain_set_values(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntRes2d_Domain_set_values(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -215,7 +225,7 @@ impl Domain {
         First: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntRes2d_Domain_set_values_pnt2d_real2_bool(
                     self as *mut Self,
                     Pnt,
@@ -224,7 +234,9 @@ impl Domain {
                     First,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -232,14 +244,16 @@ impl Domain {
     /// Defines a closed domain.
     pub fn set_equivalent_parameters(&mut self, zero: f64, period: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntRes2d_Domain_set_equivalent_parameters(
                     self as *mut Self,
                     zero,
                     period,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -251,8 +265,11 @@ impl Domain {
         {
             let __result =
                 unsafe { crate::ffi::IntRes2d_Domain_has_first_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -264,8 +281,11 @@ impl Domain {
         {
             let __result =
                 unsafe { crate::ffi::IntRes2d_Domain_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -276,8 +296,11 @@ impl Domain {
     pub fn first_point(&self) -> &crate::gp::Pnt2d {
         {
             let __result = unsafe { crate::ffi::IntRes2d_Domain_first_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -289,8 +312,11 @@ impl Domain {
         {
             let __result =
                 unsafe { crate::ffi::IntRes2d_Domain_first_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -302,8 +328,11 @@ impl Domain {
         {
             let __result =
                 unsafe { crate::ffi::IntRes2d_Domain_has_last_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -315,8 +344,11 @@ impl Domain {
         {
             let __result =
                 unsafe { crate::ffi::IntRes2d_Domain_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -327,8 +359,11 @@ impl Domain {
     pub fn last_point(&self) -> &crate::gp::Pnt2d {
         {
             let __result = unsafe { crate::ffi::IntRes2d_Domain_last_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -340,8 +375,11 @@ impl Domain {
         {
             let __result =
                 unsafe { crate::ffi::IntRes2d_Domain_last_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -350,8 +388,11 @@ impl Domain {
     pub fn is_closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::IntRes2d_Domain_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -360,14 +401,16 @@ impl Domain {
     /// Otherwise, the exception DomainError is raised.
     pub fn equivalent_parameters(&self, zero: &mut f64, zeroplusperiod: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntRes2d_Domain_equivalent_parameters(
                     self as *const Self,
                     zero,
                     zeroplusperiod,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -389,8 +432,11 @@ impl Intersection {
         {
             let __result =
                 unsafe { crate::ffi::IntRes2d_Intersection_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -402,8 +448,11 @@ impl Intersection {
         {
             let __result =
                 unsafe { crate::ffi::IntRes2d_Intersection_is_empty(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -415,8 +464,11 @@ impl Intersection {
         {
             let __result =
                 unsafe { crate::ffi::IntRes2d_Intersection_nb_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -430,8 +482,11 @@ impl Intersection {
         {
             let __result =
                 unsafe { crate::ffi::IntRes2d_Intersection_point(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -443,8 +498,11 @@ impl Intersection {
         {
             let __result =
                 unsafe { crate::ffi::IntRes2d_Intersection_nb_segments(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -458,21 +516,26 @@ impl Intersection {
         {
             let __result =
                 unsafe { crate::ffi::IntRes2d_Intersection_segment(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntRes2d_Intersection_set_reversed_parameters(
                     self as *mut Self,
                     Reverseflag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -498,8 +561,10 @@ impl IntersectionPoint {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntRes2d_IntersectionPoint_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -529,8 +594,10 @@ impl IntersectionPoint {
                     ReversedFlag,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -548,7 +615,7 @@ impl IntersectionPoint {
         ReversedFlag: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntRes2d_IntersectionPoint_set_values(
                     self as *mut Self,
                     P,
@@ -559,7 +626,9 @@ impl IntersectionPoint {
                     ReversedFlag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -570,8 +639,11 @@ impl IntersectionPoint {
         {
             let __result =
                 unsafe { crate::ffi::IntRes2d_IntersectionPoint_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -582,8 +654,11 @@ impl IntersectionPoint {
             let __result = unsafe {
                 crate::ffi::IntRes2d_IntersectionPoint_param_on_first(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -594,8 +669,11 @@ impl IntersectionPoint {
             let __result = unsafe {
                 crate::ffi::IntRes2d_IntersectionPoint_param_on_second(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -607,8 +685,11 @@ impl IntersectionPoint {
             let __result = unsafe {
                 crate::ffi::IntRes2d_IntersectionPoint_transition_of_first(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -620,8 +701,11 @@ impl IntersectionPoint {
             let __result = unsafe {
                 crate::ffi::IntRes2d_IntersectionPoint_transition_of_second(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -647,8 +731,10 @@ impl IntersectionSegment {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntRes2d_IntersectionSegment_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -668,8 +754,10 @@ impl IntersectionSegment {
                     ReverseFlag,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -689,8 +777,10 @@ impl IntersectionSegment {
                     ReverseFlag,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -699,8 +789,10 @@ impl IntersectionSegment {
     pub fn new_bool(Oppos: bool) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntRes2d_IntersectionSegment_ctor_bool(Oppos) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -712,8 +804,11 @@ impl IntersectionSegment {
             let __result = unsafe {
                 crate::ffi::IntRes2d_IntersectionSegment_is_opposite(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -729,8 +824,11 @@ impl IntersectionSegment {
             let __result = unsafe {
                 crate::ffi::IntRes2d_IntersectionSegment_has_first_point(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -744,8 +842,11 @@ impl IntersectionSegment {
             let __result = unsafe {
                 crate::ffi::IntRes2d_IntersectionSegment_first_point(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -761,8 +862,11 @@ impl IntersectionSegment {
             let __result = unsafe {
                 crate::ffi::IntRes2d_IntersectionSegment_has_last_point(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -775,8 +879,11 @@ impl IntersectionSegment {
         {
             let __result =
                 unsafe { crate::ffi::IntRes2d_IntersectionSegment_last_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -808,8 +915,10 @@ impl Transition {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntRes2d_Transition_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -828,8 +937,10 @@ impl Transition {
                     Type.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -850,8 +961,10 @@ impl Transition {
                     Oppos,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -860,8 +973,10 @@ impl Transition {
     pub fn new_position(Pos: crate::int_res2d::Position) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntRes2d_Transition_ctor_position(Pos.into()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -874,7 +989,7 @@ impl Transition {
         Type: crate::int_res2d::TypeTrans,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntRes2d_Transition_set_value_bool_position_typetrans(
                     self as *mut Self,
                     Tangent,
@@ -882,7 +997,9 @@ impl Transition {
                     Type.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -896,7 +1013,7 @@ impl Transition {
         Oppos: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntRes2d_Transition_set_value_bool_position_situation_bool(
                     self as *mut Self,
                     Tangent,
@@ -905,7 +1022,9 @@ impl Transition {
                     Oppos,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -913,10 +1032,12 @@ impl Transition {
     /// Sets the values of an UNDECIDED transition.
     pub fn set_value_position(&mut self, Pos: crate::int_res2d::Position) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntRes2d_Transition_set_value_position(self as *mut Self, Pos.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -924,8 +1045,12 @@ impl Transition {
     /// Sets the value of the position.
     pub fn set_position(&mut self, Pos: crate::int_res2d::Position) {
         {
-            unsafe { crate::ffi::IntRes2d_Transition_set_position(self as *mut Self, Pos.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntRes2d_Transition_set_position(self as *mut Self, Pos.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -937,8 +1062,11 @@ impl Transition {
         {
             let __result =
                 unsafe { crate::ffi::IntRes2d_Transition_position_on_curve(self as *const Self) };
-            crate::check_exception();
-            crate::int_res2d::Position::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_res2d::Position::try_from(__val).unwrap()
         }
     }
 
@@ -951,8 +1079,11 @@ impl Transition {
         {
             let __result =
                 unsafe { crate::ffi::IntRes2d_Transition_transition_type(self as *const Self) };
-            crate::check_exception();
-            crate::int_res2d::TypeTrans::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_res2d::TypeTrans::try_from(__val).unwrap()
         }
     }
 
@@ -965,8 +1096,11 @@ impl Transition {
         {
             let __result =
                 unsafe { crate::ffi::IntRes2d_Transition_is_tangent(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -983,8 +1117,11 @@ impl Transition {
         {
             let __result =
                 unsafe { crate::ffi::IntRes2d_Transition_situation(self as *const Self) };
-            crate::check_exception();
-            crate::int_res2d::Situation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_res2d::Situation::try_from(__val).unwrap()
         }
     }
 
@@ -999,8 +1136,11 @@ impl Transition {
         {
             let __result =
                 unsafe { crate::ffi::IntRes2d_Transition_is_opposite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

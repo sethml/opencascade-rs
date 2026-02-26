@@ -45,8 +45,10 @@ impl Inter {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepIntCurveSurface_Inter_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -60,7 +62,7 @@ impl Inter {
         theTol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepIntCurveSurface_Inter_init_shape_curve_real(
                     self as *mut Self,
                     theShape,
@@ -68,7 +70,9 @@ impl Inter {
                     theTol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -82,7 +86,7 @@ impl Inter {
         theTol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepIntCurveSurface_Inter_init_shape_lin_real(
                     self as *mut Self,
                     theShape,
@@ -90,7 +94,9 @@ impl Inter {
                     theTol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -99,10 +105,12 @@ impl Inter {
     /// tolerance used for the classification.
     pub fn load(&mut self, theShape: &crate::topo_ds::Shape, theTol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepIntCurveSurface_Inter_load(self as *mut Self, theShape, theTol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -110,10 +118,12 @@ impl Inter {
     /// Method to find intersections of specified curve with loaded shape.
     pub fn init_curve(&mut self, theCurve: &crate::geom_adaptor::Curve) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepIntCurveSurface_Inter_init_curve(self as *mut Self, theCurve)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -123,8 +133,11 @@ impl Inter {
         {
             let __result =
                 unsafe { crate::ffi::BRepIntCurveSurface_Inter_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -132,8 +145,10 @@ impl Inter {
     /// Sets the next intersection point to check.
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::BRepIntCurveSurface_Inter_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepIntCurveSurface_Inter_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -143,8 +158,11 @@ impl Inter {
         {
             let __result =
                 unsafe { crate::ffi::BRepIntCurveSurface_Inter_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -154,8 +172,11 @@ impl Inter {
         {
             let __result =
                 unsafe { crate::ffi::BRepIntCurveSurface_Inter_pnt(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -165,8 +186,11 @@ impl Inter {
     pub fn u(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepIntCurveSurface_Inter_u(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -176,8 +200,11 @@ impl Inter {
     pub fn v(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepIntCurveSurface_Inter_v(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -187,8 +214,11 @@ impl Inter {
     pub fn w(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepIntCurveSurface_Inter_w(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -198,8 +228,11 @@ impl Inter {
         {
             let __result =
                 unsafe { crate::ffi::BRepIntCurveSurface_Inter_state(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -209,8 +242,11 @@ impl Inter {
         {
             let __result =
                 unsafe { crate::ffi::BRepIntCurveSurface_Inter_transition(self as *const Self) };
-            crate::check_exception();
-            crate::int_curve_surface::TransitionOnCurve::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_curve_surface::TransitionOnCurve::try_from(__val).unwrap()
         }
     }
 
@@ -220,8 +256,11 @@ impl Inter {
         {
             let __result =
                 unsafe { crate::ffi::BRepIntCurveSurface_Inter_face(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }

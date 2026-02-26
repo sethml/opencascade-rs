@@ -31,8 +31,11 @@ pub fn spline_curve_from_iges(
         let __result = unsafe {
             crate::ffi::IGESConvGeom_spline_curve_from_iges(igesent, epscoef, epsgeom, result)
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `IGESConvGeom.hxx`:68 - `IGESConvGeom::IncreaseCurveContinuity`
@@ -53,8 +56,11 @@ pub fn increase_curve_continuity_handlegeombsplinecurve_real_int(
                 curve, epsgeom, continuity,
             )
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `IGESConvGeom.hxx`:73 - `IGESConvGeom::IncreaseCurveContinuity`
@@ -69,8 +75,11 @@ pub fn increase_curve_continuity_handlegeom2dbsplinecurve_real_int(
                 curve, epsgeom, continuity,
             )
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `IGESConvGeom.hxx`:90 - `IGESConvGeom::SplineSurfaceFromIGES`
@@ -96,8 +105,11 @@ pub fn spline_surface_from_iges(
         let __result = unsafe {
             crate::ffi::IGESConvGeom_spline_surface_from_iges(igesent, epscoef, epsgeom, result)
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `IGESConvGeom.hxx`:102 - `IGESConvGeom::IncreaseSurfaceContinuity`
@@ -116,8 +128,11 @@ pub fn increase_surface_continuity(
         let __result = unsafe {
             crate::ffi::IGESConvGeom_increase_surface_continuity(surface, epsgeom, continuity)
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 
@@ -145,8 +160,10 @@ impl GeomBuilder {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESConvGeom_GeomBuilder_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -154,8 +171,10 @@ impl GeomBuilder {
     /// Clears list of Points/Vectors and data about Transformation
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::IGESConvGeom_GeomBuilder_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IGESConvGeom_GeomBuilder_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -163,8 +182,11 @@ impl GeomBuilder {
     /// Adds a XY (Z=0) to the list of points
     pub fn add_xy(&mut self, val: &crate::gp::XY) {
         {
-            unsafe { crate::ffi::IGESConvGeom_GeomBuilder_add_xy(self as *mut Self, val) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESConvGeom_GeomBuilder_add_xy(self as *mut Self, val) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -172,8 +194,11 @@ impl GeomBuilder {
     /// Adds a XYZ to the list of points
     pub fn add_xyz(&mut self, val: &crate::gp::XYZ) {
         {
-            unsafe { crate::ffi::IGESConvGeom_GeomBuilder_add_xyz(self as *mut Self, val) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESConvGeom_GeomBuilder_add_xyz(self as *mut Self, val) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -184,8 +209,11 @@ impl GeomBuilder {
     /// AddVec adds to the last added XY or XYZ
     pub fn add_vec(&mut self, val: &crate::gp::XYZ) {
         {
-            unsafe { crate::ffi::IGESConvGeom_GeomBuilder_add_vec(self as *mut Self, val) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESConvGeom_GeomBuilder_add_vec(self as *mut Self, val) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -195,8 +223,11 @@ impl GeomBuilder {
         {
             let __result =
                 unsafe { crate::ffi::IGESConvGeom_GeomBuilder_nb_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -206,8 +237,11 @@ impl GeomBuilder {
         {
             let __result =
                 unsafe { crate::ffi::IGESConvGeom_GeomBuilder_point(self as *const Self, num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -231,8 +265,11 @@ impl GeomBuilder {
                     polyline,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -244,8 +281,11 @@ impl GeomBuilder {
         {
             let __result =
                 unsafe { crate::ffi::IGESConvGeom_GeomBuilder_position(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -253,10 +293,12 @@ impl GeomBuilder {
     /// Sets final position from an already defined Trsf
     pub fn set_position_trsf(&mut self, pos: &crate::gp::Trsf) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESConvGeom_GeomBuilder_set_position_trsf(self as *mut Self, pos)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -264,10 +306,12 @@ impl GeomBuilder {
     /// Sets final position from an Ax3
     pub fn set_position_ax3(&mut self, pos: &crate::gp::Ax3) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESConvGeom_GeomBuilder_set_position_ax3(self as *mut Self, pos)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -275,10 +319,12 @@ impl GeomBuilder {
     /// Sets final position from an Ax2
     pub fn set_position_ax2(&mut self, pos: &crate::gp::Ax2) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESConvGeom_GeomBuilder_set_position_ax2(self as *mut Self, pos)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -288,10 +334,12 @@ impl GeomBuilder {
     /// other axes are defined arbitrarily)
     pub fn set_position_ax1(&mut self, pos: &crate::gp::Ax1) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESConvGeom_GeomBuilder_set_position_ax1(self as *mut Self, pos)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -301,8 +349,11 @@ impl GeomBuilder {
         {
             let __result =
                 unsafe { crate::ffi::IGESConvGeom_GeomBuilder_is_identity(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -313,8 +364,11 @@ impl GeomBuilder {
         {
             let __result =
                 unsafe { crate::ffi::IGESConvGeom_GeomBuilder_is_translation(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -326,8 +380,11 @@ impl GeomBuilder {
         {
             let __result =
                 unsafe { crate::ffi::IGESConvGeom_GeomBuilder_is_z_only(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -338,10 +395,12 @@ impl GeomBuilder {
     /// Z will be regarded as a Z Displacement (can be ignored)
     pub fn eval_xyz(&self, val: &crate::gp::XYZ, X: &mut f64, Y: &mut f64, Z: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESConvGeom_GeomBuilder_eval_xyz(self as *const Self, val, X, Y, Z)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -359,8 +418,11 @@ impl GeomBuilder {
             let __result = unsafe {
                 crate::ffi::IGESConvGeom_GeomBuilder_make_transformation(self as *const Self, unit)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }

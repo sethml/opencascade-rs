@@ -11,8 +11,11 @@ pub fn xgetenv(aCString: &str) -> crate::OwnedPtr<crate::t_collection::ExtendedS
     let c_aCString = std::ffi::CString::new(aCString).unwrap();
     {
         let __result = unsafe { crate::ffi::UTL_xgetenv(c_aCString.as_ptr()) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `UTL.hxx`:44 - `UTL::OpenFile`
@@ -23,8 +26,11 @@ pub fn open_file(
 ) -> crate::storage::Error {
     {
         let __result = unsafe { crate::ffi::UTL_open_file(aFile, aName, aMode.into()) };
-        crate::check_exception();
-        crate::storage::Error::try_from(__result).unwrap()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        crate::storage::Error::try_from(__val).unwrap()
     }
 }
 /// **Source:** `UTL.hxx`:48 - `UTL::AddToUserInfo`
@@ -33,40 +39,54 @@ pub fn add_to_user_info(
     anInfo: &crate::t_collection::ExtendedString,
 ) {
     {
-        unsafe { crate::ffi::UTL_add_to_user_info(aData, anInfo) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::UTL_add_to_user_info(aData, anInfo) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `UTL.hxx`:51 - `UTL::Path`
 pub fn path(aFileName: &crate::t_collection::ExtendedString) -> crate::OwnedPtr<crate::osd::Path> {
     {
         let __result = unsafe { crate::ffi::UTL_path(aFileName) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `UTL.hxx`:53 - `UTL::Disk`
 pub fn disk(aPath: &crate::osd::Path) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
     {
         let __result = unsafe { crate::ffi::UTL_disk(aPath) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `UTL.hxx`:55 - `UTL::Trek`
 pub fn trek(aPath: &crate::osd::Path) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
     {
         let __result = unsafe { crate::ffi::UTL_trek(aPath) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `UTL.hxx`:57 - `UTL::Name`
 pub fn name(aPath: &crate::osd::Path) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
     {
         let __result = unsafe { crate::ffi::UTL_name(aPath) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `UTL.hxx`:59 - `UTL::Extension`
@@ -75,8 +95,11 @@ pub fn extension_path(
 ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
     {
         let __result = unsafe { crate::ffi::UTL_extension_path(aPath) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `UTL.hxx`:61 - `UTL::FileIterator`
@@ -86,8 +109,11 @@ pub fn file_iterator(
 ) -> crate::OwnedPtr<crate::osd::FileIterator> {
     {
         let __result = unsafe { crate::ffi::UTL_file_iterator(aPath, aMask) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `UTL.hxx`:64 - `UTL::Extension`
@@ -96,16 +122,22 @@ pub fn extension_extendedstring(
 ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
     {
         let __result = unsafe { crate::ffi::UTL_extension_extendedstring(aFileName) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `UTL.hxx`:67 - `UTL::LocalHost`
 pub fn local_host() -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
     {
         let __result = unsafe { crate::ffi::UTL_local_host() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `UTL.hxx`:69 - `UTL::ExtendedString`
@@ -114,8 +146,11 @@ pub fn extended_string(
 ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
     {
         let __result = unsafe { crate::ffi::UTL_extended_string(anAsciiString) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `UTL.hxx`:72 - `UTL::GUID`
@@ -124,8 +159,11 @@ pub fn guid(
 ) -> crate::OwnedPtr<crate::standard::GUID> {
     {
         let __result = unsafe { crate::ffi::UTL_guid(anXString) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `UTL.hxx`:74 - `UTL::Find`
@@ -135,8 +173,11 @@ pub fn find(
 ) -> bool {
     {
         let __result = unsafe { crate::ffi::UTL_find(aResourceManager, aResourceName) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `UTL.hxx`:77 - `UTL::Value`
@@ -151,31 +192,43 @@ pub fn value_handleresourcemanager_extendedstring(
                 aResourceName,
             )
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `UTL.hxx`:81 - `UTL::IntegerValue`
 pub fn integer_value(anExtendedString: &crate::t_collection::ExtendedString) -> i32 {
     {
         let __result = unsafe { crate::ffi::UTL_integer_value(anExtendedString) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `UTL.hxx`:84 - `UTL::CString`
 pub fn c_string(anExtendedString: &crate::t_collection::ExtendedString) -> std::string::String {
     {
         let __result = unsafe { crate::ffi::UTL_c_string(anExtendedString) };
-        crate::check_exception();
-        unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
     }
 }
 /// **Source:** `UTL.hxx`:87 - `UTL::IsReadOnly`
 pub fn is_read_only(aFileName: &crate::t_collection::ExtendedString) -> bool {
     {
         let __result = unsafe { crate::ffi::UTL_is_read_only(aFileName) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }

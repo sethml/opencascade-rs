@@ -26,8 +26,10 @@ impl IConicTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntCurve_IConicTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -35,8 +37,10 @@ impl IConicTool {
     pub fn new_elips2d(E: &crate::gp::Elips2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntCurve_IConicTool_ctor_elips2d(E) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -44,8 +48,10 @@ impl IConicTool {
     pub fn new_lin2d(L: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntCurve_IConicTool_ctor_lin2d(L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -53,8 +59,10 @@ impl IConicTool {
     pub fn new_circ2d(C: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntCurve_IConicTool_ctor_circ2d(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -62,8 +70,10 @@ impl IConicTool {
     pub fn new_parab2d(P: &crate::gp::Parab2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntCurve_IConicTool_ctor_parab2d(P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -71,8 +81,10 @@ impl IConicTool {
     pub fn new_hypr2d(H: &crate::gp::Hypr2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntCurve_IConicTool_ctor_hypr2d(H) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -80,16 +92,21 @@ impl IConicTool {
     pub fn value(&self, X: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         {
             let __result = unsafe { crate::ffi::IntCurve_IConicTool_value(self as *const Self, X) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `IntCurve_IConicTool.hxx`:57 - `IntCurve_IConicTool::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, T: &mut crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::IntCurve_IConicTool_d1(self as *const Self, U, P, T) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntCurve_IConicTool_d1(self as *const Self, U, P, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -102,8 +119,11 @@ impl IConicTool {
         N: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::IntCurve_IConicTool_d2(self as *const Self, U, P, T, N) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntCurve_IConicTool_d2(self as *const Self, U, P, T, N) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -114,8 +134,11 @@ impl IConicTool {
         {
             let __result =
                 unsafe { crate::ffi::IntCurve_IConicTool_distance(self as *const Self, P) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -127,8 +150,11 @@ impl IConicTool {
         {
             let __result =
                 unsafe { crate::ffi::IntCurve_IConicTool_grad_distance(self as *const Self, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -140,18 +166,21 @@ impl IConicTool {
         {
             let __result =
                 unsafe { crate::ffi::IntCurve_IConicTool_find_parameter(self as *const Self, P) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IntCurve_IConicTool_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IntCurve_IConicTool_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -181,8 +210,10 @@ impl IntConicConic {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntCurve_IntConicConic_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -202,8 +233,10 @@ impl IntConicConic {
                     L1, D1, L2, D2, TolConf, Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -225,8 +258,10 @@ impl IntConicConic {
                     L, DL, C, DC, TolConf, Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -248,8 +283,10 @@ impl IntConicConic {
                     L, DL, E, DE, TolConf, Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -269,8 +306,10 @@ impl IntConicConic {
                     L, DL, P, DP, TolConf, Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -290,8 +329,10 @@ impl IntConicConic {
                     L, DL, H, DH, TolConf, Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -313,8 +354,10 @@ impl IntConicConic {
                     C1, D1, C2, D2, TolConf, Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -336,8 +379,10 @@ impl IntConicConic {
                     C, DC, E, DE, TolConf, Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -359,8 +404,10 @@ impl IntConicConic {
                     C, DC, P, DP, TolConf, Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -382,8 +429,10 @@ impl IntConicConic {
                     C, DC, H, DH, TolConf, Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -405,8 +454,10 @@ impl IntConicConic {
                     E1, D1, E2, D2, TolConf, Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -428,8 +479,10 @@ impl IntConicConic {
                     E, DE, P, DP, TolConf, Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -451,8 +504,10 @@ impl IntConicConic {
                     E, DE, H, DH, TolConf, Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -472,8 +527,10 @@ impl IntConicConic {
                     P1, D1, P2, D2, TolConf, Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -493,8 +550,10 @@ impl IntConicConic {
                     P, DP, H, DH, TolConf, Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -514,8 +573,10 @@ impl IntConicConic {
                     H1, D1, H2, D2, TolConf, Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -531,7 +592,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurve_IntConicConic_perform_lin2d_domain_lin2d_domain_real2(
                     self as *mut Self,
                     L1,
@@ -542,7 +603,9 @@ impl IntConicConic {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -560,7 +623,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurve_IntConicConic_perform_lin2d_domain_circ2d_domain_real2(
                     self as *mut Self,
                     L,
@@ -571,7 +634,9 @@ impl IntConicConic {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -589,7 +654,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurve_IntConicConic_perform_lin2d_domain_elips2d_domain_real2(
                     self as *mut Self,
                     L,
@@ -600,7 +665,9 @@ impl IntConicConic {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -616,7 +683,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurve_IntConicConic_perform_lin2d_domain_parab2d_domain_real2(
                     self as *mut Self,
                     L,
@@ -627,7 +694,9 @@ impl IntConicConic {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -643,7 +712,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurve_IntConicConic_perform_lin2d_domain_hypr2d_domain_real2(
                     self as *mut Self,
                     L,
@@ -654,7 +723,9 @@ impl IntConicConic {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -672,7 +743,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurve_IntConicConic_perform_circ2d_domain_circ2d_domain_real2(
                     self as *mut Self,
                     C1,
@@ -683,7 +754,9 @@ impl IntConicConic {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -701,7 +774,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurve_IntConicConic_perform_circ2d_domain_elips2d_domain_real2(
                     self as *mut Self,
                     C,
@@ -712,7 +785,9 @@ impl IntConicConic {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -730,7 +805,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurve_IntConicConic_perform_circ2d_domain_parab2d_domain_real2(
                     self as *mut Self,
                     C,
@@ -741,7 +816,9 @@ impl IntConicConic {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -759,7 +836,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurve_IntConicConic_perform_circ2d_domain_hypr2d_domain_real2(
                     self as *mut Self,
                     C,
@@ -770,7 +847,9 @@ impl IntConicConic {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -788,7 +867,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurve_IntConicConic_perform_elips2d_domain_elips2d_domain_real2(
                     self as *mut Self,
                     E1,
@@ -799,7 +878,9 @@ impl IntConicConic {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -817,7 +898,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurve_IntConicConic_perform_elips2d_domain_parab2d_domain_real2(
                     self as *mut Self,
                     E,
@@ -828,7 +909,9 @@ impl IntConicConic {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -846,7 +929,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurve_IntConicConic_perform_elips2d_domain_hypr2d_domain_real2(
                     self as *mut Self,
                     E,
@@ -857,7 +940,9 @@ impl IntConicConic {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -873,7 +958,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurve_IntConicConic_perform_parab2d_domain_parab2d_domain_real2(
                     self as *mut Self,
                     P1,
@@ -884,7 +969,9 @@ impl IntConicConic {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -900,7 +987,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurve_IntConicConic_perform_parab2d_domain_hypr2d_domain_real2(
                     self as *mut Self,
                     P,
@@ -911,7 +998,9 @@ impl IntConicConic {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -927,7 +1016,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurve_IntConicConic_perform_hypr2d_domain_hypr2d_domain_real2(
                     self as *mut Self,
                     H1,
@@ -938,30 +1027,32 @@ impl IntConicConic {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurve_IntConicConic_as_IntRes2d_Intersection(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IntCurve_IntConicConic_as_IntRes2d_Intersection(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IntRes2d_Intersection (mutable)
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurve_IntConicConic_as_IntRes2d_Intersection_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IntCurve_IntConicConic_as_IntRes2d_Intersection_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
@@ -969,8 +1060,11 @@ impl IntConicConic {
         {
             let __result =
                 unsafe { crate::ffi::IntCurve_IntConicConic_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -980,8 +1074,11 @@ impl IntConicConic {
             let __result = unsafe {
                 crate::ffi::IntCurve_IntConicConic_inherited_IsEmpty(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -991,8 +1088,11 @@ impl IntConicConic {
             let __result = unsafe {
                 crate::ffi::IntCurve_IntConicConic_inherited_NbPoints(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1002,8 +1102,11 @@ impl IntConicConic {
             let __result = unsafe {
                 crate::ffi::IntCurve_IntConicConic_inherited_Point(self as *const Self, N)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1013,8 +1116,11 @@ impl IntConicConic {
             let __result = unsafe {
                 crate::ffi::IntCurve_IntConicConic_inherited_NbSegments(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1024,21 +1130,26 @@ impl IntConicConic {
             let __result = unsafe {
                 crate::ffi::IntCurve_IntConicConic_inherited_Segment(self as *const Self, N)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurve_IntConicConic_inherited_SetReversedParameters(
                     self as *mut Self,
                     Reverseflag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1084,8 +1195,10 @@ impl IntImpConicParConic {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntCurve_IntImpConicParConic_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1109,8 +1222,10 @@ impl IntImpConicParConic {
                     ITool, Dom1, PCurve, Dom2, TolConf, Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1130,7 +1245,7 @@ impl IntImpConicParConic {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurve_IntImpConicParConic_perform(
                     self as *mut Self,
                     ITool,
@@ -1141,7 +1256,9 @@ impl IntImpConicParConic {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1163,8 +1280,11 @@ impl IntImpConicParConic {
                     TheImpTool,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1194,8 +1314,11 @@ impl IntImpConicParConic {
                     Tolerance,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1214,7 +1337,7 @@ impl IntImpConicParConic {
         EpsNul: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurve_IntImpConicParConic_and_domaine_objet1_intersections(
                     self as *const Self,
                     TheImpTool,
@@ -1229,34 +1352,32 @@ impl IntImpConicParConic {
                     EpsNul,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurve_IntImpConicParConic_as_IntRes2d_Intersection(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IntCurve_IntImpConicParConic_as_IntRes2d_Intersection(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IntRes2d_Intersection (mutable)
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurve_IntImpConicParConic_as_IntRes2d_Intersection_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IntCurve_IntImpConicParConic_as_IntRes2d_Intersection_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
@@ -1265,8 +1386,11 @@ impl IntImpConicParConic {
             let __result = unsafe {
                 crate::ffi::IntCurve_IntImpConicParConic_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1276,8 +1400,11 @@ impl IntImpConicParConic {
             let __result = unsafe {
                 crate::ffi::IntCurve_IntImpConicParConic_inherited_IsEmpty(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1287,8 +1414,11 @@ impl IntImpConicParConic {
             let __result = unsafe {
                 crate::ffi::IntCurve_IntImpConicParConic_inherited_NbPoints(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1298,8 +1428,11 @@ impl IntImpConicParConic {
             let __result = unsafe {
                 crate::ffi::IntCurve_IntImpConicParConic_inherited_Point(self as *const Self, N)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1309,8 +1442,11 @@ impl IntImpConicParConic {
             let __result = unsafe {
                 crate::ffi::IntCurve_IntImpConicParConic_inherited_NbSegments(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1320,21 +1456,26 @@ impl IntImpConicParConic {
             let __result = unsafe {
                 crate::ffi::IntCurve_IntImpConicParConic_inherited_Segment(self as *const Self, N)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurve_IntImpConicParConic_inherited_SetReversedParameters(
                     self as *mut Self,
                     Reverseflag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1362,8 +1503,10 @@ impl MyImpParToolOfIntImpConicParConic {
                     IT, PC,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1380,8 +1523,11 @@ impl MyImpParToolOfIntImpConicParConic {
                     F,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1397,8 +1543,11 @@ impl MyImpParToolOfIntImpConicParConic {
                     D,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1414,59 +1563,64 @@ impl MyImpParToolOfIntImpConicParConic {
                     D,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_as_math_FunctionWithDerivative(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_as_math_FunctionWithDerivative(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_as_math_FunctionWithDerivative_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_as_math_FunctionWithDerivative_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_as_math_Function(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_as_math_Function(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_as_math_Function_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_as_math_Function_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
@@ -1477,8 +1631,11 @@ impl MyImpParToolOfIntImpConicParConic {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1504,8 +1661,10 @@ impl PConic {
     pub fn new_elips2d(E: &crate::gp::Elips2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntCurve_PConic_ctor_elips2d(E) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1513,8 +1672,10 @@ impl PConic {
     pub fn new_circ2d(C: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntCurve_PConic_ctor_circ2d(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1522,8 +1683,10 @@ impl PConic {
     pub fn new_parab2d(P: &crate::gp::Parab2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntCurve_PConic_ctor_parab2d(P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1531,8 +1694,10 @@ impl PConic {
     pub fn new_hypr2d(H: &crate::gp::Hypr2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntCurve_PConic_ctor_hypr2d(H) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1540,8 +1705,10 @@ impl PConic {
     pub fn new_lin2d(L: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntCurve_PConic_ctor_lin2d(L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1551,8 +1718,11 @@ impl PConic {
     /// (See FunctionAllRoots for more details)
     pub fn set_eps_x(&mut self, EpsDist: f64) {
         {
-            unsafe { crate::ffi::IntCurve_PConic_set_eps_x(self as *mut Self, EpsDist) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntCurve_PConic_set_eps_x(self as *mut Self, EpsDist) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1561,8 +1731,10 @@ impl PConic {
     /// approximate the parametric curve on its domain.
     pub fn set_accuracy(&mut self, Nb: i32) {
         {
-            unsafe { crate::ffi::IntCurve_PConic_set_accuracy(self as *mut Self, Nb) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntCurve_PConic_set_accuracy(self as *mut Self, Nb) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1570,8 +1742,11 @@ impl PConic {
     pub fn accuracy(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntCurve_PConic_accuracy(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1579,8 +1754,11 @@ impl PConic {
     pub fn eps_x(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntCurve_PConic_eps_x(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1591,8 +1769,11 @@ impl PConic {
     pub fn type_curve(&self) -> crate::geom_abs::CurveType {
         {
             let __result = unsafe { crate::ffi::IntCurve_PConic_type_curve(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
@@ -1600,8 +1781,11 @@ impl PConic {
     pub fn axis2(&self) -> &crate::gp::Ax22d {
         {
             let __result = unsafe { crate::ffi::IntCurve_PConic_axis2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1609,8 +1793,11 @@ impl PConic {
     pub fn param1(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntCurve_PConic_param1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1618,18 +1805,21 @@ impl PConic {
     pub fn param2(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntCurve_PConic_param2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::IntCurve_PConic_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IntCurve_PConic_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1654,8 +1844,10 @@ impl PConicTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntCurve_PConicTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1663,8 +1855,11 @@ impl PConicTool {
     pub fn eps_x(C: &PConic) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntCurve_PConicTool_eps_x(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1672,8 +1867,11 @@ impl PConicTool {
     pub fn nb_samples_pconic(C: &PConic) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntCurve_PConicTool_nb_samples_pconic(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1682,8 +1880,11 @@ impl PConicTool {
         {
             let __result =
                 unsafe { crate::ffi::IntCurve_PConicTool_nb_samples_pconic_real2(C, U0, U1) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1691,16 +1892,21 @@ impl PConicTool {
     pub fn value(C: &PConic, X: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         {
             let __result = unsafe { crate::ffi::IntCurve_PConicTool_value(C, X) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `IntCurve_PConicTool.hxx`:45 - `IntCurve_PConicTool::D1()`
     pub fn d1(C: &PConic, U: f64, P: &mut crate::gp::Pnt2d, T: &mut crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::IntCurve_PConicTool_d1(C, U, P, T) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntCurve_PConicTool_d1(C, U, P, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1713,8 +1919,10 @@ impl PConicTool {
         N: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::IntCurve_PConicTool_d2(C, U, P, T, N) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntCurve_PConicTool_d2(C, U, P, T, N) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1740,8 +1948,10 @@ impl ProjectOnPConicTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntCurve_ProjectOnPConicTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1763,8 +1973,11 @@ impl ProjectOnPConicTool {
                     C, Pnt, Tol,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1798,8 +2011,11 @@ impl ProjectOnPConicTool {
                     Tol,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

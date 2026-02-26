@@ -18,8 +18,11 @@ pub fn file_driver_type_asciistring_handlestoragebasedriver(
                 aBaseDriver,
             )
         };
-        crate::check_exception();
-        crate::pcdm::TypeOfFileDriver::try_from(__result).unwrap()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        crate::pcdm::TypeOfFileDriver::try_from(__val).unwrap()
     }
 }
 /// **Source:** `PCDM.hxx`:32 - `PCDM::FileDriverType`
@@ -34,8 +37,11 @@ pub fn file_driver_type_istream_handlestoragebasedriver(
                 theBaseDriver,
             )
         };
-        crate::check_exception();
-        crate::pcdm::TypeOfFileDriver::try_from(__result).unwrap()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        crate::pcdm::TypeOfFileDriver::try_from(__val).unwrap()
     }
 }
 
@@ -272,34 +278,40 @@ impl DOMHeaderParser {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::PCDM_DOMHeaderParser_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `PCDM_DOMHeaderParser.hxx`:28 - `PCDM_DOMHeaderParser::SetStartElementName()`
     pub fn set_start_element_name(&mut self, aStartElementName: &crate::t_collection::AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_DOMHeaderParser_set_start_element_name(
                     self as *mut Self,
                     aStartElementName,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `PCDM_DOMHeaderParser.hxx`:31 - `PCDM_DOMHeaderParser::SetEndElementName()`
     pub fn set_end_element_name(&mut self, anEndElementName: &crate::t_collection::AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_DOMHeaderParser_set_end_element_name(
                     self as *mut Self,
                     anEndElementName,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -308,8 +320,11 @@ impl DOMHeaderParser {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_DOMHeaderParser_start_element(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -318,8 +333,11 @@ impl DOMHeaderParser {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_DOMHeaderParser_end_element(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -328,8 +346,11 @@ impl DOMHeaderParser {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_DOMHeaderParser_get_element(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -353,8 +374,10 @@ impl Document {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::PCDM_Document_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -362,8 +385,11 @@ impl Document {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::PCDM_Document_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -371,8 +397,11 @@ impl Document {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::PCDM_Document_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -380,60 +409,63 @@ impl Document {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::PCDM_Document_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Persistent
     pub fn as_standard_persistent(&self) -> &crate::standard::Persistent {
-        {
-            let __result =
-                unsafe { crate::ffi::PCDM_Document_as_Standard_Persistent(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_Document_as_Standard_Persistent(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Persistent (mutable)
     pub fn as_standard_persistent_mut(&mut self) -> &mut crate::standard::Persistent {
-        {
-            let __result =
-                unsafe { crate::ffi::PCDM_Document_as_Standard_Persistent_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_Document_as_Standard_Persistent_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::PCDM_Document_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_Document_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::PCDM_Document_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_Document_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePCDMDocument> {
-        {
-            let __result = unsafe { crate::ffi::PCDM_Document_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::PCDM_Document_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Persistent.hxx`:35 - `Standard_Persistent::TypeNum()`
@@ -441,8 +473,11 @@ impl Document {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_Document_inherited_TypeNum(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -452,8 +487,11 @@ impl Document {
             let __result = unsafe {
                 crate::ffi::PCDM_Document_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -462,8 +500,11 @@ impl Document {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_Document_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -471,11 +512,14 @@ impl Document {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::PCDM_Document_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -485,16 +529,23 @@ impl Document {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_Document_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::PCDM_Document_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::PCDM_Document_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -504,16 +555,21 @@ impl Document {
             let __result = unsafe {
                 crate::ffi::PCDM_Document_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::PCDM_Document_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::PCDM_Document_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -529,42 +585,42 @@ unsafe impl crate::CppDeletable for HandlePCDMDocument {
 impl HandlePCDMDocument {
     /// Dereference this Handle to access the underlying PCDM_Document
     pub fn get(&self) -> &crate::ffi::PCDM_Document {
-        {
-            let __result = unsafe { crate::ffi::HandlePCDMDocument_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePCDMDocument_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying PCDM_Document
     pub fn get_mut(&mut self) -> &mut crate::ffi::PCDM_Document {
-        {
-            let __result = unsafe { crate::ffi::HandlePCDMDocument_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePCDMDocument_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<PCDM_Document> to Handle<Standard_Persistent>
     pub fn to_handle_persistent(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardPersistent> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePCDMDocument_to_HandleStandardPersistent(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePCDMDocument_to_HandleStandardPersistent(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<PCDM_Document> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePCDMDocument_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePCDMDocument_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -586,8 +642,10 @@ impl DriverError {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::PCDM_DriverError_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -597,8 +655,10 @@ impl DriverError {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_DriverError_ctor_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -613,8 +673,10 @@ impl DriverError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -623,8 +685,11 @@ impl DriverError {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_DriverError_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -632,16 +697,21 @@ impl DriverError {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::PCDM_DriverError_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PCDM_DriverError_raise_charptr(c_theMessage.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `PCDM_DriverError.hxx`:36 - `PCDM_DriverError::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::PCDM_DriverError_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::PCDM_DriverError_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -653,8 +723,11 @@ impl DriverError {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_DriverError_new_instance_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -672,8 +745,11 @@ impl DriverError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -681,8 +757,11 @@ impl DriverError {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::PCDM_DriverError_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -690,84 +769,95 @@ impl DriverError {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::PCDM_DriverError_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::PCDM_DriverError_as_Standard_Failure(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_DriverError_as_Standard_Failure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::PCDM_DriverError_as_Standard_Failure_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_DriverError_as_Standard_Failure_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::PCDM_DriverError_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_DriverError_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::PCDM_DriverError_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_DriverError_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePCDMDriverError> {
-        {
-            let __result = unsafe { crate::ffi::PCDM_DriverError_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::PCDM_DriverError_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::PCDM_DriverError_inherited_Print(self as *const Self, theStream) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::PCDM_DriverError_inherited_Print(self as *const Self, theStream)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::PCDM_DriverError_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PCDM_DriverError_inherited_Reraise(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::PCDM_DriverError_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::PCDM_DriverError_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -777,8 +867,11 @@ impl DriverError {
             let __result = unsafe {
                 crate::ffi::PCDM_DriverError_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -788,8 +881,11 @@ impl DriverError {
             let __result = unsafe {
                 crate::ffi::PCDM_DriverError_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -798,11 +894,14 @@ impl DriverError {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_DriverError_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -812,18 +911,23 @@ impl DriverError {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_DriverError_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_DriverError_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -833,16 +937,22 @@ impl DriverError {
             let __result = unsafe {
                 crate::ffi::PCDM_DriverError_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::PCDM_DriverError_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PCDM_DriverError_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -858,42 +968,42 @@ unsafe impl crate::CppDeletable for HandlePCDMDriverError {
 impl HandlePCDMDriverError {
     /// Dereference this Handle to access the underlying PCDM_DriverError
     pub fn get(&self) -> &crate::ffi::PCDM_DriverError {
-        {
-            let __result = unsafe { crate::ffi::HandlePCDMDriverError_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePCDMDriverError_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying PCDM_DriverError
     pub fn get_mut(&mut self) -> &mut crate::ffi::PCDM_DriverError {
-        {
-            let __result = unsafe { crate::ffi::HandlePCDMDriverError_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePCDMDriverError_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<PCDM_DriverError> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePCDMDriverError_to_HandleStandardFailure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePCDMDriverError_to_HandleStandardFailure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<PCDM_DriverError> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePCDMDriverError_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePCDMDriverError_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -916,8 +1026,11 @@ impl ReadWriter {
     pub fn version(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::PCDM_ReadWriter_version(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -928,14 +1041,16 @@ impl ReadWriter {
         aDocument: &crate::ffi::HandleCDMDocument,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_ReadWriter_write_reference_counter(
                     self as *const Self,
                     aData,
                     aDocument,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -947,7 +1062,7 @@ impl ReadWriter {
         theReferencerFileName: &crate::t_collection::ExtendedString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_ReadWriter_write_references(
                     self as *const Self,
                     aData,
@@ -955,7 +1070,9 @@ impl ReadWriter {
                     theReferencerFileName,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -966,10 +1083,12 @@ impl ReadWriter {
         aDocument: &crate::ffi::HandleCDMDocument,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_ReadWriter_write_extensions(self as *const Self, aData, aDocument)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -980,10 +1099,12 @@ impl ReadWriter {
         aDocument: &crate::ffi::HandleCDMDocument,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_ReadWriter_write_version(self as *const Self, aData, aDocument)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1001,8 +1122,11 @@ impl ReadWriter {
                     theMsgDriver,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1014,7 +1138,7 @@ impl ReadWriter {
         theMsgDriver: &crate::ffi::HandleMessageMessenger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_ReadWriter_read_references(
                     self as *const Self,
                     aFileName,
@@ -1022,7 +1146,9 @@ impl ReadWriter {
                     theMsgDriver,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1034,7 +1160,7 @@ impl ReadWriter {
         theMsgDriver: &crate::ffi::HandleMessageMessenger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_ReadWriter_read_extensions(
                     self as *const Self,
                     aFileName,
@@ -1042,7 +1168,9 @@ impl ReadWriter {
                     theMsgDriver,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1060,8 +1188,11 @@ impl ReadWriter {
                     theMsgDriver,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1069,8 +1200,11 @@ impl ReadWriter {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::PCDM_ReadWriter_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1081,8 +1215,11 @@ impl ReadWriter {
         anOpenMode: crate::storage::OpenMode,
     ) {
         {
-            unsafe { crate::ffi::PCDM_ReadWriter_open(aDriver, aFileName, anOpenMode.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PCDM_ReadWriter_open(aDriver, aFileName, anOpenMode.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1093,8 +1230,11 @@ impl ReadWriter {
     ) -> crate::OwnedPtr<crate::ffi::HandlePCDMReadWriter> {
         {
             let __result = unsafe { crate::ffi::PCDM_ReadWriter_reader(aFileName) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1102,8 +1242,11 @@ impl ReadWriter {
     pub fn writer() -> crate::OwnedPtr<crate::ffi::HandlePCDMReadWriter> {
         {
             let __result = unsafe { crate::ffi::PCDM_ReadWriter_writer() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1113,8 +1256,10 @@ impl ReadWriter {
         aDocument: &crate::ffi::HandleCDMDocument,
     ) {
         {
-            unsafe { crate::ffi::PCDM_ReadWriter_write_file_format(aData, aDocument) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::PCDM_ReadWriter_write_file_format(aData, aDocument) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1128,8 +1273,11 @@ impl ReadWriter {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_ReadWriter_file_format_extendedstring(aFileName) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1147,8 +1295,11 @@ impl ReadWriter {
                     theIStream, theData,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1156,8 +1307,11 @@ impl ReadWriter {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::PCDM_ReadWriter_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1165,29 +1319,32 @@ impl ReadWriter {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::PCDM_ReadWriter_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::PCDM_ReadWriter_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_ReadWriter_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::PCDM_ReadWriter_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_ReadWriter_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1196,8 +1353,11 @@ impl ReadWriter {
             let __result = unsafe {
                 crate::ffi::PCDM_ReadWriter_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1207,8 +1367,11 @@ impl ReadWriter {
             let __result = unsafe {
                 crate::ffi::PCDM_ReadWriter_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1217,11 +1380,14 @@ impl ReadWriter {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_ReadWriter_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1231,16 +1397,23 @@ impl ReadWriter {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_ReadWriter_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::PCDM_ReadWriter_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::PCDM_ReadWriter_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1250,16 +1423,22 @@ impl ReadWriter {
             let __result = unsafe {
                 crate::ffi::PCDM_ReadWriter_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::PCDM_ReadWriter_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PCDM_ReadWriter_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1275,31 +1454,31 @@ unsafe impl crate::CppDeletable for HandlePCDMReadWriter {
 impl HandlePCDMReadWriter {
     /// Dereference this Handle to access the underlying PCDM_ReadWriter
     pub fn get(&self) -> &crate::ffi::PCDM_ReadWriter {
-        {
-            let __result = unsafe { crate::ffi::HandlePCDMReadWriter_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePCDMReadWriter_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying PCDM_ReadWriter
     pub fn get_mut(&mut self) -> &mut crate::ffi::PCDM_ReadWriter {
-        {
-            let __result = unsafe { crate::ffi::HandlePCDMReadWriter_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePCDMReadWriter_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<PCDM_ReadWriter> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePCDMReadWriter_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePCDMReadWriter_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<PCDM_ReadWriter> to Handle<PCDM_ReadWriter_1>
@@ -1308,14 +1487,16 @@ impl HandlePCDMReadWriter {
     pub fn downcast_to_read_writer_1(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandlePCDMReadWriter1>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMReadWriter_downcast_to_HandlePCDMReadWriter1(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -1338,8 +1519,10 @@ impl ReadWriter_1 {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::PCDM_ReadWriter_1_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1348,8 +1531,11 @@ impl ReadWriter_1 {
     pub fn version(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::PCDM_ReadWriter_1_version(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1360,14 +1546,16 @@ impl ReadWriter_1 {
         aDocument: &crate::ffi::HandleCDMDocument,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_ReadWriter_1_write_reference_counter(
                     self as *const Self,
                     aData,
                     aDocument,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1379,7 +1567,7 @@ impl ReadWriter_1 {
         theReferencerFileName: &crate::t_collection::ExtendedString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_ReadWriter_1_write_references(
                     self as *const Self,
                     aData,
@@ -1387,7 +1575,9 @@ impl ReadWriter_1 {
                     theReferencerFileName,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1398,14 +1588,16 @@ impl ReadWriter_1 {
         aDocument: &crate::ffi::HandleCDMDocument,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_ReadWriter_1_write_extensions(
                     self as *const Self,
                     aData,
                     aDocument,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1416,10 +1608,12 @@ impl ReadWriter_1 {
         aDocument: &crate::ffi::HandleCDMDocument,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_ReadWriter_1_write_version(self as *const Self, aData, aDocument)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1437,8 +1631,11 @@ impl ReadWriter_1 {
                     theMsgDriver,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1450,7 +1647,7 @@ impl ReadWriter_1 {
         theMsgDriver: &crate::ffi::HandleMessageMessenger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_ReadWriter_1_read_references(
                     self as *const Self,
                     aFileName,
@@ -1458,7 +1655,9 @@ impl ReadWriter_1 {
                     theMsgDriver,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1470,7 +1669,7 @@ impl ReadWriter_1 {
         theMsgDriver: &crate::ffi::HandleMessageMessenger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_ReadWriter_1_read_extensions(
                     self as *const Self,
                     aFileName,
@@ -1478,7 +1677,9 @@ impl ReadWriter_1 {
                     theMsgDriver,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1496,8 +1697,11 @@ impl ReadWriter_1 {
                     theMsgDriver,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1506,8 +1710,11 @@ impl ReadWriter_1 {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_ReadWriter_1_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1515,8 +1722,11 @@ impl ReadWriter_1 {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::PCDM_ReadWriter_1_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1524,61 +1734,63 @@ impl ReadWriter_1 {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::PCDM_ReadWriter_1_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to PCDM_ReadWriter
     pub fn as_read_writer(&self) -> &ReadWriter {
-        {
-            let __result =
-                unsafe { crate::ffi::PCDM_ReadWriter_1_as_PCDM_ReadWriter(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_ReadWriter_1_as_PCDM_ReadWriter(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to PCDM_ReadWriter (mutable)
     pub fn as_read_writer_mut(&mut self) -> &mut ReadWriter {
-        {
-            let __result =
-                unsafe { crate::ffi::PCDM_ReadWriter_1_as_PCDM_ReadWriter_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_ReadWriter_1_as_PCDM_ReadWriter_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::PCDM_ReadWriter_1_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_ReadWriter_1_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::PCDM_ReadWriter_1_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_ReadWriter_1_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePCDMReadWriter1> {
-        {
-            let __result = unsafe { crate::ffi::PCDM_ReadWriter_1_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::PCDM_ReadWriter_1_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1587,8 +1799,11 @@ impl ReadWriter_1 {
             let __result = unsafe {
                 crate::ffi::PCDM_ReadWriter_1_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1598,8 +1813,11 @@ impl ReadWriter_1 {
             let __result = unsafe {
                 crate::ffi::PCDM_ReadWriter_1_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1608,11 +1826,14 @@ impl ReadWriter_1 {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_ReadWriter_1_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1622,18 +1843,23 @@ impl ReadWriter_1 {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_ReadWriter_1_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_ReadWriter_1_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1643,16 +1869,22 @@ impl ReadWriter_1 {
             let __result = unsafe {
                 crate::ffi::PCDM_ReadWriter_1_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::PCDM_ReadWriter_1_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PCDM_ReadWriter_1_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1668,42 +1900,42 @@ unsafe impl crate::CppDeletable for HandlePCDMReadWriter1 {
 impl HandlePCDMReadWriter1 {
     /// Dereference this Handle to access the underlying PCDM_ReadWriter_1
     pub fn get(&self) -> &crate::ffi::PCDM_ReadWriter_1 {
-        {
-            let __result = unsafe { crate::ffi::HandlePCDMReadWriter1_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePCDMReadWriter1_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying PCDM_ReadWriter_1
     pub fn get_mut(&mut self) -> &mut crate::ffi::PCDM_ReadWriter_1 {
-        {
-            let __result = unsafe { crate::ffi::HandlePCDMReadWriter1_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePCDMReadWriter1_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<PCDM_ReadWriter_1> to Handle<PCDM_ReadWriter>
     pub fn to_handle_read_writer(&self) -> crate::OwnedPtr<crate::ffi::HandlePCDMReadWriter> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePCDMReadWriter1_to_HandlePCDMReadWriter(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePCDMReadWriter1_to_HandlePCDMReadWriter(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<PCDM_ReadWriter_1> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePCDMReadWriter1_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePCDMReadWriter1_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1732,10 +1964,12 @@ impl Reader {
         theProgress: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_Reader_read_extendedstring_handlecdmdocument_handlecdmapplication_handlepcdmreaderfilter_progressrange(self as *mut Self, aFileName, aNewDocument, anApplication, theFilter, theProgress)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1750,10 +1984,12 @@ impl Reader {
         theProgress: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_Reader_read_istream_handlestoragedata_handlecdmdocument_handlecdmapplication_handlepcdmreaderfilter_progressrange(self as *mut Self, theIStream, theStorageData, theDoc, theApplication, theFilter, theProgress)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1761,8 +1997,11 @@ impl Reader {
     pub fn get_status(&self) -> crate::pcdm::ReaderStatus {
         {
             let __result = unsafe { crate::ffi::PCDM_Reader_get_status(self as *const Self) };
-            crate::check_exception();
-            crate::pcdm::ReaderStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::pcdm::ReaderStatus::try_from(__val).unwrap()
         }
     }
 
@@ -1770,8 +2009,11 @@ impl Reader {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::PCDM_Reader_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1779,8 +2021,11 @@ impl Reader {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::PCDM_Reader_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1788,29 +2033,32 @@ impl Reader {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::PCDM_Reader_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::PCDM_Reader_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_Reader_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::PCDM_Reader_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_Reader_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1819,8 +2067,11 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::PCDM_Reader_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1829,8 +2080,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_Reader_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1838,11 +2092,14 @@ impl Reader {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::PCDM_Reader_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1852,16 +2109,22 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_Reader_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::PCDM_Reader_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PCDM_Reader_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1870,16 +2133,21 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_Reader_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::PCDM_Reader_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::PCDM_Reader_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1895,31 +2163,30 @@ unsafe impl crate::CppDeletable for HandlePCDMReader {
 impl HandlePCDMReader {
     /// Dereference this Handle to access the underlying PCDM_Reader
     pub fn get(&self) -> &crate::ffi::PCDM_Reader {
-        {
-            let __result = unsafe { crate::ffi::HandlePCDMReader_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePCDMReader_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying PCDM_Reader
     pub fn get_mut(&mut self) -> &mut crate::ffi::PCDM_Reader {
-        {
-            let __result = unsafe { crate::ffi::HandlePCDMReader_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePCDMReader_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<PCDM_Reader> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePCDMReader_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandlePCDMReader_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<PCDM_Reader> to Handle<BinDrivers_DocumentRetrievalDriver>
@@ -1928,16 +2195,18 @@ impl HandlePCDMReader {
     pub fn downcast_to_bin_drivers_document_retrieval_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinDriversDocumentRetrievalDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMReader_downcast_to_HandleBinDriversDocumentRetrievalDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1947,16 +2216,18 @@ impl HandlePCDMReader {
     pub fn downcast_to_bin_l_drivers_document_retrieval_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinLDriversDocumentRetrievalDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMReader_downcast_to_HandleBinLDriversDocumentRetrievalDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1966,16 +2237,18 @@ impl HandlePCDMReader {
     pub fn downcast_to_bin_t_obj_drivers_document_retrieval_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinTObjDriversDocumentRetrievalDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMReader_downcast_to_HandleBinTObjDriversDocumentRetrievalDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1985,16 +2258,18 @@ impl HandlePCDMReader {
     pub fn downcast_to_bin_xcaf_drivers_document_retrieval_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinXCAFDriversDocumentRetrievalDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMReader_downcast_to_HandleBinXCAFDriversDocumentRetrievalDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2004,14 +2279,16 @@ impl HandlePCDMReader {
     pub fn downcast_to_retrieval_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandlePCDMRetrievalDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMReader_downcast_to_HandlePCDMRetrievalDriver(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2021,16 +2298,18 @@ impl HandlePCDMReader {
     pub fn downcast_to_std_drivers_document_retrieval_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdDriversDocumentRetrievalDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMReader_downcast_to_HandleStdDriversDocumentRetrievalDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2040,16 +2319,18 @@ impl HandlePCDMReader {
     pub fn downcast_to_std_l_drivers_document_retrieval_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdLDriversDocumentRetrievalDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMReader_downcast_to_HandleStdLDriversDocumentRetrievalDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2059,16 +2340,18 @@ impl HandlePCDMReader {
     pub fn downcast_to_xml_drivers_document_retrieval_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlDriversDocumentRetrievalDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMReader_downcast_to_HandleXmlDriversDocumentRetrievalDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2078,16 +2361,18 @@ impl HandlePCDMReader {
     pub fn downcast_to_xml_l_drivers_document_retrieval_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlLDriversDocumentRetrievalDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMReader_downcast_to_HandleXmlLDriversDocumentRetrievalDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2097,16 +2382,18 @@ impl HandlePCDMReader {
     pub fn downcast_to_xml_t_obj_drivers_document_retrieval_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlTObjDriversDocumentRetrievalDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMReader_downcast_to_HandleXmlTObjDriversDocumentRetrievalDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2116,16 +2403,18 @@ impl HandlePCDMReader {
     pub fn downcast_to_xml_xcaf_drivers_document_retrieval_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlXCAFDriversDocumentRetrievalDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMReader_downcast_to_HandleXmlXCAFDriversDocumentRetrievalDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -2155,8 +2444,10 @@ impl ReaderFilter {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::PCDM_ReaderFilter_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2168,8 +2459,10 @@ impl ReaderFilter {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_ReaderFilter_ctor_handlestandardtype(theSkipped) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2182,8 +2475,10 @@ impl ReaderFilter {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_ReaderFilter_ctor_asciistring(theEntryToRead) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2194,8 +2489,10 @@ impl ReaderFilter {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::PCDM_ReaderFilter_ctor_appendmode(theAppend) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2203,13 +2500,15 @@ impl ReaderFilter {
     /// Adds skipped attribute by type.
     pub fn add_skipped_handlestandardtype(&mut self, theSkipped: &crate::ffi::HandleStandardType) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_ReaderFilter_add_skipped_handlestandardtype(
                     self as *mut Self,
                     theSkipped,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2217,10 +2516,12 @@ impl ReaderFilter {
     /// Adds skipped attribute by type name.
     pub fn add_skipped_asciistring(&mut self, theSkipped: &crate::t_collection::AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_ReaderFilter_add_skipped_asciistring(self as *mut Self, theSkipped)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2228,13 +2529,15 @@ impl ReaderFilter {
     /// Adds attribute to read by type. Disables the skipped attributes added.
     pub fn add_read_handlestandardtype(&mut self, theRead: &crate::ffi::HandleStandardType) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_ReaderFilter_add_read_handlestandardtype(
                     self as *mut Self,
                     theRead,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2242,10 +2545,12 @@ impl ReaderFilter {
     /// Adds attribute to read by type name. Disables the skipped attributes added.
     pub fn add_read_asciistring(&mut self, theRead: &crate::t_collection::AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_ReaderFilter_add_read_asciistring(self as *mut Self, theRead)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2253,8 +2558,12 @@ impl ReaderFilter {
     /// Adds sub-tree path (like "0:2").
     pub fn add_path(&mut self, theEntryToRead: &crate::t_collection::AsciiString) {
         {
-            unsafe { crate::ffi::PCDM_ReaderFilter_add_path(self as *mut Self, theEntryToRead) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::PCDM_ReaderFilter_add_path(self as *mut Self, theEntryToRead)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2262,8 +2571,10 @@ impl ReaderFilter {
     /// Makes filter pass all data.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::PCDM_ReaderFilter_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::PCDM_ReaderFilter_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2280,8 +2591,11 @@ impl ReaderFilter {
                     theAttributeID,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2292,8 +2606,11 @@ impl ReaderFilter {
             let __result = unsafe {
                 crate::ffi::PCDM_ReaderFilter_is_passed_attr(self as *const Self, theAttributeType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2304,8 +2621,11 @@ impl ReaderFilter {
             let __result = unsafe {
                 crate::ffi::PCDM_ReaderFilter_is_passed_asciistring(self as *const Self, theEntry)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2319,8 +2639,11 @@ impl ReaderFilter {
                     theEntry,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2329,8 +2652,11 @@ impl ReaderFilter {
     pub fn is_part_tree(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::PCDM_ReaderFilter_is_part_tree(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2339,8 +2665,11 @@ impl ReaderFilter {
     pub fn mode(&mut self) -> &mut crate::ffi::PCDM_ReaderFilter_AppendMode {
         {
             let __result = unsafe { crate::ffi::PCDM_ReaderFilter_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2350,8 +2679,11 @@ impl ReaderFilter {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_ReaderFilter_is_append_mode(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2361,8 +2693,10 @@ impl ReaderFilter {
     /// iteration start.
     pub fn start_iteration(&mut self) {
         {
-            unsafe { crate::ffi::PCDM_ReaderFilter_start_iteration(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::PCDM_ReaderFilter_start_iteration(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2370,8 +2704,10 @@ impl ReaderFilter {
     /// Iteration to the child label.
     pub fn up(&mut self) {
         {
-            unsafe { crate::ffi::PCDM_ReaderFilter_up(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::PCDM_ReaderFilter_up(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2379,8 +2715,10 @@ impl ReaderFilter {
     /// Iteration to the child with defined tag.
     pub fn down(&mut self, theTag: &i32) {
         {
-            unsafe { crate::ffi::PCDM_ReaderFilter_down(self as *mut Self, theTag) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::PCDM_ReaderFilter_down(self as *mut Self, theTag) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2389,8 +2727,11 @@ impl ReaderFilter {
     pub fn is_passed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::PCDM_ReaderFilter_is_passed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2400,8 +2741,11 @@ impl ReaderFilter {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_ReaderFilter_is_sub_passed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2410,8 +2754,11 @@ impl ReaderFilter {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_ReaderFilter_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2419,8 +2766,11 @@ impl ReaderFilter {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::PCDM_ReaderFilter_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2428,41 +2778,43 @@ impl ReaderFilter {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::PCDM_ReaderFilter_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::PCDM_ReaderFilter_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_ReaderFilter_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::PCDM_ReaderFilter_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_ReaderFilter_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePCDMReaderFilter> {
-        {
-            let __result = unsafe { crate::ffi::PCDM_ReaderFilter_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::PCDM_ReaderFilter_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2471,8 +2823,11 @@ impl ReaderFilter {
             let __result = unsafe {
                 crate::ffi::PCDM_ReaderFilter_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2482,8 +2837,11 @@ impl ReaderFilter {
             let __result = unsafe {
                 crate::ffi::PCDM_ReaderFilter_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2492,11 +2850,14 @@ impl ReaderFilter {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_ReaderFilter_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2506,18 +2867,23 @@ impl ReaderFilter {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_ReaderFilter_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_ReaderFilter_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2527,16 +2893,22 @@ impl ReaderFilter {
             let __result = unsafe {
                 crate::ffi::PCDM_ReaderFilter_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::PCDM_ReaderFilter_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PCDM_ReaderFilter_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2552,31 +2924,31 @@ unsafe impl crate::CppDeletable for HandlePCDMReaderFilter {
 impl HandlePCDMReaderFilter {
     /// Dereference this Handle to access the underlying PCDM_ReaderFilter
     pub fn get(&self) -> &crate::ffi::PCDM_ReaderFilter {
-        {
-            let __result = unsafe { crate::ffi::HandlePCDMReaderFilter_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePCDMReaderFilter_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying PCDM_ReaderFilter
     pub fn get_mut(&mut self) -> &mut crate::ffi::PCDM_ReaderFilter {
-        {
-            let __result = unsafe { crate::ffi::HandlePCDMReaderFilter_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePCDMReaderFilter_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<PCDM_ReaderFilter> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePCDMReaderFilter_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePCDMReaderFilter_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2598,8 +2970,10 @@ impl Reference {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::PCDM_Reference_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2617,8 +2991,10 @@ impl Reference {
                     aDocumentVersion,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2627,8 +3003,11 @@ impl Reference {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_Reference_reference_identifier(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2636,8 +3015,11 @@ impl Reference {
     pub fn file_name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         {
             let __result = unsafe { crate::ffi::PCDM_Reference_file_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2646,8 +3028,11 @@ impl Reference {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_Reference_document_version(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2675,8 +3060,10 @@ impl ReferenceIterator {
             let __result = unsafe {
                 crate::ffi::PCDM_ReferenceIterator_ctor_handlemessagemessenger(theMessageDriver)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2689,7 +3076,7 @@ impl ReferenceIterator {
         UseStorageConfiguration: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_ReferenceIterator_load_references(
                     self as *mut Self,
                     aDocument,
@@ -2698,15 +3085,20 @@ impl ReferenceIterator {
                     UseStorageConfiguration,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `PCDM_ReferenceIterator.hxx`:46 - `PCDM_ReferenceIterator::Init()`
     pub fn init(&mut self, aMetaData: &crate::ffi::HandleCDMMetaData) {
         {
-            unsafe { crate::ffi::PCDM_ReferenceIterator_init(self as *mut Self, aMetaData) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PCDM_ReferenceIterator_init(self as *mut Self, aMetaData) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2715,8 +3107,11 @@ impl ReferenceIterator {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_ReferenceIterator_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2724,8 +3119,11 @@ impl ReferenceIterator {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::PCDM_ReferenceIterator_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2733,42 +3131,45 @@ impl ReferenceIterator {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::PCDM_ReferenceIterator_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::PCDM_ReferenceIterator_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::PCDM_ReferenceIterator_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::PCDM_ReferenceIterator_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::PCDM_ReferenceIterator_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePCDMReferenceIterator> {
-        {
-            let __result = unsafe { crate::ffi::PCDM_ReferenceIterator_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::PCDM_ReferenceIterator_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2780,8 +3181,11 @@ impl ReferenceIterator {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2791,8 +3195,11 @@ impl ReferenceIterator {
             let __result = unsafe {
                 crate::ffi::PCDM_ReferenceIterator_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2801,11 +3208,14 @@ impl ReferenceIterator {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_ReferenceIterator_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2816,18 +3226,23 @@ impl ReferenceIterator {
             let __result = unsafe {
                 crate::ffi::PCDM_ReferenceIterator_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_ReferenceIterator_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2837,16 +3252,22 @@ impl ReferenceIterator {
             let __result = unsafe {
                 crate::ffi::PCDM_ReferenceIterator_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::PCDM_ReferenceIterator_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PCDM_ReferenceIterator_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2862,35 +3283,32 @@ unsafe impl crate::CppDeletable for HandlePCDMReferenceIterator {
 impl HandlePCDMReferenceIterator {
     /// Dereference this Handle to access the underlying PCDM_ReferenceIterator
     pub fn get(&self) -> &crate::ffi::PCDM_ReferenceIterator {
-        {
-            let __result =
-                unsafe { crate::ffi::HandlePCDMReferenceIterator_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePCDMReferenceIterator_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying PCDM_ReferenceIterator
     pub fn get_mut(&mut self) -> &mut crate::ffi::PCDM_ReferenceIterator {
-        {
-            let __result =
-                unsafe { crate::ffi::HandlePCDMReferenceIterator_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandlePCDMReferenceIterator_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<PCDM_ReferenceIterator> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePCDMReferenceIterator_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePCDMReferenceIterator_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2911,8 +3329,11 @@ impl RetrievalDriver {
     /// **Source:** `PCDM_RetrievalDriver.hxx`:46 - `PCDM_RetrievalDriver::SetFormat()`
     pub fn set_format(&mut self, aformat: &crate::t_collection::ExtendedString) {
         {
-            unsafe { crate::ffi::PCDM_RetrievalDriver_set_format(self as *mut Self, aformat) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PCDM_RetrievalDriver_set_format(self as *mut Self, aformat) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2921,8 +3342,11 @@ impl RetrievalDriver {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_RetrievalDriver_get_format(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2931,8 +3355,11 @@ impl RetrievalDriver {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_RetrievalDriver_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2945,8 +3372,11 @@ impl RetrievalDriver {
             let __result = unsafe {
                 crate::ffi::PCDM_RetrievalDriver_document_version(theFileName, theMsgDriver)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2959,8 +3389,11 @@ impl RetrievalDriver {
             let __result = unsafe {
                 crate::ffi::PCDM_RetrievalDriver_reference_counter(theFileName, theMsgDriver)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2968,8 +3401,11 @@ impl RetrievalDriver {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::PCDM_RetrievalDriver_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2977,51 +3413,53 @@ impl RetrievalDriver {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::PCDM_RetrievalDriver_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to PCDM_Reader
     pub fn as_reader(&self) -> &Reader {
-        {
-            let __result =
-                unsafe { crate::ffi::PCDM_RetrievalDriver_as_PCDM_Reader(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_RetrievalDriver_as_PCDM_Reader(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to PCDM_Reader (mutable)
     pub fn as_reader_mut(&mut self) -> &mut Reader {
-        {
-            let __result =
-                unsafe { crate::ffi::PCDM_RetrievalDriver_as_PCDM_Reader_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_RetrievalDriver_as_PCDM_Reader_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::PCDM_RetrievalDriver_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_RetrievalDriver_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::PCDM_RetrievalDriver_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::PCDM_RetrievalDriver_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `PCDM_Reader.hxx`:42 - `PCDM_Reader::Read()`
@@ -3034,7 +3472,7 @@ impl RetrievalDriver {
         theProgress: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_RetrievalDriver_inherited_Read(
                     self as *mut Self,
                     aFileName,
@@ -3044,7 +3482,9 @@ impl RetrievalDriver {
                     theProgress,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3054,8 +3494,11 @@ impl RetrievalDriver {
             let __result = unsafe {
                 crate::ffi::PCDM_RetrievalDriver_inherited_GetStatus(self as *const Self)
             };
-            crate::check_exception();
-            crate::pcdm::ReaderStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::pcdm::ReaderStatus::try_from(__val).unwrap()
         }
     }
 
@@ -3065,8 +3508,11 @@ impl RetrievalDriver {
             let __result = unsafe {
                 crate::ffi::PCDM_RetrievalDriver_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3076,8 +3522,11 @@ impl RetrievalDriver {
             let __result = unsafe {
                 crate::ffi::PCDM_RetrievalDriver_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3086,11 +3535,14 @@ impl RetrievalDriver {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_RetrievalDriver_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3101,18 +3553,23 @@ impl RetrievalDriver {
             let __result = unsafe {
                 crate::ffi::PCDM_RetrievalDriver_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_RetrievalDriver_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3122,16 +3579,22 @@ impl RetrievalDriver {
             let __result = unsafe {
                 crate::ffi::PCDM_RetrievalDriver_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::PCDM_RetrievalDriver_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PCDM_RetrievalDriver_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3147,46 +3610,42 @@ unsafe impl crate::CppDeletable for HandlePCDMRetrievalDriver {
 impl HandlePCDMRetrievalDriver {
     /// Dereference this Handle to access the underlying PCDM_RetrievalDriver
     pub fn get(&self) -> &crate::ffi::PCDM_RetrievalDriver {
-        {
-            let __result =
-                unsafe { crate::ffi::HandlePCDMRetrievalDriver_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePCDMRetrievalDriver_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying PCDM_RetrievalDriver
     pub fn get_mut(&mut self) -> &mut crate::ffi::PCDM_RetrievalDriver {
-        {
-            let __result =
-                unsafe { crate::ffi::HandlePCDMRetrievalDriver_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePCDMRetrievalDriver_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<PCDM_RetrievalDriver> to Handle<PCDM_Reader>
     pub fn to_handle_reader(&self) -> crate::OwnedPtr<crate::ffi::HandlePCDMReader> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePCDMRetrievalDriver_to_HandlePCDMReader(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePCDMRetrievalDriver_to_HandlePCDMReader(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<PCDM_RetrievalDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePCDMRetrievalDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePCDMRetrievalDriver_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<PCDM_RetrievalDriver> to Handle<BinDrivers_DocumentRetrievalDriver>
@@ -3195,14 +3654,16 @@ impl HandlePCDMRetrievalDriver {
     pub fn downcast_to_bin_drivers_document_retrieval_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinDriversDocumentRetrievalDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMRetrievalDriver_downcast_to_HandleBinDriversDocumentRetrievalDriver(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3212,14 +3673,16 @@ impl HandlePCDMRetrievalDriver {
     pub fn downcast_to_bin_l_drivers_document_retrieval_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinLDriversDocumentRetrievalDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMRetrievalDriver_downcast_to_HandleBinLDriversDocumentRetrievalDriver(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3229,14 +3692,16 @@ impl HandlePCDMRetrievalDriver {
     pub fn downcast_to_bin_t_obj_drivers_document_retrieval_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinTObjDriversDocumentRetrievalDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMRetrievalDriver_downcast_to_HandleBinTObjDriversDocumentRetrievalDriver(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3246,14 +3711,16 @@ impl HandlePCDMRetrievalDriver {
     pub fn downcast_to_bin_xcaf_drivers_document_retrieval_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinXCAFDriversDocumentRetrievalDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMRetrievalDriver_downcast_to_HandleBinXCAFDriversDocumentRetrievalDriver(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3263,14 +3730,16 @@ impl HandlePCDMRetrievalDriver {
     pub fn downcast_to_std_drivers_document_retrieval_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdDriversDocumentRetrievalDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMRetrievalDriver_downcast_to_HandleStdDriversDocumentRetrievalDriver(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3280,14 +3749,16 @@ impl HandlePCDMRetrievalDriver {
     pub fn downcast_to_std_l_drivers_document_retrieval_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdLDriversDocumentRetrievalDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMRetrievalDriver_downcast_to_HandleStdLDriversDocumentRetrievalDriver(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3297,14 +3768,16 @@ impl HandlePCDMRetrievalDriver {
     pub fn downcast_to_xml_drivers_document_retrieval_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlDriversDocumentRetrievalDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMRetrievalDriver_downcast_to_HandleXmlDriversDocumentRetrievalDriver(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3314,14 +3787,16 @@ impl HandlePCDMRetrievalDriver {
     pub fn downcast_to_xml_l_drivers_document_retrieval_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlLDriversDocumentRetrievalDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMRetrievalDriver_downcast_to_HandleXmlLDriversDocumentRetrievalDriver(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3331,14 +3806,16 @@ impl HandlePCDMRetrievalDriver {
     pub fn downcast_to_xml_t_obj_drivers_document_retrieval_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlTObjDriversDocumentRetrievalDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMRetrievalDriver_downcast_to_HandleXmlTObjDriversDocumentRetrievalDriver(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3348,14 +3825,16 @@ impl HandlePCDMRetrievalDriver {
     pub fn downcast_to_xml_xcaf_drivers_document_retrieval_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlXCAFDriversDocumentRetrievalDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMRetrievalDriver_downcast_to_HandleXmlXCAFDriversDocumentRetrievalDriver(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -3393,8 +3872,10 @@ impl StorageDriver {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::PCDM_StorageDriver_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3408,8 +3889,11 @@ impl StorageDriver {
             let __result = unsafe {
                 crate::ffi::PCDM_StorageDriver_make_handlecdmdocument(self as *mut Self, aDocument)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3422,14 +3906,16 @@ impl StorageDriver {
         Documents: &mut crate::ffi::PCDM_SequenceOfDocument,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_StorageDriver_make_handlecdmdocument_sequenceofdocument(
                     self as *mut Self,
                     aDocument,
                     Documents,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3447,7 +3933,7 @@ impl StorageDriver {
         theRange: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_StorageDriver_write_handlecdmdocument_extendedstring_progressrange(
                     self as *mut Self,
                     aDocument,
@@ -3455,7 +3941,9 @@ impl StorageDriver {
                     theRange,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3468,7 +3956,7 @@ impl StorageDriver {
         theRange: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_StorageDriver_write_handlecdmdocument_ostream_progressrange(
                     self as *mut Self,
                     theDocument,
@@ -3476,15 +3964,20 @@ impl StorageDriver {
                     theRange,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `PCDM_StorageDriver.hxx`:76 - `PCDM_StorageDriver::SetFormat()`
     pub fn set_format(&mut self, aformat: &crate::t_collection::ExtendedString) {
         {
-            unsafe { crate::ffi::PCDM_StorageDriver_set_format(self as *mut Self, aformat) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PCDM_StorageDriver_set_format(self as *mut Self, aformat) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3493,8 +3986,11 @@ impl StorageDriver {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_StorageDriver_get_format(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3502,16 +3998,23 @@ impl StorageDriver {
     pub fn is_error(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::PCDM_StorageDriver_is_error(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `PCDM_StorageDriver.hxx`:82 - `PCDM_StorageDriver::SetIsError()`
     pub fn set_is_error(&mut self, theIsError: bool) {
         {
-            unsafe { crate::ffi::PCDM_StorageDriver_set_is_error(self as *mut Self, theIsError) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::PCDM_StorageDriver_set_is_error(self as *mut Self, theIsError)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3520,21 +4023,26 @@ impl StorageDriver {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_StorageDriver_get_store_status(self as *const Self) };
-            crate::check_exception();
-            crate::pcdm::StoreStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::pcdm::StoreStatus::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `PCDM_StorageDriver.hxx`:86 - `PCDM_StorageDriver::SetStoreStatus()`
     pub fn set_store_status(&mut self, theStoreStatus: crate::pcdm::StoreStatus) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_StorageDriver_set_store_status(
                     self as *mut Self,
                     theStoreStatus.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3543,8 +4051,11 @@ impl StorageDriver {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_StorageDriver_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3552,8 +4063,11 @@ impl StorageDriver {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::PCDM_StorageDriver_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3561,62 +4075,63 @@ impl StorageDriver {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::PCDM_StorageDriver_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to PCDM_Writer
     pub fn as_writer(&self) -> &Writer {
-        {
-            let __result =
-                unsafe { crate::ffi::PCDM_StorageDriver_as_PCDM_Writer(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_StorageDriver_as_PCDM_Writer(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to PCDM_Writer (mutable)
     pub fn as_writer_mut(&mut self) -> &mut Writer {
-        {
-            let __result =
-                unsafe { crate::ffi::PCDM_StorageDriver_as_PCDM_Writer_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_StorageDriver_as_PCDM_Writer_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::PCDM_StorageDriver_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_StorageDriver_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::PCDM_StorageDriver_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_StorageDriver_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePCDMStorageDriver> {
-        {
-            let __result = unsafe { crate::ffi::PCDM_StorageDriver_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::PCDM_StorageDriver_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3625,8 +4140,11 @@ impl StorageDriver {
             let __result = unsafe {
                 crate::ffi::PCDM_StorageDriver_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3636,8 +4154,11 @@ impl StorageDriver {
             let __result = unsafe {
                 crate::ffi::PCDM_StorageDriver_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3646,11 +4167,14 @@ impl StorageDriver {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_StorageDriver_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3661,18 +4185,23 @@ impl StorageDriver {
             let __result = unsafe {
                 crate::ffi::PCDM_StorageDriver_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_StorageDriver_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3682,16 +4211,22 @@ impl StorageDriver {
             let __result = unsafe {
                 crate::ffi::PCDM_StorageDriver_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::PCDM_StorageDriver_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PCDM_StorageDriver_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3707,43 +4242,41 @@ unsafe impl crate::CppDeletable for HandlePCDMStorageDriver {
 impl HandlePCDMStorageDriver {
     /// Dereference this Handle to access the underlying PCDM_StorageDriver
     pub fn get(&self) -> &crate::ffi::PCDM_StorageDriver {
-        {
-            let __result = unsafe { crate::ffi::HandlePCDMStorageDriver_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePCDMStorageDriver_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying PCDM_StorageDriver
     pub fn get_mut(&mut self) -> &mut crate::ffi::PCDM_StorageDriver {
-        {
-            let __result =
-                unsafe { crate::ffi::HandlePCDMStorageDriver_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePCDMStorageDriver_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<PCDM_StorageDriver> to Handle<PCDM_Writer>
     pub fn to_handle_writer(&self) -> crate::OwnedPtr<crate::ffi::HandlePCDMWriter> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePCDMStorageDriver_to_HandlePCDMWriter(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandlePCDMStorageDriver_to_HandlePCDMWriter(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<PCDM_StorageDriver> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePCDMStorageDriver_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePCDMStorageDriver_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<PCDM_StorageDriver> to Handle<BinDrivers_DocumentStorageDriver>
@@ -3752,16 +4285,18 @@ impl HandlePCDMStorageDriver {
     pub fn downcast_to_bin_drivers_document_storage_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinDriversDocumentStorageDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMStorageDriver_downcast_to_HandleBinDriversDocumentStorageDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3771,16 +4306,18 @@ impl HandlePCDMStorageDriver {
     pub fn downcast_to_bin_l_drivers_document_storage_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinLDriversDocumentStorageDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMStorageDriver_downcast_to_HandleBinLDriversDocumentStorageDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3790,14 +4327,16 @@ impl HandlePCDMStorageDriver {
     pub fn downcast_to_bin_t_obj_drivers_document_storage_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinTObjDriversDocumentStorageDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMStorageDriver_downcast_to_HandleBinTObjDriversDocumentStorageDriver(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3807,14 +4346,16 @@ impl HandlePCDMStorageDriver {
     pub fn downcast_to_bin_xcaf_drivers_document_storage_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinXCAFDriversDocumentStorageDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMStorageDriver_downcast_to_HandleBinXCAFDriversDocumentStorageDriver(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3824,16 +4365,18 @@ impl HandlePCDMStorageDriver {
     pub fn downcast_to_xml_drivers_document_storage_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlDriversDocumentStorageDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMStorageDriver_downcast_to_HandleXmlDriversDocumentStorageDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3843,16 +4386,18 @@ impl HandlePCDMStorageDriver {
     pub fn downcast_to_xml_l_drivers_document_storage_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlLDriversDocumentStorageDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMStorageDriver_downcast_to_HandleXmlLDriversDocumentStorageDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3862,14 +4407,16 @@ impl HandlePCDMStorageDriver {
     pub fn downcast_to_xml_t_obj_drivers_document_storage_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlTObjDriversDocumentStorageDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMStorageDriver_downcast_to_HandleXmlTObjDriversDocumentStorageDriver(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3879,14 +4426,16 @@ impl HandlePCDMStorageDriver {
     pub fn downcast_to_xml_xcaf_drivers_document_storage_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlXCAFDriversDocumentStorageDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMStorageDriver_downcast_to_HandleXmlXCAFDriversDocumentStorageDriver(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -3913,7 +4462,7 @@ impl Writer {
         theRange: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_Writer_write_handlecdmdocument_extendedstring_progressrange(
                     self as *mut Self,
                     aDocument,
@@ -3921,7 +4470,9 @@ impl Writer {
                     theRange,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3934,7 +4485,7 @@ impl Writer {
         theRange: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PCDM_Writer_write_handlecdmdocument_ostream_progressrange(
                     self as *mut Self,
                     theDocument,
@@ -3942,7 +4493,9 @@ impl Writer {
                     theRange,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3950,8 +4503,11 @@ impl Writer {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::PCDM_Writer_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3959,8 +4515,11 @@ impl Writer {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::PCDM_Writer_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3968,29 +4527,32 @@ impl Writer {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::PCDM_Writer_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::PCDM_Writer_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_Writer_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::PCDM_Writer_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::PCDM_Writer_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3999,8 +4561,11 @@ impl Writer {
             let __result = unsafe {
                 crate::ffi::PCDM_Writer_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4009,8 +4574,11 @@ impl Writer {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_Writer_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4018,11 +4586,14 @@ impl Writer {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::PCDM_Writer_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4032,16 +4603,22 @@ impl Writer {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_Writer_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::PCDM_Writer_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PCDM_Writer_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4050,16 +4627,21 @@ impl Writer {
         {
             let __result =
                 unsafe { crate::ffi::PCDM_Writer_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::PCDM_Writer_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::PCDM_Writer_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4075,31 +4657,30 @@ unsafe impl crate::CppDeletable for HandlePCDMWriter {
 impl HandlePCDMWriter {
     /// Dereference this Handle to access the underlying PCDM_Writer
     pub fn get(&self) -> &crate::ffi::PCDM_Writer {
-        {
-            let __result = unsafe { crate::ffi::HandlePCDMWriter_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePCDMWriter_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying PCDM_Writer
     pub fn get_mut(&mut self) -> &mut crate::ffi::PCDM_Writer {
-        {
-            let __result = unsafe { crate::ffi::HandlePCDMWriter_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePCDMWriter_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<PCDM_Writer> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePCDMWriter_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandlePCDMWriter_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<PCDM_Writer> to Handle<BinDrivers_DocumentStorageDriver>
@@ -4108,16 +4689,18 @@ impl HandlePCDMWriter {
     pub fn downcast_to_bin_drivers_document_storage_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinDriversDocumentStorageDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMWriter_downcast_to_HandleBinDriversDocumentStorageDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4127,16 +4710,18 @@ impl HandlePCDMWriter {
     pub fn downcast_to_bin_l_drivers_document_storage_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinLDriversDocumentStorageDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMWriter_downcast_to_HandleBinLDriversDocumentStorageDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4146,16 +4731,18 @@ impl HandlePCDMWriter {
     pub fn downcast_to_bin_t_obj_drivers_document_storage_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinTObjDriversDocumentStorageDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMWriter_downcast_to_HandleBinTObjDriversDocumentStorageDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4165,16 +4752,18 @@ impl HandlePCDMWriter {
     pub fn downcast_to_bin_xcaf_drivers_document_storage_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinXCAFDriversDocumentStorageDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMWriter_downcast_to_HandleBinXCAFDriversDocumentStorageDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4184,14 +4773,16 @@ impl HandlePCDMWriter {
     pub fn downcast_to_storage_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandlePCDMStorageDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMWriter_downcast_to_HandlePCDMStorageDriver(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4201,16 +4792,18 @@ impl HandlePCDMWriter {
     pub fn downcast_to_xml_drivers_document_storage_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlDriversDocumentStorageDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMWriter_downcast_to_HandleXmlDriversDocumentStorageDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4220,16 +4813,18 @@ impl HandlePCDMWriter {
     pub fn downcast_to_xml_l_drivers_document_storage_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlLDriversDocumentStorageDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMWriter_downcast_to_HandleXmlLDriversDocumentStorageDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4239,16 +4834,18 @@ impl HandlePCDMWriter {
     pub fn downcast_to_xml_t_obj_drivers_document_storage_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlTObjDriversDocumentStorageDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMWriter_downcast_to_HandleXmlTObjDriversDocumentStorageDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4258,16 +4855,18 @@ impl HandlePCDMWriter {
     pub fn downcast_to_xml_xcaf_drivers_document_storage_driver(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlXCAFDriversDocumentStorageDriver>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePCDMWriter_downcast_to_HandleXmlXCAFDriversDocumentStorageDriver(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }

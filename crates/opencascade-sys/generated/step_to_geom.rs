@@ -13,8 +13,11 @@ pub fn make_axis1_placement(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomAxis1Placement> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_axis1_placement(SA, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:119 - `StepToGeom::MakeAxis2Placement`
@@ -29,8 +32,11 @@ pub fn make_axis2_placement_handlestepgeomaxis2placement3d_factors(
                 theLocalFactors,
             )
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:122 - `StepToGeom::MakeAxis2Placement`
@@ -40,8 +46,11 @@ pub fn make_axis2_placement_handlestepgeomsuparameters(
     {
         let __result =
             unsafe { crate::ffi::StepToGeom_make_axis2_placement_handlestepgeomsuparameters(SP) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:124 - `StepToGeom::MakeAxisPlacement`
@@ -51,8 +60,11 @@ pub fn make_axis_placement(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dAxisPlacement> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_axis_placement(SA, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:127 - `StepToGeom::MakeBoundedCurve`
@@ -62,8 +74,11 @@ pub fn make_bounded_curve(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomBoundedCurve> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_bounded_curve(SC, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:130 - `StepToGeom::MakeBoundedCurve2d`
@@ -73,8 +88,11 @@ pub fn make_bounded_curve2d(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBoundedCurve> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_bounded_curve2d(SC, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:133 - `StepToGeom::MakeBoundedSurface`
@@ -84,8 +102,11 @@ pub fn make_bounded_surface(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomBoundedSurface> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_bounded_surface(SS, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:136 - `StepToGeom::MakeBSplineCurve`
@@ -95,8 +116,11 @@ pub fn make_b_spline_curve(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_b_spline_curve(SC, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:139 - `StepToGeom::MakeBSplineCurve2d`
@@ -106,8 +130,11 @@ pub fn make_b_spline_curve2d(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_b_spline_curve2d(SC, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:142 - `StepToGeom::MakeBSplineSurface`
@@ -117,8 +144,11 @@ pub fn make_b_spline_surface(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_b_spline_surface(SS, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:145 - `StepToGeom::MakeCartesianPoint`
@@ -128,8 +158,11 @@ pub fn make_cartesian_point(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomCartesianPoint> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_cartesian_point(SP, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:148 - `StepToGeom::MakeCartesianPoint2d`
@@ -140,8 +173,11 @@ pub fn make_cartesian_point2d(
     {
         let __result =
             unsafe { crate::ffi::StepToGeom_make_cartesian_point2d(SP, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:151 - `StepToGeom::MakeCircle`
@@ -151,8 +187,11 @@ pub fn make_circle(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomCircle> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_circle(SC, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:154 - `StepToGeom::MakeCircle2d`
@@ -162,8 +201,11 @@ pub fn make_circle2d(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCircle> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_circle2d(SC, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:157 - `StepToGeom::MakeConic`
@@ -173,8 +215,11 @@ pub fn make_conic(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomConic> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_conic(SC, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:160 - `StepToGeom::MakeConic2d`
@@ -184,8 +229,11 @@ pub fn make_conic2d(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dConic> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_conic2d(SC, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:163 - `StepToGeom::MakeConicalSurface`
@@ -195,8 +243,11 @@ pub fn make_conical_surface(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomConicalSurface> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_conical_surface(SS, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:166 - `StepToGeom::MakeCurve`
@@ -208,8 +259,11 @@ pub fn make_curve_handlestepgeomcurve_factors(
         let __result = unsafe {
             crate::ffi::StepToGeom_make_curve_handlestepgeomcurve_factors(SC, theLocalFactors)
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:169 - `StepToGeom::MakeCurve2d`
@@ -219,8 +273,11 @@ pub fn make_curve2d(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_curve2d(SC, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:172 - `StepToGeom::MakeCylindricalSurface`
@@ -231,8 +288,11 @@ pub fn make_cylindrical_surface(
     {
         let __result =
             unsafe { crate::ffi::StepToGeom_make_cylindrical_surface(SS, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:175 - `StepToGeom::MakeDirection`
@@ -241,8 +301,11 @@ pub fn make_direction(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomDirection> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_direction(SD) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:176 - `StepToGeom::MakeDirection2d`
@@ -251,8 +314,11 @@ pub fn make_direction2d(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dDirection> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_direction2d(SD) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:178 - `StepToGeom::MakeElementarySurface`
@@ -263,8 +329,11 @@ pub fn make_elementary_surface(
     {
         let __result =
             unsafe { crate::ffi::StepToGeom_make_elementary_surface(SS, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:181 - `StepToGeom::MakeEllipse`
@@ -274,8 +343,11 @@ pub fn make_ellipse(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomEllipse> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_ellipse(SC, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:184 - `StepToGeom::MakeEllipse2d`
@@ -285,8 +357,11 @@ pub fn make_ellipse2d(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dEllipse> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_ellipse2d(SC, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:187 - `StepToGeom::MakeHyperbola`
@@ -296,8 +371,11 @@ pub fn make_hyperbola(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomHyperbola> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_hyperbola(SC, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:190 - `StepToGeom::MakeHyperbola2d`
@@ -307,8 +385,11 @@ pub fn make_hyperbola2d(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dHyperbola> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_hyperbola2d(SC, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:193 - `StepToGeom::MakeLine`
@@ -318,8 +399,11 @@ pub fn make_line(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomLine> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_line(SC, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:196 - `StepToGeom::MakeLine2d`
@@ -329,8 +413,11 @@ pub fn make_line2d(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dLine> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_line2d(SC, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:199 - `StepToGeom::MakeParabola`
@@ -340,8 +427,11 @@ pub fn make_parabola(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomParabola> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_parabola(SC, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:202 - `StepToGeom::MakeParabola2d`
@@ -351,8 +441,11 @@ pub fn make_parabola2d(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dParabola> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_parabola2d(SC, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:205 - `StepToGeom::MakePlane`
@@ -362,8 +455,11 @@ pub fn make_plane(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlane> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_plane(SP, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:208 - `StepToGeom::MakePolyline`
@@ -373,8 +469,11 @@ pub fn make_polyline(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_polyline(SPL, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:211 - `StepToGeom::MakePolyline2d`
@@ -384,8 +483,11 @@ pub fn make_polyline2d(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_polyline2d(SPL, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:214 - `StepToGeom::MakeRectangularTrimmedSurface`
@@ -396,8 +498,11 @@ pub fn make_rectangular_trimmed_surface(
     {
         let __result =
             unsafe { crate::ffi::StepToGeom_make_rectangular_trimmed_surface(SS, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:217 - `StepToGeom::MakeSphericalSurface`
@@ -408,8 +513,11 @@ pub fn make_spherical_surface(
     {
         let __result =
             unsafe { crate::ffi::StepToGeom_make_spherical_surface(SS, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:220 - `StepToGeom::MakeSurface`
@@ -421,8 +529,11 @@ pub fn make_surface_handlestepgeomsurface_factors(
         let __result = unsafe {
             crate::ffi::StepToGeom_make_surface_handlestepgeomsurface_factors(SS, theLocalFactors)
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:223 - `StepToGeom::MakeSurfaceOfLinearExtrusion`
@@ -433,8 +544,11 @@ pub fn make_surface_of_linear_extrusion(
     {
         let __result =
             unsafe { crate::ffi::StepToGeom_make_surface_of_linear_extrusion(SS, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:226 - `StepToGeom::MakeSurfaceOfRevolution`
@@ -445,8 +559,11 @@ pub fn make_surface_of_revolution(
     {
         let __result =
             unsafe { crate::ffi::StepToGeom_make_surface_of_revolution(SS, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:229 - `StepToGeom::MakeSweptSurface`
@@ -456,8 +573,11 @@ pub fn make_swept_surface(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomSweptSurface> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_swept_surface(SS, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:232 - `StepToGeom::MakeToroidalSurface`
@@ -467,8 +587,11 @@ pub fn make_toroidal_surface(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomToroidalSurface> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_toroidal_surface(SS, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:235 - `StepToGeom::MakeTransformation2d`
@@ -480,8 +603,11 @@ pub fn make_transformation2d(
     {
         let __result =
             unsafe { crate::ffi::StepToGeom_make_transformation2d(SCTO, CT, theLocalFactors) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `StepToGeom.hxx`:239 - `StepToGeom::MakeTransformation3d`
@@ -493,8 +619,11 @@ pub fn make_transformation3d(
     {
         let __result =
             unsafe { crate::ffi::StepToGeom_make_transformation3d(SCTO, CT, theLocalFactors) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `StepToGeom.hxx`:243 - `StepToGeom::MakeTrimmedCurve`
@@ -504,8 +633,11 @@ pub fn make_trimmed_curve(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomTrimmedCurve> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_trimmed_curve(SC, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:246 - `StepToGeom::MakeTrimmedCurve2d`
@@ -515,8 +647,11 @@ pub fn make_trimmed_curve2d(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_trimmed_curve2d(SC, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:249 - `StepToGeom::MakeVectorWithMagnitude`
@@ -527,8 +662,11 @@ pub fn make_vector_with_magnitude(
     {
         let __result =
             unsafe { crate::ffi::StepToGeom_make_vector_with_magnitude(SV, theLocalFactors) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:252 - `StepToGeom::MakeVectorWithMagnitude2d`
@@ -537,8 +675,11 @@ pub fn make_vector_with_magnitude2d(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dVectorWithMagnitude> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_vector_with_magnitude2d(SV) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StepToGeom.hxx`:254 - `StepToGeom::MakeYprRotation`
@@ -548,7 +689,10 @@ pub fn make_ypr_rotation(
 ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
     {
         let __result = unsafe { crate::ffi::StepToGeom_make_ypr_rotation(SR, theCntxt) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }

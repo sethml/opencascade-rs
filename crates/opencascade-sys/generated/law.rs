@@ -16,8 +16,11 @@
 pub fn mix_bnd(Lin: &crate::ffi::HandleLawLinear) -> crate::OwnedPtr<crate::ffi::HandleLawBSpFunc> {
     {
         let __result = unsafe { crate::ffi::Law_mix_bnd(Lin) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `Law.hxx`:74 - `Law::Reparametrize`
@@ -41,8 +44,11 @@ pub fn reparametrize(
                 Curve, First, Last, HasDF, HasDL, DFirst, DLast, Rev, NbPoints,
             )
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `Law.hxx`:96 - `Law::Scale`
@@ -68,8 +74,11 @@ pub fn scale(
 ) -> crate::OwnedPtr<crate::ffi::HandleLawBSpline> {
     {
         let __result = unsafe { crate::ffi::Law_scale(First, Last, HasF, HasL, VFirst, VLast) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `Law.hxx`:103 - `Law::ScaleCub`
@@ -83,8 +92,11 @@ pub fn scale_cub(
 ) -> crate::OwnedPtr<crate::ffi::HandleLawBSpline> {
     {
         let __result = unsafe { crate::ffi::Law_scale_cub(First, Last, HasF, HasL, VFirst, VLast) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 
@@ -113,8 +125,10 @@ impl BSpFunc {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Law_BSpFunc_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -127,8 +141,10 @@ impl BSpFunc {
         {
             let __result =
                 unsafe { crate::ffi::Law_BSpFunc_ctor_handlelawbspline_real2(C, First, Last) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -136,8 +152,11 @@ impl BSpFunc {
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         {
             let __result = unsafe { crate::ffi::Law_BSpFunc_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -148,8 +167,11 @@ impl BSpFunc {
         {
             let __result =
                 unsafe { crate::ffi::Law_BSpFunc_nb_intervals(self as *const Self, S.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -159,8 +181,11 @@ impl BSpFunc {
     /// NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe { crate::ffi::Law_BSpFunc_intervals(self as *const Self, T, S.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_BSpFunc_intervals(self as *const Self, T, S.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -168,24 +193,31 @@ impl BSpFunc {
     pub fn value(&mut self, X: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::Law_BSpFunc_value(self as *mut Self, X) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Law_BSpFunc.hxx`:60 - `Law_BSpFunc::D1()`
     pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
         {
-            unsafe { crate::ffi::Law_BSpFunc_d1(self as *mut Self, X, F, D) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_BSpFunc_d1(self as *mut Self, X, F, D) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Law_BSpFunc.hxx`:64 - `Law_BSpFunc::D2()`
     pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
         {
-            unsafe { crate::ffi::Law_BSpFunc_d2(self as *mut Self, X, F, D, D2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_BSpFunc_d2(self as *mut Self, X, F, D, D2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -205,16 +237,21 @@ impl BSpFunc {
         {
             let __result =
                 unsafe { crate::ffi::Law_BSpFunc_trim(self as *const Self, PFirst, PLast, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `Law_BSpFunc.hxx`:79 - `Law_BSpFunc::Bounds()`
     pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
         {
-            unsafe { crate::ffi::Law_BSpFunc_bounds(self as *mut Self, PFirst, PLast) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_BSpFunc_bounds(self as *mut Self, PFirst, PLast) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -222,16 +259,21 @@ impl BSpFunc {
     pub fn curve(&self) -> crate::OwnedPtr<crate::ffi::HandleLawBSpline> {
         {
             let __result = unsafe { crate::ffi::Law_BSpFunc_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `Law_BSpFunc.hxx`:83 - `Law_BSpFunc::SetCurve()`
     pub fn set_curve(&mut self, C: &crate::ffi::HandleLawBSpline) {
         {
-            unsafe { crate::ffi::Law_BSpFunc_set_curve(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_BSpFunc_set_curve(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -239,8 +281,11 @@ impl BSpFunc {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Law_BSpFunc_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -248,8 +293,11 @@ impl BSpFunc {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Law_BSpFunc_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -257,57 +305,59 @@ impl BSpFunc {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Law_BSpFunc_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Law_Function
     pub fn as_function(&self) -> &Function {
-        {
-            let __result = unsafe { crate::ffi::Law_BSpFunc_as_Law_Function(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Law_BSpFunc_as_Law_Function(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Law_Function (mutable)
     pub fn as_function_mut(&mut self) -> &mut Function {
-        {
-            let __result =
-                unsafe { crate::ffi::Law_BSpFunc_as_Law_Function_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::Law_BSpFunc_as_Law_Function_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Law_BSpFunc_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Law_BSpFunc_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Law_BSpFunc_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Law_BSpFunc_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleLawBSpFunc> {
-        {
-            let __result = unsafe { crate::ffi::Law_BSpFunc_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Law_BSpFunc_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -316,8 +366,11 @@ impl BSpFunc {
             let __result = unsafe {
                 crate::ffi::Law_BSpFunc_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -326,8 +379,11 @@ impl BSpFunc {
         {
             let __result =
                 unsafe { crate::ffi::Law_BSpFunc_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -335,11 +391,14 @@ impl BSpFunc {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::Law_BSpFunc_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -349,16 +408,22 @@ impl BSpFunc {
         {
             let __result =
                 unsafe { crate::ffi::Law_BSpFunc_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Law_BSpFunc_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_BSpFunc_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -367,16 +432,21 @@ impl BSpFunc {
         {
             let __result =
                 unsafe { crate::ffi::Law_BSpFunc_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Law_BSpFunc_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_BSpFunc_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -392,55 +462,56 @@ unsafe impl crate::CppDeletable for HandleLawBSpFunc {
 impl HandleLawBSpFunc {
     /// Dereference this Handle to access the underlying Law_BSpFunc
     pub fn get(&self) -> &crate::ffi::Law_BSpFunc {
-        {
-            let __result = unsafe { crate::ffi::HandleLawBSpFunc_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleLawBSpFunc_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Law_BSpFunc
     pub fn get_mut(&mut self) -> &mut crate::ffi::Law_BSpFunc {
-        {
-            let __result = unsafe { crate::ffi::HandleLawBSpFunc_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleLawBSpFunc_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Law_BSpFunc> to Handle<Law_Function>
     pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleLawBSpFunc_to_HandleLawFunction(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleLawBSpFunc_to_HandleLawFunction(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Law_BSpFunc> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleLawBSpFunc_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleLawBSpFunc_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Law_BSpFunc> to Handle<Law_Interpol>
     ///
     /// Returns `None` if the handle does not point to a `Law_Interpol` (or subclass).
     pub fn downcast_to_interpol(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleLawInterpol>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleLawBSpFunc_downcast_to_HandleLawInterpol(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -448,13 +519,15 @@ impl HandleLawBSpFunc {
     ///
     /// Returns `None` if the handle does not point to a `Law_S` (or subclass).
     pub fn downcast_to_s(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleLawS>> {
-        let ptr =
+        let __result =
             unsafe { crate::ffi::HandleLawBSpFunc_downcast_to_HandleLawS(self as *const Self) };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -545,8 +618,10 @@ impl BSpline {
                     Periodic,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -572,8 +647,10 @@ impl BSpline {
                     Periodic,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -621,8 +698,11 @@ impl BSpline {
     /// degree.
     pub fn increase_degree(&mut self, Degree: i32) {
         {
-            unsafe { crate::ffi::Law_BSpline_increase_degree(self as *mut Self, Degree) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_BSpline_increase_degree(self as *mut Self, Degree) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -636,10 +716,12 @@ impl BSpline {
     /// If <Index> is not in [FirstUKnotIndex, LastUKnotIndex]
     pub fn increase_multiplicity_int2(&mut self, Index: i32, M: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Law_BSpline_increase_multiplicity_int2(self as *mut Self, Index, M)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -653,10 +735,12 @@ impl BSpline {
     /// If <I1,I2> are not in [FirstUKnotIndex, LastUKnotIndex]
     pub fn increase_multiplicity_int3(&mut self, I1: i32, I2: i32, M: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Law_BSpline_increase_multiplicity_int3(self as *mut Self, I1, I2, M)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -671,8 +755,12 @@ impl BSpline {
     /// If <I1,I2> are not in [FirstUKnotIndex, LastUKnotIndex]
     pub fn increment_multiplicity(&mut self, I1: i32, I2: i32, M: i32) {
         {
-            unsafe { crate::ffi::Law_BSpline_increment_multiplicity(self as *mut Self, I1, I2, M) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Law_BSpline_increment_multiplicity(self as *mut Self, I1, I2, M)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -692,7 +780,7 @@ impl BSpline {
     /// the max of Epsilon(U) and ParametricTolerance.
     pub fn insert_knot(&mut self, U: f64, M: i32, ParametricTolerance: f64, Add: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Law_BSpline_insert_knot(
                     self as *mut Self,
                     U,
@@ -701,7 +789,9 @@ impl BSpline {
                     Add,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -732,7 +822,7 @@ impl BSpline {
         Add: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Law_BSpline_insert_knots(
                     self as *mut Self,
                     Knots,
@@ -741,7 +831,9 @@ impl BSpline {
                     Add,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -771,8 +863,11 @@ impl BSpline {
             let __result = unsafe {
                 crate::ffi::Law_BSpline_remove_knot(self as *mut Self, Index, M, Tolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -785,8 +880,10 @@ impl BSpline {
     /// of the reversed curve.
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::Law_BSpline_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_BSpline_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -799,8 +896,11 @@ impl BSpline {
         {
             let __result =
                 unsafe { crate::ffi::Law_BSpline_reversed_parameter(self as *const Self, U) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -816,8 +916,10 @@ impl BSpline {
     /// raises if U2 < U1.
     pub fn segment(&mut self, U1: f64, U2: f64) {
         {
-            unsafe { crate::ffi::Law_BSpline_segment(self as *mut Self, U1, U2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_BSpline_segment(self as *mut Self, U1, U2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -828,8 +930,11 @@ impl BSpline {
     /// Raised if Index < 1 || Index > NbKnots
     pub fn set_knot_int_real(&mut self, Index: i32, K: f64) {
         {
-            unsafe { crate::ffi::Law_BSpline_set_knot_int_real(self as *mut Self, Index, K) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_BSpline_set_knot_int_real(self as *mut Self, Index, K) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -842,8 +947,10 @@ impl BSpline {
     /// Raised if  K.Lower() < 1 or K.Upper() > NbKnots
     pub fn set_knots(&mut self, K: &crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::Law_BSpline_set_knots(self as *mut Self, K) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_BSpline_set_knots(self as *mut Self, K) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -858,10 +965,12 @@ impl BSpline {
     /// Raised if Index < 1 || Index > NbKnots
     pub fn set_knot_int_real_int(&mut self, Index: i32, K: f64, M: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Law_BSpline_set_knot_int_real_int(self as *mut Self, Index, K, M)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -871,8 +980,11 @@ impl BSpline {
     /// does not do anything
     pub fn periodic_normalization(&self, U: &mut f64) {
         {
-            unsafe { crate::ffi::Law_BSpline_periodic_normalization(self as *const Self, U) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_BSpline_periodic_normalization(self as *const Self, U) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -886,8 +998,10 @@ impl BSpline {
     /// Raised if the curve is not closed.
     pub fn set_periodic(&mut self) {
         {
-            unsafe { crate::ffi::Law_BSpline_set_periodic(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_BSpline_set_periodic(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -899,8 +1013,10 @@ impl BSpline {
     /// [FirstUKnotIndex , LastUKnotIndex]
     pub fn set_origin(&mut self, Index: i32) {
         {
-            unsafe { crate::ffi::Law_BSpline_set_origin(self as *mut Self, Index) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_BSpline_set_origin(self as *mut Self, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -909,8 +1025,10 @@ impl BSpline {
     /// the curve is not modified.
     pub fn set_not_periodic(&mut self) {
         {
-            unsafe { crate::ffi::Law_BSpline_set_not_periodic(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_BSpline_set_not_periodic(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -920,8 +1038,11 @@ impl BSpline {
     /// Raised if Index < 1 || Index > NbPoles
     pub fn set_pole_int_real(&mut self, Index: i32, P: f64) {
         {
-            unsafe { crate::ffi::Law_BSpline_set_pole_int_real(self as *mut Self, Index, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_BSpline_set_pole_int_real(self as *mut Self, Index, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -934,10 +1055,12 @@ impl BSpline {
     /// Raised if Weight <= 0.0
     pub fn set_pole_int_real2(&mut self, Index: i32, P: f64, Weight: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Law_BSpline_set_pole_int_real2(self as *mut Self, Index, P, Weight)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -950,8 +1073,11 @@ impl BSpline {
     /// Raised if Weight <= 0.0
     pub fn set_weight(&mut self, Index: i32, Weight: f64) {
         {
-            unsafe { crate::ffi::Law_BSpline_set_weight(self as *mut Self, Index, Weight) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_BSpline_set_weight(self as *mut Self, Index, Weight) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -961,8 +1087,11 @@ impl BSpline {
     pub fn is_cn(&self, N: i32) -> bool {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_is_cn(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -976,8 +1105,11 @@ impl BSpline {
     pub fn is_closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -986,8 +1118,11 @@ impl BSpline {
     pub fn is_periodic(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -997,8 +1132,11 @@ impl BSpline {
     pub fn is_rational(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_is_rational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1018,8 +1156,11 @@ impl BSpline {
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -1028,8 +1169,11 @@ impl BSpline {
     pub fn degree(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1037,40 +1181,52 @@ impl BSpline {
     pub fn value(&self, U: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_value(self as *const Self, U) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Law_BSpline.hxx`:347 - `Law_BSpline::D0()`
     pub fn d0(&self, U: f64, P: &mut f64) {
         {
-            unsafe { crate::ffi::Law_BSpline_d0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_BSpline_d0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Law_BSpline.hxx`:349 - `Law_BSpline::D1()`
     pub fn d1(&self, U: f64, P: &mut f64, V1: &mut f64) {
         {
-            unsafe { crate::ffi::Law_BSpline_d1(self as *const Self, U, P, V1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_BSpline_d1(self as *const Self, U, P, V1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Law_BSpline.hxx`:351 - `Law_BSpline::D2()`
     pub fn d2(&self, U: f64, P: &mut f64, V1: &mut f64, V2: &mut f64) {
         {
-            unsafe { crate::ffi::Law_BSpline_d2(self as *const Self, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_BSpline_d2(self as *const Self, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Law_BSpline.hxx`:356 - `Law_BSpline::D3()`
     pub fn d3(&self, U: f64, P: &mut f64, V1: &mut f64, V2: &mut f64, V3: &mut f64) {
         {
-            unsafe { crate::ffi::Law_BSpline_d3(self as *const Self, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_BSpline_d3(self as *const Self, U, P, V1, V2, V3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1089,8 +1245,11 @@ impl BSpline {
     pub fn dn(&self, U: f64, N: i32) -> f64 {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_dn(self as *const Self, U, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1100,26 +1259,35 @@ impl BSpline {
             let __result = unsafe {
                 crate::ffi::Law_BSpline_local_value(self as *const Self, U, FromK1, ToK2)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Law_BSpline.hxx`:379 - `Law_BSpline::LocalD0()`
     pub fn local_d0(&self, U: f64, FromK1: i32, ToK2: i32, P: &mut f64) {
         {
-            unsafe { crate::ffi::Law_BSpline_local_d0(self as *const Self, U, FromK1, ToK2, P) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Law_BSpline_local_d0(self as *const Self, U, FromK1, ToK2, P)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Law_BSpline.hxx`:384 - `Law_BSpline::LocalD1()`
     pub fn local_d1(&self, U: f64, FromK1: i32, ToK2: i32, P: &mut f64, V1: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Law_BSpline_local_d1(self as *const Self, U, FromK1, ToK2, P, V1)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1134,10 +1302,12 @@ impl BSpline {
         V2: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Law_BSpline_local_d2(self as *const Self, U, FromK1, ToK2, P, V1, V2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1153,7 +1323,7 @@ impl BSpline {
         V3: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Law_BSpline_local_d3(
                     self as *const Self,
                     U,
@@ -1165,7 +1335,9 @@ impl BSpline {
                     V3,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1175,8 +1347,11 @@ impl BSpline {
             let __result = unsafe {
                 crate::ffi::Law_BSpline_local_dn(self as *const Self, U, FromK1, ToK2, N)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1189,8 +1364,11 @@ impl BSpline {
     pub fn end_point(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_end_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1204,8 +1382,11 @@ impl BSpline {
         {
             let __result =
                 unsafe { crate::ffi::Law_BSpline_first_u_knot_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1215,8 +1396,11 @@ impl BSpline {
     pub fn first_parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1229,8 +1413,11 @@ impl BSpline {
     pub fn knot(&self, Index: i32) -> f64 {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_knot(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1240,8 +1427,10 @@ impl BSpline {
     /// Raised if the length of K is not equal to the number of knots.
     pub fn knots(&self, K: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::Law_BSpline_knots(self as *const Self, K) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_BSpline_knots(self as *const Self, K) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1255,8 +1444,10 @@ impl BSpline {
     /// Raised if the length of K is not equal to NbPoles + Degree + 1
     pub fn knot_sequence(&self, K: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::Law_BSpline_knot_sequence(self as *const Self, K) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_BSpline_knot_sequence(self as *const Self, K) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1276,8 +1467,11 @@ impl BSpline {
         {
             let __result =
                 unsafe { crate::ffi::Law_BSpline_knot_distribution(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::BSplKnotDistribution::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::BSplKnotDistribution::try_from(__val).unwrap()
         }
     }
 
@@ -1292,8 +1486,11 @@ impl BSpline {
         {
             let __result =
                 unsafe { crate::ffi::Law_BSpline_last_u_knot_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1303,8 +1500,11 @@ impl BSpline {
     pub fn last_parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1328,7 +1528,7 @@ impl BSpline {
         WithKnotRepetition: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Law_BSpline_locate_u(
                     self as *const Self,
                     U,
@@ -1338,7 +1538,9 @@ impl BSpline {
                     WithKnotRepetition,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1349,8 +1551,11 @@ impl BSpline {
         {
             let __result =
                 unsafe { crate::ffi::Law_BSpline_multiplicity(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1360,8 +1565,10 @@ impl BSpline {
     /// Raised if the length of M is not equal to NbKnots.
     pub fn multiplicities(&self, M: &mut crate::ffi::TColStd_Array1OfInteger) {
         {
-            unsafe { crate::ffi::Law_BSpline_multiplicities(self as *const Self, M) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_BSpline_multiplicities(self as *const Self, M) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1371,8 +1578,11 @@ impl BSpline {
     pub fn nb_knots(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_nb_knots(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1381,8 +1591,11 @@ impl BSpline {
     pub fn nb_poles(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_nb_poles(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1392,8 +1605,11 @@ impl BSpline {
     pub fn pole(&self, Index: i32) -> f64 {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_pole(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1403,8 +1619,10 @@ impl BSpline {
     /// Raised if the length of P is not equal to the number of poles.
     pub fn poles(&self, P: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::Law_BSpline_poles(self as *const Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_BSpline_poles(self as *const Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1416,8 +1634,11 @@ impl BSpline {
     pub fn start_point(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_start_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1427,8 +1648,11 @@ impl BSpline {
     pub fn weight(&self, Index: i32) -> f64 {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_weight(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1438,8 +1662,10 @@ impl BSpline {
     /// Raised if the length of W is not equal to NbPoles.
     pub fn weights(&self, W: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::Law_BSpline_weights(self as *const Self, W) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_BSpline_weights(self as *const Self, W) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1466,7 +1692,7 @@ impl BSpline {
         ErrorStatus: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Law_BSpline_move_point_and_tangent(
                     self as *mut Self,
                     U,
@@ -1478,7 +1704,9 @@ impl BSpline {
                     ErrorStatus,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1489,10 +1717,12 @@ impl BSpline {
     /// |f(t1) - f(t0)| < Tolerance3D
     pub fn resolution(&self, Tolerance3D: f64, UTolerance: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Law_BSpline_resolution(self as *const Self, Tolerance3D, UTolerance)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1500,8 +1730,11 @@ impl BSpline {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleLawBSpline> {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1509,8 +1742,11 @@ impl BSpline {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1520,8 +1756,11 @@ impl BSpline {
     pub fn max_degree() -> i32 {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_max_degree() };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1529,8 +1768,11 @@ impl BSpline {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1538,38 +1780,41 @@ impl BSpline {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Law_BSpline_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Law_BSpline_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Law_BSpline_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Law_BSpline_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleLawBSpline> {
-        {
-            let __result = unsafe { crate::ffi::Law_BSpline_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Law_BSpline_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1578,8 +1823,11 @@ impl BSpline {
             let __result = unsafe {
                 crate::ffi::Law_BSpline_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1588,8 +1836,11 @@ impl BSpline {
         {
             let __result =
                 unsafe { crate::ffi::Law_BSpline_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1597,11 +1848,14 @@ impl BSpline {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::Law_BSpline_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1611,16 +1865,22 @@ impl BSpline {
         {
             let __result =
                 unsafe { crate::ffi::Law_BSpline_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Law_BSpline_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_BSpline_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1629,16 +1889,21 @@ impl BSpline {
         {
             let __result =
                 unsafe { crate::ffi::Law_BSpline_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Law_BSpline_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_BSpline_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1654,31 +1919,30 @@ unsafe impl crate::CppDeletable for HandleLawBSpline {
 impl HandleLawBSpline {
     /// Dereference this Handle to access the underlying Law_BSpline
     pub fn get(&self) -> &crate::ffi::Law_BSpline {
-        {
-            let __result = unsafe { crate::ffi::HandleLawBSpline_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleLawBSpline_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Law_BSpline
     pub fn get_mut(&mut self) -> &mut crate::ffi::Law_BSpline {
-        {
-            let __result = unsafe { crate::ffi::HandleLawBSpline_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleLawBSpline_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Law_BSpline> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleLawBSpline_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleLawBSpline_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1731,8 +1995,10 @@ impl BSplineKnotSplitting {
                     ContinuityRange,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1742,8 +2008,11 @@ impl BSplineKnotSplitting {
         {
             let __result =
                 unsafe { crate::ffi::Law_BSplineKnotSplitting_nb_splits(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1754,10 +2023,12 @@ impl BSplineKnotSplitting {
     /// Raised if the length of SplitValues is not equal to NbSPlit.
     pub fn splitting(&self, SplitValues: &mut crate::ffi::TColStd_Array1OfInteger) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Law_BSplineKnotSplitting_splitting(self as *const Self, SplitValues)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1771,8 +2042,11 @@ impl BSplineKnotSplitting {
             let __result = unsafe {
                 crate::ffi::Law_BSplineKnotSplitting_split_value(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1805,8 +2079,10 @@ impl Composite {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Law_Composite_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1815,8 +2091,10 @@ impl Composite {
     pub fn new_real3(First: f64, Last: f64, Tol: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Law_Composite_ctor_real3(First, Last, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1824,8 +2102,11 @@ impl Composite {
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         {
             let __result = unsafe { crate::ffi::Law_Composite_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -1836,8 +2117,11 @@ impl Composite {
         {
             let __result =
                 unsafe { crate::ffi::Law_Composite_nb_intervals(self as *const Self, S.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1847,8 +2131,11 @@ impl Composite {
     /// i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe { crate::ffi::Law_Composite_intervals(self as *const Self, T, S.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_Composite_intervals(self as *const Self, T, S.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1857,8 +2144,11 @@ impl Composite {
     pub fn value(&mut self, X: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::Law_Composite_value(self as *mut Self, X) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1866,8 +2156,10 @@ impl Composite {
     /// Returns the value and the first derivative at parameter X.
     pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
         {
-            unsafe { crate::ffi::Law_Composite_d1(self as *mut Self, X, F, D) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_Composite_d1(self as *mut Self, X, F, D) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1876,8 +2168,10 @@ impl Composite {
     /// at parameter X.
     pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
         {
-            unsafe { crate::ffi::Law_Composite_d2(self as *mut Self, X, F, D, D2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_Composite_d2(self as *mut Self, X, F, D, D2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1897,8 +2191,11 @@ impl Composite {
         {
             let __result =
                 unsafe { crate::ffi::Law_Composite_trim(self as *const Self, PFirst, PLast, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1906,8 +2203,11 @@ impl Composite {
     /// Returns the parametric bounds of the function.
     pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
         {
-            unsafe { crate::ffi::Law_Composite_bounds(self as *mut Self, PFirst, PLast) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_Composite_bounds(self as *mut Self, PFirst, PLast) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1918,8 +2218,11 @@ impl Composite {
         {
             let __result =
                 unsafe { crate::ffi::Law_Composite_change_elementary_law(self as *mut Self, W) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1927,8 +2230,11 @@ impl Composite {
     pub fn change_laws(&mut self) -> &mut crate::ffi::Law_Laws {
         {
             let __result = unsafe { crate::ffi::Law_Composite_change_laws(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1936,16 +2242,21 @@ impl Composite {
     pub fn is_periodic(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Law_Composite_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Law_Composite.hxx`:101 - `Law_Composite::SetPeriodic()`
     pub fn set_periodic(&mut self) {
         {
-            unsafe { crate::ffi::Law_Composite_set_periodic(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_Composite_set_periodic(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1953,8 +2264,11 @@ impl Composite {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Law_Composite_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1962,8 +2276,11 @@ impl Composite {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Law_Composite_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1971,60 +2288,61 @@ impl Composite {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Law_Composite_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Law_Function
     pub fn as_function(&self) -> &Function {
-        {
-            let __result =
-                unsafe { crate::ffi::Law_Composite_as_Law_Function(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Law_Composite_as_Law_Function(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Law_Function (mutable)
     pub fn as_function_mut(&mut self) -> &mut Function {
-        {
-            let __result =
-                unsafe { crate::ffi::Law_Composite_as_Law_Function_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::Law_Composite_as_Law_Function_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Law_Composite_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Law_Composite_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Law_Composite_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Law_Composite_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleLawComposite> {
-        {
-            let __result = unsafe { crate::ffi::Law_Composite_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Law_Composite_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2033,8 +2351,11 @@ impl Composite {
             let __result = unsafe {
                 crate::ffi::Law_Composite_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2043,8 +2364,11 @@ impl Composite {
         {
             let __result =
                 unsafe { crate::ffi::Law_Composite_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2052,11 +2376,14 @@ impl Composite {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::Law_Composite_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2066,16 +2393,23 @@ impl Composite {
         {
             let __result =
                 unsafe { crate::ffi::Law_Composite_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Law_Composite_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Law_Composite_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2085,16 +2419,21 @@ impl Composite {
             let __result = unsafe {
                 crate::ffi::Law_Composite_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Law_Composite_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_Composite_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2110,41 +2449,41 @@ unsafe impl crate::CppDeletable for HandleLawComposite {
 impl HandleLawComposite {
     /// Dereference this Handle to access the underlying Law_Composite
     pub fn get(&self) -> &crate::ffi::Law_Composite {
-        {
-            let __result = unsafe { crate::ffi::HandleLawComposite_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleLawComposite_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Law_Composite
     pub fn get_mut(&mut self) -> &mut crate::ffi::Law_Composite {
-        {
-            let __result = unsafe { crate::ffi::HandleLawComposite_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleLawComposite_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Law_Composite> to Handle<Law_Function>
     pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleLawComposite_to_HandleLawFunction(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleLawComposite_to_HandleLawFunction(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Law_Composite> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleLawComposite_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleLawComposite_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2167,8 +2506,10 @@ impl Constant {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Law_Constant_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2176,8 +2517,11 @@ impl Constant {
     /// Set the radius and the range of the constant Law.
     pub fn set(&mut self, Radius: f64, PFirst: f64, PLast: f64) {
         {
-            unsafe { crate::ffi::Law_Constant_set(self as *mut Self, Radius, PFirst, PLast) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_Constant_set(self as *mut Self, Radius, PFirst, PLast) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2186,8 +2530,11 @@ impl Constant {
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         {
             let __result = unsafe { crate::ffi::Law_Constant_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -2197,16 +2544,22 @@ impl Constant {
         {
             let __result =
                 unsafe { crate::ffi::Law_Constant_nb_intervals(self as *const Self, S.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Law_Constant.hxx`:50 - `Law_Constant::Intervals()`
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe { crate::ffi::Law_Constant_intervals(self as *const Self, T, S.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_Constant_intervals(self as *const Self, T, S.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2215,8 +2568,11 @@ impl Constant {
     pub fn value(&mut self, X: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::Law_Constant_value(self as *mut Self, X) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2224,8 +2580,10 @@ impl Constant {
     /// Returns the value and the first derivative at parameter X.
     pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
         {
-            unsafe { crate::ffi::Law_Constant_d1(self as *mut Self, X, F, D) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_Constant_d1(self as *mut Self, X, F, D) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2234,8 +2592,10 @@ impl Constant {
     /// at parameter X.
     pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
         {
-            unsafe { crate::ffi::Law_Constant_d2(self as *mut Self, X, F, D, D2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_Constant_d2(self as *mut Self, X, F, D, D2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2249,8 +2609,11 @@ impl Constant {
         {
             let __result =
                 unsafe { crate::ffi::Law_Constant_trim(self as *const Self, PFirst, PLast, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2258,8 +2621,11 @@ impl Constant {
     /// Returns the parametric bounds of the function.
     pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
         {
-            unsafe { crate::ffi::Law_Constant_bounds(self as *mut Self, PFirst, PLast) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_Constant_bounds(self as *mut Self, PFirst, PLast) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2267,8 +2633,11 @@ impl Constant {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Law_Constant_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2276,8 +2645,11 @@ impl Constant {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Law_Constant_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2285,57 +2657,59 @@ impl Constant {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Law_Constant_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Law_Function
     pub fn as_function(&self) -> &Function {
-        {
-            let __result = unsafe { crate::ffi::Law_Constant_as_Law_Function(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Law_Constant_as_Law_Function(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Law_Function (mutable)
     pub fn as_function_mut(&mut self) -> &mut Function {
-        {
-            let __result =
-                unsafe { crate::ffi::Law_Constant_as_Law_Function_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::Law_Constant_as_Law_Function_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Law_Constant_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Law_Constant_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Law_Constant_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Law_Constant_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleLawConstant> {
-        {
-            let __result = unsafe { crate::ffi::Law_Constant_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Law_Constant_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2344,8 +2718,11 @@ impl Constant {
             let __result = unsafe {
                 crate::ffi::Law_Constant_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2354,8 +2731,11 @@ impl Constant {
         {
             let __result =
                 unsafe { crate::ffi::Law_Constant_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2363,11 +2743,14 @@ impl Constant {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::Law_Constant_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2377,16 +2760,23 @@ impl Constant {
         {
             let __result =
                 unsafe { crate::ffi::Law_Constant_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Law_Constant_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Law_Constant_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2396,16 +2786,21 @@ impl Constant {
             let __result = unsafe {
                 crate::ffi::Law_Constant_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Law_Constant_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_Constant_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2421,41 +2816,41 @@ unsafe impl crate::CppDeletable for HandleLawConstant {
 impl HandleLawConstant {
     /// Dereference this Handle to access the underlying Law_Constant
     pub fn get(&self) -> &crate::ffi::Law_Constant {
-        {
-            let __result = unsafe { crate::ffi::HandleLawConstant_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleLawConstant_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Law_Constant
     pub fn get_mut(&mut self) -> &mut crate::ffi::Law_Constant {
-        {
-            let __result = unsafe { crate::ffi::HandleLawConstant_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleLawConstant_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Law_Constant> to Handle<Law_Function>
     pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleLawConstant_to_HandleLawFunction(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleLawConstant_to_HandleLawFunction(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Law_Constant> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleLawConstant_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleLawConstant_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2478,8 +2873,11 @@ impl Function {
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         {
             let __result = unsafe { crate::ffi::Law_Function_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -2490,8 +2888,11 @@ impl Function {
         {
             let __result =
                 unsafe { crate::ffi::Law_Function_nb_intervals(self as *const Self, S.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2501,8 +2902,11 @@ impl Function {
     /// i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe { crate::ffi::Law_Function_intervals(self as *const Self, T, S.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_Function_intervals(self as *const Self, T, S.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2511,8 +2915,11 @@ impl Function {
     pub fn value(&mut self, X: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::Law_Function_value(self as *mut Self, X) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2521,8 +2928,10 @@ impl Function {
     /// function at the point of parameter X.
     pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
         {
-            unsafe { crate::ffi::Law_Function_d1(self as *mut Self, X, F, D) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_Function_d1(self as *mut Self, X, F, D) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2531,8 +2940,10 @@ impl Function {
     /// at parameter X.
     pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
         {
-            unsafe { crate::ffi::Law_Function_d2(self as *mut Self, X, F, D, D2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_Function_d2(self as *mut Self, X, F, D, D2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2552,8 +2963,11 @@ impl Function {
         {
             let __result =
                 unsafe { crate::ffi::Law_Function_trim(self as *const Self, PFirst, PLast, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2561,8 +2975,11 @@ impl Function {
     /// Returns the parametric bounds of the function.
     pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
         {
-            unsafe { crate::ffi::Law_Function_bounds(self as *mut Self, PFirst, PLast) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_Function_bounds(self as *mut Self, PFirst, PLast) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2570,8 +2987,11 @@ impl Function {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Law_Function_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2579,8 +2999,11 @@ impl Function {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Law_Function_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2588,29 +3011,32 @@ impl Function {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Law_Function_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Law_Function_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Law_Function_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Law_Function_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Law_Function_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2619,8 +3045,11 @@ impl Function {
             let __result = unsafe {
                 crate::ffi::Law_Function_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2629,8 +3058,11 @@ impl Function {
         {
             let __result =
                 unsafe { crate::ffi::Law_Function_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2638,11 +3070,14 @@ impl Function {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::Law_Function_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2652,16 +3087,23 @@ impl Function {
         {
             let __result =
                 unsafe { crate::ffi::Law_Function_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Law_Function_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Law_Function_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2671,16 +3113,21 @@ impl Function {
             let __result = unsafe {
                 crate::ffi::Law_Function_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Law_Function_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_Function_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2696,45 +3143,47 @@ unsafe impl crate::CppDeletable for HandleLawFunction {
 impl HandleLawFunction {
     /// Dereference this Handle to access the underlying Law_Function
     pub fn get(&self) -> &crate::ffi::Law_Function {
-        {
-            let __result = unsafe { crate::ffi::HandleLawFunction_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleLawFunction_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Law_Function
     pub fn get_mut(&mut self) -> &mut crate::ffi::Law_Function {
-        {
-            let __result = unsafe { crate::ffi::HandleLawFunction_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleLawFunction_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Law_Function> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleLawFunction_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleLawFunction_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Law_Function> to Handle<Law_BSpFunc>
     ///
     /// Returns `None` if the handle does not point to a `Law_BSpFunc` (or subclass).
     pub fn downcast_to_b_sp_func(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleLawBSpFunc>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleLawFunction_downcast_to_HandleLawBSpFunc(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2742,14 +3191,16 @@ impl HandleLawFunction {
     ///
     /// Returns `None` if the handle does not point to a `Law_Composite` (or subclass).
     pub fn downcast_to_composite(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleLawComposite>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleLawFunction_downcast_to_HandleLawComposite(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2757,14 +3208,16 @@ impl HandleLawFunction {
     ///
     /// Returns `None` if the handle does not point to a `Law_Constant` (or subclass).
     pub fn downcast_to_constant(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleLawConstant>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleLawFunction_downcast_to_HandleLawConstant(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2772,14 +3225,16 @@ impl HandleLawFunction {
     ///
     /// Returns `None` if the handle does not point to a `Law_Interpol` (or subclass).
     pub fn downcast_to_interpol(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleLawInterpol>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleLawFunction_downcast_to_HandleLawInterpol(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2787,14 +3242,16 @@ impl HandleLawFunction {
     ///
     /// Returns `None` if the handle does not point to a `Law_Linear` (or subclass).
     pub fn downcast_to_linear(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleLawLinear>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleLawFunction_downcast_to_HandleLawLinear(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2802,13 +3259,15 @@ impl HandleLawFunction {
     ///
     /// Returns `None` if the handle does not point to a `Law_S` (or subclass).
     pub fn downcast_to_s(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleLawS>> {
-        let ptr =
+        let __result =
             unsafe { crate::ffi::HandleLawFunction_downcast_to_HandleLawS(self as *const Self) };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -2835,8 +3294,10 @@ impl Interpol {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Law_Interpol_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2860,14 +3321,16 @@ impl Interpol {
         Periodic: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Law_Interpol_set_array1ofpnt2d_bool(
                     self as *mut Self,
                     ParAndRad,
                     Periodic,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2880,7 +3343,7 @@ impl Interpol {
         Periodic: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Law_Interpol_set_in_relative_array1ofpnt2d_real2_bool(
                     self as *mut Self,
                     ParAndRad,
@@ -2889,7 +3352,9 @@ impl Interpol {
                     Periodic,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2917,7 +3382,7 @@ impl Interpol {
         Periodic: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Law_Interpol_set_array1ofpnt2d_real2_bool(
                     self as *mut Self,
                     ParAndRad,
@@ -2926,7 +3391,9 @@ impl Interpol {
                     Periodic,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2941,7 +3408,7 @@ impl Interpol {
         Periodic: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Law_Interpol_set_in_relative_array1ofpnt2d_real4_bool(
                     self as *mut Self,
                     ParAndRad,
@@ -2952,7 +3419,9 @@ impl Interpol {
                     Periodic,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2960,8 +3429,11 @@ impl Interpol {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Law_Interpol_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2969,8 +3441,11 @@ impl Interpol {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Law_Interpol_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2978,76 +3453,77 @@ impl Interpol {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Law_Interpol_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Law_BSpFunc
     pub fn as_b_sp_func(&self) -> &BSpFunc {
-        {
-            let __result = unsafe { crate::ffi::Law_Interpol_as_Law_BSpFunc(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Law_Interpol_as_Law_BSpFunc(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Law_BSpFunc (mutable)
     pub fn as_b_sp_func_mut(&mut self) -> &mut BSpFunc {
-        {
-            let __result =
-                unsafe { crate::ffi::Law_Interpol_as_Law_BSpFunc_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::Law_Interpol_as_Law_BSpFunc_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Law_Function
     pub fn as_function(&self) -> &Function {
-        {
-            let __result = unsafe { crate::ffi::Law_Interpol_as_Law_Function(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Law_Interpol_as_Law_Function(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Law_Function (mutable)
     pub fn as_function_mut(&mut self) -> &mut Function {
-        {
-            let __result =
-                unsafe { crate::ffi::Law_Interpol_as_Law_Function_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::Law_Interpol_as_Law_Function_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Law_Interpol_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Law_Interpol_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Law_Interpol_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Law_Interpol_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleLawInterpol> {
-        {
-            let __result = unsafe { crate::ffi::Law_Interpol_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Law_Interpol_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Law_BSpFunc.hxx`:46 - `Law_BSpFunc::Continuity()`
@@ -3055,8 +3531,11 @@ impl Interpol {
         {
             let __result =
                 unsafe { crate::ffi::Law_Interpol_inherited_Continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -3066,18 +3545,23 @@ impl Interpol {
             let __result = unsafe {
                 crate::ffi::Law_Interpol_inherited_NbIntervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Law_BSpFunc.hxx`:55 - `Law_BSpFunc::Intervals()`
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Law_Interpol_inherited_Intervals(self as *const Self, T, S.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3086,24 +3570,33 @@ impl Interpol {
         {
             let __result =
                 unsafe { crate::ffi::Law_Interpol_inherited_Value(self as *mut Self, X) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Law_BSpFunc.hxx`:60 - `Law_BSpFunc::D1()`
     pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
         {
-            unsafe { crate::ffi::Law_Interpol_inherited_D1(self as *mut Self, X, F, D) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_Interpol_inherited_D1(self as *mut Self, X, F, D) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Law_BSpFunc.hxx`:64 - `Law_BSpFunc::D2()`
     pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
         {
-            unsafe { crate::ffi::Law_Interpol_inherited_D2(self as *mut Self, X, F, D, D2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_Interpol_inherited_D2(self as *mut Self, X, F, D, D2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3118,16 +3611,23 @@ impl Interpol {
             let __result = unsafe {
                 crate::ffi::Law_Interpol_inherited_Trim(self as *const Self, PFirst, PLast, Tol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Law_BSpFunc.hxx`:79 - `Law_BSpFunc::Bounds()`
     pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
         {
-            unsafe { crate::ffi::Law_Interpol_inherited_Bounds(self as *mut Self, PFirst, PLast) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Law_Interpol_inherited_Bounds(self as *mut Self, PFirst, PLast)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3135,16 +3635,22 @@ impl Interpol {
     pub fn curve(&self) -> crate::OwnedPtr<crate::ffi::HandleLawBSpline> {
         {
             let __result = unsafe { crate::ffi::Law_Interpol_inherited_Curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Law_BSpFunc.hxx`:83 - `Law_BSpFunc::SetCurve()`
     pub fn set_curve(&mut self, C: &crate::ffi::HandleLawBSpline) {
         {
-            unsafe { crate::ffi::Law_Interpol_inherited_SetCurve(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_Interpol_inherited_SetCurve(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3154,8 +3660,11 @@ impl Interpol {
             let __result = unsafe {
                 crate::ffi::Law_Interpol_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3164,8 +3673,11 @@ impl Interpol {
         {
             let __result =
                 unsafe { crate::ffi::Law_Interpol_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3173,11 +3685,14 @@ impl Interpol {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::Law_Interpol_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3187,16 +3702,23 @@ impl Interpol {
         {
             let __result =
                 unsafe { crate::ffi::Law_Interpol_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Law_Interpol_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Law_Interpol_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3206,16 +3728,21 @@ impl Interpol {
             let __result = unsafe {
                 crate::ffi::Law_Interpol_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Law_Interpol_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_Interpol_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3231,51 +3758,51 @@ unsafe impl crate::CppDeletable for HandleLawInterpol {
 impl HandleLawInterpol {
     /// Dereference this Handle to access the underlying Law_Interpol
     pub fn get(&self) -> &crate::ffi::Law_Interpol {
-        {
-            let __result = unsafe { crate::ffi::HandleLawInterpol_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleLawInterpol_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Law_Interpol
     pub fn get_mut(&mut self) -> &mut crate::ffi::Law_Interpol {
-        {
-            let __result = unsafe { crate::ffi::HandleLawInterpol_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleLawInterpol_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Law_Interpol> to Handle<Law_BSpFunc>
     pub fn to_handle_b_sp_func(&self) -> crate::OwnedPtr<crate::ffi::HandleLawBSpFunc> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleLawInterpol_to_HandleLawBSpFunc(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleLawInterpol_to_HandleLawBSpFunc(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Law_Interpol> to Handle<Law_Function>
     pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleLawInterpol_to_HandleLawFunction(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleLawInterpol_to_HandleLawFunction(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Law_Interpol> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleLawInterpol_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleLawInterpol_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3319,8 +3846,10 @@ impl Interpolate {
                     Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3345,8 +3874,10 @@ impl Interpolate {
                     Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3354,14 +3885,16 @@ impl Interpolate {
     /// loads initial and final tangents if any.
     pub fn load_real2(&mut self, InitialTangent: f64, FinalTangent: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Law_Interpolate_load_real2(
                     self as *mut Self,
                     InitialTangent,
                     FinalTangent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3376,14 +3909,16 @@ impl Interpolate {
         TangentFlags: &crate::ffi::HandleTColStdHArray1OfBoolean,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Law_Interpolate_load_array1ofreal_handletcolstdharray1ofboolean(
                     self as *mut Self,
                     Tangents,
                     TangentFlags,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3391,8 +3926,10 @@ impl Interpolate {
     /// Clears the tangents if any
     pub fn clear_tangents(&mut self) {
         {
-            unsafe { crate::ffi::Law_Interpolate_clear_tangents(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_Interpolate_clear_tangents(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3400,8 +3937,10 @@ impl Interpolate {
     /// Makes the interpolation
     pub fn perform(&mut self) {
         {
-            unsafe { crate::ffi::Law_Interpolate_perform(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_Interpolate_perform(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3409,8 +3948,11 @@ impl Interpolate {
     pub fn curve(&self) -> &crate::ffi::HandleLawBSpline {
         {
             let __result = unsafe { crate::ffi::Law_Interpolate_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3418,8 +3960,11 @@ impl Interpolate {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Law_Interpolate_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3444,8 +3989,10 @@ impl Linear {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Law_Linear_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3456,8 +4003,12 @@ impl Linear {
     /// two parametric bounds.
     pub fn set(&mut self, Pdeb: f64, Valdeb: f64, Pfin: f64, Valfin: f64) {
         {
-            unsafe { crate::ffi::Law_Linear_set(self as *mut Self, Pdeb, Valdeb, Pfin, Valfin) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Law_Linear_set(self as *mut Self, Pdeb, Valdeb, Pfin, Valfin)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3466,8 +4017,11 @@ impl Linear {
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         {
             let __result = unsafe { crate::ffi::Law_Linear_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -3477,16 +4031,22 @@ impl Linear {
         {
             let __result =
                 unsafe { crate::ffi::Law_Linear_nb_intervals(self as *const Self, S.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Law_Linear.hxx`:54 - `Law_Linear::Intervals()`
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe { crate::ffi::Law_Linear_intervals(self as *const Self, T, S.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_Linear_intervals(self as *const Self, T, S.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3495,8 +4055,11 @@ impl Linear {
     pub fn value(&mut self, X: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::Law_Linear_value(self as *mut Self, X) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3505,8 +4068,10 @@ impl Linear {
     /// function at the point of parameter X.
     pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
         {
-            unsafe { crate::ffi::Law_Linear_d1(self as *mut Self, X, F, D) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_Linear_d1(self as *mut Self, X, F, D) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3515,8 +4080,10 @@ impl Linear {
     /// at parameter X.
     pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
         {
-            unsafe { crate::ffi::Law_Linear_d2(self as *mut Self, X, F, D, D2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_Linear_d2(self as *mut Self, X, F, D, D2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3536,8 +4103,11 @@ impl Linear {
         {
             let __result =
                 unsafe { crate::ffi::Law_Linear_trim(self as *const Self, PFirst, PLast, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3545,8 +4115,10 @@ impl Linear {
     /// Returns the parametric bounds of the function.
     pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
         {
-            unsafe { crate::ffi::Law_Linear_bounds(self as *mut Self, PFirst, PLast) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_Linear_bounds(self as *mut Self, PFirst, PLast) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3554,8 +4126,11 @@ impl Linear {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Law_Linear_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3563,8 +4138,11 @@ impl Linear {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Law_Linear_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3572,56 +4150,58 @@ impl Linear {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Law_Linear_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Law_Function
     pub fn as_function(&self) -> &Function {
-        {
-            let __result = unsafe { crate::ffi::Law_Linear_as_Law_Function(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Law_Linear_as_Law_Function(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Law_Function (mutable)
     pub fn as_function_mut(&mut self) -> &mut Function {
-        {
-            let __result = unsafe { crate::ffi::Law_Linear_as_Law_Function_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::Law_Linear_as_Law_Function_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Law_Linear_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Law_Linear_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Law_Linear_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Law_Linear_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleLawLinear> {
-        {
-            let __result = unsafe { crate::ffi::Law_Linear_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Law_Linear_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3630,8 +4210,11 @@ impl Linear {
             let __result = unsafe {
                 crate::ffi::Law_Linear_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3640,8 +4223,11 @@ impl Linear {
         {
             let __result =
                 unsafe { crate::ffi::Law_Linear_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3649,11 +4235,14 @@ impl Linear {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::Law_Linear_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3663,16 +4252,22 @@ impl Linear {
         {
             let __result =
                 unsafe { crate::ffi::Law_Linear_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Law_Linear_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_Linear_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3681,16 +4276,21 @@ impl Linear {
         {
             let __result =
                 unsafe { crate::ffi::Law_Linear_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Law_Linear_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_Linear_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3706,41 +4306,40 @@ unsafe impl crate::CppDeletable for HandleLawLinear {
 impl HandleLawLinear {
     /// Dereference this Handle to access the underlying Law_Linear
     pub fn get(&self) -> &crate::ffi::Law_Linear {
-        {
-            let __result = unsafe { crate::ffi::HandleLawLinear_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleLawLinear_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Law_Linear
     pub fn get_mut(&mut self) -> &mut crate::ffi::Law_Linear {
-        {
-            let __result = unsafe { crate::ffi::HandleLawLinear_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleLawLinear_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Law_Linear> to Handle<Law_Function>
     pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleLawLinear_to_HandleLawFunction(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleLawLinear_to_HandleLawFunction(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Law_Linear> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleLawLinear_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleLawLinear_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3764,8 +4363,10 @@ impl S {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Law_S_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3778,8 +4379,12 @@ impl S {
     /// equal to 0 at the two parameter points Pdeb and Pfin.
     pub fn set_real4(&mut self, Pdeb: f64, Valdeb: f64, Pfin: f64, Valfin: f64) {
         {
-            unsafe { crate::ffi::Law_S_set_real4(self as *mut Self, Pdeb, Valdeb, Pfin, Valfin) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Law_S_set_real4(self as *mut Self, Pdeb, Valdeb, Pfin, Valfin)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3800,7 +4405,7 @@ impl S {
         Dfin: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Law_S_set_real6(
                     self as *mut Self,
                     Pdeb,
@@ -3811,7 +4416,9 @@ impl S {
                     Dfin,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3819,8 +4426,11 @@ impl S {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Law_S_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3828,8 +4438,11 @@ impl S {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Law_S_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3837,81 +4450,86 @@ impl S {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Law_S_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Law_BSpFunc
     pub fn as_b_sp_func(&self) -> &BSpFunc {
-        {
-            let __result = unsafe { crate::ffi::Law_S_as_Law_BSpFunc(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Law_S_as_Law_BSpFunc(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Law_BSpFunc (mutable)
     pub fn as_b_sp_func_mut(&mut self) -> &mut BSpFunc {
-        {
-            let __result = unsafe { crate::ffi::Law_S_as_Law_BSpFunc_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::Law_S_as_Law_BSpFunc_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Law_Function
     pub fn as_function(&self) -> &Function {
-        {
-            let __result = unsafe { crate::ffi::Law_S_as_Law_Function(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Law_S_as_Law_Function(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Law_Function (mutable)
     pub fn as_function_mut(&mut self) -> &mut Function {
-        {
-            let __result = unsafe { crate::ffi::Law_S_as_Law_Function_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::Law_S_as_Law_Function_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe { crate::ffi::Law_S_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Law_S_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Law_S_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::Law_S_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleLawS> {
-        {
-            let __result = unsafe { crate::ffi::Law_S_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Law_S_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Law_BSpFunc.hxx`:46 - `Law_BSpFunc::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         {
             let __result = unsafe { crate::ffi::Law_S_inherited_Continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -3920,16 +4538,22 @@ impl S {
         {
             let __result =
                 unsafe { crate::ffi::Law_S_inherited_NbIntervals(self as *const Self, S.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Law_BSpFunc.hxx`:55 - `Law_BSpFunc::Intervals()`
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe { crate::ffi::Law_S_inherited_Intervals(self as *const Self, T, S.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_S_inherited_Intervals(self as *const Self, T, S.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3937,24 +4561,31 @@ impl S {
     pub fn value(&mut self, X: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::Law_S_inherited_Value(self as *mut Self, X) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Law_BSpFunc.hxx`:60 - `Law_BSpFunc::D1()`
     pub fn d1(&mut self, X: f64, F: &mut f64, D: &mut f64) {
         {
-            unsafe { crate::ffi::Law_S_inherited_D1(self as *mut Self, X, F, D) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_S_inherited_D1(self as *mut Self, X, F, D) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Law_BSpFunc.hxx`:64 - `Law_BSpFunc::D2()`
     pub fn d2(&mut self, X: f64, F: &mut f64, D: &mut f64, D2: &mut f64) {
         {
-            unsafe { crate::ffi::Law_S_inherited_D2(self as *mut Self, X, F, D, D2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_S_inherited_D2(self as *mut Self, X, F, D, D2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3969,16 +4600,22 @@ impl S {
             let __result = unsafe {
                 crate::ffi::Law_S_inherited_Trim(self as *const Self, PFirst, PLast, Tol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Law_BSpFunc.hxx`:79 - `Law_BSpFunc::Bounds()`
     pub fn bounds(&mut self, PFirst: &mut f64, PLast: &mut f64) {
         {
-            unsafe { crate::ffi::Law_S_inherited_Bounds(self as *mut Self, PFirst, PLast) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_S_inherited_Bounds(self as *mut Self, PFirst, PLast) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3986,16 +4623,21 @@ impl S {
     pub fn curve(&self) -> crate::OwnedPtr<crate::ffi::HandleLawBSpline> {
         {
             let __result = unsafe { crate::ffi::Law_S_inherited_Curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Law_BSpFunc.hxx`:83 - `Law_BSpFunc::SetCurve()`
     pub fn set_curve(&mut self, C: &crate::ffi::HandleLawBSpline) {
         {
-            unsafe { crate::ffi::Law_S_inherited_SetCurve(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_S_inherited_SetCurve(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4004,8 +4646,11 @@ impl S {
         {
             let __result =
                 unsafe { crate::ffi::Law_S_inherited_IsInstance(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4014,8 +4659,11 @@ impl S {
         {
             let __result =
                 unsafe { crate::ffi::Law_S_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4023,11 +4671,14 @@ impl S {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::Law_S_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4036,16 +4687,22 @@ impl S {
     pub fn get_ref_count(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Law_S_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Law_S_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Law_S_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4054,16 +4711,21 @@ impl S {
         {
             let __result =
                 unsafe { crate::ffi::Law_S_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Law_S_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Law_S_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4079,50 +4741,48 @@ unsafe impl crate::CppDeletable for HandleLawS {
 impl HandleLawS {
     /// Dereference this Handle to access the underlying Law_S
     pub fn get(&self) -> &crate::ffi::Law_S {
-        {
-            let __result = unsafe { crate::ffi::HandleLawS_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleLawS_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Law_S
     pub fn get_mut(&mut self) -> &mut crate::ffi::Law_S {
-        {
-            let __result = unsafe { crate::ffi::HandleLawS_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleLawS_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Law_S> to Handle<Law_BSpFunc>
     pub fn to_handle_b_sp_func(&self) -> crate::OwnedPtr<crate::ffi::HandleLawBSpFunc> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleLawS_to_HandleLawBSpFunc(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::HandleLawS_to_HandleLawBSpFunc(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Law_S> to Handle<Law_Function>
     pub fn to_handle_function(&self) -> crate::OwnedPtr<crate::ffi::HandleLawFunction> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleLawS_to_HandleLawFunction(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::HandleLawS_to_HandleLawFunction(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Law_S> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleLawS_to_HandleStandardTransient(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleLawS_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

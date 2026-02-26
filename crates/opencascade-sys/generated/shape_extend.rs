@@ -11,8 +11,10 @@
 /// Currently, loads messages output by ShapeHealing algorithms.
 pub fn init() {
     {
-        unsafe { crate::ffi::ShapeExtend_init() };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::ShapeExtend_init() };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `ShapeExtend.hxx`:52 - `ShapeExtend::EncodeStatus`
@@ -20,8 +22,11 @@ pub fn init() {
 pub fn encode_status(status: crate::shape_extend::Status) -> i32 {
     {
         let __result = unsafe { crate::ffi::ShapeExtend_encode_status(status.into()) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `ShapeExtend.hxx`:55 - `ShapeExtend::DecodeStatus`
@@ -29,8 +34,11 @@ pub fn encode_status(status: crate::shape_extend::Status) -> i32 {
 pub fn decode_status(flag: i32, status: crate::shape_extend::Status) -> bool {
     {
         let __result = unsafe { crate::ffi::ShapeExtend_decode_status(flag, status.into()) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 
@@ -198,8 +206,10 @@ impl BasicMsgRegistrator {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeExtend_BasicMsgRegistrator_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -213,7 +223,7 @@ impl BasicMsgRegistrator {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_BasicMsgRegistrator_send_handlestandardtransient_msg_gravity(
                     self as *mut Self,
                     object,
@@ -221,7 +231,9 @@ impl BasicMsgRegistrator {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -234,7 +246,7 @@ impl BasicMsgRegistrator {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_BasicMsgRegistrator_send_shape_msg_gravity(
                     self as *mut Self,
                     shape,
@@ -242,7 +254,9 @@ impl BasicMsgRegistrator {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -254,14 +268,16 @@ impl BasicMsgRegistrator {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_BasicMsgRegistrator_send_msg_gravity(
                     self as *mut Self,
                     message,
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -271,8 +287,11 @@ impl BasicMsgRegistrator {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_BasicMsgRegistrator_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -280,8 +299,11 @@ impl BasicMsgRegistrator {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeExtend_BasicMsgRegistrator_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -290,47 +312,46 @@ impl BasicMsgRegistrator {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_BasicMsgRegistrator_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeExtend_BasicMsgRegistrator_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeExtend_BasicMsgRegistrator_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeExtend_BasicMsgRegistrator_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeExtend_BasicMsgRegistrator_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeExtend_BasicMsgRegistrator_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::ShapeExtend_BasicMsgRegistrator_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -342,8 +363,11 @@ impl BasicMsgRegistrator {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -356,8 +380,11 @@ impl BasicMsgRegistrator {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -367,11 +394,14 @@ impl BasicMsgRegistrator {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_BasicMsgRegistrator_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -384,20 +414,25 @@ impl BasicMsgRegistrator {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_BasicMsgRegistrator_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -409,18 +444,23 @@ impl BasicMsgRegistrator {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_BasicMsgRegistrator_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -436,37 +476,35 @@ unsafe impl crate::CppDeletable for HandleShapeExtendBasicMsgRegistrator {
 impl HandleShapeExtendBasicMsgRegistrator {
     /// Dereference this Handle to access the underlying ShapeExtend_BasicMsgRegistrator
     pub fn get(&self) -> &crate::ffi::ShapeExtend_BasicMsgRegistrator {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeExtendBasicMsgRegistrator_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeExtendBasicMsgRegistrator_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeExtend_BasicMsgRegistrator
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeExtend_BasicMsgRegistrator {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeExtendBasicMsgRegistrator_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeExtendBasicMsgRegistrator_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeExtend_BasicMsgRegistrator> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeExtendBasicMsgRegistrator_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeExtendBasicMsgRegistrator_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<ShapeExtend_BasicMsgRegistrator> to Handle<ShapeExtend_MsgRegistrator>
@@ -475,14 +513,16 @@ impl HandleShapeExtendBasicMsgRegistrator {
     pub fn downcast_to_msg_registrator(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeExtendMsgRegistrator>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeExtendBasicMsgRegistrator_downcast_to_HandleShapeExtendMsgRegistrator(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -509,8 +549,11 @@ impl ComplexCurve {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_ComplexCurve_nb_curves(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -520,8 +563,11 @@ impl ComplexCurve {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_ComplexCurve_curve(self as *const Self, index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -533,8 +579,11 @@ impl ComplexCurve {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_ComplexCurve_locate_parameter(self as *const Self, U, UOut)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -550,8 +599,11 @@ impl ComplexCurve {
                     Ulocal,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -559,8 +611,11 @@ impl ComplexCurve {
     /// Applies transformation to each curve
     pub fn transform(&mut self, T: &crate::gp::Trsf) {
         {
-            unsafe { crate::ffi::ShapeExtend_ComplexCurve_transform(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeExtend_ComplexCurve_transform(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -571,8 +626,11 @@ impl ComplexCurve {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_ComplexCurve_reversed_parameter(self as *const Self, U)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -583,8 +641,11 @@ impl ComplexCurve {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_ComplexCurve_first_parameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -594,8 +655,11 @@ impl ComplexCurve {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_ComplexCurve_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -605,8 +669,11 @@ impl ComplexCurve {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_ComplexCurve_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -616,8 +683,11 @@ impl ComplexCurve {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_ComplexCurve_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -627,8 +697,11 @@ impl ComplexCurve {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_ComplexCurve_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -638,8 +711,11 @@ impl ComplexCurve {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_ComplexCurve_is_cn(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -648,16 +724,22 @@ impl ComplexCurve {
     /// Finds appropriate curve and local parameter on it.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::ShapeExtend_ComplexCurve_d0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeExtend_ComplexCurve_d0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ShapeExtend_ComplexCurve.hxx`:83 - `ShapeExtend_ComplexCurve::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
         {
-            unsafe { crate::ffi::ShapeExtend_ComplexCurve_d1(self as *const Self, U, P, V1) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeExtend_ComplexCurve_d1(self as *const Self, U, P, V1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -670,8 +752,12 @@ impl ComplexCurve {
         V2: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::ShapeExtend_ComplexCurve_d2(self as *const Self, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeExtend_ComplexCurve_d2(self as *const Self, U, P, V1, V2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -685,10 +771,12 @@ impl ComplexCurve {
         V3: &mut crate::gp::Vec,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_ComplexCurve_d3(self as *const Self, U, P, V1, V2, V3)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -697,8 +785,11 @@ impl ComplexCurve {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_ComplexCurve_dn(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -709,8 +800,11 @@ impl ComplexCurve {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_ComplexCurve_get_scale_factor(self as *const Self, ind)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -722,8 +816,11 @@ impl ComplexCurve {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_ComplexCurve_check_connectivity(self as *mut Self, Preci)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -732,8 +829,11 @@ impl ComplexCurve {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_ComplexCurve_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -741,8 +841,11 @@ impl ComplexCurve {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeExtend_ComplexCurve_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -750,81 +853,85 @@ impl ComplexCurve {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeExtend_ComplexCurve_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Geom_Curve
     pub fn as_geom_curve(&self) -> &crate::geom::Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeExtend_ComplexCurve_as_Geom_Curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ShapeExtend_ComplexCurve_as_Geom_Curve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom_Curve (mutable)
     pub fn as_geom_curve_mut(&mut self) -> &mut crate::geom::Curve {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeExtend_ComplexCurve_as_Geom_Curve_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ShapeExtend_ComplexCurve_as_Geom_Curve_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom_Geometry
     pub fn as_geom_geometry(&self) -> &crate::geom::Geometry {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeExtend_ComplexCurve_as_Geom_Geometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ShapeExtend_ComplexCurve_as_Geom_Geometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom_Geometry (mutable)
     pub fn as_geom_geometry_mut(&mut self) -> &mut crate::geom::Geometry {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeExtend_ComplexCurve_as_Geom_Geometry_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ShapeExtend_ComplexCurve_as_Geom_Geometry_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeExtend_ComplexCurve_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeExtend_ComplexCurve_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeExtend_ComplexCurve_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeExtend_ComplexCurve_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Geom_Curve.hxx`:69 - `Geom_Curve::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::ShapeExtend_ComplexCurve_inherited_Reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeExtend_ComplexCurve_inherited_Reverse(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -838,8 +945,11 @@ impl ComplexCurve {
                     T,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -852,8 +962,11 @@ impl ComplexCurve {
                     T,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -863,8 +976,11 @@ impl ComplexCurve {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_ComplexCurve_inherited_Reversed(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -874,8 +990,11 @@ impl ComplexCurve {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_ComplexCurve_inherited_Period(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -885,46 +1004,59 @@ impl ComplexCurve {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_ComplexCurve_inherited_Value(self as *const Self, U)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::ShapeExtend_ComplexCurve_inherited_Mirror(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeExtend_ComplexCurve_inherited_Mirror(self as *mut Self, P)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:72 - `Geom_Geometry::Rotate()`
     pub fn rotate(&mut self, A1: &crate::gp::Ax1, Ang: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_ComplexCurve_inherited_Rotate(self as *mut Self, A1, Ang)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:75 - `Geom_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt, S: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_ComplexCurve_inherited_Scale(self as *mut Self, P, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_ComplexCurve_inherited_Translate(self as *mut Self, V)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -934,8 +1066,11 @@ impl ComplexCurve {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_ComplexCurve_inherited_Mirrored(self as *const Self, P)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -949,8 +1084,11 @@ impl ComplexCurve {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_ComplexCurve_inherited_Rotated(self as *const Self, A1, Ang)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -964,8 +1102,11 @@ impl ComplexCurve {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_ComplexCurve_inherited_Scaled(self as *const Self, P, S)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -978,8 +1119,11 @@ impl ComplexCurve {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_ComplexCurve_inherited_Transformed(self as *const Self, T)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -992,8 +1136,11 @@ impl ComplexCurve {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_ComplexCurve_inherited_Translated(self as *const Self, V)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1002,8 +1149,11 @@ impl ComplexCurve {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_ComplexCurve_inherited_Copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1016,8 +1166,11 @@ impl ComplexCurve {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1027,8 +1180,11 @@ impl ComplexCurve {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_ComplexCurve_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1037,11 +1193,14 @@ impl ComplexCurve {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_ComplexCurve_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1052,20 +1211,25 @@ impl ComplexCurve {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_ComplexCurve_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_ComplexCurve_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1077,16 +1241,23 @@ impl ComplexCurve {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeExtend_ComplexCurve_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeExtend_ComplexCurve_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1102,57 +1273,57 @@ unsafe impl crate::CppDeletable for HandleShapeExtendComplexCurve {
 impl HandleShapeExtendComplexCurve {
     /// Dereference this Handle to access the underlying ShapeExtend_ComplexCurve
     pub fn get(&self) -> &crate::ffi::ShapeExtend_ComplexCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeExtendComplexCurve_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeExtendComplexCurve_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeExtend_ComplexCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeExtend_ComplexCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeExtendComplexCurve_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeExtendComplexCurve_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeExtend_ComplexCurve> to Handle<Geom_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeExtendComplexCurve_to_HandleGeomCurve(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeExtendComplexCurve_to_HandleGeomCurve(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeExtend_ComplexCurve> to Handle<Geom_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeExtendComplexCurve_to_HandleGeomGeometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeExtendComplexCurve_to_HandleGeomGeometry(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeExtend_ComplexCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeExtendComplexCurve_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeExtendComplexCurve_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1206,8 +1377,10 @@ impl CompositeSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeExtend_CompositeSurface_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1221,8 +1394,10 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_ctor_handletcolgeomharray2ofsurface_parametrisation(GridSurf, param.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1237,8 +1412,10 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_ctor_handletcolgeomharray2ofsurface_array1ofreal2(GridSurf, UJoints, VJoints)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1264,8 +1441,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_init_handletcolgeomharray2ofsurface_parametrisation(self as *mut Self, GridSurf, param.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1290,8 +1470,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_init_handletcolgeomharray2ofsurface_array1ofreal2(self as *mut Self, GridSurf, UJoints, VJoints)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1302,8 +1485,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_nb_u_patches(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1314,8 +1500,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_nb_v_patches(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1326,8 +1515,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_patch_int2(self as *const Self, i, j)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1337,8 +1529,11 @@ impl CompositeSurface {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_CompositeSurface_patches(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1351,8 +1546,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_u_joint_values(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1365,8 +1563,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_v_joint_values(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1379,8 +1580,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_u_joint_value(self as *const Self, i)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1393,8 +1597,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_v_joint_value(self as *const Self, j)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1412,8 +1619,11 @@ impl CompositeSurface {
                     UJoints,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1431,8 +1641,11 @@ impl CompositeSurface {
                     VJoints,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1441,13 +1654,15 @@ impl CompositeSurface {
     /// other joint values are shifted accordingly)
     pub fn set_u_first_value(&mut self, UFirst: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_set_u_first_value(
                     self as *mut Self,
                     UFirst,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1456,13 +1671,15 @@ impl CompositeSurface {
     /// other joint values are shifted accordingly)
     pub fn set_v_first_value(&mut self, VFirst: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_set_v_first_value(
                     self as *mut Self,
                     VFirst,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1473,8 +1690,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_locate_u_parameter(self as *const Self, U)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1485,8 +1705,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_locate_v_parameter(self as *const Self, V)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1495,7 +1718,7 @@ impl CompositeSurface {
     /// given point
     pub fn locate_uv_point(&self, pnt: &crate::gp::Pnt2d, i: &mut i32, j: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_locate_uv_point(
                     self as *const Self,
                     pnt,
@@ -1503,7 +1726,9 @@ impl CompositeSurface {
                     j,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1514,8 +1739,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_patch_real2(self as *const Self, U, V)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1532,8 +1760,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_patch_pnt2d(self as *const Self, pnt)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1549,8 +1780,11 @@ impl CompositeSurface {
                     u,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1566,8 +1800,11 @@ impl CompositeSurface {
                     v,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1588,8 +1825,11 @@ impl CompositeSurface {
                     uv,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1605,8 +1845,11 @@ impl CompositeSurface {
                     U,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1622,8 +1865,11 @@ impl CompositeSurface {
                     V,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1644,8 +1890,11 @@ impl CompositeSurface {
                     UV,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1673,8 +1922,11 @@ impl CompositeSurface {
                     Trsf,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1682,8 +1934,11 @@ impl CompositeSurface {
     /// Applies transformation to all the patches
     pub fn transform(&mut self, T: &crate::gp::Trsf) {
         {
-            unsafe { crate::ffi::ShapeExtend_CompositeSurface_transform(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeExtend_CompositeSurface_transform(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1693,8 +1948,11 @@ impl CompositeSurface {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_CompositeSurface_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1702,8 +1960,11 @@ impl CompositeSurface {
     /// NOT IMPLEMENTED (does nothing)
     pub fn u_reverse(&mut self) {
         {
-            unsafe { crate::ffi::ShapeExtend_CompositeSurface_u_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeExtend_CompositeSurface_u_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1717,8 +1978,11 @@ impl CompositeSurface {
                     U,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1726,8 +1990,11 @@ impl CompositeSurface {
     /// NOT IMPLEMENTED (does nothing)
     pub fn v_reverse(&mut self) {
         {
-            unsafe { crate::ffi::ShapeExtend_CompositeSurface_v_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeExtend_CompositeSurface_v_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1741,8 +2008,11 @@ impl CompositeSurface {
                     V,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1750,10 +2020,12 @@ impl CompositeSurface {
     /// Returns the parametric bounds of grid
     pub fn bounds(&self, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_bounds(self as *const Self, U1, U2, V1, V2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1765,8 +2037,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_is_u_closed(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1778,8 +2053,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_is_v_closed(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1790,8 +2068,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_is_u_periodic(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1802,8 +2083,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_is_v_periodic(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1813,8 +2097,11 @@ impl CompositeSurface {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_CompositeSurface_u_iso(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1824,8 +2111,11 @@ impl CompositeSurface {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_CompositeSurface_v_iso(self as *const Self, V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1835,8 +2125,11 @@ impl CompositeSurface {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_CompositeSurface_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -1846,8 +2139,11 @@ impl CompositeSurface {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_CompositeSurface_is_c_nu(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1857,8 +2153,11 @@ impl CompositeSurface {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_CompositeSurface_is_c_nv(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1866,8 +2165,12 @@ impl CompositeSurface {
     /// Computes the point of parameter U,V on the grid.
     pub fn d0(&self, U: f64, V: f64, P: &mut crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::ShapeExtend_CompositeSurface_d0(self as *const Self, U, V, P) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeExtend_CompositeSurface_d0(self as *const Self, U, V, P)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1883,10 +2186,12 @@ impl CompositeSurface {
         D1V: &mut crate::gp::Vec,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_d1(self as *const Self, U, V, P, D1U, D1V)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1905,7 +2210,7 @@ impl CompositeSurface {
         D2UV: &mut crate::gp::Vec,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_d2(
                     self as *const Self,
                     U,
@@ -1918,7 +2223,9 @@ impl CompositeSurface {
                     D2UV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1941,7 +2248,7 @@ impl CompositeSurface {
         D3UVV: &mut crate::gp::Vec,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_d3(
                     self as *const Self,
                     U,
@@ -1958,7 +2265,9 @@ impl CompositeSurface {
                     D3UVV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1970,8 +2279,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_dn(self as *const Self, U, V, Nu, Nv)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1981,8 +2293,11 @@ impl CompositeSurface {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_CompositeSurface_value(self as *const Self, pnt) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1990,13 +2305,15 @@ impl CompositeSurface {
     /// Computes Joint values according to parameter
     pub fn compute_joint_values(&mut self, param: crate::shape_extend::Parametrisation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_compute_joint_values(
                     self as *mut Self,
                     param.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2008,8 +2325,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_check_connectivity(self as *mut Self, prec)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2019,8 +2339,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2028,8 +2351,11 @@ impl CompositeSurface {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeExtend_CompositeSurface_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2038,89 +2364,90 @@ impl CompositeSurface {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_CompositeSurface_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Geom_Surface
     pub fn as_geom_surface(&self) -> &crate::geom::Surface {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeExtend_CompositeSurface_as_Geom_Surface(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_as_Geom_Surface(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom_Surface (mutable)
     pub fn as_geom_surface_mut(&mut self) -> &mut crate::geom::Surface {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeExtend_CompositeSurface_as_Geom_Surface_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_as_Geom_Surface_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom_Geometry
     pub fn as_geom_geometry(&self) -> &crate::geom::Geometry {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeExtend_CompositeSurface_as_Geom_Geometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_as_Geom_Geometry(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom_Geometry (mutable)
     pub fn as_geom_geometry_mut(&mut self) -> &mut crate::geom::Geometry {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeExtend_CompositeSurface_as_Geom_Geometry_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_as_Geom_Geometry_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeExtend_CompositeSurface_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeExtend_CompositeSurface_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeExtend_CompositeSurface_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendCompositeSurface> {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeExtend_CompositeSurface_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::ShapeExtend_CompositeSurface_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
@@ -2129,8 +2456,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_inherited_UReversed(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2140,15 +2470,18 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_inherited_VReversed(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom_Surface.hxx`:113 - `Geom_Surface::TransformParameters()`
     pub fn transform_parameters(&self, U: &mut f64, V: &mut f64, T: &crate::gp::Trsf) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_inherited_TransformParameters(
                     self as *const Self,
                     U,
@@ -2156,7 +2489,9 @@ impl CompositeSurface {
                     T,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2172,8 +2507,11 @@ impl CompositeSurface {
                     T,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2183,8 +2521,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_inherited_UPeriod(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2194,52 +2535,63 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_inherited_VPeriod(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_inherited_Mirror(self as *mut Self, P)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:72 - `Geom_Geometry::Rotate()`
     pub fn rotate(&mut self, A1: &crate::gp::Ax1, Ang: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_inherited_Rotate(
                     self as *mut Self,
                     A1,
                     Ang,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:75 - `Geom_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt, S: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_inherited_Scale(self as *mut Self, P, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_inherited_Translate(self as *mut Self, V)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2249,8 +2601,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_inherited_Mirrored(self as *const Self, P)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2268,8 +2623,11 @@ impl CompositeSurface {
                     Ang,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2283,8 +2641,11 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_inherited_Scaled(self as *const Self, P, S)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2300,8 +2661,11 @@ impl CompositeSurface {
                     T,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2317,8 +2681,11 @@ impl CompositeSurface {
                     V,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2331,8 +2698,11 @@ impl CompositeSurface {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2345,8 +2715,11 @@ impl CompositeSurface {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2356,11 +2729,14 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2371,20 +2747,25 @@ impl CompositeSurface {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2396,18 +2777,23 @@ impl CompositeSurface {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_CompositeSurface_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2423,61 +2809,57 @@ unsafe impl crate::CppDeletable for HandleShapeExtendCompositeSurface {
 impl HandleShapeExtendCompositeSurface {
     /// Dereference this Handle to access the underlying ShapeExtend_CompositeSurface
     pub fn get(&self) -> &crate::ffi::ShapeExtend_CompositeSurface {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeExtendCompositeSurface_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeExtendCompositeSurface_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeExtend_CompositeSurface
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeExtend_CompositeSurface {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeExtendCompositeSurface_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeExtendCompositeSurface_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeExtend_CompositeSurface> to Handle<Geom_Surface>
     pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeExtendCompositeSurface_to_HandleGeomSurface(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeExtendCompositeSurface_to_HandleGeomSurface(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeExtend_CompositeSurface> to Handle<Geom_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeExtendCompositeSurface_to_HandleGeomGeometry(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeExtendCompositeSurface_to_HandleGeomGeometry(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeExtend_CompositeSurface> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeExtendCompositeSurface_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeExtendCompositeSurface_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2506,8 +2888,10 @@ impl Explorer {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeExtend_Explorer_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2521,8 +2905,11 @@ impl Explorer {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_Explorer_compound_from_seq(self as *const Self, seqval)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2546,8 +2933,11 @@ impl Explorer {
                     expcomp,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2562,7 +2952,7 @@ impl Explorer {
         clear: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_Explorer_list_from_seq(
                     self as *const Self,
                     seqval,
@@ -2570,7 +2960,9 @@ impl Explorer {
                     clear,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2584,8 +2976,11 @@ impl Explorer {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_Explorer_seq_from_list(self as *const Self, lisval)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2604,8 +2999,11 @@ impl Explorer {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_Explorer_shape_type(self as *const Self, shape, compound)
             };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -2638,8 +3036,11 @@ impl Explorer {
                     compound,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2661,7 +3062,7 @@ impl Explorer {
         compounds: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_Explorer_dispatch_list(
                     self as *const Self,
                     list,
@@ -2675,7 +3076,9 @@ impl Explorer {
                     compounds,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2707,8 +3110,10 @@ impl MsgRegistrator {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeExtend_MsgRegistrator_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2723,7 +3128,7 @@ impl MsgRegistrator {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_MsgRegistrator_send_handlestandardtransient_msg_gravity(
                     self as *mut Self,
                     object,
@@ -2731,7 +3136,9 @@ impl MsgRegistrator {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2746,7 +3153,7 @@ impl MsgRegistrator {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_MsgRegistrator_send_shape_msg_gravity(
                     self as *mut Self,
                     shape,
@@ -2754,7 +3161,9 @@ impl MsgRegistrator {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2765,8 +3174,11 @@ impl MsgRegistrator {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_MsgRegistrator_map_transient(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2776,8 +3188,11 @@ impl MsgRegistrator {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_MsgRegistrator_map_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2786,8 +3201,11 @@ impl MsgRegistrator {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_MsgRegistrator_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2795,8 +3213,11 @@ impl MsgRegistrator {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeExtend_MsgRegistrator_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2804,69 +3225,71 @@ impl MsgRegistrator {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeExtend_MsgRegistrator_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeExtend_BasicMsgRegistrator
     pub fn as_basic_msg_registrator(&self) -> &BasicMsgRegistrator {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeExtend_MsgRegistrator_as_ShapeExtend_BasicMsgRegistrator(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeExtend_MsgRegistrator_as_ShapeExtend_BasicMsgRegistrator(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeExtend_BasicMsgRegistrator (mutable)
     pub fn as_basic_msg_registrator_mut(&mut self) -> &mut BasicMsgRegistrator {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeExtend_MsgRegistrator_as_ShapeExtend_BasicMsgRegistrator_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeExtend_MsgRegistrator_as_ShapeExtend_BasicMsgRegistrator_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeExtend_MsgRegistrator_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeExtend_MsgRegistrator_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeExtend_MsgRegistrator_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeExtend_MsgRegistrator_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendMsgRegistrator> {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeExtend_MsgRegistrator_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeExtend_MsgRegistrator_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2878,8 +3301,11 @@ impl MsgRegistrator {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2892,8 +3318,11 @@ impl MsgRegistrator {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2903,11 +3332,14 @@ impl MsgRegistrator {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_MsgRegistrator_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2918,20 +3350,25 @@ impl MsgRegistrator {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_MsgRegistrator_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_MsgRegistrator_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2943,16 +3380,23 @@ impl MsgRegistrator {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeExtend_MsgRegistrator_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeExtend_MsgRegistrator_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2968,50 +3412,50 @@ unsafe impl crate::CppDeletable for HandleShapeExtendMsgRegistrator {
 impl HandleShapeExtendMsgRegistrator {
     /// Dereference this Handle to access the underlying ShapeExtend_MsgRegistrator
     pub fn get(&self) -> &crate::ffi::ShapeExtend_MsgRegistrator {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeExtendMsgRegistrator_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeExtendMsgRegistrator_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeExtend_MsgRegistrator
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeExtend_MsgRegistrator {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeExtendMsgRegistrator_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeExtendMsgRegistrator_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeExtend_MsgRegistrator> to Handle<ShapeExtend_BasicMsgRegistrator>
     pub fn to_handle_basic_msg_registrator(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeExtendMsgRegistrator_to_HandleShapeExtendBasicMsgRegistrator(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeExtendMsgRegistrator_to_HandleShapeExtendBasicMsgRegistrator(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeExtend_MsgRegistrator> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeExtendMsgRegistrator_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeExtendMsgRegistrator_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3058,8 +3502,10 @@ impl WireData {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeExtend_WireData_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3074,8 +3520,10 @@ impl WireData {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_WireData_ctor_wire_bool2(wire, chained, theManifoldMode)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3098,13 +3546,15 @@ impl WireData {
         other: &crate::ffi::HandleShapeExtendWireData,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_WireData_init_handleshapeextendwiredata(
                     self as *mut Self,
                     other,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3134,8 +3584,11 @@ impl WireData {
                     theManifoldMode,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3143,8 +3596,10 @@ impl WireData {
     /// Clears data about Wire.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::ShapeExtend_WireData_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeExtend_WireData_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3159,8 +3614,12 @@ impl WireData {
     /// must be set in first
     pub fn compute_seams(&mut self, enforce: bool) {
         {
-            unsafe { crate::ffi::ShapeExtend_WireData_compute_seams(self as *mut Self, enforce) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeExtend_WireData_compute_seams(self as *mut Self, enforce)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3168,8 +3627,11 @@ impl WireData {
     /// Does a circular permutation in order to set <num>th edge last
     pub fn set_last(&mut self, num: i32) {
         {
-            unsafe { crate::ffi::ShapeExtend_WireData_set_last(self as *mut Self, num) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeExtend_WireData_set_last(self as *mut Self, num) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3182,8 +3644,11 @@ impl WireData {
     /// chained.
     pub fn set_degenerated_last(&mut self) {
         {
-            unsafe { crate::ffi::ShapeExtend_WireData_set_degenerated_last(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeExtend_WireData_set_degenerated_last(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3196,10 +3661,12 @@ impl WireData {
     /// Remark : Null Edge is simply ignored
     pub fn add_edge_int(&mut self, edge: &crate::topo_ds::Edge, atnum: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_WireData_add_edge_int(self as *mut Self, edge, atnum)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3209,10 +3676,12 @@ impl WireData {
     /// is used)
     pub fn add_wire_int(&mut self, wire: &crate::topo_ds::Wire, atnum: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_WireData_add_wire_int(self as *mut Self, wire, atnum)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3224,14 +3693,16 @@ impl WireData {
         atnum: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_WireData_add_handleshapeextendwiredata_int(
                     self as *mut Self,
                     wire,
                     atnum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3239,10 +3710,12 @@ impl WireData {
     /// Adds an edge or a wire invoking corresponding method Add
     pub fn add_shape_int(&mut self, shape: &crate::topo_ds::Shape, atnum: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_WireData_add_shape_int(self as *mut Self, shape, atnum)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3255,14 +3728,16 @@ impl WireData {
     /// < 0: no adding
     pub fn add_oriented_edge_int(&mut self, edge: &crate::topo_ds::Edge, mode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_WireData_add_oriented_edge_int(
                     self as *mut Self,
                     edge,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3275,14 +3750,16 @@ impl WireData {
     /// < 0: no adding
     pub fn add_oriented_wire_int(&mut self, wire: &crate::topo_ds::Wire, mode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_WireData_add_oriented_wire_int(
                     self as *mut Self,
                     wire,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3291,14 +3768,16 @@ impl WireData {
     /// AddOriented
     pub fn add_oriented_shape_int(&mut self, shape: &crate::topo_ds::Shape, mode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_WireData_add_oriented_shape_int(
                     self as *mut Self,
                     shape,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3306,8 +3785,10 @@ impl WireData {
     /// Removes an Edge, given its rank. By default removes the last edge.
     pub fn remove(&mut self, num: i32) {
         {
-            unsafe { crate::ffi::ShapeExtend_WireData_remove(self as *mut Self, num) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeExtend_WireData_remove(self as *mut Self, num) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3316,8 +3797,11 @@ impl WireData {
     /// rank number <num> with new one. Default is last edge (<num> = 0).
     pub fn set(&mut self, edge: &crate::topo_ds::Edge, num: i32) {
         {
-            unsafe { crate::ffi::ShapeExtend_WireData_set(self as *mut Self, edge, num) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeExtend_WireData_set(self as *mut Self, edge, num) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3327,8 +3811,10 @@ impl WireData {
     /// or face is not available
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::ShapeExtend_WireData_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeExtend_WireData_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3340,8 +3826,11 @@ impl WireData {
     /// If face is NULL, no swapping is performed
     pub fn reverse_face(&mut self, face: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::ShapeExtend_WireData_reverse_face(self as *mut Self, face) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeExtend_WireData_reverse_face(self as *mut Self, face) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3351,8 +3840,11 @@ impl WireData {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_WireData_nb_edges(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3363,8 +3855,11 @@ impl WireData {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_WireData_nb_non_manifold_edges(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3375,8 +3870,11 @@ impl WireData {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_WireData_nonmanifold_edge(self as *const Self, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3388,8 +3886,11 @@ impl WireData {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_WireData_nonmanifold_edges(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3403,8 +3904,11 @@ impl WireData {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_WireData_manifold_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3414,8 +3918,11 @@ impl WireData {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_WireData_edge(self as *const Self, num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3427,8 +3934,11 @@ impl WireData {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_WireData_index(self as *mut Self, edge) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3440,8 +3950,11 @@ impl WireData {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_WireData_is_seam(self as *mut Self, num) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3456,8 +3969,11 @@ impl WireData {
     pub fn wire(&self) -> crate::OwnedPtr<crate::topo_ds::Wire> {
         {
             let __result = unsafe { crate::ffi::ShapeExtend_WireData_wire(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3471,8 +3987,11 @@ impl WireData {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_WireData_wire_api_make(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3481,8 +4000,11 @@ impl WireData {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_WireData_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3490,8 +4012,11 @@ impl WireData {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeExtend_WireData_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3499,42 +4024,44 @@ impl WireData {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeExtend_WireData_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeExtend_WireData_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ShapeExtend_WireData_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeExtend_WireData_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeExtend_WireData_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendWireData> {
-        {
-            let __result = unsafe { crate::ffi::ShapeExtend_WireData_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeExtend_WireData_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3543,8 +4070,11 @@ impl WireData {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_WireData_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3554,8 +4084,11 @@ impl WireData {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_WireData_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3564,11 +4097,14 @@ impl WireData {
         {
             let __result =
                 unsafe { crate::ffi::ShapeExtend_WireData_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3579,18 +4115,23 @@ impl WireData {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_WireData_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeExtend_WireData_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3600,16 +4141,22 @@ impl WireData {
             let __result = unsafe {
                 crate::ffi::ShapeExtend_WireData_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeExtend_WireData_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeExtend_WireData_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3625,35 +4172,31 @@ unsafe impl crate::CppDeletable for HandleShapeExtendWireData {
 impl HandleShapeExtendWireData {
     /// Dereference this Handle to access the underlying ShapeExtend_WireData
     pub fn get(&self) -> &crate::ffi::ShapeExtend_WireData {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeExtendWireData_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleShapeExtendWireData_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeExtend_WireData
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeExtend_WireData {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeExtendWireData_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleShapeExtendWireData_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeExtend_WireData> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeExtendWireData_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeExtendWireData_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

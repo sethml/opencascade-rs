@@ -38,8 +38,11 @@ pub fn split_b_spline_curve_handlegeombsplinecurve_int2_bool(
                 SameOrientation,
             )
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `GeomConvert.hxx`:104 - `GeomConvert::SplitBSplineCurve`
@@ -75,8 +78,11 @@ pub fn split_b_spline_curve_handlegeombsplinecurve_real3_bool(
                 SameOrientation,
             )
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `GeomConvert.hxx`:125 - `GeomConvert::SplitBSplineSurface`
@@ -115,8 +121,11 @@ pub fn split_b_spline_surface_handlegeombsplinesurface_int4_bool2(
                 SameVOrientation,
             )
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `GeomConvert.hxx`:146 - `GeomConvert::SplitBSplineSurface`
@@ -149,8 +158,11 @@ pub fn split_b_spline_surface_handlegeombsplinesurface_int2_bool2(
                 SameOrientation,
             )
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `GeomConvert.hxx`:171 - `GeomConvert::SplitBSplineSurface`
@@ -195,8 +207,11 @@ pub fn split_b_spline_surface_handlegeombsplinesurface_real5_bool2(
                 SameVOrientation,
             )
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `GeomConvert.hxx`:198 - `GeomConvert::SplitBSplineSurface`
@@ -229,8 +244,11 @@ pub fn split_b_spline_surface_handlegeombsplinesurface_real2_bool_real_bool(
         let __result = unsafe {
             crate::ffi::GeomConvert_split_b_spline_surface_handlegeombsplinesurface_real2_bool_real_bool(S, FromParam1, ToParam2, USplit, ParametricTolerance, SameOrientation)
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `GeomConvert.hxx`:271 - `GeomConvert::CurveToBSplineCurve`
@@ -310,8 +328,11 @@ pub fn curve_to_b_spline_curve_handlegeomcurve_parameterisationtype(
                 Parameterisation.into(),
             )
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `GeomConvert.hxx`:283 - `GeomConvert::SurfaceToBSplineSurface`
@@ -328,8 +349,11 @@ pub fn surface_to_b_spline_surface(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
     {
         let __result = unsafe { crate::ffi::GeomConvert_surface_to_b_spline_surface(S) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `GeomConvert.hxx`:350 - `GeomConvert::C0BSplineToC1BSplineCurve`
@@ -346,14 +370,16 @@ pub fn c0b_spline_to_c1b_spline_curve_handlegeombsplinecurve_real2(
     AngularTolerance: f64,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::GeomConvert_c0b_spline_to_c1b_spline_curve_handlegeombsplinecurve_real2(
                 BS,
                 tolerance,
                 AngularTolerance,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `GeomConvert.hxx`:358 - `GeomConvert::C0BSplineToArrayOfC1BSplineCurve`
@@ -366,10 +392,12 @@ pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handletcol
     tolerance: f64,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomharray1ofbsplinecurve_real(BS, tabBS, tolerance)
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `GeomConvert.hxx`:370 - `GeomConvert::C0BSplineToArrayOfC1BSplineCurve`
@@ -387,10 +415,12 @@ pub fn c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handletcol
     tolerance: f64,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::GeomConvert_c0b_spline_to_array_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomharray1ofbsplinecurve_real2(BS, tabBS, AngularTolerance, tolerance)
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 
@@ -464,8 +494,10 @@ impl ApproxCurve {
                     MaxDegree,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -495,8 +527,10 @@ impl ApproxCurve {
                     MaxDegree,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -506,8 +540,11 @@ impl ApproxCurve {
         {
             let __result =
                 unsafe { crate::ffi::GeomConvert_ApproxCurve_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -518,8 +555,11 @@ impl ApproxCurve {
         {
             let __result =
                 unsafe { crate::ffi::GeomConvert_ApproxCurve_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -530,8 +570,11 @@ impl ApproxCurve {
         {
             let __result =
                 unsafe { crate::ffi::GeomConvert_ApproxCurve_has_result(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -544,8 +587,11 @@ impl ApproxCurve {
         {
             let __result =
                 unsafe { crate::ffi::GeomConvert_ApproxCurve_max_error(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -553,8 +599,10 @@ impl ApproxCurve {
     /// Print on the stream  o  information about the object
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::GeomConvert_ApproxCurve_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::GeomConvert_ApproxCurve_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -611,8 +659,10 @@ impl ApproxSurface {
                     PrecisCode,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -651,8 +701,10 @@ impl ApproxSurface {
                     PrecisCode,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -662,8 +714,11 @@ impl ApproxSurface {
         {
             let __result =
                 unsafe { crate::ffi::GeomConvert_ApproxSurface_surface(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -673,8 +728,11 @@ impl ApproxSurface {
         {
             let __result =
                 unsafe { crate::ffi::GeomConvert_ApproxSurface_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -686,8 +744,11 @@ impl ApproxSurface {
         {
             let __result =
                 unsafe { crate::ffi::GeomConvert_ApproxSurface_has_result(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -700,8 +761,11 @@ impl ApproxSurface {
         {
             let __result =
                 unsafe { crate::ffi::GeomConvert_ApproxSurface_max_error(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -709,8 +773,11 @@ impl ApproxSurface {
     /// Prints on the stream o information on the current state of the object.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::GeomConvert_ApproxSurface_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::GeomConvert_ApproxSurface_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -771,8 +838,10 @@ impl BSplineCurveKnotSplitting {
                     ContinuityRange,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -788,8 +857,11 @@ impl BSplineCurveKnotSplitting {
             let __result = unsafe {
                 crate::ffi::GeomConvert_BSplineCurveKnotSplitting_nb_splits(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -812,13 +884,15 @@ impl BSplineCurveKnotSplitting {
     /// framework (as given by the function NbSplits).
     pub fn splitting(&self, SplitValues: &mut crate::ffi::TColStd_Array1OfInteger) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomConvert_BSplineCurveKnotSplitting_splitting(
                     self as *const Self,
                     SplitValues,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -844,8 +918,11 @@ impl BSplineCurveKnotSplitting {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -885,8 +962,10 @@ impl BSplineCurveToBezierCurve {
                     BasisCurve,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -919,8 +998,10 @@ impl BSplineCurveToBezierCurve {
                     ParametricTolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -939,8 +1020,11 @@ impl BSplineCurveToBezierCurve {
             let __result = unsafe {
                 crate::ffi::GeomConvert_BSplineCurveToBezierCurve_arc(self as *mut Self, Index)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -957,10 +1041,12 @@ impl BSplineCurveToBezierCurve {
     /// this algorithm (as given by the function NbArcs).
     pub fn arcs(&mut self, Curves: &mut crate::ffi::TColGeom_Array1OfBezierCurve) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomConvert_BSplineCurveToBezierCurve_arcs(self as *mut Self, Curves)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -971,10 +1057,12 @@ impl BSplineCurveToBezierCurve {
     /// NbArcs +  1.
     pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomConvert_BSplineCurveToBezierCurve_knots(self as *const Self, TKnots)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -992,8 +1080,11 @@ impl BSplineCurveToBezierCurve {
             let __result = unsafe {
                 crate::ffi::GeomConvert_BSplineCurveToBezierCurve_nb_arcs(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1062,8 +1153,10 @@ impl BSplineSurfaceKnotSplitting {
             let __result = unsafe {
                 crate::ffi::GeomConvert_BSplineSurfaceKnotSplitting_ctor_handlegeombsplinesurface_int2(BasisSurface, UContinuityRange, VContinuityRange)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1081,8 +1174,11 @@ impl BSplineSurfaceKnotSplitting {
             let __result = unsafe {
                 crate::ffi::GeomConvert_BSplineSurfaceKnotSplitting_nb_u_splits(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1100,8 +1196,11 @@ impl BSplineSurfaceKnotSplitting {
             let __result = unsafe {
                 crate::ffi::GeomConvert_BSplineSurfaceKnotSplitting_nb_v_splits(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1138,14 +1237,16 @@ impl BSplineSurfaceKnotSplitting {
         VSplit: &mut crate::ffi::TColStd_Array1OfInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomConvert_BSplineSurfaceKnotSplitting_splitting(
                     self as *const Self,
                     USplit,
                     VSplit,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1170,8 +1271,11 @@ impl BSplineSurfaceKnotSplitting {
                     UIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1196,8 +1300,11 @@ impl BSplineSurfaceKnotSplitting {
                     VIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1249,8 +1356,10 @@ impl BSplineSurfaceToBezierSurface {
                     BasisSurface,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1291,8 +1400,10 @@ impl BSplineSurfaceToBezierSurface {
             let __result = unsafe {
                 crate::ffi::GeomConvert_BSplineSurfaceToBezierSurface_ctor_handlegeombsplinesurface_real5(BasisSurface, U1, U2, V1, V2, ParametricTolerance)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1333,8 +1444,11 @@ impl BSplineSurfaceToBezierSurface {
                     VIndex,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1364,13 +1478,15 @@ impl BSplineSurfaceToBezierSurface {
     /// (as given by the function NbVPatches) as column bounds.
     pub fn patches(&mut self, Surfaces: &mut crate::ffi::TColGeom_Array2OfBezierSurface) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomConvert_BSplineSurfaceToBezierSurface_patches(
                     self as *mut Self,
                     Surfaces,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1381,13 +1497,15 @@ impl BSplineSurfaceToBezierSurface {
     /// NbUPatches +  1.
     pub fn u_knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomConvert_BSplineSurfaceToBezierSurface_u_knots(
                     self as *const Self,
                     TKnots,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1398,13 +1516,15 @@ impl BSplineSurfaceToBezierSurface {
     /// NbVPatches +  1.
     pub fn v_knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomConvert_BSplineSurfaceToBezierSurface_v_knots(
                     self as *const Self,
                     TKnots,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1424,8 +1544,11 @@ impl BSplineSurfaceToBezierSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1445,8 +1568,11 @@ impl BSplineSurfaceToBezierSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1550,8 +1676,10 @@ impl CompBezierSurfacesToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_ctor_array2ofbeziersurface(Beziers)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1569,8 +1697,10 @@ impl CompBezierSurfacesToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_ctor_array2ofbeziersurface_real_bool(Beziers, Tolerance, RemoveKnots)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1673,8 +1803,10 @@ impl CompBezierSurfacesToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::GeomConvert_CompBezierSurfacesToBSplineSurface_ctor_array2ofbeziersurface_array1ofreal2_shape2_real(Beziers, UKnots, VKnots, UContinuity.into(), VContinuity.into(), Tolerance)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1804,8 +1936,11 @@ impl CompBezierSurfacesToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1819,8 +1954,11 @@ impl CompBezierSurfacesToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1834,8 +1972,11 @@ impl CompBezierSurfacesToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1849,8 +1990,11 @@ impl CompBezierSurfacesToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1864,8 +2008,11 @@ impl CompBezierSurfacesToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1879,8 +2026,11 @@ impl CompBezierSurfacesToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1894,8 +2044,11 @@ impl CompBezierSurfacesToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1909,8 +2062,11 @@ impl CompBezierSurfacesToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1924,8 +2080,11 @@ impl CompBezierSurfacesToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1940,8 +2099,11 @@ impl CompBezierSurfacesToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1956,8 +2118,11 @@ impl CompBezierSurfacesToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1980,8 +2145,11 @@ impl CompBezierSurfacesToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2013,8 +2181,10 @@ impl CompCurveToBSplineCurve {
                     Parameterisation.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2029,8 +2199,10 @@ impl CompCurveToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::GeomConvert_CompCurveToBSplineCurve_ctor_handlegeomboundedcurve_parameterisationtype(BasisCurve, Parameterisation.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2064,8 +2236,11 @@ impl CompCurveToBSplineCurve {
                     MinM,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2075,8 +2250,11 @@ impl CompCurveToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::GeomConvert_CompCurveToBSplineCurve_b_spline_curve(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2084,8 +2262,11 @@ impl CompCurveToBSplineCurve {
     /// Clear a result curve
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::GeomConvert_CompCurveToBSplineCurve_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::GeomConvert_CompCurveToBSplineCurve_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2108,8 +2289,10 @@ impl CurveToAnaCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomConvert_CurveToAnaCurve_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2118,16 +2301,21 @@ impl CurveToAnaCurve {
         {
             let __result =
                 unsafe { crate::ffi::GeomConvert_CurveToAnaCurve_ctor_handlegeomcurve(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `GeomConvert_CurveToAnaCurve.hxx`:44 - `GeomConvert_CurveToAnaCurve::Init()`
     pub fn init(&mut self, C: &crate::ffi::HandleGeomCurve) {
         {
-            unsafe { crate::ffi::GeomConvert_CurveToAnaCurve_init(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::GeomConvert_CurveToAnaCurve_init(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2156,8 +2344,11 @@ impl CurveToAnaCurve {
                     newL,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2168,8 +2359,11 @@ impl CurveToAnaCurve {
         {
             let __result =
                 unsafe { crate::ffi::GeomConvert_CurveToAnaCurve_gap(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2180,8 +2374,11 @@ impl CurveToAnaCurve {
             let __result = unsafe {
                 crate::ffi::GeomConvert_CurveToAnaCurve_get_conv_type(self as *const Self)
             };
-            crate::check_exception();
-            crate::geom_convert::ConvType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_convert::ConvType::try_from(__val).unwrap()
         }
     }
 
@@ -2189,13 +2386,15 @@ impl CurveToAnaCurve {
     /// Sets type of conversion
     pub fn set_conv_type(&mut self, theConvType: crate::geom_convert::ConvType) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomConvert_CurveToAnaCurve_set_conv_type(
                     self as *mut Self,
                     theConvType.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2205,8 +2404,11 @@ impl CurveToAnaCurve {
         {
             let __result =
                 unsafe { crate::ffi::GeomConvert_CurveToAnaCurve_get_target(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
@@ -2214,13 +2416,15 @@ impl CurveToAnaCurve {
     /// Sets target curve type
     pub fn set_target(&mut self, theTarget: crate::geom_abs::CurveType) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomConvert_CurveToAnaCurve_set_target(
                     self as *mut Self,
                     theTarget.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2250,8 +2454,11 @@ impl CurveToAnaCurve {
                     theTarget.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2274,8 +2481,11 @@ impl CurveToAnaCurve {
                     curve, tolerance, c1, c2, cf, cl, Deviation,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2298,8 +2508,11 @@ impl CurveToAnaCurve {
                     curve, tolerance, c1, c2, cf, cl, Deviation,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2322,8 +2535,11 @@ impl CurveToAnaCurve {
                     curve, tolerance, c1, c2, cf, cl, Deviation,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2339,8 +2555,11 @@ impl CurveToAnaCurve {
             let __result = unsafe {
                 crate::ffi::GeomConvert_CurveToAnaCurve_is_linear(aPoints, tolerance, Deviation)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2356,8 +2575,11 @@ impl CurveToAnaCurve {
         {
             let __result =
                 unsafe { crate::ffi::GeomConvert_CurveToAnaCurve_get_line(P1, P2, cf, cl) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2372,8 +2594,11 @@ impl CurveToAnaCurve {
         {
             let __result =
                 unsafe { crate::ffi::GeomConvert_CurveToAnaCurve_get_circle(Circ, P0, P1, P2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2401,8 +2626,10 @@ impl FuncConeLSDist {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomConvert_FuncConeLSDist_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2417,26 +2644,34 @@ impl FuncConeLSDist {
                     thePoints, theDir,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:42 - `GeomConvert_FuncConeLSDist::SetPoints()`
     pub fn set_points(&mut self, thePoints: &crate::ffi::HandleTColgpHArray1OfXYZ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomConvert_FuncConeLSDist_set_points(self as *mut Self, thePoints)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `GeomConvert_FuncConeLSDist.hxx`:44 - `GeomConvert_FuncConeLSDist::SetDir()`
     pub fn set_dir(&mut self, theDir: &crate::gp::Dir) {
         {
-            unsafe { crate::ffi::GeomConvert_FuncConeLSDist_set_dir(self as *mut Self, theDir) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::GeomConvert_FuncConeLSDist_set_dir(self as *mut Self, theDir)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2446,8 +2681,11 @@ impl FuncConeLSDist {
         {
             let __result =
                 unsafe { crate::ffi::GeomConvert_FuncConeLSDist_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2457,35 +2695,36 @@ impl FuncConeLSDist {
         {
             let __result =
                 unsafe { crate::ffi::GeomConvert_FuncConeLSDist_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomConvert_FuncConeLSDist_as_math_MultipleVarFunction(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomConvert_FuncConeLSDist_as_math_MultipleVarFunction(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomConvert_FuncConeLSDist_as_math_MultipleVarFunction_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomConvert_FuncConeLSDist_as_math_MultipleVarFunction_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
@@ -2494,8 +2733,11 @@ impl FuncConeLSDist {
             let __result = unsafe {
                 crate::ffi::GeomConvert_FuncConeLSDist_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2550,8 +2792,10 @@ impl FuncCylinderLSDist {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomConvert_FuncCylinderLSDist_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2566,28 +2810,34 @@ impl FuncCylinderLSDist {
                     thePoints, theDir,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:68 - `GeomConvert_FuncCylinderLSDist::SetPoints()`
     pub fn set_points(&mut self, thePoints: &crate::ffi::HandleTColgpHArray1OfXYZ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomConvert_FuncCylinderLSDist_set_points(self as *mut Self, thePoints)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `GeomConvert_FuncCylinderLSDist.hxx`:70 - `GeomConvert_FuncCylinderLSDist::SetDir()`
     pub fn set_dir(&mut self, theDir: &crate::gp::Dir) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomConvert_FuncCylinderLSDist_set_dir(self as *mut Self, theDir)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2598,8 +2848,11 @@ impl FuncCylinderLSDist {
             let __result = unsafe {
                 crate::ffi::GeomConvert_FuncCylinderLSDist_nb_variables(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2610,8 +2863,11 @@ impl FuncCylinderLSDist {
             let __result = unsafe {
                 crate::ffi::GeomConvert_FuncCylinderLSDist_value(self as *mut Self, X, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2626,8 +2882,11 @@ impl FuncCylinderLSDist {
             let __result = unsafe {
                 crate::ffi::GeomConvert_FuncCylinderLSDist_gradient(self as *mut Self, X, G)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2643,8 +2902,11 @@ impl FuncCylinderLSDist {
             let __result = unsafe {
                 crate::ffi::GeomConvert_FuncCylinderLSDist_values(self as *mut Self, X, F, G)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2652,54 +2914,56 @@ impl FuncCylinderLSDist {
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomConvert_FuncCylinderLSDist_as_math_MultipleVarFunctionWithGradient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomConvert_FuncCylinderLSDist_as_math_MultipleVarFunctionWithGradient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomConvert_FuncCylinderLSDist_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomConvert_FuncCylinderLSDist_as_math_MultipleVarFunctionWithGradient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomConvert_FuncCylinderLSDist_as_math_MultipleVarFunction(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomConvert_FuncCylinderLSDist_as_math_MultipleVarFunction(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomConvert_FuncCylinderLSDist_as_math_MultipleVarFunction_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomConvert_FuncCylinderLSDist_as_math_MultipleVarFunction_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
@@ -2710,8 +2974,11 @@ impl FuncCylinderLSDist {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2752,8 +3019,10 @@ impl FuncSphereLSDist {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomConvert_FuncSphereLSDist_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2765,18 +3034,22 @@ impl FuncSphereLSDist {
             let __result = unsafe {
                 crate::ffi::GeomConvert_FuncSphereLSDist_ctor_handletcolgpharray1ofxyz(thePoints)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `GeomConvert_FuncSphereLSDist.hxx`:54 - `GeomConvert_FuncSphereLSDist::SetPoints()`
     pub fn set_points(&mut self, thePoints: &crate::ffi::HandleTColgpHArray1OfXYZ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomConvert_FuncSphereLSDist_set_points(self as *mut Self, thePoints)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2787,8 +3060,11 @@ impl FuncSphereLSDist {
             let __result = unsafe {
                 crate::ffi::GeomConvert_FuncSphereLSDist_nb_variables(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2798,8 +3074,11 @@ impl FuncSphereLSDist {
         {
             let __result =
                 unsafe { crate::ffi::GeomConvert_FuncSphereLSDist_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2814,8 +3093,11 @@ impl FuncSphereLSDist {
             let __result = unsafe {
                 crate::ffi::GeomConvert_FuncSphereLSDist_gradient(self as *mut Self, X, G)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2831,8 +3113,11 @@ impl FuncSphereLSDist {
             let __result = unsafe {
                 crate::ffi::GeomConvert_FuncSphereLSDist_values(self as *mut Self, X, F, G)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2840,56 +3125,56 @@ impl FuncSphereLSDist {
     pub fn as_math_multiple_var_function_with_gradient(
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomConvert_FuncSphereLSDist_as_math_MultipleVarFunctionWithGradient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomConvert_FuncSphereLSDist_as_math_MultipleVarFunctionWithGradient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
     pub fn as_math_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomConvert_FuncSphereLSDist_as_math_MultipleVarFunctionWithGradient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomConvert_FuncSphereLSDist_as_math_MultipleVarFunctionWithGradient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomConvert_FuncSphereLSDist_as_math_MultipleVarFunction(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomConvert_FuncSphereLSDist_as_math_MultipleVarFunction(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomConvert_FuncSphereLSDist_as_math_MultipleVarFunction_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomConvert_FuncSphereLSDist_as_math_MultipleVarFunction_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
@@ -2898,8 +3183,11 @@ impl FuncSphereLSDist {
             let __result = unsafe {
                 crate::ffi::GeomConvert_FuncSphereLSDist_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2926,8 +3214,10 @@ impl SurfToAnaSurf {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomConvert_SurfToAnaSurf_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2936,42 +3226,50 @@ impl SurfToAnaSurf {
         {
             let __result =
                 unsafe { crate::ffi::GeomConvert_SurfToAnaSurf_ctor_handlegeomsurface(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:46 - `GeomConvert_SurfToAnaSurf::Init()`
     pub fn init(&mut self, S: &crate::ffi::HandleGeomSurface) {
         {
-            unsafe { crate::ffi::GeomConvert_SurfToAnaSurf_init(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::GeomConvert_SurfToAnaSurf_init(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:48 - `GeomConvert_SurfToAnaSurf::SetConvType()`
     pub fn set_conv_type(&mut self, theConvType: crate::geom_convert::ConvType) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomConvert_SurfToAnaSurf_set_conv_type(
                     self as *mut Self,
                     theConvType.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `GeomConvert_SurfToAnaSurf.hxx`:53 - `GeomConvert_SurfToAnaSurf::SetTarget()`
     pub fn set_target(&mut self, theSurfType: crate::geom_abs::SurfaceType) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomConvert_SurfToAnaSurf_set_target(
                     self as *mut Self,
                     theSurfType.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2982,8 +3280,11 @@ impl SurfToAnaSurf {
         {
             let __result =
                 unsafe { crate::ffi::GeomConvert_SurfToAnaSurf_gap(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3002,8 +3303,11 @@ impl SurfToAnaSurf {
                     InitialToler,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3027,8 +3331,11 @@ impl SurfToAnaSurf {
                     Vmax,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3041,8 +3348,11 @@ impl SurfToAnaSurf {
     ) -> bool {
         {
             let __result = unsafe { crate::ffi::GeomConvert_SurfToAnaSurf_is_same(S1, S2, tol) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3051,8 +3361,11 @@ impl SurfToAnaSurf {
     pub fn is_canonical(S: &crate::ffi::HandleGeomSurface) -> bool {
         {
             let __result = unsafe { crate::ffi::GeomConvert_SurfToAnaSurf_is_canonical(S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3077,8 +3390,10 @@ impl Units {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomConvert_Units_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3099,8 +3414,11 @@ impl Units {
                     theFactorRadianDegree,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3121,8 +3439,11 @@ impl Units {
                     theFactorRadianDegree,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3133,8 +3454,11 @@ impl Units {
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
         {
             let __result = unsafe { crate::ffi::GeomConvert_Units_mirror_p_curve(theCurve) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }

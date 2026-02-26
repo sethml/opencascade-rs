@@ -6,7 +6,7 @@
 /// Calling `TopoDS::Face()` on a non-Face shape throws `Standard_TypeMismatch`
 /// in C++. Verify that this is caught and turned into a Rust panic.
 #[test]
-#[should_panic(expected = "Standard_TypeMismatch")]
+#[should_panic(expected = "OCCT C++ exception: Standard_TypeMismatch: TopoDS::Face")]
 fn face_shape_on_compound_panics_with_type_mismatch() {
     // Create a box — its .shape() returns a Compound (not a Face)
     let mut make_box = opencascade_sys::b_rep_prim_api::MakeBox::new_real3(10.0, 20.0, 30.0);

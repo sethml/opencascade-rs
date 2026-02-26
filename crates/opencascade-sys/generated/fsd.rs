@@ -29,8 +29,10 @@ impl Base64 {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::FSD_Base64_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -60,8 +62,11 @@ impl Base64 {
                     theDataLen,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -76,8 +81,11 @@ impl Base64 {
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::FSD_Base64_encode_u8ptr_size(theData, theDataLen) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -108,8 +116,11 @@ impl Base64 {
                     theStrLen,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -126,8 +137,11 @@ impl Base64 {
         {
             let __result =
                 unsafe { crate::ffi::FSD_Base64_decode_charptr_size(c_theStr.as_ptr(), theLen) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -150,8 +164,10 @@ impl BinaryFile {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::FSD_BinaryFile_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -159,8 +175,11 @@ impl BinaryFile {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::FSD_BinaryFile_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -173,8 +192,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_open(self as *mut Self, aName, aMode.into()) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -182,8 +204,11 @@ impl BinaryFile {
     pub fn is_end(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::FSD_BinaryFile_is_end(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -192,8 +217,11 @@ impl BinaryFile {
     pub fn tell(&mut self) -> std::ffi::c_long {
         {
             let __result = unsafe { crate::ffi::FSD_BinaryFile_tell(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -202,8 +230,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_begin_write_info_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -221,7 +252,7 @@ impl BinaryFile {
         userInfo: &crate::ffi::TColStd_SequenceOfAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_BinaryFile_write_info(
                     self as *mut Self,
                     nbObj,
@@ -235,7 +266,9 @@ impl BinaryFile {
                     userInfo,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -244,8 +277,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_end_write_info_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -261,8 +297,11 @@ impl BinaryFile {
                     theOStream,
                 )
             };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -271,8 +310,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_begin_read_info_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -290,7 +332,7 @@ impl BinaryFile {
         userInfo: &mut crate::ffi::TColStd_SequenceOfAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_BinaryFile_read_info(
                     self as *mut Self,
                     nbObj,
@@ -304,7 +346,9 @@ impl BinaryFile {
                     userInfo,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -315,14 +359,16 @@ impl BinaryFile {
         theData: &mut crate::ffi::HandleStorageData,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_BinaryFile_read_complete_info(
                     self as *mut Self,
                     theIStream,
                     theData,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -331,8 +377,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_end_read_info_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -342,8 +391,11 @@ impl BinaryFile {
             let __result = unsafe {
                 crate::ffi::FSD_BinaryFile_begin_write_comment_section(self as *mut Self)
             };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -359,16 +411,23 @@ impl BinaryFile {
                     theOStream,
                 )
             };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:117 - `FSD_BinaryFile::WriteComment()`
     pub fn write_comment(&mut self, userComments: &crate::ffi::TColStd_SequenceOfExtendedString) {
         {
-            unsafe { crate::ffi::FSD_BinaryFile_write_comment(self as *mut Self, userComments) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::FSD_BinaryFile_write_comment(self as *mut Self, userComments)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -377,8 +436,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_end_write_comment_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -394,8 +456,11 @@ impl BinaryFile {
                     theOStream,
                 )
             };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -404,8 +469,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_begin_read_comment_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -415,8 +483,11 @@ impl BinaryFile {
         userComments: &mut crate::ffi::TColStd_SequenceOfExtendedString,
     ) {
         {
-            unsafe { crate::ffi::FSD_BinaryFile_read_comment(self as *mut Self, userComments) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_BinaryFile_read_comment(self as *mut Self, userComments) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -425,8 +496,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_end_read_comment_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -435,16 +509,23 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_begin_write_type_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:141 - `FSD_BinaryFile::SetTypeSectionSize()`
     pub fn set_type_section_size(&mut self, aSize: i32) {
         {
-            unsafe { crate::ffi::FSD_BinaryFile_set_type_section_size(self as *mut Self, aSize) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::FSD_BinaryFile_set_type_section_size(self as *mut Self, aSize)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -455,14 +536,16 @@ impl BinaryFile {
         typeName: &crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_BinaryFile_write_type_informations(
                     self as *mut Self,
                     typeNum,
                     typeName,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -471,8 +554,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_end_write_type_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -481,8 +567,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_begin_read_type_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -491,8 +580,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_type_section_size(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -503,14 +595,16 @@ impl BinaryFile {
         typeName: &mut crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_BinaryFile_read_type_informations(
                     self as *mut Self,
                     typeNum,
                     typeName,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -519,8 +613,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_end_read_type_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -529,16 +626,23 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_begin_write_root_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:166 - `FSD_BinaryFile::SetRootSectionSize()`
     pub fn set_root_section_size(&mut self, aSize: i32) {
         {
-            unsafe { crate::ffi::FSD_BinaryFile_set_root_section_size(self as *mut Self, aSize) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::FSD_BinaryFile_set_root_section_size(self as *mut Self, aSize)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -550,10 +654,12 @@ impl BinaryFile {
         aType: &crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_BinaryFile_write_root(self as *mut Self, rootName, aRef, aType)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -562,8 +668,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_end_write_root_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -572,8 +681,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_begin_read_root_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -582,8 +694,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_root_section_size(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -595,10 +710,12 @@ impl BinaryFile {
         aType: &mut crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_BinaryFile_read_root(self as *mut Self, rootName, aRef, aType)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -607,8 +724,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_end_read_root_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -617,30 +737,39 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_begin_write_ref_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:193 - `FSD_BinaryFile::SetRefSectionSize()`
     pub fn set_ref_section_size(&mut self, aSize: i32) {
         {
-            unsafe { crate::ffi::FSD_BinaryFile_set_ref_section_size(self as *mut Self, aSize) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::FSD_BinaryFile_set_ref_section_size(self as *mut Self, aSize)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:195 - `FSD_BinaryFile::WriteReferenceType()`
     pub fn write_reference_type(&mut self, reference: i32, typeNum: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_BinaryFile_write_reference_type(
                     self as *mut Self,
                     reference,
                     typeNum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -649,8 +778,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_end_write_ref_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -659,8 +791,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_begin_read_ref_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -669,22 +804,27 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_ref_section_size(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:206 - `FSD_BinaryFile::ReadReferenceType()`
     pub fn read_reference_type(&mut self, reference: &mut i32, typeNum: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_BinaryFile_read_reference_type(
                     self as *mut Self,
                     reference,
                     typeNum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -693,8 +833,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_end_read_ref_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -703,58 +846,73 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_begin_write_data_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:217 - `FSD_BinaryFile::WritePersistentObjectHeader()`
     pub fn write_persistent_object_header(&mut self, aRef: i32, aType: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_BinaryFile_write_persistent_object_header(
                     self as *mut Self,
                     aRef,
                     aType,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:220 - `FSD_BinaryFile::BeginWritePersistentObjectData()`
     pub fn begin_write_persistent_object_data(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_BinaryFile_begin_write_persistent_object_data(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:222 - `FSD_BinaryFile::BeginWriteObjectData()`
     pub fn begin_write_object_data(&mut self) {
         {
-            unsafe { crate::ffi::FSD_BinaryFile_begin_write_object_data(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_BinaryFile_begin_write_object_data(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:224 - `FSD_BinaryFile::EndWriteObjectData()`
     pub fn end_write_object_data(&mut self) {
         {
-            unsafe { crate::ffi::FSD_BinaryFile_end_write_object_data(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_BinaryFile_end_write_object_data(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:226 - `FSD_BinaryFile::EndWritePersistentObjectData()`
     pub fn end_write_persistent_object_data(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_BinaryFile_end_write_persistent_object_data(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -763,8 +921,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_end_write_data_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -773,58 +934,73 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_begin_read_data_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:232 - `FSD_BinaryFile::ReadPersistentObjectHeader()`
     pub fn read_persistent_object_header(&mut self, aRef: &mut i32, aType: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_BinaryFile_read_persistent_object_header(
                     self as *mut Self,
                     aRef,
                     aType,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:235 - `FSD_BinaryFile::BeginReadPersistentObjectData()`
     pub fn begin_read_persistent_object_data(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_BinaryFile_begin_read_persistent_object_data(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:237 - `FSD_BinaryFile::BeginReadObjectData()`
     pub fn begin_read_object_data(&mut self) {
         {
-            unsafe { crate::ffi::FSD_BinaryFile_begin_read_object_data(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_BinaryFile_begin_read_object_data(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:239 - `FSD_BinaryFile::EndReadObjectData()`
     pub fn end_read_object_data(&mut self) {
         {
-            unsafe { crate::ffi::FSD_BinaryFile_end_read_object_data(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_BinaryFile_end_read_object_data(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:241 - `FSD_BinaryFile::EndReadPersistentObjectData()`
     pub fn end_read_persistent_object_data(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_BinaryFile_end_read_persistent_object_data(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -833,16 +1009,21 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_end_read_data_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:245 - `FSD_BinaryFile::SkipObject()`
     pub fn skip_object(&mut self) {
         {
-            unsafe { crate::ffi::FSD_BinaryFile_skip_object(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FSD_BinaryFile_skip_object(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -851,8 +1032,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_put_reference(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -861,8 +1045,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_put_character(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -871,8 +1058,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_put_ext_character(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -881,8 +1071,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_put_integer(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -891,8 +1084,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_put_boolean(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -901,8 +1097,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_put_real(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -911,8 +1110,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_put_short_real(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -927,8 +1129,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_get_reference(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -946,8 +1151,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_get_character(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -965,8 +1173,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_get_ext_character(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -981,8 +1192,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_get_integer(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -997,8 +1211,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_get_boolean(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1013,8 +1230,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_get_real(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1029,8 +1249,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_get_short_real(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1038,16 +1261,21 @@ impl BinaryFile {
     pub fn close(&mut self) -> crate::storage::Error {
         {
             let __result = unsafe { crate::ffi::FSD_BinaryFile_close(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:290 - `FSD_BinaryFile::Destroy()`
     pub fn destroy(&mut self) {
         {
-            unsafe { crate::ffi::FSD_BinaryFile_destroy(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FSD_BinaryFile_destroy(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1055,8 +1283,11 @@ impl BinaryFile {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::FSD_BinaryFile_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1064,8 +1295,11 @@ impl BinaryFile {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::FSD_BinaryFile_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1073,8 +1307,11 @@ impl BinaryFile {
     pub fn is_good_file_type(aName: &crate::t_collection::AsciiString) -> crate::storage::Error {
         {
             let __result = unsafe { crate::ffi::FSD_BinaryFile_is_good_file_type(aName) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -1096,8 +1333,11 @@ impl BinaryFile {
             let __result = unsafe {
                 crate::ffi::FSD_BinaryFile_write_info_ostream_int_asciistring4_extendedstring_asciistring_extendedstring_sequenceofasciistring_bool(theOStream, nbObj, dbVersion, date, schemaName, schemaVersion, appName, appVersion, objectType, userInfo, theOnlyCount)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1115,8 +1355,11 @@ impl BinaryFile {
                     theOnlyCount,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1126,13 +1369,15 @@ impl BinaryFile {
         userComments: &mut crate::ffi::TColStd_SequenceOfExtendedString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_BinaryFile_read_comment_istream_sequenceofextendedstring(
                     theIStream,
                     userComments,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1141,8 +1386,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_type_section_size_istream(theIStream) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1153,12 +1401,14 @@ impl BinaryFile {
         typeName: &mut crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_BinaryFile_read_type_informations_istream_int_asciistring(
                     theIStream, typeNum, typeName,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1167,8 +1417,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_root_section_size_istream(theIStream) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1180,12 +1433,14 @@ impl BinaryFile {
         aType: &mut crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_BinaryFile_read_root_istream_asciistring_int_asciistring(
                     theIStream, rootName, aRef, aType,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1194,8 +1449,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_ref_section_size_istream(theIStream) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1206,12 +1464,14 @@ impl BinaryFile {
         typeNum: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_BinaryFile_read_reference_type_istream_int2(
                     theIStream, reference, typeNum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1229,8 +1489,11 @@ impl BinaryFile {
                     theOnlyCount,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1240,8 +1503,11 @@ impl BinaryFile {
         aValue: &mut i32,
     ) {
         {
-            unsafe { crate::ffi::FSD_BinaryFile_get_reference_istream_int(theIStream, aValue) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_BinaryFile_get_reference_istream_int(theIStream, aValue) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1251,8 +1517,11 @@ impl BinaryFile {
         aValue: &mut i32,
     ) {
         {
-            unsafe { crate::ffi::FSD_BinaryFile_get_integer_istream_int(theIStream, aValue) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_BinaryFile_get_integer_istream_int(theIStream, aValue) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1261,8 +1530,11 @@ impl BinaryFile {
     pub fn inverse_int(theValue: i32) -> i32 {
         {
             let __result = unsafe { crate::ffi::FSD_BinaryFile_inverse_int(theValue) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1271,8 +1543,11 @@ impl BinaryFile {
     pub fn inverse_ext_char(theValue: u16) -> u16 {
         {
             let __result = unsafe { crate::ffi::FSD_BinaryFile_inverse_ext_char(theValue) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1281,8 +1556,11 @@ impl BinaryFile {
     pub fn inverse_real(theValue: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::FSD_BinaryFile_inverse_real(theValue) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1291,8 +1569,11 @@ impl BinaryFile {
     pub fn inverse_short_real(theValue: f32) -> f32 {
         {
             let __result = unsafe { crate::ffi::FSD_BinaryFile_inverse_short_real(theValue) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1301,8 +1582,11 @@ impl BinaryFile {
     pub fn inverse_size(theValue: usize) -> usize {
         {
             let __result = unsafe { crate::ffi::FSD_BinaryFile_inverse_size(theValue) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1311,8 +1595,11 @@ impl BinaryFile {
     pub fn inverse_uint64(theValue: u64) -> u64 {
         {
             let __result = unsafe { crate::ffi::FSD_BinaryFile_inverse_uint64(theValue) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1322,8 +1609,11 @@ impl BinaryFile {
         theFileHeader: &mut FileHeader,
     ) {
         {
-            unsafe { crate::ffi::FSD_BinaryFile_read_header(theIStream, theFileHeader) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_BinaryFile_read_header(theIStream, theFileHeader) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1333,8 +1623,11 @@ impl BinaryFile {
         theHeaderData: &crate::ffi::HandleStorageHeaderData,
     ) {
         {
-            unsafe { crate::ffi::FSD_BinaryFile_read_header_data(theIStream, theHeaderData) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_BinaryFile_read_header_data(theIStream, theHeaderData) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1344,8 +1637,10 @@ impl BinaryFile {
         buffer: &mut crate::t_collection::AsciiString,
     ) {
         {
-            unsafe { crate::ffi::FSD_BinaryFile_read_string(theIStream, buffer) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FSD_BinaryFile_read_string(theIStream, buffer) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1355,8 +1650,11 @@ impl BinaryFile {
         buffer: &mut crate::t_collection::ExtendedString,
     ) {
         {
-            unsafe { crate::ffi::FSD_BinaryFile_read_extended_string(theIStream, buffer) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_BinaryFile_read_extended_string(theIStream, buffer) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1370,8 +1668,11 @@ impl BinaryFile {
             let __result = unsafe {
                 crate::ffi::FSD_BinaryFile_write_header(theOStream, theHeader, theOnlyCount)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1379,60 +1680,63 @@ impl BinaryFile {
     pub fn magic_number() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::FSD_BinaryFile_magic_number() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
     /// Upcast to Storage_BaseDriver
     pub fn as_storage_base_driver(&self) -> &crate::storage::BaseDriver {
-        {
-            let __result =
-                unsafe { crate::ffi::FSD_BinaryFile_as_Storage_BaseDriver(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::FSD_BinaryFile_as_Storage_BaseDriver(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Storage_BaseDriver (mutable)
     pub fn as_storage_base_driver_mut(&mut self) -> &mut crate::storage::BaseDriver {
-        {
-            let __result =
-                unsafe { crate::ffi::FSD_BinaryFile_as_Storage_BaseDriver_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::FSD_BinaryFile_as_Storage_BaseDriver_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::FSD_BinaryFile_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::FSD_BinaryFile_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::FSD_BinaryFile_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::FSD_BinaryFile_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleFSDBinaryFile> {
-        {
-            let __result = unsafe { crate::ffi::FSD_BinaryFile_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::FSD_BinaryFile_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Storage_BaseDriver.hxx`:44 - `Storage_BaseDriver::Name()`
@@ -1440,8 +1744,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_inherited_Name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1450,8 +1757,11 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_inherited_OpenMode(self as *const Self) };
-            crate::check_exception();
-            crate::storage::OpenMode::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::OpenMode::try_from(__val).unwrap()
         }
     }
 
@@ -1461,8 +1771,11 @@ impl BinaryFile {
             let __result = unsafe {
                 crate::ffi::FSD_BinaryFile_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1472,8 +1785,11 @@ impl BinaryFile {
             let __result = unsafe {
                 crate::ffi::FSD_BinaryFile_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1482,11 +1798,14 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1496,16 +1815,23 @@ impl BinaryFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_BinaryFile_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::FSD_BinaryFile_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::FSD_BinaryFile_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1515,16 +1841,21 @@ impl BinaryFile {
             let __result = unsafe {
                 crate::ffi::FSD_BinaryFile_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::FSD_BinaryFile_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FSD_BinaryFile_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1540,42 +1871,42 @@ unsafe impl crate::CppDeletable for HandleFSDBinaryFile {
 impl HandleFSDBinaryFile {
     /// Dereference this Handle to access the underlying FSD_BinaryFile
     pub fn get(&self) -> &crate::ffi::FSD_BinaryFile {
-        {
-            let __result = unsafe { crate::ffi::HandleFSDBinaryFile_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleFSDBinaryFile_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying FSD_BinaryFile
     pub fn get_mut(&mut self) -> &mut crate::ffi::FSD_BinaryFile {
-        {
-            let __result = unsafe { crate::ffi::HandleFSDBinaryFile_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleFSDBinaryFile_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<FSD_BinaryFile> to Handle<Storage_BaseDriver>
     pub fn to_handle_base_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleStorageBaseDriver> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleFSDBinaryFile_to_HandleStorageBaseDriver(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleFSDBinaryFile_to_HandleStorageBaseDriver(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<FSD_BinaryFile> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleFSDBinaryFile_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleFSDBinaryFile_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1597,8 +1928,10 @@ impl CmpFile {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::FSD_CmpFile_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1606,8 +1939,11 @@ impl CmpFile {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::FSD_CmpFile_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1620,8 +1956,11 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_open(self as *mut Self, aName, aMode.into()) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -1630,8 +1969,11 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_begin_write_info_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -1640,110 +1982,143 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_begin_read_info_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:47 - `FSD_CmpFile::WritePersistentObjectHeader()`
     pub fn write_persistent_object_header(&mut self, aRef: i32, aType: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_CmpFile_write_persistent_object_header(
                     self as *mut Self,
                     aRef,
                     aType,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:50 - `FSD_CmpFile::BeginWritePersistentObjectData()`
     pub fn begin_write_persistent_object_data(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_CmpFile_begin_write_persistent_object_data(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:52 - `FSD_CmpFile::BeginWriteObjectData()`
     pub fn begin_write_object_data(&mut self) {
         {
-            unsafe { crate::ffi::FSD_CmpFile_begin_write_object_data(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_CmpFile_begin_write_object_data(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:54 - `FSD_CmpFile::EndWriteObjectData()`
     pub fn end_write_object_data(&mut self) {
         {
-            unsafe { crate::ffi::FSD_CmpFile_end_write_object_data(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FSD_CmpFile_end_write_object_data(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:56 - `FSD_CmpFile::EndWritePersistentObjectData()`
     pub fn end_write_persistent_object_data(&mut self) {
         {
-            unsafe { crate::ffi::FSD_CmpFile_end_write_persistent_object_data(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::FSD_CmpFile_end_write_persistent_object_data(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:58 - `FSD_CmpFile::ReadPersistentObjectHeader()`
     pub fn read_persistent_object_header(&mut self, aRef: &mut i32, aType: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_CmpFile_read_persistent_object_header(
                     self as *mut Self,
                     aRef,
                     aType,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:61 - `FSD_CmpFile::BeginReadPersistentObjectData()`
     pub fn begin_read_persistent_object_data(&mut self) {
         {
-            unsafe { crate::ffi::FSD_CmpFile_begin_read_persistent_object_data(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::FSD_CmpFile_begin_read_persistent_object_data(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:63 - `FSD_CmpFile::BeginReadObjectData()`
     pub fn begin_read_object_data(&mut self) {
         {
-            unsafe { crate::ffi::FSD_CmpFile_begin_read_object_data(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_CmpFile_begin_read_object_data(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:65 - `FSD_CmpFile::EndReadObjectData()`
     pub fn end_read_object_data(&mut self) {
         {
-            unsafe { crate::ffi::FSD_CmpFile_end_read_object_data(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FSD_CmpFile_end_read_object_data(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:67 - `FSD_CmpFile::EndReadPersistentObjectData()`
     pub fn end_read_persistent_object_data(&mut self) {
         {
-            unsafe { crate::ffi::FSD_CmpFile_end_read_persistent_object_data(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::FSD_CmpFile_end_read_persistent_object_data(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:69 - `FSD_CmpFile::Destroy()`
     pub fn destroy(&mut self) {
         {
-            unsafe { crate::ffi::FSD_CmpFile_destroy(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FSD_CmpFile_destroy(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1751,8 +2126,11 @@ impl CmpFile {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::FSD_CmpFile_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1760,8 +2138,11 @@ impl CmpFile {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::FSD_CmpFile_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1769,8 +2150,11 @@ impl CmpFile {
     pub fn is_good_file_type(aName: &crate::t_collection::AsciiString) -> crate::storage::Error {
         {
             let __result = unsafe { crate::ffi::FSD_CmpFile_is_good_file_type(aName) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -1778,84 +2162,90 @@ impl CmpFile {
     pub fn magic_number() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::FSD_CmpFile_magic_number() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
     /// Upcast to FSD_File
     pub fn as_file(&self) -> &File {
-        {
-            let __result = unsafe { crate::ffi::FSD_CmpFile_as_FSD_File(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::FSD_CmpFile_as_FSD_File(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to FSD_File (mutable)
     pub fn as_file_mut(&mut self) -> &mut File {
-        {
-            let __result = unsafe { crate::ffi::FSD_CmpFile_as_FSD_File_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::FSD_CmpFile_as_FSD_File_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Storage_BaseDriver
     pub fn as_storage_base_driver(&self) -> &crate::storage::BaseDriver {
-        {
-            let __result =
-                unsafe { crate::ffi::FSD_CmpFile_as_Storage_BaseDriver(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::FSD_CmpFile_as_Storage_BaseDriver(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Storage_BaseDriver (mutable)
     pub fn as_storage_base_driver_mut(&mut self) -> &mut crate::storage::BaseDriver {
-        {
-            let __result =
-                unsafe { crate::ffi::FSD_CmpFile_as_Storage_BaseDriver_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::FSD_CmpFile_as_Storage_BaseDriver_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::FSD_CmpFile_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::FSD_CmpFile_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::FSD_CmpFile_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::FSD_CmpFile_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleFSDCmpFile> {
-        {
-            let __result = unsafe { crate::ffi::FSD_CmpFile_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::FSD_CmpFile_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:50 - `FSD_File::IsEnd()`
     pub fn is_end(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::FSD_CmpFile_inherited_IsEnd(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1863,8 +2253,11 @@ impl CmpFile {
     pub fn tell(&mut self) -> std::ffi::c_long {
         {
             let __result = unsafe { crate::ffi::FSD_CmpFile_inherited_Tell(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1882,7 +2275,7 @@ impl CmpFile {
         userInfo: &crate::ffi::TColStd_SequenceOfAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_WriteInfo(
                     self as *mut Self,
                     nbObj,
@@ -1896,7 +2289,9 @@ impl CmpFile {
                     userInfo,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1905,8 +2300,11 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_inherited_EndWriteInfoSection(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -1924,7 +2322,7 @@ impl CmpFile {
         userInfo: &mut crate::ffi::TColStd_SequenceOfAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_ReadInfo(
                     self as *mut Self,
                     nbObj,
@@ -1938,7 +2336,9 @@ impl CmpFile {
                     userInfo,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1949,14 +2349,16 @@ impl CmpFile {
         theData: &mut crate::ffi::HandleStorageData,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_ReadCompleteInfo(
                     self as *mut Self,
                     theIStream,
                     theData,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1965,8 +2367,11 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_inherited_EndReadInfoSection(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -1976,18 +2381,23 @@ impl CmpFile {
             let __result = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_BeginWriteCommentSection(self as *mut Self)
             };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:91 - `FSD_File::WriteComment()`
     pub fn write_comment(&mut self, userComments: &crate::ffi::TColStd_SequenceOfExtendedString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_WriteComment(self as *mut Self, userComments)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1997,8 +2407,11 @@ impl CmpFile {
             let __result = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_EndWriteCommentSection(self as *mut Self)
             };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2008,8 +2421,11 @@ impl CmpFile {
             let __result = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_BeginReadCommentSection(self as *mut Self)
             };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2019,10 +2435,12 @@ impl CmpFile {
         userComments: &mut crate::ffi::TColStd_SequenceOfExtendedString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_ReadComment(self as *mut Self, userComments)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2032,8 +2450,11 @@ impl CmpFile {
             let __result = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_EndReadCommentSection(self as *mut Self)
             };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2043,18 +2464,23 @@ impl CmpFile {
             let __result = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_BeginWriteTypeSection(self as *mut Self)
             };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:105 - `FSD_File::SetTypeSectionSize()`
     pub fn set_type_section_size(&mut self, aSize: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_SetTypeSectionSize(self as *mut Self, aSize)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2065,14 +2491,16 @@ impl CmpFile {
         typeName: &crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_WriteTypeInformations(
                     self as *mut Self,
                     typeNum,
                     typeName,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2081,8 +2509,11 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_inherited_EndWriteTypeSection(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2092,8 +2523,11 @@ impl CmpFile {
             let __result = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_BeginReadTypeSection(self as *mut Self)
             };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2102,8 +2536,11 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_inherited_TypeSectionSize(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2114,14 +2551,16 @@ impl CmpFile {
         typeName: &mut crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_ReadTypeInformations(
                     self as *mut Self,
                     typeNum,
                     typeName,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2130,8 +2569,11 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_inherited_EndReadTypeSection(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2141,18 +2583,23 @@ impl CmpFile {
             let __result = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_BeginWriteRootSection(self as *mut Self)
             };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:125 - `FSD_File::SetRootSectionSize()`
     pub fn set_root_section_size(&mut self, aSize: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_SetRootSectionSize(self as *mut Self, aSize)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2164,7 +2611,7 @@ impl CmpFile {
         aType: &crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_WriteRoot(
                     self as *mut Self,
                     rootName,
@@ -2172,7 +2619,9 @@ impl CmpFile {
                     aType,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2181,8 +2630,11 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_inherited_EndWriteRootSection(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2192,8 +2644,11 @@ impl CmpFile {
             let __result = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_BeginReadRootSection(self as *mut Self)
             };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2202,8 +2657,11 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_inherited_RootSectionSize(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2215,10 +2673,12 @@ impl CmpFile {
         aType: &mut crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_ReadRoot(self as *mut Self, rootName, aRef, aType)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2227,8 +2687,11 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_inherited_EndReadRootSection(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2238,32 +2701,39 @@ impl CmpFile {
             let __result = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_BeginWriteRefSection(self as *mut Self)
             };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:145 - `FSD_File::SetRefSectionSize()`
     pub fn set_ref_section_size(&mut self, aSize: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_SetRefSectionSize(self as *mut Self, aSize)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:147 - `FSD_File::WriteReferenceType()`
     pub fn write_reference_type(&mut self, reference: i32, typeNum: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_WriteReferenceType(
                     self as *mut Self,
                     reference,
                     typeNum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2272,8 +2742,11 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_inherited_EndWriteRefSection(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2282,8 +2755,11 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_inherited_BeginReadRefSection(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2292,22 +2768,27 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_inherited_RefSectionSize(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:156 - `FSD_File::ReadReferenceType()`
     pub fn read_reference_type(&mut self, reference: &mut i32, typeNum: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_ReadReferenceType(
                     self as *mut Self,
                     reference,
                     typeNum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2316,8 +2797,11 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_inherited_EndReadRefSection(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2327,8 +2811,11 @@ impl CmpFile {
             let __result = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_BeginWriteDataSection(self as *mut Self)
             };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2337,8 +2824,11 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_inherited_EndWriteDataSection(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2348,8 +2838,11 @@ impl CmpFile {
             let __result = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_BeginReadDataSection(self as *mut Self)
             };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2358,16 +2851,21 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_inherited_EndReadDataSection(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:193 - `FSD_File::SkipObject()`
     pub fn skip_object(&mut self) {
         {
-            unsafe { crate::ffi::FSD_CmpFile_inherited_SkipObject(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FSD_CmpFile_inherited_SkipObject(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2377,8 +2875,11 @@ impl CmpFile {
             let __result = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_PutReference(self as *mut Self, aValue)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2388,8 +2889,11 @@ impl CmpFile {
             let __result = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_PutCharacter(self as *mut Self, aValue)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2399,8 +2903,11 @@ impl CmpFile {
             let __result = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_PutExtCharacter(self as *mut Self, aValue)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2409,8 +2916,11 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_inherited_PutInteger(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2419,8 +2929,11 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_inherited_PutBoolean(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2429,8 +2942,11 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_inherited_PutReal(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2440,8 +2956,11 @@ impl CmpFile {
             let __result = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_PutShortReal(self as *mut Self, aValue)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2449,8 +2968,11 @@ impl CmpFile {
     pub fn close(&mut self) -> crate::storage::Error {
         {
             let __result = unsafe { crate::ffi::FSD_CmpFile_inherited_Close(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2458,8 +2980,11 @@ impl CmpFile {
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::FSD_CmpFile_inherited_Name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2468,8 +2993,11 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_inherited_OpenMode(self as *const Self) };
-            crate::check_exception();
-            crate::storage::OpenMode::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::OpenMode::try_from(__val).unwrap()
         }
     }
 
@@ -2479,8 +3007,11 @@ impl CmpFile {
             let __result = unsafe {
                 crate::ffi::FSD_CmpFile_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2489,8 +3020,11 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2498,11 +3032,14 @@ impl CmpFile {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::FSD_CmpFile_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2512,16 +3049,22 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::FSD_CmpFile_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_CmpFile_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2530,16 +3073,21 @@ impl CmpFile {
         {
             let __result =
                 unsafe { crate::ffi::FSD_CmpFile_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::FSD_CmpFile_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FSD_CmpFile_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2555,52 +3103,50 @@ unsafe impl crate::CppDeletable for HandleFSDCmpFile {
 impl HandleFSDCmpFile {
     /// Dereference this Handle to access the underlying FSD_CmpFile
     pub fn get(&self) -> &crate::ffi::FSD_CmpFile {
-        {
-            let __result = unsafe { crate::ffi::HandleFSDCmpFile_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleFSDCmpFile_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying FSD_CmpFile
     pub fn get_mut(&mut self) -> &mut crate::ffi::FSD_CmpFile {
-        {
-            let __result = unsafe { crate::ffi::HandleFSDCmpFile_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleFSDCmpFile_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<FSD_CmpFile> to Handle<FSD_File>
     pub fn to_handle_file(&self) -> crate::OwnedPtr<crate::ffi::HandleFSDFile> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleFSDCmpFile_to_HandleFSDFile(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleFSDCmpFile_to_HandleFSDFile(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<FSD_CmpFile> to Handle<Storage_BaseDriver>
     pub fn to_handle_base_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleStorageBaseDriver> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleFSDCmpFile_to_HandleStorageBaseDriver(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleFSDCmpFile_to_HandleStorageBaseDriver(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<FSD_CmpFile> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleFSDCmpFile_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleFSDCmpFile_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2627,8 +3173,10 @@ impl File {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::FSD_File_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2636,8 +3184,11 @@ impl File {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::FSD_File_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2656,8 +3207,11 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_open(self as *mut Self, aName, aMode.into()) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2665,8 +3219,11 @@ impl File {
     pub fn is_end(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::FSD_File_is_end(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2675,8 +3232,11 @@ impl File {
     pub fn tell(&mut self) -> std::ffi::c_long {
         {
             let __result = unsafe { crate::ffi::FSD_File_tell(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2685,8 +3245,11 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_begin_write_info_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2704,7 +3267,7 @@ impl File {
         userInfo: &crate::ffi::TColStd_SequenceOfAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_File_write_info(
                     self as *mut Self,
                     nbObj,
@@ -2718,7 +3281,9 @@ impl File {
                     userInfo,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2727,8 +3292,11 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_end_write_info_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2737,8 +3305,11 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_begin_read_info_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2756,7 +3327,7 @@ impl File {
         userInfo: &mut crate::ffi::TColStd_SequenceOfAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_File_read_info(
                     self as *mut Self,
                     nbObj,
@@ -2770,7 +3341,9 @@ impl File {
                     userInfo,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2781,10 +3354,12 @@ impl File {
         theData: &mut crate::ffi::HandleStorageData,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_File_read_complete_info(self as *mut Self, theIStream, theData)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2792,8 +3367,11 @@ impl File {
     pub fn end_read_info_section(&mut self) -> crate::storage::Error {
         {
             let __result = unsafe { crate::ffi::FSD_File_end_read_info_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2802,16 +3380,22 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_begin_write_comment_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `FSD_File.hxx`:91 - `FSD_File::WriteComment()`
     pub fn write_comment(&mut self, userComments: &crate::ffi::TColStd_SequenceOfExtendedString) {
         {
-            unsafe { crate::ffi::FSD_File_write_comment(self as *mut Self, userComments) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_File_write_comment(self as *mut Self, userComments) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2820,8 +3404,11 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_end_write_comment_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2830,8 +3417,11 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_begin_read_comment_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2841,8 +3431,11 @@ impl File {
         userComments: &mut crate::ffi::TColStd_SequenceOfExtendedString,
     ) {
         {
-            unsafe { crate::ffi::FSD_File_read_comment(self as *mut Self, userComments) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_File_read_comment(self as *mut Self, userComments) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2851,8 +3444,11 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_end_read_comment_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2861,16 +3457,22 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_begin_write_type_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `FSD_File.hxx`:105 - `FSD_File::SetTypeSectionSize()`
     pub fn set_type_section_size(&mut self, aSize: i32) {
         {
-            unsafe { crate::ffi::FSD_File_set_type_section_size(self as *mut Self, aSize) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_File_set_type_section_size(self as *mut Self, aSize) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2881,10 +3483,12 @@ impl File {
         typeName: &crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_File_write_type_informations(self as *mut Self, typeNum, typeName)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2893,8 +3497,11 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_end_write_type_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2903,8 +3510,11 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_begin_read_type_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2912,8 +3522,11 @@ impl File {
     pub fn type_section_size(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::FSD_File_type_section_size(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2924,10 +3537,12 @@ impl File {
         typeName: &mut crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_File_read_type_informations(self as *mut Self, typeNum, typeName)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2935,8 +3550,11 @@ impl File {
     pub fn end_read_type_section(&mut self) -> crate::storage::Error {
         {
             let __result = unsafe { crate::ffi::FSD_File_end_read_type_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2945,16 +3563,22 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_begin_write_root_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `FSD_File.hxx`:125 - `FSD_File::SetRootSectionSize()`
     pub fn set_root_section_size(&mut self, aSize: i32) {
         {
-            unsafe { crate::ffi::FSD_File_set_root_section_size(self as *mut Self, aSize) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_File_set_root_section_size(self as *mut Self, aSize) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2966,8 +3590,12 @@ impl File {
         aType: &crate::t_collection::AsciiString,
     ) {
         {
-            unsafe { crate::ffi::FSD_File_write_root(self as *mut Self, rootName, aRef, aType) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::FSD_File_write_root(self as *mut Self, rootName, aRef, aType)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2976,8 +3604,11 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_end_write_root_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2986,8 +3617,11 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_begin_read_root_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2995,8 +3629,11 @@ impl File {
     pub fn root_section_size(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::FSD_File_root_section_size(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3008,8 +3645,11 @@ impl File {
         aType: &mut crate::t_collection::AsciiString,
     ) {
         {
-            unsafe { crate::ffi::FSD_File_read_root(self as *mut Self, rootName, aRef, aType) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_File_read_root(self as *mut Self, rootName, aRef, aType) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3017,8 +3657,11 @@ impl File {
     pub fn end_read_root_section(&mut self) -> crate::storage::Error {
         {
             let __result = unsafe { crate::ffi::FSD_File_end_read_root_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -3027,26 +3670,34 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_begin_write_ref_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `FSD_File.hxx`:145 - `FSD_File::SetRefSectionSize()`
     pub fn set_ref_section_size(&mut self, aSize: i32) {
         {
-            unsafe { crate::ffi::FSD_File_set_ref_section_size(self as *mut Self, aSize) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_File_set_ref_section_size(self as *mut Self, aSize) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_File.hxx`:147 - `FSD_File::WriteReferenceType()`
     pub fn write_reference_type(&mut self, reference: i32, typeNum: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_File_write_reference_type(self as *mut Self, reference, typeNum)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3054,8 +3705,11 @@ impl File {
     pub fn end_write_ref_section(&mut self) -> crate::storage::Error {
         {
             let __result = unsafe { crate::ffi::FSD_File_end_write_ref_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -3064,8 +3718,11 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_begin_read_ref_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -3073,18 +3730,23 @@ impl File {
     pub fn ref_section_size(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::FSD_File_ref_section_size(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `FSD_File.hxx`:156 - `FSD_File::ReadReferenceType()`
     pub fn read_reference_type(&mut self, reference: &mut i32, typeNum: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_File_read_reference_type(self as *mut Self, reference, typeNum)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3092,8 +3754,11 @@ impl File {
     pub fn end_read_ref_section(&mut self) -> crate::storage::Error {
         {
             let __result = unsafe { crate::ffi::FSD_File_end_read_ref_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -3102,50 +3767,66 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_begin_write_data_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `FSD_File.hxx`:163 - `FSD_File::WritePersistentObjectHeader()`
     pub fn write_persistent_object_header(&mut self, aRef: i32, aType: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_File_write_persistent_object_header(self as *mut Self, aRef, aType)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_File.hxx`:167 - `FSD_File::BeginWritePersistentObjectData()`
     pub fn begin_write_persistent_object_data(&mut self) {
         {
-            unsafe { crate::ffi::FSD_File_begin_write_persistent_object_data(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::FSD_File_begin_write_persistent_object_data(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_File.hxx`:169 - `FSD_File::BeginWriteObjectData()`
     pub fn begin_write_object_data(&mut self) {
         {
-            unsafe { crate::ffi::FSD_File_begin_write_object_data(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FSD_File_begin_write_object_data(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_File.hxx`:171 - `FSD_File::EndWriteObjectData()`
     pub fn end_write_object_data(&mut self) {
         {
-            unsafe { crate::ffi::FSD_File_end_write_object_data(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FSD_File_end_write_object_data(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_File.hxx`:173 - `FSD_File::EndWritePersistentObjectData()`
     pub fn end_write_persistent_object_data(&mut self) {
         {
-            unsafe { crate::ffi::FSD_File_end_write_persistent_object_data(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_File_end_write_persistent_object_data(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3154,8 +3835,11 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_end_write_data_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -3164,50 +3848,66 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_begin_read_data_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `FSD_File.hxx`:179 - `FSD_File::ReadPersistentObjectHeader()`
     pub fn read_persistent_object_header(&mut self, aRef: &mut i32, aType: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::FSD_File_read_persistent_object_header(self as *mut Self, aRef, aType)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_File.hxx`:183 - `FSD_File::BeginReadPersistentObjectData()`
     pub fn begin_read_persistent_object_data(&mut self) {
         {
-            unsafe { crate::ffi::FSD_File_begin_read_persistent_object_data(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::FSD_File_begin_read_persistent_object_data(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_File.hxx`:185 - `FSD_File::BeginReadObjectData()`
     pub fn begin_read_object_data(&mut self) {
         {
-            unsafe { crate::ffi::FSD_File_begin_read_object_data(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FSD_File_begin_read_object_data(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_File.hxx`:187 - `FSD_File::EndReadObjectData()`
     pub fn end_read_object_data(&mut self) {
         {
-            unsafe { crate::ffi::FSD_File_end_read_object_data(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FSD_File_end_read_object_data(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `FSD_File.hxx`:189 - `FSD_File::EndReadPersistentObjectData()`
     pub fn end_read_persistent_object_data(&mut self) {
         {
-            unsafe { crate::ffi::FSD_File_end_read_persistent_object_data(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_File_end_read_persistent_object_data(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3215,16 +3915,21 @@ impl File {
     pub fn end_read_data_section(&mut self) -> crate::storage::Error {
         {
             let __result = unsafe { crate::ffi::FSD_File_end_read_data_section(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `FSD_File.hxx`:193 - `FSD_File::SkipObject()`
     pub fn skip_object(&mut self) {
         {
-            unsafe { crate::ffi::FSD_File_skip_object(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FSD_File_skip_object(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3232,8 +3937,11 @@ impl File {
     pub fn put_reference(&mut self, aValue: i32) -> &mut crate::storage::BaseDriver {
         {
             let __result = unsafe { crate::ffi::FSD_File_put_reference(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3241,8 +3949,11 @@ impl File {
     pub fn put_character(&mut self, aValue: std::ffi::c_char) -> &mut crate::storage::BaseDriver {
         {
             let __result = unsafe { crate::ffi::FSD_File_put_character(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3251,8 +3962,11 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_put_ext_character(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3260,8 +3974,11 @@ impl File {
     pub fn put_integer(&mut self, aValue: i32) -> &mut crate::storage::BaseDriver {
         {
             let __result = unsafe { crate::ffi::FSD_File_put_integer(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3269,8 +3986,11 @@ impl File {
     pub fn put_boolean(&mut self, aValue: bool) -> &mut crate::storage::BaseDriver {
         {
             let __result = unsafe { crate::ffi::FSD_File_put_boolean(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3278,8 +3998,11 @@ impl File {
     pub fn put_real(&mut self, aValue: f64) -> &mut crate::storage::BaseDriver {
         {
             let __result = unsafe { crate::ffi::FSD_File_put_real(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3288,8 +4011,11 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_put_short_real(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3303,8 +4029,11 @@ impl File {
     pub unsafe fn get_reference(&mut self, aValue: &mut i32) -> &mut crate::storage::BaseDriver {
         {
             let __result = unsafe { crate::ffi::FSD_File_get_reference(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3321,8 +4050,11 @@ impl File {
     ) -> &mut crate::storage::BaseDriver {
         {
             let __result = unsafe { crate::ffi::FSD_File_get_character(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3340,8 +4072,11 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_get_ext_character(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3355,8 +4090,11 @@ impl File {
     pub unsafe fn get_integer(&mut self, aValue: &mut i32) -> &mut crate::storage::BaseDriver {
         {
             let __result = unsafe { crate::ffi::FSD_File_get_integer(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3370,8 +4108,11 @@ impl File {
     pub unsafe fn get_boolean(&mut self, aValue: &mut bool) -> &mut crate::storage::BaseDriver {
         {
             let __result = unsafe { crate::ffi::FSD_File_get_boolean(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3385,8 +4126,11 @@ impl File {
     pub unsafe fn get_real(&mut self, aValue: &mut f64) -> &mut crate::storage::BaseDriver {
         {
             let __result = unsafe { crate::ffi::FSD_File_get_real(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3401,8 +4145,11 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_get_short_real(self as *mut Self, aValue) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3415,16 +4162,21 @@ impl File {
     pub fn close(&mut self) -> crate::storage::Error {
         {
             let __result = unsafe { crate::ffi::FSD_File_close(self as *mut Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `FSD_File.hxx`:242 - `FSD_File::Destroy()`
     pub fn destroy(&mut self) {
         {
-            unsafe { crate::ffi::FSD_File_destroy(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FSD_File_destroy(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3432,8 +4184,11 @@ impl File {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::FSD_File_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3441,8 +4196,11 @@ impl File {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::FSD_File_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3450,8 +4208,11 @@ impl File {
     pub fn is_good_file_type(aName: &crate::t_collection::AsciiString) -> crate::storage::Error {
         {
             let __result = unsafe { crate::ffi::FSD_File_is_good_file_type(aName) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -3459,66 +4220,68 @@ impl File {
     pub fn magic_number() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::FSD_File_magic_number() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
     /// Upcast to Storage_BaseDriver
     pub fn as_storage_base_driver(&self) -> &crate::storage::BaseDriver {
-        {
-            let __result =
-                unsafe { crate::ffi::FSD_File_as_Storage_BaseDriver(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::FSD_File_as_Storage_BaseDriver(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Storage_BaseDriver (mutable)
     pub fn as_storage_base_driver_mut(&mut self) -> &mut crate::storage::BaseDriver {
-        {
-            let __result =
-                unsafe { crate::ffi::FSD_File_as_Storage_BaseDriver_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::FSD_File_as_Storage_BaseDriver_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::FSD_File_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::FSD_File_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::FSD_File_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::FSD_File_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleFSDFile> {
-        {
-            let __result = unsafe { crate::ffi::FSD_File_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::FSD_File_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Storage_BaseDriver.hxx`:44 - `Storage_BaseDriver::Name()`
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::FSD_File_inherited_Name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3526,8 +4289,11 @@ impl File {
     pub fn open_mode(&self) -> crate::storage::OpenMode {
         {
             let __result = unsafe { crate::ffi::FSD_File_inherited_OpenMode(self as *const Self) };
-            crate::check_exception();
-            crate::storage::OpenMode::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::OpenMode::try_from(__val).unwrap()
         }
     }
 
@@ -3536,8 +4302,11 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_inherited_IsInstance(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3546,8 +4315,11 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3555,11 +4327,14 @@ impl File {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::FSD_File_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3569,16 +4344,22 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::FSD_File_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FSD_File_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3587,16 +4368,21 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::FSD_File_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::FSD_File_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FSD_File_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3612,55 +4398,55 @@ unsafe impl crate::CppDeletable for HandleFSDFile {
 impl HandleFSDFile {
     /// Dereference this Handle to access the underlying FSD_File
     pub fn get(&self) -> &crate::ffi::FSD_File {
-        {
-            let __result = unsafe { crate::ffi::HandleFSDFile_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleFSDFile_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying FSD_File
     pub fn get_mut(&mut self) -> &mut crate::ffi::FSD_File {
-        {
-            let __result = unsafe { crate::ffi::HandleFSDFile_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleFSDFile_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<FSD_File> to Handle<Storage_BaseDriver>
     pub fn to_handle_base_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleStorageBaseDriver> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleFSDFile_to_HandleStorageBaseDriver(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleFSDFile_to_HandleStorageBaseDriver(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<FSD_File> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleFSDFile_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleFSDFile_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<FSD_File> to Handle<FSD_CmpFile>
     ///
     /// Returns `None` if the handle does not point to a `FSD_CmpFile` (or subclass).
     pub fn downcast_to_cmp_file(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleFSDCmpFile>> {
-        let ptr =
+        let __result =
             unsafe { crate::ffi::HandleFSDFile_downcast_to_HandleFSDCmpFile(self as *const Self) };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }

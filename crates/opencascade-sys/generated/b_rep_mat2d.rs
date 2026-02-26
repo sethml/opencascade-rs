@@ -58,8 +58,10 @@ impl BisectingLocus {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepMAT2d_BisectingLocus_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -77,7 +79,7 @@ impl BisectingLocus {
         IsOpenResult: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepMAT2d_BisectingLocus_compute(
                     self as *mut Self,
                     anExplo,
@@ -87,7 +89,9 @@ impl BisectingLocus {
                     IsOpenResult,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -97,8 +101,11 @@ impl BisectingLocus {
         {
             let __result =
                 unsafe { crate::ffi::BRepMAT2d_BisectingLocus_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -108,8 +115,11 @@ impl BisectingLocus {
         {
             let __result =
                 unsafe { crate::ffi::BRepMAT2d_BisectingLocus_graph(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -120,8 +130,11 @@ impl BisectingLocus {
             let __result = unsafe {
                 crate::ffi::BRepMAT2d_BisectingLocus_number_of_contours(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -133,8 +146,11 @@ impl BisectingLocus {
             let __result = unsafe {
                 crate::ffi::BRepMAT2d_BisectingLocus_number_of_elts(self as *const Self, IndLine)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -151,8 +167,11 @@ impl BisectingLocus {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -169,8 +188,11 @@ impl BisectingLocus {
             let __result = unsafe {
                 crate::ffi::BRepMAT2d_BisectingLocus_basic_elt(self as *const Self, IndLine, Index)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -187,8 +209,11 @@ impl BisectingLocus {
                     aBasicElt,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -206,8 +231,11 @@ impl BisectingLocus {
                     aNode,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -225,8 +253,11 @@ impl BisectingLocus {
             let __result = unsafe {
                 crate::ffi::BRepMAT2d_BisectingLocus_geom_bis(self as *const Self, anArc, Reverse)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -251,8 +282,10 @@ impl Explorer {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepMAT2d_Explorer_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -260,8 +293,10 @@ impl Explorer {
     pub fn new_face(aFace: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepMAT2d_Explorer_ctor_face(aFace) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -269,16 +304,20 @@ impl Explorer {
     /// Clear the contents of <me>.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::BRepMAT2d_Explorer_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepMAT2d_Explorer_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepMAT2d_Explorer.hxx`:48 - `BRepMAT2d_Explorer::Perform()`
     pub fn perform(&mut self, aFace: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::BRepMAT2d_Explorer_perform(self as *mut Self, aFace) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepMAT2d_Explorer_perform(self as *mut Self, aFace) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -288,8 +327,11 @@ impl Explorer {
         {
             let __result =
                 unsafe { crate::ffi::BRepMAT2d_Explorer_number_of_contours(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -301,8 +343,11 @@ impl Explorer {
             let __result = unsafe {
                 crate::ffi::BRepMAT2d_Explorer_number_of_curves(self as *const Self, IndexContour)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -311,8 +356,11 @@ impl Explorer {
     /// the Contour number <IndexContour>.
     pub fn init(&mut self, IndexContour: i32) {
         {
-            unsafe { crate::ffi::BRepMAT2d_Explorer_init(self as *mut Self, IndexContour) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepMAT2d_Explorer_init(self as *mut Self, IndexContour) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -322,8 +370,11 @@ impl Explorer {
     pub fn more(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepMAT2d_Explorer_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -331,8 +382,10 @@ impl Explorer {
     /// Move to the next curve of the current Contour.
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::BRepMAT2d_Explorer_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepMAT2d_Explorer_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -341,8 +394,11 @@ impl Explorer {
     pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
         {
             let __result = unsafe { crate::ffi::BRepMAT2d_Explorer_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -350,8 +406,11 @@ impl Explorer {
     pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::BRepMAT2d_Explorer_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -361,8 +420,11 @@ impl Explorer {
             let __result = unsafe {
                 crate::ffi::BRepMAT2d_Explorer_contour(self as *const Self, IndexContour)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -371,8 +433,11 @@ impl Explorer {
         {
             let __result =
                 unsafe { crate::ffi::BRepMAT2d_Explorer_is_modified(self as *const Self, aShape) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -386,8 +451,11 @@ impl Explorer {
             let __result = unsafe {
                 crate::ffi::BRepMAT2d_Explorer_modified_shape(self as *const Self, aShape)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -396,8 +464,11 @@ impl Explorer {
         {
             let __result =
                 unsafe { crate::ffi::BRepMAT2d_Explorer_get_is_closed(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -422,8 +493,10 @@ impl LinkTopoBilo {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepMAT2d_LinkTopoBilo_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -439,8 +512,10 @@ impl LinkTopoBilo {
             let __result = unsafe {
                 crate::ffi::BRepMAT2d_LinkTopoBilo_ctor_explorer_bisectinglocus(Explo, BiLo)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -450,8 +525,12 @@ impl LinkTopoBilo {
     /// raises if <S> is not a face or a wire.
     pub fn perform(&mut self, Explo: &Explorer, BiLo: &BisectingLocus) {
         {
-            unsafe { crate::ffi::BRepMAT2d_LinkTopoBilo_perform(self as *mut Self, Explo, BiLo) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepMAT2d_LinkTopoBilo_perform(self as *mut Self, Explo, BiLo)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -462,8 +541,10 @@ impl LinkTopoBilo {
     /// raises if <S> is not an edge or a vertex.
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepMAT2d_LinkTopoBilo_init(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepMAT2d_LinkTopoBilo_init(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -472,8 +553,11 @@ impl LinkTopoBilo {
     pub fn more(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepMAT2d_LinkTopoBilo_more(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -481,8 +565,10 @@ impl LinkTopoBilo {
     /// Proceed to the next BasicElt.
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::BRepMAT2d_LinkTopoBilo_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepMAT2d_LinkTopoBilo_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -491,8 +577,11 @@ impl LinkTopoBilo {
     pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleMATBasicElt> {
         {
             let __result = unsafe { crate::ffi::BRepMAT2d_LinkTopoBilo_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -506,8 +595,11 @@ impl LinkTopoBilo {
             let __result = unsafe {
                 crate::ffi::BRepMAT2d_LinkTopoBilo_generating_shape(self as *const Self, aBE)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }

@@ -14,8 +14,11 @@ pub fn common_vertex_mut(
 ) -> bool {
     {
         let __result = unsafe { crate::ffi::ChFi2d_common_vertex_mut(E1, E2, V) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `ChFi2d.hxx`:58 - `ChFi2d::FindConnectedEdges`
@@ -27,8 +30,11 @@ pub fn find_connected_edges(
 ) -> crate::ch_fi2d::ConstructionError {
     {
         let __result = unsafe { crate::ffi::ChFi2d_find_connected_edges(F, V, E1, E2) };
-        crate::check_exception();
-        crate::ch_fi2d::ConstructionError::try_from(__result).unwrap()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        crate::ch_fi2d::ConstructionError::try_from(__val).unwrap()
     }
 }
 
@@ -117,8 +123,10 @@ impl AnaFilletAlgo {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFi2d_AnaFilletAlgo_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -134,8 +142,10 @@ impl AnaFilletAlgo {
         {
             let __result =
                 unsafe { crate::ffi::ChFi2d_AnaFilletAlgo_ctor_wire_pln(theWire, thePlane) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -153,8 +163,10 @@ impl AnaFilletAlgo {
             let __result = unsafe {
                 crate::ffi::ChFi2d_AnaFilletAlgo_ctor_edge2_pln(theEdge1, theEdge2, thePlane)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -162,10 +174,12 @@ impl AnaFilletAlgo {
     /// Initializes the class by a wire consisting of two edges.
     pub fn init_wire_pln(&mut self, theWire: &crate::topo_ds::Wire, thePlane: &crate::gp::Pln) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi2d_AnaFilletAlgo_init_wire_pln(self as *mut Self, theWire, thePlane)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -178,7 +192,7 @@ impl AnaFilletAlgo {
         thePlane: &crate::gp::Pln,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi2d_AnaFilletAlgo_init_edge2_pln(
                     self as *mut Self,
                     theEdge1,
@@ -186,7 +200,9 @@ impl AnaFilletAlgo {
                     thePlane,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -196,8 +212,11 @@ impl AnaFilletAlgo {
         {
             let __result =
                 unsafe { crate::ffi::ChFi2d_AnaFilletAlgo_perform(self as *mut Self, radius) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -217,8 +236,11 @@ impl AnaFilletAlgo {
         {
             let __result =
                 unsafe { crate::ffi::ChFi2d_AnaFilletAlgo_result(self as *mut Self, e1, e2) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -243,8 +265,10 @@ impl Builder {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFi2d_Builder_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -254,24 +278,32 @@ impl Builder {
     pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFi2d_Builder_ctor_face(F) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `ChFi2d_Builder.hxx`:50 - `ChFi2d_Builder::Init()`
     pub fn init_face(&mut self, F: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::ChFi2d_Builder_init_face(self as *mut Self, F) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFi2d_Builder_init_face(self as *mut Self, F) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFi2d_Builder.hxx`:52 - `ChFi2d_Builder::Init()`
     pub fn init_face2(&mut self, RefFace: &crate::topo_ds::Face, ModFace: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::ChFi2d_Builder_init_face2(self as *mut Self, RefFace, ModFace) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFi2d_Builder_init_face2(self as *mut Self, RefFace, ModFace)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -289,8 +321,11 @@ impl Builder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi2d_Builder_add_fillet(self as *mut Self, V, Radius) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -307,8 +342,11 @@ impl Builder {
             let __result = unsafe {
                 crate::ffi::ChFi2d_Builder_modify_fillet(self as *mut Self, Fillet, Radius)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -322,8 +360,11 @@ impl Builder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi2d_Builder_remove_fillet(self as *mut Self, Fillet) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -349,8 +390,11 @@ impl Builder {
                     D2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -379,8 +423,11 @@ impl Builder {
                     Ang,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -408,8 +455,11 @@ impl Builder {
                     D2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -435,8 +485,11 @@ impl Builder {
                     Ang,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -451,8 +504,11 @@ impl Builder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi2d_Builder_remove_chamfer(self as *mut Self, Chamfer) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -461,8 +517,11 @@ impl Builder {
     pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
         {
             let __result = unsafe { crate::ffi::ChFi2d_Builder_result(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -471,8 +530,11 @@ impl Builder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi2d_Builder_is_modified(self as *const Self, E) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -481,8 +543,11 @@ impl Builder {
     pub fn fillet_edges(&self) -> &crate::ffi::TopTools_SequenceOfShape {
         {
             let __result = unsafe { crate::ffi::ChFi2d_Builder_fillet_edges(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -490,8 +555,11 @@ impl Builder {
     pub fn nb_fillet(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFi2d_Builder_nb_fillet(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -500,8 +568,11 @@ impl Builder {
     pub fn chamfer_edges(&self) -> &crate::ffi::TopTools_SequenceOfShape {
         {
             let __result = unsafe { crate::ffi::ChFi2d_Builder_chamfer_edges(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -509,8 +580,11 @@ impl Builder {
     pub fn nb_chamfer(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFi2d_Builder_nb_chamfer(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -519,8 +593,11 @@ impl Builder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi2d_Builder_has_descendant(self as *const Self, E) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -537,8 +614,11 @@ impl Builder {
         {
             let __result =
                 unsafe { crate::ffi::ChFi2d_Builder_descendant_edge(self as *const Self, E) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -555,8 +635,11 @@ impl Builder {
     pub unsafe fn basis_edge(&self, E: &crate::topo_ds::Edge) -> &crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::ChFi2d_Builder_basis_edge(self as *const Self, E) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -564,8 +647,11 @@ impl Builder {
     pub fn status(&self) -> crate::ch_fi2d::ConstructionError {
         {
             let __result = unsafe { crate::ffi::ChFi2d_Builder_status(self as *const Self) };
-            crate::check_exception();
-            crate::ch_fi2d::ConstructionError::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi2d::ConstructionError::try_from(__val).unwrap()
         }
     }
 }
@@ -590,8 +676,10 @@ impl ChamferAPI {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFi2d_ChamferAPI_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -600,8 +688,10 @@ impl ChamferAPI {
     pub fn new_wire(theWire: &crate::topo_ds::Wire) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFi2d_ChamferAPI_ctor_wire(theWire) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -613,8 +703,10 @@ impl ChamferAPI {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFi2d_ChamferAPI_ctor_edge2(theEdge1, theEdge2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -622,8 +714,11 @@ impl ChamferAPI {
     /// Initializes the class by a wire consisting of two libear edges.
     pub fn init_wire(&mut self, theWire: &crate::topo_ds::Wire) {
         {
-            unsafe { crate::ffi::ChFi2d_ChamferAPI_init_wire(self as *mut Self, theWire) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFi2d_ChamferAPI_init_wire(self as *mut Self, theWire) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -631,10 +726,12 @@ impl ChamferAPI {
     /// Initializes the class by two linear edges.
     pub fn init_edge2(&mut self, theEdge1: &crate::topo_ds::Edge, theEdge2: &crate::topo_ds::Edge) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi2d_ChamferAPI_init_edge2(self as *mut Self, theEdge1, theEdge2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -644,8 +741,11 @@ impl ChamferAPI {
     pub fn perform(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::ChFi2d_ChamferAPI_perform(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -667,8 +767,11 @@ impl ChamferAPI {
                     theLength2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -710,8 +813,10 @@ impl FilletAPI {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFi2d_FilletAPI_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -723,8 +828,10 @@ impl FilletAPI {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFi2d_FilletAPI_ctor_wire_pln(theWire, thePlane) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -739,8 +846,10 @@ impl FilletAPI {
             let __result = unsafe {
                 crate::ffi::ChFi2d_FilletAPI_ctor_edge2_pln(theEdge1, theEdge2, thePlane)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -748,10 +857,12 @@ impl FilletAPI {
     /// Initializes a fillet algorithm: accepts a wire consisting of two edges in a plane.
     pub fn init_wire_pln(&mut self, theWire: &crate::topo_ds::Wire, thePlane: &crate::gp::Pln) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi2d_FilletAPI_init_wire_pln(self as *mut Self, theWire, thePlane)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -764,7 +875,7 @@ impl FilletAPI {
         thePlane: &crate::gp::Pln,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi2d_FilletAPI_init_edge2_pln(
                     self as *mut Self,
                     theEdge1,
@@ -772,7 +883,9 @@ impl FilletAPI {
                     thePlane,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -783,8 +896,11 @@ impl FilletAPI {
         {
             let __result =
                 unsafe { crate::ffi::ChFi2d_FilletAPI_perform(self as *mut Self, theRadius) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -797,8 +913,11 @@ impl FilletAPI {
         {
             let __result =
                 unsafe { crate::ffi::ChFi2d_FilletAPI_nb_results(self as *mut Self, thePoint) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -825,8 +944,11 @@ impl FilletAPI {
                     iSolution,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -878,8 +1000,10 @@ impl FilletAlgo {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFi2d_FilletAlgo_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -892,8 +1016,10 @@ impl FilletAlgo {
         {
             let __result =
                 unsafe { crate::ffi::ChFi2d_FilletAlgo_ctor_wire_pln(theWire, thePlane) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -908,8 +1034,10 @@ impl FilletAlgo {
             let __result = unsafe {
                 crate::ffi::ChFi2d_FilletAlgo_ctor_edge2_pln(theEdge1, theEdge2, thePlane)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -917,10 +1045,12 @@ impl FilletAlgo {
     /// Initializes a fillet algorithm: accepts a wire consisting of two edges in a plane.
     pub fn init_wire_pln(&mut self, theWire: &crate::topo_ds::Wire, thePlane: &crate::gp::Pln) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi2d_FilletAlgo_init_wire_pln(self as *mut Self, theWire, thePlane)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -933,7 +1063,7 @@ impl FilletAlgo {
         thePlane: &crate::gp::Pln,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFi2d_FilletAlgo_init_edge2_pln(
                     self as *mut Self,
                     theEdge1,
@@ -941,7 +1071,9 @@ impl FilletAlgo {
                     thePlane,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -952,8 +1084,11 @@ impl FilletAlgo {
         {
             let __result =
                 unsafe { crate::ffi::ChFi2d_FilletAlgo_perform(self as *mut Self, theRadius) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -966,8 +1101,11 @@ impl FilletAlgo {
         {
             let __result =
                 unsafe { crate::ffi::ChFi2d_FilletAlgo_nb_results(self as *mut Self, thePoint) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -994,8 +1132,11 @@ impl FilletAlgo {
                     iSolution,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -1017,8 +1158,10 @@ impl FilletPoint {
     pub fn new_real(theParam: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::FilletPoint_ctor_real(theParam) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1026,8 +1169,10 @@ impl FilletPoint {
     /// Changes the point position by changing point parameter on the first curve.
     pub fn set_param(&mut self, theParam: f64) {
         {
-            unsafe { crate::ffi::FilletPoint_set_param(self as *mut Self, theParam) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FilletPoint_set_param(self as *mut Self, theParam) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1036,8 +1181,11 @@ impl FilletPoint {
     pub fn get_param(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::FilletPoint_get_param(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1046,8 +1194,11 @@ impl FilletPoint {
     pub fn get_nb_values(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::FilletPoint_get_nb_values(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1057,8 +1208,11 @@ impl FilletPoint {
         {
             let __result =
                 unsafe { crate::ffi::FilletPoint_get_value(self as *mut Self, theIndex) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1067,8 +1221,11 @@ impl FilletPoint {
     pub fn get_diff(&mut self, theIndex: i32) -> f64 {
         {
             let __result = unsafe { crate::ffi::FilletPoint_get_diff(self as *mut Self, theIndex) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1077,8 +1234,11 @@ impl FilletPoint {
     pub fn is_valid(&mut self, theIndex: i32) -> bool {
         {
             let __result = unsafe { crate::ffi::FilletPoint_is_valid(self as *mut Self, theIndex) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1087,8 +1247,11 @@ impl FilletPoint {
     pub fn get_near(&mut self, theIndex: i32) -> i32 {
         {
             let __result = unsafe { crate::ffi::FilletPoint_get_near(self as *mut Self, theIndex) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1096,8 +1259,10 @@ impl FilletPoint {
     /// Defines the parameter of the projected point on the second curve.
     pub fn set_param2(&mut self, theParam2: f64) {
         {
-            unsafe { crate::ffi::FilletPoint_set_param2(self as *mut Self, theParam2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FilletPoint_set_param2(self as *mut Self, theParam2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1106,8 +1271,11 @@ impl FilletPoint {
     pub fn get_param2(&mut self) -> f64 {
         {
             let __result = unsafe { crate::ffi::FilletPoint_get_param2(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1115,8 +1283,10 @@ impl FilletPoint {
     /// Center of the fillet.
     pub fn set_center(&mut self, thePoint: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::FilletPoint_set_center(self as *mut Self, thePoint) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FilletPoint_set_center(self as *mut Self, thePoint) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1125,8 +1295,11 @@ impl FilletPoint {
     pub fn get_center(&mut self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         {
             let __result = unsafe { crate::ffi::FilletPoint_get_center(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1134,8 +1307,12 @@ impl FilletPoint {
     /// Appends value of the function.
     pub fn append_value(&mut self, theValue: f64, theValid: bool) {
         {
-            unsafe { crate::ffi::FilletPoint_append_value(self as *mut Self, theValue, theValid) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::FilletPoint_append_value(self as *mut Self, theValue, theValid)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1146,8 +1323,11 @@ impl FilletPoint {
             let __result = unsafe {
                 crate::ffi::FilletPoint_calculate_diff(self as *mut Self, arg0 as *mut _)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1155,8 +1335,11 @@ impl FilletPoint {
     /// Filters out the values and leaves the most optimal one.
     pub fn filter_points(&mut self, arg0: &mut FilletPoint) {
         {
-            unsafe { crate::ffi::FilletPoint_filter_points(self as *mut Self, arg0 as *mut _) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::FilletPoint_filter_points(self as *mut Self, arg0 as *mut _) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1166,11 +1349,14 @@ impl FilletPoint {
     pub fn copy(&mut self) -> Option<&mut FilletPoint> {
         {
             let __result = unsafe { crate::ffi::FilletPoint_copy(self as *mut Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &mut *__result })
+                Some(unsafe { &mut *__val })
             }
         }
     }
@@ -1181,8 +1367,11 @@ impl FilletPoint {
         {
             let __result =
                 unsafe { crate::ffi::FilletPoint_has_solution(self as *mut Self, theRadius) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1191,8 +1380,11 @@ impl FilletPoint {
     pub fn lower_value(&mut self) -> f64 {
         {
             let __result = unsafe { crate::ffi::FilletPoint_lower_value(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1200,8 +1392,10 @@ impl FilletPoint {
     /// Removes the found value by the given index.
     pub fn remove(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::FilletPoint_remove(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::FilletPoint_remove(self as *mut Self, theIndex) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

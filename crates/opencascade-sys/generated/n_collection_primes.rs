@@ -11,7 +11,10 @@
 pub fn next_prime_for_map(theN: i32) -> i32 {
     {
         let __result = unsafe { crate::ffi::NCollection_Primes_next_prime_for_map(theN) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }

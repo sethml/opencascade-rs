@@ -19,8 +19,11 @@ pub fn concatenate_wire(
     {
         let __result =
             unsafe { crate::ffi::BRepAlgo_concatenate_wire(Wire, Option.into(), AngularTolerance) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `BRepAlgo.hxx`:44 - `BRepAlgo::ConcatenateWireC0`
@@ -30,8 +33,11 @@ pub fn concatenate_wire(
 pub fn concatenate_wire_c0(Wire: &crate::topo_ds::Wire) -> crate::OwnedPtr<crate::topo_ds::Edge> {
     {
         let __result = unsafe { crate::ffi::BRepAlgo_concatenate_wire_c0(Wire) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `BRepAlgo.hxx`:57 - `BRepAlgo::ConvertWire`
@@ -54,8 +60,11 @@ pub fn convert_wire(
     {
         let __result =
             unsafe { crate::ffi::BRepAlgo_convert_wire(theWire, theAngleTolerance, theFace) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `BRepAlgo.hxx`:63 - `BRepAlgo::ConvertFace`
@@ -67,8 +76,11 @@ pub fn convert_face(
 ) -> crate::OwnedPtr<crate::topo_ds::Face> {
     {
         let __result = unsafe { crate::ffi::BRepAlgo_convert_face(theFace, theAngleTolerance) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `BRepAlgo.hxx`:68 - `BRepAlgo::IsValid`
@@ -77,8 +89,11 @@ pub fn convert_face(
 pub fn is_valid_shape(S: &crate::topo_ds::Shape) -> bool {
     {
         let __result = unsafe { crate::ffi::BRepAlgo_is_valid_shape(S) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `BRepAlgo.hxx`:78 - `BRepAlgo::IsValid`
@@ -105,8 +120,11 @@ pub fn is_valid_listofshape_shape_bool2(
                 GeomCtrl,
             )
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `BRepAlgo.hxx`:88 - `BRepAlgo::IsTopologicallyValid`
@@ -117,8 +135,11 @@ pub fn is_valid_listofshape_shape_bool2(
 pub fn is_topologically_valid(S: &crate::topo_ds::Shape) -> bool {
     {
         let __result = unsafe { crate::ffi::BRepAlgo_is_topologically_valid(S) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 
@@ -145,16 +166,20 @@ impl AsDes {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_AsDes_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BRepAlgo_AsDes.hxx`:38 - `BRepAlgo_AsDes::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::BRepAlgo_AsDes_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_AsDes_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -162,8 +187,10 @@ impl AsDes {
     /// Stores <SS> as a futur subshape of <S>.
     pub fn add_shape2(&mut self, S: &crate::topo_ds::Shape, SS: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepAlgo_AsDes_add_shape2(self as *mut Self, S, SS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_AsDes_add_shape2(self as *mut Self, S, SS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -175,8 +202,12 @@ impl AsDes {
         SS: &crate::ffi::TopTools_ListOfShape,
     ) {
         {
-            unsafe { crate::ffi::BRepAlgo_AsDes_add_shape_listofshape(self as *mut Self, S, SS) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepAlgo_AsDes_add_shape_listofshape(self as *mut Self, S, SS)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -185,8 +216,11 @@ impl AsDes {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgo_AsDes_has_ascendant(self as *const Self, S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -195,8 +229,11 @@ impl AsDes {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgo_AsDes_has_descendant(self as *const Self, S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -211,8 +248,11 @@ impl AsDes {
     pub unsafe fn ascendant(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_AsDes_ascendant(self as *const Self, S) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -230,8 +270,11 @@ impl AsDes {
     ) -> &crate::ffi::TopTools_ListOfShape {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_AsDes_descendant(self as *const Self, S) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -250,8 +293,11 @@ impl AsDes {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgo_AsDes_change_descendant(self as *mut Self, S) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -260,8 +306,11 @@ impl AsDes {
     /// theOldS disappear from this.
     pub fn replace(&mut self, theOldS: &crate::topo_ds::Shape, theNewS: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepAlgo_AsDes_replace(self as *mut Self, theOldS, theNewS) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgo_AsDes_replace(self as *mut Self, theOldS, theNewS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -269,8 +318,10 @@ impl AsDes {
     /// Remove theS from me.
     pub fn remove(&mut self, theS: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepAlgo_AsDes_remove(self as *mut Self, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_AsDes_remove(self as *mut Self, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -287,8 +338,11 @@ impl AsDes {
             let __result = unsafe {
                 crate::ffi::BRepAlgo_AsDes_has_common_descendant(self as *const Self, S1, S2, LC)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -296,8 +350,11 @@ impl AsDes {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_AsDes_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -305,8 +362,11 @@ impl AsDes {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_AsDes_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -314,40 +374,43 @@ impl AsDes {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_AsDes_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAlgo_AsDes_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgo_AsDes_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepAlgo_AsDes_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepAlgo_AsDes_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepAlgoAsDes> {
-        {
-            let __result = unsafe { crate::ffi::BRepAlgo_AsDes_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::BRepAlgo_AsDes_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -356,8 +419,11 @@ impl AsDes {
             let __result = unsafe {
                 crate::ffi::BRepAlgo_AsDes_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -367,8 +433,11 @@ impl AsDes {
             let __result = unsafe {
                 crate::ffi::BRepAlgo_AsDes_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -377,11 +446,14 @@ impl AsDes {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgo_AsDes_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -391,16 +463,23 @@ impl AsDes {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgo_AsDes_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::BRepAlgo_AsDes_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepAlgo_AsDes_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -410,16 +489,21 @@ impl AsDes {
             let __result = unsafe {
                 crate::ffi::BRepAlgo_AsDes_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::BRepAlgo_AsDes_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_AsDes_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -435,31 +519,31 @@ unsafe impl crate::CppDeletable for HandleBRepAlgoAsDes {
 impl HandleBRepAlgoAsDes {
     /// Dereference this Handle to access the underlying BRepAlgo_AsDes
     pub fn get(&self) -> &crate::ffi::BRepAlgo_AsDes {
-        {
-            let __result = unsafe { crate::ffi::HandleBRepAlgoAsDes_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBRepAlgoAsDes_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepAlgo_AsDes
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepAlgo_AsDes {
-        {
-            let __result = unsafe { crate::ffi::HandleBRepAlgoAsDes_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleBRepAlgoAsDes_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepAlgo_AsDes> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepAlgoAsDes_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepAlgoAsDes_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -487,8 +571,10 @@ impl FaceRestrictor {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_FaceRestrictor_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -499,7 +585,7 @@ impl FaceRestrictor {
     /// See Add().
     pub fn init(&mut self, F: &crate::topo_ds::Face, Proj: bool, ControlOrientation: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgo_FaceRestrictor_init(
                     self as *mut Self,
                     F,
@@ -507,7 +593,9 @@ impl FaceRestrictor {
                     ControlOrientation,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -525,8 +613,10 @@ impl FaceRestrictor {
     /// projection of the curve 3d on <F>.
     pub fn add(&mut self, W: &mut crate::topo_ds::Wire) {
         {
-            unsafe { crate::ffi::BRepAlgo_FaceRestrictor_add(self as *mut Self, W) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_FaceRestrictor_add(self as *mut Self, W) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -534,8 +624,10 @@ impl FaceRestrictor {
     /// Removes all the Wires
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::BRepAlgo_FaceRestrictor_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_FaceRestrictor_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -543,8 +635,10 @@ impl FaceRestrictor {
     /// Evaluate all the faces limited by the set of Wires.
     pub fn perform(&mut self) {
         {
-            unsafe { crate::ffi::BRepAlgo_FaceRestrictor_perform(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_FaceRestrictor_perform(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -553,8 +647,11 @@ impl FaceRestrictor {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgo_FaceRestrictor_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -562,16 +659,21 @@ impl FaceRestrictor {
     pub fn more(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_FaceRestrictor_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepAlgo_FaceRestrictor.hxx`:71 - `BRepAlgo_FaceRestrictor::Next()`
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::BRepAlgo_FaceRestrictor_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_FaceRestrictor_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -580,8 +682,11 @@ impl FaceRestrictor {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgo_FaceRestrictor_current(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -606,16 +711,20 @@ impl Image {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_Image_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BRepAlgo_Image.hxx`:40 - `BRepAlgo_Image::SetRoot()`
     pub fn set_root(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepAlgo_Image_set_root(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_Image_set_root(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -623,8 +732,11 @@ impl Image {
     /// Links <NewS> as image of <OldS>.
     pub fn bind_shape2(&mut self, OldS: &crate::topo_ds::Shape, NewS: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepAlgo_Image_bind_shape2(self as *mut Self, OldS, NewS) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgo_Image_bind_shape2(self as *mut Self, OldS, NewS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -636,10 +748,12 @@ impl Image {
         NewS: &crate::ffi::TopTools_ListOfShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgo_Image_bind_shape_listofshape(self as *mut Self, OldS, NewS)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -647,8 +761,11 @@ impl Image {
     /// Add <NewS> to the image of <OldS>.
     pub fn add_shape2(&mut self, OldS: &crate::topo_ds::Shape, NewS: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepAlgo_Image_add_shape2(self as *mut Self, OldS, NewS) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgo_Image_add_shape2(self as *mut Self, OldS, NewS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -660,18 +777,22 @@ impl Image {
         NewS: &crate::ffi::TopTools_ListOfShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgo_Image_add_shape_listofshape(self as *mut Self, OldS, NewS)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepAlgo_Image.hxx`:54 - `BRepAlgo_Image::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::BRepAlgo_Image_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_Image_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -679,8 +800,10 @@ impl Image {
     /// Remove <S> to set of images.
     pub fn remove(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepAlgo_Image_remove(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_Image_remove(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -688,8 +811,10 @@ impl Image {
     /// Removes the root <theRoot> from the list of roots and up and down maps.
     pub fn remove_root(&mut self, Root: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepAlgo_Image_remove_root(self as *mut Self, Root) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_Image_remove_root(self as *mut Self, Root) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -703,8 +828,12 @@ impl Image {
         NewRoot: &crate::topo_ds::Shape,
     ) {
         {
-            unsafe { crate::ffi::BRepAlgo_Image_replace_root(self as *mut Self, OldRoot, NewRoot) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepAlgo_Image_replace_root(self as *mut Self, OldRoot, NewRoot)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -712,8 +841,11 @@ impl Image {
     pub fn roots(&self) -> &crate::ffi::TopTools_ListOfShape {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_Image_roots(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -721,8 +853,11 @@ impl Image {
     pub fn is_image(&self, S: &crate::topo_ds::Shape) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_Image_is_image(self as *const Self, S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -737,8 +872,11 @@ impl Image {
     pub unsafe fn image_from(&self, S: &crate::topo_ds::Shape) -> &crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_Image_image_from(self as *const Self, S) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -753,8 +891,11 @@ impl Image {
     pub unsafe fn root(&self, S: &crate::topo_ds::Shape) -> &crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_Image_root(self as *const Self, S) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -762,8 +903,11 @@ impl Image {
     pub fn has_image(&self, S: &crate::topo_ds::Shape) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_Image_has_image(self as *const Self, S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -779,8 +923,11 @@ impl Image {
     pub unsafe fn image(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_Image_image(self as *const Self, S) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -789,8 +936,10 @@ impl Image {
     /// <L> contains only <S> if  HasImage(S) is false.
     pub fn last_image(&self, S: &crate::topo_ds::Shape, L: &mut crate::ffi::TopTools_ListOfShape) {
         {
-            unsafe { crate::ffi::BRepAlgo_Image_last_image(self as *const Self, S, L) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_Image_last_image(self as *const Self, S, L) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -798,8 +947,10 @@ impl Image {
     /// Keeps only the link between roots and lastimage.
     pub fn compact(&mut self) {
         {
-            unsafe { crate::ffi::BRepAlgo_Image_compact(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_Image_compact(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -809,8 +960,12 @@ impl Image {
     /// Warning:  Compact() must be call before.
     pub fn filter(&mut self, S: &crate::topo_ds::Shape, ShapeType: crate::top_abs::ShapeEnum) {
         {
-            unsafe { crate::ffi::BRepAlgo_Image_filter(self as *mut Self, S, ShapeType.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepAlgo_Image_filter(self as *mut Self, S, ShapeType.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -834,8 +989,10 @@ impl Loop {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_Loop_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -844,8 +1001,10 @@ impl Loop {
     /// pcurves on <F>.
     pub fn init(&mut self, F: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::BRepAlgo_Loop_init(self as *mut Self, F) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_Loop_init(self as *mut Self, F) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -858,8 +1017,10 @@ impl Loop {
         LV: &crate::ffi::TopTools_ListOfShape,
     ) {
         {
-            unsafe { crate::ffi::BRepAlgo_Loop_add_edge(self as *mut Self, E, LV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_Loop_add_edge(self as *mut Self, E, LV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -867,8 +1028,10 @@ impl Loop {
     /// Add <E> as const edge, E can be in the result.
     pub fn add_const_edge(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::BRepAlgo_Loop_add_const_edge(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_Loop_add_const_edge(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -876,8 +1039,10 @@ impl Loop {
     /// Add <LE> as a set of const edges.
     pub fn add_const_edges(&mut self, LE: &crate::ffi::TopTools_ListOfShape) {
         {
-            unsafe { crate::ffi::BRepAlgo_Loop_add_const_edges(self as *mut Self, LE) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_Loop_add_const_edges(self as *mut Self, LE) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -885,8 +1050,11 @@ impl Loop {
     /// Sets the Image Vertex - Vertex
     pub fn set_image_vv(&mut self, theImageVV: &Image) {
         {
-            unsafe { crate::ffi::BRepAlgo_Loop_set_image_vv(self as *mut Self, theImageVV) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgo_Loop_set_image_vv(self as *mut Self, theImageVV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -894,8 +1062,10 @@ impl Loop {
     /// Make loops.
     pub fn perform(&mut self) {
         {
-            unsafe { crate::ffi::BRepAlgo_Loop_perform(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_Loop_perform(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -906,8 +1076,11 @@ impl Loop {
         theVEmap: &mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
     ) {
         {
-            unsafe { crate::ffi::BRepAlgo_Loop_update_v_emap(self as *mut Self, theVEmap) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgo_Loop_update_v_emap(self as *mut Self, theVEmap) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -921,8 +1094,11 @@ impl Loop {
         NE: &mut crate::ffi::TopTools_ListOfShape,
     ) {
         {
-            unsafe { crate::ffi::BRepAlgo_Loop_cut_edge(self as *const Self, E, VonE, NE) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgo_Loop_cut_edge(self as *const Self, E, VonE, NE) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -932,8 +1108,11 @@ impl Loop {
     pub fn new_wires(&self) -> &crate::ffi::TopTools_ListOfShape {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_Loop_new_wires(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -941,8 +1120,10 @@ impl Loop {
     /// Build faces from the wires result.
     pub fn wires_to_faces(&mut self) {
         {
-            unsafe { crate::ffi::BRepAlgo_Loop_wires_to_faces(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_Loop_wires_to_faces(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -953,8 +1134,11 @@ impl Loop {
     pub fn new_faces(&self) -> &crate::ffi::TopTools_ListOfShape {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_Loop_new_faces(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -970,8 +1154,11 @@ impl Loop {
     pub unsafe fn new_edges(&self, E: &crate::topo_ds::Edge) -> &crate::ffi::TopTools_ListOfShape {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_Loop_new_edges(self as *const Self, E) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -982,13 +1169,15 @@ impl Loop {
         VerVerMap: &mut crate::ffi::TopTools_DataMapOfShapeShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgo_Loop_get_vertices_for_substitute(
                     self as *const Self,
                     VerVerMap,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -998,10 +1187,12 @@ impl Loop {
         VerVerMap: &mut crate::ffi::TopTools_DataMapOfShapeShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgo_Loop_vertices_for_substitute(self as *mut Self, VerVerMap)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1009,8 +1200,11 @@ impl Loop {
     /// Set maximal tolerance used for comparing distances between vertices.
     pub fn set_tol_conf(&mut self, theTolConf: f64) {
         {
-            unsafe { crate::ffi::BRepAlgo_Loop_set_tol_conf(self as *mut Self, theTolConf) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgo_Loop_set_tol_conf(self as *mut Self, theTolConf) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1019,8 +1213,11 @@ impl Loop {
     pub fn get_tol_conf(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_Loop_get_tol_conf(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1045,8 +1242,10 @@ impl NormalProjection {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_NormalProjection_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1054,16 +1253,20 @@ impl NormalProjection {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepAlgo_NormalProjection_ctor_shape(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BRepAlgo_NormalProjection.hxx`:43 - `BRepAlgo_NormalProjection::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepAlgo_NormalProjection_init(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_NormalProjection_init(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1071,8 +1274,11 @@ impl NormalProjection {
     /// Add an edge or a wire to the list of shape to project
     pub fn add(&mut self, ToProj: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepAlgo_NormalProjection_add(self as *mut Self, ToProj) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepAlgo_NormalProjection_add(self as *mut Self, ToProj) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1093,7 +1299,7 @@ impl NormalProjection {
         MaxSeg: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgo_NormalProjection_set_params(
                     self as *mut Self,
                     Tol3D,
@@ -1103,7 +1309,9 @@ impl NormalProjection {
                     MaxSeg,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1112,8 +1320,12 @@ impl NormalProjection {
     /// in their default values
     pub fn set_default_params(&mut self) {
         {
-            unsafe { crate::ffi::BRepAlgo_NormalProjection_set_default_params(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepAlgo_NormalProjection_set_default_params(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1124,10 +1336,12 @@ impl NormalProjection {
     /// if MaxDist < 0 then this method does not affect the algorithm
     pub fn set_max_distance(&mut self, MaxDist: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgo_NormalProjection_set_max_distance(self as *mut Self, MaxDist)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1136,8 +1350,12 @@ impl NormalProjection {
     /// the  initial 3dcurve is kept  to  build the  resulting edges.
     pub fn compute3d(&mut self, With3d: bool) {
         {
-            unsafe { crate::ffi::BRepAlgo_NormalProjection_compute3d(self as *mut Self, With3d) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepAlgo_NormalProjection_compute3d(self as *mut Self, With3d)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1145,10 +1363,12 @@ impl NormalProjection {
     /// Manage  limitation  of  projected  edges.
     pub fn set_limit(&mut self, FaceBoundaries: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepAlgo_NormalProjection_set_limit(self as *mut Self, FaceBoundaries)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1156,8 +1376,10 @@ impl NormalProjection {
     /// Builds the result as a  compound.
     pub fn build(&mut self) {
         {
-            unsafe { crate::ffi::BRepAlgo_NormalProjection_build(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepAlgo_NormalProjection_build(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1166,8 +1388,11 @@ impl NormalProjection {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgo_NormalProjection_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1177,8 +1402,11 @@ impl NormalProjection {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgo_NormalProjection_projection(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1194,8 +1422,11 @@ impl NormalProjection {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgo_NormalProjection_ancestor(self as *const Self, E) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1211,8 +1442,11 @@ impl NormalProjection {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgo_NormalProjection_couple(self as *const Self, E) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1232,8 +1466,11 @@ impl NormalProjection {
         {
             let __result =
                 unsafe { crate::ffi::BRepAlgo_NormalProjection_generated(self as *mut Self, S) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1243,8 +1480,11 @@ impl NormalProjection {
             let __result = unsafe {
                 crate::ffi::BRepAlgo_NormalProjection_is_elementary(self as *const Self, C)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1256,8 +1496,11 @@ impl NormalProjection {
             let __result = unsafe {
                 crate::ffi::BRepAlgo_NormalProjection_build_wire(self as *const Self, Liste)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

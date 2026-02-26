@@ -27,8 +27,10 @@ impl Attr {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LDOM_Attr_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -36,8 +38,11 @@ impl Attr {
     pub fn get_name(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         {
             let __result = unsafe { crate::ffi::LDOM_Attr_get_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -45,44 +50,49 @@ impl Attr {
     pub fn get_value(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         {
             let __result = unsafe { crate::ffi::LDOM_Attr_get_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `LDOM_Attr.hxx`:60 - `LDOM_Attr::setValue()`
     pub fn set_value(&mut self, aValue: &crate::ldom_string::LDOMString) {
         {
-            unsafe { crate::ffi::LDOM_Attr_set_value(self as *mut Self, aValue) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::LDOM_Attr_set_value(self as *mut Self, aValue) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to LDOM_Node
     pub fn as_node(&self) -> &Node {
-        {
-            let __result = unsafe { crate::ffi::LDOM_Attr_as_LDOM_Node(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::LDOM_Attr_as_LDOM_Node(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to LDOM_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        {
-            let __result = unsafe { crate::ffi::LDOM_Attr_as_LDOM_Node_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::LDOM_Attr_as_LDOM_Node_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::LDOM_Attr_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::LDOM_Attr_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:66 - `LDOM_Node::getOwnerDocument()`
@@ -90,8 +100,11 @@ impl Attr {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Attr_inherited_getOwnerDocument(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -99,8 +112,11 @@ impl Attr {
     pub fn is_null(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::LDOM_Attr_inherited_isNull(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -109,8 +125,11 @@ impl Attr {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Attr_inherited_getNodeType(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -119,8 +138,11 @@ impl Attr {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Attr_inherited_getNodeName(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -129,8 +151,11 @@ impl Attr {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Attr_inherited_getNodeValue(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -139,8 +164,11 @@ impl Attr {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Attr_inherited_getFirstChild(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -149,8 +177,11 @@ impl Attr {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Attr_inherited_getLastChild(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -159,24 +190,33 @@ impl Attr {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Attr_inherited_getNextSibling(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:94 - `LDOM_Node::removeChild()`
     pub fn remove_child(&mut self, aChild: &Node) {
         {
-            unsafe { crate::ffi::LDOM_Attr_inherited_removeChild(self as *mut Self, aChild) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::LDOM_Attr_inherited_removeChild(self as *mut Self, aChild) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:96 - `LDOM_Node::appendChild()`
     pub fn append_child(&mut self, aChild: &Node) {
         {
-            unsafe { crate::ffi::LDOM_Attr_inherited_appendChild(self as *mut Self, aChild) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::LDOM_Attr_inherited_appendChild(self as *mut Self, aChild) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -185,16 +225,22 @@ impl Attr {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Attr_inherited_hasChildNodes(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
     pub fn set_value_clear(&self) {
         {
-            unsafe { crate::ffi::LDOM_Attr_inherited_SetValueClear(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::LDOM_Attr_inherited_SetValueClear(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -217,8 +263,10 @@ impl BasicAttribute {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LDOM_BasicAttribute_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -226,8 +274,11 @@ impl BasicAttribute {
     pub fn get_name(&self) -> std::string::String {
         {
             let __result = unsafe { crate::ffi::LDOM_BasicAttribute_get_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -236,8 +287,11 @@ impl BasicAttribute {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_BasicAttribute_get_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -248,29 +302,33 @@ impl BasicAttribute {
         aDoc: &crate::ffi::HandleLDOMMemManager,
     ) {
         {
-            unsafe { crate::ffi::LDOM_BasicAttribute_set_value(self as *mut Self, aValue, aDoc) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::LDOM_BasicAttribute_set_value(self as *mut Self, aValue, aDoc)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to LDOM_BasicNode
     pub fn as_basic_node(&self) -> &BasicNode {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOM_BasicAttribute_as_LDOM_BasicNode(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::LDOM_BasicAttribute_as_LDOM_BasicNode(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to LDOM_BasicNode (mutable)
     pub fn as_basic_node_mut(&mut self) -> &mut BasicNode {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOM_BasicAttribute_as_LDOM_BasicNode_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::LDOM_BasicAttribute_as_LDOM_BasicNode_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `LDOM_BasicNode.hxx`:32 - `LDOM_BasicNode::isNull()`
@@ -278,8 +336,11 @@ impl BasicAttribute {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_BasicAttribute_inherited_isNull(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -289,8 +350,11 @@ impl BasicAttribute {
             let __result = unsafe {
                 crate::ffi::LDOM_BasicAttribute_inherited_getNodeType(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -300,11 +364,14 @@ impl BasicAttribute {
             let __result = unsafe {
                 crate::ffi::LDOM_BasicAttribute_inherited_GetSibling(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -328,8 +395,10 @@ impl BasicElement {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LDOM_BasicElement_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -338,8 +407,11 @@ impl BasicElement {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_BasicElement_get_tag_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -348,11 +420,14 @@ impl BasicElement {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_BasicElement_get_first_child(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -362,11 +437,14 @@ impl BasicElement {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_BasicElement_get_last_child(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -391,8 +469,11 @@ impl BasicElement {
                     aLastCh as *const _,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -406,29 +487,32 @@ impl BasicElement {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_BasicElement_create(c_aName.as_ptr(), aLength, aDoc) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// Upcast to LDOM_BasicNode
     pub fn as_basic_node(&self) -> &BasicNode {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOM_BasicElement_as_LDOM_BasicNode(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::LDOM_BasicElement_as_LDOM_BasicNode(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to LDOM_BasicNode (mutable)
     pub fn as_basic_node_mut(&mut self) -> &mut BasicNode {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOM_BasicElement_as_LDOM_BasicNode_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::LDOM_BasicElement_as_LDOM_BasicNode_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `LDOM_BasicNode.hxx`:32 - `LDOM_BasicNode::isNull()`
@@ -436,8 +520,11 @@ impl BasicElement {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_BasicElement_inherited_isNull(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -446,8 +533,11 @@ impl BasicElement {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_BasicElement_inherited_getNodeType(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -456,11 +546,14 @@ impl BasicElement {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_BasicElement_inherited_GetSibling(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -484,8 +577,11 @@ impl BasicNode {
     pub fn is_null(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::LDOM_BasicNode_is_null(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -493,8 +589,11 @@ impl BasicNode {
     pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi::LDOM_Node_NodeType> {
         {
             let __result = unsafe { crate::ffi::LDOM_BasicNode_get_node_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -502,11 +601,14 @@ impl BasicNode {
     pub fn get_sibling(&self) -> Option<&BasicNode> {
         {
             let __result = unsafe { crate::ffi::LDOM_BasicNode_get_sibling(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -530,8 +632,10 @@ impl BasicText {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LDOM_BasicText_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -539,8 +643,11 @@ impl BasicText {
     pub fn get_data(&self) -> &crate::ldom_basic_string::LDOMBasicString {
         {
             let __result = unsafe { crate::ffi::LDOM_BasicText_get_data(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -551,29 +658,31 @@ impl BasicText {
         aDoc: &crate::ffi::HandleLDOMMemManager,
     ) {
         {
-            unsafe { crate::ffi::LDOM_BasicText_set_data(self as *mut Self, aValue, aDoc) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::LDOM_BasicText_set_data(self as *mut Self, aValue, aDoc) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to LDOM_BasicNode
     pub fn as_basic_node(&self) -> &BasicNode {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOM_BasicText_as_LDOM_BasicNode(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::LDOM_BasicText_as_LDOM_BasicNode(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to LDOM_BasicNode (mutable)
     pub fn as_basic_node_mut(&mut self) -> &mut BasicNode {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOM_BasicText_as_LDOM_BasicNode_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::LDOM_BasicText_as_LDOM_BasicNode_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `LDOM_BasicNode.hxx`:32 - `LDOM_BasicNode::isNull()`
@@ -581,8 +690,11 @@ impl BasicText {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_BasicText_inherited_isNull(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -591,8 +703,11 @@ impl BasicText {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_BasicText_inherited_getNodeType(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -601,11 +716,14 @@ impl BasicText {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_BasicText_inherited_GetSibling(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -629,79 +747,76 @@ impl CDATASection {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LDOM_CDATASection_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to LDOM_Text
     pub fn as_text(&self) -> &Text {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOM_CDATASection_as_LDOM_Text(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::LDOM_CDATASection_as_LDOM_Text(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to LDOM_Text (mutable)
     pub fn as_text_mut(&mut self) -> &mut Text {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOM_CDATASection_as_LDOM_Text_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::LDOM_CDATASection_as_LDOM_Text_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to LDOM_CharacterData
     pub fn as_character_data(&self) -> &CharacterData {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOM_CDATASection_as_LDOM_CharacterData(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::LDOM_CDATASection_as_LDOM_CharacterData(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to LDOM_CharacterData (mutable)
     pub fn as_character_data_mut(&mut self) -> &mut CharacterData {
-        {
-            let __result = unsafe {
-                crate::ffi::LDOM_CDATASection_as_LDOM_CharacterData_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::LDOM_CDATASection_as_LDOM_CharacterData_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to LDOM_Node
     pub fn as_node(&self) -> &Node {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOM_CDATASection_as_LDOM_Node(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::LDOM_CDATASection_as_LDOM_Node(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to LDOM_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOM_CDATASection_as_LDOM_Node_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::LDOM_CDATASection_as_LDOM_Node_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::LDOM_CDATASection_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::LDOM_CDATASection_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `LDOM_CharacterData.hxx`:53 - `LDOM_CharacterData::getData()`
@@ -709,16 +824,23 @@ impl CDATASection {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_CDATASection_inherited_getData(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `LDOM_CharacterData.hxx`:57 - `LDOM_CharacterData::setData()`
     pub fn set_data(&mut self, aValue: &crate::ldom_string::LDOMString) {
         {
-            unsafe { crate::ffi::LDOM_CDATASection_inherited_setData(self as *mut Self, aValue) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::LDOM_CDATASection_inherited_setData(self as *mut Self, aValue)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -727,8 +849,11 @@ impl CDATASection {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_CDATASection_inherited_getLength(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -738,8 +863,11 @@ impl CDATASection {
             let __result = unsafe {
                 crate::ffi::LDOM_CDATASection_inherited_getOwnerDocument(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -748,8 +876,11 @@ impl CDATASection {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_CDATASection_inherited_isNull(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -758,8 +889,11 @@ impl CDATASection {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_CDATASection_inherited_getNodeType(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -768,8 +902,11 @@ impl CDATASection {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_CDATASection_inherited_getNodeName(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -779,8 +916,11 @@ impl CDATASection {
             let __result = unsafe {
                 crate::ffi::LDOM_CDATASection_inherited_getNodeValue(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -790,8 +930,11 @@ impl CDATASection {
             let __result = unsafe {
                 crate::ffi::LDOM_CDATASection_inherited_getFirstChild(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -801,8 +944,11 @@ impl CDATASection {
             let __result = unsafe {
                 crate::ffi::LDOM_CDATASection_inherited_getLastChild(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -812,28 +958,35 @@ impl CDATASection {
             let __result = unsafe {
                 crate::ffi::LDOM_CDATASection_inherited_getNextSibling(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:94 - `LDOM_Node::removeChild()`
     pub fn remove_child(&mut self, aChild: &Node) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::LDOM_CDATASection_inherited_removeChild(self as *mut Self, aChild)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:96 - `LDOM_Node::appendChild()`
     pub fn append_child(&mut self, aChild: &Node) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::LDOM_CDATASection_inherited_appendChild(self as *mut Self, aChild)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -843,16 +996,23 @@ impl CDATASection {
             let __result = unsafe {
                 crate::ffi::LDOM_CDATASection_inherited_hasChildNodes(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
     pub fn set_value_clear(&self) {
         {
-            unsafe { crate::ffi::LDOM_CDATASection_inherited_SetValueClear(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::LDOM_CDATASection_inherited_SetValueClear(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -876,8 +1036,10 @@ impl CharReference {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LDOM_CharReference_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -885,8 +1047,11 @@ impl CharReference {
     pub unsafe fn decode(theSrc: *mut std::ffi::c_char, theLen: &mut i32) -> *mut std::ffi::c_char {
         {
             let __result = unsafe { crate::ffi::LDOM_CharReference_decode(theSrc, theLen) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -901,8 +1066,11 @@ impl CharReference {
             let __result = unsafe {
                 crate::ffi::LDOM_CharReference_encode(c_theSrc.as_ptr(), theLen, isAttribute)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -925,8 +1093,10 @@ impl CharacterData {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LDOM_CharacterData_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -934,16 +1104,22 @@ impl CharacterData {
     pub fn get_data(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         {
             let __result = unsafe { crate::ffi::LDOM_CharacterData_get_data(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `LDOM_CharacterData.hxx`:57 - `LDOM_CharacterData::setData()`
     pub fn set_data(&mut self, aValue: &crate::ldom_string::LDOMString) {
         {
-            unsafe { crate::ffi::LDOM_CharacterData_set_data(self as *mut Self, aValue) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::LDOM_CharacterData_set_data(self as *mut Self, aValue) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -952,38 +1128,40 @@ impl CharacterData {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_CharacterData_get_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to LDOM_Node
     pub fn as_node(&self) -> &Node {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOM_CharacterData_as_LDOM_Node(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::LDOM_CharacterData_as_LDOM_Node(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to LDOM_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOM_CharacterData_as_LDOM_Node_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::LDOM_CharacterData_as_LDOM_Node_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::LDOM_CharacterData_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::LDOM_CharacterData_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:66 - `LDOM_Node::getOwnerDocument()`
@@ -992,8 +1170,11 @@ impl CharacterData {
             let __result = unsafe {
                 crate::ffi::LDOM_CharacterData_inherited_getOwnerDocument(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1002,8 +1183,11 @@ impl CharacterData {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_CharacterData_inherited_isNull(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1013,8 +1197,11 @@ impl CharacterData {
             let __result = unsafe {
                 crate::ffi::LDOM_CharacterData_inherited_getNodeType(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1024,8 +1211,11 @@ impl CharacterData {
             let __result = unsafe {
                 crate::ffi::LDOM_CharacterData_inherited_getNodeName(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1035,8 +1225,11 @@ impl CharacterData {
             let __result = unsafe {
                 crate::ffi::LDOM_CharacterData_inherited_getNodeValue(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1046,8 +1239,11 @@ impl CharacterData {
             let __result = unsafe {
                 crate::ffi::LDOM_CharacterData_inherited_getFirstChild(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1057,8 +1253,11 @@ impl CharacterData {
             let __result = unsafe {
                 crate::ffi::LDOM_CharacterData_inherited_getLastChild(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1068,28 +1267,35 @@ impl CharacterData {
             let __result = unsafe {
                 crate::ffi::LDOM_CharacterData_inherited_getNextSibling(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:94 - `LDOM_Node::removeChild()`
     pub fn remove_child(&mut self, aChild: &Node) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::LDOM_CharacterData_inherited_removeChild(self as *mut Self, aChild)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:96 - `LDOM_Node::appendChild()`
     pub fn append_child(&mut self, aChild: &Node) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::LDOM_CharacterData_inherited_appendChild(self as *mut Self, aChild)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1099,16 +1305,23 @@ impl CharacterData {
             let __result = unsafe {
                 crate::ffi::LDOM_CharacterData_inherited_hasChildNodes(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
     pub fn set_value_clear(&self) {
         {
-            unsafe { crate::ffi::LDOM_CharacterData_inherited_SetValueClear(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::LDOM_CharacterData_inherited_SetValueClear(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1131,56 +1344,58 @@ impl Comment {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LDOM_Comment_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to LDOM_CharacterData
     pub fn as_character_data(&self) -> &CharacterData {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOM_Comment_as_LDOM_CharacterData(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::LDOM_Comment_as_LDOM_CharacterData(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to LDOM_CharacterData (mutable)
     pub fn as_character_data_mut(&mut self) -> &mut CharacterData {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOM_Comment_as_LDOM_CharacterData_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::LDOM_Comment_as_LDOM_CharacterData_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to LDOM_Node
     pub fn as_node(&self) -> &Node {
-        {
-            let __result = unsafe { crate::ffi::LDOM_Comment_as_LDOM_Node(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::LDOM_Comment_as_LDOM_Node(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to LDOM_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        {
-            let __result = unsafe { crate::ffi::LDOM_Comment_as_LDOM_Node_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::LDOM_Comment_as_LDOM_Node_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::LDOM_Comment_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::LDOM_Comment_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `LDOM_CharacterData.hxx`:53 - `LDOM_CharacterData::getData()`
@@ -1188,16 +1403,22 @@ impl Comment {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Comment_inherited_getData(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `LDOM_CharacterData.hxx`:57 - `LDOM_CharacterData::setData()`
     pub fn set_data(&mut self, aValue: &crate::ldom_string::LDOMString) {
         {
-            unsafe { crate::ffi::LDOM_Comment_inherited_setData(self as *mut Self, aValue) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::LDOM_Comment_inherited_setData(self as *mut Self, aValue) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1206,8 +1427,11 @@ impl Comment {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Comment_inherited_getLength(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1216,8 +1440,11 @@ impl Comment {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Comment_inherited_getOwnerDocument(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1226,8 +1453,11 @@ impl Comment {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Comment_inherited_isNull(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1236,8 +1466,11 @@ impl Comment {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Comment_inherited_getNodeType(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1246,8 +1479,11 @@ impl Comment {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Comment_inherited_getNodeName(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1256,8 +1492,11 @@ impl Comment {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Comment_inherited_getNodeValue(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1266,8 +1505,11 @@ impl Comment {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Comment_inherited_getFirstChild(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1276,8 +1518,11 @@ impl Comment {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Comment_inherited_getLastChild(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1286,24 +1531,35 @@ impl Comment {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Comment_inherited_getNextSibling(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:94 - `LDOM_Node::removeChild()`
     pub fn remove_child(&mut self, aChild: &Node) {
         {
-            unsafe { crate::ffi::LDOM_Comment_inherited_removeChild(self as *mut Self, aChild) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::LDOM_Comment_inherited_removeChild(self as *mut Self, aChild)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:96 - `LDOM_Node::appendChild()`
     pub fn append_child(&mut self, aChild: &Node) {
         {
-            unsafe { crate::ffi::LDOM_Comment_inherited_appendChild(self as *mut Self, aChild) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::LDOM_Comment_inherited_appendChild(self as *mut Self, aChild)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1312,16 +1568,22 @@ impl Comment {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Comment_inherited_hasChildNodes(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
     pub fn set_value_clear(&self) {
         {
-            unsafe { crate::ffi::LDOM_Comment_inherited_SetValueClear(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::LDOM_Comment_inherited_SetValueClear(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1344,8 +1606,10 @@ impl Document {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LDOM_Document_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1353,8 +1617,10 @@ impl Document {
     pub fn new_memmanager(aMemManager: &MemManager) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LDOM_Document_ctor_memmanager(aMemManager) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1366,8 +1632,11 @@ impl Document {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Document_create_element(self as *mut Self, theTagName) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1380,8 +1649,11 @@ impl Document {
             let __result = unsafe {
                 crate::ffi::LDOM_Document_create_cdata_section(self as *mut Self, theData)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1393,8 +1665,11 @@ impl Document {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Document_create_comment(self as *mut Self, theData) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1406,8 +1681,11 @@ impl Document {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Document_create_text_node(self as *mut Self, theData) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1416,8 +1694,11 @@ impl Document {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Document_get_document_element(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1430,8 +1711,11 @@ impl Document {
             let __result = unsafe {
                 crate::ffi::LDOM_Document_get_elements_by_tag_name(self as *const Self, theTagName)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1439,8 +1723,11 @@ impl Document {
     pub fn is_null(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::LDOM_Document_is_null(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1450,8 +1737,11 @@ impl Document {
     ) -> crate::OwnedPtr<Document> {
         {
             let __result = unsafe { crate::ffi::LDOM_Document_create_document(theQualifiedName) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -1474,8 +1764,10 @@ impl DocumentType {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LDOM_DocumentType_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -1498,8 +1790,10 @@ impl Element {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LDOM_Element_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1507,8 +1801,11 @@ impl Element {
     pub fn get_tag_name(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         {
             let __result = unsafe { crate::ffi::LDOM_Element_get_tag_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1520,8 +1817,11 @@ impl Element {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Element_get_attribute(self as *const Self, aName) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1533,8 +1833,11 @@ impl Element {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Element_get_attribute_node(self as *const Self, aName) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1547,8 +1850,11 @@ impl Element {
             let __result = unsafe {
                 crate::ffi::LDOM_Element_get_elements_by_tag_name(self as *const Self, aName)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1559,24 +1865,33 @@ impl Element {
         aValue: &crate::ldom_string::LDOMString,
     ) {
         {
-            unsafe { crate::ffi::LDOM_Element_set_attribute(self as *mut Self, aName, aValue) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::LDOM_Element_set_attribute(self as *mut Self, aName, aValue) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `LDOM_Element.hxx`:67 - `LDOM_Element::setAttributeNode()`
     pub fn set_attribute_node(&mut self, aNewAttr: &Attr) {
         {
-            unsafe { crate::ffi::LDOM_Element_set_attribute_node(self as *mut Self, aNewAttr) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::LDOM_Element_set_attribute_node(self as *mut Self, aNewAttr) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `LDOM_Element.hxx`:69 - `LDOM_Element::removeAttribute()`
     pub fn remove_attribute(&mut self, aName: &crate::ldom_string::LDOMString) {
         {
-            unsafe { crate::ffi::LDOM_Element_remove_attribute(self as *mut Self, aName) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::LDOM_Element_remove_attribute(self as *mut Self, aName) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1589,8 +1904,11 @@ impl Element {
             let __result = unsafe {
                 crate::ffi::LDOM_Element_get_child_by_tag_name(self as *const Self, aTagName)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1599,16 +1917,22 @@ impl Element {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Element_get_sibling_by_tag_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `LDOM_Element.hxx`:76 - `LDOM_Element::ReplaceElement()`
     pub fn replace_element(&mut self, anOther: &Element) {
         {
-            unsafe { crate::ffi::LDOM_Element_replace_element(self as *mut Self, anOther) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::LDOM_Element_replace_element(self as *mut Self, anOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1617,36 +1941,39 @@ impl Element {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Element_get_attributes_list(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to LDOM_Node
     pub fn as_node(&self) -> &Node {
-        {
-            let __result = unsafe { crate::ffi::LDOM_Element_as_LDOM_Node(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::LDOM_Element_as_LDOM_Node(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to LDOM_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        {
-            let __result = unsafe { crate::ffi::LDOM_Element_as_LDOM_Node_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::LDOM_Element_as_LDOM_Node_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::LDOM_Element_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::LDOM_Element_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:66 - `LDOM_Node::getOwnerDocument()`
@@ -1654,8 +1981,11 @@ impl Element {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Element_inherited_getOwnerDocument(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1664,8 +1994,11 @@ impl Element {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Element_inherited_isNull(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1674,8 +2007,11 @@ impl Element {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Element_inherited_getNodeType(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1684,8 +2020,11 @@ impl Element {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Element_inherited_getNodeName(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1694,8 +2033,11 @@ impl Element {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Element_inherited_getNodeValue(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1704,8 +2046,11 @@ impl Element {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Element_inherited_getFirstChild(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1714,8 +2059,11 @@ impl Element {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Element_inherited_getLastChild(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1724,24 +2072,35 @@ impl Element {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Element_inherited_getNextSibling(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:94 - `LDOM_Node::removeChild()`
     pub fn remove_child(&mut self, aChild: &Node) {
         {
-            unsafe { crate::ffi::LDOM_Element_inherited_removeChild(self as *mut Self, aChild) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::LDOM_Element_inherited_removeChild(self as *mut Self, aChild)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:96 - `LDOM_Node::appendChild()`
     pub fn append_child(&mut self, aChild: &Node) {
         {
-            unsafe { crate::ffi::LDOM_Element_inherited_appendChild(self as *mut Self, aChild) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::LDOM_Element_inherited_appendChild(self as *mut Self, aChild)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1750,16 +2109,22 @@ impl Element {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Element_inherited_hasChildNodes(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
     pub fn set_value_clear(&self) {
         {
-            unsafe { crate::ffi::LDOM_Element_inherited_SetValueClear(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::LDOM_Element_inherited_SetValueClear(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1783,8 +2148,10 @@ impl LDOMImplementation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LDOM_LDOMImplementation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1802,8 +2169,11 @@ impl LDOMImplementation {
                     aDocType,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -1826,8 +2196,10 @@ impl MemManager {
     pub fn new_int(aBlockSize: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LDOM_MemManager_ctor_int(aBlockSize) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1836,8 +2208,11 @@ impl MemManager {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_MemManager_allocate(self as *mut Self, aSize) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1858,8 +2233,11 @@ impl MemManager {
                     theHash,
                 )
             };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1872,7 +2250,7 @@ impl MemManager {
     ) {
         let c_aString = std::ffi::CString::new(aString).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::LDOM_MemManager_hashed_allocate_charptr_int_ldombasicstring(
                     self as *mut Self,
                     c_aString.as_ptr(),
@@ -1880,7 +2258,9 @@ impl MemManager {
                     theResult,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1888,8 +2268,11 @@ impl MemManager {
     pub fn self_(&self) -> &MemManager {
         {
             let __result = unsafe { crate::ffi::LDOM_MemManager_self_(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1897,11 +2280,14 @@ impl MemManager {
     pub fn root_element(&self) -> Option<&BasicElement> {
         {
             let __result = unsafe { crate::ffi::LDOM_MemManager_root_element(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1910,8 +2296,11 @@ impl MemManager {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::LDOM_MemManager_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1921,8 +2310,11 @@ impl MemManager {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_MemManager_hash(c_theString.as_ptr(), theLen) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1938,8 +2330,11 @@ impl MemManager {
                     c_theHashedStr.as_ptr(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1947,8 +2342,11 @@ impl MemManager {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::LDOM_MemManager_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1956,40 +2354,43 @@ impl MemManager {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::LDOM_MemManager_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOM_MemManager_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::LDOM_MemManager_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOM_MemManager_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::LDOM_MemManager_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleLDOMMemManager> {
-        {
-            let __result = unsafe { crate::ffi::LDOM_MemManager_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::LDOM_MemManager_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1998,8 +2399,11 @@ impl MemManager {
             let __result = unsafe {
                 crate::ffi::LDOM_MemManager_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2009,8 +2413,11 @@ impl MemManager {
             let __result = unsafe {
                 crate::ffi::LDOM_MemManager_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2019,11 +2426,14 @@ impl MemManager {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_MemManager_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2033,16 +2443,23 @@ impl MemManager {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_MemManager_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::LDOM_MemManager_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::LDOM_MemManager_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2052,16 +2469,22 @@ impl MemManager {
             let __result = unsafe {
                 crate::ffi::LDOM_MemManager_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::LDOM_MemManager_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::LDOM_MemManager_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2077,31 +2500,31 @@ unsafe impl crate::CppDeletable for HandleLDOMMemManager {
 impl HandleLDOMMemManager {
     /// Dereference this Handle to access the underlying LDOM_MemManager
     pub fn get(&self) -> &crate::ffi::LDOM_MemManager {
-        {
-            let __result = unsafe { crate::ffi::HandleLDOMMemManager_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleLDOMMemManager_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying LDOM_MemManager
     pub fn get_mut(&mut self) -> &mut crate::ffi::LDOM_MemManager {
-        {
-            let __result = unsafe { crate::ffi::HandleLDOMMemManager_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleLDOMMemManager_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<LDOM_MemManager> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleLDOMMemManager_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleLDOMMemManager_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2123,8 +2546,10 @@ impl Node {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LDOM_Node_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2132,8 +2557,11 @@ impl Node {
     pub fn get_owner_document(&self) -> &MemManager {
         {
             let __result = unsafe { crate::ffi::LDOM_Node_get_owner_document(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2141,8 +2569,11 @@ impl Node {
     pub fn is_null(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::LDOM_Node_is_null(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2150,8 +2581,11 @@ impl Node {
     pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi::LDOM_Node_NodeType> {
         {
             let __result = unsafe { crate::ffi::LDOM_Node_get_node_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2159,8 +2593,11 @@ impl Node {
     pub fn get_node_name(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         {
             let __result = unsafe { crate::ffi::LDOM_Node_get_node_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2168,8 +2605,11 @@ impl Node {
     pub fn get_node_value(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         {
             let __result = unsafe { crate::ffi::LDOM_Node_get_node_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2177,8 +2617,11 @@ impl Node {
     pub fn get_first_child(&self) -> crate::OwnedPtr<Node> {
         {
             let __result = unsafe { crate::ffi::LDOM_Node_get_first_child(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2186,8 +2629,11 @@ impl Node {
     pub fn get_last_child(&self) -> crate::OwnedPtr<Node> {
         {
             let __result = unsafe { crate::ffi::LDOM_Node_get_last_child(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2195,24 +2641,31 @@ impl Node {
     pub fn get_next_sibling(&self) -> crate::OwnedPtr<Node> {
         {
             let __result = unsafe { crate::ffi::LDOM_Node_get_next_sibling(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `LDOM_Node.hxx`:94 - `LDOM_Node::removeChild()`
     pub fn remove_child(&mut self, aChild: &Node) {
         {
-            unsafe { crate::ffi::LDOM_Node_remove_child(self as *mut Self, aChild) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::LDOM_Node_remove_child(self as *mut Self, aChild) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `LDOM_Node.hxx`:96 - `LDOM_Node::appendChild()`
     pub fn append_child(&mut self, aChild: &Node) {
         {
-            unsafe { crate::ffi::LDOM_Node_append_child(self as *mut Self, aChild) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::LDOM_Node_append_child(self as *mut Self, aChild) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2220,26 +2673,31 @@ impl Node {
     pub fn has_child_nodes(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::LDOM_Node_has_child_nodes(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
     pub fn set_value_clear(&self) {
         {
-            unsafe { crate::ffi::LDOM_Node_set_value_clear(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::LDOM_Node_set_value_clear(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::LDOM_Node_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::LDOM_Node_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2261,8 +2719,10 @@ impl NodeList {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LDOM_NodeList_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2270,8 +2730,11 @@ impl NodeList {
     pub fn item(&self, arg0: i32) -> crate::OwnedPtr<Node> {
         {
             let __result = unsafe { crate::ffi::LDOM_NodeList_item(self as *const Self, arg0) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2279,18 +2742,21 @@ impl NodeList {
     pub fn get_length(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::LDOM_NodeList_get_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::LDOM_NodeList_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::LDOM_NodeList_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2318,8 +2784,10 @@ impl SBuffer {
     pub fn new_int(theMaxBuf: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LDOM_SBuffer_ctor_int(theMaxBuf) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2332,8 +2800,11 @@ impl SBuffer {
     pub fn str(&self) -> std::string::String {
         {
             let __result = unsafe { crate::ffi::LDOM_SBuffer_str(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2342,8 +2813,11 @@ impl SBuffer {
     pub fn length(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::LDOM_SBuffer_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2351,8 +2825,10 @@ impl SBuffer {
     /// Clears first element of sequence and removes all others
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::LDOM_SBuffer_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::LDOM_SBuffer_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2360,8 +2836,11 @@ impl SBuffer {
     pub fn overflow(&mut self, c: i32) -> i32 {
         {
             let __result = unsafe { crate::ffi::LDOM_SBuffer_overflow(self as *mut Self, c) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2369,8 +2848,11 @@ impl SBuffer {
     pub fn underflow(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::LDOM_SBuffer_underflow(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2403,8 +2885,10 @@ impl OSStream {
     pub fn new_int(theMaxBuf: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LDOM_OSStream_ctor_int(theMaxBuf) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2412,8 +2896,11 @@ impl OSStream {
     pub fn str(&self) -> std::string::String {
         {
             let __result = unsafe { crate::ffi::LDOM_OSStream_str(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2421,37 +2908,42 @@ impl OSStream {
     pub fn length(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::LDOM_OSStream_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `LDOM_OSStream.hxx`:109 - `LDOM_OSStream::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::LDOM_OSStream_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::LDOM_OSStream_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to Standard_OStream
     pub fn as_standard_o_stream(&self) -> &crate::standard::OStream {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOM_OSStream_as_Standard_OStream(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::LDOM_OSStream_as_Standard_OStream(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_OStream (mutable)
     pub fn as_standard_o_stream_mut(&mut self) -> &mut crate::standard::OStream {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOM_OSStream_as_Standard_OStream_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::LDOM_OSStream_as_Standard_OStream_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 }
 
@@ -2473,72 +2965,79 @@ impl Text {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LDOM_Text_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to LDOM_CharacterData
     pub fn as_character_data(&self) -> &CharacterData {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOM_Text_as_LDOM_CharacterData(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::LDOM_Text_as_LDOM_CharacterData(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to LDOM_CharacterData (mutable)
     pub fn as_character_data_mut(&mut self) -> &mut CharacterData {
-        {
-            let __result =
-                unsafe { crate::ffi::LDOM_Text_as_LDOM_CharacterData_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::LDOM_Text_as_LDOM_CharacterData_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to LDOM_Node
     pub fn as_node(&self) -> &Node {
-        {
-            let __result = unsafe { crate::ffi::LDOM_Text_as_LDOM_Node(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::LDOM_Text_as_LDOM_Node(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to LDOM_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
-        {
-            let __result = unsafe { crate::ffi::LDOM_Text_as_LDOM_Node_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::LDOM_Text_as_LDOM_Node_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::LDOM_Text_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::LDOM_Text_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `LDOM_CharacterData.hxx`:53 - `LDOM_CharacterData::getData()`
     pub fn get_data(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         {
             let __result = unsafe { crate::ffi::LDOM_Text_inherited_getData(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `LDOM_CharacterData.hxx`:57 - `LDOM_CharacterData::setData()`
     pub fn set_data(&mut self, aValue: &crate::ldom_string::LDOMString) {
         {
-            unsafe { crate::ffi::LDOM_Text_inherited_setData(self as *mut Self, aValue) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::LDOM_Text_inherited_setData(self as *mut Self, aValue) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2547,8 +3046,11 @@ impl Text {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Text_inherited_getLength(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2557,8 +3059,11 @@ impl Text {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Text_inherited_getOwnerDocument(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2566,8 +3071,11 @@ impl Text {
     pub fn is_null(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::LDOM_Text_inherited_isNull(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2576,8 +3084,11 @@ impl Text {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Text_inherited_getNodeType(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2586,8 +3097,11 @@ impl Text {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Text_inherited_getNodeName(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2596,8 +3110,11 @@ impl Text {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Text_inherited_getNodeValue(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2606,8 +3123,11 @@ impl Text {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Text_inherited_getFirstChild(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2616,8 +3136,11 @@ impl Text {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Text_inherited_getLastChild(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2626,24 +3149,33 @@ impl Text {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Text_inherited_getNextSibling(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:94 - `LDOM_Node::removeChild()`
     pub fn remove_child(&mut self, aChild: &Node) {
         {
-            unsafe { crate::ffi::LDOM_Text_inherited_removeChild(self as *mut Self, aChild) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::LDOM_Text_inherited_removeChild(self as *mut Self, aChild) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:96 - `LDOM_Node::appendChild()`
     pub fn append_child(&mut self, aChild: &Node) {
         {
-            unsafe { crate::ffi::LDOM_Text_inherited_appendChild(self as *mut Self, aChild) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::LDOM_Text_inherited_appendChild(self as *mut Self, aChild) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2652,16 +3184,22 @@ impl Text {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_Text_inherited_hasChildNodes(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
     pub fn set_value_clear(&self) {
         {
-            unsafe { crate::ffi::LDOM_Text_inherited_SetValueClear(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::LDOM_Text_inherited_SetValueClear(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2694,8 +3232,10 @@ impl XmlReader {
                     theTagPerStep,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2723,8 +3263,11 @@ impl XmlReader {
                     theDocStart,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2732,8 +3275,11 @@ impl XmlReader {
     pub fn get_element(&mut self) -> &mut BasicElement {
         {
             let __result = unsafe { crate::ffi::LDOM_XmlReader_get_element(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2741,14 +3287,16 @@ impl XmlReader {
     pub fn create_element(&mut self, theName: &str, theLen: i32) {
         let c_theName = std::ffi::CString::new(theName).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::LDOM_XmlReader_create_element(
                     self as *mut Self,
                     c_theName.as_ptr(),
                     theLen,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2756,8 +3304,11 @@ impl XmlReader {
     pub fn get_bom(&self) -> crate::OwnedPtr<crate::ffi::LDOM_OSStream_BOMType> {
         {
             let __result = unsafe { crate::ffi::LDOM_XmlReader_get_bom(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2777,8 +3328,11 @@ impl XmlReader {
                     c_theEnd.as_ptr(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2803,16 +3357,21 @@ impl XmlWriter {
         {
             let __result =
                 unsafe { crate::ffi::LDOM_XmlWriter_ctor_charptr(c_theEncoding.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `LDOM_XmlWriter.hxx`:34 - `LDOM_XmlWriter::SetIndentation()`
     pub fn set_indentation(&mut self, theIndent: i32) {
         {
-            unsafe { crate::ffi::LDOM_XmlWriter_set_indentation(self as *mut Self, theIndent) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::LDOM_XmlWriter_set_indentation(self as *mut Self, theIndent) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2823,14 +3382,16 @@ impl XmlWriter {
         theDoc: &Document,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::LDOM_XmlWriter_write_ostream_document(
                     self as *mut Self,
                     theOStream,
                     theDoc,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2841,14 +3402,16 @@ impl XmlWriter {
         theNode: &Node,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::LDOM_XmlWriter_write_ostream_node(
                     self as *mut Self,
                     theOStream,
                     theNode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

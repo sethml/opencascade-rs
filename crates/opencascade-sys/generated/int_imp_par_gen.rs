@@ -22,10 +22,12 @@ pub fn determine_transition_position_vec2d2_transition_position_vec2d2_transitio
     Tol: f64,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::IntImpParGen_determine_transition_position_vec2d2_transition_position_vec2d2_transition_real(Pos1.into(), Tan1, Norm1, Trans1, Pos2.into(), Tan2, Norm2, Trans2, Tol)
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `IntImpParGen.hxx`:56 - `IntImpParGen::DetermineTransition`
@@ -42,16 +44,22 @@ pub fn determine_transition_position_vec2d_transition_position_vec2d_transition_
         let __result = unsafe {
             crate::ffi::IntImpParGen_determine_transition_position_vec2d_transition_position_vec2d_transition_real(Pos1.into(), Tan1, Trans1, Pos2.into(), Tan2, Trans2, Tol)
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `IntImpParGen.hxx`:69 - `IntImpParGen::NormalizeOnDomain`
 pub fn normalize_on_domain(Par1: &mut f64, Dom1: &crate::int_res2d::Domain) -> f64 {
     {
         let __result = unsafe { crate::ffi::IntImpParGen_normalize_on_domain(Par1, Dom1) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 
@@ -75,8 +83,10 @@ impl ImpTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntImpParGen_ImpTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -85,16 +95,22 @@ impl ImpTool {
         {
             let __result =
                 unsafe { crate::ffi::IntImpParGen_ImpTool_value(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `IntImpParGen_ImpTool.hxx`:36 - `IntImpParGen_ImpTool::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, T: &mut crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::IntImpParGen_ImpTool_d1(self as *const Self, U, P, T) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntImpParGen_ImpTool_d1(self as *const Self, U, P, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -107,8 +123,11 @@ impl ImpTool {
         N: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::IntImpParGen_ImpTool_d2(self as *const Self, U, P, T, N) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntImpParGen_ImpTool_d2(self as *const Self, U, P, T, N) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -119,8 +138,11 @@ impl ImpTool {
         {
             let __result =
                 unsafe { crate::ffi::IntImpParGen_ImpTool_distance(self as *const Self, P) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -132,8 +154,11 @@ impl ImpTool {
         {
             let __result =
                 unsafe { crate::ffi::IntImpParGen_ImpTool_grad_distance(self as *const Self, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -147,8 +172,11 @@ impl ImpTool {
         {
             let __result =
                 unsafe { crate::ffi::IntImpParGen_ImpTool_find_parameter(self as *const Self, P) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

@@ -24,8 +24,10 @@ impl LDOMParser {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LDOMParser_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -33,8 +35,11 @@ impl LDOMParser {
     pub fn get_document(&mut self) -> crate::OwnedPtr<crate::ldom::Document> {
         {
             let __result = unsafe { crate::ffi::LDOMParser_get_document(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -45,8 +50,11 @@ impl LDOMParser {
             let __result = unsafe {
                 crate::ffi::LDOMParser_parse_charptr(self as *mut Self, c_aFileName.as_ptr())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -66,8 +74,11 @@ impl LDOMParser {
                     theWithoutRoot,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -84,8 +95,11 @@ impl LDOMParser {
     ) -> &crate::t_collection::AsciiString {
         {
             let __result = unsafe { crate::ffi::LDOMParser_get_error(self as *const Self, aData) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -93,8 +107,11 @@ impl LDOMParser {
     pub fn get_bom(&self) -> crate::OwnedPtr<crate::ffi::LDOM_OSStream_BOMType> {
         {
             let __result = unsafe { crate::ffi::LDOMParser_get_bom(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }

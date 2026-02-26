@@ -26,8 +26,10 @@ impl Construct {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP209_Construct_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -39,8 +41,10 @@ impl Construct {
         {
             let __result =
                 unsafe { crate::ffi::StepAP209_Construct_ctor_handlexscontrolworksession(WS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -49,8 +53,11 @@ impl Construct {
     pub fn init(&mut self, WS: &crate::ffi::HandleXSControlWorkSession) -> bool {
         {
             let __result = unsafe { crate::ffi::StepAP209_Construct_init(self as *mut Self, WS) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -59,8 +66,11 @@ impl Construct {
         {
             let __result =
                 unsafe { crate::ffi::StepAP209_Construct_is_desing(self as *const Self, PD) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -69,8 +79,11 @@ impl Construct {
         {
             let __result =
                 unsafe { crate::ffi::StepAP209_Construct_is_analys(self as *const Self, PD) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -86,8 +99,11 @@ impl Construct {
                     Prod,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -103,8 +119,11 @@ impl Construct {
                     PDF,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -120,8 +139,11 @@ impl Construct {
                     theFeaModel,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -137,8 +159,11 @@ impl Construct {
                     Prod,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -151,8 +176,11 @@ impl Construct {
             let __result = unsafe {
                 crate::ffi::StepAP209_Construct_ideal_shape_handlestepbasicproductdefinitionformation(self as *const Self, PDF)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -168,8 +196,11 @@ impl Construct {
                     Prod,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -182,8 +213,11 @@ impl Construct {
             let __result = unsafe {
                 crate::ffi::StepAP209_Construct_nomin_shape_handlestepbasicproductdefinitionformation(self as *const Self, PDF)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -195,8 +229,11 @@ impl Construct {
             let __result = unsafe {
                 crate::ffi::StepAP209_Construct_get_element_material(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -207,8 +244,11 @@ impl Construct {
         {
             let __result =
                 unsafe { crate::ffi::StepAP209_Construct_get_elem_geom_relat(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -221,8 +261,11 @@ impl Construct {
             let __result = unsafe {
                 crate::ffi::StepAP209_Construct_get_elements1_d(self as *const Self, theFeaModel)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -235,8 +278,11 @@ impl Construct {
             let __result = unsafe {
                 crate::ffi::StepAP209_Construct_get_elements2_d(self as *const Self, theFEAModel)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -249,8 +295,11 @@ impl Construct {
             let __result = unsafe {
                 crate::ffi::StepAP209_Construct_get_elements3_d(self as *const Self, theFEAModel)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -266,8 +315,11 @@ impl Construct {
             let __result = unsafe {
                 crate::ffi::StepAP209_Construct_get_cur_elem_section(self as *const Self, ElemRepr)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -280,8 +332,11 @@ impl Construct {
             let __result = unsafe {
                 crate::ffi::StepAP209_Construct_get_sh_repr_for_elem(self as *const Self, ElemRepr)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -292,8 +347,11 @@ impl Construct {
             let __result = unsafe {
                 crate::ffi::StepAP209_Construct_create_analys_structure(self as *const Self, Prod)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -304,8 +362,11 @@ impl Construct {
             let __result = unsafe {
                 crate::ffi::StepAP209_Construct_create_fea_structure(self as *const Self, Prod)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -317,8 +378,11 @@ impl Construct {
             let __result = unsafe {
                 crate::ffi::StepAP209_Construct_replace_cc_desing_to_applied(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -333,8 +397,11 @@ impl Construct {
             let __result = unsafe {
                 crate::ffi::StepAP209_Construct_create_adding_entities(self as *const Self, AnaPD)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -345,8 +412,11 @@ impl Construct {
             let __result = unsafe {
                 crate::ffi::StepAP209_Construct_create_ap203_structure(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -366,8 +436,11 @@ impl Construct {
                     aModel,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -383,8 +456,11 @@ impl Construct {
                     PDS,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -400,8 +476,11 @@ impl Construct {
                     PD,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -417,8 +496,11 @@ impl Construct {
                     PD,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -434,31 +516,32 @@ impl Construct {
                     PDS,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to STEPConstruct_Tool
     pub fn as_step_construct_tool(&self) -> &crate::step_construct::Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP209_Construct_as_STEPConstruct_Tool(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StepAP209_Construct_as_STEPConstruct_Tool(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to STEPConstruct_Tool (mutable)
     pub fn as_step_construct_tool_mut(&mut self) -> &mut crate::step_construct::Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP209_Construct_as_STEPConstruct_Tool_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::StepAP209_Construct_as_STEPConstruct_Tool_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:53 - `STEPConstruct_Tool::WS()`
@@ -466,8 +549,11 @@ impl Construct {
         {
             let __result =
                 unsafe { crate::ffi::StepAP209_Construct_inherited_WS(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -476,8 +562,11 @@ impl Construct {
         {
             let __result =
                 unsafe { crate::ffi::StepAP209_Construct_inherited_Model(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -487,8 +576,11 @@ impl Construct {
             let __result = unsafe {
                 crate::ffi::StepAP209_Construct_inherited_Graph(self as *const Self, recompute)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -498,8 +590,11 @@ impl Construct {
             let __result = unsafe {
                 crate::ffi::StepAP209_Construct_inherited_TransientProcess(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -509,8 +604,11 @@ impl Construct {
             let __result = unsafe {
                 crate::ffi::StepAP209_Construct_inherited_FinderProcess(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }

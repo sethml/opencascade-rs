@@ -13,8 +13,11 @@
 pub fn get_length_factor_value(theUnit: i32) -> f64 {
     {
         let __result = unsafe { crate::ffi::UnitsMethods_get_length_factor_value(theUnit) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `UnitsMethods.hxx`:35 - `UnitsMethods::GetCasCadeLengthUnit`
@@ -24,8 +27,11 @@ pub fn get_cas_cade_length_unit(theBaseUnit: crate::units_methods::LengthUnit) -
     {
         let __result =
             unsafe { crate::ffi::UnitsMethods_get_cas_cade_length_unit(theBaseUnit.into()) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `UnitsMethods.hxx`:39 - `UnitsMethods::SetCasCadeLengthUnit`
@@ -35,13 +41,15 @@ pub fn set_cas_cade_length_unit_real_lengthunit(
     theBaseUnit: crate::units_methods::LengthUnit,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::UnitsMethods_set_cas_cade_length_unit_real_lengthunit(
                 theUnitValue,
                 theBaseUnit.into(),
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `UnitsMethods.hxx`:46 - `UnitsMethods::SetCasCadeLengthUnit`
@@ -50,8 +58,10 @@ pub fn set_cas_cade_length_unit_real_lengthunit(
 /// as described in IGES standard)
 pub fn set_cas_cade_length_unit_int(theUnit: i32) {
     {
-        unsafe { crate::ffi::UnitsMethods_set_cas_cade_length_unit_int(theUnit) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::UnitsMethods_set_cas_cade_length_unit_int(theUnit) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `UnitsMethods.hxx`:49 - `UnitsMethods::GetLengthUnitScale`
@@ -64,8 +74,11 @@ pub fn get_length_unit_scale(
         let __result = unsafe {
             crate::ffi::UnitsMethods_get_length_unit_scale(theFromUnit.into(), theToUnit.into())
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `UnitsMethods.hxx`:53 - `UnitsMethods::GetLengthUnitByFactorValue`
@@ -81,8 +94,11 @@ pub fn get_length_unit_by_factor_value(
                 theBaseUnit.into(),
             )
         };
-        crate::check_exception();
-        crate::units_methods::LengthUnit::try_from(__result).unwrap()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        crate::units_methods::LengthUnit::try_from(__val).unwrap()
     }
 }
 /// **Source:** `UnitsMethods.hxx`:58 - `UnitsMethods::DumpLengthUnit`
@@ -98,8 +114,11 @@ pub fn dump_length_unit_real_lengthunit(
                 theBaseUnit.into(),
             )
         };
-        crate::check_exception();
-        unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
     }
 }
 /// **Source:** `UnitsMethods.hxx`:63 - `UnitsMethods::DumpLengthUnit`
@@ -110,8 +129,11 @@ pub fn dump_length_unit_lengthunit(
     {
         let __result =
             unsafe { crate::ffi::UnitsMethods_dump_length_unit_lengthunit(theUnit.into()) };
-        crate::check_exception();
-        unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
     }
 }
 /// **Source:** `UnitsMethods.hxx`:66 - `UnitsMethods::LengthUnitFromString`
@@ -125,8 +147,11 @@ pub fn length_unit_from_string(
         let __result = unsafe {
             crate::ffi::UnitsMethods_length_unit_from_string(c_theStr.as_ptr(), theCaseSensitive)
         };
-        crate::check_exception();
-        crate::units_methods::LengthUnit::try_from(__result).unwrap()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        crate::units_methods::LengthUnit::try_from(__val).unwrap()
     }
 }
 

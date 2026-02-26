@@ -15,8 +15,10 @@ pub fn substitute(
     mapOldNew: &mut crate::ffi::TopTools_DataMapOfShapeShape,
 ) {
     {
-        unsafe { crate::ffi::TNaming_substitute(labelsource, labelcible, mapOldNew) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::TNaming_substitute(labelsource, labelcible, mapOldNew) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `TNaming.hxx`:115 - `TNaming::Update`
@@ -32,8 +34,11 @@ pub fn update_label_datamapofshapeshape(
     mapOldNew: &mut crate::ffi::TopTools_DataMapOfShapeShape,
 ) {
     {
-        unsafe { crate::ffi::TNaming_update_label_datamapofshapeshape(label, mapOldNew) };
-        crate::check_exception();
+        let __exc =
+            unsafe { crate::ffi::TNaming_update_label_datamapofshapeshape(label, mapOldNew) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `TNaming.hxx`:120 - `TNaming::Displace`
@@ -41,8 +46,10 @@ pub fn update_label_datamapofshapeshape(
 /// et  de   ses   sous   labels.
 pub fn displace(label: &crate::tdf::Label, aLocation: &crate::top_loc::Location, WithOld: bool) {
     {
-        unsafe { crate::ffi::TNaming_displace(label, aLocation, WithOld) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::TNaming_displace(label, aLocation, WithOld) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `TNaming.hxx`:126 - `TNaming::ChangeShapes`
@@ -50,8 +57,10 @@ pub fn displace(label: &crate::tdf::Label, aLocation: &crate::top_loc::Location,
 /// par des copies.
 pub fn change_shapes(label: &crate::tdf::Label, M: &mut crate::ffi::TopTools_DataMapOfShapeShape) {
     {
-        unsafe { crate::ffi::TNaming_change_shapes(label, M) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::TNaming_change_shapes(label, M) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `TNaming.hxx`:133 - `TNaming::Transform`
@@ -62,8 +71,10 @@ pub fn change_shapes(label: &crate::tdf::Label, M: &mut crate::ffi::TopTools_Dat
 /// ci ne sont pas associees a des sous-labels de <Label>.
 pub fn transform(label: &crate::tdf::Label, aTransformation: &crate::gp::Trsf) {
     {
-        unsafe { crate::ffi::TNaming_transform(label, aTransformation) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::TNaming_transform(label, aTransformation) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `TNaming.hxx`:138 - `TNaming::Replicate`
@@ -76,8 +87,11 @@ pub fn replicate_handletnamingnamedshape_trsf_label(
     L: &crate::tdf::Label,
 ) {
     {
-        unsafe { crate::ffi::TNaming_replicate_handletnamingnamedshape_trsf_label(NS, T, L) };
-        crate::check_exception();
+        let __exc =
+            unsafe { crate::ffi::TNaming_replicate_handletnamingnamedshape_trsf_label(NS, T, L) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `TNaming.hxx`:145 - `TNaming::Replicate`
@@ -90,8 +104,10 @@ pub fn replicate_shape_trsf_label(
     L: &crate::tdf::Label,
 ) {
     {
-        unsafe { crate::ffi::TNaming_replicate_shape_trsf_label(SH, T, L) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::TNaming_replicate_shape_trsf_label(SH, T, L) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `TNaming.hxx`:150 - `TNaming::MakeShape`
@@ -99,8 +115,11 @@ pub fn replicate_shape_trsf_label(
 pub fn make_shape(MS: &crate::ffi::TopTools_MapOfShape) -> crate::OwnedPtr<crate::topo_ds::Shape> {
     {
         let __result = unsafe { crate::ffi::TNaming_make_shape(MS) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TNaming.hxx`:153 - `TNaming::FindUniqueContext`
@@ -111,8 +130,11 @@ pub fn find_unique_context(
 ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
     {
         let __result = unsafe { crate::ffi::TNaming_find_unique_context(S, Context) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TNaming.hxx`:159 - `TNaming::FindUniqueContextSet`
@@ -126,8 +148,11 @@ pub fn find_unique_context_set(
 ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
     {
         let __result = unsafe { crate::ffi::TNaming_find_unique_context_set(S, Context, Arr) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TNaming.hxx`:164 - `TNaming::SubstituteSShape`
@@ -139,8 +164,11 @@ pub fn substitute_s_shape(
 ) -> bool {
     {
         let __result = unsafe { crate::ffi::TNaming_substitute_s_shape(accesslabel, From, To) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `TNaming.hxx`:169 - `TNaming::OuterWire`
@@ -151,8 +179,11 @@ pub fn outer_wire_face_wire(
 ) -> bool {
     {
         let __result = unsafe { crate::ffi::TNaming_outer_wire_face_wire(theFace, theWire) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `TNaming.hxx`:175 - `TNaming::OuterShell`
@@ -165,8 +196,11 @@ pub fn outer_shell_solid_shell(
 ) -> bool {
     {
         let __result = unsafe { crate::ffi::TNaming_outer_shell_solid_shell(theSolid, theShell) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `TNaming.hxx`:185 - `TNaming::Print`
@@ -178,8 +212,11 @@ pub fn print_evolution_ostream(
 ) -> &mut crate::ffi::Standard_OStream {
     {
         let __result = unsafe { crate::ffi::TNaming_print_evolution_ostream(EVOL.into(), S) };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 /// **Source:** `TNaming.hxx`:189 - `TNaming::Print`
@@ -191,8 +228,11 @@ pub fn print_nametype_ostream(
 ) -> &mut crate::ffi::Standard_OStream {
     {
         let __result = unsafe { crate::ffi::TNaming_print_nametype_ostream(NAME.into(), S) };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 /// **Source:** `TNaming.hxx`:193 - `TNaming::Print`
@@ -210,8 +250,11 @@ pub unsafe fn print_label_ostream<'a>(
 ) -> &'a mut crate::ffi::Standard_OStream {
     {
         let __result = unsafe { crate::ffi::TNaming_print_label_ostream(ACCESS, S) };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 
@@ -361,8 +404,10 @@ impl Builder {
     pub fn new_label(aLabel: &crate::tdf::Label) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TNaming_Builder_ctor_label(aLabel) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -373,8 +418,11 @@ impl Builder {
     /// generated in construction of a box.
     pub fn generated_shape(&mut self, newShape: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TNaming_Builder_generated_shape(self as *mut Self, newShape) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_Builder_generated_shape(self as *mut Self, newShape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -389,10 +437,12 @@ impl Builder {
         newShape: &crate::topo_ds::Shape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_Builder_generated_shape2(self as *mut Self, oldShape, newShape)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -401,8 +451,10 @@ impl Builder {
     /// As an example, consider the case of a face removed by a Boolean operation.
     pub fn delete(&mut self, oldShape: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TNaming_Builder_delete(self as *mut Self, oldShape) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_Builder_delete(self as *mut Self, oldShape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -413,8 +465,12 @@ impl Builder {
     /// or merged in a Boolean operation.
     pub fn modify(&mut self, oldShape: &crate::topo_ds::Shape, newShape: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TNaming_Builder_modify(self as *mut Self, oldShape, newShape) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TNaming_Builder_modify(self as *mut Self, oldShape, newShape)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -424,8 +480,11 @@ impl Builder {
     /// of shapes under a label.
     pub fn select(&mut self, aShape: &crate::topo_ds::Shape, inShape: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TNaming_Builder_select(self as *mut Self, aShape, inShape) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_Builder_select(self as *mut Self, aShape, inShape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -434,8 +493,11 @@ impl Builder {
     pub fn named_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
         {
             let __result = unsafe { crate::ffi::TNaming_Builder_named_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -459,8 +521,10 @@ impl CopyShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TNaming_CopyShape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -472,8 +536,10 @@ impl CopyShape {
         aResult: &mut crate::topo_ds::Shape,
     ) {
         {
-            unsafe { crate::ffi::TNaming_CopyShape_copy_tool(aShape, aMap, aResult) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_CopyShape_copy_tool(aShape, aMap, aResult) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -486,10 +552,12 @@ impl CopyShape {
         TrTool: &crate::ffi::HandleTNamingTranslateTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_CopyShape_translate_shape_indexeddatamapoftransienttransient_shape_handletnamingtranslatetool(aShape, aMap, aResult, TrTool)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -506,8 +574,11 @@ impl CopyShape {
                     L, aMap,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -539,8 +610,10 @@ impl DeltaOnModification {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_DeltaOnModification_ctor_handletnamingnamedshape(NS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -548,8 +621,10 @@ impl DeltaOnModification {
     /// Applies the delta to the attribute.
     pub fn apply(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_DeltaOnModification_apply(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_DeltaOnModification_apply(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -559,8 +634,11 @@ impl DeltaOnModification {
             let __result = unsafe {
                 crate::ffi::TNaming_DeltaOnModification_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -568,8 +646,11 @@ impl DeltaOnModification {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TNaming_DeltaOnModification_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -577,91 +658,91 @@ impl DeltaOnModification {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TNaming_DeltaOnModification_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDF_DeltaOnModification
     pub fn as_tdf_delta_on_modification(&self) -> &crate::tdf::DeltaOnModification {
-        {
-            let __result = unsafe {
-                crate::ffi::TNaming_DeltaOnModification_as_TDF_DeltaOnModification(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TNaming_DeltaOnModification_as_TDF_DeltaOnModification(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_DeltaOnModification (mutable)
     pub fn as_tdf_delta_on_modification_mut(&mut self) -> &mut crate::tdf::DeltaOnModification {
-        {
-            let __result = unsafe {
-                crate::ffi::TNaming_DeltaOnModification_as_TDF_DeltaOnModification_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TNaming_DeltaOnModification_as_TDF_DeltaOnModification_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to TDF_AttributeDelta
     pub fn as_tdf_attribute_delta(&self) -> &crate::tdf::AttributeDelta {
-        {
-            let __result = unsafe {
-                crate::ffi::TNaming_DeltaOnModification_as_TDF_AttributeDelta(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TNaming_DeltaOnModification_as_TDF_AttributeDelta(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_AttributeDelta (mutable)
     pub fn as_tdf_attribute_delta_mut(&mut self) -> &mut crate::tdf::AttributeDelta {
-        {
-            let __result = unsafe {
-                crate::ffi::TNaming_DeltaOnModification_as_TDF_AttributeDelta_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TNaming_DeltaOnModification_as_TDF_AttributeDelta_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TNaming_DeltaOnModification_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TNaming_DeltaOnModification_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TNaming_DeltaOnModification_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TNaming_DeltaOnModification_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTNamingDeltaOnModification> {
-        {
-            let __result =
-                unsafe { crate::ffi::TNaming_DeltaOnModification_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TNaming_DeltaOnModification_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
@@ -670,8 +751,11 @@ impl DeltaOnModification {
             let __result = unsafe {
                 crate::ffi::TNaming_DeltaOnModification_inherited_Label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -681,8 +765,11 @@ impl DeltaOnModification {
             let __result = unsafe {
                 crate::ffi::TNaming_DeltaOnModification_inherited_Attribute(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -692,8 +779,11 @@ impl DeltaOnModification {
             let __result = unsafe {
                 crate::ffi::TNaming_DeltaOnModification_inherited_ID(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -706,8 +796,11 @@ impl DeltaOnModification {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -720,8 +813,11 @@ impl DeltaOnModification {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -731,11 +827,14 @@ impl DeltaOnModification {
             let __result = unsafe {
                 crate::ffi::TNaming_DeltaOnModification_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -746,20 +845,25 @@ impl DeltaOnModification {
             let __result = unsafe {
                 crate::ffi::TNaming_DeltaOnModification_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_DeltaOnModification_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -771,18 +875,23 @@ impl DeltaOnModification {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_DeltaOnModification_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -798,65 +907,65 @@ unsafe impl crate::CppDeletable for HandleTNamingDeltaOnModification {
 impl HandleTNamingDeltaOnModification {
     /// Dereference this Handle to access the underlying TNaming_DeltaOnModification
     pub fn get(&self) -> &crate::ffi::TNaming_DeltaOnModification {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTNamingDeltaOnModification_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleTNamingDeltaOnModification_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TNaming_DeltaOnModification
     pub fn get_mut(&mut self) -> &mut crate::ffi::TNaming_DeltaOnModification {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTNamingDeltaOnModification_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTNamingDeltaOnModification_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TNaming_DeltaOnModification> to Handle<TDF_DeltaOnModification>
     pub fn to_handle_delta_on_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTNamingDeltaOnModification_to_HandleTDFDeltaOnModification(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTNamingDeltaOnModification_to_HandleTDFDeltaOnModification(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TNaming_DeltaOnModification> to Handle<TDF_AttributeDelta>
     pub fn to_handle_attribute_delta(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTNamingDeltaOnModification_to_HandleTDFAttributeDelta(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTNamingDeltaOnModification_to_HandleTDFAttributeDelta(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TNaming_DeltaOnModification> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTNamingDeltaOnModification_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTNamingDeltaOnModification_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -882,8 +991,10 @@ impl DeltaOnRemoval {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_DeltaOnRemoval_ctor_handletnamingnamedshape(NS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -891,8 +1002,10 @@ impl DeltaOnRemoval {
     /// Applies the delta to the attribute.
     pub fn apply(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_DeltaOnRemoval_apply(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_DeltaOnRemoval_apply(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -901,8 +1014,11 @@ impl DeltaOnRemoval {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_DeltaOnRemoval_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -910,8 +1026,11 @@ impl DeltaOnRemoval {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TNaming_DeltaOnRemoval_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -919,86 +1038,89 @@ impl DeltaOnRemoval {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TNaming_DeltaOnRemoval_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDF_DeltaOnRemoval
     pub fn as_tdf_delta_on_removal(&self) -> &crate::tdf::DeltaOnRemoval {
-        {
-            let __result = unsafe {
-                crate::ffi::TNaming_DeltaOnRemoval_as_TDF_DeltaOnRemoval(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TNaming_DeltaOnRemoval_as_TDF_DeltaOnRemoval(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_DeltaOnRemoval (mutable)
     pub fn as_tdf_delta_on_removal_mut(&mut self) -> &mut crate::tdf::DeltaOnRemoval {
-        {
-            let __result = unsafe {
-                crate::ffi::TNaming_DeltaOnRemoval_as_TDF_DeltaOnRemoval_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TNaming_DeltaOnRemoval_as_TDF_DeltaOnRemoval_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to TDF_AttributeDelta
     pub fn as_tdf_attribute_delta(&self) -> &crate::tdf::AttributeDelta {
-        {
-            let __result = unsafe {
-                crate::ffi::TNaming_DeltaOnRemoval_as_TDF_AttributeDelta(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TNaming_DeltaOnRemoval_as_TDF_AttributeDelta(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_AttributeDelta (mutable)
     pub fn as_tdf_attribute_delta_mut(&mut self) -> &mut crate::tdf::AttributeDelta {
-        {
-            let __result = unsafe {
-                crate::ffi::TNaming_DeltaOnRemoval_as_TDF_AttributeDelta_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TNaming_DeltaOnRemoval_as_TDF_AttributeDelta_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TNaming_DeltaOnRemoval_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TNaming_DeltaOnRemoval_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TNaming_DeltaOnRemoval_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TNaming_DeltaOnRemoval_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTNamingDeltaOnRemoval> {
-        {
-            let __result = unsafe { crate::ffi::TNaming_DeltaOnRemoval_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TNaming_DeltaOnRemoval_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
@@ -1006,8 +1128,11 @@ impl DeltaOnRemoval {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_DeltaOnRemoval_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1017,8 +1142,11 @@ impl DeltaOnRemoval {
             let __result = unsafe {
                 crate::ffi::TNaming_DeltaOnRemoval_inherited_Attribute(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1027,8 +1155,11 @@ impl DeltaOnRemoval {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_DeltaOnRemoval_inherited_ID(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1041,8 +1172,11 @@ impl DeltaOnRemoval {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1052,8 +1186,11 @@ impl DeltaOnRemoval {
             let __result = unsafe {
                 crate::ffi::TNaming_DeltaOnRemoval_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1062,11 +1199,14 @@ impl DeltaOnRemoval {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_DeltaOnRemoval_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1077,18 +1217,23 @@ impl DeltaOnRemoval {
             let __result = unsafe {
                 crate::ffi::TNaming_DeltaOnRemoval_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_DeltaOnRemoval_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1098,16 +1243,22 @@ impl DeltaOnRemoval {
             let __result = unsafe {
                 crate::ffi::TNaming_DeltaOnRemoval_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TNaming_DeltaOnRemoval_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_DeltaOnRemoval_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1123,65 +1274,58 @@ unsafe impl crate::CppDeletable for HandleTNamingDeltaOnRemoval {
 impl HandleTNamingDeltaOnRemoval {
     /// Dereference this Handle to access the underlying TNaming_DeltaOnRemoval
     pub fn get(&self) -> &crate::ffi::TNaming_DeltaOnRemoval {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTNamingDeltaOnRemoval_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTNamingDeltaOnRemoval_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TNaming_DeltaOnRemoval
     pub fn get_mut(&mut self) -> &mut crate::ffi::TNaming_DeltaOnRemoval {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTNamingDeltaOnRemoval_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTNamingDeltaOnRemoval_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TNaming_DeltaOnRemoval> to Handle<TDF_DeltaOnRemoval>
     pub fn to_handle_delta_on_removal(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTNamingDeltaOnRemoval_to_HandleTDFDeltaOnRemoval(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTNamingDeltaOnRemoval_to_HandleTDFDeltaOnRemoval(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TNaming_DeltaOnRemoval> to Handle<TDF_AttributeDelta>
     pub fn to_handle_attribute_delta(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTNamingDeltaOnRemoval_to_HandleTDFAttributeDelta(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTNamingDeltaOnRemoval_to_HandleTDFAttributeDelta(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TNaming_DeltaOnRemoval> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTNamingDeltaOnRemoval_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTNamingDeltaOnRemoval_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1210,8 +1354,10 @@ impl Identifier {
             let __result = unsafe {
                 crate::ffi::TNaming_Identifier_ctor_label_shape2_bool(Lab, S, Context, Geom)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1228,8 +1374,10 @@ impl Identifier {
                     Lab, S, ContextNS, Geom,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1237,8 +1385,11 @@ impl Identifier {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TNaming_Identifier_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1246,8 +1397,11 @@ impl Identifier {
     pub fn type_(&self) -> crate::t_naming::NameType {
         {
             let __result = unsafe { crate::ffi::TNaming_Identifier_type_(self as *const Self) };
-            crate::check_exception();
-            crate::t_naming::NameType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::t_naming::NameType::try_from(__val).unwrap()
         }
     }
 
@@ -1255,8 +1409,11 @@ impl Identifier {
     pub fn is_feature(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::TNaming_Identifier_is_feature(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1264,16 +1421,21 @@ impl Identifier {
     pub fn feature(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
         {
             let __result = unsafe { crate::ffi::TNaming_Identifier_feature(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `TNaming_Identifier.hxx`:54 - `TNaming_Identifier::InitArgs()`
     pub fn init_args(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_Identifier_init_args(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_Identifier_init_args(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1281,16 +1443,21 @@ impl Identifier {
     pub fn more_args(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TNaming_Identifier_more_args(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TNaming_Identifier.hxx`:58 - `TNaming_Identifier::NextArg()`
     pub fn next_arg(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_Identifier_next_arg(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_Identifier_next_arg(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1299,8 +1466,11 @@ impl Identifier {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Identifier_arg_is_feature(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1308,8 +1478,11 @@ impl Identifier {
     pub fn feature_arg(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
         {
             let __result = unsafe { crate::ffi::TNaming_Identifier_feature_arg(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1317,8 +1490,11 @@ impl Identifier {
     pub fn shape_arg(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::TNaming_Identifier_shape_arg(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1327,8 +1503,11 @@ impl Identifier {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Identifier_shape_context(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1340,8 +1519,11 @@ impl Identifier {
             let __result = unsafe {
                 crate::ffi::TNaming_Identifier_named_shape_of_generation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1352,14 +1534,16 @@ impl Identifier {
         Context: &crate::topo_ds::Shape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_Identifier_ancestor_identification(
                     self as *mut Self,
                     Localizer,
                     Context,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1370,14 +1554,16 @@ impl Identifier {
         NS: &crate::ffi::HandleTNamingNamedShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_Identifier_primitive_identification(
                     self as *mut Self,
                     Localizer,
                     NS,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1388,14 +1574,16 @@ impl Identifier {
         NS: &crate::ffi::HandleTNamingNamedShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_Identifier_generated_identification(
                     self as *mut Self,
                     Localizer,
                     NS,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1406,10 +1594,12 @@ impl Identifier {
         NS: &crate::ffi::HandleTNamingNamedShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_Identifier_identification(self as *mut Self, Localizer, NS)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1446,8 +1636,10 @@ impl Iterator {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Iterator_ctor_handletnamingnamedshape(anAtt) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1457,8 +1649,10 @@ impl Iterator {
     pub fn new_label(aLabel: &crate::tdf::Label) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TNaming_Iterator_ctor_label(aLabel) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1468,8 +1662,10 @@ impl Iterator {
     pub fn new_label_int(aLabel: &crate::tdf::Label, aTrans: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TNaming_Iterator_ctor_label_int(aLabel, aTrans) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1479,8 +1675,11 @@ impl Iterator {
     pub fn more(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TNaming_Iterator_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1488,8 +1687,10 @@ impl Iterator {
     /// Moves the iteration to the next Item
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_Iterator_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_Iterator_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1499,8 +1700,11 @@ impl Iterator {
     pub fn old_shape(&self) -> &crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::TNaming_Iterator_old_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1509,8 +1713,11 @@ impl Iterator {
     pub fn new_shape(&self) -> &crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::TNaming_Iterator_new_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1521,8 +1728,11 @@ impl Iterator {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Iterator_is_modification(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1530,8 +1740,11 @@ impl Iterator {
     pub fn evolution(&self) -> crate::t_naming::Evolution {
         {
             let __result = unsafe { crate::ffi::TNaming_Iterator_evolution(self as *const Self) };
-            crate::check_exception();
-            crate::t_naming::Evolution::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::t_naming::Evolution::try_from(__val).unwrap()
         }
     }
 }
@@ -1554,8 +1767,10 @@ impl IteratorOnShapesSet {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TNaming_IteratorOnShapesSet_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1563,8 +1778,10 @@ impl IteratorOnShapesSet {
     pub fn new_shapesset(S: &ShapesSet) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TNaming_IteratorOnShapesSet_ctor_shapesset(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1572,8 +1789,11 @@ impl IteratorOnShapesSet {
     /// Initialize the iteration
     pub fn init(&mut self, S: &ShapesSet) {
         {
-            unsafe { crate::ffi::TNaming_IteratorOnShapesSet_init(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_IteratorOnShapesSet_init(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1584,8 +1804,11 @@ impl IteratorOnShapesSet {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_IteratorOnShapesSet_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1593,8 +1816,10 @@ impl IteratorOnShapesSet {
     /// Move to the next Item
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_IteratorOnShapesSet_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_IteratorOnShapesSet_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1603,8 +1828,11 @@ impl IteratorOnShapesSet {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_IteratorOnShapesSet_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -1627,16 +1855,21 @@ impl Localizer {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TNaming_Localizer_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TNaming_Localizer.hxx`:46 - `TNaming_Localizer::Init()`
     pub fn init(&mut self, US: &crate::ffi::HandleTNamingUsedShapes, CurTrans: i32) {
         {
-            unsafe { crate::ffi::TNaming_Localizer_init(self as *mut Self, US, CurTrans) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_Localizer_init(self as *mut Self, US, CurTrans) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1656,8 +1889,11 @@ impl Localizer {
             let __result = unsafe {
                 crate::ffi::TNaming_Localizer_sub_shapes(self as *mut Self, S, Type.into())
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1677,8 +1913,11 @@ impl Localizer {
             let __result = unsafe {
                 crate::ffi::TNaming_Localizer_ancestors(self as *mut Self, S, Type.into())
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1690,7 +1929,7 @@ impl Localizer {
         AncInFeatures: &mut crate::ffi::TopTools_MapOfShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_Localizer_find_features_in_ancestors(
                     self as *mut Self,
                     S,
@@ -1698,7 +1937,9 @@ impl Localizer {
                     AncInFeatures,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1712,7 +1953,7 @@ impl Localizer {
         OldLab: &mut crate::ffi::TNaming_ListOfNamedShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_Localizer_go_back(
                     self as *mut Self,
                     S,
@@ -1722,7 +1963,9 @@ impl Localizer {
                     OldLab,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1735,7 +1978,7 @@ impl Localizer {
         ValidShapes: &mut crate::ffi::TopTools_MapOfShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_Localizer_backward(
                     self as *mut Self,
                     NS,
@@ -1744,7 +1987,9 @@ impl Localizer {
                     ValidShapes,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1756,7 +2001,7 @@ impl Localizer {
         Neighbourg: &mut crate::ffi::TopTools_MapOfShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_Localizer_find_neighbourg(
                     self as *mut Self,
                     Cont,
@@ -1764,7 +2009,9 @@ impl Localizer {
                     Neighbourg,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1772,8 +2019,11 @@ impl Localizer {
     pub fn is_new(S: &crate::topo_ds::Shape, NS: &crate::ffi::HandleTNamingNamedShape) -> bool {
         {
             let __result = unsafe { crate::ffi::TNaming_Localizer_is_new(S, NS) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1784,8 +2034,11 @@ impl Localizer {
         theListOfGenerators: &mut crate::ffi::TopTools_ListOfShape,
     ) {
         {
-            unsafe { crate::ffi::TNaming_Localizer_find_generator(NS, S, theListOfGenerators) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_Localizer_find_generator(NS, S, theListOfGenerators) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1797,8 +2050,11 @@ impl Localizer {
         theSC: &mut crate::topo_ds::Shape,
     ) {
         {
-            unsafe { crate::ffi::TNaming_Localizer_find_shape_context(NS, theS, theSC) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_Localizer_find_shape_context(NS, theS, theSC) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1822,42 +2078,54 @@ impl Name {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TNaming_Name_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TNaming_Name.hxx`:43 - `TNaming_Name::Type()`
     pub fn type_nametype(&mut self, aType: crate::t_naming::NameType) {
         {
-            unsafe { crate::ffi::TNaming_Name_type_nametype(self as *mut Self, aType.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_Name_type_nametype(self as *mut Self, aType.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_Name.hxx`:45 - `TNaming_Name::ShapeType()`
     pub fn shape_type_shapeenum(&mut self, aType: crate::top_abs::ShapeEnum) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_Name_shape_type_shapeenum(self as *mut Self, aType.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_Name.hxx`:47 - `TNaming_Name::Shape()`
     pub fn shape_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TNaming_Name_shape_shape(self as *mut Self, theShape) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_Name_shape_shape(self as *mut Self, theShape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_Name.hxx`:49 - `TNaming_Name::Append()`
     pub fn append(&mut self, arg: &crate::ffi::HandleTNamingNamedShape) {
         {
-            unsafe { crate::ffi::TNaming_Name_append(self as *mut Self, arg) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_Name_append(self as *mut Self, arg) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1867,42 +2135,51 @@ impl Name {
         arg: &crate::ffi::HandleTNamingNamedShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_Name_stop_named_shape_handletnamingnamedshape(
                     self as *mut Self,
                     arg,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_Name.hxx`:53 - `TNaming_Name::Index()`
     pub fn index_int(&mut self, I: i32) {
         {
-            unsafe { crate::ffi::TNaming_Name_index_int(self as *mut Self, I) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_Name_index_int(self as *mut Self, I) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_Name.hxx`:55 - `TNaming_Name::ContextLabel()`
     pub fn context_label_label(&mut self, theLab: &crate::tdf::Label) {
         {
-            unsafe { crate::ffi::TNaming_Name_context_label_label(self as *mut Self, theLab) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_Name_context_label_label(self as *mut Self, theLab) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_Name.hxx`:57 - `TNaming_Name::Orientation()`
     pub fn orientation_orientation(&mut self, theOrientation: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_Name_orientation_orientation(
                     self as *mut Self,
                     theOrientation.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1910,8 +2187,11 @@ impl Name {
     pub fn type_(&self) -> crate::t_naming::NameType {
         {
             let __result = unsafe { crate::ffi::TNaming_Name_type_(self as *const Self) };
-            crate::check_exception();
-            crate::t_naming::NameType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::t_naming::NameType::try_from(__val).unwrap()
         }
     }
 
@@ -1919,8 +2199,11 @@ impl Name {
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         {
             let __result = unsafe { crate::ffi::TNaming_Name_shape_type(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -1928,8 +2211,11 @@ impl Name {
     pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::TNaming_Name_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1937,8 +2223,11 @@ impl Name {
     pub fn arguments(&self) -> &crate::ffi::TNaming_ListOfNamedShape {
         {
             let __result = unsafe { crate::ffi::TNaming_Name_arguments(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1947,8 +2236,11 @@ impl Name {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Name_stop_named_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1956,8 +2248,11 @@ impl Name {
     pub fn index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TNaming_Name_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1965,8 +2260,11 @@ impl Name {
     pub fn context_label(&self) -> &crate::tdf::Label {
         {
             let __result = unsafe { crate::ffi::TNaming_Name_context_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1974,8 +2272,11 @@ impl Name {
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         {
             let __result = unsafe { crate::ffi::TNaming_Name_orientation(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -1984,16 +2285,21 @@ impl Name {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Name_solve(self as *const Self, aLab, Valid) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TNaming_Name.hxx`:77 - `TNaming_Name::Paste()`
     pub fn paste(&self, into: &mut Name, RT: &crate::ffi::HandleTDFRelocationTable) {
         {
-            unsafe { crate::ffi::TNaming_Name_paste(self as *const Self, into, RT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_Name_paste(self as *const Self, into, RT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2024,8 +2330,10 @@ impl NamedShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TNaming_NamedShape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2033,8 +2341,11 @@ impl NamedShape {
     pub fn is_empty(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TNaming_NamedShape_is_empty(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2044,8 +2355,11 @@ impl NamedShape {
     pub fn get(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::TNaming_NamedShape_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2054,8 +2368,11 @@ impl NamedShape {
     pub fn evolution(&self) -> crate::t_naming::Evolution {
         {
             let __result = unsafe { crate::ffi::TNaming_NamedShape_evolution(self as *const Self) };
-            crate::check_exception();
-            crate::t_naming::Evolution::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::t_naming::Evolution::try_from(__val).unwrap()
         }
     }
 
@@ -2064,8 +2381,11 @@ impl NamedShape {
     pub fn version(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TNaming_NamedShape_version(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2073,16 +2393,21 @@ impl NamedShape {
     /// Set the Version of the attribute.
     pub fn set_version(&mut self, version: i32) {
         {
-            unsafe { crate::ffi::TNaming_NamedShape_set_version(self as *mut Self, version) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_NamedShape_set_version(self as *mut Self, version) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_NamedShape.hxx`:73 - `TNaming_NamedShape::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_NamedShape_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_NamedShape_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2091,8 +2416,11 @@ impl NamedShape {
     pub fn id(&self) -> &crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TNaming_NamedShape_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2103,8 +2431,11 @@ impl NamedShape {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_NamedShape_backup_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2113,8 +2444,11 @@ impl NamedShape {
     /// one. It is used when aborting a transaction.
     pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TNaming_NamedShape_restore(self as *mut Self, anAttribute) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_NamedShape_restore(self as *mut Self, anAttribute) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2132,8 +2466,11 @@ impl NamedShape {
                     anOldAttribute,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2144,13 +2481,15 @@ impl NamedShape {
         aDelta: &crate::ffi::HandleTDFDeltaOnModification,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_NamedShape_delta_on_modification_handletdfdeltaonmodification(
                     self as *mut Self,
                     aDelta,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2161,8 +2500,11 @@ impl NamedShape {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_NamedShape_delta_on_removal(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2172,8 +2514,11 @@ impl NamedShape {
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         {
             let __result = unsafe { crate::ffi::TNaming_NamedShape_new_empty(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2191,14 +2536,16 @@ impl NamedShape {
         aRelocTationable: &crate::ffi::HandleTDFRelocationTable,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_NamedShape_paste(
                     self as *const Self,
                     intoAttribute,
                     aRelocTationable,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2208,16 +2555,21 @@ impl NamedShape {
     /// look at the first level of references.
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         {
-            unsafe { crate::ffi::TNaming_NamedShape_references(self as *const Self, aDataSet) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_NamedShape_references(self as *const Self, aDataSet) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_NamedShape.hxx`:122 - `TNaming_NamedShape::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_NamedShape_before_removal(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_NamedShape_before_removal(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2232,8 +2584,11 @@ impl NamedShape {
             let __result = unsafe {
                 crate::ffi::TNaming_NamedShape_before_undo(self as *mut Self, anAttDelta, forceIt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2248,8 +2603,11 @@ impl NamedShape {
             let __result = unsafe {
                 crate::ffi::TNaming_NamedShape_after_undo(self as *mut Self, anAttDelta, forceIt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2267,8 +2625,11 @@ impl NamedShape {
     ) -> &mut crate::ffi::Standard_OStream {
         {
             let __result = unsafe { crate::ffi::TNaming_NamedShape_dump(self as *mut Self, anOS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2277,8 +2638,11 @@ impl NamedShape {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_NamedShape_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2289,8 +2653,11 @@ impl NamedShape {
     pub fn get_id() -> &'static crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TNaming_NamedShape_get_id() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2298,8 +2665,11 @@ impl NamedShape {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TNaming_NamedShape_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2307,69 +2677,73 @@ impl NamedShape {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TNaming_NamedShape_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TNaming_NamedShape_as_TDF_Attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TNaming_NamedShape_as_TDF_Attribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TNaming_NamedShape_as_TDF_Attribute_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TNaming_NamedShape_as_TDF_Attribute_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TNaming_NamedShape_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TNaming_NamedShape_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TNaming_NamedShape_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TNaming_NamedShape_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
-        {
-            let __result = unsafe { crate::ffi::TNaming_NamedShape_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TNaming_NamedShape_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         {
-            unsafe { crate::ffi::TNaming_NamedShape_inherited_SetID(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_NamedShape_inherited_SetID(self as *mut Self, arg0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2378,8 +2752,11 @@ impl NamedShape {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_NamedShape_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2389,8 +2766,11 @@ impl NamedShape {
             let __result = unsafe {
                 crate::ffi::TNaming_NamedShape_inherited_Transaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2400,8 +2780,11 @@ impl NamedShape {
             let __result = unsafe {
                 crate::ffi::TNaming_NamedShape_inherited_UntilTransaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2410,8 +2793,11 @@ impl NamedShape {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_NamedShape_inherited_IsValid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2420,8 +2806,11 @@ impl NamedShape {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_NamedShape_inherited_IsNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2431,8 +2820,11 @@ impl NamedShape {
             let __result = unsafe {
                 crate::ffi::TNaming_NamedShape_inherited_IsForgotten(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2442,8 +2834,11 @@ impl NamedShape {
             let __result = unsafe {
                 crate::ffi::TNaming_NamedShape_inherited_IsAttribute(self as *const Self, anID)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2461,18 +2856,23 @@ impl NamedShape {
                     anAttribute,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_NamedShape_inherited_AddAttribute(self as *const Self, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2482,45 +2882,60 @@ impl NamedShape {
             let __result = unsafe {
                 crate::ffi::TNaming_NamedShape_inherited_ForgetAttribute(self as *const Self, aguid)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_NamedShape_inherited_ForgetAllAttributes(
                     self as *const Self,
                     clearChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_NamedShape_inherited_AfterAddition(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TNaming_NamedShape_inherited_AfterAddition(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_NamedShape_inherited_BeforeForget(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_NamedShape_inherited_BeforeForget(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_NamedShape_inherited_AfterResume(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_NamedShape_inherited_AfterResume(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2530,26 +2945,34 @@ impl NamedShape {
             let __result = unsafe {
                 crate::ffi::TNaming_NamedShape_inherited_AfterRetrieval(self as *mut Self, forceIt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_NamedShape_inherited_BeforeCommitTransaction(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_NamedShape_inherited_Backup(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_NamedShape_inherited_Backup(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2558,8 +2981,11 @@ impl NamedShape {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_NamedShape_inherited_IsBackuped(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2569,8 +2995,11 @@ impl NamedShape {
             let __result = unsafe {
                 crate::ffi::TNaming_NamedShape_inherited_DeltaOnAddition(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2580,8 +3009,11 @@ impl NamedShape {
             let __result = unsafe {
                 crate::ffi::TNaming_NamedShape_inherited_DeltaOnForget(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2591,8 +3023,11 @@ impl NamedShape {
             let __result = unsafe {
                 crate::ffi::TNaming_NamedShape_inherited_DeltaOnResume(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2604,7 +3039,7 @@ impl NamedShape {
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_NamedShape_inherited_ExtendedDump(
                     self as *const Self,
                     anOS,
@@ -2612,17 +3047,21 @@ impl NamedShape {
                     aMap,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_NamedShape_inherited_Forget(self as *mut Self, aTransaction)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2632,8 +3071,11 @@ impl NamedShape {
             let __result = unsafe {
                 crate::ffi::TNaming_NamedShape_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2643,8 +3085,11 @@ impl NamedShape {
             let __result = unsafe {
                 crate::ffi::TNaming_NamedShape_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2653,11 +3098,14 @@ impl NamedShape {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_NamedShape_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2668,18 +3116,23 @@ impl NamedShape {
             let __result = unsafe {
                 crate::ffi::TNaming_NamedShape_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_NamedShape_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2689,16 +3142,22 @@ impl NamedShape {
             let __result = unsafe {
                 crate::ffi::TNaming_NamedShape_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TNaming_NamedShape_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_NamedShape_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2714,43 +3173,42 @@ unsafe impl crate::CppDeletable for HandleTNamingNamedShape {
 impl HandleTNamingNamedShape {
     /// Dereference this Handle to access the underlying TNaming_NamedShape
     pub fn get(&self) -> &crate::ffi::TNaming_NamedShape {
-        {
-            let __result = unsafe { crate::ffi::HandleTNamingNamedShape_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTNamingNamedShape_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TNaming_NamedShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::TNaming_NamedShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTNamingNamedShape_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTNamingNamedShape_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TNaming_NamedShape> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTNamingNamedShape_to_HandleTDFAttribute(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTNamingNamedShape_to_HandleTDFAttribute(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TNaming_NamedShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTNamingNamedShape_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTNamingNamedShape_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2777,8 +3235,10 @@ impl Naming {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TNaming_Naming_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2786,8 +3246,11 @@ impl Naming {
     pub fn is_defined(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TNaming_Naming_is_defined(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2795,8 +3258,11 @@ impl Naming {
     pub fn get_name(&self) -> &Name {
         {
             let __result = unsafe { crate::ffi::TNaming_Naming_get_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2804,8 +3270,11 @@ impl Naming {
     pub fn change_name(&mut self) -> &mut Name {
         {
             let __result = unsafe { crate::ffi::TNaming_Naming_change_name(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2815,8 +3284,11 @@ impl Naming {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Naming_regenerate(self as *mut Self, scope) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2827,8 +3299,11 @@ impl Naming {
     pub fn solve(&mut self, scope: &mut crate::ffi::TDF_LabelMap) -> bool {
         {
             let __result = unsafe { crate::ffi::TNaming_Naming_solve(self as *mut Self, scope) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2838,8 +3313,11 @@ impl Naming {
     pub fn id(&self) -> &crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TNaming_Naming_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2847,16 +3325,21 @@ impl Naming {
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         {
             let __result = unsafe { crate::ffi::TNaming_Naming_new_empty(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `TNaming_Naming.hxx`:95 - `TNaming_Naming::Restore()`
     pub fn restore(&mut self, With: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TNaming_Naming_restore(self as *mut Self, With) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_Naming_restore(self as *mut Self, With) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2867,16 +3350,21 @@ impl Naming {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         {
-            unsafe { crate::ffi::TNaming_Naming_paste(self as *const Self, Into, RT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_Naming_paste(self as *const Self, Into, RT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_Naming.hxx`:100 - `TNaming_Naming::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         {
-            unsafe { crate::ffi::TNaming_Naming_references(self as *const Self, aDataSet) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_Naming_references(self as *const Self, aDataSet) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2893,8 +3381,11 @@ impl Naming {
     ) -> &mut crate::ffi::Standard_OStream {
         {
             let __result = unsafe { crate::ffi::TNaming_Naming_dump(self as *mut Self, anOS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2906,10 +3397,12 @@ impl Naming {
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_Naming_extended_dump(self as *const Self, anOS, aFilter, aMap)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2917,8 +3410,11 @@ impl Naming {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TNaming_Naming_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2928,8 +3424,11 @@ impl Naming {
     pub fn get_id() -> &'static crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TNaming_Naming_get_id() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2937,8 +3436,11 @@ impl Naming {
     pub fn insert(under: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTNamingNaming> {
         {
             let __result = unsafe { crate::ffi::TNaming_Naming_insert(under) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2973,8 +3475,11 @@ impl Naming {
                     BNproblem,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2982,8 +3487,11 @@ impl Naming {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TNaming_Naming_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2991,67 +3499,72 @@ impl Naming {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TNaming_Naming_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TNaming_Naming_as_TDF_Attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TNaming_Naming_as_TDF_Attribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TNaming_Naming_as_TDF_Attribute_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TNaming_Naming_as_TDF_Attribute_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TNaming_Naming_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TNaming_Naming_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TNaming_Naming_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TNaming_Naming_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTNamingNaming> {
-        {
-            let __result = unsafe { crate::ffi::TNaming_Naming_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TNaming_Naming_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         {
-            unsafe { crate::ffi::TNaming_Naming_inherited_SetID(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_Naming_inherited_SetID(self as *mut Self, arg0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3060,8 +3573,11 @@ impl Naming {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Naming_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3070,8 +3586,11 @@ impl Naming {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Naming_inherited_Transaction(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3081,8 +3600,11 @@ impl Naming {
             let __result = unsafe {
                 crate::ffi::TNaming_Naming_inherited_UntilTransaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3091,8 +3613,11 @@ impl Naming {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Naming_inherited_IsValid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3101,8 +3626,11 @@ impl Naming {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Naming_inherited_IsNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3111,8 +3639,11 @@ impl Naming {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Naming_inherited_IsForgotten(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3122,8 +3653,11 @@ impl Naming {
             let __result = unsafe {
                 crate::ffi::TNaming_Naming_inherited_IsAttribute(self as *const Self, anID)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3141,18 +3675,23 @@ impl Naming {
                     anAttribute,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_Naming_inherited_AddAttribute(self as *const Self, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3162,53 +3701,70 @@ impl Naming {
             let __result = unsafe {
                 crate::ffi::TNaming_Naming_inherited_ForgetAttribute(self as *const Self, aguid)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_Naming_inherited_ForgetAllAttributes(
                     self as *const Self,
                     clearChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_Naming_inherited_AfterAddition(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_Naming_inherited_AfterAddition(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_Naming_inherited_BeforeRemoval(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_Naming_inherited_BeforeRemoval(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_Naming_inherited_BeforeForget(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_Naming_inherited_BeforeForget(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_Naming_inherited_AfterResume(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_Naming_inherited_AfterResume(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3218,8 +3774,11 @@ impl Naming {
             let __result = unsafe {
                 crate::ffi::TNaming_Naming_inherited_AfterRetrieval(self as *mut Self, forceIt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3237,8 +3796,11 @@ impl Naming {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3256,26 +3818,33 @@ impl Naming {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_Naming_inherited_BeforeCommitTransaction(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_Naming_inherited_Backup(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_Naming_inherited_Backup(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3284,8 +3853,11 @@ impl Naming {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Naming_inherited_IsBackuped(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3294,8 +3866,11 @@ impl Naming {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Naming_inherited_BackupCopy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3305,8 +3880,11 @@ impl Naming {
             let __result = unsafe {
                 crate::ffi::TNaming_Naming_inherited_DeltaOnAddition(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3315,8 +3893,11 @@ impl Naming {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Naming_inherited_DeltaOnForget(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3325,8 +3906,11 @@ impl Naming {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Naming_inherited_DeltaOnResume(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3342,8 +3926,11 @@ impl Naming {
                     anOldAttribute,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3352,16 +3939,23 @@ impl Naming {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Naming_inherited_DeltaOnRemoval(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         {
-            unsafe { crate::ffi::TNaming_Naming_inherited_Forget(self as *mut Self, aTransaction) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TNaming_Naming_inherited_Forget(self as *mut Self, aTransaction)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3371,8 +3965,11 @@ impl Naming {
             let __result = unsafe {
                 crate::ffi::TNaming_Naming_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3382,8 +3979,11 @@ impl Naming {
             let __result = unsafe {
                 crate::ffi::TNaming_Naming_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3392,11 +3992,14 @@ impl Naming {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Naming_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3406,16 +4009,23 @@ impl Naming {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Naming_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_Naming_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TNaming_Naming_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3425,16 +4035,21 @@ impl Naming {
             let __result = unsafe {
                 crate::ffi::TNaming_Naming_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TNaming_Naming_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_Naming_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3450,42 +4065,41 @@ unsafe impl crate::CppDeletable for HandleTNamingNaming {
 impl HandleTNamingNaming {
     /// Dereference this Handle to access the underlying TNaming_Naming
     pub fn get(&self) -> &crate::ffi::TNaming_Naming {
-        {
-            let __result = unsafe { crate::ffi::HandleTNamingNaming_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTNamingNaming_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TNaming_Naming
     pub fn get_mut(&mut self) -> &mut crate::ffi::TNaming_Naming {
-        {
-            let __result = unsafe { crate::ffi::HandleTNamingNaming_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTNamingNaming_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TNaming_Naming> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTNamingNaming_to_HandleTDFAttribute(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleTNamingNaming_to_HandleTDFAttribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TNaming_Naming> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTNamingNaming_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTNamingNaming_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3508,8 +4122,10 @@ impl NamingTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TNaming_NamingTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3521,8 +4137,11 @@ impl NamingTool {
         MS: &mut crate::ffi::TopTools_IndexedMapOfShape,
     ) {
         {
-            unsafe { crate::ffi::TNaming_NamingTool_current_shape(Valid, Forbiden, NS, MS) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_NamingTool_current_shape(Valid, Forbiden, NS, MS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3535,12 +4154,14 @@ impl NamingTool {
         MS: &mut crate::ffi::TopTools_IndexedMapOfShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_NamingTool_current_shape_from_shape(
                     Valid, Forbiden, Acces, S, MS,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3550,8 +4171,10 @@ impl NamingTool {
         Labels: &mut crate::ffi::TDF_LabelMap,
     ) {
         {
-            unsafe { crate::ffi::TNaming_NamingTool_build_descendants(NS, Labels) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_NamingTool_build_descendants(NS, Labels) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3585,8 +4208,10 @@ impl NewShapeIterator {
                     access,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3598,8 +4223,10 @@ impl NewShapeIterator {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_NewShapeIterator_ctor_shape_label(aShape, access) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3609,8 +4236,10 @@ impl NewShapeIterator {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_NewShapeIterator_ctor_iterator(anIterator) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3619,16 +4248,21 @@ impl NewShapeIterator {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_NewShapeIterator_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TNaming_NewShapeIterator.hxx`:57 - `TNaming_NewShapeIterator::Next()`
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_NewShapeIterator_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_NewShapeIterator_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3637,8 +4271,11 @@ impl NewShapeIterator {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_NewShapeIterator_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3647,8 +4284,11 @@ impl NewShapeIterator {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_NewShapeIterator_named_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3658,8 +4298,11 @@ impl NewShapeIterator {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_NewShapeIterator_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3671,19 +4314,22 @@ impl NewShapeIterator {
             let __result = unsafe {
                 crate::ffi::TNaming_NewShapeIterator_is_modification(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::TNaming_NewShapeIterator_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::TNaming_NewShapeIterator_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3716,8 +4362,10 @@ impl OldShapeIterator {
                     access,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3729,8 +4377,10 @@ impl OldShapeIterator {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_OldShapeIterator_ctor_shape_label(aShape, access) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3740,8 +4390,10 @@ impl OldShapeIterator {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_OldShapeIterator_ctor_iterator(anIterator) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3750,16 +4402,21 @@ impl OldShapeIterator {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_OldShapeIterator_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TNaming_OldShapeIterator.hxx`:57 - `TNaming_OldShapeIterator::Next()`
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_OldShapeIterator_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_OldShapeIterator_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3768,8 +4425,11 @@ impl OldShapeIterator {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_OldShapeIterator_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3778,8 +4438,11 @@ impl OldShapeIterator {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_OldShapeIterator_named_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3788,8 +4451,11 @@ impl OldShapeIterator {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_OldShapeIterator_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3801,19 +4467,22 @@ impl OldShapeIterator {
             let __result = unsafe {
                 crate::ffi::TNaming_OldShapeIterator_is_modification(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::TNaming_OldShapeIterator_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::TNaming_OldShapeIterator_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3835,8 +4504,10 @@ impl RefShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TNaming_RefShape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3844,16 +4515,20 @@ impl RefShape {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TNaming_RefShape_ctor_shape(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TNaming_RefShape.hxx`:39 - `TNaming_RefShape::Shape()`
     pub fn shape_shape(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TNaming_RefShape_shape_shape(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_RefShape_shape_shape(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3861,8 +4536,11 @@ impl RefShape {
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::TNaming_RefShape_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3870,8 +4548,11 @@ impl RefShape {
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         {
             let __result = unsafe { crate::ffi::TNaming_RefShape_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3879,8 +4560,11 @@ impl RefShape {
     pub fn named_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
         {
             let __result = unsafe { crate::ffi::TNaming_RefShape_named_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -3919,8 +4603,10 @@ impl SameShapeIterator {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_SameShapeIterator_ctor_shape_label(aShape, access) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3929,16 +4615,21 @@ impl SameShapeIterator {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_SameShapeIterator_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TNaming_SameShapeIterator.hxx`:43 - `TNaming_SameShapeIterator::Next()`
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_SameShapeIterator_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_SameShapeIterator_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3947,8 +4638,11 @@ impl SameShapeIterator {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_SameShapeIterator_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -3974,8 +4668,10 @@ impl Scope {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TNaming_Scope_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3985,8 +4681,10 @@ impl Scope {
     pub fn new_bool(WithValid: bool) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TNaming_Scope_ctor_bool(WithValid) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3995,8 +4693,10 @@ impl Scope {
     pub fn new_labelmap(valid: &mut crate::ffi::TDF_LabelMap) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TNaming_Scope_ctor_labelmap(valid) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4004,56 +4704,75 @@ impl Scope {
     pub fn with_valid(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TNaming_Scope_with_valid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TNaming_Scope.hxx`:48 - `TNaming_Scope::WithValid()`
     pub fn with_valid_bool(&mut self, mode: bool) {
         {
-            unsafe { crate::ffi::TNaming_Scope_with_valid_bool(self as *mut Self, mode) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_Scope_with_valid_bool(self as *mut Self, mode) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_Scope.hxx`:50 - `TNaming_Scope::ClearValid()`
     pub fn clear_valid(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_Scope_clear_valid(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_Scope_clear_valid(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_Scope.hxx`:52 - `TNaming_Scope::Valid()`
     pub fn valid(&mut self, L: &crate::tdf::Label) {
         {
-            unsafe { crate::ffi::TNaming_Scope_valid(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_Scope_valid(self as *mut Self, L) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_Scope.hxx`:54 - `TNaming_Scope::ValidChildren()`
     pub fn valid_children(&mut self, L: &crate::tdf::Label, withroot: bool) {
         {
-            unsafe { crate::ffi::TNaming_Scope_valid_children(self as *mut Self, L, withroot) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_Scope_valid_children(self as *mut Self, L, withroot) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_Scope.hxx`:57 - `TNaming_Scope::Unvalid()`
     pub fn unvalid(&mut self, L: &crate::tdf::Label) {
         {
-            unsafe { crate::ffi::TNaming_Scope_unvalid(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_Scope_unvalid(self as *mut Self, L) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_Scope.hxx`:59 - `TNaming_Scope::UnvalidChildren()`
     pub fn unvalid_children(&mut self, L: &crate::tdf::Label, withroot: bool) {
         {
-            unsafe { crate::ffi::TNaming_Scope_unvalid_children(self as *mut Self, L, withroot) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TNaming_Scope_unvalid_children(self as *mut Self, L, withroot)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4061,8 +4780,11 @@ impl Scope {
     pub fn is_valid(&self, L: &crate::tdf::Label) -> bool {
         {
             let __result = unsafe { crate::ffi::TNaming_Scope_is_valid(self as *const Self, L) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4070,8 +4792,11 @@ impl Scope {
     pub fn get_valid(&self) -> &crate::ffi::TDF_LabelMap {
         {
             let __result = unsafe { crate::ffi::TNaming_Scope_get_valid(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4079,8 +4804,11 @@ impl Scope {
     pub fn change_valid(&mut self) -> &mut crate::ffi::TDF_LabelMap {
         {
             let __result = unsafe { crate::ffi::TNaming_Scope_change_valid(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4094,8 +4822,11 @@ impl Scope {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Scope_current_shape(self as *const Self, NS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -4154,8 +4885,10 @@ impl Selector {
     pub fn new_label(aLabel: &crate::tdf::Label) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TNaming_Selector_ctor_label(aLabel) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4186,8 +4919,11 @@ impl Selector {
                     KeepOrientatation,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4213,8 +4949,11 @@ impl Selector {
                     KeepOrientatation,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4228,8 +4967,11 @@ impl Selector {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Selector_solve(self as *const Self, Valid) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4238,8 +4980,11 @@ impl Selector {
     /// This list contains the named shape on which the topological naming was built.
     pub fn arguments(&self, args: &mut crate::ffi::TDF_AttributeMap) {
         {
-            unsafe { crate::ffi::TNaming_Selector_arguments(self as *const Self, args) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_Selector_arguments(self as *const Self, args) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4249,8 +4994,11 @@ impl Selector {
     pub fn named_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
         {
             let __result = unsafe { crate::ffi::TNaming_Selector_named_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4276,8 +5024,11 @@ impl Selector {
             let __result = unsafe {
                 crate::ffi::TNaming_Selector_is_identified(access, selection, NS, Geometry)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -4300,8 +5051,10 @@ impl ShapesSet {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TNaming_ShapesSet_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4313,8 +5066,10 @@ impl ShapesSet {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_ShapesSet_ctor_shape_shapeenum(S, Type.into()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4322,8 +5077,10 @@ impl ShapesSet {
     /// Removes all Shapes
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_ShapesSet_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_ShapesSet_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4332,8 +5089,11 @@ impl ShapesSet {
     pub fn add_shape(&mut self, S: &crate::topo_ds::Shape) -> bool {
         {
             let __result = unsafe { crate::ffi::TNaming_ShapesSet_add_shape(self as *mut Self, S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4343,8 +5103,11 @@ impl ShapesSet {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_ShapesSet_contains(self as *const Self, S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4354,8 +5117,11 @@ impl ShapesSet {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_ShapesSet_remove_shape(self as *mut Self, S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4363,8 +5129,11 @@ impl ShapesSet {
     /// Adds the shapes contained in <Shapes>.
     pub fn add_shapesset(&mut self, Shapes: &ShapesSet) {
         {
-            unsafe { crate::ffi::TNaming_ShapesSet_add_shapesset(self as *mut Self, Shapes) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_ShapesSet_add_shapesset(self as *mut Self, Shapes) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4373,8 +5142,10 @@ impl ShapesSet {
     /// contained in <Shapes>
     pub fn filter(&mut self, Shapes: &ShapesSet) {
         {
-            unsafe { crate::ffi::TNaming_ShapesSet_filter(self as *mut Self, Shapes) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_ShapesSet_filter(self as *mut Self, Shapes) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4382,8 +5153,12 @@ impl ShapesSet {
     /// Removes in <me> the shapes contained in <Shapes>
     pub fn remove_shapesset(&mut self, Shapes: &ShapesSet) {
         {
-            unsafe { crate::ffi::TNaming_ShapesSet_remove_shapesset(self as *mut Self, Shapes) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TNaming_ShapesSet_remove_shapesset(self as *mut Self, Shapes)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4391,8 +5166,11 @@ impl ShapesSet {
     pub fn is_empty(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TNaming_ShapesSet_is_empty(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4400,8 +5178,11 @@ impl ShapesSet {
     pub fn nb_shapes(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TNaming_ShapesSet_nb_shapes(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4409,8 +5190,11 @@ impl ShapesSet {
     pub fn change_map(&mut self) -> &mut crate::ffi::TopTools_MapOfShape {
         {
             let __result = unsafe { crate::ffi::TNaming_ShapesSet_change_map(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4418,8 +5202,11 @@ impl ShapesSet {
     pub fn map(&self) -> &crate::ffi::TopTools_MapOfShape {
         {
             let __result = unsafe { crate::ffi::TNaming_ShapesSet_map(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -4448,8 +5235,10 @@ impl Tool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TNaming_Tool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4466,8 +5255,11 @@ impl Tool {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Tool_current_shape_handletnamingnamedshape(NS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4488,8 +5280,11 @@ impl Tool {
             let __result = unsafe {
                 crate::ffi::TNaming_Tool_current_shape_handletnamingnamedshape_labelmap(NS, Updated)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4506,8 +5301,11 @@ impl Tool {
                     NS, Updated,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4519,8 +5317,11 @@ impl Tool {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Tool_current_named_shape_handletnamingnamedshape(NS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4569,8 +5370,11 @@ impl Tool {
     ) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
         {
             let __result = unsafe { crate::ffi::TNaming_Tool_named_shape(aShape, anAcces) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4585,8 +5389,11 @@ impl Tool {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::TNaming_Tool_get_shape(NS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4597,8 +5404,11 @@ impl Tool {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::TNaming_Tool_original_shape(NS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4612,8 +5422,11 @@ impl Tool {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::TNaming_Tool_generated_shape(S, Generation) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4624,8 +5437,10 @@ impl Tool {
         OnlyModif: bool,
     ) {
         {
-            unsafe { crate::ffi::TNaming_Tool_collect(NS, Labels, OnlyModif) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_Tool_collect(NS, Labels, OnlyModif) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4634,8 +5449,11 @@ impl Tool {
     pub fn has_label(access: &crate::tdf::Label, aShape: &crate::topo_ds::Shape) -> bool {
         {
             let __result = unsafe { crate::ffi::TNaming_Tool_has_label(access, aShape) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4650,8 +5468,11 @@ impl Tool {
     ) -> crate::OwnedPtr<crate::tdf::Label> {
         {
             let __result = unsafe { crate::ffi::TNaming_Tool_label(access, aShape, TransDef) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4666,8 +5487,11 @@ impl Tool {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Tool_initial_shape(aShape, anAcces, Labels) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4677,8 +5501,11 @@ impl Tool {
     pub fn valid_until(access: &crate::tdf::Label, S: &crate::topo_ds::Shape) -> i32 {
         {
             let __result = unsafe { crate::ffi::TNaming_Tool_valid_until(access, S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4693,8 +5520,10 @@ impl Tool {
         S: &mut crate::topo_ds::Shape,
     ) {
         {
-            unsafe { crate::ffi::TNaming_Tool_find_shape(Valid, Forbiden, Arg, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_Tool_find_shape(Valid, Forbiden, Arg, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4722,80 +5551,110 @@ impl TranslateTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TNaming_TranslateTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:38 - `TNaming_TranslateTool::Add()`
     pub fn add(&self, S1: &mut crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TNaming_TranslateTool_add(self as *const Self, S1, S2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_TranslateTool_add(self as *const Self, S1, S2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:40 - `TNaming_TranslateTool::MakeVertex()`
     pub fn make_vertex(&self, S: &mut crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TNaming_TranslateTool_make_vertex(self as *const Self, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_TranslateTool_make_vertex(self as *const Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:42 - `TNaming_TranslateTool::MakeEdge()`
     pub fn make_edge(&self, S: &mut crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TNaming_TranslateTool_make_edge(self as *const Self, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_TranslateTool_make_edge(self as *const Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:44 - `TNaming_TranslateTool::MakeWire()`
     pub fn make_wire(&self, S: &mut crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TNaming_TranslateTool_make_wire(self as *const Self, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_TranslateTool_make_wire(self as *const Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:46 - `TNaming_TranslateTool::MakeFace()`
     pub fn make_face(&self, S: &mut crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TNaming_TranslateTool_make_face(self as *const Self, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_TranslateTool_make_face(self as *const Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:48 - `TNaming_TranslateTool::MakeShell()`
     pub fn make_shell(&self, S: &mut crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TNaming_TranslateTool_make_shell(self as *const Self, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_TranslateTool_make_shell(self as *const Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:50 - `TNaming_TranslateTool::MakeSolid()`
     pub fn make_solid(&self, S: &mut crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TNaming_TranslateTool_make_solid(self as *const Self, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_TranslateTool_make_solid(self as *const Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:52 - `TNaming_TranslateTool::MakeCompSolid()`
     pub fn make_comp_solid(&self, S: &mut crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TNaming_TranslateTool_make_comp_solid(self as *const Self, S) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TNaming_TranslateTool_make_comp_solid(self as *const Self, S)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:54 - `TNaming_TranslateTool::MakeCompound()`
     pub fn make_compound(&self, S: &mut crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TNaming_TranslateTool_make_compound(self as *const Self, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_TranslateTool_make_compound(self as *const Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4807,10 +5666,12 @@ impl TranslateTool {
         M: &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_TranslateTool_update_vertex(self as *const Self, S1, S2, M)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4822,10 +5683,12 @@ impl TranslateTool {
         M: &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_TranslateTool_update_edge(self as *const Self, S1, S2, M)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4837,18 +5700,24 @@ impl TranslateTool {
         M: &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_TranslateTool_update_face(self as *const Self, S1, S2, M)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:68 - `TNaming_TranslateTool::UpdateShape()`
     pub fn update_shape(&self, S1: &crate::topo_ds::Shape, S2: &mut crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TNaming_TranslateTool_update_shape(self as *const Self, S1, S2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TNaming_TranslateTool_update_shape(self as *const Self, S1, S2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4857,8 +5726,11 @@ impl TranslateTool {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_TranslateTool_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4866,8 +5738,11 @@ impl TranslateTool {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TNaming_TranslateTool_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4875,42 +5750,44 @@ impl TranslateTool {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TNaming_TranslateTool_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TNaming_TranslateTool_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TNaming_TranslateTool_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TNaming_TranslateTool_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TNaming_TranslateTool_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTNamingTranslateTool> {
-        {
-            let __result = unsafe { crate::ffi::TNaming_TranslateTool_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TNaming_TranslateTool_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -4919,8 +5796,11 @@ impl TranslateTool {
             let __result = unsafe {
                 crate::ffi::TNaming_TranslateTool_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4930,8 +5810,11 @@ impl TranslateTool {
             let __result = unsafe {
                 crate::ffi::TNaming_TranslateTool_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4940,11 +5823,14 @@ impl TranslateTool {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_TranslateTool_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4955,18 +5841,23 @@ impl TranslateTool {
             let __result = unsafe {
                 crate::ffi::TNaming_TranslateTool_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_TranslateTool_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4976,16 +5867,22 @@ impl TranslateTool {
             let __result = unsafe {
                 crate::ffi::TNaming_TranslateTool_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TNaming_TranslateTool_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_TranslateTool_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5001,35 +5898,31 @@ unsafe impl crate::CppDeletable for HandleTNamingTranslateTool {
 impl HandleTNamingTranslateTool {
     /// Dereference this Handle to access the underlying TNaming_TranslateTool
     pub fn get(&self) -> &crate::ffi::TNaming_TranslateTool {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTNamingTranslateTool_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTNamingTranslateTool_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TNaming_TranslateTool
     pub fn get_mut(&mut self) -> &mut crate::ffi::TNaming_TranslateTool {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTNamingTranslateTool_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTNamingTranslateTool_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TNaming_TranslateTool> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTNamingTranslateTool_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTNamingTranslateTool_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5052,24 +5945,30 @@ impl Translator {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TNaming_Translator_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TNaming_Translator.hxx`:35 - `TNaming_Translator::Add()`
     pub fn add(&mut self, aShape: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TNaming_Translator_add(self as *mut Self, aShape) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_Translator_add(self as *mut Self, aShape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TNaming_Translator.hxx`:37 - `TNaming_Translator::Perform()`
     pub fn perform(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_Translator_perform(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_Translator_perform(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5077,8 +5976,11 @@ impl Translator {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TNaming_Translator_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5091,8 +5993,11 @@ impl Translator {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_Translator_copied_shape(self as *const Self, aShape) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5101,16 +6006,22 @@ impl Translator {
     pub fn copied(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
         {
             let __result = unsafe { crate::ffi::TNaming_Translator_copied(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TNaming_Translator.hxx`:47 - `TNaming_Translator::DumpMap()`
     pub fn dump_map(&self, isWrite: bool) {
         {
-            unsafe { crate::ffi::TNaming_Translator_dump_map(self as *const Self, isWrite) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_Translator_dump_map(self as *const Self, isWrite) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5137,8 +6048,10 @@ impl UsedShapes {
     /// **Source:** `TNaming_UsedShapes.hxx`:45 - `TNaming_UsedShapes::Destroy()`
     pub fn destroy(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_UsedShapes_destroy(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_UsedShapes_destroy(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5146,8 +6059,11 @@ impl UsedShapes {
     pub fn map(&mut self) -> &mut crate::ffi::TNaming_DataMapOfShapePtrRefShape {
         {
             let __result = unsafe { crate::ffi::TNaming_UsedShapes_map(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5156,8 +6072,11 @@ impl UsedShapes {
     pub fn id(&self) -> &crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TNaming_UsedShapes_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5168,8 +6087,11 @@ impl UsedShapes {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_UsedShapes_backup_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5178,8 +6100,11 @@ impl UsedShapes {
     /// one. It is used when aborting a transaction.
     pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TNaming_UsedShapes_restore(self as *mut Self, anAttribute) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_UsedShapes_restore(self as *mut Self, anAttribute) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5187,8 +6112,10 @@ impl UsedShapes {
     /// Clears the table.
     pub fn before_removal(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_UsedShapes_before_removal(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TNaming_UsedShapes_before_removal(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5203,8 +6130,11 @@ impl UsedShapes {
             let __result = unsafe {
                 crate::ffi::TNaming_UsedShapes_after_undo(self as *mut Self, anAttDelta, forceIt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5214,8 +6144,11 @@ impl UsedShapes {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_UsedShapes_delta_on_addition(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5225,8 +6158,11 @@ impl UsedShapes {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_UsedShapes_delta_on_removal(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5236,8 +6172,11 @@ impl UsedShapes {
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         {
             let __result = unsafe { crate::ffi::TNaming_UsedShapes_new_empty(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5255,14 +6194,16 @@ impl UsedShapes {
         aRelocTationable: &crate::ffi::HandleTDFRelocationTable,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_UsedShapes_paste(
                     self as *const Self,
                     intoAttribute,
                     aRelocTationable,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5276,8 +6217,11 @@ impl UsedShapes {
     /// previously stored in <aDataSet>.
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         {
-            unsafe { crate::ffi::TNaming_UsedShapes_references(self as *const Self, aDataSet) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_UsedShapes_references(self as *const Self, aDataSet) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5295,8 +6239,11 @@ impl UsedShapes {
     ) -> &mut crate::ffi::Standard_OStream {
         {
             let __result = unsafe { crate::ffi::TNaming_UsedShapes_dump(self as *mut Self, anOS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5305,8 +6252,11 @@ impl UsedShapes {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_UsedShapes_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5315,8 +6265,11 @@ impl UsedShapes {
     pub fn get_id() -> &'static crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TNaming_UsedShapes_get_id() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5324,8 +6277,11 @@ impl UsedShapes {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TNaming_UsedShapes_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5333,69 +6289,73 @@ impl UsedShapes {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TNaming_UsedShapes_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TNaming_UsedShapes_as_TDF_Attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TNaming_UsedShapes_as_TDF_Attribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TNaming_UsedShapes_as_TDF_Attribute_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TNaming_UsedShapes_as_TDF_Attribute_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TNaming_UsedShapes_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TNaming_UsedShapes_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TNaming_UsedShapes_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TNaming_UsedShapes_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTNamingUsedShapes> {
-        {
-            let __result = unsafe { crate::ffi::TNaming_UsedShapes_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TNaming_UsedShapes_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         {
-            unsafe { crate::ffi::TNaming_UsedShapes_inherited_SetID(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_UsedShapes_inherited_SetID(self as *mut Self, arg0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5404,8 +6364,11 @@ impl UsedShapes {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_UsedShapes_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5415,8 +6378,11 @@ impl UsedShapes {
             let __result = unsafe {
                 crate::ffi::TNaming_UsedShapes_inherited_Transaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5426,8 +6392,11 @@ impl UsedShapes {
             let __result = unsafe {
                 crate::ffi::TNaming_UsedShapes_inherited_UntilTransaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5436,8 +6405,11 @@ impl UsedShapes {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_UsedShapes_inherited_IsValid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5446,8 +6418,11 @@ impl UsedShapes {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_UsedShapes_inherited_IsNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5457,8 +6432,11 @@ impl UsedShapes {
             let __result = unsafe {
                 crate::ffi::TNaming_UsedShapes_inherited_IsForgotten(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5468,8 +6446,11 @@ impl UsedShapes {
             let __result = unsafe {
                 crate::ffi::TNaming_UsedShapes_inherited_IsAttribute(self as *const Self, anID)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5487,18 +6468,23 @@ impl UsedShapes {
                     anAttribute,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_UsedShapes_inherited_AddAttribute(self as *const Self, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5508,45 +6494,60 @@ impl UsedShapes {
             let __result = unsafe {
                 crate::ffi::TNaming_UsedShapes_inherited_ForgetAttribute(self as *const Self, aguid)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_UsedShapes_inherited_ForgetAllAttributes(
                     self as *const Self,
                     clearChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_UsedShapes_inherited_AfterAddition(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TNaming_UsedShapes_inherited_AfterAddition(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_UsedShapes_inherited_BeforeForget(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_UsedShapes_inherited_BeforeForget(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_UsedShapes_inherited_AfterResume(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_UsedShapes_inherited_AfterResume(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5556,8 +6557,11 @@ impl UsedShapes {
             let __result = unsafe {
                 crate::ffi::TNaming_UsedShapes_inherited_AfterRetrieval(self as *mut Self, forceIt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5575,26 +6579,34 @@ impl UsedShapes {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_UsedShapes_inherited_BeforeCommitTransaction(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         {
-            unsafe { crate::ffi::TNaming_UsedShapes_inherited_Backup(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_UsedShapes_inherited_Backup(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5603,8 +6615,11 @@ impl UsedShapes {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_UsedShapes_inherited_IsBackuped(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5614,8 +6629,11 @@ impl UsedShapes {
             let __result = unsafe {
                 crate::ffi::TNaming_UsedShapes_inherited_DeltaOnForget(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5625,8 +6643,11 @@ impl UsedShapes {
             let __result = unsafe {
                 crate::ffi::TNaming_UsedShapes_inherited_DeltaOnResume(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5642,8 +6663,11 @@ impl UsedShapes {
                     anOldAttribute,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5655,7 +6679,7 @@ impl UsedShapes {
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_UsedShapes_inherited_ExtendedDump(
                     self as *const Self,
                     anOS,
@@ -5663,17 +6687,21 @@ impl UsedShapes {
                     aMap,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_UsedShapes_inherited_Forget(self as *mut Self, aTransaction)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5683,8 +6711,11 @@ impl UsedShapes {
             let __result = unsafe {
                 crate::ffi::TNaming_UsedShapes_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5694,8 +6725,11 @@ impl UsedShapes {
             let __result = unsafe {
                 crate::ffi::TNaming_UsedShapes_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5704,11 +6738,14 @@ impl UsedShapes {
         {
             let __result =
                 unsafe { crate::ffi::TNaming_UsedShapes_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5719,18 +6756,23 @@ impl UsedShapes {
             let __result = unsafe {
                 crate::ffi::TNaming_UsedShapes_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TNaming_UsedShapes_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5740,16 +6782,22 @@ impl UsedShapes {
             let __result = unsafe {
                 crate::ffi::TNaming_UsedShapes_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TNaming_UsedShapes_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TNaming_UsedShapes_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5765,43 +6813,42 @@ unsafe impl crate::CppDeletable for HandleTNamingUsedShapes {
 impl HandleTNamingUsedShapes {
     /// Dereference this Handle to access the underlying TNaming_UsedShapes
     pub fn get(&self) -> &crate::ffi::TNaming_UsedShapes {
-        {
-            let __result = unsafe { crate::ffi::HandleTNamingUsedShapes_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTNamingUsedShapes_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TNaming_UsedShapes
     pub fn get_mut(&mut self) -> &mut crate::ffi::TNaming_UsedShapes {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTNamingUsedShapes_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTNamingUsedShapes_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TNaming_UsedShapes> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTNamingUsedShapes_to_HandleTDFAttribute(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTNamingUsedShapes_to_HandleTDFAttribute(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TNaming_UsedShapes> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTNamingUsedShapes_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTNamingUsedShapes_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

@@ -93,8 +93,10 @@ impl PWalking {
                     Increment,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -139,8 +141,10 @@ impl PWalking {
                     V2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -148,8 +152,12 @@ impl PWalking {
     /// calculate the line of intersection
     pub fn perform_array1ofreal(&mut self, ParDep: &crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::IntWalk_PWalking_perform_array1ofreal(self as *mut Self, ParDep) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntWalk_PWalking_perform_array1ofreal(self as *mut Self, ParDep)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -172,7 +180,7 @@ impl PWalking {
         v2max: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntWalk_PWalking_perform_array1ofreal_real8(
                     self as *mut Self,
                     ParDep,
@@ -186,7 +194,9 @@ impl PWalking {
                     v2max,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -205,8 +215,11 @@ impl PWalking {
                     FirstPoint,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -215,8 +228,11 @@ impl PWalking {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::IntWalk_PWalking_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -226,8 +242,11 @@ impl PWalking {
     pub fn nb_points(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntWalk_PWalking_nb_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -239,8 +258,11 @@ impl PWalking {
         {
             let __result =
                 unsafe { crate::ffi::IntWalk_PWalking_value(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -248,8 +270,11 @@ impl PWalking {
     pub fn line(&self) -> &crate::ffi::HandleIntSurfLineOn2S {
         {
             let __result = unsafe { crate::ffi::IntWalk_PWalking_line(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -261,8 +286,11 @@ impl PWalking {
         {
             let __result =
                 unsafe { crate::ffi::IntWalk_PWalking_tangent_at_first(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -274,8 +302,11 @@ impl PWalking {
         {
             let __result =
                 unsafe { crate::ffi::IntWalk_PWalking_tangent_at_last(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -285,8 +316,11 @@ impl PWalking {
     pub fn is_closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::IntWalk_PWalking_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -301,8 +335,11 @@ impl PWalking {
         {
             let __result =
                 unsafe { crate::ffi::IntWalk_PWalking_tangent_at_line(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -320,8 +357,11 @@ impl PWalking {
                     theStatus.into(),
                 )
             };
-            crate::check_exception();
-            crate::int_walk::StatusDeflection::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_walk::StatusDeflection::try_from(__val).unwrap()
         }
     }
 
@@ -342,8 +382,11 @@ impl PWalking {
                     &mut ChoixIso_i32_,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         };
         *ChoixIso = crate::int_imp::ConstIsoparametric::try_from(ChoixIso_i32_).unwrap();
         result_
@@ -358,7 +401,7 @@ impl PWalking {
     ) {
         let mut ChoixIso_i32_: i32 = (*ChoixIso).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntWalk_PWalking_repartir_ou_diviser(
                     self as *mut Self,
                     DejaReparti,
@@ -366,7 +409,9 @@ impl PWalking {
                     Arrive,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *ChoixIso = crate::int_imp::ConstIsoparametric::try_from(ChoixIso_i32_).unwrap();
     }
@@ -375,8 +420,11 @@ impl PWalking {
     /// Inserts thePOn2S in the end of line
     pub fn add_a_point(&mut self, thePOn2S: &crate::int_surf::PntOn2S) {
         {
-            unsafe { crate::ffi::IntWalk_PWalking_add_a_point(self as *mut Self, thePOn2S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntWalk_PWalking_add_a_point(self as *mut Self, thePOn2S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -387,8 +435,11 @@ impl PWalking {
     /// theIndex must be started with 1.
     pub fn remove_a_point(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::IntWalk_PWalking_remove_a_point(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntWalk_PWalking_remove_a_point(self as *mut Self, theIndex) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -406,8 +457,11 @@ impl PWalking {
                     theASurf2,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -427,8 +481,11 @@ impl PWalking {
                     theMinNbPoints,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -437,8 +494,11 @@ impl PWalking {
         {
             let __result =
                 unsafe { crate::ffi::IntWalk_PWalking_max_step(self as *mut Self, theIndex) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -466,8 +526,10 @@ impl TheFunctionOfTheInt2S {
             let __result = unsafe {
                 crate::ffi::IntWalk_TheFunctionOfTheInt2S_ctor_handleadaptor3dsurface2(S1, S2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -477,8 +539,11 @@ impl TheFunctionOfTheInt2S {
             let __result = unsafe {
                 crate::ffi::IntWalk_TheFunctionOfTheInt2S_nb_variables(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -488,8 +553,11 @@ impl TheFunctionOfTheInt2S {
             let __result = unsafe {
                 crate::ffi::IntWalk_TheFunctionOfTheInt2S_nb_equations(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -498,8 +566,11 @@ impl TheFunctionOfTheInt2S {
         {
             let __result =
                 unsafe { crate::ffi::IntWalk_TheFunctionOfTheInt2S_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -513,8 +584,11 @@ impl TheFunctionOfTheInt2S {
             let __result = unsafe {
                 crate::ffi::IntWalk_TheFunctionOfTheInt2S_derivatives(self as *mut Self, X, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -529,8 +603,11 @@ impl TheFunctionOfTheInt2S {
             let __result = unsafe {
                 crate::ffi::IntWalk_TheFunctionOfTheInt2S_values(self as *mut Self, X, F, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -545,7 +622,7 @@ impl TheFunctionOfTheInt2S {
         Tolerance: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntWalk_TheFunctionOfTheInt2S_compute_parameters(
                     self as *mut Self,
                     ChoixIso.into(),
@@ -556,7 +633,9 @@ impl TheFunctionOfTheInt2S {
                     Tolerance,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -566,8 +645,11 @@ impl TheFunctionOfTheInt2S {
         {
             let __result =
                 unsafe { crate::ffi::IntWalk_TheFunctionOfTheInt2S_root(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -576,8 +658,11 @@ impl TheFunctionOfTheInt2S {
         {
             let __result =
                 unsafe { crate::ffi::IntWalk_TheFunctionOfTheInt2S_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -598,8 +683,11 @@ impl TheFunctionOfTheInt2S {
                     &mut BestChoix_i32_,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         };
         *BestChoix = crate::int_imp::ConstIsoparametric::try_from(BestChoix_i32_).unwrap();
         result_
@@ -610,8 +698,11 @@ impl TheFunctionOfTheInt2S {
         {
             let __result =
                 unsafe { crate::ffi::IntWalk_TheFunctionOfTheInt2S_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -621,8 +712,11 @@ impl TheFunctionOfTheInt2S {
             let __result = unsafe {
                 crate::ffi::IntWalk_TheFunctionOfTheInt2S_direction_on_s1(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -632,8 +726,11 @@ impl TheFunctionOfTheInt2S {
             let __result = unsafe {
                 crate::ffi::IntWalk_TheFunctionOfTheInt2S_direction_on_s2(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -643,8 +740,11 @@ impl TheFunctionOfTheInt2S {
             let __result = unsafe {
                 crate::ffi::IntWalk_TheFunctionOfTheInt2S_auxillar_surface1(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -654,8 +754,11 @@ impl TheFunctionOfTheInt2S {
             let __result = unsafe {
                 crate::ffi::IntWalk_TheFunctionOfTheInt2S_auxillar_surface2(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -663,52 +766,52 @@ impl TheFunctionOfTheInt2S {
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::IntWalk_TheFunctionOfTheInt2S_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IntWalk_TheFunctionOfTheInt2S_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::IntWalk_TheFunctionOfTheInt2S_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IntWalk_TheFunctionOfTheInt2S_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::IntWalk_TheFunctionOfTheInt2S_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IntWalk_TheFunctionOfTheInt2S_as_math_FunctionSet(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::IntWalk_TheFunctionOfTheInt2S_as_math_FunctionSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IntWalk_TheFunctionOfTheInt2S_as_math_FunctionSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
@@ -719,8 +822,11 @@ impl TheFunctionOfTheInt2S {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -756,8 +862,10 @@ impl TheInt2S {
                     TolTangency,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -781,8 +889,10 @@ impl TheInt2S {
             let __result = unsafe {
                 crate::ffi::IntWalk_TheInt2S_ctor_handleadaptor3dsurface2_real(S1, S2, TolTangency)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -805,8 +915,11 @@ impl TheInt2S {
                     Rsnld,
                 )
             };
-            crate::check_exception();
-            crate::int_imp::ConstIsoparametric::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_imp::ConstIsoparametric::try_from(__val).unwrap()
         }
     }
 
@@ -831,8 +944,11 @@ impl TheInt2S {
                     ChoixIso.into(),
                 )
             };
-            crate::check_exception();
-            crate::int_imp::ConstIsoparametric::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_imp::ConstIsoparametric::try_from(__val).unwrap()
         }
     }
 
@@ -841,8 +957,11 @@ impl TheInt2S {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::IntWalk_TheInt2S_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -851,8 +970,11 @@ impl TheInt2S {
     pub fn is_empty(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::IntWalk_TheInt2S_is_empty(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -861,8 +983,11 @@ impl TheInt2S {
     pub fn point(&self) -> &crate::int_surf::PntOn2S {
         {
             let __result = unsafe { crate::ffi::IntWalk_TheInt2S_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -872,8 +997,11 @@ impl TheInt2S {
     pub fn is_tangent(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::IntWalk_TheInt2S_is_tangent(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -882,8 +1010,11 @@ impl TheInt2S {
     pub fn direction(&self) -> &crate::gp::Dir {
         {
             let __result = unsafe { crate::ffi::IntWalk_TheInt2S_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -894,8 +1025,11 @@ impl TheInt2S {
         {
             let __result =
                 unsafe { crate::ffi::IntWalk_TheInt2S_direction_on_s1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -906,8 +1040,11 @@ impl TheInt2S {
         {
             let __result =
                 unsafe { crate::ffi::IntWalk_TheInt2S_direction_on_s2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -917,8 +1054,11 @@ impl TheInt2S {
     pub fn function(&mut self) -> &mut TheFunctionOfTheInt2S {
         {
             let __result = unsafe { crate::ffi::IntWalk_TheInt2S_function(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -928,8 +1068,11 @@ impl TheInt2S {
     pub fn change_point(&mut self) -> &mut crate::int_surf::PntOn2S {
         {
             let __result = unsafe { crate::ffi::IntWalk_TheInt2S_change_point(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 }

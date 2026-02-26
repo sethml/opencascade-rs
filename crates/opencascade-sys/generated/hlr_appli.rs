@@ -28,8 +28,10 @@ impl ReflectLines {
     pub fn new_shape(aShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAppli_ReflectLines_ctor_shape(aShape) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -50,7 +52,7 @@ impl ReflectLines {
         ZUp: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAppli_ReflectLines_set_axes(
                     self as *mut Self,
                     Nx,
@@ -64,15 +66,19 @@ impl ReflectLines {
                     ZUp,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `HLRAppli_ReflectLines.hxx`:54 - `HLRAppli_ReflectLines::Perform()`
     pub fn perform(&mut self) {
         {
-            unsafe { crate::ffi::HLRAppli_ReflectLines_perform(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAppli_ReflectLines_perform(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -83,8 +89,11 @@ impl ReflectLines {
         {
             let __result =
                 unsafe { crate::ffi::HLRAppli_ReflectLines_get_result(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -107,8 +116,11 @@ impl ReflectLines {
                     In3d,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }

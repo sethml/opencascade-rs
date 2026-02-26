@@ -25,8 +25,10 @@ impl Classifier {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2dHatch_Classifier_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -41,8 +43,10 @@ impl Classifier {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Classifier_ctor_elements_pnt2d_real(F, P, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -51,8 +55,11 @@ impl Classifier {
     /// face described by <F>.
     pub fn perform(&mut self, F: &mut Elements, P: &crate::gp::Pnt2d, Tol: f64) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Classifier_perform(self as *mut Self, F, P, Tol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2dHatch_Classifier_perform(self as *mut Self, F, P, Tol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -61,8 +68,11 @@ impl Classifier {
     pub fn state(&self) -> crate::top_abs::State {
         {
             let __result = unsafe { crate::ffi::Geom2dHatch_Classifier_state(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -73,8 +83,11 @@ impl Classifier {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Classifier_rejected(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -85,8 +98,11 @@ impl Classifier {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Classifier_no_wires(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -97,8 +113,11 @@ impl Classifier {
     pub fn edge(&self) -> &crate::geom2d_adaptor::Curve {
         {
             let __result = unsafe { crate::ffi::Geom2dHatch_Classifier_edge(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -109,8 +128,11 @@ impl Classifier {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Classifier_edge_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -121,8 +143,11 @@ impl Classifier {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Classifier_position(self as *const Self) };
-            crate::check_exception();
-            crate::int_res2d::Position::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_res2d::Position::try_from(__val).unwrap()
         }
     }
 }
@@ -145,8 +170,10 @@ impl Element {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2dHatch_Element_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -160,8 +187,10 @@ impl Element {
             let __result = unsafe {
                 crate::ffi::Geom2dHatch_Element_ctor_curve_orientation(Curve, Orientation.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -170,8 +199,11 @@ impl Element {
     pub fn curve(&self) -> &crate::geom2d_adaptor::Curve {
         {
             let __result = unsafe { crate::ffi::Geom2dHatch_Element_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -181,8 +213,11 @@ impl Element {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Element_change_curve(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -190,13 +225,15 @@ impl Element {
     /// Sets the orientation of the element.
     pub fn orientation_orientation(&mut self, Orientation: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2dHatch_Element_orientation_orientation(
                     self as *mut Self,
                     Orientation.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -206,8 +243,11 @@ impl Element {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Element_orientation(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 }
@@ -230,16 +270,20 @@ impl Elements {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2dHatch_Elements_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:42 - `Geom2dHatch_Elements::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Elements_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2dHatch_Elements_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -248,8 +292,11 @@ impl Elements {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Elements_bind(self as *mut Self, K, I) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -258,8 +305,11 @@ impl Elements {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Elements_is_bound(self as *const Self, K) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -268,8 +318,11 @@ impl Elements {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Elements_un_bind(self as *mut Self, K) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -277,8 +330,11 @@ impl Elements {
     pub fn find(&self, K: i32) -> &Element {
         {
             let __result = unsafe { crate::ffi::Geom2dHatch_Elements_find(self as *const Self, K) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -287,8 +343,11 @@ impl Elements {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Elements_change_find(self as *mut Self, K) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -297,8 +356,11 @@ impl Elements {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Elements_check_point(self as *mut Self, P) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -307,8 +369,11 @@ impl Elements {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Elements_reject(self as *const Self, P) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -322,8 +387,11 @@ impl Elements {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Elements_segment(self as *mut Self, P, L, Par) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -338,16 +406,21 @@ impl Elements {
             let __result = unsafe {
                 crate::ffi::Geom2dHatch_Elements_other_segment(self as *mut Self, P, L, Par)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:68 - `Geom2dHatch_Elements::InitWires()`
     pub fn init_wires(&mut self) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Elements_init_wires(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2dHatch_Elements_init_wires(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -356,16 +429,21 @@ impl Elements {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Elements_more_wires(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:72 - `Geom2dHatch_Elements::NextWire()`
     pub fn next_wire(&mut self) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Elements_next_wire(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2dHatch_Elements_next_wire(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -375,16 +453,21 @@ impl Elements {
             let __result = unsafe {
                 crate::ffi::Geom2dHatch_Elements_reject_wire(self as *const Self, L, Par)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:76 - `Geom2dHatch_Elements::InitEdges()`
     pub fn init_edges(&mut self) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Elements_init_edges(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2dHatch_Elements_init_edges(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -393,16 +476,21 @@ impl Elements {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Elements_more_edges(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:80 - `Geom2dHatch_Elements::NextEdge()`
     pub fn next_edge(&mut self) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Elements_next_edge(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2dHatch_Elements_next_edge(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -412,8 +500,11 @@ impl Elements {
             let __result = unsafe {
                 crate::ffi::Geom2dHatch_Elements_reject_edge(self as *const Self, L, Par)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -425,22 +516,23 @@ impl Elements {
     ) {
         let mut Or_i32_: i32 = (*Or).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2dHatch_Elements_current_edge(self as *const Self, E, &mut Or_i32_)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dHatch_Elements_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Geom2dHatch_Elements_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -463,8 +555,10 @@ impl FClass2dOfClassifier {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2dHatch_FClass2dOfClassifier_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -476,10 +570,12 @@ impl FClass2dOfClassifier {
     /// attached to the line segment in intersections.
     pub fn reset(&mut self, L: &crate::gp::Lin2d, P: f64, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2dHatch_FClass2dOfClassifier_reset(self as *mut Self, L, P, Tol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -488,14 +584,16 @@ impl FClass2dOfClassifier {
     /// <E> from the boundary.
     pub fn compare(&mut self, E: &crate::geom2d_adaptor::Curve, Or: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2dHatch_FClass2dOfClassifier_compare(
                     self as *mut Self,
                     E,
                     Or.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -506,8 +604,11 @@ impl FClass2dOfClassifier {
             let __result = unsafe {
                 crate::ffi::Geom2dHatch_FClass2dOfClassifier_parameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -518,8 +619,11 @@ impl FClass2dOfClassifier {
             let __result = unsafe {
                 crate::ffi::Geom2dHatch_FClass2dOfClassifier_intersector(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -535,8 +639,11 @@ impl FClass2dOfClassifier {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -546,8 +653,11 @@ impl FClass2dOfClassifier {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_FClass2dOfClassifier_state(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -560,8 +670,11 @@ impl FClass2dOfClassifier {
             let __result = unsafe {
                 crate::ffi::Geom2dHatch_FClass2dOfClassifier_is_head_or_end(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -599,8 +712,10 @@ impl Hatcher {
                     KeepSeg,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -629,13 +744,15 @@ impl Hatcher {
     /// Sets the associated intersector.
     pub fn intersector_intersector(&mut self, Intersector: &Intersector) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2dHatch_Hatcher_intersector_intersector(
                     self as *mut Self,
                     Intersector,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -645,8 +762,11 @@ impl Hatcher {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatcher_intersector(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -656,8 +776,11 @@ impl Hatcher {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatcher_change_intersector(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -665,10 +788,12 @@ impl Hatcher {
     /// Sets the confusion tolerance.
     pub fn confusion2d_real(&mut self, Confusion: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2dHatch_Hatcher_confusion2d_real(self as *mut Self, Confusion)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -680,8 +805,11 @@ impl Hatcher {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatcher_confusion2d(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -689,10 +817,12 @@ impl Hatcher {
     /// Sets the confusion tolerance.
     pub fn confusion3d_real(&mut self, Confusion: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2dHatch_Hatcher_confusion3d_real(self as *mut Self, Confusion)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -704,8 +834,11 @@ impl Hatcher {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatcher_confusion3d(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -713,8 +846,12 @@ impl Hatcher {
     /// Sets the above flag.
     pub fn keep_points_bool(&mut self, Keep: bool) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Hatcher_keep_points_bool(self as *mut Self, Keep) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2dHatch_Hatcher_keep_points_bool(self as *mut Self, Keep)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -724,8 +861,11 @@ impl Hatcher {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatcher_keep_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -733,8 +873,12 @@ impl Hatcher {
     /// Sets the above flag.
     pub fn keep_segments_bool(&mut self, Keep: bool) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Hatcher_keep_segments_bool(self as *mut Self, Keep) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2dHatch_Hatcher_keep_segments_bool(self as *mut Self, Keep)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -744,8 +888,11 @@ impl Hatcher {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatcher_keep_segments(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -753,8 +900,10 @@ impl Hatcher {
     /// Removes all the hatchings and all the elements.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Hatcher_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2dHatch_Hatcher_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -764,8 +913,11 @@ impl Hatcher {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatcher_element_curve(self as *const Self, IndE) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -784,8 +936,11 @@ impl Hatcher {
                     Orientation.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -804,8 +959,11 @@ impl Hatcher {
                     Orientation.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -813,8 +971,11 @@ impl Hatcher {
     /// Removes the IndE-th element from the hatcher.
     pub fn rem_element(&mut self, IndE: i32) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Hatcher_rem_element(self as *mut Self, IndE) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2dHatch_Hatcher_rem_element(self as *mut Self, IndE) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -822,8 +983,10 @@ impl Hatcher {
     /// Removes all the elements from the hatcher.
     pub fn clr_elements(&mut self) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Hatcher_clr_elements(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2dHatch_Hatcher_clr_elements(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -834,8 +997,11 @@ impl Hatcher {
             let __result = unsafe {
                 crate::ffi::Geom2dHatch_Hatcher_hatching_curve(self as *const Self, IndH)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -845,8 +1011,11 @@ impl Hatcher {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatcher_add_hatching(self as *mut Self, Curve) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -854,8 +1023,11 @@ impl Hatcher {
     /// Removes the IndH-th hatching from the hatcher.
     pub fn rem_hatching(&mut self, IndH: i32) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Hatcher_rem_hatching(self as *mut Self, IndH) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2dHatch_Hatcher_rem_hatching(self as *mut Self, IndH) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -863,8 +1035,10 @@ impl Hatcher {
     /// Removes all the hatchings from the hatcher.
     pub fn clr_hatchings(&mut self) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Hatcher_clr_hatchings(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2dHatch_Hatcher_clr_hatchings(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -875,8 +1049,11 @@ impl Hatcher {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatcher_nb_points(self as *const Self, IndH) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -887,8 +1064,11 @@ impl Hatcher {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatcher_point(self as *const Self, IndH, IndP) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -897,8 +1077,10 @@ impl Hatcher {
     /// elements of the hatcher.
     pub fn trim(&mut self) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Hatcher_trim(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2dHatch_Hatcher_trim(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -909,8 +1091,11 @@ impl Hatcher {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatcher_trim_curve(self as *mut Self, Curve) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -919,8 +1104,11 @@ impl Hatcher {
     /// already given.
     pub fn trim_int(&mut self, IndH: i32) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Hatcher_trim_int(self as *mut Self, IndH) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2dHatch_Hatcher_trim_int(self as *mut Self, IndH) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -928,8 +1116,11 @@ impl Hatcher {
     /// Computes the domains of all the hatchings.
     pub fn compute_domains(&mut self) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Hatcher_compute_domains(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2dHatch_Hatcher_compute_domains(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -937,8 +1128,12 @@ impl Hatcher {
     /// Computes the domains of the IndH-th hatching.
     pub fn compute_domains_int(&mut self, IndH: i32) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Hatcher_compute_domains_int(self as *mut Self, IndH) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2dHatch_Hatcher_compute_domains_int(self as *mut Self, IndH)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -949,8 +1144,11 @@ impl Hatcher {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatcher_trim_done(self as *const Self, IndH) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -961,8 +1159,11 @@ impl Hatcher {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatcher_trim_failed(self as *const Self, IndH) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -972,8 +1173,11 @@ impl Hatcher {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2dHatch_Hatcher_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -984,8 +1188,11 @@ impl Hatcher {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatcher_is_done_int(self as *const Self, IndH) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -995,8 +1202,11 @@ impl Hatcher {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatcher_status(self as *const Self, IndH) };
-            crate::check_exception();
-            crate::hatch_gen::ErrorStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::hatch_gen::ErrorStatus::try_from(__val).unwrap()
         }
     }
 
@@ -1008,8 +1218,11 @@ impl Hatcher {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatcher_nb_domains(self as *const Self, IndH) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1019,8 +1232,11 @@ impl Hatcher {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatcher_domain(self as *const Self, IndH, IDom) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1028,8 +1244,10 @@ impl Hatcher {
     /// Dump the hatcher.
     pub fn dump(&self) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Hatcher_dump(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2dHatch_Hatcher_dump(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1052,8 +1270,10 @@ impl Hatching {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2dHatch_Hatching_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1062,8 +1282,10 @@ impl Hatching {
     pub fn new_curve(Curve: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2dHatch_Hatching_ctor_curve(Curve) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1072,8 +1294,11 @@ impl Hatching {
     pub fn curve(&self) -> &crate::geom2d_adaptor::Curve {
         {
             let __result = unsafe { crate::ffi::Geom2dHatch_Hatching_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1083,8 +1308,11 @@ impl Hatching {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatching_change_curve(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1093,8 +1321,11 @@ impl Hatching {
     /// given value.
     pub fn trim_done_bool(&mut self, Flag: bool) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Hatching_trim_done_bool(self as *mut Self, Flag) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2dHatch_Hatching_trim_done_bool(self as *mut Self, Flag) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1104,8 +1335,11 @@ impl Hatching {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatching_trim_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1114,8 +1348,12 @@ impl Hatching {
     /// given value.
     pub fn trim_failed_bool(&mut self, Flag: bool) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Hatching_trim_failed_bool(self as *mut Self, Flag) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2dHatch_Hatching_trim_failed_bool(self as *mut Self, Flag)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1125,8 +1363,11 @@ impl Hatching {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatching_trim_failed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1135,8 +1376,11 @@ impl Hatching {
     /// given value.
     pub fn is_done_bool(&mut self, Flag: bool) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Hatching_is_done_bool(self as *mut Self, Flag) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2dHatch_Hatching_is_done_bool(self as *mut Self, Flag) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1145,8 +1389,11 @@ impl Hatching {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2dHatch_Hatching_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1154,13 +1401,15 @@ impl Hatching {
     /// Sets the error status.
     pub fn status_errorstatus(&mut self, theStatus: crate::hatch_gen::ErrorStatus) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2dHatch_Hatching_status_errorstatus(
                     self as *mut Self,
                     theStatus.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1169,8 +1418,11 @@ impl Hatching {
     pub fn status(&self) -> crate::hatch_gen::ErrorStatus {
         {
             let __result = unsafe { crate::ffi::Geom2dHatch_Hatching_status(self as *const Self) };
-            crate::check_exception();
-            crate::hatch_gen::ErrorStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::hatch_gen::ErrorStatus::try_from(__val).unwrap()
         }
     }
 
@@ -1178,10 +1430,12 @@ impl Hatching {
     /// Adds an intersection point to the hatching.
     pub fn add_point(&mut self, Point: &crate::hatch_gen::PointOnHatching, Confusion: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2dHatch_Hatching_add_point(self as *mut Self, Point, Confusion)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1192,8 +1446,11 @@ impl Hatching {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatching_nb_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1206,8 +1463,11 @@ impl Hatching {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatching_point(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1220,8 +1480,11 @@ impl Hatching {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatching_change_point(self as *mut Self, Index) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1232,8 +1495,11 @@ impl Hatching {
     /// Index < 1 or Index > NbPoints.
     pub fn rem_point(&mut self, Index: i32) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Hatching_rem_point(self as *mut Self, Index) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2dHatch_Hatching_rem_point(self as *mut Self, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1241,8 +1507,10 @@ impl Hatching {
     /// Removes all the intersection points of the hatching.
     pub fn clr_points(&mut self) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Hatching_clr_points(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2dHatch_Hatching_clr_points(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1250,8 +1518,11 @@ impl Hatching {
     /// Adds a domain to the hatching.
     pub fn add_domain(&mut self, Domain: &crate::hatch_gen::Domain) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Hatching_add_domain(self as *mut Self, Domain) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2dHatch_Hatching_add_domain(self as *mut Self, Domain) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1261,8 +1532,11 @@ impl Hatching {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatching_nb_domains(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1274,8 +1548,11 @@ impl Hatching {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Hatching_domain(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1285,8 +1562,11 @@ impl Hatching {
     /// Index < 1 or Index > NbDomains.
     pub fn rem_domain(&mut self, Index: i32) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Hatching_rem_domain(self as *mut Self, Index) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2dHatch_Hatching_rem_domain(self as *mut Self, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1294,8 +1574,10 @@ impl Hatching {
     /// Removes all the domains of the hatching.
     pub fn clr_domains(&mut self) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Hatching_clr_domains(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2dHatch_Hatching_clr_domains(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1307,8 +1589,11 @@ impl Hatching {
             let __result = unsafe {
                 crate::ffi::Geom2dHatch_Hatching_classification_point(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -1333,8 +1618,10 @@ impl Intersector {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dHatch_Intersector_ctor_real2(Confusion, Tangency) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1342,8 +1629,10 @@ impl Intersector {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2dHatch_Intersector_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1355,8 +1644,11 @@ impl Intersector {
             let __result = unsafe {
                 crate::ffi::Geom2dHatch_Intersector_confusion_tolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1364,13 +1656,15 @@ impl Intersector {
     /// Sets the confusion tolerance of the intersector.
     pub fn set_confusion_tolerance(&mut self, Confusion: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2dHatch_Intersector_set_confusion_tolerance(
                     self as *mut Self,
                     Confusion,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1382,8 +1676,11 @@ impl Intersector {
             let __result = unsafe {
                 crate::ffi::Geom2dHatch_Intersector_tangency_tolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1391,13 +1688,15 @@ impl Intersector {
     /// Sets the tangency tolerance of the intersector.
     pub fn set_tangency_tolerance(&mut self, Tangency: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2dHatch_Intersector_set_tangency_tolerance(
                     self as *mut Self,
                     Tangency,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1412,8 +1711,11 @@ impl Intersector {
         C2: &crate::geom2d_adaptor::Curve,
     ) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Intersector_intersect(self as *mut Self, C1, C2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2dHatch_Intersector_intersect(self as *mut Self, C1, C2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1433,8 +1735,12 @@ impl Intersector {
         E: &crate::geom2d_adaptor::Curve,
     ) {
         {
-            unsafe { crate::ffi::Geom2dHatch_Intersector_perform(self as *mut Self, L, P, Tol, E) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2dHatch_Intersector_perform(self as *mut Self, L, P, Tol, E)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1451,7 +1757,7 @@ impl Intersector {
         C: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2dHatch_Intersector_local_geometry(
                     self as *const Self,
                     E,
@@ -1461,52 +1767,53 @@ impl Intersector {
                     C,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to Geom2dInt_GInter
     pub fn as_geom2d_int_g_inter(&self) -> &crate::geom2d_int::GInter {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dHatch_Intersector_as_Geom2dInt_GInter(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2dHatch_Intersector_as_Geom2dInt_GInter(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2dInt_GInter (mutable)
     pub fn as_geom2d_int_g_inter_mut(&mut self) -> &mut crate::geom2d_int::GInter {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dHatch_Intersector_as_Geom2dInt_GInter_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Geom2dHatch_Intersector_as_Geom2dInt_GInter_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dHatch_Intersector_as_IntRes2d_Intersection(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Geom2dHatch_Intersector_as_IntRes2d_Intersection(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IntRes2d_Intersection (mutable)
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dHatch_Intersector_as_IntRes2d_Intersection_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Geom2dHatch_Intersector_as_IntRes2d_Intersection_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Geom2dInt_GInter.hxx`:131 - `Geom2dInt_GInter::ComputeDomain()`
@@ -1523,21 +1830,26 @@ impl Intersector {
                     TolDomain,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom2dInt_GInter.hxx`:135 - `Geom2dInt_GInter::SetMinNbSamples()`
     pub fn set_min_nb_samples(&mut self, theMinNbSamples: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2dHatch_Intersector_inherited_SetMinNbSamples(
                     self as *mut Self,
                     theMinNbSamples,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1547,8 +1859,11 @@ impl Intersector {
             let __result = unsafe {
                 crate::ffi::Geom2dHatch_Intersector_inherited_GetMinNbSamples(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1558,8 +1873,11 @@ impl Intersector {
             let __result = unsafe {
                 crate::ffi::Geom2dHatch_Intersector_inherited_IsDone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1569,8 +1887,11 @@ impl Intersector {
             let __result = unsafe {
                 crate::ffi::Geom2dHatch_Intersector_inherited_IsEmpty(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1580,8 +1901,11 @@ impl Intersector {
             let __result = unsafe {
                 crate::ffi::Geom2dHatch_Intersector_inherited_NbPoints(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1591,8 +1915,11 @@ impl Intersector {
             let __result = unsafe {
                 crate::ffi::Geom2dHatch_Intersector_inherited_Point(self as *const Self, N)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1602,8 +1929,11 @@ impl Intersector {
             let __result = unsafe {
                 crate::ffi::Geom2dHatch_Intersector_inherited_NbSegments(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1613,21 +1943,26 @@ impl Intersector {
             let __result = unsafe {
                 crate::ffi::Geom2dHatch_Intersector_inherited_Segment(self as *const Self, N)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2dHatch_Intersector_inherited_SetReversedParameters(
                     self as *mut Self,
                     Reverseflag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

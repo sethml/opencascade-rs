@@ -26,8 +26,11 @@ pub fn to2d(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
     {
         let __result = unsafe { crate::ffi::GeomAPI_to2d(C, P) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `GeomAPI.hxx`:87 - `GeomAPI::To3d`
@@ -41,8 +44,11 @@ pub fn to3d_handlegeom2dcurve_pln(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
     {
         let __result = unsafe { crate::ffi::GeomAPI_to3d_handlegeom2dcurve_pln(C, P) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 
@@ -89,8 +95,10 @@ impl ExtremaCurveCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomAPI_ExtremaCurveCurve_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -103,8 +111,10 @@ impl ExtremaCurveCurve {
         {
             let __result =
                 unsafe { crate::ffi::GeomAPI_ExtremaCurveCurve_ctor_handlegeomcurve2(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -130,8 +140,10 @@ impl ExtremaCurveCurve {
                     C1, C2, U1min, U1max, U2min, U2max,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -144,14 +156,16 @@ impl ExtremaCurveCurve {
         C2: &crate::ffi::HandleGeomCurve,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ExtremaCurveCurve_init_handlegeomcurve2(
                     self as *mut Self,
                     C1,
                     C2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -175,7 +189,7 @@ impl ExtremaCurveCurve {
         U2max: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ExtremaCurveCurve_init_handlegeomcurve2_real4(
                     self as *mut Self,
                     C1,
@@ -186,7 +200,9 @@ impl ExtremaCurveCurve {
                     U2max,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -197,8 +213,11 @@ impl ExtremaCurveCurve {
         {
             let __result =
                 unsafe { crate::ffi::GeomAPI_ExtremaCurveCurve_nb_extrema(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -212,10 +231,12 @@ impl ExtremaCurveCurve {
     /// number of extrema computed by this algorithm.
     pub fn points(&self, Index: i32, P1: &mut crate::gp::Pnt, P2: &mut crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ExtremaCurveCurve_points(self as *const Self, Index, P1, P2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -229,10 +250,12 @@ impl ExtremaCurveCurve {
     /// number of extrema computed by this algorithm.
     pub fn parameters(&self, Index: i32, U1: &mut f64, U2: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ExtremaCurveCurve_parameters(self as *const Self, Index, U1, U2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -248,8 +271,11 @@ impl ExtremaCurveCurve {
             let __result = unsafe {
                 crate::ffi::GeomAPI_ExtremaCurveCurve_distance(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -259,8 +285,11 @@ impl ExtremaCurveCurve {
         {
             let __result =
                 unsafe { crate::ffi::GeomAPI_ExtremaCurveCurve_is_parallel(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -271,10 +300,12 @@ impl ExtremaCurveCurve {
     /// Exceptions StdFail_NotDone if this algorithm fails.
     pub fn nearest_points(&self, P1: &mut crate::gp::Pnt, P2: &mut crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ExtremaCurveCurve_nearest_points(self as *const Self, P1, P2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -285,14 +316,16 @@ impl ExtremaCurveCurve {
     /// Exceptions StdFail_NotDone if this algorithm fails.
     pub fn lower_distance_parameters(&self, U1: &mut f64, U2: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ExtremaCurveCurve_lower_distance_parameters(
                     self as *const Self,
                     U1,
                     U2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -305,8 +338,11 @@ impl ExtremaCurveCurve {
             let __result = unsafe {
                 crate::ffi::GeomAPI_ExtremaCurveCurve_lower_distance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -316,8 +352,11 @@ impl ExtremaCurveCurve {
         {
             let __result =
                 unsafe { crate::ffi::GeomAPI_ExtremaCurveCurve_extrema(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -338,8 +377,11 @@ impl ExtremaCurveCurve {
                     P2,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -356,8 +398,11 @@ impl ExtremaCurveCurve {
                     U2,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -370,8 +415,11 @@ impl ExtremaCurveCurve {
             let __result = unsafe {
                 crate::ffi::GeomAPI_ExtremaCurveCurve_total_lower_distance(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -422,8 +470,10 @@ impl ExtremaCurveSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomAPI_ExtremaCurveSurface_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -440,8 +490,10 @@ impl ExtremaCurveSurface {
                     Curve, Surface,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -470,8 +522,10 @@ impl ExtremaCurveSurface {
                     Curve, Surface, Wmin, Wmax, Umin, Umax, Vmin, Vmax,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -484,14 +538,16 @@ impl ExtremaCurveSurface {
         Surface: &crate::ffi::HandleGeomSurface,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ExtremaCurveSurface_init_handlegeomcurve_handlegeomsurface(
                     self as *mut Self,
                     Curve,
                     Surface,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -516,7 +572,7 @@ impl ExtremaCurveSurface {
         Vmax: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ExtremaCurveSurface_init_handlegeomcurve_handlegeomsurface_real6(
                     self as *mut Self,
                     Curve,
@@ -529,7 +585,9 @@ impl ExtremaCurveSurface {
                     Vmax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -540,8 +598,11 @@ impl ExtremaCurveSurface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAPI_ExtremaCurveSurface_nb_extrema(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -555,10 +616,12 @@ impl ExtremaCurveSurface {
     /// number of extrema computed by this algorithm.
     pub fn points(&self, Index: i32, P1: &mut crate::gp::Pnt, P2: &mut crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ExtremaCurveSurface_points(self as *const Self, Index, P1, P2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -572,7 +635,7 @@ impl ExtremaCurveSurface {
     /// number of extrema computed by this algorithm.
     pub fn parameters(&self, Index: i32, W: &mut f64, U: &mut f64, V: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ExtremaCurveSurface_parameters(
                     self as *const Self,
                     Index,
@@ -581,7 +644,9 @@ impl ExtremaCurveSurface {
                     V,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -597,8 +662,11 @@ impl ExtremaCurveSurface {
             let __result = unsafe {
                 crate::ffi::GeomAPI_ExtremaCurveSurface_distance(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -608,8 +676,11 @@ impl ExtremaCurveSurface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAPI_ExtremaCurveSurface_is_parallel(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -619,10 +690,12 @@ impl ExtremaCurveSurface {
     /// Exceptions - StdFail_NotDone if this algorithm fails.
     pub fn nearest_points(&self, PC: &mut crate::gp::Pnt, PS: &mut crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ExtremaCurveSurface_nearest_points(self as *const Self, PC, PS)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -633,7 +706,7 @@ impl ExtremaCurveSurface {
     /// Exceptions - StdFail_NotDone if this algorithm fails.
     pub fn lower_distance_parameters(&self, W: &mut f64, U: &mut f64, V: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ExtremaCurveSurface_lower_distance_parameters(
                     self as *const Self,
                     W,
@@ -641,7 +714,9 @@ impl ExtremaCurveSurface {
                     V,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -654,8 +729,11 @@ impl ExtremaCurveSurface {
             let __result = unsafe {
                 crate::ffi::GeomAPI_ExtremaCurveSurface_lower_distance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -665,8 +743,11 @@ impl ExtremaCurveSurface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAPI_ExtremaCurveSurface_extrema(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -712,8 +793,10 @@ impl ExtremaSurfaceSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomAPI_ExtremaSurfaceSurface_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -728,8 +811,10 @@ impl ExtremaSurfaceSurface {
             let __result = unsafe {
                 crate::ffi::GeomAPI_ExtremaSurfaceSurface_ctor_handlegeomsurface2(S1, S2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -763,8 +848,10 @@ impl ExtremaSurfaceSurface {
                     S1, S2, U1min, U1max, V1min, V1max, U2min, U2max, V2min, V2max,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -778,14 +865,16 @@ impl ExtremaSurfaceSurface {
         S2: &crate::ffi::HandleGeomSurface,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ExtremaSurfaceSurface_init_handlegeomsurface2(
                     self as *mut Self,
                     S1,
                     S2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -814,7 +903,7 @@ impl ExtremaSurfaceSurface {
         V2max: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ExtremaSurfaceSurface_init_handlegeomsurface2_real8(
                     self as *mut Self,
                     S1,
@@ -829,7 +918,9 @@ impl ExtremaSurfaceSurface {
                     V2max,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -841,8 +932,11 @@ impl ExtremaSurfaceSurface {
             let __result = unsafe {
                 crate::ffi::GeomAPI_ExtremaSurfaceSurface_nb_extrema(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -856,10 +950,12 @@ impl ExtremaSurfaceSurface {
     /// number of extrema computed by this algorithm.
     pub fn points(&self, Index: i32, P1: &mut crate::gp::Pnt, P2: &mut crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ExtremaSurfaceSurface_points(self as *const Self, Index, P1, P2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -874,7 +970,7 @@ impl ExtremaSurfaceSurface {
     /// number of extrema computed by this algorithm.
     pub fn parameters(&self, Index: i32, U1: &mut f64, V1: &mut f64, U2: &mut f64, V2: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ExtremaSurfaceSurface_parameters(
                     self as *const Self,
                     Index,
@@ -884,7 +980,9 @@ impl ExtremaSurfaceSurface {
                     V2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -900,8 +998,11 @@ impl ExtremaSurfaceSurface {
             let __result = unsafe {
                 crate::ffi::GeomAPI_ExtremaSurfaceSurface_distance(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -912,8 +1013,11 @@ impl ExtremaSurfaceSurface {
             let __result = unsafe {
                 crate::ffi::GeomAPI_ExtremaSurfaceSurface_is_parallel(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -924,14 +1028,16 @@ impl ExtremaSurfaceSurface {
     /// Exceptions StdFail_NotDone if this algorithm fails.
     pub fn nearest_points(&self, P1: &mut crate::gp::Pnt, P2: &mut crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ExtremaSurfaceSurface_nearest_points(
                     self as *const Self,
                     P1,
                     P2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -949,7 +1055,7 @@ impl ExtremaSurfaceSurface {
         V2: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ExtremaSurfaceSurface_lower_distance_parameters(
                     self as *const Self,
                     U1,
@@ -958,7 +1064,9 @@ impl ExtremaSurfaceSurface {
                     V2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -971,8 +1079,11 @@ impl ExtremaSurfaceSurface {
             let __result = unsafe {
                 crate::ffi::GeomAPI_ExtremaSurfaceSurface_lower_distance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -982,8 +1093,11 @@ impl ExtremaSurfaceSurface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAPI_ExtremaSurfaceSurface_extrema(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -1011,8 +1125,10 @@ impl IntCS {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomAPI_IntCS_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1028,8 +1144,10 @@ impl IntCS {
         {
             let __result =
                 unsafe { crate::ffi::GeomAPI_IntCS_ctor_handlegeomcurve_handlegeomsurface(C, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1040,8 +1158,10 @@ impl IntCS {
     /// Use function IsDone to verify that the intersections are computed successfully.
     pub fn perform(&mut self, C: &crate::ffi::HandleGeomCurve, S: &crate::ffi::HandleGeomSurface) {
         {
-            unsafe { crate::ffi::GeomAPI_IntCS_perform(self as *mut Self, C, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::GeomAPI_IntCS_perform(self as *mut Self, C, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1050,8 +1170,11 @@ impl IntCS {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::GeomAPI_IntCS_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1062,8 +1185,11 @@ impl IntCS {
     pub fn nb_points(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::GeomAPI_IntCS_nb_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1075,8 +1201,11 @@ impl IntCS {
     pub fn point(&self, Index: i32) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::GeomAPI_IntCS_point(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1090,10 +1219,12 @@ impl IntCS {
     /// NbPoints is the number of computed intersection points.
     pub fn parameters_int_real3(&self, Index: i32, U: &mut f64, V: &mut f64, W: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_IntCS_parameters_int_real3(self as *const Self, Index, U, V, W)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1105,8 +1236,11 @@ impl IntCS {
     pub fn nb_segments(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::GeomAPI_IntCS_nb_segments(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1121,8 +1255,11 @@ impl IntCS {
     pub fn segment(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
         {
             let __result = unsafe { crate::ffi::GeomAPI_IntCS_segment(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1143,7 +1280,7 @@ impl IntCS {
         V2: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_IntCS_parameters_int_real4(
                     self as *const Self,
                     Index,
@@ -1153,7 +1290,9 @@ impl IntCS {
                     V2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1184,8 +1323,10 @@ impl IntSS {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomAPI_IntSS_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1203,8 +1344,10 @@ impl IntSS {
         {
             let __result =
                 unsafe { crate::ffi::GeomAPI_IntSS_ctor_handlegeomsurface2_real(S1, S2, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1222,8 +1365,11 @@ impl IntSS {
         Tol: f64,
     ) {
         {
-            unsafe { crate::ffi::GeomAPI_IntSS_perform(self as *mut Self, S1, S2, Tol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::GeomAPI_IntSS_perform(self as *mut Self, S1, S2, Tol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1232,8 +1378,11 @@ impl IntSS {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::GeomAPI_IntSS_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1244,8 +1393,11 @@ impl IntSS {
     pub fn nb_lines(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::GeomAPI_IntSS_nb_lines(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1258,8 +1410,11 @@ impl IntSS {
     pub fn line(&self, Index: i32) -> &crate::ffi::HandleGeomCurve {
         {
             let __result = unsafe { crate::ffi::GeomAPI_IntSS_line(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -1346,8 +1501,10 @@ impl Interpolate {
                     Tolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1400,8 +1557,10 @@ impl Interpolate {
             let __result = unsafe {
                 crate::ffi::GeomAPI_Interpolate_ctor_handletcolgpharray1ofpnt_handletcolstdharray1ofreal_bool_real(Points, Parameters, PeriodicFlag, Tolerance)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1419,7 +1578,7 @@ impl Interpolate {
         Scale: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_Interpolate_load_vec2_bool(
                     self as *mut Self,
                     InitialTangent,
@@ -1427,7 +1586,9 @@ impl Interpolate {
                     Scale,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1448,7 +1609,7 @@ impl Interpolate {
         Scale: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_Interpolate_load_array1ofvec_handletcolstdharray1ofboolean_bool(
                     self as *mut Self,
                     Tangents,
@@ -1456,7 +1617,9 @@ impl Interpolate {
                     Scale,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1465,8 +1628,11 @@ impl Interpolate {
     /// constrained BSpline curve (as initialized by the function Load).
     pub fn clear_tangents(&mut self) {
         {
-            unsafe { crate::ffi::GeomAPI_Interpolate_clear_tangents(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::GeomAPI_Interpolate_clear_tangents(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1476,8 +1642,10 @@ impl Interpolate {
     /// computation is successful, and then the function Curve to obtain the result.
     pub fn perform(&mut self) {
         {
-            unsafe { crate::ffi::GeomAPI_Interpolate_perform(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::GeomAPI_Interpolate_perform(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1487,8 +1655,11 @@ impl Interpolate {
     pub fn curve(&self) -> &crate::ffi::HandleGeomBSplineCurve {
         {
             let __result = unsafe { crate::ffi::GeomAPI_Interpolate_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1498,8 +1669,11 @@ impl Interpolate {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::GeomAPI_Interpolate_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1531,8 +1705,10 @@ impl PointsToBSpline {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomAPI_PointsToBSpline_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1561,8 +1737,10 @@ impl PointsToBSpline {
                     Tol3D,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1586,8 +1764,10 @@ impl PointsToBSpline {
             let __result = unsafe {
                 crate::ffi::GeomAPI_PointsToBSpline_ctor_array1ofpnt_parametrizationtype_int2_shape_real(Points, ParType.into(), DegMin, DegMax, Continuity.into(), Tol3D)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1620,8 +1800,10 @@ impl PointsToBSpline {
                     Tol3D,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1651,8 +1833,10 @@ impl PointsToBSpline {
                     Tol3D,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1750,7 +1934,7 @@ impl PointsToBSpline {
         Tol3D: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_PointsToBSpline_init_array1ofpnt_int2_shape_real(
                     self as *mut Self,
                     Points,
@@ -1760,7 +1944,9 @@ impl PointsToBSpline {
                     Tol3D,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1782,10 +1968,12 @@ impl PointsToBSpline {
         Tol3D: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_PointsToBSpline_init_array1ofpnt_parametrizationtype_int2_shape_real(self as *mut Self, Points, ParType.into(), DegMin, DegMax, Continuity.into(), Tol3D)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1809,7 +1997,7 @@ impl PointsToBSpline {
         Tol3D: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_PointsToBSpline_init_array1ofpnt_array1ofreal_int2_shape_real(
                     self as *mut Self,
                     Points,
@@ -1820,7 +2008,9 @@ impl PointsToBSpline {
                     Tol3D,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1840,7 +2030,7 @@ impl PointsToBSpline {
         Tol3D: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_PointsToBSpline_init_array1ofpnt_real3_int_shape_real(
                     self as *mut Self,
                     Points,
@@ -1852,7 +2042,9 @@ impl PointsToBSpline {
                     Tol3D,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1863,8 +2055,11 @@ impl PointsToBSpline {
         {
             let __result =
                 unsafe { crate::ffi::GeomAPI_PointsToBSpline_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1873,8 +2068,11 @@ impl PointsToBSpline {
         {
             let __result =
                 unsafe { crate::ffi::GeomAPI_PointsToBSpline_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1942,8 +2140,10 @@ impl PointsToBSplineSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomAPI_PointsToBSplineSurface_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1972,8 +2172,10 @@ impl PointsToBSplineSurface {
                     Tol3D,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1997,8 +2199,10 @@ impl PointsToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::GeomAPI_PointsToBSplineSurface_ctor_array2ofpnt_parametrizationtype_int2_shape_real(Points, ParType.into(), DegMin, DegMax, Continuity.into(), Tol3D)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2028,8 +2232,10 @@ impl PointsToBSplineSurface {
                     Tol3D,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2075,8 +2281,10 @@ impl PointsToBSplineSurface {
                     Tol3D,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2184,7 +2392,7 @@ impl PointsToBSplineSurface {
         Tol3D: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_PointsToBSplineSurface_init_array2ofpnt_int2_shape_real(
                     self as *mut Self,
                     Points,
@@ -2194,7 +2402,9 @@ impl PointsToBSplineSurface {
                     Tol3D,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2210,14 +2420,16 @@ impl PointsToBSplineSurface {
         thePeriodic: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_PointsToBSplineSurface_interpolate_array2ofpnt_bool(
                     self as *mut Self,
                     Points,
                     thePeriodic,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2234,10 +2446,12 @@ impl PointsToBSplineSurface {
         thePeriodic: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_PointsToBSplineSurface_interpolate_array2ofpnt_parametrizationtype_bool(self as *mut Self, Points, ParType.into(), thePeriodic)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2271,7 +2485,7 @@ impl PointsToBSplineSurface {
         Tol3D: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_PointsToBSplineSurface_init_array2ofreal_real4_int2_shape_real(
                     self as *mut Self,
                     ZPoints,
@@ -2285,7 +2499,9 @@ impl PointsToBSplineSurface {
                     Tol3D,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2313,7 +2529,7 @@ impl PointsToBSplineSurface {
         dY: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_PointsToBSplineSurface_interpolate_array2ofreal_real4(
                     self as *mut Self,
                     ZPoints,
@@ -2323,7 +2539,9 @@ impl PointsToBSplineSurface {
                     dY,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2346,10 +2564,12 @@ impl PointsToBSplineSurface {
         thePeriodic: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_PointsToBSplineSurface_init_array2ofpnt_parametrizationtype_int2_shape_real_bool(self as *mut Self, Points, ParType.into(), DegMin, DegMax, Continuity.into(), Tol3D, thePeriodic)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2369,7 +2589,7 @@ impl PointsToBSplineSurface {
         Tol3D: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_PointsToBSplineSurface_init_array2ofpnt_real3_int_shape_real(
                     self as *mut Self,
                     Points,
@@ -2381,7 +2601,9 @@ impl PointsToBSplineSurface {
                     Tol3D,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2391,8 +2613,11 @@ impl PointsToBSplineSurface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAPI_PointsToBSplineSurface_surface(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2401,8 +2626,11 @@ impl PointsToBSplineSurface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAPI_PointsToBSplineSurface_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2429,8 +2657,10 @@ impl ProjectPointOnCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomAPI_ProjectPointOnCurve_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2445,8 +2675,10 @@ impl ProjectPointOnCurve {
             let __result = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnCurve_ctor_pnt_handlegeomcurve(P, Curve)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2465,8 +2697,10 @@ impl ProjectPointOnCurve {
                     P, Curve, Umin, Usup,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2479,14 +2713,16 @@ impl ProjectPointOnCurve {
         Curve: &crate::ffi::HandleGeomCurve,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnCurve_init_pnt_handlegeomcurve(
                     self as *mut Self,
                     P,
                     Curve,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2501,7 +2737,7 @@ impl ProjectPointOnCurve {
         Usup: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnCurve_init_pnt_handlegeomcurve_real2(
                     self as *mut Self,
                     P,
@@ -2510,7 +2746,9 @@ impl ProjectPointOnCurve {
                     Usup,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2524,7 +2762,7 @@ impl ProjectPointOnCurve {
         Usup: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnCurve_init_handlegeomcurve_real2(
                     self as *mut Self,
                     Curve,
@@ -2532,7 +2770,9 @@ impl ProjectPointOnCurve {
                     Usup,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2540,8 +2780,11 @@ impl ProjectPointOnCurve {
     /// Performs the projection of a point on the current curve.
     pub fn perform(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::GeomAPI_ProjectPointOnCurve_perform(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::GeomAPI_ProjectPointOnCurve_perform(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2553,8 +2796,11 @@ impl ProjectPointOnCurve {
         {
             let __result =
                 unsafe { crate::ffi::GeomAPI_ProjectPointOnCurve_nb_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2569,8 +2815,11 @@ impl ProjectPointOnCurve {
             let __result = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnCurve_point(self as *const Self, Index)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2586,8 +2835,11 @@ impl ProjectPointOnCurve {
             let __result = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnCurve_parameter_int(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2600,14 +2852,16 @@ impl ProjectPointOnCurve {
     /// NbPoints is the number of solution points.-
     pub fn parameter_int_real(&self, Index: i32, U: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnCurve_parameter_int_real(
                     self as *const Self,
                     Index,
                     U,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2622,8 +2876,11 @@ impl ProjectPointOnCurve {
             let __result = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnCurve_distance(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2636,8 +2893,11 @@ impl ProjectPointOnCurve {
             let __result = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnCurve_nearest_point(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2652,8 +2912,11 @@ impl ProjectPointOnCurve {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2666,8 +2929,11 @@ impl ProjectPointOnCurve {
             let __result = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnCurve_lower_distance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2677,8 +2943,11 @@ impl ProjectPointOnCurve {
         {
             let __result =
                 unsafe { crate::ffi::GeomAPI_ProjectPointOnCurve_extrema(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -2705,8 +2974,10 @@ impl ProjectPointOnSurf {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomAPI_ProjectPointOnSurf_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2726,8 +2997,10 @@ impl ProjectPointOnSurf {
                     Algo.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2752,8 +3025,10 @@ impl ProjectPointOnSurf {
                     Algo.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2781,8 +3056,10 @@ impl ProjectPointOnSurf {
                     Algo.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2810,8 +3087,10 @@ impl ProjectPointOnSurf {
                     Algo.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2824,7 +3103,7 @@ impl ProjectPointOnSurf {
         Algo: crate::extrema::ExtAlgo,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnSurf_init_pnt_handlegeomsurface_real_extalgo(
                     self as *mut Self,
                     P,
@@ -2833,7 +3112,9 @@ impl ProjectPointOnSurf {
                     Algo.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2848,7 +3129,7 @@ impl ProjectPointOnSurf {
         Algo: crate::extrema::ExtAlgo,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnSurf_init_pnt_handlegeomsurface_extalgo(
                     self as *mut Self,
                     P,
@@ -2856,7 +3137,9 @@ impl ProjectPointOnSurf {
                     Algo.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2873,7 +3156,7 @@ impl ProjectPointOnSurf {
         Algo: crate::extrema::ExtAlgo,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnSurf_init_pnt_handlegeomsurface_real5_extalgo(
                     self as *mut Self,
                     P,
@@ -2886,7 +3169,9 @@ impl ProjectPointOnSurf {
                     Algo.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2905,7 +3190,7 @@ impl ProjectPointOnSurf {
         Algo: crate::extrema::ExtAlgo,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnSurf_init_pnt_handlegeomsurface_real4_extalgo(
                     self as *mut Self,
                     P,
@@ -2917,7 +3202,9 @@ impl ProjectPointOnSurf {
                     Algo.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2933,7 +3220,7 @@ impl ProjectPointOnSurf {
         Algo: crate::extrema::ExtAlgo,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnSurf_init_handlegeomsurface_real5_extalgo(
                     self as *mut Self,
                     Surface,
@@ -2945,7 +3232,9 @@ impl ProjectPointOnSurf {
                     Algo.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2960,7 +3249,7 @@ impl ProjectPointOnSurf {
         Algo: crate::extrema::ExtAlgo,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnSurf_init_handlegeomsurface_real4_extalgo(
                     self as *mut Self,
                     Surface,
@@ -2971,7 +3260,9 @@ impl ProjectPointOnSurf {
                     Algo.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2980,13 +3271,15 @@ impl ProjectPointOnSurf {
     /// By default the Extrema is initialized with Grad algorithm.
     pub fn set_extrema_algo(&mut self, theAlgo: crate::extrema::ExtAlgo) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnSurf_set_extrema_algo(
                     self as *mut Self,
                     theAlgo.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2995,13 +3288,15 @@ impl ProjectPointOnSurf {
     /// By default the Extrema is set to search the MinMax solutions.
     pub fn set_extrema_flag(&mut self, theExtFlag: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnSurf_set_extrema_flag(
                     self as *mut Self,
                     theExtFlag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3009,8 +3304,11 @@ impl ProjectPointOnSurf {
     /// Performs the projection of a point on the current surface.
     pub fn perform(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::GeomAPI_ProjectPointOnSurf_perform(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::GeomAPI_ProjectPointOnSurf_perform(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3019,8 +3317,11 @@ impl ProjectPointOnSurf {
         {
             let __result =
                 unsafe { crate::ffi::GeomAPI_ProjectPointOnSurf_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3031,8 +3332,11 @@ impl ProjectPointOnSurf {
         {
             let __result =
                 unsafe { crate::ffi::GeomAPI_ProjectPointOnSurf_nb_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3046,8 +3350,11 @@ impl ProjectPointOnSurf {
         {
             let __result =
                 unsafe { crate::ffi::GeomAPI_ProjectPointOnSurf_point(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3060,10 +3367,12 @@ impl ProjectPointOnSurf {
     /// NbPoints is the number of solution points.
     pub fn parameters(&self, Index: i32, U: &mut f64, V: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnSurf_parameters(self as *const Self, Index, U, V)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3079,8 +3388,11 @@ impl ProjectPointOnSurf {
             let __result = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnSurf_distance(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3094,8 +3406,11 @@ impl ProjectPointOnSurf {
             let __result = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnSurf_nearest_point(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3106,14 +3421,16 @@ impl ProjectPointOnSurf {
     /// StdFail_NotDone if projection fails.
     pub fn lower_distance_parameters(&self, U: &mut f64, V: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnSurf_lower_distance_parameters(
                     self as *const Self,
                     U,
                     V,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3127,8 +3444,11 @@ impl ProjectPointOnSurf {
             let __result = unsafe {
                 crate::ffi::GeomAPI_ProjectPointOnSurf_lower_distance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3138,8 +3458,11 @@ impl ProjectPointOnSurf {
         {
             let __result =
                 unsafe { crate::ffi::GeomAPI_ProjectPointOnSurf_extrema(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }

@@ -43,8 +43,10 @@ impl AsciiString {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TCollection_AsciiString_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -55,8 +57,10 @@ impl AsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_AsciiString_ctor_charptr(c_message.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -68,8 +72,10 @@ impl AsciiString {
             let __result = unsafe {
                 crate::ffi::TCollection_AsciiString_ctor_charptr_int(c_message.as_ptr(), aLen)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -78,8 +84,10 @@ impl AsciiString {
     pub fn new_char(aChar: std::ffi::c_char) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TCollection_AsciiString_ctor_char(aChar) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -90,8 +98,10 @@ impl AsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_AsciiString_ctor_int_char(length, filler) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -100,8 +110,10 @@ impl AsciiString {
     pub fn new_int(value: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TCollection_AsciiString_ctor_int(value) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -110,8 +122,10 @@ impl AsciiString {
     pub fn new_real(value: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TCollection_AsciiString_ctor_real(value) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -126,8 +140,10 @@ impl AsciiString {
             let __result = unsafe {
                 crate::ffi::TCollection_AsciiString_ctor_asciistring_char(astring, message)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -143,8 +159,10 @@ impl AsciiString {
                     c_message.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -155,8 +173,10 @@ impl AsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_AsciiString_ctor_asciistring2(astring, message) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -176,8 +196,10 @@ impl AsciiString {
                     replaceNonAscii,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -185,10 +207,12 @@ impl AsciiString {
     /// Appends <other>  to me. This is an unary operator.
     pub fn assign_cat_char(&mut self, other: std::ffi::c_char) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_AsciiString_assign_cat_char(self as *mut Self, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -196,8 +220,12 @@ impl AsciiString {
     /// Appends <other>  to me. This is an unary operator.
     pub fn assign_cat_int(&mut self, other: i32) {
         {
-            unsafe { crate::ffi::TCollection_AsciiString_assign_cat_int(self as *mut Self, other) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TCollection_AsciiString_assign_cat_int(self as *mut Self, other)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -205,10 +233,12 @@ impl AsciiString {
     /// Appends <other>  to me. This is an unary operator.
     pub fn assign_cat_real(&mut self, other: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_AsciiString_assign_cat_real(self as *mut Self, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -222,13 +252,15 @@ impl AsciiString {
     pub fn assign_cat_charptr(&mut self, other: &str) {
         let c_other = std::ffi::CString::new(other).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_AsciiString_assign_cat_charptr(
                     self as *mut Self,
                     c_other.as_ptr(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -237,10 +269,12 @@ impl AsciiString {
     /// Example: aString += anotherString
     pub fn assign_cat_asciistring(&mut self, other: &AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_AsciiString_assign_cat_asciistring(self as *mut Self, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -253,8 +287,11 @@ impl AsciiString {
     /// me = "Hello "
     pub fn capitalize(&mut self) {
         {
-            unsafe { crate::ffi::TCollection_AsciiString_capitalize(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TCollection_AsciiString_capitalize(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -273,8 +310,11 @@ impl AsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_AsciiString_cat_char(self as *const Self, other) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -292,8 +332,11 @@ impl AsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_AsciiString_cat_int(self as *const Self, other) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -311,8 +354,11 @@ impl AsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_AsciiString_cat_real(self as *const Self, other) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -336,8 +382,11 @@ impl AsciiString {
                     c_other.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -349,8 +398,11 @@ impl AsciiString {
             let __result = unsafe {
                 crate::ffi::TCollection_AsciiString_cat_asciistring(self as *const Self, other)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -368,8 +420,12 @@ impl AsciiString {
     /// abcdef " );
     pub fn center(&mut self, Width: i32, Filler: std::ffi::c_char) {
         {
-            unsafe { crate::ffi::TCollection_AsciiString_center(self as *mut Self, Width, Filler) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TCollection_AsciiString_center(self as *mut Self, Width, Filler)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -388,7 +444,7 @@ impl AsciiString {
         CaseSensitive: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_AsciiString_change_all(
                     self as *mut Self,
                     aChar,
@@ -396,7 +452,9 @@ impl AsciiString {
                     CaseSensitive,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -405,8 +463,10 @@ impl AsciiString {
     /// This produces an empty AsciiString.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::TCollection_AsciiString_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TCollection_AsciiString_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -417,13 +477,15 @@ impl AsciiString {
     pub fn copy_charptr(&mut self, fromwhere: &str) {
         let c_fromwhere = std::ffi::CString::new(fromwhere).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_AsciiString_copy_charptr(
                     self as *mut Self,
                     c_fromwhere.as_ptr(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -433,10 +495,12 @@ impl AsciiString {
     /// Example: aString = anotherString;
     pub fn copy_asciistring(&mut self, fromwhere: &AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_AsciiString_copy_asciistring(self as *mut Self, fromwhere)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -444,8 +508,11 @@ impl AsciiString {
     /// Exchange the data of two strings (without reallocating memory).
     pub fn swap(&mut self, theOther: &mut AsciiString) {
         {
-            unsafe { crate::ffi::TCollection_AsciiString_swap(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TCollection_AsciiString_swap(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -472,8 +539,11 @@ impl AsciiString {
                     ToIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -505,8 +575,11 @@ impl AsciiString {
                     ToIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -521,10 +594,12 @@ impl AsciiString {
     /// aString.Insert(2,'h'); gives "Why"
     pub fn insert_int_char(&mut self, where_: i32, what: std::ffi::c_char) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_AsciiString_insert_int_char(self as *mut Self, where_, what)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -536,14 +611,16 @@ impl AsciiString {
     pub fn insert_int_charptr(&mut self, where_: i32, what: &str) {
         let c_what = std::ffi::CString::new(what).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_AsciiString_insert_int_charptr(
                     self as *mut Self,
                     where_,
                     c_what.as_ptr(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -551,14 +628,16 @@ impl AsciiString {
     /// Inserts a AsciiString at position <where>.
     pub fn insert_int_asciistring(&mut self, where_: i32, what: &AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_AsciiString_insert_int_asciistring(
                     self as *mut Self,
                     where_,
                     what,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -574,10 +653,12 @@ impl AsciiString {
     /// me = "abcde" , other = "ab"
     pub fn insert_after(&mut self, Index: i32, other: &AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_AsciiString_insert_after(self as *mut Self, Index, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -593,10 +674,12 @@ impl AsciiString {
     /// me = "abcde" , other = "ab"
     pub fn insert_before(&mut self, Index: i32, other: &AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_AsciiString_insert_before(self as *mut Self, Index, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -606,8 +689,11 @@ impl AsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_AsciiString_is_empty(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -624,8 +710,11 @@ impl AsciiString {
                     c_other.as_ptr(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -638,8 +727,11 @@ impl AsciiString {
             let __result = unsafe {
                 crate::ffi::TCollection_AsciiString_is_equal_asciistring(self as *const Self, other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -656,8 +748,11 @@ impl AsciiString {
                     c_other.as_ptr(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -673,8 +768,11 @@ impl AsciiString {
                     other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -689,8 +787,11 @@ impl AsciiString {
                     c_other.as_ptr(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -701,8 +802,11 @@ impl AsciiString {
             let __result = unsafe {
                 crate::ffi::TCollection_AsciiString_is_less_asciistring(self as *const Self, other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -717,8 +821,11 @@ impl AsciiString {
                     c_other.as_ptr(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -732,8 +839,11 @@ impl AsciiString {
                     other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -744,8 +854,11 @@ impl AsciiString {
             let __result = unsafe {
                 crate::ffi::TCollection_AsciiString_starts_with(self as *const Self, theStartString)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -756,8 +869,11 @@ impl AsciiString {
             let __result = unsafe {
                 crate::ffi::TCollection_AsciiString_ends_with(self as *const Self, theEndString)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -769,8 +885,11 @@ impl AsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_AsciiString_integer_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -782,8 +901,11 @@ impl AsciiString {
             let __result = unsafe {
                 crate::ffi::TCollection_AsciiString_is_integer_value(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -801,8 +923,11 @@ impl AsciiString {
                     theToCheckFull,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -814,8 +939,11 @@ impl AsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_AsciiString_is_ascii(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -823,8 +951,11 @@ impl AsciiString {
     /// Removes all space characters in the beginning of the string.
     pub fn left_adjust(&mut self) {
         {
-            unsafe { crate::ffi::TCollection_AsciiString_left_adjust(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TCollection_AsciiString_left_adjust(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -841,10 +972,12 @@ impl AsciiString {
     /// me = "abcdef   "
     pub fn left_justify(&mut self, Width: i32, Filler: std::ffi::c_char) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_AsciiString_left_justify(self as *mut Self, Width, Filler)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -864,8 +997,11 @@ impl AsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_AsciiString_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -897,8 +1033,11 @@ impl AsciiString {
                     ToIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -932,8 +1071,11 @@ impl AsciiString {
                     ToIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -947,8 +1089,11 @@ impl AsciiString {
     /// assert ( myString == "hello dolly" );
     pub fn lower_case(&mut self) {
         {
-            unsafe { crate::ffi::TCollection_AsciiString_lower_case(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TCollection_AsciiString_lower_case(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -961,8 +1106,11 @@ impl AsciiString {
     /// assert ( myAlphabet == "abcde" );
     pub fn prepend(&mut self, other: &AsciiString) {
         {
-            unsafe { crate::ffi::TCollection_AsciiString_prepend(self as *mut Self, other) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TCollection_AsciiString_prepend(self as *mut Self, other) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -970,8 +1118,11 @@ impl AsciiString {
     /// Displays <me> on a stream.
     pub fn print(&self, astream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::TCollection_AsciiString_print(self as *const Self, astream) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TCollection_AsciiString_print(self as *const Self, astream) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -979,8 +1130,11 @@ impl AsciiString {
     /// Read <me> from a stream.
     pub fn read(&mut self, astream: &mut crate::ffi::Standard_IStream) {
         {
-            unsafe { crate::ffi::TCollection_AsciiString_read(self as *mut Self, astream) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TCollection_AsciiString_read(self as *mut Self, astream) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -993,8 +1147,11 @@ impl AsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_AsciiString_real_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1007,14 +1164,16 @@ impl AsciiString {
     /// me = "Hello"
     pub fn remove_all_char_bool(&mut self, C: std::ffi::c_char, CaseSensitive: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_AsciiString_remove_all_char_bool(
                     self as *mut Self,
                     C,
                     CaseSensitive,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1022,8 +1181,12 @@ impl AsciiString {
     /// Removes every <what> characters from <me>.
     pub fn remove_all_char(&mut self, what: std::ffi::c_char) {
         {
-            unsafe { crate::ffi::TCollection_AsciiString_remove_all_char(self as *mut Self, what) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TCollection_AsciiString_remove_all_char(self as *mut Self, what)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1036,10 +1199,12 @@ impl AsciiString {
     /// This gives "Hlo".
     pub fn remove(&mut self, where_: i32, ahowmany: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_AsciiString_remove(self as *mut Self, where_, ahowmany)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1047,8 +1212,11 @@ impl AsciiString {
     /// Removes all space characters at the end of the string.
     pub fn right_adjust(&mut self) {
         {
-            unsafe { crate::ffi::TCollection_AsciiString_right_adjust(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TCollection_AsciiString_right_adjust(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1065,10 +1233,12 @@ impl AsciiString {
     /// me = "   abcdef"
     pub fn right_justify(&mut self, Width: i32, Filler: std::ffi::c_char) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_AsciiString_right_justify(self as *mut Self, Width, Filler)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1088,8 +1258,11 @@ impl AsciiString {
                     c_what.as_ptr(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1102,8 +1275,11 @@ impl AsciiString {
             let __result = unsafe {
                 crate::ffi::TCollection_AsciiString_search_asciistring(self as *const Self, what)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1123,8 +1299,11 @@ impl AsciiString {
                     c_what.as_ptr(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1140,8 +1319,11 @@ impl AsciiString {
                     what,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1154,14 +1336,16 @@ impl AsciiString {
     /// astring.Replace(6,'g')  gives <me> = "Garbage"
     pub fn set_value_int_char(&mut self, where_: i32, what: std::ffi::c_char) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_AsciiString_set_value_int_char(
                     self as *mut Self,
                     where_,
                     what,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1175,14 +1359,16 @@ impl AsciiString {
     pub fn set_value_int_charptr(&mut self, where_: i32, what: &str) {
         let c_what = std::ffi::CString::new(what).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_AsciiString_set_value_int_charptr(
                     self as *mut Self,
                     where_,
                     c_what.as_ptr(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1190,14 +1376,16 @@ impl AsciiString {
     /// Replaces a part of <me> by another AsciiString.
     pub fn set_value_int_asciistring(&mut self, where_: i32, what: &AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_AsciiString_set_value_int_asciistring(
                     self as *mut Self,
                     where_,
                     what,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1210,8 +1398,11 @@ impl AsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_AsciiString_split(self as *mut Self, where_) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1236,8 +1427,11 @@ impl AsciiString {
                     ToIndex,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1249,8 +1443,11 @@ impl AsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_AsciiString_to_c_string(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1280,8 +1477,11 @@ impl AsciiString {
                     whichone,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1290,8 +1490,11 @@ impl AsciiString {
     /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
     pub fn trunc(&mut self, ahowmany: i32) {
         {
-            unsafe { crate::ffi::TCollection_AsciiString_trunc(self as *mut Self, ahowmany) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TCollection_AsciiString_trunc(self as *mut Self, ahowmany) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1299,8 +1502,11 @@ impl AsciiString {
     /// Converts <me> to its upper-case equivalent.
     pub fn upper_case(&mut self) {
         {
-            unsafe { crate::ffi::TCollection_AsciiString_upper_case(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TCollection_AsciiString_upper_case(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1311,8 +1517,11 @@ impl AsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_AsciiString_usefull_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1327,8 +1536,11 @@ impl AsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_AsciiString_value(self as *const Self, where_) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1340,8 +1552,11 @@ impl AsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_AsciiString_hash_code(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1353,8 +1568,11 @@ impl AsciiString {
             let __result = unsafe {
                 crate::ffi::TCollection_AsciiString_is_equal_asciistring2(string1, string2)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1370,8 +1588,11 @@ impl AsciiString {
                     c_string2.as_ptr(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1390,19 +1611,21 @@ impl AsciiString {
                     theIsCaseSensitive,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::TCollection_AsciiString_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TCollection_AsciiString_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1453,8 +1676,10 @@ impl ExtendedString {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TCollection_ExtendedString_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1473,8 +1698,10 @@ impl ExtendedString {
                     isMultiByte,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1484,8 +1711,10 @@ impl ExtendedString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_ExtendedString_ctor_char16ptr(astring) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1494,8 +1723,10 @@ impl ExtendedString {
     pub fn new_char(aChar: std::ffi::c_char) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TCollection_ExtendedString_ctor_char(aChar) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1504,8 +1735,10 @@ impl ExtendedString {
     pub fn new_char16(aChar: u16) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TCollection_ExtendedString_ctor_char16(aChar) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1516,8 +1749,10 @@ impl ExtendedString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_ExtendedString_ctor_int_char16(length, filler) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1526,8 +1761,10 @@ impl ExtendedString {
     pub fn new_int(value: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TCollection_ExtendedString_ctor_int(value) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1536,8 +1773,10 @@ impl ExtendedString {
     pub fn new_real(value: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TCollection_ExtendedString_ctor_real(value) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1551,8 +1790,10 @@ impl ExtendedString {
             let __result = unsafe {
                 crate::ffi::TCollection_ExtendedString_ctor_asciistring_bool(astring, isMultiByte)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1581,8 +1822,12 @@ impl ExtendedString {
     /// Example: aString += anotherString
     pub fn assign_cat(&mut self, other: &ExtendedString) {
         {
-            unsafe { crate::ffi::TCollection_ExtendedString_assign_cat(self as *mut Self, other) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TCollection_ExtendedString_assign_cat(self as *mut Self, other)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1592,8 +1837,11 @@ impl ExtendedString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_ExtendedString_cat(self as *const Self, other) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1604,10 +1852,12 @@ impl ExtendedString {
     /// If you don't use default case sensitive, no matter whether aChar is uppercase or not.
     pub fn change_all(&mut self, aChar: u16, NewChar: u16) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_ExtendedString_change_all(self as *mut Self, aChar, NewChar)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1616,8 +1866,10 @@ impl ExtendedString {
     /// This produces an empty ExtendedString.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::TCollection_ExtendedString_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TCollection_ExtendedString_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1626,8 +1878,12 @@ impl ExtendedString {
     /// Used as operator =
     pub fn copy(&mut self, fromwhere: &ExtendedString) {
         {
-            unsafe { crate::ffi::TCollection_ExtendedString_copy(self as *mut Self, fromwhere) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TCollection_ExtendedString_copy(self as *mut Self, fromwhere)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1635,8 +1891,11 @@ impl ExtendedString {
     /// Exchange the data of two strings (without reallocating memory).
     pub fn swap(&mut self, theOther: &mut ExtendedString) {
         {
-            unsafe { crate::ffi::TCollection_ExtendedString_swap(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TCollection_ExtendedString_swap(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1644,14 +1903,16 @@ impl ExtendedString {
     /// Insert a Character at position <where>.
     pub fn insert_int_char16(&mut self, where_: i32, what: u16) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_ExtendedString_insert_int_char16(
                     self as *mut Self,
                     where_,
                     what,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1659,14 +1920,16 @@ impl ExtendedString {
     /// Insert a ExtendedString at position <where>.
     pub fn insert_int_extendedstring(&mut self, where_: i32, what: &ExtendedString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_ExtendedString_insert_int_extendedstring(
                     self as *mut Self,
                     where_,
                     what,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1676,8 +1939,11 @@ impl ExtendedString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_ExtendedString_is_empty(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1693,8 +1959,11 @@ impl ExtendedString {
                     other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1710,8 +1979,11 @@ impl ExtendedString {
                     other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1727,8 +1999,11 @@ impl ExtendedString {
                     other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1744,8 +2019,11 @@ impl ExtendedString {
                     other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1756,8 +2034,11 @@ impl ExtendedString {
             let __result = unsafe {
                 crate::ffi::TCollection_ExtendedString_is_less_char16ptr(self as *const Self, other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1771,8 +2052,11 @@ impl ExtendedString {
                     other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1786,8 +2070,11 @@ impl ExtendedString {
                     other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1801,8 +2088,11 @@ impl ExtendedString {
                     other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1816,8 +2106,11 @@ impl ExtendedString {
                     theStartString,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1828,8 +2121,11 @@ impl ExtendedString {
             let __result = unsafe {
                 crate::ffi::TCollection_ExtendedString_ends_with(self as *const Self, theEndString)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1840,8 +2136,11 @@ impl ExtendedString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_ExtendedString_is_ascii(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1852,8 +2151,11 @@ impl ExtendedString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_ExtendedString_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1861,8 +2163,12 @@ impl ExtendedString {
     /// Displays <me> .
     pub fn print(&self, astream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::TCollection_ExtendedString_print(self as *const Self, astream) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TCollection_ExtendedString_print(self as *const Self, astream)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1870,8 +2176,12 @@ impl ExtendedString {
     /// Removes every <what> characters from <me>.
     pub fn remove_all(&mut self, what: u16) {
         {
-            unsafe { crate::ffi::TCollection_ExtendedString_remove_all(self as *mut Self, what) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TCollection_ExtendedString_remove_all(self as *mut Self, what)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1879,10 +2189,12 @@ impl ExtendedString {
     /// Erases <ahowmany> characters from position <where>,<where> included.
     pub fn remove(&mut self, where_: i32, ahowmany: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_ExtendedString_remove(self as *mut Self, where_, ahowmany)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1894,8 +2206,11 @@ impl ExtendedString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_ExtendedString_search(self as *const Self, what) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1908,8 +2223,11 @@ impl ExtendedString {
             let __result = unsafe {
                 crate::ffi::TCollection_ExtendedString_search_from_end(self as *const Self, what)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1919,14 +2237,16 @@ impl ExtendedString {
     /// an exception is raised.
     pub fn set_value_int_char16(&mut self, where_: i32, what: u16) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_ExtendedString_set_value_int_char16(
                     self as *mut Self,
                     where_,
                     what,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1934,14 +2254,16 @@ impl ExtendedString {
     /// Replaces a part of <me> by another ExtendedString see above.
     pub fn set_value_int_extendedstring(&mut self, where_: i32, what: &ExtendedString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_ExtendedString_set_value_int_extendedstring(
                     self as *mut Self,
                     where_,
                     what,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1960,8 +2282,11 @@ impl ExtendedString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_ExtendedString_split(self as *mut Self, where_) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1994,8 +2319,11 @@ impl ExtendedString {
                     whichone,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2006,8 +2334,11 @@ impl ExtendedString {
             let __result = unsafe {
                 crate::ffi::TCollection_ExtendedString_to_ext_string(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2019,8 +2350,12 @@ impl ExtendedString {
     /// than the length of this string.
     pub fn trunc(&mut self, ahowmany: i32) {
         {
-            unsafe { crate::ffi::TCollection_ExtendedString_trunc(self as *mut Self, ahowmany) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TCollection_ExtendedString_trunc(self as *mut Self, ahowmany)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2039,8 +2374,11 @@ impl ExtendedString {
             let __result = unsafe {
                 crate::ffi::TCollection_ExtendedString_value(self as *const Self, where_)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2054,8 +2392,11 @@ impl ExtendedString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_ExtendedString_hash_code(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2071,8 +2412,11 @@ impl ExtendedString {
                     theCString,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2085,8 +2429,11 @@ impl ExtendedString {
             let __result = unsafe {
                 crate::ffi::TCollection_ExtendedString_length_of_c_string(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2098,19 +2445,22 @@ impl ExtendedString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_ExtendedString_is_equal(theString1, theString2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::TCollection_ExtendedString_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::TCollection_ExtendedString_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2159,8 +2509,10 @@ impl HAsciiString {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TCollection_HAsciiString_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2171,8 +2523,10 @@ impl HAsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HAsciiString_ctor_charptr(c_message.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2181,8 +2535,10 @@ impl HAsciiString {
     pub fn new_char(aChar: std::ffi::c_char) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TCollection_HAsciiString_ctor_char(aChar) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2193,8 +2549,10 @@ impl HAsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HAsciiString_ctor_int_char(length, filler) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2203,8 +2561,10 @@ impl HAsciiString {
     pub fn new_int(value: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TCollection_HAsciiString_ctor_int(value) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2213,8 +2573,10 @@ impl HAsciiString {
     pub fn new_real(value: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TCollection_HAsciiString_ctor_real(value) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2224,8 +2586,10 @@ impl HAsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HAsciiString_ctor_asciistring(aString) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2238,8 +2602,10 @@ impl HAsciiString {
             let __result = unsafe {
                 crate::ffi::TCollection_HAsciiString_ctor_handletcollectionhasciistring(aString)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2259,8 +2625,10 @@ impl HAsciiString {
                     replaceNonAscii,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2269,13 +2637,15 @@ impl HAsciiString {
     pub fn assign_cat_charptr(&mut self, other: &str) {
         let c_other = std::ffi::CString::new(other).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HAsciiString_assign_cat_charptr(
                     self as *mut Self,
                     c_other.as_ptr(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2287,13 +2657,15 @@ impl HAsciiString {
         other: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HAsciiString_assign_cat_handletcollectionhasciistring(
                     self as *mut Self,
                     other,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2307,8 +2679,11 @@ impl HAsciiString {
     /// me = "Hello "
     pub fn capitalize(&mut self) {
         {
-            unsafe { crate::ffi::TCollection_HAsciiString_capitalize(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TCollection_HAsciiString_capitalize(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2337,8 +2712,11 @@ impl HAsciiString {
                     c_other.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2357,8 +2735,11 @@ impl HAsciiString {
                     other,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2380,10 +2761,12 @@ impl HAsciiString {
     /// " abcdef ") );
     pub fn center(&mut self, Width: i32, Filler: std::ffi::c_char) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HAsciiString_center(self as *mut Self, Width, Filler)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2409,7 +2792,7 @@ impl HAsciiString {
         CaseSensitive: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HAsciiString_change_all(
                     self as *mut Self,
                     aChar,
@@ -2417,7 +2800,9 @@ impl HAsciiString {
                     CaseSensitive,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2426,8 +2811,10 @@ impl HAsciiString {
     /// This produces an empty HAsciiString.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::TCollection_HAsciiString_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TCollection_HAsciiString_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2460,8 +2847,11 @@ impl HAsciiString {
                     ToIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2494,8 +2884,11 @@ impl HAsciiString {
                     ToIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2510,14 +2903,16 @@ impl HAsciiString {
     /// aString.Insert(2,'h'); gives "Why"
     pub fn insert_int_char(&mut self, where_: i32, what: std::ffi::c_char) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HAsciiString_insert_int_char(
                     self as *mut Self,
                     where_,
                     what,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2526,14 +2921,16 @@ impl HAsciiString {
     pub fn insert_int_charptr(&mut self, where_: i32, what: &str) {
         let c_what = std::ffi::CString::new(what).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HAsciiString_insert_int_charptr(
                     self as *mut Self,
                     where_,
                     c_what.as_ptr(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2545,14 +2942,16 @@ impl HAsciiString {
         what: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HAsciiString_insert_int_handletcollectionhasciistring(
                     self as *mut Self,
                     where_,
                     what,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2565,10 +2964,12 @@ impl HAsciiString {
     /// me = "abcde" , other = "ab"
     pub fn insert_after(&mut self, Index: i32, other: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HAsciiString_insert_after(self as *mut Self, Index, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2582,10 +2983,12 @@ impl HAsciiString {
     /// me = "abcde" , other = "ab"
     pub fn insert_before(&mut self, Index: i32, other: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HAsciiString_insert_before(self as *mut Self, Index, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2595,8 +2998,11 @@ impl HAsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HAsciiString_is_empty(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2606,8 +3012,11 @@ impl HAsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HAsciiString_is_less(self as *const Self, other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2618,8 +3027,11 @@ impl HAsciiString {
             let __result = unsafe {
                 crate::ffi::TCollection_HAsciiString_is_greater(self as *const Self, other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2631,8 +3043,11 @@ impl HAsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HAsciiString_integer_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2643,8 +3058,11 @@ impl HAsciiString {
             let __result = unsafe {
                 crate::ffi::TCollection_HAsciiString_is_integer_value(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2654,8 +3072,11 @@ impl HAsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HAsciiString_is_real_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2667,8 +3088,11 @@ impl HAsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HAsciiString_is_ascii(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2680,8 +3104,11 @@ impl HAsciiString {
             let __result = unsafe {
                 crate::ffi::TCollection_HAsciiString_is_different(self as *const Self, S)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2699,8 +3126,11 @@ impl HAsciiString {
                     S,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2716,8 +3146,11 @@ impl HAsciiString {
             let __result = unsafe {
                 crate::ffi::TCollection_HAsciiString_is_same_string_handletcollectionhasciistring_bool(self as *const Self, S, CaseSensitive)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2725,8 +3158,11 @@ impl HAsciiString {
     /// Removes all space characters in the beginning of the string
     pub fn left_adjust(&mut self) {
         {
-            unsafe { crate::ffi::TCollection_HAsciiString_left_adjust(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TCollection_HAsciiString_left_adjust(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2743,10 +3179,12 @@ impl HAsciiString {
     /// me = "abcdef   "
     pub fn left_justify(&mut self, Width: i32, Filler: std::ffi::c_char) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HAsciiString_left_justify(self as *mut Self, Width, Filler)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2757,8 +3195,11 @@ impl HAsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HAsciiString_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2790,8 +3231,11 @@ impl HAsciiString {
                     ToIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2824,8 +3268,11 @@ impl HAsciiString {
                     ToIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2833,8 +3280,11 @@ impl HAsciiString {
     /// Converts <me> to its lower-case equivalent.
     pub fn lower_case(&mut self) {
         {
-            unsafe { crate::ffi::TCollection_HAsciiString_lower_case(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TCollection_HAsciiString_lower_case(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2847,8 +3297,11 @@ impl HAsciiString {
     /// me = "abcde" , S = "ab"
     pub fn prepend(&mut self, other: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe { crate::ffi::TCollection_HAsciiString_prepend(self as *mut Self, other) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TCollection_HAsciiString_prepend(self as *mut Self, other) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2856,8 +3309,11 @@ impl HAsciiString {
     /// Prints this string on the stream <astream>.
     pub fn print(&self, astream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::TCollection_HAsciiString_print(self as *const Self, astream) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TCollection_HAsciiString_print(self as *const Self, astream) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2870,8 +3326,11 @@ impl HAsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HAsciiString_real_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2884,14 +3343,16 @@ impl HAsciiString {
     /// me = "Hello"
     pub fn remove_all_char_bool(&mut self, C: std::ffi::c_char, CaseSensitive: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HAsciiString_remove_all_char_bool(
                     self as *mut Self,
                     C,
                     CaseSensitive,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2899,10 +3360,12 @@ impl HAsciiString {
     /// Removes every <what> characters from <me>
     pub fn remove_all_char(&mut self, what: std::ffi::c_char) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HAsciiString_remove_all_char(self as *mut Self, what)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2915,10 +3378,12 @@ impl HAsciiString {
     /// This gives "Hlo".
     pub fn remove(&mut self, where_: i32, ahowmany: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HAsciiString_remove(self as *mut Self, where_, ahowmany)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2926,8 +3391,11 @@ impl HAsciiString {
     /// Removes all space characters at the end of the string.
     pub fn right_adjust(&mut self) {
         {
-            unsafe { crate::ffi::TCollection_HAsciiString_right_adjust(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TCollection_HAsciiString_right_adjust(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2944,10 +3412,12 @@ impl HAsciiString {
     /// me = "   abcdef"
     pub fn right_justify(&mut self, Width: i32, Filler: std::ffi::c_char) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HAsciiString_right_justify(self as *mut Self, Width, Filler)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2967,8 +3437,11 @@ impl HAsciiString {
                     c_what.as_ptr(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2987,8 +3460,11 @@ impl HAsciiString {
                     what,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3008,8 +3484,11 @@ impl HAsciiString {
                     c_what.as_ptr(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3028,8 +3507,11 @@ impl HAsciiString {
                     what,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3042,14 +3524,16 @@ impl HAsciiString {
     /// astring.Replace(6,'g')  gives <me> = "Garbage"
     pub fn set_value_int_char(&mut self, where_: i32, what: std::ffi::c_char) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HAsciiString_set_value_int_char(
                     self as *mut Self,
                     where_,
                     what,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3063,14 +3547,16 @@ impl HAsciiString {
     pub fn set_value_int_charptr(&mut self, where_: i32, what: &str) {
         let c_what = std::ffi::CString::new(what).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HAsciiString_set_value_int_charptr(
                     self as *mut Self,
                     where_,
                     c_what.as_ptr(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3082,14 +3568,16 @@ impl HAsciiString {
         what: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HAsciiString_set_value_int_handletcollectionhasciistring(
                     self as *mut Self,
                     where_,
                     what,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3105,8 +3593,11 @@ impl HAsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HAsciiString_split(self as *mut Self, where_) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3136,8 +3627,11 @@ impl HAsciiString {
                     ToIndex,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3149,8 +3643,11 @@ impl HAsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HAsciiString_to_c_string(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3184,8 +3681,11 @@ impl HAsciiString {
                     whichone,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3194,8 +3694,11 @@ impl HAsciiString {
     /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
     pub fn trunc(&mut self, ahowmany: i32) {
         {
-            unsafe { crate::ffi::TCollection_HAsciiString_trunc(self as *mut Self, ahowmany) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TCollection_HAsciiString_trunc(self as *mut Self, ahowmany) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3203,8 +3706,11 @@ impl HAsciiString {
     /// Converts <me> to its upper-case equivalent.
     pub fn upper_case(&mut self) {
         {
-            unsafe { crate::ffi::TCollection_HAsciiString_upper_case(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TCollection_HAsciiString_upper_case(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3215,8 +3721,11 @@ impl HAsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HAsciiString_usefull_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3231,8 +3740,11 @@ impl HAsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HAsciiString_value(self as *const Self, where_) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3242,8 +3754,11 @@ impl HAsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HAsciiString_string(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3253,8 +3768,11 @@ impl HAsciiString {
             let __result = unsafe {
                 crate::ffi::TCollection_HAsciiString_is_same_state(self as *const Self, other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3263,8 +3781,11 @@ impl HAsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HAsciiString_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3272,8 +3793,11 @@ impl HAsciiString {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TCollection_HAsciiString_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3281,43 +3805,45 @@ impl HAsciiString {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TCollection_HAsciiString_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TCollection_HAsciiString_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TCollection_HAsciiString_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TCollection_HAsciiString_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TCollection_HAsciiString_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
-        {
-            let __result =
-                unsafe { crate::ffi::TCollection_HAsciiString_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TCollection_HAsciiString_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3329,8 +3855,11 @@ impl HAsciiString {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3340,8 +3869,11 @@ impl HAsciiString {
             let __result = unsafe {
                 crate::ffi::TCollection_HAsciiString_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3350,11 +3882,14 @@ impl HAsciiString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HAsciiString_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3365,20 +3900,25 @@ impl HAsciiString {
             let __result = unsafe {
                 crate::ffi::TCollection_HAsciiString_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HAsciiString_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3390,16 +3930,23 @@ impl HAsciiString {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TCollection_HAsciiString_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TCollection_HAsciiString_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3415,35 +3962,35 @@ unsafe impl crate::CppDeletable for HandleTCollectionHAsciiString {
 impl HandleTCollectionHAsciiString {
     /// Dereference this Handle to access the underlying TCollection_HAsciiString
     pub fn get(&self) -> &crate::ffi::TCollection_HAsciiString {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTCollectionHAsciiString_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleTCollectionHAsciiString_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TCollection_HAsciiString
     pub fn get_mut(&mut self) -> &mut crate::ffi::TCollection_HAsciiString {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTCollectionHAsciiString_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTCollectionHAsciiString_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TCollection_HAsciiString> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTCollectionHAsciiString_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTCollectionHAsciiString_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3484,8 +4031,10 @@ impl HExtendedString {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TCollection_HExtendedString_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3496,8 +4045,10 @@ impl HExtendedString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HExtendedString_ctor_charptr(c_message.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3507,8 +4058,10 @@ impl HExtendedString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HExtendedString_ctor_char16ptr(message) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3517,8 +4070,10 @@ impl HExtendedString {
     pub fn new_char16(aChar: u16) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TCollection_HExtendedString_ctor_char16(aChar) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3529,8 +4084,10 @@ impl HExtendedString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HExtendedString_ctor_int_char16(length, filler) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3540,8 +4097,10 @@ impl HExtendedString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HExtendedString_ctor_extendedstring(aString) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3554,8 +4113,10 @@ impl HExtendedString {
             let __result = unsafe {
                 crate::ffi::TCollection_HExtendedString_ctor_handletcollectionhasciistring(aString)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3570,8 +4131,10 @@ impl HExtendedString {
                     aString,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3579,8 +4142,12 @@ impl HExtendedString {
     /// Appends <other>  to me.
     pub fn assign_cat(&mut self, other: &crate::ffi::HandleTCollectionHExtendedString) {
         {
-            unsafe { crate::ffi::TCollection_HExtendedString_assign_cat(self as *mut Self, other) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TCollection_HExtendedString_assign_cat(self as *mut Self, other)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3593,8 +4160,11 @@ impl HExtendedString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HExtendedString_cat(self as *const Self, other) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3603,14 +4173,16 @@ impl HExtendedString {
     /// in the string <me>.
     pub fn change_all(&mut self, aChar: u16, NewChar: u16) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HExtendedString_change_all(
                     self as *mut Self,
                     aChar,
                     NewChar,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3619,8 +4191,10 @@ impl HExtendedString {
     /// This produces an empty ExtendedString.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::TCollection_HExtendedString_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TCollection_HExtendedString_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3630,8 +4204,11 @@ impl HExtendedString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HExtendedString_is_empty(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3646,14 +4223,16 @@ impl HExtendedString {
     /// aString.Insert(2,'h'); gives "Why"
     pub fn insert_int_char16(&mut self, where_: i32, what: u16) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HExtendedString_insert_int_char16(
                     self as *mut Self,
                     where_,
                     what,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3665,14 +4244,16 @@ impl HExtendedString {
         what: &crate::ffi::HandleTCollectionHExtendedString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HExtendedString_insert_int_handletcollectionhextendedstring(
                     self as *mut Self,
                     where_,
                     what,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3683,8 +4264,11 @@ impl HExtendedString {
             let __result = unsafe {
                 crate::ffi::TCollection_HExtendedString_is_less(self as *const Self, other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3695,8 +4279,11 @@ impl HExtendedString {
             let __result = unsafe {
                 crate::ffi::TCollection_HExtendedString_is_greater(self as *const Self, other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3706,8 +4293,11 @@ impl HExtendedString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HExtendedString_is_ascii(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3718,8 +4308,11 @@ impl HExtendedString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HExtendedString_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3732,10 +4325,12 @@ impl HExtendedString {
     /// This gives "Hlo".
     pub fn remove(&mut self, where_: i32, ahowmany: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HExtendedString_remove(self as *mut Self, where_, ahowmany)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3743,8 +4338,12 @@ impl HExtendedString {
     /// Removes every <what> characters from <me>.
     pub fn remove_all(&mut self, what: u16) {
         {
-            unsafe { crate::ffi::TCollection_HExtendedString_remove_all(self as *mut Self, what) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TCollection_HExtendedString_remove_all(self as *mut Self, what)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3757,14 +4356,16 @@ impl HExtendedString {
     /// astring.Replace(6,'g')  gives <me> = "Garbage"
     pub fn set_value_int_char16(&mut self, where_: i32, what: u16) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HExtendedString_set_value_int_char16(
                     self as *mut Self,
                     where_,
                     what,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3776,10 +4377,12 @@ impl HExtendedString {
         what: &crate::ffi::HandleTCollectionHExtendedString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HExtendedString_set_value_int_handletcollectionhextendedstring(self as *mut Self, where_, what)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3795,8 +4398,11 @@ impl HExtendedString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HExtendedString_split(self as *mut Self, where_) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3809,8 +4415,11 @@ impl HExtendedString {
             let __result = unsafe {
                 crate::ffi::TCollection_HExtendedString_search(self as *const Self, what)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3823,8 +4432,11 @@ impl HExtendedString {
             let __result = unsafe {
                 crate::ffi::TCollection_HExtendedString_search_from_end(self as *const Self, what)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3835,8 +4447,11 @@ impl HExtendedString {
             let __result = unsafe {
                 crate::ffi::TCollection_HExtendedString_to_ext_string(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3869,8 +4484,11 @@ impl HExtendedString {
                     whichone,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3879,8 +4497,12 @@ impl HExtendedString {
     /// Example:  me = "Hello Dolly" -> Trunc(3) -> me = "Hel"
     pub fn trunc(&mut self, ahowmany: i32) {
         {
-            unsafe { crate::ffi::TCollection_HExtendedString_trunc(self as *mut Self, ahowmany) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TCollection_HExtendedString_trunc(self as *mut Self, ahowmany)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3896,8 +4518,11 @@ impl HExtendedString {
             let __result = unsafe {
                 crate::ffi::TCollection_HExtendedString_value(self as *const Self, where_)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3907,8 +4532,11 @@ impl HExtendedString {
         {
             let __result =
                 unsafe { crate::ffi::TCollection_HExtendedString_string(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3916,8 +4544,12 @@ impl HExtendedString {
     /// Displays <me> .
     pub fn print(&self, astream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::TCollection_HExtendedString_print(self as *const Self, astream) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TCollection_HExtendedString_print(self as *const Self, astream)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3927,8 +4559,11 @@ impl HExtendedString {
             let __result = unsafe {
                 crate::ffi::TCollection_HExtendedString_is_same_state(self as *const Self, other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3938,8 +4573,11 @@ impl HExtendedString {
             let __result = unsafe {
                 crate::ffi::TCollection_HExtendedString_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3947,8 +4585,11 @@ impl HExtendedString {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TCollection_HExtendedString_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3956,43 +4597,45 @@ impl HExtendedString {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TCollection_HExtendedString_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TCollection_HExtendedString_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TCollection_HExtendedString_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TCollection_HExtendedString_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TCollection_HExtendedString_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
-        {
-            let __result =
-                unsafe { crate::ffi::TCollection_HExtendedString_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TCollection_HExtendedString_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -4004,8 +4647,11 @@ impl HExtendedString {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4018,8 +4664,11 @@ impl HExtendedString {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4029,11 +4678,14 @@ impl HExtendedString {
             let __result = unsafe {
                 crate::ffi::TCollection_HExtendedString_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4044,20 +4696,25 @@ impl HExtendedString {
             let __result = unsafe {
                 crate::ffi::TCollection_HExtendedString_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HExtendedString_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4069,18 +4726,23 @@ impl HExtendedString {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TCollection_HExtendedString_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4096,35 +4758,35 @@ unsafe impl crate::CppDeletable for HandleTCollectionHExtendedString {
 impl HandleTCollectionHExtendedString {
     /// Dereference this Handle to access the underlying TCollection_HExtendedString
     pub fn get(&self) -> &crate::ffi::TCollection_HExtendedString {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTCollectionHExtendedString_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleTCollectionHExtendedString_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TCollection_HExtendedString
     pub fn get_mut(&mut self) -> &mut crate::ffi::TCollection_HExtendedString {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTCollectionHExtendedString_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTCollectionHExtendedString_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TCollection_HExtendedString> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTCollectionHExtendedString_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTCollectionHExtendedString_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

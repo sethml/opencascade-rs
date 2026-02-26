@@ -14,8 +14,11 @@
 pub fn vertex(theShape: &Shape) -> &Vertex {
     {
         let __result = unsafe { crate::ffi::TopoDS_vertex(theShape) };
-        crate::check_exception();
-        unsafe { &*(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &*(__val) }
     }
 }
 /// **Source:** `TopoDS.hxx`:82 - `TopoDS::Vertex`
@@ -26,8 +29,11 @@ pub fn vertex(theShape: &Shape) -> &Vertex {
 pub fn vertex_mut(theShape: &mut Shape) -> &mut Vertex {
     {
         let __result = unsafe { crate::ffi::TopoDS_vertex_mut(theShape) };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 /// **Source:** `TopoDS.hxx`:94 - `TopoDS::Edge`
@@ -38,8 +44,11 @@ pub fn vertex_mut(theShape: &mut Shape) -> &mut Vertex {
 pub fn edge(theShape: &Shape) -> &Edge {
     {
         let __result = unsafe { crate::ffi::TopoDS_edge(theShape) };
-        crate::check_exception();
-        unsafe { &*(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &*(__val) }
     }
 }
 /// **Source:** `TopoDS.hxx`:106 - `TopoDS::Edge`
@@ -50,8 +59,11 @@ pub fn edge(theShape: &Shape) -> &Edge {
 pub fn edge_mut(theShape: &mut Shape) -> &mut Edge {
     {
         let __result = unsafe { crate::ffi::TopoDS_edge_mut(theShape) };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 /// **Source:** `TopoDS.hxx`:118 - `TopoDS::Wire`
@@ -62,8 +74,11 @@ pub fn edge_mut(theShape: &mut Shape) -> &mut Edge {
 pub fn wire(theShape: &Shape) -> &Wire {
     {
         let __result = unsafe { crate::ffi::TopoDS_wire(theShape) };
-        crate::check_exception();
-        unsafe { &*(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &*(__val) }
     }
 }
 /// **Source:** `TopoDS.hxx`:130 - `TopoDS::Wire`
@@ -74,8 +89,11 @@ pub fn wire(theShape: &Shape) -> &Wire {
 pub fn wire_mut(theShape: &mut Shape) -> &mut Wire {
     {
         let __result = unsafe { crate::ffi::TopoDS_wire_mut(theShape) };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 /// **Source:** `TopoDS.hxx`:142 - `TopoDS::Face`
@@ -86,8 +104,11 @@ pub fn wire_mut(theShape: &mut Shape) -> &mut Wire {
 pub fn face_shape(theShape: &Shape) -> &Face {
     {
         let __result = unsafe { crate::ffi::TopoDS_face_shape(theShape) };
-        crate::check_exception();
-        unsafe { &*(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &*(__val) }
     }
 }
 /// **Source:** `TopoDS.hxx`:154 - `TopoDS::Face`
@@ -98,8 +119,11 @@ pub fn face_shape(theShape: &Shape) -> &Face {
 pub fn face_mut(theShape: &mut Shape) -> &mut Face {
     {
         let __result = unsafe { crate::ffi::TopoDS_face_mut(theShape) };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 /// **Source:** `TopoDS.hxx`:166 - `TopoDS::Shell`
@@ -110,8 +134,11 @@ pub fn face_mut(theShape: &mut Shape) -> &mut Face {
 pub fn shell_shape(theShape: &Shape) -> &Shell {
     {
         let __result = unsafe { crate::ffi::TopoDS_shell_shape(theShape) };
-        crate::check_exception();
-        unsafe { &*(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &*(__val) }
     }
 }
 /// **Source:** `TopoDS.hxx`:178 - `TopoDS::Shell`
@@ -122,8 +149,11 @@ pub fn shell_shape(theShape: &Shape) -> &Shell {
 pub fn shell_mut(theShape: &mut Shape) -> &mut Shell {
     {
         let __result = unsafe { crate::ffi::TopoDS_shell_mut(theShape) };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 /// **Source:** `TopoDS.hxx`:190 - `TopoDS::Solid`
@@ -134,8 +164,11 @@ pub fn shell_mut(theShape: &mut Shape) -> &mut Shell {
 pub fn solid(theShape: &Shape) -> &Solid {
     {
         let __result = unsafe { crate::ffi::TopoDS_solid(theShape) };
-        crate::check_exception();
-        unsafe { &*(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &*(__val) }
     }
 }
 /// **Source:** `TopoDS.hxx`:202 - `TopoDS::Solid`
@@ -146,8 +179,11 @@ pub fn solid(theShape: &Shape) -> &Solid {
 pub fn solid_mut(theShape: &mut Shape) -> &mut Solid {
     {
         let __result = unsafe { crate::ffi::TopoDS_solid_mut(theShape) };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 /// **Source:** `TopoDS.hxx`:214 - `TopoDS::CompSolid`
@@ -158,8 +194,11 @@ pub fn solid_mut(theShape: &mut Shape) -> &mut Solid {
 pub fn comp_solid(theShape: &Shape) -> &CompSolid {
     {
         let __result = unsafe { crate::ffi::TopoDS_comp_solid(theShape) };
-        crate::check_exception();
-        unsafe { &*(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &*(__val) }
     }
 }
 /// **Source:** `TopoDS.hxx`:226 - `TopoDS::CompSolid`
@@ -170,8 +209,11 @@ pub fn comp_solid(theShape: &Shape) -> &CompSolid {
 pub fn comp_solid_mut(theShape: &mut Shape) -> &mut CompSolid {
     {
         let __result = unsafe { crate::ffi::TopoDS_comp_solid_mut(theShape) };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 /// **Source:** `TopoDS.hxx`:238 - `TopoDS::Compound`
@@ -182,8 +224,11 @@ pub fn comp_solid_mut(theShape: &mut Shape) -> &mut CompSolid {
 pub fn compound(theShape: &Shape) -> &Compound {
     {
         let __result = unsafe { crate::ffi::TopoDS_compound(theShape) };
-        crate::check_exception();
-        unsafe { &*(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &*(__val) }
     }
 }
 /// **Source:** `TopoDS.hxx`:250 - `TopoDS::Compound`
@@ -194,8 +239,11 @@ pub fn compound(theShape: &Shape) -> &Compound {
 pub fn compound_mut(theShape: &mut Shape) -> &mut Compound {
     {
         let __result = unsafe { crate::ffi::TopoDS_compound_mut(theShape) };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 
@@ -244,8 +292,10 @@ impl AlertAttribute {
             let __result = unsafe {
                 crate::ffi::TopoDS_AlertAttribute_ctor_shape_asciistring(theShape, theName)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -254,8 +304,11 @@ impl AlertAttribute {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_AlertAttribute_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -265,8 +318,11 @@ impl AlertAttribute {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_AlertAttribute_get_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -274,8 +330,11 @@ impl AlertAttribute {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopoDS_AlertAttribute_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -283,8 +342,11 @@ impl AlertAttribute {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_AlertAttribute_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -292,86 +354,86 @@ impl AlertAttribute {
     /// Push shape information into messenger
     pub fn send(theMessenger: &crate::ffi::HandleMessageMessenger, theShape: &Shape) {
         {
-            unsafe { crate::ffi::TopoDS_AlertAttribute_send(theMessenger, theShape) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_AlertAttribute_send(theMessenger, theShape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to Message_AttributeStream
     pub fn as_message_attribute_stream(&self) -> &crate::message::AttributeStream {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_AlertAttribute_as_Message_AttributeStream(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopoDS_AlertAttribute_as_Message_AttributeStream(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Message_AttributeStream (mutable)
     pub fn as_message_attribute_stream_mut(&mut self) -> &mut crate::message::AttributeStream {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_AlertAttribute_as_Message_AttributeStream_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopoDS_AlertAttribute_as_Message_AttributeStream_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Message_Attribute
     pub fn as_message_attribute(&self) -> &crate::message::Attribute {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_AlertAttribute_as_Message_Attribute(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_AlertAttribute_as_Message_Attribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Message_Attribute (mutable)
     pub fn as_message_attribute_mut(&mut self) -> &mut crate::message::Attribute {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_AlertAttribute_as_Message_Attribute_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopoDS_AlertAttribute_as_Message_Attribute_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_AlertAttribute_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_AlertAttribute_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_AlertAttribute_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopoDS_AlertAttribute_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertAttribute> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_AlertAttribute_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_AlertAttribute_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Message_AttributeStream.hxx`:32 - `Message_AttributeStream::Stream()`
@@ -379,18 +441,23 @@ impl AlertAttribute {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_AlertAttribute_inherited_Stream(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Message_AttributeStream.hxx`:35 - `Message_AttributeStream::SetStream()`
     pub fn set_stream(&mut self, theStream: &crate::ffi::Standard_SStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_AlertAttribute_inherited_SetStream(self as *mut Self, theStream)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -399,18 +466,23 @@ impl AlertAttribute {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_AlertAttribute_inherited_GetName(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Message_Attribute.hxx`:44 - `Message_Attribute::SetName()`
     pub fn set_name(&mut self, theName: &crate::t_collection::AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_AlertAttribute_inherited_SetName(self as *mut Self, theName)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -420,8 +492,11 @@ impl AlertAttribute {
             let __result = unsafe {
                 crate::ffi::TopoDS_AlertAttribute_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -431,8 +506,11 @@ impl AlertAttribute {
             let __result = unsafe {
                 crate::ffi::TopoDS_AlertAttribute_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -441,11 +519,14 @@ impl AlertAttribute {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_AlertAttribute_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -456,18 +537,23 @@ impl AlertAttribute {
             let __result = unsafe {
                 crate::ffi::TopoDS_AlertAttribute_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_AlertAttribute_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -477,16 +563,22 @@ impl AlertAttribute {
             let __result = unsafe {
                 crate::ffi::TopoDS_AlertAttribute_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopoDS_AlertAttribute_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_AlertAttribute_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -502,63 +594,57 @@ unsafe impl crate::CppDeletable for HandleTopoDSAlertAttribute {
 impl HandleTopoDSAlertAttribute {
     /// Dereference this Handle to access the underlying TopoDS_AlertAttribute
     pub fn get(&self) -> &crate::ffi::TopoDS_AlertAttribute {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopoDSAlertAttribute_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSAlertAttribute_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopoDS_AlertAttribute
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_AlertAttribute {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopoDSAlertAttribute_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSAlertAttribute_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopoDS_AlertAttribute> to Handle<Message_AttributeStream>
     pub fn to_handle_attribute_stream(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleMessageAttributeStream> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSAlertAttribute_to_HandleMessageAttributeStream(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSAlertAttribute_to_HandleMessageAttributeStream(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopoDS_AlertAttribute> to Handle<Message_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAttribute> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSAlertAttribute_to_HandleMessageAttribute(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSAlertAttribute_to_HandleMessageAttribute(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopoDS_AlertAttribute> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSAlertAttribute_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSAlertAttribute_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -582,8 +668,10 @@ impl AlertWithShape {
     pub fn new_shape(theShape: &Shape) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_AlertWithShape_ctor_shape(theShape) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -593,8 +681,11 @@ impl AlertWithShape {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_AlertWithShape_get_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -602,8 +693,11 @@ impl AlertWithShape {
     /// Sets the shape
     pub fn set_shape(&mut self, theShape: &Shape) {
         {
-            unsafe { crate::ffi::TopoDS_AlertWithShape_set_shape(self as *mut Self, theShape) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_AlertWithShape_set_shape(self as *mut Self, theShape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -613,8 +707,11 @@ impl AlertWithShape {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_AlertWithShape_supports_merge(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -624,8 +721,11 @@ impl AlertWithShape {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_AlertWithShape_merge(self as *mut Self, theTarget) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -634,8 +734,11 @@ impl AlertWithShape {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_AlertWithShape_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -643,8 +746,11 @@ impl AlertWithShape {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopoDS_AlertWithShape_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -652,63 +758,64 @@ impl AlertWithShape {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_AlertWithShape_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Message_Alert
     pub fn as_message_alert(&self) -> &crate::message::Alert {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_AlertWithShape_as_Message_Alert(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_AlertWithShape_as_Message_Alert(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Message_Alert (mutable)
     pub fn as_message_alert_mut(&mut self) -> &mut crate::message::Alert {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_AlertWithShape_as_Message_Alert_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_AlertWithShape_as_Message_Alert_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_AlertWithShape_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_AlertWithShape_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_AlertWithShape_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopoDS_AlertWithShape_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSAlertWithShape> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_AlertWithShape_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_AlertWithShape_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -717,8 +824,11 @@ impl AlertWithShape {
             let __result = unsafe {
                 crate::ffi::TopoDS_AlertWithShape_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -728,8 +838,11 @@ impl AlertWithShape {
             let __result = unsafe {
                 crate::ffi::TopoDS_AlertWithShape_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -738,11 +851,14 @@ impl AlertWithShape {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_AlertWithShape_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -753,18 +869,23 @@ impl AlertWithShape {
             let __result = unsafe {
                 crate::ffi::TopoDS_AlertWithShape_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_AlertWithShape_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -774,16 +895,22 @@ impl AlertWithShape {
             let __result = unsafe {
                 crate::ffi::TopoDS_AlertWithShape_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopoDS_AlertWithShape_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_AlertWithShape_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -799,46 +926,42 @@ unsafe impl crate::CppDeletable for HandleTopoDSAlertWithShape {
 impl HandleTopoDSAlertWithShape {
     /// Dereference this Handle to access the underlying TopoDS_AlertWithShape
     pub fn get(&self) -> &crate::ffi::TopoDS_AlertWithShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopoDSAlertWithShape_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSAlertWithShape_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopoDS_AlertWithShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_AlertWithShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopoDSAlertWithShape_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSAlertWithShape_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopoDS_AlertWithShape> to Handle<Message_Alert>
     pub fn to_handle_alert(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlert> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSAlertWithShape_to_HandleMessageAlert(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_to_HandleMessageAlert(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopoDS_AlertWithShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSAlertWithShape_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSAlertWithShape_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<TopoDS_AlertWithShape> to Handle<BOPAlgo_AlertAcquiredSelfIntersection>
@@ -847,14 +970,16 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_acquired_self_intersection(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertAcquiredSelfIntersection>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertAcquiredSelfIntersection(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -864,16 +989,18 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_bad_positioning(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertBadPositioning>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertBadPositioning(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -883,14 +1010,16 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_building_p_curve_failed(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertBuildingPCurveFailed>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertBuildingPCurveFailed(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -900,16 +1029,18 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_empty_shape(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertEmptyShape>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertEmptyShape(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -919,14 +1050,16 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_face_builder_unused_edges(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertFaceBuilderUnusedEdges>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertFaceBuilderUnusedEdges(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -937,14 +1070,16 @@ impl HandleTopoDSAlertWithShape {
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed>>
     {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertIntersectionOfPairOfShapesFailed(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -954,16 +1089,18 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_not_splittable_edge(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertNotSplittableEdge>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertNotSplittableEdge(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -973,14 +1110,16 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_removal_of_ib_for_edges_failed(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertRemovalOfIBForEdgesFailed>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertRemovalOfIBForEdgesFailed(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -990,14 +1129,16 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_removal_of_ib_for_faces_failed(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertRemovalOfIBForFacesFailed>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertRemovalOfIBForFacesFailed(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1007,14 +1148,16 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_removal_of_ib_for_m_dim_shapes(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertRemovalOfIBForMDimShapes>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertRemovalOfIBForMDimShapes(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1024,14 +1167,16 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_removal_of_ib_for_solids_failed(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertRemovalOfIBForSolidsFailed>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertRemovalOfIBForSolidsFailed(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1041,14 +1186,16 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_self_interfering_shape(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertSelfInterferingShape>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertSelfInterferingShape(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1058,16 +1205,18 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_shape_is_not_periodic(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertShapeIsNotPeriodic>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertShapeIsNotPeriodic(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1077,16 +1226,18 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_shell_splitter_failed(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertShellSplitterFailed>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertShellSplitterFailed(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1096,14 +1247,16 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_solid_builder_unused_faces(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertSolidBuilderUnusedFaces>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertSolidBuilderUnusedFaces(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1113,16 +1266,18 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_too_small_edge(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertTooSmallEdge>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertTooSmallEdge(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1132,16 +1287,18 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_unable_to_glue(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToGlue>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToGlue(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1151,14 +1308,16 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_unable_to_make_closed_edge_on_face(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToMakeClosedEdgeOnFace(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1168,14 +1327,16 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_unable_to_make_identical(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToMakeIdentical>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToMakeIdentical(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1185,14 +1346,16 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_unable_to_make_periodic(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToMakePeriodic>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToMakePeriodic(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1202,14 +1365,16 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_unable_to_orient_the_shape(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToOrientTheShape>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToOrientTheShape(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1219,14 +1384,16 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_unable_to_remove_the_feature(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToRemoveTheFeature>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToRemoveTheFeature(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1236,16 +1403,18 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_unable_to_repeat(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToRepeat>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToRepeat(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1255,16 +1424,18 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_unable_to_trim(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnableToTrim>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnableToTrim(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1274,16 +1445,18 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_unknown_shape(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnknownShape>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnknownShape(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1293,16 +1466,18 @@ impl HandleTopoDSAlertWithShape {
     pub fn downcast_to_alert_unsupported_type(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBOPAlgoAlertUnsupportedType>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSAlertWithShape_downcast_to_HandleBOPAlgoAlertUnsupportedType(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -1365,8 +1540,10 @@ impl Builder {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_Builder_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1374,8 +1551,10 @@ impl Builder {
     /// Make an empty Wire.
     pub fn make_wire(&self, W: &mut Wire) {
         {
-            unsafe { crate::ffi::TopoDS_Builder_make_wire(self as *const Self, W) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Builder_make_wire(self as *const Self, W) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1383,8 +1562,10 @@ impl Builder {
     /// Make an empty Shell.
     pub fn make_shell(&self, S: &mut Shell) {
         {
-            unsafe { crate::ffi::TopoDS_Builder_make_shell(self as *const Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Builder_make_shell(self as *const Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1392,8 +1573,10 @@ impl Builder {
     /// Make a Solid covering the whole 3D space.
     pub fn make_solid(&self, S: &mut Solid) {
         {
-            unsafe { crate::ffi::TopoDS_Builder_make_solid(self as *const Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Builder_make_solid(self as *const Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1401,8 +1584,11 @@ impl Builder {
     /// Make an empty Composite Solid.
     pub fn make_comp_solid(&self, C: &mut CompSolid) {
         {
-            unsafe { crate::ffi::TopoDS_Builder_make_comp_solid(self as *const Self, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_Builder_make_comp_solid(self as *const Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1410,8 +1596,10 @@ impl Builder {
     /// Make an empty Compound.
     pub fn make_compound(&self, C: &mut Compound) {
         {
-            unsafe { crate::ffi::TopoDS_Builder_make_compound(self as *const Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Builder_make_compound(self as *const Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1422,8 +1610,10 @@ impl Builder {
     /// - TopoDS__UnCompatibleShapes if S and C are not compatible.
     pub fn add(&self, S: &mut Shape, C: &Shape) {
         {
-            unsafe { crate::ffi::TopoDS_Builder_add(self as *const Self, S, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Builder_add(self as *const Self, S, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1433,18 +1623,20 @@ impl Builder {
     /// TopoDS_FrozenShape if S is frozen and cannot be modified.
     pub fn remove(&self, S: &mut Shape, C: &Shape) {
         {
-            unsafe { crate::ffi::TopoDS_Builder_remove(self as *const Self, S, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Builder_remove(self as *const Self, S, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_Builder_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_Builder_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1476,38 +1668,39 @@ impl CompSolid {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_CompSolid_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to TopoDS_Shape
     pub fn as_shape(&self) -> &Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_CompSolid_as_TopoDS_Shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TopoDS_CompSolid_as_TopoDS_Shape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDS_Shape (mutable)
     pub fn as_shape_mut(&mut self) -> &mut Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_CompSolid_as_TopoDS_Shape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_CompSolid_as_TopoDS_Shape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_CompSolid_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_CompSolid_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:78 - `TopoDS_Shape::IsNull()`
@@ -1515,16 +1708,22 @@ impl CompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_CompSolid_inherited_IsNull(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:82 - `TopoDS_Shape::Nullify()`
     pub fn nullify(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_CompSolid_inherited_Nullify(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_CompSolid_inherited_Nullify(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1533,8 +1732,11 @@ impl CompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_CompSolid_inherited_Location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1552,8 +1754,11 @@ impl CompSolid {
                     theRaiseExc,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1562,8 +1767,11 @@ impl CompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_CompSolid_inherited_Orientation(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -1576,8 +1784,11 @@ impl CompSolid {
                     theOrient.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1586,8 +1797,11 @@ impl CompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_CompSolid_inherited_TShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1596,8 +1810,11 @@ impl CompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_CompSolid_inherited_ShapeType(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -1606,8 +1823,11 @@ impl CompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_CompSolid_inherited_Free(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1616,8 +1836,11 @@ impl CompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_CompSolid_inherited_Locked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1626,8 +1849,11 @@ impl CompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_CompSolid_inherited_Modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1636,8 +1862,11 @@ impl CompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_CompSolid_inherited_Checked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1646,8 +1875,11 @@ impl CompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_CompSolid_inherited_Orientable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1656,8 +1888,11 @@ impl CompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_CompSolid_inherited_Closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1666,8 +1901,11 @@ impl CompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_CompSolid_inherited_Infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1676,22 +1914,27 @@ impl CompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_CompSolid_inherited_Convex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:194 - `TopoDS_Shape::Move()`
     pub fn move_(&mut self, thePosition: &crate::top_loc::Location, theRaiseExc: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_CompSolid_inherited_Move(
                     self as *mut Self,
                     thePosition,
                     theRaiseExc,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1709,16 +1952,22 @@ impl CompSolid {
                     theRaiseExc,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:218 - `TopoDS_Shape::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_CompSolid_inherited_Reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_CompSolid_inherited_Reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1727,16 +1976,22 @@ impl CompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_CompSolid_inherited_Reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:232 - `TopoDS_Shape::Complement()`
     pub fn complement(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_CompSolid_inherited_Complement(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_CompSolid_inherited_Complement(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1745,18 +2000,23 @@ impl CompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_CompSolid_inherited_Complemented(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:246 - `TopoDS_Shape::Compose()`
     pub fn compose(&mut self, theOrient: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_CompSolid_inherited_Compose(self as *mut Self, theOrient.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1769,8 +2029,11 @@ impl CompSolid {
                     theOrient.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1779,8 +2042,11 @@ impl CompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_CompSolid_inherited_NbChildren(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1790,8 +2056,11 @@ impl CompSolid {
             let __result = unsafe {
                 crate::ffi::TopoDS_CompSolid_inherited_IsPartner(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1801,8 +2070,11 @@ impl CompSolid {
             let __result = unsafe {
                 crate::ffi::TopoDS_CompSolid_inherited_IsSame(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1812,8 +2084,11 @@ impl CompSolid {
             let __result = unsafe {
                 crate::ffi::TopoDS_CompSolid_inherited_IsEqual(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1823,16 +2098,22 @@ impl CompSolid {
             let __result = unsafe {
                 crate::ffi::TopoDS_CompSolid_inherited_IsNotEqual(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopy()`
     pub fn empty_copy(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_CompSolid_inherited_EmptyCopy(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_CompSolid_inherited_EmptyCopy(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1841,8 +2122,11 @@ impl CompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_CompSolid_inherited_EmptyCopied(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -1875,38 +2159,39 @@ impl Compound {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_Compound_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to TopoDS_Shape
     pub fn as_shape(&self) -> &Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_Compound_as_TopoDS_Shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TopoDS_Compound_as_TopoDS_Shape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDS_Shape (mutable)
     pub fn as_shape_mut(&mut self) -> &mut Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_Compound_as_TopoDS_Shape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_Compound_as_TopoDS_Shape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_Compound_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_Compound_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:78 - `TopoDS_Shape::IsNull()`
@@ -1914,16 +2199,21 @@ impl Compound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Compound_inherited_IsNull(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:82 - `TopoDS_Shape::Nullify()`
     pub fn nullify(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Compound_inherited_Nullify(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Compound_inherited_Nullify(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1932,8 +2222,11 @@ impl Compound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Compound_inherited_Location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1951,8 +2244,11 @@ impl Compound {
                     theRaiseExc,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1961,8 +2257,11 @@ impl Compound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Compound_inherited_Orientation(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -1975,8 +2274,11 @@ impl Compound {
                     theOrient.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1985,8 +2287,11 @@ impl Compound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Compound_inherited_TShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1995,8 +2300,11 @@ impl Compound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Compound_inherited_ShapeType(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -2005,8 +2313,11 @@ impl Compound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Compound_inherited_Free(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2015,8 +2326,11 @@ impl Compound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Compound_inherited_Locked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2025,8 +2339,11 @@ impl Compound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Compound_inherited_Modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2035,8 +2352,11 @@ impl Compound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Compound_inherited_Checked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2045,8 +2365,11 @@ impl Compound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Compound_inherited_Orientable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2055,8 +2378,11 @@ impl Compound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Compound_inherited_Closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2065,8 +2391,11 @@ impl Compound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Compound_inherited_Infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2075,22 +2404,27 @@ impl Compound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Compound_inherited_Convex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:194 - `TopoDS_Shape::Move()`
     pub fn move_(&mut self, thePosition: &crate::top_loc::Location, theRaiseExc: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_Compound_inherited_Move(
                     self as *mut Self,
                     thePosition,
                     theRaiseExc,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2108,16 +2442,21 @@ impl Compound {
                     theRaiseExc,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:218 - `TopoDS_Shape::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Compound_inherited_Reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Compound_inherited_Reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2126,16 +2465,22 @@ impl Compound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Compound_inherited_Reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:232 - `TopoDS_Shape::Complement()`
     pub fn complement(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Compound_inherited_Complement(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_Compound_inherited_Complement(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2144,18 +2489,23 @@ impl Compound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Compound_inherited_Complemented(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:246 - `TopoDS_Shape::Compose()`
     pub fn compose(&mut self, theOrient: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_Compound_inherited_Compose(self as *mut Self, theOrient.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2168,8 +2518,11 @@ impl Compound {
                     theOrient.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2178,8 +2531,11 @@ impl Compound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Compound_inherited_NbChildren(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2189,8 +2545,11 @@ impl Compound {
             let __result = unsafe {
                 crate::ffi::TopoDS_Compound_inherited_IsPartner(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2200,8 +2559,11 @@ impl Compound {
             let __result = unsafe {
                 crate::ffi::TopoDS_Compound_inherited_IsSame(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2211,8 +2573,11 @@ impl Compound {
             let __result = unsafe {
                 crate::ffi::TopoDS_Compound_inherited_IsEqual(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2222,16 +2587,22 @@ impl Compound {
             let __result = unsafe {
                 crate::ffi::TopoDS_Compound_inherited_IsNotEqual(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopy()`
     pub fn empty_copy(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Compound_inherited_EmptyCopy(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_Compound_inherited_EmptyCopy(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2240,8 +2611,11 @@ impl Compound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Compound_inherited_EmptyCopied(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -2273,53 +2647,59 @@ impl Edge {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_Edge_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to TopoDS_Shape
     pub fn as_shape(&self) -> &Shape {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_Edge_as_TopoDS_Shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TopoDS_Edge_as_TopoDS_Shape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDS_Shape (mutable)
     pub fn as_shape_mut(&mut self) -> &mut Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_Edge_as_TopoDS_Shape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::TopoDS_Edge_as_TopoDS_Shape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_Edge_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_Edge_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:78 - `TopoDS_Shape::IsNull()`
     pub fn is_null(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Edge_inherited_IsNull(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:82 - `TopoDS_Shape::Nullify()`
     pub fn nullify(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Edge_inherited_Nullify(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Edge_inherited_Nullify(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2328,8 +2708,11 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Edge_inherited_Location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2343,8 +2726,11 @@ impl Edge {
             let __result = unsafe {
                 crate::ffi::TopoDS_Edge_inherited_Located(self as *const Self, theLoc, theRaiseExc)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2353,8 +2739,11 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Edge_inherited_Orientation(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -2364,8 +2753,11 @@ impl Edge {
             let __result = unsafe {
                 crate::ffi::TopoDS_Edge_inherited_Oriented(self as *const Self, theOrient.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2373,8 +2765,11 @@ impl Edge {
     pub fn t_shape(&self) -> &crate::ffi::HandleTopoDSTShape {
         {
             let __result = unsafe { crate::ffi::TopoDS_Edge_inherited_TShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2383,8 +2778,11 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Edge_inherited_ShapeType(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -2392,8 +2790,11 @@ impl Edge {
     pub fn free(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Edge_inherited_Free(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2401,8 +2802,11 @@ impl Edge {
     pub fn locked(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Edge_inherited_Locked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2411,8 +2815,11 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Edge_inherited_Modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2421,8 +2828,11 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Edge_inherited_Checked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2431,8 +2841,11 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Edge_inherited_Orientable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2440,8 +2853,11 @@ impl Edge {
     pub fn closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Edge_inherited_Closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2450,8 +2866,11 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Edge_inherited_Infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2459,18 +2878,23 @@ impl Edge {
     pub fn convex(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Edge_inherited_Convex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:194 - `TopoDS_Shape::Move()`
     pub fn move_(&mut self, thePosition: &crate::top_loc::Location, theRaiseExc: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_Edge_inherited_Move(self as *mut Self, thePosition, theRaiseExc)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2488,16 +2912,21 @@ impl Edge {
                     theRaiseExc,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:218 - `TopoDS_Shape::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Edge_inherited_Reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Edge_inherited_Reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2506,16 +2935,21 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Edge_inherited_Reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:232 - `TopoDS_Shape::Complement()`
     pub fn complement(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Edge_inherited_Complement(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Edge_inherited_Complement(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2524,18 +2958,23 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Edge_inherited_Complemented(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:246 - `TopoDS_Shape::Compose()`
     pub fn compose(&mut self, theOrient: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_Edge_inherited_Compose(self as *mut Self, theOrient.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2545,8 +2984,11 @@ impl Edge {
             let __result = unsafe {
                 crate::ffi::TopoDS_Edge_inherited_Composed(self as *const Self, theOrient.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2555,8 +2997,11 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Edge_inherited_NbChildren(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2566,8 +3011,11 @@ impl Edge {
             let __result = unsafe {
                 crate::ffi::TopoDS_Edge_inherited_IsPartner(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2576,8 +3024,11 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Edge_inherited_IsSame(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2586,8 +3037,11 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Edge_inherited_IsEqual(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2597,16 +3051,21 @@ impl Edge {
             let __result = unsafe {
                 crate::ffi::TopoDS_Edge_inherited_IsNotEqual(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopy()`
     pub fn empty_copy(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Edge_inherited_EmptyCopy(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Edge_inherited_EmptyCopy(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2615,8 +3074,11 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Edge_inherited_EmptyCopied(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -2647,53 +3109,59 @@ impl Face {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_Face_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to TopoDS_Shape
     pub fn as_shape(&self) -> &Shape {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_Face_as_TopoDS_Shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TopoDS_Face_as_TopoDS_Shape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDS_Shape (mutable)
     pub fn as_shape_mut(&mut self) -> &mut Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_Face_as_TopoDS_Shape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::TopoDS_Face_as_TopoDS_Shape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_Face_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_Face_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:78 - `TopoDS_Shape::IsNull()`
     pub fn is_null(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Face_inherited_IsNull(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:82 - `TopoDS_Shape::Nullify()`
     pub fn nullify(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Face_inherited_Nullify(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Face_inherited_Nullify(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2702,8 +3170,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Face_inherited_Location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2717,8 +3188,11 @@ impl Face {
             let __result = unsafe {
                 crate::ffi::TopoDS_Face_inherited_Located(self as *const Self, theLoc, theRaiseExc)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2727,8 +3201,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Face_inherited_Orientation(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -2738,8 +3215,11 @@ impl Face {
             let __result = unsafe {
                 crate::ffi::TopoDS_Face_inherited_Oriented(self as *const Self, theOrient.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2747,8 +3227,11 @@ impl Face {
     pub fn t_shape(&self) -> &crate::ffi::HandleTopoDSTShape {
         {
             let __result = unsafe { crate::ffi::TopoDS_Face_inherited_TShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2757,8 +3240,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Face_inherited_ShapeType(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -2766,8 +3252,11 @@ impl Face {
     pub fn free(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Face_inherited_Free(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2775,8 +3264,11 @@ impl Face {
     pub fn locked(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Face_inherited_Locked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2785,8 +3277,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Face_inherited_Modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2795,8 +3290,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Face_inherited_Checked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2805,8 +3303,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Face_inherited_Orientable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2814,8 +3315,11 @@ impl Face {
     pub fn closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Face_inherited_Closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2824,8 +3328,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Face_inherited_Infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2833,18 +3340,23 @@ impl Face {
     pub fn convex(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Face_inherited_Convex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:194 - `TopoDS_Shape::Move()`
     pub fn move_(&mut self, thePosition: &crate::top_loc::Location, theRaiseExc: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_Face_inherited_Move(self as *mut Self, thePosition, theRaiseExc)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2862,16 +3374,21 @@ impl Face {
                     theRaiseExc,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:218 - `TopoDS_Shape::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Face_inherited_Reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Face_inherited_Reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2880,16 +3397,21 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Face_inherited_Reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:232 - `TopoDS_Shape::Complement()`
     pub fn complement(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Face_inherited_Complement(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Face_inherited_Complement(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2898,18 +3420,23 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Face_inherited_Complemented(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:246 - `TopoDS_Shape::Compose()`
     pub fn compose(&mut self, theOrient: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_Face_inherited_Compose(self as *mut Self, theOrient.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2919,8 +3446,11 @@ impl Face {
             let __result = unsafe {
                 crate::ffi::TopoDS_Face_inherited_Composed(self as *const Self, theOrient.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2929,8 +3459,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Face_inherited_NbChildren(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2940,8 +3473,11 @@ impl Face {
             let __result = unsafe {
                 crate::ffi::TopoDS_Face_inherited_IsPartner(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2950,8 +3486,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Face_inherited_IsSame(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2960,8 +3499,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Face_inherited_IsEqual(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2971,16 +3513,21 @@ impl Face {
             let __result = unsafe {
                 crate::ffi::TopoDS_Face_inherited_IsNotEqual(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopy()`
     pub fn empty_copy(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Face_inherited_EmptyCopy(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Face_inherited_EmptyCopy(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2989,8 +3536,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Face_inherited_EmptyCopied(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -3015,8 +3565,10 @@ impl FrozenShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_FrozenShape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3026,8 +3578,10 @@ impl FrozenShape {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_FrozenShape_ctor_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3042,8 +3596,10 @@ impl FrozenShape {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3052,8 +3608,11 @@ impl FrozenShape {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_FrozenShape_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3061,16 +3620,21 @@ impl FrozenShape {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::TopoDS_FrozenShape_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_FrozenShape_raise_charptr(c_theMessage.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopoDS_FrozenShape.hxx`:39 - `TopoDS_FrozenShape::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::TopoDS_FrozenShape_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_FrozenShape_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3083,8 +3647,11 @@ impl FrozenShape {
             let __result = unsafe {
                 crate::ffi::TopoDS_FrozenShape_new_instance_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3102,8 +3669,11 @@ impl FrozenShape {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3111,8 +3681,11 @@ impl FrozenShape {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopoDS_FrozenShape_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3120,110 +3693,116 @@ impl FrozenShape {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_FrozenShape_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_FrozenShape_as_Standard_DomainError(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_FrozenShape_as_Standard_DomainError(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_FrozenShape_as_Standard_DomainError_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopoDS_FrozenShape_as_Standard_DomainError_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_FrozenShape_as_Standard_Failure(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_FrozenShape_as_Standard_Failure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_FrozenShape_as_Standard_Failure_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_FrozenShape_as_Standard_Failure_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_FrozenShape_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_FrozenShape_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_FrozenShape_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_FrozenShape_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSFrozenShape> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_FrozenShape_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_FrozenShape_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_FrozenShape_inherited_Print(self as *const Self, theStream)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_FrozenShape_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_FrozenShape_inherited_Reraise(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_FrozenShape_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_FrozenShape_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3233,8 +3812,11 @@ impl FrozenShape {
             let __result = unsafe {
                 crate::ffi::TopoDS_FrozenShape_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3244,8 +3826,11 @@ impl FrozenShape {
             let __result = unsafe {
                 crate::ffi::TopoDS_FrozenShape_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3254,11 +3839,14 @@ impl FrozenShape {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_FrozenShape_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3269,18 +3857,23 @@ impl FrozenShape {
             let __result = unsafe {
                 crate::ffi::TopoDS_FrozenShape_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_FrozenShape_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3290,16 +3883,22 @@ impl FrozenShape {
             let __result = unsafe {
                 crate::ffi::TopoDS_FrozenShape_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopoDS_FrozenShape_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_FrozenShape_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3315,56 +3914,53 @@ unsafe impl crate::CppDeletable for HandleTopoDSFrozenShape {
 impl HandleTopoDSFrozenShape {
     /// Dereference this Handle to access the underlying TopoDS_FrozenShape
     pub fn get(&self) -> &crate::ffi::TopoDS_FrozenShape {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSFrozenShape_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSFrozenShape_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopoDS_FrozenShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_FrozenShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopoDSFrozenShape_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSFrozenShape_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopoDS_FrozenShape> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSFrozenShape_to_HandleStandardDomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSFrozenShape_to_HandleStandardDomainError(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopoDS_FrozenShape> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSFrozenShape_to_HandleStandardFailure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSFrozenShape_to_HandleStandardFailure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopoDS_FrozenShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSFrozenShape_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSFrozenShape_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3388,8 +3984,10 @@ impl HShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_HShape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3398,8 +3996,10 @@ impl HShape {
     pub fn new_shape(aShape: &Shape) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_HShape_ctor_shape(aShape) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3407,8 +4007,10 @@ impl HShape {
     /// Loads this shape with the shape aShape
     pub fn shape_shape(&mut self, aShape: &Shape) {
         {
-            unsafe { crate::ffi::TopoDS_HShape_shape_shape(self as *mut Self, aShape) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_HShape_shape_shape(self as *mut Self, aShape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3417,8 +4019,11 @@ impl HShape {
     pub fn shape(&self) -> &Shape {
         {
             let __result = unsafe { crate::ffi::TopoDS_HShape_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3432,8 +4037,11 @@ impl HShape {
     pub fn change_shape(&mut self) -> &mut Shape {
         {
             let __result = unsafe { crate::ffi::TopoDS_HShape_change_shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3441,8 +4049,11 @@ impl HShape {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_HShape_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3450,8 +4061,11 @@ impl HShape {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopoDS_HShape_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3459,40 +4073,43 @@ impl HShape {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_HShape_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_HShape_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_HShape_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_HShape_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_HShape_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSHShape> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_HShape_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_HShape_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3501,8 +4118,11 @@ impl HShape {
             let __result = unsafe {
                 crate::ffi::TopoDS_HShape_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3511,8 +4131,11 @@ impl HShape {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_HShape_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3520,11 +4143,14 @@ impl HShape {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::TopoDS_HShape_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3534,16 +4160,23 @@ impl HShape {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_HShape_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_HShape_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopoDS_HShape_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3553,16 +4186,21 @@ impl HShape {
             let __result = unsafe {
                 crate::ffi::TopoDS_HShape_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopoDS_HShape_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_HShape_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3578,31 +4216,31 @@ unsafe impl crate::CppDeletable for HandleTopoDSHShape {
 impl HandleTopoDSHShape {
     /// Dereference this Handle to access the underlying TopoDS_HShape
     pub fn get(&self) -> &crate::ffi::TopoDS_HShape {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSHShape_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSHShape_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopoDS_HShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_HShape {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSHShape_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSHShape_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopoDS_HShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSHShape_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSHShape_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3630,8 +4268,10 @@ impl Iterator {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_Iterator_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3647,8 +4287,10 @@ impl Iterator {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Iterator_ctor_shape_bool2(S, cumOri, cumLoc) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3686,8 +4328,12 @@ impl Iterator {
     /// each sub-shape the transformation that is associated with S.
     pub fn initialize(&mut self, S: &Shape, cumOri: bool, cumLoc: bool) {
         {
-            unsafe { crate::ffi::TopoDS_Iterator_initialize(self as *mut Self, S, cumOri, cumLoc) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopoDS_Iterator_initialize(self as *mut Self, S, cumOri, cumLoc)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3697,8 +4343,11 @@ impl Iterator {
     pub fn more(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Iterator_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3709,8 +4358,10 @@ impl Iterator {
     /// Standard_NoMoreObject if there are no more sub-shapes in the shape.
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Iterator_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Iterator_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3722,18 +4373,21 @@ impl Iterator {
     pub fn value(&self) -> &Shape {
         {
             let __result = unsafe { crate::ffi::TopoDS_Iterator_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_Iterator_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_Iterator_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3757,8 +4411,10 @@ impl LockedShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_LockedShape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3768,8 +4424,10 @@ impl LockedShape {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_LockedShape_ctor_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3784,8 +4442,10 @@ impl LockedShape {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3794,8 +4454,11 @@ impl LockedShape {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_LockedShape_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3803,16 +4466,21 @@ impl LockedShape {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::TopoDS_LockedShape_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_LockedShape_raise_charptr(c_theMessage.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopoDS_LockedShape.hxx`:39 - `TopoDS_LockedShape::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::TopoDS_LockedShape_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_LockedShape_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3825,8 +4493,11 @@ impl LockedShape {
             let __result = unsafe {
                 crate::ffi::TopoDS_LockedShape_new_instance_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3844,8 +4515,11 @@ impl LockedShape {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3853,8 +4527,11 @@ impl LockedShape {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopoDS_LockedShape_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3862,110 +4539,116 @@ impl LockedShape {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_LockedShape_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_LockedShape_as_Standard_DomainError(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_LockedShape_as_Standard_DomainError(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_LockedShape_as_Standard_DomainError_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopoDS_LockedShape_as_Standard_DomainError_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_LockedShape_as_Standard_Failure(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_LockedShape_as_Standard_Failure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_LockedShape_as_Standard_Failure_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_LockedShape_as_Standard_Failure_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_LockedShape_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_LockedShape_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_LockedShape_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_LockedShape_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSLockedShape> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_LockedShape_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_LockedShape_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_LockedShape_inherited_Print(self as *const Self, theStream)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_LockedShape_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_LockedShape_inherited_Reraise(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_LockedShape_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_LockedShape_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3975,8 +4658,11 @@ impl LockedShape {
             let __result = unsafe {
                 crate::ffi::TopoDS_LockedShape_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3986,8 +4672,11 @@ impl LockedShape {
             let __result = unsafe {
                 crate::ffi::TopoDS_LockedShape_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3996,11 +4685,14 @@ impl LockedShape {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_LockedShape_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4011,18 +4703,23 @@ impl LockedShape {
             let __result = unsafe {
                 crate::ffi::TopoDS_LockedShape_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_LockedShape_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4032,16 +4729,22 @@ impl LockedShape {
             let __result = unsafe {
                 crate::ffi::TopoDS_LockedShape_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopoDS_LockedShape_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_LockedShape_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4057,56 +4760,53 @@ unsafe impl crate::CppDeletable for HandleTopoDSLockedShape {
 impl HandleTopoDSLockedShape {
     /// Dereference this Handle to access the underlying TopoDS_LockedShape
     pub fn get(&self) -> &crate::ffi::TopoDS_LockedShape {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSLockedShape_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSLockedShape_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopoDS_LockedShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_LockedShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopoDSLockedShape_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSLockedShape_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopoDS_LockedShape> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSLockedShape_to_HandleStandardDomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSLockedShape_to_HandleStandardDomainError(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopoDS_LockedShape> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSLockedShape_to_HandleStandardFailure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSLockedShape_to_HandleStandardFailure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopoDS_LockedShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSLockedShape_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSLockedShape_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4139,8 +4839,10 @@ impl Shape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_Shape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4151,8 +4853,11 @@ impl Shape {
     pub fn is_null(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Shape_is_null(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4161,8 +4866,10 @@ impl Shape {
     /// stored in this shape. As a result, this shape becomes null.
     pub fn nullify(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Shape_nullify(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Shape_nullify(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4171,8 +4878,11 @@ impl Shape {
     pub fn location(&self) -> &crate::top_loc::Location {
         {
             let __result = unsafe { crate::ffi::TopoDS_Shape_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4182,14 +4892,16 @@ impl Shape {
     /// @param theRaiseExc flag to raise exception in case of transformation with scale or negative.
     pub fn location_location_bool(&mut self, theLoc: &crate::top_loc::Location, theRaiseExc: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_Shape_location_location_bool(
                     self as *mut Self,
                     theLoc,
                     theRaiseExc,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4208,8 +4920,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::TopoDS_Shape_located(self as *const Self, theLoc, theRaiseExc)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4218,8 +4933,11 @@ impl Shape {
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         {
             let __result = unsafe { crate::ffi::TopoDS_Shape_orientation(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -4227,13 +4945,15 @@ impl Shape {
     /// Sets the shape orientation.
     pub fn orientation_orientation(&mut self, theOrient: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_Shape_orientation_orientation(
                     self as *mut Self,
                     theOrient.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4244,8 +4964,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shape_oriented(self as *const Self, theOrient.into()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4254,8 +4977,11 @@ impl Shape {
     pub fn t_shape(&self) -> &crate::ffi::HandleTopoDSTShape {
         {
             let __result = unsafe { crate::ffi::TopoDS_Shape_t_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4268,8 +4994,11 @@ impl Shape {
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         {
             let __result = unsafe { crate::ffi::TopoDS_Shape_shape_type(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -4278,8 +5007,11 @@ impl Shape {
     pub fn free(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Shape_free(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4287,8 +5019,10 @@ impl Shape {
     /// Sets the free flag.
     pub fn free_bool(&mut self, theIsFree: bool) {
         {
-            unsafe { crate::ffi::TopoDS_Shape_free_bool(self as *mut Self, theIsFree) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Shape_free_bool(self as *mut Self, theIsFree) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4297,8 +5031,11 @@ impl Shape {
     pub fn locked(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Shape_locked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4306,8 +5043,11 @@ impl Shape {
     /// Sets the locked flag.
     pub fn locked_bool(&mut self, theIsLocked: bool) {
         {
-            unsafe { crate::ffi::TopoDS_Shape_locked_bool(self as *mut Self, theIsLocked) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_Shape_locked_bool(self as *mut Self, theIsLocked) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4316,8 +5056,11 @@ impl Shape {
     pub fn modified(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Shape_modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4325,8 +5068,11 @@ impl Shape {
     /// Sets the modification flag.
     pub fn modified_bool(&mut self, theIsModified: bool) {
         {
-            unsafe { crate::ffi::TopoDS_Shape_modified_bool(self as *mut Self, theIsModified) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_Shape_modified_bool(self as *mut Self, theIsModified) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4335,8 +5081,11 @@ impl Shape {
     pub fn checked(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Shape_checked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4344,8 +5093,11 @@ impl Shape {
     /// Sets the checked flag.
     pub fn checked_bool(&mut self, theIsChecked: bool) {
         {
-            unsafe { crate::ffi::TopoDS_Shape_checked_bool(self as *mut Self, theIsChecked) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_Shape_checked_bool(self as *mut Self, theIsChecked) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4354,8 +5106,11 @@ impl Shape {
     pub fn orientable(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Shape_orientable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4363,8 +5118,12 @@ impl Shape {
     /// Sets the orientability flag.
     pub fn orientable_bool(&mut self, theIsOrientable: bool) {
         {
-            unsafe { crate::ffi::TopoDS_Shape_orientable_bool(self as *mut Self, theIsOrientable) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopoDS_Shape_orientable_bool(self as *mut Self, theIsOrientable)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4373,8 +5132,11 @@ impl Shape {
     pub fn closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Shape_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4382,8 +5144,11 @@ impl Shape {
     /// Sets the closedness flag.
     pub fn closed_bool(&mut self, theIsClosed: bool) {
         {
-            unsafe { crate::ffi::TopoDS_Shape_closed_bool(self as *mut Self, theIsClosed) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_Shape_closed_bool(self as *mut Self, theIsClosed) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4392,8 +5157,11 @@ impl Shape {
     pub fn infinite(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Shape_infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4401,8 +5169,11 @@ impl Shape {
     /// Sets the infinity flag.
     pub fn infinite_bool(&mut self, theIsInfinite: bool) {
         {
-            unsafe { crate::ffi::TopoDS_Shape_infinite_bool(self as *mut Self, theIsInfinite) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_Shape_infinite_bool(self as *mut Self, theIsInfinite) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4411,8 +5182,11 @@ impl Shape {
     pub fn convex(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Shape_convex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4420,8 +5194,11 @@ impl Shape {
     /// Sets the convexness flag.
     pub fn convex_bool(&mut self, theIsConvex: bool) {
         {
-            unsafe { crate::ffi::TopoDS_Shape_convex_bool(self as *mut Self, theIsConvex) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_Shape_convex_bool(self as *mut Self, theIsConvex) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4431,8 +5208,12 @@ impl Shape {
     /// @param theRaiseExc flag to raise exception in case of transformation with scale or negative.
     pub fn move_(&mut self, thePosition: &crate::top_loc::Location, theRaiseExc: bool) {
         {
-            unsafe { crate::ffi::TopoDS_Shape_move_(self as *mut Self, thePosition, theRaiseExc) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopoDS_Shape_move_(self as *mut Self, thePosition, theRaiseExc)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4450,8 +5231,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::TopoDS_Shape_moved(self as *const Self, thePosition, theRaiseExc)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4460,8 +5244,10 @@ impl Shape {
     /// from the TopAbs package.
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Shape_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Shape_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4472,8 +5258,11 @@ impl Shape {
     pub fn reversed(&self) -> crate::OwnedPtr<Shape> {
         {
             let __result = unsafe { crate::ffi::TopoDS_Shape_reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4482,8 +5271,10 @@ impl Shape {
     /// method from the TopAbs package.
     pub fn complement(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Shape_complement(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Shape_complement(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4494,8 +5285,11 @@ impl Shape {
     pub fn complemented(&self) -> crate::OwnedPtr<Shape> {
         {
             let __result = unsafe { crate::ffi::TopoDS_Shape_complemented(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4504,8 +5298,11 @@ impl Shape {
     /// using the Compose method from the TopAbs package.
     pub fn compose(&mut self, theOrient: crate::top_abs::Orientation) {
         {
-            unsafe { crate::ffi::TopoDS_Shape_compose(self as *mut Self, theOrient.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_Shape_compose(self as *mut Self, theOrient.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4517,8 +5314,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shape_composed(self as *const Self, theOrient.into()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4528,8 +5328,11 @@ impl Shape {
     pub fn nb_children(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TopoDS_Shape_nb_children(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4541,8 +5344,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shape_is_partner(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4554,8 +5360,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shape_is_same(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4567,8 +5376,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shape_is_equal(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4578,8 +5390,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shape_is_not_equal(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4589,8 +5404,10 @@ impl Shape {
     /// same geometry and no sub-shapes.
     pub fn empty_copy(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Shape_empty_copy(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Shape_empty_copy(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4601,28 +5418,33 @@ impl Shape {
     pub fn empty_copied(&self) -> crate::OwnedPtr<Shape> {
         {
             let __result = unsafe { crate::ffi::TopoDS_Shape_empty_copied(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `TopoDS_Shape.hxx`:309 - `TopoDS_Shape::TShape()`
     pub fn t_shape_handletopodstshape(&mut self, theTShape: &crate::ffi::HandleTopoDSTShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_Shape_t_shape_handletopodstshape(self as *mut Self, theTShape)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_Shape_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_Shape_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4652,37 +5474,38 @@ impl Shell {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_Shell_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to TopoDS_Shape
     pub fn as_shape(&self) -> &Shape {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_Shell_as_TopoDS_Shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TopoDS_Shell_as_TopoDS_Shape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDS_Shape (mutable)
     pub fn as_shape_mut(&mut self) -> &mut Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_Shell_as_TopoDS_Shape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::TopoDS_Shell_as_TopoDS_Shape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_Shell_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_Shell_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:78 - `TopoDS_Shape::IsNull()`
@@ -4690,16 +5513,21 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shell_inherited_IsNull(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:82 - `TopoDS_Shape::Nullify()`
     pub fn nullify(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Shell_inherited_Nullify(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Shell_inherited_Nullify(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4708,8 +5536,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shell_inherited_Location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4723,8 +5554,11 @@ impl Shell {
             let __result = unsafe {
                 crate::ffi::TopoDS_Shell_inherited_Located(self as *const Self, theLoc, theRaiseExc)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4733,8 +5567,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shell_inherited_Orientation(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -4744,8 +5581,11 @@ impl Shell {
             let __result = unsafe {
                 crate::ffi::TopoDS_Shell_inherited_Oriented(self as *const Self, theOrient.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4754,8 +5594,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shell_inherited_TShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4764,8 +5607,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shell_inherited_ShapeType(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -4773,8 +5619,11 @@ impl Shell {
     pub fn free(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Shell_inherited_Free(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4783,8 +5632,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shell_inherited_Locked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4793,8 +5645,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shell_inherited_Modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4803,8 +5658,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shell_inherited_Checked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4813,8 +5671,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shell_inherited_Orientable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4823,8 +5684,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shell_inherited_Closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4833,8 +5697,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shell_inherited_Infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4843,18 +5710,23 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shell_inherited_Convex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:194 - `TopoDS_Shape::Move()`
     pub fn move_(&mut self, thePosition: &crate::top_loc::Location, theRaiseExc: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_Shell_inherited_Move(self as *mut Self, thePosition, theRaiseExc)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4872,16 +5744,21 @@ impl Shell {
                     theRaiseExc,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:218 - `TopoDS_Shape::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Shell_inherited_Reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Shell_inherited_Reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4890,16 +5767,21 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shell_inherited_Reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:232 - `TopoDS_Shape::Complement()`
     pub fn complement(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Shell_inherited_Complement(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Shell_inherited_Complement(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4908,18 +5790,23 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shell_inherited_Complemented(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:246 - `TopoDS_Shape::Compose()`
     pub fn compose(&mut self, theOrient: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_Shell_inherited_Compose(self as *mut Self, theOrient.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4929,8 +5816,11 @@ impl Shell {
             let __result = unsafe {
                 crate::ffi::TopoDS_Shell_inherited_Composed(self as *const Self, theOrient.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4939,8 +5829,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shell_inherited_NbChildren(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4950,8 +5843,11 @@ impl Shell {
             let __result = unsafe {
                 crate::ffi::TopoDS_Shell_inherited_IsPartner(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4960,8 +5856,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shell_inherited_IsSame(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4971,8 +5870,11 @@ impl Shell {
             let __result = unsafe {
                 crate::ffi::TopoDS_Shell_inherited_IsEqual(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4982,16 +5884,21 @@ impl Shell {
             let __result = unsafe {
                 crate::ffi::TopoDS_Shell_inherited_IsNotEqual(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopy()`
     pub fn empty_copy(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Shell_inherited_EmptyCopy(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Shell_inherited_EmptyCopy(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5000,8 +5907,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Shell_inherited_EmptyCopied(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -5033,37 +5943,38 @@ impl Solid {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_Solid_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to TopoDS_Shape
     pub fn as_shape(&self) -> &Shape {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_Solid_as_TopoDS_Shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TopoDS_Solid_as_TopoDS_Shape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDS_Shape (mutable)
     pub fn as_shape_mut(&mut self) -> &mut Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_Solid_as_TopoDS_Shape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::TopoDS_Solid_as_TopoDS_Shape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_Solid_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_Solid_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:78 - `TopoDS_Shape::IsNull()`
@@ -5071,16 +5982,21 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Solid_inherited_IsNull(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:82 - `TopoDS_Shape::Nullify()`
     pub fn nullify(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Solid_inherited_Nullify(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Solid_inherited_Nullify(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5089,8 +6005,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Solid_inherited_Location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5104,8 +6023,11 @@ impl Solid {
             let __result = unsafe {
                 crate::ffi::TopoDS_Solid_inherited_Located(self as *const Self, theLoc, theRaiseExc)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5114,8 +6036,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Solid_inherited_Orientation(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -5125,8 +6050,11 @@ impl Solid {
             let __result = unsafe {
                 crate::ffi::TopoDS_Solid_inherited_Oriented(self as *const Self, theOrient.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5135,8 +6063,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Solid_inherited_TShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5145,8 +6076,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Solid_inherited_ShapeType(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -5154,8 +6088,11 @@ impl Solid {
     pub fn free(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Solid_inherited_Free(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5164,8 +6101,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Solid_inherited_Locked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5174,8 +6114,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Solid_inherited_Modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5184,8 +6127,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Solid_inherited_Checked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5194,8 +6140,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Solid_inherited_Orientable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5204,8 +6153,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Solid_inherited_Closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5214,8 +6166,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Solid_inherited_Infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5224,18 +6179,23 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Solid_inherited_Convex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:194 - `TopoDS_Shape::Move()`
     pub fn move_(&mut self, thePosition: &crate::top_loc::Location, theRaiseExc: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_Solid_inherited_Move(self as *mut Self, thePosition, theRaiseExc)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5253,16 +6213,21 @@ impl Solid {
                     theRaiseExc,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:218 - `TopoDS_Shape::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Solid_inherited_Reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Solid_inherited_Reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5271,16 +6236,21 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Solid_inherited_Reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:232 - `TopoDS_Shape::Complement()`
     pub fn complement(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Solid_inherited_Complement(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Solid_inherited_Complement(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5289,18 +6259,23 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Solid_inherited_Complemented(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:246 - `TopoDS_Shape::Compose()`
     pub fn compose(&mut self, theOrient: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_Solid_inherited_Compose(self as *mut Self, theOrient.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5310,8 +6285,11 @@ impl Solid {
             let __result = unsafe {
                 crate::ffi::TopoDS_Solid_inherited_Composed(self as *const Self, theOrient.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5320,8 +6298,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Solid_inherited_NbChildren(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5331,8 +6312,11 @@ impl Solid {
             let __result = unsafe {
                 crate::ffi::TopoDS_Solid_inherited_IsPartner(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5341,8 +6325,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Solid_inherited_IsSame(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5352,8 +6339,11 @@ impl Solid {
             let __result = unsafe {
                 crate::ffi::TopoDS_Solid_inherited_IsEqual(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5363,16 +6353,21 @@ impl Solid {
             let __result = unsafe {
                 crate::ffi::TopoDS_Solid_inherited_IsNotEqual(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopy()`
     pub fn empty_copy(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Solid_inherited_EmptyCopy(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Solid_inherited_EmptyCopy(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5381,8 +6376,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Solid_inherited_EmptyCopied(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -5407,8 +6405,10 @@ impl TCompSolid {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_TCompSolid_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5417,8 +6417,11 @@ impl TCompSolid {
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         {
             let __result = unsafe { crate::ffi::TopoDS_TCompSolid_shape_type(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -5427,8 +6430,11 @@ impl TCompSolid {
     pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         {
             let __result = unsafe { crate::ffi::TopoDS_TCompSolid_empty_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5437,8 +6443,11 @@ impl TCompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompSolid_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5446,8 +6455,11 @@ impl TCompSolid {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopoDS_TCompSolid_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5455,61 +6467,63 @@ impl TCompSolid {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_TCompSolid_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TopoDS_TShape
     pub fn as_t_shape(&self) -> &TShape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TCompSolid_as_TopoDS_TShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TCompSolid_as_TopoDS_TShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDS_TShape (mutable)
     pub fn as_t_shape_mut(&mut self) -> &mut TShape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TCompSolid_as_TopoDS_TShape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TCompSolid_as_TopoDS_TShape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TCompSolid_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TCompSolid_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_TCompSolid_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TCompSolid_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTCompSolid> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_TCompSolid_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_TCompSolid_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
@@ -5517,8 +6531,11 @@ impl TCompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompSolid_inherited_Free(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5527,8 +6544,11 @@ impl TCompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompSolid_inherited_Locked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5537,8 +6557,11 @@ impl TCompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompSolid_inherited_Modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5547,8 +6570,11 @@ impl TCompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompSolid_inherited_Checked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5557,8 +6583,11 @@ impl TCompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompSolid_inherited_Orientable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5567,8 +6596,11 @@ impl TCompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompSolid_inherited_Closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5577,8 +6609,11 @@ impl TCompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompSolid_inherited_Infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5587,8 +6622,11 @@ impl TCompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompSolid_inherited_Convex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5597,8 +6635,11 @@ impl TCompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompSolid_inherited_NbChildren(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5608,8 +6649,11 @@ impl TCompSolid {
             let __result = unsafe {
                 crate::ffi::TopoDS_TCompSolid_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5619,8 +6663,11 @@ impl TCompSolid {
             let __result = unsafe {
                 crate::ffi::TopoDS_TCompSolid_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5629,11 +6676,14 @@ impl TCompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompSolid_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5643,18 +6693,23 @@ impl TCompSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompSolid_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_TCompSolid_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5664,16 +6719,22 @@ impl TCompSolid {
             let __result = unsafe {
                 crate::ffi::TopoDS_TCompSolid_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopoDS_TCompSolid_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_TCompSolid_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5689,42 +6750,42 @@ unsafe impl crate::CppDeletable for HandleTopoDSTCompSolid {
 impl HandleTopoDSTCompSolid {
     /// Dereference this Handle to access the underlying TopoDS_TCompSolid
     pub fn get(&self) -> &crate::ffi::TopoDS_TCompSolid {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSTCompSolid_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSTCompSolid_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopoDS_TCompSolid
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_TCompSolid {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSTCompSolid_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSTCompSolid_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopoDS_TCompSolid> to Handle<TopoDS_TShape>
     pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSTCompSolid_to_HandleTopoDSTShape(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSTCompSolid_to_HandleTopoDSTShape(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopoDS_TCompSolid> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSTCompSolid_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSTCompSolid_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5748,8 +6809,10 @@ impl TCompound {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_TCompound_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5758,8 +6821,11 @@ impl TCompound {
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         {
             let __result = unsafe { crate::ffi::TopoDS_TCompound_shape_type(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -5768,8 +6834,11 @@ impl TCompound {
     pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         {
             let __result = unsafe { crate::ffi::TopoDS_TCompound_empty_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5778,8 +6847,11 @@ impl TCompound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompound_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5787,8 +6859,11 @@ impl TCompound {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopoDS_TCompound_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5796,61 +6871,63 @@ impl TCompound {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_TCompound_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TopoDS_TShape
     pub fn as_t_shape(&self) -> &TShape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TCompound_as_TopoDS_TShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TCompound_as_TopoDS_TShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDS_TShape (mutable)
     pub fn as_t_shape_mut(&mut self) -> &mut TShape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TCompound_as_TopoDS_TShape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TCompound_as_TopoDS_TShape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TCompound_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TCompound_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_TCompound_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TCompound_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTCompound> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_TCompound_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_TCompound_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
@@ -5858,8 +6935,11 @@ impl TCompound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompound_inherited_Free(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5868,8 +6948,11 @@ impl TCompound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompound_inherited_Locked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5878,8 +6961,11 @@ impl TCompound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompound_inherited_Modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5888,8 +6974,11 @@ impl TCompound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompound_inherited_Checked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5898,8 +6987,11 @@ impl TCompound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompound_inherited_Orientable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5908,8 +7000,11 @@ impl TCompound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompound_inherited_Closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5918,8 +7013,11 @@ impl TCompound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompound_inherited_Infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5928,8 +7026,11 @@ impl TCompound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompound_inherited_Convex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5938,8 +7039,11 @@ impl TCompound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompound_inherited_NbChildren(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5949,8 +7053,11 @@ impl TCompound {
             let __result = unsafe {
                 crate::ffi::TopoDS_TCompound_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5960,8 +7067,11 @@ impl TCompound {
             let __result = unsafe {
                 crate::ffi::TopoDS_TCompound_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5970,11 +7080,14 @@ impl TCompound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompound_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5984,18 +7097,23 @@ impl TCompound {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TCompound_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_TCompound_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6005,16 +7123,22 @@ impl TCompound {
             let __result = unsafe {
                 crate::ffi::TopoDS_TCompound_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopoDS_TCompound_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_TCompound_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6030,42 +7154,41 @@ unsafe impl crate::CppDeletable for HandleTopoDSTCompound {
 impl HandleTopoDSTCompound {
     /// Dereference this Handle to access the underlying TopoDS_TCompound
     pub fn get(&self) -> &crate::ffi::TopoDS_TCompound {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSTCompound_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSTCompound_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopoDS_TCompound
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_TCompound {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSTCompound_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSTCompound_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopoDS_TCompound> to Handle<TopoDS_TShape>
     pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSTCompound_to_HandleTopoDSTShape(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleTopoDSTCompound_to_HandleTopoDSTShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopoDS_TCompound> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSTCompound_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSTCompound_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6090,8 +7213,11 @@ impl TEdge {
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         {
             let __result = unsafe { crate::ffi::TopoDS_TEdge_shape_type(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -6099,8 +7225,11 @@ impl TEdge {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_TEdge_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6108,8 +7237,11 @@ impl TEdge {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopoDS_TEdge_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6117,57 +7249,61 @@ impl TEdge {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_TEdge_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TopoDS_TShape
     pub fn as_t_shape(&self) -> &TShape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TEdge_as_TopoDS_TShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TopoDS_TEdge_as_TopoDS_TShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDS_TShape (mutable)
     pub fn as_t_shape_mut(&mut self) -> &mut TShape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TEdge_as_TopoDS_TShape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::TopoDS_TEdge_as_TopoDS_TShape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TEdge_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TEdge_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TEdge_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TEdge_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
     pub fn free(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_TEdge_inherited_Free(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6176,8 +7312,11 @@ impl TEdge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TEdge_inherited_Locked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6186,8 +7325,11 @@ impl TEdge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TEdge_inherited_Modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6196,8 +7338,11 @@ impl TEdge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TEdge_inherited_Checked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6206,8 +7351,11 @@ impl TEdge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TEdge_inherited_Orientable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6216,8 +7364,11 @@ impl TEdge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TEdge_inherited_Closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6226,8 +7377,11 @@ impl TEdge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TEdge_inherited_Infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6236,8 +7390,11 @@ impl TEdge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TEdge_inherited_Convex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6246,8 +7403,11 @@ impl TEdge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TEdge_inherited_EmptyCopy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6256,8 +7416,11 @@ impl TEdge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TEdge_inherited_NbChildren(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6267,8 +7430,11 @@ impl TEdge {
             let __result = unsafe {
                 crate::ffi::TopoDS_TEdge_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6277,8 +7443,11 @@ impl TEdge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TEdge_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6286,11 +7455,14 @@ impl TEdge {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::TopoDS_TEdge_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6300,16 +7472,23 @@ impl TEdge {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TEdge_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_TEdge_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopoDS_TEdge_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6319,16 +7498,21 @@ impl TEdge {
             let __result = unsafe {
                 crate::ffi::TopoDS_TEdge_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopoDS_TEdge_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_TEdge_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6344,55 +7528,57 @@ unsafe impl crate::CppDeletable for HandleTopoDSTEdge {
 impl HandleTopoDSTEdge {
     /// Dereference this Handle to access the underlying TopoDS_TEdge
     pub fn get(&self) -> &crate::ffi::TopoDS_TEdge {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSTEdge_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSTEdge_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopoDS_TEdge
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_TEdge {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSTEdge_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSTEdge_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopoDS_TEdge> to Handle<TopoDS_TShape>
     pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopoDSTEdge_to_HandleTopoDSTShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleTopoDSTEdge_to_HandleTopoDSTShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopoDS_TEdge> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSTEdge_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSTEdge_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<TopoDS_TEdge> to Handle<BRep_TEdge>
     ///
     /// Returns `None` if the handle does not point to a `BRep_TEdge` (or subclass).
     pub fn downcast_to_t_edge(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepTEdge>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSTEdge_downcast_to_HandleBRepTEdge(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -6419,8 +7605,10 @@ impl TFace {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_TFace_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6429,8 +7617,11 @@ impl TFace {
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         {
             let __result = unsafe { crate::ffi::TopoDS_TFace_shape_type(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -6439,8 +7630,11 @@ impl TFace {
     pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         {
             let __result = unsafe { crate::ffi::TopoDS_TFace_empty_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6448,8 +7642,11 @@ impl TFace {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_TFace_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6457,8 +7654,11 @@ impl TFace {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopoDS_TFace_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6466,66 +7666,70 @@ impl TFace {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_TFace_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TopoDS_TShape
     pub fn as_t_shape(&self) -> &TShape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TFace_as_TopoDS_TShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TopoDS_TFace_as_TopoDS_TShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDS_TShape (mutable)
     pub fn as_t_shape_mut(&mut self) -> &mut TShape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TFace_as_TopoDS_TShape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::TopoDS_TFace_as_TopoDS_TShape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TFace_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TFace_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TFace_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TFace_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTFace> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_TFace_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_TFace_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
     pub fn free(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_TFace_inherited_Free(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6534,8 +7738,11 @@ impl TFace {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TFace_inherited_Locked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6544,8 +7751,11 @@ impl TFace {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TFace_inherited_Modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6554,8 +7764,11 @@ impl TFace {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TFace_inherited_Checked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6564,8 +7777,11 @@ impl TFace {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TFace_inherited_Orientable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6574,8 +7790,11 @@ impl TFace {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TFace_inherited_Closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6584,8 +7803,11 @@ impl TFace {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TFace_inherited_Infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6594,8 +7816,11 @@ impl TFace {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TFace_inherited_Convex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6604,8 +7829,11 @@ impl TFace {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TFace_inherited_NbChildren(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6615,8 +7843,11 @@ impl TFace {
             let __result = unsafe {
                 crate::ffi::TopoDS_TFace_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6625,8 +7856,11 @@ impl TFace {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TFace_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6634,11 +7868,14 @@ impl TFace {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::TopoDS_TFace_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6648,16 +7885,23 @@ impl TFace {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TFace_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_TFace_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopoDS_TFace_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6667,16 +7911,21 @@ impl TFace {
             let __result = unsafe {
                 crate::ffi::TopoDS_TFace_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopoDS_TFace_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_TFace_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6692,55 +7941,57 @@ unsafe impl crate::CppDeletable for HandleTopoDSTFace {
 impl HandleTopoDSTFace {
     /// Dereference this Handle to access the underlying TopoDS_TFace
     pub fn get(&self) -> &crate::ffi::TopoDS_TFace {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSTFace_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSTFace_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopoDS_TFace
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_TFace {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSTFace_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSTFace_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopoDS_TFace> to Handle<TopoDS_TShape>
     pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopoDSTFace_to_HandleTopoDSTShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleTopoDSTFace_to_HandleTopoDSTShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopoDS_TFace> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSTFace_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSTFace_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<TopoDS_TFace> to Handle<BRep_TFace>
     ///
     /// Returns `None` if the handle does not point to a `BRep_TFace` (or subclass).
     pub fn downcast_to_t_face(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepTFace>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSTFace_downcast_to_HandleBRepTFace(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -6789,8 +8040,11 @@ impl TShape {
     pub fn free(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShape_free(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6798,8 +8052,11 @@ impl TShape {
     /// Sets the free flag.
     pub fn free_bool(&mut self, theIsFree: bool) {
         {
-            unsafe { crate::ffi::TopoDS_TShape_free_bool(self as *mut Self, theIsFree) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_TShape_free_bool(self as *mut Self, theIsFree) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6808,8 +8065,11 @@ impl TShape {
     pub fn locked(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShape_locked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6817,8 +8077,11 @@ impl TShape {
     /// Sets the locked flag.
     pub fn locked_bool(&mut self, theIsLocked: bool) {
         {
-            unsafe { crate::ffi::TopoDS_TShape_locked_bool(self as *mut Self, theIsLocked) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_TShape_locked_bool(self as *mut Self, theIsLocked) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6827,8 +8090,11 @@ impl TShape {
     pub fn modified(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShape_modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6836,8 +8102,12 @@ impl TShape {
     /// Sets the modification flag.
     pub fn modified_bool(&mut self, theIsModified: bool) {
         {
-            unsafe { crate::ffi::TopoDS_TShape_modified_bool(self as *mut Self, theIsModified) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopoDS_TShape_modified_bool(self as *mut Self, theIsModified)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6846,8 +8116,11 @@ impl TShape {
     pub fn checked(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShape_checked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6855,8 +8128,11 @@ impl TShape {
     /// Sets the checked flag.
     pub fn checked_bool(&mut self, theIsChecked: bool) {
         {
-            unsafe { crate::ffi::TopoDS_TShape_checked_bool(self as *mut Self, theIsChecked) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_TShape_checked_bool(self as *mut Self, theIsChecked) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6865,8 +8141,11 @@ impl TShape {
     pub fn orientable(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShape_orientable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6874,10 +8153,12 @@ impl TShape {
     /// Sets the orientability flag.
     pub fn orientable_bool(&mut self, theIsOrientable: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_TShape_orientable_bool(self as *mut Self, theIsOrientable)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6886,8 +8167,11 @@ impl TShape {
     pub fn closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShape_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6895,8 +8179,11 @@ impl TShape {
     /// Sets the closedness flag.
     pub fn closed_bool(&mut self, theIsClosed: bool) {
         {
-            unsafe { crate::ffi::TopoDS_TShape_closed_bool(self as *mut Self, theIsClosed) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_TShape_closed_bool(self as *mut Self, theIsClosed) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6905,8 +8192,11 @@ impl TShape {
     pub fn infinite(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShape_infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6914,8 +8204,12 @@ impl TShape {
     /// Sets the infinity flag.
     pub fn infinite_bool(&mut self, theIsInfinite: bool) {
         {
-            unsafe { crate::ffi::TopoDS_TShape_infinite_bool(self as *mut Self, theIsInfinite) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopoDS_TShape_infinite_bool(self as *mut Self, theIsInfinite)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6924,8 +8218,11 @@ impl TShape {
     pub fn convex(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShape_convex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6933,8 +8230,11 @@ impl TShape {
     /// Sets the convexness flag.
     pub fn convex_bool(&mut self, theIsConvex: bool) {
         {
-            unsafe { crate::ffi::TopoDS_TShape_convex_bool(self as *mut Self, theIsConvex) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_TShape_convex_bool(self as *mut Self, theIsConvex) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6944,8 +8244,11 @@ impl TShape {
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShape_shape_type(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -6954,8 +8257,11 @@ impl TShape {
     pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShape_empty_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6965,8 +8271,11 @@ impl TShape {
     pub fn nb_children(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShape_nb_children(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6974,8 +8283,11 @@ impl TShape {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShape_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6983,8 +8295,11 @@ impl TShape {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShape_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6992,29 +8307,32 @@ impl TShape {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShape_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TShape_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TShape_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TShape_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TShape_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -7023,8 +8341,11 @@ impl TShape {
             let __result = unsafe {
                 crate::ffi::TopoDS_TShape_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7033,8 +8354,11 @@ impl TShape {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TShape_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7042,11 +8366,14 @@ impl TShape {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShape_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7056,16 +8383,23 @@ impl TShape {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TShape_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_TShape_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopoDS_TShape_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7075,16 +8409,21 @@ impl TShape {
             let __result = unsafe {
                 crate::ffi::TopoDS_TShape_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopoDS_TShape_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_TShape_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7100,45 +8439,47 @@ unsafe impl crate::CppDeletable for HandleTopoDSTShape {
 impl HandleTopoDSTShape {
     /// Dereference this Handle to access the underlying TopoDS_TShape
     pub fn get(&self) -> &crate::ffi::TopoDS_TShape {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSTShape_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSTShape_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopoDS_TShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_TShape {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSTShape_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSTShape_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopoDS_TShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSTShape_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSTShape_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<TopoDS_TShape> to Handle<BRep_TEdge>
     ///
     /// Returns `None` if the handle does not point to a `BRep_TEdge` (or subclass).
     pub fn downcast_to_b_rep_t_edge(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepTEdge>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSTShape_downcast_to_HandleBRepTEdge(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -7146,14 +8487,16 @@ impl HandleTopoDSTShape {
     ///
     /// Returns `None` if the handle does not point to a `BRep_TFace` (or subclass).
     pub fn downcast_to_b_rep_t_face(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepTFace>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSTShape_downcast_to_HandleBRepTFace(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -7163,14 +8506,16 @@ impl HandleTopoDSTShape {
     pub fn downcast_to_b_rep_t_vertex(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepTVertex>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSTShape_downcast_to_HandleBRepTVertex(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -7180,14 +8525,16 @@ impl HandleTopoDSTShape {
     pub fn downcast_to_t_comp_solid(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSTCompSolid>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSTShape_downcast_to_HandleTopoDSTCompSolid(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -7197,14 +8544,16 @@ impl HandleTopoDSTShape {
     pub fn downcast_to_t_compound(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSTCompound>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSTShape_downcast_to_HandleTopoDSTCompound(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -7214,14 +8563,16 @@ impl HandleTopoDSTShape {
     pub fn downcast_to_topo_ds_t_edge(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSTEdge>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSTShape_downcast_to_HandleTopoDSTEdge(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -7231,14 +8582,16 @@ impl HandleTopoDSTShape {
     pub fn downcast_to_topo_ds_t_face(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSTFace>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSTShape_downcast_to_HandleTopoDSTFace(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -7246,14 +8599,16 @@ impl HandleTopoDSTShape {
     ///
     /// Returns `None` if the handle does not point to a `TopoDS_TShell` (or subclass).
     pub fn downcast_to_t_shell(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSTShell>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSTShape_downcast_to_HandleTopoDSTShell(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -7261,14 +8616,16 @@ impl HandleTopoDSTShape {
     ///
     /// Returns `None` if the handle does not point to a `TopoDS_TSolid` (or subclass).
     pub fn downcast_to_t_solid(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSTSolid>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSTShape_downcast_to_HandleTopoDSTSolid(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -7278,14 +8635,16 @@ impl HandleTopoDSTShape {
     pub fn downcast_to_topo_ds_t_vertex(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSTVertex>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSTShape_downcast_to_HandleTopoDSTVertex(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -7293,14 +8652,16 @@ impl HandleTopoDSTShape {
     ///
     /// Returns `None` if the handle does not point to a `TopoDS_TWire` (or subclass).
     pub fn downcast_to_t_wire(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTopoDSTWire>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSTShape_downcast_to_HandleTopoDSTWire(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -7325,8 +8686,10 @@ impl TShell {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShell_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7335,8 +8698,11 @@ impl TShell {
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShell_shape_type(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -7345,8 +8711,11 @@ impl TShell {
     pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShell_empty_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7354,8 +8723,11 @@ impl TShell {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShell_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7363,8 +8735,11 @@ impl TShell {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShell_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -7372,68 +8747,72 @@ impl TShell {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShell_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TopoDS_TShape
     pub fn as_t_shape(&self) -> &TShape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TShell_as_TopoDS_TShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TopoDS_TShell_as_TopoDS_TShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDS_TShape (mutable)
     pub fn as_t_shape_mut(&mut self) -> &mut TShape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TShell_as_TopoDS_TShape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::TopoDS_TShell_as_TopoDS_TShape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TShell_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TShell_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TShell_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TShell_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShell> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_TShell_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_TShell_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
     pub fn free(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShell_inherited_Free(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7442,8 +8821,11 @@ impl TShell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TShell_inherited_Locked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7452,8 +8834,11 @@ impl TShell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TShell_inherited_Modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7462,8 +8847,11 @@ impl TShell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TShell_inherited_Checked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7472,8 +8860,11 @@ impl TShell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TShell_inherited_Orientable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7482,8 +8873,11 @@ impl TShell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TShell_inherited_Closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7492,8 +8886,11 @@ impl TShell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TShell_inherited_Infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7502,8 +8899,11 @@ impl TShell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TShell_inherited_Convex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7512,8 +8912,11 @@ impl TShell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TShell_inherited_NbChildren(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7523,8 +8926,11 @@ impl TShell {
             let __result = unsafe {
                 crate::ffi::TopoDS_TShell_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7533,8 +8939,11 @@ impl TShell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TShell_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7542,11 +8951,14 @@ impl TShell {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::TopoDS_TShell_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7556,16 +8968,23 @@ impl TShell {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TShell_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_TShell_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopoDS_TShell_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7575,16 +8994,21 @@ impl TShell {
             let __result = unsafe {
                 crate::ffi::TopoDS_TShell_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopoDS_TShell_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_TShell_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7600,42 +9024,41 @@ unsafe impl crate::CppDeletable for HandleTopoDSTShell {
 impl HandleTopoDSTShell {
     /// Dereference this Handle to access the underlying TopoDS_TShell
     pub fn get(&self) -> &crate::ffi::TopoDS_TShell {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSTShell_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSTShell_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopoDS_TShell
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_TShell {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSTShell_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSTShell_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopoDS_TShell> to Handle<TopoDS_TShape>
     pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSTShell_to_HandleTopoDSTShape(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleTopoDSTShell_to_HandleTopoDSTShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopoDS_TShell> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSTShell_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSTShell_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -7660,8 +9083,10 @@ impl TSolid {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_TSolid_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7670,8 +9095,11 @@ impl TSolid {
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         {
             let __result = unsafe { crate::ffi::TopoDS_TSolid_shape_type(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -7680,8 +9108,11 @@ impl TSolid {
     pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         {
             let __result = unsafe { crate::ffi::TopoDS_TSolid_empty_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7689,8 +9120,11 @@ impl TSolid {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_TSolid_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7698,8 +9132,11 @@ impl TSolid {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopoDS_TSolid_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -7707,68 +9144,72 @@ impl TSolid {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_TSolid_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TopoDS_TShape
     pub fn as_t_shape(&self) -> &TShape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TSolid_as_TopoDS_TShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TopoDS_TSolid_as_TopoDS_TShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDS_TShape (mutable)
     pub fn as_t_shape_mut(&mut self) -> &mut TShape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TSolid_as_TopoDS_TShape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::TopoDS_TSolid_as_TopoDS_TShape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TSolid_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TSolid_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TSolid_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TSolid_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTSolid> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_TSolid_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_TSolid_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
     pub fn free(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_TSolid_inherited_Free(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7777,8 +9218,11 @@ impl TSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TSolid_inherited_Locked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7787,8 +9231,11 @@ impl TSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TSolid_inherited_Modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7797,8 +9244,11 @@ impl TSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TSolid_inherited_Checked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7807,8 +9257,11 @@ impl TSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TSolid_inherited_Orientable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7817,8 +9270,11 @@ impl TSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TSolid_inherited_Closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7827,8 +9283,11 @@ impl TSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TSolid_inherited_Infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7837,8 +9296,11 @@ impl TSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TSolid_inherited_Convex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7847,8 +9309,11 @@ impl TSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TSolid_inherited_NbChildren(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7858,8 +9323,11 @@ impl TSolid {
             let __result = unsafe {
                 crate::ffi::TopoDS_TSolid_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7868,8 +9336,11 @@ impl TSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TSolid_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7877,11 +9348,14 @@ impl TSolid {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::TopoDS_TSolid_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7891,16 +9365,23 @@ impl TSolid {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TSolid_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_TSolid_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopoDS_TSolid_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7910,16 +9391,21 @@ impl TSolid {
             let __result = unsafe {
                 crate::ffi::TopoDS_TSolid_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopoDS_TSolid_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_TSolid_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7935,42 +9421,41 @@ unsafe impl crate::CppDeletable for HandleTopoDSTSolid {
 impl HandleTopoDSTSolid {
     /// Dereference this Handle to access the underlying TopoDS_TSolid
     pub fn get(&self) -> &crate::ffi::TopoDS_TSolid {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSTSolid_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSTSolid_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopoDS_TSolid
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_TSolid {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSTSolid_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSTSolid_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopoDS_TSolid> to Handle<TopoDS_TShape>
     pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSTSolid_to_HandleTopoDSTShape(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleTopoDSTSolid_to_HandleTopoDSTShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopoDS_TSolid> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSTSolid_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSTSolid_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -7995,8 +9480,11 @@ impl TVertex {
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         {
             let __result = unsafe { crate::ffi::TopoDS_TVertex_shape_type(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -8004,8 +9492,11 @@ impl TVertex {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_TVertex_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8013,8 +9504,11 @@ impl TVertex {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopoDS_TVertex_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8022,49 +9516,51 @@ impl TVertex {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_TVertex_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TopoDS_TShape
     pub fn as_t_shape(&self) -> &TShape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TVertex_as_TopoDS_TShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TopoDS_TVertex_as_TopoDS_TShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDS_TShape (mutable)
     pub fn as_t_shape_mut(&mut self) -> &mut TShape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TVertex_as_TopoDS_TShape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TVertex_as_TopoDS_TShape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TVertex_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TVertex_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TVertex_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TVertex_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
@@ -8072,8 +9568,11 @@ impl TVertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TVertex_inherited_Free(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8082,8 +9581,11 @@ impl TVertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TVertex_inherited_Locked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8092,8 +9594,11 @@ impl TVertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TVertex_inherited_Modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8102,8 +9607,11 @@ impl TVertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TVertex_inherited_Checked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8112,8 +9620,11 @@ impl TVertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TVertex_inherited_Orientable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8122,8 +9633,11 @@ impl TVertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TVertex_inherited_Closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8132,8 +9646,11 @@ impl TVertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TVertex_inherited_Infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8142,8 +9659,11 @@ impl TVertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TVertex_inherited_Convex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8152,8 +9672,11 @@ impl TVertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TVertex_inherited_EmptyCopy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8162,8 +9685,11 @@ impl TVertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TVertex_inherited_NbChildren(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8173,8 +9699,11 @@ impl TVertex {
             let __result = unsafe {
                 crate::ffi::TopoDS_TVertex_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8184,8 +9713,11 @@ impl TVertex {
             let __result = unsafe {
                 crate::ffi::TopoDS_TVertex_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8194,11 +9726,14 @@ impl TVertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TVertex_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -8208,16 +9743,23 @@ impl TVertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TVertex_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_TVertex_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopoDS_TVertex_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8227,16 +9769,21 @@ impl TVertex {
             let __result = unsafe {
                 crate::ffi::TopoDS_TVertex_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopoDS_TVertex_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_TVertex_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8252,56 +9799,57 @@ unsafe impl crate::CppDeletable for HandleTopoDSTVertex {
 impl HandleTopoDSTVertex {
     /// Dereference this Handle to access the underlying TopoDS_TVertex
     pub fn get(&self) -> &crate::ffi::TopoDS_TVertex {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSTVertex_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSTVertex_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopoDS_TVertex
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_TVertex {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSTVertex_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSTVertex_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopoDS_TVertex> to Handle<TopoDS_TShape>
     pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSTVertex_to_HandleTopoDSTShape(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleTopoDSTVertex_to_HandleTopoDSTShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopoDS_TVertex> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSTVertex_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSTVertex_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<TopoDS_TVertex> to Handle<BRep_TVertex>
     ///
     /// Returns `None` if the handle does not point to a `BRep_TVertex` (or subclass).
     pub fn downcast_to_t_vertex(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepTVertex>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopoDSTVertex_downcast_to_HandleBRepTVertex(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -8326,8 +9874,10 @@ impl TWire {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_TWire_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8336,8 +9886,11 @@ impl TWire {
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         {
             let __result = unsafe { crate::ffi::TopoDS_TWire_shape_type(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -8346,8 +9899,11 @@ impl TWire {
     pub fn empty_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
         {
             let __result = unsafe { crate::ffi::TopoDS_TWire_empty_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8355,8 +9911,11 @@ impl TWire {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_TWire_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8364,8 +9923,11 @@ impl TWire {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopoDS_TWire_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8373,66 +9935,70 @@ impl TWire {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_TWire_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TopoDS_TShape
     pub fn as_t_shape(&self) -> &TShape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TWire_as_TopoDS_TShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TopoDS_TWire_as_TopoDS_TShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDS_TShape (mutable)
     pub fn as_t_shape_mut(&mut self) -> &mut TShape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TWire_as_TopoDS_TShape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::TopoDS_TWire_as_TopoDS_TShape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TWire_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TWire_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_TWire_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopoDS_TWire_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTWire> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_TWire_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_TWire_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TopoDS_TShape.hxx`:59 - `TopoDS_TShape::Free()`
     pub fn free(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_TWire_inherited_Free(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8441,8 +10007,11 @@ impl TWire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TWire_inherited_Locked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8451,8 +10020,11 @@ impl TWire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TWire_inherited_Modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8461,8 +10033,11 @@ impl TWire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TWire_inherited_Checked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8471,8 +10046,11 @@ impl TWire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TWire_inherited_Orientable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8481,8 +10059,11 @@ impl TWire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TWire_inherited_Closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8491,8 +10072,11 @@ impl TWire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TWire_inherited_Infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8501,8 +10085,11 @@ impl TWire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TWire_inherited_Convex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8511,8 +10098,11 @@ impl TWire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TWire_inherited_NbChildren(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8522,8 +10112,11 @@ impl TWire {
             let __result = unsafe {
                 crate::ffi::TopoDS_TWire_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8532,8 +10125,11 @@ impl TWire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TWire_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8541,11 +10137,14 @@ impl TWire {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::TopoDS_TWire_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -8555,16 +10154,23 @@ impl TWire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_TWire_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_TWire_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopoDS_TWire_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8574,16 +10180,21 @@ impl TWire {
             let __result = unsafe {
                 crate::ffi::TopoDS_TWire_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopoDS_TWire_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_TWire_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8599,41 +10210,41 @@ unsafe impl crate::CppDeletable for HandleTopoDSTWire {
 impl HandleTopoDSTWire {
     /// Dereference this Handle to access the underlying TopoDS_TWire
     pub fn get(&self) -> &crate::ffi::TopoDS_TWire {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSTWire_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSTWire_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopoDS_TWire
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_TWire {
-        {
-            let __result = unsafe { crate::ffi::HandleTopoDSTWire_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTopoDSTWire_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopoDS_TWire> to Handle<TopoDS_TShape>
     pub fn to_handle_t_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopoDSTShape> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopoDSTWire_to_HandleTopoDSTShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleTopoDSTWire_to_HandleTopoDSTShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopoDS_TWire> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSTWire_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSTWire_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -8656,8 +10267,10 @@ impl UnCompatibleShapes {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_UnCompatibleShapes_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8668,8 +10281,10 @@ impl UnCompatibleShapes {
             let __result = unsafe {
                 crate::ffi::TopoDS_UnCompatibleShapes_ctor_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8684,8 +10299,10 @@ impl UnCompatibleShapes {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8694,8 +10311,11 @@ impl UnCompatibleShapes {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_UnCompatibleShapes_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8703,16 +10323,22 @@ impl UnCompatibleShapes {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::TopoDS_UnCompatibleShapes_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopoDS_UnCompatibleShapes_raise_charptr(c_theMessage.as_ptr())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopoDS_UnCompatibleShapes.hxx`:38 - `TopoDS_UnCompatibleShapes::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::TopoDS_UnCompatibleShapes_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_UnCompatibleShapes_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8725,8 +10351,11 @@ impl UnCompatibleShapes {
             let __result = unsafe {
                 crate::ffi::TopoDS_UnCompatibleShapes_new_instance_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8744,8 +10373,11 @@ impl UnCompatibleShapes {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8753,8 +10385,11 @@ impl UnCompatibleShapes {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopoDS_UnCompatibleShapes_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8762,115 +10397,126 @@ impl UnCompatibleShapes {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopoDS_UnCompatibleShapes_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_UnCompatibleShapes_as_Standard_DomainError(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopoDS_UnCompatibleShapes_as_Standard_DomainError(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_UnCompatibleShapes_as_Standard_DomainError_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopoDS_UnCompatibleShapes_as_Standard_DomainError_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_UnCompatibleShapes_as_Standard_Failure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopoDS_UnCompatibleShapes_as_Standard_Failure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_UnCompatibleShapes_as_Standard_Failure_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopoDS_UnCompatibleShapes_as_Standard_Failure_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_UnCompatibleShapes_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopoDS_UnCompatibleShapes_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopoDS_UnCompatibleShapes_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopoDS_UnCompatibleShapes_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopoDSUnCompatibleShapes> {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_UnCompatibleShapes_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_UnCompatibleShapes_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_UnCompatibleShapes_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_UnCompatibleShapes_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopoDS_UnCompatibleShapes_inherited_Reraise(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_UnCompatibleShapes_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_UnCompatibleShapes_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8883,8 +10529,11 @@ impl UnCompatibleShapes {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8894,8 +10543,11 @@ impl UnCompatibleShapes {
             let __result = unsafe {
                 crate::ffi::TopoDS_UnCompatibleShapes_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8905,11 +10557,14 @@ impl UnCompatibleShapes {
             let __result = unsafe {
                 crate::ffi::TopoDS_UnCompatibleShapes_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -8920,20 +10575,25 @@ impl UnCompatibleShapes {
             let __result = unsafe {
                 crate::ffi::TopoDS_UnCompatibleShapes_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_UnCompatibleShapes_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8945,16 +10605,23 @@ impl UnCompatibleShapes {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopoDS_UnCompatibleShapes_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopoDS_UnCompatibleShapes_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8970,61 +10637,59 @@ unsafe impl crate::CppDeletable for HandleTopoDSUnCompatibleShapes {
 impl HandleTopoDSUnCompatibleShapes {
     /// Dereference this Handle to access the underlying TopoDS_UnCompatibleShapes
     pub fn get(&self) -> &crate::ffi::TopoDS_UnCompatibleShapes {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopoDSUnCompatibleShapes_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleTopoDSUnCompatibleShapes_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopoDS_UnCompatibleShapes
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopoDS_UnCompatibleShapes {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopoDSUnCompatibleShapes_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTopoDSUnCompatibleShapes_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopoDS_UnCompatibleShapes> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSUnCompatibleShapes_to_HandleStandardDomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSUnCompatibleShapes_to_HandleStandardDomainError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopoDS_UnCompatibleShapes> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSUnCompatibleShapes_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSUnCompatibleShapes_to_HandleStandardFailure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopoDS_UnCompatibleShapes> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopoDSUnCompatibleShapes_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopoDSUnCompatibleShapes_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -9055,38 +10720,38 @@ impl Vertex {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_Vertex_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to TopoDS_Shape
     pub fn as_shape(&self) -> &Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_Vertex_as_TopoDS_Shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TopoDS_Vertex_as_TopoDS_Shape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDS_Shape (mutable)
     pub fn as_shape_mut(&mut self) -> &mut Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_Vertex_as_TopoDS_Shape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::TopoDS_Vertex_as_TopoDS_Shape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_Vertex_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_Vertex_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:78 - `TopoDS_Shape::IsNull()`
@@ -9094,16 +10759,21 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Vertex_inherited_IsNull(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:82 - `TopoDS_Shape::Nullify()`
     pub fn nullify(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Vertex_inherited_Nullify(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Vertex_inherited_Nullify(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9112,8 +10782,11 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Vertex_inherited_Location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9131,8 +10804,11 @@ impl Vertex {
                     theRaiseExc,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9141,8 +10817,11 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Vertex_inherited_Orientation(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -9152,8 +10831,11 @@ impl Vertex {
             let __result = unsafe {
                 crate::ffi::TopoDS_Vertex_inherited_Oriented(self as *const Self, theOrient.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9162,8 +10844,11 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Vertex_inherited_TShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9172,8 +10857,11 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Vertex_inherited_ShapeType(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -9181,8 +10869,11 @@ impl Vertex {
     pub fn free(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Vertex_inherited_Free(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9191,8 +10882,11 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Vertex_inherited_Locked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9201,8 +10895,11 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Vertex_inherited_Modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9211,8 +10908,11 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Vertex_inherited_Checked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9221,8 +10921,11 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Vertex_inherited_Orientable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9231,8 +10934,11 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Vertex_inherited_Closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9241,8 +10947,11 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Vertex_inherited_Infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9251,22 +10960,27 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Vertex_inherited_Convex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:194 - `TopoDS_Shape::Move()`
     pub fn move_(&mut self, thePosition: &crate::top_loc::Location, theRaiseExc: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_Vertex_inherited_Move(
                     self as *mut Self,
                     thePosition,
                     theRaiseExc,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9284,16 +10998,21 @@ impl Vertex {
                     theRaiseExc,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:218 - `TopoDS_Shape::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Vertex_inherited_Reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Vertex_inherited_Reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9302,16 +11021,22 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Vertex_inherited_Reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:232 - `TopoDS_Shape::Complement()`
     pub fn complement(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Vertex_inherited_Complement(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopoDS_Vertex_inherited_Complement(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9320,18 +11045,23 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Vertex_inherited_Complemented(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:246 - `TopoDS_Shape::Compose()`
     pub fn compose(&mut self, theOrient: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_Vertex_inherited_Compose(self as *mut Self, theOrient.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9341,8 +11071,11 @@ impl Vertex {
             let __result = unsafe {
                 crate::ffi::TopoDS_Vertex_inherited_Composed(self as *const Self, theOrient.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9351,8 +11084,11 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Vertex_inherited_NbChildren(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9362,8 +11098,11 @@ impl Vertex {
             let __result = unsafe {
                 crate::ffi::TopoDS_Vertex_inherited_IsPartner(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9373,8 +11112,11 @@ impl Vertex {
             let __result = unsafe {
                 crate::ffi::TopoDS_Vertex_inherited_IsSame(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9384,8 +11126,11 @@ impl Vertex {
             let __result = unsafe {
                 crate::ffi::TopoDS_Vertex_inherited_IsEqual(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9395,16 +11140,21 @@ impl Vertex {
             let __result = unsafe {
                 crate::ffi::TopoDS_Vertex_inherited_IsNotEqual(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopy()`
     pub fn empty_copy(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Vertex_inherited_EmptyCopy(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Vertex_inherited_EmptyCopy(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9413,8 +11163,11 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Vertex_inherited_EmptyCopied(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -9445,53 +11198,59 @@ impl Wire {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopoDS_Wire_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to TopoDS_Shape
     pub fn as_shape(&self) -> &Shape {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_Wire_as_TopoDS_Shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TopoDS_Wire_as_TopoDS_Shape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopoDS_Shape (mutable)
     pub fn as_shape_mut(&mut self) -> &mut Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::TopoDS_Wire_as_TopoDS_Shape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::TopoDS_Wire_as_TopoDS_Shape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::TopoDS_Wire_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopoDS_Wire_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:78 - `TopoDS_Shape::IsNull()`
     pub fn is_null(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Wire_inherited_IsNull(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:82 - `TopoDS_Shape::Nullify()`
     pub fn nullify(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Wire_inherited_Nullify(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Wire_inherited_Nullify(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9500,8 +11259,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Wire_inherited_Location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9515,8 +11277,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::TopoDS_Wire_inherited_Located(self as *const Self, theLoc, theRaiseExc)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9525,8 +11290,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Wire_inherited_Orientation(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -9536,8 +11304,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::TopoDS_Wire_inherited_Oriented(self as *const Self, theOrient.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9545,8 +11316,11 @@ impl Wire {
     pub fn t_shape(&self) -> &crate::ffi::HandleTopoDSTShape {
         {
             let __result = unsafe { crate::ffi::TopoDS_Wire_inherited_TShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9555,8 +11329,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Wire_inherited_ShapeType(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -9564,8 +11341,11 @@ impl Wire {
     pub fn free(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Wire_inherited_Free(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9573,8 +11353,11 @@ impl Wire {
     pub fn locked(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Wire_inherited_Locked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9583,8 +11366,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Wire_inherited_Modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9593,8 +11379,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Wire_inherited_Checked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9603,8 +11392,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Wire_inherited_Orientable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9612,8 +11404,11 @@ impl Wire {
     pub fn closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Wire_inherited_Closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9622,8 +11417,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Wire_inherited_Infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9631,18 +11429,23 @@ impl Wire {
     pub fn convex(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopoDS_Wire_inherited_Convex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:194 - `TopoDS_Shape::Move()`
     pub fn move_(&mut self, thePosition: &crate::top_loc::Location, theRaiseExc: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_Wire_inherited_Move(self as *mut Self, thePosition, theRaiseExc)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9660,16 +11463,21 @@ impl Wire {
                     theRaiseExc,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:218 - `TopoDS_Shape::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Wire_inherited_Reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Wire_inherited_Reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9678,16 +11486,21 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Wire_inherited_Reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:232 - `TopoDS_Shape::Complement()`
     pub fn complement(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Wire_inherited_Complement(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Wire_inherited_Complement(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9696,18 +11509,23 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Wire_inherited_Complemented(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:246 - `TopoDS_Shape::Compose()`
     pub fn compose(&mut self, theOrient: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopoDS_Wire_inherited_Compose(self as *mut Self, theOrient.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9717,8 +11535,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::TopoDS_Wire_inherited_Composed(self as *const Self, theOrient.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9727,8 +11548,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Wire_inherited_NbChildren(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9738,8 +11562,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::TopoDS_Wire_inherited_IsPartner(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9748,8 +11575,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Wire_inherited_IsSame(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9758,8 +11588,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Wire_inherited_IsEqual(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9769,16 +11602,21 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::TopoDS_Wire_inherited_IsNotEqual(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopoDS_Shape.hxx`:297 - `TopoDS_Shape::EmptyCopy()`
     pub fn empty_copy(&mut self) {
         {
-            unsafe { crate::ffi::TopoDS_Wire_inherited_EmptyCopy(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopoDS_Wire_inherited_EmptyCopy(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9787,8 +11625,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::TopoDS_Wire_inherited_EmptyCopied(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }

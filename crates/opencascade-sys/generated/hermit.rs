@@ -18,8 +18,11 @@ pub fn solution_handlegeombsplinecurve_real2(
         let __result = unsafe {
             crate::ffi::Hermit_solution_handlegeombsplinecurve_real2(BS, TolPoles, TolKnots)
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `Hermit.hxx`:58 - `Hermit::Solution`
@@ -34,8 +37,11 @@ pub fn solution_handlegeom2dbsplinecurve_real2(
         let __result = unsafe {
             crate::ffi::Hermit_solution_handlegeom2dbsplinecurve_real2(BS, TolPoles, TolKnots)
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `Hermit.hxx`:66 - `Hermit::Solutionbis`
@@ -50,7 +56,10 @@ pub fn solutionbis(
     TolKnots: f64,
 ) {
     {
-        unsafe { crate::ffi::Hermit_solutionbis(BS, Knotmin, Knotmax, TolPoles, TolKnots) };
-        crate::check_exception();
+        let __exc =
+            unsafe { crate::ffi::Hermit_solutionbis(BS, Knotmin, Knotmax, TolPoles, TolKnots) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }

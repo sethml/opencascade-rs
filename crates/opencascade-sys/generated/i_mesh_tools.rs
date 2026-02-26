@@ -71,8 +71,10 @@ impl Context {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IMeshTools_Context_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -82,8 +84,11 @@ impl Context {
     pub fn build_model(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::IMeshTools_Context_build_model(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -94,8 +99,11 @@ impl Context {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_Context_discretize_edges(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -106,8 +114,11 @@ impl Context {
     pub fn heal_model(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::IMeshTools_Context_heal_model(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -119,8 +130,11 @@ impl Context {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_Context_pre_process_model(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -132,8 +146,11 @@ impl Context {
             let __result = unsafe {
                 crate::ffi::IMeshTools_Context_discretize_faces(self as *mut Self, theRange)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -144,8 +161,11 @@ impl Context {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_Context_post_process_model(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -153,8 +173,10 @@ impl Context {
     /// Cleans temporary context data.
     pub fn clean(&mut self) {
         {
-            unsafe { crate::ffi::IMeshTools_Context_clean(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IMeshTools_Context_clean(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -164,8 +186,11 @@ impl Context {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_Context_get_model_builder(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -173,10 +198,12 @@ impl Context {
     /// Sets instance of a tool to be used to build discrete model.
     pub fn set_model_builder(&mut self, theBuilder: &crate::ffi::HandleIMeshToolsModelBuilder) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_Context_set_model_builder(self as *mut Self, theBuilder)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -186,8 +213,11 @@ impl Context {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_Context_get_edge_discret(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -195,10 +225,12 @@ impl Context {
     /// Sets instance of a tool to be used to discretize edges of a model.
     pub fn set_edge_discret(&mut self, theEdgeDiscret: &crate::ffi::HandleIMeshToolsModelAlgo) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_Context_set_edge_discret(self as *mut Self, theEdgeDiscret)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -208,8 +240,11 @@ impl Context {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_Context_get_model_healer(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -217,10 +252,12 @@ impl Context {
     /// Sets instance of a tool to be used to heal discrete model.
     pub fn set_model_healer(&mut self, theModelHealer: &crate::ffi::HandleIMeshToolsModelAlgo) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_Context_set_model_healer(self as *mut Self, theModelHealer)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -230,8 +267,11 @@ impl Context {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_Context_get_pre_processor(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -239,10 +279,12 @@ impl Context {
     /// Sets instance of pre-processing algorithm.
     pub fn set_pre_processor(&mut self, thePreProcessor: &crate::ffi::HandleIMeshToolsModelAlgo) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_Context_set_pre_processor(self as *mut Self, thePreProcessor)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -252,8 +294,11 @@ impl Context {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_Context_get_face_discret(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -261,10 +306,12 @@ impl Context {
     /// Sets instance of meshing algorithm.
     pub fn set_face_discret(&mut self, theFaceDiscret: &crate::ffi::HandleIMeshToolsModelAlgo) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_Context_set_face_discret(self as *mut Self, theFaceDiscret)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -274,8 +321,11 @@ impl Context {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_Context_get_post_processor(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -283,13 +333,15 @@ impl Context {
     /// Sets instance of post-processing algorithm.
     pub fn set_post_processor(&mut self, thePostProcessor: &crate::ffi::HandleIMeshToolsModelAlgo) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_Context_set_post_processor(
                     self as *mut Self,
                     thePostProcessor,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -299,8 +351,11 @@ impl Context {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_Context_get_parameters(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -310,8 +365,11 @@ impl Context {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_Context_change_parameters(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -320,8 +378,11 @@ impl Context {
     pub fn get_model(&self) -> &crate::ffi::HandleIMeshDataModel {
         {
             let __result = unsafe { crate::ffi::IMeshTools_Context_get_model(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -330,8 +391,11 @@ impl Context {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_Context_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -339,8 +403,11 @@ impl Context {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IMeshTools_Context_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -348,71 +415,74 @@ impl Context {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IMeshTools_Context_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IMeshData_Shape
     pub fn as_i_mesh_data_shape(&self) -> &crate::i_mesh_data::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::IMeshTools_Context_as_IMeshData_Shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IMeshTools_Context_as_IMeshData_Shape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IMeshData_Shape (mutable)
     pub fn as_i_mesh_data_shape_mut(&mut self) -> &mut crate::i_mesh_data::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::IMeshTools_Context_as_IMeshData_Shape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IMeshTools_Context_as_IMeshData_Shape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_Context_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IMeshTools_Context_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_Context_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IMeshTools_Context_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsContext> {
-        {
-            let __result = unsafe { crate::ffi::IMeshTools_Context_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IMeshTools_Context_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
     pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_Context_inherited_SetShape(self as *mut Self, theShape)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -421,8 +491,11 @@ impl Context {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_Context_inherited_GetShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -432,8 +505,11 @@ impl Context {
             let __result = unsafe {
                 crate::ffi::IMeshTools_Context_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -443,8 +519,11 @@ impl Context {
             let __result = unsafe {
                 crate::ffi::IMeshTools_Context_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -453,11 +532,14 @@ impl Context {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_Context_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -468,18 +550,23 @@ impl Context {
             let __result = unsafe {
                 crate::ffi::IMeshTools_Context_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_Context_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -489,16 +576,22 @@ impl Context {
             let __result = unsafe {
                 crate::ffi::IMeshTools_Context_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IMeshTools_Context_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IMeshTools_Context_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -514,43 +607,42 @@ unsafe impl crate::CppDeletable for HandleIMeshToolsContext {
 impl HandleIMeshToolsContext {
     /// Dereference this Handle to access the underlying IMeshTools_Context
     pub fn get(&self) -> &crate::ffi::IMeshTools_Context {
-        {
-            let __result = unsafe { crate::ffi::HandleIMeshToolsContext_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIMeshToolsContext_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IMeshTools_Context
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshTools_Context {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIMeshToolsContext_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleIMeshToolsContext_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IMeshTools_Context> to Handle<IMeshData_Shape>
     pub fn to_handle_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataShape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIMeshToolsContext_to_HandleIMeshDataShape(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIMeshToolsContext_to_HandleIMeshDataShape(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IMeshTools_Context> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIMeshToolsContext_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIMeshToolsContext_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<IMeshTools_Context> to Handle<BRepMesh_Context>
@@ -559,16 +651,18 @@ impl HandleIMeshToolsContext {
     pub fn downcast_to_context(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshContext>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIMeshToolsContext_downcast_to_HandleBRepMeshContext(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -594,8 +688,11 @@ impl CurveTessellator {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_CurveTessellator_points_nb(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -620,8 +717,11 @@ impl CurveTessellator {
                     theParameter,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -631,8 +731,11 @@ impl CurveTessellator {
             let __result = unsafe {
                 crate::ffi::IMeshTools_CurveTessellator_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -640,8 +743,11 @@ impl CurveTessellator {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IMeshTools_CurveTessellator_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -649,31 +755,34 @@ impl CurveTessellator {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IMeshTools_CurveTessellator_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_CurveTessellator_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IMeshTools_CurveTessellator_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_CurveTessellator_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IMeshTools_CurveTessellator_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -685,8 +794,11 @@ impl CurveTessellator {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -699,8 +811,11 @@ impl CurveTessellator {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -710,11 +825,14 @@ impl CurveTessellator {
             let __result = unsafe {
                 crate::ffi::IMeshTools_CurveTessellator_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -725,20 +843,25 @@ impl CurveTessellator {
             let __result = unsafe {
                 crate::ffi::IMeshTools_CurveTessellator_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_CurveTessellator_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -750,18 +873,23 @@ impl CurveTessellator {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_CurveTessellator_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -777,35 +905,35 @@ unsafe impl crate::CppDeletable for HandleIMeshToolsCurveTessellator {
 impl HandleIMeshToolsCurveTessellator {
     /// Dereference this Handle to access the underlying IMeshTools_CurveTessellator
     pub fn get(&self) -> &crate::ffi::IMeshTools_CurveTessellator {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIMeshToolsCurveTessellator_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIMeshToolsCurveTessellator_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IMeshTools_CurveTessellator
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshTools_CurveTessellator {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIMeshToolsCurveTessellator_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIMeshToolsCurveTessellator_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IMeshTools_CurveTessellator> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIMeshToolsCurveTessellator_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIMeshToolsCurveTessellator_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<IMeshTools_CurveTessellator> to Handle<BRepMesh_CurveTessellator>
@@ -814,16 +942,18 @@ impl HandleIMeshToolsCurveTessellator {
     pub fn downcast_to_curve_tessellator(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshCurveTessellator>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIMeshToolsCurveTessellator_downcast_to_HandleBRepMeshCurveTessellator(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -833,14 +963,16 @@ impl HandleIMeshToolsCurveTessellator {
     pub fn downcast_to_edge_tessellation_extractor(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshEdgeTessellationExtractor>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIMeshToolsCurveTessellator_downcast_to_HandleBRepMeshEdgeTessellationExtractor(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -869,7 +1001,7 @@ impl MeshAlgo {
         theRange: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_MeshAlgo_perform(
                     self as *mut Self,
                     theDFace,
@@ -877,7 +1009,9 @@ impl MeshAlgo {
                     theRange,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -886,8 +1020,11 @@ impl MeshAlgo {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_MeshAlgo_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -895,8 +1032,11 @@ impl MeshAlgo {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IMeshTools_MeshAlgo_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -904,31 +1044,32 @@ impl MeshAlgo {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IMeshTools_MeshAlgo_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_MeshAlgo_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IMeshTools_MeshAlgo_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_MeshAlgo_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IMeshTools_MeshAlgo_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -937,8 +1078,11 @@ impl MeshAlgo {
             let __result = unsafe {
                 crate::ffi::IMeshTools_MeshAlgo_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -948,8 +1092,11 @@ impl MeshAlgo {
             let __result = unsafe {
                 crate::ffi::IMeshTools_MeshAlgo_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -958,11 +1105,14 @@ impl MeshAlgo {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_MeshAlgo_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -973,18 +1123,23 @@ impl MeshAlgo {
             let __result = unsafe {
                 crate::ffi::IMeshTools_MeshAlgo_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_MeshAlgo_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -994,16 +1149,22 @@ impl MeshAlgo {
             let __result = unsafe {
                 crate::ffi::IMeshTools_MeshAlgo_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IMeshTools_MeshAlgo_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IMeshTools_MeshAlgo_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1019,32 +1180,31 @@ unsafe impl crate::CppDeletable for HandleIMeshToolsMeshAlgo {
 impl HandleIMeshToolsMeshAlgo {
     /// Dereference this Handle to access the underlying IMeshTools_MeshAlgo
     pub fn get(&self) -> &crate::ffi::IMeshTools_MeshAlgo {
-        {
-            let __result = unsafe { crate::ffi::HandleIMeshToolsMeshAlgo_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIMeshToolsMeshAlgo_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IMeshTools_MeshAlgo
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshTools_MeshAlgo {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIMeshToolsMeshAlgo_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleIMeshToolsMeshAlgo_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IMeshTools_MeshAlgo> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIMeshToolsMeshAlgo_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIMeshToolsMeshAlgo_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<IMeshTools_MeshAlgo> to Handle<BRepMesh_ConstrainedBaseMeshAlgo>
@@ -1053,16 +1213,18 @@ impl HandleIMeshToolsMeshAlgo {
     pub fn downcast_to_constrained_base_mesh_algo(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshConstrainedBaseMeshAlgo>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIMeshToolsMeshAlgo_downcast_to_HandleBRepMeshConstrainedBaseMeshAlgo(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1072,16 +1234,18 @@ impl HandleIMeshToolsMeshAlgo {
     pub fn downcast_to_delabella_base_mesh_algo(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshDelabellaBaseMeshAlgo>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIMeshToolsMeshAlgo_downcast_to_HandleBRepMeshDelabellaBaseMeshAlgo(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1091,16 +1255,18 @@ impl HandleIMeshToolsMeshAlgo {
     pub fn downcast_to_delaunay_base_mesh_algo(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshDelaunayBaseMeshAlgo>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIMeshToolsMeshAlgo_downcast_to_HandleBRepMeshDelaunayBaseMeshAlgo(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -1136,8 +1302,11 @@ impl MeshAlgoFactory {
                     theParameters,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1146,8 +1315,11 @@ impl MeshAlgoFactory {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_MeshAlgoFactory_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1155,8 +1327,11 @@ impl MeshAlgoFactory {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IMeshTools_MeshAlgoFactory_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1164,31 +1339,34 @@ impl MeshAlgoFactory {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IMeshTools_MeshAlgoFactory_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_MeshAlgoFactory_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IMeshTools_MeshAlgoFactory_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_MeshAlgoFactory_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IMeshTools_MeshAlgoFactory_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1200,8 +1378,11 @@ impl MeshAlgoFactory {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1214,8 +1395,11 @@ impl MeshAlgoFactory {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1225,11 +1409,14 @@ impl MeshAlgoFactory {
             let __result = unsafe {
                 crate::ffi::IMeshTools_MeshAlgoFactory_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1240,20 +1427,25 @@ impl MeshAlgoFactory {
             let __result = unsafe {
                 crate::ffi::IMeshTools_MeshAlgoFactory_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_MeshAlgoFactory_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1265,16 +1457,23 @@ impl MeshAlgoFactory {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IMeshTools_MeshAlgoFactory_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IMeshTools_MeshAlgoFactory_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1290,35 +1489,35 @@ unsafe impl crate::CppDeletable for HandleIMeshToolsMeshAlgoFactory {
 impl HandleIMeshToolsMeshAlgoFactory {
     /// Dereference this Handle to access the underlying IMeshTools_MeshAlgoFactory
     pub fn get(&self) -> &crate::ffi::IMeshTools_MeshAlgoFactory {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIMeshToolsMeshAlgoFactory_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIMeshToolsMeshAlgoFactory_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IMeshTools_MeshAlgoFactory
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshTools_MeshAlgoFactory {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIMeshToolsMeshAlgoFactory_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIMeshToolsMeshAlgoFactory_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IMeshTools_MeshAlgoFactory> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIMeshToolsMeshAlgoFactory_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIMeshToolsMeshAlgoFactory_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<IMeshTools_MeshAlgoFactory> to Handle<BRepMesh_DelabellaMeshAlgoFactory>
@@ -1327,14 +1526,16 @@ impl HandleIMeshToolsMeshAlgoFactory {
     pub fn downcast_to_delabella_mesh_algo_factory(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshDelabellaMeshAlgoFactory>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIMeshToolsMeshAlgoFactory_downcast_to_HandleBRepMeshDelabellaMeshAlgoFactory(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1344,16 +1545,18 @@ impl HandleIMeshToolsMeshAlgoFactory {
     pub fn downcast_to_mesh_algo_factory(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshMeshAlgoFactory>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIMeshToolsMeshAlgoFactory_downcast_to_HandleBRepMeshMeshAlgoFactory(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -1393,8 +1596,10 @@ impl MeshBuilder {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IMeshTools_MeshBuilder_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1407,8 +1612,10 @@ impl MeshBuilder {
             let __result = unsafe {
                 crate::ffi::IMeshTools_MeshBuilder_ctor_handleimeshtoolscontext(theContext)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1416,10 +1623,12 @@ impl MeshBuilder {
     /// Sets context for algorithm.
     pub fn set_context(&mut self, theContext: &crate::ffi::HandleIMeshToolsContext) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_MeshBuilder_set_context(self as *mut Self, theContext)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1429,8 +1638,11 @@ impl MeshBuilder {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_MeshBuilder_get_context(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1438,8 +1650,11 @@ impl MeshBuilder {
     /// Performs meshing to the shape using current context.
     pub fn perform(&mut self, theRange: &crate::message::ProgressRange) {
         {
-            unsafe { crate::ffi::IMeshTools_MeshBuilder_perform(self as *mut Self, theRange) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IMeshTools_MeshBuilder_perform(self as *mut Self, theRange) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1448,8 +1663,11 @@ impl MeshBuilder {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_MeshBuilder_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1457,8 +1675,11 @@ impl MeshBuilder {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IMeshTools_MeshBuilder_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1466,76 +1687,80 @@ impl MeshBuilder {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IMeshTools_MeshBuilder_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Message_Algorithm
     pub fn as_message_algorithm(&self) -> &crate::message::Algorithm {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_MeshBuilder_as_Message_Algorithm(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IMeshTools_MeshBuilder_as_Message_Algorithm(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Message_Algorithm (mutable)
     pub fn as_message_algorithm_mut(&mut self) -> &mut crate::message::Algorithm {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_MeshBuilder_as_Message_Algorithm_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IMeshTools_MeshBuilder_as_Message_Algorithm_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_MeshBuilder_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IMeshTools_MeshBuilder_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_MeshBuilder_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IMeshTools_MeshBuilder_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsMeshBuilder> {
-        {
-            let __result = unsafe { crate::ffi::IMeshTools_MeshBuilder_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IMeshTools_MeshBuilder_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:95 - `Message_Algorithm::SetStatus()`
     pub fn set_status(&mut self, theStat: crate::message::Status) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_MeshBuilder_inherited_SetStatus(
                     self as *mut Self,
                     theStat.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1545,8 +1770,11 @@ impl MeshBuilder {
             let __result = unsafe {
                 crate::ffi::IMeshTools_MeshBuilder_inherited_GetStatus(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1556,29 +1784,38 @@ impl MeshBuilder {
             let __result = unsafe {
                 crate::ffi::IMeshTools_MeshBuilder_inherited_ChangeStatus(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:147 - `Message_Algorithm::ClearStatus()`
     pub fn clear_status(&mut self) {
         {
-            unsafe { crate::ffi::IMeshTools_MeshBuilder_inherited_ClearStatus(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IMeshTools_MeshBuilder_inherited_ClearStatus(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:150 - `Message_Algorithm::SetMessenger()`
     pub fn set_messenger(&mut self, theMsgr: &crate::ffi::HandleMessageMessenger) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_MeshBuilder_inherited_SetMessenger(
                     self as *mut Self,
                     theMsgr,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1588,8 +1825,11 @@ impl MeshBuilder {
             let __result = unsafe {
                 crate::ffi::IMeshTools_MeshBuilder_inherited_GetMessenger(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1601,7 +1841,7 @@ impl MeshBuilder {
         theMaxCount: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_MeshBuilder_inherited_SendStatusMessages(
                     self as *const Self,
                     theFilter,
@@ -1609,31 +1849,37 @@ impl MeshBuilder {
                     theMaxCount,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:182 - `Message_Algorithm::SendMessages()`
     pub fn send_messages(&self, theTraceLevel: crate::message::Gravity, theMaxCount: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_MeshBuilder_inherited_SendMessages(
                     self as *const Self,
                     theTraceLevel.into(),
                     theMaxCount,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:187 - `Message_Algorithm::AddStatus()`
     pub fn add_status(&mut self, theOther: &crate::ffi::HandleMessageAlgorithm) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_MeshBuilder_inherited_AddStatus(self as *mut Self, theOther)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1649,8 +1895,11 @@ impl MeshBuilder {
                     theStatus.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1666,8 +1915,11 @@ impl MeshBuilder {
                     theStatus.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1680,8 +1932,11 @@ impl MeshBuilder {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1691,8 +1946,11 @@ impl MeshBuilder {
             let __result = unsafe {
                 crate::ffi::IMeshTools_MeshBuilder_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1701,11 +1959,14 @@ impl MeshBuilder {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_MeshBuilder_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1716,18 +1977,23 @@ impl MeshBuilder {
             let __result = unsafe {
                 crate::ffi::IMeshTools_MeshBuilder_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_MeshBuilder_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1737,16 +2003,22 @@ impl MeshBuilder {
             let __result = unsafe {
                 crate::ffi::IMeshTools_MeshBuilder_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IMeshTools_MeshBuilder_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IMeshTools_MeshBuilder_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1762,48 +2034,43 @@ unsafe impl crate::CppDeletable for HandleIMeshToolsMeshBuilder {
 impl HandleIMeshToolsMeshBuilder {
     /// Dereference this Handle to access the underlying IMeshTools_MeshBuilder
     pub fn get(&self) -> &crate::ffi::IMeshTools_MeshBuilder {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIMeshToolsMeshBuilder_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIMeshToolsMeshBuilder_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IMeshTools_MeshBuilder
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshTools_MeshBuilder {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIMeshToolsMeshBuilder_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIMeshToolsMeshBuilder_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IMeshTools_MeshBuilder> to Handle<Message_Algorithm>
     pub fn to_handle_algorithm(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlgorithm> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIMeshToolsMeshBuilder_to_HandleMessageAlgorithm(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIMeshToolsMeshBuilder_to_HandleMessageAlgorithm(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IMeshTools_MeshBuilder> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIMeshToolsMeshBuilder_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIMeshToolsMeshBuilder_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1839,8 +2106,11 @@ impl ModelAlgo {
                     theRange,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1849,8 +2119,11 @@ impl ModelAlgo {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_ModelAlgo_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1858,8 +2131,11 @@ impl ModelAlgo {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IMeshTools_ModelAlgo_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1867,31 +2143,33 @@ impl ModelAlgo {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IMeshTools_ModelAlgo_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_ModelAlgo_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IMeshTools_ModelAlgo_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_ModelAlgo_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IMeshTools_ModelAlgo_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1900,8 +2178,11 @@ impl ModelAlgo {
             let __result = unsafe {
                 crate::ffi::IMeshTools_ModelAlgo_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1911,8 +2192,11 @@ impl ModelAlgo {
             let __result = unsafe {
                 crate::ffi::IMeshTools_ModelAlgo_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1921,11 +2205,14 @@ impl ModelAlgo {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_ModelAlgo_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1936,18 +2223,23 @@ impl ModelAlgo {
             let __result = unsafe {
                 crate::ffi::IMeshTools_ModelAlgo_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_ModelAlgo_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1957,16 +2249,22 @@ impl ModelAlgo {
             let __result = unsafe {
                 crate::ffi::IMeshTools_ModelAlgo_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IMeshTools_ModelAlgo_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IMeshTools_ModelAlgo_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1982,35 +2280,31 @@ unsafe impl crate::CppDeletable for HandleIMeshToolsModelAlgo {
 impl HandleIMeshToolsModelAlgo {
     /// Dereference this Handle to access the underlying IMeshTools_ModelAlgo
     pub fn get(&self) -> &crate::ffi::IMeshTools_ModelAlgo {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIMeshToolsModelAlgo_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIMeshToolsModelAlgo_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IMeshTools_ModelAlgo
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshTools_ModelAlgo {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIMeshToolsModelAlgo_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleIMeshToolsModelAlgo_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IMeshTools_ModelAlgo> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIMeshToolsModelAlgo_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIMeshToolsModelAlgo_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<IMeshTools_ModelAlgo> to Handle<BRepMesh_EdgeDiscret>
@@ -2019,16 +2313,18 @@ impl HandleIMeshToolsModelAlgo {
     pub fn downcast_to_edge_discret(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshEdgeDiscret>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIMeshToolsModelAlgo_downcast_to_HandleBRepMeshEdgeDiscret(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2038,16 +2334,18 @@ impl HandleIMeshToolsModelAlgo {
     pub fn downcast_to_face_discret(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshFaceDiscret>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIMeshToolsModelAlgo_downcast_to_HandleBRepMeshFaceDiscret(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2057,16 +2355,18 @@ impl HandleIMeshToolsModelAlgo {
     pub fn downcast_to_model_healer(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshModelHealer>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIMeshToolsModelAlgo_downcast_to_HandleBRepMeshModelHealer(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2076,16 +2376,18 @@ impl HandleIMeshToolsModelAlgo {
     pub fn downcast_to_model_post_processor(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshModelPostProcessor>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIMeshToolsModelAlgo_downcast_to_HandleBRepMeshModelPostProcessor(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2095,16 +2397,18 @@ impl HandleIMeshToolsModelAlgo {
     pub fn downcast_to_model_pre_processor(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshModelPreProcessor>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIMeshToolsModelAlgo_downcast_to_HandleBRepMeshModelPreProcessor(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -2145,8 +2449,11 @@ impl ModelBuilder {
                     theParameters,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2155,8 +2462,11 @@ impl ModelBuilder {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_ModelBuilder_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2164,8 +2474,11 @@ impl ModelBuilder {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IMeshTools_ModelBuilder_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2173,65 +2486,70 @@ impl ModelBuilder {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IMeshTools_ModelBuilder_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Message_Algorithm
     pub fn as_message_algorithm(&self) -> &crate::message::Algorithm {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_ModelBuilder_as_Message_Algorithm(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IMeshTools_ModelBuilder_as_Message_Algorithm(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Message_Algorithm (mutable)
     pub fn as_message_algorithm_mut(&mut self) -> &mut crate::message::Algorithm {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_ModelBuilder_as_Message_Algorithm_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IMeshTools_ModelBuilder_as_Message_Algorithm_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_ModelBuilder_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IMeshTools_ModelBuilder_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_ModelBuilder_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IMeshTools_ModelBuilder_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:95 - `Message_Algorithm::SetStatus()`
     pub fn set_status(&mut self, theStat: crate::message::Status) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_ModelBuilder_inherited_SetStatus(
                     self as *mut Self,
                     theStat.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2241,8 +2559,11 @@ impl ModelBuilder {
             let __result = unsafe {
                 crate::ffi::IMeshTools_ModelBuilder_inherited_GetStatus(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2252,29 +2573,38 @@ impl ModelBuilder {
             let __result = unsafe {
                 crate::ffi::IMeshTools_ModelBuilder_inherited_ChangeStatus(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:147 - `Message_Algorithm::ClearStatus()`
     pub fn clear_status(&mut self) {
         {
-            unsafe { crate::ffi::IMeshTools_ModelBuilder_inherited_ClearStatus(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IMeshTools_ModelBuilder_inherited_ClearStatus(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:150 - `Message_Algorithm::SetMessenger()`
     pub fn set_messenger(&mut self, theMsgr: &crate::ffi::HandleMessageMessenger) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_ModelBuilder_inherited_SetMessenger(
                     self as *mut Self,
                     theMsgr,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2284,8 +2614,11 @@ impl ModelBuilder {
             let __result = unsafe {
                 crate::ffi::IMeshTools_ModelBuilder_inherited_GetMessenger(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2297,7 +2630,7 @@ impl ModelBuilder {
         theMaxCount: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_ModelBuilder_inherited_SendStatusMessages(
                     self as *const Self,
                     theFilter,
@@ -2305,31 +2638,37 @@ impl ModelBuilder {
                     theMaxCount,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:182 - `Message_Algorithm::SendMessages()`
     pub fn send_messages(&self, theTraceLevel: crate::message::Gravity, theMaxCount: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_ModelBuilder_inherited_SendMessages(
                     self as *const Self,
                     theTraceLevel.into(),
                     theMaxCount,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:187 - `Message_Algorithm::AddStatus()`
     pub fn add_status(&mut self, theOther: &crate::ffi::HandleMessageAlgorithm) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_ModelBuilder_inherited_AddStatus(self as *mut Self, theOther)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2345,8 +2684,11 @@ impl ModelBuilder {
                     theStatus.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2362,8 +2704,11 @@ impl ModelBuilder {
                     theStatus.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2376,8 +2721,11 @@ impl ModelBuilder {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2387,8 +2735,11 @@ impl ModelBuilder {
             let __result = unsafe {
                 crate::ffi::IMeshTools_ModelBuilder_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2397,11 +2748,14 @@ impl ModelBuilder {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_ModelBuilder_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2412,18 +2766,23 @@ impl ModelBuilder {
             let __result = unsafe {
                 crate::ffi::IMeshTools_ModelBuilder_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_ModelBuilder_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2433,16 +2792,23 @@ impl ModelBuilder {
             let __result = unsafe {
                 crate::ffi::IMeshTools_ModelBuilder_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IMeshTools_ModelBuilder_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IMeshTools_ModelBuilder_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2458,48 +2824,43 @@ unsafe impl crate::CppDeletable for HandleIMeshToolsModelBuilder {
 impl HandleIMeshToolsModelBuilder {
     /// Dereference this Handle to access the underlying IMeshTools_ModelBuilder
     pub fn get(&self) -> &crate::ffi::IMeshTools_ModelBuilder {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIMeshToolsModelBuilder_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIMeshToolsModelBuilder_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IMeshTools_ModelBuilder
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshTools_ModelBuilder {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIMeshToolsModelBuilder_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIMeshToolsModelBuilder_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IMeshTools_ModelBuilder> to Handle<Message_Algorithm>
     pub fn to_handle_algorithm(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlgorithm> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIMeshToolsModelBuilder_to_HandleMessageAlgorithm(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIMeshToolsModelBuilder_to_HandleMessageAlgorithm(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IMeshTools_ModelBuilder> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIMeshToolsModelBuilder_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIMeshToolsModelBuilder_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<IMeshTools_ModelBuilder> to Handle<BRepMesh_ModelBuilder>
@@ -2508,16 +2869,18 @@ impl HandleIMeshToolsModelBuilder {
     pub fn downcast_to_model_builder(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshModelBuilder>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIMeshToolsModelBuilder_downcast_to_HandleBRepMeshModelBuilder(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -2542,8 +2905,10 @@ impl Parameters {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IMeshTools_Parameters_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2553,8 +2918,11 @@ impl Parameters {
     pub fn rel_min_size() -> f64 {
         {
             let __result = unsafe { crate::ffi::IMeshTools_Parameters_rel_min_size() };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2579,8 +2947,10 @@ impl ShapeExplorer {
     pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IMeshTools_ShapeExplorer_ctor_shape(theShape) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2588,8 +2958,12 @@ impl ShapeExplorer {
     /// Starts exploring of a shape.
     pub fn accept(&mut self, theVisitor: &crate::ffi::HandleIMeshToolsShapeVisitor) {
         {
-            unsafe { crate::ffi::IMeshTools_ShapeExplorer_accept(self as *mut Self, theVisitor) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IMeshTools_ShapeExplorer_accept(self as *mut Self, theVisitor)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2598,8 +2972,11 @@ impl ShapeExplorer {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_ShapeExplorer_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2607,8 +2984,11 @@ impl ShapeExplorer {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IMeshTools_ShapeExplorer_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2616,74 +2996,77 @@ impl ShapeExplorer {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IMeshTools_ShapeExplorer_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IMeshData_Shape
     pub fn as_i_mesh_data_shape(&self) -> &crate::i_mesh_data::Shape {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_ShapeExplorer_as_IMeshData_Shape(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IMeshTools_ShapeExplorer_as_IMeshData_Shape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IMeshData_Shape (mutable)
     pub fn as_i_mesh_data_shape_mut(&mut self) -> &mut crate::i_mesh_data::Shape {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_ShapeExplorer_as_IMeshData_Shape_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IMeshTools_ShapeExplorer_as_IMeshData_Shape_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_ShapeExplorer_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IMeshTools_ShapeExplorer_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_ShapeExplorer_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IMeshTools_ShapeExplorer_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIMeshToolsShapeExplorer> {
-        {
-            let __result =
-                unsafe { crate::ffi::IMeshTools_ShapeExplorer_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IMeshTools_ShapeExplorer_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IMeshData_Shape.hxx`:31 - `IMeshData_Shape::SetShape()`
     pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_ShapeExplorer_inherited_SetShape(self as *mut Self, theShape)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2693,8 +3076,11 @@ impl ShapeExplorer {
             let __result = unsafe {
                 crate::ffi::IMeshTools_ShapeExplorer_inherited_GetShape(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2707,8 +3093,11 @@ impl ShapeExplorer {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2718,8 +3107,11 @@ impl ShapeExplorer {
             let __result = unsafe {
                 crate::ffi::IMeshTools_ShapeExplorer_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2728,11 +3120,14 @@ impl ShapeExplorer {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_ShapeExplorer_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2743,20 +3138,25 @@ impl ShapeExplorer {
             let __result = unsafe {
                 crate::ffi::IMeshTools_ShapeExplorer_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_ShapeExplorer_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2768,16 +3168,23 @@ impl ShapeExplorer {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IMeshTools_ShapeExplorer_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IMeshTools_ShapeExplorer_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2793,48 +3200,46 @@ unsafe impl crate::CppDeletable for HandleIMeshToolsShapeExplorer {
 impl HandleIMeshToolsShapeExplorer {
     /// Dereference this Handle to access the underlying IMeshTools_ShapeExplorer
     pub fn get(&self) -> &crate::ffi::IMeshTools_ShapeExplorer {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIMeshToolsShapeExplorer_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIMeshToolsShapeExplorer_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IMeshTools_ShapeExplorer
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshTools_ShapeExplorer {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIMeshToolsShapeExplorer_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIMeshToolsShapeExplorer_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IMeshTools_ShapeExplorer> to Handle<IMeshData_Shape>
     pub fn to_handle_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleIMeshDataShape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIMeshToolsShapeExplorer_to_HandleIMeshDataShape(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIMeshToolsShapeExplorer_to_HandleIMeshDataShape(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IMeshTools_ShapeExplorer> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIMeshToolsShapeExplorer_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIMeshToolsShapeExplorer_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2857,8 +3262,12 @@ impl ShapeVisitor {
     /// Handles TopoDS_Face object.
     pub fn visit_face(&mut self, theFace: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::IMeshTools_ShapeVisitor_visit_face(self as *mut Self, theFace) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IMeshTools_ShapeVisitor_visit_face(self as *mut Self, theFace)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2866,8 +3275,12 @@ impl ShapeVisitor {
     /// Handles TopoDS_Edge object.
     pub fn visit_edge(&mut self, theEdge: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::IMeshTools_ShapeVisitor_visit_edge(self as *mut Self, theEdge) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IMeshTools_ShapeVisitor_visit_edge(self as *mut Self, theEdge)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2876,8 +3289,11 @@ impl ShapeVisitor {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_ShapeVisitor_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2885,8 +3301,11 @@ impl ShapeVisitor {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IMeshTools_ShapeVisitor_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2894,31 +3313,34 @@ impl ShapeVisitor {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IMeshTools_ShapeVisitor_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_ShapeVisitor_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IMeshTools_ShapeVisitor_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IMeshTools_ShapeVisitor_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IMeshTools_ShapeVisitor_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2930,8 +3352,11 @@ impl ShapeVisitor {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2941,8 +3366,11 @@ impl ShapeVisitor {
             let __result = unsafe {
                 crate::ffi::IMeshTools_ShapeVisitor_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2951,11 +3379,14 @@ impl ShapeVisitor {
         {
             let __result =
                 unsafe { crate::ffi::IMeshTools_ShapeVisitor_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2966,18 +3397,23 @@ impl ShapeVisitor {
             let __result = unsafe {
                 crate::ffi::IMeshTools_ShapeVisitor_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IMeshTools_ShapeVisitor_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2987,16 +3423,23 @@ impl ShapeVisitor {
             let __result = unsafe {
                 crate::ffi::IMeshTools_ShapeVisitor_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IMeshTools_ShapeVisitor_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IMeshTools_ShapeVisitor_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3012,35 +3455,32 @@ unsafe impl crate::CppDeletable for HandleIMeshToolsShapeVisitor {
 impl HandleIMeshToolsShapeVisitor {
     /// Dereference this Handle to access the underlying IMeshTools_ShapeVisitor
     pub fn get(&self) -> &crate::ffi::IMeshTools_ShapeVisitor {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIMeshToolsShapeVisitor_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIMeshToolsShapeVisitor_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IMeshTools_ShapeVisitor
     pub fn get_mut(&mut self) -> &mut crate::ffi::IMeshTools_ShapeVisitor {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIMeshToolsShapeVisitor_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIMeshToolsShapeVisitor_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IMeshTools_ShapeVisitor> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIMeshToolsShapeVisitor_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIMeshToolsShapeVisitor_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<IMeshTools_ShapeVisitor> to Handle<BRepMesh_ShapeVisitor>
@@ -3049,16 +3489,18 @@ impl HandleIMeshToolsShapeVisitor {
     pub fn downcast_to_shape_visitor(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepMeshShapeVisitor>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIMeshToolsShapeVisitor_downcast_to_HandleBRepMeshShapeVisitor(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }

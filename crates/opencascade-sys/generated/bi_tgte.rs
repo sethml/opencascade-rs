@@ -62,8 +62,10 @@ impl Blend {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BiTgte_Blend_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -82,16 +84,21 @@ impl Blend {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_Blend_ctor_shape_real2_bool(S, Radius, Tol, NUBS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BiTgte_Blend.hxx`:62 - `BiTgte_Blend::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape, Radius: f64, Tol: f64, NUBS: bool) {
         {
-            unsafe { crate::ffi::BiTgte_Blend_init(self as *mut Self, S, Radius, Tol, NUBS) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BiTgte_Blend_init(self as *mut Self, S, Radius, Tol, NUBS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -99,8 +106,10 @@ impl Blend {
     /// Clear all the Fields.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::BiTgte_Blend_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BiTgte_Blend_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -109,8 +118,10 @@ impl Blend {
     /// must roll.
     pub fn set_faces(&mut self, F1: &crate::topo_ds::Face, F2: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::BiTgte_Blend_set_faces(self as *mut Self, F1, F2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BiTgte_Blend_set_faces(self as *mut Self, F1, F2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -118,8 +129,10 @@ impl Blend {
     /// Set an edge of <myShape> to be rounded.
     pub fn set_edge(&mut self, Edge: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::BiTgte_Blend_set_edge(self as *mut Self, Edge) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BiTgte_Blend_set_edge(self as *mut Self, Edge) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -127,8 +140,11 @@ impl Blend {
     /// Set a face on which the fillet must stop.
     pub fn set_stopping_face(&mut self, Face: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::BiTgte_Blend_set_stopping_face(self as *mut Self, Face) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BiTgte_Blend_set_stopping_face(self as *mut Self, Face) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -138,8 +154,10 @@ impl Blend {
     /// If false, only the blending surfaces are computed.
     pub fn perform(&mut self, BuildShape: bool) {
         {
-            unsafe { crate::ffi::BiTgte_Blend_perform(self as *mut Self, BuildShape) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BiTgte_Blend_perform(self as *mut Self, BuildShape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -147,8 +165,11 @@ impl Blend {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BiTgte_Blend_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -157,8 +178,11 @@ impl Blend {
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::BiTgte_Blend_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -167,8 +191,11 @@ impl Blend {
     pub fn nb_surfaces(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BiTgte_Blend_nb_surfaces(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -178,8 +205,11 @@ impl Blend {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_Blend_surface_int(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -188,8 +218,11 @@ impl Blend {
     pub fn face_int(&self, Index: i32) -> &crate::topo_ds::Face {
         {
             let __result = unsafe { crate::ffi::BiTgte_Blend_face_int(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -197,8 +230,10 @@ impl Blend {
     /// set in <LC> all the center lines
     pub fn center_lines(&self, LC: &mut crate::ffi::TopTools_ListOfShape) {
         {
-            unsafe { crate::ffi::BiTgte_Blend_center_lines(self as *const Self, LC) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BiTgte_Blend_center_lines(self as *const Self, LC) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -216,8 +251,11 @@ impl Blend {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_Blend_surface_shape(self as *const Self, CenterLine) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -238,8 +276,11 @@ impl Blend {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_Blend_face_shape(self as *const Self, CenterLine) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -249,8 +290,11 @@ impl Blend {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_Blend_contact_type(self as *const Self, Index) };
-            crate::check_exception();
-            crate::bi_tgte::ContactType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::bi_tgte::ContactType::try_from(__val).unwrap()
         }
     }
 
@@ -261,8 +305,11 @@ impl Blend {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_Blend_support_shape1(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -273,8 +320,11 @@ impl Blend {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_Blend_support_shape2(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -285,8 +335,11 @@ impl Blend {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_Blend_curve_on_shape1(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -297,8 +350,11 @@ impl Blend {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_Blend_curve_on_shape2(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -310,8 +366,11 @@ impl Blend {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_Blend_p_curve_on_face1(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -322,8 +381,11 @@ impl Blend {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_Blend_p_curve1_on_fillet(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -335,8 +397,11 @@ impl Blend {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_Blend_p_curve_on_face2(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -347,8 +412,11 @@ impl Blend {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_Blend_p_curve2_on_fillet(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -356,8 +424,11 @@ impl Blend {
     pub fn nb_branches(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BiTgte_Blend_nb_branches(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -368,10 +439,12 @@ impl Blend {
     /// i.e: Branche<Index> = Face(From) + Face(From+1) + ..+ Face(To)
     pub fn indices_of_branche(&self, Index: i32, From: &mut i32, To: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BiTgte_Blend_indices_of_branche(self as *const Self, Index, From, To)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -379,8 +452,10 @@ impl Blend {
     /// Computes the center lines
     pub fn compute_centers(&mut self) {
         {
-            unsafe { crate::ffi::BiTgte_Blend_compute_centers(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BiTgte_Blend_compute_centers(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -405,8 +480,10 @@ impl CurveOnEdge {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -417,8 +494,10 @@ impl CurveOnEdge {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_ctor_edge2(EonF, Edge) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -427,8 +506,11 @@ impl CurveOnEdge {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnEdge_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -438,16 +520,22 @@ impl CurveOnEdge {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnEdge_shallow_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnEdge.hxx`:56 - `BiTgte_CurveOnEdge::Init()`
     pub fn init(&mut self, EonF: &crate::topo_ds::Edge, Edge: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::BiTgte_CurveOnEdge_init(self as *mut Self, EonF, Edge) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BiTgte_CurveOnEdge_init(self as *mut Self, EonF, Edge) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -456,8 +544,11 @@ impl CurveOnEdge {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnEdge_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -466,8 +557,11 @@ impl CurveOnEdge {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnEdge_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -476,8 +570,11 @@ impl CurveOnEdge {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnEdge_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -489,8 +586,11 @@ impl CurveOnEdge {
             let __result = unsafe {
                 crate::ffi::BiTgte_CurveOnEdge_nb_intervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -502,8 +602,12 @@ impl CurveOnEdge {
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe { crate::ffi::BiTgte_CurveOnEdge_intervals(self as *const Self, T, S.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BiTgte_CurveOnEdge_intervals(self as *const Self, T, S.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -522,8 +626,11 @@ impl CurveOnEdge {
             let __result = unsafe {
                 crate::ffi::BiTgte_CurveOnEdge_trim(self as *const Self, First, Last, Tol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -531,8 +638,11 @@ impl CurveOnEdge {
     pub fn is_closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -541,8 +651,11 @@ impl CurveOnEdge {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnEdge_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -550,8 +663,11 @@ impl CurveOnEdge {
     pub fn period(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -560,8 +676,11 @@ impl CurveOnEdge {
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_value(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -569,8 +688,10 @@ impl CurveOnEdge {
     /// Computes the point of parameter U on the curve.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::BiTgte_CurveOnEdge_d0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BiTgte_CurveOnEdge_d0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -581,8 +702,10 @@ impl CurveOnEdge {
     /// is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         {
-            unsafe { crate::ffi::BiTgte_CurveOnEdge_d1(self as *const Self, U, P, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BiTgte_CurveOnEdge_d1(self as *const Self, U, P, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -599,8 +722,11 @@ impl CurveOnEdge {
         V2: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::BiTgte_CurveOnEdge_d2(self as *const Self, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BiTgte_CurveOnEdge_d2(self as *const Self, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -618,8 +744,11 @@ impl CurveOnEdge {
         V3: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::BiTgte_CurveOnEdge_d3(self as *const Self, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BiTgte_CurveOnEdge_d3(self as *const Self, U, P, V1, V2, V3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -632,8 +761,11 @@ impl CurveOnEdge {
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_dn(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -644,8 +776,11 @@ impl CurveOnEdge {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnEdge_resolution(self as *const Self, R3d) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -656,8 +791,11 @@ impl CurveOnEdge {
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_get_type(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
@@ -665,8 +803,11 @@ impl CurveOnEdge {
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_line(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -674,8 +815,11 @@ impl CurveOnEdge {
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_circle(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -683,8 +827,11 @@ impl CurveOnEdge {
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_ellipse(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -692,8 +839,11 @@ impl CurveOnEdge {
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_hyperbola(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -701,8 +851,11 @@ impl CurveOnEdge {
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_parabola(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -710,8 +863,11 @@ impl CurveOnEdge {
     pub fn degree(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -720,8 +876,11 @@ impl CurveOnEdge {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnEdge_is_rational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -729,8 +888,11 @@ impl CurveOnEdge {
     pub fn nb_poles(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_nb_poles(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -738,8 +900,11 @@ impl CurveOnEdge {
     pub fn nb_knots(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_nb_knots(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -747,8 +912,11 @@ impl CurveOnEdge {
     pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_bezier(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -756,8 +924,11 @@ impl CurveOnEdge {
     pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_b_spline(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -765,8 +936,11 @@ impl CurveOnEdge {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -774,62 +948,63 @@ impl CurveOnEdge {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Adaptor3d_Curve
     pub fn as_adaptor3d_curve(&self) -> &crate::adaptor3d::Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::BiTgte_CurveOnEdge_as_Adaptor3d_Curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BiTgte_CurveOnEdge_as_Adaptor3d_Curve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Adaptor3d_Curve (mutable)
     pub fn as_adaptor3d_curve_mut(&mut self) -> &mut crate::adaptor3d::Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::BiTgte_CurveOnEdge_as_Adaptor3d_Curve_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BiTgte_CurveOnEdge_as_Adaptor3d_Curve_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::BiTgte_CurveOnEdge_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BiTgte_CurveOnEdge_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::BiTgte_CurveOnEdge_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BiTgte_CurveOnEdge_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBiTgteCurveOnEdge> {
-        {
-            let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::BiTgte_CurveOnEdge_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
@@ -838,8 +1013,11 @@ impl CurveOnEdge {
             let __result = unsafe {
                 crate::ffi::BiTgte_CurveOnEdge_inherited_OffsetCurve(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -849,8 +1027,11 @@ impl CurveOnEdge {
             let __result = unsafe {
                 crate::ffi::BiTgte_CurveOnEdge_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -860,8 +1041,11 @@ impl CurveOnEdge {
             let __result = unsafe {
                 crate::ffi::BiTgte_CurveOnEdge_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -870,11 +1054,14 @@ impl CurveOnEdge {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnEdge_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -885,18 +1072,23 @@ impl CurveOnEdge {
             let __result = unsafe {
                 crate::ffi::BiTgte_CurveOnEdge_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BiTgte_CurveOnEdge_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -906,16 +1098,22 @@ impl CurveOnEdge {
             let __result = unsafe {
                 crate::ffi::BiTgte_CurveOnEdge_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::BiTgte_CurveOnEdge_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BiTgte_CurveOnEdge_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -931,43 +1129,42 @@ unsafe impl crate::CppDeletable for HandleBiTgteCurveOnEdge {
 impl HandleBiTgteCurveOnEdge {
     /// Dereference this Handle to access the underlying BiTgte_CurveOnEdge
     pub fn get(&self) -> &crate::ffi::BiTgte_CurveOnEdge {
-        {
-            let __result = unsafe { crate::ffi::HandleBiTgteCurveOnEdge_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBiTgteCurveOnEdge_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BiTgte_CurveOnEdge
     pub fn get_mut(&mut self) -> &mut crate::ffi::BiTgte_CurveOnEdge {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleBiTgteCurveOnEdge_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleBiTgteCurveOnEdge_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BiTgte_CurveOnEdge> to Handle<Adaptor3d_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBiTgteCurveOnEdge_to_HandleAdaptor3dCurve(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBiTgteCurveOnEdge_to_HandleAdaptor3dCurve(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BiTgte_CurveOnEdge> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBiTgteCurveOnEdge_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBiTgteCurveOnEdge_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -991,8 +1188,10 @@ impl CurveOnVertex {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1003,8 +1202,10 @@ impl CurveOnVertex {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_ctor_edge_vertex(EonF, V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1013,16 +1214,22 @@ impl CurveOnVertex {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnVertex_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `BiTgte_CurveOnVertex.hxx`:53 - `BiTgte_CurveOnVertex::Init()`
     pub fn init(&mut self, EonF: &crate::topo_ds::Edge, V: &crate::topo_ds::Vertex) {
         {
-            unsafe { crate::ffi::BiTgte_CurveOnVertex_init(self as *mut Self, EonF, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BiTgte_CurveOnVertex_init(self as *mut Self, EonF, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1031,8 +1238,11 @@ impl CurveOnVertex {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnVertex_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1041,8 +1251,11 @@ impl CurveOnVertex {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnVertex_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1051,8 +1264,11 @@ impl CurveOnVertex {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnVertex_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -1064,8 +1280,11 @@ impl CurveOnVertex {
             let __result = unsafe {
                 crate::ffi::BiTgte_CurveOnVertex_nb_intervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1077,8 +1296,12 @@ impl CurveOnVertex {
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe { crate::ffi::BiTgte_CurveOnVertex_intervals(self as *const Self, T, S.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BiTgte_CurveOnVertex_intervals(self as *const Self, T, S.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1097,8 +1320,11 @@ impl CurveOnVertex {
             let __result = unsafe {
                 crate::ffi::BiTgte_CurveOnVertex_trim(self as *const Self, First, Last, Tol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1107,8 +1333,11 @@ impl CurveOnVertex {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnVertex_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1117,8 +1346,11 @@ impl CurveOnVertex {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnVertex_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1126,8 +1358,11 @@ impl CurveOnVertex {
     pub fn period(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1137,8 +1372,11 @@ impl CurveOnVertex {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnVertex_value(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1146,8 +1384,10 @@ impl CurveOnVertex {
     /// Computes the point of parameter U on the curve.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::BiTgte_CurveOnVertex_d0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BiTgte_CurveOnVertex_d0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1158,8 +1398,11 @@ impl CurveOnVertex {
     /// is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         {
-            unsafe { crate::ffi::BiTgte_CurveOnVertex_d1(self as *const Self, U, P, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BiTgte_CurveOnVertex_d1(self as *const Self, U, P, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1176,8 +1419,11 @@ impl CurveOnVertex {
         V2: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::BiTgte_CurveOnVertex_d2(self as *const Self, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BiTgte_CurveOnVertex_d2(self as *const Self, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1195,8 +1441,12 @@ impl CurveOnVertex {
         V3: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::BiTgte_CurveOnVertex_d3(self as *const Self, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BiTgte_CurveOnVertex_d3(self as *const Self, U, P, V1, V2, V3)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1210,8 +1460,11 @@ impl CurveOnVertex {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnVertex_dn(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1222,8 +1475,11 @@ impl CurveOnVertex {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnVertex_resolution(self as *const Self, R3d) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1235,8 +1491,11 @@ impl CurveOnVertex {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnVertex_get_type(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
@@ -1244,8 +1503,11 @@ impl CurveOnVertex {
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_line(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1253,8 +1515,11 @@ impl CurveOnVertex {
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_circle(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1262,8 +1527,11 @@ impl CurveOnVertex {
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_ellipse(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1272,8 +1540,11 @@ impl CurveOnVertex {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnVertex_hyperbola(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1282,8 +1553,11 @@ impl CurveOnVertex {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnVertex_parabola(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1291,8 +1565,11 @@ impl CurveOnVertex {
     pub fn degree(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1301,8 +1578,11 @@ impl CurveOnVertex {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnVertex_is_rational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1311,8 +1591,11 @@ impl CurveOnVertex {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnVertex_nb_poles(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1321,8 +1604,11 @@ impl CurveOnVertex {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnVertex_nb_knots(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1330,8 +1616,11 @@ impl CurveOnVertex {
     pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_bezier(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1340,8 +1629,11 @@ impl CurveOnVertex {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnVertex_b_spline(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1349,8 +1641,11 @@ impl CurveOnVertex {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1358,63 +1653,64 @@ impl CurveOnVertex {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Adaptor3d_Curve
     pub fn as_adaptor3d_curve(&self) -> &crate::adaptor3d::Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::BiTgte_CurveOnVertex_as_Adaptor3d_Curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BiTgte_CurveOnVertex_as_Adaptor3d_Curve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Adaptor3d_Curve (mutable)
     pub fn as_adaptor3d_curve_mut(&mut self) -> &mut crate::adaptor3d::Curve {
-        {
-            let __result = unsafe {
-                crate::ffi::BiTgte_CurveOnVertex_as_Adaptor3d_Curve_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BiTgte_CurveOnVertex_as_Adaptor3d_Curve_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::BiTgte_CurveOnVertex_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BiTgte_CurveOnVertex_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::BiTgte_CurveOnVertex_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BiTgte_CurveOnVertex_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBiTgteCurveOnVertex> {
-        {
-            let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::BiTgte_CurveOnVertex_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:57 - `Adaptor3d_Curve::ShallowCopy()`
@@ -1423,8 +1719,11 @@ impl CurveOnVertex {
             let __result = unsafe {
                 crate::ffi::BiTgte_CurveOnVertex_inherited_ShallowCopy(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1434,8 +1733,11 @@ impl CurveOnVertex {
             let __result = unsafe {
                 crate::ffi::BiTgte_CurveOnVertex_inherited_OffsetCurve(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1445,8 +1747,11 @@ impl CurveOnVertex {
             let __result = unsafe {
                 crate::ffi::BiTgte_CurveOnVertex_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1456,8 +1761,11 @@ impl CurveOnVertex {
             let __result = unsafe {
                 crate::ffi::BiTgte_CurveOnVertex_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1466,11 +1774,14 @@ impl CurveOnVertex {
         {
             let __result =
                 unsafe { crate::ffi::BiTgte_CurveOnVertex_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1481,18 +1792,23 @@ impl CurveOnVertex {
             let __result = unsafe {
                 crate::ffi::BiTgte_CurveOnVertex_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BiTgte_CurveOnVertex_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1502,16 +1818,22 @@ impl CurveOnVertex {
             let __result = unsafe {
                 crate::ffi::BiTgte_CurveOnVertex_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::BiTgte_CurveOnVertex_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BiTgte_CurveOnVertex_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1527,45 +1849,41 @@ unsafe impl crate::CppDeletable for HandleBiTgteCurveOnVertex {
 impl HandleBiTgteCurveOnVertex {
     /// Dereference this Handle to access the underlying BiTgte_CurveOnVertex
     pub fn get(&self) -> &crate::ffi::BiTgte_CurveOnVertex {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleBiTgteCurveOnVertex_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBiTgteCurveOnVertex_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BiTgte_CurveOnVertex
     pub fn get_mut(&mut self) -> &mut crate::ffi::BiTgte_CurveOnVertex {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleBiTgteCurveOnVertex_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleBiTgteCurveOnVertex_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BiTgte_CurveOnVertex> to Handle<Adaptor3d_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBiTgteCurveOnVertex_to_HandleAdaptor3dCurve(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBiTgteCurveOnVertex_to_HandleAdaptor3dCurve(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BiTgte_CurveOnVertex> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBiTgteCurveOnVertex_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBiTgteCurveOnVertex_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

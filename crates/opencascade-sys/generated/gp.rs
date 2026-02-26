@@ -18,8 +18,11 @@
 pub fn resolution() -> f64 {
     {
         let __result = unsafe { crate::ffi::gp_resolution() };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `gp.hxx`:58 - `gp::Origin`
@@ -27,8 +30,11 @@ pub fn resolution() -> f64 {
 pub fn origin() -> crate::OwnedPtr<Pnt> {
     {
         let __result = unsafe { crate::ffi::gp_origin() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `gp.hxx`:61 - `gp::DX`
@@ -36,8 +42,11 @@ pub fn origin() -> crate::OwnedPtr<Pnt> {
 pub fn dx() -> crate::OwnedPtr<Dir> {
     {
         let __result = unsafe { crate::ffi::gp_dx() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `gp.hxx`:64 - `gp::DY`
@@ -45,8 +54,11 @@ pub fn dx() -> crate::OwnedPtr<Dir> {
 pub fn dy() -> crate::OwnedPtr<Dir> {
     {
         let __result = unsafe { crate::ffi::gp_dy() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `gp.hxx`:67 - `gp::DZ`
@@ -54,8 +66,11 @@ pub fn dy() -> crate::OwnedPtr<Dir> {
 pub fn dz() -> crate::OwnedPtr<Dir> {
     {
         let __result = unsafe { crate::ffi::gp_dz() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `gp.hxx`:71 - `gp::OX`
@@ -64,8 +79,11 @@ pub fn dz() -> crate::OwnedPtr<Dir> {
 pub fn ox() -> crate::OwnedPtr<Ax1> {
     {
         let __result = unsafe { crate::ffi::gp_ox() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `gp.hxx`:75 - `gp::OY`
@@ -74,8 +92,11 @@ pub fn ox() -> crate::OwnedPtr<Ax1> {
 pub fn oy() -> crate::OwnedPtr<Ax1> {
     {
         let __result = unsafe { crate::ffi::gp_oy() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `gp.hxx`:79 - `gp::OZ`
@@ -84,8 +105,11 @@ pub fn oy() -> crate::OwnedPtr<Ax1> {
 pub fn oz() -> crate::OwnedPtr<Ax1> {
     {
         let __result = unsafe { crate::ffi::gp_oz() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `gp.hxx`:84 - `gp::XOY`
@@ -95,8 +119,11 @@ pub fn oz() -> crate::OwnedPtr<Ax1> {
 pub fn xoy() -> crate::OwnedPtr<Ax2> {
     {
         let __result = unsafe { crate::ffi::gp_xoy() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `gp.hxx`:89 - `gp::ZOX`
@@ -106,8 +133,11 @@ pub fn xoy() -> crate::OwnedPtr<Ax2> {
 pub fn zox() -> crate::OwnedPtr<Ax2> {
     {
         let __result = unsafe { crate::ffi::gp_zox() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `gp.hxx`:95 - `gp::YOZ`
@@ -118,8 +148,11 @@ pub fn zox() -> crate::OwnedPtr<Ax2> {
 pub fn yoz() -> crate::OwnedPtr<Ax2> {
     {
         let __result = unsafe { crate::ffi::gp_yoz() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `gp.hxx`:98 - `gp::Origin2d`
@@ -127,8 +160,11 @@ pub fn yoz() -> crate::OwnedPtr<Ax2> {
 pub fn origin2d() -> crate::OwnedPtr<Pnt2d> {
     {
         let __result = unsafe { crate::ffi::gp_origin2d() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `gp.hxx`:101 - `gp::DX2d`
@@ -136,8 +172,11 @@ pub fn origin2d() -> crate::OwnedPtr<Pnt2d> {
 pub fn dx2d() -> crate::OwnedPtr<Dir2d> {
     {
         let __result = unsafe { crate::ffi::gp_dx2d() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `gp.hxx`:104 - `gp::DY2d`
@@ -145,8 +184,11 @@ pub fn dx2d() -> crate::OwnedPtr<Dir2d> {
 pub fn dy2d() -> crate::OwnedPtr<Dir2d> {
     {
         let __result = unsafe { crate::ffi::gp_dy2d() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `gp.hxx`:108 - `gp::OX2d`
@@ -155,8 +197,11 @@ pub fn dy2d() -> crate::OwnedPtr<Dir2d> {
 pub fn ox2d() -> crate::OwnedPtr<Ax2d> {
     {
         let __result = unsafe { crate::ffi::gp_ox2d() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `gp.hxx`:112 - `gp::OY2d`
@@ -165,8 +210,11 @@ pub fn ox2d() -> crate::OwnedPtr<Ax2d> {
 pub fn oy2d() -> crate::OwnedPtr<Ax2d> {
     {
         let __result = unsafe { crate::ffi::gp_oy2d() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 
@@ -371,8 +419,10 @@ impl Ax1 {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Ax1_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -381,8 +431,10 @@ impl Ax1 {
     pub fn new_pnt_dir(theP: &Pnt, theV: &Dir) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Ax1_ctor_pnt_dir(theP, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -390,8 +442,10 @@ impl Ax1 {
     /// Assigns V as the "Direction"  of this axis.
     pub fn set_direction(&mut self, theV: &Dir) {
         {
-            unsafe { crate::ffi::gp_Ax1_set_direction(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax1_set_direction(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -399,8 +453,10 @@ impl Ax1 {
     /// Assigns  P as the origin of this axis.
     pub fn set_location(&mut self, theP: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Ax1_set_location(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax1_set_location(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -409,8 +465,11 @@ impl Ax1 {
     pub fn direction(&self) -> &Dir {
         {
             let __result = unsafe { crate::ffi::gp_Ax1_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -419,8 +478,11 @@ impl Ax1 {
     pub fn location(&self) -> &Pnt {
         {
             let __result = unsafe { crate::ffi::gp_Ax1_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -442,8 +504,11 @@ impl Ax1 {
                     LinearTolerance,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -456,8 +521,11 @@ impl Ax1 {
             let __result = unsafe {
                 crate::ffi::gp_Ax1_is_normal(self as *const Self, theOther, theAngularTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -470,8 +538,11 @@ impl Ax1 {
             let __result = unsafe {
                 crate::ffi::gp_Ax1_is_opposite(self as *const Self, theOther, theAngularTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -484,8 +555,11 @@ impl Ax1 {
             let __result = unsafe {
                 crate::ffi::gp_Ax1_is_parallel(self as *const Self, theOther, theAngularTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -495,8 +569,11 @@ impl Ax1 {
     pub fn angle(&self, theOther: &Ax1) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Ax1_angle(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -504,8 +581,10 @@ impl Ax1 {
     /// Reverses the unit vector of this axis and assigns the result to this axis.
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Ax1_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax1_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -514,8 +593,11 @@ impl Ax1 {
     pub fn reversed(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Ax1_reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -525,8 +607,10 @@ impl Ax1 {
     /// center of the symmetry and assigns the result to this axis.
     pub fn mirror_pnt(&mut self, P: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Ax1_mirror_pnt(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax1_mirror_pnt(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -537,8 +621,11 @@ impl Ax1 {
     pub fn mirrored_pnt(&self, P: &Pnt) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Ax1_mirrored_pnt(self as *const Self, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -548,8 +635,10 @@ impl Ax1 {
     /// is the axis of the symmetry and assigns the result to this axis.
     pub fn mirror_ax1(&mut self, A1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Ax1_mirror_ax1(self as *mut Self, A1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax1_mirror_ax1(self as *mut Self, A1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -560,8 +649,11 @@ impl Ax1 {
     pub fn mirrored_ax1(&self, A1: &Ax1) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Ax1_mirrored_ax1(self as *const Self, A1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -572,8 +664,10 @@ impl Ax1 {
     /// (Location, XDirection, YDirection) and assigns the result to this axis.
     pub fn mirror_ax2(&mut self, A2: &Ax2) {
         {
-            unsafe { crate::ffi::gp_Ax1_mirror_ax2(self as *mut Self, A2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax1_mirror_ax2(self as *mut Self, A2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -585,8 +679,11 @@ impl Ax1 {
     pub fn mirrored_ax2(&self, A2: &Ax2) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Ax1_mirrored_ax2(self as *const Self, A2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -595,8 +692,10 @@ impl Ax1 {
     /// and assigns the result to this axis.
     pub fn rotate(&mut self, theA1: &Ax1, theAngRad: f64) {
         {
-            unsafe { crate::ffi::gp_Ax1_rotate(self as *mut Self, theA1, theAngRad) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax1_rotate(self as *mut Self, theA1, theAngRad) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -607,8 +706,11 @@ impl Ax1 {
         {
             let __result =
                 unsafe { crate::ffi::gp_Ax1_rotated(self as *const Self, theA1, theAngRad) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -618,8 +720,10 @@ impl Ax1 {
     /// - center theP and assigns the result to this axis.
     pub fn scale(&mut self, theP: &Pnt, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Ax1_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax1_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -630,8 +734,11 @@ impl Ax1 {
     pub fn scaled(&self, theP: &Pnt, theS: f64) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Ax1_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -639,8 +746,10 @@ impl Ax1 {
     /// Applies the transformation theT to this axis and assigns the result to this axis.
     pub fn transform(&mut self, theT: &Trsf) {
         {
-            unsafe { crate::ffi::gp_Ax1_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax1_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -652,8 +761,11 @@ impl Ax1 {
     pub fn transformed(&self, theT: &Trsf) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Ax1_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -661,8 +773,10 @@ impl Ax1 {
     /// Translates this axis by the vector theV, and assigns the result to this axis.
     pub fn translate_vec(&mut self, theV: &Vec) {
         {
-            unsafe { crate::ffi::gp_Ax1_translate_vec(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax1_translate_vec(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -672,8 +786,11 @@ impl Ax1 {
     pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Ax1_translated_vec(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -683,8 +800,11 @@ impl Ax1 {
     /// and assigns the result to this axis.
     pub fn translate_pnt2(&mut self, theP1: &Pnt, theP2: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Ax1_translate_pnt2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Ax1_translate_pnt2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -696,18 +816,21 @@ impl Ax1 {
         {
             let __result =
                 unsafe { crate::ffi::gp_Ax1_translated_pnt2(self as *const Self, theP1, theP2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Ax1_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Ax1_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -759,8 +882,10 @@ impl Ax2 {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Ax2_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -774,8 +899,10 @@ impl Ax2 {
     pub fn new_pnt_dir2(P: &Pnt, N: &Dir, Vx: &Dir) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Ax2_ctor_pnt_dir2(P, N, Vx) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -786,8 +913,10 @@ impl Ax2 {
     pub fn new_pnt_dir(P: &Pnt, V: &Dir) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Ax2_ctor_pnt_dir(P, V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -802,8 +931,10 @@ impl Ax2 {
     /// Direction" of this coordinate system.
     pub fn set_axis(&mut self, A1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Ax2_set_axis(self as *mut Self, A1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax2_set_axis(self as *mut Self, A1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -817,8 +948,10 @@ impl Ax2 {
     /// Direction" of this coordinate system.
     pub fn set_direction(&mut self, V: &Dir) {
         {
-            unsafe { crate::ffi::gp_Ax2_set_direction(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax2_set_direction(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -826,8 +959,10 @@ impl Ax2 {
     /// Changes the "Location" point (origin) of <me>.
     pub fn set_location(&mut self, theP: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Ax2_set_location(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax2_set_location(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -841,8 +976,10 @@ impl Ax2 {
     /// the "main Direction" of this coordinate system.
     pub fn set_x_direction(&mut self, theVx: &Dir) {
         {
-            unsafe { crate::ffi::gp_Ax2_set_x_direction(self as *mut Self, theVx) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax2_set_x_direction(self as *mut Self, theVx) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -857,8 +994,10 @@ impl Ax2 {
     /// the "main Direction" of this coordinate system.
     pub fn set_y_direction(&mut self, theVy: &Dir) {
         {
-            unsafe { crate::ffi::gp_Ax2_set_y_direction(self as *mut Self, theVy) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax2_set_y_direction(self as *mut Self, theVy) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -869,8 +1008,11 @@ impl Ax2 {
     pub fn angle(&self, theOther: &Ax2) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Ax2_angle(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -880,8 +1022,11 @@ impl Ax2 {
     pub fn axis(&self) -> &Ax1 {
         {
             let __result = unsafe { crate::ffi::gp_Ax2_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -890,8 +1035,11 @@ impl Ax2 {
     pub fn direction(&self) -> &Dir {
         {
             let __result = unsafe { crate::ffi::gp_Ax2_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -900,8 +1048,11 @@ impl Ax2 {
     pub fn location(&self) -> &Pnt {
         {
             let __result = unsafe { crate::ffi::gp_Ax2_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -910,8 +1061,11 @@ impl Ax2 {
     pub fn x_direction(&self) -> &Dir {
         {
             let __result = unsafe { crate::ffi::gp_Ax2_x_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -920,8 +1074,11 @@ impl Ax2 {
     pub fn y_direction(&self) -> &Dir {
         {
             let __result = unsafe { crate::ffi::gp_Ax2_y_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -941,8 +1098,11 @@ impl Ax2 {
                     AngularTolerance,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -967,8 +1127,11 @@ impl Ax2 {
                     AngularTolerance,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -990,8 +1153,10 @@ impl Ax2 {
     /// coordinate system.
     pub fn mirror_pnt(&mut self, P: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Ax2_mirror_pnt(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax2_mirror_pnt(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1014,8 +1179,11 @@ impl Ax2 {
     pub fn mirrored_pnt(&self, P: &Pnt) -> crate::OwnedPtr<Ax2> {
         {
             let __result = unsafe { crate::ffi::gp_Ax2_mirrored_pnt(self as *const Self, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1037,8 +1205,10 @@ impl Ax2 {
     /// coordinate system.
     pub fn mirror_ax1(&mut self, A1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Ax2_mirror_ax1(self as *mut Self, A1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax2_mirror_ax1(self as *mut Self, A1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1061,8 +1231,11 @@ impl Ax2 {
     pub fn mirrored_ax1(&self, A1: &Ax1) -> crate::OwnedPtr<Ax2> {
         {
             let __result = unsafe { crate::ffi::gp_Ax2_mirrored_ax1(self as *const Self, A1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1085,8 +1258,10 @@ impl Ax2 {
     /// coordinate system.
     pub fn mirror_ax2(&mut self, A2: &Ax2) {
         {
-            unsafe { crate::ffi::gp_Ax2_mirror_ax2(self as *mut Self, A2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax2_mirror_ax2(self as *mut Self, A2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1110,16 +1285,21 @@ impl Ax2 {
     pub fn mirrored_ax2(&self, A2: &Ax2) -> crate::OwnedPtr<Ax2> {
         {
             let __result = unsafe { crate::ffi::gp_Ax2_mirrored_ax2(self as *const Self, A2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax2.hxx`:273 - `gp_Ax2::Rotate()`
     pub fn rotate(&mut self, theA1: &Ax1, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Ax2_rotate(self as *mut Self, theA1, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax2_rotate(self as *mut Self, theA1, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1130,16 +1310,21 @@ impl Ax2 {
         {
             let __result =
                 unsafe { crate::ffi::gp_Ax2_rotated(self as *const Self, theA1, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax2.hxx`:292 - `gp_Ax2::Scale()`
     pub fn scale(&mut self, theP: &Pnt, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Ax2_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax2_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1154,16 +1339,21 @@ impl Ax2 {
     pub fn scaled(&self, theP: &Pnt, theS: f64) -> crate::OwnedPtr<Ax2> {
         {
             let __result = unsafe { crate::ffi::gp_Ax2_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax2.hxx`:318 - `gp_Ax2::Transform()`
     pub fn transform(&mut self, theT: &Trsf) {
         {
-            unsafe { crate::ffi::gp_Ax2_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax2_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1175,16 +1365,21 @@ impl Ax2 {
     pub fn transformed(&self, theT: &Trsf) -> crate::OwnedPtr<Ax2> {
         {
             let __result = unsafe { crate::ffi::gp_Ax2_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax2.hxx`:339 - `gp_Ax2::Translate()`
     pub fn translate_vec(&mut self, theV: &Vec) {
         {
-            unsafe { crate::ffi::gp_Ax2_translate_vec(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax2_translate_vec(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1194,16 +1389,22 @@ impl Ax2 {
     pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Ax2> {
         {
             let __result = unsafe { crate::ffi::gp_Ax2_translated_vec(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax2.hxx`:350 - `gp_Ax2::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &Pnt, theP2: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Ax2_translate_pnt2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Ax2_translate_pnt2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1213,18 +1414,21 @@ impl Ax2 {
         {
             let __result =
                 unsafe { crate::ffi::gp_Ax2_translated_pnt2(self as *const Self, theP1, theP2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Ax2_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Ax2_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1265,8 +1469,10 @@ impl Ax22d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Ax22d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1280,8 +1486,10 @@ impl Ax22d {
     pub fn new_pnt2d_dir2d2(theP: &Pnt2d, theVx: &Dir2d, theVy: &Dir2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Ax22d_ctor_pnt2d_dir2d2(theP, theVx, theVy) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1298,8 +1506,10 @@ impl Ax22d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Ax22d_ctor_pnt2d_dir2d_bool(theP, theV, theIsSense) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1311,8 +1521,10 @@ impl Ax22d {
     pub fn new_ax2d_bool(theA: &Ax2d, theIsSense: bool) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Ax22d_ctor_ax2d_bool(theA, theIsSense) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1339,8 +1551,10 @@ impl Ax22d {
     /// coordinate system theA1 to this coordinate system.
     pub fn set_axis(&mut self, theA1: &Ax22d) {
         {
-            unsafe { crate::ffi::gp_Ax22d_set_axis(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax22d_set_axis(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1350,8 +1564,10 @@ impl Ax22d {
     /// The "YDirection" is recomputed in the same sense as before.
     pub fn set_x_axis(&mut self, theA1: &Ax2d) {
         {
-            unsafe { crate::ffi::gp_Ax22d_set_x_axis(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax22d_set_x_axis(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1360,8 +1576,10 @@ impl Ax22d {
     /// The "XDirection" is recomputed in the same sense as before.
     pub fn set_y_axis(&mut self, theA1: &Ax2d) {
         {
-            unsafe { crate::ffi::gp_Ax22d_set_y_axis(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax22d_set_y_axis(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1369,8 +1587,10 @@ impl Ax22d {
     /// Changes the "Location" point (origin) of <me>.
     pub fn set_location(&mut self, theP: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Ax22d_set_location(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax22d_set_location(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1382,8 +1602,10 @@ impl Ax22d {
     /// left-handed) of this coordinate system.
     pub fn set_x_direction(&mut self, theVx: &Dir2d) {
         {
-            unsafe { crate::ffi::gp_Ax22d_set_x_direction(self as *mut Self, theVx) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax22d_set_x_direction(self as *mut Self, theVx) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1395,8 +1617,10 @@ impl Ax22d {
     /// left-handed) of this coordinate system.
     pub fn set_y_direction(&mut self, theVy: &Dir2d) {
         {
-            unsafe { crate::ffi::gp_Ax22d_set_y_direction(self as *mut Self, theVy) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax22d_set_y_direction(self as *mut Self, theVy) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1408,8 +1632,11 @@ impl Ax22d {
     pub fn x_axis(&self) -> crate::OwnedPtr<Ax2d> {
         {
             let __result = unsafe { crate::ffi::gp_Ax22d_x_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1421,8 +1648,11 @@ impl Ax22d {
     pub fn y_axis(&self) -> crate::OwnedPtr<Ax2d> {
         {
             let __result = unsafe { crate::ffi::gp_Ax22d_y_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1431,8 +1661,11 @@ impl Ax22d {
     pub fn location(&self) -> &Pnt2d {
         {
             let __result = unsafe { crate::ffi::gp_Ax22d_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1441,8 +1674,11 @@ impl Ax22d {
     pub fn x_direction(&self) -> &Dir2d {
         {
             let __result = unsafe { crate::ffi::gp_Ax22d_x_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1451,16 +1687,21 @@ impl Ax22d {
     pub fn y_direction(&self) -> &Dir2d {
         {
             let __result = unsafe { crate::ffi::gp_Ax22d_y_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `gp_Ax22d.hxx`:170 - `gp_Ax22d::Mirror()`
     pub fn mirror_pnt2d(&mut self, theP: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Ax22d_mirror_pnt2d(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax22d_mirror_pnt2d(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1476,16 +1717,21 @@ impl Ax22d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Ax22d_mirrored_pnt2d(self as *const Self, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax22d.hxx`:181 - `gp_Ax22d::Mirror()`
     pub fn mirror_ax2d(&mut self, theA: &Ax2d) {
         {
-            unsafe { crate::ffi::gp_Ax22d_mirror_ax2d(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax22d_mirror_ax2d(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1500,16 +1746,21 @@ impl Ax22d {
     pub fn mirrored_ax2d(&self, theA: &Ax2d) -> crate::OwnedPtr<Ax22d> {
         {
             let __result = unsafe { crate::ffi::gp_Ax22d_mirrored_ax2d(self as *const Self, theA) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax22d.hxx`:192 - `gp_Ax22d::Rotate()`
     pub fn rotate(&mut self, theP: &Pnt2d, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Ax22d_rotate(self as *mut Self, theP, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax22d_rotate(self as *mut Self, theP, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1521,16 +1772,21 @@ impl Ax22d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Ax22d_rotated(self as *const Self, theP, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax22d.hxx`:204 - `gp_Ax22d::Scale()`
     pub fn scale(&mut self, theP: &Pnt2d, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Ax22d_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax22d_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1545,16 +1801,21 @@ impl Ax22d {
     pub fn scaled(&self, theP: &Pnt2d, theS: f64) -> crate::OwnedPtr<Ax22d> {
         {
             let __result = unsafe { crate::ffi::gp_Ax22d_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax22d.hxx`:220 - `gp_Ax22d::Transform()`
     pub fn transform(&mut self, theT: &Trsf2d) {
         {
-            unsafe { crate::ffi::gp_Ax22d_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax22d_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1567,16 +1828,21 @@ impl Ax22d {
     pub fn transformed(&self, theT: &Trsf2d) -> crate::OwnedPtr<Ax22d> {
         {
             let __result = unsafe { crate::ffi::gp_Ax22d_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax22d.hxx`:234 - `gp_Ax22d::Translate()`
     pub fn translate_vec2d(&mut self, theV: &Vec2d) {
         {
-            unsafe { crate::ffi::gp_Ax22d_translate_vec2d(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax22d_translate_vec2d(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1587,16 +1853,22 @@ impl Ax22d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Ax22d_translated_vec2d(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax22d.hxx`:245 - `gp_Ax22d::Translate()`
     pub fn translate_pnt2d2(&mut self, theP1: &Pnt2d, theP2: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Ax22d_translate_pnt2d2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Ax22d_translate_pnt2d2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1608,18 +1880,21 @@ impl Ax22d {
             let __result = unsafe {
                 crate::ffi::gp_Ax22d_translated_pnt2d2(self as *const Self, theP1, theP2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Ax22d_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Ax22d_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1660,8 +1935,10 @@ impl Ax2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Ax2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1672,8 +1949,10 @@ impl Ax2d {
     pub fn new_pnt2d_dir2d(theP: &Pnt2d, theV: &Dir2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Ax2d_ctor_pnt2d_dir2d(theP, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1681,8 +1960,10 @@ impl Ax2d {
     /// Changes the "Location" point (origin) of <me>.
     pub fn set_location(&mut self, theP: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Ax2d_set_location(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax2d_set_location(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1690,8 +1971,10 @@ impl Ax2d {
     /// Changes the direction of <me>.
     pub fn set_direction(&mut self, theV: &Dir2d) {
         {
-            unsafe { crate::ffi::gp_Ax2d_set_direction(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax2d_set_direction(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1700,8 +1983,11 @@ impl Ax2d {
     pub fn location(&self) -> &Pnt2d {
         {
             let __result = unsafe { crate::ffi::gp_Ax2d_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1710,8 +1996,11 @@ impl Ax2d {
     pub fn direction(&self) -> &Dir2d {
         {
             let __result = unsafe { crate::ffi::gp_Ax2d_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1733,8 +2022,11 @@ impl Ax2d {
                     LinearTolerance,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1747,8 +2039,11 @@ impl Ax2d {
             let __result = unsafe {
                 crate::ffi::gp_Ax2d_is_normal(self as *const Self, theOther, theAngularTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1761,8 +2056,11 @@ impl Ax2d {
             let __result = unsafe {
                 crate::ffi::gp_Ax2d_is_opposite(self as *const Self, theOther, theAngularTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1776,8 +2074,11 @@ impl Ax2d {
             let __result = unsafe {
                 crate::ffi::gp_Ax2d_is_parallel(self as *const Self, theOther, theAngularTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1787,8 +2088,11 @@ impl Ax2d {
     pub fn angle(&self, theOther: &Ax2d) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Ax2d_angle(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1796,8 +2100,10 @@ impl Ax2d {
     /// Reverses the direction of <me> and assigns the result to this axis.
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Ax2d_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax2d_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1806,16 +2112,21 @@ impl Ax2d {
     pub fn reversed(&self) -> crate::OwnedPtr<Ax2d> {
         {
             let __result = unsafe { crate::ffi::gp_Ax2d_reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax2d.hxx`:128 - `gp_Ax2d::Mirror()`
     pub fn mirror_pnt2d(&mut self, P: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Ax2d_mirror_pnt2d(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax2d_mirror_pnt2d(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1826,16 +2137,21 @@ impl Ax2d {
     pub fn mirrored_pnt2d(&self, P: &Pnt2d) -> crate::OwnedPtr<Ax2d> {
         {
             let __result = unsafe { crate::ffi::gp_Ax2d_mirrored_pnt2d(self as *const Self, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax2d.hxx`:135 - `gp_Ax2d::Mirror()`
     pub fn mirror_ax2d(&mut self, A: &Ax2d) {
         {
-            unsafe { crate::ffi::gp_Ax2d_mirror_ax2d(self as *mut Self, A) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax2d_mirror_ax2d(self as *mut Self, A) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1846,16 +2162,21 @@ impl Ax2d {
     pub fn mirrored_ax2d(&self, A: &Ax2d) -> crate::OwnedPtr<Ax2d> {
         {
             let __result = unsafe { crate::ffi::gp_Ax2d_mirrored_ax2d(self as *const Self, A) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax2d.hxx`:142 - `gp_Ax2d::Rotate()`
     pub fn rotate(&mut self, theP: &Pnt2d, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Ax2d_rotate(self as *mut Self, theP, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax2d_rotate(self as *mut Self, theP, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1866,16 +2187,21 @@ impl Ax2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Ax2d_rotated(self as *const Self, theP, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax2d.hxx`:157 - `gp_Ax2d::Scale()`
     pub fn scale(&mut self, P: &Pnt2d, S: f64) {
         {
-            unsafe { crate::ffi::gp_Ax2d_scale(self as *mut Self, P, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax2d_scale(self as *mut Self, P, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1886,16 +2212,21 @@ impl Ax2d {
     pub fn scaled(&self, theP: &Pnt2d, theS: f64) -> crate::OwnedPtr<Ax2d> {
         {
             let __result = unsafe { crate::ffi::gp_Ax2d_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax2d.hxx`:169 - `gp_Ax2d::Transform()`
     pub fn transform(&mut self, theT: &Trsf2d) {
         {
-            unsafe { crate::ffi::gp_Ax2d_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax2d_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1904,16 +2235,21 @@ impl Ax2d {
     pub fn transformed(&self, theT: &Trsf2d) -> crate::OwnedPtr<Ax2d> {
         {
             let __result = unsafe { crate::ffi::gp_Ax2d_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax2d.hxx`:183 - `gp_Ax2d::Translate()`
     pub fn translate_vec2d(&mut self, theV: &Vec2d) {
         {
-            unsafe { crate::ffi::gp_Ax2d_translate_vec2d(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax2d_translate_vec2d(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1924,16 +2260,22 @@ impl Ax2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Ax2d_translated_vec2d(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax2d.hxx`:194 - `gp_Ax2d::Translate()`
     pub fn translate_pnt2d2(&mut self, theP1: &Pnt2d, theP2: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Ax2d_translate_pnt2d2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Ax2d_translate_pnt2d2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1943,18 +2285,21 @@ impl Ax2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Ax2d_translated_pnt2d2(self as *const Self, theP1, theP2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Ax2d_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Ax2d_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2012,8 +2357,10 @@ impl Ax3 {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Ax3_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2023,8 +2370,10 @@ impl Ax3 {
     pub fn new_ax2(theA: &Ax2) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Ax3_ctor_ax2(theA) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2036,8 +2385,10 @@ impl Ax3 {
     pub fn new_pnt_dir2(theP: &Pnt, theN: &Dir, theVx: &Dir) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Ax3_ctor_pnt_dir2(theP, theN, theVx) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2047,8 +2398,10 @@ impl Ax3 {
     pub fn new_pnt_dir(theP: &Pnt, theV: &Dir) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Ax3_ctor_pnt_dir(theP, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2056,8 +2409,10 @@ impl Ax3 {
     /// Reverses the X direction of <me>.
     pub fn x_reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Ax3_x_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax3_x_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2065,8 +2420,10 @@ impl Ax3 {
     /// Reverses the Y direction of <me>.
     pub fn y_reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Ax3_y_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax3_y_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2074,8 +2431,10 @@ impl Ax3 {
     /// Reverses the Z direction of <me>.
     pub fn z_reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Ax3_z_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax3_z_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2094,8 +2453,10 @@ impl Ax3 {
     /// "YDirection".
     pub fn set_axis(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Ax3_set_axis(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax3_set_axis(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2111,8 +2472,10 @@ impl Ax3 {
     /// and the new "YDirection".
     pub fn set_direction(&mut self, theV: &Dir) {
         {
-            unsafe { crate::ffi::gp_Ax3_set_direction(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax3_set_direction(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2120,8 +2483,10 @@ impl Ax3 {
     /// Changes the "Location" point (origin) of <me>.
     pub fn set_location(&mut self, theP: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Ax3_set_location(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax3_set_location(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2134,8 +2499,10 @@ impl Ax3 {
     /// orientation) to the main direction of <me>
     pub fn set_x_direction(&mut self, theVx: &Dir) {
         {
-            unsafe { crate::ffi::gp_Ax3_set_x_direction(self as *mut Self, theVx) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax3_set_x_direction(self as *mut Self, theVx) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2148,8 +2515,10 @@ impl Ax3 {
     /// Raises ConstructionError if <theVy> is parallel to the main direction of <me>
     pub fn set_y_direction(&mut self, theVy: &Dir) {
         {
-            unsafe { crate::ffi::gp_Ax3_set_y_direction(self as *mut Self, theVy) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax3_set_y_direction(self as *mut Self, theVy) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2160,8 +2529,11 @@ impl Ax3 {
     pub fn angle(&self, theOther: &Ax3) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Ax3_angle(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2171,8 +2543,11 @@ impl Ax3 {
     pub fn axis(&self) -> &Ax1 {
         {
             let __result = unsafe { crate::ffi::gp_Ax3_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2186,8 +2561,11 @@ impl Ax3 {
     pub fn ax2(&self) -> crate::OwnedPtr<Ax2> {
         {
             let __result = unsafe { crate::ffi::gp_Ax3_ax2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2196,8 +2574,11 @@ impl Ax3 {
     pub fn direction(&self) -> &Dir {
         {
             let __result = unsafe { crate::ffi::gp_Ax3_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2206,8 +2587,11 @@ impl Ax3 {
     pub fn location(&self) -> &Pnt {
         {
             let __result = unsafe { crate::ffi::gp_Ax3_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2216,8 +2600,11 @@ impl Ax3 {
     pub fn x_direction(&self) -> &Dir {
         {
             let __result = unsafe { crate::ffi::gp_Ax3_x_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2226,8 +2613,11 @@ impl Ax3 {
     pub fn y_direction(&self) -> &Dir {
         {
             let __result = unsafe { crate::ffi::gp_Ax3_y_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2237,8 +2627,11 @@ impl Ax3 {
     pub fn direct(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::gp_Ax3_direct(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2265,8 +2658,11 @@ impl Ax3 {
                     theAngularTolerance,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2292,16 +2688,21 @@ impl Ax3 {
                     theAngularTolerance,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `gp_Ax3.hxx`:203 - `gp_Ax3::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Ax3_mirror_pnt(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax3_mirror_pnt(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2316,16 +2717,21 @@ impl Ax3 {
     pub fn mirrored_pnt(&self, theP: &Pnt) -> crate::OwnedPtr<Ax3> {
         {
             let __result = unsafe { crate::ffi::gp_Ax3_mirrored_pnt(self as *const Self, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax3.hxx`:214 - `gp_Ax3::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Ax3_mirror_ax1(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax3_mirror_ax1(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2340,16 +2746,21 @@ impl Ax3 {
     pub fn mirrored_ax1(&self, theA1: &Ax1) -> crate::OwnedPtr<Ax3> {
         {
             let __result = unsafe { crate::ffi::gp_Ax3_mirrored_ax1(self as *const Self, theA1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax3.hxx`:225 - `gp_Ax3::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &Ax2) {
         {
-            unsafe { crate::ffi::gp_Ax3_mirror_ax2(self as *mut Self, theA2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax3_mirror_ax2(self as *mut Self, theA2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2365,16 +2776,21 @@ impl Ax3 {
     pub fn mirrored_ax2(&self, theA2: &Ax2) -> crate::OwnedPtr<Ax3> {
         {
             let __result = unsafe { crate::ffi::gp_Ax3_mirrored_ax2(self as *const Self, theA2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax3.hxx`:237 - `gp_Ax3::Rotate()`
     pub fn rotate(&mut self, theA1: &Ax1, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Ax3_rotate(self as *mut Self, theA1, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax3_rotate(self as *mut Self, theA1, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2386,16 +2802,21 @@ impl Ax3 {
         {
             let __result =
                 unsafe { crate::ffi::gp_Ax3_rotated(self as *const Self, theA1, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax3.hxx`:254 - `gp_Ax3::Scale()`
     pub fn scale(&mut self, theP: &Pnt, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Ax3_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax3_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2410,16 +2831,21 @@ impl Ax3 {
     pub fn scaled(&self, theP: &Pnt, theS: f64) -> crate::OwnedPtr<Ax3> {
         {
             let __result = unsafe { crate::ffi::gp_Ax3_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax3.hxx`:278 - `gp_Ax3::Transform()`
     pub fn transform(&mut self, theT: &Trsf) {
         {
-            unsafe { crate::ffi::gp_Ax3_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax3_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2432,16 +2858,21 @@ impl Ax3 {
     pub fn transformed(&self, theT: &Trsf) -> crate::OwnedPtr<Ax3> {
         {
             let __result = unsafe { crate::ffi::gp_Ax3_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax3.hxx`:297 - `gp_Ax3::Translate()`
     pub fn translate_vec(&mut self, theV: &Vec) {
         {
-            unsafe { crate::ffi::gp_Ax3_translate_vec(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Ax3_translate_vec(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2451,16 +2882,22 @@ impl Ax3 {
     pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Ax3> {
         {
             let __result = unsafe { crate::ffi::gp_Ax3_translated_vec(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Ax3.hxx`:308 - `gp_Ax3::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &Pnt, theP2: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Ax3_translate_pnt2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Ax3_translate_pnt2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2471,18 +2908,21 @@ impl Ax3 {
         {
             let __result =
                 unsafe { crate::ffi::gp_Ax3_translated_pnt2(self as *const Self, theP1, theP2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Ax3_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Ax3_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2531,8 +2971,10 @@ impl Circ {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Circ_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2544,8 +2986,10 @@ impl Circ {
     pub fn new_ax2_real(theA2: &Ax2, theRadius: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Circ_ctor_ax2_real(theA2, theRadius) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2556,8 +3000,10 @@ impl Circ {
     /// is parallel to the "XAxis" of the circle.
     pub fn set_axis(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Circ_set_axis(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ_set_axis(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2565,8 +3011,10 @@ impl Circ {
     /// Changes the "Location" point (center) of the circle.
     pub fn set_location(&mut self, theP: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Circ_set_location(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ_set_location(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2574,8 +3022,10 @@ impl Circ {
     /// Changes the position of the circle.
     pub fn set_position(&mut self, theA2: &Ax2) {
         {
-            unsafe { crate::ffi::gp_Circ_set_position(self as *mut Self, theA2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ_set_position(self as *mut Self, theA2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2586,8 +3036,10 @@ impl Circ {
     /// Standard_ConstructionError if theRadius is negative.
     pub fn set_radius(&mut self, theRadius: f64) {
         {
-            unsafe { crate::ffi::gp_Circ_set_radius(self as *mut Self, theRadius) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ_set_radius(self as *mut Self, theRadius) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2596,8 +3048,11 @@ impl Circ {
     pub fn area(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Circ_area(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2608,8 +3063,11 @@ impl Circ {
     pub fn axis(&self) -> &Ax1 {
         {
             let __result = unsafe { crate::ffi::gp_Circ_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2618,8 +3076,11 @@ impl Circ {
     pub fn length(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Circ_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2630,8 +3091,11 @@ impl Circ {
     pub fn location(&self) -> &Pnt {
         {
             let __result = unsafe { crate::ffi::gp_Circ_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2641,8 +3105,11 @@ impl Circ {
     pub fn position(&self) -> &Ax2 {
         {
             let __result = unsafe { crate::ffi::gp_Circ_position(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2651,8 +3118,11 @@ impl Circ {
     pub fn radius(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Circ_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2663,8 +3133,11 @@ impl Circ {
     pub fn x_axis(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Circ_x_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2675,8 +3148,11 @@ impl Circ {
     pub fn y_axis(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Circ_y_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2686,8 +3162,11 @@ impl Circ {
     pub fn distance(&self, theP: &Pnt) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Circ_distance(self as *const Self, theP) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2697,8 +3176,11 @@ impl Circ {
         {
             let __result =
                 unsafe { crate::ffi::gp_Circ_square_distance(self as *const Self, theP) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2711,16 +3193,21 @@ impl Circ {
             let __result = unsafe {
                 crate::ffi::gp_Circ_contains(self as *const Self, theP, theLinearTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `gp_Circ.hxx`:153 - `gp_Circ::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Circ_mirror_pnt(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ_mirror_pnt(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2731,16 +3218,21 @@ impl Circ {
     pub fn mirrored_pnt(&self, theP: &Pnt) -> crate::OwnedPtr<Circ> {
         {
             let __result = unsafe { crate::ffi::gp_Circ_mirrored_pnt(self as *const Self, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Circ.hxx`:160 - `gp_Circ::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Circ_mirror_ax1(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ_mirror_ax1(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2751,16 +3243,21 @@ impl Circ {
     pub fn mirrored_ax1(&self, theA1: &Ax1) -> crate::OwnedPtr<Circ> {
         {
             let __result = unsafe { crate::ffi::gp_Circ_mirrored_ax1(self as *const Self, theA1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Circ.hxx`:167 - `gp_Circ::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &Ax2) {
         {
-            unsafe { crate::ffi::gp_Circ_mirror_ax2(self as *mut Self, theA2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ_mirror_ax2(self as *mut Self, theA2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2771,16 +3268,21 @@ impl Circ {
     pub fn mirrored_ax2(&self, theA2: &Ax2) -> crate::OwnedPtr<Circ> {
         {
             let __result = unsafe { crate::ffi::gp_Circ_mirrored_ax2(self as *const Self, theA2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Circ.hxx`:174 - `gp_Circ::Rotate()`
     pub fn rotate(&mut self, theA1: &Ax1, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Circ_rotate(self as *mut Self, theA1, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ_rotate(self as *mut Self, theA1, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2791,16 +3293,21 @@ impl Circ {
         {
             let __result =
                 unsafe { crate::ffi::gp_Circ_rotated(self as *const Self, theA1, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Circ.hxx`:185 - `gp_Circ::Scale()`
     pub fn scale(&mut self, theP: &Pnt, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Circ_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2813,16 +3320,21 @@ impl Circ {
     pub fn scaled(&self, theP: &Pnt, theS: f64) -> crate::OwnedPtr<Circ> {
         {
             let __result = unsafe { crate::ffi::gp_Circ_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Circ.hxx`:194 - `gp_Circ::Transform()`
     pub fn transform(&mut self, theT: &Trsf) {
         {
-            unsafe { crate::ffi::gp_Circ_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2831,16 +3343,21 @@ impl Circ {
     pub fn transformed(&self, theT: &Trsf) -> crate::OwnedPtr<Circ> {
         {
             let __result = unsafe { crate::ffi::gp_Circ_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Circ.hxx`:199 - `gp_Circ::Translate()`
     pub fn translate_vec(&mut self, theV: &Vec) {
         {
-            unsafe { crate::ffi::gp_Circ_translate_vec(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ_translate_vec(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2850,16 +3367,22 @@ impl Circ {
     pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Circ> {
         {
             let __result = unsafe { crate::ffi::gp_Circ_translated_vec(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Circ.hxx`:210 - `gp_Circ::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &Pnt, theP2: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Circ_translate_pnt2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Circ_translate_pnt2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2869,18 +3392,21 @@ impl Circ {
         {
             let __result =
                 unsafe { crate::ffi::gp_Circ_translated_pnt2(self as *const Self, theP1, theP2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Circ_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Circ_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2927,8 +3453,10 @@ impl Circ2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Circ2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2946,8 +3474,10 @@ impl Circ2d {
             let __result = unsafe {
                 crate::ffi::gp_Circ2d_ctor_ax2d_real_bool(theXAxis, theRadius, theIsSense)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2961,8 +3491,10 @@ impl Circ2d {
     pub fn new_ax22d_real(theAxis: &Ax22d, theRadius: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Circ2d_ctor_ax22d_real(theAxis, theRadius) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2979,8 +3511,10 @@ impl Circ2d {
     /// Changes the location point (center) of the circle.
     pub fn set_location(&mut self, theP: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Circ2d_set_location(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ2d_set_location(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2988,8 +3522,10 @@ impl Circ2d {
     /// Changes the X axis of the circle.
     pub fn set_x_axis(&mut self, theA: &Ax2d) {
         {
-            unsafe { crate::ffi::gp_Circ2d_set_x_axis(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ2d_set_x_axis(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2997,8 +3533,10 @@ impl Circ2d {
     /// Changes the X axis of the circle.
     pub fn set_axis(&mut self, theA: &Ax22d) {
         {
-            unsafe { crate::ffi::gp_Circ2d_set_axis(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ2d_set_axis(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3006,8 +3544,10 @@ impl Circ2d {
     /// Changes the Y axis of the circle.
     pub fn set_y_axis(&mut self, theA: &Ax2d) {
         {
-            unsafe { crate::ffi::gp_Circ2d_set_y_axis(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ2d_set_y_axis(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3019,8 +3559,10 @@ impl Circ2d {
     /// Standard_ConstructionError if theRadius is negative.
     pub fn set_radius(&mut self, theRadius: f64) {
         {
-            unsafe { crate::ffi::gp_Circ2d_set_radius(self as *mut Self, theRadius) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ2d_set_radius(self as *mut Self, theRadius) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3029,8 +3571,11 @@ impl Circ2d {
     pub fn area(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Circ2d_area(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3048,7 +3593,7 @@ impl Circ2d {
         theF: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Circ2d_coefficients(
                     self as *const Self,
                     theA,
@@ -3059,7 +3604,9 @@ impl Circ2d {
                     theF,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3073,8 +3620,11 @@ impl Circ2d {
             let __result = unsafe {
                 crate::ffi::gp_Circ2d_contains(self as *const Self, theP, theLinearTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3084,8 +3634,11 @@ impl Circ2d {
     pub fn distance(&self, theP: &Pnt2d) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Circ2d_distance(self as *const Self, theP) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3095,8 +3648,11 @@ impl Circ2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Circ2d_square_distance(self as *const Self, theP) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3105,8 +3661,11 @@ impl Circ2d {
     pub fn length(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Circ2d_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3115,8 +3674,11 @@ impl Circ2d {
     pub fn location(&self) -> &Pnt2d {
         {
             let __result = unsafe { crate::ffi::gp_Circ2d_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3125,8 +3687,11 @@ impl Circ2d {
     pub fn radius(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Circ2d_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3135,8 +3700,11 @@ impl Circ2d {
     pub fn axis(&self) -> &Ax22d {
         {
             let __result = unsafe { crate::ffi::gp_Circ2d_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3145,8 +3713,11 @@ impl Circ2d {
     pub fn position(&self) -> &Ax22d {
         {
             let __result = unsafe { crate::ffi::gp_Circ2d_position(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3155,8 +3726,11 @@ impl Circ2d {
     pub fn x_axis(&self) -> crate::OwnedPtr<Ax2d> {
         {
             let __result = unsafe { crate::ffi::gp_Circ2d_x_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3166,8 +3740,11 @@ impl Circ2d {
     pub fn y_axis(&self) -> crate::OwnedPtr<Ax2d> {
         {
             let __result = unsafe { crate::ffi::gp_Circ2d_y_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3178,8 +3755,10 @@ impl Circ2d {
     /// Reverse assigns the result to this circle,
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Circ2d_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ2d_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3191,8 +3770,11 @@ impl Circ2d {
     pub fn reversed(&self) -> crate::OwnedPtr<Circ2d> {
         {
             let __result = unsafe { crate::ffi::gp_Circ2d_reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3202,16 +3784,21 @@ impl Circ2d {
     pub fn is_direct(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::gp_Circ2d_is_direct(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `gp_Circ2d.hxx`:185 - `gp_Circ2d::Mirror()`
     pub fn mirror_pnt2d(&mut self, theP: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Circ2d_mirror_pnt2d(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ2d_mirror_pnt2d(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3222,16 +3809,21 @@ impl Circ2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Circ2d_mirrored_pnt2d(self as *const Self, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Circ2d.hxx`:191 - `gp_Circ2d::Mirror()`
     pub fn mirror_ax2d(&mut self, theA: &Ax2d) {
         {
-            unsafe { crate::ffi::gp_Circ2d_mirror_ax2d(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ2d_mirror_ax2d(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3242,16 +3834,21 @@ impl Circ2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Circ2d_mirrored_ax2d(self as *const Self, theA) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Circ2d.hxx`:197 - `gp_Circ2d::Rotate()`
     pub fn rotate(&mut self, theP: &Pnt2d, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Circ2d_rotate(self as *mut Self, theP, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ2d_rotate(self as *mut Self, theP, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3262,16 +3859,21 @@ impl Circ2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Circ2d_rotated(self as *const Self, theP, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Circ2d.hxx`:208 - `gp_Circ2d::Scale()`
     pub fn scale(&mut self, theP: &Pnt2d, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Circ2d_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ2d_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3284,16 +3886,21 @@ impl Circ2d {
     pub fn scaled(&self, theP: &Pnt2d, theS: f64) -> crate::OwnedPtr<Circ2d> {
         {
             let __result = unsafe { crate::ffi::gp_Circ2d_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Circ2d.hxx`:217 - `gp_Circ2d::Transform()`
     pub fn transform(&mut self, theT: &Trsf2d) {
         {
-            unsafe { crate::ffi::gp_Circ2d_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ2d_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3302,16 +3909,21 @@ impl Circ2d {
     pub fn transformed(&self, theT: &Trsf2d) -> crate::OwnedPtr<Circ2d> {
         {
             let __result = unsafe { crate::ffi::gp_Circ2d_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Circ2d.hxx`:222 - `gp_Circ2d::Translate()`
     pub fn translate_vec2d(&mut self, theV: &Vec2d) {
         {
-            unsafe { crate::ffi::gp_Circ2d_translate_vec2d(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Circ2d_translate_vec2d(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3322,16 +3934,22 @@ impl Circ2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Circ2d_translated_vec2d(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Circ2d.hxx`:233 - `gp_Circ2d::Translate()`
     pub fn translate_pnt2d2(&mut self, theP1: &Pnt2d, theP2: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Circ2d_translate_pnt2d2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Circ2d_translate_pnt2d2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3342,18 +3960,21 @@ impl Circ2d {
             let __result = unsafe {
                 crate::ffi::gp_Circ2d_translated_pnt2d2(self as *const Self, theP1, theP2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Circ2d_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Circ2d_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3405,8 +4026,10 @@ impl Cone {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Cone_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3423,8 +4046,10 @@ impl Cone {
     pub fn new_ax3_real2(theA3: &Ax3, theAng: f64, theRadius: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Cone_ctor_ax3_real2(theA3, theAng, theRadius) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3434,8 +4059,10 @@ impl Cone {
     /// of the coordinate system of the cone.
     pub fn set_axis(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Cone_set_axis(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cone_set_axis(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3443,8 +4070,10 @@ impl Cone {
     /// Changes the location of the cone.
     pub fn set_location(&mut self, theLoc: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Cone_set_location(self as *mut Self, theLoc) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cone_set_location(self as *mut Self, theLoc) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3453,8 +4082,10 @@ impl Cone {
     /// This coordinate system defines the reference plane of the cone.
     pub fn set_position(&mut self, theA3: &Ax3) {
         {
-            unsafe { crate::ffi::gp_Cone_set_position(self as *mut Self, theA3) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cone_set_position(self as *mut Self, theA3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3464,8 +4095,10 @@ impl Cone {
     /// Raised if theR < 0.0
     pub fn set_radius(&mut self, theR: f64) {
         {
-            unsafe { crate::ffi::gp_Cone_set_radius(self as *mut Self, theR) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cone_set_radius(self as *mut Self, theR) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3477,8 +4110,10 @@ impl Cone {
     /// Resolution
     pub fn set_semi_angle(&mut self, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Cone_set_semi_angle(self as *mut Self, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cone_set_semi_angle(self as *mut Self, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3488,8 +4123,11 @@ impl Cone {
     pub fn apex(&self) -> crate::OwnedPtr<Pnt> {
         {
             let __result = unsafe { crate::ffi::gp_Cone_apex(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3498,8 +4136,10 @@ impl Cone {
     /// reversing the YAxis.
     pub fn u_reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Cone_u_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cone_u_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3507,8 +4147,10 @@ impl Cone {
     /// Reverses the   V   parametrization of   the  cone  reversing the ZAxis.
     pub fn v_reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Cone_v_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cone_v_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3517,8 +4159,11 @@ impl Cone {
     pub fn direct(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::gp_Cone_direct(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3527,8 +4172,11 @@ impl Cone {
     pub fn axis(&self) -> &Ax1 {
         {
             let __result = unsafe { crate::ffi::gp_Cone_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3551,7 +4199,7 @@ impl Cone {
         theD: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Cone_coefficients(
                     self as *const Self,
                     theA1,
@@ -3566,7 +4214,9 @@ impl Cone {
                     theD,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3575,8 +4225,11 @@ impl Cone {
     pub fn location(&self) -> &Pnt {
         {
             let __result = unsafe { crate::ffi::gp_Cone_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3585,8 +4238,11 @@ impl Cone {
     pub fn position(&self) -> &Ax3 {
         {
             let __result = unsafe { crate::ffi::gp_Cone_position(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3595,8 +4251,11 @@ impl Cone {
     pub fn ref_radius(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Cone_ref_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3606,8 +4265,11 @@ impl Cone {
     pub fn semi_angle(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Cone_semi_angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3616,8 +4278,11 @@ impl Cone {
     pub fn x_axis(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Cone_x_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3626,16 +4291,21 @@ impl Cone {
     pub fn y_axis(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Cone_y_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Cone.hxx`:164 - `gp_Cone::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Cone_mirror_pnt(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cone_mirror_pnt(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3646,16 +4316,21 @@ impl Cone {
     pub fn mirrored_pnt(&self, theP: &Pnt) -> crate::OwnedPtr<Cone> {
         {
             let __result = unsafe { crate::ffi::gp_Cone_mirrored_pnt(self as *const Self, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Cone.hxx`:171 - `gp_Cone::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Cone_mirror_ax1(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cone_mirror_ax1(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3666,16 +4341,21 @@ impl Cone {
     pub fn mirrored_ax1(&self, theA1: &Ax1) -> crate::OwnedPtr<Cone> {
         {
             let __result = unsafe { crate::ffi::gp_Cone_mirrored_ax1(self as *const Self, theA1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Cone.hxx`:178 - `gp_Cone::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &Ax2) {
         {
-            unsafe { crate::ffi::gp_Cone_mirror_ax2(self as *mut Self, theA2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cone_mirror_ax2(self as *mut Self, theA2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3686,16 +4366,21 @@ impl Cone {
     pub fn mirrored_ax2(&self, theA2: &Ax2) -> crate::OwnedPtr<Cone> {
         {
             let __result = unsafe { crate::ffi::gp_Cone_mirrored_ax2(self as *const Self, theA2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Cone.hxx`:185 - `gp_Cone::Rotate()`
     pub fn rotate(&mut self, theA1: &Ax1, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Cone_rotate(self as *mut Self, theA1, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cone_rotate(self as *mut Self, theA1, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3706,16 +4391,21 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::gp_Cone_rotated(self as *const Self, theA1, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Cone.hxx`:196 - `gp_Cone::Scale()`
     pub fn scale(&mut self, theP: &Pnt, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Cone_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cone_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3725,16 +4415,21 @@ impl Cone {
     pub fn scaled(&self, theP: &Pnt, theS: f64) -> crate::OwnedPtr<Cone> {
         {
             let __result = unsafe { crate::ffi::gp_Cone_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Cone.hxx`:202 - `gp_Cone::Transform()`
     pub fn transform(&mut self, theT: &Trsf) {
         {
-            unsafe { crate::ffi::gp_Cone_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cone_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3743,16 +4438,21 @@ impl Cone {
     pub fn transformed(&self, theT: &Trsf) -> crate::OwnedPtr<Cone> {
         {
             let __result = unsafe { crate::ffi::gp_Cone_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Cone.hxx`:207 - `gp_Cone::Translate()`
     pub fn translate_vec(&mut self, theV: &Vec) {
         {
-            unsafe { crate::ffi::gp_Cone_translate_vec(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cone_translate_vec(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3762,16 +4462,22 @@ impl Cone {
     pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Cone> {
         {
             let __result = unsafe { crate::ffi::gp_Cone_translated_vec(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Cone.hxx`:218 - `gp_Cone::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &Pnt, theP2: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Cone_translate_pnt2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Cone_translate_pnt2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3781,18 +4487,21 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::gp_Cone_translated_pnt2(self as *const Self, theP1, theP2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Cone_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Cone_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3835,8 +4544,10 @@ impl Cylinder {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Cylinder_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3847,8 +4558,10 @@ impl Cylinder {
     pub fn new_ax3_real(theA3: &Ax3, theRadius: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Cylinder_ctor_ax3_real(theA3, theRadius) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3857,8 +4570,10 @@ impl Cylinder {
     /// is parallel to the "XDirection" of the coordinate system of the cylinder.
     pub fn set_axis(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Cylinder_set_axis(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cylinder_set_axis(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3866,8 +4581,10 @@ impl Cylinder {
     /// Changes the location of the surface.
     pub fn set_location(&mut self, theLoc: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Cylinder_set_location(self as *mut Self, theLoc) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cylinder_set_location(self as *mut Self, theLoc) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3875,8 +4592,10 @@ impl Cylinder {
     /// Change the local coordinate system of the surface.
     pub fn set_position(&mut self, theA3: &Ax3) {
         {
-            unsafe { crate::ffi::gp_Cylinder_set_position(self as *mut Self, theA3) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cylinder_set_position(self as *mut Self, theA3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3886,8 +4605,10 @@ impl Cylinder {
     /// Standard_ConstructionError if theR is negative.
     pub fn set_radius(&mut self, theR: f64) {
         {
-            unsafe { crate::ffi::gp_Cylinder_set_radius(self as *mut Self, theR) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cylinder_set_radius(self as *mut Self, theR) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3896,8 +4617,10 @@ impl Cylinder {
     /// reversing the YAxis.
     pub fn u_reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Cylinder_u_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cylinder_u_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3906,8 +4629,10 @@ impl Cylinder {
     /// reversing the Axis.
     pub fn v_reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Cylinder_v_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cylinder_v_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3916,8 +4641,11 @@ impl Cylinder {
     pub fn direct(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::gp_Cylinder_direct(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3926,8 +4654,11 @@ impl Cylinder {
     pub fn axis(&self) -> &Ax1 {
         {
             let __result = unsafe { crate::ffi::gp_Cylinder_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3950,7 +4681,7 @@ impl Cylinder {
         theD: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Cylinder_coefficients(
                     self as *const Self,
                     theA1,
@@ -3965,7 +4696,9 @@ impl Cylinder {
                     theD,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3974,8 +4707,11 @@ impl Cylinder {
     pub fn location(&self) -> &Pnt {
         {
             let __result = unsafe { crate::ffi::gp_Cylinder_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3984,8 +4720,11 @@ impl Cylinder {
     pub fn position(&self) -> &Ax3 {
         {
             let __result = unsafe { crate::ffi::gp_Cylinder_position(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3994,8 +4733,11 @@ impl Cylinder {
     pub fn radius(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Cylinder_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4004,8 +4746,11 @@ impl Cylinder {
     pub fn x_axis(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Cylinder_x_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4014,16 +4759,21 @@ impl Cylinder {
     pub fn y_axis(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Cylinder_y_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Cylinder.hxx`:125 - `gp_Cylinder::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Cylinder_mirror_pnt(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cylinder_mirror_pnt(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4035,16 +4785,21 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::gp_Cylinder_mirrored_pnt(self as *const Self, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Cylinder.hxx`:132 - `gp_Cylinder::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Cylinder_mirror_ax1(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cylinder_mirror_ax1(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4056,16 +4811,21 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::gp_Cylinder_mirrored_ax1(self as *const Self, theA1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Cylinder.hxx`:139 - `gp_Cylinder::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &Ax2) {
         {
-            unsafe { crate::ffi::gp_Cylinder_mirror_ax2(self as *mut Self, theA2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cylinder_mirror_ax2(self as *mut Self, theA2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4077,16 +4837,21 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::gp_Cylinder_mirrored_ax2(self as *const Self, theA2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Cylinder.hxx`:146 - `gp_Cylinder::Rotate()`
     pub fn rotate(&mut self, theA1: &Ax1, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Cylinder_rotate(self as *mut Self, theA1, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cylinder_rotate(self as *mut Self, theA1, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4097,16 +4862,21 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::gp_Cylinder_rotated(self as *const Self, theA1, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Cylinder.hxx`:157 - `gp_Cylinder::Scale()`
     pub fn scale(&mut self, theP: &Pnt, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Cylinder_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cylinder_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4117,16 +4887,21 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::gp_Cylinder_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Cylinder.hxx`:163 - `gp_Cylinder::Transform()`
     pub fn transform(&mut self, theT: &Trsf) {
         {
-            unsafe { crate::ffi::gp_Cylinder_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cylinder_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4136,16 +4911,21 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::gp_Cylinder_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Cylinder.hxx`:168 - `gp_Cylinder::Translate()`
     pub fn translate_vec(&mut self, theV: &Vec) {
         {
-            unsafe { crate::ffi::gp_Cylinder_translate_vec(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Cylinder_translate_vec(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4156,16 +4936,22 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::gp_Cylinder_translated_vec(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Cylinder.hxx`:179 - `gp_Cylinder::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &Pnt, theP2: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Cylinder_translate_pnt2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Cylinder_translate_pnt2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4176,18 +4962,21 @@ impl Cylinder {
             let __result = unsafe {
                 crate::ffi::gp_Cylinder_translated_pnt2(self as *const Self, theP1, theP2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Cylinder_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Cylinder_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4217,8 +5006,10 @@ impl Dir {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Dir_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4228,8 +5019,10 @@ impl Dir {
     pub fn new_vec(theV: &Vec) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Dir_ctor_vec(theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4239,8 +5032,10 @@ impl Dir {
     pub fn new_xyz(theCoord: &XYZ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Dir_ctor_xyz(theCoord) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4254,8 +5049,10 @@ impl Dir {
     pub fn new_real3(theXv: f64, theYv: f64, theZv: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Dir_ctor_real3(theXv, theYv, theZv) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4278,8 +5075,12 @@ impl Dir {
     /// that were not directly modified.
     pub fn set_coord_int_real(&mut self, theIndex: i32, theXi: f64) {
         {
-            unsafe { crate::ffi::gp_Dir_set_coord_int_real(self as *mut Self, theIndex, theXi) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Dir_set_coord_int_real(self as *mut Self, theIndex, theXi)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4289,8 +5090,12 @@ impl Dir {
     /// implicitly modified when any single one is changed directly.
     pub fn set_coord_real3(&mut self, theXv: f64, theYv: f64, theZv: f64) {
         {
-            unsafe { crate::ffi::gp_Dir_set_coord_real3(self as *mut Self, theXv, theYv, theZv) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Dir_set_coord_real3(self as *mut Self, theXv, theYv, theZv)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4298,8 +5103,10 @@ impl Dir {
     /// Assigns the given value to the X coordinate of this   unit vector.
     pub fn set_x(&mut self, theX: f64) {
         {
-            unsafe { crate::ffi::gp_Dir_set_x(self as *mut Self, theX) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Dir_set_x(self as *mut Self, theX) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4307,8 +5114,10 @@ impl Dir {
     /// Assigns the given value to the Y coordinate of this   unit vector.
     pub fn set_y(&mut self, theY: f64) {
         {
-            unsafe { crate::ffi::gp_Dir_set_y(self as *mut Self, theY) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Dir_set_y(self as *mut Self, theY) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4316,8 +5125,10 @@ impl Dir {
     /// Assigns the given value to the Z  coordinate of this   unit vector.
     pub fn set_z(&mut self, theZ: f64) {
         {
-            unsafe { crate::ffi::gp_Dir_set_z(self as *mut Self, theZ) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Dir_set_z(self as *mut Self, theZ) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4325,8 +5136,10 @@ impl Dir {
     /// Assigns the three coordinates of theCoord to this unit vector.
     pub fn set_xyz(&mut self, theCoord: &XYZ) {
         {
-            unsafe { crate::ffi::gp_Dir_set_xyz(self as *mut Self, theCoord) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Dir_set_xyz(self as *mut Self, theCoord) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4340,8 +5153,11 @@ impl Dir {
     pub fn coord_int(&self, theIndex: i32) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Dir_coord_int(self as *const Self, theIndex) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4349,8 +5165,11 @@ impl Dir {
     /// Returns for the  unit vector  its three coordinates theXv, theYv, and theZv.
     pub fn coord_real3(&self, theXv: &mut f64, theYv: &mut f64, theZv: &mut f64) {
         {
-            unsafe { crate::ffi::gp_Dir_coord_real3(self as *const Self, theXv, theYv, theZv) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Dir_coord_real3(self as *const Self, theXv, theYv, theZv) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4359,8 +5178,11 @@ impl Dir {
     pub fn x(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Dir_x(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4369,8 +5191,11 @@ impl Dir {
     pub fn y(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Dir_y(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4379,8 +5204,11 @@ impl Dir {
     pub fn z(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Dir_z(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4389,8 +5217,11 @@ impl Dir {
     pub fn xyz(&self) -> &XYZ {
         {
             let __result = unsafe { crate::ffi::gp_Dir_xyz(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4402,8 +5233,11 @@ impl Dir {
             let __result = unsafe {
                 crate::ffi::gp_Dir_is_equal(self as *const Self, theOther, theAngularTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4415,8 +5249,11 @@ impl Dir {
             let __result = unsafe {
                 crate::ffi::gp_Dir_is_normal(self as *const Self, theOther, theAngularTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4428,8 +5265,11 @@ impl Dir {
             let __result = unsafe {
                 crate::ffi::gp_Dir_is_opposite(self as *const Self, theOther, theAngularTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4442,8 +5282,11 @@ impl Dir {
             let __result = unsafe {
                 crate::ffi::gp_Dir_is_parallel(self as *const Self, theOther, theAngularTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4454,8 +5297,11 @@ impl Dir {
     pub fn angle(&self, theOther: &Dir) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Dir_angle(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4473,8 +5319,11 @@ impl Dir {
             let __result = unsafe {
                 crate::ffi::gp_Dir_angle_with_ref(self as *const Self, theOther, theVRef)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4485,8 +5334,10 @@ impl Dir {
     /// to create a direction.
     pub fn cross(&mut self, theRight: &Dir) {
         {
-            unsafe { crate::ffi::gp_Dir_cross(self as *mut Self, theRight) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Dir_cross(self as *mut Self, theRight) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4499,16 +5350,21 @@ impl Dir {
     pub fn crossed(&self, theRight: &Dir) -> crate::OwnedPtr<Dir> {
         {
             let __result = unsafe { crate::ffi::gp_Dir_crossed(self as *const Self, theRight) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Dir.hxx`:190 - `gp_Dir::CrossCross()`
     pub fn cross_cross(&mut self, theV1: &Dir, theV2: &Dir) {
         {
-            unsafe { crate::ffi::gp_Dir_cross_cross(self as *mut Self, theV1, theV2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Dir_cross_cross(self as *mut Self, theV1, theV2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4525,8 +5381,11 @@ impl Dir {
         {
             let __result =
                 unsafe { crate::ffi::gp_Dir_cross_crossed(self as *const Self, theV1, theV2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4535,8 +5394,11 @@ impl Dir {
     pub fn dot(&self, theOther: &Dir) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Dir_dot(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4550,16 +5412,21 @@ impl Dir {
         {
             let __result =
                 unsafe { crate::ffi::gp_Dir_dot_cross(self as *const Self, theV1, theV2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `gp_Dir.hxx`:217 - `gp_Dir::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Dir_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Dir_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4572,16 +5439,21 @@ impl Dir {
     pub fn reversed(&self) -> crate::OwnedPtr<Dir> {
         {
             let __result = unsafe { crate::ffi::gp_Dir_reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Dir.hxx`:233 - `gp_Dir::Mirror()`
     pub fn mirror_dir(&mut self, theV: &Dir) {
         {
-            unsafe { crate::ffi::gp_Dir_mirror_dir(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Dir_mirror_dir(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4592,16 +5464,21 @@ impl Dir {
     pub fn mirrored_dir(&self, theV: &Dir) -> crate::OwnedPtr<Dir> {
         {
             let __result = unsafe { crate::ffi::gp_Dir_mirrored_dir(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Dir.hxx`:240 - `gp_Dir::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Dir_mirror_ax1(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Dir_mirror_ax1(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4612,16 +5489,21 @@ impl Dir {
     pub fn mirrored_ax1(&self, theA1: &Ax1) -> crate::OwnedPtr<Dir> {
         {
             let __result = unsafe { crate::ffi::gp_Dir_mirrored_ax1(self as *const Self, theA1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Dir.hxx`:247 - `gp_Dir::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &Ax2) {
         {
-            unsafe { crate::ffi::gp_Dir_mirror_ax2(self as *mut Self, theA2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Dir_mirror_ax2(self as *mut Self, theA2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4632,16 +5514,21 @@ impl Dir {
     pub fn mirrored_ax2(&self, theA2: &Ax2) -> crate::OwnedPtr<Dir> {
         {
             let __result = unsafe { crate::ffi::gp_Dir_mirrored_ax2(self as *const Self, theA2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Dir.hxx`:254 - `gp_Dir::Rotate()`
     pub fn rotate(&mut self, theA1: &Ax1, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Dir_rotate(self as *mut Self, theA1, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Dir_rotate(self as *mut Self, theA1, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4652,16 +5539,21 @@ impl Dir {
         {
             let __result =
                 unsafe { crate::ffi::gp_Dir_rotated(self as *const Self, theA1, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Dir.hxx`:265 - `gp_Dir::Transform()`
     pub fn transform(&mut self, theT: &Trsf) {
         {
-            unsafe { crate::ffi::gp_Dir_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Dir_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4673,18 +5565,21 @@ impl Dir {
     pub fn transformed(&self, theT: &Trsf) -> crate::OwnedPtr<Dir> {
         {
             let __result = unsafe { crate::ffi::gp_Dir_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Dir_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Dir_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4715,8 +5610,10 @@ impl Dir2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Dir2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4726,8 +5623,10 @@ impl Dir2d {
     pub fn new_vec2d(theV: &Vec2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Dir2d_ctor_vec2d(theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4737,8 +5636,10 @@ impl Dir2d {
     pub fn new_xy(theCoord: &XY) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Dir2d_ctor_xy(theCoord) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4748,8 +5649,10 @@ impl Dir2d {
     pub fn new_real2(theXv: f64, theYv: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Dir2d_ctor_real2(theXv, theYv) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4772,8 +5675,12 @@ impl Dir2d {
     /// Raises OutOfRange if theIndex != {1, 2}.
     pub fn set_coord_int_real(&mut self, theIndex: i32, theXi: f64) {
         {
-            unsafe { crate::ffi::gp_Dir2d_set_coord_int_real(self as *mut Self, theIndex, theXi) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Dir2d_set_coord_int_real(self as *mut Self, theIndex, theXi)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4794,8 +5701,11 @@ impl Dir2d {
     /// Raises OutOfRange if theIndex != {1, 2}.
     pub fn set_coord_real2(&mut self, theXv: f64, theYv: f64) {
         {
-            unsafe { crate::ffi::gp_Dir2d_set_coord_real2(self as *mut Self, theXv, theYv) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Dir2d_set_coord_real2(self as *mut Self, theXv, theYv) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4814,8 +5724,10 @@ impl Dir2d {
     /// vector that was not directly modified.
     pub fn set_x(&mut self, theX: f64) {
         {
-            unsafe { crate::ffi::gp_Dir2d_set_x(self as *mut Self, theX) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Dir2d_set_x(self as *mut Self, theX) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4834,8 +5746,10 @@ impl Dir2d {
     /// vector that was not directly modified.
     pub fn set_y(&mut self, theY: f64) {
         {
-            unsafe { crate::ffi::gp_Dir2d_set_y(self as *mut Self, theY) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Dir2d_set_y(self as *mut Self, theY) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4855,8 +5769,10 @@ impl Dir2d {
     /// vector that was not directly modified.
     pub fn set_xy(&mut self, theCoord: &XY) {
         {
-            unsafe { crate::ffi::gp_Dir2d_set_xy(self as *mut Self, theCoord) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Dir2d_set_xy(self as *mut Self, theCoord) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4868,8 +5784,11 @@ impl Dir2d {
     pub fn coord_int(&self, theIndex: i32) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Dir2d_coord_int(self as *const Self, theIndex) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4878,8 +5797,11 @@ impl Dir2d {
     /// Raises OutOfRange if theIndex != {1, 2}.
     pub fn coord_real2(&self, theXv: &mut f64, theYv: &mut f64) {
         {
-            unsafe { crate::ffi::gp_Dir2d_coord_real2(self as *const Self, theXv, theYv) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Dir2d_coord_real2(self as *const Self, theXv, theYv) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4888,8 +5810,11 @@ impl Dir2d {
     pub fn x(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Dir2d_x(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4898,8 +5823,11 @@ impl Dir2d {
     pub fn y(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Dir2d_y(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4910,8 +5838,11 @@ impl Dir2d {
     pub fn xy(&self) -> &XY {
         {
             let __result = unsafe { crate::ffi::gp_Dir2d_xy(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4924,8 +5855,11 @@ impl Dir2d {
             let __result = unsafe {
                 crate::ffi::gp_Dir2d_is_equal(self as *const Self, theOther, theAngularTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4938,8 +5872,11 @@ impl Dir2d {
             let __result = unsafe {
                 crate::ffi::gp_Dir2d_is_normal(self as *const Self, theOther, theAngularTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4952,8 +5889,11 @@ impl Dir2d {
             let __result = unsafe {
                 crate::ffi::gp_Dir2d_is_opposite(self as *const Self, theOther, theAngularTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4967,8 +5907,11 @@ impl Dir2d {
             let __result = unsafe {
                 crate::ffi::gp_Dir2d_is_parallel(self as *const Self, theOther, theAngularTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4978,8 +5921,11 @@ impl Dir2d {
     pub fn angle(&self, theOther: &Dir2d) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Dir2d_angle(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4988,8 +5934,11 @@ impl Dir2d {
     pub fn crossed(&self, theRight: &Dir2d) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Dir2d_crossed(self as *const Self, theRight) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4998,16 +5947,21 @@ impl Dir2d {
     pub fn dot(&self, theOther: &Dir2d) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Dir2d_dot(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `gp_Dir2d.hxx`:200 - `gp_Dir2d::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Dir2d_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Dir2d_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5016,16 +5970,21 @@ impl Dir2d {
     pub fn reversed(&self) -> crate::OwnedPtr<Dir2d> {
         {
             let __result = unsafe { crate::ffi::gp_Dir2d_reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Dir2d.hxx`:212 - `gp_Dir2d::Mirror()`
     pub fn mirror_dir2d(&mut self, theV: &Dir2d) {
         {
-            unsafe { crate::ffi::gp_Dir2d_mirror_dir2d(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Dir2d_mirror_dir2d(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5037,16 +5996,21 @@ impl Dir2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Dir2d_mirrored_dir2d(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Dir2d.hxx`:219 - `gp_Dir2d::Mirror()`
     pub fn mirror_ax2d(&mut self, theA: &Ax2d) {
         {
-            unsafe { crate::ffi::gp_Dir2d_mirror_ax2d(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Dir2d_mirror_ax2d(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5057,16 +6021,21 @@ impl Dir2d {
     pub fn mirrored_ax2d(&self, theA: &Ax2d) -> crate::OwnedPtr<Dir2d> {
         {
             let __result = unsafe { crate::ffi::gp_Dir2d_mirrored_ax2d(self as *const Self, theA) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Dir2d.hxx`:226 - `gp_Dir2d::Rotate()`
     pub fn rotate(&mut self, Ang: f64) {
         {
-            unsafe { crate::ffi::gp_Dir2d_rotate(self as *mut Self, Ang) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Dir2d_rotate(self as *mut Self, Ang) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5076,16 +6045,21 @@ impl Dir2d {
     pub fn rotated(&self, theAng: f64) -> crate::OwnedPtr<Dir2d> {
         {
             let __result = unsafe { crate::ffi::gp_Dir2d_rotated(self as *const Self, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Dir2d.hxx`:237 - `gp_Dir2d::Transform()`
     pub fn transform(&mut self, theT: &Trsf2d) {
         {
-            unsafe { crate::ffi::gp_Dir2d_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Dir2d_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5097,18 +6071,21 @@ impl Dir2d {
     pub fn transformed(&self, theT: &Trsf2d) -> crate::OwnedPtr<Dir2d> {
         {
             let __result = unsafe { crate::ffi::gp_Dir2d_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Dir2d_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Dir2d_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5156,8 +6133,10 @@ impl Elips {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Elips_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5179,8 +6158,10 @@ impl Elips {
             let __result = unsafe {
                 crate::ffi::gp_Elips_ctor_ax2_real2(theA2, theMajorRadius, theMinorRadius)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5196,8 +6177,10 @@ impl Elips {
     /// is parallel to the direction of the "XAxis" of the ellipse.
     pub fn set_axis(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Elips_set_axis(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Elips_set_axis(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5206,8 +6189,10 @@ impl Elips {
     /// so that its origin becomes theP.
     pub fn set_location(&mut self, theP: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Elips_set_location(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Elips_set_location(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5217,8 +6202,11 @@ impl Elips {
     /// Raises ConstructionError if theMajorRadius < MinorRadius.
     pub fn set_major_radius(&mut self, theMajorRadius: f64) {
         {
-            unsafe { crate::ffi::gp_Elips_set_major_radius(self as *mut Self, theMajorRadius) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Elips_set_major_radius(self as *mut Self, theMajorRadius) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5228,8 +6216,11 @@ impl Elips {
     /// Raises ConstructionError if theMinorRadius > MajorRadius or MinorRadius < 0.
     pub fn set_minor_radius(&mut self, theMinorRadius: f64) {
         {
-            unsafe { crate::ffi::gp_Elips_set_minor_radius(self as *mut Self, theMinorRadius) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Elips_set_minor_radius(self as *mut Self, theMinorRadius) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5238,8 +6229,10 @@ impl Elips {
     /// so that it becomes theA2.
     pub fn set_position(&mut self, theA2: &Ax2) {
         {
-            unsafe { crate::ffi::gp_Elips_set_position(self as *mut Self, theA2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Elips_set_position(self as *mut Self, theA2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5248,8 +6241,11 @@ impl Elips {
     pub fn area(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Elips_area(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5258,8 +6254,11 @@ impl Elips {
     pub fn axis(&self) -> &Ax1 {
         {
             let __result = unsafe { crate::ffi::gp_Elips_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5281,8 +6280,11 @@ impl Elips {
     pub fn directrix1(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Elips_directrix1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5295,8 +6297,11 @@ impl Elips {
     pub fn directrix2(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Elips_directrix2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5308,8 +6313,11 @@ impl Elips {
     pub fn eccentricity(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Elips_eccentricity(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5319,8 +6327,11 @@ impl Elips {
     pub fn focal(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Elips_focal(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5330,8 +6341,11 @@ impl Elips {
     pub fn focus1(&self) -> crate::OwnedPtr<Pnt> {
         {
             let __result = unsafe { crate::ffi::gp_Elips_focus1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5341,8 +6355,11 @@ impl Elips {
     pub fn focus2(&self) -> crate::OwnedPtr<Pnt> {
         {
             let __result = unsafe { crate::ffi::gp_Elips_focus2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5352,8 +6369,11 @@ impl Elips {
     pub fn location(&self) -> &Pnt {
         {
             let __result = unsafe { crate::ffi::gp_Elips_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5362,8 +6382,11 @@ impl Elips {
     pub fn major_radius(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Elips_major_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5372,8 +6395,11 @@ impl Elips {
     pub fn minor_radius(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Elips_minor_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5384,8 +6410,11 @@ impl Elips {
     pub fn parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Elips_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5394,8 +6423,11 @@ impl Elips {
     pub fn position(&self) -> &Ax2 {
         {
             let __result = unsafe { crate::ffi::gp_Elips_position(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5406,8 +6438,11 @@ impl Elips {
     pub fn x_axis(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Elips_x_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5418,16 +6453,21 @@ impl Elips {
     pub fn y_axis(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Elips_y_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Elips.hxx`:199 - `gp_Elips::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Elips_mirror_pnt(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Elips_mirror_pnt(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5437,16 +6477,21 @@ impl Elips {
     pub fn mirrored_pnt(&self, theP: &Pnt) -> crate::OwnedPtr<Elips> {
         {
             let __result = unsafe { crate::ffi::gp_Elips_mirrored_pnt(self as *const Self, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Elips.hxx`:205 - `gp_Elips::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Elips_mirror_ax1(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Elips_mirror_ax1(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5456,16 +6501,21 @@ impl Elips {
     pub fn mirrored_ax1(&self, theA1: &Ax1) -> crate::OwnedPtr<Elips> {
         {
             let __result = unsafe { crate::ffi::gp_Elips_mirrored_ax1(self as *const Self, theA1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Elips.hxx`:211 - `gp_Elips::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &Ax2) {
         {
-            unsafe { crate::ffi::gp_Elips_mirror_ax2(self as *mut Self, theA2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Elips_mirror_ax2(self as *mut Self, theA2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5476,16 +6526,21 @@ impl Elips {
     pub fn mirrored_ax2(&self, theA2: &Ax2) -> crate::OwnedPtr<Elips> {
         {
             let __result = unsafe { crate::ffi::gp_Elips_mirrored_ax2(self as *const Self, theA2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Elips.hxx`:218 - `gp_Elips::Rotate()`
     pub fn rotate(&mut self, theA1: &Ax1, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Elips_rotate(self as *mut Self, theA1, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Elips_rotate(self as *mut Self, theA1, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5496,16 +6551,21 @@ impl Elips {
         {
             let __result =
                 unsafe { crate::ffi::gp_Elips_rotated(self as *const Self, theA1, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Elips.hxx`:229 - `gp_Elips::Scale()`
     pub fn scale(&mut self, theP: &Pnt, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Elips_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Elips_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5514,16 +6574,21 @@ impl Elips {
     pub fn scaled(&self, theP: &Pnt, theS: f64) -> crate::OwnedPtr<Elips> {
         {
             let __result = unsafe { crate::ffi::gp_Elips_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Elips.hxx`:234 - `gp_Elips::Transform()`
     pub fn transform(&mut self, theT: &Trsf) {
         {
-            unsafe { crate::ffi::gp_Elips_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Elips_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5532,16 +6597,21 @@ impl Elips {
     pub fn transformed(&self, theT: &Trsf) -> crate::OwnedPtr<Elips> {
         {
             let __result = unsafe { crate::ffi::gp_Elips_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Elips.hxx`:239 - `gp_Elips::Translate()`
     pub fn translate_vec(&mut self, theV: &Vec) {
         {
-            unsafe { crate::ffi::gp_Elips_translate_vec(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Elips_translate_vec(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5552,16 +6622,22 @@ impl Elips {
         {
             let __result =
                 unsafe { crate::ffi::gp_Elips_translated_vec(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Elips.hxx`:250 - `gp_Elips::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &Pnt, theP2: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Elips_translate_pnt2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Elips_translate_pnt2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5571,18 +6647,21 @@ impl Elips {
         {
             let __result =
                 unsafe { crate::ffi::gp_Elips_translated_pnt2(self as *const Self, theP1, theP2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Elips_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Elips_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5625,8 +6704,10 @@ impl Elips2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Elips2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5654,8 +6735,10 @@ impl Elips2d {
                     theIsSense,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5684,8 +6767,10 @@ impl Elips2d {
             let __result = unsafe {
                 crate::ffi::gp_Elips2d_ctor_ax22d_real2(theA, theMajorRadius, theMinorRadius)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5711,8 +6796,10 @@ impl Elips2d {
     /// -   its origin becomes theP.
     pub fn set_location(&mut self, theP: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Elips2d_set_location(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Elips2d_set_location(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5721,8 +6808,12 @@ impl Elips2d {
     /// Raises ConstructionError if theMajorRadius < MinorRadius.
     pub fn set_major_radius(&mut self, theMajorRadius: f64) {
         {
-            unsafe { crate::ffi::gp_Elips2d_set_major_radius(self as *mut Self, theMajorRadius) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Elips2d_set_major_radius(self as *mut Self, theMajorRadius)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5731,8 +6822,12 @@ impl Elips2d {
     /// Raises ConstructionError if MajorRadius < theMinorRadius or MinorRadius < 0.0
     pub fn set_minor_radius(&mut self, theMinorRadius: f64) {
         {
-            unsafe { crate::ffi::gp_Elips2d_set_minor_radius(self as *mut Self, theMinorRadius) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Elips2d_set_minor_radius(self as *mut Self, theMinorRadius)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5741,8 +6836,10 @@ impl Elips2d {
     /// it becomes theA.
     pub fn set_axis(&mut self, theA: &Ax22d) {
         {
-            unsafe { crate::ffi::gp_Elips2d_set_axis(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Elips2d_set_axis(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5754,8 +6851,10 @@ impl Elips2d {
     /// system is not modified.
     pub fn set_x_axis(&mut self, theA: &Ax2d) {
         {
-            unsafe { crate::ffi::gp_Elips2d_set_x_axis(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Elips2d_set_x_axis(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5767,8 +6866,10 @@ impl Elips2d {
     /// system is not modified.
     pub fn set_y_axis(&mut self, theA: &Ax2d) {
         {
-            unsafe { crate::ffi::gp_Elips2d_set_y_axis(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Elips2d_set_y_axis(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5777,8 +6878,11 @@ impl Elips2d {
     pub fn area(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Elips2d_area(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5795,7 +6899,7 @@ impl Elips2d {
         theF: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Elips2d_coefficients(
                     self as *const Self,
                     theA,
@@ -5806,7 +6910,9 @@ impl Elips2d {
                     theF,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5824,8 +6930,11 @@ impl Elips2d {
     pub fn directrix1(&self) -> crate::OwnedPtr<Ax2d> {
         {
             let __result = unsafe { crate::ffi::gp_Elips2d_directrix1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5838,8 +6947,11 @@ impl Elips2d {
     pub fn directrix2(&self) -> crate::OwnedPtr<Ax2d> {
         {
             let __result = unsafe { crate::ffi::gp_Elips2d_directrix2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5851,8 +6963,11 @@ impl Elips2d {
     pub fn eccentricity(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Elips2d_eccentricity(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5862,8 +6977,11 @@ impl Elips2d {
     pub fn focal(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Elips2d_focal(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5873,8 +6991,11 @@ impl Elips2d {
     pub fn focus1(&self) -> crate::OwnedPtr<Pnt2d> {
         {
             let __result = unsafe { crate::ffi::gp_Elips2d_focus1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5884,8 +7005,11 @@ impl Elips2d {
     pub fn focus2(&self) -> crate::OwnedPtr<Pnt2d> {
         {
             let __result = unsafe { crate::ffi::gp_Elips2d_focus2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5894,8 +7018,11 @@ impl Elips2d {
     pub fn location(&self) -> &Pnt2d {
         {
             let __result = unsafe { crate::ffi::gp_Elips2d_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5904,8 +7031,11 @@ impl Elips2d {
     pub fn major_radius(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Elips2d_major_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5914,8 +7044,11 @@ impl Elips2d {
     pub fn minor_radius(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Elips2d_minor_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5926,8 +7059,11 @@ impl Elips2d {
     pub fn parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Elips2d_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5936,8 +7072,11 @@ impl Elips2d {
     pub fn axis(&self) -> &Ax22d {
         {
             let __result = unsafe { crate::ffi::gp_Elips2d_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5946,8 +7085,11 @@ impl Elips2d {
     pub fn x_axis(&self) -> crate::OwnedPtr<Ax2d> {
         {
             let __result = unsafe { crate::ffi::gp_Elips2d_x_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5957,16 +7099,21 @@ impl Elips2d {
     pub fn y_axis(&self) -> crate::OwnedPtr<Ax2d> {
         {
             let __result = unsafe { crate::ffi::gp_Elips2d_y_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Elips2d.hxx`:220 - `gp_Elips2d::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Elips2d_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Elips2d_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5974,8 +7121,11 @@ impl Elips2d {
     pub fn reversed(&self) -> crate::OwnedPtr<Elips2d> {
         {
             let __result = unsafe { crate::ffi::gp_Elips2d_reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5985,16 +7135,21 @@ impl Elips2d {
     pub fn is_direct(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::gp_Elips2d_is_direct(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `gp_Elips2d.hxx`:233 - `gp_Elips2d::Mirror()`
     pub fn mirror_pnt2d(&mut self, theP: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Elips2d_mirror_pnt2d(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Elips2d_mirror_pnt2d(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6005,16 +7160,21 @@ impl Elips2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Elips2d_mirrored_pnt2d(self as *const Self, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Elips2d.hxx`:239 - `gp_Elips2d::Mirror()`
     pub fn mirror_ax2d(&mut self, theA: &Ax2d) {
         {
-            unsafe { crate::ffi::gp_Elips2d_mirror_ax2d(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Elips2d_mirror_ax2d(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6025,16 +7185,21 @@ impl Elips2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Elips2d_mirrored_ax2d(self as *const Self, theA) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Elips2d.hxx`:245 - `gp_Elips2d::Rotate()`
     pub fn rotate(&mut self, theP: &Pnt2d, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Elips2d_rotate(self as *mut Self, theP, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Elips2d_rotate(self as *mut Self, theP, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6043,16 +7208,21 @@ impl Elips2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Elips2d_rotated(self as *const Self, theP, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Elips2d.hxx`:254 - `gp_Elips2d::Scale()`
     pub fn scale(&mut self, theP: &Pnt2d, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Elips2d_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Elips2d_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6062,16 +7232,21 @@ impl Elips2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Elips2d_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Elips2d.hxx`:259 - `gp_Elips2d::Transform()`
     pub fn transform(&mut self, theT: &Trsf2d) {
         {
-            unsafe { crate::ffi::gp_Elips2d_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Elips2d_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6080,16 +7255,21 @@ impl Elips2d {
     pub fn transformed(&self, theT: &Trsf2d) -> crate::OwnedPtr<Elips2d> {
         {
             let __result = unsafe { crate::ffi::gp_Elips2d_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Elips2d.hxx`:264 - `gp_Elips2d::Translate()`
     pub fn translate_vec2d(&mut self, theV: &Vec2d) {
         {
-            unsafe { crate::ffi::gp_Elips2d_translate_vec2d(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Elips2d_translate_vec2d(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6100,16 +7280,22 @@ impl Elips2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Elips2d_translated_vec2d(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Elips2d.hxx`:275 - `gp_Elips2d::Translate()`
     pub fn translate_pnt2d2(&mut self, theP1: &Pnt2d, theP2: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Elips2d_translate_pnt2d2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Elips2d_translate_pnt2d2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6120,18 +7306,21 @@ impl Elips2d {
             let __result = unsafe {
                 crate::ffi::gp_Elips2d_translated_pnt2d2(self as *const Self, theP1, theP2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Elips2d_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Elips2d_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6179,8 +7368,10 @@ impl GTrsf {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6191,8 +7382,10 @@ impl GTrsf {
     pub fn new_trsf(theT: &Trsf) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf_ctor_trsf(theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6203,8 +7396,10 @@ impl GTrsf {
     pub fn new_mat_xyz(theM: &Mat, theV: &XYZ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf_ctor_mat_xyz(theM, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6218,10 +7413,12 @@ impl GTrsf {
     /// HP' = theRatio * HP.
     pub fn set_affinity_ax1_real(&mut self, theA1: &Ax1, theRatio: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_GTrsf_set_affinity_ax1_real(self as *mut Self, theA1, theRatio)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6236,10 +7433,12 @@ impl GTrsf {
     /// HP' = theRatio * HP.
     pub fn set_affinity_ax2_real(&mut self, theA2: &Ax2, theRatio: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_GTrsf_set_affinity_ax2_real(self as *mut Self, theA2, theRatio)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6249,8 +7448,12 @@ impl GTrsf {
     /// if  theRow < 1 or theRow > 3 or theCol < 1 or theCol > 4
     pub fn set_value(&mut self, theRow: i32, theCol: i32, theValue: f64) {
         {
-            unsafe { crate::ffi::gp_GTrsf_set_value(self as *mut Self, theRow, theCol, theValue) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_GTrsf_set_value(self as *mut Self, theRow, theCol, theValue)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6258,8 +7461,11 @@ impl GTrsf {
     /// Replaces the vectorial part of this transformation by theMatrix.
     pub fn set_vectorial_part(&mut self, theMatrix: &Mat) {
         {
-            unsafe { crate::ffi::gp_GTrsf_set_vectorial_part(self as *mut Self, theMatrix) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_GTrsf_set_vectorial_part(self as *mut Self, theMatrix) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6268,8 +7474,11 @@ impl GTrsf {
     /// this transformation by the coordinates of the number triple theCoord.
     pub fn set_translation_part(&mut self, theCoord: &XYZ) {
         {
-            unsafe { crate::ffi::gp_GTrsf_set_translation_part(self as *mut Self, theCoord) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_GTrsf_set_translation_part(self as *mut Self, theCoord) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6277,8 +7486,10 @@ impl GTrsf {
     /// Assigns the vectorial and translation parts of theT to this transformation.
     pub fn set_trsf(&mut self, theT: &Trsf) {
         {
-            unsafe { crate::ffi::gp_GTrsf_set_trsf(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_GTrsf_set_trsf(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6288,8 +7499,11 @@ impl GTrsf {
     pub fn is_negative(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf_is_negative(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6305,8 +7519,11 @@ impl GTrsf {
     pub fn is_singular(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf_is_singular(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6319,8 +7536,11 @@ impl GTrsf {
     pub fn form(&self) -> crate::gp::TrsfForm {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf_form(self as *const Self) };
-            crate::check_exception();
-            crate::gp::TrsfForm::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::gp::TrsfForm::try_from(__val).unwrap()
         }
     }
 
@@ -6335,8 +7555,10 @@ impl GTrsf {
     /// @endcode
     pub fn set_form(&mut self) {
         {
-            unsafe { crate::ffi::gp_GTrsf_set_form(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_GTrsf_set_form(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6345,8 +7567,11 @@ impl GTrsf {
     pub fn translation_part(&self) -> &XYZ {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf_translation_part(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6356,8 +7581,11 @@ impl GTrsf {
     pub fn vectorial_part(&self) -> &Mat {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf_vectorial_part(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6368,16 +7596,21 @@ impl GTrsf {
         {
             let __result =
                 unsafe { crate::ffi::gp_GTrsf_value(self as *const Self, theRow, theCol) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `gp_GTrsf.hxx`:187 - `gp_GTrsf::Invert()`
     pub fn invert(&mut self) {
         {
-            unsafe { crate::ffi::gp_GTrsf_invert(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_GTrsf_invert(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6388,8 +7621,11 @@ impl GTrsf {
     pub fn inverted(&self) -> crate::OwnedPtr<GTrsf> {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf_inverted(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6412,8 +7648,11 @@ impl GTrsf {
     pub fn multiplied(&self, theT: &GTrsf) -> crate::OwnedPtr<GTrsf> {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf_multiplied(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6422,8 +7661,10 @@ impl GTrsf {
     /// <me> = <me> * theT
     pub fn multiply(&mut self, theT: &GTrsf) {
         {
-            unsafe { crate::ffi::gp_GTrsf_multiply(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_GTrsf_multiply(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6433,16 +7674,20 @@ impl GTrsf {
     /// this = theT * this
     pub fn pre_multiply(&mut self, theT: &GTrsf) {
         {
-            unsafe { crate::ffi::gp_GTrsf_pre_multiply(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_GTrsf_pre_multiply(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `gp_GTrsf.hxx`:234 - `gp_GTrsf::Power()`
     pub fn power(&mut self, theN: i32) {
         {
-            unsafe { crate::ffi::gp_GTrsf_power(self as *mut Self, theN) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_GTrsf_power(self as *mut Self, theN) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6463,16 +7708,22 @@ impl GTrsf {
     pub fn powered(&self, theN: i32) -> crate::OwnedPtr<GTrsf> {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf_powered(self as *const Self, theN) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_GTrsf.hxx`:256 - `gp_GTrsf::Transforms()`
     pub fn transforms_xyz(&self, theCoord: &mut XYZ) {
         {
-            unsafe { crate::ffi::gp_GTrsf_transforms_xyz(self as *const Self, theCoord) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_GTrsf_transforms_xyz(self as *const Self, theCoord) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6480,8 +7731,12 @@ impl GTrsf {
     /// Transforms a triplet XYZ with a GTrsf.
     pub fn transforms_real3(&self, theX: &mut f64, theY: &mut f64, theZ: &mut f64) {
         {
-            unsafe { crate::ffi::gp_GTrsf_transforms_real3(self as *const Self, theX, theY, theZ) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_GTrsf_transforms_real3(self as *const Self, theX, theY, theZ)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6489,18 +7744,21 @@ impl GTrsf {
     pub fn trsf(&self) -> crate::OwnedPtr<Trsf> {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf_trsf(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_GTrsf_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_GTrsf_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6547,8 +7805,10 @@ impl GTrsf2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6558,8 +7818,10 @@ impl GTrsf2d {
     pub fn new_trsf2d(theT: &Trsf2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf2d_ctor_trsf2d(theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6570,8 +7832,10 @@ impl GTrsf2d {
     pub fn new_mat2d_xy(theM: &Mat2d, theV: &XY) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf2d_ctor_mat2d_xy(theM, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6584,8 +7848,11 @@ impl GTrsf2d {
     /// HP and HP' satisfy: HP' = theRatio * HP.
     pub fn set_affinity(&mut self, theA: &Ax2d, theRatio: f64) {
         {
-            unsafe { crate::ffi::gp_GTrsf2d_set_affinity(self as *mut Self, theA, theRatio) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_GTrsf2d_set_affinity(self as *mut Self, theA, theRatio) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6595,10 +7862,12 @@ impl GTrsf2d {
     /// Raises OutOfRange if theRow < 1 or theRow > 2 or theCol < 1 or theCol > 3
     pub fn set_value(&mut self, theRow: i32, theCol: i32, theValue: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_GTrsf2d_set_value(self as *mut Self, theRow, theCol, theValue)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6607,8 +7876,11 @@ impl GTrsf2d {
     /// transformation by the coordinates of the number pair theCoord.
     pub fn set_translation_part(&mut self, theCoord: &XY) {
         {
-            unsafe { crate::ffi::gp_GTrsf2d_set_translation_part(self as *mut Self, theCoord) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_GTrsf2d_set_translation_part(self as *mut Self, theCoord) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6616,8 +7888,10 @@ impl GTrsf2d {
     /// Assigns the vectorial and translation parts of theT to this transformation.
     pub fn set_trsf2d(&mut self, theT: &Trsf2d) {
         {
-            unsafe { crate::ffi::gp_GTrsf2d_set_trsf2d(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_GTrsf2d_set_trsf2d(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6625,8 +7899,11 @@ impl GTrsf2d {
     /// Replaces the vectorial part of this transformation by theMatrix.
     pub fn set_vectorial_part(&mut self, theMatrix: &Mat2d) {
         {
-            unsafe { crate::ffi::gp_GTrsf2d_set_vectorial_part(self as *mut Self, theMatrix) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_GTrsf2d_set_vectorial_part(self as *mut Self, theMatrix) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6636,8 +7913,11 @@ impl GTrsf2d {
     pub fn is_negative(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf2d_is_negative(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6653,8 +7933,11 @@ impl GTrsf2d {
     pub fn is_singular(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf2d_is_singular(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6667,8 +7950,11 @@ impl GTrsf2d {
     pub fn form(&self) -> crate::gp::TrsfForm {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf2d_form(self as *const Self) };
-            crate::check_exception();
-            crate::gp::TrsfForm::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::gp::TrsfForm::try_from(__val).unwrap()
         }
     }
 
@@ -6677,8 +7963,11 @@ impl GTrsf2d {
     pub fn translation_part(&self) -> &XY {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf2d_translation_part(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6688,8 +7977,11 @@ impl GTrsf2d {
     pub fn vectorial_part(&self) -> &Mat2d {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf2d_vectorial_part(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6700,16 +7992,21 @@ impl GTrsf2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_GTrsf2d_value(self as *const Self, theRow, theCol) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `gp_GTrsf2d.hxx`:144 - `gp_GTrsf2d::Invert()`
     pub fn invert(&mut self) {
         {
-            unsafe { crate::ffi::gp_GTrsf2d_invert(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_GTrsf2d_invert(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6720,8 +8017,11 @@ impl GTrsf2d {
     pub fn inverted(&self) -> crate::OwnedPtr<GTrsf2d> {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf2d_inverted(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6744,16 +8044,21 @@ impl GTrsf2d {
     pub fn multiplied(&self, theT: &GTrsf2d) -> crate::OwnedPtr<GTrsf2d> {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf2d_multiplied(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_GTrsf2d.hxx`:180 - `gp_GTrsf2d::Multiply()`
     pub fn multiply(&mut self, theT: &GTrsf2d) {
         {
-            unsafe { crate::ffi::gp_GTrsf2d_multiply(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_GTrsf2d_multiply(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6763,16 +8068,20 @@ impl GTrsf2d {
     /// this = theT * this
     pub fn pre_multiply(&mut self, theT: &GTrsf2d) {
         {
-            unsafe { crate::ffi::gp_GTrsf2d_pre_multiply(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_GTrsf2d_pre_multiply(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `gp_GTrsf2d.hxx`:189 - `gp_GTrsf2d::Power()`
     pub fn power(&mut self, theN: i32) {
         {
-            unsafe { crate::ffi::gp_GTrsf2d_power(self as *mut Self, theN) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_GTrsf2d_power(self as *mut Self, theN) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6787,16 +8096,22 @@ impl GTrsf2d {
     pub fn powered(&self, theN: i32) -> crate::OwnedPtr<GTrsf2d> {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf2d_powered(self as *const Self, theN) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_GTrsf2d.hxx`:205 - `gp_GTrsf2d::Transforms()`
     pub fn transforms_xy(&self, theCoord: &mut XY) {
         {
-            unsafe { crate::ffi::gp_GTrsf2d_transforms_xy(self as *const Self, theCoord) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_GTrsf2d_transforms_xy(self as *const Self, theCoord) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6805,8 +8120,11 @@ impl GTrsf2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_GTrsf2d_transformed(self as *const Self, theCoord) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6820,8 +8138,11 @@ impl GTrsf2d {
     /// -   Transformed creates a new coordinate pair.
     pub fn transforms_real2(&self, theX: &mut f64, theY: &mut f64) {
         {
-            unsafe { crate::ffi::gp_GTrsf2d_transforms_real2(self as *const Self, theX, theY) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_GTrsf2d_transforms_real2(self as *const Self, theX, theY) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6833,18 +8154,21 @@ impl GTrsf2d {
     pub fn trsf2d(&self) -> crate::OwnedPtr<Trsf2d> {
         {
             let __result = unsafe { crate::ffi::gp_GTrsf2d_trsf2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_GTrsf2d_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_GTrsf2d_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6913,8 +8237,10 @@ impl Hypr {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6946,8 +8272,10 @@ impl Hypr {
             let __result = unsafe {
                 crate::ffi::gp_Hypr_ctor_ax2_real2(theA2, theMajorRadius, theMinorRadius)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6961,8 +8289,10 @@ impl Hypr {
     /// the "XAxis" of the hyperbola.
     pub fn set_axis(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Hypr_set_axis(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Hypr_set_axis(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6971,8 +8301,10 @@ impl Hypr {
     /// system so that its origin becomes theP.
     pub fn set_location(&mut self, theP: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Hypr_set_location(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Hypr_set_location(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6982,8 +8314,11 @@ impl Hypr {
     /// Standard_ConstructionError if theMajorRadius is negative.
     pub fn set_major_radius(&mut self, theMajorRadius: f64) {
         {
-            unsafe { crate::ffi::gp_Hypr_set_major_radius(self as *mut Self, theMajorRadius) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Hypr_set_major_radius(self as *mut Self, theMajorRadius) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6993,8 +8328,11 @@ impl Hypr {
     /// Standard_ConstructionError if theMinorRadius is negative.
     pub fn set_minor_radius(&mut self, theMinorRadius: f64) {
         {
-            unsafe { crate::ffi::gp_Hypr_set_minor_radius(self as *mut Self, theMinorRadius) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Hypr_set_minor_radius(self as *mut Self, theMinorRadius) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7003,8 +8341,10 @@ impl Hypr {
     /// system so that it becomes A2.
     pub fn set_position(&mut self, theA2: &Ax2) {
         {
-            unsafe { crate::ffi::gp_Hypr_set_position(self as *mut Self, theA2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Hypr_set_position(self as *mut Self, theA2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7017,8 +8357,11 @@ impl Hypr {
     pub fn asymptote1(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_asymptote1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7031,8 +8374,11 @@ impl Hypr {
     pub fn asymptote2(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_asymptote2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7042,8 +8388,11 @@ impl Hypr {
     pub fn axis(&self) -> &Ax1 {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7053,8 +8402,11 @@ impl Hypr {
     pub fn conjugate_branch1(&self) -> crate::OwnedPtr<Hypr> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_conjugate_branch1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7064,8 +8416,11 @@ impl Hypr {
     pub fn conjugate_branch2(&self) -> crate::OwnedPtr<Hypr> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_conjugate_branch2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7081,8 +8436,11 @@ impl Hypr {
     pub fn directrix1(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_directrix1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7092,8 +8450,11 @@ impl Hypr {
     pub fn directrix2(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_directrix2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7105,8 +8466,11 @@ impl Hypr {
     pub fn eccentricity(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_eccentricity(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7116,8 +8480,11 @@ impl Hypr {
     pub fn focal(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_focal(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7127,8 +8494,11 @@ impl Hypr {
     pub fn focus1(&self) -> crate::OwnedPtr<Pnt> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_focus1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7138,8 +8508,11 @@ impl Hypr {
     pub fn focus2(&self) -> crate::OwnedPtr<Pnt> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_focus2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7149,8 +8522,11 @@ impl Hypr {
     pub fn location(&self) -> &Pnt {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7160,8 +8536,11 @@ impl Hypr {
     pub fn major_radius(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_major_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7171,8 +8550,11 @@ impl Hypr {
     pub fn minor_radius(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_minor_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7183,8 +8565,11 @@ impl Hypr {
     pub fn other_branch(&self) -> crate::OwnedPtr<Hypr> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_other_branch(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7195,8 +8580,11 @@ impl Hypr {
     pub fn parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7205,8 +8593,11 @@ impl Hypr {
     pub fn position(&self) -> &Ax2 {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_position(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7220,8 +8611,11 @@ impl Hypr {
     pub fn x_axis(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_x_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7234,16 +8628,21 @@ impl Hypr {
     pub fn y_axis(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_y_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Hypr.hxx`:277 - `gp_Hypr::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Hypr_mirror_pnt(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Hypr_mirror_pnt(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7253,16 +8652,21 @@ impl Hypr {
     pub fn mirrored_pnt(&self, theP: &Pnt) -> crate::OwnedPtr<Hypr> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_mirrored_pnt(self as *const Self, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Hypr.hxx`:283 - `gp_Hypr::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Hypr_mirror_ax1(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Hypr_mirror_ax1(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7272,16 +8676,21 @@ impl Hypr {
     pub fn mirrored_ax1(&self, theA1: &Ax1) -> crate::OwnedPtr<Hypr> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_mirrored_ax1(self as *const Self, theA1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Hypr.hxx`:289 - `gp_Hypr::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &Ax2) {
         {
-            unsafe { crate::ffi::gp_Hypr_mirror_ax2(self as *mut Self, theA2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Hypr_mirror_ax2(self as *mut Self, theA2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7292,16 +8701,21 @@ impl Hypr {
     pub fn mirrored_ax2(&self, theA2: &Ax2) -> crate::OwnedPtr<Hypr> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_mirrored_ax2(self as *const Self, theA2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Hypr.hxx`:296 - `gp_Hypr::Rotate()`
     pub fn rotate(&mut self, theA1: &Ax1, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Hypr_rotate(self as *mut Self, theA1, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Hypr_rotate(self as *mut Self, theA1, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7312,16 +8726,21 @@ impl Hypr {
         {
             let __result =
                 unsafe { crate::ffi::gp_Hypr_rotated(self as *const Self, theA1, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Hypr.hxx`:307 - `gp_Hypr::Scale()`
     pub fn scale(&mut self, theP: &Pnt, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Hypr_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Hypr_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7330,16 +8749,21 @@ impl Hypr {
     pub fn scaled(&self, theP: &Pnt, theS: f64) -> crate::OwnedPtr<Hypr> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Hypr.hxx`:312 - `gp_Hypr::Transform()`
     pub fn transform(&mut self, theT: &Trsf) {
         {
-            unsafe { crate::ffi::gp_Hypr_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Hypr_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7349,16 +8773,21 @@ impl Hypr {
     pub fn transformed(&self, theT: &Trsf) -> crate::OwnedPtr<Hypr> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Hypr.hxx`:318 - `gp_Hypr::Translate()`
     pub fn translate_vec(&mut self, theV: &Vec) {
         {
-            unsafe { crate::ffi::gp_Hypr_translate_vec(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Hypr_translate_vec(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7368,16 +8797,22 @@ impl Hypr {
     pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Hypr> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr_translated_vec(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Hypr.hxx`:329 - `gp_Hypr::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &Pnt, theP2: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Hypr_translate_pnt2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Hypr_translate_pnt2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7387,18 +8822,21 @@ impl Hypr {
         {
             let __result =
                 unsafe { crate::ffi::gp_Hypr_translated_pnt2(self as *const Self, theP1, theP2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Hypr_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Hypr_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -7461,8 +8899,10 @@ impl Hypr2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7492,8 +8932,10 @@ impl Hypr2d {
                     theIsSense,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7522,8 +8964,10 @@ impl Hypr2d {
             let __result = unsafe {
                 crate::ffi::gp_Hypr2d_ctor_ax22d_real2(theA, theMajorRadius, theMinorRadius)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7551,8 +8995,10 @@ impl Hypr2d {
     /// coordinate system so that its origin becomes theP.
     pub fn set_location(&mut self, theP: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Hypr2d_set_location(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Hypr2d_set_location(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7563,8 +9009,12 @@ impl Hypr2d {
     /// MinorRadius is negative.
     pub fn set_major_radius(&mut self, theMajorRadius: f64) {
         {
-            unsafe { crate::ffi::gp_Hypr2d_set_major_radius(self as *mut Self, theMajorRadius) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Hypr2d_set_major_radius(self as *mut Self, theMajorRadius)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7575,8 +9025,12 @@ impl Hypr2d {
     /// theMinorRadius is negative.
     pub fn set_minor_radius(&mut self, theMinorRadius: f64) {
         {
-            unsafe { crate::ffi::gp_Hypr2d_set_minor_radius(self as *mut Self, theMinorRadius) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Hypr2d_set_minor_radius(self as *mut Self, theMinorRadius)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7585,8 +9039,10 @@ impl Hypr2d {
     /// coordinate system so that it becomes theA.
     pub fn set_axis(&mut self, theA: &Ax22d) {
         {
-            unsafe { crate::ffi::gp_Hypr2d_set_axis(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Hypr2d_set_axis(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7595,8 +9051,10 @@ impl Hypr2d {
     /// recomputed and the location of the hyperbola too.
     pub fn set_x_axis(&mut self, theA: &Ax2d) {
         {
-            unsafe { crate::ffi::gp_Hypr2d_set_x_axis(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Hypr2d_set_x_axis(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7605,8 +9063,10 @@ impl Hypr2d {
     /// recomputed and the location of the hyperbola too.
     pub fn set_y_axis(&mut self, theA: &Ax2d) {
         {
-            unsafe { crate::ffi::gp_Hypr2d_set_y_axis(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Hypr2d_set_y_axis(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7620,8 +9080,11 @@ impl Hypr2d {
     pub fn asymptote1(&self) -> crate::OwnedPtr<Ax2d> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_asymptote1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7635,8 +9098,11 @@ impl Hypr2d {
     pub fn asymptote2(&self) -> crate::OwnedPtr<Ax2d> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_asymptote2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7654,7 +9120,7 @@ impl Hypr2d {
         theF: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Hypr2d_coefficients(
                     self as *const Self,
                     theA,
@@ -7665,7 +9131,9 @@ impl Hypr2d {
                     theF,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7675,8 +9143,11 @@ impl Hypr2d {
     pub fn conjugate_branch1(&self) -> crate::OwnedPtr<Hypr2d> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_conjugate_branch1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7686,8 +9157,11 @@ impl Hypr2d {
     pub fn conjugate_branch2(&self) -> crate::OwnedPtr<Hypr2d> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_conjugate_branch2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7703,8 +9177,11 @@ impl Hypr2d {
     pub fn directrix1(&self) -> crate::OwnedPtr<Ax2d> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_directrix1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7714,8 +9191,11 @@ impl Hypr2d {
     pub fn directrix2(&self) -> crate::OwnedPtr<Ax2d> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_directrix2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7727,8 +9207,11 @@ impl Hypr2d {
     pub fn eccentricity(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_eccentricity(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7738,8 +9221,11 @@ impl Hypr2d {
     pub fn focal(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_focal(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7749,8 +9235,11 @@ impl Hypr2d {
     pub fn focus1(&self) -> crate::OwnedPtr<Pnt2d> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_focus1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7760,8 +9249,11 @@ impl Hypr2d {
     pub fn focus2(&self) -> crate::OwnedPtr<Pnt2d> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_focus2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7772,8 +9264,11 @@ impl Hypr2d {
     pub fn location(&self) -> &Pnt2d {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7783,8 +9278,11 @@ impl Hypr2d {
     pub fn major_radius(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_major_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7794,8 +9292,11 @@ impl Hypr2d {
     pub fn minor_radius(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_minor_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7806,8 +9307,11 @@ impl Hypr2d {
     pub fn other_branch(&self) -> crate::OwnedPtr<Hypr2d> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_other_branch(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7818,8 +9322,11 @@ impl Hypr2d {
     pub fn parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7828,8 +9335,11 @@ impl Hypr2d {
     pub fn axis(&self) -> &Ax22d {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7842,8 +9352,11 @@ impl Hypr2d {
     pub fn x_axis(&self) -> crate::OwnedPtr<Ax2d> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_x_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7856,16 +9369,21 @@ impl Hypr2d {
     pub fn y_axis(&self) -> crate::OwnedPtr<Ax2d> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_y_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Hypr2d.hxx`:311 - `gp_Hypr2d::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Hypr2d_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Hypr2d_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7879,8 +9397,11 @@ impl Hypr2d {
     pub fn reversed(&self) -> crate::OwnedPtr<Hypr2d> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7890,16 +9411,21 @@ impl Hypr2d {
     pub fn is_direct(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_is_direct(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `gp_Hypr2d.hxx`:330 - `gp_Hypr2d::Mirror()`
     pub fn mirror_pnt2d(&mut self, theP: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Hypr2d_mirror_pnt2d(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Hypr2d_mirror_pnt2d(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7910,16 +9436,21 @@ impl Hypr2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Hypr2d_mirrored_pnt2d(self as *const Self, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Hypr2d.hxx`:336 - `gp_Hypr2d::Mirror()`
     pub fn mirror_ax2d(&mut self, theA: &Ax2d) {
         {
-            unsafe { crate::ffi::gp_Hypr2d_mirror_ax2d(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Hypr2d_mirror_ax2d(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7930,16 +9461,21 @@ impl Hypr2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Hypr2d_mirrored_ax2d(self as *const Self, theA) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Hypr2d.hxx`:342 - `gp_Hypr2d::Rotate()`
     pub fn rotate(&mut self, theP: &Pnt2d, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Hypr2d_rotate(self as *mut Self, theP, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Hypr2d_rotate(self as *mut Self, theP, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7950,16 +9486,21 @@ impl Hypr2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Hypr2d_rotated(self as *const Self, theP, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Hypr2d.hxx`:353 - `gp_Hypr2d::Scale()`
     pub fn scale(&mut self, theP: &Pnt2d, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Hypr2d_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Hypr2d_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7971,16 +9512,21 @@ impl Hypr2d {
     pub fn scaled(&self, theP: &Pnt2d, theS: f64) -> crate::OwnedPtr<Hypr2d> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Hypr2d.hxx`:361 - `gp_Hypr2d::Transform()`
     pub fn transform(&mut self, theT: &Trsf2d) {
         {
-            unsafe { crate::ffi::gp_Hypr2d_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Hypr2d_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7990,16 +9536,21 @@ impl Hypr2d {
     pub fn transformed(&self, theT: &Trsf2d) -> crate::OwnedPtr<Hypr2d> {
         {
             let __result = unsafe { crate::ffi::gp_Hypr2d_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Hypr2d.hxx`:367 - `gp_Hypr2d::Translate()`
     pub fn translate_vec2d(&mut self, theV: &Vec2d) {
         {
-            unsafe { crate::ffi::gp_Hypr2d_translate_vec2d(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Hypr2d_translate_vec2d(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8010,16 +9561,22 @@ impl Hypr2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Hypr2d_translated_vec2d(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Hypr2d.hxx`:378 - `gp_Hypr2d::Translate()`
     pub fn translate_pnt2d2(&mut self, theP1: &Pnt2d, theP2: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Hypr2d_translate_pnt2d2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Hypr2d_translate_pnt2d2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8030,18 +9587,21 @@ impl Hypr2d {
             let __result = unsafe {
                 crate::ffi::gp_Hypr2d_translated_pnt2d2(self as *const Self, theP1, theP2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Hypr2d_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Hypr2d_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -8079,8 +9639,10 @@ impl Lin {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Lin_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8089,8 +9651,10 @@ impl Lin {
     pub fn new_ax1(theA1: &Ax1) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Lin_ctor_ax1(theA1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8101,16 +9665,20 @@ impl Lin {
     pub fn new_pnt_dir(theP: &Pnt, theV: &Dir) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Lin_ctor_pnt_dir(theP, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `gp_Lin.hxx`:62 - `gp_Lin::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Lin_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Lin_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8122,8 +9690,11 @@ impl Lin {
     pub fn reversed(&self) -> crate::OwnedPtr<Lin> {
         {
             let __result = unsafe { crate::ffi::gp_Lin_reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8131,8 +9702,10 @@ impl Lin {
     /// Changes the direction of the line.
     pub fn set_direction(&mut self, theV: &Dir) {
         {
-            unsafe { crate::ffi::gp_Lin_set_direction(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Lin_set_direction(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8140,8 +9713,10 @@ impl Lin {
     /// Changes the location point (origin) of the line.
     pub fn set_location(&mut self, theP: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Lin_set_location(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Lin_set_location(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8151,8 +9726,10 @@ impl Lin {
     /// The "Direction" of <theA1> is  the direction of the line.
     pub fn set_position(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Lin_set_position(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Lin_set_position(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8161,8 +9738,11 @@ impl Lin {
     pub fn direction(&self) -> &Dir {
         {
             let __result = unsafe { crate::ffi::gp_Lin_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8171,8 +9751,11 @@ impl Lin {
     pub fn location(&self) -> &Pnt {
         {
             let __result = unsafe { crate::ffi::gp_Lin_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8182,8 +9765,11 @@ impl Lin {
     pub fn position(&self) -> &Ax1 {
         {
             let __result = unsafe { crate::ffi::gp_Lin_position(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8192,8 +9778,11 @@ impl Lin {
     pub fn angle(&self, theOther: &Lin) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Lin_angle(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8206,8 +9795,11 @@ impl Lin {
             let __result = unsafe {
                 crate::ffi::gp_Lin_contains(self as *const Self, theP, theLinearTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8216,8 +9808,11 @@ impl Lin {
     pub fn distance_pnt(&self, theP: &Pnt) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Lin_distance_pnt(self as *const Self, theP) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8227,8 +9822,11 @@ impl Lin {
         {
             let __result =
                 unsafe { crate::ffi::gp_Lin_distance_lin(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8238,8 +9836,11 @@ impl Lin {
         {
             let __result =
                 unsafe { crate::ffi::gp_Lin_square_distance_pnt(self as *const Self, theP) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8249,8 +9850,11 @@ impl Lin {
         {
             let __result =
                 unsafe { crate::ffi::gp_Lin_square_distance_lin(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8263,16 +9867,21 @@ impl Lin {
     pub fn normal(&self, theP: &Pnt) -> crate::OwnedPtr<Lin> {
         {
             let __result = unsafe { crate::ffi::gp_Lin_normal(self as *const Self, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Lin.hxx`:133 - `gp_Lin::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Lin_mirror_pnt(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Lin_mirror_pnt(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8283,16 +9892,21 @@ impl Lin {
     pub fn mirrored_pnt(&self, theP: &Pnt) -> crate::OwnedPtr<Lin> {
         {
             let __result = unsafe { crate::ffi::gp_Lin_mirrored_pnt(self as *const Self, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Lin.hxx`:140 - `gp_Lin::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Lin_mirror_ax1(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Lin_mirror_ax1(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8303,16 +9917,21 @@ impl Lin {
     pub fn mirrored_ax1(&self, theA1: &Ax1) -> crate::OwnedPtr<Lin> {
         {
             let __result = unsafe { crate::ffi::gp_Lin_mirrored_ax1(self as *const Self, theA1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Lin.hxx`:147 - `gp_Lin::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &Ax2) {
         {
-            unsafe { crate::ffi::gp_Lin_mirror_ax2(self as *mut Self, theA2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Lin_mirror_ax2(self as *mut Self, theA2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8324,16 +9943,21 @@ impl Lin {
     pub fn mirrored_ax2(&self, theA2: &Ax2) -> crate::OwnedPtr<Lin> {
         {
             let __result = unsafe { crate::ffi::gp_Lin_mirrored_ax2(self as *const Self, theA2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Lin.hxx`:155 - `gp_Lin::Rotate()`
     pub fn rotate(&mut self, theA1: &Ax1, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Lin_rotate(self as *mut Self, theA1, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Lin_rotate(self as *mut Self, theA1, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8344,16 +9968,21 @@ impl Lin {
         {
             let __result =
                 unsafe { crate::ffi::gp_Lin_rotated(self as *const Self, theA1, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Lin.hxx`:166 - `gp_Lin::Scale()`
     pub fn scale(&mut self, theP: &Pnt, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Lin_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Lin_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8364,16 +9993,21 @@ impl Lin {
     pub fn scaled(&self, theP: &Pnt, theS: f64) -> crate::OwnedPtr<Lin> {
         {
             let __result = unsafe { crate::ffi::gp_Lin_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Lin.hxx`:178 - `gp_Lin::Transform()`
     pub fn transform(&mut self, theT: &Trsf) {
         {
-            unsafe { crate::ffi::gp_Lin_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Lin_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8382,16 +10016,21 @@ impl Lin {
     pub fn transformed(&self, theT: &Trsf) -> crate::OwnedPtr<Lin> {
         {
             let __result = unsafe { crate::ffi::gp_Lin_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Lin.hxx`:188 - `gp_Lin::Translate()`
     pub fn translate_vec(&mut self, theV: &Vec) {
         {
-            unsafe { crate::ffi::gp_Lin_translate_vec(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Lin_translate_vec(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8401,16 +10040,22 @@ impl Lin {
     pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Lin> {
         {
             let __result = unsafe { crate::ffi::gp_Lin_translated_vec(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Lin.hxx`:199 - `gp_Lin::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &Pnt, theP2: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Lin_translate_pnt2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Lin_translate_pnt2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8420,18 +10065,21 @@ impl Lin {
         {
             let __result =
                 unsafe { crate::ffi::gp_Lin_translated_pnt2(self as *const Self, theP1, theP2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Lin_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Lin_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -8473,8 +10121,10 @@ impl Lin2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Lin2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8483,8 +10133,10 @@ impl Lin2d {
     pub fn new_ax2d(theA: &Ax2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Lin2d_ctor_ax2d(theA) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8494,8 +10146,10 @@ impl Lin2d {
     pub fn new_pnt2d_dir2d(theP: &Pnt2d, theV: &Dir2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Lin2d_ctor_pnt2d_dir2d(theP, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8506,16 +10160,20 @@ impl Lin2d {
     pub fn new_real3(theA: f64, theB: f64, theC: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Lin2d_ctor_real3(theA, theB, theC) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `gp_Lin2d.hxx`:67 - `gp_Lin2d::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Lin2d_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Lin2d_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8527,8 +10185,11 @@ impl Lin2d {
     pub fn reversed(&self) -> crate::OwnedPtr<Lin2d> {
         {
             let __result = unsafe { crate::ffi::gp_Lin2d_reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8536,8 +10197,10 @@ impl Lin2d {
     /// Changes the direction of the line.
     pub fn set_direction(&mut self, theV: &Dir2d) {
         {
-            unsafe { crate::ffi::gp_Lin2d_set_direction(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Lin2d_set_direction(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8545,8 +10208,10 @@ impl Lin2d {
     /// Changes the origin of the line.
     pub fn set_location(&mut self, theP: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Lin2d_set_location(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Lin2d_set_location(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8556,8 +10221,10 @@ impl Lin2d {
     /// The "Direction" of <theA> is  the direction of the line.
     pub fn set_position(&mut self, theA: &Ax2d) {
         {
-            unsafe { crate::ffi::gp_Lin2d_set_position(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Lin2d_set_position(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8566,8 +10233,11 @@ impl Lin2d {
     /// theA * X + theB * Y + theC = 0.
     pub fn coefficients(&self, theA: &mut f64, theB: &mut f64, theC: &mut f64) {
         {
-            unsafe { crate::ffi::gp_Lin2d_coefficients(self as *const Self, theA, theB, theC) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Lin2d_coefficients(self as *const Self, theA, theB, theC) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8576,8 +10246,11 @@ impl Lin2d {
     pub fn direction(&self) -> &Dir2d {
         {
             let __result = unsafe { crate::ffi::gp_Lin2d_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8586,8 +10259,11 @@ impl Lin2d {
     pub fn location(&self) -> &Pnt2d {
         {
             let __result = unsafe { crate::ffi::gp_Lin2d_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8597,8 +10273,11 @@ impl Lin2d {
     pub fn position(&self) -> &Ax2d {
         {
             let __result = unsafe { crate::ffi::gp_Lin2d_position(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8607,8 +10286,11 @@ impl Lin2d {
     pub fn angle(&self, theOther: &Lin2d) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Lin2d_angle(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8621,8 +10303,11 @@ impl Lin2d {
             let __result = unsafe {
                 crate::ffi::gp_Lin2d_contains(self as *const Self, theP, theLinearTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8632,8 +10317,11 @@ impl Lin2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Lin2d_distance_pnt2d(self as *const Self, theP) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8643,8 +10331,11 @@ impl Lin2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Lin2d_distance_lin2d(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8655,8 +10346,11 @@ impl Lin2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Lin2d_square_distance_pnt2d(self as *const Self, theP) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8667,8 +10361,11 @@ impl Lin2d {
             let __result = unsafe {
                 crate::ffi::gp_Lin2d_square_distance_lin2d(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8678,16 +10375,21 @@ impl Lin2d {
     pub fn normal(&self, theP: &Pnt2d) -> crate::OwnedPtr<Lin2d> {
         {
             let __result = unsafe { crate::ffi::gp_Lin2d_normal(self as *const Self, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Lin2d.hxx`:144 - `gp_Lin2d::Mirror()`
     pub fn mirror_pnt2d(&mut self, theP: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Lin2d_mirror_pnt2d(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Lin2d_mirror_pnt2d(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8699,16 +10401,21 @@ impl Lin2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Lin2d_mirrored_pnt2d(self as *const Self, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Lin2d.hxx`:151 - `gp_Lin2d::Mirror()`
     pub fn mirror_ax2d(&mut self, theA: &Ax2d) {
         {
-            unsafe { crate::ffi::gp_Lin2d_mirror_ax2d(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Lin2d_mirror_ax2d(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8719,16 +10426,21 @@ impl Lin2d {
     pub fn mirrored_ax2d(&self, theA: &Ax2d) -> crate::OwnedPtr<Lin2d> {
         {
             let __result = unsafe { crate::ffi::gp_Lin2d_mirrored_ax2d(self as *const Self, theA) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Lin2d.hxx`:158 - `gp_Lin2d::Rotate()`
     pub fn rotate(&mut self, theP: &Pnt2d, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Lin2d_rotate(self as *mut Self, theP, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Lin2d_rotate(self as *mut Self, theP, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8739,16 +10451,21 @@ impl Lin2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Lin2d_rotated(self as *const Self, theP, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Lin2d.hxx`:169 - `gp_Lin2d::Scale()`
     pub fn scale(&mut self, theP: &Pnt2d, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Lin2d_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Lin2d_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8758,16 +10475,21 @@ impl Lin2d {
     pub fn scaled(&self, theP: &Pnt2d, theS: f64) -> crate::OwnedPtr<Lin2d> {
         {
             let __result = unsafe { crate::ffi::gp_Lin2d_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Lin2d.hxx`:180 - `gp_Lin2d::Transform()`
     pub fn transform(&mut self, theT: &Trsf2d) {
         {
-            unsafe { crate::ffi::gp_Lin2d_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Lin2d_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8776,16 +10498,21 @@ impl Lin2d {
     pub fn transformed(&self, theT: &Trsf2d) -> crate::OwnedPtr<Lin2d> {
         {
             let __result = unsafe { crate::ffi::gp_Lin2d_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Lin2d.hxx`:190 - `gp_Lin2d::Translate()`
     pub fn translate_vec2d(&mut self, theV: &Vec2d) {
         {
-            unsafe { crate::ffi::gp_Lin2d_translate_vec2d(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Lin2d_translate_vec2d(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8796,16 +10523,22 @@ impl Lin2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Lin2d_translated_vec2d(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Lin2d.hxx`:201 - `gp_Lin2d::Translate()`
     pub fn translate_pnt2d2(&mut self, theP1: &Pnt2d, theP2: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Lin2d_translate_pnt2d2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Lin2d_translate_pnt2d2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8816,18 +10549,21 @@ impl Lin2d {
             let __result = unsafe {
                 crate::ffi::gp_Lin2d_translated_pnt2d2(self as *const Self, theP1, theP2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Lin2d_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Lin2d_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -8852,8 +10588,10 @@ impl Mat {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Mat_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8875,8 +10613,10 @@ impl Mat {
                     theA11, theA12, theA13, theA21, theA22, theA23, theA31, theA32, theA33,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8886,8 +10626,10 @@ impl Mat {
     pub fn new_xyz3(theCol1: &XYZ, theCol2: &XYZ, theCol3: &XYZ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Mat_ctor_xyz3(theCol1, theCol2, theCol3) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8897,8 +10639,10 @@ impl Mat {
     /// Raises OutOfRange if theCol < 1 or theCol > 3.
     pub fn set_col(&mut self, theCol: i32, theValue: &XYZ) {
         {
-            unsafe { crate::ffi::gp_Mat_set_col(self as *mut Self, theCol, theValue) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat_set_col(self as *mut Self, theCol, theValue) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8907,8 +10651,12 @@ impl Mat {
     /// columns of this matrix.
     pub fn set_cols(&mut self, theCol1: &XYZ, theCol2: &XYZ, theCol3: &XYZ) {
         {
-            unsafe { crate::ffi::gp_Mat_set_cols(self as *mut Self, theCol1, theCol2, theCol3) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Mat_set_cols(self as *mut Self, theCol1, theCol2, theCol3)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8923,8 +10671,10 @@ impl Mat {
     /// Note: this matrix is anti-symmetric.
     pub fn set_cross(&mut self, theRef: &XYZ) {
         {
-            unsafe { crate::ffi::gp_Mat_set_cross(self as *mut Self, theRef) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat_set_cross(self as *mut Self, theRef) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8938,8 +10688,11 @@ impl Mat {
     /// The other coefficients of the matrix are not modified.
     pub fn set_diagonal(&mut self, theX1: f64, theX2: f64, theX3: f64) {
         {
-            unsafe { crate::ffi::gp_Mat_set_diagonal(self as *mut Self, theX1, theX2, theX3) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Mat_set_diagonal(self as *mut Self, theX1, theX2, theX3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8951,8 +10704,10 @@ impl Mat {
     /// Note: this matrix is symmetric.
     pub fn set_dot(&mut self, theRef: &XYZ) {
         {
-            unsafe { crate::ffi::gp_Mat_set_dot(self as *mut Self, theRef) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat_set_dot(self as *mut Self, theRef) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8960,8 +10715,10 @@ impl Mat {
     /// Modifies this matrix so that it represents the Identity matrix.
     pub fn set_identity(&mut self) {
         {
-            unsafe { crate::ffi::gp_Mat_set_identity(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat_set_identity(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8972,8 +10729,11 @@ impl Mat {
     /// Raises ConstructionError if XYZ.Modulus() <= Resolution()
     pub fn set_rotation(&mut self, theAxis: &XYZ, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Mat_set_rotation(self as *mut Self, theAxis, theAng) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Mat_set_rotation(self as *mut Self, theAxis, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8982,8 +10742,10 @@ impl Mat {
     /// theRow of this matrix. Raises OutOfRange if theRow < 1 or theRow > 3.
     pub fn set_row(&mut self, theRow: i32, theValue: &XYZ) {
         {
-            unsafe { crate::ffi::gp_Mat_set_row(self as *mut Self, theRow, theValue) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat_set_row(self as *mut Self, theRow, theValue) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8992,8 +10754,12 @@ impl Mat {
     /// rows of this matrix.
     pub fn set_rows(&mut self, theRow1: &XYZ, theRow2: &XYZ, theRow3: &XYZ) {
         {
-            unsafe { crate::ffi::gp_Mat_set_rows(self as *mut Self, theRow1, theRow2, theRow3) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Mat_set_rows(self as *mut Self, theRow1, theRow2, theRow3)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9007,8 +10773,10 @@ impl Mat {
     /// @endcode
     pub fn set_scale(&mut self, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Mat_set_scale(self as *mut Self, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat_set_scale(self as *mut Self, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9017,8 +10785,12 @@ impl Mat {
     /// Raises OutOfRange if theRow < 1 or theRow > 3 or theCol < 1 or theCol > 3
     pub fn set_value(&mut self, theRow: i32, theCol: i32, theValue: f64) {
         {
-            unsafe { crate::ffi::gp_Mat_set_value(self as *mut Self, theRow, theCol, theValue) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Mat_set_value(self as *mut Self, theRow, theCol, theValue)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9028,8 +10800,11 @@ impl Mat {
     pub fn column(&self, theCol: i32) -> crate::OwnedPtr<XYZ> {
         {
             let __result = unsafe { crate::ffi::gp_Mat_column(self as *const Self, theCol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9038,8 +10813,11 @@ impl Mat {
     pub fn determinant(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Mat_determinant(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9048,8 +10826,11 @@ impl Mat {
     pub fn diagonal(&self) -> crate::OwnedPtr<XYZ> {
         {
             let __result = unsafe { crate::ffi::gp_Mat_diagonal(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9059,8 +10840,11 @@ impl Mat {
     pub fn row(&self, theRow: i32) -> crate::OwnedPtr<XYZ> {
         {
             let __result = unsafe { crate::ffi::gp_Mat_row(self as *const Self, theRow) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9070,8 +10854,11 @@ impl Mat {
     pub fn value(&self, theRow: i32, theCol: i32) -> &f64 {
         {
             let __result = unsafe { crate::ffi::gp_Mat_value(self as *const Self, theRow, theCol) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9082,8 +10869,11 @@ impl Mat {
         {
             let __result =
                 unsafe { crate::ffi::gp_Mat_change_value(self as *mut Self, theRow, theCol) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -9094,16 +10884,21 @@ impl Mat {
     pub fn is_singular(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::gp_Mat_is_singular(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `gp_Mat.hxx`:197 - `gp_Mat::Add()`
     pub fn add(&mut self, theOther: &Mat) {
         {
-            unsafe { crate::ffi::gp_Mat_add(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat_add(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9114,16 +10909,21 @@ impl Mat {
     pub fn added(&self, theOther: &Mat) -> crate::OwnedPtr<Mat> {
         {
             let __result = unsafe { crate::ffi::gp_Mat_added(self as *const Self, theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Mat.hxx`:208 - `gp_Mat::Divide()`
     pub fn divide(&mut self, theScalar: f64) {
         {
-            unsafe { crate::ffi::gp_Mat_divide(self as *mut Self, theScalar) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat_divide(self as *mut Self, theScalar) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9132,16 +10932,21 @@ impl Mat {
     pub fn divided(&self, theScalar: f64) -> crate::OwnedPtr<Mat> {
         {
             let __result = unsafe { crate::ffi::gp_Mat_divided(self as *const Self, theScalar) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Mat.hxx`:220 - `gp_Mat::Invert()`
     pub fn invert(&mut self) {
         {
-            unsafe { crate::ffi::gp_Mat_invert(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat_invert(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9159,8 +10964,11 @@ impl Mat {
     pub fn inverted(&self) -> crate::OwnedPtr<Mat> {
         {
             let __result = unsafe { crate::ffi::gp_Mat_inverted(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9170,8 +10978,11 @@ impl Mat {
         {
             let __result =
                 unsafe { crate::ffi::gp_Mat_multiplied_mat(self as *const Self, theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9179,16 +10990,20 @@ impl Mat {
     /// Computes the product of two matrices <me> = <Other> * <me>.
     pub fn multiply_mat(&mut self, theOther: &Mat) {
         {
-            unsafe { crate::ffi::gp_Mat_multiply_mat(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat_multiply_mat(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `gp_Mat.hxx`:249 - `gp_Mat::PreMultiply()`
     pub fn pre_multiply(&mut self, theOther: &Mat) {
         {
-            unsafe { crate::ffi::gp_Mat_pre_multiply(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat_pre_multiply(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9197,8 +11012,11 @@ impl Mat {
         {
             let __result =
                 unsafe { crate::ffi::gp_Mat_multiplied_real(self as *const Self, theScalar) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9206,16 +11024,20 @@ impl Mat {
     /// Multiplies all the coefficients of the matrix by Scalar
     pub fn multiply_real(&mut self, theScalar: f64) {
         {
-            unsafe { crate::ffi::gp_Mat_multiply_real(self as *mut Self, theScalar) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat_multiply_real(self as *mut Self, theScalar) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `gp_Mat.hxx`:263 - `gp_Mat::Power()`
     pub fn power(&mut self, N: i32) {
         {
-            unsafe { crate::ffi::gp_Mat_power(self as *mut Self, N) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat_power(self as *mut Self, N) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9228,16 +11050,21 @@ impl Mat {
     pub fn powered(&self, theN: i32) -> crate::OwnedPtr<Mat> {
         {
             let __result = unsafe { crate::ffi::gp_Mat_powered(self as *const Self, theN) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Mat.hxx`:277 - `gp_Mat::Subtract()`
     pub fn subtract(&mut self, theOther: &Mat) {
         {
-            unsafe { crate::ffi::gp_Mat_subtract(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat_subtract(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9247,16 +11074,21 @@ impl Mat {
     pub fn subtracted(&self, theOther: &Mat) -> crate::OwnedPtr<Mat> {
         {
             let __result = unsafe { crate::ffi::gp_Mat_subtracted(self as *const Self, theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Mat.hxx`:287 - `gp_Mat::Transpose()`
     pub fn transpose(&mut self) {
         {
-            unsafe { crate::ffi::gp_Mat_transpose(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat_transpose(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9265,18 +11097,21 @@ impl Mat {
     pub fn transposed(&self) -> crate::OwnedPtr<Mat> {
         {
             let __result = unsafe { crate::ffi::gp_Mat_transposed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Mat_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Mat_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -9301,8 +11136,10 @@ impl Mat2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Mat2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9311,8 +11148,10 @@ impl Mat2d {
     pub fn new_xy2(theCol1: &XY, theCol2: &XY) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Mat2d_ctor_xy2(theCol1, theCol2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9322,8 +11161,11 @@ impl Mat2d {
     /// Raises OutOfRange if theCol < 1 or theCol > 2.
     pub fn set_col(&mut self, theCol: i32, theValue: &XY) {
         {
-            unsafe { crate::ffi::gp_Mat2d_set_col(self as *mut Self, theCol, theValue) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Mat2d_set_col(self as *mut Self, theCol, theValue) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9331,8 +11173,11 @@ impl Mat2d {
     /// Assigns the number pairs theCol1, theCol2 to the two columns of   this matrix
     pub fn set_cols(&mut self, theCol1: &XY, theCol2: &XY) {
         {
-            unsafe { crate::ffi::gp_Mat2d_set_cols(self as *mut Self, theCol1, theCol2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Mat2d_set_cols(self as *mut Self, theCol1, theCol2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9345,8 +11190,11 @@ impl Mat2d {
     /// The other coefficients of the matrix are not modified.
     pub fn set_diagonal(&mut self, theX1: f64, theX2: f64) {
         {
-            unsafe { crate::ffi::gp_Mat2d_set_diagonal(self as *mut Self, theX1, theX2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Mat2d_set_diagonal(self as *mut Self, theX1, theX2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9354,8 +11202,10 @@ impl Mat2d {
     /// Modifies this matrix, so that it represents the Identity matrix.
     pub fn set_identity(&mut self) {
         {
-            unsafe { crate::ffi::gp_Mat2d_set_identity(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat2d_set_identity(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9364,8 +11214,10 @@ impl Mat2d {
     /// value in radian of the rotation.
     pub fn set_rotation(&mut self, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Mat2d_set_rotation(self as *mut Self, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat2d_set_rotation(self as *mut Self, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9374,8 +11226,11 @@ impl Mat2d {
     /// Raises OutOfRange if theRow < 1 or theRow > 2.
     pub fn set_row(&mut self, theRow: i32, theValue: &XY) {
         {
-            unsafe { crate::ffi::gp_Mat2d_set_row(self as *mut Self, theRow, theValue) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Mat2d_set_row(self as *mut Self, theRow, theValue) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9383,8 +11238,11 @@ impl Mat2d {
     /// Assigns the number pairs theRow1, theRow2 to the two rows of this matrix.
     pub fn set_rows(&mut self, theRow1: &XY, theRow2: &XY) {
         {
-            unsafe { crate::ffi::gp_Mat2d_set_rows(self as *mut Self, theRow1, theRow2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Mat2d_set_rows(self as *mut Self, theRow1, theRow2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9397,8 +11255,10 @@ impl Mat2d {
     /// @endcode
     pub fn set_scale(&mut self, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Mat2d_set_scale(self as *mut Self, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat2d_set_scale(self as *mut Self, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9407,8 +11267,12 @@ impl Mat2d {
     /// Raises OutOfRange if theRow < 1 or theRow > 2 or theCol < 1 or theCol > 2
     pub fn set_value(&mut self, theRow: i32, theCol: i32, theValue: f64) {
         {
-            unsafe { crate::ffi::gp_Mat2d_set_value(self as *mut Self, theRow, theCol, theValue) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Mat2d_set_value(self as *mut Self, theRow, theCol, theValue)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9418,8 +11282,11 @@ impl Mat2d {
     pub fn column(&self, theCol: i32) -> crate::OwnedPtr<XY> {
         {
             let __result = unsafe { crate::ffi::gp_Mat2d_column(self as *const Self, theCol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9428,8 +11295,11 @@ impl Mat2d {
     pub fn determinant(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Mat2d_determinant(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9438,8 +11308,11 @@ impl Mat2d {
     pub fn diagonal(&self) -> crate::OwnedPtr<XY> {
         {
             let __result = unsafe { crate::ffi::gp_Mat2d_diagonal(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9449,8 +11322,11 @@ impl Mat2d {
     pub fn row(&self, theRow: i32) -> crate::OwnedPtr<XY> {
         {
             let __result = unsafe { crate::ffi::gp_Mat2d_row(self as *const Self, theRow) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9462,8 +11338,11 @@ impl Mat2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Mat2d_value(self as *const Self, theRow, theCol) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9475,8 +11354,11 @@ impl Mat2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Mat2d_change_value(self as *mut Self, theRow, theCol) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -9488,16 +11370,21 @@ impl Mat2d {
     pub fn is_singular(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::gp_Mat2d_is_singular(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `gp_Mat2d.hxx`:157 - `gp_Mat2d::Add()`
     pub fn add(&mut self, Other: &Mat2d) {
         {
-            unsafe { crate::ffi::gp_Mat2d_add(self as *mut Self, Other) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat2d_add(self as *mut Self, Other) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9513,16 +11400,21 @@ impl Mat2d {
     pub fn added(&self, theOther: &Mat2d) -> crate::OwnedPtr<Mat2d> {
         {
             let __result = unsafe { crate::ffi::gp_Mat2d_added(self as *const Self, theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Mat2d.hxx`:173 - `gp_Mat2d::Divide()`
     pub fn divide(&mut self, theScalar: f64) {
         {
-            unsafe { crate::ffi::gp_Mat2d_divide(self as *mut Self, theScalar) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat2d_divide(self as *mut Self, theScalar) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9531,16 +11423,21 @@ impl Mat2d {
     pub fn divided(&self, theScalar: f64) -> crate::OwnedPtr<Mat2d> {
         {
             let __result = unsafe { crate::ffi::gp_Mat2d_divided(self as *const Self, theScalar) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Mat2d.hxx`:185 - `gp_Mat2d::Invert()`
     pub fn invert(&mut self) {
         {
-            unsafe { crate::ffi::gp_Mat2d_invert(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat2d_invert(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9550,8 +11447,11 @@ impl Mat2d {
     pub fn inverted(&self) -> crate::OwnedPtr<Mat2d> {
         {
             let __result = unsafe { crate::ffi::gp_Mat2d_inverted(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9560,8 +11460,11 @@ impl Mat2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Mat2d_multiplied_mat2d(self as *const Self, theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9569,8 +11472,10 @@ impl Mat2d {
     /// Computes the product of two matrices <me> * <theOther>
     pub fn multiply_mat2d(&mut self, theOther: &Mat2d) {
         {
-            unsafe { crate::ffi::gp_Mat2d_multiply_mat2d(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat2d_multiply_mat2d(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9579,8 +11484,10 @@ impl Mat2d {
     /// <me> = theOther * <me>.
     pub fn pre_multiply(&mut self, theOther: &Mat2d) {
         {
-            unsafe { crate::ffi::gp_Mat2d_pre_multiply(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat2d_pre_multiply(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9589,8 +11496,11 @@ impl Mat2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Mat2d_multiplied_real(self as *const Self, theScalar) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9598,16 +11508,20 @@ impl Mat2d {
     /// Multiplies all the coefficients of the matrix by a scalar.
     pub fn multiply_real(&mut self, theScalar: f64) {
         {
-            unsafe { crate::ffi::gp_Mat2d_multiply_real(self as *mut Self, theScalar) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat2d_multiply_real(self as *mut Self, theScalar) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `gp_Mat2d.hxx`:227 - `gp_Mat2d::Power()`
     pub fn power(&mut self, theN: i32) {
         {
-            unsafe { crate::ffi::gp_Mat2d_power(self as *mut Self, theN) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat2d_power(self as *mut Self, theN) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9620,16 +11534,21 @@ impl Mat2d {
     pub fn powered(&self, theN: i32) -> crate::OwnedPtr<Mat2d> {
         {
             let __result = unsafe { crate::ffi::gp_Mat2d_powered(self as *const Self, theN) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Mat2d.hxx`:241 - `gp_Mat2d::Subtract()`
     pub fn subtract(&mut self, theOther: &Mat2d) {
         {
-            unsafe { crate::ffi::gp_Mat2d_subtract(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat2d_subtract(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9642,16 +11561,21 @@ impl Mat2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Mat2d_subtracted(self as *const Self, theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Mat2d.hxx`:256 - `gp_Mat2d::Transpose()`
     pub fn transpose(&mut self) {
         {
-            unsafe { crate::ffi::gp_Mat2d_transpose(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Mat2d_transpose(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9660,18 +11584,21 @@ impl Mat2d {
     pub fn transposed(&self) -> crate::OwnedPtr<Mat2d> {
         {
             let __result = unsafe { crate::ffi::gp_Mat2d_transposed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Mat2d_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Mat2d_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -9721,8 +11648,10 @@ impl Parab {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Parab_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9738,8 +11667,10 @@ impl Parab {
     pub fn new_ax2_real(theA2: &Ax2, theFocal: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Parab_ctor_ax2_real(theA2, theFocal) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9755,8 +11686,10 @@ impl Parab {
     pub fn new_ax1_pnt(theD: &Ax1, theF: &Pnt) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Parab_ctor_ax1_pnt(theD, theF) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9769,8 +11702,10 @@ impl Parab {
     /// XAxis of the parabola.
     pub fn set_axis(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Parab_set_axis(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab_set_axis(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9779,8 +11714,10 @@ impl Parab {
     /// Raises ConstructionError if theFocal < 0.0
     pub fn set_focal(&mut self, theFocal: f64) {
         {
-            unsafe { crate::ffi::gp_Parab_set_focal(self as *mut Self, theFocal) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab_set_focal(self as *mut Self, theFocal) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9789,8 +11726,10 @@ impl Parab {
     /// the parabola.
     pub fn set_location(&mut self, theP: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Parab_set_location(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab_set_location(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9798,8 +11737,10 @@ impl Parab {
     /// Changes the local coordinate system of the parabola.
     pub fn set_position(&mut self, theA2: &Ax2) {
         {
-            unsafe { crate::ffi::gp_Parab_set_position(self as *mut Self, theA2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab_set_position(self as *mut Self, theA2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9810,8 +11751,11 @@ impl Parab {
     pub fn axis(&self) -> &Ax1 {
         {
             let __result = unsafe { crate::ffi::gp_Parab_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9828,8 +11772,11 @@ impl Parab {
     pub fn directrix(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Parab_directrix(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9839,8 +11786,11 @@ impl Parab {
     pub fn focal(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Parab_focal(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9849,8 +11799,11 @@ impl Parab {
     pub fn focus(&self) -> crate::OwnedPtr<Pnt> {
         {
             let __result = unsafe { crate::ffi::gp_Parab_focus(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9860,8 +11813,11 @@ impl Parab {
     pub fn location(&self) -> &Pnt {
         {
             let __result = unsafe { crate::ffi::gp_Parab_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9872,8 +11828,11 @@ impl Parab {
     pub fn parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Parab_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9882,8 +11841,11 @@ impl Parab {
     pub fn position(&self) -> &Ax2 {
         {
             let __result = unsafe { crate::ffi::gp_Parab_position(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9893,8 +11855,11 @@ impl Parab {
     pub fn x_axis(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Parab_x_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9904,16 +11869,21 @@ impl Parab {
     pub fn y_axis(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Parab_y_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Parab.hxx`:153 - `gp_Parab::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Parab_mirror_pnt(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab_mirror_pnt(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9924,16 +11894,21 @@ impl Parab {
     pub fn mirrored_pnt(&self, theP: &Pnt) -> crate::OwnedPtr<Parab> {
         {
             let __result = unsafe { crate::ffi::gp_Parab_mirrored_pnt(self as *const Self, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Parab.hxx`:160 - `gp_Parab::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Parab_mirror_ax1(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab_mirror_ax1(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9944,16 +11919,21 @@ impl Parab {
     pub fn mirrored_ax1(&self, theA1: &Ax1) -> crate::OwnedPtr<Parab> {
         {
             let __result = unsafe { crate::ffi::gp_Parab_mirrored_ax1(self as *const Self, theA1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Parab.hxx`:167 - `gp_Parab::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &Ax2) {
         {
-            unsafe { crate::ffi::gp_Parab_mirror_ax2(self as *mut Self, theA2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab_mirror_ax2(self as *mut Self, theA2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9964,16 +11944,21 @@ impl Parab {
     pub fn mirrored_ax2(&self, theA2: &Ax2) -> crate::OwnedPtr<Parab> {
         {
             let __result = unsafe { crate::ffi::gp_Parab_mirrored_ax2(self as *const Self, theA2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Parab.hxx`:174 - `gp_Parab::Rotate()`
     pub fn rotate(&mut self, theA1: &Ax1, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Parab_rotate(self as *mut Self, theA1, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab_rotate(self as *mut Self, theA1, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9984,16 +11969,21 @@ impl Parab {
         {
             let __result =
                 unsafe { crate::ffi::gp_Parab_rotated(self as *const Self, theA1, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Parab.hxx`:185 - `gp_Parab::Scale()`
     pub fn scale(&mut self, theP: &Pnt, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Parab_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10004,16 +11994,21 @@ impl Parab {
     pub fn scaled(&self, theP: &Pnt, theS: f64) -> crate::OwnedPtr<Parab> {
         {
             let __result = unsafe { crate::ffi::gp_Parab_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Parab.hxx`:192 - `gp_Parab::Transform()`
     pub fn transform(&mut self, theT: &Trsf) {
         {
-            unsafe { crate::ffi::gp_Parab_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10022,16 +12017,21 @@ impl Parab {
     pub fn transformed(&self, theT: &Trsf) -> crate::OwnedPtr<Parab> {
         {
             let __result = unsafe { crate::ffi::gp_Parab_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Parab.hxx`:197 - `gp_Parab::Translate()`
     pub fn translate_vec(&mut self, theV: &Vec) {
         {
-            unsafe { crate::ffi::gp_Parab_translate_vec(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab_translate_vec(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10042,16 +12042,22 @@ impl Parab {
         {
             let __result =
                 unsafe { crate::ffi::gp_Parab_translated_vec(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Parab.hxx`:208 - `gp_Parab::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &Pnt, theP2: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Parab_translate_pnt2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Parab_translate_pnt2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10061,18 +12067,21 @@ impl Parab {
         {
             let __result =
                 unsafe { crate::ffi::gp_Parab_translated_pnt2(self as *const Self, theP1, theP2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Parab_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Parab_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -10119,8 +12128,10 @@ impl Parab2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Parab2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10142,8 +12153,10 @@ impl Parab2d {
             let __result = unsafe {
                 crate::ffi::gp_Parab2d_ctor_ax2d_real_bool(theMirrorAxis, theFocalLength, theSense)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10157,8 +12170,10 @@ impl Parab2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Parab2d_ctor_ax22d_real(theAxes, theFocalLength) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10183,8 +12198,10 @@ impl Parab2d {
             let __result = unsafe {
                 crate::ffi::gp_Parab2d_ctor_ax2d_pnt2d_bool(theDirectrix, theFocus, theSense)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10223,8 +12240,10 @@ impl Parab2d {
     /// Raises ConstructionError if theFocal < 0.0
     pub fn set_focal(&mut self, theFocal: f64) {
         {
-            unsafe { crate::ffi::gp_Parab2d_set_focal(self as *mut Self, theFocal) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab2d_set_focal(self as *mut Self, theFocal) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10233,8 +12252,10 @@ impl Parab2d {
     /// vertex of the parabola.
     pub fn set_location(&mut self, theP: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Parab2d_set_location(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab2d_set_location(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10246,8 +12267,10 @@ impl Parab2d {
     /// coordinate system is not modified.
     pub fn set_mirror_axis(&mut self, theA: &Ax2d) {
         {
-            unsafe { crate::ffi::gp_Parab2d_set_mirror_axis(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab2d_set_mirror_axis(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10256,8 +12279,10 @@ impl Parab2d {
     /// The "Location" point of A becomes the vertex of the parabola.
     pub fn set_axis(&mut self, theA: &Ax22d) {
         {
-            unsafe { crate::ffi::gp_Parab2d_set_axis(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab2d_set_axis(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10277,7 +12302,7 @@ impl Parab2d {
         theF: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Parab2d_coefficients(
                     self as *const Self,
                     theA,
@@ -10288,7 +12313,9 @@ impl Parab2d {
                     theF,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10304,8 +12331,11 @@ impl Parab2d {
     pub fn directrix(&self) -> crate::OwnedPtr<Ax2d> {
         {
             let __result = unsafe { crate::ffi::gp_Parab2d_directrix(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10315,8 +12345,11 @@ impl Parab2d {
     pub fn focal(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Parab2d_focal(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10325,8 +12358,11 @@ impl Parab2d {
     pub fn focus(&self) -> crate::OwnedPtr<Pnt2d> {
         {
             let __result = unsafe { crate::ffi::gp_Parab2d_focus(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10335,8 +12371,11 @@ impl Parab2d {
     pub fn location(&self) -> crate::OwnedPtr<Pnt2d> {
         {
             let __result = unsafe { crate::ffi::gp_Parab2d_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10346,8 +12385,11 @@ impl Parab2d {
     pub fn mirror_axis(&self) -> crate::OwnedPtr<Ax2d> {
         {
             let __result = unsafe { crate::ffi::gp_Parab2d_mirror_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10357,8 +12399,11 @@ impl Parab2d {
     pub fn axis(&self) -> crate::OwnedPtr<Ax22d> {
         {
             let __result = unsafe { crate::ffi::gp_Parab2d_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10368,16 +12413,21 @@ impl Parab2d {
     pub fn parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Parab2d_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `gp_Parab2d.hxx`:177 - `gp_Parab2d::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Parab2d_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab2d_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10391,8 +12441,11 @@ impl Parab2d {
     pub fn reversed(&self) -> crate::OwnedPtr<Parab2d> {
         {
             let __result = unsafe { crate::ffi::gp_Parab2d_reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10402,16 +12455,21 @@ impl Parab2d {
     pub fn is_direct(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::gp_Parab2d_is_direct(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `gp_Parab2d.hxx`:196 - `gp_Parab2d::Mirror()`
     pub fn mirror_pnt2d(&mut self, theP: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Parab2d_mirror_pnt2d(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab2d_mirror_pnt2d(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10422,16 +12480,21 @@ impl Parab2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Parab2d_mirrored_pnt2d(self as *const Self, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Parab2d.hxx`:202 - `gp_Parab2d::Mirror()`
     pub fn mirror_ax2d(&mut self, theA: &Ax2d) {
         {
-            unsafe { crate::ffi::gp_Parab2d_mirror_ax2d(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab2d_mirror_ax2d(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10442,16 +12505,21 @@ impl Parab2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Parab2d_mirrored_ax2d(self as *const Self, theA) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Parab2d.hxx`:208 - `gp_Parab2d::Rotate()`
     pub fn rotate(&mut self, theP: &Pnt2d, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Parab2d_rotate(self as *mut Self, theP, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab2d_rotate(self as *mut Self, theP, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10462,16 +12530,21 @@ impl Parab2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Parab2d_rotated(self as *const Self, theP, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Parab2d.hxx`:219 - `gp_Parab2d::Scale()`
     pub fn scale(&mut self, theP: &Pnt2d, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Parab2d_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab2d_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10483,16 +12556,21 @@ impl Parab2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Parab2d_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Parab2d.hxx`:226 - `gp_Parab2d::Transform()`
     pub fn transform(&mut self, theT: &Trsf2d) {
         {
-            unsafe { crate::ffi::gp_Parab2d_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab2d_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10501,16 +12579,21 @@ impl Parab2d {
     pub fn transformed(&self, theT: &Trsf2d) -> crate::OwnedPtr<Parab2d> {
         {
             let __result = unsafe { crate::ffi::gp_Parab2d_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Parab2d.hxx`:231 - `gp_Parab2d::Translate()`
     pub fn translate_vec2d(&mut self, theV: &Vec2d) {
         {
-            unsafe { crate::ffi::gp_Parab2d_translate_vec2d(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Parab2d_translate_vec2d(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10521,16 +12604,22 @@ impl Parab2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Parab2d_translated_vec2d(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Parab2d.hxx`:242 - `gp_Parab2d::Translate()`
     pub fn translate_pnt2d2(&mut self, theP1: &Pnt2d, theP2: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Parab2d_translate_pnt2d2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Parab2d_translate_pnt2d2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10541,18 +12630,21 @@ impl Parab2d {
             let __result = unsafe {
                 crate::ffi::gp_Parab2d_translated_pnt2d2(self as *const Self, theP1, theP2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Parab2d_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Parab2d_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -10597,8 +12689,10 @@ impl Pln {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Pln_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10612,8 +12706,10 @@ impl Pln {
     pub fn new_ax3(theA3: &Ax3) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Pln_ctor_ax3(theA3) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10623,8 +12719,10 @@ impl Pln {
     pub fn new_pnt_dir(theP: &Pnt, theV: &Dir) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Pln_ctor_pnt_dir(theP, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10637,8 +12735,10 @@ impl Pln {
     pub fn new_real4(theA: f64, theB: f64, theC: f64, theD: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Pln_ctor_real4(theA, theB, theC, theD) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10649,8 +12749,12 @@ impl Pln {
     /// @endcode
     pub fn coefficients(&self, theA: &mut f64, theB: &mut f64, theC: &mut f64, theD: &mut f64) {
         {
-            unsafe { crate::ffi::gp_Pln_coefficients(self as *const Self, theA, theB, theC, theD) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Pln_coefficients(self as *const Self, theA, theB, theC, theD)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10661,8 +12765,10 @@ impl Pln {
     /// Raises ConstructionError if the theA1 is parallel to the "XAxis" of the plane.
     pub fn set_axis(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Pln_set_axis(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pln_set_axis(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10670,8 +12776,10 @@ impl Pln {
     /// Changes the origin of the plane.
     pub fn set_location(&mut self, theLoc: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Pln_set_location(self as *mut Self, theLoc) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pln_set_location(self as *mut Self, theLoc) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10679,8 +12787,10 @@ impl Pln {
     /// Changes the local coordinate system of the plane.
     pub fn set_position(&mut self, theA3: &Ax3) {
         {
-            unsafe { crate::ffi::gp_Pln_set_position(self as *mut Self, theA3) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pln_set_position(self as *mut Self, theA3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10689,8 +12799,10 @@ impl Pln {
     /// reversing the XAxis.
     pub fn u_reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Pln_u_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pln_u_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10699,8 +12811,10 @@ impl Pln {
     /// reversing the YAxis.
     pub fn v_reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Pln_v_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pln_v_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10709,8 +12823,11 @@ impl Pln {
     pub fn direct(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::gp_Pln_direct(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10719,8 +12836,11 @@ impl Pln {
     pub fn axis(&self) -> &Ax1 {
         {
             let __result = unsafe { crate::ffi::gp_Pln_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10729,8 +12849,11 @@ impl Pln {
     pub fn location(&self) -> &Pnt {
         {
             let __result = unsafe { crate::ffi::gp_Pln_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10739,8 +12862,11 @@ impl Pln {
     pub fn position(&self) -> &Ax3 {
         {
             let __result = unsafe { crate::ffi::gp_Pln_position(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10749,8 +12875,11 @@ impl Pln {
     pub fn distance_pnt(&self, theP: &Pnt) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Pln_distance_pnt(self as *const Self, theP) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10759,8 +12888,11 @@ impl Pln {
     pub fn distance_lin(&self, theL: &Lin) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Pln_distance_lin(self as *const Self, theL) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10770,8 +12902,11 @@ impl Pln {
         {
             let __result =
                 unsafe { crate::ffi::gp_Pln_distance_pln(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10781,8 +12916,11 @@ impl Pln {
         {
             let __result =
                 unsafe { crate::ffi::gp_Pln_square_distance_pnt(self as *const Self, theP) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10792,8 +12930,11 @@ impl Pln {
         {
             let __result =
                 unsafe { crate::ffi::gp_Pln_square_distance_lin(self as *const Self, theL) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10803,8 +12944,11 @@ impl Pln {
         {
             let __result =
                 unsafe { crate::ffi::gp_Pln_square_distance_pln(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10813,8 +12957,11 @@ impl Pln {
     pub fn x_axis(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Pln_x_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10823,8 +12970,11 @@ impl Pln {
     pub fn y_axis(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Pln_y_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10842,8 +12992,11 @@ impl Pln {
             let __result = unsafe {
                 crate::ffi::gp_Pln_contains_pnt_real(self as *const Self, theP, theLinearTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10871,16 +13024,21 @@ impl Pln {
                     theAngularTolerance,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `gp_Pln.hxx`:186 - `gp_Pln::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Pln_mirror_pnt(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pln_mirror_pnt(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10893,16 +13051,21 @@ impl Pln {
     pub fn mirrored_pnt(&self, theP: &Pnt) -> crate::OwnedPtr<Pln> {
         {
             let __result = unsafe { crate::ffi::gp_Pln_mirrored_pnt(self as *const Self, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Pln.hxx`:195 - `gp_Pln::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Pln_mirror_ax1(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pln_mirror_ax1(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10918,16 +13081,21 @@ impl Pln {
     pub fn mirrored_ax1(&self, theA1: &Ax1) -> crate::OwnedPtr<Pln> {
         {
             let __result = unsafe { crate::ffi::gp_Pln_mirrored_ax1(self as *const Self, theA1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Pln.hxx`:207 - `gp_Pln::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &Ax2) {
         {
-            unsafe { crate::ffi::gp_Pln_mirror_ax2(self as *mut Self, theA2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pln_mirror_ax2(self as *mut Self, theA2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10943,16 +13111,21 @@ impl Pln {
     pub fn mirrored_ax2(&self, theA2: &Ax2) -> crate::OwnedPtr<Pln> {
         {
             let __result = unsafe { crate::ffi::gp_Pln_mirrored_ax2(self as *const Self, theA2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Pln.hxx`:219 - `gp_Pln::Rotate()`
     pub fn rotate(&mut self, theA1: &Ax1, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Pln_rotate(self as *mut Self, theA1, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pln_rotate(self as *mut Self, theA1, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10963,16 +13136,21 @@ impl Pln {
         {
             let __result =
                 unsafe { crate::ffi::gp_Pln_rotated(self as *const Self, theA1, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Pln.hxx`:230 - `gp_Pln::Scale()`
     pub fn scale(&mut self, theP: &Pnt, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Pln_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pln_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10981,16 +13159,21 @@ impl Pln {
     pub fn scaled(&self, theP: &Pnt, theS: f64) -> crate::OwnedPtr<Pln> {
         {
             let __result = unsafe { crate::ffi::gp_Pln_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Pln.hxx`:240 - `gp_Pln::Transform()`
     pub fn transform(&mut self, theT: &Trsf) {
         {
-            unsafe { crate::ffi::gp_Pln_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pln_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11003,16 +13186,21 @@ impl Pln {
     pub fn transformed(&self, theT: &Trsf) -> crate::OwnedPtr<Pln> {
         {
             let __result = unsafe { crate::ffi::gp_Pln_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Pln.hxx`:254 - `gp_Pln::Translate()`
     pub fn translate_vec(&mut self, theV: &Vec) {
         {
-            unsafe { crate::ffi::gp_Pln_translate_vec(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pln_translate_vec(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11022,16 +13210,22 @@ impl Pln {
     pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Pln> {
         {
             let __result = unsafe { crate::ffi::gp_Pln_translated_vec(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Pln.hxx`:265 - `gp_Pln::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &Pnt, theP2: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Pln_translate_pnt2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Pln_translate_pnt2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11041,18 +13235,21 @@ impl Pln {
         {
             let __result =
                 unsafe { crate::ffi::gp_Pln_translated_pnt2(self as *const Self, theP1, theP2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Pln_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Pln_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -11076,8 +13273,10 @@ impl Pnt {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Pnt_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11086,8 +13285,10 @@ impl Pnt {
     pub fn new_xyz(theCoord: &XYZ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Pnt_ctor_xyz(theCoord) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11096,8 +13297,10 @@ impl Pnt {
     pub fn new_real3(theXp: f64, theYp: f64, theZp: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Pnt_ctor_real3(theXp, theYp, theZp) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11109,8 +13312,12 @@ impl Pnt {
     /// Raised if theIndex != {1, 2, 3}.
     pub fn set_coord_int_real(&mut self, theIndex: i32, theXi: f64) {
         {
-            unsafe { crate::ffi::gp_Pnt_set_coord_int_real(self as *mut Self, theIndex, theXi) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Pnt_set_coord_int_real(self as *mut Self, theIndex, theXi)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11118,8 +13325,12 @@ impl Pnt {
     /// For this point, assigns  the values theXp, theYp and theZp to its three coordinates.
     pub fn set_coord_real3(&mut self, theXp: f64, theYp: f64, theZp: f64) {
         {
-            unsafe { crate::ffi::gp_Pnt_set_coord_real3(self as *mut Self, theXp, theYp, theZp) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Pnt_set_coord_real3(self as *mut Self, theXp, theYp, theZp)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11127,8 +13338,10 @@ impl Pnt {
     /// Assigns the given value to the X coordinate of this point.
     pub fn set_x(&mut self, theX: f64) {
         {
-            unsafe { crate::ffi::gp_Pnt_set_x(self as *mut Self, theX) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pnt_set_x(self as *mut Self, theX) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11136,8 +13349,10 @@ impl Pnt {
     /// Assigns the given value to the Y coordinate of this point.
     pub fn set_y(&mut self, theY: f64) {
         {
-            unsafe { crate::ffi::gp_Pnt_set_y(self as *mut Self, theY) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pnt_set_y(self as *mut Self, theY) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11145,8 +13360,10 @@ impl Pnt {
     /// Assigns the given value to the Z coordinate of this point.
     pub fn set_z(&mut self, theZ: f64) {
         {
-            unsafe { crate::ffi::gp_Pnt_set_z(self as *mut Self, theZ) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pnt_set_z(self as *mut Self, theZ) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11154,8 +13371,10 @@ impl Pnt {
     /// Assigns the three coordinates of theCoord to this point.
     pub fn set_xyz(&mut self, theCoord: &XYZ) {
         {
-            unsafe { crate::ffi::gp_Pnt_set_xyz(self as *mut Self, theCoord) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pnt_set_xyz(self as *mut Self, theCoord) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11169,8 +13388,11 @@ impl Pnt {
     pub fn coord_int(&self, theIndex: i32) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Pnt_coord_int(self as *const Self, theIndex) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11178,8 +13400,11 @@ impl Pnt {
     /// For this point gives its three coordinates theXp, theYp and theZp.
     pub fn coord_real3(&self, theXp: &mut f64, theYp: &mut f64, theZp: &mut f64) {
         {
-            unsafe { crate::ffi::gp_Pnt_coord_real3(self as *const Self, theXp, theYp, theZp) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Pnt_coord_real3(self as *const Self, theXp, theYp, theZp) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11188,8 +13413,11 @@ impl Pnt {
     pub fn x(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Pnt_x(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11198,8 +13426,11 @@ impl Pnt {
     pub fn y(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Pnt_y(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11208,8 +13439,11 @@ impl Pnt {
     pub fn z(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Pnt_z(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11218,8 +13452,11 @@ impl Pnt {
     pub fn xyz(&self) -> &XYZ {
         {
             let __result = unsafe { crate::ffi::gp_Pnt_xyz(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11228,8 +13465,11 @@ impl Pnt {
     pub fn coord(&self) -> &XYZ {
         {
             let __result = unsafe { crate::ffi::gp_Pnt_coord(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11239,8 +13479,11 @@ impl Pnt {
     pub fn change_coord(&mut self) -> &mut XYZ {
         {
             let __result = unsafe { crate::ffi::gp_Pnt_change_coord(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -11249,8 +13492,12 @@ impl Pnt {
     /// (theAlpha*this + theBeta*theP) / (theAlpha + theBeta)
     pub fn bary_center(&mut self, theAlpha: f64, theP: &Pnt, theBeta: f64) {
         {
-            unsafe { crate::ffi::gp_Pnt_bary_center(self as *mut Self, theAlpha, theP, theBeta) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Pnt_bary_center(self as *mut Self, theAlpha, theP, theBeta)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11263,8 +13510,11 @@ impl Pnt {
             let __result = unsafe {
                 crate::ffi::gp_Pnt_is_equal(self as *const Self, theOther, theLinearTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11273,8 +13523,11 @@ impl Pnt {
     pub fn distance(&self, theOther: &Pnt) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Pnt_distance(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11284,8 +13537,11 @@ impl Pnt {
         {
             let __result =
                 unsafe { crate::ffi::gp_Pnt_square_distance(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11295,8 +13551,10 @@ impl Pnt {
     /// the  symmetry.
     pub fn mirror_pnt(&mut self, theP: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Pnt_mirror_pnt(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pnt_mirror_pnt(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11307,16 +13565,21 @@ impl Pnt {
     pub fn mirrored_pnt(&self, theP: &Pnt) -> crate::OwnedPtr<Pnt> {
         {
             let __result = unsafe { crate::ffi::gp_Pnt_mirrored_pnt(self as *const Self, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Pnt.hxx`:144 - `gp_Pnt::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Pnt_mirror_ax1(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pnt_mirror_ax1(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11327,16 +13590,21 @@ impl Pnt {
     pub fn mirrored_ax1(&self, theA1: &Ax1) -> crate::OwnedPtr<Pnt> {
         {
             let __result = unsafe { crate::ffi::gp_Pnt_mirrored_ax1(self as *const Self, theA1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Pnt.hxx`:151 - `gp_Pnt::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &Ax2) {
         {
-            unsafe { crate::ffi::gp_Pnt_mirror_ax2(self as *mut Self, theA2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pnt_mirror_ax2(self as *mut Self, theA2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11346,16 +13614,21 @@ impl Pnt {
     pub fn mirrored_ax2(&self, theA2: &Ax2) -> crate::OwnedPtr<Pnt> {
         {
             let __result = unsafe { crate::ffi::gp_Pnt_mirrored_ax2(self as *const Self, theA2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Pnt.hxx`:157 - `gp_Pnt::Rotate()`
     pub fn rotate(&mut self, theA1: &Ax1, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Pnt_rotate(self as *mut Self, theA1, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pnt_rotate(self as *mut Self, theA1, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11364,8 +13637,11 @@ impl Pnt {
         {
             let __result =
                 unsafe { crate::ffi::gp_Pnt_rotated(self as *const Self, theA1, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11373,8 +13649,10 @@ impl Pnt {
     /// Scales a point. theS is the scaling value.
     pub fn scale(&mut self, theP: &Pnt, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Pnt_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pnt_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11382,8 +13660,11 @@ impl Pnt {
     pub fn scaled(&self, theP: &Pnt, theS: f64) -> crate::OwnedPtr<Pnt> {
         {
             let __result = unsafe { crate::ffi::gp_Pnt_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11391,8 +13672,10 @@ impl Pnt {
     /// Transforms a point with the transformation T.
     pub fn transform(&mut self, theT: &Trsf) {
         {
-            unsafe { crate::ffi::gp_Pnt_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pnt_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11400,8 +13683,11 @@ impl Pnt {
     pub fn transformed(&self, theT: &Trsf) -> crate::OwnedPtr<Pnt> {
         {
             let __result = unsafe { crate::ffi::gp_Pnt_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11410,8 +13696,10 @@ impl Pnt {
     /// The magnitude of the translation is the vector's magnitude.
     pub fn translate_vec(&mut self, theV: &Vec) {
         {
-            unsafe { crate::ffi::gp_Pnt_translate_vec(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pnt_translate_vec(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11419,8 +13707,11 @@ impl Pnt {
     pub fn translated_vec(&self, theV: &Vec) -> crate::OwnedPtr<Pnt> {
         {
             let __result = unsafe { crate::ffi::gp_Pnt_translated_vec(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11428,8 +13719,11 @@ impl Pnt {
     /// Translates a point from the point theP1 to the point theP2.
     pub fn translate_pnt2(&mut self, theP1: &Pnt, theP2: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Pnt_translate_pnt2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Pnt_translate_pnt2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11438,18 +13732,21 @@ impl Pnt {
         {
             let __result =
                 unsafe { crate::ffi::gp_Pnt_translated_pnt2(self as *const Self, theP1, theP2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Pnt_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Pnt_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -11473,8 +13770,10 @@ impl Pnt2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Pnt2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11483,8 +13782,10 @@ impl Pnt2d {
     pub fn new_xy(theCoord: &XY) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Pnt2d_ctor_xy(theCoord) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11493,8 +13794,10 @@ impl Pnt2d {
     pub fn new_real2(theXp: f64, theYp: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Pnt2d_ctor_real2(theXp, theYp) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11505,8 +13808,12 @@ impl Pnt2d {
     /// Raises OutOfRange if theIndex != {1, 2}.
     pub fn set_coord_int_real(&mut self, theIndex: i32, theXi: f64) {
         {
-            unsafe { crate::ffi::gp_Pnt2d_set_coord_int_real(self as *mut Self, theIndex, theXi) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Pnt2d_set_coord_int_real(self as *mut Self, theIndex, theXi)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11514,8 +13821,11 @@ impl Pnt2d {
     /// For this point, assigns the values theXp and theYp to its two coordinates
     pub fn set_coord_real2(&mut self, theXp: f64, theYp: f64) {
         {
-            unsafe { crate::ffi::gp_Pnt2d_set_coord_real2(self as *mut Self, theXp, theYp) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Pnt2d_set_coord_real2(self as *mut Self, theXp, theYp) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11523,8 +13833,10 @@ impl Pnt2d {
     /// Assigns the given value to the X  coordinate of this point.
     pub fn set_x(&mut self, theX: f64) {
         {
-            unsafe { crate::ffi::gp_Pnt2d_set_x(self as *mut Self, theX) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pnt2d_set_x(self as *mut Self, theX) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11532,8 +13844,10 @@ impl Pnt2d {
     /// Assigns the given value to the Y  coordinate of this point.
     pub fn set_y(&mut self, theY: f64) {
         {
-            unsafe { crate::ffi::gp_Pnt2d_set_y(self as *mut Self, theY) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pnt2d_set_y(self as *mut Self, theY) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11541,8 +13855,10 @@ impl Pnt2d {
     /// Assigns the two coordinates of Coord to this point.
     pub fn set_xy(&mut self, theCoord: &XY) {
         {
-            unsafe { crate::ffi::gp_Pnt2d_set_xy(self as *mut Self, theCoord) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pnt2d_set_xy(self as *mut Self, theCoord) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11554,8 +13870,11 @@ impl Pnt2d {
     pub fn coord_int(&self, theIndex: i32) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Pnt2d_coord_int(self as *const Self, theIndex) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11563,8 +13882,11 @@ impl Pnt2d {
     /// For this point returns its two coordinates as a number pair.
     pub fn coord_real2(&self, theXp: &mut f64, theYp: &mut f64) {
         {
-            unsafe { crate::ffi::gp_Pnt2d_coord_real2(self as *const Self, theXp, theYp) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Pnt2d_coord_real2(self as *const Self, theXp, theYp) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11573,8 +13895,11 @@ impl Pnt2d {
     pub fn x(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Pnt2d_x(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11583,8 +13908,11 @@ impl Pnt2d {
     pub fn y(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Pnt2d_y(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11593,8 +13921,11 @@ impl Pnt2d {
     pub fn xy(&self) -> &XY {
         {
             let __result = unsafe { crate::ffi::gp_Pnt2d_xy(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11603,8 +13934,11 @@ impl Pnt2d {
     pub fn coord(&self) -> &XY {
         {
             let __result = unsafe { crate::ffi::gp_Pnt2d_coord(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11614,8 +13948,11 @@ impl Pnt2d {
     pub fn change_coord(&mut self) -> &mut XY {
         {
             let __result = unsafe { crate::ffi::gp_Pnt2d_change_coord(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -11628,8 +13965,11 @@ impl Pnt2d {
             let __result = unsafe {
                 crate::ffi::gp_Pnt2d_is_equal(self as *const Self, theOther, theLinearTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11638,8 +13978,11 @@ impl Pnt2d {
     pub fn distance(&self, theOther: &Pnt2d) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Pnt2d_distance(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11649,8 +13992,11 @@ impl Pnt2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Pnt2d_square_distance(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11660,8 +14006,10 @@ impl Pnt2d {
     /// the  symmetry.
     pub fn mirror_pnt2d(&mut self, theP: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Pnt2d_mirror_pnt2d(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pnt2d_mirror_pnt2d(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11672,16 +14020,21 @@ impl Pnt2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Pnt2d_mirrored_pnt2d(self as *const Self, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Pnt2d.hxx`:123 - `gp_Pnt2d::Mirror()`
     pub fn mirror_ax2d(&mut self, theA: &Ax2d) {
         {
-            unsafe { crate::ffi::gp_Pnt2d_mirror_ax2d(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pnt2d_mirror_ax2d(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11689,8 +14042,11 @@ impl Pnt2d {
     pub fn mirrored_ax2d(&self, theA: &Ax2d) -> crate::OwnedPtr<Pnt2d> {
         {
             let __result = unsafe { crate::ffi::gp_Pnt2d_mirrored_ax2d(self as *const Self, theA) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11699,8 +14055,10 @@ impl Pnt2d {
     /// Ang is the angular value of the rotation in radians.
     pub fn rotate(&mut self, theP: &Pnt2d, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Pnt2d_rotate(self as *mut Self, theP, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pnt2d_rotate(self as *mut Self, theP, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11709,8 +14067,11 @@ impl Pnt2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Pnt2d_rotated(self as *const Self, theP, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11718,8 +14079,10 @@ impl Pnt2d {
     /// Scales a point. theS is the scaling value.
     pub fn scale(&mut self, theP: &Pnt2d, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Pnt2d_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pnt2d_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11727,8 +14090,11 @@ impl Pnt2d {
     pub fn scaled(&self, theP: &Pnt2d, theS: f64) -> crate::OwnedPtr<Pnt2d> {
         {
             let __result = unsafe { crate::ffi::gp_Pnt2d_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11736,8 +14102,10 @@ impl Pnt2d {
     /// Transforms a point with the transformation theT.
     pub fn transform(&mut self, theT: &Trsf2d) {
         {
-            unsafe { crate::ffi::gp_Pnt2d_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pnt2d_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11745,8 +14113,11 @@ impl Pnt2d {
     pub fn transformed(&self, theT: &Trsf2d) -> crate::OwnedPtr<Pnt2d> {
         {
             let __result = unsafe { crate::ffi::gp_Pnt2d_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11755,8 +14126,10 @@ impl Pnt2d {
     /// The magnitude of the translation is the vector's magnitude.
     pub fn translate_vec2d(&mut self, theV: &Vec2d) {
         {
-            unsafe { crate::ffi::gp_Pnt2d_translate_vec2d(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Pnt2d_translate_vec2d(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11765,8 +14138,11 @@ impl Pnt2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Pnt2d_translated_vec2d(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11774,8 +14150,11 @@ impl Pnt2d {
     /// Translates a point from the point theP1 to the point theP2.
     pub fn translate_pnt2d2(&mut self, theP1: &Pnt2d, theP2: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Pnt2d_translate_pnt2d2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Pnt2d_translate_pnt2d2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11785,18 +14164,21 @@ impl Pnt2d {
             let __result = unsafe {
                 crate::ffi::gp_Pnt2d_translated_pnt2d2(self as *const Self, theP1, theP2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Pnt2d_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Pnt2d_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -11826,8 +14208,10 @@ impl Quaternion {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Quaternion_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11836,8 +14220,10 @@ impl Quaternion {
     pub fn new_real4(theX: f64, theY: f64, theZ: f64, theW: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Quaternion_ctor_real4(theX, theY, theZ, theW) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11847,8 +14233,10 @@ impl Quaternion {
     pub fn new_vec2(theVecFrom: &Vec, theVecTo: &Vec) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Quaternion_ctor_vec2(theVecFrom, theVecTo) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11867,8 +14255,10 @@ impl Quaternion {
             let __result = unsafe {
                 crate::ffi::gp_Quaternion_ctor_vec3(theVecFrom, theVecTo, theHelpCrossVec)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11878,8 +14268,10 @@ impl Quaternion {
     pub fn new_vec_real(theAxis: &Vec, theAngle: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Quaternion_ctor_vec_real(theAxis, theAngle) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11889,8 +14281,10 @@ impl Quaternion {
     pub fn new_mat(theMat: &Mat) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Quaternion_ctor_mat(theMat) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11900,8 +14294,11 @@ impl Quaternion {
         {
             let __result =
                 unsafe { crate::ffi::gp_Quaternion_is_equal(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11912,10 +14309,12 @@ impl Quaternion {
     /// axis is computed as theVecFrom ^ (1,0,0) or theVecFrom ^ (0,0,1).
     pub fn set_rotation_vec2(&mut self, theVecFrom: &Vec, theVecTo: &Vec) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Quaternion_set_rotation_vec2(self as *mut Self, theVecFrom, theVecTo)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11926,7 +14325,7 @@ impl Quaternion {
     /// axis is computed as theVecFrom ^ theHelpCrossVec.
     pub fn set_rotation_vec3(&mut self, theVecFrom: &Vec, theVecTo: &Vec, theHelpCrossVec: &Vec) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Quaternion_set_rotation_vec3(
                     self as *mut Self,
                     theVecFrom,
@@ -11934,7 +14333,9 @@ impl Quaternion {
                     theHelpCrossVec,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11942,10 +14343,12 @@ impl Quaternion {
     /// Create a unit quaternion from Axis+Angle representation
     pub fn set_vector_and_angle(&mut self, theAxis: &Vec, theAngle: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Quaternion_set_vector_and_angle(self as *mut Self, theAxis, theAngle)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11954,14 +14357,16 @@ impl Quaternion {
     /// preserve the axis direction and angle from -PI to +PI
     pub fn get_vector_and_angle(&self, theAxis: &mut Vec, theAngle: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Quaternion_get_vector_and_angle(
                     self as *const Self,
                     theAxis,
                     theAngle,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11973,8 +14378,10 @@ impl Quaternion {
     /// and than search others from this one
     pub fn set_matrix(&mut self, theMat: &Mat) {
         {
-            unsafe { crate::ffi::gp_Quaternion_set_matrix(self as *mut Self, theMat) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Quaternion_set_matrix(self as *mut Self, theMat) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11983,8 +14390,11 @@ impl Quaternion {
     pub fn get_matrix(&self) -> crate::OwnedPtr<Mat> {
         {
             let __result = unsafe { crate::ffi::gp_Quaternion_get_matrix(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11999,7 +14409,7 @@ impl Quaternion {
         theGamma: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Quaternion_set_euler_angles(
                     self as *mut Self,
                     theOrder.into(),
@@ -12008,7 +14418,9 @@ impl Quaternion {
                     theGamma,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12022,7 +14434,7 @@ impl Quaternion {
         theGamma: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Quaternion_get_euler_angles(
                     self as *const Self,
                     theOrder.into(),
@@ -12031,25 +14443,33 @@ impl Quaternion {
                     theGamma,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `gp_Quaternion.hxx`:131 - `gp_Quaternion::Set()`
     pub fn set_real4(&mut self, theX: f64, theY: f64, theZ: f64, theW: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Quaternion_set_real4(self as *mut Self, theX, theY, theZ, theW)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `gp_Quaternion.hxx`:136 - `gp_Quaternion::Set()`
     pub fn set_quaternion(&mut self, theQuaternion: &Quaternion) {
         {
-            unsafe { crate::ffi::gp_Quaternion_set_quaternion(self as *mut Self, theQuaternion) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Quaternion_set_quaternion(self as *mut Self, theQuaternion)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12057,8 +14477,11 @@ impl Quaternion {
     pub fn x(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Quaternion_x(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12066,8 +14489,11 @@ impl Quaternion {
     pub fn y(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Quaternion_y(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12075,8 +14501,11 @@ impl Quaternion {
     pub fn z(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Quaternion_z(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12084,8 +14513,11 @@ impl Quaternion {
     pub fn w(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Quaternion_w(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12093,8 +14525,10 @@ impl Quaternion {
     /// Make identity quaternion (zero-rotation)
     pub fn set_ident(&mut self) {
         {
-            unsafe { crate::ffi::gp_Quaternion_set_ident(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Quaternion_set_ident(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12102,8 +14536,10 @@ impl Quaternion {
     /// Reverse direction of rotation (conjugate quaternion)
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Quaternion_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Quaternion_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12112,8 +14548,11 @@ impl Quaternion {
     pub fn reversed(&self) -> crate::OwnedPtr<Quaternion> {
         {
             let __result = unsafe { crate::ffi::gp_Quaternion_reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12121,8 +14560,10 @@ impl Quaternion {
     /// Inverts quaternion (both rotation direction and norm)
     pub fn invert(&mut self) {
         {
-            unsafe { crate::ffi::gp_Quaternion_invert(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Quaternion_invert(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12131,8 +14572,11 @@ impl Quaternion {
     pub fn inverted(&self) -> crate::OwnedPtr<Quaternion> {
         {
             let __result = unsafe { crate::ffi::gp_Quaternion_inverted(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12141,8 +14585,11 @@ impl Quaternion {
     pub fn square_norm(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Quaternion_square_norm(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12151,8 +14598,11 @@ impl Quaternion {
     pub fn norm(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Quaternion_norm(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12161,8 +14611,10 @@ impl Quaternion {
     /// rotation is not changed by this operation (except 0-scaling)
     pub fn scale(&mut self, theScale: f64) {
         {
-            unsafe { crate::ffi::gp_Quaternion_scale(self as *mut Self, theScale) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Quaternion_scale(self as *mut Self, theScale) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12172,8 +14624,11 @@ impl Quaternion {
         {
             let __result =
                 unsafe { crate::ffi::gp_Quaternion_scaled(self as *const Self, theScale) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12183,8 +14638,10 @@ impl Quaternion {
     /// and preserve length goes to 0 or infinity
     pub fn stabilize_length(&mut self) {
         {
-            unsafe { crate::ffi::gp_Quaternion_stabilize_length(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Quaternion_stabilize_length(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12194,8 +14651,10 @@ impl Quaternion {
     /// so we can be sure that can divide by magnitude
     pub fn normalize(&mut self) {
         {
-            unsafe { crate::ffi::gp_Quaternion_normalize(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Quaternion_normalize(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12204,8 +14663,11 @@ impl Quaternion {
     pub fn normalized(&self) -> crate::OwnedPtr<Quaternion> {
         {
             let __result = unsafe { crate::ffi::gp_Quaternion_normalized(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12216,8 +14678,11 @@ impl Quaternion {
     pub fn negated(&self) -> crate::OwnedPtr<Quaternion> {
         {
             let __result = unsafe { crate::ffi::gp_Quaternion_negated(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12227,8 +14692,11 @@ impl Quaternion {
         {
             let __result =
                 unsafe { crate::ffi::gp_Quaternion_added(self as *const Self, theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12238,8 +14706,11 @@ impl Quaternion {
         {
             let __result =
                 unsafe { crate::ffi::gp_Quaternion_subtracted(self as *const Self, theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12258,8 +14729,11 @@ impl Quaternion {
         {
             let __result =
                 unsafe { crate::ffi::gp_Quaternion_multiplied(self as *const Self, theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12267,8 +14741,10 @@ impl Quaternion {
     /// Adds components of other quaternion; result is "rotations mix"
     pub fn add(&mut self, theOther: &Quaternion) {
         {
-            unsafe { crate::ffi::gp_Quaternion_add(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Quaternion_add(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12276,8 +14752,10 @@ impl Quaternion {
     /// Subtracts components of other quaternion; result is "rotations mix"
     pub fn subtract(&mut self, theOther: &Quaternion) {
         {
-            unsafe { crate::ffi::gp_Quaternion_subtract(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Quaternion_subtract(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12285,8 +14763,12 @@ impl Quaternion {
     /// Adds rotation by multiplication
     pub fn multiply_quaternion(&mut self, theOther: &Quaternion) {
         {
-            unsafe { crate::ffi::gp_Quaternion_multiply_quaternion(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Quaternion_multiply_quaternion(self as *mut Self, theOther)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12295,8 +14777,11 @@ impl Quaternion {
     pub fn dot(&self, theOther: &Quaternion) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Quaternion_dot(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12306,8 +14791,11 @@ impl Quaternion {
         {
             let __result =
                 unsafe { crate::ffi::gp_Quaternion_get_rotation_angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12317,18 +14805,21 @@ impl Quaternion {
         {
             let __result =
                 unsafe { crate::ffi::gp_Quaternion_multiply_vec(self as *const Self, theVec) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Quaternion_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Quaternion_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -12353,8 +14844,10 @@ impl QuaternionNLerp {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_QuaternionNLerp_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12364,8 +14857,10 @@ impl QuaternionNLerp {
         {
             let __result =
                 unsafe { crate::ffi::gp_QuaternionNLerp_ctor_quaternion2(theQStart, theQEnd) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12373,8 +14868,12 @@ impl QuaternionNLerp {
     /// Initialize the tool with Start and End values.
     pub fn init(&mut self, theQStart: &Quaternion, theQEnd: &Quaternion) {
         {
-            unsafe { crate::ffi::gp_QuaternionNLerp_init(self as *mut Self, theQStart, theQEnd) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_QuaternionNLerp_init(self as *mut Self, theQStart, theQEnd)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12382,10 +14881,12 @@ impl QuaternionNLerp {
     /// Initialize the tool with Start and End unit quaternions.
     pub fn init_from_unit(&mut self, theQStart: &Quaternion, theQEnd: &Quaternion) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_QuaternionNLerp_init_from_unit(self as *mut Self, theQStart, theQEnd)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12393,10 +14894,12 @@ impl QuaternionNLerp {
     /// Set interpolated quaternion for theT position (from 0.0 to 1.0)
     pub fn interpolate(&self, theT: f64, theResultQ: &mut Quaternion) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_QuaternionNLerp_interpolate(self as *const Self, theT, theResultQ)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12417,18 +14920,21 @@ impl QuaternionNLerp {
                     theQStart, theQEnd, theT,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_QuaternionNLerp_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_QuaternionNLerp_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -12453,8 +14959,10 @@ impl QuaternionSLerp {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_QuaternionSLerp_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12464,8 +14972,10 @@ impl QuaternionSLerp {
         {
             let __result =
                 unsafe { crate::ffi::gp_QuaternionSLerp_ctor_quaternion2(theQStart, theQEnd) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12473,8 +14983,12 @@ impl QuaternionSLerp {
     /// Initialize the tool with Start and End values.
     pub fn init(&mut self, theQStart: &Quaternion, theQEnd: &Quaternion) {
         {
-            unsafe { crate::ffi::gp_QuaternionSLerp_init(self as *mut Self, theQStart, theQEnd) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_QuaternionSLerp_init(self as *mut Self, theQStart, theQEnd)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12482,10 +14996,12 @@ impl QuaternionSLerp {
     /// Initialize the tool with Start and End unit quaternions.
     pub fn init_from_unit(&mut self, theQStart: &Quaternion, theQEnd: &Quaternion) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_QuaternionSLerp_init_from_unit(self as *mut Self, theQStart, theQEnd)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12493,10 +15009,12 @@ impl QuaternionSLerp {
     /// Set interpolated quaternion for theT position (from 0.0 to 1.0)
     pub fn interpolate(&self, theT: f64, theResultQ: &mut Quaternion) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_QuaternionSLerp_interpolate(self as *const Self, theT, theResultQ)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12517,18 +15035,21 @@ impl QuaternionSLerp {
                     theQStart, theQEnd, theT,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_QuaternionSLerp_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_QuaternionSLerp_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -12571,8 +15092,10 @@ impl Sphere {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Sphere_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12585,8 +15108,10 @@ impl Sphere {
     pub fn new_ax3_real(theA3: &Ax3, theRadius: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Sphere_ctor_ax3_real(theA3, theRadius) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12594,8 +15119,10 @@ impl Sphere {
     /// Changes the center of the sphere.
     pub fn set_location(&mut self, theLoc: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Sphere_set_location(self as *mut Self, theLoc) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Sphere_set_location(self as *mut Self, theLoc) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12603,8 +15130,10 @@ impl Sphere {
     /// Changes the local coordinate system of the sphere.
     pub fn set_position(&mut self, theA3: &Ax3) {
         {
-            unsafe { crate::ffi::gp_Sphere_set_position(self as *mut Self, theA3) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Sphere_set_position(self as *mut Self, theA3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12615,8 +15144,10 @@ impl Sphere {
     /// Raises ConstructionError if theR < 0.0
     pub fn set_radius(&mut self, theR: f64) {
         {
-            unsafe { crate::ffi::gp_Sphere_set_radius(self as *mut Self, theR) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Sphere_set_radius(self as *mut Self, theR) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12625,8 +15156,11 @@ impl Sphere {
     pub fn area(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Sphere_area(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12651,7 +15185,7 @@ impl Sphere {
         theD: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Sphere_coefficients(
                     self as *const Self,
                     theA1,
@@ -12666,7 +15200,9 @@ impl Sphere {
                     theD,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12675,8 +15211,10 @@ impl Sphere {
     /// reversing the YAxis.
     pub fn u_reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Sphere_u_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Sphere_u_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12685,8 +15223,10 @@ impl Sphere {
     /// reversing the ZAxis.
     pub fn v_reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Sphere_v_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Sphere_v_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12696,8 +15236,11 @@ impl Sphere {
     pub fn direct(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::gp_Sphere_direct(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12707,8 +15250,11 @@ impl Sphere {
     pub fn location(&self) -> &Pnt {
         {
             let __result = unsafe { crate::ffi::gp_Sphere_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -12717,8 +15263,11 @@ impl Sphere {
     pub fn position(&self) -> &Ax3 {
         {
             let __result = unsafe { crate::ffi::gp_Sphere_position(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -12727,8 +15276,11 @@ impl Sphere {
     pub fn radius(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Sphere_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12737,8 +15289,11 @@ impl Sphere {
     pub fn volume(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Sphere_volume(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12747,8 +15302,11 @@ impl Sphere {
     pub fn x_axis(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Sphere_x_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12757,16 +15315,21 @@ impl Sphere {
     pub fn y_axis(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Sphere_y_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Sphere.hxx`:133 - `gp_Sphere::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Sphere_mirror_pnt(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Sphere_mirror_pnt(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12777,16 +15340,21 @@ impl Sphere {
     pub fn mirrored_pnt(&self, theP: &Pnt) -> crate::OwnedPtr<Sphere> {
         {
             let __result = unsafe { crate::ffi::gp_Sphere_mirrored_pnt(self as *const Self, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Sphere.hxx`:140 - `gp_Sphere::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Sphere_mirror_ax1(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Sphere_mirror_ax1(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12798,16 +15366,21 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::gp_Sphere_mirrored_ax1(self as *const Self, theA1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Sphere.hxx`:147 - `gp_Sphere::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &Ax2) {
         {
-            unsafe { crate::ffi::gp_Sphere_mirror_ax2(self as *mut Self, theA2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Sphere_mirror_ax2(self as *mut Self, theA2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12819,16 +15392,21 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::gp_Sphere_mirrored_ax2(self as *const Self, theA2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Sphere.hxx`:154 - `gp_Sphere::Rotate()`
     pub fn rotate(&mut self, theA1: &Ax1, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Sphere_rotate(self as *mut Self, theA1, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Sphere_rotate(self as *mut Self, theA1, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12839,16 +15417,21 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::gp_Sphere_rotated(self as *const Self, theA1, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Sphere.hxx`:165 - `gp_Sphere::Scale()`
     pub fn scale(&mut self, theP: &Pnt, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Sphere_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Sphere_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12858,16 +15441,21 @@ impl Sphere {
     pub fn scaled(&self, theP: &Pnt, theS: f64) -> crate::OwnedPtr<Sphere> {
         {
             let __result = unsafe { crate::ffi::gp_Sphere_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Sphere.hxx`:171 - `gp_Sphere::Transform()`
     pub fn transform(&mut self, theT: &Trsf) {
         {
-            unsafe { crate::ffi::gp_Sphere_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Sphere_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12876,16 +15464,21 @@ impl Sphere {
     pub fn transformed(&self, theT: &Trsf) -> crate::OwnedPtr<Sphere> {
         {
             let __result = unsafe { crate::ffi::gp_Sphere_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Sphere.hxx`:176 - `gp_Sphere::Translate()`
     pub fn translate_vec(&mut self, theV: &Vec) {
         {
-            unsafe { crate::ffi::gp_Sphere_translate_vec(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Sphere_translate_vec(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12896,16 +15489,22 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::gp_Sphere_translated_vec(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Sphere.hxx`:187 - `gp_Sphere::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &Pnt, theP2: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Sphere_translate_pnt2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Sphere_translate_pnt2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12915,18 +15514,21 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::gp_Sphere_translated_pnt2(self as *const Self, theP1, theP2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Sphere_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Sphere_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -12981,8 +15583,10 @@ impl Torus {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Torus_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13004,8 +15608,10 @@ impl Torus {
             let __result = unsafe {
                 crate::ffi::gp_Torus_ctor_ax3_real2(theA3, theMajorRadius, theMinorRadius)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13018,8 +15624,10 @@ impl Torus {
     /// of the coordinate system of the toroidal surface.
     pub fn set_axis(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Torus_set_axis(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Torus_set_axis(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13027,8 +15635,10 @@ impl Torus {
     /// Changes the location of the torus.
     pub fn set_location(&mut self, theLoc: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Torus_set_location(self as *mut Self, theLoc) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Torus_set_location(self as *mut Self, theLoc) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13037,8 +15647,11 @@ impl Torus {
     /// Raises ConstructionError if theMajorRadius - MinorRadius <= Resolution()
     pub fn set_major_radius(&mut self, theMajorRadius: f64) {
         {
-            unsafe { crate::ffi::gp_Torus_set_major_radius(self as *mut Self, theMajorRadius) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Torus_set_major_radius(self as *mut Self, theMajorRadius) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13048,8 +15661,11 @@ impl Torus {
     /// MajorRadius - theMinorRadius <= Resolution from gp.
     pub fn set_minor_radius(&mut self, theMinorRadius: f64) {
         {
-            unsafe { crate::ffi::gp_Torus_set_minor_radius(self as *mut Self, theMinorRadius) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Torus_set_minor_radius(self as *mut Self, theMinorRadius) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13057,8 +15673,10 @@ impl Torus {
     /// Changes the local coordinate system of the surface.
     pub fn set_position(&mut self, theA3: &Ax3) {
         {
-            unsafe { crate::ffi::gp_Torus_set_position(self as *mut Self, theA3) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Torus_set_position(self as *mut Self, theA3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13067,8 +15685,11 @@ impl Torus {
     pub fn area(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Torus_area(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13077,8 +15698,10 @@ impl Torus {
     /// reversing the YAxis.
     pub fn u_reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Torus_u_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Torus_u_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13087,8 +15710,10 @@ impl Torus {
     /// reversing the ZAxis.
     pub fn v_reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Torus_v_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Torus_v_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13097,8 +15722,11 @@ impl Torus {
     pub fn direct(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::gp_Torus_direct(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13107,8 +15735,11 @@ impl Torus {
     pub fn axis(&self) -> &Ax1 {
         {
             let __result = unsafe { crate::ffi::gp_Torus_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13134,8 +15765,10 @@ impl Torus {
     /// Raises DimensionError if the length of theCoef is lower than 35.
     pub fn coefficients(&self, theCoef: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::gp_Torus_coefficients(self as *const Self, theCoef) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Torus_coefficients(self as *const Self, theCoef) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13144,8 +15777,11 @@ impl Torus {
     pub fn location(&self) -> &Pnt {
         {
             let __result = unsafe { crate::ffi::gp_Torus_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13154,8 +15790,11 @@ impl Torus {
     pub fn position(&self) -> &Ax3 {
         {
             let __result = unsafe { crate::ffi::gp_Torus_position(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13164,8 +15803,11 @@ impl Torus {
     pub fn major_radius(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Torus_major_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13174,8 +15816,11 @@ impl Torus {
     pub fn minor_radius(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Torus_minor_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13184,8 +15829,11 @@ impl Torus {
     pub fn volume(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Torus_volume(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13194,8 +15842,11 @@ impl Torus {
     pub fn x_axis(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Torus_x_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13204,16 +15855,21 @@ impl Torus {
     pub fn y_axis(&self) -> crate::OwnedPtr<Ax1> {
         {
             let __result = unsafe { crate::ffi::gp_Torus_y_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Torus.hxx`:182 - `gp_Torus::Mirror()`
     pub fn mirror_pnt(&mut self, theP: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Torus_mirror_pnt(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Torus_mirror_pnt(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13224,16 +15880,21 @@ impl Torus {
     pub fn mirrored_pnt(&self, theP: &Pnt) -> crate::OwnedPtr<Torus> {
         {
             let __result = unsafe { crate::ffi::gp_Torus_mirrored_pnt(self as *const Self, theP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Torus.hxx`:189 - `gp_Torus::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Torus_mirror_ax1(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Torus_mirror_ax1(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13244,16 +15905,21 @@ impl Torus {
     pub fn mirrored_ax1(&self, theA1: &Ax1) -> crate::OwnedPtr<Torus> {
         {
             let __result = unsafe { crate::ffi::gp_Torus_mirrored_ax1(self as *const Self, theA1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Torus.hxx`:196 - `gp_Torus::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &Ax2) {
         {
-            unsafe { crate::ffi::gp_Torus_mirror_ax2(self as *mut Self, theA2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Torus_mirror_ax2(self as *mut Self, theA2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13264,16 +15930,21 @@ impl Torus {
     pub fn mirrored_ax2(&self, theA2: &Ax2) -> crate::OwnedPtr<Torus> {
         {
             let __result = unsafe { crate::ffi::gp_Torus_mirrored_ax2(self as *const Self, theA2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Torus.hxx`:203 - `gp_Torus::Rotate()`
     pub fn rotate(&mut self, theA1: &Ax1, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Torus_rotate(self as *mut Self, theA1, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Torus_rotate(self as *mut Self, theA1, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13284,16 +15955,21 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::gp_Torus_rotated(self as *const Self, theA1, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Torus.hxx`:214 - `gp_Torus::Scale()`
     pub fn scale(&mut self, theP: &Pnt, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Torus_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Torus_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13303,16 +15979,21 @@ impl Torus {
     pub fn scaled(&self, theP: &Pnt, theS: f64) -> crate::OwnedPtr<Torus> {
         {
             let __result = unsafe { crate::ffi::gp_Torus_scaled(self as *const Self, theP, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Torus.hxx`:220 - `gp_Torus::Transform()`
     pub fn transform(&mut self, theT: &Trsf) {
         {
-            unsafe { crate::ffi::gp_Torus_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Torus_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13321,16 +16002,21 @@ impl Torus {
     pub fn transformed(&self, theT: &Trsf) -> crate::OwnedPtr<Torus> {
         {
             let __result = unsafe { crate::ffi::gp_Torus_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Torus.hxx`:225 - `gp_Torus::Translate()`
     pub fn translate_vec(&mut self, theV: &Vec) {
         {
-            unsafe { crate::ffi::gp_Torus_translate_vec(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Torus_translate_vec(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13341,16 +16027,22 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::gp_Torus_translated_vec(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Torus.hxx`:236 - `gp_Torus::Translate()`
     pub fn translate_pnt2(&mut self, theP1: &Pnt, theP2: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Torus_translate_pnt2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Torus_translate_pnt2(self as *mut Self, theP1, theP2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13360,18 +16052,21 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::gp_Torus_translated_pnt2(self as *const Self, theP1, theP2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Torus_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Torus_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -13413,8 +16108,10 @@ impl Trsf {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Trsf_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13438,8 +16135,10 @@ impl Trsf {
     pub fn new_trsf2d(theT: &Trsf2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Trsf_ctor_trsf2d(theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13448,8 +16147,10 @@ impl Trsf {
     /// theP is the center of the symmetry.
     pub fn set_mirror_pnt(&mut self, theP: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Trsf_set_mirror_pnt(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Trsf_set_mirror_pnt(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13458,8 +16159,10 @@ impl Trsf {
     /// theA1 is the center of the axial symmetry.
     pub fn set_mirror_ax1(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Trsf_set_mirror_ax1(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Trsf_set_mirror_ax1(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13470,8 +16173,10 @@ impl Trsf {
     /// Direction" and "Y Direction".
     pub fn set_mirror_ax2(&mut self, theA2: &Ax2) {
         {
-            unsafe { crate::ffi::gp_Trsf_set_mirror_ax2(self as *mut Self, theA2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Trsf_set_mirror_ax2(self as *mut Self, theA2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13481,8 +16186,12 @@ impl Trsf {
     /// rotation in radians.
     pub fn set_rotation_ax1_real(&mut self, theA1: &Ax1, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Trsf_set_rotation_ax1_real(self as *mut Self, theA1, theAng) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Trsf_set_rotation_ax1_real(self as *mut Self, theA1, theAng)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13492,8 +16201,11 @@ impl Trsf {
     /// no translation is involved.
     pub fn set_rotation_quaternion(&mut self, theR: &Quaternion) {
         {
-            unsafe { crate::ffi::gp_Trsf_set_rotation_quaternion(self as *mut Self, theR) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Trsf_set_rotation_quaternion(self as *mut Self, theR) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13501,8 +16213,10 @@ impl Trsf {
     /// Replaces the rotation part with specified quaternion.
     pub fn set_rotation_part(&mut self, theR: &Quaternion) {
         {
-            unsafe { crate::ffi::gp_Trsf_set_rotation_part(self as *mut Self, theR) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Trsf_set_rotation_part(self as *mut Self, theR) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13512,8 +16226,10 @@ impl Trsf {
     /// Raises ConstructionError  If <theS> is null.
     pub fn set_scale(&mut self, theP: &Pnt, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Trsf_set_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Trsf_set_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13540,14 +16256,16 @@ impl Trsf {
     /// inverse of the vectorial part of the other.
     pub fn set_displacement(&mut self, theFromSystem1: &Ax3, theToSystem2: &Ax3) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Trsf_set_displacement(
                     self as *mut Self,
                     theFromSystem1,
                     theToSystem2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13572,14 +16290,16 @@ impl Trsf {
     /// @endcode
     pub fn set_transformation_ax32(&mut self, theFromSystem1: &Ax3, theToSystem2: &Ax3) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Trsf_set_transformation_ax32(
                     self as *mut Self,
                     theFromSystem1,
                     theToSystem2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13598,8 +16318,12 @@ impl Trsf {
     /// defaulted to the absolute coordinate system.
     pub fn set_transformation_ax3(&mut self, theToSystem: &Ax3) {
         {
-            unsafe { crate::ffi::gp_Trsf_set_transformation_ax3(self as *mut Self, theToSystem) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Trsf_set_transformation_ax3(self as *mut Self, theToSystem)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13607,10 +16331,12 @@ impl Trsf {
     /// Sets transformation by directly specified rotation and translation.
     pub fn set_transformation_quaternion_vec(&mut self, R: &Quaternion, theT: &Vec) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Trsf_set_transformation_quaternion_vec(self as *mut Self, R, theT)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13619,8 +16345,10 @@ impl Trsf {
     /// theV is the vector of the translation.
     pub fn set_translation_vec(&mut self, theV: &Vec) {
         {
-            unsafe { crate::ffi::gp_Trsf_set_translation_vec(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Trsf_set_translation_vec(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13629,8 +16357,12 @@ impl Trsf {
     /// is the vector (theP1, theP2) defined from point theP1 to point theP2.
     pub fn set_translation_pnt2(&mut self, theP1: &Pnt, theP2: &Pnt) {
         {
-            unsafe { crate::ffi::gp_Trsf_set_translation_pnt2(self as *mut Self, theP1, theP2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Trsf_set_translation_pnt2(self as *mut Self, theP1, theP2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13638,8 +16370,11 @@ impl Trsf {
     /// Replaces the translation vector with the vector theV.
     pub fn set_translation_part(&mut self, theV: &Vec) {
         {
-            unsafe { crate::ffi::gp_Trsf_set_translation_part(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Trsf_set_translation_part(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13648,16 +16383,20 @@ impl Trsf {
     /// Raises ConstructionError  If theS is null.
     pub fn set_scale_factor(&mut self, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Trsf_set_scale_factor(self as *mut Self, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Trsf_set_scale_factor(self as *mut Self, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `gp_Trsf.hxx`:190 - `gp_Trsf::SetForm()`
     pub fn set_form(&mut self, theP: crate::gp::TrsfForm) {
         {
-            unsafe { crate::ffi::gp_Trsf_set_form(self as *mut Self, theP.into()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Trsf_set_form(self as *mut Self, theP.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13689,7 +16428,7 @@ impl Trsf {
         a34: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Trsf_set_values(
                     self as *mut Self,
                     a11,
@@ -13706,7 +16445,9 @@ impl Trsf {
                     a34,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13716,8 +16457,11 @@ impl Trsf {
     pub fn is_negative(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::gp_Trsf_is_negative(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13729,8 +16473,11 @@ impl Trsf {
     pub fn form(&self) -> crate::gp::TrsfForm {
         {
             let __result = unsafe { crate::ffi::gp_Trsf_form(self as *const Self) };
-            crate::check_exception();
-            crate::gp::TrsfForm::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::gp::TrsfForm::try_from(__val).unwrap()
         }
     }
 
@@ -13739,8 +16486,11 @@ impl Trsf {
     pub fn scale_factor(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Trsf_scale_factor(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13749,8 +16499,11 @@ impl Trsf {
     pub fn translation_part(&self) -> &XYZ {
         {
             let __result = unsafe { crate::ffi::gp_Trsf_translation_part(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13767,8 +16520,11 @@ impl Trsf {
             let __result = unsafe {
                 crate::ffi::gp_Trsf_get_rotation_xyz_real(self as *const Self, theAxis, theAngle)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13777,8 +16533,11 @@ impl Trsf {
     pub fn get_rotation(&self) -> crate::OwnedPtr<Quaternion> {
         {
             let __result = unsafe { crate::ffi::gp_Trsf_get_rotation(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13788,8 +16547,11 @@ impl Trsf {
     pub fn vectorial_part(&self) -> crate::OwnedPtr<Mat> {
         {
             let __result = unsafe { crate::ffi::gp_Trsf_vectorial_part(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13803,8 +16565,11 @@ impl Trsf {
     pub fn h_vectorial_part(&self) -> &Mat {
         {
             let __result = unsafe { crate::ffi::gp_Trsf_h_vectorial_part(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13817,16 +16582,21 @@ impl Trsf {
         {
             let __result =
                 unsafe { crate::ffi::gp_Trsf_value(self as *const Self, theRow, theCol) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `gp_Trsf.hxx`:262 - `gp_Trsf::Invert()`
     pub fn invert(&mut self) {
         {
-            unsafe { crate::ffi::gp_Trsf_invert(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Trsf_invert(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13849,8 +16619,11 @@ impl Trsf {
     pub fn inverted(&self) -> crate::OwnedPtr<Trsf> {
         {
             let __result = unsafe { crate::ffi::gp_Trsf_inverted(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13858,8 +16631,11 @@ impl Trsf {
     pub fn multiplied(&self, theT: &Trsf) -> crate::OwnedPtr<Trsf> {
         {
             let __result = unsafe { crate::ffi::gp_Trsf_multiplied(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13868,8 +16644,10 @@ impl Trsf {
     /// <me> = <me> * theT
     pub fn multiply(&mut self, theT: &Trsf) {
         {
-            unsafe { crate::ffi::gp_Trsf_multiply(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Trsf_multiply(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13878,16 +16656,20 @@ impl Trsf {
     /// <me> = theT * <me>
     pub fn pre_multiply(&mut self, theT: &Trsf) {
         {
-            unsafe { crate::ffi::gp_Trsf_pre_multiply(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Trsf_pre_multiply(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `gp_Trsf.hxx`:305 - `gp_Trsf::Power()`
     pub fn power(&mut self, theN: i32) {
         {
-            unsafe { crate::ffi::gp_Trsf_power(self as *mut Self, theN) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Trsf_power(self as *mut Self, theN) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13902,16 +16684,23 @@ impl Trsf {
     pub fn powered(&self, theN: i32) -> crate::OwnedPtr<Trsf> {
         {
             let __result = unsafe { crate::ffi::gp_Trsf_powered(self as *const Self, theN) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Trsf.hxx`:321 - `gp_Trsf::Transforms()`
     pub fn transforms_real3(&self, theX: &mut f64, theY: &mut f64, theZ: &mut f64) {
         {
-            unsafe { crate::ffi::gp_Trsf_transforms_real3(self as *const Self, theX, theY, theZ) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Trsf_transforms_real3(self as *const Self, theX, theY, theZ)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13919,18 +16708,21 @@ impl Trsf {
     /// Transformation of a triplet XYZ with a Trsf
     pub fn transforms_xyz(&self, theCoord: &mut XYZ) {
         {
-            unsafe { crate::ffi::gp_Trsf_transforms_xyz(self as *const Self, theCoord) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Trsf_transforms_xyz(self as *const Self, theCoord) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Trsf_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Trsf_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -13969,8 +16761,10 @@ impl Trsf2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Trsf2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13980,8 +16774,10 @@ impl Trsf2d {
     pub fn new_trsf(theT: &Trsf) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Trsf2d_ctor_trsf(theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13990,8 +16786,10 @@ impl Trsf2d {
     /// theP is the center of the symmetry.
     pub fn set_mirror_pnt2d(&mut self, theP: &Pnt2d) {
         {
-            unsafe { crate::ffi::gp_Trsf2d_set_mirror_pnt2d(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Trsf2d_set_mirror_pnt2d(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14000,8 +16798,10 @@ impl Trsf2d {
     /// theA is the center of the axial symmetry.
     pub fn set_mirror_ax2d(&mut self, theA: &Ax2d) {
         {
-            unsafe { crate::ffi::gp_Trsf2d_set_mirror_ax2d(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Trsf2d_set_mirror_ax2d(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14011,8 +16811,11 @@ impl Trsf2d {
     /// rotation in radian.
     pub fn set_rotation(&mut self, theP: &Pnt2d, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Trsf2d_set_rotation(self as *mut Self, theP, theAng) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Trsf2d_set_rotation(self as *mut Self, theP, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14021,8 +16824,10 @@ impl Trsf2d {
     /// theP is the center of the scale and theS is the scaling value.
     pub fn set_scale(&mut self, theP: &Pnt2d, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Trsf2d_set_scale(self as *mut Self, theP, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Trsf2d_set_scale(self as *mut Self, theP, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14031,14 +16836,16 @@ impl Trsf2d {
     /// system "theFromSystem1" to the coordinate system "theToSystem2".
     pub fn set_transformation_ax2d2(&mut self, theFromSystem1: &Ax2d, theToSystem2: &Ax2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Trsf2d_set_transformation_ax2d2(
                     self as *mut Self,
                     theFromSystem1,
                     theToSystem2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14049,10 +16856,12 @@ impl Trsf2d {
     /// to the local coordinate system defined with the Ax2d theToSystem.
     pub fn set_transformation_ax2d(&mut self, theToSystem: &Ax2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Trsf2d_set_transformation_ax2d(self as *mut Self, theToSystem)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14061,8 +16870,11 @@ impl Trsf2d {
     /// theV is the vector of the translation.
     pub fn set_translation_vec2d(&mut self, theV: &Vec2d) {
         {
-            unsafe { crate::ffi::gp_Trsf2d_set_translation_vec2d(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Trsf2d_set_translation_vec2d(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14071,10 +16883,12 @@ impl Trsf2d {
     /// the point theP1 to the point theP2.
     pub fn set_translation_pnt2d2(&mut self, theP1: &Pnt2d, theP2: &Pnt2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Trsf2d_set_translation_pnt2d2(self as *mut Self, theP1, theP2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14082,8 +16896,11 @@ impl Trsf2d {
     /// Replaces the translation vector with theV.
     pub fn set_translation_part(&mut self, theV: &Vec2d) {
         {
-            unsafe { crate::ffi::gp_Trsf2d_set_translation_part(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Trsf2d_set_translation_part(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14091,8 +16908,10 @@ impl Trsf2d {
     /// Modifies the scale factor.
     pub fn set_scale_factor(&mut self, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Trsf2d_set_scale_factor(self as *mut Self, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Trsf2d_set_scale_factor(self as *mut Self, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14102,8 +16921,11 @@ impl Trsf2d {
     pub fn is_negative(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::gp_Trsf2d_is_negative(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14115,8 +16937,11 @@ impl Trsf2d {
     pub fn form(&self) -> crate::gp::TrsfForm {
         {
             let __result = unsafe { crate::ffi::gp_Trsf2d_form(self as *const Self) };
-            crate::check_exception();
-            crate::gp::TrsfForm::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::gp::TrsfForm::try_from(__val).unwrap()
         }
     }
 
@@ -14125,8 +16950,11 @@ impl Trsf2d {
     pub fn scale_factor(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Trsf2d_scale_factor(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14135,8 +16963,11 @@ impl Trsf2d {
     pub fn translation_part(&self) -> &XY {
         {
             let __result = unsafe { crate::ffi::gp_Trsf2d_translation_part(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -14146,8 +16977,11 @@ impl Trsf2d {
     pub fn vectorial_part(&self) -> crate::OwnedPtr<Mat2d> {
         {
             let __result = unsafe { crate::ffi::gp_Trsf2d_vectorial_part(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14159,8 +16993,11 @@ impl Trsf2d {
     pub fn h_vectorial_part(&self) -> &Mat2d {
         {
             let __result = unsafe { crate::ffi::gp_Trsf2d_h_vectorial_part(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -14170,8 +17007,11 @@ impl Trsf2d {
     pub fn rotation_part(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Trsf2d_rotation_part(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14183,16 +17023,21 @@ impl Trsf2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Trsf2d_value(self as *const Self, theRow, theCol) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `gp_Trsf2d.hxx`:133 - `gp_Trsf2d::Invert()`
     pub fn invert(&mut self) {
         {
-            unsafe { crate::ffi::gp_Trsf2d_invert(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Trsf2d_invert(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14204,8 +17049,11 @@ impl Trsf2d {
     pub fn inverted(&self) -> crate::OwnedPtr<Trsf2d> {
         {
             let __result = unsafe { crate::ffi::gp_Trsf2d_inverted(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14213,8 +17061,11 @@ impl Trsf2d {
     pub fn multiplied(&self, theT: &Trsf2d) -> crate::OwnedPtr<Trsf2d> {
         {
             let __result = unsafe { crate::ffi::gp_Trsf2d_multiplied(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14223,8 +17074,10 @@ impl Trsf2d {
     /// <me> = <me> * theT
     pub fn multiply(&mut self, theT: &Trsf2d) {
         {
-            unsafe { crate::ffi::gp_Trsf2d_multiply(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Trsf2d_multiply(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14233,16 +17086,20 @@ impl Trsf2d {
     /// <me> = theT * <me>
     pub fn pre_multiply(&mut self, theT: &Trsf2d) {
         {
-            unsafe { crate::ffi::gp_Trsf2d_pre_multiply(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Trsf2d_pre_multiply(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `gp_Trsf2d.hxx`:165 - `gp_Trsf2d::Power()`
     pub fn power(&mut self, theN: i32) {
         {
-            unsafe { crate::ffi::gp_Trsf2d_power(self as *mut Self, theN) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Trsf2d_power(self as *mut Self, theN) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14257,16 +17114,22 @@ impl Trsf2d {
     pub fn powered(&mut self, theN: i32) -> crate::OwnedPtr<Trsf2d> {
         {
             let __result = unsafe { crate::ffi::gp_Trsf2d_powered(self as *mut Self, theN) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Trsf2d.hxx`:181 - `gp_Trsf2d::Transforms()`
     pub fn transforms_real2(&self, theX: &mut f64, theY: &mut f64) {
         {
-            unsafe { crate::ffi::gp_Trsf2d_transforms_real2(self as *const Self, theX, theY) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Trsf2d_transforms_real2(self as *const Self, theX, theY) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14274,8 +17137,11 @@ impl Trsf2d {
     /// Transforms  a doublet XY with a Trsf2d
     pub fn transforms_xy(&self, theCoord: &mut XY) {
         {
-            unsafe { crate::ffi::gp_Trsf2d_transforms_xy(self as *const Self, theCoord) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Trsf2d_transforms_xy(self as *const Self, theCoord) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14292,20 +17158,22 @@ impl Trsf2d {
     /// If the matrix as not a uniform scale it will be orthogonalized before future using.
     pub fn set_values(&mut self, a11: f64, a12: f64, a13: f64, a21: f64, a22: f64, a23: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Trsf2d_set_values(self as *mut Self, a11, a12, a13, a21, a22, a23)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Trsf2d_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Trsf2d_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -14329,8 +17197,10 @@ impl Vec {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Vec_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -14339,8 +17209,10 @@ impl Vec {
     pub fn new_dir(theV: &Dir) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Vec_ctor_dir(theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -14349,8 +17221,10 @@ impl Vec {
     pub fn new_xyz(theCoord: &XYZ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Vec_ctor_xyz(theCoord) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -14359,8 +17233,10 @@ impl Vec {
     pub fn new_real3(theXv: f64, theYv: f64, theZv: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Vec_ctor_real3(theXv, theYv, theZv) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -14370,8 +17246,10 @@ impl Vec {
     pub fn new_pnt2(theP1: &Pnt, theP2: &Pnt) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Vec_ctor_pnt2(theP1, theP2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -14383,8 +17261,12 @@ impl Vec {
     /// Raised if theIndex != {1, 2, 3}.
     pub fn set_coord_int_real(&mut self, theIndex: i32, theXi: f64) {
         {
-            unsafe { crate::ffi::gp_Vec_set_coord_int_real(self as *mut Self, theIndex, theXi) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Vec_set_coord_int_real(self as *mut Self, theIndex, theXi)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14393,8 +17275,12 @@ impl Vec {
     /// -   the values theXv, theYv and theZv to its three coordinates.
     pub fn set_coord_real3(&mut self, theXv: f64, theYv: f64, theZv: f64) {
         {
-            unsafe { crate::ffi::gp_Vec_set_coord_real3(self as *mut Self, theXv, theYv, theZv) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Vec_set_coord_real3(self as *mut Self, theXv, theYv, theZv)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14402,8 +17288,10 @@ impl Vec {
     /// Assigns the given value to the X coordinate of this vector.
     pub fn set_x(&mut self, theX: f64) {
         {
-            unsafe { crate::ffi::gp_Vec_set_x(self as *mut Self, theX) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec_set_x(self as *mut Self, theX) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14411,8 +17299,10 @@ impl Vec {
     /// Assigns the given value to the X coordinate of this vector.
     pub fn set_y(&mut self, theY: f64) {
         {
-            unsafe { crate::ffi::gp_Vec_set_y(self as *mut Self, theY) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec_set_y(self as *mut Self, theY) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14420,8 +17310,10 @@ impl Vec {
     /// Assigns the given value to the X coordinate of this vector.
     pub fn set_z(&mut self, theZ: f64) {
         {
-            unsafe { crate::ffi::gp_Vec_set_z(self as *mut Self, theZ) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec_set_z(self as *mut Self, theZ) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14429,8 +17321,10 @@ impl Vec {
     /// Assigns the three coordinates of theCoord to this vector.
     pub fn set_xyz(&mut self, theCoord: &XYZ) {
         {
-            unsafe { crate::ffi::gp_Vec_set_xyz(self as *mut Self, theCoord) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec_set_xyz(self as *mut Self, theCoord) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14443,8 +17337,11 @@ impl Vec {
     pub fn coord_int(&self, theIndex: i32) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Vec_coord_int(self as *const Self, theIndex) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14452,8 +17349,11 @@ impl Vec {
     /// For this vector returns its three coordinates theXv, theYv, and theZv inline
     pub fn coord_real3(&self, theXv: &mut f64, theYv: &mut f64, theZv: &mut f64) {
         {
-            unsafe { crate::ffi::gp_Vec_coord_real3(self as *const Self, theXv, theYv, theZv) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Vec_coord_real3(self as *const Self, theXv, theYv, theZv) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14462,8 +17362,11 @@ impl Vec {
     pub fn x(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Vec_x(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14472,8 +17375,11 @@ impl Vec {
     pub fn y(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Vec_y(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14482,8 +17388,11 @@ impl Vec {
     pub fn z(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Vec_z(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14493,8 +17402,11 @@ impl Vec {
     pub fn xyz(&self) -> &XYZ {
         {
             let __result = unsafe { crate::ffi::gp_Vec_xyz(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -14517,8 +17429,11 @@ impl Vec {
                     theAngularTolerance,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14531,8 +17446,11 @@ impl Vec {
             let __result = unsafe {
                 crate::ffi::gp_Vec_is_normal(self as *const Self, theOther, theAngularTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14545,8 +17463,11 @@ impl Vec {
             let __result = unsafe {
                 crate::ffi::gp_Vec_is_opposite(self as *const Self, theOther, theAngularTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14562,8 +17483,11 @@ impl Vec {
             let __result = unsafe {
                 crate::ffi::gp_Vec_is_parallel(self as *const Self, theOther, theAngularTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14576,8 +17500,11 @@ impl Vec {
     pub fn angle(&self, theOther: &Vec) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Vec_angle(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14601,8 +17528,11 @@ impl Vec {
             let __result = unsafe {
                 crate::ffi::gp_Vec_angle_with_ref(self as *const Self, theOther, theVRef)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14611,8 +17541,11 @@ impl Vec {
     pub fn magnitude(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Vec_magnitude(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14621,8 +17554,11 @@ impl Vec {
     pub fn square_magnitude(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Vec_square_magnitude(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14630,8 +17566,10 @@ impl Vec {
     /// Adds two vectors
     pub fn add(&mut self, theOther: &Vec) {
         {
-            unsafe { crate::ffi::gp_Vec_add(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec_add(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14640,8 +17578,11 @@ impl Vec {
     pub fn added(&self, theOther: &Vec) -> crate::OwnedPtr<Vec> {
         {
             let __result = unsafe { crate::ffi::gp_Vec_added(self as *const Self, theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14649,8 +17590,10 @@ impl Vec {
     /// Subtracts two vectors
     pub fn subtract(&mut self, theRight: &Vec) {
         {
-            unsafe { crate::ffi::gp_Vec_subtract(self as *mut Self, theRight) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec_subtract(self as *mut Self, theRight) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14659,8 +17602,11 @@ impl Vec {
     pub fn subtracted(&self, theRight: &Vec) -> crate::OwnedPtr<Vec> {
         {
             let __result = unsafe { crate::ffi::gp_Vec_subtracted(self as *const Self, theRight) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14668,8 +17614,10 @@ impl Vec {
     /// Multiplies a vector by a scalar
     pub fn multiply(&mut self, theScalar: f64) {
         {
-            unsafe { crate::ffi::gp_Vec_multiply(self as *mut Self, theScalar) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec_multiply(self as *mut Self, theScalar) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14678,8 +17626,11 @@ impl Vec {
     pub fn multiplied(&self, theScalar: f64) -> crate::OwnedPtr<Vec> {
         {
             let __result = unsafe { crate::ffi::gp_Vec_multiplied(self as *const Self, theScalar) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14687,8 +17638,10 @@ impl Vec {
     /// Divides a vector by a scalar
     pub fn divide(&mut self, theScalar: f64) {
         {
-            unsafe { crate::ffi::gp_Vec_divide(self as *mut Self, theScalar) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec_divide(self as *mut Self, theScalar) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14697,8 +17650,11 @@ impl Vec {
     pub fn divided(&self, theScalar: f64) -> crate::OwnedPtr<Vec> {
         {
             let __result = unsafe { crate::ffi::gp_Vec_divided(self as *const Self, theScalar) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14706,8 +17662,10 @@ impl Vec {
     /// computes the cross product between two vectors
     pub fn cross(&mut self, theRight: &Vec) {
         {
-            unsafe { crate::ffi::gp_Vec_cross(self as *mut Self, theRight) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec_cross(self as *mut Self, theRight) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14716,8 +17674,11 @@ impl Vec {
     pub fn crossed(&self, theRight: &Vec) -> crate::OwnedPtr<Vec> {
         {
             let __result = unsafe { crate::ffi::gp_Vec_crossed(self as *const Self, theRight) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14729,8 +17690,11 @@ impl Vec {
         {
             let __result =
                 unsafe { crate::ffi::gp_Vec_cross_magnitude(self as *const Self, theRight) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14742,8 +17706,11 @@ impl Vec {
         {
             let __result =
                 unsafe { crate::ffi::gp_Vec_cross_square_magnitude(self as *const Self, theRight) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14752,8 +17719,10 @@ impl Vec {
     /// <me> ^= (theV1 ^ theV2)
     pub fn cross_cross(&mut self, theV1: &Vec, theV2: &Vec) {
         {
-            unsafe { crate::ffi::gp_Vec_cross_cross(self as *mut Self, theV1, theV2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec_cross_cross(self as *mut Self, theV1, theV2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14764,8 +17733,11 @@ impl Vec {
         {
             let __result =
                 unsafe { crate::ffi::gp_Vec_cross_crossed(self as *const Self, theV1, theV2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14774,8 +17746,11 @@ impl Vec {
     pub fn dot(&self, theOther: &Vec) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Vec_dot(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14785,8 +17760,11 @@ impl Vec {
         {
             let __result =
                 unsafe { crate::ffi::gp_Vec_dot_cross(self as *const Self, theV1, theV2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14796,8 +17774,10 @@ impl Vec {
     /// lower or equal to Resolution from gp.
     pub fn normalize(&mut self) {
         {
-            unsafe { crate::ffi::gp_Vec_normalize(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec_normalize(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14808,8 +17788,11 @@ impl Vec {
     pub fn normalized(&self) -> crate::OwnedPtr<Vec> {
         {
             let __result = unsafe { crate::ffi::gp_Vec_normalized(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14817,8 +17800,10 @@ impl Vec {
     /// Reverses the direction of a vector
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Vec_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14827,8 +17812,11 @@ impl Vec {
     pub fn reversed(&self) -> crate::OwnedPtr<Vec> {
         {
             let __result = unsafe { crate::ffi::gp_Vec_reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14846,7 +17834,7 @@ impl Vec {
         theV4: &Vec,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Vec_set_linear_form_real_vec_real_vec_real_vec2(
                     self as *mut Self,
                     theA1,
@@ -14858,7 +17846,9 @@ impl Vec {
                     theV4,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14875,7 +17865,7 @@ impl Vec {
         theV3: &Vec,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Vec_set_linear_form_real_vec_real_vec_real_vec(
                     self as *mut Self,
                     theA1,
@@ -14886,7 +17876,9 @@ impl Vec {
                     theV3,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14902,7 +17894,7 @@ impl Vec {
         theV3: &Vec,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Vec_set_linear_form_real_vec_real_vec2(
                     self as *mut Self,
                     theA1,
@@ -14912,7 +17904,9 @@ impl Vec {
                     theV3,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14927,7 +17921,7 @@ impl Vec {
         theV2: &Vec,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Vec_set_linear_form_real_vec_real_vec(
                     self as *mut Self,
                     theA1,
@@ -14936,7 +17930,9 @@ impl Vec {
                     theV2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14944,10 +17940,12 @@ impl Vec {
     /// <me> is set to the following linear form : theA1 * theV1 + theV2
     pub fn set_linear_form_real_vec2(&mut self, theA1: f64, theV1: &Vec, theV2: &Vec) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Vec_set_linear_form_real_vec2(self as *mut Self, theA1, theV1, theV2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14955,16 +17953,21 @@ impl Vec {
     /// <me> is set to the following linear form : theV1 + theV2
     pub fn set_linear_form_vec2(&mut self, theV1: &Vec, theV2: &Vec) {
         {
-            unsafe { crate::ffi::gp_Vec_set_linear_form_vec2(self as *mut Self, theV1, theV2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Vec_set_linear_form_vec2(self as *mut Self, theV1, theV2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `gp_Vec.hxx`:388 - `gp_Vec::Mirror()`
     pub fn mirror_vec(&mut self, theV: &Vec) {
         {
-            unsafe { crate::ffi::gp_Vec_mirror_vec(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec_mirror_vec(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14975,16 +17978,21 @@ impl Vec {
     pub fn mirrored_vec(&self, theV: &Vec) -> crate::OwnedPtr<Vec> {
         {
             let __result = unsafe { crate::ffi::gp_Vec_mirrored_vec(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Vec.hxx`:395 - `gp_Vec::Mirror()`
     pub fn mirror_ax1(&mut self, theA1: &Ax1) {
         {
-            unsafe { crate::ffi::gp_Vec_mirror_ax1(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec_mirror_ax1(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14995,16 +18003,21 @@ impl Vec {
     pub fn mirrored_ax1(&self, theA1: &Ax1) -> crate::OwnedPtr<Vec> {
         {
             let __result = unsafe { crate::ffi::gp_Vec_mirrored_ax1(self as *const Self, theA1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Vec.hxx`:402 - `gp_Vec::Mirror()`
     pub fn mirror_ax2(&mut self, theA2: &Ax2) {
         {
-            unsafe { crate::ffi::gp_Vec_mirror_ax2(self as *mut Self, theA2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec_mirror_ax2(self as *mut Self, theA2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15015,16 +18028,21 @@ impl Vec {
     pub fn mirrored_ax2(&self, theA2: &Ax2) -> crate::OwnedPtr<Vec> {
         {
             let __result = unsafe { crate::ffi::gp_Vec_mirrored_ax2(self as *const Self, theA2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Vec.hxx`:409 - `gp_Vec::Rotate()`
     pub fn rotate(&mut self, theA1: &Ax1, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Vec_rotate(self as *mut Self, theA1, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec_rotate(self as *mut Self, theA1, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15035,16 +18053,21 @@ impl Vec {
         {
             let __result =
                 unsafe { crate::ffi::gp_Vec_rotated(self as *const Self, theA1, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Vec.hxx`:420 - `gp_Vec::Scale()`
     pub fn scale(&mut self, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Vec_scale(self as *mut Self, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec_scale(self as *mut Self, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15053,8 +18076,11 @@ impl Vec {
     pub fn scaled(&self, theS: f64) -> crate::OwnedPtr<Vec> {
         {
             let __result = unsafe { crate::ffi::gp_Vec_scaled(self as *const Self, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15062,8 +18088,10 @@ impl Vec {
     /// Transforms a vector with the transformation theT.
     pub fn transform(&mut self, theT: &Trsf) {
         {
-            unsafe { crate::ffi::gp_Vec_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15072,18 +18100,21 @@ impl Vec {
     pub fn transformed(&self, theT: &Trsf) -> crate::OwnedPtr<Vec> {
         {
             let __result = unsafe { crate::ffi::gp_Vec_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Vec_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Vec_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -15107,8 +18138,10 @@ impl Vec2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -15117,8 +18150,10 @@ impl Vec2d {
     pub fn new_dir2d(theV: &Dir2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_ctor_dir2d(theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -15127,8 +18162,10 @@ impl Vec2d {
     pub fn new_xy(theCoord: &XY) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_ctor_xy(theCoord) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -15137,8 +18174,10 @@ impl Vec2d {
     pub fn new_real2(theXv: f64, theYv: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_ctor_real2(theXv, theYv) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -15148,8 +18187,10 @@ impl Vec2d {
     pub fn new_pnt2d2(theP1: &Pnt2d, theP2: &Pnt2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_ctor_pnt2d2(theP1, theP2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -15160,8 +18201,12 @@ impl Vec2d {
     /// Raises OutOfRange if theIndex != {1, 2}.
     pub fn set_coord_int_real(&mut self, theIndex: i32, theXi: f64) {
         {
-            unsafe { crate::ffi::gp_Vec2d_set_coord_int_real(self as *mut Self, theIndex, theXi) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Vec2d_set_coord_int_real(self as *mut Self, theIndex, theXi)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15170,8 +18215,11 @@ impl Vec2d {
     /// the values theXv and theYv to its two coordinates
     pub fn set_coord_real2(&mut self, theXv: f64, theYv: f64) {
         {
-            unsafe { crate::ffi::gp_Vec2d_set_coord_real2(self as *mut Self, theXv, theYv) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Vec2d_set_coord_real2(self as *mut Self, theXv, theYv) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15179,8 +18227,10 @@ impl Vec2d {
     /// Assigns the given value to the X coordinate of this vector.
     pub fn set_x(&mut self, theX: f64) {
         {
-            unsafe { crate::ffi::gp_Vec2d_set_x(self as *mut Self, theX) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec2d_set_x(self as *mut Self, theX) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15188,8 +18238,10 @@ impl Vec2d {
     /// Assigns the given value to the Y coordinate of this vector.
     pub fn set_y(&mut self, theY: f64) {
         {
-            unsafe { crate::ffi::gp_Vec2d_set_y(self as *mut Self, theY) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec2d_set_y(self as *mut Self, theY) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15197,8 +18249,10 @@ impl Vec2d {
     /// Assigns the two coordinates of theCoord to this vector.
     pub fn set_xy(&mut self, theCoord: &XY) {
         {
-            unsafe { crate::ffi::gp_Vec2d_set_xy(self as *mut Self, theCoord) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec2d_set_xy(self as *mut Self, theCoord) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15210,8 +18264,11 @@ impl Vec2d {
     pub fn coord_int(&self, theIndex: i32) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_coord_int(self as *const Self, theIndex) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15219,8 +18276,11 @@ impl Vec2d {
     /// For this vector, returns  its two coordinates theXv and theYv
     pub fn coord_real2(&self, theXv: &mut f64, theYv: &mut f64) {
         {
-            unsafe { crate::ffi::gp_Vec2d_coord_real2(self as *const Self, theXv, theYv) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_Vec2d_coord_real2(self as *const Self, theXv, theYv) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15229,8 +18289,11 @@ impl Vec2d {
     pub fn x(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_x(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15239,8 +18302,11 @@ impl Vec2d {
     pub fn y(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_y(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15249,8 +18315,11 @@ impl Vec2d {
     pub fn xy(&self) -> &XY {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_xy(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -15273,8 +18342,11 @@ impl Vec2d {
                     theAngularTolerance,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15288,8 +18360,11 @@ impl Vec2d {
             let __result = unsafe {
                 crate::ffi::gp_Vec2d_is_normal(self as *const Self, theOther, theAngularTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15302,8 +18377,11 @@ impl Vec2d {
             let __result = unsafe {
                 crate::ffi::gp_Vec2d_is_opposite(self as *const Self, theOther, theAngularTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15318,8 +18396,11 @@ impl Vec2d {
             let __result = unsafe {
                 crate::ffi::gp_Vec2d_is_parallel(self as *const Self, theOther, theAngularTolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15334,8 +18415,11 @@ impl Vec2d {
     pub fn angle(&self, theOther: &Vec2d) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_angle(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15344,8 +18428,11 @@ impl Vec2d {
     pub fn magnitude(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_magnitude(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15354,16 +18441,21 @@ impl Vec2d {
     pub fn square_magnitude(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_square_magnitude(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `gp_Vec2d.hxx`:143 - `gp_Vec2d::Add()`
     pub fn add(&mut self, theOther: &Vec2d) {
         {
-            unsafe { crate::ffi::gp_Vec2d_add(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec2d_add(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15372,8 +18464,11 @@ impl Vec2d {
     pub fn added(&self, theOther: &Vec2d) -> crate::OwnedPtr<Vec2d> {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_added(self as *const Self, theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15382,8 +18477,11 @@ impl Vec2d {
     pub fn crossed(&self, theRight: &Vec2d) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_crossed(self as *const Self, theRight) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15394,8 +18492,11 @@ impl Vec2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Vec2d_cross_magnitude(self as *const Self, theRight) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15407,16 +18508,21 @@ impl Vec2d {
             let __result = unsafe {
                 crate::ffi::gp_Vec2d_cross_square_magnitude(self as *const Self, theRight)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `gp_Vec2d.hxx`:182 - `gp_Vec2d::Divide()`
     pub fn divide(&mut self, theScalar: f64) {
         {
-            unsafe { crate::ffi::gp_Vec2d_divide(self as *mut Self, theScalar) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec2d_divide(self as *mut Self, theScalar) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15425,8 +18531,11 @@ impl Vec2d {
     pub fn divided(&self, theScalar: f64) -> crate::OwnedPtr<Vec2d> {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_divided(self as *const Self, theScalar) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15435,8 +18544,11 @@ impl Vec2d {
     pub fn dot(&self, theOther: &Vec2d) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_dot(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15444,16 +18556,21 @@ impl Vec2d {
     pub fn get_normal(&self) -> crate::OwnedPtr<Vec2d> {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_get_normal(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Vec2d.hxx`:206 - `gp_Vec2d::Multiply()`
     pub fn multiply(&mut self, theScalar: f64) {
         {
-            unsafe { crate::ffi::gp_Vec2d_multiply(self as *mut Self, theScalar) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec2d_multiply(self as *mut Self, theScalar) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15465,16 +18582,21 @@ impl Vec2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Vec2d_multiplied(self as *const Self, theScalar) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Vec2d.hxx`:225 - `gp_Vec2d::Normalize()`
     pub fn normalize(&mut self) {
         {
-            unsafe { crate::ffi::gp_Vec2d_normalize(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec2d_normalize(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15486,16 +18608,21 @@ impl Vec2d {
     pub fn normalized(&self) -> crate::OwnedPtr<Vec2d> {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_normalized(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Vec2d.hxx`:239 - `gp_Vec2d::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_Vec2d_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec2d_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15504,8 +18631,11 @@ impl Vec2d {
     pub fn reversed(&self) -> crate::OwnedPtr<Vec2d> {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15513,8 +18643,10 @@ impl Vec2d {
     /// Subtracts two vectors
     pub fn subtract(&mut self, theRight: &Vec2d) {
         {
-            unsafe { crate::ffi::gp_Vec2d_subtract(self as *mut Self, theRight) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec2d_subtract(self as *mut Self, theRight) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15524,8 +18656,11 @@ impl Vec2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Vec2d_subtracted(self as *const Self, theRight) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15541,7 +18676,7 @@ impl Vec2d {
         theV3: &Vec2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Vec2d_set_linear_form_real_vec2d_real_vec2d2(
                     self as *mut Self,
                     theA1,
@@ -15551,7 +18686,9 @@ impl Vec2d {
                     theV3,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15565,7 +18702,7 @@ impl Vec2d {
         theV2: &Vec2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Vec2d_set_linear_form_real_vec2d_real_vec2d(
                     self as *mut Self,
                     theA1,
@@ -15574,7 +18711,9 @@ impl Vec2d {
                     theV2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15582,7 +18721,7 @@ impl Vec2d {
     /// <me> is set to the following linear form : theA1 * theV1 + theV2
     pub fn set_linear_form_real_vec2d2(&mut self, theA1: f64, theV1: &Vec2d, theV2: &Vec2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_Vec2d_set_linear_form_real_vec2d2(
                     self as *mut Self,
                     theA1,
@@ -15590,7 +18729,9 @@ impl Vec2d {
                     theV2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15598,8 +18739,12 @@ impl Vec2d {
     /// <me> is set to the following linear form : theV1 + theV2
     pub fn set_linear_form_vec2d2(&mut self, theV1: &Vec2d, theV2: &Vec2d) {
         {
-            unsafe { crate::ffi::gp_Vec2d_set_linear_form_vec2d2(self as *mut Self, theV1, theV2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_Vec2d_set_linear_form_vec2d2(self as *mut Self, theV1, theV2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15609,8 +18754,10 @@ impl Vec2d {
     /// the  symmetry.
     pub fn mirror_vec2d(&mut self, theV: &Vec2d) {
         {
-            unsafe { crate::ffi::gp_Vec2d_mirror_vec2d(self as *mut Self, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec2d_mirror_vec2d(self as *mut Self, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15622,8 +18769,11 @@ impl Vec2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Vec2d_mirrored_vec2d(self as *const Self, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15633,8 +18783,10 @@ impl Vec2d {
     /// of the symmetry.
     pub fn mirror_ax2d(&mut self, theA1: &Ax2d) {
         {
-            unsafe { crate::ffi::gp_Vec2d_mirror_ax2d(self as *mut Self, theA1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec2d_mirror_ax2d(self as *mut Self, theA1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15646,16 +18798,21 @@ impl Vec2d {
         {
             let __result =
                 unsafe { crate::ffi::gp_Vec2d_mirrored_ax2d(self as *const Self, theA1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Vec2d.hxx`:321 - `gp_Vec2d::Rotate()`
     pub fn rotate(&mut self, theAng: f64) {
         {
-            unsafe { crate::ffi::gp_Vec2d_rotate(self as *mut Self, theAng) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec2d_rotate(self as *mut Self, theAng) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15665,16 +18822,21 @@ impl Vec2d {
     pub fn rotated(&self, theAng: f64) -> crate::OwnedPtr<Vec2d> {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_rotated(self as *const Self, theAng) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Vec2d.hxx`:332 - `gp_Vec2d::Scale()`
     pub fn scale(&mut self, theS: f64) {
         {
-            unsafe { crate::ffi::gp_Vec2d_scale(self as *mut Self, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec2d_scale(self as *mut Self, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15683,16 +18845,21 @@ impl Vec2d {
     pub fn scaled(&self, theS: f64) -> crate::OwnedPtr<Vec2d> {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_scaled(self as *const Self, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `gp_Vec2d.hxx`:342 - `gp_Vec2d::Transform()`
     pub fn transform(&mut self, theT: &Trsf2d) {
         {
-            unsafe { crate::ffi::gp_Vec2d_transform(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_Vec2d_transform(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15701,18 +18868,21 @@ impl Vec2d {
     pub fn transformed(&self, theT: &Trsf2d) -> crate::OwnedPtr<Vec2d> {
         {
             let __result = unsafe { crate::ffi::gp_Vec2d_transformed(self as *const Self, theT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_Vec2d_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_Vec2d_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -15734,8 +18904,10 @@ impl VectorWithNullMagnitude {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_VectorWithNullMagnitude_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -15746,8 +18918,10 @@ impl VectorWithNullMagnitude {
             let __result = unsafe {
                 crate::ffi::gp_VectorWithNullMagnitude_ctor_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -15762,8 +18936,10 @@ impl VectorWithNullMagnitude {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -15772,8 +18948,11 @@ impl VectorWithNullMagnitude {
         {
             let __result =
                 unsafe { crate::ffi::gp_VectorWithNullMagnitude_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -15781,16 +18960,22 @@ impl VectorWithNullMagnitude {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::gp_VectorWithNullMagnitude_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_VectorWithNullMagnitude_raise_charptr(c_theMessage.as_ptr())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `gp_VectorWithNullMagnitude.hxx`:36 - `gp_VectorWithNullMagnitude::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::gp_VectorWithNullMagnitude_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_VectorWithNullMagnitude_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15803,8 +18988,11 @@ impl VectorWithNullMagnitude {
             let __result = unsafe {
                 crate::ffi::gp_VectorWithNullMagnitude_new_instance_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15822,8 +19010,11 @@ impl VectorWithNullMagnitude {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15831,8 +19022,11 @@ impl VectorWithNullMagnitude {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::gp_VectorWithNullMagnitude_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -15840,117 +19034,126 @@ impl VectorWithNullMagnitude {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::gp_VectorWithNullMagnitude_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::gp_VectorWithNullMagnitude_as_Standard_DomainError(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::gp_VectorWithNullMagnitude_as_Standard_DomainError(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::gp_VectorWithNullMagnitude_as_Standard_DomainError_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::gp_VectorWithNullMagnitude_as_Standard_DomainError_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::gp_VectorWithNullMagnitude_as_Standard_Failure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::gp_VectorWithNullMagnitude_as_Standard_Failure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::gp_VectorWithNullMagnitude_as_Standard_Failure_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::gp_VectorWithNullMagnitude_as_Standard_Failure_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::gp_VectorWithNullMagnitude_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::gp_VectorWithNullMagnitude_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::gp_VectorWithNullMagnitude_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::gp_VectorWithNullMagnitude_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlegpVectorWithNullMagnitude> {
-        {
-            let __result =
-                unsafe { crate::ffi::gp_VectorWithNullMagnitude_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_VectorWithNullMagnitude_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_VectorWithNullMagnitude_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::gp_VectorWithNullMagnitude_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_VectorWithNullMagnitude_inherited_Reraise(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::gp_VectorWithNullMagnitude_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_VectorWithNullMagnitude_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15963,8 +19166,11 @@ impl VectorWithNullMagnitude {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15977,8 +19183,11 @@ impl VectorWithNullMagnitude {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15988,11 +19197,14 @@ impl VectorWithNullMagnitude {
             let __result = unsafe {
                 crate::ffi::gp_VectorWithNullMagnitude_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -16003,20 +19215,25 @@ impl VectorWithNullMagnitude {
             let __result = unsafe {
                 crate::ffi::gp_VectorWithNullMagnitude_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_VectorWithNullMagnitude_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16028,16 +19245,23 @@ impl VectorWithNullMagnitude {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::gp_VectorWithNullMagnitude_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_VectorWithNullMagnitude_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -16053,61 +19277,61 @@ unsafe impl crate::CppDeletable for HandlegpVectorWithNullMagnitude {
 impl HandlegpVectorWithNullMagnitude {
     /// Dereference this Handle to access the underlying gp_VectorWithNullMagnitude
     pub fn get(&self) -> &crate::ffi::gp_VectorWithNullMagnitude {
-        {
-            let __result =
-                unsafe { crate::ffi::HandlegpVectorWithNullMagnitude_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandlegpVectorWithNullMagnitude_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying gp_VectorWithNullMagnitude
     pub fn get_mut(&mut self) -> &mut crate::ffi::gp_VectorWithNullMagnitude {
-        {
-            let __result =
-                unsafe { crate::ffi::HandlegpVectorWithNullMagnitude_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandlegpVectorWithNullMagnitude_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<gp_VectorWithNullMagnitude> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlegpVectorWithNullMagnitude_to_HandleStandardDomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlegpVectorWithNullMagnitude_to_HandleStandardDomainError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<gp_VectorWithNullMagnitude> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlegpVectorWithNullMagnitude_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlegpVectorWithNullMagnitude_to_HandleStandardFailure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<gp_VectorWithNullMagnitude> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlegpVectorWithNullMagnitude_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlegpVectorWithNullMagnitude_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -16136,8 +19360,10 @@ impl XY {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_XY_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -16146,8 +19372,10 @@ impl XY {
     pub fn new_real2(theX: f64, theY: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_XY_ctor_real2(theX, theY) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -16158,8 +19386,11 @@ impl XY {
     /// Raises OutOfRange if theIndex != {1, 2}.
     pub fn set_coord_int_real(&mut self, theIndex: i32, theXi: f64) {
         {
-            unsafe { crate::ffi::gp_XY_set_coord_int_real(self as *mut Self, theIndex, theXi) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_XY_set_coord_int_real(self as *mut Self, theIndex, theXi) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16168,8 +19399,10 @@ impl XY {
     /// the values theX and theY to its coordinates
     pub fn set_coord_real2(&mut self, theX: f64, theY: f64) {
         {
-            unsafe { crate::ffi::gp_XY_set_coord_real2(self as *mut Self, theX, theY) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XY_set_coord_real2(self as *mut Self, theX, theY) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16177,8 +19410,10 @@ impl XY {
     /// Assigns the given value to the X coordinate of this number pair.
     pub fn set_x(&mut self, theX: f64) {
         {
-            unsafe { crate::ffi::gp_XY_set_x(self as *mut Self, theX) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XY_set_x(self as *mut Self, theX) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16186,8 +19421,10 @@ impl XY {
     /// Assigns the given value to the Y  coordinate of this number pair.
     pub fn set_y(&mut self, theY: f64) {
         {
-            unsafe { crate::ffi::gp_XY_set_y(self as *mut Self, theY) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XY_set_y(self as *mut Self, theY) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16199,8 +19436,11 @@ impl XY {
     pub fn coord_int(&self, theIndex: i32) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_XY_coord_int(self as *const Self, theIndex) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16208,8 +19448,11 @@ impl XY {
     pub fn change_coord(&mut self, theIndex: i32) -> &mut f64 {
         {
             let __result = unsafe { crate::ffi::gp_XY_change_coord(self as *mut Self, theIndex) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -16217,8 +19460,10 @@ impl XY {
     /// For this number pair, returns its coordinates X and Y.
     pub fn coord_real2(&self, theX: &mut f64, theY: &mut f64) {
         {
-            unsafe { crate::ffi::gp_XY_coord_real2(self as *const Self, theX, theY) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XY_coord_real2(self as *const Self, theX, theY) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16227,8 +19472,11 @@ impl XY {
     pub fn x(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_XY_x(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16237,8 +19485,11 @@ impl XY {
     pub fn y(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_XY_y(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16247,8 +19498,11 @@ impl XY {
     pub fn modulus(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_XY_modulus(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16257,8 +19511,11 @@ impl XY {
     pub fn square_modulus(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_XY_square_modulus(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16273,8 +19530,11 @@ impl XY {
         {
             let __result =
                 unsafe { crate::ffi::gp_XY_is_equal(self as *const Self, theOther, theTolerance) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16286,8 +19546,10 @@ impl XY {
     /// @endcode
     pub fn add(&mut self, theOther: &XY) {
         {
-            unsafe { crate::ffi::gp_XY_add(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XY_add(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16300,8 +19562,11 @@ impl XY {
     pub fn added(&self, theOther: &XY) -> crate::OwnedPtr<XY> {
         {
             let __result = unsafe { crate::ffi::gp_XY_added(self as *const Self, theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16312,8 +19577,11 @@ impl XY {
     pub fn crossed(&self, theOther: &XY) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_XY_crossed(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16324,8 +19592,11 @@ impl XY {
         {
             let __result =
                 unsafe { crate::ffi::gp_XY_cross_magnitude(self as *const Self, theRight) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16336,8 +19607,11 @@ impl XY {
         {
             let __result =
                 unsafe { crate::ffi::gp_XY_cross_square_magnitude(self as *const Self, theRight) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16345,8 +19619,10 @@ impl XY {
     /// divides <me> by a real.
     pub fn divide(&mut self, theScalar: f64) {
         {
-            unsafe { crate::ffi::gp_XY_divide(self as *mut Self, theScalar) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XY_divide(self as *mut Self, theScalar) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16355,8 +19631,11 @@ impl XY {
     pub fn divided(&self, theScalar: f64) -> crate::OwnedPtr<XY> {
         {
             let __result = unsafe { crate::ffi::gp_XY_divided(self as *const Self, theScalar) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16365,8 +19644,11 @@ impl XY {
     pub fn dot(&self, theOther: &XY) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_XY_dot(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16377,8 +19659,10 @@ impl XY {
     /// @endcode
     pub fn multiply_real(&mut self, theScalar: f64) {
         {
-            unsafe { crate::ffi::gp_XY_multiply_real(self as *mut Self, theScalar) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XY_multiply_real(self as *mut Self, theScalar) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16389,8 +19673,10 @@ impl XY {
     /// @endcode
     pub fn multiply_xy(&mut self, theOther: &XY) {
         {
-            unsafe { crate::ffi::gp_XY_multiply_xy(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XY_multiply_xy(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16398,8 +19684,10 @@ impl XY {
     /// <me> = theMatrix * <me>
     pub fn multiply_mat2d(&mut self, theMatrix: &Mat2d) {
         {
-            unsafe { crate::ffi::gp_XY_multiply_mat2d(self as *mut Self, theMatrix) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XY_multiply_mat2d(self as *mut Self, theMatrix) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16412,8 +19700,11 @@ impl XY {
         {
             let __result =
                 unsafe { crate::ffi::gp_XY_multiplied_real(self as *const Self, theScalar) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16426,8 +19717,11 @@ impl XY {
         {
             let __result =
                 unsafe { crate::ffi::gp_XY_multiplied_xy(self as *const Self, theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16437,8 +19731,11 @@ impl XY {
         {
             let __result =
                 unsafe { crate::ffi::gp_XY_multiplied_mat2d(self as *const Self, theMatrix) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16450,8 +19747,10 @@ impl XY {
     /// Raises ConstructionError if <me>.Modulus() <= Resolution from gp
     pub fn normalize(&mut self) {
         {
-            unsafe { crate::ffi::gp_XY_normalize(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XY_normalize(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16464,8 +19763,11 @@ impl XY {
     pub fn normalized(&self) -> crate::OwnedPtr<XY> {
         {
             let __result = unsafe { crate::ffi::gp_XY_normalized(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16475,8 +19777,10 @@ impl XY {
     /// <me>.Y() = -<me>.Y()
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_XY_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XY_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16488,8 +19792,11 @@ impl XY {
     pub fn reversed(&self) -> crate::OwnedPtr<XY> {
         {
             let __result = unsafe { crate::ffi::gp_XY_reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16507,7 +19814,7 @@ impl XY {
         theXY2: &XY,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_XY_set_linear_form_real_xy_real_xy(
                     self as *mut Self,
                     theA1,
@@ -16516,7 +19823,9 @@ impl XY {
                     theXY2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16535,7 +19844,7 @@ impl XY {
         theXY3: &XY,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_XY_set_linear_form_real_xy_real_xy2(
                     self as *mut Self,
                     theA1,
@@ -16545,7 +19854,9 @@ impl XY {
                     theXY3,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16557,10 +19868,12 @@ impl XY {
     /// @endcode
     pub fn set_linear_form_real_xy2(&mut self, theA1: f64, theXY1: &XY, theXY2: &XY) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_XY_set_linear_form_real_xy2(self as *mut Self, theA1, theXY1, theXY2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16572,8 +19885,11 @@ impl XY {
     /// @endcode
     pub fn set_linear_form_xy2(&mut self, theXY1: &XY, theXY2: &XY) {
         {
-            unsafe { crate::ffi::gp_XY_set_linear_form_xy2(self as *mut Self, theXY1, theXY2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_XY_set_linear_form_xy2(self as *mut Self, theXY1, theXY2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16584,8 +19900,10 @@ impl XY {
     /// @endcode
     pub fn subtract(&mut self, theOther: &XY) {
         {
-            unsafe { crate::ffi::gp_XY_subtract(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XY_subtract(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16597,18 +19915,21 @@ impl XY {
     pub fn subtracted(&self, theOther: &XY) -> crate::OwnedPtr<XY> {
         {
             let __result = unsafe { crate::ffi::gp_XY_subtracted(self as *const Self, theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_XY_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_XY_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -16637,8 +19958,10 @@ impl XYZ {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_XYZ_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -16647,8 +19970,10 @@ impl XYZ {
     pub fn new_real3(theX: f64, theY: f64, theZ: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::gp_XYZ_ctor_real3(theX, theY, theZ) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -16657,8 +19982,11 @@ impl XYZ {
     /// the values theX, theY and theZ to its three coordinates
     pub fn set_coord_real3(&mut self, theX: f64, theY: f64, theZ: f64) {
         {
-            unsafe { crate::ffi::gp_XYZ_set_coord_real3(self as *mut Self, theX, theY, theZ) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_XYZ_set_coord_real3(self as *mut Self, theX, theY, theZ) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16670,8 +19998,12 @@ impl XYZ {
     /// Raises OutOfRange if theIndex != {1, 2, 3}.
     pub fn set_coord_int_real(&mut self, theIndex: i32, theXi: f64) {
         {
-            unsafe { crate::ffi::gp_XYZ_set_coord_int_real(self as *mut Self, theIndex, theXi) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_XYZ_set_coord_int_real(self as *mut Self, theIndex, theXi)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16679,8 +20011,10 @@ impl XYZ {
     /// Assigns the given value to the X coordinate
     pub fn set_x(&mut self, theX: f64) {
         {
-            unsafe { crate::ffi::gp_XYZ_set_x(self as *mut Self, theX) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XYZ_set_x(self as *mut Self, theX) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16688,8 +20022,10 @@ impl XYZ {
     /// Assigns the given value to the Y coordinate
     pub fn set_y(&mut self, theY: f64) {
         {
-            unsafe { crate::ffi::gp_XYZ_set_y(self as *mut Self, theY) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XYZ_set_y(self as *mut Self, theY) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16697,8 +20033,10 @@ impl XYZ {
     /// Assigns the given value to the Z coordinate
     pub fn set_z(&mut self, theZ: f64) {
         {
-            unsafe { crate::ffi::gp_XYZ_set_z(self as *mut Self, theZ) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XYZ_set_z(self as *mut Self, theZ) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16712,8 +20050,11 @@ impl XYZ {
     pub fn coord_int(&self, theIndex: i32) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_XYZ_coord_int(self as *const Self, theIndex) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16721,16 +20062,22 @@ impl XYZ {
     pub fn change_coord(&mut self, theIndex: i32) -> &mut f64 {
         {
             let __result = unsafe { crate::ffi::gp_XYZ_change_coord(self as *mut Self, theIndex) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// **Source:** `gp_XYZ.hxx`:99 - `gp_XYZ::Coord()`
     pub fn coord_real3(&self, theX: &mut f64, theY: &mut f64, theZ: &mut f64) {
         {
-            unsafe { crate::ffi::gp_XYZ_coord_real3(self as *const Self, theX, theY, theZ) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_XYZ_coord_real3(self as *const Self, theX, theY, theZ) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16741,8 +20088,11 @@ impl XYZ {
     pub unsafe fn get_data(&self) -> *const f64 {
         {
             let __result = unsafe { crate::ffi::gp_XYZ_get_data(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16753,8 +20103,11 @@ impl XYZ {
     pub unsafe fn change_data(&mut self) -> *mut f64 {
         {
             let __result = unsafe { crate::ffi::gp_XYZ_change_data(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16763,8 +20116,11 @@ impl XYZ {
     pub fn x(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_XYZ_x(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16773,8 +20129,11 @@ impl XYZ {
     pub fn y(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_XYZ_y(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16783,8 +20142,11 @@ impl XYZ {
     pub fn z(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_XYZ_z(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16793,8 +20155,11 @@ impl XYZ {
     pub fn modulus(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_XYZ_modulus(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16803,8 +20168,11 @@ impl XYZ {
     pub fn square_modulus(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_XYZ_square_modulus(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16819,8 +20187,11 @@ impl XYZ {
         {
             let __result =
                 unsafe { crate::ffi::gp_XYZ_is_equal(self as *const Self, theOther, theTolerance) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16832,8 +20203,10 @@ impl XYZ {
     /// @endcode
     pub fn add(&mut self, theOther: &XYZ) {
         {
-            unsafe { crate::ffi::gp_XYZ_add(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XYZ_add(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16846,8 +20219,11 @@ impl XYZ {
     pub fn added(&self, theOther: &XYZ) -> crate::OwnedPtr<XYZ> {
         {
             let __result = unsafe { crate::ffi::gp_XYZ_added(self as *const Self, theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16859,8 +20235,10 @@ impl XYZ {
     /// @endcode
     pub fn cross(&mut self, theOther: &XYZ) {
         {
-            unsafe { crate::ffi::gp_XYZ_cross(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XYZ_cross(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16873,8 +20251,11 @@ impl XYZ {
     pub fn crossed(&self, theOther: &XYZ) -> crate::OwnedPtr<XYZ> {
         {
             let __result = unsafe { crate::ffi::gp_XYZ_crossed(self as *const Self, theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16885,8 +20266,11 @@ impl XYZ {
         {
             let __result =
                 unsafe { crate::ffi::gp_XYZ_cross_magnitude(self as *const Self, theRight) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16897,8 +20281,11 @@ impl XYZ {
         {
             let __result =
                 unsafe { crate::ffi::gp_XYZ_cross_square_magnitude(self as *const Self, theRight) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16907,8 +20294,11 @@ impl XYZ {
     /// Computes <me> = <me>.Cross(theCoord1.Cross(theCoord2))
     pub fn cross_cross(&mut self, theCoord1: &XYZ, theCoord2: &XYZ) {
         {
-            unsafe { crate::ffi::gp_XYZ_cross_cross(self as *mut Self, theCoord1, theCoord2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::gp_XYZ_cross_cross(self as *mut Self, theCoord1, theCoord2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16920,8 +20310,11 @@ impl XYZ {
             let __result = unsafe {
                 crate::ffi::gp_XYZ_cross_crossed(self as *const Self, theCoord1, theCoord2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16929,8 +20322,10 @@ impl XYZ {
     /// divides <me> by a real.
     pub fn divide(&mut self, theScalar: f64) {
         {
-            unsafe { crate::ffi::gp_XYZ_divide(self as *mut Self, theScalar) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XYZ_divide(self as *mut Self, theScalar) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16939,8 +20334,11 @@ impl XYZ {
     pub fn divided(&self, theScalar: f64) -> crate::OwnedPtr<XYZ> {
         {
             let __result = unsafe { crate::ffi::gp_XYZ_divided(self as *const Self, theScalar) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16949,8 +20347,11 @@ impl XYZ {
     pub fn dot(&self, theOther: &XYZ) -> f64 {
         {
             let __result = unsafe { crate::ffi::gp_XYZ_dot(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16960,8 +20361,11 @@ impl XYZ {
         {
             let __result =
                 unsafe { crate::ffi::gp_XYZ_dot_cross(self as *const Self, theCoord1, theCoord2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16973,8 +20377,10 @@ impl XYZ {
     /// @endcode
     pub fn multiply_real(&mut self, theScalar: f64) {
         {
-            unsafe { crate::ffi::gp_XYZ_multiply_real(self as *mut Self, theScalar) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XYZ_multiply_real(self as *mut Self, theScalar) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16986,8 +20392,10 @@ impl XYZ {
     /// @endcode
     pub fn multiply_xyz(&mut self, theOther: &XYZ) {
         {
-            unsafe { crate::ffi::gp_XYZ_multiply_xyz(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XYZ_multiply_xyz(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16995,8 +20403,10 @@ impl XYZ {
     /// <me> = theMatrix * <me>
     pub fn multiply_mat(&mut self, theMatrix: &Mat) {
         {
-            unsafe { crate::ffi::gp_XYZ_multiply_mat(self as *mut Self, theMatrix) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XYZ_multiply_mat(self as *mut Self, theMatrix) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17010,8 +20420,11 @@ impl XYZ {
         {
             let __result =
                 unsafe { crate::ffi::gp_XYZ_multiplied_real(self as *const Self, theScalar) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -17025,8 +20438,11 @@ impl XYZ {
         {
             let __result =
                 unsafe { crate::ffi::gp_XYZ_multiplied_xyz(self as *const Self, theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -17036,8 +20452,11 @@ impl XYZ {
         {
             let __result =
                 unsafe { crate::ffi::gp_XYZ_multiplied_mat(self as *const Self, theMatrix) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -17050,8 +20469,10 @@ impl XYZ {
     /// Raised if <me>.Modulus() <= Resolution from gp
     pub fn normalize(&mut self) {
         {
-            unsafe { crate::ffi::gp_XYZ_normalize(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XYZ_normalize(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17065,8 +20486,11 @@ impl XYZ {
     pub fn normalized(&self) -> crate::OwnedPtr<XYZ> {
         {
             let __result = unsafe { crate::ffi::gp_XYZ_normalized(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -17078,8 +20502,10 @@ impl XYZ {
     /// @endcode
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::gp_XYZ_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XYZ_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17092,8 +20518,11 @@ impl XYZ {
     pub fn reversed(&self) -> crate::OwnedPtr<XYZ> {
         {
             let __result = unsafe { crate::ffi::gp_XYZ_reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -17105,8 +20534,10 @@ impl XYZ {
     /// @endcode
     pub fn subtract(&mut self, theOther: &XYZ) {
         {
-            unsafe { crate::ffi::gp_XYZ_subtract(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::gp_XYZ_subtract(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17119,8 +20550,11 @@ impl XYZ {
     pub fn subtracted(&self, theOther: &XYZ) -> crate::OwnedPtr<XYZ> {
         {
             let __result = unsafe { crate::ffi::gp_XYZ_subtracted(self as *const Self, theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -17140,7 +20574,7 @@ impl XYZ {
         theXYZ4: &XYZ,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_XYZ_set_linear_form_real_xyz_real_xyz_real_xyz2(
                     self as *mut Self,
                     theA1,
@@ -17152,7 +20586,9 @@ impl XYZ {
                     theXYZ4,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17171,7 +20607,7 @@ impl XYZ {
         theXYZ3: &XYZ,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_XYZ_set_linear_form_real_xyz_real_xyz_real_xyz(
                     self as *mut Self,
                     theA1,
@@ -17182,7 +20618,9 @@ impl XYZ {
                     theXYZ3,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17200,7 +20638,7 @@ impl XYZ {
         theXYZ3: &XYZ,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_XYZ_set_linear_form_real_xyz_real_xyz2(
                     self as *mut Self,
                     theA1,
@@ -17210,7 +20648,9 @@ impl XYZ {
                     theXYZ3,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17227,7 +20667,7 @@ impl XYZ {
         theXYZ2: &XYZ,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_XYZ_set_linear_form_real_xyz_real_xyz(
                     self as *mut Self,
                     theA1,
@@ -17236,7 +20676,9 @@ impl XYZ {
                     theXYZ2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17247,7 +20689,7 @@ impl XYZ {
     /// @endcode
     pub fn set_linear_form_real_xyz2(&mut self, theA1: f64, theXYZ1: &XYZ, theXYZ2: &XYZ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::gp_XYZ_set_linear_form_real_xyz2(
                     self as *mut Self,
                     theA1,
@@ -17255,7 +20697,9 @@ impl XYZ {
                     theXYZ2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17266,18 +20710,22 @@ impl XYZ {
     /// @endcode
     pub fn set_linear_form_xyz2(&mut self, theXYZ1: &XYZ, theXYZ2: &XYZ) {
         {
-            unsafe { crate::ffi::gp_XYZ_set_linear_form_xyz2(self as *mut Self, theXYZ1, theXYZ2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::gp_XYZ_set_linear_form_xyz2(self as *mut Self, theXYZ1, theXYZ2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::gp_XYZ_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::gp_XYZ_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

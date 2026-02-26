@@ -38,8 +38,10 @@ impl ConfigurationNode {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DEPLY_ConfigurationNode_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -53,8 +55,10 @@ impl ConfigurationNode {
             let __result = unsafe {
                 crate::ffi::DEPLY_ConfigurationNode_ctor_handledeplyconfigurationnode(theNode)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -63,8 +67,11 @@ impl ConfigurationNode {
         {
             let __result =
                 unsafe { crate::ffi::DEPLY_ConfigurationNode_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -76,8 +83,11 @@ impl ConfigurationNode {
         {
             let __result =
                 unsafe { crate::ffi::DEPLY_ConfigurationNode_load(self as *mut Self, theResource) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -87,8 +97,11 @@ impl ConfigurationNode {
     pub fn save(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::DEPLY_ConfigurationNode_save(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -98,8 +111,11 @@ impl ConfigurationNode {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleDEConfigurationNode> {
         {
             let __result = unsafe { crate::ffi::DEPLY_ConfigurationNode_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -110,8 +126,11 @@ impl ConfigurationNode {
         {
             let __result =
                 unsafe { crate::ffi::DEPLY_ConfigurationNode_build_provider(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -123,8 +142,11 @@ impl ConfigurationNode {
             let __result = unsafe {
                 crate::ffi::DEPLY_ConfigurationNode_is_import_supported(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -136,8 +158,11 @@ impl ConfigurationNode {
             let __result = unsafe {
                 crate::ffi::DEPLY_ConfigurationNode_is_export_supported(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -148,8 +173,11 @@ impl ConfigurationNode {
         {
             let __result =
                 unsafe { crate::ffi::DEPLY_ConfigurationNode_get_format(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -160,8 +188,11 @@ impl ConfigurationNode {
         {
             let __result =
                 unsafe { crate::ffi::DEPLY_ConfigurationNode_get_vendor(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -172,8 +203,11 @@ impl ConfigurationNode {
         {
             let __result =
                 unsafe { crate::ffi::DEPLY_ConfigurationNode_get_extensions(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -186,8 +220,11 @@ impl ConfigurationNode {
             let __result = unsafe {
                 crate::ffi::DEPLY_ConfigurationNode_check_content(self as *const Self, theBuffer)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -195,8 +232,11 @@ impl ConfigurationNode {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::DEPLY_ConfigurationNode_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -204,64 +244,67 @@ impl ConfigurationNode {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::DEPLY_ConfigurationNode_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to DE_ConfigurationNode
     pub fn as_de_configuration_node(&self) -> &crate::de::ConfigurationNode {
-        {
-            let __result = unsafe {
-                crate::ffi::DEPLY_ConfigurationNode_as_DE_ConfigurationNode(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::DEPLY_ConfigurationNode_as_DE_ConfigurationNode(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to DE_ConfigurationNode (mutable)
     pub fn as_de_configuration_node_mut(&mut self) -> &mut crate::de::ConfigurationNode {
-        {
-            let __result = unsafe {
-                crate::ffi::DEPLY_ConfigurationNode_as_DE_ConfigurationNode_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::DEPLY_ConfigurationNode_as_DE_ConfigurationNode_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::DEPLY_ConfigurationNode_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::DEPLY_ConfigurationNode_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::DEPLY_ConfigurationNode_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::DEPLY_ConfigurationNode_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleDEPLYConfigurationNode> {
-        {
-            let __result = unsafe { crate::ffi::DEPLY_ConfigurationNode_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::DEPLY_ConfigurationNode_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:91 - `DE_ConfigurationNode::UpdateLoad()`
@@ -274,8 +317,11 @@ impl ConfigurationNode {
                     theToKeep,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -288,8 +334,11 @@ impl ConfigurationNode {
                     theExtension,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -299,34 +348,41 @@ impl ConfigurationNode {
             let __result = unsafe {
                 crate::ffi::DEPLY_ConfigurationNode_inherited_IsEnabled(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:132 - `DE_ConfigurationNode::SetEnabled()`
     pub fn set_enabled(&mut self, theIsLoaded: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DEPLY_ConfigurationNode_inherited_SetEnabled(
                     self as *mut Self,
                     theIsLoaded,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `DE_ConfigurationNode.hxx`:141 - `DE_ConfigurationNode::CustomActivation()`
     pub fn custom_activation(&mut self, arg0: &crate::ffi::TColStd_ListOfAsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DEPLY_ConfigurationNode_inherited_CustomActivation(
                     self as *mut Self,
                     arg0,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -339,8 +395,11 @@ impl ConfigurationNode {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -350,8 +409,11 @@ impl ConfigurationNode {
             let __result = unsafe {
                 crate::ffi::DEPLY_ConfigurationNode_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -360,11 +422,14 @@ impl ConfigurationNode {
         {
             let __result =
                 unsafe { crate::ffi::DEPLY_ConfigurationNode_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -375,18 +440,23 @@ impl ConfigurationNode {
             let __result = unsafe {
                 crate::ffi::DEPLY_ConfigurationNode_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::DEPLY_ConfigurationNode_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -396,16 +466,23 @@ impl ConfigurationNode {
             let __result = unsafe {
                 crate::ffi::DEPLY_ConfigurationNode_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::DEPLY_ConfigurationNode_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::DEPLY_ConfigurationNode_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -421,50 +498,47 @@ unsafe impl crate::CppDeletable for HandleDEPLYConfigurationNode {
 impl HandleDEPLYConfigurationNode {
     /// Dereference this Handle to access the underlying DEPLY_ConfigurationNode
     pub fn get(&self) -> &crate::ffi::DEPLY_ConfigurationNode {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleDEPLYConfigurationNode_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleDEPLYConfigurationNode_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying DEPLY_ConfigurationNode
     pub fn get_mut(&mut self) -> &mut crate::ffi::DEPLY_ConfigurationNode {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleDEPLYConfigurationNode_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleDEPLYConfigurationNode_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<DEPLY_ConfigurationNode> to Handle<DE_ConfigurationNode>
     pub fn to_handle_configuration_node(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleDEConfigurationNode> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleDEPLYConfigurationNode_to_HandleDEConfigurationNode(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleDEPLYConfigurationNode_to_HandleDEConfigurationNode(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<DEPLY_ConfigurationNode> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleDEPLYConfigurationNode_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleDEPLYConfigurationNode_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -484,8 +558,10 @@ impl ConfigurationNode_RWPly_InternalSection {
         {
             let __result =
                 unsafe { crate::ffi::DEPLY_ConfigurationNode_RWPly_InternalSection_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -519,8 +595,10 @@ impl Provider {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::DEPLY_Provider_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -533,8 +611,10 @@ impl Provider {
         {
             let __result =
                 unsafe { crate::ffi::DEPLY_Provider_ctor_handledeconfigurationnode(theNode) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -542,8 +622,11 @@ impl Provider {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::DEPLY_Provider_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -565,8 +648,11 @@ impl Provider {
             let __result = unsafe {
                 crate::ffi::DEPLY_Provider_write_asciistring_handletdocstddocument_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theDocument, theWS, theProgress)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -591,8 +677,11 @@ impl Provider {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -614,8 +703,11 @@ impl Provider {
             let __result = unsafe {
                 crate::ffi::DEPLY_Provider_write_asciistring_shape_handlexscontrolworksession_progressrange(self as *mut Self, thePath, theShape, theWS, theProgress)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -640,8 +732,11 @@ impl Provider {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -651,8 +746,11 @@ impl Provider {
     pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::DEPLY_Provider_get_format(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -662,8 +760,11 @@ impl Provider {
     pub fn get_vendor(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::DEPLY_Provider_get_vendor(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -671,8 +772,11 @@ impl Provider {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::DEPLY_Provider_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -680,60 +784,61 @@ impl Provider {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::DEPLY_Provider_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to DE_Provider
     pub fn as_de_provider(&self) -> &crate::de::Provider {
-        {
-            let __result =
-                unsafe { crate::ffi::DEPLY_Provider_as_DE_Provider(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::DEPLY_Provider_as_DE_Provider(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to DE_Provider (mutable)
     pub fn as_de_provider_mut(&mut self) -> &mut crate::de::Provider {
-        {
-            let __result =
-                unsafe { crate::ffi::DEPLY_Provider_as_DE_Provider_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::DEPLY_Provider_as_DE_Provider_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::DEPLY_Provider_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::DEPLY_Provider_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::DEPLY_Provider_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::DEPLY_Provider_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleDEPLYProvider> {
-        {
-            let __result = unsafe { crate::ffi::DEPLY_Provider_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::DEPLY_Provider_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `DE_Provider.hxx`:62 - `DE_Provider::Read()`
@@ -754,8 +859,11 @@ impl Provider {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -764,16 +872,22 @@ impl Provider {
         {
             let __result =
                 unsafe { crate::ffi::DEPLY_Provider_inherited_GetNode(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `DE_Provider.hxx`:159 - `DE_Provider::SetNode()`
     pub fn set_node(&mut self, theNode: &crate::ffi::HandleDEConfigurationNode) {
         {
-            unsafe { crate::ffi::DEPLY_Provider_inherited_SetNode(self as *mut Self, theNode) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::DEPLY_Provider_inherited_SetNode(self as *mut Self, theNode) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -783,8 +897,11 @@ impl Provider {
             let __result = unsafe {
                 crate::ffi::DEPLY_Provider_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -794,8 +911,11 @@ impl Provider {
             let __result = unsafe {
                 crate::ffi::DEPLY_Provider_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -804,11 +924,14 @@ impl Provider {
         {
             let __result =
                 unsafe { crate::ffi::DEPLY_Provider_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -818,16 +941,23 @@ impl Provider {
         {
             let __result =
                 unsafe { crate::ffi::DEPLY_Provider_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::DEPLY_Provider_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::DEPLY_Provider_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -837,16 +967,21 @@ impl Provider {
             let __result = unsafe {
                 crate::ffi::DEPLY_Provider_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::DEPLY_Provider_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::DEPLY_Provider_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -862,40 +997,40 @@ unsafe impl crate::CppDeletable for HandleDEPLYProvider {
 impl HandleDEPLYProvider {
     /// Dereference this Handle to access the underlying DEPLY_Provider
     pub fn get(&self) -> &crate::ffi::DEPLY_Provider {
-        {
-            let __result = unsafe { crate::ffi::HandleDEPLYProvider_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleDEPLYProvider_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying DEPLY_Provider
     pub fn get_mut(&mut self) -> &mut crate::ffi::DEPLY_Provider {
-        {
-            let __result = unsafe { crate::ffi::HandleDEPLYProvider_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleDEPLYProvider_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<DEPLY_Provider> to Handle<DE_Provider>
     pub fn to_handle_provider(&self) -> crate::OwnedPtr<crate::ffi::HandleDEProvider> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleDEPLYProvider_to_HandleDEProvider(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleDEPLYProvider_to_HandleDEProvider(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<DEPLY_Provider> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleDEPLYProvider_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleDEPLYProvider_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

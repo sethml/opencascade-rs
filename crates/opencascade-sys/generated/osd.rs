@@ -64,10 +64,12 @@
 /// Refer to documentation of Standard_ErrorHandler.hxx for details.
 pub fn set_signal_signalmode_bool(theSignalMode: crate::osd::SignalMode, theFloatingSignal: bool) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::OSD_set_signal_signalmode_bool(theSignalMode.into(), theFloatingSignal)
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `OSD.hxx`:88 - `OSD::SetSignal`
@@ -75,8 +77,10 @@ pub fn set_signal_signalmode_bool(theSignalMode: crate::osd::SignalMode, theFloa
 /// Short-cut for OSD::SetSignal (OSD_SignalMode_Set, theFloatingSignal).
 pub fn set_signal_bool(theFloatingSignal: bool) {
     {
-        unsafe { crate::ffi::OSD_set_signal_bool(theFloatingSignal) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::OSD_set_signal_bool(theFloatingSignal) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `OSD.hxx`:97 - `OSD::SetThreadLocalSignal`
@@ -86,8 +90,12 @@ pub fn set_signal_bool(theFloatingSignal: bool) {
 /// without overriding global handlers (set by application or by OSD::SetSignal()).
 pub fn set_thread_local_signal(theSignalMode: crate::osd::SignalMode, theFloatingSignal: bool) {
     {
-        unsafe { crate::ffi::OSD_set_thread_local_signal(theSignalMode.into(), theFloatingSignal) };
-        crate::check_exception();
+        let __exc = unsafe {
+            crate::ffi::OSD_set_thread_local_signal(theSignalMode.into(), theFloatingSignal)
+        };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `OSD.hxx`:104 - `OSD::SetFloatingSignal`
@@ -97,8 +105,10 @@ pub fn set_thread_local_signal(theSignalMode: crate::osd::SignalMode, theFloatin
 /// Note that FPE setting is thread-local, new threads inherit it from parent.
 pub fn set_floating_signal(theFloatingSignal: bool) {
     {
-        unsafe { crate::ffi::OSD_set_floating_signal(theFloatingSignal) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::OSD_set_floating_signal(theFloatingSignal) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `OSD.hxx`:108 - `OSD::SignalMode`
@@ -107,8 +117,11 @@ pub fn set_floating_signal(theFloatingSignal: bool) {
 pub fn signal_mode() -> crate::osd::SignalMode {
     {
         let __result = unsafe { crate::ffi::OSD_signal_mode() };
-        crate::check_exception();
-        crate::osd::SignalMode::try_from(__result).unwrap()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        crate::osd::SignalMode::try_from(__val).unwrap()
     }
 }
 /// **Source:** `OSD.hxx`:112 - `OSD::ToCatchFloatingSignals`
@@ -117,24 +130,31 @@ pub fn signal_mode() -> crate::osd::SignalMode {
 pub fn to_catch_floating_signals() -> bool {
     {
         let __result = unsafe { crate::ffi::OSD_to_catch_floating_signals() };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `OSD.hxx`:115 - `OSD::SecSleep`
 /// Commands the process to sleep for a number of seconds.
 pub fn sec_sleep(theSeconds: i32) {
     {
-        unsafe { crate::ffi::OSD_sec_sleep(theSeconds) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::OSD_sec_sleep(theSeconds) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `OSD.hxx`:118 - `OSD::MilliSecSleep`
 /// Commands the process to sleep for a number of milliseconds
 pub fn milli_sec_sleep(theMilliseconds: i32) {
     {
-        unsafe { crate::ffi::OSD_milli_sec_sleep(theMilliseconds) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::OSD_milli_sec_sleep(theMilliseconds) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `OSD.hxx`:123 - `OSD::RealToCString`
@@ -144,8 +164,11 @@ pub fn milli_sec_sleep(theMilliseconds: i32) {
 pub unsafe fn real_to_c_string(aReal: f64, aString: &mut *mut std::ffi::c_char) -> bool {
     {
         let __result = unsafe { crate::ffi::OSD_real_to_c_string(aReal, aString) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `OSD.hxx`:130 - `OSD::CStringToReal`
@@ -157,8 +180,11 @@ pub fn c_string_to_real(aString: &str, aReal: &mut f64) -> bool {
     let c_aString = std::ffi::CString::new(aString).unwrap();
     {
         let __result = unsafe { crate::ffi::OSD_c_string_to_real(c_aString.as_ptr(), aReal) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `OSD.hxx`:136 - `OSD::ControlBreak`
@@ -167,8 +193,10 @@ pub fn c_string_to_real(aString: &str, aReal: &mut f64) -> bool {
 /// not. If yes then raises Exception_CTRL_BREAK.
 pub fn control_break() {
     {
-        unsafe { crate::ffi::OSD_control_break() };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::OSD_control_break() };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `OSD.hxx`:141 - `OSD::SignalStackTraceLength`
@@ -178,16 +206,21 @@ pub fn control_break() {
 pub fn signal_stack_trace_length() -> i32 {
     {
         let __result = unsafe { crate::ffi::OSD_signal_stack_trace_length() };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `OSD.hxx`:144 - `OSD::SetSignalStackTraceLength`
 /// Sets a length of stack trace to be put into exception redirected from signal.
 pub fn set_signal_stack_trace_length(theLength: i32) {
     {
-        unsafe { crate::ffi::OSD_set_signal_stack_trace_length(theLength) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::OSD_set_signal_stack_trace_length(theLength) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 
@@ -633,8 +666,10 @@ impl CachedFileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_CachedFileSystem_ctor_handleosdfilesystem(theLinkedFileSystem)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -643,8 +678,11 @@ impl CachedFileSystem {
         {
             let __result =
                 unsafe { crate::ffi::OSD_CachedFileSystem_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -654,8 +692,11 @@ impl CachedFileSystem {
         {
             let __result =
                 unsafe { crate::ffi::OSD_CachedFileSystem_linked_file_system(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -666,13 +707,15 @@ impl CachedFileSystem {
         theLinkedFileSystem: &crate::ffi::HandleOSDFileSystem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_CachedFileSystem_set_linked_file_system(
                     self as *mut Self,
                     theLinkedFileSystem,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -683,8 +726,11 @@ impl CachedFileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_CachedFileSystem_is_supported_path(self as *const Self, theUrl)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -695,8 +741,11 @@ impl CachedFileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_CachedFileSystem_is_open_i_stream(self as *const Self, theStream)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -707,8 +756,11 @@ impl CachedFileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_CachedFileSystem_is_open_o_stream(self as *const Self, theStream)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -732,8 +784,11 @@ impl CachedFileSystem {
                     theOldStream,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -749,8 +804,11 @@ impl CachedFileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_CachedFileSystem_open_o_stream(self as *mut Self, theUrl, theMode)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -773,8 +831,11 @@ impl CachedFileSystem {
                     theOutBufSize.map_or(std::ptr::null_mut(), |r| r as *mut _),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -782,8 +843,11 @@ impl CachedFileSystem {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_CachedFileSystem_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -791,63 +855,64 @@ impl CachedFileSystem {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_CachedFileSystem_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_FileSystem
     pub fn as_file_system(&self) -> &FileSystem {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_CachedFileSystem_as_OSD_FileSystem(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::OSD_CachedFileSystem_as_OSD_FileSystem(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_FileSystem (mutable)
     pub fn as_file_system_mut(&mut self) -> &mut FileSystem {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_CachedFileSystem_as_OSD_FileSystem_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_CachedFileSystem_as_OSD_FileSystem_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_CachedFileSystem_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::OSD_CachedFileSystem_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_CachedFileSystem_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_CachedFileSystem_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleOSDCachedFileSystem> {
-        {
-            let __result = unsafe { crate::ffi::OSD_CachedFileSystem_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::OSD_CachedFileSystem_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -856,8 +921,11 @@ impl CachedFileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_CachedFileSystem_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -867,8 +935,11 @@ impl CachedFileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_CachedFileSystem_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -877,11 +948,14 @@ impl CachedFileSystem {
         {
             let __result =
                 unsafe { crate::ffi::OSD_CachedFileSystem_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -892,18 +966,23 @@ impl CachedFileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_CachedFileSystem_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_CachedFileSystem_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -913,16 +992,22 @@ impl CachedFileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_CachedFileSystem_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::OSD_CachedFileSystem_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_CachedFileSystem_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -938,46 +1023,42 @@ unsafe impl crate::CppDeletable for HandleOSDCachedFileSystem {
 impl HandleOSDCachedFileSystem {
     /// Dereference this Handle to access the underlying OSD_CachedFileSystem
     pub fn get(&self) -> &crate::ffi::OSD_CachedFileSystem {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDCachedFileSystem_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleOSDCachedFileSystem_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_CachedFileSystem
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_CachedFileSystem {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDCachedFileSystem_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleOSDCachedFileSystem_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_CachedFileSystem> to Handle<OSD_FileSystem>
     pub fn to_handle_file_system(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDFileSystem> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDCachedFileSystem_to_HandleOSDFileSystem(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDCachedFileSystem_to_HandleOSDFileSystem(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_CachedFileSystem> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDCachedFileSystem_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDCachedFileSystem_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1012,8 +1093,10 @@ impl Chronometer {
     pub fn new_bool(theThisThreadOnly: bool) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Chronometer_ctor_bool(theThisThreadOnly) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1032,8 +1115,11 @@ impl Chronometer {
     pub fn is_started(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_Chronometer_is_started(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1041,8 +1127,10 @@ impl Chronometer {
     /// Stops and Reinitializes the Chronometer.
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Chronometer_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Chronometer_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1050,8 +1138,10 @@ impl Chronometer {
     /// Restarts the Chronometer.
     pub fn restart(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Chronometer_restart(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Chronometer_restart(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1059,8 +1149,10 @@ impl Chronometer {
     /// Stops the Chronometer.
     pub fn stop(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Chronometer_stop(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Chronometer_stop(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1069,8 +1161,10 @@ impl Chronometer {
     /// the chronometer.
     pub fn start(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Chronometer_start(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Chronometer_start(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1080,8 +1174,10 @@ impl Chronometer {
     /// The chronometer can be running (laps Time) or stopped.
     pub fn show(&self) {
         {
-            unsafe { crate::ffi::OSD_Chronometer_show(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Chronometer_show(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1091,8 +1187,12 @@ impl Chronometer {
     /// The chronometer can be running (laps Time) or stopped.
     pub fn show_ostream(&self, theOStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::OSD_Chronometer_show_ostream(self as *const Self, theOStream) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_Chronometer_show_ostream(self as *const Self, theOStream)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1103,8 +1203,11 @@ impl Chronometer {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Chronometer_user_time_cpu(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1115,8 +1218,11 @@ impl Chronometer {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Chronometer_system_time_cpu(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1127,8 +1233,11 @@ impl Chronometer {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Chronometer_is_this_thread_only(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1137,10 +1246,12 @@ impl Chronometer {
     /// Will raise exception if Timer is in started state.
     pub fn set_this_thread_only(&mut self, theIsThreadOnly: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Chronometer_set_this_thread_only(self as *mut Self, theIsThreadOnly)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1149,8 +1260,12 @@ impl Chronometer {
     /// The chronometer can be running (laps Time) or stopped.
     pub fn show_real(&self, theUserSeconds: &mut f64) {
         {
-            unsafe { crate::ffi::OSD_Chronometer_show_real(self as *const Self, theUserSeconds) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_Chronometer_show_real(self as *const Self, theUserSeconds)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1159,14 +1274,16 @@ impl Chronometer {
     /// The chronometer can be running (laps Time) or stopped.
     pub fn show_real2(&self, theUserSec: &mut f64, theSystemSec: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Chronometer_show_real2(
                     self as *const Self,
                     theUserSec,
                     theSystemSec,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1177,8 +1294,11 @@ impl Chronometer {
     /// and is platform-specific.
     pub fn get_process_cpu(UserSeconds: &mut f64, SystemSeconds: &mut f64) {
         {
-            unsafe { crate::ffi::OSD_Chronometer_get_process_cpu(UserSeconds, SystemSeconds) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Chronometer_get_process_cpu(UserSeconds, SystemSeconds) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1189,8 +1309,11 @@ impl Chronometer {
     /// differently on different platforms and CPUs.
     pub fn get_thread_cpu(UserSeconds: &mut f64, SystemSeconds: &mut f64) {
         {
-            unsafe { crate::ffi::OSD_Chronometer_get_thread_cpu(UserSeconds, SystemSeconds) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Chronometer_get_thread_cpu(UserSeconds, SystemSeconds) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1216,8 +1339,10 @@ impl Directory {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Directory_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1226,8 +1351,10 @@ impl Directory {
     pub fn new_path(theName: &Path) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Directory_ctor_path(theName) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1240,8 +1367,10 @@ impl Directory {
     /// OSDError is raised.
     pub fn build(&mut self, Protect: &Protection) {
         {
-            unsafe { crate::ffi::OSD_Directory_build(self as *mut Self, Protect) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Directory_build(self as *mut Self, Protect) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1251,44 +1380,51 @@ impl Directory {
     pub fn build_temporary() -> crate::OwnedPtr<Directory> {
         {
             let __result = unsafe { crate::ffi::OSD_Directory_build_temporary() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to OSD_FileNode
     pub fn as_file_node(&self) -> &FileNode {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_Directory_as_OSD_FileNode(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_Directory_as_OSD_FileNode(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_FileNode (mutable)
     pub fn as_file_node_mut(&mut self) -> &mut FileNode {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_Directory_as_OSD_FileNode_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::OSD_Directory_as_OSD_FileNode_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:38 - `OSD_FileNode::Path()`
     pub fn path(&self, Name: &mut Path) {
         {
-            unsafe { crate::ffi::OSD_Directory_inherited_Path(self as *const Self, Name) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Directory_inherited_Path(self as *const Self, Name) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:42 - `OSD_FileNode::SetPath()`
     pub fn set_path(&mut self, Name: &Path) {
         {
-            unsafe { crate::ffi::OSD_Directory_inherited_SetPath(self as *mut Self, Name) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Directory_inherited_SetPath(self as *mut Self, Name) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1296,32 +1432,43 @@ impl Directory {
     pub fn exists(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_Directory_inherited_Exists(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:48 - `OSD_FileNode::Remove()`
     pub fn remove(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Directory_inherited_Remove(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Directory_inherited_Remove(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:51 - `OSD_FileNode::Move()`
     pub fn move_(&mut self, NewPath: &Path) {
         {
-            unsafe { crate::ffi::OSD_Directory_inherited_Move(self as *mut Self, NewPath) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Directory_inherited_Move(self as *mut Self, NewPath) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:54 - `OSD_FileNode::Copy()`
     pub fn copy(&mut self, ToPath: &Path) {
         {
-            unsafe { crate::ffi::OSD_Directory_inherited_Copy(self as *mut Self, ToPath) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Directory_inherited_Copy(self as *mut Self, ToPath) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1330,16 +1477,23 @@ impl Directory {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Directory_inherited_Protection(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:61 - `OSD_FileNode::SetProtection()`
     pub fn set_protection(&mut self, Prot: &Protection) {
         {
-            unsafe { crate::ffi::OSD_Directory_inherited_SetProtection(self as *mut Self, Prot) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_Directory_inherited_SetProtection(self as *mut Self, Prot)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1348,8 +1502,11 @@ impl Directory {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Directory_inherited_AccessMoment(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1358,8 +1515,11 @@ impl Directory {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Directory_inherited_CreationMoment(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1368,24 +1528,31 @@ impl Directory {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Directory_inherited_Failed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:77 - `OSD_FileNode::Reset()`
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Directory_inherited_Reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Directory_inherited_Reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:80 - `OSD_FileNode::Perror()`
     pub fn perror(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Directory_inherited_Perror(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Directory_inherited_Perror(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1394,8 +1561,11 @@ impl Directory {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Directory_inherited_Error(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1422,8 +1592,10 @@ impl DirectoryIterator {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_DirectoryIterator_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1438,16 +1610,20 @@ impl DirectoryIterator {
         {
             let __result =
                 unsafe { crate::ffi::OSD_DirectoryIterator_ctor_path_asciistring(where_, Mask) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `OSD_DirectoryIterator.hxx`:46 - `OSD_DirectoryIterator::Destroy()`
     pub fn destroy(&mut self) {
         {
-            unsafe { crate::ffi::OSD_DirectoryIterator_destroy(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_DirectoryIterator_destroy(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1455,10 +1631,12 @@ impl DirectoryIterator {
     /// Initializes the current File Directory
     pub fn initialize(&mut self, where_: &Path, Mask: &crate::t_collection::AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_DirectoryIterator_initialize(self as *mut Self, where_, Mask)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1468,8 +1646,11 @@ impl DirectoryIterator {
     pub fn more(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_DirectoryIterator_more(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1479,8 +1660,10 @@ impl DirectoryIterator {
     /// position of the iterator.
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::OSD_DirectoryIterator_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_DirectoryIterator_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1489,8 +1672,11 @@ impl DirectoryIterator {
     pub fn values(&mut self) -> crate::OwnedPtr<Directory> {
         {
             let __result = unsafe { crate::ffi::OSD_DirectoryIterator_values(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1499,8 +1685,11 @@ impl DirectoryIterator {
     pub fn failed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_DirectoryIterator_failed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1508,8 +1697,10 @@ impl DirectoryIterator {
     /// Resets error counter to zero
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::OSD_DirectoryIterator_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_DirectoryIterator_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1517,8 +1708,10 @@ impl DirectoryIterator {
     /// Raises OSD_Error
     pub fn perror(&mut self) {
         {
-            unsafe { crate::ffi::OSD_DirectoryIterator_perror(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_DirectoryIterator_perror(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1527,8 +1720,11 @@ impl DirectoryIterator {
     pub fn error(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::OSD_DirectoryIterator_error(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1555,8 +1751,10 @@ impl Disk {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Disk_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1566,8 +1764,10 @@ impl Disk {
     pub fn new_path(Name: &Path) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Disk_ctor_path(Name) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1582,8 +1782,10 @@ impl Disk {
         let c_PathName = std::ffi::CString::new(PathName).unwrap();
         {
             let __result = unsafe { crate::ffi::OSD_Disk_ctor_charptr(c_PathName.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1592,8 +1794,11 @@ impl Disk {
     pub fn name(&self) -> crate::OwnedPtr<Path> {
         {
             let __result = unsafe { crate::ffi::OSD_Disk_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1601,8 +1806,10 @@ impl Disk {
     /// Instantiates <me> with <Name>.
     pub fn set_name(&mut self, Name: &Path) {
         {
-            unsafe { crate::ffi::OSD_Disk_set_name(self as *mut Self, Name) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Disk_set_name(self as *mut Self, Name) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1611,8 +1818,11 @@ impl Disk {
     pub fn disk_size(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::OSD_Disk_disk_size(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1621,8 +1831,11 @@ impl Disk {
     pub fn disk_free(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::OSD_Disk_disk_free(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1631,8 +1844,11 @@ impl Disk {
     pub fn failed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_Disk_failed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1640,8 +1856,10 @@ impl Disk {
     /// Resets error counter to zero
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Disk_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Disk_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1649,8 +1867,10 @@ impl Disk {
     /// Raises OSD_Error
     pub fn perror(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Disk_perror(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Disk_perror(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1659,8 +1879,11 @@ impl Disk {
     pub fn error(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::OSD_Disk_error(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1690,8 +1913,10 @@ impl Environment {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Environment_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1701,8 +1926,10 @@ impl Environment {
     pub fn new_asciistring(Name: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Environment_ctor_asciistring(Name) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1714,8 +1941,10 @@ impl Environment {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Environment_ctor_asciistring2(Name, Value) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1726,8 +1955,10 @@ impl Environment {
     /// contains the character '$' which is forbidden.
     pub fn set_value(&mut self, Value: &crate::t_collection::AsciiString) {
         {
-            unsafe { crate::ffi::OSD_Environment_set_value(self as *mut Self, Value) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Environment_set_value(self as *mut Self, Value) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1736,8 +1967,11 @@ impl Environment {
     pub fn value(&mut self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::OSD_Environment_value(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1748,8 +1982,10 @@ impl Environment {
     /// contains the character '$' which is forbidden.
     pub fn set_name(&mut self, name: &crate::t_collection::AsciiString) {
         {
-            unsafe { crate::ffi::OSD_Environment_set_name(self as *mut Self, name) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Environment_set_name(self as *mut Self, name) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1758,8 +1994,11 @@ impl Environment {
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::OSD_Environment_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1768,8 +2007,10 @@ impl Environment {
     /// into system (physically).
     pub fn build(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Environment_build(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Environment_build(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1777,8 +2018,10 @@ impl Environment {
     /// Removes (physically) an environment variable
     pub fn remove(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Environment_remove(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Environment_remove(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1787,8 +2030,11 @@ impl Environment {
     pub fn failed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_Environment_failed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1796,8 +2042,10 @@ impl Environment {
     /// Resets error counter to zero
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Environment_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Environment_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1805,8 +2053,10 @@ impl Environment {
     /// Raises OSD_Error
     pub fn perror(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Environment_perror(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Environment_perror(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1815,8 +2065,11 @@ impl Environment {
     pub fn error(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::OSD_Environment_error(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1842,8 +2095,10 @@ impl Error {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Error_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1851,8 +2106,10 @@ impl Error {
     /// Raises OSD_Error with accurate error message.
     pub fn perror(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Error_perror(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Error_perror(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1867,8 +2124,12 @@ impl Error {
         Message: &crate::t_collection::AsciiString,
     ) {
         {
-            unsafe { crate::ffi::OSD_Error_set_value(self as *mut Self, Errcode, From, Message) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_Error_set_value(self as *mut Self, Errcode, From, Message)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1878,8 +2139,11 @@ impl Error {
     pub fn error(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::OSD_Error_error(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1889,8 +2153,11 @@ impl Error {
     pub fn failed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_Error_failed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1899,8 +2166,10 @@ impl Error {
     /// This allows the user to ignore an error (WARNING).
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Error_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Error_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1923,8 +2192,10 @@ impl Exception {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1933,8 +2204,10 @@ impl Exception {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
             let __result = unsafe { crate::ffi::OSD_Exception_ctor_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1949,8 +2222,10 @@ impl Exception {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1958,8 +2233,11 @@ impl Exception {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1967,16 +2245,20 @@ impl Exception {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::OSD_Exception_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Exception_raise_charptr(c_theMessage.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_Exception.hxx`:34 - `OSD_Exception::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_Exception_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Exception_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1988,8 +2270,11 @@ impl Exception {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Exception_new_instance_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2007,8 +2292,11 @@ impl Exception {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2016,8 +2304,11 @@ impl Exception {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2025,83 +2316,94 @@ impl Exception {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_Exception_as_Standard_Failure(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::OSD_Exception_as_Standard_Failure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_Exception_as_Standard_Failure_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_Exception_as_Standard_Failure_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_Exception_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::OSD_Exception_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_Exception_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_Exception_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleOSDException> {
-        {
-            let __result = unsafe { crate::ffi::OSD_Exception_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::OSD_Exception_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::OSD_Exception_inherited_Print(self as *const Self, theStream) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_Exception_inherited_Print(self as *const Self, theStream)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Exception_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Exception_inherited_Reraise(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Exception_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Exception_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2111,8 +2413,11 @@ impl Exception {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2121,8 +2426,11 @@ impl Exception {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Exception_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2130,11 +2438,14 @@ impl Exception {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2144,16 +2455,23 @@ impl Exception {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Exception_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Exception_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_Exception_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2163,16 +2481,21 @@ impl Exception {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::OSD_Exception_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Exception_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2188,42 +2511,41 @@ unsafe impl crate::CppDeletable for HandleOSDException {
 impl HandleOSDException {
     /// Dereference this Handle to access the underlying OSD_Exception
     pub fn get(&self) -> &crate::ffi::OSD_Exception {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDException_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleOSDException_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_Exception
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_Exception {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDException_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleOSDException_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_Exception> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDException_to_HandleStandardFailure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDException_to_HandleStandardFailure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDException_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDException_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<OSD_Exception> to Handle<OSD_Exception_ACCESS_VIOLATION>
@@ -2232,16 +2554,18 @@ impl HandleOSDException {
     pub fn downcast_to_exception_access_violation(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDExceptionACCESSVIOLATION>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleOSDException_downcast_to_HandleOSDExceptionACCESSVIOLATION(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2251,16 +2575,18 @@ impl HandleOSDException {
     pub fn downcast_to_exception_array_bounds_exceeded(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDExceptionARRAYBOUNDSEXCEEDED>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleOSDException_downcast_to_HandleOSDExceptionARRAYBOUNDSEXCEEDED(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2270,16 +2596,18 @@ impl HandleOSDException {
     pub fn downcast_to_exception_ctrl_break(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDExceptionCTRLBREAK>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleOSDException_downcast_to_HandleOSDExceptionCTRLBREAK(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2289,16 +2617,18 @@ impl HandleOSDException {
     pub fn downcast_to_exception_illegal_instruction(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDExceptionILLEGALINSTRUCTION>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleOSDException_downcast_to_HandleOSDExceptionILLEGALINSTRUCTION(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2308,16 +2638,18 @@ impl HandleOSDException {
     pub fn downcast_to_exception_int_overflow(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDExceptionINTOVERFLOW>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleOSDException_downcast_to_HandleOSDExceptionINTOVERFLOW(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2327,16 +2659,18 @@ impl HandleOSDException {
     pub fn downcast_to_exception_invalid_disposition(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDExceptionINVALIDDISPOSITION>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleOSDException_downcast_to_HandleOSDExceptionINVALIDDISPOSITION(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2346,16 +2680,18 @@ impl HandleOSDException {
     pub fn downcast_to_exception_in_page_error(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDExceptionINPAGEERROR>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleOSDException_downcast_to_HandleOSDExceptionINPAGEERROR(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2365,16 +2701,18 @@ impl HandleOSDException {
     pub fn downcast_to_exception_noncontinuable_exception(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDExceptionNONCONTINUABLEEXCEPTION>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleOSDException_downcast_to_HandleOSDExceptionNONCONTINUABLEEXCEPTION(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2384,16 +2722,18 @@ impl HandleOSDException {
     pub fn downcast_to_exception_priv_instruction(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDExceptionPRIVINSTRUCTION>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleOSDException_downcast_to_HandleOSDExceptionPRIVINSTRUCTION(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2403,16 +2743,18 @@ impl HandleOSDException {
     pub fn downcast_to_exception_stack_overflow(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDExceptionSTACKOVERFLOW>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleOSDException_downcast_to_HandleOSDExceptionSTACKOVERFLOW(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2422,16 +2764,18 @@ impl HandleOSDException {
     pub fn downcast_to_exception_status_no_memory(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDExceptionSTATUSNOMEMORY>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleOSDException_downcast_to_HandleOSDExceptionSTATUSNOMEMORY(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -2454,8 +2798,10 @@ impl Exception_ACCESS_VIOLATION {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_ACCESS_VIOLATION_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2466,8 +2812,10 @@ impl Exception_ACCESS_VIOLATION {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_ACCESS_VIOLATION_ctor_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2482,8 +2830,10 @@ impl Exception_ACCESS_VIOLATION {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2493,8 +2843,11 @@ impl Exception_ACCESS_VIOLATION {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_ACCESS_VIOLATION_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2502,18 +2855,23 @@ impl Exception_ACCESS_VIOLATION {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_ACCESS_VIOLATION_raise_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_Exception_ACCESS_VIOLATION.hxx`:34 - `OSD_Exception_ACCESS_VIOLATION::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_Exception_ACCESS_VIOLATION_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Exception_ACCESS_VIOLATION_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2528,8 +2886,11 @@ impl Exception_ACCESS_VIOLATION {
                     c_theMessage.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2547,8 +2908,11 @@ impl Exception_ACCESS_VIOLATION {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2556,8 +2920,11 @@ impl Exception_ACCESS_VIOLATION {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_ACCESS_VIOLATION_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2566,123 +2933,128 @@ impl Exception_ACCESS_VIOLATION {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Exception_ACCESS_VIOLATION_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_Exception
     pub fn as_exception(&self) -> &Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_ACCESS_VIOLATION_as_OSD_Exception(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_ACCESS_VIOLATION_as_OSD_Exception(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_Exception (mutable)
     pub fn as_exception_mut(&mut self) -> &mut Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_ACCESS_VIOLATION_as_OSD_Exception_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_ACCESS_VIOLATION_as_OSD_Exception_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_ACCESS_VIOLATION_as_Standard_Failure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_ACCESS_VIOLATION_as_Standard_Failure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_ACCESS_VIOLATION_as_Standard_Failure_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_ACCESS_VIOLATION_as_Standard_Failure_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_ACCESS_VIOLATION_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_ACCESS_VIOLATION_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_ACCESS_VIOLATION_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_ACCESS_VIOLATION_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleOSDExceptionACCESSVIOLATION> {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_Exception_ACCESS_VIOLATION_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::OSD_Exception_ACCESS_VIOLATION_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_ACCESS_VIOLATION_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_ACCESS_VIOLATION_inherited_Reraise(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Exception_ACCESS_VIOLATION_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_Exception_ACCESS_VIOLATION_inherited_Jump(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2695,8 +3067,11 @@ impl Exception_ACCESS_VIOLATION {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2709,8 +3084,11 @@ impl Exception_ACCESS_VIOLATION {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2720,11 +3098,14 @@ impl Exception_ACCESS_VIOLATION {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_ACCESS_VIOLATION_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2737,20 +3118,25 @@ impl Exception_ACCESS_VIOLATION {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_ACCESS_VIOLATION_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2762,18 +3148,23 @@ impl Exception_ACCESS_VIOLATION {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_ACCESS_VIOLATION_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2789,61 +3180,59 @@ unsafe impl crate::CppDeletable for HandleOSDExceptionACCESSVIOLATION {
 impl HandleOSDExceptionACCESSVIOLATION {
     /// Dereference this Handle to access the underlying OSD_Exception_ACCESS_VIOLATION
     pub fn get(&self) -> &crate::ffi::OSD_Exception_ACCESS_VIOLATION {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDExceptionACCESSVIOLATION_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleOSDExceptionACCESSVIOLATION_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_Exception_ACCESS_VIOLATION
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_Exception_ACCESS_VIOLATION {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDExceptionACCESSVIOLATION_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleOSDExceptionACCESSVIOLATION_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_Exception_ACCESS_VIOLATION> to Handle<OSD_Exception>
     pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDException> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionACCESSVIOLATION_to_HandleOSDException(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionACCESSVIOLATION_to_HandleOSDException(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_ACCESS_VIOLATION> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionACCESSVIOLATION_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionACCESSVIOLATION_to_HandleStandardFailure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_ACCESS_VIOLATION> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionACCESSVIOLATION_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionACCESSVIOLATION_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2865,8 +3254,10 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2877,8 +3268,10 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_ctor_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2893,8 +3286,10 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2904,8 +3299,11 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2913,18 +3311,24 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_raise_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_Exception_ARRAY_BOUNDS_EXCEEDED.hxx`:34 - `OSD_Exception_ARRAY_BOUNDS_EXCEEDED::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_raise_sstream(theMessage)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2939,8 +3343,11 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
                     c_theMessage.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2958,8 +3365,11 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2968,8 +3378,11 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2978,132 +3391,134 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_Exception
     pub fn as_exception(&self) -> &Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_as_OSD_Exception(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_as_OSD_Exception(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_Exception (mutable)
     pub fn as_exception_mut(&mut self) -> &mut Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_as_OSD_Exception_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_as_OSD_Exception_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_as_Standard_Failure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_as_Standard_Failure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_as_Standard_Failure_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_as_Standard_Failure_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleOSDExceptionARRAYBOUNDSEXCEEDED> {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_inherited_Reraise(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_inherited_Jump(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3116,8 +3531,11 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3130,8 +3548,11 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3141,11 +3562,14 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3158,20 +3582,25 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3183,20 +3612,25 @@ impl Exception_ARRAY_BOUNDS_EXCEEDED {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3212,63 +3646,61 @@ unsafe impl crate::CppDeletable for HandleOSDExceptionARRAYBOUNDSEXCEEDED {
 impl HandleOSDExceptionARRAYBOUNDSEXCEEDED {
     /// Dereference this Handle to access the underlying OSD_Exception_ARRAY_BOUNDS_EXCEEDED
     pub fn get(&self) -> &crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionARRAYBOUNDSEXCEEDED_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleOSDExceptionARRAYBOUNDSEXCEEDED_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_Exception_ARRAY_BOUNDS_EXCEEDED
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_Exception_ARRAY_BOUNDS_EXCEEDED {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionARRAYBOUNDSEXCEEDED_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleOSDExceptionARRAYBOUNDSEXCEEDED_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_Exception_ARRAY_BOUNDS_EXCEEDED> to Handle<OSD_Exception>
     pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDException> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionARRAYBOUNDSEXCEEDED_to_HandleOSDException(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionARRAYBOUNDSEXCEEDED_to_HandleOSDException(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_ARRAY_BOUNDS_EXCEEDED> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionARRAYBOUNDSEXCEEDED_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionARRAYBOUNDSEXCEEDED_to_HandleStandardFailure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_ARRAY_BOUNDS_EXCEEDED> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionARRAYBOUNDSEXCEEDED_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionARRAYBOUNDSEXCEEDED_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3290,8 +3722,10 @@ impl Exception_CTRL_BREAK {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_CTRL_BREAK_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3301,8 +3735,10 @@ impl Exception_CTRL_BREAK {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Exception_CTRL_BREAK_ctor_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3317,8 +3753,10 @@ impl Exception_CTRL_BREAK {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3327,8 +3765,11 @@ impl Exception_CTRL_BREAK {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Exception_CTRL_BREAK_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3336,16 +3777,22 @@ impl Exception_CTRL_BREAK {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::OSD_Exception_CTRL_BREAK_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_Exception_CTRL_BREAK_raise_charptr(c_theMessage.as_ptr())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_Exception_CTRL_BREAK.hxx`:33 - `OSD_Exception_CTRL_BREAK::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_Exception_CTRL_BREAK_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Exception_CTRL_BREAK_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3358,8 +3805,11 @@ impl Exception_CTRL_BREAK {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_CTRL_BREAK_new_instance_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3377,8 +3827,11 @@ impl Exception_CTRL_BREAK {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3386,8 +3839,11 @@ impl Exception_CTRL_BREAK {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_CTRL_BREAK_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3395,112 +3851,121 @@ impl Exception_CTRL_BREAK {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_CTRL_BREAK_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_Exception
     pub fn as_exception(&self) -> &Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_CTRL_BREAK_as_OSD_Exception(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::OSD_Exception_CTRL_BREAK_as_OSD_Exception(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_Exception (mutable)
     pub fn as_exception_mut(&mut self) -> &mut Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_CTRL_BREAK_as_OSD_Exception_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_Exception_CTRL_BREAK_as_OSD_Exception_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_CTRL_BREAK_as_Standard_Failure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_CTRL_BREAK_as_Standard_Failure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_CTRL_BREAK_as_Standard_Failure_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_CTRL_BREAK_as_Standard_Failure_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_CTRL_BREAK_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_CTRL_BREAK_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_CTRL_BREAK_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_CTRL_BREAK_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleOSDExceptionCTRLBREAK> {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_Exception_CTRL_BREAK_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::OSD_Exception_CTRL_BREAK_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_CTRL_BREAK_inherited_Print(self as *const Self, theStream)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Exception_CTRL_BREAK_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_Exception_CTRL_BREAK_inherited_Reraise(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Exception_CTRL_BREAK_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Exception_CTRL_BREAK_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3513,8 +3978,11 @@ impl Exception_CTRL_BREAK {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3524,8 +3992,11 @@ impl Exception_CTRL_BREAK {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_CTRL_BREAK_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3534,11 +4005,14 @@ impl Exception_CTRL_BREAK {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Exception_CTRL_BREAK_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3549,20 +4023,25 @@ impl Exception_CTRL_BREAK {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_CTRL_BREAK_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_CTRL_BREAK_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3574,16 +4053,23 @@ impl Exception_CTRL_BREAK {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::OSD_Exception_CTRL_BREAK_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_Exception_CTRL_BREAK_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3599,59 +4085,54 @@ unsafe impl crate::CppDeletable for HandleOSDExceptionCTRLBREAK {
 impl HandleOSDExceptionCTRLBREAK {
     /// Dereference this Handle to access the underlying OSD_Exception_CTRL_BREAK
     pub fn get(&self) -> &crate::ffi::OSD_Exception_CTRL_BREAK {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDExceptionCTRLBREAK_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleOSDExceptionCTRLBREAK_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_Exception_CTRL_BREAK
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_Exception_CTRL_BREAK {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDExceptionCTRLBREAK_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleOSDExceptionCTRLBREAK_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_Exception_CTRL_BREAK> to Handle<OSD_Exception>
     pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDException> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionCTRLBREAK_to_HandleOSDException(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionCTRLBREAK_to_HandleOSDException(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_CTRL_BREAK> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionCTRLBREAK_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionCTRLBREAK_to_HandleStandardFailure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_CTRL_BREAK> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionCTRLBREAK_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionCTRLBREAK_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3673,8 +4154,10 @@ impl Exception_ILLEGAL_INSTRUCTION {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3685,8 +4168,10 @@ impl Exception_ILLEGAL_INSTRUCTION {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_ctor_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3701,8 +4186,10 @@ impl Exception_ILLEGAL_INSTRUCTION {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3712,8 +4199,11 @@ impl Exception_ILLEGAL_INSTRUCTION {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3721,18 +4211,23 @@ impl Exception_ILLEGAL_INSTRUCTION {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_raise_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_Exception_ILLEGAL_INSTRUCTION.hxx`:34 - `OSD_Exception_ILLEGAL_INSTRUCTION::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3747,8 +4242,11 @@ impl Exception_ILLEGAL_INSTRUCTION {
                     c_theMessage.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3766,8 +4264,11 @@ impl Exception_ILLEGAL_INSTRUCTION {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3775,8 +4276,11 @@ impl Exception_ILLEGAL_INSTRUCTION {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3785,129 +4289,130 @@ impl Exception_ILLEGAL_INSTRUCTION {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_Exception
     pub fn as_exception(&self) -> &Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_as_OSD_Exception(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_as_OSD_Exception(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_Exception (mutable)
     pub fn as_exception_mut(&mut self) -> &mut Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_as_OSD_Exception_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_as_OSD_Exception_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_as_Standard_Failure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_as_Standard_Failure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_as_Standard_Failure_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_as_Standard_Failure_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleOSDExceptionILLEGALINSTRUCTION> {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_inherited_Reraise(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_inherited_Jump(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3920,8 +4425,11 @@ impl Exception_ILLEGAL_INSTRUCTION {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3934,8 +4442,11 @@ impl Exception_ILLEGAL_INSTRUCTION {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3945,11 +4456,14 @@ impl Exception_ILLEGAL_INSTRUCTION {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3962,20 +4476,25 @@ impl Exception_ILLEGAL_INSTRUCTION {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3987,18 +4506,23 @@ impl Exception_ILLEGAL_INSTRUCTION {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4014,63 +4538,61 @@ unsafe impl crate::CppDeletable for HandleOSDExceptionILLEGALINSTRUCTION {
 impl HandleOSDExceptionILLEGALINSTRUCTION {
     /// Dereference this Handle to access the underlying OSD_Exception_ILLEGAL_INSTRUCTION
     pub fn get(&self) -> &crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionILLEGALINSTRUCTION_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleOSDExceptionILLEGALINSTRUCTION_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_Exception_ILLEGAL_INSTRUCTION
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_Exception_ILLEGAL_INSTRUCTION {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionILLEGALINSTRUCTION_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleOSDExceptionILLEGALINSTRUCTION_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_Exception_ILLEGAL_INSTRUCTION> to Handle<OSD_Exception>
     pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDException> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionILLEGALINSTRUCTION_to_HandleOSDException(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionILLEGALINSTRUCTION_to_HandleOSDException(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_ILLEGAL_INSTRUCTION> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionILLEGALINSTRUCTION_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionILLEGALINSTRUCTION_to_HandleStandardFailure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_ILLEGAL_INSTRUCTION> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionILLEGALINSTRUCTION_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionILLEGALINSTRUCTION_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4092,8 +4614,10 @@ impl Exception_INT_OVERFLOW {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_INT_OVERFLOW_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4104,8 +4628,10 @@ impl Exception_INT_OVERFLOW {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_INT_OVERFLOW_ctor_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4120,8 +4646,10 @@ impl Exception_INT_OVERFLOW {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4130,8 +4658,11 @@ impl Exception_INT_OVERFLOW {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Exception_INT_OVERFLOW_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4139,16 +4670,22 @@ impl Exception_INT_OVERFLOW {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::OSD_Exception_INT_OVERFLOW_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_Exception_INT_OVERFLOW_raise_charptr(c_theMessage.as_ptr())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_Exception_INT_OVERFLOW.hxx`:34 - `OSD_Exception_INT_OVERFLOW::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_Exception_INT_OVERFLOW_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Exception_INT_OVERFLOW_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4161,8 +4698,11 @@ impl Exception_INT_OVERFLOW {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_INT_OVERFLOW_new_instance_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4180,8 +4720,11 @@ impl Exception_INT_OVERFLOW {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4189,8 +4732,11 @@ impl Exception_INT_OVERFLOW {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_INT_OVERFLOW_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4198,115 +4744,125 @@ impl Exception_INT_OVERFLOW {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_INT_OVERFLOW_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_Exception
     pub fn as_exception(&self) -> &Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_INT_OVERFLOW_as_OSD_Exception(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::OSD_Exception_INT_OVERFLOW_as_OSD_Exception(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_Exception (mutable)
     pub fn as_exception_mut(&mut self) -> &mut Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_INT_OVERFLOW_as_OSD_Exception_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_INT_OVERFLOW_as_OSD_Exception_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_INT_OVERFLOW_as_Standard_Failure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_INT_OVERFLOW_as_Standard_Failure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_INT_OVERFLOW_as_Standard_Failure_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_INT_OVERFLOW_as_Standard_Failure_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_INT_OVERFLOW_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_INT_OVERFLOW_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_INT_OVERFLOW_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_INT_OVERFLOW_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleOSDExceptionINTOVERFLOW> {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_Exception_INT_OVERFLOW_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::OSD_Exception_INT_OVERFLOW_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_INT_OVERFLOW_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Exception_INT_OVERFLOW_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_Exception_INT_OVERFLOW_inherited_Reraise(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Exception_INT_OVERFLOW_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Exception_INT_OVERFLOW_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4319,8 +4875,11 @@ impl Exception_INT_OVERFLOW {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4333,8 +4892,11 @@ impl Exception_INT_OVERFLOW {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4344,11 +4906,14 @@ impl Exception_INT_OVERFLOW {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_INT_OVERFLOW_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4359,20 +4924,25 @@ impl Exception_INT_OVERFLOW {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_INT_OVERFLOW_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_INT_OVERFLOW_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4384,16 +4954,23 @@ impl Exception_INT_OVERFLOW {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::OSD_Exception_INT_OVERFLOW_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_Exception_INT_OVERFLOW_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4409,59 +4986,57 @@ unsafe impl crate::CppDeletable for HandleOSDExceptionINTOVERFLOW {
 impl HandleOSDExceptionINTOVERFLOW {
     /// Dereference this Handle to access the underlying OSD_Exception_INT_OVERFLOW
     pub fn get(&self) -> &crate::ffi::OSD_Exception_INT_OVERFLOW {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDExceptionINTOVERFLOW_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleOSDExceptionINTOVERFLOW_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_Exception_INT_OVERFLOW
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_Exception_INT_OVERFLOW {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDExceptionINTOVERFLOW_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleOSDExceptionINTOVERFLOW_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_Exception_INT_OVERFLOW> to Handle<OSD_Exception>
     pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDException> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionINTOVERFLOW_to_HandleOSDException(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionINTOVERFLOW_to_HandleOSDException(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_INT_OVERFLOW> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionINTOVERFLOW_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionINTOVERFLOW_to_HandleStandardFailure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_INT_OVERFLOW> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionINTOVERFLOW_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionINTOVERFLOW_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4483,8 +5058,10 @@ impl Exception_INVALID_DISPOSITION {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_INVALID_DISPOSITION_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4495,8 +5072,10 @@ impl Exception_INVALID_DISPOSITION {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_INVALID_DISPOSITION_ctor_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4511,8 +5090,10 @@ impl Exception_INVALID_DISPOSITION {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4522,8 +5103,11 @@ impl Exception_INVALID_DISPOSITION {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_INVALID_DISPOSITION_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4531,18 +5115,23 @@ impl Exception_INVALID_DISPOSITION {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_INVALID_DISPOSITION_raise_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_Exception_INVALID_DISPOSITION.hxx`:34 - `OSD_Exception_INVALID_DISPOSITION::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_Exception_INVALID_DISPOSITION_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Exception_INVALID_DISPOSITION_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4557,8 +5146,11 @@ impl Exception_INVALID_DISPOSITION {
                     c_theMessage.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4576,8 +5168,11 @@ impl Exception_INVALID_DISPOSITION {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4585,8 +5180,11 @@ impl Exception_INVALID_DISPOSITION {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_INVALID_DISPOSITION_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4595,129 +5193,130 @@ impl Exception_INVALID_DISPOSITION {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Exception_INVALID_DISPOSITION_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_Exception
     pub fn as_exception(&self) -> &Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_INVALID_DISPOSITION_as_OSD_Exception(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_INVALID_DISPOSITION_as_OSD_Exception(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_Exception (mutable)
     pub fn as_exception_mut(&mut self) -> &mut Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_INVALID_DISPOSITION_as_OSD_Exception_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_INVALID_DISPOSITION_as_OSD_Exception_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_INVALID_DISPOSITION_as_Standard_Failure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_INVALID_DISPOSITION_as_Standard_Failure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_INVALID_DISPOSITION_as_Standard_Failure_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_INVALID_DISPOSITION_as_Standard_Failure_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_INVALID_DISPOSITION_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_INVALID_DISPOSITION_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_INVALID_DISPOSITION_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_INVALID_DISPOSITION_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleOSDExceptionINVALIDDISPOSITION> {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_Exception_INVALID_DISPOSITION_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::OSD_Exception_INVALID_DISPOSITION_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_INVALID_DISPOSITION_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_INVALID_DISPOSITION_inherited_Reraise(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_INVALID_DISPOSITION_inherited_Jump(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4730,8 +5329,11 @@ impl Exception_INVALID_DISPOSITION {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4744,8 +5346,11 @@ impl Exception_INVALID_DISPOSITION {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4755,11 +5360,14 @@ impl Exception_INVALID_DISPOSITION {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_INVALID_DISPOSITION_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4772,20 +5380,25 @@ impl Exception_INVALID_DISPOSITION {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_INVALID_DISPOSITION_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4797,18 +5410,23 @@ impl Exception_INVALID_DISPOSITION {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_INVALID_DISPOSITION_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4824,63 +5442,61 @@ unsafe impl crate::CppDeletable for HandleOSDExceptionINVALIDDISPOSITION {
 impl HandleOSDExceptionINVALIDDISPOSITION {
     /// Dereference this Handle to access the underlying OSD_Exception_INVALID_DISPOSITION
     pub fn get(&self) -> &crate::ffi::OSD_Exception_INVALID_DISPOSITION {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionINVALIDDISPOSITION_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleOSDExceptionINVALIDDISPOSITION_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_Exception_INVALID_DISPOSITION
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_Exception_INVALID_DISPOSITION {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionINVALIDDISPOSITION_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleOSDExceptionINVALIDDISPOSITION_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_Exception_INVALID_DISPOSITION> to Handle<OSD_Exception>
     pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDException> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionINVALIDDISPOSITION_to_HandleOSDException(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionINVALIDDISPOSITION_to_HandleOSDException(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_INVALID_DISPOSITION> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionINVALIDDISPOSITION_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionINVALIDDISPOSITION_to_HandleStandardFailure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_INVALID_DISPOSITION> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionINVALIDDISPOSITION_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionINVALIDDISPOSITION_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4902,8 +5518,10 @@ impl Exception_IN_PAGE_ERROR {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_IN_PAGE_ERROR_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4914,8 +5532,10 @@ impl Exception_IN_PAGE_ERROR {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_IN_PAGE_ERROR_ctor_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4930,8 +5550,10 @@ impl Exception_IN_PAGE_ERROR {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4941,8 +5563,11 @@ impl Exception_IN_PAGE_ERROR {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_IN_PAGE_ERROR_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4950,16 +5575,23 @@ impl Exception_IN_PAGE_ERROR {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::OSD_Exception_IN_PAGE_ERROR_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_Exception_IN_PAGE_ERROR_raise_charptr(c_theMessage.as_ptr())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_Exception_IN_PAGE_ERROR.hxx`:34 - `OSD_Exception_IN_PAGE_ERROR::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_Exception_IN_PAGE_ERROR_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Exception_IN_PAGE_ERROR_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4972,8 +5604,11 @@ impl Exception_IN_PAGE_ERROR {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_IN_PAGE_ERROR_new_instance_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4991,8 +5626,11 @@ impl Exception_IN_PAGE_ERROR {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5000,8 +5638,11 @@ impl Exception_IN_PAGE_ERROR {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_IN_PAGE_ERROR_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5009,115 +5650,127 @@ impl Exception_IN_PAGE_ERROR {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_IN_PAGE_ERROR_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_Exception
     pub fn as_exception(&self) -> &Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_IN_PAGE_ERROR_as_OSD_Exception(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_IN_PAGE_ERROR_as_OSD_Exception(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_Exception (mutable)
     pub fn as_exception_mut(&mut self) -> &mut Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_IN_PAGE_ERROR_as_OSD_Exception_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_IN_PAGE_ERROR_as_OSD_Exception_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_IN_PAGE_ERROR_as_Standard_Failure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_IN_PAGE_ERROR_as_Standard_Failure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_IN_PAGE_ERROR_as_Standard_Failure_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_IN_PAGE_ERROR_as_Standard_Failure_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_IN_PAGE_ERROR_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_IN_PAGE_ERROR_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_IN_PAGE_ERROR_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_IN_PAGE_ERROR_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleOSDExceptionINPAGEERROR> {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_Exception_IN_PAGE_ERROR_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::OSD_Exception_IN_PAGE_ERROR_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_IN_PAGE_ERROR_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Exception_IN_PAGE_ERROR_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_Exception_IN_PAGE_ERROR_inherited_Reraise(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Exception_IN_PAGE_ERROR_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_Exception_IN_PAGE_ERROR_inherited_Jump(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5130,8 +5783,11 @@ impl Exception_IN_PAGE_ERROR {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5144,8 +5800,11 @@ impl Exception_IN_PAGE_ERROR {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5155,11 +5814,14 @@ impl Exception_IN_PAGE_ERROR {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_IN_PAGE_ERROR_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5170,20 +5832,25 @@ impl Exception_IN_PAGE_ERROR {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_IN_PAGE_ERROR_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_IN_PAGE_ERROR_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5195,18 +5862,23 @@ impl Exception_IN_PAGE_ERROR {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_IN_PAGE_ERROR_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5222,59 +5894,57 @@ unsafe impl crate::CppDeletable for HandleOSDExceptionINPAGEERROR {
 impl HandleOSDExceptionINPAGEERROR {
     /// Dereference this Handle to access the underlying OSD_Exception_IN_PAGE_ERROR
     pub fn get(&self) -> &crate::ffi::OSD_Exception_IN_PAGE_ERROR {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDExceptionINPAGEERROR_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleOSDExceptionINPAGEERROR_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_Exception_IN_PAGE_ERROR
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_Exception_IN_PAGE_ERROR {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDExceptionINPAGEERROR_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleOSDExceptionINPAGEERROR_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_Exception_IN_PAGE_ERROR> to Handle<OSD_Exception>
     pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDException> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionINPAGEERROR_to_HandleOSDException(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionINPAGEERROR_to_HandleOSDException(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_IN_PAGE_ERROR> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionINPAGEERROR_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionINPAGEERROR_to_HandleStandardFailure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_IN_PAGE_ERROR> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionINPAGEERROR_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionINPAGEERROR_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5296,8 +5966,10 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5310,8 +5982,10 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
                     c_theMessage.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5326,8 +6000,10 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5337,8 +6013,11 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5346,20 +6025,26 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_raise_charptr(
                     c_theMessage.as_ptr(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_Exception_NONCONTINUABLE_EXCEPTION.hxx`:34 - `OSD_Exception_NONCONTINUABLE_EXCEPTION::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_raise_sstream(theMessage)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5374,8 +6059,11 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
                     c_theMessage.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5393,8 +6081,11 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5403,8 +6094,11 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5413,134 +6107,140 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_Exception
     pub fn as_exception(&self) -> &Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_as_OSD_Exception(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_as_OSD_Exception(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_Exception (mutable)
     pub fn as_exception_mut(&mut self) -> &mut Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_as_OSD_Exception_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_as_OSD_Exception_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_as_Standard_Failure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_as_Standard_Failure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_as_Standard_Failure_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_as_Standard_Failure_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleOSDExceptionNONCONTINUABLEEXCEPTION> {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_inherited_Reraise(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_inherited_Jump(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5553,8 +6253,11 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5567,8 +6270,11 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5580,11 +6286,14 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5597,20 +6306,25 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5622,20 +6336,25 @@ impl Exception_NONCONTINUABLE_EXCEPTION {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5651,63 +6370,63 @@ unsafe impl crate::CppDeletable for HandleOSDExceptionNONCONTINUABLEEXCEPTION {
 impl HandleOSDExceptionNONCONTINUABLEEXCEPTION {
     /// Dereference this Handle to access the underlying OSD_Exception_NONCONTINUABLE_EXCEPTION
     pub fn get(&self) -> &crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionNONCONTINUABLEEXCEPTION_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionNONCONTINUABLEEXCEPTION_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_Exception_NONCONTINUABLE_EXCEPTION
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_Exception_NONCONTINUABLE_EXCEPTION {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionNONCONTINUABLEEXCEPTION_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionNONCONTINUABLEEXCEPTION_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_Exception_NONCONTINUABLE_EXCEPTION> to Handle<OSD_Exception>
     pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDException> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionNONCONTINUABLEEXCEPTION_to_HandleOSDException(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionNONCONTINUABLEEXCEPTION_to_HandleOSDException(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_NONCONTINUABLE_EXCEPTION> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionNONCONTINUABLEEXCEPTION_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionNONCONTINUABLEEXCEPTION_to_HandleStandardFailure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_NONCONTINUABLE_EXCEPTION> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionNONCONTINUABLEEXCEPTION_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionNONCONTINUABLEEXCEPTION_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5729,8 +6448,10 @@ impl Exception_PRIV_INSTRUCTION {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_PRIV_INSTRUCTION_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5741,8 +6462,10 @@ impl Exception_PRIV_INSTRUCTION {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_PRIV_INSTRUCTION_ctor_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5757,8 +6480,10 @@ impl Exception_PRIV_INSTRUCTION {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5768,8 +6493,11 @@ impl Exception_PRIV_INSTRUCTION {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_PRIV_INSTRUCTION_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5777,18 +6505,23 @@ impl Exception_PRIV_INSTRUCTION {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_PRIV_INSTRUCTION_raise_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_Exception_PRIV_INSTRUCTION.hxx`:34 - `OSD_Exception_PRIV_INSTRUCTION::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_Exception_PRIV_INSTRUCTION_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Exception_PRIV_INSTRUCTION_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5803,8 +6536,11 @@ impl Exception_PRIV_INSTRUCTION {
                     c_theMessage.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5822,8 +6558,11 @@ impl Exception_PRIV_INSTRUCTION {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5831,8 +6570,11 @@ impl Exception_PRIV_INSTRUCTION {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_PRIV_INSTRUCTION_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5841,123 +6583,128 @@ impl Exception_PRIV_INSTRUCTION {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Exception_PRIV_INSTRUCTION_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_Exception
     pub fn as_exception(&self) -> &Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_PRIV_INSTRUCTION_as_OSD_Exception(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_PRIV_INSTRUCTION_as_OSD_Exception(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_Exception (mutable)
     pub fn as_exception_mut(&mut self) -> &mut Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_PRIV_INSTRUCTION_as_OSD_Exception_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_PRIV_INSTRUCTION_as_OSD_Exception_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_PRIV_INSTRUCTION_as_Standard_Failure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_PRIV_INSTRUCTION_as_Standard_Failure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_PRIV_INSTRUCTION_as_Standard_Failure_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_PRIV_INSTRUCTION_as_Standard_Failure_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_PRIV_INSTRUCTION_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_PRIV_INSTRUCTION_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_PRIV_INSTRUCTION_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_PRIV_INSTRUCTION_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleOSDExceptionPRIVINSTRUCTION> {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_Exception_PRIV_INSTRUCTION_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::OSD_Exception_PRIV_INSTRUCTION_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_PRIV_INSTRUCTION_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_PRIV_INSTRUCTION_inherited_Reraise(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Exception_PRIV_INSTRUCTION_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_Exception_PRIV_INSTRUCTION_inherited_Jump(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5970,8 +6717,11 @@ impl Exception_PRIV_INSTRUCTION {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5984,8 +6734,11 @@ impl Exception_PRIV_INSTRUCTION {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5995,11 +6748,14 @@ impl Exception_PRIV_INSTRUCTION {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_PRIV_INSTRUCTION_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6012,20 +6768,25 @@ impl Exception_PRIV_INSTRUCTION {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_PRIV_INSTRUCTION_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6037,18 +6798,23 @@ impl Exception_PRIV_INSTRUCTION {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_PRIV_INSTRUCTION_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6064,61 +6830,59 @@ unsafe impl crate::CppDeletable for HandleOSDExceptionPRIVINSTRUCTION {
 impl HandleOSDExceptionPRIVINSTRUCTION {
     /// Dereference this Handle to access the underlying OSD_Exception_PRIV_INSTRUCTION
     pub fn get(&self) -> &crate::ffi::OSD_Exception_PRIV_INSTRUCTION {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDExceptionPRIVINSTRUCTION_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleOSDExceptionPRIVINSTRUCTION_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_Exception_PRIV_INSTRUCTION
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_Exception_PRIV_INSTRUCTION {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDExceptionPRIVINSTRUCTION_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleOSDExceptionPRIVINSTRUCTION_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_Exception_PRIV_INSTRUCTION> to Handle<OSD_Exception>
     pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDException> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionPRIVINSTRUCTION_to_HandleOSDException(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionPRIVINSTRUCTION_to_HandleOSDException(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_PRIV_INSTRUCTION> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionPRIVINSTRUCTION_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionPRIVINSTRUCTION_to_HandleStandardFailure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_PRIV_INSTRUCTION> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionPRIVINSTRUCTION_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionPRIVINSTRUCTION_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6140,8 +6904,10 @@ impl Exception_STACK_OVERFLOW {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_STACK_OVERFLOW_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6152,8 +6918,10 @@ impl Exception_STACK_OVERFLOW {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_STACK_OVERFLOW_ctor_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6168,8 +6936,10 @@ impl Exception_STACK_OVERFLOW {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6179,8 +6949,11 @@ impl Exception_STACK_OVERFLOW {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_STACK_OVERFLOW_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6188,18 +6961,23 @@ impl Exception_STACK_OVERFLOW {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_STACK_OVERFLOW_raise_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_Exception_STACK_OVERFLOW.hxx`:34 - `OSD_Exception_STACK_OVERFLOW::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_Exception_STACK_OVERFLOW_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Exception_STACK_OVERFLOW_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6212,8 +6990,11 @@ impl Exception_STACK_OVERFLOW {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_STACK_OVERFLOW_new_instance_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6231,8 +7012,11 @@ impl Exception_STACK_OVERFLOW {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6240,8 +7024,11 @@ impl Exception_STACK_OVERFLOW {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_STACK_OVERFLOW_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6250,119 +7037,128 @@ impl Exception_STACK_OVERFLOW {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Exception_STACK_OVERFLOW_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_Exception
     pub fn as_exception(&self) -> &Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_STACK_OVERFLOW_as_OSD_Exception(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_STACK_OVERFLOW_as_OSD_Exception(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_Exception (mutable)
     pub fn as_exception_mut(&mut self) -> &mut Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_STACK_OVERFLOW_as_OSD_Exception_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_STACK_OVERFLOW_as_OSD_Exception_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_STACK_OVERFLOW_as_Standard_Failure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_STACK_OVERFLOW_as_Standard_Failure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_STACK_OVERFLOW_as_Standard_Failure_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_STACK_OVERFLOW_as_Standard_Failure_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_STACK_OVERFLOW_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_STACK_OVERFLOW_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_STACK_OVERFLOW_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_STACK_OVERFLOW_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleOSDExceptionSTACKOVERFLOW> {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_Exception_STACK_OVERFLOW_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::OSD_Exception_STACK_OVERFLOW_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_STACK_OVERFLOW_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_STACK_OVERFLOW_inherited_Reraise(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Exception_STACK_OVERFLOW_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_Exception_STACK_OVERFLOW_inherited_Jump(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6375,8 +7171,11 @@ impl Exception_STACK_OVERFLOW {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6389,8 +7188,11 @@ impl Exception_STACK_OVERFLOW {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6400,11 +7202,14 @@ impl Exception_STACK_OVERFLOW {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_STACK_OVERFLOW_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6415,20 +7220,25 @@ impl Exception_STACK_OVERFLOW {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_STACK_OVERFLOW_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_STACK_OVERFLOW_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6440,18 +7250,23 @@ impl Exception_STACK_OVERFLOW {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_STACK_OVERFLOW_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6467,61 +7282,59 @@ unsafe impl crate::CppDeletable for HandleOSDExceptionSTACKOVERFLOW {
 impl HandleOSDExceptionSTACKOVERFLOW {
     /// Dereference this Handle to access the underlying OSD_Exception_STACK_OVERFLOW
     pub fn get(&self) -> &crate::ffi::OSD_Exception_STACK_OVERFLOW {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDExceptionSTACKOVERFLOW_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleOSDExceptionSTACKOVERFLOW_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_Exception_STACK_OVERFLOW
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_Exception_STACK_OVERFLOW {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDExceptionSTACKOVERFLOW_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleOSDExceptionSTACKOVERFLOW_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_Exception_STACK_OVERFLOW> to Handle<OSD_Exception>
     pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDException> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionSTACKOVERFLOW_to_HandleOSDException(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionSTACKOVERFLOW_to_HandleOSDException(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_STACK_OVERFLOW> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionSTACKOVERFLOW_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionSTACKOVERFLOW_to_HandleStandardFailure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_STACK_OVERFLOW> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionSTACKOVERFLOW_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionSTACKOVERFLOW_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6543,8 +7356,10 @@ impl Exception_STATUS_NO_MEMORY {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_STATUS_NO_MEMORY_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6555,8 +7370,10 @@ impl Exception_STATUS_NO_MEMORY {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_STATUS_NO_MEMORY_ctor_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6571,8 +7388,10 @@ impl Exception_STATUS_NO_MEMORY {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6582,8 +7401,11 @@ impl Exception_STATUS_NO_MEMORY {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_STATUS_NO_MEMORY_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6591,18 +7413,23 @@ impl Exception_STATUS_NO_MEMORY {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_STATUS_NO_MEMORY_raise_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_Exception_STATUS_NO_MEMORY.hxx`:34 - `OSD_Exception_STATUS_NO_MEMORY::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_Exception_STATUS_NO_MEMORY_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Exception_STATUS_NO_MEMORY_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6617,8 +7444,11 @@ impl Exception_STATUS_NO_MEMORY {
                     c_theMessage.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6636,8 +7466,11 @@ impl Exception_STATUS_NO_MEMORY {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6645,8 +7478,11 @@ impl Exception_STATUS_NO_MEMORY {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_Exception_STATUS_NO_MEMORY_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6655,123 +7491,128 @@ impl Exception_STATUS_NO_MEMORY {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Exception_STATUS_NO_MEMORY_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_Exception
     pub fn as_exception(&self) -> &Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_STATUS_NO_MEMORY_as_OSD_Exception(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_STATUS_NO_MEMORY_as_OSD_Exception(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_Exception (mutable)
     pub fn as_exception_mut(&mut self) -> &mut Exception {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_STATUS_NO_MEMORY_as_OSD_Exception_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_STATUS_NO_MEMORY_as_OSD_Exception_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_STATUS_NO_MEMORY_as_Standard_Failure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_STATUS_NO_MEMORY_as_Standard_Failure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_STATUS_NO_MEMORY_as_Standard_Failure_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_STATUS_NO_MEMORY_as_Standard_Failure_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_STATUS_NO_MEMORY_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_STATUS_NO_MEMORY_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_Exception_STATUS_NO_MEMORY_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_Exception_STATUS_NO_MEMORY_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleOSDExceptionSTATUSNOMEMORY> {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_Exception_STATUS_NO_MEMORY_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::OSD_Exception_STATUS_NO_MEMORY_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_STATUS_NO_MEMORY_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_STATUS_NO_MEMORY_inherited_Reraise(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Exception_STATUS_NO_MEMORY_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_Exception_STATUS_NO_MEMORY_inherited_Jump(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6784,8 +7625,11 @@ impl Exception_STATUS_NO_MEMORY {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6798,8 +7642,11 @@ impl Exception_STATUS_NO_MEMORY {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6809,11 +7656,14 @@ impl Exception_STATUS_NO_MEMORY {
             let __result = unsafe {
                 crate::ffi::OSD_Exception_STATUS_NO_MEMORY_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6826,20 +7676,25 @@ impl Exception_STATUS_NO_MEMORY {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_STATUS_NO_MEMORY_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6851,18 +7706,23 @@ impl Exception_STATUS_NO_MEMORY {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Exception_STATUS_NO_MEMORY_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6878,61 +7738,59 @@ unsafe impl crate::CppDeletable for HandleOSDExceptionSTATUSNOMEMORY {
 impl HandleOSDExceptionSTATUSNOMEMORY {
     /// Dereference this Handle to access the underlying OSD_Exception_STATUS_NO_MEMORY
     pub fn get(&self) -> &crate::ffi::OSD_Exception_STATUS_NO_MEMORY {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDExceptionSTATUSNOMEMORY_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleOSDExceptionSTATUSNOMEMORY_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_Exception_STATUS_NO_MEMORY
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_Exception_STATUS_NO_MEMORY {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDExceptionSTATUSNOMEMORY_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleOSDExceptionSTATUSNOMEMORY_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_Exception_STATUS_NO_MEMORY> to Handle<OSD_Exception>
     pub fn to_handle_exception(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDException> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionSTATUSNOMEMORY_to_HandleOSDException(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionSTATUSNOMEMORY_to_HandleOSDException(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_STATUS_NO_MEMORY> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionSTATUSNOMEMORY_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionSTATUSNOMEMORY_to_HandleStandardFailure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Exception_STATUS_NO_MEMORY> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDExceptionSTATUSNOMEMORY_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDExceptionSTATUSNOMEMORY_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6958,8 +7816,10 @@ impl File {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_File_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6968,8 +7828,10 @@ impl File {
     pub fn new_path(Name: &Path) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_File_ctor_path(Name) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6980,8 +7842,11 @@ impl File {
     /// If no name was given, ProgramError is raised.
     pub fn build(&mut self, Mode: crate::osd::OpenMode, Protect: &Protection) {
         {
-            unsafe { crate::ffi::OSD_File_build(self as *mut Self, Mode.into(), Protect) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_File_build(self as *mut Self, Mode.into(), Protect) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6991,8 +7856,11 @@ impl File {
     /// If no name was given, ProgramError is raised.
     pub fn open(&mut self, Mode: crate::osd::OpenMode, Protect: &Protection) {
         {
-            unsafe { crate::ffi::OSD_File_open(self as *mut Self, Mode.into(), Protect) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_File_open(self as *mut Self, Mode.into(), Protect) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7003,8 +7871,11 @@ impl File {
     /// If no name was given, ProgramError is raised.
     pub fn append(&mut self, Mode: crate::osd::OpenMode, Protect: &Protection) {
         {
-            unsafe { crate::ffi::OSD_File_append(self as *mut Self, Mode.into(), Protect) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_File_append(self as *mut Self, Mode.into(), Protect) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7022,8 +7893,12 @@ impl File {
         Nbyte: i32,
     ) {
         {
-            unsafe { crate::ffi::OSD_File_read_asciistring_int(self as *mut Self, Buffer, Nbyte) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_File_read_asciistring_int(self as *mut Self, Buffer, Nbyte)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7044,7 +7919,7 @@ impl File {
         NbyteRead: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_File_read_line_asciistring_int2(
                     self as *mut Self,
                     Buffer,
@@ -7052,7 +7927,9 @@ impl File {
                     NbyteRead,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7074,8 +7951,11 @@ impl File {
             let __result = unsafe {
                 crate::ffi::OSD_File_read_line_asciistring_int(self as *mut Self, Buffer, NByte)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7094,10 +7974,12 @@ impl File {
         Readbyte: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_File_read_address_int2(self as *mut Self, Buffer, Nbyte, Readbyte)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7109,10 +7991,12 @@ impl File {
         theNbBytes: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_File_write_asciistring_int(self as *mut Self, theBuffer, theNbBytes)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7121,10 +8005,12 @@ impl File {
     /// to by theBuffer to the file associated to the object File.
     pub unsafe fn write_address_int(&mut self, theBuffer: *mut std::ffi::c_void, theNbBytes: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_File_write_address_int(self as *mut Self, theBuffer, theNbBytes)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7132,8 +8018,11 @@ impl File {
     /// Sets the seek pointer associated with the open file
     pub fn seek(&mut self, Offset: i32, Whence: crate::osd::FromWhere) {
         {
-            unsafe { crate::ffi::OSD_File_seek(self as *mut Self, Offset, Whence.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_File_seek(self as *mut Self, Offset, Whence.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7141,8 +8030,10 @@ impl File {
     /// Closes the file (and deletes a descriptor)
     pub fn close(&mut self) {
         {
-            unsafe { crate::ffi::OSD_File_close(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_File_close(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7151,8 +8042,11 @@ impl File {
     pub fn is_at_end(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_File_is_at_end(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7162,8 +8056,11 @@ impl File {
     pub fn kind_of_file(&self) -> crate::osd::KindFile {
         {
             let __result = unsafe { crate::ffi::OSD_File_kind_of_file(self as *const Self) };
-            crate::check_exception();
-            crate::osd::KindFile::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::osd::KindFile::try_from(__val).unwrap()
         }
     }
 
@@ -7172,8 +8069,10 @@ impl File {
     /// This temporary file is already open !
     pub fn build_temporary(&mut self) {
         {
-            unsafe { crate::ffi::OSD_File_build_temporary(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_File_build_temporary(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7181,8 +8080,10 @@ impl File {
     /// Locks current file
     pub fn set_lock(&mut self, Lock: crate::osd::LockType) {
         {
-            unsafe { crate::ffi::OSD_File_set_lock(self as *mut Self, Lock.into()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_File_set_lock(self as *mut Self, Lock.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7190,8 +8091,10 @@ impl File {
     /// Unlocks current file
     pub fn un_lock(&mut self) {
         {
-            unsafe { crate::ffi::OSD_File_un_lock(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_File_un_lock(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7200,8 +8103,11 @@ impl File {
     pub fn get_lock(&self) -> crate::osd::LockType {
         {
             let __result = unsafe { crate::ffi::OSD_File_get_lock(self as *const Self) };
-            crate::check_exception();
-            crate::osd::LockType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::osd::LockType::try_from(__val).unwrap()
         }
     }
 
@@ -7210,8 +8116,11 @@ impl File {
     pub fn is_locked(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_File_is_locked(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7220,8 +8129,11 @@ impl File {
     pub fn size(&mut self) -> usize {
         {
             let __result = unsafe { crate::ffi::OSD_File_size(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7230,8 +8142,11 @@ impl File {
     pub fn is_open(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_File_is_open(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7241,8 +8156,11 @@ impl File {
     pub fn is_readable(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_File_is_readable(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7251,8 +8169,11 @@ impl File {
     pub fn is_writeable(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_File_is_writeable(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7261,8 +8182,11 @@ impl File {
     pub fn is_executable(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_File_is_executable(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7283,8 +8207,11 @@ impl File {
             let __result = unsafe {
                 crate::ffi::OSD_File_read_last_line(self as *mut Self, aLine, aDelay, aNbTries)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7293,8 +8220,11 @@ impl File {
     pub fn edit(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_File_edit(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7302,42 +8232,48 @@ impl File {
     /// Set file pointer position to the beginning of the file
     pub fn rewind(&mut self) {
         {
-            unsafe { crate::ffi::OSD_File_rewind(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_File_rewind(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to OSD_FileNode
     pub fn as_file_node(&self) -> &FileNode {
-        {
-            let __result = unsafe { crate::ffi::OSD_File_as_OSD_FileNode(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_File_as_OSD_FileNode(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_FileNode (mutable)
     pub fn as_file_node_mut(&mut self) -> &mut FileNode {
-        {
-            let __result = unsafe { crate::ffi::OSD_File_as_OSD_FileNode_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::OSD_File_as_OSD_FileNode_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:38 - `OSD_FileNode::Path()`
     pub fn path(&self, Name: &mut Path) {
         {
-            unsafe { crate::ffi::OSD_File_inherited_Path(self as *const Self, Name) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_File_inherited_Path(self as *const Self, Name) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:42 - `OSD_FileNode::SetPath()`
     pub fn set_path(&mut self, Name: &Path) {
         {
-            unsafe { crate::ffi::OSD_File_inherited_SetPath(self as *mut Self, Name) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_File_inherited_SetPath(self as *mut Self, Name) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7345,32 +8281,41 @@ impl File {
     pub fn exists(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_File_inherited_Exists(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:48 - `OSD_FileNode::Remove()`
     pub fn remove(&mut self) {
         {
-            unsafe { crate::ffi::OSD_File_inherited_Remove(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_File_inherited_Remove(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:51 - `OSD_FileNode::Move()`
     pub fn move_(&mut self, NewPath: &Path) {
         {
-            unsafe { crate::ffi::OSD_File_inherited_Move(self as *mut Self, NewPath) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_File_inherited_Move(self as *mut Self, NewPath) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:54 - `OSD_FileNode::Copy()`
     pub fn copy(&mut self, ToPath: &Path) {
         {
-            unsafe { crate::ffi::OSD_File_inherited_Copy(self as *mut Self, ToPath) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_File_inherited_Copy(self as *mut Self, ToPath) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7378,16 +8323,22 @@ impl File {
     pub fn protection(&mut self) -> crate::OwnedPtr<Protection> {
         {
             let __result = unsafe { crate::ffi::OSD_File_inherited_Protection(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:61 - `OSD_FileNode::SetProtection()`
     pub fn set_protection(&mut self, Prot: &Protection) {
         {
-            unsafe { crate::ffi::OSD_File_inherited_SetProtection(self as *mut Self, Prot) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_File_inherited_SetProtection(self as *mut Self, Prot) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7396,8 +8347,11 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::OSD_File_inherited_AccessMoment(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7406,8 +8360,11 @@ impl File {
         {
             let __result =
                 unsafe { crate::ffi::OSD_File_inherited_CreationMoment(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7415,24 +8372,31 @@ impl File {
     pub fn failed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_File_inherited_Failed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:77 - `OSD_FileNode::Reset()`
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::OSD_File_inherited_Reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_File_inherited_Reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `OSD_FileNode.hxx`:80 - `OSD_FileNode::Perror()`
     pub fn perror(&mut self) {
         {
-            unsafe { crate::ffi::OSD_File_inherited_Perror(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_File_inherited_Perror(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7440,8 +8404,11 @@ impl File {
     pub fn error(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::OSD_File_inherited_Error(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -7467,8 +8434,10 @@ impl FileIterator {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_FileIterator_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7483,16 +8452,20 @@ impl FileIterator {
         {
             let __result =
                 unsafe { crate::ffi::OSD_FileIterator_ctor_path_asciistring(where_, Mask) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `OSD_FileIterator.hxx`:41 - `OSD_FileIterator::Destroy()`
     pub fn destroy(&mut self) {
         {
-            unsafe { crate::ffi::OSD_FileIterator_destroy(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_FileIterator_destroy(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7500,8 +8473,11 @@ impl FileIterator {
     /// Initializes the current File Iterator
     pub fn initialize(&mut self, where_: &Path, Mask: &crate::t_collection::AsciiString) {
         {
-            unsafe { crate::ffi::OSD_FileIterator_initialize(self as *mut Self, where_, Mask) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_FileIterator_initialize(self as *mut Self, where_, Mask) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7511,8 +8487,11 @@ impl FileIterator {
     pub fn more(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_FileIterator_more(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7522,8 +8501,10 @@ impl FileIterator {
     /// position of the iterator.
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::OSD_FileIterator_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_FileIterator_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7532,8 +8513,11 @@ impl FileIterator {
     pub fn values(&mut self) -> crate::OwnedPtr<File> {
         {
             let __result = unsafe { crate::ffi::OSD_FileIterator_values(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7542,8 +8526,11 @@ impl FileIterator {
     pub fn failed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_FileIterator_failed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7551,8 +8538,10 @@ impl FileIterator {
     /// Resets error counter to zero
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::OSD_FileIterator_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_FileIterator_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7560,8 +8549,10 @@ impl FileIterator {
     /// Raises OSD_Error
     pub fn perror(&mut self) {
         {
-            unsafe { crate::ffi::OSD_FileIterator_perror(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_FileIterator_perror(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7570,8 +8561,11 @@ impl FileIterator {
     pub fn error(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::OSD_FileIterator_error(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -7592,8 +8586,10 @@ impl FileNode {
     /// Gets file name and path.
     pub fn path(&self, Name: &mut Path) {
         {
-            unsafe { crate::ffi::OSD_FileNode_path(self as *const Self, Name) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_FileNode_path(self as *const Self, Name) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7602,8 +8598,10 @@ impl FileNode {
     /// If a name is not found, it raises a program error.
     pub fn set_path(&mut self, Name: &Path) {
         {
-            unsafe { crate::ffi::OSD_FileNode_set_path(self as *mut Self, Name) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_FileNode_set_path(self as *mut Self, Name) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7612,8 +8610,11 @@ impl FileNode {
     pub fn exists(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_FileNode_exists(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7621,8 +8622,10 @@ impl FileNode {
     /// Erases the FileNode from directory
     pub fn remove(&mut self) {
         {
-            unsafe { crate::ffi::OSD_FileNode_remove(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_FileNode_remove(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7630,8 +8633,10 @@ impl FileNode {
     /// Moves <me> into another directory
     pub fn move_(&mut self, NewPath: &Path) {
         {
-            unsafe { crate::ffi::OSD_FileNode_move_(self as *mut Self, NewPath) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_FileNode_move_(self as *mut Self, NewPath) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7639,8 +8644,10 @@ impl FileNode {
     /// Copies <me> to another FileNode
     pub fn copy(&mut self, ToPath: &Path) {
         {
-            unsafe { crate::ffi::OSD_FileNode_copy(self as *mut Self, ToPath) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_FileNode_copy(self as *mut Self, ToPath) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7649,8 +8656,11 @@ impl FileNode {
     pub fn protection(&mut self) -> crate::OwnedPtr<Protection> {
         {
             let __result = unsafe { crate::ffi::OSD_FileNode_protection(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7658,8 +8668,10 @@ impl FileNode {
     /// Changes protection of the FileNode
     pub fn set_protection(&mut self, Prot: &Protection) {
         {
-            unsafe { crate::ffi::OSD_FileNode_set_protection(self as *mut Self, Prot) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_FileNode_set_protection(self as *mut Self, Prot) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7670,8 +8682,11 @@ impl FileNode {
     pub fn access_moment(&mut self) -> crate::OwnedPtr<crate::quantity::Date> {
         {
             let __result = unsafe { crate::ffi::OSD_FileNode_access_moment(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7682,8 +8697,11 @@ impl FileNode {
     pub fn creation_moment(&mut self) -> crate::OwnedPtr<crate::quantity::Date> {
         {
             let __result = unsafe { crate::ffi::OSD_FileNode_creation_moment(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7692,8 +8710,11 @@ impl FileNode {
     pub fn failed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_FileNode_failed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7701,8 +8722,10 @@ impl FileNode {
     /// Resets error counter to zero
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::OSD_FileNode_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_FileNode_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7710,8 +8733,10 @@ impl FileNode {
     /// Raises OSD_Error
     pub fn perror(&mut self) {
         {
-            unsafe { crate::ffi::OSD_FileNode_perror(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_FileNode_perror(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7720,8 +8745,11 @@ impl FileNode {
     pub fn error(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::OSD_FileNode_error(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -7746,8 +8774,11 @@ impl FileSystem {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_FileSystem_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7758,8 +8789,11 @@ impl FileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_FileSystem_is_supported_path(self as *const Self, theUrl)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7770,8 +8804,11 @@ impl FileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_FileSystem_is_open_i_stream(self as *const Self, theStream)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7782,8 +8819,11 @@ impl FileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_FileSystem_is_open_o_stream(self as *const Self, theStream)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7819,8 +8859,11 @@ impl FileSystem {
                     theOldStream,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7841,8 +8884,11 @@ impl FileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_FileSystem_open_o_stream(self as *mut Self, theUrl, theMode)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7871,8 +8917,11 @@ impl FileSystem {
                     theOutBufSize.map_or(std::ptr::null_mut(), |r| r as *mut _),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7880,8 +8929,11 @@ impl FileSystem {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_FileSystem_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -7889,8 +8941,11 @@ impl FileSystem {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_FileSystem_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7900,8 +8955,11 @@ impl FileSystem {
     pub fn default_file_system() -> &'static crate::ffi::HandleOSDFileSystem {
         {
             let __result = unsafe { crate::ffi::OSD_FileSystem_default_file_system() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7917,10 +8975,12 @@ impl FileSystem {
         theIsPreferred: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_FileSystem_add_default_protocol(theFileSystem, theIsPreferred)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7929,29 +8989,32 @@ impl FileSystem {
     /// OSD_FileSystem::DefaultFileSystem().
     pub fn remove_default_protocol(theFileSystem: &crate::ffi::HandleOSDFileSystem) {
         {
-            unsafe { crate::ffi::OSD_FileSystem_remove_default_protocol(theFileSystem) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_FileSystem_remove_default_protocol(theFileSystem) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_FileSystem_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::OSD_FileSystem_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_FileSystem_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_FileSystem_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -7960,8 +9023,11 @@ impl FileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_FileSystem_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7971,8 +9037,11 @@ impl FileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_FileSystem_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7981,11 +9050,14 @@ impl FileSystem {
         {
             let __result =
                 unsafe { crate::ffi::OSD_FileSystem_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7995,16 +9067,23 @@ impl FileSystem {
         {
             let __result =
                 unsafe { crate::ffi::OSD_FileSystem_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::OSD_FileSystem_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_FileSystem_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8014,16 +9093,21 @@ impl FileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_FileSystem_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::OSD_FileSystem_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_FileSystem_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8039,31 +9123,31 @@ unsafe impl crate::CppDeletable for HandleOSDFileSystem {
 impl HandleOSDFileSystem {
     /// Dereference this Handle to access the underlying OSD_FileSystem
     pub fn get(&self) -> &crate::ffi::OSD_FileSystem {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDFileSystem_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleOSDFileSystem_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_FileSystem
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_FileSystem {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDFileSystem_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleOSDFileSystem_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_FileSystem> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDFileSystem_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDFileSystem_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<OSD_FileSystem> to Handle<OSD_CachedFileSystem>
@@ -8072,16 +9156,18 @@ impl HandleOSDFileSystem {
     pub fn downcast_to_cached_file_system(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDCachedFileSystem>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleOSDFileSystem_downcast_to_HandleOSDCachedFileSystem(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8091,16 +9177,18 @@ impl HandleOSDFileSystem {
     pub fn downcast_to_file_system_selector(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDFileSystemSelector>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleOSDFileSystem_downcast_to_HandleOSDFileSystemSelector(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8110,16 +9198,18 @@ impl HandleOSDFileSystem {
     pub fn downcast_to_local_file_system(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDLocalFileSystem>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleOSDFileSystem_downcast_to_HandleOSDLocalFileSystem(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -8144,8 +9234,10 @@ impl FileSystemSelector {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_FileSystemSelector_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8154,8 +9246,11 @@ impl FileSystemSelector {
         {
             let __result =
                 unsafe { crate::ffi::OSD_FileSystemSelector_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8170,14 +9265,16 @@ impl FileSystemSelector {
         theIsPreferred: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_FileSystemSelector_add_protocol(
                     self as *mut Self,
                     theFileSystem,
                     theIsPreferred,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8185,10 +9282,12 @@ impl FileSystemSelector {
     /// Unregisters file system within this selector.
     pub fn remove_protocol(&mut self, theFileSystem: &crate::ffi::HandleOSDFileSystem) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_FileSystemSelector_remove_protocol(self as *mut Self, theFileSystem)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8199,8 +9298,11 @@ impl FileSystemSelector {
             let __result = unsafe {
                 crate::ffi::OSD_FileSystemSelector_is_supported_path(self as *const Self, theUrl)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8211,8 +9313,11 @@ impl FileSystemSelector {
             let __result = unsafe {
                 crate::ffi::OSD_FileSystemSelector_is_open_i_stream(self as *const Self, theStream)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8223,8 +9328,11 @@ impl FileSystemSelector {
             let __result = unsafe {
                 crate::ffi::OSD_FileSystemSelector_is_open_o_stream(self as *const Self, theStream)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8247,8 +9355,11 @@ impl FileSystemSelector {
                     theOldStream,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8263,8 +9374,11 @@ impl FileSystemSelector {
             let __result = unsafe {
                 crate::ffi::OSD_FileSystemSelector_open_o_stream(self as *mut Self, theUrl, theMode)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8287,8 +9401,11 @@ impl FileSystemSelector {
                     theOutBufSize.map_or(std::ptr::null_mut(), |r| r as *mut _),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8296,8 +9413,11 @@ impl FileSystemSelector {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_FileSystemSelector_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8305,64 +9425,65 @@ impl FileSystemSelector {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_FileSystemSelector_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_FileSystem
     pub fn as_file_system(&self) -> &FileSystem {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_FileSystemSelector_as_OSD_FileSystem(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::OSD_FileSystemSelector_as_OSD_FileSystem(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_FileSystem (mutable)
     pub fn as_file_system_mut(&mut self) -> &mut FileSystem {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_FileSystemSelector_as_OSD_FileSystem_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_FileSystemSelector_as_OSD_FileSystem_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_FileSystemSelector_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::OSD_FileSystemSelector_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_FileSystemSelector_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::OSD_FileSystemSelector_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleOSDFileSystemSelector> {
-        {
-            let __result = unsafe { crate::ffi::OSD_FileSystemSelector_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::OSD_FileSystemSelector_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -8374,8 +9495,11 @@ impl FileSystemSelector {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8385,8 +9509,11 @@ impl FileSystemSelector {
             let __result = unsafe {
                 crate::ffi::OSD_FileSystemSelector_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8395,11 +9522,14 @@ impl FileSystemSelector {
         {
             let __result =
                 unsafe { crate::ffi::OSD_FileSystemSelector_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -8410,18 +9540,23 @@ impl FileSystemSelector {
             let __result = unsafe {
                 crate::ffi::OSD_FileSystemSelector_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_FileSystemSelector_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8431,16 +9566,22 @@ impl FileSystemSelector {
             let __result = unsafe {
                 crate::ffi::OSD_FileSystemSelector_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::OSD_FileSystemSelector_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_FileSystemSelector_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8456,46 +9597,43 @@ unsafe impl crate::CppDeletable for HandleOSDFileSystemSelector {
 impl HandleOSDFileSystemSelector {
     /// Dereference this Handle to access the underlying OSD_FileSystemSelector
     pub fn get(&self) -> &crate::ffi::OSD_FileSystemSelector {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDFileSystemSelector_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleOSDFileSystemSelector_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_FileSystemSelector
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_FileSystemSelector {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDFileSystemSelector_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleOSDFileSystemSelector_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_FileSystemSelector> to Handle<OSD_FileSystem>
     pub fn to_handle_file_system(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDFileSystem> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDFileSystemSelector_to_HandleOSDFileSystem(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDFileSystemSelector_to_HandleOSDFileSystem(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_FileSystemSelector> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDFileSystemSelector_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDFileSystemSelector_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -8520,8 +9658,10 @@ impl Host {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Host_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8530,8 +9670,11 @@ impl Host {
     pub fn system_version(&mut self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::OSD_Host_system_version(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8540,8 +9683,11 @@ impl Host {
     pub fn system_id(&self) -> crate::osd::SysType {
         {
             let __result = unsafe { crate::ffi::OSD_Host_system_id(self as *const Self) };
-            crate::check_exception();
-            crate::osd::SysType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::osd::SysType::try_from(__val).unwrap()
         }
     }
 
@@ -8550,8 +9696,11 @@ impl Host {
     pub fn host_name(&mut self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::OSD_Host_host_name(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8560,8 +9709,11 @@ impl Host {
     pub fn available_memory(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::OSD_Host_available_memory(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8570,8 +9722,11 @@ impl Host {
     pub fn internet_address(&mut self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::OSD_Host_internet_address(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8580,8 +9735,11 @@ impl Host {
     pub fn machine_type(&mut self) -> crate::osd::OEMType {
         {
             let __result = unsafe { crate::ffi::OSD_Host_machine_type(self as *mut Self) };
-            crate::check_exception();
-            crate::osd::OEMType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::osd::OEMType::try_from(__val).unwrap()
         }
     }
 
@@ -8590,8 +9748,11 @@ impl Host {
     pub fn failed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_Host_failed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8599,8 +9760,10 @@ impl Host {
     /// Resets error counter to zero
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Host_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Host_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8608,8 +9771,10 @@ impl Host {
     /// Raises OSD_Error
     pub fn perror(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Host_perror(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Host_perror(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8618,8 +9783,11 @@ impl Host {
     pub fn error(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::OSD_Host_error(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -8644,8 +9812,10 @@ impl LocalFileSystem {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_LocalFileSystem_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8654,8 +9824,11 @@ impl LocalFileSystem {
         {
             let __result =
                 unsafe { crate::ffi::OSD_LocalFileSystem_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8666,8 +9839,11 @@ impl LocalFileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_LocalFileSystem_is_supported_path(self as *const Self, theUrl)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8678,8 +9854,11 @@ impl LocalFileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_LocalFileSystem_is_open_i_stream(self as *const Self, theStream)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8690,8 +9869,11 @@ impl LocalFileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_LocalFileSystem_is_open_o_stream(self as *const Self, theStream)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8714,8 +9896,11 @@ impl LocalFileSystem {
                     theOutBufSize.map_or(std::ptr::null_mut(), |r| r as *mut _),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8723,8 +9908,11 @@ impl LocalFileSystem {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_LocalFileSystem_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8732,62 +9920,63 @@ impl LocalFileSystem {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_LocalFileSystem_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_FileSystem
     pub fn as_file_system(&self) -> &FileSystem {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_LocalFileSystem_as_OSD_FileSystem(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::OSD_LocalFileSystem_as_OSD_FileSystem(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_FileSystem (mutable)
     pub fn as_file_system_mut(&mut self) -> &mut FileSystem {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_LocalFileSystem_as_OSD_FileSystem_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_LocalFileSystem_as_OSD_FileSystem_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_LocalFileSystem_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::OSD_LocalFileSystem_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::OSD_LocalFileSystem_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_LocalFileSystem_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleOSDLocalFileSystem> {
-        {
-            let __result = unsafe { crate::ffi::OSD_LocalFileSystem_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::OSD_LocalFileSystem_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `OSD_FileSystem.hxx`:68 - `OSD_FileSystem::OpenIStream()`
@@ -8808,8 +9997,11 @@ impl LocalFileSystem {
                     theOldStream,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8827,8 +10019,11 @@ impl LocalFileSystem {
                     theMode,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8838,8 +10033,11 @@ impl LocalFileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_LocalFileSystem_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8849,8 +10047,11 @@ impl LocalFileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_LocalFileSystem_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8859,11 +10060,14 @@ impl LocalFileSystem {
         {
             let __result =
                 unsafe { crate::ffi::OSD_LocalFileSystem_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -8874,18 +10078,23 @@ impl LocalFileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_LocalFileSystem_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_LocalFileSystem_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8895,16 +10104,22 @@ impl LocalFileSystem {
             let __result = unsafe {
                 crate::ffi::OSD_LocalFileSystem_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::OSD_LocalFileSystem_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_LocalFileSystem_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8920,43 +10135,42 @@ unsafe impl crate::CppDeletable for HandleOSDLocalFileSystem {
 impl HandleOSDLocalFileSystem {
     /// Dereference this Handle to access the underlying OSD_LocalFileSystem
     pub fn get(&self) -> &crate::ffi::OSD_LocalFileSystem {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDLocalFileSystem_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleOSDLocalFileSystem_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_LocalFileSystem
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_LocalFileSystem {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDLocalFileSystem_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleOSDLocalFileSystem_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_LocalFileSystem> to Handle<OSD_FileSystem>
     pub fn to_handle_file_system(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDFileSystem> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDLocalFileSystem_to_HandleOSDFileSystem(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDLocalFileSystem_to_HandleOSDFileSystem(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_LocalFileSystem> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDLocalFileSystem_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDLocalFileSystem_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -8984,8 +10198,10 @@ impl MAllocHook {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_MAllocHook_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8998,8 +10214,10 @@ impl MAllocHook {
     /// To clear the handler, pass NULL here.
     pub fn set_callback(theCB: &mut MAllocHook_Callback) {
         {
-            unsafe { crate::ffi::OSD_MAllocHook_set_callback(theCB as *mut _) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_MAllocHook_set_callback(theCB as *mut _) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9008,11 +10226,14 @@ impl MAllocHook {
     pub unsafe fn get_callback() -> Option<&'static mut MAllocHook_Callback> {
         {
             let __result = unsafe { crate::ffi::OSD_MAllocHook_get_callback() };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &mut *__result })
+                Some(unsafe { &mut *__val })
             }
         }
     }
@@ -9022,11 +10243,14 @@ impl MAllocHook {
     pub unsafe fn get_log_file_handler() -> Option<&'static mut MAllocHook_LogFileHandler> {
         {
             let __result = unsafe { crate::ffi::OSD_MAllocHook_get_log_file_handler() };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &mut *__result })
+                Some(unsafe { &mut *__val })
             }
         }
     }
@@ -9036,11 +10260,14 @@ impl MAllocHook {
     pub unsafe fn get_collect_by_size() -> Option<&'static mut MAllocHook_CollectBySize> {
         {
             let __result = unsafe { crate::ffi::OSD_MAllocHook_get_collect_by_size() };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &mut *__result })
+                Some(unsafe { &mut *__val })
             }
         }
     }
@@ -9068,14 +10295,16 @@ impl MAllocHook_Callback {
     /// the allocation order number of the memory block
     pub fn alloc_event(&mut self, theSize: usize, theRequestNum: std::ffi::c_long) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_MAllocHook_Callback_alloc_event(
                     self as *mut Self,
                     theSize,
                     theRequestNum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9096,7 +10325,7 @@ impl MAllocHook_Callback {
         theRequestNum: std::ffi::c_long,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_MAllocHook_Callback_free_event(
                     self as *mut Self,
                     theData,
@@ -9104,7 +10333,9 @@ impl MAllocHook_Callback {
                     theRequestNum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -9128,8 +10359,10 @@ impl MAllocHook_LogFileHandler {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_MAllocHook_LogFileHandler_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9145,8 +10378,11 @@ impl MAllocHook_LogFileHandler {
                     c_theFileName.as_ptr(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9154,18 +10390,23 @@ impl MAllocHook_LogFileHandler {
     /// Close the file and stop collecting events
     pub fn close(&mut self) {
         {
-            unsafe { crate::ffi::OSD_MAllocHook_LogFileHandler_close(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_MAllocHook_LogFileHandler_close(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_MAllocHook.hxx`:93 - `OSD_MAllocHook_LogFileHandler::AllocEvent()`
     pub fn alloc_event(&mut self, arg0: usize, arg1: std::ffi::c_long) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_MAllocHook_LogFileHandler_alloc_event(self as *mut Self, arg0, arg1)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9177,7 +10418,7 @@ impl MAllocHook_LogFileHandler {
         arg2: std::ffi::c_long,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_MAllocHook_LogFileHandler_free_event(
                     self as *mut Self,
                     arg0,
@@ -9185,7 +10426,9 @@ impl MAllocHook_LogFileHandler {
                     arg2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9207,8 +10450,11 @@ impl MAllocHook_LogFileHandler {
                     theIncludeAlive,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -9231,8 +10477,10 @@ impl MAllocHook_CollectBySize {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_MAllocHook_CollectBySize_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9240,8 +10488,11 @@ impl MAllocHook_CollectBySize {
     /// Reset the buffer and start collecting events.
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::OSD_MAllocHook_CollectBySize_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_MAllocHook_CollectBySize_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9256,18 +10507,23 @@ impl MAllocHook_CollectBySize {
                     c_theOutFile.as_ptr(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `OSD_MAllocHook.hxx`:121 - `OSD_MAllocHook_CollectBySize::AllocEvent()`
     pub fn alloc_event(&mut self, arg0: usize, arg1: std::ffi::c_long) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_MAllocHook_CollectBySize_alloc_event(self as *mut Self, arg0, arg1)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9279,7 +10535,7 @@ impl MAllocHook_CollectBySize {
         arg2: std::ffi::c_long,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_MAllocHook_CollectBySize_free_event(
                     self as *mut Self,
                     arg0,
@@ -9287,7 +10543,9 @@ impl MAllocHook_CollectBySize {
                     arg2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -9348,8 +10606,10 @@ impl MemInfo {
     pub fn new_bool(theImmediateUpdate: bool) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_MemInfo_ctor_bool(theImmediateUpdate) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9365,8 +10625,11 @@ impl MemInfo {
         {
             let __result =
                 unsafe { crate::ffi::OSD_MemInfo_is_active(self as *const Self, theCounter) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9375,8 +10638,11 @@ impl MemInfo {
     /// @param theActive state for counters
     pub fn set_active_bool(&mut self, theActive: bool) {
         {
-            unsafe { crate::ffi::OSD_MemInfo_set_active_bool(self as *mut Self, theActive) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_MemInfo_set_active_bool(self as *mut Self, theActive) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9390,14 +10656,16 @@ impl MemInfo {
         theActive: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_MemInfo_set_active_counter_bool(
                     self as *mut Self,
                     theCounter,
                     theActive,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9405,8 +10673,10 @@ impl MemInfo {
     /// Clear counters
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::OSD_MemInfo_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_MemInfo_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9414,8 +10684,10 @@ impl MemInfo {
     /// Update counters
     pub fn update(&mut self) {
         {
-            unsafe { crate::ffi::OSD_MemInfo_update(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_MemInfo_update(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9424,8 +10696,11 @@ impl MemInfo {
     pub fn to_string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::OSD_MemInfo_to_string(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9437,8 +10712,11 @@ impl MemInfo {
         {
             let __result =
                 unsafe { crate::ffi::OSD_MemInfo_value(self as *const Self, theCounter) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9450,8 +10728,11 @@ impl MemInfo {
         {
             let __result =
                 unsafe { crate::ffi::OSD_MemInfo_value_mi_b(self as *const Self, theCounter) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9464,8 +10745,11 @@ impl MemInfo {
             let __result = unsafe {
                 crate::ffi::OSD_MemInfo_value_precise_mi_b(self as *const Self, theCounter)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9474,8 +10758,11 @@ impl MemInfo {
     pub fn print_info() -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::OSD_MemInfo_print_info() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -9498,8 +10785,10 @@ impl OSDError {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_OSDError_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9508,8 +10797,10 @@ impl OSDError {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
             let __result = unsafe { crate::ffi::OSD_OSDError_ctor_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9524,8 +10815,10 @@ impl OSDError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9533,8 +10826,11 @@ impl OSDError {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_OSDError_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9542,16 +10838,20 @@ impl OSDError {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::OSD_OSDError_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_OSDError_raise_charptr(c_theMessage.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_OSDError.hxx`:34 - `OSD_OSDError::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_OSDError_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_OSDError_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9563,8 +10863,11 @@ impl OSDError {
         {
             let __result =
                 unsafe { crate::ffi::OSD_OSDError_new_instance_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9582,8 +10885,11 @@ impl OSDError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9591,8 +10897,11 @@ impl OSDError {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_OSDError_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -9600,81 +10909,90 @@ impl OSDError {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_OSDError_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_OSDError_as_Standard_Failure(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_OSDError_as_Standard_Failure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_OSDError_as_Standard_Failure_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_OSDError_as_Standard_Failure_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_OSDError_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::OSD_OSDError_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_OSDError_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_OSDError_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleOSDOSDError> {
-        {
-            let __result = unsafe { crate::ffi::OSD_OSDError_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::OSD_OSDError_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::OSD_OSDError_inherited_Print(self as *const Self, theStream) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_OSDError_inherited_Print(self as *const Self, theStream) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::OSD_OSDError_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_OSDError_inherited_Reraise(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::OSD_OSDError_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_OSDError_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9684,8 +11002,11 @@ impl OSDError {
             let __result = unsafe {
                 crate::ffi::OSD_OSDError_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9694,8 +11015,11 @@ impl OSDError {
         {
             let __result =
                 unsafe { crate::ffi::OSD_OSDError_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9703,11 +11027,14 @@ impl OSDError {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::OSD_OSDError_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -9717,16 +11044,23 @@ impl OSDError {
         {
             let __result =
                 unsafe { crate::ffi::OSD_OSDError_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::OSD_OSDError_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_OSDError_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9736,16 +11070,21 @@ impl OSDError {
             let __result = unsafe {
                 crate::ffi::OSD_OSDError_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::OSD_OSDError_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_OSDError_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -9761,42 +11100,41 @@ unsafe impl crate::CppDeletable for HandleOSDOSDError {
 impl HandleOSDOSDError {
     /// Dereference this Handle to access the underlying OSD_OSDError
     pub fn get(&self) -> &crate::ffi::OSD_OSDError {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDOSDError_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleOSDOSDError_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_OSDError
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_OSDError {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDOSDError_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleOSDOSDError_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_OSDError> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDOSDError_to_HandleStandardFailure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDOSDError_to_HandleStandardFailure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_OSDError> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDOSDError_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDOSDError_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -9855,8 +11193,10 @@ impl Parallel {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Parallel_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9868,8 +11208,11 @@ impl Parallel {
     pub fn to_use_occt_threads() -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_Parallel_to_use_occt_threads() };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9878,8 +11221,10 @@ impl Parallel {
     /// Has no effect if OCCT has been built with no auxiliary threads library.
     pub fn set_use_occt_threads(theToUseOcct: bool) {
         {
-            unsafe { crate::ffi::OSD_Parallel_set_use_occt_threads(theToUseOcct) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Parallel_set_use_occt_threads(theToUseOcct) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9888,8 +11233,11 @@ impl Parallel {
     pub fn nb_logical_processors() -> i32 {
         {
             let __result = unsafe { crate::ffi::OSD_Parallel_nb_logical_processors() };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -9914,8 +11262,10 @@ impl Path {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Path_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9938,8 +11288,10 @@ impl Path {
             let __result = unsafe {
                 crate::ffi::OSD_Path_ctor_asciistring_systype(aDependentName, aSysType.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9985,8 +11337,10 @@ impl Path {
                     anExtension,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10003,7 +11357,7 @@ impl Path {
         anExtension: &mut crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Path_values(
                     self as *const Self,
                     aNode,
@@ -10015,7 +11369,9 @@ impl Path {
                     anExtension,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10032,7 +11388,7 @@ impl Path {
         anExtension: &crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Path_set_values(
                     self as *mut Self,
                     aNode,
@@ -10044,7 +11400,9 @@ impl Path {
                     anExtension,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10070,10 +11428,12 @@ impl Path {
         aType: crate::osd::SysType,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Path_system_name(self as *const Self, FullName, aType.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10081,8 +11441,10 @@ impl Path {
     /// Returns system dependent path resolving logical symbols.
     pub fn expanded_name(&mut self, aName: &mut crate::t_collection::AsciiString) {
         {
-            unsafe { crate::ffi::OSD_Path_expanded_name(self as *mut Self, aName) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Path_expanded_name(self as *mut Self, aName) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10095,8 +11457,10 @@ impl Path {
     /// without any error.
     pub fn up_trek(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Path_up_trek(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Path_up_trek(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10106,8 +11470,10 @@ impl Path {
     /// me.DownTrek("bin") gives me = "|usr|bin|todo.sh".
     pub fn down_trek(&mut self, aName: &crate::t_collection::AsciiString) {
         {
-            unsafe { crate::ffi::OSD_Path_down_trek(self as *mut Self, aName) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Path_down_trek(self as *mut Self, aName) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10118,8 +11484,11 @@ impl Path {
     pub fn trek_length(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::OSD_Path_trek_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10132,8 +11501,11 @@ impl Path {
     /// TrekLength() to know number of components of Trek in <me>.
     pub fn remove_a_trek_int(&mut self, where_: i32) {
         {
-            unsafe { crate::ffi::OSD_Path_remove_a_trek_int(self as *mut Self, where_) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Path_remove_a_trek_int(self as *mut Self, where_) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10144,8 +11516,11 @@ impl Path {
     /// me.RemoveATrek("sys") gives me = "|usr|etc|doc".
     pub fn remove_a_trek_asciistring(&mut self, aName: &crate::t_collection::AsciiString) {
         {
-            unsafe { crate::ffi::OSD_Path_remove_a_trek_asciistring(self as *mut Self, aName) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Path_remove_a_trek_asciistring(self as *mut Self, aName) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10156,8 +11531,11 @@ impl Path {
     pub fn trek_value(&self, where_: i32) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::OSD_Path_trek_value(self as *const Self, where_) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10167,8 +11545,11 @@ impl Path {
     /// me.InsertATrek("sys",2) gives me = "|usr|sys|etc"
     pub fn insert_a_trek(&mut self, aName: &crate::t_collection::AsciiString, where_: i32) {
         {
-            unsafe { crate::ffi::OSD_Path_insert_a_trek(self as *mut Self, aName, where_) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Path_insert_a_trek(self as *mut Self, aName, where_) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10177,8 +11558,11 @@ impl Path {
     pub fn node(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::OSD_Path_node(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10187,8 +11571,11 @@ impl Path {
     pub fn user_name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::OSD_Path_user_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10197,8 +11584,11 @@ impl Path {
     pub fn password(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::OSD_Path_password(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10207,8 +11597,11 @@ impl Path {
     pub fn disk(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::OSD_Path_disk(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10217,8 +11610,11 @@ impl Path {
     pub fn trek(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::OSD_Path_trek(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10228,8 +11624,11 @@ impl Path {
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::OSD_Path_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10239,8 +11638,11 @@ impl Path {
     pub fn extension(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::OSD_Path_extension(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10248,8 +11650,10 @@ impl Path {
     /// Sets Node of <me>.
     pub fn set_node(&mut self, aName: &crate::t_collection::AsciiString) {
         {
-            unsafe { crate::ffi::OSD_Path_set_node(self as *mut Self, aName) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Path_set_node(self as *mut Self, aName) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10257,8 +11661,10 @@ impl Path {
     /// Sets UserName of <me>.
     pub fn set_user_name(&mut self, aName: &crate::t_collection::AsciiString) {
         {
-            unsafe { crate::ffi::OSD_Path_set_user_name(self as *mut Self, aName) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Path_set_user_name(self as *mut Self, aName) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10266,8 +11672,10 @@ impl Path {
     /// Sets Password of <me>.
     pub fn set_password(&mut self, aName: &crate::t_collection::AsciiString) {
         {
-            unsafe { crate::ffi::OSD_Path_set_password(self as *mut Self, aName) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Path_set_password(self as *mut Self, aName) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10275,8 +11683,10 @@ impl Path {
     /// Sets Disk of <me>.
     pub fn set_disk(&mut self, aName: &crate::t_collection::AsciiString) {
         {
-            unsafe { crate::ffi::OSD_Path_set_disk(self as *mut Self, aName) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Path_set_disk(self as *mut Self, aName) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10284,8 +11694,10 @@ impl Path {
     /// Sets Trek of <me>.
     pub fn set_trek(&mut self, aName: &crate::t_collection::AsciiString) {
         {
-            unsafe { crate::ffi::OSD_Path_set_trek(self as *mut Self, aName) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Path_set_trek(self as *mut Self, aName) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10294,8 +11706,10 @@ impl Path {
     /// If <me> hasn't been initialized, it returns an empty AsciiString.
     pub fn set_name(&mut self, aName: &crate::t_collection::AsciiString) {
         {
-            unsafe { crate::ffi::OSD_Path_set_name(self as *mut Self, aName) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Path_set_name(self as *mut Self, aName) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10303,8 +11717,10 @@ impl Path {
     /// Sets my extension name.
     pub fn set_extension(&mut self, aName: &crate::t_collection::AsciiString) {
         {
-            unsafe { crate::ffi::OSD_Path_set_extension(self as *mut Self, aName) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Path_set_extension(self as *mut Self, aName) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10316,8 +11732,11 @@ impl Path {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Path_locate_exec_file(self as *mut Self, aPath) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10330,8 +11749,11 @@ impl Path {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Path_is_valid(theDependentName, theSysType.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10348,8 +11770,11 @@ impl Path {
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::OSD_Path_relative_path(DirPath, AbsFilePath) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10365,8 +11790,11 @@ impl Path {
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::OSD_Path_absolute_path(DirPath, RelFilePath) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10384,10 +11812,12 @@ impl Path {
         theFileName: &mut crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Path_folder_and_file_from_path(theFilePath, theFolder, theFileName)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10406,10 +11836,12 @@ impl Path {
         theExtension: &mut crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Path_file_name_and_extension(theFilePath, theName, theExtension)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10423,8 +11855,11 @@ impl Path {
         let c_thePath = std::ffi::CString::new(thePath).unwrap();
         {
             let __result = unsafe { crate::ffi::OSD_Path_is_dos_path(c_thePath.as_ptr()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10440,8 +11875,11 @@ impl Path {
         let c_thePath = std::ffi::CString::new(thePath).unwrap();
         {
             let __result = unsafe { crate::ffi::OSD_Path_is_nt_extended_path(c_thePath.as_ptr()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10454,8 +11892,11 @@ impl Path {
         let c_thePath = std::ffi::CString::new(thePath).unwrap();
         {
             let __result = unsafe { crate::ffi::OSD_Path_is_unc_path(c_thePath.as_ptr()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10468,8 +11909,11 @@ impl Path {
         let c_thePath = std::ffi::CString::new(thePath).unwrap();
         {
             let __result = unsafe { crate::ffi::OSD_Path_is_unc_extended_path(c_thePath.as_ptr()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10482,8 +11926,11 @@ impl Path {
         let c_thePath = std::ffi::CString::new(thePath).unwrap();
         {
             let __result = unsafe { crate::ffi::OSD_Path_is_unix_path(c_thePath.as_ptr()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10497,8 +11944,11 @@ impl Path {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Path_is_content_protocol_path(c_thePath.as_ptr()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10513,8 +11963,11 @@ impl Path {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Path_is_remote_protocol_path(c_thePath.as_ptr()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10526,8 +11979,11 @@ impl Path {
         let c_thePath = std::ffi::CString::new(thePath).unwrap();
         {
             let __result = unsafe { crate::ffi::OSD_Path_is_relative_path(c_thePath.as_ptr()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10539,8 +11995,11 @@ impl Path {
         let c_thePath = std::ffi::CString::new(thePath).unwrap();
         {
             let __result = unsafe { crate::ffi::OSD_Path_is_absolute_path(c_thePath.as_ptr()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -10568,8 +12027,10 @@ impl PerfMeter {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_PerfMeter_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10581,8 +12042,10 @@ impl PerfMeter {
             let __result = unsafe {
                 crate::ffi::OSD_PerfMeter_ctor_charptr_bool(c_theMeter.as_ptr(), theToAutoStart)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10597,8 +12060,11 @@ impl PerfMeter {
     pub fn init(&mut self, theMeter: &str) {
         let c_theMeter = std::ffi::CString::new(theMeter).unwrap();
         {
-            unsafe { crate::ffi::OSD_PerfMeter_init(self as *mut Self, c_theMeter.as_ptr()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_PerfMeter_init(self as *mut Self, c_theMeter.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10606,8 +12072,10 @@ impl PerfMeter {
     /// Starts the meter
     pub fn start(&self) {
         {
-            unsafe { crate::ffi::OSD_PerfMeter_start(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_PerfMeter_start(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10615,8 +12083,10 @@ impl PerfMeter {
     /// Stops the meter
     pub fn stop(&self) {
         {
-            unsafe { crate::ffi::OSD_PerfMeter_stop(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_PerfMeter_stop(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10624,8 +12094,10 @@ impl PerfMeter {
     /// Increments the counter w/o time measurement
     pub fn tick(&self) {
         {
-            unsafe { crate::ffi::OSD_PerfMeter_tick(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_PerfMeter_tick(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10633,8 +12105,10 @@ impl PerfMeter {
     /// Outputs the meter data and resets it to initial state
     pub fn flush(&self) {
         {
-            unsafe { crate::ffi::OSD_PerfMeter_flush(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_PerfMeter_flush(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -10659,8 +12133,10 @@ impl Process {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Process_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10668,8 +12144,10 @@ impl Process {
     /// Returns the terminal used (vt100, vt200 ,sun-cmd ...)
     pub fn terminal_type(&mut self, Name: &mut crate::t_collection::AsciiString) {
         {
-            unsafe { crate::ffi::OSD_Process_terminal_type(self as *mut Self, Name) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Process_terminal_type(self as *mut Self, Name) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10678,8 +12156,11 @@ impl Process {
     pub fn system_date(&mut self) -> crate::OwnedPtr<crate::quantity::Date> {
         {
             let __result = unsafe { crate::ffi::OSD_Process_system_date(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10688,8 +12169,11 @@ impl Process {
     pub fn user_name(&mut self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::OSD_Process_user_name(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10698,8 +12182,11 @@ impl Process {
     pub fn is_super_user(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_Process_is_super_user(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10708,8 +12195,11 @@ impl Process {
     pub fn process_id(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::OSD_Process_process_id(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10718,8 +12208,11 @@ impl Process {
     pub fn current_directory(&mut self) -> crate::OwnedPtr<Path> {
         {
             let __result = unsafe { crate::ffi::OSD_Process_current_directory(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10727,8 +12220,11 @@ impl Process {
     /// Changes the current process directory.
     pub fn set_current_directory(&mut self, where_: &Path) {
         {
-            unsafe { crate::ffi::OSD_Process_set_current_directory(self as *mut Self, where_) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Process_set_current_directory(self as *mut Self, where_) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10737,8 +12233,11 @@ impl Process {
     pub fn failed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_Process_failed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10746,8 +12245,10 @@ impl Process {
     /// Resets error counter to zero
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Process_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Process_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10755,8 +12256,10 @@ impl Process {
     /// Raises OSD_Error
     pub fn perror(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Process_perror(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Process_perror(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10765,8 +12268,11 @@ impl Process {
     pub fn error(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::OSD_Process_error(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10775,8 +12281,11 @@ impl Process {
     pub fn executable_path() -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::OSD_Process_executable_path() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10785,8 +12294,11 @@ impl Process {
     pub fn executable_folder() -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::OSD_Process_executable_folder() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -10834,8 +12346,10 @@ impl Protection {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Protection_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10856,8 +12370,10 @@ impl Protection {
                     World.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10875,7 +12391,7 @@ impl Protection {
         let mut Group_i32_: i32 = (*Group).into();
         let mut World_i32_: i32 = (*World).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Protection_values(
                     self as *mut Self,
                     &mut System_i32_,
@@ -10884,7 +12400,9 @@ impl Protection {
                     &mut World_i32_,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *System = crate::osd::SingleProtection::try_from(System_i32_).unwrap();
         *User = crate::osd::SingleProtection::try_from(User_i32_).unwrap();
@@ -10902,7 +12420,7 @@ impl Protection {
         World: crate::osd::SingleProtection,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Protection_set_values(
                     self as *mut Self,
                     System.into(),
@@ -10911,7 +12429,9 @@ impl Protection {
                     World.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10919,8 +12439,11 @@ impl Protection {
     /// Sets protection of 'System'
     pub fn set_system(&mut self, priv_: crate::osd::SingleProtection) {
         {
-            unsafe { crate::ffi::OSD_Protection_set_system(self as *mut Self, priv_.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Protection_set_system(self as *mut Self, priv_.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10928,8 +12451,11 @@ impl Protection {
     /// Sets protection of 'User'
     pub fn set_user(&mut self, priv_: crate::osd::SingleProtection) {
         {
-            unsafe { crate::ffi::OSD_Protection_set_user(self as *mut Self, priv_.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Protection_set_user(self as *mut Self, priv_.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10937,8 +12463,11 @@ impl Protection {
     /// Sets protection of 'Group'
     pub fn set_group(&mut self, priv_: crate::osd::SingleProtection) {
         {
-            unsafe { crate::ffi::OSD_Protection_set_group(self as *mut Self, priv_.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Protection_set_group(self as *mut Self, priv_.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10946,8 +12475,11 @@ impl Protection {
     /// Sets protection of 'World'
     pub fn set_world(&mut self, priv_: crate::osd::SingleProtection) {
         {
-            unsafe { crate::ffi::OSD_Protection_set_world(self as *mut Self, priv_.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Protection_set_world(self as *mut Self, priv_.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10956,8 +12488,11 @@ impl Protection {
     pub fn system(&self) -> crate::osd::SingleProtection {
         {
             let __result = unsafe { crate::ffi::OSD_Protection_system(self as *const Self) };
-            crate::check_exception();
-            crate::osd::SingleProtection::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::osd::SingleProtection::try_from(__val).unwrap()
         }
     }
 
@@ -10966,8 +12501,11 @@ impl Protection {
     pub fn user(&self) -> crate::osd::SingleProtection {
         {
             let __result = unsafe { crate::ffi::OSD_Protection_user(self as *const Self) };
-            crate::check_exception();
-            crate::osd::SingleProtection::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::osd::SingleProtection::try_from(__val).unwrap()
         }
     }
 
@@ -10976,8 +12514,11 @@ impl Protection {
     pub fn group(&self) -> crate::osd::SingleProtection {
         {
             let __result = unsafe { crate::ffi::OSD_Protection_group(self as *const Self) };
-            crate::check_exception();
-            crate::osd::SingleProtection::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::osd::SingleProtection::try_from(__val).unwrap()
         }
     }
 
@@ -10986,8 +12527,11 @@ impl Protection {
     pub fn world(&self) -> crate::osd::SingleProtection {
         {
             let __result = unsafe { crate::ffi::OSD_Protection_world(self as *const Self) };
-            crate::check_exception();
-            crate::osd::SingleProtection::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::osd::SingleProtection::try_from(__val).unwrap()
         }
     }
 
@@ -11002,10 +12546,12 @@ impl Protection {
     ) {
         let mut aProt_i32_: i32 = (*aProt).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Protection_add(self as *mut Self, &mut aProt_i32_, aRight.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *aProt = crate::osd::SingleProtection::try_from(aProt_i32_).unwrap();
     }
@@ -11022,10 +12568,12 @@ impl Protection {
     ) {
         let mut aProt_i32_: i32 = (*aProt).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Protection_sub(self as *mut Self, &mut aProt_i32_, aRight.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *aProt = crate::osd::SingleProtection::try_from(aProt_i32_).unwrap();
     }
@@ -11049,8 +12597,10 @@ impl SIGBUS {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_SIGBUS_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11059,8 +12609,10 @@ impl SIGBUS {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
             let __result = unsafe { crate::ffi::OSD_SIGBUS_ctor_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11075,8 +12627,10 @@ impl SIGBUS {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11084,8 +12638,11 @@ impl SIGBUS {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_SIGBUS_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11093,16 +12650,20 @@ impl SIGBUS {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::OSD_SIGBUS_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGBUS_raise_charptr(c_theMessage.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_SIGBUS.hxx`:33 - `OSD_SIGBUS::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_SIGBUS_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGBUS_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11112,8 +12673,11 @@ impl SIGBUS {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGBUS_new_instance_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11131,8 +12695,11 @@ impl SIGBUS {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11140,8 +12707,11 @@ impl SIGBUS {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_SIGBUS_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -11149,99 +12719,106 @@ impl SIGBUS {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_SIGBUS_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_Signal
     pub fn as_signal(&self) -> &Signal {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGBUS_as_OSD_Signal(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_SIGBUS_as_OSD_Signal(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_Signal (mutable)
     pub fn as_signal_mut(&mut self) -> &mut Signal {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGBUS_as_OSD_Signal_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::OSD_SIGBUS_as_OSD_Signal_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGBUS_as_Standard_Failure(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_SIGBUS_as_Standard_Failure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGBUS_as_Standard_Failure_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::OSD_SIGBUS_as_Standard_Failure_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGBUS_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_SIGBUS_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGBUS_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_SIGBUS_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleOSDSIGBUS> {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGBUS_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::OSD_SIGBUS_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::OSD_SIGBUS_inherited_Print(self as *const Self, theStream) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_SIGBUS_inherited_Print(self as *const Self, theStream) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGBUS_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGBUS_inherited_Reraise(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGBUS_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGBUS_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11251,8 +12828,11 @@ impl SIGBUS {
             let __result = unsafe {
                 crate::ffi::OSD_SIGBUS_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11261,8 +12841,11 @@ impl SIGBUS {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGBUS_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11270,11 +12853,14 @@ impl SIGBUS {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::OSD_SIGBUS_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -11284,16 +12870,22 @@ impl SIGBUS {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGBUS_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGBUS_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_SIGBUS_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11302,16 +12894,21 @@ impl SIGBUS {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGBUS_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::OSD_SIGBUS_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGBUS_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -11327,52 +12924,50 @@ unsafe impl crate::CppDeletable for HandleOSDSIGBUS {
 impl HandleOSDSIGBUS {
     /// Dereference this Handle to access the underlying OSD_SIGBUS
     pub fn get(&self) -> &crate::ffi::OSD_SIGBUS {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDSIGBUS_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleOSDSIGBUS_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_SIGBUS
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_SIGBUS {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDSIGBUS_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleOSDSIGBUS_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_SIGBUS> to Handle<OSD_Signal>
     pub fn to_handle_signal(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDSignal> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDSIGBUS_to_HandleOSDSignal(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGBUS_to_HandleOSDSignal(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_SIGBUS> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDSIGBUS_to_HandleStandardFailure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGBUS_to_HandleStandardFailure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_SIGBUS> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDSIGBUS_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGBUS_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -11394,8 +12989,10 @@ impl SIGHUP {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_SIGHUP_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11404,8 +13001,10 @@ impl SIGHUP {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
             let __result = unsafe { crate::ffi::OSD_SIGHUP_ctor_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11420,8 +13019,10 @@ impl SIGHUP {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11429,8 +13030,11 @@ impl SIGHUP {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_SIGHUP_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11438,16 +13042,20 @@ impl SIGHUP {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::OSD_SIGHUP_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGHUP_raise_charptr(c_theMessage.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_SIGHUP.hxx`:33 - `OSD_SIGHUP::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_SIGHUP_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGHUP_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11457,8 +13065,11 @@ impl SIGHUP {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGHUP_new_instance_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11476,8 +13087,11 @@ impl SIGHUP {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11485,8 +13099,11 @@ impl SIGHUP {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_SIGHUP_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -11494,99 +13111,106 @@ impl SIGHUP {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_SIGHUP_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_Signal
     pub fn as_signal(&self) -> &Signal {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGHUP_as_OSD_Signal(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_SIGHUP_as_OSD_Signal(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_Signal (mutable)
     pub fn as_signal_mut(&mut self) -> &mut Signal {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGHUP_as_OSD_Signal_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::OSD_SIGHUP_as_OSD_Signal_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGHUP_as_Standard_Failure(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_SIGHUP_as_Standard_Failure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGHUP_as_Standard_Failure_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::OSD_SIGHUP_as_Standard_Failure_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGHUP_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_SIGHUP_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGHUP_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_SIGHUP_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleOSDSIGHUP> {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGHUP_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::OSD_SIGHUP_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::OSD_SIGHUP_inherited_Print(self as *const Self, theStream) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_SIGHUP_inherited_Print(self as *const Self, theStream) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGHUP_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGHUP_inherited_Reraise(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGHUP_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGHUP_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11596,8 +13220,11 @@ impl SIGHUP {
             let __result = unsafe {
                 crate::ffi::OSD_SIGHUP_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11606,8 +13233,11 @@ impl SIGHUP {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGHUP_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11615,11 +13245,14 @@ impl SIGHUP {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::OSD_SIGHUP_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -11629,16 +13262,22 @@ impl SIGHUP {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGHUP_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGHUP_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_SIGHUP_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11647,16 +13286,21 @@ impl SIGHUP {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGHUP_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::OSD_SIGHUP_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGHUP_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -11672,52 +13316,50 @@ unsafe impl crate::CppDeletable for HandleOSDSIGHUP {
 impl HandleOSDSIGHUP {
     /// Dereference this Handle to access the underlying OSD_SIGHUP
     pub fn get(&self) -> &crate::ffi::OSD_SIGHUP {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDSIGHUP_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleOSDSIGHUP_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_SIGHUP
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_SIGHUP {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDSIGHUP_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleOSDSIGHUP_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_SIGHUP> to Handle<OSD_Signal>
     pub fn to_handle_signal(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDSignal> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDSIGHUP_to_HandleOSDSignal(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGHUP_to_HandleOSDSignal(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_SIGHUP> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDSIGHUP_to_HandleStandardFailure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGHUP_to_HandleStandardFailure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_SIGHUP> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDSIGHUP_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGHUP_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -11739,8 +13381,10 @@ impl SIGILL {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_SIGILL_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11749,8 +13393,10 @@ impl SIGILL {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
             let __result = unsafe { crate::ffi::OSD_SIGILL_ctor_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11765,8 +13411,10 @@ impl SIGILL {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11774,8 +13422,11 @@ impl SIGILL {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_SIGILL_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11783,16 +13434,20 @@ impl SIGILL {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::OSD_SIGILL_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGILL_raise_charptr(c_theMessage.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_SIGILL.hxx`:33 - `OSD_SIGILL::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_SIGILL_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGILL_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11802,8 +13457,11 @@ impl SIGILL {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGILL_new_instance_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11821,8 +13479,11 @@ impl SIGILL {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11830,8 +13491,11 @@ impl SIGILL {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_SIGILL_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -11839,99 +13503,106 @@ impl SIGILL {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_SIGILL_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_Signal
     pub fn as_signal(&self) -> &Signal {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGILL_as_OSD_Signal(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_SIGILL_as_OSD_Signal(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_Signal (mutable)
     pub fn as_signal_mut(&mut self) -> &mut Signal {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGILL_as_OSD_Signal_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::OSD_SIGILL_as_OSD_Signal_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGILL_as_Standard_Failure(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_SIGILL_as_Standard_Failure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGILL_as_Standard_Failure_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::OSD_SIGILL_as_Standard_Failure_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGILL_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_SIGILL_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGILL_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_SIGILL_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleOSDSIGILL> {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGILL_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::OSD_SIGILL_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::OSD_SIGILL_inherited_Print(self as *const Self, theStream) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_SIGILL_inherited_Print(self as *const Self, theStream) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGILL_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGILL_inherited_Reraise(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGILL_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGILL_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11941,8 +13612,11 @@ impl SIGILL {
             let __result = unsafe {
                 crate::ffi::OSD_SIGILL_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11951,8 +13625,11 @@ impl SIGILL {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGILL_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11960,11 +13637,14 @@ impl SIGILL {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::OSD_SIGILL_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -11974,16 +13654,22 @@ impl SIGILL {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGILL_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGILL_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_SIGILL_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11992,16 +13678,21 @@ impl SIGILL {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGILL_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::OSD_SIGILL_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGILL_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -12017,52 +13708,50 @@ unsafe impl crate::CppDeletable for HandleOSDSIGILL {
 impl HandleOSDSIGILL {
     /// Dereference this Handle to access the underlying OSD_SIGILL
     pub fn get(&self) -> &crate::ffi::OSD_SIGILL {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDSIGILL_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleOSDSIGILL_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_SIGILL
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_SIGILL {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDSIGILL_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleOSDSIGILL_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_SIGILL> to Handle<OSD_Signal>
     pub fn to_handle_signal(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDSignal> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDSIGILL_to_HandleOSDSignal(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGILL_to_HandleOSDSignal(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_SIGILL> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDSIGILL_to_HandleStandardFailure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGILL_to_HandleStandardFailure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_SIGILL> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDSIGILL_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGILL_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -12084,8 +13773,10 @@ impl SIGINT {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_SIGINT_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12094,8 +13785,10 @@ impl SIGINT {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
             let __result = unsafe { crate::ffi::OSD_SIGINT_ctor_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12110,8 +13803,10 @@ impl SIGINT {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12119,8 +13814,11 @@ impl SIGINT {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_SIGINT_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -12128,16 +13826,20 @@ impl SIGINT {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::OSD_SIGINT_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGINT_raise_charptr(c_theMessage.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_SIGINT.hxx`:33 - `OSD_SIGINT::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_SIGINT_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGINT_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12147,8 +13849,11 @@ impl SIGINT {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGINT_new_instance_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12166,8 +13871,11 @@ impl SIGINT {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12175,8 +13883,11 @@ impl SIGINT {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_SIGINT_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -12184,99 +13895,106 @@ impl SIGINT {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_SIGINT_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_Signal
     pub fn as_signal(&self) -> &Signal {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGINT_as_OSD_Signal(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_SIGINT_as_OSD_Signal(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_Signal (mutable)
     pub fn as_signal_mut(&mut self) -> &mut Signal {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGINT_as_OSD_Signal_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::OSD_SIGINT_as_OSD_Signal_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGINT_as_Standard_Failure(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_SIGINT_as_Standard_Failure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGINT_as_Standard_Failure_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::OSD_SIGINT_as_Standard_Failure_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGINT_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_SIGINT_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGINT_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_SIGINT_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleOSDSIGINT> {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGINT_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::OSD_SIGINT_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::OSD_SIGINT_inherited_Print(self as *const Self, theStream) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_SIGINT_inherited_Print(self as *const Self, theStream) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGINT_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGINT_inherited_Reraise(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGINT_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGINT_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12286,8 +14004,11 @@ impl SIGINT {
             let __result = unsafe {
                 crate::ffi::OSD_SIGINT_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12296,8 +14017,11 @@ impl SIGINT {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGINT_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12305,11 +14029,14 @@ impl SIGINT {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::OSD_SIGINT_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -12319,16 +14046,22 @@ impl SIGINT {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGINT_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGINT_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_SIGINT_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12337,16 +14070,21 @@ impl SIGINT {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGINT_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::OSD_SIGINT_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGINT_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -12362,52 +14100,50 @@ unsafe impl crate::CppDeletable for HandleOSDSIGINT {
 impl HandleOSDSIGINT {
     /// Dereference this Handle to access the underlying OSD_SIGINT
     pub fn get(&self) -> &crate::ffi::OSD_SIGINT {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDSIGINT_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleOSDSIGINT_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_SIGINT
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_SIGINT {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDSIGINT_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleOSDSIGINT_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_SIGINT> to Handle<OSD_Signal>
     pub fn to_handle_signal(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDSignal> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDSIGINT_to_HandleOSDSignal(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGINT_to_HandleOSDSignal(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_SIGINT> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDSIGINT_to_HandleStandardFailure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGINT_to_HandleStandardFailure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_SIGINT> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDSIGINT_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGINT_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -12429,8 +14165,10 @@ impl SIGKILL {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_SIGKILL_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12439,8 +14177,10 @@ impl SIGKILL {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
             let __result = unsafe { crate::ffi::OSD_SIGKILL_ctor_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12455,8 +14195,10 @@ impl SIGKILL {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12464,8 +14206,11 @@ impl SIGKILL {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_SIGKILL_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -12473,16 +14218,20 @@ impl SIGKILL {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::OSD_SIGKILL_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGKILL_raise_charptr(c_theMessage.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_SIGKILL.hxx`:33 - `OSD_SIGKILL::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_SIGKILL_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGKILL_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12492,8 +14241,11 @@ impl SIGKILL {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGKILL_new_instance_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12511,8 +14263,11 @@ impl SIGKILL {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12520,8 +14275,11 @@ impl SIGKILL {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_SIGKILL_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -12529,99 +14287,108 @@ impl SIGKILL {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_SIGKILL_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_Signal
     pub fn as_signal(&self) -> &Signal {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGKILL_as_OSD_Signal(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_SIGKILL_as_OSD_Signal(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_Signal (mutable)
     pub fn as_signal_mut(&mut self) -> &mut Signal {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGKILL_as_OSD_Signal_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::OSD_SIGKILL_as_OSD_Signal_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGKILL_as_Standard_Failure(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_SIGKILL_as_Standard_Failure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGKILL_as_Standard_Failure_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_SIGKILL_as_Standard_Failure_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGKILL_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::OSD_SIGKILL_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGKILL_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_SIGKILL_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleOSDSIGKILL> {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGKILL_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::OSD_SIGKILL_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::OSD_SIGKILL_inherited_Print(self as *const Self, theStream) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_SIGKILL_inherited_Print(self as *const Self, theStream) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGKILL_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGKILL_inherited_Reraise(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGKILL_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGKILL_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12631,8 +14398,11 @@ impl SIGKILL {
             let __result = unsafe {
                 crate::ffi::OSD_SIGKILL_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12641,8 +14411,11 @@ impl SIGKILL {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGKILL_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12650,11 +14423,14 @@ impl SIGKILL {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::OSD_SIGKILL_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -12664,16 +14440,22 @@ impl SIGKILL {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGKILL_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGKILL_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_SIGKILL_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12682,16 +14464,21 @@ impl SIGKILL {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGKILL_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::OSD_SIGKILL_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGKILL_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -12707,52 +14494,50 @@ unsafe impl crate::CppDeletable for HandleOSDSIGKILL {
 impl HandleOSDSIGKILL {
     /// Dereference this Handle to access the underlying OSD_SIGKILL
     pub fn get(&self) -> &crate::ffi::OSD_SIGKILL {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDSIGKILL_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleOSDSIGKILL_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_SIGKILL
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_SIGKILL {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDSIGKILL_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleOSDSIGKILL_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_SIGKILL> to Handle<OSD_Signal>
     pub fn to_handle_signal(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDSignal> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDSIGKILL_to_HandleOSDSignal(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGKILL_to_HandleOSDSignal(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_SIGKILL> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDSIGKILL_to_HandleStandardFailure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGKILL_to_HandleStandardFailure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_SIGKILL> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDSIGKILL_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGKILL_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -12774,8 +14559,10 @@ impl SIGQUIT {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_SIGQUIT_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12784,8 +14571,10 @@ impl SIGQUIT {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
             let __result = unsafe { crate::ffi::OSD_SIGQUIT_ctor_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12800,8 +14589,10 @@ impl SIGQUIT {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12809,8 +14600,11 @@ impl SIGQUIT {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_SIGQUIT_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -12818,16 +14612,20 @@ impl SIGQUIT {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::OSD_SIGQUIT_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGQUIT_raise_charptr(c_theMessage.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_SIGQUIT.hxx`:33 - `OSD_SIGQUIT::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_SIGQUIT_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGQUIT_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12837,8 +14635,11 @@ impl SIGQUIT {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGQUIT_new_instance_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12856,8 +14657,11 @@ impl SIGQUIT {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12865,8 +14669,11 @@ impl SIGQUIT {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_SIGQUIT_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -12874,99 +14681,108 @@ impl SIGQUIT {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_SIGQUIT_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_Signal
     pub fn as_signal(&self) -> &Signal {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGQUIT_as_OSD_Signal(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_SIGQUIT_as_OSD_Signal(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_Signal (mutable)
     pub fn as_signal_mut(&mut self) -> &mut Signal {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGQUIT_as_OSD_Signal_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::OSD_SIGQUIT_as_OSD_Signal_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGQUIT_as_Standard_Failure(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_SIGQUIT_as_Standard_Failure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGQUIT_as_Standard_Failure_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_SIGQUIT_as_Standard_Failure_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGQUIT_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::OSD_SIGQUIT_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGQUIT_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_SIGQUIT_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleOSDSIGQUIT> {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGQUIT_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::OSD_SIGQUIT_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::OSD_SIGQUIT_inherited_Print(self as *const Self, theStream) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_SIGQUIT_inherited_Print(self as *const Self, theStream) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGQUIT_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGQUIT_inherited_Reraise(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGQUIT_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGQUIT_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12976,8 +14792,11 @@ impl SIGQUIT {
             let __result = unsafe {
                 crate::ffi::OSD_SIGQUIT_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12986,8 +14805,11 @@ impl SIGQUIT {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGQUIT_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12995,11 +14817,14 @@ impl SIGQUIT {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::OSD_SIGQUIT_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -13009,16 +14834,22 @@ impl SIGQUIT {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGQUIT_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGQUIT_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_SIGQUIT_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13027,16 +14858,21 @@ impl SIGQUIT {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGQUIT_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::OSD_SIGQUIT_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGQUIT_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -13052,52 +14888,50 @@ unsafe impl crate::CppDeletable for HandleOSDSIGQUIT {
 impl HandleOSDSIGQUIT {
     /// Dereference this Handle to access the underlying OSD_SIGQUIT
     pub fn get(&self) -> &crate::ffi::OSD_SIGQUIT {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDSIGQUIT_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleOSDSIGQUIT_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_SIGQUIT
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_SIGQUIT {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDSIGQUIT_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleOSDSIGQUIT_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_SIGQUIT> to Handle<OSD_Signal>
     pub fn to_handle_signal(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDSignal> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDSIGQUIT_to_HandleOSDSignal(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGQUIT_to_HandleOSDSignal(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_SIGQUIT> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDSIGQUIT_to_HandleStandardFailure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGQUIT_to_HandleStandardFailure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_SIGQUIT> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDSIGQUIT_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGQUIT_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -13119,8 +14953,10 @@ impl SIGSEGV {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_SIGSEGV_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13129,8 +14965,10 @@ impl SIGSEGV {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
             let __result = unsafe { crate::ffi::OSD_SIGSEGV_ctor_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13145,8 +14983,10 @@ impl SIGSEGV {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13154,8 +14994,11 @@ impl SIGSEGV {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_SIGSEGV_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13163,16 +15006,20 @@ impl SIGSEGV {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::OSD_SIGSEGV_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGSEGV_raise_charptr(c_theMessage.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_SIGSEGV.hxx`:34 - `OSD_SIGSEGV::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_SIGSEGV_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGSEGV_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13182,8 +15029,11 @@ impl SIGSEGV {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGSEGV_new_instance_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13201,8 +15051,11 @@ impl SIGSEGV {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13210,8 +15063,11 @@ impl SIGSEGV {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_SIGSEGV_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -13219,99 +15075,108 @@ impl SIGSEGV {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_SIGSEGV_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_Signal
     pub fn as_signal(&self) -> &Signal {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGSEGV_as_OSD_Signal(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_SIGSEGV_as_OSD_Signal(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_Signal (mutable)
     pub fn as_signal_mut(&mut self) -> &mut Signal {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGSEGV_as_OSD_Signal_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::OSD_SIGSEGV_as_OSD_Signal_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGSEGV_as_Standard_Failure(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_SIGSEGV_as_Standard_Failure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGSEGV_as_Standard_Failure_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_SIGSEGV_as_Standard_Failure_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGSEGV_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::OSD_SIGSEGV_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGSEGV_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_SIGSEGV_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleOSDSIGSEGV> {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGSEGV_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::OSD_SIGSEGV_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::OSD_SIGSEGV_inherited_Print(self as *const Self, theStream) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_SIGSEGV_inherited_Print(self as *const Self, theStream) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGSEGV_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGSEGV_inherited_Reraise(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGSEGV_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGSEGV_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13321,8 +15186,11 @@ impl SIGSEGV {
             let __result = unsafe {
                 crate::ffi::OSD_SIGSEGV_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13331,8 +15199,11 @@ impl SIGSEGV {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGSEGV_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13340,11 +15211,14 @@ impl SIGSEGV {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::OSD_SIGSEGV_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -13354,16 +15228,22 @@ impl SIGSEGV {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGSEGV_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGSEGV_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_SIGSEGV_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13372,16 +15252,21 @@ impl SIGSEGV {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGSEGV_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::OSD_SIGSEGV_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGSEGV_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -13397,52 +15282,50 @@ unsafe impl crate::CppDeletable for HandleOSDSIGSEGV {
 impl HandleOSDSIGSEGV {
     /// Dereference this Handle to access the underlying OSD_SIGSEGV
     pub fn get(&self) -> &crate::ffi::OSD_SIGSEGV {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDSIGSEGV_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleOSDSIGSEGV_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_SIGSEGV
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_SIGSEGV {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDSIGSEGV_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleOSDSIGSEGV_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_SIGSEGV> to Handle<OSD_Signal>
     pub fn to_handle_signal(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDSignal> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDSIGSEGV_to_HandleOSDSignal(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGSEGV_to_HandleOSDSignal(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_SIGSEGV> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDSIGSEGV_to_HandleStandardFailure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGSEGV_to_HandleStandardFailure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_SIGSEGV> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDSIGSEGV_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGSEGV_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -13464,8 +15347,10 @@ impl SIGSYS {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_SIGSYS_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13474,8 +15359,10 @@ impl SIGSYS {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
             let __result = unsafe { crate::ffi::OSD_SIGSYS_ctor_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13490,8 +15377,10 @@ impl SIGSYS {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13499,8 +15388,11 @@ impl SIGSYS {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_SIGSYS_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13508,16 +15400,20 @@ impl SIGSYS {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::OSD_SIGSYS_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGSYS_raise_charptr(c_theMessage.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_SIGSYS.hxx`:33 - `OSD_SIGSYS::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_SIGSYS_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGSYS_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13527,8 +15423,11 @@ impl SIGSYS {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGSYS_new_instance_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13546,8 +15445,11 @@ impl SIGSYS {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13555,8 +15457,11 @@ impl SIGSYS {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_SIGSYS_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -13564,99 +15469,106 @@ impl SIGSYS {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_SIGSYS_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to OSD_Signal
     pub fn as_signal(&self) -> &Signal {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGSYS_as_OSD_Signal(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_SIGSYS_as_OSD_Signal(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_Signal (mutable)
     pub fn as_signal_mut(&mut self) -> &mut Signal {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGSYS_as_OSD_Signal_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::OSD_SIGSYS_as_OSD_Signal_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGSYS_as_Standard_Failure(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_SIGSYS_as_Standard_Failure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGSYS_as_Standard_Failure_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::OSD_SIGSYS_as_Standard_Failure_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGSYS_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_SIGSYS_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_SIGSYS_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_SIGSYS_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleOSDSIGSYS> {
-        {
-            let __result = unsafe { crate::ffi::OSD_SIGSYS_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::OSD_SIGSYS_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::OSD_SIGSYS_inherited_Print(self as *const Self, theStream) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_SIGSYS_inherited_Print(self as *const Self, theStream) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGSYS_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGSYS_inherited_Reraise(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGSYS_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGSYS_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13666,8 +15578,11 @@ impl SIGSYS {
             let __result = unsafe {
                 crate::ffi::OSD_SIGSYS_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13676,8 +15591,11 @@ impl SIGSYS {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGSYS_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13685,11 +15603,14 @@ impl SIGSYS {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::OSD_SIGSYS_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -13699,16 +15620,22 @@ impl SIGSYS {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGSYS_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SIGSYS_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_SIGSYS_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13717,16 +15644,21 @@ impl SIGSYS {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SIGSYS_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::OSD_SIGSYS_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SIGSYS_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -13742,52 +15674,50 @@ unsafe impl crate::CppDeletable for HandleOSDSIGSYS {
 impl HandleOSDSIGSYS {
     /// Dereference this Handle to access the underlying OSD_SIGSYS
     pub fn get(&self) -> &crate::ffi::OSD_SIGSYS {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDSIGSYS_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleOSDSIGSYS_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_SIGSYS
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_SIGSYS {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDSIGSYS_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleOSDSIGSYS_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_SIGSYS> to Handle<OSD_Signal>
     pub fn to_handle_signal(&self) -> crate::OwnedPtr<crate::ffi::HandleOSDSignal> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleOSDSIGSYS_to_HandleOSDSignal(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGSYS_to_HandleOSDSignal(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_SIGSYS> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDSIGSYS_to_HandleStandardFailure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGSYS_to_HandleStandardFailure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_SIGSYS> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDSIGSYS_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSIGSYS_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -13813,8 +15743,10 @@ impl SharedLibrary {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_SharedLibrary_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13825,8 +15757,10 @@ impl SharedLibrary {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SharedLibrary_ctor_charptr(c_aFilename.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13835,8 +15769,12 @@ impl SharedLibrary {
     pub fn set_name(&mut self, aName: &str) {
         let c_aName = std::ffi::CString::new(aName).unwrap();
         {
-            unsafe { crate::ffi::OSD_SharedLibrary_set_name(self as *mut Self, c_aName.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_SharedLibrary_set_name(self as *mut Self, c_aName.as_ptr())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13845,8 +15783,11 @@ impl SharedLibrary {
     pub fn name(&self) -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_SharedLibrary_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -13875,8 +15816,11 @@ impl SharedLibrary {
         {
             let __result =
                 unsafe { crate::ffi::OSD_SharedLibrary_dl_open(self as *mut Self, Mode.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13889,8 +15833,10 @@ impl SharedLibrary {
     /// the results are undefined.
     pub fn dl_close(&self) {
         {
-            unsafe { crate::ffi::OSD_SharedLibrary_dl_close(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SharedLibrary_dl_close(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13901,8 +15847,11 @@ impl SharedLibrary {
     pub fn dl_error(&self) -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_SharedLibrary_dl_error(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -13910,8 +15859,10 @@ impl SharedLibrary {
     /// Frees memory allocated.
     pub fn destroy(&mut self) {
         {
-            unsafe { crate::ffi::OSD_SharedLibrary_destroy(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_SharedLibrary_destroy(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -13943,8 +15894,10 @@ impl Signal {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Signal_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13953,8 +15906,10 @@ impl Signal {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
             let __result = unsafe { crate::ffi::OSD_Signal_ctor_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13969,8 +15924,10 @@ impl Signal {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13978,8 +15935,11 @@ impl Signal {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_Signal_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13987,16 +15947,20 @@ impl Signal {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::OSD_Signal_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Signal_raise_charptr(c_theMessage.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_Signal.hxx`:34 - `OSD_Signal::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::OSD_Signal_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Signal_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14006,8 +15970,11 @@ impl Signal {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Signal_new_instance_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14025,8 +15992,11 @@ impl Signal {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14034,8 +16004,11 @@ impl Signal {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_Signal_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -14043,81 +16016,88 @@ impl Signal {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_Signal_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_Signal_as_Standard_Failure(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_Signal_as_Standard_Failure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_Signal_as_Standard_Failure_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::OSD_Signal_as_Standard_Failure_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_Signal_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_Signal_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_Signal_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_Signal_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleOSDSignal> {
-        {
-            let __result = unsafe { crate::ffi::OSD_Signal_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::OSD_Signal_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::OSD_Signal_inherited_Print(self as *const Self, theStream) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Signal_inherited_Print(self as *const Self, theStream) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Signal_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Signal_inherited_Reraise(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Signal_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Signal_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14127,8 +16107,11 @@ impl Signal {
             let __result = unsafe {
                 crate::ffi::OSD_Signal_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14137,8 +16120,11 @@ impl Signal {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Signal_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14146,11 +16132,14 @@ impl Signal {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::OSD_Signal_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -14160,16 +16149,22 @@ impl Signal {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Signal_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Signal_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Signal_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14178,16 +16173,21 @@ impl Signal {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Signal_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::OSD_Signal_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Signal_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -14203,55 +16203,55 @@ unsafe impl crate::CppDeletable for HandleOSDSignal {
 impl HandleOSDSignal {
     /// Dereference this Handle to access the underlying OSD_Signal
     pub fn get(&self) -> &crate::ffi::OSD_Signal {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDSignal_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleOSDSignal_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_Signal
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_Signal {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDSignal_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleOSDSignal_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_Signal> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDSignal_to_HandleStandardFailure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSignal_to_HandleStandardFailure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<OSD_Signal> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDSignal_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleOSDSignal_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<OSD_Signal> to Handle<OSD_SIGBUS>
     ///
     /// Returns `None` if the handle does not point to a `OSD_SIGBUS` (or subclass).
     pub fn downcast_to_sigbus(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDSIGBUS>> {
-        let ptr =
+        let __result =
             unsafe { crate::ffi::HandleOSDSignal_downcast_to_HandleOSDSIGBUS(self as *const Self) };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -14259,13 +16259,15 @@ impl HandleOSDSignal {
     ///
     /// Returns `None` if the handle does not point to a `OSD_SIGHUP` (or subclass).
     pub fn downcast_to_sighup(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDSIGHUP>> {
-        let ptr =
+        let __result =
             unsafe { crate::ffi::HandleOSDSignal_downcast_to_HandleOSDSIGHUP(self as *const Self) };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -14273,13 +16275,15 @@ impl HandleOSDSignal {
     ///
     /// Returns `None` if the handle does not point to a `OSD_SIGILL` (or subclass).
     pub fn downcast_to_sigill(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDSIGILL>> {
-        let ptr =
+        let __result =
             unsafe { crate::ffi::HandleOSDSignal_downcast_to_HandleOSDSIGILL(self as *const Self) };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -14287,13 +16291,15 @@ impl HandleOSDSignal {
     ///
     /// Returns `None` if the handle does not point to a `OSD_SIGINT` (or subclass).
     pub fn downcast_to_sigint(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDSIGINT>> {
-        let ptr =
+        let __result =
             unsafe { crate::ffi::HandleOSDSignal_downcast_to_HandleOSDSIGINT(self as *const Self) };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -14301,14 +16307,16 @@ impl HandleOSDSignal {
     ///
     /// Returns `None` if the handle does not point to a `OSD_SIGKILL` (or subclass).
     pub fn downcast_to_sigkill(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDSIGKILL>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleOSDSignal_downcast_to_HandleOSDSIGKILL(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -14316,14 +16324,16 @@ impl HandleOSDSignal {
     ///
     /// Returns `None` if the handle does not point to a `OSD_SIGQUIT` (or subclass).
     pub fn downcast_to_sigquit(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDSIGQUIT>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleOSDSignal_downcast_to_HandleOSDSIGQUIT(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -14331,14 +16341,16 @@ impl HandleOSDSignal {
     ///
     /// Returns `None` if the handle does not point to a `OSD_SIGSEGV` (or subclass).
     pub fn downcast_to_sigsegv(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDSIGSEGV>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleOSDSignal_downcast_to_HandleOSDSIGSEGV(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -14346,13 +16358,15 @@ impl HandleOSDSignal {
     ///
     /// Returns `None` if the handle does not point to a `OSD_SIGSYS` (or subclass).
     pub fn downcast_to_sigsys(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleOSDSIGSYS>> {
-        let ptr =
+        let __result =
             unsafe { crate::ffi::HandleOSDSignal_downcast_to_HandleOSDSIGSYS(self as *const Self) };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -14378,8 +16392,10 @@ impl Thread {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Thread_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -14387,16 +16403,21 @@ impl Thread {
     /// Copy thread handle from other OSD_Thread object.
     pub fn assign(&mut self, other: &Thread) {
         {
-            unsafe { crate::ffi::OSD_Thread_assign(self as *mut Self, other) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Thread_assign(self as *mut Self, other) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `OSD_Thread.hxx`:55 - `OSD_Thread::SetPriority()`
     pub fn set_priority(&mut self, thePriority: i32) {
         {
-            unsafe { crate::ffi::OSD_Thread_set_priority(self as *mut Self, thePriority) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Thread_set_priority(self as *mut Self, thePriority) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14411,8 +16432,11 @@ impl Thread {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Thread_run(self as *mut Self, data, WNTStackSize) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14426,8 +16450,10 @@ impl Thread {
     /// release all thread data upon its completion.
     pub fn detach(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Thread_detach(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Thread_detach(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14436,8 +16462,11 @@ impl Thread {
     pub fn wait(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_Thread_wait(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14455,8 +16484,11 @@ impl Thread {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Thread_wait_address(self as *mut Self, theResult) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14473,8 +16505,11 @@ impl Thread {
             let __result = unsafe {
                 crate::ffi::OSD_Thread_wait_int_address(self as *mut Self, time, theResult)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14484,8 +16519,11 @@ impl Thread {
     pub fn get_id(&self) -> std::ffi::c_ulong {
         {
             let __result = unsafe { crate::ffi::OSD_Thread_get_id(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14494,18 +16532,21 @@ impl Thread {
     pub fn current() -> std::ffi::c_ulong {
         {
             let __result = unsafe { crate::ffi::OSD_Thread_current() };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::OSD_Thread_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::OSD_Thread_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -14577,8 +16618,10 @@ impl ThreadPool {
     pub fn new_int(theNbThreads: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_ThreadPool_ctor_int(theNbThreads) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -14598,8 +16641,11 @@ impl ThreadPool {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_ThreadPool_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -14608,8 +16654,11 @@ impl ThreadPool {
     pub fn has_threads(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_ThreadPool_has_threads(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14619,8 +16668,11 @@ impl ThreadPool {
         {
             let __result =
                 unsafe { crate::ffi::OSD_ThreadPool_lower_thread_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14630,8 +16682,11 @@ impl ThreadPool {
         {
             let __result =
                 unsafe { crate::ffi::OSD_ThreadPool_upper_thread_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14640,8 +16695,11 @@ impl ThreadPool {
     pub fn nb_threads(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::OSD_ThreadPool_nb_threads(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14653,8 +16711,11 @@ impl ThreadPool {
             let __result = unsafe {
                 crate::ffi::OSD_ThreadPool_nb_default_threads_to_launch(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14663,13 +16724,15 @@ impl ThreadPool {
     /// Should be set BEFORE first usage.
     pub fn set_nb_default_threads_to_launch(&mut self, theNbThreads: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_ThreadPool_set_nb_default_threads_to_launch(
                     self as *mut Self,
                     theNbThreads,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14678,8 +16741,11 @@ impl ThreadPool {
     pub fn is_in_use(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::OSD_ThreadPool_is_in_use(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14688,8 +16754,10 @@ impl ThreadPool {
     /// Should be called only with no active jobs, or exception Standard_ProgramError will be thrown!
     pub fn init(&mut self, theNbThreads: i32) {
         {
-            unsafe { crate::ffi::OSD_ThreadPool_init(self as *mut Self, theNbThreads) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_ThreadPool_init(self as *mut Self, theNbThreads) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14697,8 +16765,11 @@ impl ThreadPool {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::OSD_ThreadPool_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -14706,8 +16777,11 @@ impl ThreadPool {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::OSD_ThreadPool_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -14717,40 +16791,43 @@ impl ThreadPool {
     pub fn default_pool(theNbThreads: i32) -> &'static crate::ffi::HandleOSDThreadPool {
         {
             let __result = unsafe { crate::ffi::OSD_ThreadPool_default_pool(theNbThreads) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_ThreadPool_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::OSD_ThreadPool_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_ThreadPool_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::OSD_ThreadPool_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleOSDThreadPool> {
-        {
-            let __result = unsafe { crate::ffi::OSD_ThreadPool_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::OSD_ThreadPool_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -14759,8 +16836,11 @@ impl ThreadPool {
             let __result = unsafe {
                 crate::ffi::OSD_ThreadPool_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14770,8 +16850,11 @@ impl ThreadPool {
             let __result = unsafe {
                 crate::ffi::OSD_ThreadPool_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14780,11 +16863,14 @@ impl ThreadPool {
         {
             let __result =
                 unsafe { crate::ffi::OSD_ThreadPool_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -14794,16 +16880,23 @@ impl ThreadPool {
         {
             let __result =
                 unsafe { crate::ffi::OSD_ThreadPool_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::OSD_ThreadPool_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::OSD_ThreadPool_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14813,16 +16906,21 @@ impl ThreadPool {
             let __result = unsafe {
                 crate::ffi::OSD_ThreadPool_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::OSD_ThreadPool_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_ThreadPool_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -14838,31 +16936,31 @@ unsafe impl crate::CppDeletable for HandleOSDThreadPool {
 impl HandleOSDThreadPool {
     /// Dereference this Handle to access the underlying OSD_ThreadPool
     pub fn get(&self) -> &crate::ffi::OSD_ThreadPool {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDThreadPool_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleOSDThreadPool_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying OSD_ThreadPool
     pub fn get_mut(&mut self) -> &mut crate::ffi::OSD_ThreadPool {
-        {
-            let __result = unsafe { crate::ffi::HandleOSDThreadPool_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleOSDThreadPool_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<OSD_ThreadPool> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleOSDThreadPool_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleOSDThreadPool_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -14895,8 +16993,10 @@ impl ThreadPool_Launcher {
             let __result = unsafe {
                 crate::ffi::OSD_ThreadPool_Launcher_ctor_threadpool_int(thePool, theMaxThreads)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -14920,8 +17020,11 @@ impl ThreadPool_Launcher {
         {
             let __result =
                 unsafe { crate::ffi::OSD_ThreadPool_Launcher_has_threads(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14931,8 +17034,11 @@ impl ThreadPool_Launcher {
         {
             let __result =
                 unsafe { crate::ffi::OSD_ThreadPool_Launcher_nb_threads(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14943,8 +17049,11 @@ impl ThreadPool_Launcher {
             let __result = unsafe {
                 crate::ffi::OSD_ThreadPool_Launcher_lower_thread_index(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14955,8 +17064,11 @@ impl ThreadPool_Launcher {
             let __result = unsafe {
                 crate::ffi::OSD_ThreadPool_Launcher_upper_thread_index(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14964,8 +17076,10 @@ impl ThreadPool_Launcher {
     /// Release threads before Launcher destruction.
     pub fn release(&mut self) {
         {
-            unsafe { crate::ffi::OSD_ThreadPool_Launcher_release(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_ThreadPool_Launcher_release(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -15005,8 +17119,10 @@ impl Timer {
     pub fn new_bool(theThisThreadOnly: bool) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::OSD_Timer_ctor_bool(theThisThreadOnly) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -15025,8 +17141,11 @@ impl Timer {
     /// Stops and reinitializes the timer with specified elapsed time.
     pub fn reset_real(&mut self, theTimeElapsedSec: f64) {
         {
-            unsafe { crate::ffi::OSD_Timer_reset_real(self as *mut Self, theTimeElapsedSec) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::OSD_Timer_reset_real(self as *mut Self, theTimeElapsedSec) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15034,8 +17153,10 @@ impl Timer {
     /// Stops and reinitializes the timer with zero elapsed time.
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Timer_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Timer_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15043,8 +17164,10 @@ impl Timer {
     /// Restarts the Timer.
     pub fn restart(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Timer_restart(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Timer_restart(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15054,8 +17177,10 @@ impl Timer {
     /// stopped.
     pub fn show(&self) {
         {
-            unsafe { crate::ffi::OSD_Timer_show(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Timer_show(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15064,8 +17189,10 @@ impl Timer {
     /// output stream <OS>.
     pub fn show_ostream(&self, os: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::OSD_Timer_show_ostream(self as *const Self, os) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Timer_show_ostream(self as *const Self, os) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15080,7 +17207,7 @@ impl Timer {
         theCPUtime: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Timer_show_real_int2_real(
                     self as *const Self,
                     theSeconds,
@@ -15089,7 +17216,9 @@ impl Timer {
                     theCPUtime,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15097,8 +17226,10 @@ impl Timer {
     /// Stops the Timer.
     pub fn stop(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Timer_stop(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Timer_stop(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15107,8 +17238,10 @@ impl Timer {
     /// the Timer.
     pub fn start(&mut self) {
         {
-            unsafe { crate::ffi::OSD_Timer_start(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::OSD_Timer_start(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15117,8 +17250,11 @@ impl Timer {
     pub fn elapsed_time(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::OSD_Timer_elapsed_time(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15131,28 +17267,30 @@ impl Timer {
     pub fn get_wall_clock_time() -> f64 {
         {
             let __result = unsafe { crate::ffi::OSD_Timer_get_wall_clock_time() };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to OSD_Chronometer
     pub fn as_chronometer(&self) -> &Chronometer {
-        {
-            let __result = unsafe { crate::ffi::OSD_Timer_as_OSD_Chronometer(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::OSD_Timer_as_OSD_Chronometer(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to OSD_Chronometer (mutable)
     pub fn as_chronometer_mut(&mut self) -> &mut Chronometer {
-        {
-            let __result =
-                unsafe { crate::ffi::OSD_Timer_as_OSD_Chronometer_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::OSD_Timer_as_OSD_Chronometer_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `OSD_Chronometer.hxx`:50 - `OSD_Chronometer::IsStarted()`
@@ -15160,8 +17298,11 @@ impl Timer {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Timer_inherited_IsStarted(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15170,8 +17311,11 @@ impl Timer {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Timer_inherited_UserTimeCPU(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15180,8 +17324,11 @@ impl Timer {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Timer_inherited_SystemTimeCPU(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15190,21 +17337,26 @@ impl Timer {
         {
             let __result =
                 unsafe { crate::ffi::OSD_Timer_inherited_IsThisThreadOnly(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `OSD_Chronometer.hxx`:99 - `OSD_Chronometer::SetThisThreadOnly()`
     pub fn set_this_thread_only(&mut self, theIsThreadOnly: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::OSD_Timer_inherited_SetThisThreadOnly(
                     self as *mut Self,
                     theIsThreadOnly,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

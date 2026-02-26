@@ -35,8 +35,10 @@ impl CommonBlock {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_CommonBlock_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -50,8 +52,10 @@ impl CommonBlock {
             let __result = unsafe {
                 crate::ffi::BOPDS_CommonBlock_ctor_handlencollectionbaseallocator(theAllocator)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -61,8 +65,11 @@ impl CommonBlock {
     /// of the common block
     pub fn add_pave_block(&mut self, aPB: &crate::ffi::HandleBOPDSPaveBlock) {
         {
-            unsafe { crate::ffi::BOPDS_CommonBlock_add_pave_block(self as *mut Self, aPB) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_CommonBlock_add_pave_block(self as *mut Self, aPB) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -71,8 +78,11 @@ impl CommonBlock {
     /// Sets the list of pave blocks for the common block
     pub fn set_pave_blocks(&mut self, aLPB: &crate::ffi::BOPDS_ListOfPaveBlock) {
         {
-            unsafe { crate::ffi::BOPDS_CommonBlock_set_pave_blocks(self as *mut Self, aLPB) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_CommonBlock_set_pave_blocks(self as *mut Self, aLPB) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -83,8 +93,10 @@ impl CommonBlock {
     /// of the common block
     pub fn add_face(&mut self, aF: i32) {
         {
-            unsafe { crate::ffi::BOPDS_CommonBlock_add_face(self as *mut Self, aF) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_CommonBlock_add_face(self as *mut Self, aF) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -94,8 +106,10 @@ impl CommonBlock {
     /// of the common block
     pub fn set_faces(&mut self, aLF: &crate::ffi::TColStd_ListOfInteger) {
         {
-            unsafe { crate::ffi::BOPDS_CommonBlock_set_faces(self as *mut Self, aLF) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_CommonBlock_set_faces(self as *mut Self, aLF) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -106,8 +120,11 @@ impl CommonBlock {
     /// of the common block (the input list is emptied)
     pub fn append_faces(&mut self, aLF: &mut crate::ffi::TColStd_ListOfInteger) {
         {
-            unsafe { crate::ffi::BOPDS_CommonBlock_append_faces(self as *mut Self, aLF) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_CommonBlock_append_faces(self as *mut Self, aLF) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -119,8 +136,11 @@ impl CommonBlock {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_CommonBlock_pave_blocks(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -131,8 +151,11 @@ impl CommonBlock {
     pub fn faces(&self) -> &crate::ffi::TColStd_ListOfInteger {
         {
             let __result = unsafe { crate::ffi::BOPDS_CommonBlock_faces(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -144,8 +167,11 @@ impl CommonBlock {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_CommonBlock_pave_block1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -158,8 +184,11 @@ impl CommonBlock {
             let __result = unsafe {
                 crate::ffi::BOPDS_CommonBlock_pave_block_on_edge(self as *mut Self, theIndex)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -173,8 +202,11 @@ impl CommonBlock {
             let __result = unsafe {
                 crate::ffi::BOPDS_CommonBlock_is_pave_block_on_face(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -188,8 +220,11 @@ impl CommonBlock {
             let __result = unsafe {
                 crate::ffi::BOPDS_CommonBlock_is_pave_block_on_edge(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -205,8 +240,11 @@ impl CommonBlock {
                     thePB,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -218,8 +256,11 @@ impl CommonBlock {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_CommonBlock_contains_int(self as *const Self, theF) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -229,8 +270,11 @@ impl CommonBlock {
     /// to all pave blocks of the common block
     pub fn set_edge(&mut self, theEdge: i32) {
         {
-            unsafe { crate::ffi::BOPDS_CommonBlock_set_edge(self as *mut Self, theEdge) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_CommonBlock_set_edge(self as *mut Self, theEdge) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -241,16 +285,21 @@ impl CommonBlock {
     pub fn edge(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BOPDS_CommonBlock_edge(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BOPDS_CommonBlock.hxx`:127 - `BOPDS_CommonBlock::Dump()`
     pub fn dump(&self) {
         {
-            unsafe { crate::ffi::BOPDS_CommonBlock_dump(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_CommonBlock_dump(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -260,8 +309,12 @@ impl CommonBlock {
     /// It will be representative for the whole group.
     pub fn set_real_pave_block(&mut self, thePB: &crate::ffi::HandleBOPDSPaveBlock) {
         {
-            unsafe { crate::ffi::BOPDS_CommonBlock_set_real_pave_block(self as *mut Self, thePB) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_CommonBlock_set_real_pave_block(self as *mut Self, thePB)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -269,8 +322,11 @@ impl CommonBlock {
     /// Sets the tolerance for the common block
     pub fn set_tolerance(&mut self, theTol: f64) {
         {
-            unsafe { crate::ffi::BOPDS_CommonBlock_set_tolerance(self as *mut Self, theTol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_CommonBlock_set_tolerance(self as *mut Self, theTol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -279,8 +335,11 @@ impl CommonBlock {
     pub fn tolerance(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BOPDS_CommonBlock_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -289,8 +348,11 @@ impl CommonBlock {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_CommonBlock_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -298,8 +360,11 @@ impl CommonBlock {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::BOPDS_CommonBlock_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -307,41 +372,43 @@ impl CommonBlock {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BOPDS_CommonBlock_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_CommonBlock_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BOPDS_CommonBlock_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::BOPDS_CommonBlock_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BOPDS_CommonBlock_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBOPDSCommonBlock> {
-        {
-            let __result = unsafe { crate::ffi::BOPDS_CommonBlock_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::BOPDS_CommonBlock_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -350,8 +417,11 @@ impl CommonBlock {
             let __result = unsafe {
                 crate::ffi::BOPDS_CommonBlock_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -361,8 +431,11 @@ impl CommonBlock {
             let __result = unsafe {
                 crate::ffi::BOPDS_CommonBlock_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -371,11 +444,14 @@ impl CommonBlock {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_CommonBlock_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -385,18 +461,23 @@ impl CommonBlock {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_CommonBlock_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_CommonBlock_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -406,16 +487,22 @@ impl CommonBlock {
             let __result = unsafe {
                 crate::ffi::BOPDS_CommonBlock_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::BOPDS_CommonBlock_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_CommonBlock_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -431,31 +518,31 @@ unsafe impl crate::CppDeletable for HandleBOPDSCommonBlock {
 impl HandleBOPDSCommonBlock {
     /// Dereference this Handle to access the underlying BOPDS_CommonBlock
     pub fn get(&self) -> &crate::ffi::BOPDS_CommonBlock {
-        {
-            let __result = unsafe { crate::ffi::HandleBOPDSCommonBlock_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBOPDSCommonBlock_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BOPDS_CommonBlock
     pub fn get_mut(&mut self) -> &mut crate::ffi::BOPDS_CommonBlock {
-        {
-            let __result = unsafe { crate::ffi::HandleBOPDSCommonBlock_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleBOPDSCommonBlock_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BOPDS_CommonBlock> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBOPDSCommonBlock_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBOPDSCommonBlock_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -484,8 +571,10 @@ impl CoupleOfPaveBlocks {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_CoupleOfPaveBlocks_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -504,8 +593,10 @@ impl CoupleOfPaveBlocks {
             let __result = unsafe {
                 crate::ffi::BOPDS_CoupleOfPaveBlocks_ctor_handlebopdspaveblock2(thePB1, thePB2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -516,8 +607,12 @@ impl CoupleOfPaveBlocks {
     /// index
     pub fn set_index(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_CoupleOfPaveBlocks_set_index(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_CoupleOfPaveBlocks_set_index(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -530,8 +625,11 @@ impl CoupleOfPaveBlocks {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_CoupleOfPaveBlocks_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -542,10 +640,12 @@ impl CoupleOfPaveBlocks {
     /// index of an interference
     pub fn set_index_interf(&mut self, theIndex: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_CoupleOfPaveBlocks_set_index_interf(self as *mut Self, theIndex)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -558,8 +658,11 @@ impl CoupleOfPaveBlocks {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_CoupleOfPaveBlocks_index_interf(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -576,14 +679,16 @@ impl CoupleOfPaveBlocks {
         thePB2: &crate::ffi::HandleBOPDSPaveBlock,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_CoupleOfPaveBlocks_set_pave_blocks(
                     self as *mut Self,
                     thePB1,
                     thePB2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -600,14 +705,16 @@ impl CoupleOfPaveBlocks {
         thePB2: &mut crate::ffi::HandleBOPDSPaveBlock,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_CoupleOfPaveBlocks_pave_blocks(
                     self as *const Self,
                     thePB1,
                     thePB2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -618,10 +725,12 @@ impl CoupleOfPaveBlocks {
     /// the first pave block
     pub fn set_pave_block1(&mut self, thePB: &crate::ffi::HandleBOPDSPaveBlock) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_CoupleOfPaveBlocks_set_pave_block1(self as *mut Self, thePB)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -634,8 +743,11 @@ impl CoupleOfPaveBlocks {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_CoupleOfPaveBlocks_pave_block1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -646,10 +758,12 @@ impl CoupleOfPaveBlocks {
     /// the second pave block
     pub fn set_pave_block2(&mut self, thePB: &crate::ffi::HandleBOPDSPaveBlock) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_CoupleOfPaveBlocks_set_pave_block2(self as *mut Self, thePB)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -662,8 +776,11 @@ impl CoupleOfPaveBlocks {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_CoupleOfPaveBlocks_pave_block2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -672,10 +789,12 @@ impl CoupleOfPaveBlocks {
     /// Sets the tolerance associated with this couple
     pub fn set_tolerance(&mut self, theTol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_CoupleOfPaveBlocks_set_tolerance(self as *mut Self, theTol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -686,8 +805,11 @@ impl CoupleOfPaveBlocks {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_CoupleOfPaveBlocks_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -713,8 +835,10 @@ impl Curve {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_Curve_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -728,8 +852,10 @@ impl Curve {
             let __result = unsafe {
                 crate::ffi::BOPDS_Curve_ctor_handlencollectionbaseallocator(theAllocator)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -738,8 +864,10 @@ impl Curve {
     /// Sets the curve <theC>
     pub fn set_curve(&mut self, theC: &crate::int_tools::Curve) {
         {
-            unsafe { crate::ffi::BOPDS_Curve_set_curve(self as *mut Self, theC) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_Curve_set_curve(self as *mut Self, theC) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -749,8 +877,11 @@ impl Curve {
     pub fn curve(&self) -> &crate::int_tools::Curve {
         {
             let __result = unsafe { crate::ffi::BOPDS_Curve_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -759,8 +890,10 @@ impl Curve {
     /// Sets the bounding box <theBox> of the curve
     pub fn set_box(&mut self, theBox: &crate::bnd::Box) {
         {
-            unsafe { crate::ffi::BOPDS_Curve_set_box(self as *mut Self, theBox) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_Curve_set_box(self as *mut Self, theBox) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -770,8 +903,11 @@ impl Curve {
     pub fn box_(&self) -> &crate::bnd::Box {
         {
             let __result = unsafe { crate::ffi::BOPDS_Curve_box_(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -781,16 +917,22 @@ impl Curve {
     pub fn change_box(&mut self) -> &mut crate::bnd::Box {
         {
             let __result = unsafe { crate::ffi::BOPDS_Curve_change_box(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// **Source:** `BOPDS_Curve.hxx`:67 - `BOPDS_Curve::SetPaveBlocks()`
     pub fn set_pave_blocks(&mut self, theLPB: &crate::ffi::BOPDS_ListOfPaveBlock) {
         {
-            unsafe { crate::ffi::BOPDS_Curve_set_pave_blocks(self as *mut Self, theLPB) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_Curve_set_pave_blocks(self as *mut Self, theLPB) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -801,8 +943,11 @@ impl Curve {
     pub fn pave_blocks(&self) -> &crate::ffi::BOPDS_ListOfPaveBlock {
         {
             let __result = unsafe { crate::ffi::BOPDS_Curve_pave_blocks(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -813,8 +958,11 @@ impl Curve {
     pub fn change_pave_blocks(&mut self) -> &mut crate::ffi::BOPDS_ListOfPaveBlock {
         {
             let __result = unsafe { crate::ffi::BOPDS_Curve_change_pave_blocks(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -823,8 +971,10 @@ impl Curve {
     /// of the curve
     pub fn init_pave_block1(&mut self) {
         {
-            unsafe { crate::ffi::BOPDS_Curve_init_pave_block1(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_Curve_init_pave_block1(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -835,8 +985,11 @@ impl Curve {
     pub fn change_pave_block1(&mut self) -> &mut crate::ffi::HandleBOPDSPaveBlock {
         {
             let __result = unsafe { crate::ffi::BOPDS_Curve_change_pave_block1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -847,8 +1000,11 @@ impl Curve {
     pub fn techno_vertices(&self) -> &crate::ffi::TColStd_ListOfInteger {
         {
             let __result = unsafe { crate::ffi::BOPDS_Curve_techno_vertices(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -860,8 +1016,11 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_Curve_change_techno_vertices(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -872,8 +1031,11 @@ impl Curve {
     pub fn has_edge(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BOPDS_Curve_has_edge(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -881,8 +1043,10 @@ impl Curve {
     /// Sets the tolerance for the curve.
     pub fn set_tolerance(&mut self, theTol: f64) {
         {
-            unsafe { crate::ffi::BOPDS_Curve_set_tolerance(self as *mut Self, theTol) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_Curve_set_tolerance(self as *mut Self, theTol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -891,8 +1055,11 @@ impl Curve {
     pub fn tolerance(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BOPDS_Curve_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -902,8 +1069,11 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_Curve_tangential_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -944,8 +1114,10 @@ impl DS {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -958,8 +1130,10 @@ impl DS {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_DS_ctor_handlencollectionbaseallocator(theAllocator) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -967,8 +1141,10 @@ impl DS {
     /// Clears the contents
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::BOPDS_DS_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_DS_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -977,8 +1153,11 @@ impl DS {
     pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_allocator(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -987,8 +1166,10 @@ impl DS {
     /// Sets the arguments [theLS] of an operation
     pub fn set_arguments(&mut self, theLS: &crate::ffi::TopTools_ListOfShape) {
         {
-            unsafe { crate::ffi::BOPDS_DS_set_arguments(self as *mut Self, theLS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_DS_set_arguments(self as *mut Self, theLS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -998,8 +1179,11 @@ impl DS {
     pub fn arguments(&self) -> &crate::ffi::TopTools_ListOfShape {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_arguments(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1008,8 +1192,10 @@ impl DS {
     /// the arguments
     pub fn init(&mut self, theFuzz: f64) {
         {
-            unsafe { crate::ffi::BOPDS_DS_init(self as *mut Self, theFuzz) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_DS_init(self as *mut Self, theFuzz) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1019,8 +1205,11 @@ impl DS {
     pub fn nb_shapes(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_nb_shapes(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1030,8 +1219,11 @@ impl DS {
     pub fn nb_source_shapes(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_nb_source_shapes(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1041,8 +1233,11 @@ impl DS {
     pub fn nb_ranges(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_nb_ranges(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1052,8 +1247,11 @@ impl DS {
     pub fn range(&self, theIndex: i32) -> &IndexRange {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_range(self as *const Self, theIndex) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1063,8 +1261,11 @@ impl DS {
     pub fn rank(&self, theIndex: i32) -> i32 {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_rank(self as *const Self, theIndex) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1075,8 +1276,11 @@ impl DS {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_DS_is_new_shape(self as *const Self, theIndex) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1089,8 +1293,11 @@ impl DS {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_DS_append_shapeinfo(self as *mut Self, theSI) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1102,8 +1309,11 @@ impl DS {
     pub fn append_shape(&mut self, theS: &crate::topo_ds::Shape) -> i32 {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_append_shape(self as *mut Self, theS) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1115,8 +1325,11 @@ impl DS {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_DS_shape_info(self as *const Self, theIndex) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1128,8 +1341,11 @@ impl DS {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_DS_change_shape_info(self as *mut Self, theIndex) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1140,8 +1356,11 @@ impl DS {
     pub fn shape(&self, theIndex: i32) -> &crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_shape(self as *const Self, theIndex) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1151,8 +1370,11 @@ impl DS {
     pub fn index(&self, theS: &crate::topo_ds::Shape) -> i32 {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_index(self as *const Self, theS) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1162,8 +1384,11 @@ impl DS {
     pub fn pave_blocks_pool(&self) -> &crate::ffi::BOPDS_VectorOfListOfPaveBlock {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_pave_blocks_pool(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1174,8 +1399,11 @@ impl DS {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_DS_change_pave_blocks_pool(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1187,8 +1415,11 @@ impl DS {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_DS_has_pave_blocks(self as *const Self, theIndex) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1199,8 +1430,11 @@ impl DS {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_DS_pave_blocks(self as *const Self, theIndex) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1211,8 +1445,11 @@ impl DS {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_DS_change_pave_blocks(self as *mut Self, theIndex) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1220,8 +1457,10 @@ impl DS {
     /// Update the pave blocks for the all shapes in data structure
     pub fn update_pave_blocks(&mut self) {
         {
-            unsafe { crate::ffi::BOPDS_DS_update_pave_blocks(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_DS_update_pave_blocks(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1229,8 +1468,10 @@ impl DS {
     /// Update the pave block thePB
     pub fn update_pave_block(&mut self, thePB: &crate::ffi::HandleBOPDSPaveBlock) {
         {
-            unsafe { crate::ffi::BOPDS_DS_update_pave_block(self as *mut Self, thePB) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_DS_update_pave_block(self as *mut Self, thePB) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1242,8 +1483,12 @@ impl DS {
         theFuzz: f64,
     ) {
         {
-            unsafe { crate::ffi::BOPDS_DS_update_common_block(self as *mut Self, theCB, theFuzz) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_DS_update_common_block(self as *mut Self, theCB, theFuzz)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1254,8 +1499,11 @@ impl DS {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_DS_is_common_block(self as *const Self, thePB) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1268,8 +1516,11 @@ impl DS {
     ) -> crate::OwnedPtr<crate::ffi::HandleBOPDSCommonBlock> {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_common_block(self as *const Self, thePB) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1282,8 +1533,11 @@ impl DS {
         theCB: &crate::ffi::HandleBOPDSCommonBlock,
     ) {
         {
-            unsafe { crate::ffi::BOPDS_DS_set_common_block(self as *mut Self, thePB, theCB) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_DS_set_common_block(self as *mut Self, thePB, theCB) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1297,8 +1551,11 @@ impl DS {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_DS_real_pave_block(self as *const Self, thePB) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1309,8 +1566,11 @@ impl DS {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_DS_is_common_block_on_edge(self as *const Self, thePB) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1320,8 +1580,11 @@ impl DS {
     pub fn face_info_pool(&self) -> &crate::ffi::BOPDS_VectorOfFaceInfo {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_face_info_pool(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1333,8 +1596,11 @@ impl DS {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_DS_has_face_info(self as *const Self, theIndex) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1344,8 +1610,11 @@ impl DS {
     pub fn face_info(&self, theIndex: i32) -> &FaceInfo {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_face_info(self as *const Self, theIndex) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1356,8 +1625,11 @@ impl DS {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_DS_change_face_info(self as *mut Self, theIndex) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1365,8 +1637,12 @@ impl DS {
     /// Update the state In of face with index theIndex
     pub fn update_face_info_in_int(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_DS_update_face_info_in_int(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_DS_update_face_info_in_int(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1377,10 +1653,12 @@ impl DS {
         theFaces: &crate::ffi::TColStd_MapOfInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_DS_update_face_info_in_mapofinteger(self as *mut Self, theFaces)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1388,8 +1666,12 @@ impl DS {
     /// Update the state On of face with index theIndex
     pub fn update_face_info_on_int(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_DS_update_face_info_on_int(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_DS_update_face_info_on_int(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1400,10 +1682,12 @@ impl DS {
         theFaces: &crate::ffi::TColStd_MapOfInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_DS_update_face_info_on_mapofinteger(self as *mut Self, theFaces)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1418,10 +1702,12 @@ impl DS {
         theMVP: &mut crate::ffi::TColStd_MapOfInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_DS_face_info_on(self as *mut Self, theIndex, theMPB, theMVP)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1436,10 +1722,12 @@ impl DS {
         theMVP: &mut crate::ffi::TColStd_MapOfInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_DS_face_info_in(self as *mut Self, theIndex, theMPB, theMVP)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1449,8 +1737,11 @@ impl DS {
     /// for the face with index theIndex
     pub fn alone_vertices(&self, theF: i32, theLI: &mut crate::ffi::TColStd_ListOfInteger) {
         {
-            unsafe { crate::ffi::BOPDS_DS_alone_vertices(self as *const Self, theF, theLI) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_DS_alone_vertices(self as *const Self, theF, theLI) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1461,8 +1752,10 @@ impl DS {
     /// ++
     pub fn refine_face_info_on(&mut self) {
         {
-            unsafe { crate::ffi::BOPDS_DS_refine_face_info_on(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_DS_refine_face_info_on(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1470,8 +1763,10 @@ impl DS {
     /// Removes any pave block from list of having IN state if it has also the state ON.
     pub fn refine_face_info_in(&mut self) {
         {
-            unsafe { crate::ffi::BOPDS_DS_refine_face_info_in(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_DS_refine_face_info_in(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1491,7 +1786,7 @@ impl DS {
         theCommonPB: &mut crate::ffi::BOPDS_MapOfPaveBlock,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_DS_sub_shapes_on_in(
                     self as *const Self,
                     theNF1,
@@ -1502,7 +1797,9 @@ impl DS {
                     theCommonPB,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1519,7 +1816,7 @@ impl DS {
         theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_DS_shared_edges(
                     self as *mut Self,
                     theF1,
@@ -1528,7 +1825,9 @@ impl DS {
                     theAllocator,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1538,8 +1837,11 @@ impl DS {
     pub fn shapes_sd(&mut self) -> &mut crate::ffi::TColStd_DataMapOfIntegerInteger {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_shapes_sd(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1549,8 +1851,12 @@ impl DS {
     /// with indices theIndex, theIndexSD
     pub fn add_shape_sd(&mut self, theIndex: i32, theIndexSD: i32) {
         {
-            unsafe { crate::ffi::BOPDS_DS_add_shape_sd(self as *mut Self, theIndex, theIndexSD) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_DS_add_shape_sd(self as *mut Self, theIndex, theIndexSD)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1566,8 +1872,11 @@ impl DS {
             let __result = unsafe {
                 crate::ffi::BOPDS_DS_has_shape_sd(self as *const Self, theIndex, theIndexSD)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1577,8 +1886,11 @@ impl DS {
     pub fn interf_vv(&mut self) -> &mut crate::ffi::BOPDS_VectorOfInterfVV {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_interf_vv(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1588,8 +1900,11 @@ impl DS {
     pub fn interf_ve(&mut self) -> &mut crate::ffi::BOPDS_VectorOfInterfVE {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_interf_ve(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1599,8 +1914,11 @@ impl DS {
     pub fn interf_vf(&mut self) -> &mut crate::ffi::BOPDS_VectorOfInterfVF {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_interf_vf(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1610,8 +1928,11 @@ impl DS {
     pub fn interf_ee(&mut self) -> &mut crate::ffi::BOPDS_VectorOfInterfEE {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_interf_ee(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1621,8 +1942,11 @@ impl DS {
     pub fn interf_ef(&mut self) -> &mut crate::ffi::BOPDS_VectorOfInterfEF {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_interf_ef(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1632,8 +1956,11 @@ impl DS {
     pub fn interf_ff(&mut self) -> &mut crate::ffi::BOPDS_VectorOfInterfFF {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_interf_ff(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1643,8 +1970,11 @@ impl DS {
     pub fn interf_vz(&mut self) -> &mut crate::ffi::BOPDS_VectorOfInterfVZ {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_interf_vz(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1654,8 +1984,11 @@ impl DS {
     pub fn interf_ez(&mut self) -> &mut crate::ffi::BOPDS_VectorOfInterfEZ {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_interf_ez(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1665,8 +1998,11 @@ impl DS {
     pub fn interf_fz(&mut self) -> &mut crate::ffi::BOPDS_VectorOfInterfFZ {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_interf_fz(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1676,8 +2012,11 @@ impl DS {
     pub fn interf_zz(&mut self) -> &mut crate::ffi::BOPDS_VectorOfInterfZZ {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_interf_zz(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1690,8 +2029,11 @@ impl DS {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_DS_add_interf(self as *mut Self, theI1, theI2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1703,8 +2045,11 @@ impl DS {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_DS_has_interf_int(self as *const Self, theI) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1716,8 +2061,11 @@ impl DS {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_DS_has_interf_int2(self as *const Self, theI1, theI2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1737,8 +2085,11 @@ impl DS {
                     theFlag,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1751,8 +2102,11 @@ impl DS {
             let __result = unsafe {
                 crate::ffi::BOPDS_DS_has_interf_sub_shapes(self as *const Self, theI1, theI2)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1764,16 +2118,21 @@ impl DS {
     pub fn interferences(&self) -> &crate::ffi::BOPDS_MapOfPair {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_interferences(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `BOPDS_DS.hxx`:394 - `BOPDS_DS::Dump()`
     pub fn dump(&self) {
         {
-            unsafe { crate::ffi::BOPDS_DS_dump(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_DS_dump(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1782,8 +2141,11 @@ impl DS {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_DS_is_sub_shape(self as *mut Self, theI1, theI2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1792,8 +2154,10 @@ impl DS {
     /// of the shape with index theIndex
     pub fn paves(&mut self, theIndex: i32, theLP: &mut crate::ffi::BOPDS_ListOfPave) {
         {
-            unsafe { crate::ffi::BOPDS_DS_paves(self as *mut Self, theIndex, theLP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_DS_paves(self as *mut Self, theIndex, theLP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1801,8 +2165,12 @@ impl DS {
     /// Update the pave blocks for all shapes in data structure
     pub fn update_pave_blocks_with_sd_vertices(&mut self) {
         {
-            unsafe { crate::ffi::BOPDS_DS_update_pave_blocks_with_sd_vertices(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_DS_update_pave_blocks_with_sd_vertices(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1810,10 +2178,12 @@ impl DS {
     /// Update the pave block for all shapes in data structure
     pub fn update_pave_block_with_sd_vertices(&mut self, thePB: &crate::ffi::HandleBOPDSPaveBlock) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_DS_update_pave_block_with_sd_vertices(self as *mut Self, thePB)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1824,18 +2194,24 @@ impl DS {
         theCB: &crate::ffi::HandleBOPDSCommonBlock,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_DS_update_common_block_with_sd_vertices(self as *mut Self, theCB)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BOPDS_DS.hxx`:412 - `BOPDS_DS::InitPaveBlocksForVertex()`
     pub fn init_pave_blocks_for_vertex(&mut self, theNV: i32) {
         {
-            unsafe { crate::ffi::BOPDS_DS_init_pave_blocks_for_vertex(self as *mut Self, theNV) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_DS_init_pave_blocks_for_vertex(self as *mut Self, theNV)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1843,8 +2219,10 @@ impl DS {
     /// Clears information about PaveBlocks for the untouched edges
     pub fn release_pave_blocks(&mut self) {
         {
-            unsafe { crate::ffi::BOPDS_DS_release_pave_blocks(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_DS_release_pave_blocks(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1857,8 +2235,11 @@ impl DS {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_DS_is_valid_shrunk_data(self as *mut Self, thePB) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1873,7 +2254,7 @@ impl DS {
         theCheckInverted: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_DS_build_bnd_box_solid(
                     self as *mut Self,
                     theIndex,
@@ -1881,7 +2262,9 @@ impl DS {
                     theCheckInverted,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1890,8 +2273,11 @@ impl DS {
     pub fn nb_interf_types() -> i32 {
         {
             let __result = unsafe { crate::ffi::BOPDS_DS_nb_interf_types() };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1917,8 +2303,10 @@ impl FaceInfo {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_FaceInfo_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1932,8 +2320,10 @@ impl FaceInfo {
             let __result = unsafe {
                 crate::ffi::BOPDS_FaceInfo_ctor_handlencollectionbaseallocator(theAllocator)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1941,8 +2331,10 @@ impl FaceInfo {
     /// Clears the contents
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::BOPDS_FaceInfo_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_FaceInfo_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1951,8 +2343,10 @@ impl FaceInfo {
     /// Sets the index of the face <theI>
     pub fn set_index(&mut self, theI: i32) {
         {
-            unsafe { crate::ffi::BOPDS_FaceInfo_set_index(self as *mut Self, theI) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_FaceInfo_set_index(self as *mut Self, theI) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1964,8 +2358,11 @@ impl FaceInfo {
     pub fn index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BOPDS_FaceInfo_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1977,8 +2374,11 @@ impl FaceInfo {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_FaceInfo_pave_blocks_in(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1991,8 +2391,11 @@ impl FaceInfo {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_FaceInfo_change_pave_blocks_in(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2004,8 +2407,11 @@ impl FaceInfo {
     pub fn vertices_in(&self) -> &crate::ffi::TColStd_MapOfInteger {
         {
             let __result = unsafe { crate::ffi::BOPDS_FaceInfo_vertices_in(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2020,8 +2426,11 @@ impl FaceInfo {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_FaceInfo_change_vertices_in(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2033,8 +2442,11 @@ impl FaceInfo {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_FaceInfo_pave_blocks_on(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2047,8 +2459,11 @@ impl FaceInfo {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_FaceInfo_change_pave_blocks_on(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2060,8 +2475,11 @@ impl FaceInfo {
     pub fn vertices_on(&self) -> &crate::ffi::TColStd_MapOfInteger {
         {
             let __result = unsafe { crate::ffi::BOPDS_FaceInfo_vertices_on(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2076,8 +2494,11 @@ impl FaceInfo {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_FaceInfo_change_vertices_on(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2089,8 +2510,11 @@ impl FaceInfo {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_FaceInfo_pave_blocks_sc(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2099,8 +2523,11 @@ impl FaceInfo {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_FaceInfo_change_pave_blocks_sc(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2111,8 +2538,11 @@ impl FaceInfo {
     pub fn vertices_sc(&self) -> &crate::ffi::TColStd_MapOfInteger {
         {
             let __result = unsafe { crate::ffi::BOPDS_FaceInfo_vertices_sc(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2126,8 +2556,11 @@ impl FaceInfo {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_FaceInfo_change_vertices_sc(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 }
@@ -2153,8 +2586,10 @@ impl IndexRange {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_IndexRange_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2163,8 +2598,10 @@ impl IndexRange {
     /// Sets the first index <theI1>  of the range
     pub fn set_first(&mut self, theI1: i32) {
         {
-            unsafe { crate::ffi::BOPDS_IndexRange_set_first(self as *mut Self, theI1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_IndexRange_set_first(self as *mut Self, theI1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2173,8 +2610,10 @@ impl IndexRange {
     /// Sets the second index <theI2>  of the range
     pub fn set_last(&mut self, theI2: i32) {
         {
-            unsafe { crate::ffi::BOPDS_IndexRange_set_last(self as *mut Self, theI2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_IndexRange_set_last(self as *mut Self, theI2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2184,8 +2623,11 @@ impl IndexRange {
     pub fn first(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BOPDS_IndexRange_first(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2195,8 +2637,11 @@ impl IndexRange {
     pub fn last(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BOPDS_IndexRange_last(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2206,8 +2651,12 @@ impl IndexRange {
     /// Sets the second index of the range <theI2>
     pub fn set_indices(&mut self, theI1: i32, theI2: i32) {
         {
-            unsafe { crate::ffi::BOPDS_IndexRange_set_indices(self as *mut Self, theI1, theI2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_IndexRange_set_indices(self as *mut Self, theI1, theI2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2217,8 +2666,11 @@ impl IndexRange {
     /// Returns the second index of the range <theI2>
     pub fn indices(&self, theI1: &mut i32, theI2: &mut i32) {
         {
-            unsafe { crate::ffi::BOPDS_IndexRange_indices(self as *const Self, theI1, theI2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_IndexRange_indices(self as *const Self, theI1, theI2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2229,16 +2681,21 @@ impl IndexRange {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_IndexRange_contains(self as *const Self, theIndex) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BOPDS_IndexRange.hxx`:64 - `BOPDS_IndexRange::Dump()`
     pub fn dump(&self) {
         {
-            unsafe { crate::ffi::BOPDS_IndexRange_dump(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_IndexRange_dump(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2265,10 +2722,12 @@ impl Interf {
     /// index of the second shape
     pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_Interf_set_indices(self as *mut Self, theIndex1, theIndex2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2281,8 +2740,12 @@ impl Interf {
     /// index of the second shape
     pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
         {
-            unsafe { crate::ffi::BOPDS_Interf_indices(self as *const Self, theIndex1, theIndex2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_Interf_indices(self as *const Self, theIndex1, theIndex2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2293,8 +2756,10 @@ impl Interf {
     /// index of the first shape
     pub fn set_index1(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_Interf_set_index1(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_Interf_set_index1(self as *mut Self, theIndex) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2305,8 +2770,10 @@ impl Interf {
     /// index of the second shape
     pub fn set_index2(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_Interf_set_index2(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_Interf_set_index2(self as *mut Self, theIndex) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2318,8 +2785,11 @@ impl Interf {
     pub fn index1(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BOPDS_Interf_index1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2331,8 +2801,11 @@ impl Interf {
     pub fn index2(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BOPDS_Interf_index2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2347,8 +2820,11 @@ impl Interf {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_Interf_opposite_index(self as *const Self, theI) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2363,8 +2839,11 @@ impl Interf {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_Interf_contains(self as *const Self, theIndex) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2375,8 +2854,11 @@ impl Interf {
     /// the index
     pub fn set_index_new(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_Interf_set_index_new(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_Interf_set_index_new(self as *mut Self, theIndex) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2388,8 +2870,11 @@ impl Interf {
     pub fn index_new(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BOPDS_Interf_index_new(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2406,8 +2891,11 @@ impl Interf {
             let __result = unsafe {
                 crate::ffi::BOPDS_Interf_has_index_new_int(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2419,8 +2907,11 @@ impl Interf {
     pub fn has_index_new(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BOPDS_Interf_has_index_new(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2444,8 +2935,10 @@ impl InterfVV {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_InterfVV_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2461,72 +2954,84 @@ impl InterfVV {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfVV_ctor_handlencollectionbaseallocator(theAllocator)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to BOPDS_Interf
     pub fn as_interf(&self) -> &Interf {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_InterfVV_as_BOPDS_Interf(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::BOPDS_InterfVV_as_BOPDS_Interf(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BOPDS_Interf (mutable)
     pub fn as_interf_mut(&mut self) -> &mut Interf {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_InterfVV_as_BOPDS_Interf_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::BOPDS_InterfVV_as_BOPDS_Interf_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
     pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfVV_inherited_SetIndices(
                     self as *mut Self,
                     theIndex1,
                     theIndex2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
     pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfVV_inherited_Indices(
                     self as *const Self,
                     theIndex1,
                     theIndex2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
     pub fn set_index1(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_InterfVV_inherited_SetIndex1(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_InterfVV_inherited_SetIndex1(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
     pub fn set_index2(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_InterfVV_inherited_SetIndex2(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_InterfVV_inherited_SetIndex2(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2535,8 +3040,11 @@ impl InterfVV {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfVV_inherited_Index1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2545,8 +3053,11 @@ impl InterfVV {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfVV_inherited_Index2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2556,8 +3067,11 @@ impl InterfVV {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfVV_inherited_OppositeIndex(self as *const Self, theI)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2567,18 +3081,23 @@ impl InterfVV {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfVV_inherited_Contains(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
     pub fn set_index_new(&mut self, theIndex: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfVV_inherited_SetIndexNew(self as *mut Self, theIndex)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2587,8 +3106,11 @@ impl InterfVV {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfVV_inherited_IndexNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2598,8 +3120,11 @@ impl InterfVV {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfVV_inherited_HasIndexNew(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2623,8 +3148,10 @@ impl InterfVE {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_InterfVE_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2640,8 +3167,10 @@ impl InterfVE {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfVE_ctor_handlencollectionbaseallocator(theAllocator)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2655,8 +3184,11 @@ impl InterfVE {
     /// value of parameter
     pub fn set_parameter(&mut self, theT: f64) {
         {
-            unsafe { crate::ffi::BOPDS_InterfVE_set_parameter(self as *mut Self, theT) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_InterfVE_set_parameter(self as *mut Self, theT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2671,72 +3203,85 @@ impl InterfVE {
     pub fn parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BOPDS_InterfVE_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to BOPDS_Interf
     pub fn as_interf(&self) -> &Interf {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_InterfVE_as_BOPDS_Interf(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::BOPDS_InterfVE_as_BOPDS_Interf(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BOPDS_Interf (mutable)
     pub fn as_interf_mut(&mut self) -> &mut Interf {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_InterfVE_as_BOPDS_Interf_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::BOPDS_InterfVE_as_BOPDS_Interf_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
     pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfVE_inherited_SetIndices(
                     self as *mut Self,
                     theIndex1,
                     theIndex2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
     pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfVE_inherited_Indices(
                     self as *const Self,
                     theIndex1,
                     theIndex2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
     pub fn set_index1(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_InterfVE_inherited_SetIndex1(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_InterfVE_inherited_SetIndex1(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
     pub fn set_index2(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_InterfVE_inherited_SetIndex2(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_InterfVE_inherited_SetIndex2(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2745,8 +3290,11 @@ impl InterfVE {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfVE_inherited_Index1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2755,8 +3303,11 @@ impl InterfVE {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfVE_inherited_Index2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2766,8 +3317,11 @@ impl InterfVE {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfVE_inherited_OppositeIndex(self as *const Self, theI)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2777,18 +3331,23 @@ impl InterfVE {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfVE_inherited_Contains(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
     pub fn set_index_new(&mut self, theIndex: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfVE_inherited_SetIndexNew(self as *mut Self, theIndex)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2797,8 +3356,11 @@ impl InterfVE {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfVE_inherited_IndexNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2808,8 +3370,11 @@ impl InterfVE {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfVE_inherited_HasIndexNew(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2833,8 +3398,10 @@ impl InterfVF {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_InterfVF_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2850,8 +3417,10 @@ impl InterfVF {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfVF_ctor_handlencollectionbaseallocator(theAllocator)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2867,8 +3436,10 @@ impl InterfVF {
     /// value of U parameter
     pub fn set_uv(&mut self, theU: f64, theV: f64) {
         {
-            unsafe { crate::ffi::BOPDS_InterfVF_set_uv(self as *mut Self, theU, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_InterfVF_set_uv(self as *mut Self, theU, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2884,72 +3455,84 @@ impl InterfVF {
     /// value of U parameter
     pub fn uv(&self, theU: &mut f64, theV: &mut f64) {
         {
-            unsafe { crate::ffi::BOPDS_InterfVF_uv(self as *const Self, theU, theV) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_InterfVF_uv(self as *const Self, theU, theV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to BOPDS_Interf
     pub fn as_interf(&self) -> &Interf {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_InterfVF_as_BOPDS_Interf(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::BOPDS_InterfVF_as_BOPDS_Interf(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BOPDS_Interf (mutable)
     pub fn as_interf_mut(&mut self) -> &mut Interf {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_InterfVF_as_BOPDS_Interf_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::BOPDS_InterfVF_as_BOPDS_Interf_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
     pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfVF_inherited_SetIndices(
                     self as *mut Self,
                     theIndex1,
                     theIndex2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
     pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfVF_inherited_Indices(
                     self as *const Self,
                     theIndex1,
                     theIndex2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
     pub fn set_index1(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_InterfVF_inherited_SetIndex1(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_InterfVF_inherited_SetIndex1(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
     pub fn set_index2(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_InterfVF_inherited_SetIndex2(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_InterfVF_inherited_SetIndex2(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2958,8 +3541,11 @@ impl InterfVF {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfVF_inherited_Index1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2968,8 +3554,11 @@ impl InterfVF {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfVF_inherited_Index2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2979,8 +3568,11 @@ impl InterfVF {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfVF_inherited_OppositeIndex(self as *const Self, theI)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2990,18 +3582,23 @@ impl InterfVF {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfVF_inherited_Contains(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
     pub fn set_index_new(&mut self, theIndex: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfVF_inherited_SetIndexNew(self as *mut Self, theIndex)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3010,8 +3607,11 @@ impl InterfVF {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfVF_inherited_IndexNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3021,8 +3621,11 @@ impl InterfVF {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfVF_inherited_HasIndexNew(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3046,8 +3649,10 @@ impl InterfEE {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_InterfEE_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3063,8 +3668,10 @@ impl InterfEE {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfEE_ctor_handlencollectionbaseallocator(theAllocator)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3076,8 +3683,11 @@ impl InterfEE {
     /// common part
     pub fn set_common_part(&mut self, theCP: &crate::int_tools::CommonPrt) {
         {
-            unsafe { crate::ffi::BOPDS_InterfEE_set_common_part(self as *mut Self, theCP) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_InterfEE_set_common_part(self as *mut Self, theCP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3090,72 +3700,85 @@ impl InterfEE {
     pub fn common_part(&self) -> &crate::int_tools::CommonPrt {
         {
             let __result = unsafe { crate::ffi::BOPDS_InterfEE_common_part(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to BOPDS_Interf
     pub fn as_interf(&self) -> &Interf {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_InterfEE_as_BOPDS_Interf(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::BOPDS_InterfEE_as_BOPDS_Interf(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BOPDS_Interf (mutable)
     pub fn as_interf_mut(&mut self) -> &mut Interf {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_InterfEE_as_BOPDS_Interf_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::BOPDS_InterfEE_as_BOPDS_Interf_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
     pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfEE_inherited_SetIndices(
                     self as *mut Self,
                     theIndex1,
                     theIndex2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
     pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfEE_inherited_Indices(
                     self as *const Self,
                     theIndex1,
                     theIndex2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
     pub fn set_index1(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_InterfEE_inherited_SetIndex1(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_InterfEE_inherited_SetIndex1(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
     pub fn set_index2(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_InterfEE_inherited_SetIndex2(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_InterfEE_inherited_SetIndex2(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3164,8 +3787,11 @@ impl InterfEE {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfEE_inherited_Index1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3174,8 +3800,11 @@ impl InterfEE {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfEE_inherited_Index2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3185,8 +3814,11 @@ impl InterfEE {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfEE_inherited_OppositeIndex(self as *const Self, theI)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3196,18 +3828,23 @@ impl InterfEE {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfEE_inherited_Contains(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
     pub fn set_index_new(&mut self, theIndex: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfEE_inherited_SetIndexNew(self as *mut Self, theIndex)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3216,8 +3853,11 @@ impl InterfEE {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfEE_inherited_IndexNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3227,8 +3867,11 @@ impl InterfEE {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfEE_inherited_HasIndexNew(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3252,8 +3895,10 @@ impl InterfEF {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_InterfEF_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3274,8 +3919,10 @@ impl InterfEF {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfEF_ctor_handlencollectionbaseallocator(theAllocator)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3287,8 +3934,11 @@ impl InterfEF {
     /// common part
     pub fn set_common_part(&mut self, theCP: &crate::int_tools::CommonPrt) {
         {
-            unsafe { crate::ffi::BOPDS_InterfEF_set_common_part(self as *mut Self, theCP) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_InterfEF_set_common_part(self as *mut Self, theCP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3301,72 +3951,85 @@ impl InterfEF {
     pub fn common_part(&self) -> &crate::int_tools::CommonPrt {
         {
             let __result = unsafe { crate::ffi::BOPDS_InterfEF_common_part(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to BOPDS_Interf
     pub fn as_interf(&self) -> &Interf {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_InterfEF_as_BOPDS_Interf(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::BOPDS_InterfEF_as_BOPDS_Interf(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BOPDS_Interf (mutable)
     pub fn as_interf_mut(&mut self) -> &mut Interf {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_InterfEF_as_BOPDS_Interf_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::BOPDS_InterfEF_as_BOPDS_Interf_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
     pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfEF_inherited_SetIndices(
                     self as *mut Self,
                     theIndex1,
                     theIndex2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
     pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfEF_inherited_Indices(
                     self as *const Self,
                     theIndex1,
                     theIndex2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
     pub fn set_index1(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_InterfEF_inherited_SetIndex1(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_InterfEF_inherited_SetIndex1(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
     pub fn set_index2(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_InterfEF_inherited_SetIndex2(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_InterfEF_inherited_SetIndex2(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3375,8 +4038,11 @@ impl InterfEF {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfEF_inherited_Index1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3385,8 +4051,11 @@ impl InterfEF {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfEF_inherited_Index2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3396,8 +4065,11 @@ impl InterfEF {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfEF_inherited_OppositeIndex(self as *const Self, theI)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3407,18 +4079,23 @@ impl InterfEF {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfEF_inherited_Contains(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
     pub fn set_index_new(&mut self, theIndex: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfEF_inherited_SetIndexNew(self as *mut Self, theIndex)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3427,8 +4104,11 @@ impl InterfEF {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfEF_inherited_IndexNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3438,8 +4118,11 @@ impl InterfEF {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfEF_inherited_HasIndexNew(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3460,8 +4143,10 @@ impl InterfFF {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_InterfFF_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3474,8 +4159,12 @@ impl InterfFF {
     /// number of intersection points
     pub fn init(&mut self, theNbCurves: i32, theNbPoints: i32) {
         {
-            unsafe { crate::ffi::BOPDS_InterfFF_init(self as *mut Self, theNbCurves, theNbPoints) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_InterfFF_init(self as *mut Self, theNbCurves, theNbPoints)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3487,8 +4176,11 @@ impl InterfFF {
     /// the flag
     pub fn set_tangent_faces(&mut self, theFlag: bool) {
         {
-            unsafe { crate::ffi::BOPDS_InterfFF_set_tangent_faces(self as *mut Self, theFlag) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_InterfFF_set_tangent_faces(self as *mut Self, theFlag) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3501,8 +4193,11 @@ impl InterfFF {
     pub fn tangent_faces(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BOPDS_InterfFF_tangent_faces(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3515,8 +4210,11 @@ impl InterfFF {
     pub fn curves(&self) -> &crate::ffi::BOPDS_VectorOfCurve {
         {
             let __result = unsafe { crate::ffi::BOPDS_InterfFF_curves(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3529,8 +4227,11 @@ impl InterfFF {
     pub fn change_curves(&mut self) -> &mut crate::ffi::BOPDS_VectorOfCurve {
         {
             let __result = unsafe { crate::ffi::BOPDS_InterfFF_change_curves(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3543,8 +4244,11 @@ impl InterfFF {
     pub fn points(&self) -> &crate::ffi::BOPDS_VectorOfPoint {
         {
             let __result = unsafe { crate::ffi::BOPDS_InterfFF_points(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3557,72 +4261,85 @@ impl InterfFF {
     pub fn change_points(&mut self) -> &mut crate::ffi::BOPDS_VectorOfPoint {
         {
             let __result = unsafe { crate::ffi::BOPDS_InterfFF_change_points(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// Upcast to BOPDS_Interf
     pub fn as_interf(&self) -> &Interf {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_InterfFF_as_BOPDS_Interf(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::BOPDS_InterfFF_as_BOPDS_Interf(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BOPDS_Interf (mutable)
     pub fn as_interf_mut(&mut self) -> &mut Interf {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_InterfFF_as_BOPDS_Interf_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::BOPDS_InterfFF_as_BOPDS_Interf_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
     pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfFF_inherited_SetIndices(
                     self as *mut Self,
                     theIndex1,
                     theIndex2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
     pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfFF_inherited_Indices(
                     self as *const Self,
                     theIndex1,
                     theIndex2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
     pub fn set_index1(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_InterfFF_inherited_SetIndex1(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_InterfFF_inherited_SetIndex1(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
     pub fn set_index2(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_InterfFF_inherited_SetIndex2(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_InterfFF_inherited_SetIndex2(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3631,8 +4348,11 @@ impl InterfFF {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfFF_inherited_Index1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3641,8 +4361,11 @@ impl InterfFF {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfFF_inherited_Index2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3652,8 +4375,11 @@ impl InterfFF {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfFF_inherited_OppositeIndex(self as *const Self, theI)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3663,18 +4389,23 @@ impl InterfFF {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfFF_inherited_Contains(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
     pub fn set_index_new(&mut self, theIndex: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfFF_inherited_SetIndexNew(self as *mut Self, theIndex)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3683,8 +4414,11 @@ impl InterfFF {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfFF_inherited_IndexNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3694,8 +4428,11 @@ impl InterfFF {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfFF_inherited_HasIndexNew(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3719,8 +4456,10 @@ impl InterfVZ {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_InterfVZ_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3736,72 +4475,84 @@ impl InterfVZ {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfVZ_ctor_handlencollectionbaseallocator(theAllocator)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to BOPDS_Interf
     pub fn as_interf(&self) -> &Interf {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_InterfVZ_as_BOPDS_Interf(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::BOPDS_InterfVZ_as_BOPDS_Interf(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BOPDS_Interf (mutable)
     pub fn as_interf_mut(&mut self) -> &mut Interf {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_InterfVZ_as_BOPDS_Interf_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::BOPDS_InterfVZ_as_BOPDS_Interf_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
     pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfVZ_inherited_SetIndices(
                     self as *mut Self,
                     theIndex1,
                     theIndex2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
     pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfVZ_inherited_Indices(
                     self as *const Self,
                     theIndex1,
                     theIndex2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
     pub fn set_index1(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_InterfVZ_inherited_SetIndex1(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_InterfVZ_inherited_SetIndex1(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
     pub fn set_index2(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_InterfVZ_inherited_SetIndex2(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_InterfVZ_inherited_SetIndex2(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3810,8 +4561,11 @@ impl InterfVZ {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfVZ_inherited_Index1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3820,8 +4574,11 @@ impl InterfVZ {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfVZ_inherited_Index2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3831,8 +4588,11 @@ impl InterfVZ {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfVZ_inherited_OppositeIndex(self as *const Self, theI)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3842,18 +4602,23 @@ impl InterfVZ {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfVZ_inherited_Contains(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
     pub fn set_index_new(&mut self, theIndex: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfVZ_inherited_SetIndexNew(self as *mut Self, theIndex)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3862,8 +4627,11 @@ impl InterfVZ {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfVZ_inherited_IndexNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3873,8 +4641,11 @@ impl InterfVZ {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfVZ_inherited_HasIndexNew(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3898,8 +4669,10 @@ impl InterfEZ {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_InterfEZ_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3915,72 +4688,84 @@ impl InterfEZ {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfEZ_ctor_handlencollectionbaseallocator(theAllocator)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to BOPDS_Interf
     pub fn as_interf(&self) -> &Interf {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_InterfEZ_as_BOPDS_Interf(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::BOPDS_InterfEZ_as_BOPDS_Interf(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BOPDS_Interf (mutable)
     pub fn as_interf_mut(&mut self) -> &mut Interf {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_InterfEZ_as_BOPDS_Interf_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::BOPDS_InterfEZ_as_BOPDS_Interf_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
     pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfEZ_inherited_SetIndices(
                     self as *mut Self,
                     theIndex1,
                     theIndex2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
     pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfEZ_inherited_Indices(
                     self as *const Self,
                     theIndex1,
                     theIndex2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
     pub fn set_index1(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_InterfEZ_inherited_SetIndex1(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_InterfEZ_inherited_SetIndex1(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
     pub fn set_index2(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_InterfEZ_inherited_SetIndex2(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_InterfEZ_inherited_SetIndex2(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3989,8 +4774,11 @@ impl InterfEZ {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfEZ_inherited_Index1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3999,8 +4787,11 @@ impl InterfEZ {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfEZ_inherited_Index2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4010,8 +4801,11 @@ impl InterfEZ {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfEZ_inherited_OppositeIndex(self as *const Self, theI)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4021,18 +4815,23 @@ impl InterfEZ {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfEZ_inherited_Contains(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
     pub fn set_index_new(&mut self, theIndex: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfEZ_inherited_SetIndexNew(self as *mut Self, theIndex)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4041,8 +4840,11 @@ impl InterfEZ {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfEZ_inherited_IndexNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4052,8 +4854,11 @@ impl InterfEZ {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfEZ_inherited_HasIndexNew(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -4077,8 +4882,10 @@ impl InterfFZ {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_InterfFZ_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4094,72 +4901,84 @@ impl InterfFZ {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfFZ_ctor_handlencollectionbaseallocator(theAllocator)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to BOPDS_Interf
     pub fn as_interf(&self) -> &Interf {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_InterfFZ_as_BOPDS_Interf(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::BOPDS_InterfFZ_as_BOPDS_Interf(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BOPDS_Interf (mutable)
     pub fn as_interf_mut(&mut self) -> &mut Interf {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_InterfFZ_as_BOPDS_Interf_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::BOPDS_InterfFZ_as_BOPDS_Interf_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
     pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfFZ_inherited_SetIndices(
                     self as *mut Self,
                     theIndex1,
                     theIndex2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
     pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfFZ_inherited_Indices(
                     self as *const Self,
                     theIndex1,
                     theIndex2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
     pub fn set_index1(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_InterfFZ_inherited_SetIndex1(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_InterfFZ_inherited_SetIndex1(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
     pub fn set_index2(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_InterfFZ_inherited_SetIndex2(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_InterfFZ_inherited_SetIndex2(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4168,8 +4987,11 @@ impl InterfFZ {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfFZ_inherited_Index1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4178,8 +5000,11 @@ impl InterfFZ {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfFZ_inherited_Index2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4189,8 +5014,11 @@ impl InterfFZ {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfFZ_inherited_OppositeIndex(self as *const Self, theI)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4200,18 +5028,23 @@ impl InterfFZ {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfFZ_inherited_Contains(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
     pub fn set_index_new(&mut self, theIndex: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfFZ_inherited_SetIndexNew(self as *mut Self, theIndex)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4220,8 +5053,11 @@ impl InterfFZ {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfFZ_inherited_IndexNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4231,8 +5067,11 @@ impl InterfFZ {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfFZ_inherited_HasIndexNew(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -4256,8 +5095,10 @@ impl InterfZZ {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_InterfZZ_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4273,72 +5114,84 @@ impl InterfZZ {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfZZ_ctor_handlencollectionbaseallocator(theAllocator)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to BOPDS_Interf
     pub fn as_interf(&self) -> &Interf {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_InterfZZ_as_BOPDS_Interf(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::BOPDS_InterfZZ_as_BOPDS_Interf(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BOPDS_Interf (mutable)
     pub fn as_interf_mut(&mut self) -> &mut Interf {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_InterfZZ_as_BOPDS_Interf_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::BOPDS_InterfZZ_as_BOPDS_Interf_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:44 - `BOPDS_Interf::SetIndices()`
     pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfZZ_inherited_SetIndices(
                     self as *mut Self,
                     theIndex1,
                     theIndex2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:58 - `BOPDS_Interf::Indices()`
     pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfZZ_inherited_Indices(
                     self as *const Self,
                     theIndex1,
                     theIndex2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:70 - `BOPDS_Interf::SetIndex1()`
     pub fn set_index1(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_InterfZZ_inherited_SetIndex1(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_InterfZZ_inherited_SetIndex1(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:78 - `BOPDS_Interf::SetIndex2()`
     pub fn set_index2(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_InterfZZ_inherited_SetIndex2(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_InterfZZ_inherited_SetIndex2(self as *mut Self, theIndex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4347,8 +5200,11 @@ impl InterfZZ {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfZZ_inherited_Index1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4357,8 +5213,11 @@ impl InterfZZ {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfZZ_inherited_Index2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4368,8 +5227,11 @@ impl InterfZZ {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfZZ_inherited_OppositeIndex(self as *const Self, theI)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4379,18 +5241,23 @@ impl InterfZZ {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfZZ_inherited_Contains(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Interf.hxx`:139 - `BOPDS_Interf::SetIndexNew()`
     pub fn set_index_new(&mut self, theIndex: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_InterfZZ_inherited_SetIndexNew(self as *mut Self, theIndex)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4399,8 +5266,11 @@ impl InterfZZ {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_InterfZZ_inherited_IndexNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4410,8 +5280,11 @@ impl InterfZZ {
             let __result = unsafe {
                 crate::ffi::BOPDS_InterfZZ_inherited_HasIndexNew(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -4441,8 +5314,10 @@ impl Iterator {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_Iterator_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4456,8 +5331,10 @@ impl Iterator {
             let __result = unsafe {
                 crate::ffi::BOPDS_Iterator_ctor_handlencollectionbaseallocator(theAllocator)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4466,8 +5343,10 @@ impl Iterator {
     /// Sets the data structure <pDS> to process
     pub unsafe fn set_ds(&mut self, pDS: &*mut DS) {
         {
-            unsafe { crate::ffi::BOPDS_Iterator_set_ds(self as *mut Self, pDS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_Iterator_set_ds(self as *mut Self, pDS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4477,8 +5356,11 @@ impl Iterator {
     pub fn ds(&self) -> &DS {
         {
             let __result = unsafe { crate::ffi::BOPDS_Iterator_ds(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4492,14 +5374,16 @@ impl Iterator {
         theType2: crate::top_abs::ShapeEnum,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_Iterator_initialize(
                     self as *mut Self,
                     theType1.into(),
                     theType2.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4509,8 +5393,11 @@ impl Iterator {
     pub fn more(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BOPDS_Iterator_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4518,8 +5405,10 @@ impl Iterator {
     /// Moves iterations ahead
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::BOPDS_Iterator_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_Iterator_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4529,8 +5418,12 @@ impl Iterator {
     /// theIndex2 - the index of the second shape
     pub fn value(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
         {
-            unsafe { crate::ffi::BOPDS_Iterator_value(self as *const Self, theIndex1, theIndex2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_Iterator_value(self as *const Self, theIndex1, theIndex2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4544,7 +5437,7 @@ impl Iterator {
         theFuzzyValue: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_Iterator_prepare(
                     self as *mut Self,
                     theCtx,
@@ -4552,7 +5445,9 @@ impl Iterator {
                     theFuzzyValue,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4561,8 +5456,11 @@ impl Iterator {
     /// intersects such elements with the tree.
     pub fn intersect_ext(&mut self, theIndicies: &crate::ffi::TColStd_MapOfInteger) {
         {
-            unsafe { crate::ffi::BOPDS_Iterator_intersect_ext(self as *mut Self, theIndicies) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_Iterator_intersect_ext(self as *mut Self, theIndicies) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4572,8 +5470,11 @@ impl Iterator {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_Iterator_expected_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4582,8 +5483,11 @@ impl Iterator {
     pub fn block_length(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BOPDS_Iterator_block_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4593,8 +5497,11 @@ impl Iterator {
     /// if <theFlag> is false the parallel processing is switched off
     pub fn set_run_parallel(&mut self, theFlag: bool) {
         {
-            unsafe { crate::ffi::BOPDS_Iterator_set_run_parallel(self as *mut Self, theFlag) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_Iterator_set_run_parallel(self as *mut Self, theFlag) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4603,8 +5510,11 @@ impl Iterator {
     pub fn run_parallel(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BOPDS_Iterator_run_parallel(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4613,8 +5523,11 @@ impl Iterator {
     pub fn nb_ext_interfs() -> i32 {
         {
             let __result = unsafe { crate::ffi::BOPDS_Iterator_nb_ext_interfs() };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -4644,8 +5557,10 @@ impl IteratorSI {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_IteratorSI_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4659,8 +5574,10 @@ impl IteratorSI {
             let __result = unsafe {
                 crate::ffi::BOPDS_IteratorSI_ctor_handlencollectionbaseallocator(theAllocator)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4676,31 +5593,33 @@ impl IteratorSI {
     /// other - all interferences.
     pub fn update_by_level_of_check(&mut self, theLevel: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_IteratorSI_update_by_level_of_check(self as *mut Self, theLevel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to BOPDS_Iterator
     pub fn as_iterator(&self) -> &Iterator {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_IteratorSI_as_BOPDS_Iterator(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BOPDS_IteratorSI_as_BOPDS_Iterator(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BOPDS_Iterator (mutable)
     pub fn as_iterator_mut(&mut self) -> &mut Iterator {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_IteratorSI_as_BOPDS_Iterator_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BOPDS_IteratorSI_as_BOPDS_Iterator_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BOPDS_Iterator.hxx`:59 - `BOPDS_Iterator::DS()`
@@ -4708,8 +5627,11 @@ impl IteratorSI {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_IteratorSI_inherited_DS(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4720,14 +5642,16 @@ impl IteratorSI {
         theType2: crate::top_abs::ShapeEnum,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_IteratorSI_inherited_Initialize(
                     self as *mut Self,
                     theType1.into(),
                     theType2.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4736,30 +5660,37 @@ impl IteratorSI {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_IteratorSI_inherited_More(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Iterator.hxx`:71 - `BOPDS_Iterator::Next()`
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::BOPDS_IteratorSI_inherited_Next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_IteratorSI_inherited_Next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Iterator.hxx`:76 - `BOPDS_Iterator::Value()`
     pub fn value(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_IteratorSI_inherited_Value(
                     self as *const Self,
                     theIndex1,
                     theIndex2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4771,7 +5702,7 @@ impl IteratorSI {
         theFuzzyValue: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_IteratorSI_inherited_Prepare(
                     self as *mut Self,
                     theCtx,
@@ -4779,17 +5710,21 @@ impl IteratorSI {
                     theFuzzyValue,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Iterator.hxx`:87 - `BOPDS_Iterator::IntersectExt()`
     pub fn intersect_ext(&mut self, theIndicies: &crate::ffi::TColStd_MapOfInteger) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_IteratorSI_inherited_IntersectExt(self as *mut Self, theIndicies)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4799,8 +5734,11 @@ impl IteratorSI {
             let __result = unsafe {
                 crate::ffi::BOPDS_IteratorSI_inherited_ExpectedLength(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4809,18 +5747,23 @@ impl IteratorSI {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_IteratorSI_inherited_BlockLength(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BOPDS_Iterator.hxx`:98 - `BOPDS_Iterator::SetRunParallel()`
     pub fn set_run_parallel(&mut self, theFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_IteratorSI_inherited_SetRunParallel(self as *mut Self, theFlag)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4829,8 +5772,11 @@ impl IteratorSI {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_IteratorSI_inherited_RunParallel(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -4854,8 +5800,10 @@ impl Pair {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_Pair_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4863,8 +5811,10 @@ impl Pair {
     pub fn new_int2(theIndex1: i32, theIndex2: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_Pair_ctor_int2(theIndex1, theIndex2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4872,8 +5822,12 @@ impl Pair {
     /// Sets the indices
     pub fn set_indices(&mut self, theIndex1: i32, theIndex2: i32) {
         {
-            unsafe { crate::ffi::BOPDS_Pair_set_indices(self as *mut Self, theIndex1, theIndex2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_Pair_set_indices(self as *mut Self, theIndex1, theIndex2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4881,8 +5835,12 @@ impl Pair {
     /// Gets the indices
     pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
         {
-            unsafe { crate::ffi::BOPDS_Pair_indices(self as *const Self, theIndex1, theIndex2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_Pair_indices(self as *const Self, theIndex1, theIndex2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4892,8 +5850,11 @@ impl Pair {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_Pair_is_equal(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -4919,8 +5880,10 @@ impl Pave {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_Pave_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4929,8 +5892,10 @@ impl Pave {
     /// Sets the index of vertex <theIndex>
     pub fn set_index(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_Pave_set_index(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_Pave_set_index(self as *mut Self, theIndex) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4940,8 +5905,11 @@ impl Pave {
     pub fn index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BOPDS_Pave_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4950,8 +5918,11 @@ impl Pave {
     /// Sets the parameter of vertex <theParameter>
     pub fn set_parameter(&mut self, theParameter: f64) {
         {
-            unsafe { crate::ffi::BOPDS_Pave_set_parameter(self as *mut Self, theParameter) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_Pave_set_parameter(self as *mut Self, theParameter) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4961,8 +5932,11 @@ impl Pave {
     pub fn parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BOPDS_Pave_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4972,8 +5946,12 @@ impl Pave {
     /// Returns the parameter of vertex <theParameter>
     pub fn contents(&self, theIndex: &mut i32, theParameter: &mut f64) {
         {
-            unsafe { crate::ffi::BOPDS_Pave_contents(self as *const Self, theIndex, theParameter) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_Pave_contents(self as *const Self, theIndex, theParameter)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4984,8 +5962,11 @@ impl Pave {
     pub fn is_less(&self, theOther: &Pave) -> bool {
         {
             let __result = unsafe { crate::ffi::BOPDS_Pave_is_less(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4997,16 +5978,21 @@ impl Pave {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_Pave_is_equal(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BOPDS_Pave.hxx`:70 - `BOPDS_Pave::Dump()`
     pub fn dump(&self) {
         {
-            unsafe { crate::ffi::BOPDS_Pave_dump(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_Pave_dump(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5033,8 +6019,10 @@ impl PaveBlock {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_PaveBlock_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5048,8 +6036,10 @@ impl PaveBlock {
             let __result = unsafe {
                 crate::ffi::BOPDS_PaveBlock_ctor_handlencollectionbaseallocator(theAllocator)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5058,8 +6048,11 @@ impl PaveBlock {
     /// Sets the first pave <thePave>
     pub fn set_pave1(&mut self, thePave: &Pave) {
         {
-            unsafe { crate::ffi::BOPDS_PaveBlock_set_pave1(self as *mut Self, thePave) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_PaveBlock_set_pave1(self as *mut Self, thePave) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5069,8 +6062,11 @@ impl PaveBlock {
     pub fn pave1(&self) -> &Pave {
         {
             let __result = unsafe { crate::ffi::BOPDS_PaveBlock_pave1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5079,8 +6075,11 @@ impl PaveBlock {
     /// Sets the second pave <thePave>
     pub fn set_pave2(&mut self, thePave: &Pave) {
         {
-            unsafe { crate::ffi::BOPDS_PaveBlock_set_pave2(self as *mut Self, thePave) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_PaveBlock_set_pave2(self as *mut Self, thePave) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5090,8 +6089,11 @@ impl PaveBlock {
     pub fn pave2(&self) -> &Pave {
         {
             let __result = unsafe { crate::ffi::BOPDS_PaveBlock_pave2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5100,8 +6102,10 @@ impl PaveBlock {
     /// Sets the index of edge of pave block <theEdge>
     pub fn set_edge(&mut self, theEdge: i32) {
         {
-            unsafe { crate::ffi::BOPDS_PaveBlock_set_edge(self as *mut Self, theEdge) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_PaveBlock_set_edge(self as *mut Self, theEdge) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5111,8 +6115,11 @@ impl PaveBlock {
     pub fn edge(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BOPDS_PaveBlock_edge(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5122,8 +6129,11 @@ impl PaveBlock {
     pub fn has_edge(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BOPDS_PaveBlock_has_edge(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5135,8 +6145,11 @@ impl PaveBlock {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_PaveBlock_has_edge_int(self as *const Self, theEdge) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5146,8 +6159,12 @@ impl PaveBlock {
     /// of the pave block <theEdge>
     pub fn set_original_edge(&mut self, theEdge: i32) {
         {
-            unsafe { crate::ffi::BOPDS_PaveBlock_set_original_edge(self as *mut Self, theEdge) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_PaveBlock_set_original_edge(self as *mut Self, theEdge)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5158,8 +6175,11 @@ impl PaveBlock {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_PaveBlock_original_edge(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5171,8 +6191,11 @@ impl PaveBlock {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_PaveBlock_is_split_edge(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5182,8 +6205,11 @@ impl PaveBlock {
     /// of the pave block
     pub fn range(&self, theT1: &mut f64, theT2: &mut f64) {
         {
-            unsafe { crate::ffi::BOPDS_PaveBlock_range(self as *const Self, theT1, theT2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_PaveBlock_range(self as *const Self, theT1, theT2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5197,8 +6223,11 @@ impl PaveBlock {
             let __result = unsafe {
                 crate::ffi::BOPDS_PaveBlock_has_same_bounds(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5208,10 +6237,12 @@ impl PaveBlock {
     /// of the pave block
     pub fn indices(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_PaveBlock_indices(self as *const Self, theIndex1, theIndex2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5221,8 +6252,11 @@ impl PaveBlock {
     pub fn is_to_update(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BOPDS_PaveBlock_is_to_update(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5231,8 +6265,11 @@ impl PaveBlock {
     /// Appends extra paves <thePave>
     pub fn append_ext_pave(&mut self, thePave: &Pave) {
         {
-            unsafe { crate::ffi::BOPDS_PaveBlock_append_ext_pave(self as *mut Self, thePave) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_PaveBlock_append_ext_pave(self as *mut Self, thePave) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5241,8 +6278,11 @@ impl PaveBlock {
     /// Appends extra pave <thePave>
     pub fn append_ext_pave1(&mut self, thePave: &Pave) {
         {
-            unsafe { crate::ffi::BOPDS_PaveBlock_append_ext_pave1(self as *mut Self, thePave) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_PaveBlock_append_ext_pave1(self as *mut Self, thePave) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5251,8 +6291,12 @@ impl PaveBlock {
     /// Removes a pave with the given vertex number from extra paves
     pub fn remove_ext_pave(&mut self, theVertNum: i32) {
         {
-            unsafe { crate::ffi::BOPDS_PaveBlock_remove_ext_pave(self as *mut Self, theVertNum) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_PaveBlock_remove_ext_pave(self as *mut Self, theVertNum)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5262,8 +6306,11 @@ impl PaveBlock {
     pub fn ext_paves(&self) -> &crate::ffi::BOPDS_ListOfPave {
         {
             let __result = unsafe { crate::ffi::BOPDS_PaveBlock_ext_paves(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5274,8 +6321,11 @@ impl PaveBlock {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_PaveBlock_change_ext_paves(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5287,8 +6337,11 @@ impl PaveBlock {
     /// pave are used to produce new pave blocks.
     pub fn update(&mut self, theLPB: &mut crate::ffi::BOPDS_ListOfPaveBlock, theFlag: bool) {
         {
-            unsafe { crate::ffi::BOPDS_PaveBlock_update(self as *mut Self, theLPB, theFlag) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_PaveBlock_update(self as *mut Self, theLPB, theFlag) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5308,8 +6361,11 @@ impl PaveBlock {
                     theInd,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5327,7 +6383,7 @@ impl PaveBlock {
         theIsSplittable: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_PaveBlock_set_shrunk_data(
                     self as *mut Self,
                     theTS1,
@@ -5336,7 +6392,9 @@ impl PaveBlock {
                     theIsSplittable,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5354,7 +6412,7 @@ impl PaveBlock {
         theIsSplittable: &mut bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_PaveBlock_shrunk_data(
                     self as *const Self,
                     theTS1,
@@ -5363,7 +6421,9 @@ impl PaveBlock {
                     theIsSplittable,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5375,16 +6435,21 @@ impl PaveBlock {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_PaveBlock_has_shrunk_data(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BOPDS_PaveBlock.hxx`:175 - `BOPDS_PaveBlock::Dump()`
     pub fn dump(&self) {
         {
-            unsafe { crate::ffi::BOPDS_PaveBlock_dump(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_PaveBlock_dump(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5396,8 +6461,11 @@ impl PaveBlock {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_PaveBlock_is_splittable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5405,8 +6473,11 @@ impl PaveBlock {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BOPDS_PaveBlock_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5414,8 +6485,11 @@ impl PaveBlock {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::BOPDS_PaveBlock_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5423,40 +6497,43 @@ impl PaveBlock {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BOPDS_PaveBlock_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_PaveBlock_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BOPDS_PaveBlock_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::BOPDS_PaveBlock_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BOPDS_PaveBlock_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBOPDSPaveBlock> {
-        {
-            let __result = unsafe { crate::ffi::BOPDS_PaveBlock_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::BOPDS_PaveBlock_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -5465,8 +6542,11 @@ impl PaveBlock {
             let __result = unsafe {
                 crate::ffi::BOPDS_PaveBlock_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5476,8 +6556,11 @@ impl PaveBlock {
             let __result = unsafe {
                 crate::ffi::BOPDS_PaveBlock_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5486,11 +6569,14 @@ impl PaveBlock {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_PaveBlock_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5500,16 +6586,23 @@ impl PaveBlock {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_PaveBlock_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::BOPDS_PaveBlock_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BOPDS_PaveBlock_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5519,16 +6612,22 @@ impl PaveBlock {
             let __result = unsafe {
                 crate::ffi::BOPDS_PaveBlock_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::BOPDS_PaveBlock_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_PaveBlock_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5544,31 +6643,31 @@ unsafe impl crate::CppDeletable for HandleBOPDSPaveBlock {
 impl HandleBOPDSPaveBlock {
     /// Dereference this Handle to access the underlying BOPDS_PaveBlock
     pub fn get(&self) -> &crate::ffi::BOPDS_PaveBlock {
-        {
-            let __result = unsafe { crate::ffi::HandleBOPDSPaveBlock_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBOPDSPaveBlock_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BOPDS_PaveBlock
     pub fn get_mut(&mut self) -> &mut crate::ffi::BOPDS_PaveBlock {
-        {
-            let __result = unsafe { crate::ffi::HandleBOPDSPaveBlock_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleBOPDSPaveBlock_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BOPDS_PaveBlock> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBOPDSPaveBlock_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBOPDSPaveBlock_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5593,8 +6692,10 @@ impl Point {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_Point_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5603,8 +6704,10 @@ impl Point {
     /// Sets 3D point <thePnt>
     pub fn set_pnt(&mut self, thePnt: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::BOPDS_Point_set_pnt(self as *mut Self, thePnt) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_Point_set_pnt(self as *mut Self, thePnt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5614,8 +6717,11 @@ impl Point {
     pub fn pnt(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::BOPDS_Point_pnt(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5624,8 +6730,10 @@ impl Point {
     /// Sets 2D point on the first face <thePnt>
     pub fn set_pnt2_d1(&mut self, thePnt: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::BOPDS_Point_set_pnt2_d1(self as *mut Self, thePnt) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_Point_set_pnt2_d1(self as *mut Self, thePnt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5635,8 +6743,11 @@ impl Point {
     pub fn pnt2_d1(&self) -> &crate::gp::Pnt2d {
         {
             let __result = unsafe { crate::ffi::BOPDS_Point_pnt2_d1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5645,8 +6756,10 @@ impl Point {
     /// Sets 2D point on the second face <thePnt>
     pub fn set_pnt2_d2(&mut self, thePnt: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::BOPDS_Point_set_pnt2_d2(self as *mut Self, thePnt) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_Point_set_pnt2_d2(self as *mut Self, thePnt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5656,8 +6769,11 @@ impl Point {
     pub fn pnt2_d2(&self) -> &crate::gp::Pnt2d {
         {
             let __result = unsafe { crate::ffi::BOPDS_Point_pnt2_d2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5666,8 +6782,10 @@ impl Point {
     /// Sets the index of the vertex <theIndex>
     pub fn set_index(&mut self, theIndex: i32) {
         {
-            unsafe { crate::ffi::BOPDS_Point_set_index(self as *mut Self, theIndex) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_Point_set_index(self as *mut Self, theIndex) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5677,8 +6795,11 @@ impl Point {
     pub fn index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BOPDS_Point_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -5704,8 +6825,10 @@ impl ShapeInfo {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_ShapeInfo_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5719,8 +6842,10 @@ impl ShapeInfo {
             let __result = unsafe {
                 crate::ffi::BOPDS_ShapeInfo_ctor_handlencollectionbaseallocator(theAllocator)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5729,8 +6854,10 @@ impl ShapeInfo {
     /// Sets the shape <theS>
     pub fn set_shape(&mut self, theS: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BOPDS_ShapeInfo_set_shape(self as *mut Self, theS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_ShapeInfo_set_shape(self as *mut Self, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5740,8 +6867,11 @@ impl ShapeInfo {
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::BOPDS_ShapeInfo_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5750,10 +6880,12 @@ impl ShapeInfo {
     /// Sets the type of shape theType
     pub fn set_shape_type(&mut self, theType: crate::top_abs::ShapeEnum) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_ShapeInfo_set_shape_type(self as *mut Self, theType.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5763,8 +6895,11 @@ impl ShapeInfo {
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         {
             let __result = unsafe { crate::ffi::BOPDS_ShapeInfo_shape_type(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -5773,8 +6908,10 @@ impl ShapeInfo {
     /// Sets the boundung box of the shape theBox
     pub fn set_box(&mut self, theBox: &crate::bnd::Box) {
         {
-            unsafe { crate::ffi::BOPDS_ShapeInfo_set_box(self as *mut Self, theBox) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_ShapeInfo_set_box(self as *mut Self, theBox) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5784,8 +6921,11 @@ impl ShapeInfo {
     pub fn box_(&self) -> &crate::bnd::Box {
         {
             let __result = unsafe { crate::ffi::BOPDS_ShapeInfo_box_(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5795,8 +6935,11 @@ impl ShapeInfo {
     pub fn change_box(&mut self) -> &mut crate::bnd::Box {
         {
             let __result = unsafe { crate::ffi::BOPDS_ShapeInfo_change_box(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5806,8 +6949,11 @@ impl ShapeInfo {
     pub fn sub_shapes(&self) -> &crate::ffi::TColStd_ListOfInteger {
         {
             let __result = unsafe { crate::ffi::BOPDS_ShapeInfo_sub_shapes(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5818,8 +6964,11 @@ impl ShapeInfo {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_ShapeInfo_change_sub_shapes(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5831,8 +6980,11 @@ impl ShapeInfo {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_ShapeInfo_has_sub_shape(self as *const Self, theI) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5841,8 +6993,11 @@ impl ShapeInfo {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_ShapeInfo_has_reference(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5851,8 +7006,11 @@ impl ShapeInfo {
     /// Sets the index of a reference information
     pub fn set_reference(&mut self, theI: i32) {
         {
-            unsafe { crate::ffi::BOPDS_ShapeInfo_set_reference(self as *mut Self, theI) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_ShapeInfo_set_reference(self as *mut Self, theI) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5862,8 +7020,11 @@ impl ShapeInfo {
     pub fn reference(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BOPDS_ShapeInfo_reference(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5873,8 +7034,11 @@ impl ShapeInfo {
     pub fn has_b_rep(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BOPDS_ShapeInfo_has_b_rep(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5887,8 +7051,11 @@ impl ShapeInfo {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_ShapeInfo_is_interfering(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5898,8 +7065,11 @@ impl ShapeInfo {
     pub fn has_flag(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BOPDS_ShapeInfo_has_flag(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5911,8 +7081,11 @@ impl ShapeInfo {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_ShapeInfo_has_flag_int(self as *const Self, theFlag) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5921,8 +7094,10 @@ impl ShapeInfo {
     /// Sets the flag
     pub fn set_flag(&mut self, theI: i32) {
         {
-            unsafe { crate::ffi::BOPDS_ShapeInfo_set_flag(self as *mut Self, theI) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_ShapeInfo_set_flag(self as *mut Self, theI) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5931,16 +7106,21 @@ impl ShapeInfo {
     pub fn flag(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BOPDS_ShapeInfo_flag(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BOPDS_ShapeInfo.hxx`:122 - `BOPDS_ShapeInfo::Dump()`
     pub fn dump(&self) {
         {
-            unsafe { crate::ffi::BOPDS_ShapeInfo_dump(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_ShapeInfo_dump(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5968,8 +7148,10 @@ impl SubIterator {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_SubIterator_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5983,8 +7165,10 @@ impl SubIterator {
             let __result = unsafe {
                 crate::ffi::BOPDS_SubIterator_ctor_handlencollectionbaseallocator(theAllocator)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5993,8 +7177,10 @@ impl SubIterator {
     /// It is used to access the shapes and their bounding boxes.
     pub unsafe fn set_ds(&mut self, pDS: &*mut DS) {
         {
-            unsafe { crate::ffi::BOPDS_SubIterator_set_ds(self as *mut Self, pDS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_SubIterator_set_ds(self as *mut Self, pDS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6003,8 +7189,11 @@ impl SubIterator {
     pub fn ds(&self) -> &DS {
         {
             let __result = unsafe { crate::ffi::BOPDS_SubIterator_ds(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6012,8 +7201,11 @@ impl SubIterator {
     /// Sets the first set of indices <theLI> to process
     pub fn set_sub_set1(&mut self, theLI: &crate::ffi::TColStd_ListOfInteger) {
         {
-            unsafe { crate::ffi::BOPDS_SubIterator_set_sub_set1(self as *mut Self, theLI) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_SubIterator_set_sub_set1(self as *mut Self, theLI) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6022,8 +7214,11 @@ impl SubIterator {
     pub fn sub_set1(&self) -> &crate::ffi::TColStd_ListOfInteger {
         {
             let __result = unsafe { crate::ffi::BOPDS_SubIterator_sub_set1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6031,8 +7226,11 @@ impl SubIterator {
     /// Sets the second set of indices <theLI> to process
     pub fn set_sub_set2(&mut self, theLI: &crate::ffi::TColStd_ListOfInteger) {
         {
-            unsafe { crate::ffi::BOPDS_SubIterator_set_sub_set2(self as *mut Self, theLI) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BOPDS_SubIterator_set_sub_set2(self as *mut Self, theLI) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6041,8 +7239,11 @@ impl SubIterator {
     pub fn sub_set2(&self) -> &crate::ffi::TColStd_ListOfInteger {
         {
             let __result = unsafe { crate::ffi::BOPDS_SubIterator_sub_set2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6050,8 +7251,10 @@ impl SubIterator {
     /// Initializes the iterator
     pub fn initialize(&mut self) {
         {
-            unsafe { crate::ffi::BOPDS_SubIterator_initialize(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_SubIterator_initialize(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6060,8 +7263,11 @@ impl SubIterator {
     pub fn more(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BOPDS_SubIterator_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6069,8 +7275,10 @@ impl SubIterator {
     /// Moves iterations ahead
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::BOPDS_SubIterator_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_SubIterator_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6080,10 +7288,12 @@ impl SubIterator {
     /// theIndex2 - the index of the second shape
     pub fn value(&self, theIndex1: &mut i32, theIndex2: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BOPDS_SubIterator_value(self as *const Self, theIndex1, theIndex2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6092,8 +7302,10 @@ impl SubIterator {
     /// the results to be used
     pub fn prepare(&mut self) {
         {
-            unsafe { crate::ffi::BOPDS_SubIterator_prepare(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BOPDS_SubIterator_prepare(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6103,8 +7315,11 @@ impl SubIterator {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_SubIterator_expected_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -6131,8 +7346,10 @@ impl Tools {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BOPDS_Tools_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6148,8 +7365,11 @@ impl Tools {
             let __result = unsafe {
                 crate::ffi::BOPDS_Tools_type_to_integer_shapeenum2(theT1.into(), theT2.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6160,8 +7380,11 @@ impl Tools {
         {
             let __result =
                 unsafe { crate::ffi::BOPDS_Tools_type_to_integer_shapeenum(theT.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6171,8 +7394,11 @@ impl Tools {
     pub fn has_b_rep(theT: crate::top_abs::ShapeEnum) -> bool {
         {
             let __result = unsafe { crate::ffi::BOPDS_Tools_has_b_rep(theT.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6182,8 +7408,11 @@ impl Tools {
     pub fn is_interfering(theT: crate::top_abs::ShapeEnum) -> bool {
         {
             let __result = unsafe { crate::ffi::BOPDS_Tools_is_interfering(theT.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

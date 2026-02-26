@@ -28,8 +28,10 @@ impl B2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_B2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -38,8 +40,10 @@ impl B2d {
     pub fn new_xy2(theCenter: &crate::gp::XY, theHSize: &crate::gp::XY) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_B2d_ctor_xy2(theCenter, theHSize) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -48,8 +52,11 @@ impl B2d {
     pub fn is_void(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_B2d_is_void(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -57,8 +64,10 @@ impl B2d {
     /// Reset the box data.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::Bnd_B2d_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B2d_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -66,8 +75,10 @@ impl B2d {
     /// Update the box by a point.
     pub fn add_xy(&mut self, thePnt: &crate::gp::XY) {
         {
-            unsafe { crate::ffi::Bnd_B2d_add_xy(self as *mut Self, thePnt) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B2d_add_xy(self as *mut Self, thePnt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -75,8 +86,10 @@ impl B2d {
     /// Update the box by a point.
     pub fn add_pnt2d(&mut self, thePnt: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Bnd_B2d_add_pnt2d(self as *mut Self, thePnt) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B2d_add_pnt2d(self as *mut Self, thePnt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -84,8 +97,10 @@ impl B2d {
     /// Update the box by another box.
     pub fn add_b2d(&mut self, theBox: &B2d) {
         {
-            unsafe { crate::ffi::Bnd_B2d_add_b2d(self as *mut Self, theBox) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B2d_add_b2d(self as *mut Self, theBox) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -96,8 +111,11 @@ impl B2d {
     pub fn corner_min(&self) -> crate::OwnedPtr<crate::gp::XY> {
         {
             let __result = unsafe { crate::ffi::Bnd_B2d_corner_min(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -108,8 +126,11 @@ impl B2d {
     pub fn corner_max(&self) -> crate::OwnedPtr<crate::gp::XY> {
         {
             let __result = unsafe { crate::ffi::Bnd_B2d_corner_max(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -119,8 +140,11 @@ impl B2d {
     pub fn square_extent(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Bnd_B2d_square_extent(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -128,8 +152,10 @@ impl B2d {
     /// Extend the Box by the absolute value of theDiff.
     pub fn enlarge(&mut self, theDiff: f64) {
         {
-            unsafe { crate::ffi::Bnd_B2d_enlarge(self as *mut Self, theDiff) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B2d_enlarge(self as *mut Self, theDiff) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -140,8 +166,11 @@ impl B2d {
     pub fn limit(&mut self, theOtherBox: &B2d) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_B2d_limit(self as *mut Self, theOtherBox) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -151,8 +180,11 @@ impl B2d {
     pub fn transformed(&self, theTrsf: &crate::gp::Trsf2d) -> crate::OwnedPtr<B2d> {
         {
             let __result = unsafe { crate::ffi::Bnd_B2d_transformed(self as *const Self, theTrsf) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -162,8 +194,11 @@ impl B2d {
     pub fn is_out_xy(&self, thePnt: &crate::gp::XY) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_B2d_is_out_xy(self as *const Self, thePnt) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -185,8 +220,11 @@ impl B2d {
                     isCircleHollow,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -197,8 +235,11 @@ impl B2d {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_B2d_is_out_b2d(self as *const Self, theOtherBox) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -211,8 +252,11 @@ impl B2d {
             let __result = unsafe {
                 crate::ffi::Bnd_B2d_is_out_b2d_trsf2d(self as *const Self, theOtherBox, theTrsf)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -222,8 +266,11 @@ impl B2d {
     pub fn is_out_ax2d(&self, theLine: &crate::gp::Ax2d) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_B2d_is_out_ax2d(self as *const Self, theLine) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -235,8 +282,11 @@ impl B2d {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_B2d_is_out_xy2(self as *const Self, theP0, theP1) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -246,8 +296,11 @@ impl B2d {
     pub fn is_in_b2d(&self, theBox: &B2d) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_B2d_is_in_b2d(self as *const Self, theBox) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -260,8 +313,11 @@ impl B2d {
             let __result = unsafe {
                 crate::ffi::Bnd_B2d_is_in_b2d_trsf2d(self as *const Self, theBox, theTrsf)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -269,8 +325,10 @@ impl B2d {
     /// Set the Center coordinates
     pub fn set_center(&mut self, theCenter: &crate::gp::XY) {
         {
-            unsafe { crate::ffi::Bnd_B2d_set_center(self as *mut Self, theCenter) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B2d_set_center(self as *mut Self, theCenter) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -279,18 +337,20 @@ impl B2d {
     /// All components of theHSize must be non-negative.
     pub fn set_h_size(&mut self, theHSize: &crate::gp::XY) {
         {
-            unsafe { crate::ffi::Bnd_B2d_set_h_size(self as *mut Self, theHSize) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B2d_set_h_size(self as *mut Self, theHSize) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Bnd_B2d_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Bnd_B2d_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -313,8 +373,10 @@ impl B2f {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_B2f_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -323,8 +385,10 @@ impl B2f {
     pub fn new_xy2(theCenter: &crate::gp::XY, theHSize: &crate::gp::XY) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_B2f_ctor_xy2(theCenter, theHSize) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -333,8 +397,11 @@ impl B2f {
     pub fn is_void(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_B2f_is_void(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -342,8 +409,10 @@ impl B2f {
     /// Reset the box data.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::Bnd_B2f_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B2f_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -351,8 +420,10 @@ impl B2f {
     /// Update the box by a point.
     pub fn add_xy(&mut self, thePnt: &crate::gp::XY) {
         {
-            unsafe { crate::ffi::Bnd_B2f_add_xy(self as *mut Self, thePnt) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B2f_add_xy(self as *mut Self, thePnt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -360,8 +431,10 @@ impl B2f {
     /// Update the box by a point.
     pub fn add_pnt2d(&mut self, thePnt: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Bnd_B2f_add_pnt2d(self as *mut Self, thePnt) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B2f_add_pnt2d(self as *mut Self, thePnt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -369,8 +442,10 @@ impl B2f {
     /// Update the box by another box.
     pub fn add_b2f(&mut self, theBox: &B2f) {
         {
-            unsafe { crate::ffi::Bnd_B2f_add_b2f(self as *mut Self, theBox) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B2f_add_b2f(self as *mut Self, theBox) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -381,8 +456,11 @@ impl B2f {
     pub fn corner_min(&self) -> crate::OwnedPtr<crate::gp::XY> {
         {
             let __result = unsafe { crate::ffi::Bnd_B2f_corner_min(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -393,8 +471,11 @@ impl B2f {
     pub fn corner_max(&self) -> crate::OwnedPtr<crate::gp::XY> {
         {
             let __result = unsafe { crate::ffi::Bnd_B2f_corner_max(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -404,8 +485,11 @@ impl B2f {
     pub fn square_extent(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Bnd_B2f_square_extent(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -413,8 +497,10 @@ impl B2f {
     /// Extend the Box by the absolute value of theDiff.
     pub fn enlarge(&mut self, theDiff: f64) {
         {
-            unsafe { crate::ffi::Bnd_B2f_enlarge(self as *mut Self, theDiff) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B2f_enlarge(self as *mut Self, theDiff) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -425,8 +511,11 @@ impl B2f {
     pub fn limit(&mut self, theOtherBox: &B2f) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_B2f_limit(self as *mut Self, theOtherBox) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -436,8 +525,11 @@ impl B2f {
     pub fn transformed(&self, theTrsf: &crate::gp::Trsf2d) -> crate::OwnedPtr<B2f> {
         {
             let __result = unsafe { crate::ffi::Bnd_B2f_transformed(self as *const Self, theTrsf) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -447,8 +539,11 @@ impl B2f {
     pub fn is_out_xy(&self, thePnt: &crate::gp::XY) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_B2f_is_out_xy(self as *const Self, thePnt) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -470,8 +565,11 @@ impl B2f {
                     isCircleHollow,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -482,8 +580,11 @@ impl B2f {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_B2f_is_out_b2f(self as *const Self, theOtherBox) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -496,8 +597,11 @@ impl B2f {
             let __result = unsafe {
                 crate::ffi::Bnd_B2f_is_out_b2f_trsf2d(self as *const Self, theOtherBox, theTrsf)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -507,8 +611,11 @@ impl B2f {
     pub fn is_out_ax2d(&self, theLine: &crate::gp::Ax2d) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_B2f_is_out_ax2d(self as *const Self, theLine) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -520,8 +627,11 @@ impl B2f {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_B2f_is_out_xy2(self as *const Self, theP0, theP1) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -531,8 +641,11 @@ impl B2f {
     pub fn is_in_b2f(&self, theBox: &B2f) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_B2f_is_in_b2f(self as *const Self, theBox) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -545,8 +658,11 @@ impl B2f {
             let __result = unsafe {
                 crate::ffi::Bnd_B2f_is_in_b2f_trsf2d(self as *const Self, theBox, theTrsf)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -554,8 +670,10 @@ impl B2f {
     /// Set the Center coordinates
     pub fn set_center(&mut self, theCenter: &crate::gp::XY) {
         {
-            unsafe { crate::ffi::Bnd_B2f_set_center(self as *mut Self, theCenter) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B2f_set_center(self as *mut Self, theCenter) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -564,18 +682,20 @@ impl B2f {
     /// All components of theHSize must be non-negative.
     pub fn set_h_size(&mut self, theHSize: &crate::gp::XY) {
         {
-            unsafe { crate::ffi::Bnd_B2f_set_h_size(self as *mut Self, theHSize) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B2f_set_h_size(self as *mut Self, theHSize) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Bnd_B2f_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Bnd_B2f_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -598,8 +718,10 @@ impl B3d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_B3d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -611,8 +733,10 @@ impl B3d {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_B3d_ctor_xyz2(theCenter, theHSize) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -621,8 +745,11 @@ impl B3d {
     pub fn is_void(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_B3d_is_void(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -630,8 +757,10 @@ impl B3d {
     /// Reset the box data.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::Bnd_B3d_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B3d_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -639,8 +768,10 @@ impl B3d {
     /// Update the box by a point.
     pub fn add_xyz(&mut self, thePnt: &crate::gp::XYZ) {
         {
-            unsafe { crate::ffi::Bnd_B3d_add_xyz(self as *mut Self, thePnt) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B3d_add_xyz(self as *mut Self, thePnt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -648,8 +779,10 @@ impl B3d {
     /// Update the box by a point.
     pub fn add_pnt(&mut self, thePnt: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Bnd_B3d_add_pnt(self as *mut Self, thePnt) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B3d_add_pnt(self as *mut Self, thePnt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -657,8 +790,10 @@ impl B3d {
     /// Update the box by another box.
     pub fn add_b3d(&mut self, theBox: &B3d) {
         {
-            unsafe { crate::ffi::Bnd_B3d_add_b3d(self as *mut Self, theBox) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B3d_add_b3d(self as *mut Self, theBox) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -669,8 +804,11 @@ impl B3d {
     pub fn corner_min(&self) -> crate::OwnedPtr<crate::gp::XYZ> {
         {
             let __result = unsafe { crate::ffi::Bnd_B3d_corner_min(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -681,8 +819,11 @@ impl B3d {
     pub fn corner_max(&self) -> crate::OwnedPtr<crate::gp::XYZ> {
         {
             let __result = unsafe { crate::ffi::Bnd_B3d_corner_max(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -692,8 +833,11 @@ impl B3d {
     pub fn square_extent(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Bnd_B3d_square_extent(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -701,8 +845,10 @@ impl B3d {
     /// Extend the Box by the absolute value of theDiff.
     pub fn enlarge(&mut self, theDiff: f64) {
         {
-            unsafe { crate::ffi::Bnd_B3d_enlarge(self as *mut Self, theDiff) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B3d_enlarge(self as *mut Self, theDiff) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -713,8 +859,11 @@ impl B3d {
     pub fn limit(&mut self, theOtherBox: &B3d) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_B3d_limit(self as *mut Self, theOtherBox) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -724,8 +873,11 @@ impl B3d {
     pub fn transformed(&self, theTrsf: &crate::gp::Trsf) -> crate::OwnedPtr<B3d> {
         {
             let __result = unsafe { crate::ffi::Bnd_B3d_transformed(self as *const Self, theTrsf) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -735,8 +887,11 @@ impl B3d {
     pub fn is_out_xyz(&self, thePnt: &crate::gp::XYZ) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_B3d_is_out_xyz(self as *const Self, thePnt) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -761,8 +916,11 @@ impl B3d {
                     isSphereHollow,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -773,8 +931,11 @@ impl B3d {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_B3d_is_out_b3d(self as *const Self, theOtherBox) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -787,8 +948,11 @@ impl B3d {
             let __result = unsafe {
                 crate::ffi::Bnd_B3d_is_out_b3d_trsf(self as *const Self, theOtherBox, theTrsf)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -814,8 +978,11 @@ impl B3d {
                     theOverthickness,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -825,8 +992,11 @@ impl B3d {
     pub fn is_out_ax3(&self, thePlane: &crate::gp::Ax3) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_B3d_is_out_ax3(self as *const Self, thePlane) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -836,8 +1006,11 @@ impl B3d {
     pub fn is_in_b3d(&self, theBox: &B3d) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_B3d_is_in_b3d(self as *const Self, theBox) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -849,8 +1022,11 @@ impl B3d {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_B3d_is_in_b3d_trsf(self as *const Self, theBox, theTrsf) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -858,8 +1034,10 @@ impl B3d {
     /// Set the Center coordinates
     pub fn set_center(&mut self, theCenter: &crate::gp::XYZ) {
         {
-            unsafe { crate::ffi::Bnd_B3d_set_center(self as *mut Self, theCenter) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B3d_set_center(self as *mut Self, theCenter) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -868,18 +1046,20 @@ impl B3d {
     /// All components of theHSize must be non-negative.
     pub fn set_h_size(&mut self, theHSize: &crate::gp::XYZ) {
         {
-            unsafe { crate::ffi::Bnd_B3d_set_h_size(self as *mut Self, theHSize) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B3d_set_h_size(self as *mut Self, theHSize) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Bnd_B3d_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Bnd_B3d_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -902,8 +1082,10 @@ impl B3f {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_B3f_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -915,8 +1097,10 @@ impl B3f {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_B3f_ctor_xyz2(theCenter, theHSize) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -925,8 +1109,11 @@ impl B3f {
     pub fn is_void(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_B3f_is_void(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -934,8 +1121,10 @@ impl B3f {
     /// Reset the box data.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::Bnd_B3f_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B3f_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -943,8 +1132,10 @@ impl B3f {
     /// Update the box by a point.
     pub fn add_xyz(&mut self, thePnt: &crate::gp::XYZ) {
         {
-            unsafe { crate::ffi::Bnd_B3f_add_xyz(self as *mut Self, thePnt) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B3f_add_xyz(self as *mut Self, thePnt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -952,8 +1143,10 @@ impl B3f {
     /// Update the box by a point.
     pub fn add_pnt(&mut self, thePnt: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Bnd_B3f_add_pnt(self as *mut Self, thePnt) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B3f_add_pnt(self as *mut Self, thePnt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -961,8 +1154,10 @@ impl B3f {
     /// Update the box by another box.
     pub fn add_b3f(&mut self, theBox: &B3f) {
         {
-            unsafe { crate::ffi::Bnd_B3f_add_b3f(self as *mut Self, theBox) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B3f_add_b3f(self as *mut Self, theBox) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -973,8 +1168,11 @@ impl B3f {
     pub fn corner_min(&self) -> crate::OwnedPtr<crate::gp::XYZ> {
         {
             let __result = unsafe { crate::ffi::Bnd_B3f_corner_min(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -985,8 +1183,11 @@ impl B3f {
     pub fn corner_max(&self) -> crate::OwnedPtr<crate::gp::XYZ> {
         {
             let __result = unsafe { crate::ffi::Bnd_B3f_corner_max(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -996,8 +1197,11 @@ impl B3f {
     pub fn square_extent(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Bnd_B3f_square_extent(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1005,8 +1209,10 @@ impl B3f {
     /// Extend the Box by the absolute value of theDiff.
     pub fn enlarge(&mut self, theDiff: f64) {
         {
-            unsafe { crate::ffi::Bnd_B3f_enlarge(self as *mut Self, theDiff) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B3f_enlarge(self as *mut Self, theDiff) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1017,8 +1223,11 @@ impl B3f {
     pub fn limit(&mut self, theOtherBox: &B3f) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_B3f_limit(self as *mut Self, theOtherBox) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1028,8 +1237,11 @@ impl B3f {
     pub fn transformed(&self, theTrsf: &crate::gp::Trsf) -> crate::OwnedPtr<B3f> {
         {
             let __result = unsafe { crate::ffi::Bnd_B3f_transformed(self as *const Self, theTrsf) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1039,8 +1251,11 @@ impl B3f {
     pub fn is_out_xyz(&self, thePnt: &crate::gp::XYZ) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_B3f_is_out_xyz(self as *const Self, thePnt) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1065,8 +1280,11 @@ impl B3f {
                     isSphereHollow,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1077,8 +1295,11 @@ impl B3f {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_B3f_is_out_b3f(self as *const Self, theOtherBox) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1091,8 +1312,11 @@ impl B3f {
             let __result = unsafe {
                 crate::ffi::Bnd_B3f_is_out_b3f_trsf(self as *const Self, theOtherBox, theTrsf)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1118,8 +1342,11 @@ impl B3f {
                     theOverthickness,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1129,8 +1356,11 @@ impl B3f {
     pub fn is_out_ax3(&self, thePlane: &crate::gp::Ax3) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_B3f_is_out_ax3(self as *const Self, thePlane) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1140,8 +1370,11 @@ impl B3f {
     pub fn is_in_b3f(&self, theBox: &B3f) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_B3f_is_in_b3f(self as *const Self, theBox) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1153,8 +1386,11 @@ impl B3f {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_B3f_is_in_b3f_trsf(self as *const Self, theBox, theTrsf) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1162,8 +1398,10 @@ impl B3f {
     /// Set the Center coordinates
     pub fn set_center(&mut self, theCenter: &crate::gp::XYZ) {
         {
-            unsafe { crate::ffi::Bnd_B3f_set_center(self as *mut Self, theCenter) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B3f_set_center(self as *mut Self, theCenter) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1172,18 +1410,20 @@ impl B3f {
     /// All components of theHSize must be non-negative.
     pub fn set_h_size(&mut self, theHSize: &crate::gp::XYZ) {
         {
-            unsafe { crate::ffi::Bnd_B3f_set_h_size(self as *mut Self, theHSize) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_B3f_set_h_size(self as *mut Self, theHSize) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Bnd_B3f_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Bnd_B3f_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1214,8 +1454,10 @@ impl BoundSortBox {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_BoundSortBox_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1228,14 +1470,16 @@ impl BoundSortBox {
         SetOfBox: &crate::ffi::HandleBndHArray1OfBox,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Bnd_BoundSortBox_initialize_box_handlebndharray1ofbox(
                     self as *mut Self,
                     CompleteBox,
                     SetOfBox,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1248,13 +1492,15 @@ impl BoundSortBox {
         SetOfBox: &crate::ffi::HandleBndHArray1OfBox,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Bnd_BoundSortBox_initialize_handlebndharray1ofbox(
                     self as *mut Self,
                     SetOfBox,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1265,14 +1511,16 @@ impl BoundSortBox {
     /// function to define the array of bounding boxes to be sorted by this algorithm.
     pub fn initialize_box_int(&mut self, CompleteBox: &Box, nbComponents: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Bnd_BoundSortBox_initialize_box_int(
                     self as *mut Self,
                     CompleteBox,
                     nbComponents,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1295,8 +1543,11 @@ impl BoundSortBox {
     /// this comparison algorithm.
     pub fn add(&mut self, theBox: &Box, boxIndex: i32) {
         {
-            unsafe { crate::ffi::Bnd_BoundSortBox_add(self as *mut Self, theBox, boxIndex) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Bnd_BoundSortBox_add(self as *mut Self, theBox, boxIndex) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1316,8 +1567,11 @@ impl BoundSortBox {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_BoundSortBox_compare_box(self as *mut Self, theBox) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1337,34 +1591,41 @@ impl BoundSortBox {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_BoundSortBox_compare_pln(self as *mut Self, P) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `Bnd_BoundSortBox.hxx`:95 - `Bnd_BoundSortBox::Dump()`
     pub fn dump(&self) {
         {
-            unsafe { crate::ffi::Bnd_BoundSortBox_dump(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_BoundSortBox_dump(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Bnd_BoundSortBox.hxx`:97 - `Bnd_BoundSortBox::Destroy()`
     pub fn destroy(&mut self) {
         {
-            unsafe { crate::ffi::Bnd_BoundSortBox_destroy(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_BoundSortBox_destroy(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Bnd_BoundSortBox_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Bnd_BoundSortBox_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1414,8 +1675,10 @@ impl Box {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1426,8 +1689,10 @@ impl Box {
     pub fn new_pnt2(theMin: &crate::gp::Pnt, theMax: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_ctor_pnt2(theMin, theMax) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1436,8 +1701,10 @@ impl Box {
     /// It is infinitely long in all directions.
     pub fn set_whole(&mut self) {
         {
-            unsafe { crate::ffi::Bnd_Box_set_whole(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box_set_whole(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1445,8 +1712,10 @@ impl Box {
     /// Sets this bounding box so that it is empty. All points are outside a void box.
     pub fn set_void(&mut self) {
         {
-            unsafe { crate::ffi::Bnd_Box_set_void(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box_set_void(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1456,8 +1725,10 @@ impl Box {
     /// to be void and then adding the point P.
     pub fn set_pnt(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Bnd_Box_set_pnt(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box_set_pnt(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1469,8 +1740,10 @@ impl Box {
     /// involves first setting this box to be void and then adding   the half-line.
     pub fn set_pnt_dir(&mut self, P: &crate::gp::Pnt, D: &crate::gp::Dir) {
         {
-            unsafe { crate::ffi::Bnd_Box_set_pnt_dir(self as *mut Self, P, D) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box_set_pnt_dir(self as *mut Self, P, D) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1490,7 +1763,7 @@ impl Box {
         aZmax: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Bnd_Box_update_real6(
                     self as *mut Self,
                     aXmin,
@@ -1501,7 +1774,9 @@ impl Box {
                     aZmax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1509,8 +1784,10 @@ impl Box {
     /// Adds a point of coordinates (X,Y,Z) to this bounding box.
     pub fn update_real3(&mut self, X: f64, Y: f64, Z: f64) {
         {
-            unsafe { crate::ffi::Bnd_Box_update_real3(self as *mut Self, X, Y, Z) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box_update_real3(self as *mut Self, X, Y, Z) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1519,8 +1796,11 @@ impl Box {
     pub fn get_gap(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_get_gap(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1528,8 +1808,10 @@ impl Box {
     /// Set the gap of this bounding box to abs(Tol).
     pub fn set_gap(&mut self, Tol: f64) {
         {
-            unsafe { crate::ffi::Bnd_Box_set_gap(self as *mut Self, Tol) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box_set_gap(self as *mut Self, Tol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1542,8 +1824,10 @@ impl Box {
     /// increased by the same amount.
     pub fn enlarge(&mut self, Tol: f64) {
         {
-            unsafe { crate::ffi::Bnd_Box_enlarge(self as *mut Self, Tol) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box_enlarge(self as *mut Self, Tol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1563,7 +1847,7 @@ impl Box {
         theZmax: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Bnd_Box_get(
                     self as *const Self,
                     theXmin,
@@ -1574,7 +1858,9 @@ impl Box {
                     theZmax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1587,8 +1873,11 @@ impl Box {
     pub fn corner_min(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_corner_min(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1601,8 +1890,11 @@ impl Box {
     pub fn corner_max(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_corner_max(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1611,8 +1903,10 @@ impl Box {
     /// direction.
     pub fn open_xmin(&mut self) {
         {
-            unsafe { crate::ffi::Bnd_Box_open_xmin(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box_open_xmin(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1621,8 +1915,10 @@ impl Box {
     /// direction.
     pub fn open_xmax(&mut self) {
         {
-            unsafe { crate::ffi::Bnd_Box_open_xmax(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box_open_xmax(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1631,8 +1927,10 @@ impl Box {
     /// direction.
     pub fn open_ymin(&mut self) {
         {
-            unsafe { crate::ffi::Bnd_Box_open_ymin(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box_open_ymin(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1641,8 +1939,10 @@ impl Box {
     /// direction.
     pub fn open_ymax(&mut self) {
         {
-            unsafe { crate::ffi::Bnd_Box_open_ymax(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box_open_ymax(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1651,8 +1951,10 @@ impl Box {
     /// direction.
     pub fn open_zmin(&mut self) {
         {
-            unsafe { crate::ffi::Bnd_Box_open_zmin(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box_open_zmin(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1661,8 +1963,10 @@ impl Box {
     /// direction.
     pub fn open_zmax(&mut self) {
         {
-            unsafe { crate::ffi::Bnd_Box_open_zmax(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box_open_zmax(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1671,8 +1975,11 @@ impl Box {
     pub fn is_open(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_is_open(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1681,8 +1988,11 @@ impl Box {
     pub fn is_open_xmin(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_is_open_xmin(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1691,8 +2001,11 @@ impl Box {
     pub fn is_open_xmax(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_is_open_xmax(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1701,8 +2014,11 @@ impl Box {
     pub fn is_open_ymin(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_is_open_ymin(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1711,8 +2027,11 @@ impl Box {
     pub fn is_open_ymax(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_is_open_ymax(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1721,8 +2040,11 @@ impl Box {
     pub fn is_open_zmin(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_is_open_zmin(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1731,8 +2053,11 @@ impl Box {
     pub fn is_open_zmax(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_is_open_zmax(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1741,8 +2066,11 @@ impl Box {
     pub fn is_whole(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_is_whole(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1751,8 +2079,11 @@ impl Box {
     pub fn is_void(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_is_void(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1761,8 +2092,11 @@ impl Box {
     pub fn is_x_thin(&self, tol: f64) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_is_x_thin(self as *const Self, tol) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1771,8 +2105,11 @@ impl Box {
     pub fn is_y_thin(&self, tol: f64) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_is_y_thin(self as *const Self, tol) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1781,8 +2118,11 @@ impl Box {
     pub fn is_z_thin(&self, tol: f64) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_is_z_thin(self as *const Self, tol) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1792,8 +2132,11 @@ impl Box {
     pub fn is_thin(&self, tol: f64) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_is_thin(self as *const Self, tol) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1807,8 +2150,11 @@ impl Box {
     pub fn transformed(&self, T: &crate::gp::Trsf) -> crate::OwnedPtr<Box> {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_transformed(self as *const Self, T) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1816,8 +2162,10 @@ impl Box {
     /// Adds the box <Other> to <me>.
     pub fn add_box(&mut self, Other: &Box) {
         {
-            unsafe { crate::ffi::Bnd_Box_add_box(self as *mut Self, Other) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box_add_box(self as *mut Self, Other) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1825,8 +2173,10 @@ impl Box {
     /// Adds a Pnt to the box.
     pub fn add_pnt(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Bnd_Box_add_pnt(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box_add_pnt(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1834,8 +2184,10 @@ impl Box {
     /// Extends  <me> from the Pnt <P> in the direction <D>.
     pub fn add_pnt_dir(&mut self, P: &crate::gp::Pnt, D: &crate::gp::Dir) {
         {
-            unsafe { crate::ffi::Bnd_Box_add_pnt_dir(self as *mut Self, P, D) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box_add_pnt_dir(self as *mut Self, P, D) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1845,8 +2197,10 @@ impl Box {
     /// 1,2 or 3 directions.
     pub fn add_dir(&mut self, D: &crate::gp::Dir) {
         {
-            unsafe { crate::ffi::Bnd_Box_add_dir(self as *mut Self, D) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box_add_dir(self as *mut Self, D) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1855,8 +2209,11 @@ impl Box {
     pub fn is_out_pnt(&self, P: &crate::gp::Pnt) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_is_out_pnt(self as *const Self, P) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1865,8 +2222,11 @@ impl Box {
     pub fn is_out_lin(&self, L: &crate::gp::Lin) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_is_out_lin(self as *const Self, L) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1875,8 +2235,11 @@ impl Box {
     pub fn is_out_pln(&self, P: &crate::gp::Pln) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_is_out_pln(self as *const Self, P) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1885,8 +2248,11 @@ impl Box {
     pub fn is_out_box(&self, Other: &Box) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_is_out_box(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1897,8 +2263,11 @@ impl Box {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_Box_is_out_box_trsf(self as *const Self, Other, T) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1915,8 +2284,11 @@ impl Box {
             let __result = unsafe {
                 crate::ffi::Bnd_Box_is_out_trsf_box_trsf(self as *const Self, T1, Other, T2)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1933,8 +2305,11 @@ impl Box {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_Box_is_out_pnt2_dir(self as *const Self, P1, P2, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1943,16 +2318,21 @@ impl Box {
     pub fn distance(&self, Other: &Box) -> f64 {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_distance(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Bnd_Box.hxx`:273 - `Bnd_Box::Dump()`
     pub fn dump(&self) {
         {
-            unsafe { crate::ffi::Bnd_Box_dump(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box_dump(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1961,8 +2341,11 @@ impl Box {
     pub fn square_extent(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_square_extent(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1974,8 +2357,11 @@ impl Box {
     pub fn finite_part(&self) -> crate::OwnedPtr<Box> {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_finite_part(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1984,18 +2370,21 @@ impl Box {
     pub fn has_finite_part(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box_has_finite_part(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Bnd_Box_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Bnd_Box_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2038,8 +2427,10 @@ impl Box2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_Box2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2048,8 +2439,10 @@ impl Box2d {
     /// space, i.e. it is infinite in all directions.
     pub fn set_whole(&mut self) {
         {
-            unsafe { crate::ffi::Bnd_Box2d_set_whole(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box2d_set_whole(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2057,8 +2450,10 @@ impl Box2d {
     /// Sets this 2D bounding box so that it is empty. All points are outside a void box.
     pub fn set_void(&mut self) {
         {
-            unsafe { crate::ffi::Bnd_Box2d_set_void(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box2d_set_void(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2068,8 +2463,10 @@ impl Box2d {
     /// to be void and then adding the point PThe rectangle bounds   the  point <P>.
     pub fn set_pnt2d(&mut self, thePnt: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Bnd_Box2d_set_pnt2d(self as *mut Self, thePnt) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box2d_set_pnt2d(self as *mut Self, thePnt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2081,8 +2478,11 @@ impl Box2d {
     /// first setting this 2D box to be void and then adding the   half-line.
     pub fn set_pnt2d_dir2d(&mut self, thePnt: &crate::gp::Pnt2d, theDir: &crate::gp::Dir2d) {
         {
-            unsafe { crate::ffi::Bnd_Box2d_set_pnt2d_dir2d(self as *mut Self, thePnt, theDir) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Bnd_Box2d_set_pnt2d_dir2d(self as *mut Self, thePnt, theDir) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2093,10 +2493,12 @@ impl Box2d {
     /// -   interval [ aYmin,aYmax ] in the "Y Direction"
     pub fn update_real4(&mut self, aXmin: f64, aYmin: f64, aXmax: f64, aYmax: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Bnd_Box2d_update_real4(self as *mut Self, aXmin, aYmin, aXmax, aYmax)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2104,8 +2506,10 @@ impl Box2d {
     /// Adds a point of coordinates (X,Y) to this bounding box.
     pub fn update_real2(&mut self, X: f64, Y: f64) {
         {
-            unsafe { crate::ffi::Bnd_Box2d_update_real2(self as *mut Self, X, Y) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box2d_update_real2(self as *mut Self, X, Y) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2114,8 +2518,11 @@ impl Box2d {
     pub fn get_gap(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Bnd_Box2d_get_gap(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2123,8 +2530,10 @@ impl Box2d {
     /// Set the gap of this 2D bounding box to abs(Tol).
     pub fn set_gap(&mut self, Tol: f64) {
         {
-            unsafe { crate::ffi::Bnd_Box2d_set_gap(self as *mut Self, Tol) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box2d_set_gap(self as *mut Self, Tol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2136,8 +2545,10 @@ impl Box2d {
     /// increased by the same amount.
     pub fn enlarge(&mut self, theTol: f64) {
         {
-            unsafe { crate::ffi::Bnd_Box2d_enlarge(self as *mut Self, theTol) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box2d_enlarge(self as *mut Self, theTol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2148,8 +2559,12 @@ impl Box2d {
     /// if IsVoid()
     pub fn get(&self, aXmin: &mut f64, aYmin: &mut f64, aXmax: &mut f64, aYmax: &mut f64) {
         {
-            unsafe { crate::ffi::Bnd_Box2d_get(self as *const Self, aXmin, aYmin, aXmax, aYmax) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Bnd_Box2d_get(self as *const Self, aXmin, aYmin, aXmax, aYmax)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2157,8 +2572,10 @@ impl Box2d {
     /// The Box will be infinitely long in the Xmin direction.
     pub fn open_xmin(&mut self) {
         {
-            unsafe { crate::ffi::Bnd_Box2d_open_xmin(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box2d_open_xmin(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2166,8 +2583,10 @@ impl Box2d {
     /// The Box will be infinitely long in the Xmax direction.
     pub fn open_xmax(&mut self) {
         {
-            unsafe { crate::ffi::Bnd_Box2d_open_xmax(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box2d_open_xmax(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2175,8 +2594,10 @@ impl Box2d {
     /// The Box will be infinitely long in the Ymin direction.
     pub fn open_ymin(&mut self) {
         {
-            unsafe { crate::ffi::Bnd_Box2d_open_ymin(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box2d_open_ymin(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2184,8 +2605,10 @@ impl Box2d {
     /// The Box will be infinitely long in the Ymax direction.
     pub fn open_ymax(&mut self) {
         {
-            unsafe { crate::ffi::Bnd_Box2d_open_ymax(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box2d_open_ymax(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2194,8 +2617,11 @@ impl Box2d {
     pub fn is_open_xmin(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box2d_is_open_xmin(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2204,8 +2630,11 @@ impl Box2d {
     pub fn is_open_xmax(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box2d_is_open_xmax(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2214,8 +2643,11 @@ impl Box2d {
     pub fn is_open_ymin(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box2d_is_open_ymin(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2224,8 +2656,11 @@ impl Box2d {
     pub fn is_open_ymax(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box2d_is_open_ymax(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2235,8 +2670,11 @@ impl Box2d {
     pub fn is_whole(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box2d_is_whole(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2245,8 +2683,11 @@ impl Box2d {
     pub fn is_void(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box2d_is_void(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2260,8 +2701,11 @@ impl Box2d {
     pub fn transformed(&self, T: &crate::gp::Trsf2d) -> crate::OwnedPtr<Box2d> {
         {
             let __result = unsafe { crate::ffi::Bnd_Box2d_transformed(self as *const Self, T) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2269,8 +2713,10 @@ impl Box2d {
     /// Adds the 2d box <Other> to <me>.
     pub fn add_box2d(&mut self, Other: &Box2d) {
         {
-            unsafe { crate::ffi::Bnd_Box2d_add_box2d(self as *mut Self, Other) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box2d_add_box2d(self as *mut Self, Other) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2278,8 +2724,10 @@ impl Box2d {
     /// Adds the 2d point.
     pub fn add_pnt2d(&mut self, thePnt: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Bnd_Box2d_add_pnt2d(self as *mut Self, thePnt) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box2d_add_pnt2d(self as *mut Self, thePnt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2287,8 +2735,11 @@ impl Box2d {
     /// Extends bounding box from thePnt in the direction theDir.
     pub fn add_pnt2d_dir2d(&mut self, thePnt: &crate::gp::Pnt2d, theDir: &crate::gp::Dir2d) {
         {
-            unsafe { crate::ffi::Bnd_Box2d_add_pnt2d_dir2d(self as *mut Self, thePnt, theDir) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Bnd_Box2d_add_pnt2d_dir2d(self as *mut Self, thePnt, theDir) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2298,8 +2749,10 @@ impl Box2d {
     /// directions.
     pub fn add_dir2d(&mut self, D: &crate::gp::Dir2d) {
         {
-            unsafe { crate::ffi::Bnd_Box2d_add_dir2d(self as *mut Self, D) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box2d_add_dir2d(self as *mut Self, D) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2308,8 +2761,11 @@ impl Box2d {
     pub fn is_out_pnt2d(&self, P: &crate::gp::Pnt2d) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box2d_is_out_pnt2d(self as *const Self, P) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2318,8 +2774,11 @@ impl Box2d {
     pub fn is_out_lin2d(&self, theL: &crate::gp::Lin2d) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Box2d_is_out_lin2d(self as *const Self, theL) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2329,8 +2788,11 @@ impl Box2d {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_Box2d_is_out_pnt2d2(self as *const Self, theP0, theP1) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2340,8 +2802,11 @@ impl Box2d {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_Box2d_is_out_box2d(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2352,8 +2817,11 @@ impl Box2d {
             let __result = unsafe {
                 crate::ffi::Bnd_Box2d_is_out_box2d_trsf2d(self as *const Self, theOther, theTrsf)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2371,16 +2839,21 @@ impl Box2d {
             let __result = unsafe {
                 crate::ffi::Bnd_Box2d_is_out_trsf2d_box2d_trsf2d(self as *const Self, T1, Other, T2)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:223 - `Bnd_Box2d::Dump()`
     pub fn dump(&self) {
         {
-            unsafe { crate::ffi::Bnd_Box2d_dump(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Box2d_dump(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2389,18 +2862,21 @@ impl Box2d {
     pub fn square_extent(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Bnd_Box2d_square_extent(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Bnd_Box2d_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Bnd_Box2d_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2422,8 +2898,10 @@ impl HArray1OfBox {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_HArray1OfBox_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2431,8 +2909,10 @@ impl HArray1OfBox {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_HArray1OfBox_ctor_int2(theLower, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2441,8 +2921,10 @@ impl HArray1OfBox {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_HArray1OfBox_ctor_int2_box(theLower, theUpper, theValue) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2457,8 +2939,10 @@ impl HArray1OfBox {
             let __result = unsafe {
                 crate::ffi::Bnd_HArray1OfBox_ctor_box_int2_bool(theBegin, theLower, theUpper, arg3)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2466,8 +2950,10 @@ impl HArray1OfBox {
     pub fn new_array1ofbox(theOther: &crate::ffi::Bnd_Array1OfBox) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_HArray1OfBox_ctor_array1ofbox(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2475,8 +2961,11 @@ impl HArray1OfBox {
     pub fn array1(&self) -> &crate::ffi::Bnd_Array1OfBox {
         {
             let __result = unsafe { crate::ffi::Bnd_HArray1OfBox_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2484,8 +2973,11 @@ impl HArray1OfBox {
     pub fn change_array1(&mut self) -> &mut crate::ffi::Bnd_Array1OfBox {
         {
             let __result = unsafe { crate::ffi::Bnd_HArray1OfBox_change_array1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2494,8 +2986,11 @@ impl HArray1OfBox {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_HArray1OfBox_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2503,8 +2998,11 @@ impl HArray1OfBox {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Bnd_HArray1OfBox_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2512,41 +3010,43 @@ impl HArray1OfBox {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Bnd_HArray1OfBox_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Bnd_HArray1OfBox_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Bnd_HArray1OfBox_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Bnd_HArray1OfBox_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Bnd_HArray1OfBox_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBndHArray1OfBox> {
-        {
-            let __result = unsafe { crate::ffi::Bnd_HArray1OfBox_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Bnd_HArray1OfBox_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2555,8 +3055,11 @@ impl HArray1OfBox {
             let __result = unsafe {
                 crate::ffi::Bnd_HArray1OfBox_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2566,8 +3069,11 @@ impl HArray1OfBox {
             let __result = unsafe {
                 crate::ffi::Bnd_HArray1OfBox_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2576,11 +3082,14 @@ impl HArray1OfBox {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_HArray1OfBox_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2590,18 +3099,23 @@ impl HArray1OfBox {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_HArray1OfBox_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Bnd_HArray1OfBox_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2611,16 +3125,22 @@ impl HArray1OfBox {
             let __result = unsafe {
                 crate::ffi::Bnd_HArray1OfBox_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Bnd_HArray1OfBox_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Bnd_HArray1OfBox_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2636,31 +3156,31 @@ unsafe impl crate::CppDeletable for HandleBndHArray1OfBox {
 impl HandleBndHArray1OfBox {
     /// Dereference this Handle to access the underlying Bnd_HArray1OfBox
     pub fn get(&self) -> &crate::ffi::Bnd_HArray1OfBox {
-        {
-            let __result = unsafe { crate::ffi::HandleBndHArray1OfBox_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBndHArray1OfBox_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Bnd_HArray1OfBox
     pub fn get_mut(&mut self) -> &mut crate::ffi::Bnd_HArray1OfBox {
-        {
-            let __result = unsafe { crate::ffi::HandleBndHArray1OfBox_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleBndHArray1OfBox_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Bnd_HArray1OfBox> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBndHArray1OfBox_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBndHArray1OfBox_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2682,8 +3202,10 @@ impl HArray1OfBox2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_HArray1OfBox2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2691,8 +3213,10 @@ impl HArray1OfBox2d {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_HArray1OfBox2d_ctor_int2(theLower, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2702,8 +3226,10 @@ impl HArray1OfBox2d {
             let __result = unsafe {
                 crate::ffi::Bnd_HArray1OfBox2d_ctor_int2_box2d(theLower, theUpper, theValue)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2720,8 +3246,10 @@ impl HArray1OfBox2d {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2729,8 +3257,10 @@ impl HArray1OfBox2d {
     pub fn new_array1ofbox2d(theOther: &crate::ffi::Bnd_Array1OfBox2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_HArray1OfBox2d_ctor_array1ofbox2d(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2738,8 +3268,11 @@ impl HArray1OfBox2d {
     pub fn array1(&self) -> &crate::ffi::Bnd_Array1OfBox2d {
         {
             let __result = unsafe { crate::ffi::Bnd_HArray1OfBox2d_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2748,8 +3281,11 @@ impl HArray1OfBox2d {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_HArray1OfBox2d_change_array1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2758,8 +3294,11 @@ impl HArray1OfBox2d {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_HArray1OfBox2d_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2767,8 +3306,11 @@ impl HArray1OfBox2d {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Bnd_HArray1OfBox2d_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2776,42 +3318,43 @@ impl HArray1OfBox2d {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Bnd_HArray1OfBox2d_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Bnd_HArray1OfBox2d_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Bnd_HArray1OfBox2d_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Bnd_HArray1OfBox2d_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Bnd_HArray1OfBox2d_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBndHArray1OfBox2d> {
-        {
-            let __result = unsafe { crate::ffi::Bnd_HArray1OfBox2d_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Bnd_HArray1OfBox2d_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2820,8 +3363,11 @@ impl HArray1OfBox2d {
             let __result = unsafe {
                 crate::ffi::Bnd_HArray1OfBox2d_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2831,8 +3377,11 @@ impl HArray1OfBox2d {
             let __result = unsafe {
                 crate::ffi::Bnd_HArray1OfBox2d_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2841,11 +3390,14 @@ impl HArray1OfBox2d {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_HArray1OfBox2d_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2856,18 +3408,23 @@ impl HArray1OfBox2d {
             let __result = unsafe {
                 crate::ffi::Bnd_HArray1OfBox2d_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Bnd_HArray1OfBox2d_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2877,16 +3434,22 @@ impl HArray1OfBox2d {
             let __result = unsafe {
                 crate::ffi::Bnd_HArray1OfBox2d_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Bnd_HArray1OfBox2d_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Bnd_HArray1OfBox2d_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2902,32 +3465,31 @@ unsafe impl crate::CppDeletable for HandleBndHArray1OfBox2d {
 impl HandleBndHArray1OfBox2d {
     /// Dereference this Handle to access the underlying Bnd_HArray1OfBox2d
     pub fn get(&self) -> &crate::ffi::Bnd_HArray1OfBox2d {
-        {
-            let __result = unsafe { crate::ffi::HandleBndHArray1OfBox2d_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBndHArray1OfBox2d_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Bnd_HArray1OfBox2d
     pub fn get_mut(&mut self) -> &mut crate::ffi::Bnd_HArray1OfBox2d {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleBndHArray1OfBox2d_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleBndHArray1OfBox2d_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Bnd_HArray1OfBox2d> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBndHArray1OfBox2d_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBndHArray1OfBox2d_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2949,8 +3511,10 @@ impl HArray1OfSphere {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_HArray1OfSphere_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2958,8 +3522,10 @@ impl HArray1OfSphere {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_HArray1OfSphere_ctor_int2(theLower, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2973,8 +3539,10 @@ impl HArray1OfSphere {
             let __result = unsafe {
                 crate::ffi::Bnd_HArray1OfSphere_ctor_int2_sphere(theLower, theUpper, theValue)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2991,8 +3559,10 @@ impl HArray1OfSphere {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3000,8 +3570,10 @@ impl HArray1OfSphere {
     pub fn new_array1ofsphere(theOther: &crate::ffi::Bnd_Array1OfSphere) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_HArray1OfSphere_ctor_array1ofsphere(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3009,8 +3581,11 @@ impl HArray1OfSphere {
     pub fn array1(&self) -> &crate::ffi::Bnd_Array1OfSphere {
         {
             let __result = unsafe { crate::ffi::Bnd_HArray1OfSphere_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3019,8 +3594,11 @@ impl HArray1OfSphere {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_HArray1OfSphere_change_array1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3029,8 +3607,11 @@ impl HArray1OfSphere {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_HArray1OfSphere_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3038,8 +3619,11 @@ impl HArray1OfSphere {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Bnd_HArray1OfSphere_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3047,42 +3631,43 @@ impl HArray1OfSphere {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Bnd_HArray1OfSphere_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Bnd_HArray1OfSphere_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Bnd_HArray1OfSphere_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Bnd_HArray1OfSphere_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Bnd_HArray1OfSphere_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBndHArray1OfSphere> {
-        {
-            let __result = unsafe { crate::ffi::Bnd_HArray1OfSphere_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Bnd_HArray1OfSphere_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3091,8 +3676,11 @@ impl HArray1OfSphere {
             let __result = unsafe {
                 crate::ffi::Bnd_HArray1OfSphere_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3102,8 +3690,11 @@ impl HArray1OfSphere {
             let __result = unsafe {
                 crate::ffi::Bnd_HArray1OfSphere_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3112,11 +3703,14 @@ impl HArray1OfSphere {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_HArray1OfSphere_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3127,18 +3721,23 @@ impl HArray1OfSphere {
             let __result = unsafe {
                 crate::ffi::Bnd_HArray1OfSphere_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Bnd_HArray1OfSphere_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3148,16 +3747,22 @@ impl HArray1OfSphere {
             let __result = unsafe {
                 crate::ffi::Bnd_HArray1OfSphere_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Bnd_HArray1OfSphere_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Bnd_HArray1OfSphere_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3173,32 +3778,31 @@ unsafe impl crate::CppDeletable for HandleBndHArray1OfSphere {
 impl HandleBndHArray1OfSphere {
     /// Dereference this Handle to access the underlying Bnd_HArray1OfSphere
     pub fn get(&self) -> &crate::ffi::Bnd_HArray1OfSphere {
-        {
-            let __result = unsafe { crate::ffi::HandleBndHArray1OfSphere_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBndHArray1OfSphere_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Bnd_HArray1OfSphere
     pub fn get_mut(&mut self) -> &mut crate::ffi::Bnd_HArray1OfSphere {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleBndHArray1OfSphere_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleBndHArray1OfSphere_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Bnd_HArray1OfSphere> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBndHArray1OfSphere_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBndHArray1OfSphere_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3228,8 +3832,10 @@ impl OBB {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_OBB_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3256,8 +3862,10 @@ impl OBB {
                     theHZSize,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3266,8 +3874,10 @@ impl OBB {
     pub fn new_box(theBox: &Box) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_OBB_ctor_box(theBox) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3287,7 +3897,7 @@ impl OBB {
         theIsOptimal: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Bnd_OBB_re_build(
                     self as *mut Self,
                     theListOfPoints,
@@ -3295,7 +3905,9 @@ impl OBB {
                     theIsOptimal,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3303,8 +3915,10 @@ impl OBB {
     /// Sets the center of OBB
     pub fn set_center(&mut self, theCenter: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Bnd_OBB_set_center(self as *mut Self, theCenter) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_OBB_set_center(self as *mut Self, theCenter) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3312,10 +3926,12 @@ impl OBB {
     /// Sets the X component of OBB - direction and size
     pub fn set_x_component(&mut self, theXDirection: &crate::gp::Dir, theHXSize: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Bnd_OBB_set_x_component(self as *mut Self, theXDirection, theHXSize)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3323,10 +3939,12 @@ impl OBB {
     /// Sets the Y component of OBB - direction and size
     pub fn set_y_component(&mut self, theYDirection: &crate::gp::Dir, theHYSize: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Bnd_OBB_set_y_component(self as *mut Self, theYDirection, theHYSize)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3334,10 +3952,12 @@ impl OBB {
     /// Sets the Z component of OBB - direction and size
     pub fn set_z_component(&mut self, theZDirection: &crate::gp::Dir, theHZSize: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Bnd_OBB_set_z_component(self as *mut Self, theZDirection, theHZSize)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3352,8 +3972,11 @@ impl OBB {
     pub fn position(&self) -> crate::OwnedPtr<crate::gp::Ax3> {
         {
             let __result = unsafe { crate::ffi::Bnd_OBB_position(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3362,8 +3985,11 @@ impl OBB {
     pub fn center(&self) -> &crate::gp::XYZ {
         {
             let __result = unsafe { crate::ffi::Bnd_OBB_center(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3372,8 +3998,11 @@ impl OBB {
     pub fn x_direction(&self) -> &crate::gp::XYZ {
         {
             let __result = unsafe { crate::ffi::Bnd_OBB_x_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3382,8 +4011,11 @@ impl OBB {
     pub fn y_direction(&self) -> &crate::gp::XYZ {
         {
             let __result = unsafe { crate::ffi::Bnd_OBB_y_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3392,8 +4024,11 @@ impl OBB {
     pub fn z_direction(&self) -> &crate::gp::XYZ {
         {
             let __result = unsafe { crate::ffi::Bnd_OBB_z_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3402,8 +4037,11 @@ impl OBB {
     pub fn xh_size(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Bnd_OBB_xh_size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3412,8 +4050,11 @@ impl OBB {
     pub fn yh_size(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Bnd_OBB_yh_size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3422,8 +4063,11 @@ impl OBB {
     pub fn zh_size(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Bnd_OBB_zh_size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3432,8 +4076,11 @@ impl OBB {
     pub fn is_void(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_OBB_is_void(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3441,8 +4088,10 @@ impl OBB {
     /// Clears this box
     pub fn set_void(&mut self) {
         {
-            unsafe { crate::ffi::Bnd_OBB_set_void(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_OBB_set_void(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3450,8 +4099,10 @@ impl OBB {
     /// Sets the flag for axes aligned box
     pub fn set_aa_box(&mut self, theFlag: &bool) {
         {
-            unsafe { crate::ffi::Bnd_OBB_set_aa_box(self as *mut Self, theFlag) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_OBB_set_aa_box(self as *mut Self, theFlag) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3460,8 +4111,11 @@ impl OBB {
     pub fn is_aa_box(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_OBB_is_aa_box(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3469,8 +4123,10 @@ impl OBB {
     /// Enlarges the box with the given value
     pub fn enlarge(&mut self, theGapAdd: f64) {
         {
-            unsafe { crate::ffi::Bnd_OBB_enlarge(self as *mut Self, theGapAdd) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_OBB_enlarge(self as *mut Self, theGapAdd) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3490,8 +4146,11 @@ impl OBB {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_OBB_get_vertex(self as *const Self, theP.as_mut_ptr()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3500,8 +4159,11 @@ impl OBB {
     pub fn square_extent(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Bnd_OBB_square_extent(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3510,8 +4172,11 @@ impl OBB {
     pub fn is_out_obb(&self, theOther: &OBB) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_OBB_is_out_obb(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3520,8 +4185,11 @@ impl OBB {
     pub fn is_out_pnt(&self, theP: &crate::gp::Pnt) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_OBB_is_out_pnt(self as *const Self, theP) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3531,8 +4199,11 @@ impl OBB {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_OBB_is_completely_inside(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3541,8 +4212,10 @@ impl OBB {
     /// (which it was created from) and theOther.
     pub fn add_obb(&mut self, theOther: &OBB) {
         {
-            unsafe { crate::ffi::Bnd_OBB_add_obb(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_OBB_add_obb(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3551,18 +4224,20 @@ impl OBB {
     /// (which it was created from) and theP.
     pub fn add_pnt(&mut self, theP: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Bnd_OBB_add_pnt(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_OBB_add_pnt(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Bnd_OBB_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Bnd_OBB_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3588,8 +4263,10 @@ impl Range {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_Range_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3598,8 +4275,10 @@ impl Range {
     pub fn new_real2(theMin: f64, theMax: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_Range_ctor_real2(theMin, theMax) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3607,8 +4286,10 @@ impl Range {
     /// Replaces <this> with common-part of <this> and theOther
     pub fn common(&mut self, theOther: &Range) {
         {
-            unsafe { crate::ffi::Bnd_Range_common(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Range_common(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3621,8 +4302,11 @@ impl Range {
     pub fn union(&mut self, theOther: &Range) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Range_union(self as *mut Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3644,8 +4328,12 @@ impl Range {
         thePeriod: f64,
     ) {
         {
-            unsafe { crate::ffi::Bnd_Range_split(self as *const Self, theVal, theList, thePeriod) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Bnd_Range_split(self as *const Self, theVal, theList, thePeriod)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3664,8 +4352,11 @@ impl Range {
             let __result = unsafe {
                 crate::ffi::Bnd_Range_is_intersected(self as *const Self, theVal, thePeriod)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3673,8 +4364,10 @@ impl Range {
     /// Extends <this> to include theParameter
     pub fn add_real(&mut self, theParameter: f64) {
         {
-            unsafe { crate::ffi::Bnd_Range_add_real(self as *mut Self, theParameter) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Range_add_real(self as *mut Self, theParameter) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3683,8 +4376,10 @@ impl Range {
     /// @sa use method ::Union() to check if two ranges overlap method merging
     pub fn add_range(&mut self, theRange: &Range) {
         {
-            unsafe { crate::ffi::Bnd_Range_add_range(self as *mut Self, theRange) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Range_add_range(self as *mut Self, theRange) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3694,8 +4389,11 @@ impl Range {
     pub fn get_min(&self, thePar: &mut f64) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Range_get_min(self as *const Self, thePar) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3705,8 +4403,11 @@ impl Range {
     pub fn get_max(&self, thePar: &mut f64) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Range_get_max(self as *const Self, thePar) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3718,8 +4419,11 @@ impl Range {
             let __result = unsafe {
                 crate::ffi::Bnd_Range_get_bounds(self as *const Self, theFirstPar, theLastPar)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3741,8 +4445,11 @@ impl Range {
                     theParameter,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3751,8 +4458,11 @@ impl Range {
     pub fn delta(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Bnd_Range_delta(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3761,8 +4471,11 @@ impl Range {
     pub fn is_void(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Range_is_void(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3770,8 +4483,10 @@ impl Range {
     /// Initializes <this> by default parameters. Makes <this> VOID.
     pub fn set_void(&mut self) {
         {
-            unsafe { crate::ffi::Bnd_Range_set_void(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Range_set_void(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3779,8 +4494,10 @@ impl Range {
     /// Extends this to the given value (in both side)
     pub fn enlarge(&mut self, theDelta: f64) {
         {
-            unsafe { crate::ffi::Bnd_Range_enlarge(self as *mut Self, theDelta) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Range_enlarge(self as *mut Self, theDelta) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3789,8 +4506,11 @@ impl Range {
     pub fn shifted(&self, theVal: f64) -> crate::OwnedPtr<Range> {
         {
             let __result = unsafe { crate::ffi::Bnd_Range_shifted(self as *const Self, theVal) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3798,8 +4518,10 @@ impl Range {
     /// Shifts <*this> by theVal
     pub fn shift(&mut self, theVal: f64) {
         {
-            unsafe { crate::ffi::Bnd_Range_shift(self as *mut Self, theVal) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Range_shift(self as *mut Self, theVal) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3808,8 +4530,10 @@ impl Range {
     /// Marks range as Void if the given Lower value is greater than range Max.
     pub fn trim_from(&mut self, theValLower: f64) {
         {
-            unsafe { crate::ffi::Bnd_Range_trim_from(self as *mut Self, theValLower) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Range_trim_from(self as *mut Self, theValLower) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3818,8 +4542,10 @@ impl Range {
     /// Marks range as Void if the given Upper value is smaller than range Max.
     pub fn trim_to(&mut self, theValUpper: f64) {
         {
-            unsafe { crate::ffi::Bnd_Range_trim_to(self as *mut Self, theValUpper) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Range_trim_to(self as *mut Self, theValUpper) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3829,8 +4555,11 @@ impl Range {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_Range_is_out_real(self as *const Self, theValue) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3840,18 +4569,21 @@ impl Range {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_Range_is_out_range(self as *const Self, theRange) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Bnd_Range_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Bnd_Range_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3876,8 +4608,10 @@ impl Sphere {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_Sphere_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3892,8 +4626,10 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_Sphere_ctor_xyz_real_int2(theCntr, theRad, theU, theV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3902,8 +4638,11 @@ impl Sphere {
     pub fn u(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Bnd_Sphere_u(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3912,8 +4651,11 @@ impl Sphere {
     pub fn v(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Bnd_Sphere_v(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3923,16 +4665,21 @@ impl Sphere {
     pub fn is_valid(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Bnd_Sphere_is_valid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Bnd_Sphere.hxx`:53 - `Bnd_Sphere::SetValid()`
     pub fn set_valid(&mut self, isValid: bool) {
         {
-            unsafe { crate::ffi::Bnd_Sphere_set_valid(self as *mut Self, isValid) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Sphere_set_valid(self as *mut Self, isValid) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3941,8 +4688,11 @@ impl Sphere {
     pub fn center(&self) -> &crate::gp::XYZ {
         {
             let __result = unsafe { crate::ffi::Bnd_Sphere_center(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3951,8 +4701,11 @@ impl Sphere {
     pub fn radius(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Bnd_Sphere_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3962,10 +4715,12 @@ impl Sphere {
     /// may affect performance!
     pub fn distances(&self, theXYZ: &crate::gp::XYZ, theMin: &mut f64, theMax: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Bnd_Sphere_distances(self as *const Self, theXYZ, theMin, theMax)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3975,10 +4730,12 @@ impl Sphere {
     /// may affect performance!
     pub fn square_distances(&self, theXYZ: &crate::gp::XYZ, theMin: &mut f64, theMax: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Bnd_Sphere_square_distances(self as *const Self, theXYZ, theMin, theMax)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4002,8 +4759,11 @@ impl Sphere {
                     theInside,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4011,8 +4771,11 @@ impl Sphere {
     pub fn distance(&self, theNode: &crate::gp::XYZ) -> f64 {
         {
             let __result = unsafe { crate::ffi::Bnd_Sphere_distance(self as *const Self, theNode) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4021,16 +4784,21 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_Sphere_square_distance(self as *const Self, theNode) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Bnd_Sphere.hxx`:86 - `Bnd_Sphere::Add()`
     pub fn add(&mut self, theOther: &Sphere) {
         {
-            unsafe { crate::ffi::Bnd_Sphere_add(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Bnd_Sphere_add(self as *mut Self, theOther) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4039,8 +4807,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::Bnd_Sphere_is_out_sphere(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4050,8 +4821,11 @@ impl Sphere {
             let __result = unsafe {
                 crate::ffi::Bnd_Sphere_is_out_xyz_real(self as *const Self, thePnt, theMaxDist)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4059,18 +4833,21 @@ impl Sphere {
     pub fn square_extent(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Bnd_Sphere_square_extent(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Bnd_Sphere_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Bnd_Sphere_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4094,8 +4871,10 @@ impl Tools {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Bnd_Tools_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4105,8 +4884,11 @@ impl Tools {
     pub fn bnd2_bvh_box2d(theBox: &Box2d) -> crate::OwnedPtr<crate::ffi::BVH_Box_Standard_Real_2> {
         {
             let __result = unsafe { crate::ffi::Bnd_Tools_bnd2_bvh_box2d(theBox) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4115,18 +4897,21 @@ impl Tools {
     pub fn bnd2_bvh_box(theBox: &Box) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
         {
             let __result = unsafe { crate::ffi::Bnd_Tools_bnd2_bvh_box(theBox) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Bnd_Tools_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Bnd_Tools_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

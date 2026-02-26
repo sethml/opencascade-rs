@@ -10,8 +10,10 @@
 /// Prepares dynamic data (Protocol, Modules) for this package
 pub fn init() {
     {
-        unsafe { crate::ffi::IGESGraph_init() };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::IGESGraph_init() };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `IGESGraph.hxx`:38 - `IGESGraph::Protocol`
@@ -19,8 +21,11 @@ pub fn init() {
 pub fn protocol() -> crate::OwnedPtr<crate::ffi::HandleIGESGraphProtocol> {
     {
         let __result = unsafe { crate::ffi::IGESGraph_protocol() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 
@@ -57,8 +62,10 @@ impl Color {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_Color_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -76,27 +83,31 @@ impl Color {
         aColorName: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_Color_init(self as *mut Self, red, green, blue, aColorName)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IGESGraph_Color.hxx`:52 - `IGESGraph_Color::RGBIntensity()`
     pub fn rgb_intensity(&self, Red: &mut f64, Green: &mut f64, Blue: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_Color_rgb_intensity(self as *const Self, Red, Green, Blue)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IGESGraph_Color.hxx`:56 - `IGESGraph_Color::CMYIntensity()`
     pub fn cmy_intensity(&self, Cyan: &mut f64, Magenta: &mut f64, Yellow: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_Color_cmy_intensity(
                     self as *const Self,
                     Cyan,
@@ -104,14 +115,16 @@ impl Color {
                     Yellow,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IGESGraph_Color.hxx`:60 - `IGESGraph_Color::HLSPercentage()`
     pub fn hls_percentage(&self, Hue: &mut f64, Lightness: &mut f64, Saturation: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_Color_hls_percentage(
                     self as *const Self,
                     Hue,
@@ -119,7 +132,9 @@ impl Color {
                     Saturation,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -130,8 +145,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_has_color_name(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -141,8 +159,11 @@ impl Color {
     pub fn color_name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_Color_color_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -150,8 +171,11 @@ impl Color {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESGraph_Color_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -159,8 +183,11 @@ impl Color {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESGraph_Color_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -168,82 +195,83 @@ impl Color {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESGraph_Color_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESData_ColorEntity
     pub fn as_iges_data_color_entity(&self) -> &crate::iges_data::ColorEntity {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESGraph_Color_as_IGESData_ColorEntity(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_Color_as_IGESData_ColorEntity(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_ColorEntity (mutable)
     pub fn as_iges_data_color_entity_mut(&mut self) -> &mut crate::iges_data::ColorEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_Color_as_IGESData_ColorEntity_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_Color_as_IGESData_ColorEntity_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESGraph_Color_as_IGESData_IGESEntity(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_Color_as_IGESData_IGESEntity(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_Color_as_IGESData_IGESEntity_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_Color_as_IGESData_IGESEntity_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESGraph_Color_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_Color_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESGraph_Color_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_Color_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphColor> {
-        {
-            let __result = unsafe { crate::ffi::IGESGraph_Color_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESGraph_Color_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
@@ -251,8 +279,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_IGESType(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -261,8 +292,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_TypeNumber(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -271,8 +305,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_FormNumber(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -285,8 +322,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_DirFieldEntity(self as *const Self, fieldnum)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -295,8 +335,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_HasStructure(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -305,8 +348,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_Structure(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -315,8 +361,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_DefLineFont(self as *const Self) };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -325,8 +374,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_RankLineFont(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -335,8 +387,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_LineFont(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -345,8 +400,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_DefLevel(self as *const Self) };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -355,8 +413,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_Level(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -365,8 +426,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_LevelList(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -375,8 +439,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_DefView(self as *const Self) };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -385,8 +452,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_View(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -395,8 +465,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_SingleView(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -405,8 +478,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_ViewList(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -415,8 +491,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_HasTransf(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -425,8 +504,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_Transf(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -436,8 +518,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_HasLabelDisplay(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -446,8 +531,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_LabelDisplay(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -456,8 +544,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_BlankStatus(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -467,8 +558,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_SubordinateStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -477,8 +571,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_UseFlag(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -488,8 +585,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_HierarchyStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -499,8 +599,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_LineWeightNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -509,8 +612,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_LineWeight(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -519,8 +625,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_DefColor(self as *const Self) };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -529,8 +638,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_RankColor(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -539,8 +651,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_Color(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -549,8 +664,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_HasShortLabel(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -559,8 +677,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_ShortLabel(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -570,8 +691,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_HasSubScriptNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -581,8 +705,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_SubScriptNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -593,65 +720,81 @@ impl Color {
         ent: &crate::ffi::HandleIGESDataIGESEntity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_InitDirFieldEntity(
                     self as *mut Self,
                     fieldnum,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
     pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
         {
-            unsafe { crate::ffi::IGESGraph_Color_inherited_InitTransf(self as *mut Self, ent) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESGraph_Color_inherited_InitTransf(self as *mut Self, ent) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
     pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
         {
-            unsafe { crate::ffi::IGESGraph_Color_inherited_InitView(self as *mut Self, ent) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESGraph_Color_inherited_InitView(self as *mut Self, ent) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
     pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_InitLineFont(self as *mut Self, ent, rank)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
     pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
         {
-            unsafe { crate::ffi::IGESGraph_Color_inherited_InitLevel(self as *mut Self, ent, val) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_Color_inherited_InitLevel(self as *mut Self, ent, val)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
     pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_InitColor(self as *mut Self, ent, rank)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_InitStatus(
                     self as *mut Self,
                     blank,
@@ -660,17 +803,21 @@ impl Color {
                     hierarchy,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
     pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_SetLabel(self as *mut Self, label, sub)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -682,7 +829,7 @@ impl Color {
         weightnum: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_InitMisc(
                     self as *mut Self,
                     str,
@@ -690,7 +837,9 @@ impl Color {
                     weightnum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -699,8 +848,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_HasOneParent(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -709,8 +861,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_UniqueParent(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -719,8 +874,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_Location(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -730,8 +888,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_VectorLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -741,8 +902,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_CompoundLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -751,8 +915,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_HasName(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -761,8 +928,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_NameValue(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -772,8 +942,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_ArePresentAssociativities(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -783,8 +956,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_NbAssociativities(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -794,8 +970,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_Associativities(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -808,8 +987,11 @@ impl Color {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -822,24 +1004,35 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_TypedAssociativity(self as *const Self, atype)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
     pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe { crate::ffi::IGESGraph_Color_inherited_Associate(self as *const Self, ent) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_Color_inherited_Associate(self as *const Self, ent)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
     pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe { crate::ffi::IGESGraph_Color_inherited_Dissociate(self as *const Self, ent) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_Color_inherited_Dissociate(self as *const Self, ent)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -849,8 +1042,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_ArePresentProperties(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -859,8 +1055,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_NbProperties(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -869,8 +1068,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_Properties(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -880,8 +1082,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_NbTypedProperties(self as *const Self, atype)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -899,31 +1104,42 @@ impl Color {
                     anum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
     pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe { crate::ffi::IGESGraph_Color_inherited_AddProperty(self as *mut Self, ent) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_Color_inherited_AddProperty(self as *mut Self, ent)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
     pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe { crate::ffi::IGESGraph_Color_inherited_RemoveProperty(self as *mut Self, ent) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_Color_inherited_RemoveProperty(self as *mut Self, ent)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_SetLineWeight(
                     self as *mut Self,
                     defw,
@@ -931,7 +1147,9 @@ impl Color {
                     gradw,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -941,8 +1159,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -952,8 +1173,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -962,11 +1186,14 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -976,16 +1203,23 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Color_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::IGESGraph_Color_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_Color_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -995,16 +1229,22 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Color_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESGraph_Color_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESGraph_Color_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1020,53 +1260,53 @@ unsafe impl crate::CppDeletable for HandleIGESGraphColor {
 impl HandleIGESGraphColor {
     /// Dereference this Handle to access the underlying IGESGraph_Color
     pub fn get(&self) -> &crate::ffi::IGESGraph_Color {
-        {
-            let __result = unsafe { crate::ffi::HandleIGESGraphColor_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESGraphColor_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESGraph_Color
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGraph_Color {
-        {
-            let __result = unsafe { crate::ffi::HandleIGESGraphColor_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleIGESGraphColor_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESGraph_Color> to Handle<IGESData_ColorEntity>
     pub fn to_handle_color_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphColor_to_HandleIGESDataColorEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphColor_to_HandleIGESDataColorEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_Color> to Handle<IGESData_IGESEntity>
     pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphColor_to_HandleIGESDataIGESEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphColor_to_HandleIGESDataIGESEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_Color> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphColor_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphColor_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1093,8 +1333,10 @@ impl DefinitionLevel {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_DefinitionLevel_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1104,10 +1346,12 @@ impl DefinitionLevel {
     /// - allLevelNumbers : Values of Level Numbers
     pub fn init(&mut self, allLevelNumbers: &crate::ffi::HandleTColStdHArray1OfInteger) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_init(self as *mut Self, allLevelNumbers)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1118,8 +1362,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_nb_property_values(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1130,8 +1377,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_nb_level_numbers(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1144,8 +1394,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_level_number(self as *const Self, LevelIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1154,8 +1407,11 @@ impl DefinitionLevel {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_DefinitionLevel_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1163,8 +1419,11 @@ impl DefinitionLevel {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESGraph_DefinitionLevel_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1172,91 +1431,89 @@ impl DefinitionLevel {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESGraph_DefinitionLevel_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESData_LevelListEntity
     pub fn as_iges_data_level_list_entity(&self) -> &crate::iges_data::LevelListEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_DefinitionLevel_as_IGESData_LevelListEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_DefinitionLevel_as_IGESData_LevelListEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_LevelListEntity (mutable)
     pub fn as_iges_data_level_list_entity_mut(&mut self) -> &mut crate::iges_data::LevelListEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_DefinitionLevel_as_IGESData_LevelListEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_DefinitionLevel_as_IGESData_LevelListEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_DefinitionLevel_as_IGESData_IGESEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_DefinitionLevel_as_IGESData_IGESEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_DefinitionLevel_as_IGESData_IGESEntity_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_DefinitionLevel_as_IGESData_IGESEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_DefinitionLevel_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_DefinitionLevel_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_DefinitionLevel_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_DefinitionLevel_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphDefinitionLevel> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESGraph_DefinitionLevel_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESGraph_DefinitionLevel_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESData_LevelListEntity.hxx`:42 - `IGESData_LevelListEntity::HasLevelNumber()`
@@ -1268,8 +1525,11 @@ impl DefinitionLevel {
                     level,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1279,8 +1539,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_IGESType(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1290,8 +1553,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_TypeNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1301,8 +1567,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_FormNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1318,8 +1587,11 @@ impl DefinitionLevel {
                     fieldnum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1329,8 +1601,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_HasStructure(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1340,8 +1615,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_Structure(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1351,8 +1629,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_DefLineFont(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -1362,8 +1643,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_RankLineFont(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1373,8 +1657,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_LineFont(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1384,8 +1671,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_DefLevel(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -1395,8 +1685,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_Level(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1406,8 +1699,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_LevelList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1417,8 +1713,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_DefView(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -1428,8 +1727,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_View(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1439,8 +1741,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_SingleView(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1450,8 +1755,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_ViewList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1461,8 +1769,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_HasTransf(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1472,8 +1783,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_Transf(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1483,8 +1797,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_HasLabelDisplay(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1494,8 +1811,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_LabelDisplay(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1505,8 +1825,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_BlankStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1518,8 +1841,11 @@ impl DefinitionLevel {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1529,8 +1855,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_UseFlag(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1540,8 +1869,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_HierarchyStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1553,8 +1885,11 @@ impl DefinitionLevel {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1564,8 +1899,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_LineWeight(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1575,8 +1913,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_DefColor(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -1586,8 +1927,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_RankColor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1597,8 +1941,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_Color(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1608,8 +1955,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_HasShortLabel(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1619,8 +1969,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_ShortLabel(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1632,8 +1985,11 @@ impl DefinitionLevel {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1643,8 +1999,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_SubScriptNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1655,83 +2014,95 @@ impl DefinitionLevel {
         ent: &crate::ffi::HandleIGESDataIGESEntity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_InitDirFieldEntity(
                     self as *mut Self,
                     fieldnum,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
     pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_InitTransf(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
     pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_InitView(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
     pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_InitLineFont(
                     self as *mut Self,
                     ent,
                     rank,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
     pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_InitLevel(
                     self as *mut Self,
                     ent,
                     val,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
     pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_InitColor(
                     self as *mut Self,
                     ent,
                     rank,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_InitStatus(
                     self as *mut Self,
                     blank,
@@ -1740,21 +2111,25 @@ impl DefinitionLevel {
                     hierarchy,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
     pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_SetLabel(
                     self as *mut Self,
                     label,
                     sub,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1766,7 +2141,7 @@ impl DefinitionLevel {
         weightnum: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_InitMisc(
                     self as *mut Self,
                     str,
@@ -1774,7 +2149,9 @@ impl DefinitionLevel {
                     weightnum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1784,8 +2161,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_HasOneParent(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1795,8 +2175,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_UniqueParent(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1806,8 +2189,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_Location(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1817,8 +2203,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_VectorLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1830,8 +2219,11 @@ impl DefinitionLevel {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1841,8 +2233,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_HasName(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1852,8 +2247,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_NameValue(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1865,8 +2263,11 @@ impl DefinitionLevel {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1878,8 +2279,11 @@ impl DefinitionLevel {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1889,8 +2293,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_Associativities(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1903,8 +2310,11 @@ impl DefinitionLevel {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1920,28 +2330,35 @@ impl DefinitionLevel {
                     atype,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
     pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_Associate(self as *const Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
     pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_Dissociate(self as *const Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1953,8 +2370,11 @@ impl DefinitionLevel {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1964,8 +2384,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_NbProperties(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1975,8 +2398,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_Properties(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1989,8 +2415,11 @@ impl DefinitionLevel {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2008,38 +2437,45 @@ impl DefinitionLevel {
                     anum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
     pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_AddProperty(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
     pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_RemoveProperty(
                     self as *mut Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_SetLineWeight(
                     self as *mut Self,
                     defw,
@@ -2047,7 +2483,9 @@ impl DefinitionLevel {
                     gradw,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2060,8 +2498,11 @@ impl DefinitionLevel {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2071,8 +2512,11 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2082,11 +2526,14 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2097,20 +2544,25 @@ impl DefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DefinitionLevel_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2122,16 +2574,23 @@ impl DefinitionLevel {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESGraph_DefinitionLevel_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_DefinitionLevel_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2147,63 +2606,63 @@ unsafe impl crate::CppDeletable for HandleIGESGraphDefinitionLevel {
 impl HandleIGESGraphDefinitionLevel {
     /// Dereference this Handle to access the underlying IGESGraph_DefinitionLevel
     pub fn get(&self) -> &crate::ffi::IGESGraph_DefinitionLevel {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphDefinitionLevel_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphDefinitionLevel_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESGraph_DefinitionLevel
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGraph_DefinitionLevel {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphDefinitionLevel_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphDefinitionLevel_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESGraph_DefinitionLevel> to Handle<IGESData_LevelListEntity>
     pub fn to_handle_level_list_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphDefinitionLevel_to_HandleIGESDataLevelListEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphDefinitionLevel_to_HandleIGESDataLevelListEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_DefinitionLevel> to Handle<IGESData_IGESEntity>
     pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphDefinitionLevel_to_HandleIGESDataIGESEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphDefinitionLevel_to_HandleIGESDataIGESEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_DefinitionLevel> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphDefinitionLevel_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphDefinitionLevel_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2231,8 +2690,10 @@ impl DrawingSize {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_DrawingSize_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2244,10 +2705,12 @@ impl DrawingSize {
     /// - aYSize  : Extent of Drawing along positive YD axis
     pub fn init(&mut self, nbProps: i32, aXSize: f64, aYSize: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_init(self as *mut Self, nbProps, aXSize, aYSize)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2258,8 +2721,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_nb_property_values(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2268,8 +2734,11 @@ impl DrawingSize {
     pub fn x_size(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::IGESGraph_DrawingSize_x_size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2278,8 +2747,11 @@ impl DrawingSize {
     pub fn y_size(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::IGESGraph_DrawingSize_y_size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2288,8 +2760,11 @@ impl DrawingSize {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_DrawingSize_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2297,8 +2772,11 @@ impl DrawingSize {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESGraph_DrawingSize_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2306,64 +2784,66 @@ impl DrawingSize {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESGraph_DrawingSize_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_DrawingSize_as_IGESData_IGESEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_DrawingSize_as_IGESData_IGESEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_DrawingSize_as_IGESData_IGESEntity_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_DrawingSize_as_IGESData_IGESEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_DrawingSize_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_DrawingSize_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_DrawingSize_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_DrawingSize_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphDrawingSize> {
-        {
-            let __result = unsafe { crate::ffi::IGESGraph_DrawingSize_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESGraph_DrawingSize_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
@@ -2372,8 +2852,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_IGESType(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2383,8 +2866,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_TypeNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2394,8 +2880,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_FormNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2411,8 +2900,11 @@ impl DrawingSize {
                     fieldnum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2422,8 +2914,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_HasStructure(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2433,8 +2928,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_Structure(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2444,8 +2942,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_DefLineFont(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -2455,8 +2956,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_RankLineFont(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2466,8 +2970,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_LineFont(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2477,8 +2984,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_DefLevel(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -2487,8 +2997,11 @@ impl DrawingSize {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_DrawingSize_inherited_Level(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2498,8 +3011,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_LevelList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2508,8 +3024,11 @@ impl DrawingSize {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_DrawingSize_inherited_DefView(self as *const Self) };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -2518,8 +3037,11 @@ impl DrawingSize {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_DrawingSize_inherited_View(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2529,8 +3051,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_SingleView(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2540,8 +3065,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_ViewList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2551,8 +3079,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_HasTransf(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2561,8 +3092,11 @@ impl DrawingSize {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_DrawingSize_inherited_Transf(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2572,8 +3106,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_HasLabelDisplay(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2583,8 +3120,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_LabelDisplay(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2594,8 +3134,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_BlankStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2605,8 +3148,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_SubordinateStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2615,8 +3161,11 @@ impl DrawingSize {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_DrawingSize_inherited_UseFlag(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2626,8 +3175,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_HierarchyStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2637,8 +3189,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_LineWeightNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2648,8 +3203,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_LineWeight(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2659,8 +3217,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_DefColor(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -2670,8 +3231,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_RankColor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2680,8 +3244,11 @@ impl DrawingSize {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_DrawingSize_inherited_Color(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2691,8 +3258,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_HasShortLabel(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2702,8 +3272,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_ShortLabel(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2713,8 +3286,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_HasSubScriptNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2724,8 +3300,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_SubScriptNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2736,73 +3315,87 @@ impl DrawingSize {
         ent: &crate::ffi::HandleIGESDataIGESEntity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_InitDirFieldEntity(
                     self as *mut Self,
                     fieldnum,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
     pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_InitTransf(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
     pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
         {
-            unsafe { crate::ffi::IGESGraph_DrawingSize_inherited_InitView(self as *mut Self, ent) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_DrawingSize_inherited_InitView(self as *mut Self, ent)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
     pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_InitLineFont(
                     self as *mut Self,
                     ent,
                     rank,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
     pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_InitLevel(self as *mut Self, ent, val)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
     pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_InitColor(self as *mut Self, ent, rank)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_InitStatus(
                     self as *mut Self,
                     blank,
@@ -2811,17 +3404,21 @@ impl DrawingSize {
                     hierarchy,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
     pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_SetLabel(self as *mut Self, label, sub)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2833,7 +3430,7 @@ impl DrawingSize {
         weightnum: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_InitMisc(
                     self as *mut Self,
                     str,
@@ -2841,7 +3438,9 @@ impl DrawingSize {
                     weightnum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2851,8 +3450,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_HasOneParent(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2862,8 +3464,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_UniqueParent(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2873,8 +3478,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_Location(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2884,8 +3492,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_VectorLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2895,8 +3506,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_CompoundLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2905,8 +3519,11 @@ impl DrawingSize {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_DrawingSize_inherited_HasName(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2916,8 +3533,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_NameValue(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2929,8 +3549,11 @@ impl DrawingSize {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2940,8 +3563,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_NbAssociativities(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2951,8 +3577,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_Associativities(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2965,8 +3594,11 @@ impl DrawingSize {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2982,28 +3614,35 @@ impl DrawingSize {
                     atype,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
     pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_Associate(self as *const Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
     pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_Dissociate(self as *const Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3015,8 +3654,11 @@ impl DrawingSize {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3026,8 +3668,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_NbProperties(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3037,8 +3682,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_Properties(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3051,8 +3699,11 @@ impl DrawingSize {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3070,35 +3721,42 @@ impl DrawingSize {
                     anum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
     pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_AddProperty(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
     pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_RemoveProperty(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_SetLineWeight(
                     self as *mut Self,
                     defw,
@@ -3106,7 +3764,9 @@ impl DrawingSize {
                     gradw,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3116,8 +3776,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3127,8 +3790,11 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3137,11 +3803,14 @@ impl DrawingSize {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_DrawingSize_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3152,18 +3821,23 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3173,16 +3847,22 @@ impl DrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingSize_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESGraph_DrawingSize_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESGraph_DrawingSize_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3198,48 +3878,42 @@ unsafe impl crate::CppDeletable for HandleIGESGraphDrawingSize {
 impl HandleIGESGraphDrawingSize {
     /// Dereference this Handle to access the underlying IGESGraph_DrawingSize
     pub fn get(&self) -> &crate::ffi::IGESGraph_DrawingSize {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphDrawingSize_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESGraphDrawingSize_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESGraph_DrawingSize
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGraph_DrawingSize {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphDrawingSize_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleIGESGraphDrawingSize_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESGraph_DrawingSize> to Handle<IGESData_IGESEntity>
     pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphDrawingSize_to_HandleIGESDataIGESEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphDrawingSize_to_HandleIGESDataIGESEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_DrawingSize> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphDrawingSize_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphDrawingSize_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3266,8 +3940,10 @@ impl DrawingUnits {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_DrawingUnits_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3284,10 +3960,12 @@ impl DrawingUnits {
         aUnit: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_init(self as *mut Self, nbProps, aFlag, aUnit)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3298,8 +3976,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_nb_property_values(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3308,8 +3989,11 @@ impl DrawingUnits {
     pub fn flag(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IGESGraph_DrawingUnits_flag(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3318,8 +4002,11 @@ impl DrawingUnits {
     pub fn unit(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_DrawingUnits_unit(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3330,8 +4017,11 @@ impl DrawingUnits {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_DrawingUnits_unit_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3340,8 +4030,11 @@ impl DrawingUnits {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_DrawingUnits_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3349,8 +4042,11 @@ impl DrawingUnits {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESGraph_DrawingUnits_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3358,64 +4054,67 @@ impl DrawingUnits {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESGraph_DrawingUnits_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_DrawingUnits_as_IGESData_IGESEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_DrawingUnits_as_IGESData_IGESEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_DrawingUnits_as_IGESData_IGESEntity_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_DrawingUnits_as_IGESData_IGESEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_DrawingUnits_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_DrawingUnits_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_DrawingUnits_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_DrawingUnits_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphDrawingUnits> {
-        {
-            let __result = unsafe { crate::ffi::IGESGraph_DrawingUnits_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESGraph_DrawingUnits_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
@@ -3424,8 +4123,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_IGESType(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3435,8 +4137,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_TypeNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3446,8 +4151,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_FormNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3463,8 +4171,11 @@ impl DrawingUnits {
                     fieldnum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3474,8 +4185,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_HasStructure(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3485,8 +4199,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_Structure(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3496,8 +4213,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_DefLineFont(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -3507,8 +4227,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_RankLineFont(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3518,8 +4241,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_LineFont(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3529,8 +4255,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_DefLevel(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -3539,8 +4268,11 @@ impl DrawingUnits {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_DrawingUnits_inherited_Level(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3550,8 +4282,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_LevelList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3561,8 +4296,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_DefView(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -3571,8 +4309,11 @@ impl DrawingUnits {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_DrawingUnits_inherited_View(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3582,8 +4323,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_SingleView(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3593,8 +4337,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_ViewList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3604,8 +4351,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_HasTransf(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3614,8 +4364,11 @@ impl DrawingUnits {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_DrawingUnits_inherited_Transf(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3625,8 +4378,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_HasLabelDisplay(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3636,8 +4392,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_LabelDisplay(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3647,8 +4406,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_BlankStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3658,8 +4420,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_SubordinateStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3669,8 +4434,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_UseFlag(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3680,8 +4448,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_HierarchyStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3691,8 +4462,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_LineWeightNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3702,8 +4476,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_LineWeight(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3713,8 +4490,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_DefColor(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -3724,8 +4504,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_RankColor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3734,8 +4517,11 @@ impl DrawingUnits {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_DrawingUnits_inherited_Color(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3745,8 +4531,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_HasShortLabel(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3756,8 +4545,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_ShortLabel(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3767,8 +4559,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_HasSubScriptNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3778,8 +4573,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_SubScriptNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3790,75 +4588,87 @@ impl DrawingUnits {
         ent: &crate::ffi::HandleIGESDataIGESEntity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_InitDirFieldEntity(
                     self as *mut Self,
                     fieldnum,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
     pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_InitTransf(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
     pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_InitView(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
     pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_InitLineFont(
                     self as *mut Self,
                     ent,
                     rank,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
     pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_InitLevel(self as *mut Self, ent, val)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
     pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_InitColor(self as *mut Self, ent, rank)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_InitStatus(
                     self as *mut Self,
                     blank,
@@ -3867,17 +4677,21 @@ impl DrawingUnits {
                     hierarchy,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
     pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_SetLabel(self as *mut Self, label, sub)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3889,7 +4703,7 @@ impl DrawingUnits {
         weightnum: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_InitMisc(
                     self as *mut Self,
                     str,
@@ -3897,7 +4711,9 @@ impl DrawingUnits {
                     weightnum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3907,8 +4723,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_HasOneParent(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3918,8 +4737,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_UniqueParent(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3929,8 +4751,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_Location(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3940,8 +4765,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_VectorLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3951,8 +4779,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_CompoundLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3962,8 +4793,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_HasName(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3973,8 +4807,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_NameValue(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3986,8 +4823,11 @@ impl DrawingUnits {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3997,8 +4837,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_NbAssociativities(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4008,8 +4851,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_Associativities(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4022,8 +4868,11 @@ impl DrawingUnits {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4039,28 +4888,35 @@ impl DrawingUnits {
                     atype,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
     pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_Associate(self as *const Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
     pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_Dissociate(self as *const Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4072,8 +4928,11 @@ impl DrawingUnits {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4083,8 +4942,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_NbProperties(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4094,8 +4956,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_Properties(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4108,8 +4973,11 @@ impl DrawingUnits {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4127,35 +4995,42 @@ impl DrawingUnits {
                     anum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
     pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_AddProperty(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
     pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_RemoveProperty(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_SetLineWeight(
                     self as *mut Self,
                     defw,
@@ -4163,7 +5038,9 @@ impl DrawingUnits {
                     gradw,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4176,8 +5053,11 @@ impl DrawingUnits {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4187,8 +5067,11 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4197,11 +5080,14 @@ impl DrawingUnits {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_DrawingUnits_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4212,18 +5098,23 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4233,16 +5124,22 @@ impl DrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_DrawingUnits_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESGraph_DrawingUnits_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESGraph_DrawingUnits_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4258,48 +5155,43 @@ unsafe impl crate::CppDeletable for HandleIGESGraphDrawingUnits {
 impl HandleIGESGraphDrawingUnits {
     /// Dereference this Handle to access the underlying IGESGraph_DrawingUnits
     pub fn get(&self) -> &crate::ffi::IGESGraph_DrawingUnits {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphDrawingUnits_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESGraphDrawingUnits_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESGraph_DrawingUnits
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGraph_DrawingUnits {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphDrawingUnits_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphDrawingUnits_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESGraph_DrawingUnits> to Handle<IGESData_IGESEntity>
     pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphDrawingUnits_to_HandleIGESDataIGESEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphDrawingUnits_to_HandleIGESDataIGESEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_DrawingUnits> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphDrawingUnits_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphDrawingUnits_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4324,8 +5216,10 @@ impl GeneralModule {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_GeneralModule_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4339,7 +5233,7 @@ impl GeneralModule {
         iter: &mut crate::interface::EntityIterator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_own_shared_case(
                     self as *const Self,
                     CN,
@@ -4347,7 +5241,9 @@ impl GeneralModule {
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4364,8 +5260,11 @@ impl GeneralModule {
             let __result = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_dir_checker(self as *const Self, CN, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4379,7 +5278,7 @@ impl GeneralModule {
         ach: &mut crate::ffi::HandleInterfaceCheck,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_own_check_case(
                     self as *const Self,
                     CN,
@@ -4388,7 +5287,9 @@ impl GeneralModule {
                     ach,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4399,8 +5300,11 @@ impl GeneralModule {
             let __result = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_new_void(self as *const Self, CN, entto)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4414,7 +5318,7 @@ impl GeneralModule {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_own_copy_case(
                     self as *const Self,
                     CN,
@@ -4423,7 +5327,9 @@ impl GeneralModule {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4445,8 +5351,11 @@ impl GeneralModule {
                     shares,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4455,8 +5364,11 @@ impl GeneralModule {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_GeneralModule_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4464,8 +5376,11 @@ impl GeneralModule {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESGraph_GeneralModule_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4473,88 +5388,89 @@ impl GeneralModule {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESGraph_GeneralModule_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESData_GeneralModule
     pub fn as_iges_data_general_module(&self) -> &crate::iges_data::GeneralModule {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_GeneralModule_as_IGESData_GeneralModule(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_GeneralModule_as_IGESData_GeneralModule(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_GeneralModule (mutable)
     pub fn as_iges_data_general_module_mut(&mut self) -> &mut crate::iges_data::GeneralModule {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_GeneralModule_as_IGESData_GeneralModule_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_GeneralModule_as_IGESData_GeneralModule_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Interface_GeneralModule
     pub fn as_interface_general_module(&self) -> &crate::interface::GeneralModule {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_GeneralModule_as_Interface_GeneralModule(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_GeneralModule_as_Interface_GeneralModule(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Interface_GeneralModule (mutable)
     pub fn as_interface_general_module_mut(&mut self) -> &mut crate::interface::GeneralModule {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_GeneralModule_as_Interface_GeneralModule_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_GeneralModule_as_Interface_GeneralModule_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_GeneralModule_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_GeneralModule_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_GeneralModule_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_GeneralModule_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphGeneralModule> {
-        {
-            let __result = unsafe { crate::ffi::IGESGraph_GeneralModule_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESGraph_GeneralModule_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:50 - `IGESData_GeneralModule::FillSharedCase()`
@@ -4565,7 +5481,7 @@ impl GeneralModule {
         iter: &mut crate::interface::EntityIterator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_inherited_FillSharedCase(
                     self as *const Self,
                     CN,
@@ -4573,7 +5489,9 @@ impl GeneralModule {
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4585,7 +5503,7 @@ impl GeneralModule {
         iter: &mut crate::interface::EntityIterator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_inherited_ListImpliedCase(
                     self as *const Self,
                     CN,
@@ -4593,7 +5511,9 @@ impl GeneralModule {
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4605,7 +5525,7 @@ impl GeneralModule {
         iter: &mut crate::interface::EntityIterator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_inherited_OwnImpliedCase(
                     self as *const Self,
                     CN,
@@ -4613,7 +5533,9 @@ impl GeneralModule {
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4626,7 +5548,7 @@ impl GeneralModule {
         ach: &mut crate::ffi::HandleInterfaceCheck,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_inherited_CheckCase(
                     self as *const Self,
                     CN,
@@ -4635,7 +5557,9 @@ impl GeneralModule {
                     ach,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4645,8 +5569,11 @@ impl GeneralModule {
             let __result = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_inherited_CanCopy(self as *const Self, CN, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4659,7 +5586,7 @@ impl GeneralModule {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_inherited_CopyCase(
                     self as *const Self,
                     CN,
@@ -4668,7 +5595,9 @@ impl GeneralModule {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4681,7 +5610,7 @@ impl GeneralModule {
         TC: &crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_inherited_RenewImpliedCase(
                     self as *const Self,
                     CN,
@@ -4690,7 +5619,9 @@ impl GeneralModule {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4703,7 +5634,7 @@ impl GeneralModule {
         TC: &crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_inherited_OwnRenewCase(
                     self as *const Self,
                     CN,
@@ -4712,7 +5643,9 @@ impl GeneralModule {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4724,7 +5657,7 @@ impl GeneralModule {
         dispatched: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_inherited_WhenDeleteCase(
                     self as *const Self,
                     CN,
@@ -4732,21 +5665,25 @@ impl GeneralModule {
                     dispatched,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:149 - `IGESData_GeneralModule::OwnDeleteCase()`
     pub fn own_delete_case(&self, CN: i32, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_inherited_OwnDeleteCase(
                     self as *const Self,
                     CN,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4766,8 +5703,11 @@ impl GeneralModule {
                     shares,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4780,7 +5720,7 @@ impl GeneralModule {
         iter: &mut crate::interface::EntityIterator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_inherited_FillShared(
                     self as *const Self,
                     model,
@@ -4789,7 +5729,9 @@ impl GeneralModule {
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4800,14 +5742,16 @@ impl GeneralModule {
         shared: &crate::ffi::HandleStandardTransient,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_inherited_Share(
                     self as *const Self,
                     iter,
                     shared,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4820,7 +5764,7 @@ impl GeneralModule {
         iter: &mut crate::interface::EntityIterator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_inherited_ListImplied(
                     self as *const Self,
                     model,
@@ -4829,7 +5773,9 @@ impl GeneralModule {
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4851,8 +5797,11 @@ impl GeneralModule {
                     TC,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4874,8 +5823,11 @@ impl GeneralModule {
                     TC,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4888,8 +5840,11 @@ impl GeneralModule {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4899,8 +5854,11 @@ impl GeneralModule {
             let __result = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4909,11 +5867,14 @@ impl GeneralModule {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_GeneralModule_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4924,18 +5885,23 @@ impl GeneralModule {
             let __result = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4945,16 +5911,23 @@ impl GeneralModule {
             let __result = unsafe {
                 crate::ffi::IGESGraph_GeneralModule_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESGraph_GeneralModule_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_GeneralModule_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4970,65 +5943,62 @@ unsafe impl crate::CppDeletable for HandleIGESGraphGeneralModule {
 impl HandleIGESGraphGeneralModule {
     /// Dereference this Handle to access the underlying IGESGraph_GeneralModule
     pub fn get(&self) -> &crate::ffi::IGESGraph_GeneralModule {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphGeneralModule_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESGraphGeneralModule_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESGraph_GeneralModule
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGraph_GeneralModule {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphGeneralModule_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphGeneralModule_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESGraph_GeneralModule> to Handle<IGESData_GeneralModule>
     pub fn to_handle_iges_data_general_module(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataGeneralModule> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphGeneralModule_to_HandleIGESDataGeneralModule(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphGeneralModule_to_HandleIGESDataGeneralModule(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_GeneralModule> to Handle<Interface_GeneralModule>
     pub fn to_handle_interface_general_module(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceGeneralModule> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphGeneralModule_to_HandleInterfaceGeneralModule(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphGeneralModule_to_HandleInterfaceGeneralModule(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_GeneralModule> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphGeneralModule_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphGeneralModule_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5050,8 +6020,10 @@ impl HArray1OfColor {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_HArray1OfColor_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5060,8 +6032,10 @@ impl HArray1OfColor {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HArray1OfColor_ctor_int2(theLower, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5077,8 +6051,10 @@ impl HArray1OfColor {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5095,8 +6071,10 @@ impl HArray1OfColor {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5107,8 +6085,10 @@ impl HArray1OfColor {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HArray1OfColor_ctor_array1ofcolor(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5117,8 +6097,11 @@ impl HArray1OfColor {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HArray1OfColor_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5127,8 +6110,11 @@ impl HArray1OfColor {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HArray1OfColor_change_array1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5137,8 +6123,11 @@ impl HArray1OfColor {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HArray1OfColor_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5146,8 +6135,11 @@ impl HArray1OfColor {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESGraph_HArray1OfColor_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5155,43 +6147,45 @@ impl HArray1OfColor {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESGraph_HArray1OfColor_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_HArray1OfColor_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_HArray1OfColor_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_HArray1OfColor_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_HArray1OfColor_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphHArray1OfColor> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESGraph_HArray1OfColor_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESGraph_HArray1OfColor_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -5203,8 +6197,11 @@ impl HArray1OfColor {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5214,8 +6211,11 @@ impl HArray1OfColor {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HArray1OfColor_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5224,11 +6224,14 @@ impl HArray1OfColor {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HArray1OfColor_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5239,20 +6242,25 @@ impl HArray1OfColor {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HArray1OfColor_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_HArray1OfColor_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5264,16 +6272,23 @@ impl HArray1OfColor {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESGraph_HArray1OfColor_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_HArray1OfColor_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5289,35 +6304,35 @@ unsafe impl crate::CppDeletable for HandleIGESGraphHArray1OfColor {
 impl HandleIGESGraphHArray1OfColor {
     /// Dereference this Handle to access the underlying IGESGraph_HArray1OfColor
     pub fn get(&self) -> &crate::ffi::IGESGraph_HArray1OfColor {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphHArray1OfColor_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphHArray1OfColor_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESGraph_HArray1OfColor
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGraph_HArray1OfColor {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphHArray1OfColor_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphHArray1OfColor_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESGraph_HArray1OfColor> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphHArray1OfColor_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphHArray1OfColor_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5339,8 +6354,10 @@ impl HArray1OfTextDisplayTemplate {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5350,8 +6367,10 @@ impl HArray1OfTextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_ctor_int2(theLower, theUpper)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5365,8 +6384,10 @@ impl HArray1OfTextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_ctor_int2_handleigesgraphtextdisplaytemplate(theLower, theUpper, theValue)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5381,8 +6402,10 @@ impl HArray1OfTextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_ctor_handleigesgraphtextdisplaytemplate_int2_bool(theBegin, theLower, theUpper, arg3)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5396,8 +6419,10 @@ impl HArray1OfTextDisplayTemplate {
                     theOther,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5407,8 +6432,11 @@ impl HArray1OfTextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_array1(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5418,8 +6446,11 @@ impl HArray1OfTextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_change_array1(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5429,8 +6460,11 @@ impl HArray1OfTextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5439,8 +6473,11 @@ impl HArray1OfTextDisplayTemplate {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5449,48 +6486,50 @@ impl HArray1OfTextDisplayTemplate {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphHArray1OfTextDisplayTemplate> {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -5502,8 +6541,11 @@ impl HArray1OfTextDisplayTemplate {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5516,8 +6558,11 @@ impl HArray1OfTextDisplayTemplate {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5529,11 +6574,14 @@ impl HArray1OfTextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5546,20 +6594,25 @@ impl HArray1OfTextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5571,20 +6624,25 @@ impl HArray1OfTextDisplayTemplate {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5600,37 +6658,37 @@ unsafe impl crate::CppDeletable for HandleIGESGraphHArray1OfTextDisplayTemplate 
 impl HandleIGESGraphHArray1OfTextDisplayTemplate {
     /// Dereference this Handle to access the underlying IGESGraph_HArray1OfTextDisplayTemplate
     pub fn get(&self) -> &crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphHArray1OfTextDisplayTemplate_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphHArray1OfTextDisplayTemplate_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESGraph_HArray1OfTextDisplayTemplate
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGraph_HArray1OfTextDisplayTemplate {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphHArray1OfTextDisplayTemplate_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphHArray1OfTextDisplayTemplate_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESGraph_HArray1OfTextDisplayTemplate> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphHArray1OfTextDisplayTemplate_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphHArray1OfTextDisplayTemplate_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5652,8 +6710,10 @@ impl HArray1OfTextFontDef {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_HArray1OfTextFontDef_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5662,8 +6722,10 @@ impl HArray1OfTextFontDef {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HArray1OfTextFontDef_ctor_int2(theLower, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5679,8 +6741,10 @@ impl HArray1OfTextFontDef {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5697,8 +6761,10 @@ impl HArray1OfTextFontDef {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5710,8 +6776,10 @@ impl HArray1OfTextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HArray1OfTextFontDef_ctor_array1oftextfontdef(theOther)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5720,8 +6788,11 @@ impl HArray1OfTextFontDef {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HArray1OfTextFontDef_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5731,8 +6802,11 @@ impl HArray1OfTextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HArray1OfTextFontDef_change_array1(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5742,8 +6816,11 @@ impl HArray1OfTextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HArray1OfTextFontDef_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5751,8 +6828,11 @@ impl HArray1OfTextFontDef {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESGraph_HArray1OfTextFontDef_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5761,47 +6841,46 @@ impl HArray1OfTextFontDef {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HArray1OfTextFontDef_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_HArray1OfTextFontDef_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_HArray1OfTextFontDef_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_HArray1OfTextFontDef_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_HArray1OfTextFontDef_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphHArray1OfTextFontDef> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESGraph_HArray1OfTextFontDef_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_HArray1OfTextFontDef_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -5813,8 +6892,11 @@ impl HArray1OfTextFontDef {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5827,8 +6909,11 @@ impl HArray1OfTextFontDef {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5838,11 +6923,14 @@ impl HArray1OfTextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HArray1OfTextFontDef_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5855,20 +6943,25 @@ impl HArray1OfTextFontDef {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_HArray1OfTextFontDef_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5880,18 +6973,23 @@ impl HArray1OfTextFontDef {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_HArray1OfTextFontDef_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5907,36 +7005,35 @@ unsafe impl crate::CppDeletable for HandleIGESGraphHArray1OfTextFontDef {
 impl HandleIGESGraphHArray1OfTextFontDef {
     /// Dereference this Handle to access the underlying IGESGraph_HArray1OfTextFontDef
     pub fn get(&self) -> &crate::ffi::IGESGraph_HArray1OfTextFontDef {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphHArray1OfTextFontDef_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphHArray1OfTextFontDef_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESGraph_HArray1OfTextFontDef
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGraph_HArray1OfTextFontDef {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphHArray1OfTextFontDef_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphHArray1OfTextFontDef_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESGraph_HArray1OfTextFontDef> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphHArray1OfTextFontDef_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphHArray1OfTextFontDef_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5963,8 +7060,10 @@ impl HighLight {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_HighLight_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5975,10 +7074,12 @@ impl HighLight {
     /// - aHighLightStatus : HighLight Flag
     pub fn init(&mut self, nbProps: i32, aHighLightStatus: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_HighLight_init(self as *mut Self, nbProps, aHighLightStatus)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5988,8 +7089,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_nb_property_values(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6000,8 +7104,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_high_light_status(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6011,8 +7118,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_is_high_lighted(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6021,8 +7131,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6030,8 +7143,11 @@ impl HighLight {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESGraph_HighLight_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6039,64 +7155,64 @@ impl HighLight {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESGraph_HighLight_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_HighLight_as_IGESData_IGESEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_HighLight_as_IGESData_IGESEntity(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_HighLight_as_IGESData_IGESEntity_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_HighLight_as_IGESData_IGESEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_HighLight_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_HighLight_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_HighLight_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_HighLight_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphHighLight> {
-        {
-            let __result = unsafe { crate::ffi::IGESGraph_HighLight_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESGraph_HighLight_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
@@ -6104,8 +7220,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_inherited_IGESType(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6115,8 +7234,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_TypeNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6126,8 +7248,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_FormNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6143,8 +7268,11 @@ impl HighLight {
                     fieldnum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6154,8 +7282,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_HasStructure(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6164,8 +7295,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_inherited_Structure(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6175,8 +7309,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_DefLineFont(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -6186,8 +7323,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_RankLineFont(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6196,8 +7336,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_inherited_LineFont(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6206,8 +7349,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_inherited_DefLevel(self as *const Self) };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -6216,8 +7362,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_inherited_Level(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6226,8 +7375,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_inherited_LevelList(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6236,8 +7388,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_inherited_DefView(self as *const Self) };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -6246,8 +7401,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_inherited_View(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6257,8 +7415,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_SingleView(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6267,8 +7428,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_inherited_ViewList(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6277,8 +7441,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_inherited_HasTransf(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6287,8 +7454,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_inherited_Transf(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6298,8 +7468,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_HasLabelDisplay(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6309,8 +7482,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_LabelDisplay(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6320,8 +7496,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_BlankStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6331,8 +7510,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_SubordinateStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6341,8 +7523,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_inherited_UseFlag(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6352,8 +7537,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_HierarchyStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6363,8 +7551,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_LineWeightNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6374,8 +7565,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_LineWeight(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6384,8 +7578,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_inherited_DefColor(self as *const Self) };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -6394,8 +7591,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_inherited_RankColor(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6404,8 +7604,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_inherited_Color(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6415,8 +7618,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_HasShortLabel(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6426,8 +7632,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_ShortLabel(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6437,8 +7646,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_HasSubScriptNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6448,8 +7660,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_SubScriptNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6460,67 +7675,83 @@ impl HighLight {
         ent: &crate::ffi::HandleIGESDataIGESEntity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_InitDirFieldEntity(
                     self as *mut Self,
                     fieldnum,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
     pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
         {
-            unsafe { crate::ffi::IGESGraph_HighLight_inherited_InitTransf(self as *mut Self, ent) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_HighLight_inherited_InitTransf(self as *mut Self, ent)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
     pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
         {
-            unsafe { crate::ffi::IGESGraph_HighLight_inherited_InitView(self as *mut Self, ent) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_HighLight_inherited_InitView(self as *mut Self, ent)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
     pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_InitLineFont(self as *mut Self, ent, rank)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
     pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_InitLevel(self as *mut Self, ent, val)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
     pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_InitColor(self as *mut Self, ent, rank)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_InitStatus(
                     self as *mut Self,
                     blank,
@@ -6529,17 +7760,21 @@ impl HighLight {
                     hierarchy,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
     pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_SetLabel(self as *mut Self, label, sub)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6551,7 +7786,7 @@ impl HighLight {
         weightnum: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_InitMisc(
                     self as *mut Self,
                     str,
@@ -6559,7 +7794,9 @@ impl HighLight {
                     weightnum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6569,8 +7806,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_HasOneParent(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6580,8 +7820,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_UniqueParent(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6590,8 +7833,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_inherited_Location(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6601,8 +7847,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_VectorLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6612,8 +7861,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_CompoundLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6622,8 +7874,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_inherited_HasName(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6632,8 +7887,11 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_inherited_NameValue(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6645,8 +7903,11 @@ impl HighLight {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6656,8 +7917,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_NbAssociativities(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6667,8 +7931,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_Associativities(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6681,8 +7948,11 @@ impl HighLight {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6698,28 +7968,35 @@ impl HighLight {
                     atype,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
     pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_Associate(self as *const Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
     pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_Dissociate(self as *const Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6729,8 +8006,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_ArePresentProperties(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6740,8 +8020,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_NbProperties(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6751,8 +8034,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_Properties(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6765,8 +8051,11 @@ impl HighLight {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6784,35 +8073,42 @@ impl HighLight {
                     anum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
     pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_AddProperty(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
     pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_RemoveProperty(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_SetLineWeight(
                     self as *mut Self,
                     defw,
@@ -6820,7 +8116,9 @@ impl HighLight {
                     gradw,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6830,8 +8128,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6841,8 +8142,11 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6851,11 +8155,14 @@ impl HighLight {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_HighLight_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6866,18 +8173,23 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6887,16 +8199,22 @@ impl HighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_HighLight_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESGraph_HighLight_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESGraph_HighLight_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6912,45 +8230,42 @@ unsafe impl crate::CppDeletable for HandleIGESGraphHighLight {
 impl HandleIGESGraphHighLight {
     /// Dereference this Handle to access the underlying IGESGraph_HighLight
     pub fn get(&self) -> &crate::ffi::IGESGraph_HighLight {
-        {
-            let __result = unsafe { crate::ffi::HandleIGESGraphHighLight_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESGraphHighLight_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESGraph_HighLight
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGraph_HighLight {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphHighLight_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleIGESGraphHighLight_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESGraph_HighLight> to Handle<IGESData_IGESEntity>
     pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphHighLight_to_HandleIGESDataIGESEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphHighLight_to_HandleIGESDataIGESEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_HighLight> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphHighLight_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphHighLight_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6977,8 +8292,10 @@ impl IntercharacterSpacing {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_IntercharacterSpacing_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6989,14 +8306,16 @@ impl IntercharacterSpacing {
     /// - anISpace : Intercharacter spacing percentage
     pub fn init(&mut self, nbProps: i32, anISpace: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_init(
                     self as *mut Self,
                     nbProps,
                     anISpace,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7007,8 +8326,11 @@ impl IntercharacterSpacing {
             let __result = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_nb_property_values(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7019,8 +8341,11 @@ impl IntercharacterSpacing {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_IntercharacterSpacing_i_space(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7030,8 +8355,11 @@ impl IntercharacterSpacing {
             let __result = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7039,8 +8367,11 @@ impl IntercharacterSpacing {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESGraph_IntercharacterSpacing_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -7049,73 +8380,70 @@ impl IntercharacterSpacing {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_IntercharacterSpacing_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_IntercharacterSpacing_as_IGESData_IGESEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_IntercharacterSpacing_as_IGESData_IGESEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_IntercharacterSpacing_as_IGESData_IGESEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_IntercharacterSpacing_as_IGESData_IGESEntity_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_IntercharacterSpacing_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_IntercharacterSpacing_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_IntercharacterSpacing_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_IntercharacterSpacing_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphIntercharacterSpacing> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESGraph_IntercharacterSpacing_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_IntercharacterSpacing_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
@@ -7124,8 +8452,11 @@ impl IntercharacterSpacing {
             let __result = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_IGESType(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7137,8 +8468,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7150,8 +8484,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7167,8 +8504,11 @@ impl IntercharacterSpacing {
                     fieldnum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7180,8 +8520,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7191,8 +8534,11 @@ impl IntercharacterSpacing {
             let __result = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_Structure(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7204,8 +8550,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -7217,8 +8566,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7228,8 +8580,11 @@ impl IntercharacterSpacing {
             let __result = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_LineFont(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7239,8 +8594,11 @@ impl IntercharacterSpacing {
             let __result = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_DefLevel(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -7250,8 +8608,11 @@ impl IntercharacterSpacing {
             let __result = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_Level(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7261,8 +8622,11 @@ impl IntercharacterSpacing {
             let __result = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_LevelList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7272,8 +8636,11 @@ impl IntercharacterSpacing {
             let __result = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_DefView(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -7283,8 +8650,11 @@ impl IntercharacterSpacing {
             let __result = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_View(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7296,8 +8666,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7307,8 +8680,11 @@ impl IntercharacterSpacing {
             let __result = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_ViewList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7318,8 +8694,11 @@ impl IntercharacterSpacing {
             let __result = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_HasTransf(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7329,8 +8708,11 @@ impl IntercharacterSpacing {
             let __result = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_Transf(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7342,8 +8724,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7355,8 +8740,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7368,8 +8756,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7381,8 +8772,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7392,8 +8786,11 @@ impl IntercharacterSpacing {
             let __result = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_UseFlag(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7405,8 +8802,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7418,8 +8818,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7431,8 +8834,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7442,8 +8848,11 @@ impl IntercharacterSpacing {
             let __result = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_DefColor(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -7453,8 +8862,11 @@ impl IntercharacterSpacing {
             let __result = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_RankColor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7464,8 +8876,11 @@ impl IntercharacterSpacing {
             let __result = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_Color(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7477,8 +8892,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7490,8 +8908,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7503,8 +8924,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7516,8 +8940,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7528,89 +8955,101 @@ impl IntercharacterSpacing {
         ent: &crate::ffi::HandleIGESDataIGESEntity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_InitDirFieldEntity(
                     self as *mut Self,
                     fieldnum,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
     pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_InitTransf(
                     self as *mut Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
     pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_InitView(
                     self as *mut Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
     pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_InitLineFont(
                     self as *mut Self,
                     ent,
                     rank,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
     pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_InitLevel(
                     self as *mut Self,
                     ent,
                     val,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
     pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_InitColor(
                     self as *mut Self,
                     ent,
                     rank,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_InitStatus(
                     self as *mut Self,
                     blank,
@@ -7619,21 +9058,25 @@ impl IntercharacterSpacing {
                     hierarchy,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
     pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_SetLabel(
                     self as *mut Self,
                     label,
                     sub,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7645,7 +9088,7 @@ impl IntercharacterSpacing {
         weightnum: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_InitMisc(
                     self as *mut Self,
                     str,
@@ -7653,7 +9096,9 @@ impl IntercharacterSpacing {
                     weightnum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7665,8 +9110,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7678,8 +9126,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7689,8 +9140,11 @@ impl IntercharacterSpacing {
             let __result = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_Location(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7702,8 +9156,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7715,8 +9172,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7726,8 +9186,11 @@ impl IntercharacterSpacing {
             let __result = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_HasName(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7737,8 +9200,11 @@ impl IntercharacterSpacing {
             let __result = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_NameValue(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7750,8 +9216,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7763,8 +9232,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7776,8 +9248,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7790,8 +9265,11 @@ impl IntercharacterSpacing {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7807,34 +9285,41 @@ impl IntercharacterSpacing {
                     atype,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
     pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_Associate(
                     self as *const Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
     pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_Dissociate(
                     self as *const Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7846,8 +9331,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7859,8 +9347,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7872,8 +9363,11 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7886,8 +9380,11 @@ impl IntercharacterSpacing {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7905,41 +9402,48 @@ impl IntercharacterSpacing {
                     anum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
     pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_AddProperty(
                     self as *mut Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
     pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_RemoveProperty(
                     self as *mut Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_SetLineWeight(
                     self as *mut Self,
                     defw,
@@ -7947,7 +9451,9 @@ impl IntercharacterSpacing {
                     gradw,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7960,8 +9466,11 @@ impl IntercharacterSpacing {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7974,8 +9483,11 @@ impl IntercharacterSpacing {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7985,11 +9497,14 @@ impl IntercharacterSpacing {
             let __result = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -8002,20 +9517,25 @@ impl IntercharacterSpacing {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8027,18 +9547,23 @@ impl IntercharacterSpacing {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_IntercharacterSpacing_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8054,50 +9579,48 @@ unsafe impl crate::CppDeletable for HandleIGESGraphIntercharacterSpacing {
 impl HandleIGESGraphIntercharacterSpacing {
     /// Dereference this Handle to access the underlying IGESGraph_IntercharacterSpacing
     pub fn get(&self) -> &crate::ffi::IGESGraph_IntercharacterSpacing {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphIntercharacterSpacing_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphIntercharacterSpacing_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESGraph_IntercharacterSpacing
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGraph_IntercharacterSpacing {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphIntercharacterSpacing_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphIntercharacterSpacing_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESGraph_IntercharacterSpacing> to Handle<IGESData_IGESEntity>
     pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphIntercharacterSpacing_to_HandleIGESDataIGESEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphIntercharacterSpacing_to_HandleIGESDataIGESEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_IntercharacterSpacing> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphIntercharacterSpacing_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphIntercharacterSpacing_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -8126,8 +9649,10 @@ impl LineFontDefPattern {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_LineFontDefPattern_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8142,14 +9667,16 @@ impl LineFontDefPattern {
         aPattern: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_init(
                     self as *mut Self,
                     allSegLength,
                     aPattern,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8160,8 +9687,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_nb_segments(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8173,8 +9703,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_length(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8191,8 +9724,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_display_pattern(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8207,8 +9743,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_is_visible(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8218,8 +9757,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8227,8 +9769,11 @@ impl LineFontDefPattern {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESGraph_LineFontDefPattern_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8237,95 +9782,92 @@ impl LineFontDefPattern {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_LineFontDefPattern_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESData_LineFontEntity
     pub fn as_iges_data_line_font_entity(&self) -> &crate::iges_data::LineFontEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_LineFontDefPattern_as_IGESData_LineFontEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_LineFontDefPattern_as_IGESData_LineFontEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_LineFontEntity (mutable)
     pub fn as_iges_data_line_font_entity_mut(&mut self) -> &mut crate::iges_data::LineFontEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_LineFontDefPattern_as_IGESData_LineFontEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_LineFontDefPattern_as_IGESData_LineFontEntity_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_LineFontDefPattern_as_IGESData_IGESEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_LineFontDefPattern_as_IGESData_IGESEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_LineFontDefPattern_as_IGESData_IGESEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_LineFontDefPattern_as_IGESData_IGESEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_LineFontDefPattern_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_LineFontDefPattern_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_LineFontDefPattern_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_LineFontDefPattern_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphLineFontDefPattern> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESGraph_LineFontDefPattern_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_LineFontDefPattern_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
@@ -8334,8 +9876,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_IGESType(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8345,8 +9890,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_TypeNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8356,8 +9904,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_FormNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8373,8 +9924,11 @@ impl LineFontDefPattern {
                     fieldnum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8384,8 +9938,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_HasStructure(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8395,8 +9952,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_Structure(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8406,8 +9966,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_DefLineFont(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -8417,8 +9980,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_RankLineFont(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8428,8 +9994,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_LineFont(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8439,8 +10008,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_DefLevel(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -8450,8 +10022,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_Level(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8461,8 +10036,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_LevelList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8472,8 +10050,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_DefView(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -8483,8 +10064,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_View(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8494,8 +10078,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_SingleView(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8505,8 +10092,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_ViewList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8516,8 +10106,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_HasTransf(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8527,8 +10120,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_Transf(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8540,8 +10136,11 @@ impl LineFontDefPattern {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8551,8 +10150,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_LabelDisplay(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8562,8 +10164,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_BlankStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8575,8 +10180,11 @@ impl LineFontDefPattern {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8586,8 +10194,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_UseFlag(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8599,8 +10210,11 @@ impl LineFontDefPattern {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8612,8 +10226,11 @@ impl LineFontDefPattern {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8623,8 +10240,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_LineWeight(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8634,8 +10254,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_DefColor(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -8645,8 +10268,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_RankColor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8656,8 +10282,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_Color(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8669,8 +10298,11 @@ impl LineFontDefPattern {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8680,8 +10312,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_ShortLabel(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8693,8 +10328,11 @@ impl LineFontDefPattern {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8706,8 +10344,11 @@ impl LineFontDefPattern {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8718,86 +10359,98 @@ impl LineFontDefPattern {
         ent: &crate::ffi::HandleIGESDataIGESEntity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_InitDirFieldEntity(
                     self as *mut Self,
                     fieldnum,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
     pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_InitTransf(
                     self as *mut Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
     pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_InitView(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
     pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_InitLineFont(
                     self as *mut Self,
                     ent,
                     rank,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
     pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_InitLevel(
                     self as *mut Self,
                     ent,
                     val,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
     pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_InitColor(
                     self as *mut Self,
                     ent,
                     rank,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_InitStatus(
                     self as *mut Self,
                     blank,
@@ -8806,21 +10459,25 @@ impl LineFontDefPattern {
                     hierarchy,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
     pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_SetLabel(
                     self as *mut Self,
                     label,
                     sub,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8832,7 +10489,7 @@ impl LineFontDefPattern {
         weightnum: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_InitMisc(
                     self as *mut Self,
                     str,
@@ -8840,7 +10497,9 @@ impl LineFontDefPattern {
                     weightnum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8850,8 +10509,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_HasOneParent(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8861,8 +10523,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_UniqueParent(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8872,8 +10537,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_Location(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8885,8 +10553,11 @@ impl LineFontDefPattern {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8898,8 +10569,11 @@ impl LineFontDefPattern {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8909,8 +10583,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_HasName(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8920,8 +10597,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_NameValue(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8933,8 +10613,11 @@ impl LineFontDefPattern {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8946,8 +10629,11 @@ impl LineFontDefPattern {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8959,8 +10645,11 @@ impl LineFontDefPattern {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8973,8 +10662,11 @@ impl LineFontDefPattern {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8990,34 +10682,41 @@ impl LineFontDefPattern {
                     atype,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
     pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_Associate(
                     self as *const Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
     pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_Dissociate(
                     self as *const Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9029,8 +10728,11 @@ impl LineFontDefPattern {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9040,8 +10742,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_NbProperties(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9051,8 +10756,11 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_Properties(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9065,8 +10773,11 @@ impl LineFontDefPattern {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9084,41 +10795,48 @@ impl LineFontDefPattern {
                     anum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
     pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_AddProperty(
                     self as *mut Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
     pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_RemoveProperty(
                     self as *mut Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_SetLineWeight(
                     self as *mut Self,
                     defw,
@@ -9126,7 +10844,9 @@ impl LineFontDefPattern {
                     gradw,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9139,8 +10859,11 @@ impl LineFontDefPattern {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9153,8 +10876,11 @@ impl LineFontDefPattern {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9164,11 +10890,14 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -9179,20 +10908,25 @@ impl LineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9204,18 +10938,23 @@ impl LineFontDefPattern {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefPattern_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -9231,63 +10970,63 @@ unsafe impl crate::CppDeletable for HandleIGESGraphLineFontDefPattern {
 impl HandleIGESGraphLineFontDefPattern {
     /// Dereference this Handle to access the underlying IGESGraph_LineFontDefPattern
     pub fn get(&self) -> &crate::ffi::IGESGraph_LineFontDefPattern {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphLineFontDefPattern_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphLineFontDefPattern_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESGraph_LineFontDefPattern
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGraph_LineFontDefPattern {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphLineFontDefPattern_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphLineFontDefPattern_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESGraph_LineFontDefPattern> to Handle<IGESData_LineFontEntity>
     pub fn to_handle_line_font_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphLineFontDefPattern_to_HandleIGESDataLineFontEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphLineFontDefPattern_to_HandleIGESDataLineFontEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_LineFontDefPattern> to Handle<IGESData_IGESEntity>
     pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphLineFontDefPattern_to_HandleIGESDataIGESEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphLineFontDefPattern_to_HandleIGESDataIGESEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_LineFontDefPattern> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphLineFontDefPattern_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphLineFontDefPattern_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -9316,8 +11055,10 @@ impl LineFontDefTemplate {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_LineFontDefTemplate_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9338,7 +11079,7 @@ impl LineFontDefTemplate {
         aScale: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_init(
                     self as *mut Self,
                     anOrientation,
@@ -9347,7 +11088,9 @@ impl LineFontDefTemplate {
                     aScale,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9366,8 +11109,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_orientation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9378,8 +11124,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_template_entity(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9390,8 +11139,11 @@ impl LineFontDefTemplate {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_LineFontDefTemplate_distance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9402,8 +11154,11 @@ impl LineFontDefTemplate {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_LineFontDefTemplate_scale(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9413,8 +11168,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9422,8 +11180,11 @@ impl LineFontDefTemplate {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESGraph_LineFontDefTemplate_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -9432,97 +11193,94 @@ impl LineFontDefTemplate {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_LineFontDefTemplate_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESData_LineFontEntity
     pub fn as_iges_data_line_font_entity(&self) -> &crate::iges_data::LineFontEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_LineFontDefTemplate_as_IGESData_LineFontEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_LineFontDefTemplate_as_IGESData_LineFontEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_LineFontEntity (mutable)
     pub fn as_iges_data_line_font_entity_mut(&mut self) -> &mut crate::iges_data::LineFontEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_LineFontDefTemplate_as_IGESData_LineFontEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_LineFontDefTemplate_as_IGESData_LineFontEntity_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_LineFontDefTemplate_as_IGESData_IGESEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_LineFontDefTemplate_as_IGESData_IGESEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_LineFontDefTemplate_as_IGESData_IGESEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_LineFontDefTemplate_as_IGESData_IGESEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_LineFontDefTemplate_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_LineFontDefTemplate_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_LineFontDefTemplate_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_LineFontDefTemplate_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphLineFontDefTemplate> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESGraph_LineFontDefTemplate_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_LineFontDefTemplate_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
@@ -9531,8 +11289,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_IGESType(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9542,8 +11303,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_TypeNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9553,8 +11317,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_FormNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9570,8 +11337,11 @@ impl LineFontDefTemplate {
                     fieldnum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9583,8 +11353,11 @@ impl LineFontDefTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9594,8 +11367,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_Structure(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9605,8 +11381,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_DefLineFont(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -9618,8 +11397,11 @@ impl LineFontDefTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9629,8 +11411,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_LineFont(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9640,8 +11425,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_DefLevel(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -9651,8 +11439,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_Level(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9662,8 +11453,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_LevelList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9673,8 +11467,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_DefView(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -9684,8 +11481,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_View(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9695,8 +11495,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_SingleView(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9706,8 +11509,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_ViewList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9717,8 +11523,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_HasTransf(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9728,8 +11537,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_Transf(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9741,8 +11553,11 @@ impl LineFontDefTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9754,8 +11569,11 @@ impl LineFontDefTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9765,8 +11583,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_BlankStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9778,8 +11599,11 @@ impl LineFontDefTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9789,8 +11613,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_UseFlag(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9802,8 +11629,11 @@ impl LineFontDefTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9815,8 +11645,11 @@ impl LineFontDefTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9826,8 +11659,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_LineWeight(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9837,8 +11673,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_DefColor(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -9848,8 +11687,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_RankColor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9859,8 +11701,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_Color(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9872,8 +11717,11 @@ impl LineFontDefTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9883,8 +11731,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_ShortLabel(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9896,8 +11747,11 @@ impl LineFontDefTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9909,8 +11763,11 @@ impl LineFontDefTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9921,86 +11778,98 @@ impl LineFontDefTemplate {
         ent: &crate::ffi::HandleIGESDataIGESEntity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_InitDirFieldEntity(
                     self as *mut Self,
                     fieldnum,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
     pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_InitTransf(
                     self as *mut Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
     pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_InitView(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
     pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_InitLineFont(
                     self as *mut Self,
                     ent,
                     rank,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
     pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_InitLevel(
                     self as *mut Self,
                     ent,
                     val,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
     pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_InitColor(
                     self as *mut Self,
                     ent,
                     rank,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_InitStatus(
                     self as *mut Self,
                     blank,
@@ -10009,21 +11878,25 @@ impl LineFontDefTemplate {
                     hierarchy,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
     pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_SetLabel(
                     self as *mut Self,
                     label,
                     sub,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10035,7 +11908,7 @@ impl LineFontDefTemplate {
         weightnum: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_InitMisc(
                     self as *mut Self,
                     str,
@@ -10043,7 +11916,9 @@ impl LineFontDefTemplate {
                     weightnum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10055,8 +11930,11 @@ impl LineFontDefTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10068,8 +11946,11 @@ impl LineFontDefTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10079,8 +11960,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_Location(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10092,8 +11976,11 @@ impl LineFontDefTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10105,8 +11992,11 @@ impl LineFontDefTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10116,8 +12006,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_HasName(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10127,8 +12020,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_NameValue(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10140,8 +12036,11 @@ impl LineFontDefTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10153,8 +12052,11 @@ impl LineFontDefTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10166,8 +12068,11 @@ impl LineFontDefTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10180,8 +12085,11 @@ impl LineFontDefTemplate {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10197,34 +12105,41 @@ impl LineFontDefTemplate {
                     atype,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
     pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_Associate(
                     self as *const Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
     pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_Dissociate(
                     self as *const Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10236,8 +12151,11 @@ impl LineFontDefTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10249,8 +12167,11 @@ impl LineFontDefTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10260,8 +12181,11 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_Properties(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10274,8 +12198,11 @@ impl LineFontDefTemplate {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10293,41 +12220,48 @@ impl LineFontDefTemplate {
                     anum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
     pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_AddProperty(
                     self as *mut Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
     pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_RemoveProperty(
                     self as *mut Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_SetLineWeight(
                     self as *mut Self,
                     defw,
@@ -10335,7 +12269,9 @@ impl LineFontDefTemplate {
                     gradw,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10348,8 +12284,11 @@ impl LineFontDefTemplate {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10362,8 +12301,11 @@ impl LineFontDefTemplate {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10373,11 +12315,14 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -10388,20 +12333,25 @@ impl LineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10413,18 +12363,23 @@ impl LineFontDefTemplate {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontDefTemplate_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -10440,64 +12395,63 @@ unsafe impl crate::CppDeletable for HandleIGESGraphLineFontDefTemplate {
 impl HandleIGESGraphLineFontDefTemplate {
     /// Dereference this Handle to access the underlying IGESGraph_LineFontDefTemplate
     pub fn get(&self) -> &crate::ffi::IGESGraph_LineFontDefTemplate {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphLineFontDefTemplate_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphLineFontDefTemplate_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESGraph_LineFontDefTemplate
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGraph_LineFontDefTemplate {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphLineFontDefTemplate_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphLineFontDefTemplate_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESGraph_LineFontDefTemplate> to Handle<IGESData_LineFontEntity>
     pub fn to_handle_line_font_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphLineFontDefTemplate_to_HandleIGESDataLineFontEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphLineFontDefTemplate_to_HandleIGESDataLineFontEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_LineFontDefTemplate> to Handle<IGESData_IGESEntity>
     pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphLineFontDefTemplate_to_HandleIGESDataIGESEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphLineFontDefTemplate_to_HandleIGESDataIGESEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_LineFontDefTemplate> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphLineFontDefTemplate_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphLineFontDefTemplate_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -10525,8 +12479,10 @@ impl LineFontPredefined {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_LineFontPredefined_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10537,14 +12493,16 @@ impl LineFontPredefined {
     /// - aLineFontPatternCode : Line Font Pattern Code
     pub fn init(&mut self, nbProps: i32, aLineFontPatternCode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_init(
                     self as *mut Self,
                     nbProps,
                     aLineFontPatternCode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10555,8 +12513,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_nb_property_values(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10567,8 +12528,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_line_font_pattern_code(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10578,8 +12542,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10587,8 +12554,11 @@ impl LineFontPredefined {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESGraph_LineFontPredefined_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -10597,69 +12567,68 @@ impl LineFontPredefined {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_LineFontPredefined_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_LineFontPredefined_as_IGESData_IGESEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_LineFontPredefined_as_IGESData_IGESEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_LineFontPredefined_as_IGESData_IGESEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_LineFontPredefined_as_IGESData_IGESEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_LineFontPredefined_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_LineFontPredefined_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_LineFontPredefined_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_LineFontPredefined_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphLineFontPredefined> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESGraph_LineFontPredefined_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_LineFontPredefined_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
@@ -10668,8 +12637,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_IGESType(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10679,8 +12651,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_TypeNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10690,8 +12665,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_FormNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10707,8 +12685,11 @@ impl LineFontPredefined {
                     fieldnum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10718,8 +12699,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_HasStructure(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10729,8 +12713,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_Structure(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10740,8 +12727,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_DefLineFont(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -10751,8 +12741,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_RankLineFont(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10762,8 +12755,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_LineFont(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10773,8 +12769,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_DefLevel(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -10784,8 +12783,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_Level(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10795,8 +12797,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_LevelList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10806,8 +12811,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_DefView(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -10817,8 +12825,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_View(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10828,8 +12839,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_SingleView(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10839,8 +12853,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_ViewList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10850,8 +12867,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_HasTransf(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10861,8 +12881,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_Transf(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10874,8 +12897,11 @@ impl LineFontPredefined {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10885,8 +12911,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_LabelDisplay(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10896,8 +12925,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_BlankStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10909,8 +12941,11 @@ impl LineFontPredefined {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10920,8 +12955,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_UseFlag(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10933,8 +12971,11 @@ impl LineFontPredefined {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10946,8 +12987,11 @@ impl LineFontPredefined {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10957,8 +13001,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_LineWeight(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10968,8 +13015,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_DefColor(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -10979,8 +13029,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_RankColor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10990,8 +13043,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_Color(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11003,8 +13059,11 @@ impl LineFontPredefined {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11014,8 +13073,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_ShortLabel(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11027,8 +13089,11 @@ impl LineFontPredefined {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11040,8 +13105,11 @@ impl LineFontPredefined {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11052,86 +13120,98 @@ impl LineFontPredefined {
         ent: &crate::ffi::HandleIGESDataIGESEntity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_InitDirFieldEntity(
                     self as *mut Self,
                     fieldnum,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
     pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_InitTransf(
                     self as *mut Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
     pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_InitView(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
     pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_InitLineFont(
                     self as *mut Self,
                     ent,
                     rank,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
     pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_InitLevel(
                     self as *mut Self,
                     ent,
                     val,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
     pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_InitColor(
                     self as *mut Self,
                     ent,
                     rank,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_InitStatus(
                     self as *mut Self,
                     blank,
@@ -11140,21 +13220,25 @@ impl LineFontPredefined {
                     hierarchy,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
     pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_SetLabel(
                     self as *mut Self,
                     label,
                     sub,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11166,7 +13250,7 @@ impl LineFontPredefined {
         weightnum: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_InitMisc(
                     self as *mut Self,
                     str,
@@ -11174,7 +13258,9 @@ impl LineFontPredefined {
                     weightnum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11184,8 +13270,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_HasOneParent(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11195,8 +13284,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_UniqueParent(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11206,8 +13298,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_Location(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11219,8 +13314,11 @@ impl LineFontPredefined {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11232,8 +13330,11 @@ impl LineFontPredefined {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11243,8 +13344,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_HasName(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11254,8 +13358,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_NameValue(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11267,8 +13374,11 @@ impl LineFontPredefined {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11280,8 +13390,11 @@ impl LineFontPredefined {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11293,8 +13406,11 @@ impl LineFontPredefined {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11307,8 +13423,11 @@ impl LineFontPredefined {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11324,34 +13443,41 @@ impl LineFontPredefined {
                     atype,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
     pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_Associate(
                     self as *const Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
     pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_Dissociate(
                     self as *const Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11363,8 +13489,11 @@ impl LineFontPredefined {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11374,8 +13503,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_NbProperties(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11385,8 +13517,11 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_Properties(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11399,8 +13534,11 @@ impl LineFontPredefined {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11418,41 +13556,48 @@ impl LineFontPredefined {
                     anum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
     pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_AddProperty(
                     self as *mut Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
     pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_RemoveProperty(
                     self as *mut Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_SetLineWeight(
                     self as *mut Self,
                     defw,
@@ -11460,7 +13605,9 @@ impl LineFontPredefined {
                     gradw,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11473,8 +13620,11 @@ impl LineFontPredefined {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11487,8 +13637,11 @@ impl LineFontPredefined {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11498,11 +13651,14 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -11513,20 +13669,25 @@ impl LineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11538,18 +13699,23 @@ impl LineFontPredefined {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_LineFontPredefined_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -11565,48 +13731,48 @@ unsafe impl crate::CppDeletable for HandleIGESGraphLineFontPredefined {
 impl HandleIGESGraphLineFontPredefined {
     /// Dereference this Handle to access the underlying IGESGraph_LineFontPredefined
     pub fn get(&self) -> &crate::ffi::IGESGraph_LineFontPredefined {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphLineFontPredefined_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphLineFontPredefined_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESGraph_LineFontPredefined
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGraph_LineFontPredefined {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphLineFontPredefined_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphLineFontPredefined_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESGraph_LineFontPredefined> to Handle<IGESData_IGESEntity>
     pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphLineFontPredefined_to_HandleIGESDataIGESEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphLineFontPredefined_to_HandleIGESDataIGESEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_LineFontPredefined> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphLineFontPredefined_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphLineFontPredefined_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -11633,8 +13799,10 @@ impl NominalSize {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_NominalSize_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11653,7 +13821,7 @@ impl NominalSize {
         aStandardName: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_NominalSize_init(
                     self as *mut Self,
                     nbProps,
@@ -11662,7 +13830,9 @@ impl NominalSize {
                     aStandardName,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11673,8 +13843,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_nb_property_values(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11685,8 +13858,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_nominal_size_value(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11696,8 +13872,11 @@ impl NominalSize {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_NominalSize_nominal_size_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11708,8 +13887,11 @@ impl NominalSize {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_NominalSize_has_standard_name(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11719,8 +13901,11 @@ impl NominalSize {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_NominalSize_standard_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11729,8 +13914,11 @@ impl NominalSize {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_NominalSize_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11738,8 +13926,11 @@ impl NominalSize {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESGraph_NominalSize_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -11747,64 +13938,66 @@ impl NominalSize {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESGraph_NominalSize_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_NominalSize_as_IGESData_IGESEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_NominalSize_as_IGESData_IGESEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_NominalSize_as_IGESData_IGESEntity_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_NominalSize_as_IGESData_IGESEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_NominalSize_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_NominalSize_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_NominalSize_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_NominalSize_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphNominalSize> {
-        {
-            let __result = unsafe { crate::ffi::IGESGraph_NominalSize_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESGraph_NominalSize_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
@@ -11813,8 +14006,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_IGESType(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11824,8 +14020,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_TypeNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11835,8 +14034,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_FormNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11852,8 +14054,11 @@ impl NominalSize {
                     fieldnum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11863,8 +14068,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_HasStructure(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11874,8 +14082,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_Structure(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11885,8 +14096,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_DefLineFont(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -11896,8 +14110,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_RankLineFont(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11907,8 +14124,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_LineFont(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11918,8 +14138,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_DefLevel(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -11928,8 +14151,11 @@ impl NominalSize {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_NominalSize_inherited_Level(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11939,8 +14165,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_LevelList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11949,8 +14178,11 @@ impl NominalSize {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_NominalSize_inherited_DefView(self as *const Self) };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -11959,8 +14191,11 @@ impl NominalSize {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_NominalSize_inherited_View(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11970,8 +14205,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_SingleView(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11981,8 +14219,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_ViewList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11992,8 +14233,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_HasTransf(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12002,8 +14246,11 @@ impl NominalSize {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_NominalSize_inherited_Transf(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12013,8 +14260,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_HasLabelDisplay(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12024,8 +14274,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_LabelDisplay(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12035,8 +14288,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_BlankStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12046,8 +14302,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_SubordinateStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12056,8 +14315,11 @@ impl NominalSize {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_NominalSize_inherited_UseFlag(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12067,8 +14329,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_HierarchyStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12078,8 +14343,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_LineWeightNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12089,8 +14357,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_LineWeight(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12100,8 +14371,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_DefColor(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -12111,8 +14385,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_RankColor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12121,8 +14398,11 @@ impl NominalSize {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_NominalSize_inherited_Color(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12132,8 +14412,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_HasShortLabel(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12143,8 +14426,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_ShortLabel(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12154,8 +14440,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_HasSubScriptNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12165,8 +14454,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_SubScriptNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12177,73 +14469,87 @@ impl NominalSize {
         ent: &crate::ffi::HandleIGESDataIGESEntity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_InitDirFieldEntity(
                     self as *mut Self,
                     fieldnum,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
     pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_InitTransf(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
     pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
         {
-            unsafe { crate::ffi::IGESGraph_NominalSize_inherited_InitView(self as *mut Self, ent) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_NominalSize_inherited_InitView(self as *mut Self, ent)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
     pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_InitLineFont(
                     self as *mut Self,
                     ent,
                     rank,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
     pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_InitLevel(self as *mut Self, ent, val)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
     pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_InitColor(self as *mut Self, ent, rank)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_InitStatus(
                     self as *mut Self,
                     blank,
@@ -12252,17 +14558,21 @@ impl NominalSize {
                     hierarchy,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
     pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_SetLabel(self as *mut Self, label, sub)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12274,7 +14584,7 @@ impl NominalSize {
         weightnum: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_InitMisc(
                     self as *mut Self,
                     str,
@@ -12282,7 +14592,9 @@ impl NominalSize {
                     weightnum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12292,8 +14604,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_HasOneParent(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12303,8 +14618,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_UniqueParent(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12314,8 +14632,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_Location(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12325,8 +14646,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_VectorLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12336,8 +14660,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_CompoundLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12346,8 +14673,11 @@ impl NominalSize {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_NominalSize_inherited_HasName(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12357,8 +14687,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_NameValue(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12370,8 +14703,11 @@ impl NominalSize {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12381,8 +14717,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_NbAssociativities(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12392,8 +14731,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_Associativities(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12406,8 +14748,11 @@ impl NominalSize {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12423,28 +14768,35 @@ impl NominalSize {
                     atype,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
     pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_Associate(self as *const Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
     pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_Dissociate(self as *const Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12456,8 +14808,11 @@ impl NominalSize {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12467,8 +14822,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_NbProperties(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12478,8 +14836,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_Properties(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12492,8 +14853,11 @@ impl NominalSize {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12511,35 +14875,42 @@ impl NominalSize {
                     anum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
     pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_AddProperty(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
     pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_RemoveProperty(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_SetLineWeight(
                     self as *mut Self,
                     defw,
@@ -12547,7 +14918,9 @@ impl NominalSize {
                     gradw,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12557,8 +14930,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12568,8 +14944,11 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12578,11 +14957,14 @@ impl NominalSize {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_NominalSize_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -12593,18 +14975,23 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12614,16 +15001,22 @@ impl NominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_NominalSize_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESGraph_NominalSize_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESGraph_NominalSize_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -12639,48 +15032,42 @@ unsafe impl crate::CppDeletable for HandleIGESGraphNominalSize {
 impl HandleIGESGraphNominalSize {
     /// Dereference this Handle to access the underlying IGESGraph_NominalSize
     pub fn get(&self) -> &crate::ffi::IGESGraph_NominalSize {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphNominalSize_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESGraphNominalSize_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESGraph_NominalSize
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGraph_NominalSize {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphNominalSize_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleIGESGraphNominalSize_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESGraph_NominalSize> to Handle<IGESData_IGESEntity>
     pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphNominalSize_to_HandleIGESDataIGESEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphNominalSize_to_HandleIGESDataIGESEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_NominalSize> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphNominalSize_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphNominalSize_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -12708,8 +15095,10 @@ impl Pick {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_Pick_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12719,8 +15108,11 @@ impl Pick {
     /// - aPickStatus : Pick Flag
     pub fn init(&mut self, nbProps: i32, aPickStatus: i32) {
         {
-            unsafe { crate::ffi::IGESGraph_Pick_init(self as *mut Self, nbProps, aPickStatus) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESGraph_Pick_init(self as *mut Self, nbProps, aPickStatus) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12730,8 +15122,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_nb_property_values(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12741,8 +15136,11 @@ impl Pick {
     pub fn pick_flag(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IGESGraph_Pick_pick_flag(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12751,8 +15149,11 @@ impl Pick {
     pub fn is_pickable(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::IGESGraph_Pick_is_pickable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12760,8 +15161,11 @@ impl Pick {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESGraph_Pick_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -12769,8 +15173,11 @@ impl Pick {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESGraph_Pick_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -12778,60 +15185,63 @@ impl Pick {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESGraph_Pick_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESGraph_Pick_as_IGESData_IGESEntity(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_Pick_as_IGESData_IGESEntity(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESGraph_Pick_as_IGESData_IGESEntity_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_Pick_as_IGESData_IGESEntity_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESGraph_Pick_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_Pick_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESGraph_Pick_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_Pick_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphPick> {
-        {
-            let __result = unsafe { crate::ffi::IGESGraph_Pick_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESGraph_Pick_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
@@ -12839,8 +15249,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_IGESType(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12849,8 +15262,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_TypeNumber(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12859,8 +15275,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_FormNumber(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12873,8 +15292,11 @@ impl Pick {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_DirFieldEntity(self as *const Self, fieldnum)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12883,8 +15305,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_HasStructure(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12893,8 +15318,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_Structure(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12903,8 +15331,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_DefLineFont(self as *const Self) };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -12913,8 +15344,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_RankLineFont(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12923,8 +15357,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_LineFont(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12933,8 +15370,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_DefLevel(self as *const Self) };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -12943,8 +15383,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_Level(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12953,8 +15396,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_LevelList(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12963,8 +15409,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_DefView(self as *const Self) };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -12973,8 +15422,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_View(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12983,8 +15435,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_SingleView(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12993,8 +15448,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_ViewList(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13003,8 +15461,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_HasTransf(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13013,8 +15474,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_Transf(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13024,8 +15488,11 @@ impl Pick {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_HasLabelDisplay(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13034,8 +15501,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_LabelDisplay(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13044,8 +15514,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_BlankStatus(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13055,8 +15528,11 @@ impl Pick {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_SubordinateStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13065,8 +15541,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_UseFlag(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13076,8 +15555,11 @@ impl Pick {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_HierarchyStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13087,8 +15569,11 @@ impl Pick {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_LineWeightNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13097,8 +15582,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_LineWeight(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13107,8 +15595,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_DefColor(self as *const Self) };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -13117,8 +15608,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_RankColor(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13127,8 +15621,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_Color(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13137,8 +15634,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_HasShortLabel(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13147,8 +15647,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_ShortLabel(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13158,8 +15661,11 @@ impl Pick {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_HasSubScriptNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13169,8 +15675,11 @@ impl Pick {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_SubScriptNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13181,63 +15690,81 @@ impl Pick {
         ent: &crate::ffi::HandleIGESDataIGESEntity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_InitDirFieldEntity(
                     self as *mut Self,
                     fieldnum,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
     pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
         {
-            unsafe { crate::ffi::IGESGraph_Pick_inherited_InitTransf(self as *mut Self, ent) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESGraph_Pick_inherited_InitTransf(self as *mut Self, ent) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
     pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
         {
-            unsafe { crate::ffi::IGESGraph_Pick_inherited_InitView(self as *mut Self, ent) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESGraph_Pick_inherited_InitView(self as *mut Self, ent) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
     pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_InitLineFont(self as *mut Self, ent, rank)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
     pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
         {
-            unsafe { crate::ffi::IGESGraph_Pick_inherited_InitLevel(self as *mut Self, ent, val) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_Pick_inherited_InitLevel(self as *mut Self, ent, val)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
     pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
         {
-            unsafe { crate::ffi::IGESGraph_Pick_inherited_InitColor(self as *mut Self, ent, rank) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_Pick_inherited_InitColor(self as *mut Self, ent, rank)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_InitStatus(
                     self as *mut Self,
                     blank,
@@ -13246,15 +15773,21 @@ impl Pick {
                     hierarchy,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
     pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
         {
-            unsafe { crate::ffi::IGESGraph_Pick_inherited_SetLabel(self as *mut Self, label, sub) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_Pick_inherited_SetLabel(self as *mut Self, label, sub)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13266,7 +15799,7 @@ impl Pick {
         weightnum: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_InitMisc(
                     self as *mut Self,
                     str,
@@ -13274,7 +15807,9 @@ impl Pick {
                     weightnum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13283,8 +15818,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_HasOneParent(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13293,8 +15831,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_UniqueParent(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13303,8 +15844,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_Location(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13313,8 +15857,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_VectorLocation(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13324,8 +15871,11 @@ impl Pick {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_CompoundLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13334,8 +15884,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_HasName(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13344,8 +15897,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_NameValue(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13355,8 +15911,11 @@ impl Pick {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_ArePresentAssociativities(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13366,8 +15925,11 @@ impl Pick {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_NbAssociativities(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13377,8 +15939,11 @@ impl Pick {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_Associativities(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13391,8 +15956,11 @@ impl Pick {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13405,24 +15973,34 @@ impl Pick {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_TypedAssociativity(self as *const Self, atype)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
     pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe { crate::ffi::IGESGraph_Pick_inherited_Associate(self as *const Self, ent) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESGraph_Pick_inherited_Associate(self as *const Self, ent) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
     pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe { crate::ffi::IGESGraph_Pick_inherited_Dissociate(self as *const Self, ent) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_Pick_inherited_Dissociate(self as *const Self, ent)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13432,8 +16010,11 @@ impl Pick {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_ArePresentProperties(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13442,8 +16023,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_NbProperties(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13452,8 +16036,11 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_Properties(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13463,8 +16050,11 @@ impl Pick {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_NbTypedProperties(self as *const Self, atype)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13478,31 +16068,41 @@ impl Pick {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_TypedProperty(self as *const Self, atype, anum)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
     pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe { crate::ffi::IGESGraph_Pick_inherited_AddProperty(self as *mut Self, ent) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESGraph_Pick_inherited_AddProperty(self as *mut Self, ent) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
     pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe { crate::ffi::IGESGraph_Pick_inherited_RemoveProperty(self as *mut Self, ent) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_Pick_inherited_RemoveProperty(self as *mut Self, ent)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_SetLineWeight(
                     self as *mut Self,
                     defw,
@@ -13510,7 +16110,9 @@ impl Pick {
                     gradw,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13520,8 +16122,11 @@ impl Pick {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13531,8 +16136,11 @@ impl Pick {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13541,11 +16149,14 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -13555,16 +16166,23 @@ impl Pick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Pick_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::IGESGraph_Pick_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_Pick_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13574,16 +16192,21 @@ impl Pick {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Pick_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESGraph_Pick_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IGESGraph_Pick_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -13599,42 +16222,42 @@ unsafe impl crate::CppDeletable for HandleIGESGraphPick {
 impl HandleIGESGraphPick {
     /// Dereference this Handle to access the underlying IGESGraph_Pick
     pub fn get(&self) -> &crate::ffi::IGESGraph_Pick {
-        {
-            let __result = unsafe { crate::ffi::HandleIGESGraphPick_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESGraphPick_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESGraph_Pick
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGraph_Pick {
-        {
-            let __result = unsafe { crate::ffi::HandleIGESGraphPick_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleIGESGraphPick_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESGraph_Pick> to Handle<IGESData_IGESEntity>
     pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphPick_to_HandleIGESDataIGESEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphPick_to_HandleIGESDataIGESEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_Pick> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphPick_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphPick_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -13657,8 +16280,10 @@ impl Protocol {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_Protocol_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13669,8 +16294,11 @@ impl Protocol {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Protocol_nb_resources(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13680,8 +16308,11 @@ impl Protocol {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Protocol_resource(self as *const Self, num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13695,8 +16326,11 @@ impl Protocol {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Protocol_type_number(self as *const Self, atype) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13705,8 +16339,11 @@ impl Protocol {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Protocol_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13714,8 +16351,11 @@ impl Protocol {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESGraph_Protocol_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -13723,85 +16363,83 @@ impl Protocol {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESGraph_Protocol_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESData_Protocol
     pub fn as_iges_data_protocol(&self) -> &crate::iges_data::Protocol {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESGraph_Protocol_as_IGESData_Protocol(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_Protocol_as_IGESData_Protocol(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_Protocol (mutable)
     pub fn as_iges_data_protocol_mut(&mut self) -> &mut crate::iges_data::Protocol {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_Protocol_as_IGESData_Protocol_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_Protocol_as_IGESData_Protocol_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Interface_Protocol
     pub fn as_interface_protocol(&self) -> &crate::interface::Protocol {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_Protocol_as_Interface_Protocol(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_Protocol_as_Interface_Protocol(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Interface_Protocol (mutable)
     pub fn as_interface_protocol_mut(&mut self) -> &mut crate::interface::Protocol {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_Protocol_as_Interface_Protocol_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_Protocol_as_Interface_Protocol_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_Protocol_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_Protocol_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_Protocol_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_Protocol_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphProtocol> {
-        {
-            let __result = unsafe { crate::ffi::IGESGraph_Protocol_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESGraph_Protocol_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESData_Protocol.hxx`:53 - `IGESData_Protocol::NewModel()`
@@ -13809,8 +16447,11 @@ impl Protocol {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Protocol_inherited_NewModel(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13820,8 +16461,11 @@ impl Protocol {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Protocol_inherited_IsSuitableModel(self as *const Self, model)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13831,8 +16475,11 @@ impl Protocol {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Protocol_inherited_UnknownEntity(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13842,8 +16489,11 @@ impl Protocol {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Protocol_inherited_IsUnknownEntity(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13853,8 +16503,11 @@ impl Protocol {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Protocol_inherited_CaseNumber(self as *const Self, obj)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13864,8 +16517,11 @@ impl Protocol {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Protocol_inherited_IsDynamicType(self as *const Self, obj)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13875,8 +16531,11 @@ impl Protocol {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Protocol_inherited_NbTypes(self as *const Self, obj)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13890,8 +16549,11 @@ impl Protocol {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Protocol_inherited_Type(self as *const Self, obj, nt)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13905,8 +16567,11 @@ impl Protocol {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Protocol_inherited_GlobalCheck(self as *const Self, G, ach)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13916,8 +16581,11 @@ impl Protocol {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Protocol_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13927,8 +16595,11 @@ impl Protocol {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Protocol_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13937,11 +16608,14 @@ impl Protocol {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_Protocol_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -13952,18 +16626,23 @@ impl Protocol {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Protocol_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_Protocol_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13973,16 +16652,22 @@ impl Protocol {
             let __result = unsafe {
                 crate::ffi::IGESGraph_Protocol_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESGraph_Protocol_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESGraph_Protocol_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -13998,58 +16683,57 @@ unsafe impl crate::CppDeletable for HandleIGESGraphProtocol {
 impl HandleIGESGraphProtocol {
     /// Dereference this Handle to access the underlying IGESGraph_Protocol
     pub fn get(&self) -> &crate::ffi::IGESGraph_Protocol {
-        {
-            let __result = unsafe { crate::ffi::HandleIGESGraphProtocol_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESGraphProtocol_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESGraph_Protocol
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGraph_Protocol {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphProtocol_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleIGESGraphProtocol_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESGraph_Protocol> to Handle<IGESData_Protocol>
     pub fn to_handle_iges_data_protocol(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataProtocol> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphProtocol_to_HandleIGESDataProtocol(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphProtocol_to_HandleIGESDataProtocol(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_Protocol> to Handle<Interface_Protocol>
     pub fn to_handle_interface_protocol(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphProtocol_to_HandleInterfaceProtocol(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphProtocol_to_HandleInterfaceProtocol(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_Protocol> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphProtocol_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphProtocol_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -14075,8 +16759,10 @@ impl ReadWriteModule {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_ReadWriteModule_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -14091,8 +16777,11 @@ impl ReadWriteModule {
                     formnum,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14106,7 +16795,7 @@ impl ReadWriteModule {
         PR: &mut crate::iges_data::ParamReader,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ReadWriteModule_read_own_params(
                     self as *const Self,
                     CN,
@@ -14115,7 +16804,9 @@ impl ReadWriteModule {
                     PR,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14128,7 +16819,7 @@ impl ReadWriteModule {
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ReadWriteModule_write_own_params(
                     self as *const Self,
                     CN,
@@ -14136,7 +16827,9 @@ impl ReadWriteModule {
                     IW,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14145,8 +16838,11 @@ impl ReadWriteModule {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_ReadWriteModule_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -14154,8 +16850,11 @@ impl ReadWriteModule {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESGraph_ReadWriteModule_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -14163,93 +16862,89 @@ impl ReadWriteModule {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESGraph_ReadWriteModule_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESData_ReadWriteModule
     pub fn as_iges_data_read_write_module(&self) -> &crate::iges_data::ReadWriteModule {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_ReadWriteModule_as_IGESData_ReadWriteModule(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_ReadWriteModule_as_IGESData_ReadWriteModule(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_ReadWriteModule (mutable)
     pub fn as_iges_data_read_write_module_mut(&mut self) -> &mut crate::iges_data::ReadWriteModule {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_ReadWriteModule_as_IGESData_ReadWriteModule_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_ReadWriteModule_as_IGESData_ReadWriteModule_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Interface_ReaderModule
     pub fn as_interface_reader_module(&self) -> &crate::interface::ReaderModule {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_ReadWriteModule_as_Interface_ReaderModule(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_ReadWriteModule_as_Interface_ReaderModule(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Interface_ReaderModule (mutable)
     pub fn as_interface_reader_module_mut(&mut self) -> &mut crate::interface::ReaderModule {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_ReadWriteModule_as_Interface_ReaderModule_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_ReadWriteModule_as_Interface_ReaderModule_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_ReadWriteModule_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_ReadWriteModule_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_ReadWriteModule_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_ReadWriteModule_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphReadWriteModule> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESGraph_ReadWriteModule_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESGraph_ReadWriteModule_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESData_ReadWriteModule.hxx`:62 - `IGESData_ReadWriteModule::CaseNum()`
@@ -14262,8 +16957,11 @@ impl ReadWriteModule {
                     num,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14277,7 +16975,7 @@ impl ReadWriteModule {
         ent: &crate::ffi::HandleStandardTransient,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ReadWriteModule_inherited_Read(
                     self as *const Self,
                     CN,
@@ -14287,7 +16985,9 @@ impl ReadWriteModule {
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14311,8 +17011,11 @@ impl ReadWriteModule {
                     ent,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14325,8 +17028,11 @@ impl ReadWriteModule {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14336,8 +17042,11 @@ impl ReadWriteModule {
             let __result = unsafe {
                 crate::ffi::IGESGraph_ReadWriteModule_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14347,11 +17056,14 @@ impl ReadWriteModule {
             let __result = unsafe {
                 crate::ffi::IGESGraph_ReadWriteModule_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -14362,20 +17074,25 @@ impl ReadWriteModule {
             let __result = unsafe {
                 crate::ffi::IGESGraph_ReadWriteModule_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ReadWriteModule_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14387,16 +17104,23 @@ impl ReadWriteModule {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESGraph_ReadWriteModule_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_ReadWriteModule_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -14412,65 +17136,65 @@ unsafe impl crate::CppDeletable for HandleIGESGraphReadWriteModule {
 impl HandleIGESGraphReadWriteModule {
     /// Dereference this Handle to access the underlying IGESGraph_ReadWriteModule
     pub fn get(&self) -> &crate::ffi::IGESGraph_ReadWriteModule {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphReadWriteModule_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphReadWriteModule_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESGraph_ReadWriteModule
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGraph_ReadWriteModule {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphReadWriteModule_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphReadWriteModule_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESGraph_ReadWriteModule> to Handle<IGESData_ReadWriteModule>
     pub fn to_handle_read_write_module(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataReadWriteModule> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphReadWriteModule_to_HandleIGESDataReadWriteModule(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphReadWriteModule_to_HandleIGESDataReadWriteModule(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_ReadWriteModule> to Handle<Interface_ReaderModule>
     pub fn to_handle_reader_module(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceReaderModule> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphReadWriteModule_to_HandleInterfaceReaderModule(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphReadWriteModule_to_HandleInterfaceReaderModule(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_ReadWriteModule> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphReadWriteModule_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphReadWriteModule_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -14495,8 +17219,10 @@ impl SpecificModule {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_SpecificModule_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -14511,7 +17237,7 @@ impl SpecificModule {
         own: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_SpecificModule_own_dump(
                     self as *const Self,
                     CN,
@@ -14521,7 +17247,9 @@ impl SpecificModule {
                     own,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14534,8 +17262,11 @@ impl SpecificModule {
             let __result = unsafe {
                 crate::ffi::IGESGraph_SpecificModule_own_correct(self as *const Self, CN, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14544,8 +17275,11 @@ impl SpecificModule {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_SpecificModule_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -14553,8 +17287,11 @@ impl SpecificModule {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESGraph_SpecificModule_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -14562,67 +17299,67 @@ impl SpecificModule {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESGraph_SpecificModule_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESData_SpecificModule
     pub fn as_iges_data_specific_module(&self) -> &crate::iges_data::SpecificModule {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_SpecificModule_as_IGESData_SpecificModule(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_SpecificModule_as_IGESData_SpecificModule(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_SpecificModule (mutable)
     pub fn as_iges_data_specific_module_mut(&mut self) -> &mut crate::iges_data::SpecificModule {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_SpecificModule_as_IGESData_SpecificModule_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_SpecificModule_as_IGESData_SpecificModule_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_SpecificModule_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_SpecificModule_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_SpecificModule_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_SpecificModule_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphSpecificModule> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESGraph_SpecificModule_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESGraph_SpecificModule_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -14634,8 +17371,11 @@ impl SpecificModule {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14645,8 +17385,11 @@ impl SpecificModule {
             let __result = unsafe {
                 crate::ffi::IGESGraph_SpecificModule_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14655,11 +17398,14 @@ impl SpecificModule {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_SpecificModule_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -14670,20 +17416,25 @@ impl SpecificModule {
             let __result = unsafe {
                 crate::ffi::IGESGraph_SpecificModule_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_SpecificModule_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14695,16 +17446,23 @@ impl SpecificModule {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESGraph_SpecificModule_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_SpecificModule_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -14720,50 +17478,50 @@ unsafe impl crate::CppDeletable for HandleIGESGraphSpecificModule {
 impl HandleIGESGraphSpecificModule {
     /// Dereference this Handle to access the underlying IGESGraph_SpecificModule
     pub fn get(&self) -> &crate::ffi::IGESGraph_SpecificModule {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphSpecificModule_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphSpecificModule_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESGraph_SpecificModule
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGraph_SpecificModule {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphSpecificModule_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphSpecificModule_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESGraph_SpecificModule> to Handle<IGESData_SpecificModule>
     pub fn to_handle_specific_module(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataSpecificModule> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphSpecificModule_to_HandleIGESDataSpecificModule(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphSpecificModule_to_HandleIGESDataSpecificModule(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_SpecificModule> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphSpecificModule_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphSpecificModule_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -14791,8 +17549,10 @@ impl TextDisplayTemplate {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_TextDisplayTemplate_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -14822,7 +17582,7 @@ impl TextDisplayTemplate {
         aCorner: &crate::gp::XYZ,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_init(
                     self as *mut Self,
                     aWidth,
@@ -14836,7 +17596,9 @@ impl TextDisplayTemplate {
                     aCorner,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14845,10 +17607,12 @@ impl TextDisplayTemplate {
     /// or Basolute (Form 0) else
     pub fn set_incremental(&mut self, mode: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_set_incremental(self as *mut Self, mode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14860,8 +17624,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_is_incremental(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14871,8 +17638,11 @@ impl TextDisplayTemplate {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_TextDisplayTemplate_box_width(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14883,8 +17653,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_box_height(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14895,8 +17668,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_is_font_entity(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14906,8 +17682,11 @@ impl TextDisplayTemplate {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_TextDisplayTemplate_font_code(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14918,8 +17697,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_font_entity(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14930,8 +17712,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_slant_angle(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14942,8 +17727,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_rotation_angle(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14957,8 +17745,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_mirror_flag(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14971,8 +17762,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_rotate_flag(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14988,8 +17782,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_starting_corner(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15007,8 +17804,11 @@ impl TextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15018,8 +17818,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -15027,8 +17830,11 @@ impl TextDisplayTemplate {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESGraph_TextDisplayTemplate_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -15037,71 +17843,68 @@ impl TextDisplayTemplate {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_TextDisplayTemplate_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_TextDisplayTemplate_as_IGESData_IGESEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_TextDisplayTemplate_as_IGESData_IGESEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_TextDisplayTemplate_as_IGESData_IGESEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_TextDisplayTemplate_as_IGESData_IGESEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_TextDisplayTemplate_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_TextDisplayTemplate_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_TextDisplayTemplate_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_TextDisplayTemplate_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphTextDisplayTemplate> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESGraph_TextDisplayTemplate_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_TextDisplayTemplate_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
@@ -15110,8 +17913,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_IGESType(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15121,8 +17927,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_TypeNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15132,8 +17941,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_FormNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15149,8 +17961,11 @@ impl TextDisplayTemplate {
                     fieldnum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15162,8 +17977,11 @@ impl TextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15173,8 +17991,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_Structure(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15184,8 +18005,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_DefLineFont(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -15197,8 +18021,11 @@ impl TextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15208,8 +18035,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_LineFont(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15219,8 +18049,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_DefLevel(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -15230,8 +18063,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_Level(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15241,8 +18077,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_LevelList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15252,8 +18091,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_DefView(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -15263,8 +18105,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_View(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15274,8 +18119,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_SingleView(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15285,8 +18133,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_ViewList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15296,8 +18147,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_HasTransf(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15307,8 +18161,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_Transf(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15320,8 +18177,11 @@ impl TextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15333,8 +18193,11 @@ impl TextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15344,8 +18207,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_BlankStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15357,8 +18223,11 @@ impl TextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15368,8 +18237,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_UseFlag(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15381,8 +18253,11 @@ impl TextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15394,8 +18269,11 @@ impl TextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15405,8 +18283,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_LineWeight(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15416,8 +18297,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_DefColor(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -15427,8 +18311,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_RankColor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15438,8 +18325,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_Color(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15451,8 +18341,11 @@ impl TextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15462,8 +18355,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_ShortLabel(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15475,8 +18371,11 @@ impl TextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15488,8 +18387,11 @@ impl TextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15500,86 +18402,98 @@ impl TextDisplayTemplate {
         ent: &crate::ffi::HandleIGESDataIGESEntity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_InitDirFieldEntity(
                     self as *mut Self,
                     fieldnum,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
     pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_InitTransf(
                     self as *mut Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
     pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_InitView(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
     pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_InitLineFont(
                     self as *mut Self,
                     ent,
                     rank,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
     pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_InitLevel(
                     self as *mut Self,
                     ent,
                     val,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
     pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_InitColor(
                     self as *mut Self,
                     ent,
                     rank,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_InitStatus(
                     self as *mut Self,
                     blank,
@@ -15588,21 +18502,25 @@ impl TextDisplayTemplate {
                     hierarchy,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
     pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_SetLabel(
                     self as *mut Self,
                     label,
                     sub,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15614,7 +18532,7 @@ impl TextDisplayTemplate {
         weightnum: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_InitMisc(
                     self as *mut Self,
                     str,
@@ -15622,7 +18540,9 @@ impl TextDisplayTemplate {
                     weightnum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15634,8 +18554,11 @@ impl TextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15647,8 +18570,11 @@ impl TextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15658,8 +18584,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_Location(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15671,8 +18600,11 @@ impl TextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15684,8 +18616,11 @@ impl TextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15695,8 +18630,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_HasName(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15706,8 +18644,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_NameValue(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15719,8 +18660,11 @@ impl TextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15732,8 +18676,11 @@ impl TextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15745,8 +18692,11 @@ impl TextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15759,8 +18709,11 @@ impl TextDisplayTemplate {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15776,34 +18729,41 @@ impl TextDisplayTemplate {
                     atype,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
     pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_Associate(
                     self as *const Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
     pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_Dissociate(
                     self as *const Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15815,8 +18775,11 @@ impl TextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15828,8 +18791,11 @@ impl TextDisplayTemplate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15839,8 +18805,11 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_Properties(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15853,8 +18822,11 @@ impl TextDisplayTemplate {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15872,41 +18844,48 @@ impl TextDisplayTemplate {
                     anum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
     pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_AddProperty(
                     self as *mut Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
     pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_RemoveProperty(
                     self as *mut Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_SetLineWeight(
                     self as *mut Self,
                     defw,
@@ -15914,7 +18893,9 @@ impl TextDisplayTemplate {
                     gradw,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15927,8 +18908,11 @@ impl TextDisplayTemplate {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15941,8 +18925,11 @@ impl TextDisplayTemplate {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15952,11 +18939,14 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -15967,20 +18957,25 @@ impl TextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15992,18 +18987,23 @@ impl TextDisplayTemplate {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextDisplayTemplate_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -16019,49 +19019,48 @@ unsafe impl crate::CppDeletable for HandleIGESGraphTextDisplayTemplate {
 impl HandleIGESGraphTextDisplayTemplate {
     /// Dereference this Handle to access the underlying IGESGraph_TextDisplayTemplate
     pub fn get(&self) -> &crate::ffi::IGESGraph_TextDisplayTemplate {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphTextDisplayTemplate_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphTextDisplayTemplate_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESGraph_TextDisplayTemplate
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGraph_TextDisplayTemplate {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphTextDisplayTemplate_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphTextDisplayTemplate_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESGraph_TextDisplayTemplate> to Handle<IGESData_IGESEntity>
     pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphTextDisplayTemplate_to_HandleIGESDataIGESEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphTextDisplayTemplate_to_HandleIGESDataIGESEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_TextDisplayTemplate> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphTextDisplayTemplate_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphTextDisplayTemplate_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -16089,8 +19088,10 @@ impl TextFontDef {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_TextFontDef_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -16129,7 +19130,7 @@ impl TextFontDef {
         allMovePenToY: &crate::ffi::HandleIGESBasicHArray1OfHArray1OfInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_init(
                     self as *mut Self,
                     aFontCode,
@@ -16146,7 +19147,9 @@ impl TextFontDef {
                     allMovePenToY,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16156,8 +19159,11 @@ impl TextFontDef {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_TextFontDef_font_code(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16167,8 +19173,11 @@ impl TextFontDef {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_TextFontDef_font_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16181,8 +19190,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_is_superseded_font_entity(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16193,8 +19205,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_superseded_font_code(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16207,8 +19222,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_superseded_font_entity(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16217,8 +19235,11 @@ impl TextFontDef {
     pub fn scale(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IGESGraph_TextFontDef_scale(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16228,8 +19249,11 @@ impl TextFontDef {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_TextFontDef_nb_characters(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16240,8 +19264,11 @@ impl TextFontDef {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_TextFontDef_ascii_code(self as *const Self, Chnum) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16250,7 +19277,7 @@ impl TextFontDef {
     /// Exception OutOfRange is raised if Chnum <= 0 or Chnum > NbCharacters
     pub fn next_char_origin(&self, Chnum: i32, NX: &mut i32, NY: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_next_char_origin(
                     self as *const Self,
                     Chnum,
@@ -16258,7 +19285,9 @@ impl TextFontDef {
                     NY,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16270,8 +19299,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_nb_pen_motions(self as *const Self, Chnum)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16285,15 +19317,18 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_is_pen_up(self as *const Self, Chnum, Motionnum)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `IGESGraph_TextFontDef.hxx`:119 - `IGESGraph_TextFontDef::NextPenPosition()`
     pub fn next_pen_position(&self, Chnum: i32, Motionnum: i32, IX: &mut i32, IY: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_next_pen_position(
                     self as *const Self,
                     Chnum,
@@ -16302,7 +19337,9 @@ impl TextFontDef {
                     IY,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16311,8 +19348,11 @@ impl TextFontDef {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_TextFontDef_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -16320,8 +19360,11 @@ impl TextFontDef {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESGraph_TextFontDef_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -16329,64 +19372,66 @@ impl TextFontDef {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESGraph_TextFontDef_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_TextFontDef_as_IGESData_IGESEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_TextFontDef_as_IGESData_IGESEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_TextFontDef_as_IGESData_IGESEntity_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_TextFontDef_as_IGESData_IGESEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_TextFontDef_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESGraph_TextFontDef_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_TextFontDef_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_TextFontDef_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphTextFontDef> {
-        {
-            let __result = unsafe { crate::ffi::IGESGraph_TextFontDef_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESGraph_TextFontDef_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
@@ -16395,8 +19440,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_IGESType(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16406,8 +19454,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_TypeNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16417,8 +19468,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_FormNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16434,8 +19488,11 @@ impl TextFontDef {
                     fieldnum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16445,8 +19502,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_HasStructure(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16456,8 +19516,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_Structure(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16467,8 +19530,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_DefLineFont(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -16478,8 +19544,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_RankLineFont(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16489,8 +19558,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_LineFont(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16500,8 +19572,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_DefLevel(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -16510,8 +19585,11 @@ impl TextFontDef {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_TextFontDef_inherited_Level(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16521,8 +19599,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_LevelList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16531,8 +19612,11 @@ impl TextFontDef {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_TextFontDef_inherited_DefView(self as *const Self) };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -16541,8 +19625,11 @@ impl TextFontDef {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_TextFontDef_inherited_View(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16552,8 +19639,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_SingleView(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16563,8 +19653,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_ViewList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16574,8 +19667,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_HasTransf(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16584,8 +19680,11 @@ impl TextFontDef {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_TextFontDef_inherited_Transf(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16595,8 +19694,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_HasLabelDisplay(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16606,8 +19708,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_LabelDisplay(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16617,8 +19722,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_BlankStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16628,8 +19736,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_SubordinateStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16638,8 +19749,11 @@ impl TextFontDef {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_TextFontDef_inherited_UseFlag(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16649,8 +19763,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_HierarchyStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16660,8 +19777,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_LineWeightNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16671,8 +19791,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_LineWeight(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16682,8 +19805,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_DefColor(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -16693,8 +19819,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_RankColor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16703,8 +19832,11 @@ impl TextFontDef {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_TextFontDef_inherited_Color(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16714,8 +19846,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_HasShortLabel(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16725,8 +19860,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_ShortLabel(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16736,8 +19874,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_HasSubScriptNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16747,8 +19888,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_SubScriptNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16759,73 +19903,87 @@ impl TextFontDef {
         ent: &crate::ffi::HandleIGESDataIGESEntity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_InitDirFieldEntity(
                     self as *mut Self,
                     fieldnum,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
     pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_InitTransf(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
     pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
         {
-            unsafe { crate::ffi::IGESGraph_TextFontDef_inherited_InitView(self as *mut Self, ent) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_TextFontDef_inherited_InitView(self as *mut Self, ent)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
     pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_InitLineFont(
                     self as *mut Self,
                     ent,
                     rank,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
     pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_InitLevel(self as *mut Self, ent, val)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
     pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_InitColor(self as *mut Self, ent, rank)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_InitStatus(
                     self as *mut Self,
                     blank,
@@ -16834,17 +19992,21 @@ impl TextFontDef {
                     hierarchy,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
     pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_SetLabel(self as *mut Self, label, sub)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16856,7 +20018,7 @@ impl TextFontDef {
         weightnum: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_InitMisc(
                     self as *mut Self,
                     str,
@@ -16864,7 +20026,9 @@ impl TextFontDef {
                     weightnum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16874,8 +20038,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_HasOneParent(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16885,8 +20052,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_UniqueParent(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16896,8 +20066,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_Location(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16907,8 +20080,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_VectorLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16918,8 +20094,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_CompoundLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16928,8 +20107,11 @@ impl TextFontDef {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_TextFontDef_inherited_HasName(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16939,8 +20121,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_NameValue(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16952,8 +20137,11 @@ impl TextFontDef {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16963,8 +20151,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_NbAssociativities(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16974,8 +20165,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_Associativities(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16988,8 +20182,11 @@ impl TextFontDef {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -17005,28 +20202,35 @@ impl TextFontDef {
                     atype,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
     pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_Associate(self as *const Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
     pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_Dissociate(self as *const Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17038,8 +20242,11 @@ impl TextFontDef {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -17049,8 +20256,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_NbProperties(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -17060,8 +20270,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_Properties(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -17074,8 +20287,11 @@ impl TextFontDef {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -17093,35 +20309,42 @@ impl TextFontDef {
                     anum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
     pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_AddProperty(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
     pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_RemoveProperty(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_SetLineWeight(
                     self as *mut Self,
                     defw,
@@ -17129,7 +20352,9 @@ impl TextFontDef {
                     gradw,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17139,8 +20364,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -17150,8 +20378,11 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -17160,11 +20391,14 @@ impl TextFontDef {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_TextFontDef_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -17175,18 +20409,23 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17196,16 +20435,22 @@ impl TextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_TextFontDef_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESGraph_TextFontDef_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESGraph_TextFontDef_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -17221,48 +20466,42 @@ unsafe impl crate::CppDeletable for HandleIGESGraphTextFontDef {
 impl HandleIGESGraphTextFontDef {
     /// Dereference this Handle to access the underlying IGESGraph_TextFontDef
     pub fn get(&self) -> &crate::ffi::IGESGraph_TextFontDef {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphTextFontDef_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESGraphTextFontDef_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESGraph_TextFontDef
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGraph_TextFontDef {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphTextFontDef_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleIGESGraphTextFontDef_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESGraph_TextFontDef> to Handle<IGESData_IGESEntity>
     pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphTextFontDef_to_HandleIGESDataIGESEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphTextFontDef_to_HandleIGESDataIGESEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_TextFontDef> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphTextFontDef_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphTextFontDef_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -17287,8 +20526,10 @@ impl ToolColor {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_ToolColor_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -17302,10 +20543,12 @@ impl ToolColor {
         PR: &mut crate::iges_data::ParamReader,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolColor_read_own_params(self as *const Self, ent, IR, PR)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17317,10 +20560,12 @@ impl ToolColor {
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolColor_write_own_params(self as *const Self, ent, IW)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17333,8 +20578,12 @@ impl ToolColor {
         iter: &mut crate::interface::EntityIterator,
     ) {
         {
-            unsafe { crate::ffi::IGESGraph_ToolColor_own_shared(self as *const Self, ent, iter) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_ToolColor_own_shared(self as *const Self, ent, iter)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17347,8 +20596,11 @@ impl ToolColor {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_ToolColor_dir_checker(self as *const Self, ent) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -17361,10 +20613,12 @@ impl ToolColor {
         ach: &mut crate::ffi::HandleInterfaceCheck,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolColor_own_check(self as *const Self, ent, shares, ach)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17377,10 +20631,12 @@ impl ToolColor {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolColor_own_copy(self as *const Self, entfrom, entto, TC)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17394,10 +20650,12 @@ impl ToolColor {
         own: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolColor_own_dump(self as *const Self, ent, dumper, S, own)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -17423,8 +20681,10 @@ impl ToolDefinitionLevel {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_ToolDefinitionLevel_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -17438,7 +20698,7 @@ impl ToolDefinitionLevel {
         PR: &mut crate::iges_data::ParamReader,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolDefinitionLevel_read_own_params(
                     self as *const Self,
                     ent,
@@ -17446,7 +20706,9 @@ impl ToolDefinitionLevel {
                     PR,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17458,14 +20720,16 @@ impl ToolDefinitionLevel {
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolDefinitionLevel_write_own_params(
                     self as *const Self,
                     ent,
                     IW,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17478,10 +20742,12 @@ impl ToolDefinitionLevel {
         iter: &mut crate::interface::EntityIterator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolDefinitionLevel_own_shared(self as *const Self, ent, iter)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17495,8 +20761,11 @@ impl ToolDefinitionLevel {
             let __result = unsafe {
                 crate::ffi::IGESGraph_ToolDefinitionLevel_dir_checker(self as *const Self, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -17509,7 +20778,7 @@ impl ToolDefinitionLevel {
         ach: &mut crate::ffi::HandleInterfaceCheck,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolDefinitionLevel_own_check(
                     self as *const Self,
                     ent,
@@ -17517,7 +20786,9 @@ impl ToolDefinitionLevel {
                     ach,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17530,7 +20801,7 @@ impl ToolDefinitionLevel {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolDefinitionLevel_own_copy(
                     self as *const Self,
                     entfrom,
@@ -17538,7 +20809,9 @@ impl ToolDefinitionLevel {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17552,7 +20825,7 @@ impl ToolDefinitionLevel {
         own: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolDefinitionLevel_own_dump(
                     self as *const Self,
                     ent,
@@ -17561,7 +20834,9 @@ impl ToolDefinitionLevel {
                     own,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -17587,8 +20862,10 @@ impl ToolDrawingSize {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_ToolDrawingSize_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -17602,7 +20879,7 @@ impl ToolDrawingSize {
         PR: &mut crate::iges_data::ParamReader,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolDrawingSize_read_own_params(
                     self as *const Self,
                     ent,
@@ -17610,7 +20887,9 @@ impl ToolDrawingSize {
                     PR,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17622,10 +20901,12 @@ impl ToolDrawingSize {
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolDrawingSize_write_own_params(self as *const Self, ent, IW)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17638,10 +20919,12 @@ impl ToolDrawingSize {
         iter: &mut crate::interface::EntityIterator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolDrawingSize_own_shared(self as *const Self, ent, iter)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17653,8 +20936,11 @@ impl ToolDrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_ToolDrawingSize_own_correct(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -17668,8 +20954,11 @@ impl ToolDrawingSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_ToolDrawingSize_dir_checker(self as *const Self, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -17682,7 +20971,7 @@ impl ToolDrawingSize {
         ach: &mut crate::ffi::HandleInterfaceCheck,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolDrawingSize_own_check(
                     self as *const Self,
                     ent,
@@ -17690,7 +20979,9 @@ impl ToolDrawingSize {
                     ach,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17703,7 +20994,7 @@ impl ToolDrawingSize {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolDrawingSize_own_copy(
                     self as *const Self,
                     entfrom,
@@ -17711,7 +21002,9 @@ impl ToolDrawingSize {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17725,7 +21018,7 @@ impl ToolDrawingSize {
         own: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolDrawingSize_own_dump(
                     self as *const Self,
                     ent,
@@ -17734,7 +21027,9 @@ impl ToolDrawingSize {
                     own,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -17760,8 +21055,10 @@ impl ToolDrawingUnits {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_ToolDrawingUnits_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -17775,7 +21072,7 @@ impl ToolDrawingUnits {
         PR: &mut crate::iges_data::ParamReader,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolDrawingUnits_read_own_params(
                     self as *const Self,
                     ent,
@@ -17783,7 +21080,9 @@ impl ToolDrawingUnits {
                     PR,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17795,14 +21094,16 @@ impl ToolDrawingUnits {
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolDrawingUnits_write_own_params(
                     self as *const Self,
                     ent,
                     IW,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17815,10 +21116,12 @@ impl ToolDrawingUnits {
         iter: &mut crate::interface::EntityIterator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolDrawingUnits_own_shared(self as *const Self, ent, iter)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17830,8 +21133,11 @@ impl ToolDrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_ToolDrawingUnits_own_correct(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -17845,8 +21151,11 @@ impl ToolDrawingUnits {
             let __result = unsafe {
                 crate::ffi::IGESGraph_ToolDrawingUnits_dir_checker(self as *const Self, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -17859,7 +21168,7 @@ impl ToolDrawingUnits {
         ach: &mut crate::ffi::HandleInterfaceCheck,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolDrawingUnits_own_check(
                     self as *const Self,
                     ent,
@@ -17867,7 +21176,9 @@ impl ToolDrawingUnits {
                     ach,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17880,7 +21191,7 @@ impl ToolDrawingUnits {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolDrawingUnits_own_copy(
                     self as *const Self,
                     entfrom,
@@ -17888,7 +21199,9 @@ impl ToolDrawingUnits {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17902,7 +21215,7 @@ impl ToolDrawingUnits {
         own: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolDrawingUnits_own_dump(
                     self as *const Self,
                     ent,
@@ -17911,7 +21224,9 @@ impl ToolDrawingUnits {
                     own,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -17937,8 +21252,10 @@ impl ToolHighLight {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_ToolHighLight_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -17952,7 +21269,7 @@ impl ToolHighLight {
         PR: &mut crate::iges_data::ParamReader,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolHighLight_read_own_params(
                     self as *const Self,
                     ent,
@@ -17960,7 +21277,9 @@ impl ToolHighLight {
                     PR,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17972,10 +21291,12 @@ impl ToolHighLight {
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolHighLight_write_own_params(self as *const Self, ent, IW)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17988,10 +21309,12 @@ impl ToolHighLight {
         iter: &mut crate::interface::EntityIterator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolHighLight_own_shared(self as *const Self, ent, iter)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18003,8 +21326,11 @@ impl ToolHighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_ToolHighLight_own_correct(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -18018,8 +21344,11 @@ impl ToolHighLight {
             let __result = unsafe {
                 crate::ffi::IGESGraph_ToolHighLight_dir_checker(self as *const Self, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -18032,10 +21361,12 @@ impl ToolHighLight {
         ach: &mut crate::ffi::HandleInterfaceCheck,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolHighLight_own_check(self as *const Self, ent, shares, ach)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18048,7 +21379,7 @@ impl ToolHighLight {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolHighLight_own_copy(
                     self as *const Self,
                     entfrom,
@@ -18056,7 +21387,9 @@ impl ToolHighLight {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18070,7 +21403,7 @@ impl ToolHighLight {
         own: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolHighLight_own_dump(
                     self as *const Self,
                     ent,
@@ -18079,7 +21412,9 @@ impl ToolHighLight {
                     own,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -18105,8 +21440,10 @@ impl ToolIntercharacterSpacing {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_ToolIntercharacterSpacing_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -18120,7 +21457,7 @@ impl ToolIntercharacterSpacing {
         PR: &mut crate::iges_data::ParamReader,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolIntercharacterSpacing_read_own_params(
                     self as *const Self,
                     ent,
@@ -18128,7 +21465,9 @@ impl ToolIntercharacterSpacing {
                     PR,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18140,14 +21479,16 @@ impl ToolIntercharacterSpacing {
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolIntercharacterSpacing_write_own_params(
                     self as *const Self,
                     ent,
                     IW,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18160,14 +21501,16 @@ impl ToolIntercharacterSpacing {
         iter: &mut crate::interface::EntityIterator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolIntercharacterSpacing_own_shared(
                     self as *const Self,
                     ent,
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18182,8 +21525,11 @@ impl ToolIntercharacterSpacing {
                     ent,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -18200,8 +21546,11 @@ impl ToolIntercharacterSpacing {
                     ent,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -18214,7 +21563,7 @@ impl ToolIntercharacterSpacing {
         ach: &mut crate::ffi::HandleInterfaceCheck,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolIntercharacterSpacing_own_check(
                     self as *const Self,
                     ent,
@@ -18222,7 +21571,9 @@ impl ToolIntercharacterSpacing {
                     ach,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18235,7 +21586,7 @@ impl ToolIntercharacterSpacing {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolIntercharacterSpacing_own_copy(
                     self as *const Self,
                     entfrom,
@@ -18243,7 +21594,9 @@ impl ToolIntercharacterSpacing {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18257,7 +21610,7 @@ impl ToolIntercharacterSpacing {
         own: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolIntercharacterSpacing_own_dump(
                     self as *const Self,
                     ent,
@@ -18266,7 +21619,9 @@ impl ToolIntercharacterSpacing {
                     own,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -18292,8 +21647,10 @@ impl ToolLineFontDefPattern {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_ToolLineFontDefPattern_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -18307,7 +21664,7 @@ impl ToolLineFontDefPattern {
         PR: &mut crate::iges_data::ParamReader,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontDefPattern_read_own_params(
                     self as *const Self,
                     ent,
@@ -18315,7 +21672,9 @@ impl ToolLineFontDefPattern {
                     PR,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18327,14 +21686,16 @@ impl ToolLineFontDefPattern {
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontDefPattern_write_own_params(
                     self as *const Self,
                     ent,
                     IW,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18347,14 +21708,16 @@ impl ToolLineFontDefPattern {
         iter: &mut crate::interface::EntityIterator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontDefPattern_own_shared(
                     self as *const Self,
                     ent,
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18368,8 +21731,11 @@ impl ToolLineFontDefPattern {
             let __result = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontDefPattern_dir_checker(self as *const Self, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -18382,7 +21748,7 @@ impl ToolLineFontDefPattern {
         ach: &mut crate::ffi::HandleInterfaceCheck,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontDefPattern_own_check(
                     self as *const Self,
                     ent,
@@ -18390,7 +21756,9 @@ impl ToolLineFontDefPattern {
                     ach,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18403,7 +21771,7 @@ impl ToolLineFontDefPattern {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontDefPattern_own_copy(
                     self as *const Self,
                     entfrom,
@@ -18411,7 +21779,9 @@ impl ToolLineFontDefPattern {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18425,7 +21795,7 @@ impl ToolLineFontDefPattern {
         own: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontDefPattern_own_dump(
                     self as *const Self,
                     ent,
@@ -18434,7 +21804,9 @@ impl ToolLineFontDefPattern {
                     own,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -18460,8 +21832,10 @@ impl ToolLineFontDefTemplate {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_ToolLineFontDefTemplate_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -18475,7 +21849,7 @@ impl ToolLineFontDefTemplate {
         PR: &mut crate::iges_data::ParamReader,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontDefTemplate_read_own_params(
                     self as *const Self,
                     ent,
@@ -18483,7 +21857,9 @@ impl ToolLineFontDefTemplate {
                     PR,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18495,14 +21871,16 @@ impl ToolLineFontDefTemplate {
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontDefTemplate_write_own_params(
                     self as *const Self,
                     ent,
                     IW,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18515,14 +21893,16 @@ impl ToolLineFontDefTemplate {
         iter: &mut crate::interface::EntityIterator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontDefTemplate_own_shared(
                     self as *const Self,
                     ent,
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18536,8 +21916,11 @@ impl ToolLineFontDefTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontDefTemplate_dir_checker(self as *const Self, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -18550,7 +21933,7 @@ impl ToolLineFontDefTemplate {
         ach: &mut crate::ffi::HandleInterfaceCheck,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontDefTemplate_own_check(
                     self as *const Self,
                     ent,
@@ -18558,7 +21941,9 @@ impl ToolLineFontDefTemplate {
                     ach,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18571,7 +21956,7 @@ impl ToolLineFontDefTemplate {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontDefTemplate_own_copy(
                     self as *const Self,
                     entfrom,
@@ -18579,7 +21964,9 @@ impl ToolLineFontDefTemplate {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18593,7 +21980,7 @@ impl ToolLineFontDefTemplate {
         own: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontDefTemplate_own_dump(
                     self as *const Self,
                     ent,
@@ -18602,7 +21989,9 @@ impl ToolLineFontDefTemplate {
                     own,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -18628,8 +22017,10 @@ impl ToolLineFontPredefined {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_ToolLineFontPredefined_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -18643,7 +22034,7 @@ impl ToolLineFontPredefined {
         PR: &mut crate::iges_data::ParamReader,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontPredefined_read_own_params(
                     self as *const Self,
                     ent,
@@ -18651,7 +22042,9 @@ impl ToolLineFontPredefined {
                     PR,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18663,14 +22056,16 @@ impl ToolLineFontPredefined {
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontPredefined_write_own_params(
                     self as *const Self,
                     ent,
                     IW,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18683,14 +22078,16 @@ impl ToolLineFontPredefined {
         iter: &mut crate::interface::EntityIterator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontPredefined_own_shared(
                     self as *const Self,
                     ent,
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18702,8 +22099,11 @@ impl ToolLineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontPredefined_own_correct(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -18717,8 +22117,11 @@ impl ToolLineFontPredefined {
             let __result = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontPredefined_dir_checker(self as *const Self, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -18731,7 +22134,7 @@ impl ToolLineFontPredefined {
         ach: &mut crate::ffi::HandleInterfaceCheck,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontPredefined_own_check(
                     self as *const Self,
                     ent,
@@ -18739,7 +22142,9 @@ impl ToolLineFontPredefined {
                     ach,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18752,7 +22157,7 @@ impl ToolLineFontPredefined {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontPredefined_own_copy(
                     self as *const Self,
                     entfrom,
@@ -18760,7 +22165,9 @@ impl ToolLineFontPredefined {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18774,7 +22181,7 @@ impl ToolLineFontPredefined {
         own: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolLineFontPredefined_own_dump(
                     self as *const Self,
                     ent,
@@ -18783,7 +22190,9 @@ impl ToolLineFontPredefined {
                     own,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -18809,8 +22218,10 @@ impl ToolNominalSize {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_ToolNominalSize_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -18824,7 +22235,7 @@ impl ToolNominalSize {
         PR: &mut crate::iges_data::ParamReader,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolNominalSize_read_own_params(
                     self as *const Self,
                     ent,
@@ -18832,7 +22243,9 @@ impl ToolNominalSize {
                     PR,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18844,10 +22257,12 @@ impl ToolNominalSize {
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolNominalSize_write_own_params(self as *const Self, ent, IW)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18860,10 +22275,12 @@ impl ToolNominalSize {
         iter: &mut crate::interface::EntityIterator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolNominalSize_own_shared(self as *const Self, ent, iter)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18875,8 +22292,11 @@ impl ToolNominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_ToolNominalSize_own_correct(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -18890,8 +22310,11 @@ impl ToolNominalSize {
             let __result = unsafe {
                 crate::ffi::IGESGraph_ToolNominalSize_dir_checker(self as *const Self, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -18904,7 +22327,7 @@ impl ToolNominalSize {
         ach: &mut crate::ffi::HandleInterfaceCheck,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolNominalSize_own_check(
                     self as *const Self,
                     ent,
@@ -18912,7 +22335,9 @@ impl ToolNominalSize {
                     ach,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18925,7 +22350,7 @@ impl ToolNominalSize {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolNominalSize_own_copy(
                     self as *const Self,
                     entfrom,
@@ -18933,7 +22358,9 @@ impl ToolNominalSize {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18947,7 +22374,7 @@ impl ToolNominalSize {
         own: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolNominalSize_own_dump(
                     self as *const Self,
                     ent,
@@ -18956,7 +22383,9 @@ impl ToolNominalSize {
                     own,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -18982,8 +22411,10 @@ impl ToolPick {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_ToolPick_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -18997,10 +22428,12 @@ impl ToolPick {
         PR: &mut crate::iges_data::ParamReader,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolPick_read_own_params(self as *const Self, ent, IR, PR)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19012,10 +22445,12 @@ impl ToolPick {
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolPick_write_own_params(self as *const Self, ent, IW)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19028,8 +22463,12 @@ impl ToolPick {
         iter: &mut crate::interface::EntityIterator,
     ) {
         {
-            unsafe { crate::ffi::IGESGraph_ToolPick_own_shared(self as *const Self, ent, iter) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_ToolPick_own_shared(self as *const Self, ent, iter)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19040,8 +22479,11 @@ impl ToolPick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_ToolPick_own_correct(self as *const Self, ent) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -19054,8 +22496,11 @@ impl ToolPick {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_ToolPick_dir_checker(self as *const Self, ent) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -19068,10 +22513,12 @@ impl ToolPick {
         ach: &mut crate::ffi::HandleInterfaceCheck,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolPick_own_check(self as *const Self, ent, shares, ach)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19084,10 +22531,12 @@ impl ToolPick {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolPick_own_copy(self as *const Self, entfrom, entto, TC)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19101,10 +22550,12 @@ impl ToolPick {
         own: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolPick_own_dump(self as *const Self, ent, dumper, S, own)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -19130,8 +22581,10 @@ impl ToolTextDisplayTemplate {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_ToolTextDisplayTemplate_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -19145,7 +22598,7 @@ impl ToolTextDisplayTemplate {
         PR: &mut crate::iges_data::ParamReader,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolTextDisplayTemplate_read_own_params(
                     self as *const Self,
                     ent,
@@ -19153,7 +22606,9 @@ impl ToolTextDisplayTemplate {
                     PR,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19165,14 +22620,16 @@ impl ToolTextDisplayTemplate {
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolTextDisplayTemplate_write_own_params(
                     self as *const Self,
                     ent,
                     IW,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19185,14 +22642,16 @@ impl ToolTextDisplayTemplate {
         iter: &mut crate::interface::EntityIterator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolTextDisplayTemplate_own_shared(
                     self as *const Self,
                     ent,
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19206,8 +22665,11 @@ impl ToolTextDisplayTemplate {
             let __result = unsafe {
                 crate::ffi::IGESGraph_ToolTextDisplayTemplate_dir_checker(self as *const Self, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -19220,7 +22682,7 @@ impl ToolTextDisplayTemplate {
         ach: &mut crate::ffi::HandleInterfaceCheck,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolTextDisplayTemplate_own_check(
                     self as *const Self,
                     ent,
@@ -19228,7 +22690,9 @@ impl ToolTextDisplayTemplate {
                     ach,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19241,7 +22705,7 @@ impl ToolTextDisplayTemplate {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolTextDisplayTemplate_own_copy(
                     self as *const Self,
                     entfrom,
@@ -19249,7 +22713,9 @@ impl ToolTextDisplayTemplate {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19263,7 +22729,7 @@ impl ToolTextDisplayTemplate {
         own: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolTextDisplayTemplate_own_dump(
                     self as *const Self,
                     ent,
@@ -19272,7 +22738,9 @@ impl ToolTextDisplayTemplate {
                     own,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -19298,8 +22766,10 @@ impl ToolTextFontDef {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_ToolTextFontDef_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -19313,7 +22783,7 @@ impl ToolTextFontDef {
         PR: &mut crate::iges_data::ParamReader,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolTextFontDef_read_own_params(
                     self as *const Self,
                     ent,
@@ -19321,7 +22791,9 @@ impl ToolTextFontDef {
                     PR,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19333,10 +22805,12 @@ impl ToolTextFontDef {
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolTextFontDef_write_own_params(self as *const Self, ent, IW)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19349,10 +22823,12 @@ impl ToolTextFontDef {
         iter: &mut crate::interface::EntityIterator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolTextFontDef_own_shared(self as *const Self, ent, iter)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19366,8 +22842,11 @@ impl ToolTextFontDef {
             let __result = unsafe {
                 crate::ffi::IGESGraph_ToolTextFontDef_dir_checker(self as *const Self, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -19380,7 +22859,7 @@ impl ToolTextFontDef {
         ach: &mut crate::ffi::HandleInterfaceCheck,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolTextFontDef_own_check(
                     self as *const Self,
                     ent,
@@ -19388,7 +22867,9 @@ impl ToolTextFontDef {
                     ach,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19401,7 +22882,7 @@ impl ToolTextFontDef {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolTextFontDef_own_copy(
                     self as *const Self,
                     entfrom,
@@ -19409,7 +22890,9 @@ impl ToolTextFontDef {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19423,7 +22906,7 @@ impl ToolTextFontDef {
         own: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolTextFontDef_own_dump(
                     self as *const Self,
                     ent,
@@ -19432,7 +22915,9 @@ impl ToolTextFontDef {
                     own,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -19458,8 +22943,10 @@ impl ToolUniformRectGrid {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_ToolUniformRectGrid_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -19473,7 +22960,7 @@ impl ToolUniformRectGrid {
         PR: &mut crate::iges_data::ParamReader,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolUniformRectGrid_read_own_params(
                     self as *const Self,
                     ent,
@@ -19481,7 +22968,9 @@ impl ToolUniformRectGrid {
                     PR,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19493,14 +22982,16 @@ impl ToolUniformRectGrid {
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolUniformRectGrid_write_own_params(
                     self as *const Self,
                     ent,
                     IW,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19513,10 +23004,12 @@ impl ToolUniformRectGrid {
         iter: &mut crate::interface::EntityIterator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolUniformRectGrid_own_shared(self as *const Self, ent, iter)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19528,8 +23021,11 @@ impl ToolUniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_ToolUniformRectGrid_own_correct(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -19543,8 +23039,11 @@ impl ToolUniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_ToolUniformRectGrid_dir_checker(self as *const Self, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -19557,7 +23056,7 @@ impl ToolUniformRectGrid {
         ach: &mut crate::ffi::HandleInterfaceCheck,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolUniformRectGrid_own_check(
                     self as *const Self,
                     ent,
@@ -19565,7 +23064,9 @@ impl ToolUniformRectGrid {
                     ach,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19578,7 +23079,7 @@ impl ToolUniformRectGrid {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolUniformRectGrid_own_copy(
                     self as *const Self,
                     entfrom,
@@ -19586,7 +23087,9 @@ impl ToolUniformRectGrid {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19600,7 +23103,7 @@ impl ToolUniformRectGrid {
         own: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_ToolUniformRectGrid_own_dump(
                     self as *const Self,
                     ent,
@@ -19609,7 +23112,9 @@ impl ToolUniformRectGrid {
                     own,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -19637,8 +23142,10 @@ impl UniformRectGrid {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESGraph_UniformRectGrid_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -19665,7 +23172,7 @@ impl UniformRectGrid {
         pointsY: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_init(
                     self as *mut Self,
                     nbProps,
@@ -19678,7 +23185,9 @@ impl UniformRectGrid {
                     pointsY,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19689,8 +23198,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_nb_property_values(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -19701,8 +23213,11 @@ impl UniformRectGrid {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_UniformRectGrid_is_finite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -19713,8 +23228,11 @@ impl UniformRectGrid {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_UniformRectGrid_is_line(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -19725,8 +23243,11 @@ impl UniformRectGrid {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_UniformRectGrid_is_weighted(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -19739,8 +23260,11 @@ impl UniformRectGrid {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_UniformRectGrid_grid_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -19750,8 +23274,11 @@ impl UniformRectGrid {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_UniformRectGrid_grid_spacing(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -19762,8 +23289,11 @@ impl UniformRectGrid {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_UniformRectGrid_nb_points_x(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -19774,8 +23304,11 @@ impl UniformRectGrid {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_UniformRectGrid_nb_points_y(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -19784,8 +23317,11 @@ impl UniformRectGrid {
         {
             let __result =
                 unsafe { crate::ffi::IGESGraph_UniformRectGrid_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -19793,8 +23329,11 @@ impl UniformRectGrid {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESGraph_UniformRectGrid_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -19802,65 +23341,67 @@ impl UniformRectGrid {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESGraph_UniformRectGrid_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_UniformRectGrid_as_IGESData_IGESEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_UniformRectGrid_as_IGESData_IGESEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_UniformRectGrid_as_IGESData_IGESEntity_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_UniformRectGrid_as_IGESData_IGESEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_UniformRectGrid_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_UniformRectGrid_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESGraph_UniformRectGrid_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESGraph_UniformRectGrid_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphUniformRectGrid> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESGraph_UniformRectGrid_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESGraph_UniformRectGrid_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:51 - `IGESData_IGESEntity::IGESType()`
@@ -19869,8 +23410,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_IGESType(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -19880,8 +23424,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_TypeNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -19891,8 +23438,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_FormNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -19908,8 +23458,11 @@ impl UniformRectGrid {
                     fieldnum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -19919,8 +23472,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_HasStructure(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -19930,8 +23486,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_Structure(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -19941,8 +23500,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_DefLineFont(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -19952,8 +23514,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_RankLineFont(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -19963,8 +23528,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_LineFont(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -19974,8 +23542,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_DefLevel(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -19985,8 +23556,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_Level(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -19996,8 +23570,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_LevelList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -20007,8 +23584,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_DefView(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefList::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefList::try_from(__val).unwrap()
         }
     }
 
@@ -20018,8 +23598,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_View(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -20029,8 +23612,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_SingleView(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -20040,8 +23626,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_ViewList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -20051,8 +23640,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_HasTransf(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20062,8 +23654,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_Transf(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -20073,8 +23668,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_HasLabelDisplay(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20084,8 +23682,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_LabelDisplay(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -20095,8 +23696,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_BlankStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20108,8 +23712,11 @@ impl UniformRectGrid {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20119,8 +23726,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_UseFlag(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20130,8 +23740,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_HierarchyStatus(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20143,8 +23756,11 @@ impl UniformRectGrid {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20154,8 +23770,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_LineWeight(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20165,8 +23784,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_DefColor(self as *const Self)
             };
-            crate::check_exception();
-            crate::iges_data::DefType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::iges_data::DefType::try_from(__val).unwrap()
         }
     }
 
@@ -20176,8 +23798,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_RankColor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20187,8 +23812,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_Color(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -20198,8 +23826,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_HasShortLabel(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20209,8 +23840,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_ShortLabel(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -20222,8 +23856,11 @@ impl UniformRectGrid {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20233,8 +23870,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_SubScriptNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20245,83 +23885,95 @@ impl UniformRectGrid {
         ent: &crate::ffi::HandleIGESDataIGESEntity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_InitDirFieldEntity(
                     self as *mut Self,
                     fieldnum,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
     pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_InitTransf(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
     pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_InitView(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
     pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_InitLineFont(
                     self as *mut Self,
                     ent,
                     rank,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
     pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_InitLevel(
                     self as *mut Self,
                     ent,
                     val,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
     pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_InitColor(
                     self as *mut Self,
                     ent,
                     rank,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_InitStatus(
                     self as *mut Self,
                     blank,
@@ -20330,21 +23982,25 @@ impl UniformRectGrid {
                     hierarchy,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
     pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_SetLabel(
                     self as *mut Self,
                     label,
                     sub,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -20356,7 +24012,7 @@ impl UniformRectGrid {
         weightnum: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_InitMisc(
                     self as *mut Self,
                     str,
@@ -20364,7 +24020,9 @@ impl UniformRectGrid {
                     weightnum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -20374,8 +24032,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_HasOneParent(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20385,8 +24046,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_UniqueParent(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -20396,8 +24060,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_Location(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -20407,8 +24074,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_VectorLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -20420,8 +24090,11 @@ impl UniformRectGrid {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -20431,8 +24104,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_HasName(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20442,8 +24118,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_NameValue(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -20455,8 +24134,11 @@ impl UniformRectGrid {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20468,8 +24150,11 @@ impl UniformRectGrid {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20479,8 +24164,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_Associativities(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -20493,8 +24181,11 @@ impl UniformRectGrid {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20510,28 +24201,35 @@ impl UniformRectGrid {
                     atype,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
     pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_Associate(self as *const Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
     pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_Dissociate(self as *const Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -20543,8 +24241,11 @@ impl UniformRectGrid {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20554,8 +24255,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_NbProperties(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20565,8 +24269,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_Properties(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -20579,8 +24286,11 @@ impl UniformRectGrid {
                     atype,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20598,38 +24308,45 @@ impl UniformRectGrid {
                     anum,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
     pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_AddProperty(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
     pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_RemoveProperty(
                     self as *mut Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_SetLineWeight(
                     self as *mut Self,
                     defw,
@@ -20637,7 +24354,9 @@ impl UniformRectGrid {
                     gradw,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -20650,8 +24369,11 @@ impl UniformRectGrid {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20661,8 +24383,11 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20672,11 +24397,14 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -20687,20 +24415,25 @@ impl UniformRectGrid {
             let __result = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESGraph_UniformRectGrid_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -20712,16 +24445,23 @@ impl UniformRectGrid {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESGraph_UniformRectGrid_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESGraph_UniformRectGrid_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -20737,48 +24477,48 @@ unsafe impl crate::CppDeletable for HandleIGESGraphUniformRectGrid {
 impl HandleIGESGraphUniformRectGrid {
     /// Dereference this Handle to access the underlying IGESGraph_UniformRectGrid
     pub fn get(&self) -> &crate::ffi::IGESGraph_UniformRectGrid {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphUniformRectGrid_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphUniformRectGrid_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESGraph_UniformRectGrid
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESGraph_UniformRectGrid {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESGraphUniformRectGrid_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESGraphUniformRectGrid_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESGraph_UniformRectGrid> to Handle<IGESData_IGESEntity>
     pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphUniformRectGrid_to_HandleIGESDataIGESEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphUniformRectGrid_to_HandleIGESDataIGESEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESGraph_UniformRectGrid> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESGraphUniformRectGrid_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESGraphUniformRectGrid_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

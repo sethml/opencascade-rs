@@ -11,8 +11,11 @@
 pub fn protocol() -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
     {
         let __result = unsafe { crate::ffi::STEPEdit_protocol() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `STEPEdit.hxx`:41 - `STEPEdit::NewModel`
@@ -21,8 +24,11 @@ pub fn protocol() -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
 pub fn new_model() -> crate::OwnedPtr<crate::ffi::HandleStepDataStepModel> {
     {
         let __result = unsafe { crate::ffi::STEPEdit_new_model() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `STEPEdit.hxx`:44 - `STEPEdit::SignType`
@@ -30,8 +36,11 @@ pub fn new_model() -> crate::OwnedPtr<crate::ffi::HandleStepDataStepModel> {
 pub fn sign_type() -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
     {
         let __result = unsafe { crate::ffi::STEPEdit_sign_type() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `STEPEdit.hxx`:48 - `STEPEdit::NewSelectSDR`
@@ -40,8 +49,11 @@ pub fn sign_type() -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
 pub fn new_select_sdr() -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSignature> {
     {
         let __result = unsafe { crate::ffi::STEPEdit_new_select_sdr() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `STEPEdit.hxx`:55 - `STEPEdit::NewSelectPlacedItem`
@@ -53,8 +65,11 @@ pub fn new_select_sdr() -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSigna
 pub fn new_select_placed_item() -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSignature> {
     {
         let __result = unsafe { crate::ffi::STEPEdit_new_select_placed_item() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `STEPEdit.hxx`:61 - `STEPEdit::NewSelectShapeRepr`
@@ -65,8 +80,11 @@ pub fn new_select_placed_item() -> crate::OwnedPtr<crate::ffi::HandleIFSelectSel
 pub fn new_select_shape_repr() -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectSignature> {
     {
         let __result = unsafe { crate::ffi::STEPEdit_new_select_shape_repr() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 
@@ -96,8 +114,10 @@ impl EditContext {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::STEPEdit_EditContext_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -105,8 +125,11 @@ impl EditContext {
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::STEPEdit_EditContext_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -115,8 +138,11 @@ impl EditContext {
         {
             let __result =
                 unsafe { crate::ffi::STEPEdit_EditContext_recognize(self as *const Self, form) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -130,8 +156,11 @@ impl EditContext {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditContext_string_value(self as *const Self, form, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -146,8 +175,11 @@ impl EditContext {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditContext_apply(self as *const Self, form, ent, model)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -162,8 +194,11 @@ impl EditContext {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditContext_load(self as *const Self, form, ent, model)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -172,8 +207,11 @@ impl EditContext {
         {
             let __result =
                 unsafe { crate::ffi::STEPEdit_EditContext_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -181,8 +219,11 @@ impl EditContext {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::STEPEdit_EditContext_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -190,72 +231,75 @@ impl EditContext {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::STEPEdit_EditContext_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_Editor
     pub fn as_if_select_editor(&self) -> &crate::if_select::Editor {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPEdit_EditContext_as_IFSelect_Editor(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::STEPEdit_EditContext_as_IFSelect_Editor(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Editor (mutable)
     pub fn as_if_select_editor_mut(&mut self) -> &mut crate::if_select::Editor {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPEdit_EditContext_as_IFSelect_Editor_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::STEPEdit_EditContext_as_IFSelect_Editor_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPEdit_EditContext_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::STEPEdit_EditContext_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPEdit_EditContext_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::STEPEdit_EditContext_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPEditEditContext> {
-        {
-            let __result = unsafe { crate::ffi::STEPEdit_EditContext_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::STEPEdit_EditContext_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:62 - `IFSelect_Editor::SetList()`
     pub fn set_list(&mut self, num: i32, max: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPEdit_EditContext_inherited_SetList(self as *mut Self, num, max)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -264,8 +308,11 @@ impl EditContext {
         {
             let __result =
                 unsafe { crate::ffi::STEPEdit_EditContext_inherited_NbValues(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -275,8 +322,11 @@ impl EditContext {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditContext_inherited_TypedValue(self as *const Self, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -286,8 +336,11 @@ impl EditContext {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditContext_inherited_IsList(self as *const Self, num)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -297,8 +350,11 @@ impl EditContext {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditContext_inherited_MaxList(self as *const Self, num)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -308,28 +364,35 @@ impl EditContext {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditContext_inherited_EditMode(self as *const Self, num)
             };
-            crate::check_exception();
-            crate::if_select::EditValue::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::EditValue::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:90 - `IFSelect_Editor::PrintNames()`
     pub fn print_names(&self, S: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPEdit_EditContext_inherited_PrintNames(self as *const Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:92 - `IFSelect_Editor::PrintDefs()`
     pub fn print_defs(&self, S: &mut crate::ffi::Standard_OStream, labels: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPEdit_EditContext_inherited_PrintDefs(self as *const Self, S, labels)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -339,8 +402,11 @@ impl EditContext {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditContext_inherited_MaxNameLength(self as *const Self, what)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -358,8 +424,11 @@ impl EditContext {
                     undoable,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -369,8 +438,11 @@ impl EditContext {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditContext_inherited_ListEditor(self as *const Self, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -384,8 +456,11 @@ impl EditContext {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditContext_inherited_ListValue(self as *const Self, form, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -407,8 +482,11 @@ impl EditContext {
                     enforce,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -430,8 +508,11 @@ impl EditContext {
                     enforce,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -441,8 +522,11 @@ impl EditContext {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditContext_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -452,8 +536,11 @@ impl EditContext {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditContext_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -462,11 +549,14 @@ impl EditContext {
         {
             let __result =
                 unsafe { crate::ffi::STEPEdit_EditContext_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -477,18 +567,23 @@ impl EditContext {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditContext_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPEdit_EditContext_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -498,16 +593,22 @@ impl EditContext {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditContext_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::STEPEdit_EditContext_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPEdit_EditContext_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -523,46 +624,42 @@ unsafe impl crate::CppDeletable for HandleSTEPEditEditContext {
 impl HandleSTEPEditEditContext {
     /// Dereference this Handle to access the underlying STEPEdit_EditContext
     pub fn get(&self) -> &crate::ffi::STEPEdit_EditContext {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSTEPEditEditContext_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleSTEPEditEditContext_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying STEPEdit_EditContext
     pub fn get_mut(&mut self) -> &mut crate::ffi::STEPEdit_EditContext {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSTEPEditEditContext_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleSTEPEditEditContext_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<STEPEdit_EditContext> to Handle<IFSelect_Editor>
     pub fn to_handle_editor(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectEditor> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSTEPEditEditContext_to_HandleIFSelectEditor(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSTEPEditEditContext_to_HandleIFSelectEditor(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPEdit_EditContext> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSTEPEditEditContext_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSTEPEditEditContext_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -586,8 +683,10 @@ impl EditSDR {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::STEPEdit_EditSDR_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -595,8 +694,11 @@ impl EditSDR {
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::STEPEdit_EditSDR_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -605,8 +707,11 @@ impl EditSDR {
         {
             let __result =
                 unsafe { crate::ffi::STEPEdit_EditSDR_recognize(self as *const Self, form) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -620,8 +725,11 @@ impl EditSDR {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditSDR_string_value(self as *const Self, form, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -636,8 +744,11 @@ impl EditSDR {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditSDR_apply(self as *const Self, form, ent, model)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -651,8 +762,11 @@ impl EditSDR {
         {
             let __result =
                 unsafe { crate::ffi::STEPEdit_EditSDR_load(self as *const Self, form, ent, model) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -661,8 +775,11 @@ impl EditSDR {
         {
             let __result =
                 unsafe { crate::ffi::STEPEdit_EditSDR_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -670,8 +787,11 @@ impl EditSDR {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::STEPEdit_EditSDR_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -679,68 +799,74 @@ impl EditSDR {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::STEPEdit_EditSDR_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_Editor
     pub fn as_if_select_editor(&self) -> &crate::if_select::Editor {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPEdit_EditSDR_as_IFSelect_Editor(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::STEPEdit_EditSDR_as_IFSelect_Editor(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Editor (mutable)
     pub fn as_if_select_editor_mut(&mut self) -> &mut crate::if_select::Editor {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPEdit_EditSDR_as_IFSelect_Editor_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::STEPEdit_EditSDR_as_IFSelect_Editor_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPEdit_EditSDR_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::STEPEdit_EditSDR_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPEdit_EditSDR_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::STEPEdit_EditSDR_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPEditEditSDR> {
-        {
-            let __result = unsafe { crate::ffi::STEPEdit_EditSDR_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::STEPEdit_EditSDR_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:62 - `IFSelect_Editor::SetList()`
     pub fn set_list(&mut self, num: i32, max: i32) {
         {
-            unsafe { crate::ffi::STEPEdit_EditSDR_inherited_SetList(self as *mut Self, num, max) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::STEPEdit_EditSDR_inherited_SetList(self as *mut Self, num, max)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -749,8 +875,11 @@ impl EditSDR {
         {
             let __result =
                 unsafe { crate::ffi::STEPEdit_EditSDR_inherited_NbValues(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -760,8 +889,11 @@ impl EditSDR {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditSDR_inherited_TypedValue(self as *const Self, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -770,8 +902,11 @@ impl EditSDR {
         {
             let __result =
                 unsafe { crate::ffi::STEPEdit_EditSDR_inherited_IsList(self as *const Self, num) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -780,8 +915,11 @@ impl EditSDR {
         {
             let __result =
                 unsafe { crate::ffi::STEPEdit_EditSDR_inherited_MaxList(self as *const Self, num) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -791,26 +929,35 @@ impl EditSDR {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditSDR_inherited_EditMode(self as *const Self, num)
             };
-            crate::check_exception();
-            crate::if_select::EditValue::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::EditValue::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:90 - `IFSelect_Editor::PrintNames()`
     pub fn print_names(&self, S: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::STEPEdit_EditSDR_inherited_PrintNames(self as *const Self, S) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::STEPEdit_EditSDR_inherited_PrintNames(self as *const Self, S)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:92 - `IFSelect_Editor::PrintDefs()`
     pub fn print_defs(&self, S: &mut crate::ffi::Standard_OStream, labels: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPEdit_EditSDR_inherited_PrintDefs(self as *const Self, S, labels)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -820,8 +967,11 @@ impl EditSDR {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditSDR_inherited_MaxNameLength(self as *const Self, what)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -835,8 +985,11 @@ impl EditSDR {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditSDR_inherited_Form(self as *const Self, readonly, undoable)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -846,8 +999,11 @@ impl EditSDR {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditSDR_inherited_ListEditor(self as *const Self, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -861,8 +1017,11 @@ impl EditSDR {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditSDR_inherited_ListValue(self as *const Self, form, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -884,8 +1043,11 @@ impl EditSDR {
                     enforce,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -907,8 +1069,11 @@ impl EditSDR {
                     enforce,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -918,8 +1083,11 @@ impl EditSDR {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditSDR_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -929,8 +1097,11 @@ impl EditSDR {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditSDR_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -939,11 +1110,14 @@ impl EditSDR {
         {
             let __result =
                 unsafe { crate::ffi::STEPEdit_EditSDR_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -953,18 +1127,23 @@ impl EditSDR {
         {
             let __result =
                 unsafe { crate::ffi::STEPEdit_EditSDR_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPEdit_EditSDR_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -974,16 +1153,22 @@ impl EditSDR {
             let __result = unsafe {
                 crate::ffi::STEPEdit_EditSDR_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::STEPEdit_EditSDR_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPEdit_EditSDR_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -999,41 +1184,41 @@ unsafe impl crate::CppDeletable for HandleSTEPEditEditSDR {
 impl HandleSTEPEditEditSDR {
     /// Dereference this Handle to access the underlying STEPEdit_EditSDR
     pub fn get(&self) -> &crate::ffi::STEPEdit_EditSDR {
-        {
-            let __result = unsafe { crate::ffi::HandleSTEPEditEditSDR_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleSTEPEditEditSDR_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying STEPEdit_EditSDR
     pub fn get_mut(&mut self) -> &mut crate::ffi::STEPEdit_EditSDR {
-        {
-            let __result = unsafe { crate::ffi::HandleSTEPEditEditSDR_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleSTEPEditEditSDR_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<STEPEdit_EditSDR> to Handle<IFSelect_Editor>
     pub fn to_handle_editor(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectEditor> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSTEPEditEditSDR_to_HandleIFSelectEditor(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSTEPEditEditSDR_to_HandleIFSelectEditor(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPEdit_EditSDR> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSTEPEditEditSDR_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSTEPEditEditSDR_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

@@ -13,8 +13,10 @@
 /// is returned.
 pub fn precision_real_2(P: f64) {
     {
-        unsafe { crate::ffi::BRepLib_precision_real_2(P) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BRepLib_precision_real_2(P) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepLib.hxx`:60 - `BRepLib::Precision`
@@ -22,16 +24,21 @@ pub fn precision_real_2(P: f64) {
 pub fn precision_2() -> f64 {
     {
         let __result = unsafe { crate::ffi::BRepLib_precision_2() };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `BRepLib.hxx`:63 - `BRepLib::Plane`
 /// Sets the current plane to P.
 pub fn plane_handlegeomplane_2(P: &crate::ffi::HandleGeomPlane) {
     {
-        unsafe { crate::ffi::BRepLib_plane_handlegeomplane_2(P) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BRepLib_plane_handlegeomplane_2(P) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepLib.hxx`:66 - `BRepLib::Plane`
@@ -39,8 +46,11 @@ pub fn plane_handlegeomplane_2(P: &crate::ffi::HandleGeomPlane) {
 pub fn plane_2() -> crate::OwnedPtr<crate::ffi::HandleGeomPlane> {
     {
         let __result = unsafe { crate::ffi::BRepLib_plane_2() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `BRepLib.hxx`:72 - `BRepLib::CheckSameRange`
@@ -51,8 +61,11 @@ pub fn plane_2() -> crate::OwnedPtr<crate::ffi::HandleGeomPlane> {
 pub fn check_same_range(E: &crate::topo_ds::Edge, Confusion: f64) -> bool {
     {
         let __result = unsafe { crate::ffi::BRepLib_check_same_range(E, Confusion) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `BRepLib.hxx`:83 - `BRepLib::SameRange`
@@ -66,8 +79,10 @@ pub fn check_same_range(E: &crate::topo_ds::Edge, Confusion: f64) -> bool {
 /// the all the other curves.
 pub fn same_range_edge_real(E: &crate::topo_ds::Edge, Tolerance: f64) {
     {
-        unsafe { crate::ffi::BRepLib_same_range_edge_real(E, Tolerance) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BRepLib_same_range_edge_real(E, Tolerance) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepLib.hxx`:91 - `BRepLib::BuildCurve3d`
@@ -93,8 +108,11 @@ pub fn build_curve3d_edge_real_shape_int2(
                 MaxSegment,
             )
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `BRepLib.hxx`:100 - `BRepLib::BuildCurves3d`
@@ -118,8 +136,11 @@ pub fn build_curves3d_shape_real_shape_int2(
                 MaxSegment,
             )
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `BRepLib.hxx`:108 - `BRepLib::BuildCurves3d`
@@ -128,8 +149,11 @@ pub fn build_curves3d_shape_real_shape_int2(
 pub fn build_curves3d_shape(S: &crate::topo_ds::Shape) -> bool {
     {
         let __result = unsafe { crate::ffi::BRepLib_build_curves3d_shape(S) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `BRepLib.hxx`:111 - `BRepLib::BuildPCurveForEdgeOnPlane`
@@ -139,8 +163,11 @@ pub fn build_p_curve_for_edge_on_plane_edge_face(
     theF: &crate::topo_ds::Face,
 ) {
     {
-        unsafe { crate::ffi::BRepLib_build_p_curve_for_edge_on_plane_edge_face(theE, theF) };
-        crate::check_exception();
+        let __exc =
+            unsafe { crate::ffi::BRepLib_build_p_curve_for_edge_on_plane_edge_face(theE, theF) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepLib.hxx`:116 - `BRepLib::BuildPCurveForEdgeOnPlane`
@@ -153,12 +180,14 @@ pub fn build_p_curve_for_edge_on_plane_edge_face_handlegeom2dcurve_bool(
     bToUpdate: &mut bool,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::BRepLib_build_p_curve_for_edge_on_plane_edge_face_handlegeom2dcurve_bool(
                 theE, theF, aC2D, bToUpdate,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepLib.hxx`:141 - `BRepLib::UpdateEdgeTol`
@@ -179,8 +208,11 @@ pub fn update_edge_tol(
         let __result = unsafe {
             crate::ffi::BRepLib_update_edge_tol(E, MinToleranceRequest, MaxToleranceToCheck)
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `BRepLib.hxx`:154 - `BRepLib::UpdateEdgeTolerance`
@@ -202,8 +234,11 @@ pub fn update_edge_tolerance(
         let __result = unsafe {
             crate::ffi::BRepLib_update_edge_tolerance(S, MinToleranceRequest, MaxToleranceToCheck)
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `BRepLib.hxx`:163 - `BRepLib::SameParameter`
@@ -213,8 +248,10 @@ pub fn update_edge_tolerance(
 /// was True  on the  Edge.
 pub fn same_parameter_edge_real(theEdge: &crate::topo_ds::Edge, Tolerance: f64) {
     {
-        unsafe { crate::ffi::BRepLib_same_parameter_edge_real(theEdge, Tolerance) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BRepLib_same_parameter_edge_real(theEdge, Tolerance) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepLib.hxx`:175 - `BRepLib::SameParameter`
@@ -242,8 +279,11 @@ pub fn same_parameter_edge_real2_bool(
                 IsUseOldEdge,
             )
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `BRepLib.hxx`:184 - `BRepLib::SameParameter`
@@ -253,8 +293,11 @@ pub fn same_parameter_edge_real2_bool(
 /// was True  on an  Edge.
 pub fn same_parameter_shape_real_bool(S: &crate::topo_ds::Shape, Tolerance: f64, forced: bool) {
     {
-        unsafe { crate::ffi::BRepLib_same_parameter_shape_real_bool(S, Tolerance, forced) };
-        crate::check_exception();
+        let __exc =
+            unsafe { crate::ffi::BRepLib_same_parameter_shape_real_bool(S, Tolerance, forced) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepLib.hxx`:196 - `BRepLib::SameParameter`
@@ -273,7 +316,7 @@ pub fn same_parameter_shape_reshape_real_bool(
     forced: bool,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::BRepLib_same_parameter_shape_reshape_real_bool(
                 S,
                 theReshaper,
@@ -281,7 +324,9 @@ pub fn same_parameter_shape_reshape_real_bool(
                 forced,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepLib.hxx`:205 - `BRepLib::UpdateTolerances`
@@ -291,8 +336,11 @@ pub fn same_parameter_shape_reshape_real_bool(
 /// SameParameter. (called in)
 pub fn update_tolerances_shape_bool(S: &crate::topo_ds::Shape, verifyFaceTolerance: bool) {
     {
-        unsafe { crate::ffi::BRepLib_update_tolerances_shape_bool(S, verifyFaceTolerance) };
-        crate::check_exception();
+        let __exc =
+            unsafe { crate::ffi::BRepLib_update_tolerances_shape_bool(S, verifyFaceTolerance) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepLib.hxx`:217 - `BRepLib::UpdateTolerances`
@@ -310,14 +358,16 @@ pub fn update_tolerances_shape_reshape_bool(
     verifyFaceTolerance: bool,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::BRepLib_update_tolerances_shape_reshape_bool(
                 S,
                 theReshaper,
                 verifyFaceTolerance,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepLib.hxx`:224 - `BRepLib::UpdateInnerTolerances`
@@ -325,8 +375,10 @@ pub fn update_tolerances_shape_reshape_bool(
 /// of a shape and updates them to satisfy "SameParameter" condition
 pub fn update_inner_tolerances(S: &crate::topo_ds::Shape) {
     {
-        unsafe { crate::ffi::BRepLib_update_inner_tolerances(S) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BRepLib_update_inner_tolerances(S) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepLib.hxx`:229 - `BRepLib::OrientClosedSolid`
@@ -336,8 +388,11 @@ pub fn update_inner_tolerances(S: &crate::topo_ds::Shape) {
 pub fn orient_closed_solid(solid: &mut crate::topo_ds::Solid) -> bool {
     {
         let __result = unsafe { crate::ffi::BRepLib_orient_closed_solid(solid) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `BRepLib.hxx`:233 - `BRepLib::ContinuityOfFaces`
@@ -353,8 +408,11 @@ pub fn continuity_of_faces(
         let __result = unsafe {
             crate::ffi::BRepLib_continuity_of_faces(theEdge, theFace1, theFace2, theAngleTol)
         };
-        crate::check_exception();
-        crate::geom_abs::Shape::try_from(__result).unwrap()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        crate::geom_abs::Shape::try_from(__val).unwrap()
     }
 }
 /// **Source:** `BRepLib.hxx`:242 - `BRepLib::EncodeRegularity`
@@ -364,8 +422,10 @@ pub fn continuity_of_faces(
 /// is done.
 pub fn encode_regularity_shape_real(S: &crate::topo_ds::Shape, TolAng: f64) {
     {
-        unsafe { crate::ffi::BRepLib_encode_regularity_shape_real(S, TolAng) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BRepLib_encode_regularity_shape_real(S, TolAng) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepLib.hxx`:249 - `BRepLib::EncodeRegularity`
@@ -379,8 +439,11 @@ pub fn encode_regularity_shape_listofshape_real(
     TolAng: f64,
 ) {
     {
-        unsafe { crate::ffi::BRepLib_encode_regularity_shape_listofshape_real(S, LE, TolAng) };
-        crate::check_exception();
+        let __exc =
+            unsafe { crate::ffi::BRepLib_encode_regularity_shape_listofshape_real(S, LE, TolAng) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepLib.hxx`:257 - `BRepLib::EncodeRegularity`
@@ -395,8 +458,11 @@ pub fn encode_regularity_edge_face2_real(
     TolAng: f64,
 ) {
     {
-        unsafe { crate::ffi::BRepLib_encode_regularity_edge_face2_real(E, F1, F2, TolAng) };
-        crate::check_exception();
+        let __exc =
+            unsafe { crate::ffi::BRepLib_encode_regularity_edge_face2_real(E, F1, F2, TolAng) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepLib.hxx`:265 - `BRepLib::SortFaces`
@@ -405,8 +471,10 @@ pub fn encode_regularity_edge_face2_real(
 /// (Plane,Cylinder,Cone,Sphere,Torus,other)
 pub fn sort_faces(S: &crate::topo_ds::Shape, LF: &mut crate::ffi::TopTools_ListOfShape) {
     {
-        unsafe { crate::ffi::BRepLib_sort_faces(S, LF) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BRepLib_sort_faces(S, LF) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepLib.hxx`:270 - `BRepLib::ReverseSortFaces`
@@ -415,8 +483,10 @@ pub fn sort_faces(S: &crate::topo_ds::Shape, LF: &mut crate::ffi::TopTools_ListO
 /// (other,Torus,Sphere,Cone,Cylinder,Plane)
 pub fn reverse_sort_faces(S: &crate::topo_ds::Shape, LF: &mut crate::ffi::TopTools_ListOfShape) {
     {
-        unsafe { crate::ffi::BRepLib_reverse_sort_faces(S, LF) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BRepLib_reverse_sort_faces(S, LF) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepLib.hxx`:276 - `BRepLib::EnsureNormalConsistency`
@@ -433,8 +503,11 @@ pub fn ensure_normal_consistency(
         let __result = unsafe {
             crate::ffi::BRepLib_ensure_normal_consistency(S, theAngTol, ForceComputeNormals)
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `BRepLib.hxx`:283 - `BRepLib::UpdateDeflection`
@@ -442,8 +515,10 @@ pub fn ensure_normal_consistency(
 /// by the maximum deviation measured on existing triangulation.
 pub fn update_deflection(S: &crate::topo_ds::Shape) {
     {
-        unsafe { crate::ffi::BRepLib_update_deflection(S) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BRepLib_update_deflection(S) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepLib.hxx`:298 - `BRepLib::FindValidRange`
@@ -471,8 +546,11 @@ pub fn find_valid_range_curve_real2_pnt_real2_pnt_real3(
                 theFirst, theLast,
             )
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `BRepLib.hxx`:312 - `BRepLib::FindValidRange`
@@ -487,8 +565,11 @@ pub fn find_valid_range_edge_real2(
     {
         let __result =
             unsafe { crate::ffi::BRepLib_find_valid_range_edge_real2(theEdge, theFirst, theLast) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `BRepLib.hxx`:324 - `BRepLib::ExtendFace`
@@ -510,7 +591,7 @@ pub fn extend_face(
     theFExtended: &mut crate::topo_ds::Face,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::BRepLib_extend_face(
                 theF,
                 theExtVal,
@@ -521,7 +602,9 @@ pub fn extend_face(
                 theFExtended,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 
@@ -715,8 +798,10 @@ impl CheckCurveOnSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_CheckCurveOnSurface_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -729,8 +814,10 @@ impl CheckCurveOnSurface {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_CheckCurveOnSurface_ctor_edge_face(theEdge, theFace) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -738,10 +825,12 @@ impl CheckCurveOnSurface {
     /// Sets the data for the algorithm
     pub fn init(&mut self, theEdge: &crate::topo_ds::Edge, theFace: &crate::topo_ds::Face) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_CheckCurveOnSurface_init(self as *mut Self, theEdge, theFace)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -750,8 +839,11 @@ impl CheckCurveOnSurface {
     /// If myIsParallel == Standard_True then computation will be performed in parallel.
     pub fn perform(&mut self) {
         {
-            unsafe { crate::ffi::BRepLib_CheckCurveOnSurface_perform(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepLib_CheckCurveOnSurface_perform(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -761,8 +853,11 @@ impl CheckCurveOnSurface {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_CheckCurveOnSurface_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -770,13 +865,15 @@ impl CheckCurveOnSurface {
     /// Sets parallel flag
     pub fn set_parallel(&mut self, theIsParallel: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_CheckCurveOnSurface_set_parallel(
                     self as *mut Self,
                     theIsParallel,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -786,8 +883,11 @@ impl CheckCurveOnSurface {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_CheckCurveOnSurface_is_parallel(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -803,8 +903,11 @@ impl CheckCurveOnSurface {
             let __result = unsafe {
                 crate::ffi::BRepLib_CheckCurveOnSurface_error_status(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -815,8 +918,11 @@ impl CheckCurveOnSurface {
             let __result = unsafe {
                 crate::ffi::BRepLib_CheckCurveOnSurface_max_distance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -827,8 +933,11 @@ impl CheckCurveOnSurface {
             let __result = unsafe {
                 crate::ffi::BRepLib_CheckCurveOnSurface_max_parameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -860,8 +969,11 @@ impl Command {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepLib_Command_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -869,8 +981,10 @@ impl Command {
     /// Raises NotDone if done is false.
     pub fn check(&self) {
         {
-            unsafe { crate::ffi::BRepLib_Command_check(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepLib_Command_check(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -913,8 +1027,10 @@ impl FindSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_FindSurface_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -937,8 +1053,10 @@ impl FindSurface {
             let __result = unsafe {
                 crate::ffi::BRepLib_FindSurface_ctor_shape_real_bool2(S, Tol, OnlyPlane, OnlyClosed)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -996,7 +1114,7 @@ impl FindSurface {
     /// closed in 2D, will be ignored.
     pub fn init(&mut self, S: &crate::topo_ds::Shape, Tol: f64, OnlyPlane: bool, OnlyClosed: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_FindSurface_init(
                     self as *mut Self,
                     S,
@@ -1005,7 +1123,9 @@ impl FindSurface {
                     OnlyClosed,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1013,8 +1133,11 @@ impl FindSurface {
     pub fn found(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepLib_FindSurface_found(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1022,8 +1145,11 @@ impl FindSurface {
     pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
         {
             let __result = unsafe { crate::ffi::BRepLib_FindSurface_surface(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1032,8 +1158,11 @@ impl FindSurface {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_FindSurface_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1042,8 +1171,11 @@ impl FindSurface {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_FindSurface_tolerance_reached(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1051,8 +1183,11 @@ impl FindSurface {
     pub fn existed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepLib_FindSurface_existed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1060,8 +1195,11 @@ impl FindSurface {
     pub fn location(&self) -> crate::OwnedPtr<crate::top_loc::Location> {
         {
             let __result = unsafe { crate::ffi::BRepLib_FindSurface_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -1099,8 +1237,10 @@ impl FuseEdges {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_FuseEdges_ctor_shape_bool(theShape, PerformNow) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1115,8 +1255,11 @@ impl FuseEdges {
     /// set edges to avoid being fused
     pub fn avoid_edges(&mut self, theMapEdg: &crate::ffi::TopTools_IndexedMapOfShape) {
         {
-            unsafe { crate::ffi::BRepLib_FuseEdges_avoid_edges(self as *mut Self, theMapEdg) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepLib_FuseEdges_avoid_edges(self as *mut Self, theMapEdg) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1125,10 +1268,12 @@ impl FuseEdges {
     /// End  Modified  by  IFV  19.04.07
     pub fn set_concat_b_spl(&mut self, theConcatBSpl: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_FuseEdges_set_concat_b_spl(self as *mut Self, theConcatBSpl)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1138,8 +1283,11 @@ impl FuseEdges {
     /// that can be fused.
     pub fn edges(&mut self, theMapLstEdg: &mut crate::ffi::TopTools_DataMapOfIntegerListOfShape) {
         {
-            unsafe { crate::ffi::BRepLib_FuseEdges_edges(self as *mut Self, theMapLstEdg) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepLib_FuseEdges_edges(self as *mut Self, theMapLstEdg) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1151,8 +1299,11 @@ impl FuseEdges {
     /// theMapLstEdg(i) corresponds the resulting edge theMapEdge(i)
     pub fn result_edges(&mut self, theMapEdg: &mut crate::ffi::TopTools_DataMapOfIntegerShape) {
         {
-            unsafe { crate::ffi::BRepLib_FuseEdges_result_edges(self as *mut Self, theMapEdg) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepLib_FuseEdges_result_edges(self as *mut Self, theMapEdg) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1160,8 +1311,11 @@ impl FuseEdges {
     /// returns the map of modified faces.
     pub fn faces(&mut self, theMapFac: &mut crate::ffi::TopTools_DataMapOfShapeShape) {
         {
-            unsafe { crate::ffi::BRepLib_FuseEdges_faces(self as *mut Self, theMapFac) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepLib_FuseEdges_faces(self as *mut Self, theMapFac) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1171,8 +1325,11 @@ impl FuseEdges {
     pub fn shape(&mut self) -> &mut crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::BRepLib_FuseEdges_shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1181,8 +1338,11 @@ impl FuseEdges {
     pub fn nb_vertices(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BRepLib_FuseEdges_nb_vertices(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1191,8 +1351,10 @@ impl FuseEdges {
     /// one edge and then update myShape
     pub fn perform(&mut self) {
         {
-            unsafe { crate::ffi::BRepLib_FuseEdges_perform(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepLib_FuseEdges_perform(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1246,8 +1408,10 @@ impl MakeEdge {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1258,8 +1422,10 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_vertex2(V1, V2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1267,8 +1433,10 @@ impl MakeEdge {
     pub fn new_pnt2(P1: &crate::gp::Pnt, P2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_pnt2(P1, P2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1276,8 +1444,10 @@ impl MakeEdge {
     pub fn new_lin(L: &crate::gp::Lin) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_lin(L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1285,8 +1455,10 @@ impl MakeEdge {
     pub fn new_lin_real2(L: &crate::gp::Lin, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_lin_real2(L, p1, p2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1298,8 +1470,10 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_lin_pnt2(L, P1, P2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1311,8 +1485,10 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_lin_vertex2(L, V1, V2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1320,8 +1496,10 @@ impl MakeEdge {
     pub fn new_circ(L: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_circ(L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1329,8 +1507,10 @@ impl MakeEdge {
     pub fn new_circ_real2(L: &crate::gp::Circ, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_circ_real2(L, p1, p2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1342,8 +1522,10 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_circ_pnt2(L, P1, P2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1355,8 +1537,10 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_circ_vertex2(L, V1, V2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1364,8 +1548,10 @@ impl MakeEdge {
     pub fn new_elips(L: &crate::gp::Elips) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_elips(L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1373,8 +1559,10 @@ impl MakeEdge {
     pub fn new_elips_real2(L: &crate::gp::Elips, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_elips_real2(L, p1, p2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1386,8 +1574,10 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_elips_pnt2(L, P1, P2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1399,8 +1589,10 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_elips_vertex2(L, V1, V2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1408,8 +1600,10 @@ impl MakeEdge {
     pub fn new_hypr(L: &crate::gp::Hypr) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_hypr(L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1417,8 +1611,10 @@ impl MakeEdge {
     pub fn new_hypr_real2(L: &crate::gp::Hypr, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_hypr_real2(L, p1, p2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1430,8 +1626,10 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_hypr_pnt2(L, P1, P2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1443,8 +1641,10 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_hypr_vertex2(L, V1, V2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1452,8 +1652,10 @@ impl MakeEdge {
     pub fn new_parab(L: &crate::gp::Parab) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_parab(L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1461,8 +1663,10 @@ impl MakeEdge {
     pub fn new_parab_real2(L: &crate::gp::Parab, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_parab_real2(L, p1, p2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1474,8 +1678,10 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_parab_pnt2(L, P1, P2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1487,8 +1693,10 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_parab_vertex2(L, V1, V2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1496,8 +1704,10 @@ impl MakeEdge {
     pub fn new_handlegeomcurve(L: &crate::ffi::HandleGeomCurve) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_ctor_handlegeomcurve(L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1510,8 +1720,10 @@ impl MakeEdge {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeEdge_ctor_handlegeomcurve_real2(L, p1, p2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1524,8 +1736,10 @@ impl MakeEdge {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeEdge_ctor_handlegeomcurve_pnt2(L, P1, P2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1538,8 +1752,10 @@ impl MakeEdge {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeEdge_ctor_handlegeomcurve_vertex2(L, V1, V2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1555,8 +1771,10 @@ impl MakeEdge {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakeEdge_ctor_handlegeomcurve_pnt2_real2(L, P1, P2, p1, p2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1572,8 +1790,10 @@ impl MakeEdge {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakeEdge_ctor_handlegeomcurve_vertex2_real2(L, V1, V2, p1, p2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1586,8 +1806,10 @@ impl MakeEdge {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface(L, S)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1604,8 +1826,10 @@ impl MakeEdge {
                     L, S, p1, p2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1622,8 +1846,10 @@ impl MakeEdge {
                     L, S, P1, P2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1640,8 +1866,10 @@ impl MakeEdge {
                     L, S, V1, V2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1660,8 +1888,10 @@ impl MakeEdge {
                     L, S, P1, P2, p1, p2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1680,16 +1910,21 @@ impl MakeEdge {
                     L, S, V1, V2, p1, p2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BRepLib_MakeEdge.hxx`:193 - `BRepLib_MakeEdge::Init()`
     pub fn init_handlegeomcurve(&mut self, C: &crate::ffi::HandleGeomCurve) {
         {
-            unsafe { crate::ffi::BRepLib_MakeEdge_init_handlegeomcurve(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepLib_MakeEdge_init_handlegeomcurve(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1701,7 +1936,7 @@ impl MakeEdge {
         p2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_MakeEdge_init_handlegeomcurve_real2(
                     self as *mut Self,
                     C,
@@ -1709,7 +1944,9 @@ impl MakeEdge {
                     p2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1721,10 +1958,12 @@ impl MakeEdge {
         P2: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_MakeEdge_init_handlegeomcurve_pnt2(self as *mut Self, C, P1, P2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1736,7 +1975,7 @@ impl MakeEdge {
         V2: &crate::topo_ds::Vertex,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_MakeEdge_init_handlegeomcurve_vertex2(
                     self as *mut Self,
                     C,
@@ -1744,7 +1983,9 @@ impl MakeEdge {
                     V2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1758,7 +1999,7 @@ impl MakeEdge {
         p2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_MakeEdge_init_handlegeomcurve_pnt2_real2(
                     self as *mut Self,
                     C,
@@ -1768,7 +2009,9 @@ impl MakeEdge {
                     p2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1782,7 +2025,7 @@ impl MakeEdge {
         p2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_MakeEdge_init_handlegeomcurve_vertex2_real2(
                     self as *mut Self,
                     C,
@@ -1792,7 +2035,9 @@ impl MakeEdge {
                     p2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1803,14 +2048,16 @@ impl MakeEdge {
         S: &crate::ffi::HandleGeomSurface,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface(
                     self as *mut Self,
                     C,
                     S,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1823,7 +2070,7 @@ impl MakeEdge {
         p2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_real2(
                     self as *mut Self,
                     C,
@@ -1832,7 +2079,9 @@ impl MakeEdge {
                     p2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1845,7 +2094,7 @@ impl MakeEdge {
         P2: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_pnt2(
                     self as *mut Self,
                     C,
@@ -1854,7 +2103,9 @@ impl MakeEdge {
                     P2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1867,7 +2118,7 @@ impl MakeEdge {
         V2: &crate::topo_ds::Vertex,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_vertex2(
                     self as *mut Self,
                     C,
@@ -1876,7 +2127,9 @@ impl MakeEdge {
                     V2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1891,7 +2144,7 @@ impl MakeEdge {
         p2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_pnt2_real2(
                     self as *mut Self,
                     C,
@@ -1902,7 +2155,9 @@ impl MakeEdge {
                     p2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1917,7 +2172,7 @@ impl MakeEdge {
         p2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_vertex2_real2(
                     self as *mut Self,
                     C,
@@ -1928,7 +2183,9 @@ impl MakeEdge {
                     p2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1937,8 +2194,11 @@ impl MakeEdge {
     pub fn error(&self) -> crate::b_rep_lib::EdgeError {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_error(self as *const Self) };
-            crate::check_exception();
-            crate::b_rep_lib::EdgeError::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_lib::EdgeError::try_from(__val).unwrap()
         }
     }
 
@@ -1946,8 +2206,11 @@ impl MakeEdge {
     pub fn edge(&mut self) -> &crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_edge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1956,8 +2219,11 @@ impl MakeEdge {
     pub fn vertex1(&self) -> &crate::topo_ds::Vertex {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_vertex1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1966,56 +2232,61 @@ impl MakeEdge {
     pub fn vertex2(&self) -> &crate::topo_ds::Vertex {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge_vertex2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to BRepLib_MakeShape
     pub fn as_make_shape(&self) -> &MakeShape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeEdge_as_BRepLib_MakeShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeEdge_as_BRepLib_MakeShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepLib_MakeShape (mutable)
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeEdge_as_BRepLib_MakeShape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeEdge_as_BRepLib_MakeShape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepLib_Command
     pub fn as_command(&self) -> &Command {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeEdge_as_BRepLib_Command(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeEdge_as_BRepLib_Command(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepLib_Command (mutable)
     pub fn as_command_mut(&mut self) -> &mut Command {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeEdge_as_BRepLib_Command_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeEdge_as_BRepLib_Command_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:43 - `BRepLib_MakeShape::Build()`
     pub fn build(&mut self) {
         {
-            unsafe { crate::ffi::BRepLib_MakeEdge_inherited_Build(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepLib_MakeEdge_inherited_Build(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2024,8 +2295,11 @@ impl MakeEdge {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeEdge_inherited_Shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2035,8 +2309,11 @@ impl MakeEdge {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakeEdge_inherited_FaceStatus(self as *const Self, F)
             };
-            crate::check_exception();
-            crate::b_rep_lib::ShapeModification::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_lib::ShapeModification::try_from(__val).unwrap()
         }
     }
 
@@ -2046,8 +2323,11 @@ impl MakeEdge {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakeEdge_inherited_HasDescendants(self as *const Self, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2056,8 +2336,11 @@ impl MakeEdge {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeEdge_inherited_NbSurfaces(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2066,8 +2349,11 @@ impl MakeEdge {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeEdge_inherited_NewFaces(self as *mut Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2076,16 +2362,22 @@ impl MakeEdge {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeEdge_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepLib_Command.hxx`:45 - `BRepLib_Command::Check()`
     pub fn check(&self) {
         {
-            unsafe { crate::ffi::BRepLib_MakeEdge_inherited_Check(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepLib_MakeEdge_inherited_Check(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2142,8 +2434,10 @@ impl MakeEdge2d {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_vertex2(V1, V2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2151,8 +2445,10 @@ impl MakeEdge2d {
     pub fn new_pnt2d2(P1: &crate::gp::Pnt2d, P2: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_pnt2d2(P1, P2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2160,8 +2456,10 @@ impl MakeEdge2d {
     pub fn new_lin2d(L: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_lin2d(L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2169,8 +2467,10 @@ impl MakeEdge2d {
     pub fn new_lin2d_real2(L: &crate::gp::Lin2d, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_lin2d_real2(L, p1, p2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2182,8 +2482,10 @@ impl MakeEdge2d {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_lin2d_pnt2d2(L, P1, P2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2195,8 +2497,10 @@ impl MakeEdge2d {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_lin2d_vertex2(L, V1, V2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2204,8 +2508,10 @@ impl MakeEdge2d {
     pub fn new_circ2d(L: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_circ2d(L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2213,8 +2519,10 @@ impl MakeEdge2d {
     pub fn new_circ2d_real2(L: &crate::gp::Circ2d, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_circ2d_real2(L, p1, p2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2226,8 +2534,10 @@ impl MakeEdge2d {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_circ2d_pnt2d2(L, P1, P2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2239,8 +2549,10 @@ impl MakeEdge2d {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_circ2d_vertex2(L, V1, V2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2248,8 +2560,10 @@ impl MakeEdge2d {
     pub fn new_elips2d(L: &crate::gp::Elips2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_elips2d(L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2257,8 +2571,10 @@ impl MakeEdge2d {
     pub fn new_elips2d_real2(L: &crate::gp::Elips2d, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_elips2d_real2(L, p1, p2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2270,8 +2586,10 @@ impl MakeEdge2d {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_elips2d_pnt2d2(L, P1, P2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2284,8 +2602,10 @@ impl MakeEdge2d {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_elips2d_vertex2(L, V1, V2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2293,8 +2613,10 @@ impl MakeEdge2d {
     pub fn new_hypr2d(L: &crate::gp::Hypr2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_hypr2d(L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2302,8 +2624,10 @@ impl MakeEdge2d {
     pub fn new_hypr2d_real2(L: &crate::gp::Hypr2d, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_hypr2d_real2(L, p1, p2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2315,8 +2639,10 @@ impl MakeEdge2d {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_hypr2d_pnt2d2(L, P1, P2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2328,8 +2654,10 @@ impl MakeEdge2d {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_hypr2d_vertex2(L, V1, V2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2337,8 +2665,10 @@ impl MakeEdge2d {
     pub fn new_parab2d(L: &crate::gp::Parab2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_parab2d(L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2346,8 +2676,10 @@ impl MakeEdge2d {
     pub fn new_parab2d_real2(L: &crate::gp::Parab2d, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_parab2d_real2(L, p1, p2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2359,8 +2691,10 @@ impl MakeEdge2d {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_parab2d_pnt2d2(L, P1, P2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2373,8 +2707,10 @@ impl MakeEdge2d {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_parab2d_vertex2(L, V1, V2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2382,8 +2718,10 @@ impl MakeEdge2d {
     pub fn new_handlegeom2dcurve(L: &crate::ffi::HandleGeom2dCurve) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_handlegeom2dcurve(L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2396,8 +2734,10 @@ impl MakeEdge2d {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_handlegeom2dcurve_real2(L, p1, p2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2410,8 +2750,10 @@ impl MakeEdge2d {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_handlegeom2dcurve_pnt2d2(L, P1, P2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2424,8 +2766,10 @@ impl MakeEdge2d {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeEdge2d_ctor_handlegeom2dcurve_vertex2(L, V1, V2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2443,8 +2787,10 @@ impl MakeEdge2d {
                     L, P1, P2, p1, p2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2462,16 +2808,22 @@ impl MakeEdge2d {
                     L, V1, V2, p1, p2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BRepLib_MakeEdge2d.hxx`:162 - `BRepLib_MakeEdge2d::Init()`
     pub fn init_handlegeom2dcurve(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
         {
-            unsafe { crate::ffi::BRepLib_MakeEdge2d_init_handlegeom2dcurve(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepLib_MakeEdge2d_init_handlegeom2dcurve(self as *mut Self, C)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2483,7 +2835,7 @@ impl MakeEdge2d {
         p2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_MakeEdge2d_init_handlegeom2dcurve_real2(
                     self as *mut Self,
                     C,
@@ -2491,7 +2843,9 @@ impl MakeEdge2d {
                     p2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2503,7 +2857,7 @@ impl MakeEdge2d {
         P2: &crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_MakeEdge2d_init_handlegeom2dcurve_pnt2d2(
                     self as *mut Self,
                     C,
@@ -2511,7 +2865,9 @@ impl MakeEdge2d {
                     P2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2523,7 +2879,7 @@ impl MakeEdge2d {
         V2: &crate::topo_ds::Vertex,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_MakeEdge2d_init_handlegeom2dcurve_vertex2(
                     self as *mut Self,
                     C,
@@ -2531,7 +2887,9 @@ impl MakeEdge2d {
                     V2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2545,7 +2903,7 @@ impl MakeEdge2d {
         p2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_MakeEdge2d_init_handlegeom2dcurve_pnt2d2_real2(
                     self as *mut Self,
                     C,
@@ -2555,7 +2913,9 @@ impl MakeEdge2d {
                     p2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2569,7 +2929,7 @@ impl MakeEdge2d {
         p2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_MakeEdge2d_init_handlegeom2dcurve_vertex2_real2(
                     self as *mut Self,
                     C,
@@ -2579,7 +2939,9 @@ impl MakeEdge2d {
                     p2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2588,8 +2950,11 @@ impl MakeEdge2d {
     pub fn error(&self) -> crate::b_rep_lib::EdgeError {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_error(self as *const Self) };
-            crate::check_exception();
-            crate::b_rep_lib::EdgeError::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_lib::EdgeError::try_from(__val).unwrap()
         }
     }
 
@@ -2597,8 +2962,11 @@ impl MakeEdge2d {
     pub fn edge(&mut self) -> &crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_edge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2607,8 +2975,11 @@ impl MakeEdge2d {
     pub fn vertex1(&self) -> &crate::topo_ds::Vertex {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_vertex1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2617,57 +2988,62 @@ impl MakeEdge2d {
     pub fn vertex2(&self) -> &crate::topo_ds::Vertex {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeEdge2d_vertex2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to BRepLib_MakeShape
     pub fn as_make_shape(&self) -> &MakeShape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeEdge2d_as_BRepLib_MakeShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeEdge2d_as_BRepLib_MakeShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepLib_MakeShape (mutable)
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepLib_MakeEdge2d_as_BRepLib_MakeShape_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeEdge2d_as_BRepLib_MakeShape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepLib_Command
     pub fn as_command(&self) -> &Command {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeEdge2d_as_BRepLib_Command(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeEdge2d_as_BRepLib_Command(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepLib_Command (mutable)
     pub fn as_command_mut(&mut self) -> &mut Command {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeEdge2d_as_BRepLib_Command_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeEdge2d_as_BRepLib_Command_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:43 - `BRepLib_MakeShape::Build()`
     pub fn build(&mut self) {
         {
-            unsafe { crate::ffi::BRepLib_MakeEdge2d_inherited_Build(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepLib_MakeEdge2d_inherited_Build(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2676,8 +3052,11 @@ impl MakeEdge2d {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeEdge2d_inherited_Shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2687,8 +3066,11 @@ impl MakeEdge2d {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakeEdge2d_inherited_FaceStatus(self as *const Self, F)
             };
-            crate::check_exception();
-            crate::b_rep_lib::ShapeModification::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_lib::ShapeModification::try_from(__val).unwrap()
         }
     }
 
@@ -2698,8 +3080,11 @@ impl MakeEdge2d {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakeEdge2d_inherited_HasDescendants(self as *const Self, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2708,8 +3093,11 @@ impl MakeEdge2d {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeEdge2d_inherited_NbSurfaces(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2718,8 +3106,11 @@ impl MakeEdge2d {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeEdge2d_inherited_NewFaces(self as *mut Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2728,16 +3119,22 @@ impl MakeEdge2d {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeEdge2d_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepLib_Command.hxx`:45 - `BRepLib_Command::Check()`
     pub fn check(&self) {
         {
-            unsafe { crate::ffi::BRepLib_MakeEdge2d_inherited_Check(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepLib_MakeEdge2d_inherited_Check(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2786,8 +3183,10 @@ impl MakeFace {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeFace_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2796,8 +3195,10 @@ impl MakeFace {
     pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeFace_ctor_face(F) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2806,8 +3207,10 @@ impl MakeFace {
     pub fn new_pln(P: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeFace_ctor_pln(P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2816,8 +3219,10 @@ impl MakeFace {
     pub fn new_cylinder(C: &crate::gp::Cylinder) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeFace_ctor_cylinder(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2826,8 +3231,10 @@ impl MakeFace {
     pub fn new_cone(C: &crate::gp::Cone) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeFace_ctor_cone(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2836,8 +3243,10 @@ impl MakeFace {
     pub fn new_sphere(S: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeFace_ctor_sphere(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2846,8 +3255,10 @@ impl MakeFace {
     pub fn new_torus(C: &crate::gp::Torus) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeFace_ctor_torus(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2861,8 +3272,10 @@ impl MakeFace {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeFace_ctor_handlegeomsurface_real(S, TolDegen) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2878,8 +3291,10 @@ impl MakeFace {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeFace_ctor_pln_real4(P, UMin, UMax, VMin, VMax) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2896,8 +3311,10 @@ impl MakeFace {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakeFace_ctor_cylinder_real4(C, UMin, UMax, VMin, VMax)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2913,8 +3330,10 @@ impl MakeFace {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeFace_ctor_cone_real4(C, UMin, UMax, VMin, VMax) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2931,8 +3350,10 @@ impl MakeFace {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakeFace_ctor_sphere_real4(S, UMin, UMax, VMin, VMax)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2948,8 +3369,10 @@ impl MakeFace {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeFace_ctor_torus_real4(C, UMin, UMax, VMin, VMax) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2971,8 +3394,10 @@ impl MakeFace {
                     S, UMin, UMax, VMin, VMax, TolDegen,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2984,8 +3409,10 @@ impl MakeFace {
     pub fn new_wire_bool(W: &crate::topo_ds::Wire, OnlyPlane: bool) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeFace_ctor_wire_bool(W, OnlyPlane) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2998,8 +3425,10 @@ impl MakeFace {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeFace_ctor_pln_wire_bool(P, W, Inside) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3013,8 +3442,10 @@ impl MakeFace {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeFace_ctor_cylinder_wire_bool(C, W, Inside) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3028,8 +3459,10 @@ impl MakeFace {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeFace_ctor_cone_wire_bool(C, W, Inside) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3043,8 +3476,10 @@ impl MakeFace {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeFace_ctor_sphere_wire_bool(S, W, Inside) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3058,8 +3493,10 @@ impl MakeFace {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeFace_ctor_torus_wire_bool(C, W, Inside) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3074,8 +3511,10 @@ impl MakeFace {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakeFace_ctor_handlegeomsurface_wire_bool(S, W, Inside)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3087,8 +3526,10 @@ impl MakeFace {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeFace_ctor_face_wire(F, W) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3150,8 +3591,10 @@ impl MakeFace {
     /// Load the face.
     pub fn init_face(&mut self, F: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::BRepLib_MakeFace_init_face(self as *mut Self, F) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepLib_MakeFace_init_face(self as *mut Self, F) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3167,7 +3610,7 @@ impl MakeFace {
         TolDegen: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_MakeFace_init_handlegeomsurface_bool_real(
                     self as *mut Self,
                     S,
@@ -3175,7 +3618,9 @@ impl MakeFace {
                     TolDegen,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3193,7 +3638,7 @@ impl MakeFace {
         TolDegen: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_MakeFace_init_handlegeomsurface_real5(
                     self as *mut Self,
                     S,
@@ -3204,7 +3649,9 @@ impl MakeFace {
                     TolDegen,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3212,8 +3659,10 @@ impl MakeFace {
     /// Adds the wire <W> in the current face.
     pub fn add(&mut self, W: &crate::topo_ds::Wire) {
         {
-            unsafe { crate::ffi::BRepLib_MakeFace_add(self as *mut Self, W) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepLib_MakeFace_add(self as *mut Self, W) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3221,8 +3670,11 @@ impl MakeFace {
     pub fn error(&self) -> crate::b_rep_lib::FaceError {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeFace_error(self as *const Self) };
-            crate::check_exception();
-            crate::b_rep_lib::FaceError::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_lib::FaceError::try_from(__val).unwrap()
         }
     }
 
@@ -3231,8 +3683,11 @@ impl MakeFace {
     pub fn face(&self) -> &crate::topo_ds::Face {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeFace_face(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3251,56 +3706,61 @@ impl MakeFace {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakeFace_is_degenerated(theCurve, theMaxTol, theActTol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to BRepLib_MakeShape
     pub fn as_make_shape(&self) -> &MakeShape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeFace_as_BRepLib_MakeShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeFace_as_BRepLib_MakeShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepLib_MakeShape (mutable)
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeFace_as_BRepLib_MakeShape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeFace_as_BRepLib_MakeShape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepLib_Command
     pub fn as_command(&self) -> &Command {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeFace_as_BRepLib_Command(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeFace_as_BRepLib_Command(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepLib_Command (mutable)
     pub fn as_command_mut(&mut self) -> &mut Command {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeFace_as_BRepLib_Command_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeFace_as_BRepLib_Command_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:43 - `BRepLib_MakeShape::Build()`
     pub fn build(&mut self) {
         {
-            unsafe { crate::ffi::BRepLib_MakeFace_inherited_Build(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepLib_MakeFace_inherited_Build(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3309,8 +3769,11 @@ impl MakeFace {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeFace_inherited_Shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3320,8 +3783,11 @@ impl MakeFace {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakeFace_inherited_FaceStatus(self as *const Self, F)
             };
-            crate::check_exception();
-            crate::b_rep_lib::ShapeModification::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_lib::ShapeModification::try_from(__val).unwrap()
         }
     }
 
@@ -3331,8 +3797,11 @@ impl MakeFace {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakeFace_inherited_HasDescendants(self as *const Self, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3341,8 +3810,11 @@ impl MakeFace {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeFace_inherited_NbSurfaces(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3351,8 +3823,11 @@ impl MakeFace {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeFace_inherited_NewFaces(self as *mut Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3361,16 +3836,22 @@ impl MakeFace {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeFace_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepLib_Command.hxx`:45 - `BRepLib_Command::Check()`
     pub fn check(&self) {
         {
-            unsafe { crate::ffi::BRepLib_MakeFace_inherited_Check(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepLib_MakeFace_inherited_Check(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3409,8 +3890,10 @@ impl MakePolygon {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakePolygon_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3418,8 +3901,10 @@ impl MakePolygon {
     pub fn new_pnt2(P1: &crate::gp::Pnt, P2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakePolygon_ctor_pnt2(P1, P2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3433,8 +3918,10 @@ impl MakePolygon {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakePolygon_ctor_pnt3_bool(P1, P2, P3, Close) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3449,8 +3936,10 @@ impl MakePolygon {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakePolygon_ctor_pnt4_bool(P1, P2, P3, P4, Close) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3461,8 +3950,10 @@ impl MakePolygon {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakePolygon_ctor_vertex2(V1, V2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3476,8 +3967,10 @@ impl MakePolygon {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakePolygon_ctor_vertex3_bool(V1, V2, V3, Close) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3492,8 +3985,10 @@ impl MakePolygon {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakePolygon_ctor_vertex4_bool(V1, V2, V3, V4, Close) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3538,16 +4033,20 @@ impl MakePolygon {
     /// **Source:** `BRepLib_MakePolygon.hxx`:78 - `BRepLib_MakePolygon::Add()`
     pub fn add_pnt(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::BRepLib_MakePolygon_add_pnt(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepLib_MakePolygon_add_pnt(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepLib_MakePolygon.hxx`:80 - `BRepLib_MakePolygon::Add()`
     pub fn add_vertex(&mut self, V: &crate::topo_ds::Vertex) {
         {
-            unsafe { crate::ffi::BRepLib_MakePolygon_add_vertex(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepLib_MakePolygon_add_vertex(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3557,16 +4056,21 @@ impl MakePolygon {
     pub fn added(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakePolygon_added(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepLib_MakePolygon.hxx`:86 - `BRepLib_MakePolygon::Close()`
     pub fn close(&mut self) {
         {
-            unsafe { crate::ffi::BRepLib_MakePolygon_close(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepLib_MakePolygon_close(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3575,8 +4079,11 @@ impl MakePolygon {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakePolygon_first_vertex(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3585,8 +4092,11 @@ impl MakePolygon {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakePolygon_last_vertex(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3595,8 +4105,11 @@ impl MakePolygon {
     pub fn edge(&self) -> &crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakePolygon_edge(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3604,59 +4117,62 @@ impl MakePolygon {
     pub fn wire(&mut self) -> &crate::topo_ds::Wire {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakePolygon_wire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to BRepLib_MakeShape
     pub fn as_make_shape(&self) -> &MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepLib_MakePolygon_as_BRepLib_MakeShape(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakePolygon_as_BRepLib_MakeShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepLib_MakeShape (mutable)
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepLib_MakePolygon_as_BRepLib_MakeShape_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakePolygon_as_BRepLib_MakeShape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepLib_Command
     pub fn as_command(&self) -> &Command {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakePolygon_as_BRepLib_Command(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakePolygon_as_BRepLib_Command(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepLib_Command (mutable)
     pub fn as_command_mut(&mut self) -> &mut Command {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepLib_MakePolygon_as_BRepLib_Command_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakePolygon_as_BRepLib_Command_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:43 - `BRepLib_MakeShape::Build()`
     pub fn build(&mut self) {
         {
-            unsafe { crate::ffi::BRepLib_MakePolygon_inherited_Build(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepLib_MakePolygon_inherited_Build(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3665,8 +4181,11 @@ impl MakePolygon {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakePolygon_inherited_Shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3676,8 +4195,11 @@ impl MakePolygon {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakePolygon_inherited_FaceStatus(self as *const Self, F)
             };
-            crate::check_exception();
-            crate::b_rep_lib::ShapeModification::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_lib::ShapeModification::try_from(__val).unwrap()
         }
     }
 
@@ -3687,8 +4209,11 @@ impl MakePolygon {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakePolygon_inherited_HasDescendants(self as *const Self, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3698,8 +4223,11 @@ impl MakePolygon {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakePolygon_inherited_NbSurfaces(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3708,8 +4236,11 @@ impl MakePolygon {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakePolygon_inherited_NewFaces(self as *mut Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3718,16 +4249,22 @@ impl MakePolygon {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakePolygon_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepLib_Command.hxx`:45 - `BRepLib_Command::Check()`
     pub fn check(&self) {
         {
-            unsafe { crate::ffi::BRepLib_MakePolygon_inherited_Check(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepLib_MakePolygon_inherited_Check(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3756,8 +4293,10 @@ impl MakeShape {
     /// may be redefined.
     pub fn build(&mut self) {
         {
-            unsafe { crate::ffi::BRepLib_MakeShape_build(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepLib_MakeShape_build(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3765,8 +4304,11 @@ impl MakeShape {
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeShape_shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3777,8 +4319,11 @@ impl MakeShape {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeShape_face_status(self as *const Self, F) };
-            crate::check_exception();
-            crate::b_rep_lib::ShapeModification::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_lib::ShapeModification::try_from(__val).unwrap()
         }
     }
 
@@ -3788,8 +4333,11 @@ impl MakeShape {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeShape_has_descendants(self as *const Self, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3808,8 +4356,11 @@ impl MakeShape {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeShape_descendant_faces(self as *mut Self, F) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3820,8 +4371,11 @@ impl MakeShape {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeShape_nb_surfaces(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3830,8 +4384,11 @@ impl MakeShape {
     pub fn new_faces(&mut self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeShape_new_faces(self as *mut Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3851,29 +4408,32 @@ impl MakeShape {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeShape_faces_from_edges(self as *mut Self, E) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to BRepLib_Command
     pub fn as_command(&self) -> &Command {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeShape_as_BRepLib_Command(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeShape_as_BRepLib_Command(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepLib_Command (mutable)
     pub fn as_command_mut(&mut self) -> &mut Command {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeShape_as_BRepLib_Command_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeShape_as_BRepLib_Command_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepLib_Command.hxx`:42 - `BRepLib_Command::IsDone()`
@@ -3881,16 +4441,22 @@ impl MakeShape {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeShape_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepLib_Command.hxx`:45 - `BRepLib_Command::Check()`
     pub fn check(&self) {
         {
-            unsafe { crate::ffi::BRepLib_MakeShape_inherited_Check(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepLib_MakeShape_inherited_Check(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3919,8 +4485,10 @@ impl MakeShell {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeShell_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3932,8 +4500,10 @@ impl MakeShell {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeShell_ctor_handlegeomsurface_bool(S, Segment) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3952,8 +4522,10 @@ impl MakeShell {
                     S, UMin, UMax, VMin, VMax, Segment,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3986,7 +4558,7 @@ impl MakeShell {
         Segment: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_MakeShell_init(
                     self as *mut Self,
                     S,
@@ -3997,7 +4569,9 @@ impl MakeShell {
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4005,8 +4579,11 @@ impl MakeShell {
     pub fn error(&self) -> crate::b_rep_lib::ShellError {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeShell_error(self as *const Self) };
-            crate::check_exception();
-            crate::b_rep_lib::ShellError::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_lib::ShellError::try_from(__val).unwrap()
         }
     }
 
@@ -4015,57 +4592,61 @@ impl MakeShell {
     pub fn shell(&self) -> &crate::topo_ds::Shell {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeShell_shell(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to BRepLib_MakeShape
     pub fn as_make_shape(&self) -> &MakeShape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeShell_as_BRepLib_MakeShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeShell_as_BRepLib_MakeShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepLib_MakeShape (mutable)
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepLib_MakeShell_as_BRepLib_MakeShape_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeShell_as_BRepLib_MakeShape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepLib_Command
     pub fn as_command(&self) -> &Command {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeShell_as_BRepLib_Command(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeShell_as_BRepLib_Command(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepLib_Command (mutable)
     pub fn as_command_mut(&mut self) -> &mut Command {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeShell_as_BRepLib_Command_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeShell_as_BRepLib_Command_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:43 - `BRepLib_MakeShape::Build()`
     pub fn build(&mut self) {
         {
-            unsafe { crate::ffi::BRepLib_MakeShell_inherited_Build(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepLib_MakeShell_inherited_Build(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4074,8 +4655,11 @@ impl MakeShell {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeShell_inherited_Shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4085,8 +4669,11 @@ impl MakeShell {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakeShell_inherited_FaceStatus(self as *const Self, F)
             };
-            crate::check_exception();
-            crate::b_rep_lib::ShapeModification::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_lib::ShapeModification::try_from(__val).unwrap()
         }
     }
 
@@ -4096,8 +4683,11 @@ impl MakeShell {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakeShell_inherited_HasDescendants(self as *const Self, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4106,8 +4696,11 @@ impl MakeShell {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeShell_inherited_NbSurfaces(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4116,8 +4709,11 @@ impl MakeShell {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeShell_inherited_NewFaces(self as *mut Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4126,16 +4722,22 @@ impl MakeShell {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeShell_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepLib_Command.hxx`:45 - `BRepLib_Command::Check()`
     pub fn check(&self) {
         {
-            unsafe { crate::ffi::BRepLib_MakeShell_inherited_Check(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepLib_MakeShell_inherited_Check(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4160,8 +4762,10 @@ impl MakeSolid {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeSolid_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4170,8 +4774,10 @@ impl MakeSolid {
     pub fn new_compsolid(S: &crate::topo_ds::CompSolid) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeSolid_ctor_compsolid(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4180,8 +4786,10 @@ impl MakeSolid {
     pub fn new_shell(S: &crate::topo_ds::Shell) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeSolid_ctor_shell(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4193,8 +4801,10 @@ impl MakeSolid {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeSolid_ctor_shell2(S1, S2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4207,8 +4817,10 @@ impl MakeSolid {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeSolid_ctor_shell3(S1, S2, S3) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4217,8 +4829,10 @@ impl MakeSolid {
     pub fn new_solid(So: &crate::topo_ds::Solid) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeSolid_ctor_solid(So) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4230,8 +4844,10 @@ impl MakeSolid {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeSolid_ctor_solid_shell(So, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4239,8 +4855,10 @@ impl MakeSolid {
     /// Add the shell to the current solid.
     pub fn add(&mut self, S: &crate::topo_ds::Shell) {
         {
-            unsafe { crate::ffi::BRepLib_MakeSolid_add(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepLib_MakeSolid_add(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4249,8 +4867,11 @@ impl MakeSolid {
     pub fn solid(&mut self) -> &crate::topo_ds::Solid {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeSolid_solid(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4261,57 +4882,61 @@ impl MakeSolid {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeSolid_face_status(self as *const Self, F) };
-            crate::check_exception();
-            crate::b_rep_lib::ShapeModification::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_lib::ShapeModification::try_from(__val).unwrap()
         }
     }
 
     /// Upcast to BRepLib_MakeShape
     pub fn as_make_shape(&self) -> &MakeShape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeSolid_as_BRepLib_MakeShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeSolid_as_BRepLib_MakeShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepLib_MakeShape (mutable)
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepLib_MakeSolid_as_BRepLib_MakeShape_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeSolid_as_BRepLib_MakeShape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepLib_Command
     pub fn as_command(&self) -> &Command {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeSolid_as_BRepLib_Command(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeSolid_as_BRepLib_Command(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepLib_Command (mutable)
     pub fn as_command_mut(&mut self) -> &mut Command {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeSolid_as_BRepLib_Command_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeSolid_as_BRepLib_Command_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:43 - `BRepLib_MakeShape::Build()`
     pub fn build(&mut self) {
         {
-            unsafe { crate::ffi::BRepLib_MakeSolid_inherited_Build(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepLib_MakeSolid_inherited_Build(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4320,8 +4945,11 @@ impl MakeSolid {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeSolid_inherited_Shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4331,8 +4959,11 @@ impl MakeSolid {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakeSolid_inherited_HasDescendants(self as *const Self, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4341,8 +4972,11 @@ impl MakeSolid {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeSolid_inherited_NbSurfaces(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4351,8 +4985,11 @@ impl MakeSolid {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeSolid_inherited_NewFaces(self as *mut Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4361,16 +4998,22 @@ impl MakeSolid {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeSolid_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepLib_Command.hxx`:45 - `BRepLib_Command::Check()`
     pub fn check(&self) {
         {
-            unsafe { crate::ffi::BRepLib_MakeSolid_inherited_Check(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepLib_MakeSolid_inherited_Check(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4394,8 +5037,10 @@ impl MakeVertex {
     pub fn new_pnt(P: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeVertex_ctor_pnt(P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4403,57 +5048,62 @@ impl MakeVertex {
     pub fn vertex(&mut self) -> &crate::topo_ds::Vertex {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeVertex_vertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to BRepLib_MakeShape
     pub fn as_make_shape(&self) -> &MakeShape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeVertex_as_BRepLib_MakeShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeVertex_as_BRepLib_MakeShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepLib_MakeShape (mutable)
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepLib_MakeVertex_as_BRepLib_MakeShape_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeVertex_as_BRepLib_MakeShape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepLib_Command
     pub fn as_command(&self) -> &Command {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeVertex_as_BRepLib_Command(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeVertex_as_BRepLib_Command(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepLib_Command (mutable)
     pub fn as_command_mut(&mut self) -> &mut Command {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeVertex_as_BRepLib_Command_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeVertex_as_BRepLib_Command_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:43 - `BRepLib_MakeShape::Build()`
     pub fn build(&mut self) {
         {
-            unsafe { crate::ffi::BRepLib_MakeVertex_inherited_Build(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepLib_MakeVertex_inherited_Build(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4462,8 +5112,11 @@ impl MakeVertex {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeVertex_inherited_Shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4473,8 +5126,11 @@ impl MakeVertex {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakeVertex_inherited_FaceStatus(self as *const Self, F)
             };
-            crate::check_exception();
-            crate::b_rep_lib::ShapeModification::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_lib::ShapeModification::try_from(__val).unwrap()
         }
     }
 
@@ -4484,8 +5140,11 @@ impl MakeVertex {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakeVertex_inherited_HasDescendants(self as *const Self, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4494,8 +5153,11 @@ impl MakeVertex {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeVertex_inherited_NbSurfaces(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4504,8 +5166,11 @@ impl MakeVertex {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeVertex_inherited_NewFaces(self as *mut Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4514,16 +5179,22 @@ impl MakeVertex {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeVertex_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepLib_Command.hxx`:45 - `BRepLib_Command::Check()`
     pub fn check(&self) {
         {
-            unsafe { crate::ffi::BRepLib_MakeVertex_inherited_Check(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepLib_MakeVertex_inherited_Check(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4589,8 +5260,10 @@ impl MakeWire {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeWire_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4599,8 +5272,10 @@ impl MakeWire {
     pub fn new_edge(E: &crate::topo_ds::Edge) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeWire_ctor_edge(E) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4612,8 +5287,10 @@ impl MakeWire {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeWire_ctor_edge2(E1, E2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4626,8 +5303,10 @@ impl MakeWire {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeWire_ctor_edge3(E1, E2, E3) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4641,8 +5320,10 @@ impl MakeWire {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeWire_ctor_edge4(E1, E2, E3, E4) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4651,8 +5332,10 @@ impl MakeWire {
     pub fn new_wire(W: &crate::topo_ds::Wire) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeWire_ctor_wire(W) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4664,8 +5347,10 @@ impl MakeWire {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeWire_ctor_wire_edge(W, E) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4673,8 +5358,10 @@ impl MakeWire {
     /// Add the edge <E> to the current wire.
     pub fn add_edge(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::BRepLib_MakeWire_add_edge(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepLib_MakeWire_add_edge(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4682,8 +5369,10 @@ impl MakeWire {
     /// Add the edges of <W> to the current wire.
     pub fn add_wire(&mut self, W: &crate::topo_ds::Wire) {
         {
-            unsafe { crate::ffi::BRepLib_MakeWire_add_wire(self as *mut Self, W) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepLib_MakeWire_add_wire(self as *mut Self, W) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4693,8 +5382,11 @@ impl MakeWire {
     /// to be all connected geometrically or topologically.
     pub fn add_listofshape(&mut self, L: &crate::ffi::TopTools_ListOfShape) {
         {
-            unsafe { crate::ffi::BRepLib_MakeWire_add_listofshape(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepLib_MakeWire_add_listofshape(self as *mut Self, L) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4702,8 +5394,11 @@ impl MakeWire {
     pub fn error(&self) -> crate::b_rep_lib::WireError {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeWire_error(self as *const Self) };
-            crate::check_exception();
-            crate::b_rep_lib::WireError::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_lib::WireError::try_from(__val).unwrap()
         }
     }
 
@@ -4712,8 +5407,11 @@ impl MakeWire {
     pub fn wire(&mut self) -> &crate::topo_ds::Wire {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeWire_wire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4722,8 +5420,11 @@ impl MakeWire {
     pub fn edge(&self) -> &crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeWire_edge(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4732,56 +5433,61 @@ impl MakeWire {
     pub fn vertex(&self) -> &crate::topo_ds::Vertex {
         {
             let __result = unsafe { crate::ffi::BRepLib_MakeWire_vertex(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to BRepLib_MakeShape
     pub fn as_make_shape(&self) -> &MakeShape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeWire_as_BRepLib_MakeShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeWire_as_BRepLib_MakeShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepLib_MakeShape (mutable)
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeWire_as_BRepLib_MakeShape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeWire_as_BRepLib_MakeShape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepLib_Command
     pub fn as_command(&self) -> &Command {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeWire_as_BRepLib_Command(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeWire_as_BRepLib_Command(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepLib_Command (mutable)
     pub fn as_command_mut(&mut self) -> &mut Command {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepLib_MakeWire_as_BRepLib_Command_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepLib_MakeWire_as_BRepLib_Command_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepLib_MakeShape.hxx`:43 - `BRepLib_MakeShape::Build()`
     pub fn build(&mut self) {
         {
-            unsafe { crate::ffi::BRepLib_MakeWire_inherited_Build(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepLib_MakeWire_inherited_Build(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4790,8 +5496,11 @@ impl MakeWire {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeWire_inherited_Shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4801,8 +5510,11 @@ impl MakeWire {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakeWire_inherited_FaceStatus(self as *const Self, F)
             };
-            crate::check_exception();
-            crate::b_rep_lib::ShapeModification::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_lib::ShapeModification::try_from(__val).unwrap()
         }
     }
 
@@ -4812,8 +5524,11 @@ impl MakeWire {
             let __result = unsafe {
                 crate::ffi::BRepLib_MakeWire_inherited_HasDescendants(self as *const Self, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4822,8 +5537,11 @@ impl MakeWire {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeWire_inherited_NbSurfaces(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4832,8 +5550,11 @@ impl MakeWire {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeWire_inherited_NewFaces(self as *mut Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4842,16 +5563,22 @@ impl MakeWire {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_MakeWire_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepLib_Command.hxx`:45 - `BRepLib_Command::Check()`
     pub fn check(&self) {
         {
-            unsafe { crate::ffi::BRepLib_MakeWire_inherited_Check(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepLib_MakeWire_inherited_Check(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4882,8 +5609,11 @@ impl PointCloudShape {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_PointCloudShape_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4891,8 +5621,12 @@ impl PointCloudShape {
     /// Set shape.
     pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepLib_PointCloudShape_set_shape(self as *mut Self, theShape) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepLib_PointCloudShape_set_shape(self as *mut Self, theShape)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4902,8 +5636,11 @@ impl PointCloudShape {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_PointCloudShape_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4911,8 +5648,12 @@ impl PointCloudShape {
     /// Set tolerance.
     pub fn set_tolerance(&mut self, theTol: f64) {
         {
-            unsafe { crate::ffi::BRepLib_PointCloudShape_set_tolerance(self as *mut Self, theTol) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepLib_PointCloudShape_set_tolerance(self as *mut Self, theTol)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4923,8 +5664,11 @@ impl PointCloudShape {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_PointCloudShape_get_distance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4933,8 +5677,12 @@ impl PointCloudShape {
     /// Negative values of theDist parameter are ignored.
     pub fn set_distance(&mut self, theDist: f64) {
         {
-            unsafe { crate::ffi::BRepLib_PointCloudShape_set_distance(self as *mut Self, theDist) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepLib_PointCloudShape_set_distance(self as *mut Self, theDist)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4948,8 +5696,11 @@ impl PointCloudShape {
                     theDensity,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4960,8 +5711,11 @@ impl PointCloudShape {
             let __result = unsafe {
                 crate::ffi::BRepLib_PointCloudShape_nb_points_by_triangulation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4979,8 +5733,11 @@ impl PointCloudShape {
                     theDensity,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4993,8 +5750,11 @@ impl PointCloudShape {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -5019,8 +5779,10 @@ impl ToolTriangulatedShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepLib_ToolTriangulatedShape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5034,10 +5796,12 @@ impl ToolTriangulatedShape {
         theTris: &crate::ffi::HandlePolyTriangulation,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_ToolTriangulatedShape_compute_normals_face_handlepolytriangulation(theFace, theTris)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5053,10 +5817,12 @@ impl ToolTriangulatedShape {
         thePolyConnect: &mut crate::poly::Connect,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_ToolTriangulatedShape_compute_normals_face_handlepolytriangulation_connect(theFace, theTris, thePolyConnect)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5089,8 +5855,10 @@ impl ValidateEdge {
             let __result = unsafe {
                 crate::ffi::BRepLib_ValidateEdge_ctor_handleadaptor3dcurve_handleadaptor3dcurveonsurface_bool(theReferenceCurve, theOtherCurve, theSameParameter)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5102,10 +5870,12 @@ impl ValidateEdge {
     /// Default method is calculating in finite number of points
     pub fn set_exact_method(&mut self, theIsExact: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_ValidateEdge_set_exact_method(self as *mut Self, theIsExact)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5115,8 +5885,11 @@ impl ValidateEdge {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_ValidateEdge_is_exact_method(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5124,10 +5897,12 @@ impl ValidateEdge {
     /// Sets parallel flag
     pub fn set_parallel(&mut self, theIsMultiThread: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_ValidateEdge_set_parallel(self as *mut Self, theIsMultiThread)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5137,8 +5912,11 @@ impl ValidateEdge {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_ValidateEdge_is_parallel(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5146,13 +5924,15 @@ impl ValidateEdge {
     /// Set control points number (if you need a value other than 22)
     pub fn set_control_points_number(&mut self, theControlPointsNumber: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_ValidateEdge_set_control_points_number(
                     self as *mut Self,
                     theControlPointsNumber,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5162,13 +5942,15 @@ impl ValidateEdge {
     /// tolerance for best performcnce. Has no effect in case using exact method.
     pub fn set_exit_if_tolerance_exceeded(&mut self, theToleranceForChecking: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_ValidateEdge_set_exit_if_tolerance_exceeded(
                     self as *mut Self,
                     theToleranceForChecking,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5180,8 +5962,10 @@ impl ValidateEdge {
     /// using exact method always computes real max distance.
     pub fn process(&mut self) {
         {
-            unsafe { crate::ffi::BRepLib_ValidateEdge_process(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepLib_ValidateEdge_process(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5190,8 +5974,11 @@ impl ValidateEdge {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepLib_ValidateEdge_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5205,8 +5992,11 @@ impl ValidateEdge {
                     theToleranceToCheck,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5216,8 +6006,11 @@ impl ValidateEdge {
         {
             let __result =
                 unsafe { crate::ffi::BRepLib_ValidateEdge_get_max_distance(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5225,13 +6018,15 @@ impl ValidateEdge {
     /// Increase <theToleranceToUpdate> if max distance is greater than <theToleranceToUpdate>
     pub fn update_tolerance(&mut self, theToleranceToUpdate: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepLib_ValidateEdge_update_tolerance(
                     self as *mut Self,
                     theToleranceToUpdate,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

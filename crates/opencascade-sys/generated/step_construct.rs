@@ -21,8 +21,11 @@ pub fn find_entity_handletransferfinderprocess_shape(
                 Shape,
             )
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `STEPConstruct.hxx`:56 - `STEPConstruct::FindEntity`
@@ -43,8 +46,11 @@ pub fn find_entity_handletransferfinderprocess_shape_location(
                 Loc,
             )
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `STEPConstruct.hxx`:62 - `STEPConstruct::FindShape`
@@ -55,8 +61,11 @@ pub fn find_shape(
 ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
     {
         let __result = unsafe { crate::ffi::STEPConstruct_find_shape(TransientProcess, item) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `STEPConstruct.hxx`:67 - `STEPConstruct::FindCDSR`
@@ -70,8 +79,11 @@ pub fn find_cdsr(
         let __result = unsafe {
             crate::ffi::STEPConstruct_find_cdsr(ComponentBinder, AssemblySDR, ComponentCDSR)
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 
@@ -99,8 +111,10 @@ impl AP203Context {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_AP203Context_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -112,8 +126,11 @@ impl AP203Context {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_AP203Context_default_approval(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -121,10 +138,12 @@ impl AP203Context {
     /// Sets default approval
     pub fn set_default_approval(&mut self, app: &crate::ffi::HandleStepBasicApproval) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPConstruct_AP203Context_set_default_approval(self as *mut Self, app)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -138,8 +157,11 @@ impl AP203Context {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_AP203Context_default_date_and_time(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -147,13 +169,15 @@ impl AP203Context {
     /// Sets default date_and_time entity
     pub fn set_default_date_and_time(&mut self, dt: &crate::ffi::HandleStepBasicDateAndTime) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPConstruct_AP203Context_set_default_date_and_time(
                     self as *mut Self,
                     dt,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -169,8 +193,11 @@ impl AP203Context {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -181,13 +208,15 @@ impl AP203Context {
         po: &crate::ffi::HandleStepBasicPersonAndOrganization,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPConstruct_AP203Context_set_default_person_and_organization(
                     self as *mut Self,
                     po,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -203,8 +232,11 @@ impl AP203Context {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -215,13 +247,15 @@ impl AP203Context {
         sc: &crate::ffi::HandleStepBasicSecurityClassificationLevel,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPConstruct_AP203Context_set_default_security_classification_level(
                     self as *mut Self,
                     sc,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -232,8 +266,11 @@ impl AP203Context {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_AP203Context_role_creator(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -245,8 +282,11 @@ impl AP203Context {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_AP203Context_role_design_owner(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -258,8 +298,11 @@ impl AP203Context {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_AP203Context_role_design_supplier(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -273,8 +316,11 @@ impl AP203Context {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -284,8 +330,11 @@ impl AP203Context {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_AP203Context_role_creation_date(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -297,8 +346,11 @@ impl AP203Context {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_AP203Context_role_classification_date(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -312,8 +364,11 @@ impl AP203Context {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_AP203Context_role_approver(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -326,10 +381,12 @@ impl AP203Context {
         sdr: &crate::ffi::HandleStepShapeShapeDefinitionRepresentation,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPConstruct_AP203Context_init_handlestepshapeshapedefinitionrepresentation(self as *mut Self, sdr)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -346,8 +403,12 @@ impl AP203Context {
     /// GetProductCategoryRelationship()
     pub fn init_part(&mut self, SDRTool: &Part) {
         {
-            unsafe { crate::ffi::STEPConstruct_AP203Context_init_part(self as *mut Self, SDRTool) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::STEPConstruct_AP203Context_init_part(self as *mut Self, SDRTool)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -369,10 +430,12 @@ impl AP203Context {
         nauo: &crate::ffi::HandleStepReprNextAssemblyUsageOccurrence,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPConstruct_AP203Context_init_handlestepreprnextassemblyusageoccurrence(self as *mut Self, nauo)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -383,8 +446,11 @@ impl AP203Context {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_AP203Context_get_creator(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -396,8 +462,11 @@ impl AP203Context {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_AP203Context_get_design_owner(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -409,8 +478,11 @@ impl AP203Context {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_AP203Context_get_design_supplier(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -424,8 +496,11 @@ impl AP203Context {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -436,8 +511,11 @@ impl AP203Context {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_AP203Context_get_security(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -449,8 +527,11 @@ impl AP203Context {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_AP203Context_get_creation_date(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -462,8 +543,11 @@ impl AP203Context {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_AP203Context_get_classification_date(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -472,8 +556,11 @@ impl AP203Context {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_AP203Context_get_approval(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -484,8 +571,11 @@ impl AP203Context {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_AP203Context_get_approver(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -497,8 +587,11 @@ impl AP203Context {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_AP203Context_get_approval_date_time(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -513,8 +606,11 @@ impl AP203Context {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -522,8 +618,10 @@ impl AP203Context {
     /// Clears all fields describing entities specific to each part
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::STEPConstruct_AP203Context_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::STEPConstruct_AP203Context_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -531,8 +629,11 @@ impl AP203Context {
     /// Initializes constant fields (shared entities)
     pub fn init_roles(&mut self) {
         {
-            unsafe { crate::ffi::STEPConstruct_AP203Context_init_roles(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPConstruct_AP203Context_init_roles(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -540,10 +641,12 @@ impl AP203Context {
     /// Initializes all missing data which are required for assembly
     pub fn init_assembly(&mut self, nauo: &crate::ffi::HandleStepReprNextAssemblyUsageOccurrence) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPConstruct_AP203Context_init_assembly(self as *mut Self, nauo)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -552,10 +655,12 @@ impl AP203Context {
     /// entities according to Security entity
     pub fn init_security_requisites(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPConstruct_AP203Context_init_security_requisites(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -564,10 +669,12 @@ impl AP203Context {
     /// entities according to Approval entity
     pub fn init_approval_requisites(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPConstruct_AP203Context_init_approval_requisites(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -597,8 +704,10 @@ impl Assembly {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Assembly_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -616,10 +725,12 @@ impl Assembly {
         Loc: &crate::ffi::HandleStepGeomAxis2Placement3d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPConstruct_Assembly_init(self as *mut Self, aSR, SDR0, Ax0, Loc)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -628,8 +739,11 @@ impl Assembly {
     /// Resulting Value is returned by ItemValue
     pub fn make_relationship(&mut self) {
         {
-            unsafe { crate::ffi::STEPConstruct_Assembly_make_relationship(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPConstruct_Assembly_make_relationship(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -640,8 +754,11 @@ impl Assembly {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Assembly_item_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -651,8 +768,11 @@ impl Assembly {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Assembly_item_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -664,8 +784,11 @@ impl Assembly {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Assembly_get_nauo(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -680,8 +803,11 @@ impl Assembly {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_Assembly_check_srr_reverses_nauo(theGraph, CDSR)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -711,8 +837,10 @@ impl ContextTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_ContextTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -724,8 +852,10 @@ impl ContextTool {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ContextTool_ctor_handlestepdatastepmodel(aStepModel)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -734,23 +864,27 @@ impl ContextTool {
     /// entity of that type found in the model
     pub fn set_model(&mut self, aStepModel: &crate::ffi::HandleStepDataStepModel) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPConstruct_ContextTool_set_model(self as *mut Self, aStepModel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:56 - `STEPConstruct_ContextTool::SetGlobalFactor()`
     pub fn set_global_factor(&mut self, theGlobalFactor: &crate::step_data::Factors) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPConstruct_ContextTool_set_global_factor(
                     self as *mut Self,
                     theGlobalFactor,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -761,16 +895,23 @@ impl ContextTool {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_ContextTool_get_apd(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:60 - `STEPConstruct_ContextTool::AddAPD()`
     pub fn add_apd(&mut self, enforce: bool) {
         {
-            unsafe { crate::ffi::STEPConstruct_ContextTool_add_apd(self as *mut Self, enforce) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::STEPConstruct_ContextTool_add_apd(self as *mut Self, enforce)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -780,8 +921,11 @@ impl ContextTool {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_ContextTool_is_ap203(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -791,8 +935,11 @@ impl ContextTool {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_ContextTool_is_ap214(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -802,8 +949,11 @@ impl ContextTool {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_ContextTool_is_ap242(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -812,8 +962,11 @@ impl ContextTool {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_ContextTool_get_a_cstatus(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -825,8 +978,11 @@ impl ContextTool {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ContextTool_get_a_cschema_name(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -835,8 +991,11 @@ impl ContextTool {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_ContextTool_get_a_cyear(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -845,47 +1004,62 @@ impl ContextTool {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_ContextTool_get_a_cname(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:79 - `STEPConstruct_ContextTool::SetACstatus()`
     pub fn set_a_cstatus(&mut self, status: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPConstruct_ContextTool_set_a_cstatus(self as *mut Self, status)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:81 - `STEPConstruct_ContextTool::SetACschemaName()`
     pub fn set_a_cschema_name(&mut self, schemaName: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPConstruct_ContextTool_set_a_cschema_name(
                     self as *mut Self,
                     schemaName,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:83 - `STEPConstruct_ContextTool::SetACyear()`
     pub fn set_a_cyear(&mut self, year: i32) {
         {
-            unsafe { crate::ffi::STEPConstruct_ContextTool_set_a_cyear(self as *mut Self, year) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::STEPConstruct_ContextTool_set_a_cyear(self as *mut Self, year)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:85 - `STEPConstruct_ContextTool::SetACname()`
     pub fn set_a_cname(&mut self, name: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe { crate::ffi::STEPConstruct_ContextTool_set_a_cname(self as *mut Self, name) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::STEPConstruct_ContextTool_set_a_cname(self as *mut Self, name)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -898,8 +1072,11 @@ impl ContextTool {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ContextTool_get_default_axis(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -909,8 +1086,11 @@ impl ContextTool {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_ContextTool_ap203_context(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -920,24 +1100,33 @@ impl ContextTool {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_ContextTool_level(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:96 - `STEPConstruct_ContextTool::NextLevel()`
     pub fn next_level(&mut self) {
         {
-            unsafe { crate::ffi::STEPConstruct_ContextTool_next_level(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPConstruct_ContextTool_next_level(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:98 - `STEPConstruct_ContextTool::PrevLevel()`
     pub fn prev_level(&mut self) {
         {
-            unsafe { crate::ffi::STEPConstruct_ContextTool_prev_level(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPConstruct_ContextTool_prev_level(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -945,8 +1134,11 @@ impl ContextTool {
     /// Changes current assembly level
     pub fn set_level(&mut self, lev: i32) {
         {
-            unsafe { crate::ffi::STEPConstruct_ContextTool_set_level(self as *mut Self, lev) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPConstruct_ContextTool_set_level(self as *mut Self, lev) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -956,24 +1148,33 @@ impl ContextTool {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_ContextTool_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:106 - `STEPConstruct_ContextTool::NextIndex()`
     pub fn next_index(&mut self) {
         {
-            unsafe { crate::ffi::STEPConstruct_ContextTool_next_index(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPConstruct_ContextTool_next_index(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `STEPConstruct_ContextTool.hxx`:108 - `STEPConstruct_ContextTool::PrevIndex()`
     pub fn prev_index(&mut self) {
         {
-            unsafe { crate::ffi::STEPConstruct_ContextTool_prev_index(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPConstruct_ContextTool_prev_index(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -981,8 +1182,11 @@ impl ContextTool {
     /// Changes current index of assembly component on current level
     pub fn set_index(&mut self, ind: i32) {
         {
-            unsafe { crate::ffi::STEPConstruct_ContextTool_set_index(self as *mut Self, ind) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPConstruct_ContextTool_set_index(self as *mut Self, ind) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -994,8 +1198,11 @@ impl ContextTool {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ContextTool_get_product_name(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1010,8 +1217,11 @@ impl ContextTool {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ContextTool_get_roots_for_part(self as *mut Self, SDRTool)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1029,8 +1239,11 @@ impl ContextTool {
                     assembly,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -1061,8 +1274,10 @@ impl ExternRefs {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_ExternRefs_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1074,8 +1289,10 @@ impl ExternRefs {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_ExternRefs_ctor_handlexscontrolworksession(WS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1085,8 +1302,11 @@ impl ExternRefs {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_ExternRefs_init(self as *mut Self, WS) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1094,8 +1314,10 @@ impl ExternRefs {
     /// Clears internal fields (list of defined extern refs)
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::STEPConstruct_ExternRefs_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::STEPConstruct_ExternRefs_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1107,8 +1329,11 @@ impl ExternRefs {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_ExternRefs_load_extern_refs(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1118,8 +1343,11 @@ impl ExternRefs {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_ExternRefs_nb_extern_refs(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1130,8 +1358,11 @@ impl ExternRefs {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_ExternRefs_file_name(self as *const Self, num) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1147,8 +1378,11 @@ impl ExternRefs {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_ExternRefs_prod_def(self as *const Self, num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1160,8 +1394,11 @@ impl ExternRefs {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_ExternRefs_doc_file(self as *const Self, num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1172,8 +1409,11 @@ impl ExternRefs {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_ExternRefs_format(self as *const Self, num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1200,8 +1440,11 @@ impl ExternRefs {
                     c_format.as_ptr(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1209,8 +1452,12 @@ impl ExternRefs {
     /// Check (create if it is null) all shared entities for the model
     pub fn check_ap214_shared(&mut self) {
         {
-            unsafe { crate::ffi::STEPConstruct_ExternRefs_check_ap214_shared(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::STEPConstruct_ExternRefs_check_ap214_shared(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1222,8 +1469,11 @@ impl ExternRefs {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ExternRefs_write_extern_refs(self as *const Self, num)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1231,8 +1481,12 @@ impl ExternRefs {
     /// Set the ApplicationProtocolDefinition of the PDM schema
     pub fn set_ap214apd(&mut self, APD: &crate::ffi::HandleStepBasicApplicationProtocolDefinition) {
         {
-            unsafe { crate::ffi::STEPConstruct_ExternRefs_set_ap214apd(self as *mut Self, APD) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::STEPConstruct_ExternRefs_set_ap214apd(self as *mut Self, APD)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1245,31 +1499,34 @@ impl ExternRefs {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_ExternRefs_get_ap214apd(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to STEPConstruct_Tool
     pub fn as_tool(&self) -> &Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ExternRefs_as_STEPConstruct_Tool(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::STEPConstruct_ExternRefs_as_STEPConstruct_Tool(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to STEPConstruct_Tool (mutable)
     pub fn as_tool_mut(&mut self) -> &mut Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ExternRefs_as_STEPConstruct_Tool_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::STEPConstruct_ExternRefs_as_STEPConstruct_Tool_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:53 - `STEPConstruct_Tool::WS()`
@@ -1277,8 +1534,11 @@ impl ExternRefs {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_ExternRefs_inherited_WS(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1288,8 +1548,11 @@ impl ExternRefs {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ExternRefs_inherited_Model(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1299,8 +1562,11 @@ impl ExternRefs {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ExternRefs_inherited_Graph(self as *const Self, recompute)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1310,8 +1576,11 @@ impl ExternRefs {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ExternRefs_inherited_TransientProcess(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1321,8 +1590,11 @@ impl ExternRefs {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ExternRefs_inherited_FinderProcess(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -1349,8 +1621,10 @@ impl Part {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Part_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1363,7 +1637,7 @@ impl Part {
         theStepModel: &mut crate::ffi::HandleStepDataStepModel,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPConstruct_Part_make_sdr(
                     self as *mut Self,
                     aShape,
@@ -1372,15 +1646,20 @@ impl Part {
                     theStepModel,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:53 - `STEPConstruct_Part::ReadSDR()`
     pub fn read_sdr(&mut self, aShape: &crate::ffi::HandleStepShapeShapeDefinitionRepresentation) {
         {
-            unsafe { crate::ffi::STEPConstruct_Part_read_sdr(self as *mut Self, aShape) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPConstruct_Part_read_sdr(self as *mut Self, aShape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1388,8 +1667,11 @@ impl Part {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Part_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1400,8 +1682,11 @@ impl Part {
     ) -> crate::OwnedPtr<crate::ffi::HandleStepShapeShapeDefinitionRepresentation> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Part_sdr_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1410,8 +1695,11 @@ impl Part {
     pub fn sr_value(&self) -> crate::OwnedPtr<crate::ffi::HandleStepShapeShapeRepresentation> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Part_sr_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1419,8 +1707,11 @@ impl Part {
     pub fn pc(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicProductContext> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Part_pc(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1428,8 +1719,11 @@ impl Part {
     pub fn p_cname(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Part_p_cname(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1438,26 +1732,34 @@ impl Part {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Part_p_cdiscipline_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:69 - `STEPConstruct_Part::SetPCname()`
     pub fn set_p_cname(&mut self, name: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe { crate::ffi::STEPConstruct_Part_set_p_cname(self as *mut Self, name) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPConstruct_Part_set_p_cname(self as *mut Self, name) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:71 - `STEPConstruct_Part::SetPCdisciplineType()`
     pub fn set_p_cdiscipline_type(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPConstruct_Part_set_p_cdiscipline_type(self as *mut Self, label)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1465,8 +1767,11 @@ impl Part {
     pub fn ac(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicApplicationContext> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Part_ac(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1475,16 +1780,23 @@ impl Part {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Part_a_capplication(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:77 - `STEPConstruct_Part::SetACapplication()`
     pub fn set_a_capplication(&mut self, text: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe { crate::ffi::STEPConstruct_Part_set_a_capplication(self as *mut Self, text) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::STEPConstruct_Part_set_a_capplication(self as *mut Self, text)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1492,8 +1804,11 @@ impl Part {
     pub fn pdc(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicProductDefinitionContext> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Part_pdc(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1501,8 +1816,11 @@ impl Part {
     pub fn pd_cname(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Part_pd_cname(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1510,24 +1828,33 @@ impl Part {
     pub fn pd_cstage(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Part_pd_cstage(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:85 - `STEPConstruct_Part::SetPDCname()`
     pub fn set_pd_cname(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe { crate::ffi::STEPConstruct_Part_set_pd_cname(self as *mut Self, label) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPConstruct_Part_set_pd_cname(self as *mut Self, label) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:87 - `STEPConstruct_Part::SetPDCstage()`
     pub fn set_pd_cstage(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe { crate::ffi::STEPConstruct_Part_set_pd_cstage(self as *mut Self, label) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPConstruct_Part_set_pd_cstage(self as *mut Self, label) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1535,8 +1862,11 @@ impl Part {
     pub fn product(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicProduct> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Part_product(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1544,8 +1874,11 @@ impl Part {
     pub fn pid(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Part_pid(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1553,8 +1886,11 @@ impl Part {
     pub fn pname(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Part_pname(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1563,32 +1899,43 @@ impl Part {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Part_pdescription(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:97 - `STEPConstruct_Part::SetPid()`
     pub fn set_pid(&mut self, id: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe { crate::ffi::STEPConstruct_Part_set_pid(self as *mut Self, id) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::STEPConstruct_Part_set_pid(self as *mut Self, id) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:99 - `STEPConstruct_Part::SetPname()`
     pub fn set_pname(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe { crate::ffi::STEPConstruct_Part_set_pname(self as *mut Self, label) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPConstruct_Part_set_pname(self as *mut Self, label) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:101 - `STEPConstruct_Part::SetPdescription()`
     pub fn set_pdescription(&mut self, text: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe { crate::ffi::STEPConstruct_Part_set_pdescription(self as *mut Self, text) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPConstruct_Part_set_pdescription(self as *mut Self, text) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1596,8 +1943,11 @@ impl Part {
     pub fn pdf(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicProductDefinitionFormation> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Part_pdf(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1605,8 +1955,11 @@ impl Part {
     pub fn pd_fid(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Part_pd_fid(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1615,24 +1968,33 @@ impl Part {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Part_pd_fdescription(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:109 - `STEPConstruct_Part::SetPDFid()`
     pub fn set_pd_fid(&mut self, id: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe { crate::ffi::STEPConstruct_Part_set_pd_fid(self as *mut Self, id) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::STEPConstruct_Part_set_pd_fid(self as *mut Self, id) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:111 - `STEPConstruct_Part::SetPDFdescription()`
     pub fn set_pd_fdescription(&mut self, text: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe { crate::ffi::STEPConstruct_Part_set_pd_fdescription(self as *mut Self, text) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::STEPConstruct_Part_set_pd_fdescription(self as *mut Self, text)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1640,8 +2002,11 @@ impl Part {
     pub fn pd(&self) -> crate::OwnedPtr<crate::ffi::HandleStepBasicProductDefinition> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Part_pd(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1650,16 +2015,23 @@ impl Part {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Part_p_ddescription(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:117 - `STEPConstruct_Part::SetPDdescription()`
     pub fn set_p_ddescription(&mut self, text: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe { crate::ffi::STEPConstruct_Part_set_p_ddescription(self as *mut Self, text) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::STEPConstruct_Part_set_p_ddescription(self as *mut Self, text)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1667,8 +2039,11 @@ impl Part {
     pub fn pds(&self) -> crate::OwnedPtr<crate::ffi::HandleStepReprProductDefinitionShape> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Part_pds(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1676,8 +2051,11 @@ impl Part {
     pub fn pd_sname(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Part_pd_sname(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1686,24 +2064,34 @@ impl Part {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Part_pd_sdescription(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:125 - `STEPConstruct_Part::SetPDSname()`
     pub fn set_pd_sname(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe { crate::ffi::STEPConstruct_Part_set_pd_sname(self as *mut Self, label) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPConstruct_Part_set_pd_sname(self as *mut Self, label) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:127 - `STEPConstruct_Part::SetPDSdescription()`
     pub fn set_pd_sdescription(&mut self, text: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe { crate::ffi::STEPConstruct_Part_set_pd_sdescription(self as *mut Self, text) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::STEPConstruct_Part_set_pd_sdescription(self as *mut Self, text)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1713,8 +2101,11 @@ impl Part {
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicProductRelatedProductCategory> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Part_prpc(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1722,8 +2113,11 @@ impl Part {
     pub fn prp_cname(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Part_prp_cname(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1732,24 +2126,34 @@ impl Part {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Part_prp_cdescription(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:135 - `STEPConstruct_Part::SetPRPCname()`
     pub fn set_prp_cname(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe { crate::ffi::STEPConstruct_Part_set_prp_cname(self as *mut Self, label) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPConstruct_Part_set_prp_cname(self as *mut Self, label) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `STEPConstruct_Part.hxx`:137 - `STEPConstruct_Part::SetPRPCdescription()`
     pub fn set_prp_cdescription(&mut self, text: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe { crate::ffi::STEPConstruct_Part_set_prp_cdescription(self as *mut Self, text) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::STEPConstruct_Part_set_prp_cdescription(self as *mut Self, text)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1781,8 +2185,10 @@ impl Styles {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Styles_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1794,8 +2200,10 @@ impl Styles {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Styles_ctor_handlexscontrolworksession(WS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1804,8 +2212,11 @@ impl Styles {
     pub fn init(&mut self, WS: &crate::ffi::HandleXSControlWorkSession) -> bool {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Styles_init(self as *mut Self, WS) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1815,8 +2226,11 @@ impl Styles {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Styles_nb_styles(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1826,8 +2240,11 @@ impl Styles {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Styles_style(self as *const Self, i) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1837,8 +2254,11 @@ impl Styles {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Styles_nb_root_styles(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1848,8 +2268,11 @@ impl Styles {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Styles_root_style(self as *const Self, i) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1857,8 +2280,10 @@ impl Styles {
     /// Clears all defined styles and PSA sequence
     pub fn clear_styles(&mut self) {
         {
-            unsafe { crate::ffi::STEPConstruct_Styles_clear_styles(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::STEPConstruct_Styles_clear_styles(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1869,13 +2294,15 @@ impl Styles {
         style: &crate::ffi::HandleStepVisualStyledItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPConstruct_Styles_add_style_handlestepvisualstyleditem(
                     self as *mut Self,
                     style,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1893,8 +2320,11 @@ impl Styles {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_Styles_add_style_handlestepreprrepresentationitem_handlestepvisualpresentationstyleassignment_handlestepvisualstyleditem(self as *mut Self, item, PSA, Override)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1914,8 +2344,11 @@ impl Styles {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_Styles_add_style_shape_handlestepvisualpresentationstyleassignment_handlestepvisualstyleditem(self as *mut Self, Shape, PSA, Override)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1937,8 +2370,11 @@ impl Styles {
                     theStepModel,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1962,8 +2398,11 @@ impl Styles {
                     initPDS,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1979,8 +2418,11 @@ impl Styles {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_Styles_find_context(self as *const Self, Shape)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1991,8 +2433,11 @@ impl Styles {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Styles_load_styles(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2007,8 +2452,11 @@ impl Styles {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_Styles_load_invis_styles(self as *const Self, InvSyles)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2037,8 +2485,11 @@ impl Styles {
                     isForNAUO,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2056,8 +2507,11 @@ impl Styles {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_Styles_get_color_psa(self as *mut Self, item, Col)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2089,8 +2543,11 @@ impl Styles {
                     theIsComponent,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2104,8 +2561,11 @@ impl Styles {
     ) -> crate::OwnedPtr<crate::ffi::HandleStepVisualColour> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Styles_encode_color_color(Col) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2123,8 +2583,11 @@ impl Styles {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_Styles_encode_color_color_datamapofasciistringtransient_datamapofpointtransient(Col, DPDCs, ColRGBs)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2137,31 +2600,33 @@ impl Styles {
     ) -> bool {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Styles_decode_color(Colour, Col) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to STEPConstruct_Tool
     pub fn as_tool(&self) -> &Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_Styles_as_STEPConstruct_Tool(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::STEPConstruct_Styles_as_STEPConstruct_Tool(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to STEPConstruct_Tool (mutable)
     pub fn as_tool_mut(&mut self) -> &mut Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_Styles_as_STEPConstruct_Tool_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::STEPConstruct_Styles_as_STEPConstruct_Tool_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:53 - `STEPConstruct_Tool::WS()`
@@ -2169,8 +2634,11 @@ impl Styles {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Styles_inherited_WS(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2179,8 +2647,11 @@ impl Styles {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Styles_inherited_Model(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2190,8 +2661,11 @@ impl Styles {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_Styles_inherited_Graph(self as *const Self, recompute)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2201,8 +2675,11 @@ impl Styles {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_Styles_inherited_TransientProcess(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2212,8 +2689,11 @@ impl Styles {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_Styles_inherited_FinderProcess(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -2247,8 +2727,10 @@ impl Tool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Tool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2260,8 +2742,10 @@ impl Tool {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Tool_ctor_handlexscontrolworksession(WS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2270,8 +2754,11 @@ impl Tool {
     pub fn ws(&self) -> &crate::ffi::HandleXSControlWorkSession {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Tool_ws(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2280,8 +2767,11 @@ impl Tool {
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_Tool_model(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2291,8 +2781,11 @@ impl Tool {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Tool_graph(self as *const Self, recompute) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2302,8 +2795,11 @@ impl Tool {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Tool_transient_process(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2313,8 +2809,11 @@ impl Tool {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_Tool_finder_process(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -2340,8 +2839,10 @@ impl UnitContext {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_UnitContext_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2355,7 +2856,7 @@ impl UnitContext {
         theLocalFactors: &crate::step_data::Factors,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPConstruct_UnitContext_init(
                     self as *mut Self,
                     Tol3d,
@@ -2363,7 +2864,9 @@ impl UnitContext {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2373,8 +2876,11 @@ impl UnitContext {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_UnitContext_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2388,8 +2894,11 @@ impl UnitContext {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_UnitContext_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2405,8 +2914,11 @@ impl UnitContext {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_UnitContext_compute_factors_handlestepreprglobalunitassignedcontext_factors(self as *mut Self, aContext, theLocalFactors)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2420,8 +2932,11 @@ impl UnitContext {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_UnitContext_compute_factors_handlestepbasicnamedunit_factors(self as *mut Self, aUnit, theLocalFactors)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2435,8 +2950,11 @@ impl UnitContext {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_UnitContext_compute_tolerance(self as *mut Self, aContext)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2446,8 +2964,11 @@ impl UnitContext {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_UnitContext_length_factor(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2458,8 +2979,11 @@ impl UnitContext {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_UnitContext_plane_angle_factor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2470,8 +2994,11 @@ impl UnitContext {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_UnitContext_solid_angle_factor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2482,8 +3009,11 @@ impl UnitContext {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_UnitContext_uncertainty(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2493,8 +3023,11 @@ impl UnitContext {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_UnitContext_area_factor(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2504,8 +3037,11 @@ impl UnitContext {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_UnitContext_volume_factor(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2516,8 +3052,11 @@ impl UnitContext {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_UnitContext_has_uncertainty(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2528,8 +3067,11 @@ impl UnitContext {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_UnitContext_length_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2541,8 +3083,11 @@ impl UnitContext {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_UnitContext_plane_angle_done(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2554,8 +3099,11 @@ impl UnitContext {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_UnitContext_solid_angle_done(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2565,8 +3113,11 @@ impl UnitContext {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_UnitContext_area_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2576,8 +3127,11 @@ impl UnitContext {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_UnitContext_volume_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2589,8 +3143,11 @@ impl UnitContext {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_UnitContext_status_message(self as *const Self, status)
             };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2601,8 +3158,11 @@ impl UnitContext {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_UnitContext_convert_si_prefix(aPrefix.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2629,8 +3189,10 @@ impl ValidationProps {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::STEPConstruct_ValidationProps_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2643,8 +3205,10 @@ impl ValidationProps {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ValidationProps_ctor_handlexscontrolworksession(WS)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2654,8 +3218,11 @@ impl ValidationProps {
         {
             let __result =
                 unsafe { crate::ffi::STEPConstruct_ValidationProps_init(self as *mut Self, WS) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2677,8 +3244,11 @@ impl ValidationProps {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ValidationProps_add_prop_shape_handlestepreprrepresentationitem_charptr_bool(self as *mut Self, Shape, Prop, c_Descr.as_ptr(), instance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2699,8 +3269,11 @@ impl ValidationProps {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ValidationProps_add_prop_characterizeddefinition_handlestepreprrepresentationcontext_handlestepreprrepresentationitem_charptr(self as *mut Self, target, Context, Prop, c_Descr.as_ptr())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2712,8 +3285,11 @@ impl ValidationProps {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ValidationProps_add_area(self as *mut Self, Shape, Area)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2725,8 +3301,11 @@ impl ValidationProps {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ValidationProps_add_volume(self as *mut Self, Shape, Vol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2750,8 +3329,11 @@ impl ValidationProps {
                     instance,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2776,8 +3358,11 @@ impl ValidationProps {
                     instance,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2789,8 +3374,11 @@ impl ValidationProps {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ValidationProps_load_props(self as *const Self, seq)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2805,8 +3393,11 @@ impl ValidationProps {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ValidationProps_get_prop_nauo(self as *const Self, PD)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2821,8 +3412,11 @@ impl ValidationProps {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ValidationProps_get_prop_pd(self as *const Self, PD)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2837,8 +3431,11 @@ impl ValidationProps {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ValidationProps_get_prop_shape_handlestepbasicproductdefinition(self as *const Self, ProdDef)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2853,8 +3450,11 @@ impl ValidationProps {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ValidationProps_get_prop_shape_handlestepreprpropertydefinition(self as *const Self, PD)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2880,8 +3480,11 @@ impl ValidationProps {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2904,8 +3507,11 @@ impl ValidationProps {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2913,38 +3519,38 @@ impl ValidationProps {
     /// Sets current assembly shape SDR (for FindCDSR calls)
     pub fn set_assembly_shape(&mut self, shape: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPConstruct_ValidationProps_set_assembly_shape(
                     self as *mut Self,
                     shape,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to STEPConstruct_Tool
     pub fn as_tool(&self) -> &Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ValidationProps_as_STEPConstruct_Tool(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::STEPConstruct_ValidationProps_as_STEPConstruct_Tool(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to STEPConstruct_Tool (mutable)
     pub fn as_tool_mut(&mut self) -> &mut Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPConstruct_ValidationProps_as_STEPConstruct_Tool_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::STEPConstruct_ValidationProps_as_STEPConstruct_Tool_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `STEPConstruct_Tool.hxx`:53 - `STEPConstruct_Tool::WS()`
@@ -2953,8 +3559,11 @@ impl ValidationProps {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ValidationProps_inherited_WS(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2964,8 +3573,11 @@ impl ValidationProps {
             let __result = unsafe {
                 crate::ffi::STEPConstruct_ValidationProps_inherited_Model(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2978,8 +3590,11 @@ impl ValidationProps {
                     recompute,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2991,8 +3606,11 @@ impl ValidationProps {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3004,8 +3622,11 @@ impl ValidationProps {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }

@@ -21,8 +21,11 @@ pub fn plane_equation(
     PolarDistance: &mut f64,
 ) {
     {
-        unsafe { crate::ffi::Intf_plane_equation(P1, P2, P3, NormalVector, PolarDistance) };
-        crate::check_exception();
+        let __exc =
+            unsafe { crate::ffi::Intf_plane_equation(P1, P2, P3, NormalVector, PolarDistance) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `Intf.hxx`:51 - `Intf::Contain`
@@ -35,8 +38,11 @@ pub fn contain(
 ) -> bool {
     {
         let __result = unsafe { crate::ffi::Intf_contain(P1, P2, P3, ThePnt) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 
@@ -91,8 +97,11 @@ impl Interference {
         {
             let __result =
                 unsafe { crate::ffi::Intf_Interference_nb_section_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -103,8 +112,11 @@ impl Interference {
         {
             let __result =
                 unsafe { crate::ffi::Intf_Interference_pnt_value(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -115,8 +127,11 @@ impl Interference {
         {
             let __result =
                 unsafe { crate::ffi::Intf_Interference_nb_section_lines(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -127,8 +142,11 @@ impl Interference {
         {
             let __result =
                 unsafe { crate::ffi::Intf_Interference_line_value(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -138,8 +156,11 @@ impl Interference {
         {
             let __result =
                 unsafe { crate::ffi::Intf_Interference_nb_tangent_zones(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -150,8 +171,11 @@ impl Interference {
         {
             let __result =
                 unsafe { crate::ffi::Intf_Interference_zone_value(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -161,8 +185,11 @@ impl Interference {
         {
             let __result =
                 unsafe { crate::ffi::Intf_Interference_get_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -173,8 +200,11 @@ impl Interference {
         {
             let __result =
                 unsafe { crate::ffi::Intf_Interference_contains(self as *const Self, ThePnt) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -187,8 +217,11 @@ impl Interference {
             let __result = unsafe {
                 crate::ffi::Intf_Interference_insert_tangentzone(self as *mut Self, TheZone)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -197,18 +230,22 @@ impl Interference {
     /// polylines of intersection of the interference.
     pub fn insert_sectionpoint2(&mut self, pdeb: &SectionPoint, pfin: &SectionPoint) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Intf_Interference_insert_sectionpoint2(self as *mut Self, pdeb, pfin)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Intf_Interference.hxx`:80 - `Intf_Interference::Dump()`
     pub fn dump(&self) {
         {
-            unsafe { crate::ffi::Intf_Interference_dump(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Intf_Interference_dump(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -235,8 +272,10 @@ impl InterferencePolygon2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Intf_InterferencePolygon2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -246,8 +285,10 @@ impl InterferencePolygon2d {
         {
             let __result =
                 unsafe { crate::ffi::Intf_InterferencePolygon2d_ctor_polygon2d2(Obje1, Obje2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -256,8 +297,10 @@ impl InterferencePolygon2d {
     pub fn new_polygon2d(Obje: &Polygon2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Intf_InterferencePolygon2d_ctor_polygon2d(Obje) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -265,14 +308,16 @@ impl InterferencePolygon2d {
     /// Computes an interference between two Polygons.
     pub fn perform_polygon2d2(&mut self, Obje1: &Polygon2d, Obje2: &Polygon2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Intf_InterferencePolygon2d_perform_polygon2d2(
                     self as *mut Self,
                     Obje1,
                     Obje2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -280,10 +325,12 @@ impl InterferencePolygon2d {
     /// Computes the self interference of a Polygon.
     pub fn perform_polygon2d(&mut self, Obje: &Polygon2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Intf_InterferencePolygon2d_perform_polygon2d(self as *mut Self, Obje)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -295,31 +342,34 @@ impl InterferencePolygon2d {
             let __result = unsafe {
                 crate::ffi::Intf_InterferencePolygon2d_pnt2d_value(self as *const Self, Index)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to Intf_Interference
     pub fn as_interference(&self) -> &Interference {
-        {
-            let __result = unsafe {
-                crate::ffi::Intf_InterferencePolygon2d_as_Intf_Interference(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Intf_InterferencePolygon2d_as_Intf_Interference(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Intf_Interference (mutable)
     pub fn as_interference_mut(&mut self) -> &mut Interference {
-        {
-            let __result = unsafe {
-                crate::ffi::Intf_InterferencePolygon2d_as_Intf_Interference_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Intf_InterferencePolygon2d_as_Intf_Interference_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:43 - `Intf_Interference::NbSectionPoints()`
@@ -330,8 +380,11 @@ impl InterferencePolygon2d {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -344,8 +397,11 @@ impl InterferencePolygon2d {
                     Index,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -355,8 +411,11 @@ impl InterferencePolygon2d {
             let __result = unsafe {
                 crate::ffi::Intf_InterferencePolygon2d_inherited_NbSectionLines(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -369,8 +428,11 @@ impl InterferencePolygon2d {
                     Index,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -380,8 +442,11 @@ impl InterferencePolygon2d {
             let __result = unsafe {
                 crate::ffi::Intf_InterferencePolygon2d_inherited_NbTangentZones(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -394,8 +459,11 @@ impl InterferencePolygon2d {
                     Index,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -405,8 +473,11 @@ impl InterferencePolygon2d {
             let __result = unsafe {
                 crate::ffi::Intf_InterferencePolygon2d_inherited_GetTolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -419,8 +490,11 @@ impl InterferencePolygon2d {
                     ThePnt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -430,16 +504,23 @@ impl InterferencePolygon2d {
             let __result = unsafe {
                 crate::ffi::Intf_InterferencePolygon2d_inherited_Insert(self as *mut Self, TheZone)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:80 - `Intf_Interference::Dump()`
     pub fn dump(&self) {
         {
-            unsafe { crate::ffi::Intf_InterferencePolygon2d_inherited_Dump(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Intf_InterferencePolygon2d_inherited_Dump(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -465,8 +546,11 @@ impl Polygon2d {
     pub fn bounding(&self) -> &crate::bnd::Box2d {
         {
             let __result = unsafe { crate::ffi::Intf_Polygon2d_bounding(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -475,8 +559,11 @@ impl Polygon2d {
     pub fn closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Intf_Polygon2d_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -487,8 +574,11 @@ impl Polygon2d {
             let __result = unsafe {
                 crate::ffi::Intf_Polygon2d_deflection_over_estimation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -497,8 +587,11 @@ impl Polygon2d {
     pub fn nb_segments(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Intf_Polygon2d_nb_segments(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -511,10 +604,12 @@ impl Polygon2d {
         theEnd: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Intf_Polygon2d_segment(self as *const Self, theIndex, theBegin, theEnd)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -540,8 +635,10 @@ impl SectionLine {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Intf_SectionLine_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -551,8 +648,11 @@ impl SectionLine {
         {
             let __result =
                 unsafe { crate::ffi::Intf_SectionLine_number_of_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -563,8 +663,11 @@ impl SectionLine {
         {
             let __result =
                 unsafe { crate::ffi::Intf_SectionLine_get_point(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -573,8 +676,11 @@ impl SectionLine {
     pub fn is_closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Intf_SectionLine_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -584,8 +690,11 @@ impl SectionLine {
         {
             let __result =
                 unsafe { crate::ffi::Intf_SectionLine_contains(self as *const Self, ThePI) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -596,8 +705,11 @@ impl SectionLine {
         {
             let __result =
                 unsafe { crate::ffi::Intf_SectionLine_is_end(self as *const Self, ThePI) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -607,8 +719,11 @@ impl SectionLine {
         {
             let __result =
                 unsafe { crate::ffi::Intf_SectionLine_is_equal(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -616,8 +731,11 @@ impl SectionLine {
     /// Adds a point at the end of the SectionLine.
     pub fn append_sectionpoint(&mut self, Pi: &SectionPoint) {
         {
-            unsafe { crate::ffi::Intf_SectionLine_append_sectionpoint(self as *mut Self, Pi) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Intf_SectionLine_append_sectionpoint(self as *mut Self, Pi) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -626,8 +744,11 @@ impl SectionLine {
     /// SectionLine <me>.
     pub fn append_sectionline(&mut self, LS: &mut SectionLine) {
         {
-            unsafe { crate::ffi::Intf_SectionLine_append_sectionline(self as *mut Self, LS) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Intf_SectionLine_append_sectionline(self as *mut Self, LS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -635,8 +756,11 @@ impl SectionLine {
     /// Adds a point to the beginning of the SectionLine <me>.
     pub fn prepend_sectionpoint(&mut self, Pi: &SectionPoint) {
         {
-            unsafe { crate::ffi::Intf_SectionLine_prepend_sectionpoint(self as *mut Self, Pi) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Intf_SectionLine_prepend_sectionpoint(self as *mut Self, Pi) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -645,8 +769,11 @@ impl SectionLine {
     /// SectionLine <me>.
     pub fn prepend_sectionline(&mut self, LS: &mut SectionLine) {
         {
-            unsafe { crate::ffi::Intf_SectionLine_prepend_sectionline(self as *mut Self, LS) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Intf_SectionLine_prepend_sectionline(self as *mut Self, LS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -654,8 +781,10 @@ impl SectionLine {
     /// Reverses the order of the elements of the SectionLine.
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::Intf_SectionLine_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Intf_SectionLine_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -663,26 +792,30 @@ impl SectionLine {
     /// Closes the SectionLine.
     pub fn close(&mut self) {
         {
-            unsafe { crate::ffi::Intf_SectionLine_close(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Intf_SectionLine_close(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Intf_SectionLine.hxx`:91 - `Intf_SectionLine::Dump()`
     pub fn dump(&self, Indent: i32) {
         {
-            unsafe { crate::ffi::Intf_SectionLine_dump(self as *const Self, Indent) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Intf_SectionLine_dump(self as *const Self, Indent) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Intf_SectionLine_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Intf_SectionLine_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -706,8 +839,10 @@ impl SectionPoint {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Intf_SectionPoint_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -742,8 +877,10 @@ impl SectionPoint {
                     Incid,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -774,8 +911,10 @@ impl SectionPoint {
                     Incid,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -784,8 +923,11 @@ impl SectionPoint {
     pub fn pnt(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Intf_SectionPoint_pnt(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -796,8 +938,11 @@ impl SectionPoint {
         {
             let __result =
                 unsafe { crate::ffi::Intf_SectionPoint_param_on_first(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -808,8 +953,11 @@ impl SectionPoint {
         {
             let __result =
                 unsafe { crate::ffi::Intf_SectionPoint_param_on_second(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -819,8 +967,11 @@ impl SectionPoint {
         {
             let __result =
                 unsafe { crate::ffi::Intf_SectionPoint_type_on_first(self as *const Self) };
-            crate::check_exception();
-            crate::intf::PIType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::intf::PIType::try_from(__val).unwrap()
         }
     }
 
@@ -831,8 +982,11 @@ impl SectionPoint {
         {
             let __result =
                 unsafe { crate::ffi::Intf_SectionPoint_type_on_second(self as *const Self) };
-            crate::check_exception();
-            crate::intf::PIType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::intf::PIType::try_from(__val).unwrap()
         }
     }
 
@@ -846,7 +1000,7 @@ impl SectionPoint {
     ) {
         let mut Dim_i32_: i32 = (*Dim).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Intf_SectionPoint_info_first_pitype_int2_real(
                     self as *const Self,
                     &mut Dim_i32_,
@@ -855,7 +1009,9 @@ impl SectionPoint {
                     Param,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *Dim = crate::intf::PIType::try_from(Dim_i32_).unwrap();
     }
@@ -870,7 +1026,7 @@ impl SectionPoint {
     ) {
         let mut Dim_i32_: i32 = (*Dim).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Intf_SectionPoint_info_first_pitype_int_real(
                     self as *const Self,
                     &mut Dim_i32_,
@@ -878,7 +1034,9 @@ impl SectionPoint {
                     Param,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *Dim = crate::intf::PIType::try_from(Dim_i32_).unwrap();
     }
@@ -893,7 +1051,7 @@ impl SectionPoint {
     ) {
         let mut Dim_i32_: i32 = (*Dim).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Intf_SectionPoint_info_second_pitype_int2_real(
                     self as *const Self,
                     &mut Dim_i32_,
@@ -902,7 +1060,9 @@ impl SectionPoint {
                     Param,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *Dim = crate::intf::PIType::try_from(Dim_i32_).unwrap();
     }
@@ -917,7 +1077,7 @@ impl SectionPoint {
     ) {
         let mut Dim_i32_: i32 = (*Dim).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Intf_SectionPoint_info_second_pitype_int_real(
                     self as *const Self,
                     &mut Dim_i32_,
@@ -925,7 +1085,9 @@ impl SectionPoint {
                     Param,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *Dim = crate::intf::PIType::try_from(Dim_i32_).unwrap();
     }
@@ -937,8 +1099,11 @@ impl SectionPoint {
     pub fn incidence(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Intf_SectionPoint_incidence(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -949,8 +1114,11 @@ impl SectionPoint {
         {
             let __result =
                 unsafe { crate::ffi::Intf_SectionPoint_is_equal(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -962,8 +1130,11 @@ impl SectionPoint {
             let __result = unsafe {
                 crate::ffi::Intf_SectionPoint_is_on_same_edge(self as *const Self, Other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -971,16 +1142,20 @@ impl SectionPoint {
     /// Merges two SectionPoints.
     pub fn merge(&mut self, Other: &mut SectionPoint) {
         {
-            unsafe { crate::ffi::Intf_SectionPoint_merge(self as *mut Self, Other) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Intf_SectionPoint_merge(self as *mut Self, Other) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Intf_SectionPoint.hxx`:119 - `Intf_SectionPoint::Dump()`
     pub fn dump(&self, Indent: i32) {
         {
-            unsafe { crate::ffi::Intf_SectionPoint_dump(self as *const Self, Indent) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Intf_SectionPoint_dump(self as *const Self, Indent) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1006,8 +1181,10 @@ impl TangentZone {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Intf_TangentZone_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1017,8 +1194,11 @@ impl TangentZone {
         {
             let __result =
                 unsafe { crate::ffi::Intf_TangentZone_number_of_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1029,8 +1209,11 @@ impl TangentZone {
         {
             let __result =
                 unsafe { crate::ffi::Intf_TangentZone_get_point(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1040,8 +1223,11 @@ impl TangentZone {
         {
             let __result =
                 unsafe { crate::ffi::Intf_TangentZone_is_equal(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1051,8 +1237,11 @@ impl TangentZone {
         {
             let __result =
                 unsafe { crate::ffi::Intf_TangentZone_contains(self as *const Self, ThePI) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1061,10 +1250,12 @@ impl TangentZone {
     /// argument of the Interference. (Usable only for polygon)
     pub fn param_on_first(&self, paraMin: &mut f64, paraMax: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Intf_TangentZone_param_on_first(self as *const Self, paraMin, paraMax)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1073,10 +1264,12 @@ impl TangentZone {
     /// argument of the Interference. (Usable only for polygon)
     pub fn param_on_second(&self, paraMin: &mut f64, paraMax: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Intf_TangentZone_param_on_second(self as *const Self, paraMin, paraMax)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1091,7 +1284,7 @@ impl TangentZone {
         paraMax: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Intf_TangentZone_info_first(
                     self as *const Self,
                     segMin,
@@ -1100,7 +1293,9 @@ impl TangentZone {
                     paraMax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1115,7 +1310,7 @@ impl TangentZone {
         paraMax: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Intf_TangentZone_info_second(
                     self as *const Self,
                     segMin,
@@ -1124,7 +1319,9 @@ impl TangentZone {
                     paraMax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1135,8 +1332,11 @@ impl TangentZone {
         {
             let __result =
                 unsafe { crate::ffi::Intf_TangentZone_range_contains(self as *const Self, ThePI) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1148,8 +1348,11 @@ impl TangentZone {
             let __result = unsafe {
                 crate::ffi::Intf_TangentZone_has_common_range(self as *const Self, Other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1157,8 +1360,11 @@ impl TangentZone {
     /// Adds a SectionPoint to the TangentZone.
     pub fn append_sectionpoint(&mut self, Pi: &SectionPoint) {
         {
-            unsafe { crate::ffi::Intf_TangentZone_append_sectionpoint(self as *mut Self, Pi) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Intf_TangentZone_append_sectionpoint(self as *mut Self, Pi) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1166,8 +1372,11 @@ impl TangentZone {
     /// Adds the TangentZone <Tzi> to <me>.
     pub fn append_tangentzone(&mut self, Tzi: &TangentZone) {
         {
-            unsafe { crate::ffi::Intf_TangentZone_append_tangentzone(self as *mut Self, Tzi) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Intf_TangentZone_append_tangentzone(self as *mut Self, Tzi) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1176,8 +1385,11 @@ impl TangentZone {
     pub fn insert(&mut self, Pi: &SectionPoint) -> bool {
         {
             let __result = unsafe { crate::ffi::Intf_TangentZone_insert(self as *mut Self, Pi) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1185,8 +1397,11 @@ impl TangentZone {
     /// Inserts a point in the polygonal TangentZone.
     pub fn polygon_insert(&mut self, Pi: &SectionPoint) {
         {
-            unsafe { crate::ffi::Intf_TangentZone_polygon_insert(self as *mut Self, Pi) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Intf_TangentZone_polygon_insert(self as *mut Self, Pi) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1194,8 +1409,11 @@ impl TangentZone {
     /// Inserts a SectionPoint before <Index> in the TangentZone.
     pub fn insert_before(&mut self, Index: i32, Pi: &SectionPoint) {
         {
-            unsafe { crate::ffi::Intf_TangentZone_insert_before(self as *mut Self, Index, Pi) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Intf_TangentZone_insert_before(self as *mut Self, Index, Pi) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1203,16 +1421,21 @@ impl TangentZone {
     /// Inserts a SectionPoint after <Index> in the TangentZone.
     pub fn insert_after(&mut self, Index: i32, Pi: &SectionPoint) {
         {
-            unsafe { crate::ffi::Intf_TangentZone_insert_after(self as *mut Self, Index, Pi) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Intf_TangentZone_insert_after(self as *mut Self, Index, Pi) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Intf_TangentZone.hxx`:101 - `Intf_TangentZone::Dump()`
     pub fn dump(&self, Indent: i32) {
         {
-            unsafe { crate::ffi::Intf_TangentZone_dump(self as *const Self, Indent) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Intf_TangentZone_dump(self as *const Self, Indent) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1237,8 +1460,10 @@ impl Tool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Intf_Tool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1250,10 +1475,12 @@ impl Tool {
         boxLin: &mut crate::bnd::Box2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Intf_Tool_lin2d_box(self as *mut Self, theLin2d, bounding, boxLin)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1265,10 +1492,12 @@ impl Tool {
         boxHypr: &mut crate::bnd::Box2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Intf_Tool_hypr2d_box(self as *mut Self, theHypr2d, bounding, boxHypr)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1280,10 +1509,12 @@ impl Tool {
         boxHypr: &mut crate::bnd::Box2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Intf_Tool_parab2d_box(self as *mut Self, theParab2d, bounding, boxHypr)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1295,8 +1526,12 @@ impl Tool {
         boxLin: &mut crate::bnd::Box,
     ) {
         {
-            unsafe { crate::ffi::Intf_Tool_lin_box(self as *mut Self, theLin, bounding, boxLin) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Intf_Tool_lin_box(self as *mut Self, theLin, bounding, boxLin)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1308,10 +1543,12 @@ impl Tool {
         boxHypr: &mut crate::bnd::Box,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Intf_Tool_hypr_box(self as *mut Self, theHypr, bounding, boxHypr)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1323,10 +1560,12 @@ impl Tool {
         boxHypr: &mut crate::bnd::Box,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Intf_Tool_parab_box(self as *mut Self, theParab, bounding, boxHypr)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1334,8 +1573,11 @@ impl Tool {
     pub fn nb_segments(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Intf_Tool_nb_segments(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1344,8 +1586,11 @@ impl Tool {
         {
             let __result =
                 unsafe { crate::ffi::Intf_Tool_begin_param(self as *const Self, SegmentNum) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1354,8 +1599,11 @@ impl Tool {
         {
             let __result =
                 unsafe { crate::ffi::Intf_Tool_end_param(self as *const Self, SegmentNum) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

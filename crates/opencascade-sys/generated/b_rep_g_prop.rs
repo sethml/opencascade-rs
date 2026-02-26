@@ -53,8 +53,12 @@ pub fn linear_properties(
     UseTriangulation: bool,
 ) {
     {
-        unsafe { crate::ffi::BRepGProp_linear_properties(S, LProps, SkipShared, UseTriangulation) };
-        crate::check_exception();
+        let __exc = unsafe {
+            crate::ffi::BRepGProp_linear_properties(S, LProps, SkipShared, UseTriangulation)
+        };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepGProp.hxx`:133 - `BRepGProp::SurfaceProperties`
@@ -105,7 +109,7 @@ pub fn surface_properties_shape_gprops_bool2(
     UseTriangulation: bool,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::BRepGProp_surface_properties_shape_gprops_bool2(
                 S,
                 SProps,
@@ -113,7 +117,9 @@ pub fn surface_properties_shape_gprops_bool2(
                 UseTriangulation,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepGProp.hxx`:151 - `BRepGProp::SurfaceProperties`
@@ -141,8 +147,11 @@ pub fn surface_properties_shape_gprops_real_bool(
                 S, SProps, Eps, SkipShared,
             )
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `BRepGProp.hxx`:198 - `BRepGProp::VolumeProperties`
@@ -196,7 +205,7 @@ pub fn volume_properties_shape_gprops_bool3(
     UseTriangulation: bool,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::BRepGProp_volume_properties_shape_gprops_bool3(
                 S,
                 VProps,
@@ -205,7 +214,9 @@ pub fn volume_properties_shape_gprops_bool3(
                 UseTriangulation,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepGProp.hxx`:219 - `BRepGProp::VolumeProperties`
@@ -236,8 +247,11 @@ pub fn volume_properties_shape_gprops_real_bool2(
                 S, VProps, Eps, OnlyClosed, SkipShared,
             )
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `BRepGProp.hxx`:241 - `BRepGProp::VolumePropertiesGK`
@@ -272,8 +286,11 @@ pub fn volume_properties_gk_shape_gprops_real_bool5(
                 S, VProps, Eps, OnlyClosed, IsUseSpan, CGFlag, IFlag, SkipShared,
             )
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `BRepGProp.hxx`:251 - `BRepGProp::VolumePropertiesGK`
@@ -294,8 +311,11 @@ pub fn volume_properties_gk_shape_gprops_pln_real_bool5(
                 S, VProps, thePln, Eps, OnlyClosed, IsUseSpan, CGFlag, IFlag, SkipShared,
             )
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 
@@ -323,8 +343,10 @@ impl Cinert {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Cinert_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -335,52 +357,62 @@ impl Cinert {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Cinert_ctor_curve_pnt(C, CLocation) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BRepGProp_Cinert.hxx`:42 - `BRepGProp_Cinert::SetLocation()`
     pub fn set_location(&mut self, CLocation: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::BRepGProp_Cinert_set_location(self as *mut Self, CLocation) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepGProp_Cinert_set_location(self as *mut Self, CLocation) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepGProp_Cinert.hxx`:44 - `BRepGProp_Cinert::Perform()`
     pub fn perform(&mut self, C: &crate::b_rep_adaptor::Curve) {
         {
-            unsafe { crate::ffi::BRepGProp_Cinert_perform(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepGProp_Cinert_perform(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to GProp_GProps
     pub fn as_g_prop_g_props(&self) -> &crate::g_prop::GProps {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepGProp_Cinert_as_GProp_GProps(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::BRepGProp_Cinert_as_GProp_GProps(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GProp_GProps (mutable)
     pub fn as_g_prop_g_props_mut(&mut self) -> &mut crate::g_prop::GProps {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepGProp_Cinert_as_GProp_GProps_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepGProp_Cinert_as_GProp_GProps_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
     pub fn add(&mut self, Item: &crate::g_prop::GProps, Density: f64) {
         {
-            unsafe { crate::ffi::BRepGProp_Cinert_inherited_Add(self as *mut Self, Item, Density) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepGProp_Cinert_inherited_Add(self as *mut Self, Item, Density)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -389,8 +421,11 @@ impl Cinert {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_Cinert_inherited_Mass(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -399,8 +434,11 @@ impl Cinert {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_Cinert_inherited_CentreOfMass(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -410,15 +448,18 @@ impl Cinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Cinert_inherited_MatrixOfInertia(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
     pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_Cinert_inherited_StaticMoments(
                     self as *const Self,
                     Ix,
@@ -426,7 +467,9 @@ impl Cinert {
                     Iz,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -436,8 +479,11 @@ impl Cinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Cinert_inherited_MomentOfInertia(self as *const Self, A)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -447,8 +493,11 @@ impl Cinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Cinert_inherited_PrincipalProperties(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -458,8 +507,11 @@ impl Cinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Cinert_inherited_RadiusOfGyration(self as *const Self, A)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -485,8 +537,10 @@ impl Domain {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Domain_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -495,8 +549,10 @@ impl Domain {
     pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Domain_ctor_face(F) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -504,8 +560,10 @@ impl Domain {
     /// Initializes the domain with the face.
     pub fn init_face(&mut self, F: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::BRepGProp_Domain_init_face(self as *mut Self, F) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepGProp_Domain_init_face(self as *mut Self, F) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -514,8 +572,11 @@ impl Domain {
     pub fn more(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Domain_more(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -523,8 +584,10 @@ impl Domain {
     /// Initializes the exploration with the face already set.
     pub fn init(&mut self) {
         {
-            unsafe { crate::ffi::BRepGProp_Domain_init(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepGProp_Domain_init(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -533,8 +596,11 @@ impl Domain {
     pub fn value(&mut self) -> &crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Domain_value(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -543,8 +609,10 @@ impl Domain {
     /// curve.
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::BRepGProp_Domain_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepGProp_Domain_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -570,8 +638,10 @@ impl EdgeTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepGProp_EdgeTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -582,8 +652,11 @@ impl EdgeTool {
     pub fn first_parameter(C: &crate::b_rep_adaptor::Curve) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepGProp_EdgeTool_first_parameter(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -594,8 +667,11 @@ impl EdgeTool {
     pub fn last_parameter(C: &crate::b_rep_adaptor::Curve) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepGProp_EdgeTool_last_parameter(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -608,8 +684,11 @@ impl EdgeTool {
     pub fn integration_order(C: &crate::b_rep_adaptor::Curve) -> i32 {
         {
             let __result = unsafe { crate::ffi::BRepGProp_EdgeTool_integration_order(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -618,8 +697,11 @@ impl EdgeTool {
     pub fn value(C: &crate::b_rep_adaptor::Curve, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         {
             let __result = unsafe { crate::ffi::BRepGProp_EdgeTool_value(C, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -633,8 +715,10 @@ impl EdgeTool {
         V1: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::BRepGProp_EdgeTool_d1(C, U, P, V1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepGProp_EdgeTool_d1(C, U, P, V1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -644,8 +728,11 @@ impl EdgeTool {
     pub fn nb_intervals(C: &crate::b_rep_adaptor::Curve, S: crate::geom_abs::Shape) -> i32 {
         {
             let __result = unsafe { crate::ffi::BRepGProp_EdgeTool_nb_intervals(C, S.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -661,8 +748,10 @@ impl EdgeTool {
         S: crate::geom_abs::Shape,
     ) {
         {
-            unsafe { crate::ffi::BRepGProp_EdgeTool_intervals(C, T, S.into()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepGProp_EdgeTool_intervals(C, T, S.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -689,8 +778,10 @@ impl Face {
     pub fn new_bool(IsUseSpan: bool) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Face_ctor_bool(IsUseSpan) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -703,8 +794,10 @@ impl Face {
     pub fn new_face_bool(F: &crate::topo_ds::Face, IsUseSpan: bool) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Face_ctor_face_bool(F, IsUseSpan) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -730,8 +823,10 @@ impl Face {
     /// **Source:** `BRepGProp_Face.hxx`:56 - `BRepGProp_Face::Load()`
     pub fn load_face(&mut self, F: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::BRepGProp_Face_load_face(self as *mut Self, F) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepGProp_Face_load_face(self as *mut Self, F) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -740,8 +835,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_Face_v_integration_order(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -751,8 +849,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_Face_natural_restriction(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -761,8 +862,11 @@ impl Face {
     pub fn get_face(&self) -> &crate::topo_ds::Face {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Face_get_face(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -771,8 +875,11 @@ impl Face {
     pub fn value2d(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Face_value2d(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -781,8 +888,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_Face_s_int_order(self as *const Self, Eps) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -790,8 +900,11 @@ impl Face {
     pub fn sv_int_subs(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Face_sv_int_subs(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -799,24 +912,31 @@ impl Face {
     pub fn su_int_subs(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Face_su_int_subs(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepGProp_Face.hxx`:75 - `BRepGProp_Face::UKnots()`
     pub fn u_knots(&self, Knots: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::BRepGProp_Face_u_knots(self as *const Self, Knots) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepGProp_Face_u_knots(self as *const Self, Knots) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepGProp_Face.hxx`:77 - `BRepGProp_Face::VKnots()`
     pub fn v_knots(&self, Knots: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::BRepGProp_Face_v_knots(self as *const Self, Knots) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepGProp_Face_v_knots(self as *const Self, Knots) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -825,8 +945,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_Face_l_int_order(self as *const Self, Eps) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -834,16 +957,21 @@ impl Face {
     pub fn l_int_subs(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Face_l_int_subs(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepGProp_Face.hxx`:83 - `BRepGProp_Face::LKnots()`
     pub fn l_knots(&self, Knots: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::BRepGProp_Face_l_knots(self as *const Self, Knots) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepGProp_Face_l_knots(self as *const Self, Knots) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -855,8 +983,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_Face_u_integration_order(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -864,8 +995,11 @@ impl Face {
     /// Returns the parametric bounds of the Face.
     pub fn bounds(&self, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64) {
         {
-            unsafe { crate::ffi::BRepGProp_Face_bounds(self as *const Self, U1, U2, V1, V2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepGProp_Face_bounds(self as *const Self, U1, U2, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -874,8 +1008,11 @@ impl Face {
     /// the normal to the face at this point.
     pub fn normal(&self, U: f64, V: f64, P: &mut crate::gp::Pnt, VNor: &mut crate::gp::Vec) {
         {
-            unsafe { crate::ffi::BRepGProp_Face_normal(self as *const Self, U, V, P, VNor) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepGProp_Face_normal(self as *const Self, U, V, P, VNor) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -885,8 +1022,11 @@ impl Face {
     pub fn load_edge(&mut self, E: &crate::topo_ds::Edge) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Face_load_edge(self as *mut Self, E) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -897,8 +1037,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_Face_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -909,8 +1052,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_Face_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -921,8 +1067,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_Face_integration_order(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -931,8 +1080,10 @@ impl Face {
     /// at this point of a boundary curve.
     pub fn d12d(&self, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::BRepGProp_Face_d12d(self as *const Self, U, P, V1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepGProp_Face_d12d(self as *const Self, U, P, V1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -948,14 +1099,16 @@ impl Face {
     /// with either top or bottom one.
     pub fn load_bool_isotype(&mut self, IsFirstParam: bool, theIsoType: crate::geom_abs::IsoType) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_Face_load_bool_isotype(
                     self as *mut Self,
                     IsFirstParam,
                     theIsoType.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -973,7 +1126,7 @@ impl Face {
         theUKnots: &mut crate::ffi::HandleTColStdHArray1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_Face_get_u_knots(
                     self as *const Self,
                     theUMin,
@@ -981,7 +1134,9 @@ impl Face {
                     theUKnots,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1002,7 +1157,7 @@ impl Face {
         theTKnots: &mut crate::ffi::HandleTColStdHArray1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_Face_get_t_knots(
                     self as *const Self,
                     theTMin,
@@ -1010,7 +1165,9 @@ impl Face {
                     theTKnots,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1039,8 +1196,10 @@ impl Gauss {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Gauss_ctor_gausstype(theType) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1069,7 +1228,7 @@ impl Gauss {
         theOutInertia: &mut crate::gp::Mat,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_Gauss_compute_face_pnt_realptr_bool_real_pnt_mat(
                     self as *mut Self,
                     theSurface,
@@ -1081,7 +1240,9 @@ impl Gauss {
                     theOutInertia,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1105,7 +1266,7 @@ impl Gauss {
         theOutInertia: &mut crate::gp::Mat,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_Gauss_compute_face_pnt_real_pnt_mat(
                     self as *mut Self,
                     theSurface,
@@ -1115,7 +1276,9 @@ impl Gauss {
                     theOutInertia,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1146,7 +1309,7 @@ impl Gauss {
         theOutInertia: &mut crate::gp::Mat,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_Gauss_compute_face_domain_pnt_realptr_bool_real_pnt_mat(
                     self as *mut Self,
                     theSurface,
@@ -1159,7 +1322,9 @@ impl Gauss {
                     theOutInertia,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1185,7 +1350,7 @@ impl Gauss {
         theOutInertia: &mut crate::gp::Mat,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_Gauss_compute_face_domain_pnt_real_pnt_mat(
                     self as *mut Self,
                     theSurface,
@@ -1196,7 +1361,9 @@ impl Gauss {
                     theOutInertia,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1244,8 +1411,11 @@ impl Gauss {
                     theOutInertia,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1285,8 +1455,11 @@ impl Gauss {
                     theOutInertia,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1315,16 +1488,22 @@ impl MeshCinert {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepGProp_MeshCinert_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BRepGProp_MeshCinert.hxx`:39 - `BRepGProp_MeshCinert::SetLocation()`
     pub fn set_location(&mut self, CLocation: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::BRepGProp_MeshCinert_set_location(self as *mut Self, CLocation) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepGProp_MeshCinert_set_location(self as *mut Self, CLocation)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1333,8 +1512,11 @@ impl MeshCinert {
     /// of polylines  represented by set of points.
     pub fn perform(&mut self, theNodes: &crate::ffi::TColgp_Array1OfPnt) {
         {
-            unsafe { crate::ffi::BRepGProp_MeshCinert_perform(self as *mut Self, theNodes) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepGProp_MeshCinert_perform(self as *mut Self, theNodes) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1347,38 +1529,42 @@ impl MeshCinert {
         thePolyg: &mut crate::ffi::HandleTColgpHArray1OfPnt,
     ) {
         {
-            unsafe { crate::ffi::BRepGProp_MeshCinert_prepare_polygon(theE, thePolyg) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepGProp_MeshCinert_prepare_polygon(theE, thePolyg) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to GProp_GProps
     pub fn as_g_prop_g_props(&self) -> &crate::g_prop::GProps {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepGProp_MeshCinert_as_GProp_GProps(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepGProp_MeshCinert_as_GProp_GProps(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GProp_GProps (mutable)
     pub fn as_g_prop_g_props_mut(&mut self) -> &mut crate::g_prop::GProps {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepGProp_MeshCinert_as_GProp_GProps_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepGProp_MeshCinert_as_GProp_GProps_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
     pub fn add(&mut self, Item: &crate::g_prop::GProps, Density: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_MeshCinert_inherited_Add(self as *mut Self, Item, Density)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1387,8 +1573,11 @@ impl MeshCinert {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_MeshCinert_inherited_Mass(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1398,8 +1587,11 @@ impl MeshCinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_MeshCinert_inherited_CentreOfMass(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1409,15 +1601,18 @@ impl MeshCinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_MeshCinert_inherited_MatrixOfInertia(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
     pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_MeshCinert_inherited_StaticMoments(
                     self as *const Self,
                     Ix,
@@ -1425,7 +1620,9 @@ impl MeshCinert {
                     Iz,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1435,8 +1632,11 @@ impl MeshCinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_MeshCinert_inherited_MomentOfInertia(self as *const Self, A)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1446,8 +1646,11 @@ impl MeshCinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_MeshCinert_inherited_PrincipalProperties(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1457,8 +1660,11 @@ impl MeshCinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_MeshCinert_inherited_RadiusOfGyration(self as *const Self, A)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1486,8 +1692,10 @@ impl MeshProps {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepGProp_MeshProps_ctor_meshobjtype(theType) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1495,8 +1703,12 @@ impl MeshProps {
     /// Sets the point relative which the calculation is to be done
     pub fn set_location(&mut self, theLocation: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::BRepGProp_MeshProps_set_location(self as *mut Self, theLocation) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepGProp_MeshProps_set_location(self as *mut Self, theLocation)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1513,7 +1725,7 @@ impl MeshProps {
         theOri: crate::top_abs::Orientation,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_MeshProps_perform_handlepolytriangulation_location_orientation(
                     self as *mut Self,
                     theMesh,
@@ -1521,7 +1733,9 @@ impl MeshProps {
                     theOri.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1532,14 +1746,16 @@ impl MeshProps {
         theOri: crate::top_abs::Orientation,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_MeshProps_perform_handlepolytriangulation_orientation(
                     self as *mut Self,
                     theMesh,
                     theOri.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1551,8 +1767,11 @@ impl MeshProps {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_MeshProps_get_mesh_obj_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1572,7 +1791,7 @@ impl MeshProps {
         GaussPnts: *const f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_MeshProps_calculate_props(
                     p1,
                     p2,
@@ -1584,37 +1803,41 @@ impl MeshProps {
                     GaussPnts,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to GProp_GProps
     pub fn as_g_prop_g_props(&self) -> &crate::g_prop::GProps {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepGProp_MeshProps_as_GProp_GProps(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepGProp_MeshProps_as_GProp_GProps(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GProp_GProps (mutable)
     pub fn as_g_prop_g_props_mut(&mut self) -> &mut crate::g_prop::GProps {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepGProp_MeshProps_as_GProp_GProps_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepGProp_MeshProps_as_GProp_GProps_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
     pub fn add(&mut self, Item: &crate::g_prop::GProps, Density: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_MeshProps_inherited_Add(self as *mut Self, Item, Density)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1623,8 +1846,11 @@ impl MeshProps {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_MeshProps_inherited_Mass(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1634,8 +1860,11 @@ impl MeshProps {
             let __result = unsafe {
                 crate::ffi::BRepGProp_MeshProps_inherited_CentreOfMass(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1645,15 +1874,18 @@ impl MeshProps {
             let __result = unsafe {
                 crate::ffi::BRepGProp_MeshProps_inherited_MatrixOfInertia(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
     pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_MeshProps_inherited_StaticMoments(
                     self as *const Self,
                     Ix,
@@ -1661,7 +1893,9 @@ impl MeshProps {
                     Iz,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1671,8 +1905,11 @@ impl MeshProps {
             let __result = unsafe {
                 crate::ffi::BRepGProp_MeshProps_inherited_MomentOfInertia(self as *const Self, A)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1682,8 +1919,11 @@ impl MeshProps {
             let __result = unsafe {
                 crate::ffi::BRepGProp_MeshProps_inherited_PrincipalProperties(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1693,8 +1933,11 @@ impl MeshProps {
             let __result = unsafe {
                 crate::ffi::BRepGProp_MeshProps_inherited_RadiusOfGyration(self as *const Self, A)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1720,8 +1963,10 @@ impl Sinert {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Sinert_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1729,8 +1974,10 @@ impl Sinert {
     pub fn new_face_pnt(S: &Face, SLocation: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Sinert_ctor_face_pnt(S, SLocation) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1747,8 +1994,10 @@ impl Sinert {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_Sinert_ctor_face_domain_pnt(S, D, SLocation) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1761,8 +2010,10 @@ impl Sinert {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_Sinert_ctor_face_pnt_real(S, SLocation, Eps) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1777,32 +2028,43 @@ impl Sinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Sinert_ctor_face_domain_pnt_real(S, D, SLocation, Eps)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BRepGProp_Sinert.hxx`:55 - `BRepGProp_Sinert::SetLocation()`
     pub fn set_location(&mut self, SLocation: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::BRepGProp_Sinert_set_location(self as *mut Self, SLocation) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepGProp_Sinert_set_location(self as *mut Self, SLocation) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepGProp_Sinert.hxx`:57 - `BRepGProp_Sinert::Perform()`
     pub fn perform_face(&mut self, S: &Face) {
         {
-            unsafe { crate::ffi::BRepGProp_Sinert_perform_face(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepGProp_Sinert_perform_face(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepGProp_Sinert.hxx`:59 - `BRepGProp_Sinert::Perform()`
     pub fn perform_face_domain(&mut self, S: &mut Face, D: &mut Domain) {
         {
-            unsafe { crate::ffi::BRepGProp_Sinert_perform_face_domain(self as *mut Self, S, D) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepGProp_Sinert_perform_face_domain(self as *mut Self, S, D)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1812,8 +2074,11 @@ impl Sinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Sinert_perform_face_real(self as *mut Self, S, Eps)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1823,8 +2088,11 @@ impl Sinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Sinert_perform_face_domain_real(self as *mut Self, S, D, Eps)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1834,36 +2102,42 @@ impl Sinert {
     pub fn get_epsilon(&mut self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Sinert_get_epsilon(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to GProp_GProps
     pub fn as_g_prop_g_props(&self) -> &crate::g_prop::GProps {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepGProp_Sinert_as_GProp_GProps(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::BRepGProp_Sinert_as_GProp_GProps(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GProp_GProps (mutable)
     pub fn as_g_prop_g_props_mut(&mut self) -> &mut crate::g_prop::GProps {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepGProp_Sinert_as_GProp_GProps_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepGProp_Sinert_as_GProp_GProps_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
     pub fn add(&mut self, Item: &crate::g_prop::GProps, Density: f64) {
         {
-            unsafe { crate::ffi::BRepGProp_Sinert_inherited_Add(self as *mut Self, Item, Density) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepGProp_Sinert_inherited_Add(self as *mut Self, Item, Density)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1872,8 +2146,11 @@ impl Sinert {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_Sinert_inherited_Mass(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1882,8 +2159,11 @@ impl Sinert {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_Sinert_inherited_CentreOfMass(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1893,15 +2173,18 @@ impl Sinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Sinert_inherited_MatrixOfInertia(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
     pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_Sinert_inherited_StaticMoments(
                     self as *const Self,
                     Ix,
@@ -1909,7 +2192,9 @@ impl Sinert {
                     Iz,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1919,8 +2204,11 @@ impl Sinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Sinert_inherited_MomentOfInertia(self as *const Self, A)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1930,8 +2218,11 @@ impl Sinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Sinert_inherited_PrincipalProperties(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1941,8 +2232,11 @@ impl Sinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Sinert_inherited_RadiusOfGyration(self as *const Self, A)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2000,16 +2294,20 @@ impl TFunction {
                     theTolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BRepGProp_TFunction.hxx`:61 - `BRepGProp_TFunction::Init()`
     pub fn init(&mut self) {
         {
-            unsafe { crate::ffi::BRepGProp_TFunction_init(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepGProp_TFunction_init(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2026,13 +2324,15 @@ impl TFunction {
     /// accordingly.
     pub fn set_nb_kronrod_points(&mut self, theNbPoints: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_TFunction_set_nb_kronrod_points(
                     self as *mut Self,
                     theNbPoints,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2041,10 +2341,12 @@ impl TFunction {
     /// parameter is directly passed to the UFunction.
     pub fn set_value_type(&mut self, aType: crate::g_prop::ValueType) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_TFunction_set_value_type(self as *mut Self, aType.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2052,8 +2354,11 @@ impl TFunction {
     /// Setting the tolerance  for  inner integration
     pub fn set_tolerance(&mut self, aTol: f64) {
         {
-            unsafe { crate::ffi::BRepGProp_TFunction_set_tolerance(self as *mut Self, aTol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepGProp_TFunction_set_tolerance(self as *mut Self, aTol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2064,8 +2369,11 @@ impl TFunction {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_TFunction_error_reached(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2076,8 +2384,11 @@ impl TFunction {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_TFunction_absolut_error(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2089,8 +2400,11 @@ impl TFunction {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_TFunction_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2105,29 +2419,32 @@ impl TFunction {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_TFunction_get_state_number(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepGProp_TFunction_as_math_Function(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepGProp_TFunction_as_math_Function(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepGProp_TFunction_as_math_Function_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepGProp_TFunction_as_math_Function_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 }
 
@@ -2189,8 +2506,10 @@ impl UFunction {
                     theSurface, theVertex, IsByPoint, theCoeffs,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2198,10 +2517,12 @@ impl UFunction {
     /// Setting the type of the value to be returned.
     pub fn set_value_type(&mut self, theType: crate::g_prop::ValueType) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_UFunction_set_value_type(self as *mut Self, theType.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2210,8 +2531,12 @@ impl UFunction {
     /// integral computation.
     pub fn set_v_param(&mut self, theVParam: f64) {
         {
-            unsafe { crate::ffi::BRepGProp_UFunction_set_v_param(self as *mut Self, theVParam) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepGProp_UFunction_set_v_param(self as *mut Self, theVParam)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2221,29 +2546,32 @@ impl UFunction {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_UFunction_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepGProp_UFunction_as_math_Function(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepGProp_UFunction_as_math_Function(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepGProp_UFunction_as_math_Function_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepGProp_UFunction_as_math_Function_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
@@ -2252,8 +2580,11 @@ impl UFunction {
             let __result = unsafe {
                 crate::ffi::BRepGProp_UFunction_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2288,8 +2619,10 @@ impl Vinert {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Vinert_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2304,8 +2637,10 @@ impl Vinert {
     pub fn new_face_pnt(S: &Face, VLocation: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Vinert_ctor_face_pnt(S, VLocation) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2324,8 +2659,10 @@ impl Vinert {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_Vinert_ctor_face_pnt_real(S, VLocation, Eps) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2344,8 +2681,10 @@ impl Vinert {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Vinert_ctor_face_pnt2(S, O, VLocation) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2366,8 +2705,10 @@ impl Vinert {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_Vinert_ctor_face_pnt2_real(S, O, VLocation, Eps) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2387,8 +2728,10 @@ impl Vinert {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_Vinert_ctor_face_pln_pnt(S, Pl, VLocation) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2410,8 +2753,10 @@ impl Vinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Vinert_ctor_face_pln_pnt_real(S, Pl, VLocation, Eps)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2431,8 +2776,10 @@ impl Vinert {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_Vinert_ctor_face_domain_pnt(S, D, VLocation) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2453,8 +2800,10 @@ impl Vinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Vinert_ctor_face_domain_pnt_real(S, D, VLocation, Eps)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2475,8 +2824,10 @@ impl Vinert {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_Vinert_ctor_face_domain_pnt2(S, D, O, VLocation) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2499,8 +2850,10 @@ impl Vinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Vinert_ctor_face_domain_pnt2_real(S, D, O, VLocation, Eps)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2522,8 +2875,10 @@ impl Vinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Vinert_ctor_face_domain_pln_pnt(S, D, Pl, VLocation)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2546,24 +2901,31 @@ impl Vinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Vinert_ctor_face_domain_pln_pnt_real(S, D, Pl, VLocation, Eps)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BRepGProp_Vinert.hxx`:183 - `BRepGProp_Vinert::SetLocation()`
     pub fn set_location(&mut self, VLocation: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::BRepGProp_Vinert_set_location(self as *mut Self, VLocation) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepGProp_Vinert_set_location(self as *mut Self, VLocation) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepGProp_Vinert.hxx`:185 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face(&mut self, S: &Face) {
         {
-            unsafe { crate::ffi::BRepGProp_Vinert_perform_face(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepGProp_Vinert_perform_face(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2573,16 +2935,22 @@ impl Vinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Vinert_perform_face_real(self as *mut Self, S, Eps)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepGProp_Vinert.hxx`:189 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_pnt(&mut self, S: &Face, O: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::BRepGProp_Vinert_perform_face_pnt(self as *mut Self, S, O) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepGProp_Vinert_perform_face_pnt(self as *mut Self, S, O) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2592,16 +2960,22 @@ impl Vinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Vinert_perform_face_pnt_real(self as *mut Self, S, O, Eps)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepGProp_Vinert.hxx`:195 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_pln(&mut self, S: &Face, Pl: &crate::gp::Pln) {
         {
-            unsafe { crate::ffi::BRepGProp_Vinert_perform_face_pln(self as *mut Self, S, Pl) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepGProp_Vinert_perform_face_pln(self as *mut Self, S, Pl) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2611,16 +2985,23 @@ impl Vinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Vinert_perform_face_pln_real(self as *mut Self, S, Pl, Eps)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepGProp_Vinert.hxx`:201 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_domain(&mut self, S: &mut Face, D: &mut Domain) {
         {
-            unsafe { crate::ffi::BRepGProp_Vinert_perform_face_domain(self as *mut Self, S, D) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepGProp_Vinert_perform_face_domain(self as *mut Self, S, D)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2630,18 +3011,23 @@ impl Vinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Vinert_perform_face_domain_real(self as *mut Self, S, D, Eps)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepGProp_Vinert.hxx`:207 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_domain_pnt(&mut self, S: &mut Face, D: &mut Domain, O: &crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_Vinert_perform_face_domain_pnt(self as *mut Self, S, D, O)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2663,18 +3049,23 @@ impl Vinert {
                     Eps,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepGProp_Vinert.hxx`:214 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_domain_pln(&mut self, S: &mut Face, D: &mut Domain, Pl: &crate::gp::Pln) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_Vinert_perform_face_domain_pln(self as *mut Self, S, D, Pl)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2696,8 +3087,11 @@ impl Vinert {
                     Eps,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2707,36 +3101,42 @@ impl Vinert {
     pub fn get_epsilon(&mut self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepGProp_Vinert_get_epsilon(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to GProp_GProps
     pub fn as_g_prop_g_props(&self) -> &crate::g_prop::GProps {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepGProp_Vinert_as_GProp_GProps(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::BRepGProp_Vinert_as_GProp_GProps(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GProp_GProps (mutable)
     pub fn as_g_prop_g_props_mut(&mut self) -> &mut crate::g_prop::GProps {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepGProp_Vinert_as_GProp_GProps_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepGProp_Vinert_as_GProp_GProps_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
     pub fn add(&mut self, Item: &crate::g_prop::GProps, Density: f64) {
         {
-            unsafe { crate::ffi::BRepGProp_Vinert_inherited_Add(self as *mut Self, Item, Density) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepGProp_Vinert_inherited_Add(self as *mut Self, Item, Density)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2745,8 +3145,11 @@ impl Vinert {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_Vinert_inherited_Mass(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2755,8 +3158,11 @@ impl Vinert {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_Vinert_inherited_CentreOfMass(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2766,15 +3172,18 @@ impl Vinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Vinert_inherited_MatrixOfInertia(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
     pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_Vinert_inherited_StaticMoments(
                     self as *const Self,
                     Ix,
@@ -2782,7 +3191,9 @@ impl Vinert {
                     Iz,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2792,8 +3203,11 @@ impl Vinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Vinert_inherited_MomentOfInertia(self as *const Self, A)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2803,8 +3217,11 @@ impl Vinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Vinert_inherited_PrincipalProperties(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2814,8 +3231,11 @@ impl Vinert {
             let __result = unsafe {
                 crate::ffi::BRepGProp_Vinert_inherited_RadiusOfGyration(self as *const Self, A)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2864,8 +3284,10 @@ impl VinertGK {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepGProp_VinertGK_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2890,8 +3312,10 @@ impl VinertGK {
                     theIFlag,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2919,8 +3343,10 @@ impl VinertGK {
                     theIFlag,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2947,8 +3373,10 @@ impl VinertGK {
                     theIFlag,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2978,8 +3406,10 @@ impl VinertGK {
                     theIFlag,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3006,8 +3436,10 @@ impl VinertGK {
                     theIFlag,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3036,8 +3468,10 @@ impl VinertGK {
                     theIFlag,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3385,8 +3819,12 @@ impl VinertGK {
     /// Sets the vertex that delimit 3D closed region of space.
     pub fn set_location(&mut self, theLocation: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::BRepGProp_VinertGK_set_location(self as *mut Self, theLocation) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepGProp_VinertGK_set_location(self as *mut Self, theLocation)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3411,8 +3849,11 @@ impl VinertGK {
                     theIFlag,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3440,8 +3881,11 @@ impl VinertGK {
                     theIFlag,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3468,8 +3912,11 @@ impl VinertGK {
                     theIFlag,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3499,8 +3946,11 @@ impl VinertGK {
                     theIFlag,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3527,8 +3977,11 @@ impl VinertGK {
                     theIFlag,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3557,8 +4010,11 @@ impl VinertGK {
                     theIFlag,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3568,8 +4024,11 @@ impl VinertGK {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_VinertGK_get_error_reached(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3579,38 +4038,43 @@ impl VinertGK {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_VinertGK_get_absolut_error(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to GProp_GProps
     pub fn as_g_prop_g_props(&self) -> &crate::g_prop::GProps {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepGProp_VinertGK_as_GProp_GProps(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepGProp_VinertGK_as_GProp_GProps(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GProp_GProps (mutable)
     pub fn as_g_prop_g_props_mut(&mut self) -> &mut crate::g_prop::GProps {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepGProp_VinertGK_as_GProp_GProps_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepGProp_VinertGK_as_GProp_GProps_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
     pub fn add(&mut self, Item: &crate::g_prop::GProps, Density: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_VinertGK_inherited_Add(self as *mut Self, Item, Density)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3619,8 +4083,11 @@ impl VinertGK {
         {
             let __result =
                 unsafe { crate::ffi::BRepGProp_VinertGK_inherited_Mass(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3630,8 +4097,11 @@ impl VinertGK {
             let __result = unsafe {
                 crate::ffi::BRepGProp_VinertGK_inherited_CentreOfMass(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3641,15 +4111,18 @@ impl VinertGK {
             let __result = unsafe {
                 crate::ffi::BRepGProp_VinertGK_inherited_MatrixOfInertia(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
     pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepGProp_VinertGK_inherited_StaticMoments(
                     self as *const Self,
                     Ix,
@@ -3657,7 +4130,9 @@ impl VinertGK {
                     Iz,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3667,8 +4142,11 @@ impl VinertGK {
             let __result = unsafe {
                 crate::ffi::BRepGProp_VinertGK_inherited_MomentOfInertia(self as *const Self, A)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3678,8 +4156,11 @@ impl VinertGK {
             let __result = unsafe {
                 crate::ffi::BRepGProp_VinertGK_inherited_PrincipalProperties(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3689,8 +4170,11 @@ impl VinertGK {
             let __result = unsafe {
                 crate::ffi::BRepGProp_VinertGK_inherited_RadiusOfGyration(self as *const Self, A)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

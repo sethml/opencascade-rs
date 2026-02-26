@@ -209,8 +209,10 @@ impl ChamfSpine {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ChamfSpine_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -218,66 +220,88 @@ impl ChamfSpine {
     pub fn new_real(Tol: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ChamfSpine_ctor_real(Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `ChFiDS_ChamfSpine.hxx`:39 - `ChFiDS_ChamfSpine::SetDist()`
     pub fn set_dist(&mut self, Dis: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_ChamfSpine_set_dist(self as *mut Self, Dis) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_ChamfSpine_set_dist(self as *mut Self, Dis) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_ChamfSpine.hxx`:41 - `ChFiDS_ChamfSpine::GetDist()`
     pub fn get_dist(&self, Dis: &mut f64) {
         {
-            unsafe { crate::ffi::ChFiDS_ChamfSpine_get_dist(self as *const Self, Dis) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_ChamfSpine_get_dist(self as *const Self, Dis) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_ChamfSpine.hxx`:43 - `ChFiDS_ChamfSpine::SetDists()`
     pub fn set_dists(&mut self, Dis1: f64, Dis2: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_ChamfSpine_set_dists(self as *mut Self, Dis1, Dis2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_ChamfSpine_set_dists(self as *mut Self, Dis1, Dis2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_ChamfSpine.hxx`:45 - `ChFiDS_ChamfSpine::Dists()`
     pub fn dists(&self, Dis1: &mut f64, Dis2: &mut f64) {
         {
-            unsafe { crate::ffi::ChFiDS_ChamfSpine_dists(self as *const Self, Dis1, Dis2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_ChamfSpine_dists(self as *const Self, Dis1, Dis2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_ChamfSpine.hxx`:47 - `ChFiDS_ChamfSpine::GetDistAngle()`
     pub fn get_dist_angle(&self, Dis: &mut f64, Angle: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_get_dist_angle(self as *const Self, Dis, Angle)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_ChamfSpine.hxx`:49 - `ChFiDS_ChamfSpine::SetDistAngle()`
     pub fn set_dist_angle(&mut self, Dis: f64, Angle: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_ChamfSpine_set_dist_angle(self as *mut Self, Dis, Angle) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_ChamfSpine_set_dist_angle(self as *mut Self, Dis, Angle)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_ChamfSpine.hxx`:51 - `ChFiDS_ChamfSpine::SetMode()`
     pub fn set_mode(&mut self, theMode: crate::ch_fi_ds::ChamfMode) {
         {
-            unsafe { crate::ffi::ChFiDS_ChamfSpine_set_mode(self as *mut Self, theMode.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_ChamfSpine_set_mode(self as *mut Self, theMode.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -286,8 +310,11 @@ impl ChamfSpine {
     pub fn is_chamfer(&self) -> crate::ch_fi_ds::ChamfMethod {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ChamfSpine_is_chamfer(self as *const Self) };
-            crate::check_exception();
-            crate::ch_fi_ds::ChamfMethod::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::ChamfMethod::try_from(__val).unwrap()
         }
     }
 
@@ -296,8 +323,11 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -305,8 +335,11 @@ impl ChamfSpine {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ChamfSpine_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -314,94 +347,108 @@ impl ChamfSpine {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ChamfSpine_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ChFiDS_Spine
     pub fn as_spine(&self) -> &Spine {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFiDS_ChamfSpine_as_ChFiDS_Spine(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ChFiDS_ChamfSpine_as_ChFiDS_Spine(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ChFiDS_Spine (mutable)
     pub fn as_spine_mut(&mut self) -> &mut Spine {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFiDS_ChamfSpine_as_ChFiDS_Spine_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ChFiDS_ChamfSpine_as_ChFiDS_Spine_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFiDS_ChamfSpine_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ChFiDS_ChamfSpine_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ChFiDS_ChamfSpine_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ChFiDS_ChamfSpine_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleChFiDSChamfSpine> {
-        {
-            let __result = unsafe { crate::ffi::ChFiDS_ChamfSpine_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ChFiDS_ChamfSpine_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:78 - `ChFiDS_Spine::SetEdges()`
     pub fn set_edges(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_SetEdges(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_SetEdges(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:81 - `ChFiDS_Spine::SetOffsetEdges()`
     pub fn set_offset_edges(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_SetOffsetEdges(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_ChamfSpine_inherited_SetOffsetEdges(self as *mut Self, E)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:84 - `ChFiDS_Spine::PutInFirst()`
     pub fn put_in_first(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_PutInFirst(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_PutInFirst(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:87 - `ChFiDS_Spine::PutInFirstOffset()`
     pub fn put_in_first_offset(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_PutInFirstOffset(self as *mut Self, E)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -410,8 +457,11 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_NbEdges(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -420,8 +470,11 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_Edges(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -431,48 +484,59 @@ impl ChamfSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_OffsetEdges(self as *const Self, I)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:97 - `ChFiDS_Spine::SetFirstStatus()`
     pub fn set_first_status(&mut self, S: crate::ch_fi_ds::State) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_SetFirstStatus(self as *mut Self, S.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:101 - `ChFiDS_Spine::SetLastStatus()`
     pub fn set_last_status(&mut self, S: crate::ch_fi_ds::State) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_SetLastStatus(self as *mut Self, S.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:103 - `ChFiDS_Spine::AppendElSpine()`
     pub fn append_el_spine(&mut self, Els: &crate::ffi::HandleChFiDSElSpine) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_AppendElSpine(self as *mut Self, Els)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:105 - `ChFiDS_Spine::AppendOffsetElSpine()`
     pub fn append_offset_el_spine(&mut self, Els: &crate::ffi::HandleChFiDSElSpine) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_AppendOffsetElSpine(self as *mut Self, Els)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -481,8 +545,11 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_ElSpine(self as *const Self, IE) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -492,8 +559,11 @@ impl ChamfSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_ChangeElSpines(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -503,16 +573,23 @@ impl ChamfSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_ChangeOffsetElSpines(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:117 - `ChFiDS_Spine::Reset()`
     pub fn reset(&mut self, AllData: bool) {
         {
-            unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_Reset(self as *mut Self, AllData) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_ChamfSpine_inherited_Reset(self as *mut Self, AllData)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -521,16 +598,21 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_SplitDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:129 - `ChFiDS_Spine::Load()`
     pub fn load(&mut self) {
         {
-            unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_Load(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_Load(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -540,8 +622,11 @@ impl ChamfSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_Resolution(self as *const Self, R3d)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -550,8 +635,11 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_IsClosed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -561,8 +649,11 @@ impl ChamfSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_FirstParameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -572,28 +663,35 @@ impl ChamfSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_LastParameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:139 - `ChFiDS_Spine::SetFirstParameter()`
     pub fn set_first_parameter(&mut self, Par: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_SetFirstParameter(self as *mut Self, Par)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:141 - `ChFiDS_Spine::SetLastParameter()`
     pub fn set_last_parameter(&mut self, Par: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_SetLastParameter(self as *mut Self, Par)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -603,8 +701,11 @@ impl ChamfSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_Length(self as *const Self, IndexSpine)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -613,8 +714,11 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_IsPeriodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -623,8 +727,11 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_Period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -633,15 +740,18 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_Absc(self as *mut Self, U) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:162 - `ChFiDS_Spine::Parameter()`
     pub fn parameter(&mut self, AbsC: f64, U: &mut f64, Oriented: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_Parameter(
                     self as *mut Self,
                     AbsC,
@@ -649,7 +759,9 @@ impl ChamfSpine {
                     Oriented,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -658,24 +770,34 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_Value(self as *mut Self, AbsC) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:173 - `ChFiDS_Spine::D0()`
     pub fn d0(&mut self, AbsC: f64, P: &mut crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_D0(self as *mut Self, AbsC, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_D0(self as *mut Self, AbsC, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:175 - `ChFiDS_Spine::D1()`
     pub fn d1(&mut self, AbsC: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
         {
-            unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_D1(self as *mut Self, AbsC, P, V1) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_ChamfSpine_inherited_D1(self as *mut Self, AbsC, P, V1)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -688,18 +810,24 @@ impl ChamfSpine {
         V2: &mut crate::gp::Vec,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_D2(self as *mut Self, AbsC, P, V1, V2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:179 - `ChFiDS_Spine::SetCurrent()`
     pub fn set_current(&mut self, Index: i32) {
         {
-            unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_SetCurrent(self as *mut Self, Index) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_ChamfSpine_inherited_SetCurrent(self as *mut Self, Index)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -712,8 +840,11 @@ impl ChamfSpine {
                     Index,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -725,8 +856,11 @@ impl ChamfSpine {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -735,8 +869,11 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_GetType(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
@@ -745,8 +882,11 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_Line(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -755,8 +895,11 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_Circle(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -765,8 +908,11 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_FirstStatus(self as *const Self) };
-            crate::check_exception();
-            crate::ch_fi_ds::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::State::try_from(__val).unwrap()
         }
     }
 
@@ -775,8 +921,11 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_LastStatus(self as *const Self) };
-            crate::check_exception();
-            crate::ch_fi_ds::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::State::try_from(__val).unwrap()
         }
     }
 
@@ -786,8 +935,11 @@ impl ChamfSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_Status(self as *const Self, IsFirst)
             };
-            crate::check_exception();
-            crate::ch_fi_ds::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::State::try_from(__val).unwrap()
         }
     }
 
@@ -797,35 +949,42 @@ impl ChamfSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_GetTypeOfConcavity(self as *const Self)
             };
-            crate::check_exception();
-            crate::ch_fi_ds::TypeOfConcavity::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::TypeOfConcavity::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:205 - `ChFiDS_Spine::SetStatus()`
     pub fn set_status(&mut self, S: crate::ch_fi_ds::State, IsFirst: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_SetStatus(
                     self as *mut Self,
                     S.into(),
                     IsFirst,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:208 - `ChFiDS_Spine::SetTypeOfConcavity()`
     pub fn set_type_of_concavity(&mut self, theType: crate::ch_fi_ds::TypeOfConcavity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_SetTypeOfConcavity(
                     self as *mut Self,
                     theType.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -838,22 +997,27 @@ impl ChamfSpine {
                     IsFirst,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:214 - `ChFiDS_Spine::SetTangencyExtremity()`
     pub fn set_tangency_extremity(&mut self, IsTangency: bool, IsFirst: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_SetTangencyExtremity(
                     self as *mut Self,
                     IsTangency,
                     IsFirst,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -862,8 +1026,11 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_FirstVertex(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -872,24 +1039,34 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_LastVertex(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:222 - `ChFiDS_Spine::SetFirstTgt()`
     pub fn set_first_tgt(&mut self, W: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_SetFirstTgt(self as *mut Self, W) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_ChamfSpine_inherited_SetFirstTgt(self as *mut Self, W)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:224 - `ChFiDS_Spine::SetLastTgt()`
     pub fn set_last_tgt(&mut self, W: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_SetLastTgt(self as *mut Self, W) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_SetLastTgt(self as *mut Self, W) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -898,8 +1075,11 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_HasFirstTgt(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -908,16 +1088,23 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_HasLastTgt(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:231 - `ChFiDS_Spine::SetReference()`
     pub fn set_reference(&mut self, W: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_SetReference(self as *mut Self, W) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_ChamfSpine_inherited_SetReference(self as *mut Self, W)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -927,29 +1114,38 @@ impl ChamfSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_Index(self as *const Self, W, Forward)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:242 - `ChFiDS_Spine::UnsetReference()`
     pub fn unset_reference(&mut self) {
         {
-            unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_UnsetReference(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_ChamfSpine_inherited_UnsetReference(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:244 - `ChFiDS_Spine::SetErrorStatus()`
     pub fn set_error_status(&mut self, state: crate::ch_fi_ds::ErrorStatus) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_SetErrorStatus(
                     self as *mut Self,
                     state.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -958,8 +1154,11 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_ErrorStatus(self as *const Self) };
-            crate::check_exception();
-            crate::ch_fi_ds::ErrorStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::ErrorStatus::try_from(__val).unwrap()
         }
     }
 
@@ -968,8 +1167,11 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_Mode(self as *const Self) };
-            crate::check_exception();
-            crate::ch_fi_ds::ChamfMode::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::ChamfMode::try_from(__val).unwrap()
         }
     }
 
@@ -978,8 +1180,11 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_GetTolesp(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -989,8 +1194,11 @@ impl ChamfSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1000,8 +1208,11 @@ impl ChamfSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1010,11 +1221,14 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1024,18 +1238,23 @@ impl ChamfSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1045,16 +1264,22 @@ impl ChamfSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_ChamfSpine_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_ChamfSpine_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1070,42 +1295,41 @@ unsafe impl crate::CppDeletable for HandleChFiDSChamfSpine {
 impl HandleChFiDSChamfSpine {
     /// Dereference this Handle to access the underlying ChFiDS_ChamfSpine
     pub fn get(&self) -> &crate::ffi::ChFiDS_ChamfSpine {
-        {
-            let __result = unsafe { crate::ffi::HandleChFiDSChamfSpine_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleChFiDSChamfSpine_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ChFiDS_ChamfSpine
     pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_ChamfSpine {
-        {
-            let __result = unsafe { crate::ffi::HandleChFiDSChamfSpine_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleChFiDSChamfSpine_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ChFiDS_ChamfSpine> to Handle<ChFiDS_Spine>
     pub fn to_handle_spine(&self) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSpine> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleChFiDSChamfSpine_to_HandleChFiDSSpine(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleChFiDSChamfSpine_to_HandleChFiDSSpine(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ChFiDS_ChamfSpine> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleChFiDSChamfSpine_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleChFiDSChamfSpine_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1128,40 +1352,57 @@ impl CircSection {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_CircSection_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `ChFiDS_CircSection.hxx`:35 - `ChFiDS_CircSection::Set()`
     pub fn set_circ_real2(&mut self, C: &crate::gp::Circ, F: f64, L: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_CircSection_set_circ_real2(self as *mut Self, C, F, L) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_CircSection_set_circ_real2(self as *mut Self, C, F, L)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_CircSection.hxx`:37 - `ChFiDS_CircSection::Set()`
     pub fn set_lin_real2(&mut self, C: &crate::gp::Lin, F: f64, L: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_CircSection_set_lin_real2(self as *mut Self, C, F, L) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_CircSection_set_lin_real2(self as *mut Self, C, F, L) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_CircSection.hxx`:39 - `ChFiDS_CircSection::Get()`
     pub fn get_circ_real2(&self, C: &mut crate::gp::Circ, F: &mut f64, L: &mut f64) {
         {
-            unsafe { crate::ffi::ChFiDS_CircSection_get_circ_real2(self as *const Self, C, F, L) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_CircSection_get_circ_real2(self as *const Self, C, F, L)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_CircSection.hxx`:41 - `ChFiDS_CircSection::Get()`
     pub fn get_lin_real2(&self, C: &mut crate::gp::Lin, F: &mut f64, L: &mut f64) {
         {
-            unsafe { crate::ffi::ChFiDS_CircSection_get_lin_real2(self as *const Self, C, F, L) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_CircSection_get_lin_real2(self as *const Self, C, F, L)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1188,8 +1429,10 @@ impl CommonPoint {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_CommonPoint_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1197,8 +1440,10 @@ impl CommonPoint {
     /// default value for all fields
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::ChFiDS_CommonPoint_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_CommonPoint_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1208,8 +1453,11 @@ impl CommonPoint {
     /// of the surface.
     pub fn set_vertex(&mut self, theVertex: &crate::topo_ds::Vertex) {
         {
-            unsafe { crate::ffi::ChFiDS_CommonPoint_set_vertex(self as *mut Self, theVertex) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_CommonPoint_set_vertex(self as *mut Self, theVertex) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1224,7 +1472,7 @@ impl CommonPoint {
         TArc: crate::top_abs::Orientation,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_CommonPoint_set_arc(
                     self as *mut Self,
                     Tol,
@@ -1233,7 +1481,9 @@ impl CommonPoint {
                     TArc.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1241,8 +1491,11 @@ impl CommonPoint {
     /// Sets the value of the parameter on the spine
     pub fn set_parameter(&mut self, Param: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_CommonPoint_set_parameter(self as *mut Self, Param) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_CommonPoint_set_parameter(self as *mut Self, Param) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1251,8 +1504,11 @@ impl CommonPoint {
     /// a vertex or on an arc.
     pub fn set_point(&mut self, thePoint: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::ChFiDS_CommonPoint_set_point(self as *mut Self, thePoint) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_CommonPoint_set_point(self as *mut Self, thePoint) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1260,8 +1516,11 @@ impl CommonPoint {
     /// Set the output 3d  vector
     pub fn set_vector(&mut self, theVector: &crate::gp::Vec) {
         {
-            unsafe { crate::ffi::ChFiDS_CommonPoint_set_vector(self as *mut Self, theVector) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_CommonPoint_set_vector(self as *mut Self, theVector) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1269,8 +1528,11 @@ impl CommonPoint {
     /// This method set the fuzziness on the point.
     pub fn set_tolerance(&mut self, Tol: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_CommonPoint_set_tolerance(self as *mut Self, Tol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_CommonPoint_set_tolerance(self as *mut Self, Tol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1279,8 +1541,11 @@ impl CommonPoint {
     pub fn tolerance(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_CommonPoint_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1290,8 +1555,11 @@ impl CommonPoint {
     pub fn is_vertex(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::ChFiDS_CommonPoint_is_vertex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1303,8 +1571,11 @@ impl CommonPoint {
     pub fn vertex(&self) -> &crate::topo_ds::Vertex {
         {
             let __result = unsafe { crate::ffi::ChFiDS_CommonPoint_vertex(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1314,8 +1585,11 @@ impl CommonPoint {
     pub fn is_on_arc(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::ChFiDS_CommonPoint_is_on_arc(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1325,8 +1599,11 @@ impl CommonPoint {
     pub fn arc(&self) -> &crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::ChFiDS_CommonPoint_arc(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1337,8 +1614,11 @@ impl CommonPoint {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_CommonPoint_transition_on_arc(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -1349,8 +1629,11 @@ impl CommonPoint {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_CommonPoint_parameter_on_arc(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1359,8 +1642,11 @@ impl CommonPoint {
     pub fn parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_CommonPoint_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1369,8 +1655,11 @@ impl CommonPoint {
     pub fn point(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::ChFiDS_CommonPoint_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1380,8 +1669,11 @@ impl CommonPoint {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_CommonPoint_has_vector(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1390,8 +1682,11 @@ impl CommonPoint {
     pub fn vector(&self) -> &crate::gp::Vec {
         {
             let __result = unsafe { crate::ffi::ChFiDS_CommonPoint_vector(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -1415,8 +1710,10 @@ impl ElSpine {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1424,8 +1721,11 @@ impl ElSpine {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1434,8 +1734,11 @@ impl ElSpine {
     pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_shallow_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1444,8 +1747,11 @@ impl ElSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ElSpine_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1454,8 +1760,11 @@ impl ElSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ElSpine_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1465,8 +1774,11 @@ impl ElSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_ElSpine_get_saved_first_parameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1475,8 +1787,11 @@ impl ElSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ElSpine_get_saved_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1484,8 +1799,11 @@ impl ElSpine {
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -1494,16 +1812,22 @@ impl ElSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ElSpine_nb_intervals(self as *const Self, S.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:68 - `ChFiDS_ElSpine::Intervals()`
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe { crate::ffi::ChFiDS_ElSpine_intervals(self as *const Self, T, S.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_ElSpine_intervals(self as *const Self, T, S.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1520,8 +1844,11 @@ impl ElSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ElSpine_trim(self as *const Self, First, Last, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1530,8 +1857,11 @@ impl ElSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ElSpine_resolution(self as *const Self, R3d) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1539,8 +1869,11 @@ impl ElSpine {
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_get_type(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
@@ -1548,16 +1881,21 @@ impl ElSpine {
     pub fn is_periodic(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:85 - `ChFiDS_ElSpine::SetPeriodic()`
     pub fn set_periodic(&mut self, I: bool) {
         {
-            unsafe { crate::ffi::ChFiDS_ElSpine_set_periodic(self as *mut Self, I) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_ElSpine_set_periodic(self as *mut Self, I) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1565,8 +1903,11 @@ impl ElSpine {
     pub fn period(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1574,24 +1915,31 @@ impl ElSpine {
     pub fn value(&self, AbsC: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_value(self as *const Self, AbsC) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:91 - `ChFiDS_ElSpine::D0()`
     pub fn d0(&self, AbsC: f64, P: &mut crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::ChFiDS_ElSpine_d0(self as *const Self, AbsC, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_ElSpine_d0(self as *const Self, AbsC, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:93 - `ChFiDS_ElSpine::D1()`
     pub fn d1(&self, AbsC: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
         {
-            unsafe { crate::ffi::ChFiDS_ElSpine_d1(self as *const Self, AbsC, P, V1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_ElSpine_d1(self as *const Self, AbsC, P, V1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1604,8 +1952,11 @@ impl ElSpine {
         V2: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::ChFiDS_ElSpine_d2(self as *const Self, AbsC, P, V1, V2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_ElSpine_d2(self as *const Self, AbsC, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1619,64 +1970,88 @@ impl ElSpine {
         V3: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::ChFiDS_ElSpine_d3(self as *const Self, AbsC, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_ElSpine_d3(self as *const Self, AbsC, P, V1, V2, V3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:108 - `ChFiDS_ElSpine::FirstParameter()`
     pub fn first_parameter_real(&mut self, P: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_ElSpine_first_parameter_real(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_ElSpine_first_parameter_real(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:110 - `ChFiDS_ElSpine::LastParameter()`
     pub fn last_parameter_real(&mut self, P: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_ElSpine_last_parameter_real(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_ElSpine_last_parameter_real(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:112 - `ChFiDS_ElSpine::SaveFirstParameter()`
     pub fn save_first_parameter(&mut self) {
         {
-            unsafe { crate::ffi::ChFiDS_ElSpine_save_first_parameter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_ElSpine_save_first_parameter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:114 - `ChFiDS_ElSpine::SaveLastParameter()`
     pub fn save_last_parameter(&mut self) {
         {
-            unsafe { crate::ffi::ChFiDS_ElSpine_save_last_parameter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_ElSpine_save_last_parameter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:116 - `ChFiDS_ElSpine::SetOrigin()`
     pub fn set_origin(&mut self, O: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_ElSpine_set_origin(self as *mut Self, O) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_ElSpine_set_origin(self as *mut Self, O) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:118 - `ChFiDS_ElSpine::FirstPointAndTgt()`
     pub fn first_point_and_tgt(&self, P: &mut crate::gp::Pnt, T: &mut crate::gp::Vec) {
         {
-            unsafe { crate::ffi::ChFiDS_ElSpine_first_point_and_tgt(self as *const Self, P, T) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_ElSpine_first_point_and_tgt(self as *const Self, P, T)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:120 - `ChFiDS_ElSpine::LastPointAndTgt()`
     pub fn last_point_and_tgt(&self, P: &mut crate::gp::Pnt, T: &mut crate::gp::Vec) {
         {
-            unsafe { crate::ffi::ChFiDS_ElSpine_last_point_and_tgt(self as *const Self, P, T) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_ElSpine_last_point_and_tgt(self as *const Self, P, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1684,8 +2059,11 @@ impl ElSpine {
     pub fn nb_vertices(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_nb_vertices(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1695,40 +2073,57 @@ impl ElSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_ElSpine_vertex_with_tangent(self as *const Self, Index)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:126 - `ChFiDS_ElSpine::SetFirstPointAndTgt()`
     pub fn set_first_point_and_tgt(&mut self, P: &crate::gp::Pnt, T: &crate::gp::Vec) {
         {
-            unsafe { crate::ffi::ChFiDS_ElSpine_set_first_point_and_tgt(self as *mut Self, P, T) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_ElSpine_set_first_point_and_tgt(self as *mut Self, P, T)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:128 - `ChFiDS_ElSpine::SetLastPointAndTgt()`
     pub fn set_last_point_and_tgt(&mut self, P: &crate::gp::Pnt, T: &crate::gp::Vec) {
         {
-            unsafe { crate::ffi::ChFiDS_ElSpine_set_last_point_and_tgt(self as *mut Self, P, T) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_ElSpine_set_last_point_and_tgt(self as *mut Self, P, T)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:130 - `ChFiDS_ElSpine::AddVertexWithTangent()`
     pub fn add_vertex_with_tangent(&mut self, anAx1: &crate::gp::Ax1) {
         {
-            unsafe { crate::ffi::ChFiDS_ElSpine_add_vertex_with_tangent(self as *mut Self, anAx1) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_ElSpine_add_vertex_with_tangent(self as *mut Self, anAx1)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:132 - `ChFiDS_ElSpine::SetCurve()`
     pub fn set_curve(&mut self, C: &crate::ffi::HandleGeomCurve) {
         {
-            unsafe { crate::ffi::ChFiDS_ElSpine_set_curve(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_ElSpine_set_curve(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1736,8 +2131,11 @@ impl ElSpine {
     pub fn previous(&self) -> &crate::ffi::HandleChFiDSSurfData {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_previous(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1745,8 +2143,11 @@ impl ElSpine {
     pub fn change_previous(&mut self) -> &mut crate::ffi::HandleChFiDSSurfData {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_change_previous(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1754,8 +2155,11 @@ impl ElSpine {
     pub fn next(&self) -> &crate::ffi::HandleChFiDSSurfData {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_next(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1763,8 +2167,11 @@ impl ElSpine {
     pub fn change_next(&mut self) -> &mut crate::ffi::HandleChFiDSSurfData {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_change_next(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1772,8 +2179,11 @@ impl ElSpine {
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_line(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1781,8 +2191,11 @@ impl ElSpine {
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_circle(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1790,8 +2203,11 @@ impl ElSpine {
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_ellipse(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1799,8 +2215,11 @@ impl ElSpine {
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_hyperbola(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1808,8 +2227,11 @@ impl ElSpine {
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_parabola(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1817,8 +2239,11 @@ impl ElSpine {
     pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_bezier(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1826,8 +2251,11 @@ impl ElSpine {
     pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_b_spline(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1835,8 +2263,11 @@ impl ElSpine {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1844,60 +2275,63 @@ impl ElSpine {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ChFiDS_ElSpine_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Adaptor3d_Curve
     pub fn as_adaptor3d_curve(&self) -> &crate::adaptor3d::Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFiDS_ElSpine_as_Adaptor3d_Curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ChFiDS_ElSpine_as_Adaptor3d_Curve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Adaptor3d_Curve (mutable)
     pub fn as_adaptor3d_curve_mut(&mut self) -> &mut crate::adaptor3d::Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFiDS_ElSpine_as_Adaptor3d_Curve_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ChFiDS_ElSpine_as_Adaptor3d_Curve_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFiDS_ElSpine_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ChFiDS_ElSpine_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFiDS_ElSpine_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ChFiDS_ElSpine_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleChFiDSElSpine> {
-        {
-            let __result = unsafe { crate::ffi::ChFiDS_ElSpine_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ChFiDS_ElSpine_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:84 - `Adaptor3d_Curve::IsClosed()`
@@ -1905,8 +2339,11 @@ impl ElSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ElSpine_inherited_IsClosed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1915,8 +2352,11 @@ impl ElSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ElSpine_inherited_DN(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1925,8 +2365,11 @@ impl ElSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ElSpine_inherited_Degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1935,8 +2378,11 @@ impl ElSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ElSpine_inherited_IsRational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1945,8 +2391,11 @@ impl ElSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ElSpine_inherited_NbPoles(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1955,8 +2404,11 @@ impl ElSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ElSpine_inherited_NbKnots(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1965,8 +2417,11 @@ impl ElSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ElSpine_inherited_OffsetCurve(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1976,8 +2431,11 @@ impl ElSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_ElSpine_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1987,8 +2445,11 @@ impl ElSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_ElSpine_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1997,11 +2458,14 @@ impl ElSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ElSpine_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2011,16 +2475,23 @@ impl ElSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_ElSpine_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::ChFiDS_ElSpine_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_ElSpine_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2030,16 +2501,21 @@ impl ElSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_ElSpine_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ChFiDS_ElSpine_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_ElSpine_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2055,42 +2531,41 @@ unsafe impl crate::CppDeletable for HandleChFiDSElSpine {
 impl HandleChFiDSElSpine {
     /// Dereference this Handle to access the underlying ChFiDS_ElSpine
     pub fn get(&self) -> &crate::ffi::ChFiDS_ElSpine {
-        {
-            let __result = unsafe { crate::ffi::HandleChFiDSElSpine_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleChFiDSElSpine_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ChFiDS_ElSpine
     pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_ElSpine {
-        {
-            let __result = unsafe { crate::ffi::HandleChFiDSElSpine_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleChFiDSElSpine_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ChFiDS_ElSpine> to Handle<Adaptor3d_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleChFiDSElSpine_to_HandleAdaptor3dCurve(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleChFiDSElSpine_to_HandleAdaptor3dCurve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ChFiDS_ElSpine> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleChFiDSElSpine_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleChFiDSElSpine_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2113,8 +2588,10 @@ impl FaceInterference {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_FaceInterference_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2127,7 +2604,7 @@ impl FaceInterference {
         PCurv2: &crate::ffi::HandleGeom2dCurve,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_FaceInterference_set_interference(
                     self as *mut Self,
                     LineIndex,
@@ -2136,47 +2613,57 @@ impl FaceInterference {
                     PCurv2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_FaceInterference.hxx`:43 - `ChFiDS_FaceInterference::SetTransition()`
     pub fn set_transition(&mut self, Trans: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_FaceInterference_set_transition(self as *mut Self, Trans.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_FaceInterference.hxx`:45 - `ChFiDS_FaceInterference::SetFirstParameter()`
     pub fn set_first_parameter(&mut self, U1: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_FaceInterference_set_first_parameter(self as *mut Self, U1)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_FaceInterference.hxx`:47 - `ChFiDS_FaceInterference::SetLastParameter()`
     pub fn set_last_parameter(&mut self, U1: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_FaceInterference_set_last_parameter(self as *mut Self, U1)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_FaceInterference.hxx`:49 - `ChFiDS_FaceInterference::SetParameter()`
     pub fn set_parameter(&mut self, U1: f64, IsFirst: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_FaceInterference_set_parameter(self as *mut Self, U1, IsFirst)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2185,16 +2672,22 @@ impl FaceInterference {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FaceInterference_line_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `ChFiDS_FaceInterference.hxx`:53 - `ChFiDS_FaceInterference::SetLineIndex()`
     pub fn set_line_index(&mut self, I: i32) {
         {
-            unsafe { crate::ffi::ChFiDS_FaceInterference_set_line_index(self as *mut Self, I) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_FaceInterference_set_line_index(self as *mut Self, I) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2203,8 +2696,11 @@ impl FaceInterference {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FaceInterference_transition(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -2213,8 +2709,11 @@ impl FaceInterference {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FaceInterference_p_curve_on_face(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2223,8 +2722,11 @@ impl FaceInterference {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FaceInterference_p_curve_on_surf(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2234,8 +2736,11 @@ impl FaceInterference {
             let __result = unsafe {
                 crate::ffi::ChFiDS_FaceInterference_change_p_curve_on_face(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2245,8 +2750,11 @@ impl FaceInterference {
             let __result = unsafe {
                 crate::ffi::ChFiDS_FaceInterference_change_p_curve_on_surf(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2255,8 +2763,11 @@ impl FaceInterference {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FaceInterference_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2265,8 +2776,11 @@ impl FaceInterference {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FaceInterference_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2276,8 +2790,11 @@ impl FaceInterference {
             let __result = unsafe {
                 crate::ffi::ChFiDS_FaceInterference_parameter(self as *const Self, IsFirst)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2302,8 +2819,10 @@ impl FilSpine {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_FilSpine_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2311,16 +2830,20 @@ impl FilSpine {
     pub fn new_real(Tol: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_FilSpine_ctor_real(Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `ChFiDS_FilSpine.hxx`:44 - `ChFiDS_FilSpine::Reset()`
     pub fn reset(&mut self, AllData: bool) {
         {
-            unsafe { crate::ffi::ChFiDS_FilSpine_reset(self as *mut Self, AllData) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_FilSpine_reset(self as *mut Self, AllData) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2328,10 +2851,12 @@ impl FilSpine {
     /// initializes the constant vector on edge E.
     pub fn set_radius_real_edge(&mut self, Radius: f64, E: &crate::topo_ds::Edge) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_FilSpine_set_radius_real_edge(self as *mut Self, Radius, E)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2339,8 +2864,11 @@ impl FilSpine {
     /// resets the constant vector  on   edge E.
     pub fn un_set_radius_edge(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ChFiDS_FilSpine_un_set_radius_edge(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_FilSpine_un_set_radius_edge(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2348,10 +2876,12 @@ impl FilSpine {
     /// initializes the  vector on Vertex V.
     pub fn set_radius_real_vertex(&mut self, Radius: f64, V: &crate::topo_ds::Vertex) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_FilSpine_set_radius_real_vertex(self as *mut Self, Radius, V)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2359,8 +2889,11 @@ impl FilSpine {
     /// resets the vector on Vertex V.
     pub fn un_set_radius_vertex(&mut self, V: &crate::topo_ds::Vertex) {
         {
-            unsafe { crate::ffi::ChFiDS_FilSpine_un_set_radius_vertex(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_FilSpine_un_set_radius_vertex(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2368,10 +2901,12 @@ impl FilSpine {
     /// initializes the vector on the point of parameter W.
     pub fn set_radius_xy_int(&mut self, UandR: &crate::gp::XY, IinC: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_FilSpine_set_radius_xy_int(self as *mut Self, UandR, IinC)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2379,8 +2914,11 @@ impl FilSpine {
     /// initializes the constant vector on all spine.
     pub fn set_radius_real(&mut self, Radius: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_FilSpine_set_radius_real(self as *mut Self, Radius) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_FilSpine_set_radius_real(self as *mut Self, Radius) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2392,14 +2930,16 @@ impl FilSpine {
         IinC: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_FilSpine_set_radius_handlelawfunction_int(
                     self as *mut Self,
                     C,
                     IinC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2409,8 +2949,11 @@ impl FilSpine {
     pub fn is_constant(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::ChFiDS_FilSpine_is_constant(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2421,8 +2964,11 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_is_constant_int(self as *const Self, IE) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2432,8 +2978,11 @@ impl FilSpine {
     pub fn radius(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_FilSpine_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2444,8 +2993,11 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_radius_int(self as *const Self, IE) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2456,16 +3008,22 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_radius_edge(self as *const Self, E) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `ChFiDS_FilSpine.hxx`:88 - `ChFiDS_FilSpine::AppendElSpine()`
     pub fn append_el_spine(&mut self, Els: &crate::ffi::HandleChFiDSElSpine) {
         {
-            unsafe { crate::ffi::ChFiDS_FilSpine_append_el_spine(self as *mut Self, Els) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_FilSpine_append_el_spine(self as *mut Self, Els) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2476,8 +3034,11 @@ impl FilSpine {
     ) -> crate::OwnedPtr<crate::ffi::HandleLawComposite> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_FilSpine_law(self as *const Self, Els) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2495,8 +3056,11 @@ impl FilSpine {
     ) -> &mut crate::ffi::HandleLawFunction {
         {
             let __result = unsafe { crate::ffi::ChFiDS_FilSpine_change_law(self as *mut Self, E) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2507,8 +3071,11 @@ impl FilSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_FilSpine_max_rad_from_seq_and_laws(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2516,8 +3083,11 @@ impl FilSpine {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ChFiDS_FilSpine_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2525,8 +3095,11 @@ impl FilSpine {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ChFiDS_FilSpine_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2534,91 +3107,107 @@ impl FilSpine {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ChFiDS_FilSpine_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ChFiDS_Spine
     pub fn as_spine(&self) -> &Spine {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFiDS_FilSpine_as_ChFiDS_Spine(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::ChFiDS_FilSpine_as_ChFiDS_Spine(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ChFiDS_Spine (mutable)
     pub fn as_spine_mut(&mut self) -> &mut Spine {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFiDS_FilSpine_as_ChFiDS_Spine_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ChFiDS_FilSpine_as_ChFiDS_Spine_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFiDS_FilSpine_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ChFiDS_FilSpine_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFiDS_FilSpine_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ChFiDS_FilSpine_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleChFiDSFilSpine> {
-        {
-            let __result = unsafe { crate::ffi::ChFiDS_FilSpine_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ChFiDS_FilSpine_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:78 - `ChFiDS_Spine::SetEdges()`
     pub fn set_edges(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ChFiDS_FilSpine_inherited_SetEdges(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_FilSpine_inherited_SetEdges(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:81 - `ChFiDS_Spine::SetOffsetEdges()`
     pub fn set_offset_edges(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ChFiDS_FilSpine_inherited_SetOffsetEdges(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_FilSpine_inherited_SetOffsetEdges(self as *mut Self, E)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:84 - `ChFiDS_Spine::PutInFirst()`
     pub fn put_in_first(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ChFiDS_FilSpine_inherited_PutInFirst(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_FilSpine_inherited_PutInFirst(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:87 - `ChFiDS_Spine::PutInFirstOffset()`
     pub fn put_in_first_offset(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ChFiDS_FilSpine_inherited_PutInFirstOffset(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_FilSpine_inherited_PutInFirstOffset(self as *mut Self, E)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2627,8 +3216,11 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_NbEdges(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2637,8 +3229,11 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_Edges(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2648,38 +3243,47 @@ impl FilSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_FilSpine_inherited_OffsetEdges(self as *const Self, I)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:97 - `ChFiDS_Spine::SetFirstStatus()`
     pub fn set_first_status(&mut self, S: crate::ch_fi_ds::State) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_FilSpine_inherited_SetFirstStatus(self as *mut Self, S.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:101 - `ChFiDS_Spine::SetLastStatus()`
     pub fn set_last_status(&mut self, S: crate::ch_fi_ds::State) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_FilSpine_inherited_SetLastStatus(self as *mut Self, S.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:105 - `ChFiDS_Spine::AppendOffsetElSpine()`
     pub fn append_offset_el_spine(&mut self, Els: &crate::ffi::HandleChFiDSElSpine) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_FilSpine_inherited_AppendOffsetElSpine(self as *mut Self, Els)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2688,8 +3292,11 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_ElSpine(self as *const Self, IE) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2698,8 +3305,11 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_ChangeElSpines(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2709,8 +3319,11 @@ impl FilSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_FilSpine_inherited_ChangeOffsetElSpines(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2719,16 +3332,21 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_SplitDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:129 - `ChFiDS_Spine::Load()`
     pub fn load(&mut self) {
         {
-            unsafe { crate::ffi::ChFiDS_FilSpine_inherited_Load(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_FilSpine_inherited_Load(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2738,8 +3356,11 @@ impl FilSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_FilSpine_inherited_Resolution(self as *const Self, R3d)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2748,8 +3369,11 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_IsClosed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2759,8 +3383,11 @@ impl FilSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_FilSpine_inherited_FirstParameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2769,28 +3396,35 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_LastParameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:139 - `ChFiDS_Spine::SetFirstParameter()`
     pub fn set_first_parameter(&mut self, Par: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_FilSpine_inherited_SetFirstParameter(self as *mut Self, Par)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:141 - `ChFiDS_Spine::SetLastParameter()`
     pub fn set_last_parameter(&mut self, Par: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_FilSpine_inherited_SetLastParameter(self as *mut Self, Par)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2800,8 +3434,11 @@ impl FilSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_FilSpine_inherited_Length(self as *const Self, IndexSpine)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2810,8 +3447,11 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_IsPeriodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2820,8 +3460,11 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_Period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2830,15 +3473,18 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_Absc(self as *mut Self, U) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:162 - `ChFiDS_Spine::Parameter()`
     pub fn parameter(&mut self, AbsC: f64, U: &mut f64, Oriented: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_FilSpine_inherited_Parameter(
                     self as *mut Self,
                     AbsC,
@@ -2846,7 +3492,9 @@ impl FilSpine {
                     Oriented,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2855,24 +3503,33 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_Value(self as *mut Self, AbsC) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:173 - `ChFiDS_Spine::D0()`
     pub fn d0(&mut self, AbsC: f64, P: &mut crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::ChFiDS_FilSpine_inherited_D0(self as *mut Self, AbsC, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_FilSpine_inherited_D0(self as *mut Self, AbsC, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:175 - `ChFiDS_Spine::D1()`
     pub fn d1(&mut self, AbsC: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
         {
-            unsafe { crate::ffi::ChFiDS_FilSpine_inherited_D1(self as *mut Self, AbsC, P, V1) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_FilSpine_inherited_D1(self as *mut Self, AbsC, P, V1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2885,16 +3542,24 @@ impl FilSpine {
         V2: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::ChFiDS_FilSpine_inherited_D2(self as *mut Self, AbsC, P, V1, V2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_FilSpine_inherited_D2(self as *mut Self, AbsC, P, V1, V2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:179 - `ChFiDS_Spine::SetCurrent()`
     pub fn set_current(&mut self, Index: i32) {
         {
-            unsafe { crate::ffi::ChFiDS_FilSpine_inherited_SetCurrent(self as *mut Self, Index) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_FilSpine_inherited_SetCurrent(self as *mut Self, Index)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2907,8 +3572,11 @@ impl FilSpine {
                     Index,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2920,8 +3588,11 @@ impl FilSpine {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2930,8 +3601,11 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_GetType(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
@@ -2940,8 +3614,11 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_Line(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2950,8 +3627,11 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_Circle(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2960,8 +3640,11 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_FirstStatus(self as *const Self) };
-            crate::check_exception();
-            crate::ch_fi_ds::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::State::try_from(__val).unwrap()
         }
     }
 
@@ -2970,8 +3653,11 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_LastStatus(self as *const Self) };
-            crate::check_exception();
-            crate::ch_fi_ds::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::State::try_from(__val).unwrap()
         }
     }
 
@@ -2981,8 +3667,11 @@ impl FilSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_FilSpine_inherited_Status(self as *const Self, IsFirst)
             };
-            crate::check_exception();
-            crate::ch_fi_ds::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::State::try_from(__val).unwrap()
         }
     }
 
@@ -2992,35 +3681,42 @@ impl FilSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_FilSpine_inherited_GetTypeOfConcavity(self as *const Self)
             };
-            crate::check_exception();
-            crate::ch_fi_ds::TypeOfConcavity::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::TypeOfConcavity::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:205 - `ChFiDS_Spine::SetStatus()`
     pub fn set_status(&mut self, S: crate::ch_fi_ds::State, IsFirst: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_FilSpine_inherited_SetStatus(
                     self as *mut Self,
                     S.into(),
                     IsFirst,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:208 - `ChFiDS_Spine::SetTypeOfConcavity()`
     pub fn set_type_of_concavity(&mut self, theType: crate::ch_fi_ds::TypeOfConcavity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_FilSpine_inherited_SetTypeOfConcavity(
                     self as *mut Self,
                     theType.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3033,22 +3729,27 @@ impl FilSpine {
                     IsFirst,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:214 - `ChFiDS_Spine::SetTangencyExtremity()`
     pub fn set_tangency_extremity(&mut self, IsTangency: bool, IsFirst: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_FilSpine_inherited_SetTangencyExtremity(
                     self as *mut Self,
                     IsTangency,
                     IsFirst,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3057,8 +3758,11 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_FirstVertex(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3067,24 +3771,33 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_LastVertex(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:222 - `ChFiDS_Spine::SetFirstTgt()`
     pub fn set_first_tgt(&mut self, W: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_FilSpine_inherited_SetFirstTgt(self as *mut Self, W) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_FilSpine_inherited_SetFirstTgt(self as *mut Self, W) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:224 - `ChFiDS_Spine::SetLastTgt()`
     pub fn set_last_tgt(&mut self, W: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_FilSpine_inherited_SetLastTgt(self as *mut Self, W) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_FilSpine_inherited_SetLastTgt(self as *mut Self, W) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3093,8 +3806,11 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_HasFirstTgt(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3103,16 +3819,22 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_HasLastTgt(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:231 - `ChFiDS_Spine::SetReference()`
     pub fn set_reference(&mut self, W: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_FilSpine_inherited_SetReference(self as *mut Self, W) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_FilSpine_inherited_SetReference(self as *mut Self, W) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3122,29 +3844,37 @@ impl FilSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_FilSpine_inherited_Index(self as *const Self, W, Forward)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:242 - `ChFiDS_Spine::UnsetReference()`
     pub fn unset_reference(&mut self) {
         {
-            unsafe { crate::ffi::ChFiDS_FilSpine_inherited_UnsetReference(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_FilSpine_inherited_UnsetReference(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:244 - `ChFiDS_Spine::SetErrorStatus()`
     pub fn set_error_status(&mut self, state: crate::ch_fi_ds::ErrorStatus) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_FilSpine_inherited_SetErrorStatus(
                     self as *mut Self,
                     state.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3153,8 +3883,11 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_ErrorStatus(self as *const Self) };
-            crate::check_exception();
-            crate::ch_fi_ds::ErrorStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::ErrorStatus::try_from(__val).unwrap()
         }
     }
 
@@ -3163,8 +3896,11 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_Mode(self as *const Self) };
-            crate::check_exception();
-            crate::ch_fi_ds::ChamfMode::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::ChamfMode::try_from(__val).unwrap()
         }
     }
 
@@ -3173,8 +3909,11 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_GetTolesp(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3184,8 +3923,11 @@ impl FilSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_FilSpine_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3195,8 +3937,11 @@ impl FilSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_FilSpine_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3205,11 +3950,14 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3219,16 +3967,23 @@ impl FilSpine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_FilSpine_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::ChFiDS_FilSpine_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_FilSpine_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3238,16 +3993,22 @@ impl FilSpine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_FilSpine_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ChFiDS_FilSpine_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_FilSpine_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3263,42 +4024,41 @@ unsafe impl crate::CppDeletable for HandleChFiDSFilSpine {
 impl HandleChFiDSFilSpine {
     /// Dereference this Handle to access the underlying ChFiDS_FilSpine
     pub fn get(&self) -> &crate::ffi::ChFiDS_FilSpine {
-        {
-            let __result = unsafe { crate::ffi::HandleChFiDSFilSpine_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleChFiDSFilSpine_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ChFiDS_FilSpine
     pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_FilSpine {
-        {
-            let __result = unsafe { crate::ffi::HandleChFiDSFilSpine_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleChFiDSFilSpine_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ChFiDS_FilSpine> to Handle<ChFiDS_Spine>
     pub fn to_handle_spine(&self) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSpine> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleChFiDSFilSpine_to_HandleChFiDSSpine(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleChFiDSFilSpine_to_HandleChFiDSSpine(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ChFiDS_FilSpine> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleChFiDSFilSpine_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleChFiDSFilSpine_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3320,8 +4080,10 @@ impl HData {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_HData_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3331,8 +4093,10 @@ impl HData {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_HData_ctor_sequenceofsurfdata(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3340,18 +4104,23 @@ impl HData {
     pub fn sequence(&self) -> &crate::ffi::ChFiDS_SequenceOfSurfData {
         {
             let __result = unsafe { crate::ffi::ChFiDS_HData_sequence(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::Append()`
     pub fn append_handlechfidssurfdata(&mut self, theItem: &crate::ffi::HandleChFiDSSurfData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_HData_append_handlechfidssurfdata(self as *mut Self, theItem)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3361,10 +4130,12 @@ impl HData {
         theSequence: &mut crate::ffi::ChFiDS_SequenceOfSurfData,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_HData_append_sequenceofsurfdata(self as *mut Self, theSequence)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3372,8 +4143,11 @@ impl HData {
     pub fn change_sequence(&mut self) -> &mut crate::ffi::ChFiDS_SequenceOfSurfData {
         {
             let __result = unsafe { crate::ffi::ChFiDS_HData_change_sequence(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3381,8 +4155,11 @@ impl HData {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ChFiDS_HData_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3390,8 +4167,11 @@ impl HData {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ChFiDS_HData_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3399,38 +4179,41 @@ impl HData {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ChFiDS_HData_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFiDS_HData_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ChFiDS_HData_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFiDS_HData_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ChFiDS_HData_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleChFiDSHData> {
-        {
-            let __result = unsafe { crate::ffi::ChFiDS_HData_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ChFiDS_HData_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3439,8 +4222,11 @@ impl HData {
             let __result = unsafe {
                 crate::ffi::ChFiDS_HData_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3449,8 +4235,11 @@ impl HData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_HData_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3458,11 +4247,14 @@ impl HData {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_HData_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3472,16 +4264,23 @@ impl HData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_HData_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::ChFiDS_HData_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_HData_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3491,16 +4290,21 @@ impl HData {
             let __result = unsafe {
                 crate::ffi::ChFiDS_HData_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ChFiDS_HData_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_HData_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3516,31 +4320,31 @@ unsafe impl crate::CppDeletable for HandleChFiDSHData {
 impl HandleChFiDSHData {
     /// Dereference this Handle to access the underlying ChFiDS_HData
     pub fn get(&self) -> &crate::ffi::ChFiDS_HData {
-        {
-            let __result = unsafe { crate::ffi::HandleChFiDSHData_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleChFiDSHData_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ChFiDS_HData
     pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_HData {
-        {
-            let __result = unsafe { crate::ffi::HandleChFiDSHData_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleChFiDSHData_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ChFiDS_HData> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleChFiDSHData_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleChFiDSHData_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3564,8 +4368,10 @@ impl Map {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Map_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3579,8 +4385,11 @@ impl Map {
         T2: crate::top_abs::ShapeEnum,
     ) {
         {
-            unsafe { crate::ffi::ChFiDS_Map_fill(self as *mut Self, S, T1.into(), T2.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_Map_fill(self as *mut Self, S, T1.into(), T2.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3588,8 +4397,11 @@ impl Map {
     pub fn contains(&self, S: &crate::topo_ds::Shape) -> bool {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Map_contains(self as *const Self, S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3606,8 +4418,11 @@ impl Map {
     ) -> &crate::ffi::TopTools_ListOfShape {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Map_find_from_key(self as *const Self, S) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3616,8 +4431,11 @@ impl Map {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Map_find_from_index(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -3641,32 +4459,40 @@ impl Regul {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Regul_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `ChFiDS_Regul.hxx`:34 - `ChFiDS_Regul::SetCurve()`
     pub fn set_curve(&mut self, IC: i32) {
         {
-            unsafe { crate::ffi::ChFiDS_Regul_set_curve(self as *mut Self, IC) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Regul_set_curve(self as *mut Self, IC) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Regul.hxx`:36 - `ChFiDS_Regul::SetS1()`
     pub fn set_s1(&mut self, IS1: i32, IsFace: bool) {
         {
-            unsafe { crate::ffi::ChFiDS_Regul_set_s1(self as *mut Self, IS1, IsFace) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Regul_set_s1(self as *mut Self, IS1, IsFace) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Regul.hxx`:39 - `ChFiDS_Regul::SetS2()`
     pub fn set_s2(&mut self, IS2: i32, IsFace: bool) {
         {
-            unsafe { crate::ffi::ChFiDS_Regul_set_s2(self as *mut Self, IS2, IsFace) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Regul_set_s2(self as *mut Self, IS2, IsFace) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3674,8 +4500,11 @@ impl Regul {
     pub fn is_surface1(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Regul_is_surface1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3683,8 +4512,11 @@ impl Regul {
     pub fn is_surface2(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Regul_is_surface2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3692,8 +4524,11 @@ impl Regul {
     pub fn curve(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Regul_curve(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3701,8 +4536,11 @@ impl Regul {
     pub fn s1(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Regul_s1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3710,8 +4548,11 @@ impl Regul {
     pub fn s2(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Regul_s2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3734,8 +4575,10 @@ impl SecHArray1 {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SecHArray1_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3743,8 +4586,10 @@ impl SecHArray1 {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SecHArray1_ctor_int2(theLower, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3758,8 +4603,10 @@ impl SecHArray1 {
             let __result = unsafe {
                 crate::ffi::ChFiDS_SecHArray1_ctor_int2_circsection(theLower, theUpper, theValue)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3776,8 +4623,10 @@ impl SecHArray1 {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3785,8 +4634,10 @@ impl SecHArray1 {
     pub fn new_secarray1(theOther: &crate::ffi::ChFiDS_SecArray1) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SecHArray1_ctor_secarray1(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3794,8 +4645,11 @@ impl SecHArray1 {
     pub fn array1(&self) -> &crate::ffi::ChFiDS_SecArray1 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SecHArray1_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3804,8 +4658,11 @@ impl SecHArray1 {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SecHArray1_change_array1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3814,8 +4671,11 @@ impl SecHArray1 {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SecHArray1_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3823,8 +4683,11 @@ impl SecHArray1 {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SecHArray1_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3832,41 +4695,43 @@ impl SecHArray1 {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SecHArray1_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFiDS_SecHArray1_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ChFiDS_SecHArray1_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ChFiDS_SecHArray1_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ChFiDS_SecHArray1_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSecHArray1> {
-        {
-            let __result = unsafe { crate::ffi::ChFiDS_SecHArray1_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ChFiDS_SecHArray1_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3875,8 +4740,11 @@ impl SecHArray1 {
             let __result = unsafe {
                 crate::ffi::ChFiDS_SecHArray1_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3886,8 +4754,11 @@ impl SecHArray1 {
             let __result = unsafe {
                 crate::ffi::ChFiDS_SecHArray1_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3896,11 +4767,14 @@ impl SecHArray1 {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SecHArray1_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3910,18 +4784,23 @@ impl SecHArray1 {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SecHArray1_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_SecHArray1_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3931,16 +4810,22 @@ impl SecHArray1 {
             let __result = unsafe {
                 crate::ffi::ChFiDS_SecHArray1_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ChFiDS_SecHArray1_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_SecHArray1_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3956,31 +4841,31 @@ unsafe impl crate::CppDeletable for HandleChFiDSSecHArray1 {
 impl HandleChFiDSSecHArray1 {
     /// Dereference this Handle to access the underlying ChFiDS_SecHArray1
     pub fn get(&self) -> &crate::ffi::ChFiDS_SecHArray1 {
-        {
-            let __result = unsafe { crate::ffi::HandleChFiDSSecHArray1_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleChFiDSSecHArray1_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ChFiDS_SecHArray1
     pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_SecHArray1 {
-        {
-            let __result = unsafe { crate::ffi::HandleChFiDSSecHArray1_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleChFiDSSecHArray1_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ChFiDS_SecHArray1> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleChFiDSSecHArray1_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleChFiDSSecHArray1_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4025,8 +4910,10 @@ impl Spine {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4034,8 +4921,10 @@ impl Spine {
     pub fn new_real(Tol: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_ctor_real(Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4043,8 +4932,10 @@ impl Spine {
     /// store edges composing the guideline
     pub fn set_edges(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_set_edges(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Spine_set_edges(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4052,8 +4943,10 @@ impl Spine {
     /// store offset edges composing the offset guideline
     pub fn set_offset_edges(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_set_offset_edges(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Spine_set_offset_edges(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4061,8 +4954,10 @@ impl Spine {
     /// store the edge at the first position before all others
     pub fn put_in_first(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_put_in_first(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Spine_put_in_first(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4070,8 +4965,11 @@ impl Spine {
     /// store the offset edge at the first position before all others
     pub fn put_in_first_offset(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_put_in_first_offset(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_Spine_put_in_first_offset(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4079,8 +4977,11 @@ impl Spine {
     pub fn nb_edges(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_nb_edges(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4088,8 +4989,11 @@ impl Spine {
     pub fn edges(&self, I: i32) -> &crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_edges(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4097,8 +5001,11 @@ impl Spine {
     pub fn offset_edges(&self, I: i32) -> &crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_offset_edges(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4107,8 +5014,11 @@ impl Spine {
     /// section of free border or forms  a closed contour
     pub fn set_first_status(&mut self, S: crate::ch_fi_ds::State) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_set_first_status(self as *mut Self, S.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_Spine_set_first_status(self as *mut Self, S.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4117,24 +5027,32 @@ impl Spine {
     /// section of free border or forms  a closed contour
     pub fn set_last_status(&mut self, S: crate::ch_fi_ds::State) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_set_last_status(self as *mut Self, S.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_Spine_set_last_status(self as *mut Self, S.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:103 - `ChFiDS_Spine::AppendElSpine()`
     pub fn append_el_spine(&mut self, Els: &crate::ffi::HandleChFiDSElSpine) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_append_el_spine(self as *mut Self, Els) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Spine_append_el_spine(self as *mut Self, Els) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:105 - `ChFiDS_Spine::AppendOffsetElSpine()`
     pub fn append_offset_el_spine(&mut self, Els: &crate::ffi::HandleChFiDSElSpine) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_append_offset_el_spine(self as *mut Self, Els) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_Spine_append_offset_el_spine(self as *mut Self, Els) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4143,8 +5061,11 @@ impl Spine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Spine_el_spine_int(self as *const Self, IE) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4156,8 +5077,11 @@ impl Spine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Spine_el_spine_edge(self as *const Self, E) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4166,8 +5090,11 @@ impl Spine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Spine_el_spine_real(self as *const Self, W) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4175,8 +5102,11 @@ impl Spine {
     pub fn change_el_spines(&mut self) -> &mut crate::ffi::ChFiDS_ListOfHElSpine {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_change_el_spines(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4185,16 +5115,21 @@ impl Spine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Spine_change_offset_el_spines(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:117 - `ChFiDS_Spine::Reset()`
     pub fn reset(&mut self, AllData: bool) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_reset(self as *mut Self, AllData) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Spine_reset(self as *mut Self, AllData) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4202,16 +5137,21 @@ impl Spine {
     pub fn split_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_split_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:121 - `ChFiDS_Spine::SplitDone()`
     pub fn split_done_bool(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_split_done_bool(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Spine_split_done_bool(self as *mut Self, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4224,8 +5164,10 @@ impl Spine {
     /// exception will be raised
     pub fn load(&mut self) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_load(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Spine_load(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4233,8 +5175,11 @@ impl Spine {
     pub fn resolution(&self, R3d: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_resolution(self as *const Self, R3d) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4242,8 +5187,11 @@ impl Spine {
     pub fn is_closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4251,8 +5199,11 @@ impl Spine {
     pub fn first_parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4260,24 +5211,33 @@ impl Spine {
     pub fn last_parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:139 - `ChFiDS_Spine::SetFirstParameter()`
     pub fn set_first_parameter(&mut self, Par: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_set_first_parameter(self as *mut Self, Par) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_Spine_set_first_parameter(self as *mut Self, Par) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:141 - `ChFiDS_Spine::SetLastParameter()`
     pub fn set_last_parameter(&mut self, Par: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_set_last_parameter(self as *mut Self, Par) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_Spine_set_last_parameter(self as *mut Self, Par) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4289,8 +5249,11 @@ impl Spine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_Spine_first_parameter_int(self as *const Self, IndexSpine)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4302,8 +5265,11 @@ impl Spine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_Spine_last_parameter_int(self as *const Self, IndexSpine)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4313,8 +5279,11 @@ impl Spine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Spine_length(self as *const Self, IndexSpine) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4322,8 +5291,11 @@ impl Spine {
     pub fn is_periodic(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4331,8 +5303,11 @@ impl Spine {
     pub fn period(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4340,8 +5315,11 @@ impl Spine {
     pub fn absc_real(&mut self, U: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_absc_real(self as *mut Self, U) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4350,25 +5328,30 @@ impl Spine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Spine_absc_real_int(self as *mut Self, U, I) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:162 - `ChFiDS_Spine::Parameter()`
     pub fn parameter_real2_bool(&mut self, AbsC: f64, U: &mut f64, Oriented: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_Spine_parameter_real2_bool(self as *mut Self, AbsC, U, Oriented)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:166 - `ChFiDS_Spine::Parameter()`
     pub fn parameter_int_real2_bool(&mut self, Index: i32, AbsC: f64, U: &mut f64, Oriented: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_Spine_parameter_int_real2_bool(
                     self as *mut Self,
                     Index,
@@ -4377,7 +5360,9 @@ impl Spine {
                     Oriented,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4385,24 +5370,31 @@ impl Spine {
     pub fn value(&mut self, AbsC: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_value(self as *mut Self, AbsC) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:173 - `ChFiDS_Spine::D0()`
     pub fn d0(&mut self, AbsC: f64, P: &mut crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_d0(self as *mut Self, AbsC, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Spine_d0(self as *mut Self, AbsC, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:175 - `ChFiDS_Spine::D1()`
     pub fn d1(&mut self, AbsC: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_d1(self as *mut Self, AbsC, P, V1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Spine_d1(self as *mut Self, AbsC, P, V1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4415,16 +5407,20 @@ impl Spine {
         V2: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_d2(self as *mut Self, AbsC, P, V1, V2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Spine_d2(self as *mut Self, AbsC, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:179 - `ChFiDS_Spine::SetCurrent()`
     pub fn set_current(&mut self, Index: i32) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_set_current(self as *mut Self, Index) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Spine_set_current(self as *mut Self, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4435,8 +5431,11 @@ impl Spine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_Spine_current_elementary_spine(self as *mut Self, Index)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4446,8 +5445,11 @@ impl Spine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_Spine_current_index_of_elementary_spine(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4455,8 +5457,11 @@ impl Spine {
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_get_type(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
@@ -4464,8 +5469,11 @@ impl Spine {
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_line(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4473,8 +5481,11 @@ impl Spine {
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_circle(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4485,8 +5496,11 @@ impl Spine {
     pub fn first_status(&self) -> crate::ch_fi_ds::State {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_first_status(self as *const Self) };
-            crate::check_exception();
-            crate::ch_fi_ds::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::State::try_from(__val).unwrap()
         }
     }
 
@@ -4495,8 +5509,11 @@ impl Spine {
     pub fn last_status(&self) -> crate::ch_fi_ds::State {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_last_status(self as *const Self) };
-            crate::check_exception();
-            crate::ch_fi_ds::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::State::try_from(__val).unwrap()
         }
     }
 
@@ -4504,8 +5521,11 @@ impl Spine {
     pub fn status(&self, IsFirst: bool) -> crate::ch_fi_ds::State {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_status(self as *const Self, IsFirst) };
-            crate::check_exception();
-            crate::ch_fi_ds::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::State::try_from(__val).unwrap()
         }
     }
 
@@ -4515,16 +5535,23 @@ impl Spine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Spine_get_type_of_concavity(self as *const Self) };
-            crate::check_exception();
-            crate::ch_fi_ds::TypeOfConcavity::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::TypeOfConcavity::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:205 - `ChFiDS_Spine::SetStatus()`
     pub fn set_status(&mut self, S: crate::ch_fi_ds::State, IsFirst: bool) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_set_status(self as *mut Self, S.into(), IsFirst) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_Spine_set_status(self as *mut Self, S.into(), IsFirst)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4532,10 +5559,12 @@ impl Spine {
     /// sets the type of concavity in the connection
     pub fn set_type_of_concavity(&mut self, theType: crate::ch_fi_ds::TypeOfConcavity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_Spine_set_type_of_concavity(self as *mut Self, theType.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4547,22 +5576,27 @@ impl Spine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_Spine_is_tangency_extremity(self as *const Self, IsFirst)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:214 - `ChFiDS_Spine::SetTangencyExtremity()`
     pub fn set_tangency_extremity(&mut self, IsTangency: bool, IsFirst: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_Spine_set_tangency_extremity(
                     self as *mut Self,
                     IsTangency,
                     IsFirst,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4570,8 +5604,11 @@ impl Spine {
     pub fn absc_vertex(&self, V: &crate::topo_ds::Vertex) -> f64 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_absc_vertex(self as *const Self, V) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4579,8 +5616,11 @@ impl Spine {
     pub fn first_vertex(&self) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_first_vertex(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4588,24 +5628,31 @@ impl Spine {
     pub fn last_vertex(&self) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_last_vertex(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:222 - `ChFiDS_Spine::SetFirstTgt()`
     pub fn set_first_tgt(&mut self, W: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_set_first_tgt(self as *mut Self, W) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Spine_set_first_tgt(self as *mut Self, W) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:224 - `ChFiDS_Spine::SetLastTgt()`
     pub fn set_last_tgt(&mut self, W: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_set_last_tgt(self as *mut Self, W) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Spine_set_last_tgt(self as *mut Self, W) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4613,8 +5660,11 @@ impl Spine {
     pub fn has_first_tgt(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_has_first_tgt(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4622,8 +5672,11 @@ impl Spine {
     pub fn has_last_tgt(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_has_last_tgt(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4631,8 +5684,11 @@ impl Spine {
     /// set a parameter reference for the approx.
     pub fn set_reference_real(&mut self, W: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_set_reference_real(self as *mut Self, W) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_Spine_set_reference_real(self as *mut Self, W) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4641,8 +5697,10 @@ impl Spine {
     /// middle  of edge I.
     pub fn set_reference_int(&mut self, I: i32) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_set_reference_int(self as *mut Self, I) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Spine_set_reference_int(self as *mut Self, I) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4652,8 +5710,11 @@ impl Spine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_Spine_index_real_bool(self as *const Self, W, Forward)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4661,24 +5722,33 @@ impl Spine {
     pub fn index_edge(&self, E: &crate::topo_ds::Edge) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_index_edge(self as *const Self, E) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:242 - `ChFiDS_Spine::UnsetReference()`
     pub fn unset_reference(&mut self) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_unset_reference(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Spine_unset_reference(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:244 - `ChFiDS_Spine::SetErrorStatus()`
     pub fn set_error_status(&mut self, state: crate::ch_fi_ds::ErrorStatus) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_set_error_status(self as *mut Self, state.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_Spine_set_error_status(self as *mut Self, state.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4686,8 +5756,11 @@ impl Spine {
     pub fn error_status(&self) -> crate::ch_fi_ds::ErrorStatus {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_error_status(self as *const Self) };
-            crate::check_exception();
-            crate::ch_fi_ds::ErrorStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::ErrorStatus::try_from(__val).unwrap()
         }
     }
 
@@ -4696,8 +5769,11 @@ impl Spine {
     pub fn mode(&self) -> crate::ch_fi_ds::ChamfMode {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_mode(self as *const Self) };
-            crate::check_exception();
-            crate::ch_fi_ds::ChamfMode::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::ChamfMode::try_from(__val).unwrap()
         }
     }
 
@@ -4706,8 +5782,11 @@ impl Spine {
     pub fn get_tolesp(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_get_tolesp(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4715,8 +5794,11 @@ impl Spine {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4724,8 +5806,11 @@ impl Spine {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4733,38 +5818,41 @@ impl Spine {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFiDS_Spine_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ChFiDS_Spine_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFiDS_Spine_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ChFiDS_Spine_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSpine> {
-        {
-            let __result = unsafe { crate::ffi::ChFiDS_Spine_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ChFiDS_Spine_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -4773,8 +5861,11 @@ impl Spine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_Spine_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4783,8 +5874,11 @@ impl Spine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Spine_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4792,11 +5886,14 @@ impl Spine {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Spine_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4806,16 +5903,23 @@ impl Spine {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Spine_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_Spine_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4825,16 +5929,21 @@ impl Spine {
             let __result = unsafe {
                 crate::ffi::ChFiDS_Spine_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ChFiDS_Spine_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Spine_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4850,31 +5959,31 @@ unsafe impl crate::CppDeletable for HandleChFiDSSpine {
 impl HandleChFiDSSpine {
     /// Dereference this Handle to access the underlying ChFiDS_Spine
     pub fn get(&self) -> &crate::ffi::ChFiDS_Spine {
-        {
-            let __result = unsafe { crate::ffi::HandleChFiDSSpine_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleChFiDSSpine_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ChFiDS_Spine
     pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_Spine {
-        {
-            let __result = unsafe { crate::ffi::HandleChFiDSSpine_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleChFiDSSpine_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ChFiDS_Spine> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleChFiDSSpine_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleChFiDSSpine_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<ChFiDS_Spine> to Handle<ChFiDS_ChamfSpine>
@@ -4883,14 +5992,16 @@ impl HandleChFiDSSpine {
     pub fn downcast_to_chamf_spine(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleChFiDSChamfSpine>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleChFiDSSpine_downcast_to_HandleChFiDSChamfSpine(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4900,14 +6011,16 @@ impl HandleChFiDSSpine {
     pub fn downcast_to_fil_spine(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleChFiDSFilSpine>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleChFiDSSpine_downcast_to_HandleChFiDSFilSpine(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -4931,8 +6044,10 @@ impl Stripe {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Stripe_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4940,8 +6055,10 @@ impl Stripe {
     /// Reset everything except Spine.
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::ChFiDS_Stripe_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Stripe_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4950,8 +6067,11 @@ impl Stripe {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Stripe_set_of_surf_data(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4959,8 +6079,11 @@ impl Stripe {
     pub fn spine(&self) -> &crate::ffi::HandleChFiDSSpine {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Stripe_spine(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4969,8 +6092,11 @@ impl Stripe {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Stripe_orientation_on_face1(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -4979,8 +6105,11 @@ impl Stripe {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Stripe_orientation_on_face2(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -4988,8 +6117,11 @@ impl Stripe {
     pub fn choix(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Stripe_choix(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4998,8 +6130,11 @@ impl Stripe {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Stripe_change_set_of_surf_data(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5007,78 +6142,99 @@ impl Stripe {
     pub fn change_spine(&mut self) -> &mut crate::ffi::HandleChFiDSSpine {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Stripe_change_spine(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:57 - `ChFiDS_Stripe::OrientationOnFace1()`
     pub fn orientation_on_face1_orientation(&mut self, Or1: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_Stripe_orientation_on_face1_orientation(
                     self as *mut Self,
                     Or1.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:59 - `ChFiDS_Stripe::OrientationOnFace2()`
     pub fn orientation_on_face2_orientation(&mut self, Or2: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_Stripe_orientation_on_face2_orientation(
                     self as *mut Self,
                     Or2.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:61 - `ChFiDS_Stripe::Choix()`
     pub fn choix_int(&mut self, C: i32) {
         {
-            unsafe { crate::ffi::ChFiDS_Stripe_choix_int(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Stripe_choix_int(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:63 - `ChFiDS_Stripe::FirstParameters()`
     pub fn first_parameters(&self, Pdeb: &mut f64, Pfin: &mut f64) {
         {
-            unsafe { crate::ffi::ChFiDS_Stripe_first_parameters(self as *const Self, Pdeb, Pfin) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_Stripe_first_parameters(self as *const Self, Pdeb, Pfin)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:65 - `ChFiDS_Stripe::LastParameters()`
     pub fn last_parameters(&self, Pdeb: &mut f64, Pfin: &mut f64) {
         {
-            unsafe { crate::ffi::ChFiDS_Stripe_last_parameters(self as *const Self, Pdeb, Pfin) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_Stripe_last_parameters(self as *const Self, Pdeb, Pfin)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:67 - `ChFiDS_Stripe::ChangeFirstParameters()`
     pub fn change_first_parameters(&mut self, Pdeb: f64, Pfin: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_Stripe_change_first_parameters(self as *mut Self, Pdeb, Pfin)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:69 - `ChFiDS_Stripe::ChangeLastParameters()`
     pub fn change_last_parameters(&mut self, Pdeb: f64, Pfin: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_Stripe_change_last_parameters(self as *mut Self, Pdeb, Pfin)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5086,8 +6242,11 @@ impl Stripe {
     pub fn first_curve(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Stripe_first_curve(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5095,24 +6254,33 @@ impl Stripe {
     pub fn last_curve(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Stripe_last_curve(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:75 - `ChFiDS_Stripe::ChangeFirstCurve()`
     pub fn change_first_curve(&mut self, Index: i32) {
         {
-            unsafe { crate::ffi::ChFiDS_Stripe_change_first_curve(self as *mut Self, Index) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_Stripe_change_first_curve(self as *mut Self, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:77 - `ChFiDS_Stripe::ChangeLastCurve()`
     pub fn change_last_curve(&mut self, Index: i32) {
         {
-            unsafe { crate::ffi::ChFiDS_Stripe_change_last_curve(self as *mut Self, Index) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_Stripe_change_last_curve(self as *mut Self, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5120,8 +6288,11 @@ impl Stripe {
     pub fn first_p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Stripe_first_p_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5129,8 +6300,11 @@ impl Stripe {
     pub fn last_p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Stripe_last_p_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5139,8 +6313,11 @@ impl Stripe {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Stripe_change_first_p_curve(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5149,8 +6326,11 @@ impl Stripe {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Stripe_change_last_p_curve(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5159,8 +6339,11 @@ impl Stripe {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Stripe_first_p_curve_orientation(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -5169,34 +6352,41 @@ impl Stripe {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Stripe_last_p_curve_orientation(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:91 - `ChFiDS_Stripe::FirstPCurveOrientation()`
     pub fn first_p_curve_orientation_orientation(&mut self, O: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_Stripe_first_p_curve_orientation_orientation(
                     self as *mut Self,
                     O.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:93 - `ChFiDS_Stripe::LastPCurveOrientation()`
     pub fn last_p_curve_orientation_orientation(&mut self, O: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_Stripe_last_p_curve_orientation_orientation(
                     self as *mut Self,
                     O.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5205,8 +6395,11 @@ impl Stripe {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Stripe_index_first_point_on_s1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5215,8 +6408,11 @@ impl Stripe {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Stripe_index_first_point_on_s2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5225,8 +6421,11 @@ impl Stripe {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Stripe_index_last_point_on_s1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5235,66 +6434,83 @@ impl Stripe {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Stripe_index_last_point_on_s2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:103 - `ChFiDS_Stripe::ChangeIndexFirstPointOnS1()`
     pub fn change_index_first_point_on_s1(&mut self, Index: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_Stripe_change_index_first_point_on_s1(self as *mut Self, Index)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:105 - `ChFiDS_Stripe::ChangeIndexFirstPointOnS2()`
     pub fn change_index_first_point_on_s2(&mut self, Index: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_Stripe_change_index_first_point_on_s2(self as *mut Self, Index)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:107 - `ChFiDS_Stripe::ChangeIndexLastPointOnS1()`
     pub fn change_index_last_point_on_s1(&mut self, Index: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_Stripe_change_index_last_point_on_s1(self as *mut Self, Index)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:109 - `ChFiDS_Stripe::ChangeIndexLastPointOnS2()`
     pub fn change_index_last_point_on_s2(&mut self, Index: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_Stripe_change_index_last_point_on_s2(self as *mut Self, Index)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:111 - `ChFiDS_Stripe::Parameters()`
     pub fn parameters(&self, First: bool, Pdeb: &mut f64, Pfin: &mut f64) {
         {
-            unsafe { crate::ffi::ChFiDS_Stripe_parameters(self as *const Self, First, Pdeb, Pfin) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_Stripe_parameters(self as *const Self, First, Pdeb, Pfin)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:115 - `ChFiDS_Stripe::SetParameters()`
     pub fn set_parameters(&mut self, First: bool, Pdeb: f64, Pfin: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_Stripe_set_parameters(self as *mut Self, First, Pdeb, Pfin)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5302,16 +6518,22 @@ impl Stripe {
     pub fn curve(&self, First: bool) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Stripe_curve(self as *const Self, First) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:121 - `ChFiDS_Stripe::SetCurve()`
     pub fn set_curve(&mut self, Index: i32, First: bool) {
         {
-            unsafe { crate::ffi::ChFiDS_Stripe_set_curve(self as *mut Self, Index, First) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_Stripe_set_curve(self as *mut Self, Index, First) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5319,8 +6541,11 @@ impl Stripe {
     pub fn p_curve(&self, First: bool) -> &crate::ffi::HandleGeom2dCurve {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Stripe_p_curve(self as *const Self, First) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5329,8 +6554,11 @@ impl Stripe {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Stripe_change_p_curve(self as *mut Self, First) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5339,22 +6567,27 @@ impl Stripe {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Stripe_orientation_int(self as *const Self, OnS) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:129 - `ChFiDS_Stripe::SetOrientation()`
     pub fn set_orientation_orientation_int(&mut self, Or: crate::top_abs::Orientation, OnS: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_Stripe_set_orientation_orientation_int(
                     self as *mut Self,
                     Or.into(),
                     OnS,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5363,8 +6596,11 @@ impl Stripe {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Stripe_orientation_bool(self as *const Self, First) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -5375,14 +6611,16 @@ impl Stripe {
         First: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_Stripe_set_orientation_orientation_bool(
                     self as *mut Self,
                     Or.into(),
                     First,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5391,18 +6629,23 @@ impl Stripe {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Stripe_index_point(self as *const Self, First, OnS) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:138 - `ChFiDS_Stripe::SetIndexPoint()`
     pub fn set_index_point(&mut self, Index: i32, First: bool, OnS: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_Stripe_set_index_point(self as *mut Self, Index, First, OnS)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5410,16 +6653,22 @@ impl Stripe {
     pub fn solid_index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Stripe_solid_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:144 - `ChFiDS_Stripe::SetSolidIndex()`
     pub fn set_solid_index(&mut self, Index: i32) {
         {
-            unsafe { crate::ffi::ChFiDS_Stripe_set_solid_index(self as *mut Self, Index) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_Stripe_set_solid_index(self as *mut Self, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5427,8 +6676,10 @@ impl Stripe {
     /// Set nb of SurfData's at end put in DS
     pub fn in_ds(&mut self, First: bool, Nb: i32) {
         {
-            unsafe { crate::ffi::ChFiDS_Stripe_in_ds(self as *mut Self, First, Nb) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Stripe_in_ds(self as *mut Self, First, Nb) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5438,8 +6689,11 @@ impl Stripe {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Stripe_is_in_ds(self as *const Self, First) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5447,8 +6701,11 @@ impl Stripe {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Stripe_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5456,8 +6713,11 @@ impl Stripe {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Stripe_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5465,40 +6725,43 @@ impl Stripe {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Stripe_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFiDS_Stripe_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ChFiDS_Stripe_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFiDS_Stripe_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ChFiDS_Stripe_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleChFiDSStripe> {
-        {
-            let __result = unsafe { crate::ffi::ChFiDS_Stripe_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ChFiDS_Stripe_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -5507,8 +6770,11 @@ impl Stripe {
             let __result = unsafe {
                 crate::ffi::ChFiDS_Stripe_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5517,8 +6783,11 @@ impl Stripe {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Stripe_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5526,11 +6795,14 @@ impl Stripe {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_Stripe_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5540,16 +6812,23 @@ impl Stripe {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_Stripe_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::ChFiDS_Stripe_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_Stripe_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5559,16 +6838,21 @@ impl Stripe {
             let __result = unsafe {
                 crate::ffi::ChFiDS_Stripe_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ChFiDS_Stripe_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_Stripe_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5584,31 +6868,31 @@ unsafe impl crate::CppDeletable for HandleChFiDSStripe {
 impl HandleChFiDSStripe {
     /// Dereference this Handle to access the underlying ChFiDS_Stripe
     pub fn get(&self) -> &crate::ffi::ChFiDS_Stripe {
-        {
-            let __result = unsafe { crate::ffi::HandleChFiDSStripe_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleChFiDSStripe_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ChFiDS_Stripe
     pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_Stripe {
-        {
-            let __result = unsafe { crate::ffi::HandleChFiDSStripe_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleChFiDSStripe_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ChFiDS_Stripe> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleChFiDSStripe_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleChFiDSStripe_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5631,16 +6915,20 @@ impl StripeMap {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_StripeMap_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `ChFiDS_StripeMap.hxx`:38 - `ChFiDS_StripeMap::Add()`
     pub fn add(&mut self, V: &crate::topo_ds::Vertex, F: &crate::ffi::HandleChFiDSStripe) {
         {
-            unsafe { crate::ffi::ChFiDS_StripeMap_add(self as *mut Self, V, F) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_StripeMap_add(self as *mut Self, V, F) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5648,8 +6936,11 @@ impl StripeMap {
     pub fn extent(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_StripeMap_extent(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5667,8 +6958,11 @@ impl StripeMap {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_StripeMap_find_from_key(self as *const Self, V) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5677,8 +6971,11 @@ impl StripeMap {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_StripeMap_find_from_index(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5686,16 +6983,21 @@ impl StripeMap {
     pub fn find_key(&self, I: i32) -> &crate::topo_ds::Vertex {
         {
             let __result = unsafe { crate::ffi::ChFiDS_StripeMap_find_key(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `ChFiDS_StripeMap.hxx`:52 - `ChFiDS_StripeMap::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::ChFiDS_StripeMap_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_StripeMap_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5720,16 +7022,20 @@ impl SurfData {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SurfData_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:41 - `ChFiDS_SurfData::Copy()`
     pub fn copy(&mut self, Other: &crate::ffi::HandleChFiDSSurfData) {
         {
-            unsafe { crate::ffi::ChFiDS_SurfData_copy(self as *mut Self, Other) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_SurfData_copy(self as *mut Self, Other) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5737,8 +7043,11 @@ impl SurfData {
     pub fn index_of_s1(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SurfData_index_of_s1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5746,8 +7055,11 @@ impl SurfData {
     pub fn index_of_s2(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SurfData_index_of_s2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5755,8 +7067,11 @@ impl SurfData {
     pub fn is_on_curve1(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SurfData_is_on_curve1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5764,8 +7079,11 @@ impl SurfData {
     pub fn is_on_curve2(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SurfData_is_on_curve2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5773,8 +7091,11 @@ impl SurfData {
     pub fn index_of_c1(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SurfData_index_of_c1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5782,8 +7103,11 @@ impl SurfData {
     pub fn index_of_c2(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SurfData_index_of_c2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5791,8 +7115,11 @@ impl SurfData {
     pub fn surf(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SurfData_surf(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5800,8 +7127,11 @@ impl SurfData {
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SurfData_orientation(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -5810,8 +7140,11 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_interference_on_s1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5820,8 +7153,11 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_interference_on_s2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5830,8 +7166,11 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_vertex_first_on_s1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5840,8 +7179,11 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_vertex_first_on_s2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5850,8 +7192,11 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_vertex_last_on_s1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5860,48 +7205,66 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_vertex_last_on_s2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:71 - `ChFiDS_SurfData::ChangeIndexOfS1()`
     pub fn change_index_of_s1(&mut self, Index: i32) {
         {
-            unsafe { crate::ffi::ChFiDS_SurfData_change_index_of_s1(self as *mut Self, Index) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_SurfData_change_index_of_s1(self as *mut Self, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:73 - `ChFiDS_SurfData::ChangeIndexOfS2()`
     pub fn change_index_of_s2(&mut self, Index: i32) {
         {
-            unsafe { crate::ffi::ChFiDS_SurfData_change_index_of_s2(self as *mut Self, Index) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_SurfData_change_index_of_s2(self as *mut Self, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:75 - `ChFiDS_SurfData::ChangeSurf()`
     pub fn change_surf(&mut self, Index: i32) {
         {
-            unsafe { crate::ffi::ChFiDS_SurfData_change_surf(self as *mut Self, Index) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_SurfData_change_surf(self as *mut Self, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:77 - `ChFiDS_SurfData::SetIndexOfC1()`
     pub fn set_index_of_c1(&mut self, Index: i32) {
         {
-            unsafe { crate::ffi::ChFiDS_SurfData_set_index_of_c1(self as *mut Self, Index) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_SurfData_set_index_of_c1(self as *mut Self, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:79 - `ChFiDS_SurfData::SetIndexOfC2()`
     pub fn set_index_of_c2(&mut self, Index: i32) {
         {
-            unsafe { crate::ffi::ChFiDS_SurfData_set_index_of_c2(self as *mut Self, Index) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_SurfData_set_index_of_c2(self as *mut Self, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5910,8 +7273,11 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_change_orientation(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result as *mut crate::top_abs::Orientation) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val as *mut crate::top_abs::Orientation) }
         }
     }
 
@@ -5920,8 +7286,11 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_change_interference_on_s1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5930,8 +7299,11 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_change_interference_on_s2(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5940,8 +7312,11 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_change_vertex_first_on_s1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5950,8 +7325,11 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_change_vertex_first_on_s2(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5960,8 +7338,11 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_change_vertex_last_on_s1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5970,8 +7351,11 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_change_vertex_last_on_s2(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5980,8 +7364,11 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_interference(self as *const Self, OnS) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5990,8 +7377,11 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_change_interference(self as *mut Self, OnS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5999,8 +7389,11 @@ impl SurfData {
     pub fn index(&self, OfS: i32) -> i32 {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SurfData_index(self as *const Self, OfS) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6011,8 +7404,11 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_vertex(self as *const Self, First, OnS) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6023,8 +7419,11 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_change_vertex(self as *mut Self, First, OnS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -6033,8 +7432,11 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_is_on_curve(self as *const Self, OnS) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6043,8 +7445,11 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_index_of_c(self as *const Self, OnS) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6053,8 +7458,11 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_first_spine_param(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6063,24 +7471,35 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_last_spine_param(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:119 - `ChFiDS_SurfData::FirstSpineParam()`
     pub fn first_spine_param_real(&mut self, Par: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_SurfData_first_spine_param_real(self as *mut Self, Par) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_SurfData_first_spine_param_real(self as *mut Self, Par)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:121 - `ChFiDS_SurfData::LastSpineParam()`
     pub fn last_spine_param_real(&mut self, Par: f64) {
         {
-            unsafe { crate::ffi::ChFiDS_SurfData_last_spine_param_real(self as *mut Self, Par) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_SurfData_last_spine_param_real(self as *mut Self, Par)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6089,8 +7508,11 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_first_extension_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6099,28 +7521,35 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_last_extension_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:127 - `ChFiDS_SurfData::FirstExtensionValue()`
     pub fn first_extension_value_real(&mut self, Extend: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_SurfData_first_extension_value_real(self as *mut Self, Extend)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:129 - `ChFiDS_SurfData::LastExtensionValue()`
     pub fn last_extension_value_real(&mut self, Extend: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_SurfData_last_extension_value_real(self as *mut Self, Extend)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6128,24 +7557,31 @@ impl SurfData {
     pub fn simul(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SurfData_simul(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:133 - `ChFiDS_SurfData::SetSimul()`
     pub fn set_simul(&mut self, S: &crate::ffi::HandleStandardTransient) {
         {
-            unsafe { crate::ffi::ChFiDS_SurfData_set_simul(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_SurfData_set_simul(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:135 - `ChFiDS_SurfData::ResetSimul()`
     pub fn reset_simul(&mut self) {
         {
-            unsafe { crate::ffi::ChFiDS_SurfData_reset_simul(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ChFiDS_SurfData_reset_simul(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6159,8 +7595,11 @@ impl SurfData {
             let __result = unsafe {
                 crate::ffi::ChFiDS_SurfData_get2d_points_bool_int(self as *const Self, First, OnS)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6173,7 +7612,7 @@ impl SurfData {
         P2dl2: &mut crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_SurfData_get2d_points_pnt2d4(
                     self as *const Self,
                     P2df1,
@@ -6182,7 +7621,9 @@ impl SurfData {
                     P2dl2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6195,7 +7636,7 @@ impl SurfData {
         P2dl2: &crate::gp::Pnt2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ChFiDS_SurfData_set2d_points(
                     self as *mut Self,
                     P2df1,
@@ -6204,7 +7645,9 @@ impl SurfData {
                     P2dl2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6212,8 +7655,11 @@ impl SurfData {
     pub fn twist_on_s1(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SurfData_twist_on_s1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6221,24 +7667,33 @@ impl SurfData {
     pub fn twist_on_s2(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SurfData_twist_on_s2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:154 - `ChFiDS_SurfData::TwistOnS1()`
     pub fn twist_on_s1_bool(&mut self, T: bool) {
         {
-            unsafe { crate::ffi::ChFiDS_SurfData_twist_on_s1_bool(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_SurfData_twist_on_s1_bool(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:156 - `ChFiDS_SurfData::TwistOnS2()`
     pub fn twist_on_s2_bool(&mut self, T: bool) {
         {
-            unsafe { crate::ffi::ChFiDS_SurfData_twist_on_s2_bool(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_SurfData_twist_on_s2_bool(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6246,8 +7701,11 @@ impl SurfData {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SurfData_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6255,8 +7713,11 @@ impl SurfData {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SurfData_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6264,40 +7725,43 @@ impl SurfData {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ChFiDS_SurfData_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFiDS_SurfData_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ChFiDS_SurfData_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ChFiDS_SurfData_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ChFiDS_SurfData_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSurfData> {
-        {
-            let __result = unsafe { crate::ffi::ChFiDS_SurfData_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ChFiDS_SurfData_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -6306,8 +7770,11 @@ impl SurfData {
             let __result = unsafe {
                 crate::ffi::ChFiDS_SurfData_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6317,8 +7784,11 @@ impl SurfData {
             let __result = unsafe {
                 crate::ffi::ChFiDS_SurfData_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6327,11 +7797,14 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6341,16 +7814,23 @@ impl SurfData {
         {
             let __result =
                 unsafe { crate::ffi::ChFiDS_SurfData_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::ChFiDS_SurfData_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ChFiDS_SurfData_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6360,16 +7840,22 @@ impl SurfData {
             let __result = unsafe {
                 crate::ffi::ChFiDS_SurfData_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ChFiDS_SurfData_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ChFiDS_SurfData_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6385,31 +7871,31 @@ unsafe impl crate::CppDeletable for HandleChFiDSSurfData {
 impl HandleChFiDSSurfData {
     /// Dereference this Handle to access the underlying ChFiDS_SurfData
     pub fn get(&self) -> &crate::ffi::ChFiDS_SurfData {
-        {
-            let __result = unsafe { crate::ffi::HandleChFiDSSurfData_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleChFiDSSurfData_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ChFiDS_SurfData
     pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_SurfData {
-        {
-            let __result = unsafe { crate::ffi::HandleChFiDSSurfData_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleChFiDSSurfData_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ChFiDS_SurfData> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleChFiDSSurfData_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleChFiDSSurfData_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

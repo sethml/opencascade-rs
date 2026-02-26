@@ -161,8 +161,10 @@ impl ApproxAFunc2Var {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_ApproxAFunc2Var_ctor_int3_handletcolstdharray1ofreal3_handletcolstdharray2ofreal3_real4_isotype_shape2_int4_evaluatorfunc2var_cutting2(Num1DSS, Num2DSS, Num3DSS, OneDTol, TwoDTol, ThreeDTol, OneDTolFr, TwoDTolFr, ThreeDTolFr, FirstInU, LastInU, FirstInV, LastInV, FavorIso.into(), ContInU.into(), ContInV.into(), PrecisCode, MaxDegInU, MaxDegInV, MaxPatch, Func, UChoice, VChoice)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -197,8 +199,10 @@ impl ApproxAFunc2Var {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_ApproxAFunc2Var_ctor_int3_handletcolstdharray1ofreal3_handletcolstdharray2ofreal3_real4_isotype_shape2_int4_evaluatorfunc2var_criterion_cutting2(Num1DSS, Num2DSS, Num3DSS, OneDTol, TwoDTol, ThreeDTol, OneDTolFr, TwoDTolFr, ThreeDTolFr, FirstInU, LastInU, FirstInV, LastInV, FavorIso.into(), ContInU.into(), ContInV.into(), PrecisCode, MaxDegInU, MaxDegInV, MaxPatch, Func, Crit, UChoice, VChoice)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -209,8 +213,11 @@ impl ApproxAFunc2Var {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_ApproxAFunc2Var_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -222,8 +229,11 @@ impl ApproxAFunc2Var {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_ApproxAFunc2Var_has_result(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -234,8 +244,11 @@ impl ApproxAFunc2Var {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_ApproxAFunc2Var_surface(self as *const Self, Index)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -244,8 +257,11 @@ impl ApproxAFunc2Var {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_ApproxAFunc2Var_u_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -254,8 +270,11 @@ impl ApproxAFunc2Var {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_ApproxAFunc2Var_v_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -268,8 +287,11 @@ impl ApproxAFunc2Var {
                     Dimension,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -283,8 +305,11 @@ impl ApproxAFunc2Var {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_ApproxAFunc2Var_max_error_int(self as *const Self, Dimension)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -301,8 +326,11 @@ impl ApproxAFunc2Var {
                     Dimension,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -321,8 +349,11 @@ impl ApproxAFunc2Var {
                     Dimension,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -341,8 +372,11 @@ impl ApproxAFunc2Var {
                     Dimension,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -357,8 +391,11 @@ impl ApproxAFunc2Var {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -373,8 +410,11 @@ impl ApproxAFunc2Var {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -389,8 +429,11 @@ impl ApproxAFunc2Var {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -405,8 +448,11 @@ impl ApproxAFunc2Var {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -420,8 +466,11 @@ impl ApproxAFunc2Var {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -430,8 +479,11 @@ impl ApproxAFunc2Var {
     /// of the object.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::AdvApp2Var_ApproxAFunc2Var_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::AdvApp2Var_ApproxAFunc2Var_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -455,8 +507,10 @@ impl ApproxF2var {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_ApproxF2var_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -497,8 +551,11 @@ impl ApproxF2var {
                     contr1, contr2, tabdec, errmax, errmoy, iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -513,8 +570,11 @@ impl ApproxF2var {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_ApproxF2var_mma2roo(nbpntu, nbpntv, urootl, vrootl)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -523,8 +583,11 @@ impl ApproxF2var {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_ApproxF2var_mma2jmx(ndgjac, iordre, xjacmx) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -539,8 +602,11 @@ impl ApproxF2var {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_ApproxF2var_mmapptt(arg0, arg1, arg2, arg3, arg4) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -579,8 +645,11 @@ impl ApproxF2var {
                     soditb, disotb, diditb, iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -610,8 +679,11 @@ impl ApproxF2var {
                     disotb, soditb, diditb, fpntab, ttable, iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -652,8 +724,11 @@ impl ApproxF2var {
                     errmax, errmoy, ndegpu, ndegpv, itydec, iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -677,8 +752,11 @@ impl ApproxF2var {
                     arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -686,8 +764,11 @@ impl ApproxF2var {
     pub unsafe fn mma1her(arg0: *const i32, arg1: *mut f64, arg2: *mut i32) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_ApproxF2var_mma1her(arg0, arg1, arg2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -711,8 +792,11 @@ impl ApproxF2var {
                     arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -736,8 +820,11 @@ impl ApproxF2var {
                     arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -762,8 +849,11 @@ impl ApproxF2var {
                     arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -792,8 +882,11 @@ impl ApproxF2var {
                     epsfro, patcan, errmax, ncoefu, ncoefv,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -818,8 +911,10 @@ impl Context {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Context_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -845,8 +940,10 @@ impl Context {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_Context_ctor_int9_handletcolstdharray1ofreal3_handletcolstdharray2ofreal3(ifav, iu, iv, nlimu, nlimv, iprecis, nb1Dss, nb2Dss, nb3Dss, tol1D, tol2D, tol3D, tof1D, tof2D, tof3D)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -855,8 +952,11 @@ impl Context {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Context_total_dimension(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -865,8 +965,11 @@ impl Context {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Context_total_number_ssp(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -874,8 +977,11 @@ impl Context {
     pub fn favor_iso(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Context_favor_iso(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -883,8 +989,11 @@ impl Context {
     pub fn u_order(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Context_u_order(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -892,8 +1001,11 @@ impl Context {
     pub fn v_order(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Context_v_order(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -901,8 +1013,11 @@ impl Context {
     pub fn u_limit(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Context_u_limit(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -910,8 +1025,11 @@ impl Context {
     pub fn v_limit(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Context_v_limit(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -919,8 +1037,11 @@ impl Context {
     pub fn u_jac_deg(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Context_u_jac_deg(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -928,8 +1049,11 @@ impl Context {
     pub fn v_jac_deg(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Context_v_jac_deg(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -937,8 +1061,11 @@ impl Context {
     pub fn u_jac_max(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Context_u_jac_max(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -946,8 +1073,11 @@ impl Context {
     pub fn v_jac_max(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Context_v_jac_max(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -955,8 +1085,11 @@ impl Context {
     pub fn u_roots(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Context_u_roots(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -964,8 +1097,11 @@ impl Context {
     pub fn v_roots(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Context_v_roots(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -973,8 +1109,11 @@ impl Context {
     pub fn u_gauss(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Context_u_gauss(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -982,8 +1121,11 @@ impl Context {
     pub fn v_gauss(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Context_v_gauss(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -991,8 +1133,11 @@ impl Context {
     pub fn i_toler(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Context_i_toler(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1000,8 +1145,11 @@ impl Context {
     pub fn f_toler(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfReal> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Context_f_toler(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1009,8 +1157,11 @@ impl Context {
     pub fn c_toler(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfReal> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Context_c_toler(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -1033,8 +1184,11 @@ impl Criterion {
     /// **Source:** `AdvApp2Var_Criterion.hxx`:39 - `AdvApp2Var_Criterion::Value()`
     pub fn value(&self, P: &mut Patch, C: &Context) {
         {
-            unsafe { crate::ffi::AdvApp2Var_Criterion_value(self as *const Self, P, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::AdvApp2Var_Criterion_value(self as *const Self, P, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1043,8 +1197,11 @@ impl Criterion {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Criterion_is_satisfied(self as *const Self, P) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1053,8 +1210,11 @@ impl Criterion {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Criterion_max_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1062,8 +1222,11 @@ impl Criterion {
     pub fn type_(&self) -> crate::adv_app2_var::CriterionType {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Criterion_type_(self as *const Self) };
-            crate::check_exception();
-            crate::adv_app2_var::CriterionType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::adv_app2_var::CriterionType::try_from(__val).unwrap()
         }
     }
 
@@ -1072,8 +1235,11 @@ impl Criterion {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Criterion_repartition(self as *const Self) };
-            crate::check_exception();
-            crate::adv_app2_var::CriterionRepartition::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::adv_app2_var::CriterionRepartition::try_from(__val).unwrap()
         }
     }
 }
@@ -1124,8 +1290,10 @@ impl maovpch_1_ {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::maovpch_1__ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -1209,8 +1377,10 @@ impl Data {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Data_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1218,8 +1388,11 @@ impl Data {
     pub fn getmdnombr() -> &'static mut mdnombr_1_ {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Data_getmdnombr() };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1227,8 +1400,11 @@ impl Data {
     pub fn getminombr() -> &'static mut minombr_1_ {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Data_getminombr() };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1236,8 +1412,11 @@ impl Data {
     pub fn getmaovpar() -> &'static mut maovpar_1_ {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Data_getmaovpar() };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1245,8 +1424,11 @@ impl Data {
     pub fn getmaovpch() -> &'static mut maovpch_1_ {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Data_getmaovpch() };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1254,8 +1436,11 @@ impl Data {
     pub fn getmlgdrtl() -> &'static mut mlgdrtl_1_ {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Data_getmlgdrtl() };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1263,8 +1448,11 @@ impl Data {
     pub fn getmmjcobi() -> &'static mut mmjcobi_1_ {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Data_getmmjcobi() };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1272,8 +1460,11 @@ impl Data {
     pub fn getmmcmcnp() -> &'static mut mmcmcnp_1_ {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Data_getmmcmcnp() };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1281,8 +1472,11 @@ impl Data {
     pub fn getmmapgss() -> &'static mut mmapgss_1_ {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Data_getmmapgss() };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1290,8 +1484,11 @@ impl Data {
     pub fn getmmapgs0() -> &'static mut mmapgs0_1_ {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Data_getmmapgs0() };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1299,8 +1496,11 @@ impl Data {
     pub fn getmmapgs1() -> &'static mut mmapgs1_1_ {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Data_getmmapgs1() };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1308,8 +1508,11 @@ impl Data {
     pub fn getmmapgs2() -> &'static mut mmapgs2_1_ {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Data_getmmapgs2() };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 }
@@ -1351,8 +1554,10 @@ impl cilist {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::cilist_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -1372,8 +1577,10 @@ impl icilist {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::icilist_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -1393,8 +1600,10 @@ impl olist {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::olist_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -1414,8 +1623,10 @@ impl cllist {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::cllist_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -1444,8 +1655,10 @@ impl inlist {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::inlist_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -1465,8 +1678,10 @@ impl Vardesc {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Vardesc_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -1486,8 +1701,10 @@ impl Namelist {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Namelist_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -1523,7 +1740,7 @@ impl EvaluatorFunc2Var {
         theErrorCode: *mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::AdvApp2Var_EvaluatorFunc2Var_evaluate(
                     self as *const Self,
                     theDimension,
@@ -1539,7 +1756,9 @@ impl EvaluatorFunc2Var {
                     theErrorCode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1562,8 +1781,10 @@ impl Framework {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Framework_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1579,8 +1800,10 @@ impl Framework {
                     Frame, UFrontier, VFrontier,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1600,8 +1823,11 @@ impl Framework {
                     IndexStrip,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1621,8 +1847,11 @@ impl Framework {
                     IndexStrip,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1637,8 +1866,11 @@ impl Framework {
                     IndexStrip,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1650,7 +1882,7 @@ impl Framework {
         anIso: &crate::ffi::HandleAdvApp2VarIso,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::AdvApp2Var_Framework_change_iso(
                     self as *mut Self,
                     IndexIso,
@@ -1658,7 +1890,9 @@ impl Framework {
                     anIso,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1668,8 +1902,11 @@ impl Framework {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_Framework_node_int(self as *const Self, IndexNode)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1678,8 +1915,11 @@ impl Framework {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Framework_node_real2(self as *const Self, U, V) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1688,8 +1928,11 @@ impl Framework {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Framework_iso_u(self as *const Self, U, V0, V1) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1698,28 +1941,35 @@ impl Framework {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Framework_iso_v(self as *const Self, U0, U1, V) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `AdvApp2Var_Framework.hxx`:78 - `AdvApp2Var_Framework::UpdateInU()`
     pub fn update_in_u(&mut self, CuttingValue: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::AdvApp2Var_Framework_update_in_u(self as *mut Self, CuttingValue)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `AdvApp2Var_Framework.hxx`:80 - `AdvApp2Var_Framework::UpdateInV()`
     pub fn update_in_v(&mut self, CuttingValue: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::AdvApp2Var_Framework_update_in_v(self as *mut Self, CuttingValue)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1737,8 +1987,11 @@ impl Framework {
                     IndexStrip,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1756,8 +2009,11 @@ impl Framework {
                     IndexStrip,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -1781,8 +2037,10 @@ impl Iso {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1795,8 +2053,10 @@ impl Iso {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Iso_ctor_isotype_int2(type_.into(), iu, iv) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1826,8 +2086,10 @@ impl Iso {
                     iv,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1835,8 +2097,11 @@ impl Iso {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1845,8 +2110,11 @@ impl Iso {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Iso_is_approximated(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1854,8 +2122,11 @@ impl Iso {
     pub fn has_result(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_has_result(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1872,7 +2143,7 @@ impl Iso {
         NodeEnd: &mut Node,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::AdvApp2Var_Iso_make_approx(
                     self as *mut Self,
                     Conditions,
@@ -1885,57 +2156,74 @@ impl Iso {
                     NodeEnd,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:68 - `AdvApp2Var_Iso::ChangeDomain()`
     pub fn change_domain_real2(&mut self, a: f64, b: f64) {
         {
-            unsafe { crate::ffi::AdvApp2Var_Iso_change_domain_real2(self as *mut Self, a, b) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::AdvApp2Var_Iso_change_domain_real2(self as *mut Self, a, b) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:70 - `AdvApp2Var_Iso::ChangeDomain()`
     pub fn change_domain_real4(&mut self, a: f64, b: f64, c: f64, d: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::AdvApp2Var_Iso_change_domain_real4(self as *mut Self, a, b, c, d)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:75 - `AdvApp2Var_Iso::SetConstante()`
     pub fn set_constante(&mut self, newcte: f64) {
         {
-            unsafe { crate::ffi::AdvApp2Var_Iso_set_constante(self as *mut Self, newcte) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::AdvApp2Var_Iso_set_constante(self as *mut Self, newcte) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:77 - `AdvApp2Var_Iso::SetPosition()`
     pub fn set_position(&mut self, newpos: i32) {
         {
-            unsafe { crate::ffi::AdvApp2Var_Iso_set_position(self as *mut Self, newpos) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::AdvApp2Var_Iso_set_position(self as *mut Self, newpos) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:79 - `AdvApp2Var_Iso::ResetApprox()`
     pub fn reset_approx(&mut self) {
         {
-            unsafe { crate::ffi::AdvApp2Var_Iso_reset_approx(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::AdvApp2Var_Iso_reset_approx(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:81 - `AdvApp2Var_Iso::OverwriteApprox()`
     pub fn overwrite_approx(&mut self) {
         {
-            unsafe { crate::ffi::AdvApp2Var_Iso_overwrite_approx(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::AdvApp2Var_Iso_overwrite_approx(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1943,8 +2231,11 @@ impl Iso {
     pub fn type_(&self) -> crate::geom_abs::IsoType {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_type_(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::IsoType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::IsoType::try_from(__val).unwrap()
         }
     }
 
@@ -1952,8 +2243,11 @@ impl Iso {
     pub fn constante(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_constante(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1961,8 +2255,11 @@ impl Iso {
     pub fn t0(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_t0(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1970,8 +2267,11 @@ impl Iso {
     pub fn t1(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_t1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1979,8 +2279,11 @@ impl Iso {
     pub fn u0(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_u0(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1988,8 +2291,11 @@ impl Iso {
     pub fn u1(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_u1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1997,8 +2303,11 @@ impl Iso {
     pub fn v0(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_v0(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2006,8 +2315,11 @@ impl Iso {
     pub fn v1(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_v1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2015,8 +2327,11 @@ impl Iso {
     pub fn u_order(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_u_order(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2024,8 +2339,11 @@ impl Iso {
     pub fn v_order(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_v_order(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2033,8 +2351,11 @@ impl Iso {
     pub fn position(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_position(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2042,8 +2363,11 @@ impl Iso {
     pub fn nb_coeff(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_nb_coeff(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2051,8 +2375,11 @@ impl Iso {
     pub fn polynom(&self) -> &crate::ffi::HandleTColStdHArray1OfReal {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_polynom(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2060,8 +2387,11 @@ impl Iso {
     pub fn som_tab(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_som_tab(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2069,8 +2399,11 @@ impl Iso {
     pub fn dif_tab(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_dif_tab(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2078,8 +2411,11 @@ impl Iso {
     pub fn max_errors(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfReal> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_max_errors(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2087,8 +2423,11 @@ impl Iso {
     pub fn moy_errors(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfReal> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_moy_errors(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2096,8 +2435,11 @@ impl Iso {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2105,40 +2447,43 @@ impl Iso {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Iso_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApp2Var_Iso_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::AdvApp2Var_Iso_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApp2Var_Iso_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::AdvApp2Var_Iso_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdvApp2VarIso> {
-        {
-            let __result = unsafe { crate::ffi::AdvApp2Var_Iso_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::AdvApp2Var_Iso_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2147,8 +2492,11 @@ impl Iso {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_Iso_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2158,8 +2506,11 @@ impl Iso {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_Iso_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2168,11 +2519,14 @@ impl Iso {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Iso_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2182,16 +2536,23 @@ impl Iso {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Iso_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::AdvApp2Var_Iso_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::AdvApp2Var_Iso_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2201,16 +2562,21 @@ impl Iso {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_Iso_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::AdvApp2Var_Iso_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::AdvApp2Var_Iso_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2226,31 +2592,31 @@ unsafe impl crate::CppDeletable for HandleAdvApp2VarIso {
 impl HandleAdvApp2VarIso {
     /// Dereference this Handle to access the underlying AdvApp2Var_Iso
     pub fn get(&self) -> &crate::ffi::AdvApp2Var_Iso {
-        {
-            let __result = unsafe { crate::ffi::HandleAdvApp2VarIso_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleAdvApp2VarIso_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying AdvApp2Var_Iso
     pub fn get_mut(&mut self) -> &mut crate::ffi::AdvApp2Var_Iso {
-        {
-            let __result = unsafe { crate::ffi::HandleAdvApp2VarIso_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleAdvApp2VarIso_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<AdvApp2Var_Iso> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAdvApp2VarIso_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAdvApp2VarIso_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2273,8 +2639,10 @@ impl MathBase {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_MathBase_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2289,8 +2657,11 @@ impl MathBase {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_MathBase_mmapcmp(arg0, arg1, arg2, arg3, arg4) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2307,8 +2678,11 @@ impl MathBase {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_MathBase_mmdrc11(arg0, arg1, arg2, arg3, arg4, arg5)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2329,8 +2703,11 @@ impl MathBase {
                     arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2352,8 +2729,11 @@ impl MathBase {
                     arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2367,8 +2747,12 @@ impl MathBase {
         arg5: *mut i32,
     ) {
         {
-            unsafe { crate::ffi::AdvApp2Var_MathBase_mmwprcs(arg0, arg1, arg2, arg3, arg4, arg5) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::AdvApp2Var_MathBase_mmwprcs(arg0, arg1, arg2, arg3, arg4, arg5)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2391,8 +2775,11 @@ impl MathBase {
                     ndimax, ndimen, ncoeff, courbe, tdebut, tfinal, epsiln, xlongc, erreur, iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2406,8 +2793,11 @@ impl MathBase {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_MathBase_mmbulld(nbcoln, nblign, dtabtr, numcle) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2426,8 +2816,11 @@ impl MathBase {
                     ndimen, ncoeff, courbe, ideriv, ncofdv, crvdrv,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2448,8 +2841,11 @@ impl MathBase {
                     ndimen, ncofmx, nderiv, ctrtes, crvres, tabaux, xmatri, iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2463,8 +2859,11 @@ impl MathBase {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_MathBase_mdsptpt(ndimen, point1, point2, distan) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2486,8 +2885,11 @@ impl MathBase {
                     ncofmx, ndimen, ncoeff, iordre, crvjac, ncfnew, ycvmax, errmax, iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2506,8 +2908,11 @@ impl MathBase {
                     ncoeff, ndimen, courbe, ideriv, tparam, pntcrb,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2515,8 +2920,11 @@ impl MathBase {
     pub unsafe fn mmeps1(epsilo: *mut f64) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_MathBase_mmeps1(epsilo) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2537,8 +2945,11 @@ impl MathBase {
                     ndimen, ncoefu, ncoefv, ndimax, ncfumx, ncfvmx, tabini, tabres,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2563,8 +2974,11 @@ impl MathBase {
                     iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2586,8 +3000,11 @@ impl MathBase {
                     maxsz1, table1, isize1, jsize1, maxsz2, table2, isize2, jsize2, iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2609,8 +3026,11 @@ impl MathBase {
                     ndimen, ncourb, ncftab, orcont, ncflim, tcbold, tdecop, tcbnew, iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2631,8 +3051,11 @@ impl MathBase {
                     ncolmx, nlgnmx, tabtri, nbrcol, nbrlgn, ajoute, epseg, iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2649,8 +3072,11 @@ impl MathBase {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_MathBase_mmjaccv(ncoef, ndim, ider, crvlgd, polaux, crvcan)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2669,8 +3095,11 @@ impl MathBase {
                     tparam, iordre, ncoeff, nderiv, valbas, iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2687,8 +3116,11 @@ impl MathBase {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_MathBase_mmmpocur(ncofmx, ndim, ndeg, courbe, tparam, tabval)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2704,8 +3136,11 @@ impl MathBase {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_MathBase_mmposui(dimmat, nistoc, aposit, posuiv, iercod)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2735,8 +3170,11 @@ impl MathBase {
                     hposui, gposit, mmposui, mposit, vecsol, iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2744,8 +3182,11 @@ impl MathBase {
     pub unsafe fn mmrtptt(ndglgd: *mut i32, rtlegd: *mut f64) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_MathBase_mmrtptt(ndglgd, rtlegd) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2765,8 +3206,11 @@ impl MathBase {
                     tparam, nbrval, tablev, epsil, numint, itypen, iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2788,8 +3232,11 @@ impl MathBase {
                     ncofmx, ndimen, ncoeff, epsi3d, iordre, crvlgd, ycvmax, errmax, ncfnew,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2805,8 +3252,11 @@ impl MathBase {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_MathBase_mmunivt(ndimen, vector, vecnrm, epsiln, iercod)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2820,8 +3270,11 @@ impl MathBase {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_MathBase_mmvncol(ndimen, vecin, vecout, iercod) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2829,8 +3282,11 @@ impl MathBase {
     pub unsafe fn msc(ndimen: *mut i32, vecte1: *mut f64, vecte2: *mut f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_MathBase_msc(ndimen, vecte1, vecte2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2838,8 +3294,11 @@ impl MathBase {
     pub unsafe fn mvsheld(n: *mut i32, is: *mut i32, dtab: *mut f64, icle: *mut i32) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_MathBase_mvsheld(n, is, dtab, icle) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2860,8 +3319,11 @@ impl MathBase {
                     ndimax, ndim, ncoeff, crvold, u0, u1, crvnew, iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2877,8 +3339,11 @@ impl MathBase {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_MathBase_mmcvinv(ndimax, ncoef, ndim, curveo, curve)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2892,8 +3357,11 @@ impl MathBase {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_MathBase_mmjacan(ideriv, ndeg, poljac, polcan) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2912,8 +3380,11 @@ impl MathBase {
                     ndimax, ncoeff, courbe, ndim, tparam, pntcrb,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2935,8 +3406,11 @@ impl MathBase {
                     normax, nordre, ndim, amat, bmat, epspiv, aaux, xmat, iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2944,8 +3418,11 @@ impl MathBase {
     pub unsafe fn mmveps3(eps03: *mut f64) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_MathBase_mmveps3(eps03) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2953,8 +3430,11 @@ impl MathBase {
     pub unsafe fn pow_di(x: *mut f64, n: *mut i32) -> f64 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_MathBase_pow_di(x, n) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2962,8 +3442,11 @@ impl MathBase {
     pub unsafe fn mzsnorm(ndimen: *mut i32, vecteu: *mut f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_MathBase_mzsnorm(ndimen, vecteu) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2992,8 +3475,10 @@ impl Network {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Network_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3007,8 +3492,10 @@ impl Network {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_Network_ctor_sequenceofpatch_sequenceofreal2(Net, TheU, TheV)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3020,8 +3507,11 @@ impl Network {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_Network_first_not_approx(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3030,34 +3520,47 @@ impl Network {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Network_change_patch(self as *mut Self, Index) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// **Source:** `AdvApp2Var_Network.hxx`:48 - `AdvApp2Var_Network::UpdateInU()`
     pub fn update_in_u(&mut self, CuttingValue: f64) {
         {
-            unsafe { crate::ffi::AdvApp2Var_Network_update_in_u(self as *mut Self, CuttingValue) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::AdvApp2Var_Network_update_in_u(self as *mut Self, CuttingValue)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `AdvApp2Var_Network.hxx`:50 - `AdvApp2Var_Network::UpdateInV()`
     pub fn update_in_v(&mut self, CuttingValue: f64) {
         {
-            unsafe { crate::ffi::AdvApp2Var_Network_update_in_v(self as *mut Self, CuttingValue) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::AdvApp2Var_Network_update_in_v(self as *mut Self, CuttingValue)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `AdvApp2Var_Network.hxx`:52 - `AdvApp2Var_Network::SameDegree()`
     pub fn same_degree(&mut self, iu: i32, iv: i32, ncfu: &mut i32, ncfv: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::AdvApp2Var_Network_same_degree(self as *mut Self, iu, iv, ncfu, ncfv)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3065,8 +3568,11 @@ impl Network {
     pub fn nb_patch(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Network_nb_patch(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3075,8 +3581,11 @@ impl Network {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Network_nb_patch_in_u(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3085,8 +3594,11 @@ impl Network {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Network_nb_patch_in_v(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3095,8 +3607,11 @@ impl Network {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Network_u_parameter(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3105,8 +3620,11 @@ impl Network {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Network_v_parameter(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3116,8 +3634,11 @@ impl Network {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_Network_patch(self as *const Self, UIndex, VIndex)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -3141,8 +3662,10 @@ impl Node {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Node_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3150,8 +3673,10 @@ impl Node {
     pub fn new_int2(iu: i32, iv: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Node_ctor_int2(iu, iv) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3159,8 +3684,10 @@ impl Node {
     pub fn new_xy_int2(UV: &crate::gp::XY, iu: i32, iv: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Node_ctor_xy_int2(UV, iu, iv) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3168,8 +3695,11 @@ impl Node {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Node_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3178,8 +3708,11 @@ impl Node {
     pub fn coord(&self) -> &crate::gp::XY {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Node_coord(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3187,8 +3720,10 @@ impl Node {
     /// changes the coordinates (U,V) to (x1,x2)
     pub fn set_coord(&mut self, x1: f64, x2: f64) {
         {
-            unsafe { crate::ffi::AdvApp2Var_Node_set_coord(self as *mut Self, x1, x2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::AdvApp2Var_Node_set_coord(self as *mut Self, x1, x2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3197,8 +3732,11 @@ impl Node {
     pub fn u_order(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Node_u_order(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3207,8 +3745,11 @@ impl Node {
     pub fn v_order(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Node_v_order(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3216,8 +3757,11 @@ impl Node {
     /// affects the value F(U,V) or its derivates on the node (U,V)
     pub fn set_point(&mut self, iu: i32, iv: i32, Pt: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::AdvApp2Var_Node_set_point(self as *mut Self, iu, iv, Pt) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::AdvApp2Var_Node_set_point(self as *mut Self, iu, iv, Pt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3227,8 +3771,11 @@ impl Node {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Node_point(self as *const Self, iu, iv) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3236,8 +3783,11 @@ impl Node {
     /// affects the error between F(U,V) and its approximation
     pub fn set_error(&mut self, iu: i32, iv: i32, error: f64) {
         {
-            unsafe { crate::ffi::AdvApp2Var_Node_set_error(self as *mut Self, iu, iv, error) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::AdvApp2Var_Node_set_error(self as *mut Self, iu, iv, error) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3247,8 +3797,11 @@ impl Node {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Node_error(self as *const Self, iu, iv) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3256,8 +3809,11 @@ impl Node {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Node_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3265,40 +3821,43 @@ impl Node {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Node_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApp2Var_Node_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::AdvApp2Var_Node_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApp2Var_Node_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::AdvApp2Var_Node_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdvApp2VarNode> {
-        {
-            let __result = unsafe { crate::ffi::AdvApp2Var_Node_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::AdvApp2Var_Node_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3307,8 +3866,11 @@ impl Node {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_Node_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3318,8 +3880,11 @@ impl Node {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_Node_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3328,11 +3893,14 @@ impl Node {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Node_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3342,16 +3910,23 @@ impl Node {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Node_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::AdvApp2Var_Node_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::AdvApp2Var_Node_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3361,16 +3936,22 @@ impl Node {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_Node_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::AdvApp2Var_Node_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::AdvApp2Var_Node_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3386,31 +3967,31 @@ unsafe impl crate::CppDeletable for HandleAdvApp2VarNode {
 impl HandleAdvApp2VarNode {
     /// Dereference this Handle to access the underlying AdvApp2Var_Node
     pub fn get(&self) -> &crate::ffi::AdvApp2Var_Node {
-        {
-            let __result = unsafe { crate::ffi::HandleAdvApp2VarNode_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleAdvApp2VarNode_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying AdvApp2Var_Node
     pub fn get_mut(&mut self) -> &mut crate::ffi::AdvApp2Var_Node {
-        {
-            let __result = unsafe { crate::ffi::HandleAdvApp2VarNode_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleAdvApp2VarNode_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<AdvApp2Var_Node> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAdvApp2VarNode_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAdvApp2VarNode_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3433,8 +4014,10 @@ impl Patch {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Patch_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3450,8 +4033,10 @@ impl Patch {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Patch_ctor_real4_int2(U0, U1, V0, V1, iu, iv) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3460,8 +4045,11 @@ impl Patch {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Patch_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3470,8 +4058,11 @@ impl Patch {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Patch_is_discretised(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3483,7 +4074,7 @@ impl Patch {
         func: &EvaluatorFunc2Var,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::AdvApp2Var_Patch_discretise(
                     self as *mut Self,
                     Conditions,
@@ -3491,7 +4082,9 @@ impl Patch {
                     func,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3500,8 +4093,11 @@ impl Patch {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Patch_is_approximated(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3509,15 +4105,18 @@ impl Patch {
     pub fn has_result(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Patch_has_result(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:58 - `AdvApp2Var_Patch::MakeApprox()`
     pub fn make_approx(&mut self, Conditions: &Context, Constraints: &Framework, NumDec: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::AdvApp2Var_Patch_make_approx(
                     self as *mut Self,
                     Conditions,
@@ -3525,53 +4124,68 @@ impl Patch {
                     NumDec,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:62 - `AdvApp2Var_Patch::AddConstraints()`
     pub fn add_constraints(&mut self, Conditions: &Context, Constraints: &Framework) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::AdvApp2Var_Patch_add_constraints(
                     self as *mut Self,
                     Conditions,
                     Constraints,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:65 - `AdvApp2Var_Patch::AddErrors()`
     pub fn add_errors(&mut self, Constraints: &Framework) {
         {
-            unsafe { crate::ffi::AdvApp2Var_Patch_add_errors(self as *mut Self, Constraints) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::AdvApp2Var_Patch_add_errors(self as *mut Self, Constraints) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:67 - `AdvApp2Var_Patch::ChangeDomain()`
     pub fn change_domain(&mut self, a: f64, b: f64, c: f64, d: f64) {
         {
-            unsafe { crate::ffi::AdvApp2Var_Patch_change_domain(self as *mut Self, a, b, c, d) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::AdvApp2Var_Patch_change_domain(self as *mut Self, a, b, c, d)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:72 - `AdvApp2Var_Patch::ResetApprox()`
     pub fn reset_approx(&mut self) {
         {
-            unsafe { crate::ffi::AdvApp2Var_Patch_reset_approx(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::AdvApp2Var_Patch_reset_approx(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:74 - `AdvApp2Var_Patch::OverwriteApprox()`
     pub fn overwrite_approx(&mut self) {
         {
-            unsafe { crate::ffi::AdvApp2Var_Patch_overwrite_approx(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::AdvApp2Var_Patch_overwrite_approx(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3579,8 +4193,11 @@ impl Patch {
     pub fn u0(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Patch_u0(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3588,8 +4205,11 @@ impl Patch {
     pub fn u1(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Patch_u1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3597,8 +4217,11 @@ impl Patch {
     pub fn v0(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Patch_v0(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3606,8 +4229,11 @@ impl Patch {
     pub fn v1(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Patch_v1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3615,8 +4241,11 @@ impl Patch {
     pub fn u_order(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Patch_u_order(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3624,8 +4253,11 @@ impl Patch {
     pub fn v_order(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Patch_v_order(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3633,8 +4265,11 @@ impl Patch {
     pub fn cut_sense(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Patch_cut_sense(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3648,8 +4283,11 @@ impl Patch {
                     NumDec,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3658,8 +4296,11 @@ impl Patch {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Patch_nb_coeff_in_u(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3668,18 +4309,23 @@ impl Patch {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Patch_nb_coeff_in_v(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:97 - `AdvApp2Var_Patch::ChangeNbCoeff()`
     pub fn change_nb_coeff(&mut self, NbCoeffU: i32, NbCoeffV: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::AdvApp2Var_Patch_change_nb_coeff(self as *mut Self, NbCoeffU, NbCoeffV)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3693,8 +4339,11 @@ impl Patch {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_Patch_poles(self as *const Self, SSPIndex, Conditions)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3708,8 +4357,11 @@ impl Patch {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_Patch_coefficients(self as *const Self, SSPIndex, Conditions)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3717,8 +4369,11 @@ impl Patch {
     pub fn max_errors(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Patch_max_errors(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3727,8 +4382,11 @@ impl Patch {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Patch_average_errors(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3736,8 +4394,11 @@ impl Patch {
     pub fn iso_errors(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfReal> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Patch_iso_errors(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3745,16 +4406,22 @@ impl Patch {
     pub fn crit_value(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Patch_crit_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:115 - `AdvApp2Var_Patch::SetCritValue()`
     pub fn set_crit_value(&mut self, dist: f64) {
         {
-            unsafe { crate::ffi::AdvApp2Var_Patch_set_crit_value(self as *mut Self, dist) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::AdvApp2Var_Patch_set_crit_value(self as *mut Self, dist) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3762,8 +4429,11 @@ impl Patch {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Patch_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3771,41 +4441,43 @@ impl Patch {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_Patch_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::AdvApp2Var_Patch_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::AdvApp2Var_Patch_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::AdvApp2Var_Patch_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::AdvApp2Var_Patch_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdvApp2VarPatch> {
-        {
-            let __result = unsafe { crate::ffi::AdvApp2Var_Patch_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::AdvApp2Var_Patch_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3814,8 +4486,11 @@ impl Patch {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_Patch_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3825,8 +4500,11 @@ impl Patch {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_Patch_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3835,11 +4513,14 @@ impl Patch {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Patch_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3849,18 +4530,23 @@ impl Patch {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_Patch_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::AdvApp2Var_Patch_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3870,16 +4556,22 @@ impl Patch {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_Patch_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::AdvApp2Var_Patch_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::AdvApp2Var_Patch_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3895,31 +4587,31 @@ unsafe impl crate::CppDeletable for HandleAdvApp2VarPatch {
 impl HandleAdvApp2VarPatch {
     /// Dereference this Handle to access the underlying AdvApp2Var_Patch
     pub fn get(&self) -> &crate::ffi::AdvApp2Var_Patch {
-        {
-            let __result = unsafe { crate::ffi::HandleAdvApp2VarPatch_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleAdvApp2VarPatch_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying AdvApp2Var_Patch
     pub fn get_mut(&mut self) -> &mut crate::ffi::AdvApp2Var_Patch {
-        {
-            let __result = unsafe { crate::ffi::HandleAdvApp2VarPatch_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleAdvApp2VarPatch_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<AdvApp2Var_Patch> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAdvApp2VarPatch_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAdvApp2VarPatch_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3941,8 +4633,10 @@ impl SysBase {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_SysBase_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3950,8 +4644,11 @@ impl SysBase {
     pub fn mainial(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_SysBase_mainial(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3975,8 +4672,11 @@ impl SysBase {
                     iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4000,8 +4700,11 @@ impl SysBase {
                     iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4025,8 +4728,11 @@ impl SysBase {
                     iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4050,8 +4756,11 @@ impl SysBase {
                     iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4075,8 +4784,11 @@ impl SysBase {
                     iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4100,8 +4812,11 @@ impl SysBase {
                     iercod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4109,8 +4824,11 @@ impl SysBase {
     pub unsafe fn macinit(arg0: *mut i32, arg1: *mut i32) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_SysBase_macinit(arg0, arg1) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4122,8 +4840,11 @@ impl SysBase {
     ) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_SysBase_mcrfill(size, tin, tout) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4131,8 +4852,11 @@ impl SysBase {
     pub fn mnfndeb() -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_SysBase_mnfndeb() };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4140,8 +4864,11 @@ impl SysBase {
     pub fn do_fio() -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_SysBase_do_fio() };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4149,8 +4876,11 @@ impl SysBase {
     pub fn do_lio() -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_SysBase_do_lio() };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4161,8 +4891,11 @@ impl SysBase {
             let __result = unsafe {
                 crate::ffi::AdvApp2Var_SysBase_maermsg(c_cnompg.as_ptr(), icoder, cnompg_len)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4170,8 +4903,11 @@ impl SysBase {
     pub unsafe fn maitbr8(itaill: *mut i32, xtab: *mut f64, xval: *mut f64) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_SysBase_maitbr8(itaill, xtab, xval) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4179,8 +4915,11 @@ impl SysBase {
     pub unsafe fn maovsr8(ivalcs: *mut i32) -> i32 {
         {
             let __result = unsafe { crate::ffi::AdvApp2Var_SysBase_maovsr8(ivalcs) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4190,8 +4929,11 @@ impl SysBase {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_SysBase_mgenmsg(c_nomprg.as_ptr(), nomprg_len) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4201,16 +4943,21 @@ impl SysBase {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_SysBase_mgsomsg(c_nomprg.as_ptr(), nomprg_len) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `AdvApp2Var_SysBase.hxx`:76 - `AdvApp2Var_SysBase::miraz_()`
     pub unsafe fn miraz(taille: *mut i32, adt: *mut std::ffi::c_void) {
         {
-            unsafe { crate::ffi::AdvApp2Var_SysBase_miraz(taille, adt) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::AdvApp2Var_SysBase_miraz(taille, adt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4219,8 +4966,11 @@ impl SysBase {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_SysBase_msifill(nbintg, ivecin, ivecou) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4229,8 +4979,11 @@ impl SysBase {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_SysBase_msrfill(nbreel, vecent, vecsor) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4240,16 +4993,21 @@ impl SysBase {
         {
             let __result =
                 unsafe { crate::ffi::AdvApp2Var_SysBase_mswrdbg(c_ctexte.as_ptr(), ctexte_len) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `AdvApp2Var_SysBase.hxx`:80 - `AdvApp2Var_SysBase::mvriraz_()`
     pub unsafe fn mvriraz(taille: *mut i32, adt: *mut std::ffi::c_void) {
         {
-            unsafe { crate::ffi::AdvApp2Var_SysBase_mvriraz(taille, adt) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::AdvApp2Var_SysBase_mvriraz(taille, adt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

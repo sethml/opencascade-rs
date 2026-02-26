@@ -13,8 +13,11 @@ pub fn s_print_state(
 ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
     {
         let __result = unsafe { crate::ffi::TopOpeBRepDS_s_print_state(S.into()) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TopOpeBRepDS.hxx`:43 - `TopOpeBRepDS::Print`
@@ -24,8 +27,11 @@ pub fn print_mut(
 ) -> &mut crate::ffi::Standard_OStream {
     {
         let __result = unsafe { crate::ffi::TopOpeBRepDS_print_mut(S.into(), OS) };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 /// **Source:** `TopOpeBRepDS.hxx`:46 - `TopOpeBRepDS::SPrint`
@@ -35,8 +41,11 @@ pub fn s_print_kind(
 ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
     {
         let __result = unsafe { crate::ffi::TopOpeBRepDS_s_print_kind(K.into()) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TopOpeBRepDS.hxx`:49 - `TopOpeBRepDS::SPrint`
@@ -50,8 +59,11 @@ pub fn s_print_kind_int_asciistring2(
     {
         let __result =
             unsafe { crate::ffi::TopOpeBRepDS_s_print_kind_int_asciistring2(K.into(), I, B, A) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TopOpeBRepDS.hxx`:54 - `TopOpeBRepDS::Print`
@@ -61,8 +73,11 @@ pub fn print_kind_ostream(
 ) -> &mut crate::ffi::Standard_OStream {
     {
         let __result = unsafe { crate::ffi::TopOpeBRepDS_print_kind_ostream(K.into(), S) };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 /// **Source:** `TopOpeBRepDS.hxx`:56 - `TopOpeBRepDS::Print`
@@ -83,8 +98,11 @@ pub unsafe fn print_kind_int_ostream_asciistring2<'a>(
         let __result = unsafe {
             crate::ffi::TopOpeBRepDS_print_kind_int_ostream_asciistring2(K.into(), I, S, B, A)
         };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 /// **Source:** `TopOpeBRepDS.hxx`:62 - `TopOpeBRepDS::SPrint`
@@ -93,8 +111,11 @@ pub fn s_print_shapeenum(
 ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
     {
         let __result = unsafe { crate::ffi::TopOpeBRepDS_s_print_shapeenum(T.into()) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TopOpeBRepDS.hxx`:65 - `TopOpeBRepDS::SPrint`
@@ -105,8 +126,11 @@ pub fn s_print_shapeenum_int(
 ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
     {
         let __result = unsafe { crate::ffi::TopOpeBRepDS_s_print_shapeenum_int(T.into(), I) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TopOpeBRepDS.hxx`:68 - `TopOpeBRepDS::Print`
@@ -118,8 +142,11 @@ pub fn print_shapeenum_int_ostream(
     {
         let __result =
             unsafe { crate::ffi::TopOpeBRepDS_print_shapeenum_int_ostream(T.into(), I, S) };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 /// **Source:** `TopOpeBRepDS.hxx`:72 - `TopOpeBRepDS::SPrint`
@@ -128,8 +155,11 @@ pub fn s_print_orientation(
 ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
     {
         let __result = unsafe { crate::ffi::TopOpeBRepDS_s_print_orientation(O.into()) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TopOpeBRepDS.hxx`:74 - `TopOpeBRepDS::SPrint`
@@ -138,8 +168,11 @@ pub fn s_print_config(
 ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
     {
         let __result = unsafe { crate::ffi::TopOpeBRepDS_s_print_config(C.into()) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TopOpeBRepDS.hxx`:76 - `TopOpeBRepDS::Print`
@@ -149,40 +182,55 @@ pub fn print_config_ostream(
 ) -> &mut crate::ffi::Standard_OStream {
     {
         let __result = unsafe { crate::ffi::TopOpeBRepDS_print_config_ostream(C.into(), S) };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 /// **Source:** `TopOpeBRepDS.hxx`:78 - `TopOpeBRepDS::IsGeometry`
 pub fn is_geometry(K: crate::top_ope_b_rep_ds::Kind) -> bool {
     {
         let __result = unsafe { crate::ffi::TopOpeBRepDS_is_geometry(K.into()) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `TopOpeBRepDS.hxx`:80 - `TopOpeBRepDS::IsTopology`
 pub fn is_topology(K: crate::top_ope_b_rep_ds::Kind) -> bool {
     {
         let __result = unsafe { crate::ffi::TopOpeBRepDS_is_topology(K.into()) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `TopOpeBRepDS.hxx`:82 - `TopOpeBRepDS::KindToShape`
 pub fn kind_to_shape(K: crate::top_ope_b_rep_ds::Kind) -> crate::top_abs::ShapeEnum {
     {
         let __result = unsafe { crate::ffi::TopOpeBRepDS_kind_to_shape(K.into()) };
-        crate::check_exception();
-        crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        crate::top_abs::ShapeEnum::try_from(__val).unwrap()
     }
 }
 /// **Source:** `TopOpeBRepDS.hxx`:84 - `TopOpeBRepDS::ShapeToKind`
 pub fn shape_to_kind(S: crate::top_abs::ShapeEnum) -> crate::top_ope_b_rep_ds::Kind {
     {
         let __result = unsafe { crate::ffi::TopOpeBRepDS_shape_to_kind(S.into()) };
-        crate::check_exception();
-        crate::top_ope_b_rep_ds::Kind::try_from(__result).unwrap()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        crate::top_ope_b_rep_ds::Kind::try_from(__val).unwrap()
     }
 }
 
@@ -308,8 +356,10 @@ impl Association {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Association_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -320,14 +370,16 @@ impl Association {
         K: &crate::ffi::HandleTopOpeBRepDSInterference,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Association_associate_handletopopebrepdsinterference2(
                     self as *mut Self,
                     I,
                     K,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -338,10 +390,12 @@ impl Association {
         LI: &crate::ffi::TopOpeBRepDS_ListOfInterference,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Association_associate_handletopopebrepdsinterference_listofinterference(self as *mut Self, I, LI)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -351,8 +405,11 @@ impl Association {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Association_has_association(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -370,8 +427,11 @@ impl Association {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Association_associated(self as *mut Self, I) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -385,8 +445,11 @@ impl Association {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Association_are_associated(self as *const Self, I, K)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -395,8 +458,11 @@ impl Association {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Association_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -404,8 +470,11 @@ impl Association {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Association_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -413,43 +482,45 @@ impl Association {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Association_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_Association_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_Association_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_Association_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_Association_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSAssociation> {
-        {
-            let __result =
-                unsafe { crate::ffi::TopOpeBRepDS_Association_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopOpeBRepDS_Association_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -461,8 +532,11 @@ impl Association {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -472,8 +546,11 @@ impl Association {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Association_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -482,11 +559,14 @@ impl Association {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Association_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -497,20 +577,25 @@ impl Association {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Association_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Association_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -522,16 +607,23 @@ impl Association {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Association_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_Association_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -547,35 +639,35 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepDSAssociation {
 impl HandleTopOpeBRepDSAssociation {
     /// Dereference this Handle to access the underlying TopOpeBRepDS_Association
     pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_Association {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopOpeBRepDSAssociation_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleTopOpeBRepDSAssociation_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_Association
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_Association {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopOpeBRepDSAssociation_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTopOpeBRepDSAssociation_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopOpeBRepDS_Association> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSAssociation_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSAssociation_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -599,8 +691,10 @@ impl BuildTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_BuildTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -612,8 +706,10 @@ impl BuildTool {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_ctor_outcurvetype(OutCurveType.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -621,8 +717,10 @@ impl BuildTool {
     pub fn new_geomtool(GT: &crate::top_ope_b_rep_tool::GeomTool) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_BuildTool_ctor_geomtool(GT) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -631,8 +729,11 @@ impl BuildTool {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_BuildTool_get_geom_tool(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -641,26 +742,35 @@ impl BuildTool {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_BuildTool_change_geom_tool(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:62 - `TopOpeBRepDS_BuildTool::MakeVertex()`
     pub fn make_vertex(&self, V: &mut crate::topo_ds::Shape, P: &Point) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_BuildTool_make_vertex(self as *const Self, V, P) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_BuildTool_make_vertex(self as *const Self, V, P)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:64 - `TopOpeBRepDS_BuildTool::MakeEdge()`
     pub fn make_edge_shape_curve(&self, E: &mut crate::topo_ds::Shape, C: &Curve) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_make_edge_shape_curve(self as *const Self, E, C)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -672,7 +782,7 @@ impl BuildTool {
         DS: &DataStructure,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_make_edge_shape_curve_datastructure(
                     self as *const Self,
                     E,
@@ -680,7 +790,9 @@ impl BuildTool {
                     DS,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -692,7 +804,7 @@ impl BuildTool {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_make_edge_shape_handlegeomcurve_real(
                     self as *const Self,
                     E,
@@ -700,47 +812,65 @@ impl BuildTool {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:74 - `TopOpeBRepDS_BuildTool::MakeEdge()`
     pub fn make_edge_shape(&self, E: &mut crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_BuildTool_make_edge_shape(self as *const Self, E) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_BuildTool_make_edge_shape(self as *const Self, E)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:76 - `TopOpeBRepDS_BuildTool::MakeWire()`
     pub fn make_wire(&self, W: &mut crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_BuildTool_make_wire(self as *const Self, W) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_BuildTool_make_wire(self as *const Self, W) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:78 - `TopOpeBRepDS_BuildTool::MakeFace()`
     pub fn make_face(&self, F: &mut crate::topo_ds::Shape, S: &Surface) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_BuildTool_make_face(self as *const Self, F, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_BuildTool_make_face(self as *const Self, F, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:80 - `TopOpeBRepDS_BuildTool::MakeShell()`
     pub fn make_shell(&self, Sh: &mut crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_BuildTool_make_shell(self as *const Self, Sh) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_BuildTool_make_shell(self as *const Self, Sh) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:82 - `TopOpeBRepDS_BuildTool::MakeSolid()`
     pub fn make_solid(&self, S: &mut crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_BuildTool_make_solid(self as *const Self, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_BuildTool_make_solid(self as *const Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -748,8 +878,12 @@ impl BuildTool {
     /// Make an edge <Eou> with the curve of the edge <Ein>
     pub fn copy_edge(&self, Ein: &crate::topo_ds::Shape, Eou: &mut crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_BuildTool_copy_edge(self as *const Self, Ein, Eou) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_BuildTool_copy_edge(self as *const Self, Ein, Eou)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -763,7 +897,7 @@ impl BuildTool {
         Parmax: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_get_oriented_edge_vertices(
                     self as *const Self,
                     E,
@@ -773,7 +907,9 @@ impl BuildTool {
                     Parmax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -792,7 +928,7 @@ impl BuildTool {
         newparmax: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_update_edge_curve_tol(
                     self as *const Self,
                     F1,
@@ -807,7 +943,9 @@ impl BuildTool {
                     newparmax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -820,7 +958,7 @@ impl BuildTool {
         HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_approx_curves(
                     self as *const Self,
                     C,
@@ -829,7 +967,9 @@ impl BuildTool {
                     HDS,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -844,7 +984,7 @@ impl BuildTool {
         CompC3D: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_compute_p_curves(
                     self as *const Self,
                     C,
@@ -855,7 +995,9 @@ impl BuildTool {
                     CompC3D,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -868,7 +1010,7 @@ impl BuildTool {
         CompPC2: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_put_p_curves(
                     self as *const Self,
                     newC,
@@ -877,7 +1019,9 @@ impl BuildTool {
                     CompPC2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -891,7 +1035,7 @@ impl BuildTool {
         HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_recompute_curves(
                     self as *const Self,
                     C,
@@ -901,7 +1045,9 @@ impl BuildTool {
                     HDS,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -909,8 +1055,12 @@ impl BuildTool {
     /// Make a face <Fou> with the surface of the face <Fin>
     pub fn copy_face(&self, Fin: &crate::topo_ds::Shape, Fou: &mut crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_BuildTool_copy_face(self as *const Self, Fin, Fou) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_BuildTool_copy_face(self as *const Self, Fin, Fou)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -922,7 +1072,7 @@ impl BuildTool {
         V: &crate::topo_ds::Shape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_add_edge_vertex_shape3(
                     self as *const Self,
                     Ein,
@@ -930,53 +1080,69 @@ impl BuildTool {
                     V,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:134 - `TopOpeBRepDS_BuildTool::AddEdgeVertex()`
     pub fn add_edge_vertex_shape2(&self, E: &mut crate::topo_ds::Shape, V: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_add_edge_vertex_shape2(self as *const Self, E, V)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:136 - `TopOpeBRepDS_BuildTool::AddWireEdge()`
     pub fn add_wire_edge(&self, W: &mut crate::topo_ds::Shape, E: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_BuildTool_add_wire_edge(self as *const Self, W, E) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_BuildTool_add_wire_edge(self as *const Self, W, E)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:138 - `TopOpeBRepDS_BuildTool::AddFaceWire()`
     pub fn add_face_wire(&self, F: &mut crate::topo_ds::Shape, W: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_BuildTool_add_face_wire(self as *const Self, F, W) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_BuildTool_add_face_wire(self as *const Self, F, W)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:140 - `TopOpeBRepDS_BuildTool::AddShellFace()`
     pub fn add_shell_face(&self, Sh: &mut crate::topo_ds::Shape, F: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_add_shell_face(self as *const Self, Sh, F)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:142 - `TopOpeBRepDS_BuildTool::AddSolidShell()`
     pub fn add_solid_shell(&self, S: &mut crate::topo_ds::Shape, Sh: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_add_solid_shell(self as *const Self, S, Sh)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -990,7 +1156,7 @@ impl BuildTool {
         P: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_parameter_shape2_real(
                     self as *const Self,
                     E,
@@ -998,7 +1164,9 @@ impl BuildTool {
                     P,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1006,10 +1174,12 @@ impl BuildTool {
     /// Sets the range of edge <E>.
     pub fn range(&self, E: &crate::topo_ds::Shape, first: f64, last: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_range(self as *const Self, E, first, last)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1018,10 +1188,12 @@ impl BuildTool {
     /// only when <Ein> has a closed geometry.
     pub fn update_edge(&self, Ein: &crate::topo_ds::Shape, Eou: &mut crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_update_edge(self as *const Self, Ein, Eou)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1035,7 +1207,7 @@ impl BuildTool {
         V: &mut crate::topo_ds::Shape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_parameter_curve_shape2(
                     self as *const Self,
                     C,
@@ -1043,7 +1215,9 @@ impl BuildTool {
                     V,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1056,8 +1230,12 @@ impl BuildTool {
         Tol: f64,
     ) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_BuildTool_curve3_d(self as *const Self, E, C, Tol) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_BuildTool_curve3_d(self as *const Self, E, C, Tol)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1073,7 +1251,7 @@ impl BuildTool {
         C: &crate::ffi::HandleGeom2dCurve,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_p_curve_shape2_handlegeom2dcurve(
                     self as *const Self,
                     F,
@@ -1081,7 +1259,9 @@ impl BuildTool {
                     C,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1094,7 +1274,7 @@ impl BuildTool {
         C: &crate::ffi::HandleGeom2dCurve,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_p_curve_shape2_curve_handlegeom2dcurve(
                     self as *const Self,
                     F,
@@ -1103,7 +1283,9 @@ impl BuildTool {
                     C,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1114,14 +1296,16 @@ impl BuildTool {
         O: crate::top_abs::Orientation,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_orientation_shape_orientation(
                     self as *const Self,
                     S,
                     O.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1131,16 +1315,22 @@ impl BuildTool {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_orientation_shape(self as *const Self, S)
             };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:187 - `TopOpeBRepDS_BuildTool::Closed()`
     pub fn closed(&self, S: &mut crate::topo_ds::Shape, B: bool) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_BuildTool_closed(self as *const Self, S, B) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_BuildTool_closed(self as *const Self, S, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1149,8 +1339,11 @@ impl BuildTool {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_BuildTool_approximation(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1161,14 +1354,16 @@ impl BuildTool {
         SU: &crate::ffi::HandleGeomSurface,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_update_surface_shape_handlegeomsurface(
                     self as *const Self,
                     F,
                     SU,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1180,7 +1375,7 @@ impl BuildTool {
         newF: &crate::topo_ds::Shape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_BuildTool_update_surface_shape3(
                     self as *const Self,
                     E,
@@ -1188,7 +1383,9 @@ impl BuildTool {
                     newF,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1197,16 +1394,22 @@ impl BuildTool {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_BuildTool_over_write(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:199 - `TopOpeBRepDS_BuildTool::OverWrite()`
     pub fn over_write_bool(&mut self, O: bool) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_BuildTool_over_write_bool(self as *mut Self, O) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_BuildTool_over_write_bool(self as *mut Self, O) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1215,16 +1418,22 @@ impl BuildTool {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_BuildTool_translate(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_BuildTool.hxx`:203 - `TopOpeBRepDS_BuildTool::Translate()`
     pub fn translate_bool(&mut self, T: bool) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_BuildTool_translate_bool(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_BuildTool_translate_bool(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1248,8 +1457,10 @@ impl Check {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Check_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1261,8 +1472,10 @@ impl Check {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Check_ctor_handletopopebrepdshdatastructure(HDS)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1271,8 +1484,11 @@ impl Check {
     pub fn chk_intg(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Check_chk_intg(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1283,8 +1499,11 @@ impl Check {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Check_chk_intg_interf(self as *mut Self, LI) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1296,8 +1515,11 @@ impl Check {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Check_check_ds(self as *mut Self, i, K.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1307,8 +1529,11 @@ impl Check {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Check_chk_intg_sam_dom(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1320,8 +1545,11 @@ impl Check {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Check_check_shapes(self as *const Self, LS) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1334,8 +1562,11 @@ impl Check {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Check_one_vertex_on_pnt(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1343,8 +1574,11 @@ impl Check {
     pub fn hds(&self) -> &crate::ffi::HandleTopOpeBRepDSHDataStructure {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Check_hds(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1352,8 +1586,11 @@ impl Check {
     pub fn change_hds(&mut self) -> &mut crate::ffi::HandleTopOpeBRepDSHDataStructure {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Check_change_hds(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1371,8 +1608,11 @@ impl Check {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Check_print_intg(self as *mut Self, S) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1392,8 +1632,11 @@ impl Check {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Check_print(self as *mut Self, stat.into(), S) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1418,8 +1661,11 @@ impl Check {
                     S,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1440,8 +1686,11 @@ impl Check {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Check_print_shape_int_ostream(self as *mut Self, index, S)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1450,8 +1699,11 @@ impl Check {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Check_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1459,8 +1711,11 @@ impl Check {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Check_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1468,42 +1723,43 @@ impl Check {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Check_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_Check_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopOpeBRepDS_Check_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_Check_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopOpeBRepDS_Check_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSCheck> {
-        {
-            let __result = unsafe { crate::ffi::TopOpeBRepDS_Check_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopOpeBRepDS_Check_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1512,8 +1768,11 @@ impl Check {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Check_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1523,8 +1782,11 @@ impl Check {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Check_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1533,11 +1795,14 @@ impl Check {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Check_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1548,18 +1813,23 @@ impl Check {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Check_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Check_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1569,16 +1839,22 @@ impl Check {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Check_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Check_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_Check_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1594,32 +1870,31 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepDSCheck {
 impl HandleTopOpeBRepDSCheck {
     /// Dereference this Handle to access the underlying TopOpeBRepDS_Check
     pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_Check {
-        {
-            let __result = unsafe { crate::ffi::HandleTopOpeBRepDSCheck_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopOpeBRepDSCheck_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_Check
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_Check {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopOpeBRepDSCheck_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTopOpeBRepDSCheck_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopOpeBRepDS_Check> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSCheck_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSCheck_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1642,8 +1917,10 @@ impl Curve {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Curve_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1657,8 +1934,10 @@ impl Curve {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Curve_ctor_handlegeomcurve_real_bool(P, T, IsWalk)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1673,8 +1952,12 @@ impl Curve {
     /// **Source:** `TopOpeBRepDS_Curve.hxx`:42 - `TopOpeBRepDS_Curve::DefineCurve()`
     pub fn define_curve(&mut self, P: &crate::ffi::HandleGeomCurve, T: f64, IsWalk: bool) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Curve_define_curve(self as *mut Self, P, T, IsWalk) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_Curve_define_curve(self as *mut Self, P, T, IsWalk)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1682,8 +1965,11 @@ impl Curve {
     /// Update the tolerance
     pub fn tolerance_real(&mut self, tol: f64) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Curve_tolerance_real(self as *mut Self, tol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_Curve_tolerance_real(self as *mut Self, tol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1695,8 +1981,11 @@ impl Curve {
         I2: &crate::ffi::HandleTopOpeBRepDSInterference,
     ) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Curve_set_sci(self as *mut Self, I1, I2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_Curve_set_sci(self as *mut Self, I1, I2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1704,8 +1993,11 @@ impl Curve {
     pub fn get_sci1(&self) -> &crate::ffi::HandleTopOpeBRepDSInterference {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Curve_get_sci1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1713,8 +2005,11 @@ impl Curve {
     pub fn get_sci2(&self) -> &crate::ffi::HandleTopOpeBRepDSInterference {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Curve_get_sci2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1725,24 +2020,33 @@ impl Curve {
         I2: &mut crate::ffi::HandleTopOpeBRepDSInterference,
     ) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Curve_get_sci(self as *const Self, I1, I2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_Curve_get_sci(self as *const Self, I1, I2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Curve.hxx`:60 - `TopOpeBRepDS_Curve::SetShapes()`
     pub fn set_shapes(&mut self, S1: &crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Curve_set_shapes(self as *mut Self, S1, S2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_Curve_set_shapes(self as *mut Self, S1, S2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Curve.hxx`:62 - `TopOpeBRepDS_Curve::GetShapes()`
     pub fn get_shapes(&self, S1: &mut crate::topo_ds::Shape, S2: &mut crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Curve_get_shapes(self as *const Self, S1, S2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_Curve_get_shapes(self as *const Self, S1, S2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1750,8 +2054,11 @@ impl Curve {
     pub fn shape1(&self) -> &crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Curve_shape1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1760,8 +2067,11 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Curve_change_shape1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1769,8 +2079,11 @@ impl Curve {
     pub fn shape2(&self) -> &crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Curve_shape2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1779,8 +2092,11 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Curve_change_shape2(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1788,16 +2104,22 @@ impl Curve {
     pub fn curve(&self) -> &crate::ffi::HandleGeomCurve {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Curve_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Curve.hxx`:74 - `TopOpeBRepDS_Curve::SetRange()`
     pub fn set_range(&mut self, First: f64, Last: f64) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Curve_set_range(self as *mut Self, First, Last) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_Curve_set_range(self as *mut Self, First, Last) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1806,8 +2128,11 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Curve_range(self as *const Self, First, Last) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1815,8 +2140,11 @@ impl Curve {
     pub fn tolerance(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Curve_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1825,22 +2153,27 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Curve_change_curve(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Curve.hxx`:82 - `TopOpeBRepDS_Curve::Curve()`
     pub fn curve_handlegeomcurve_real(&mut self, C3D: &crate::ffi::HandleGeomCurve, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Curve_curve_handlegeomcurve_real(
                     self as *mut Self,
                     C3D,
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1848,18 +2181,23 @@ impl Curve {
     pub fn curve1(&self) -> &crate::ffi::HandleGeom2dCurve {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Curve_curve1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Curve.hxx`:86 - `TopOpeBRepDS_Curve::Curve1()`
     pub fn curve1_handlegeom2dcurve(&mut self, PC1: &crate::ffi::HandleGeom2dCurve) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Curve_curve1_handlegeom2dcurve(self as *mut Self, PC1)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1867,18 +2205,23 @@ impl Curve {
     pub fn curve2(&self) -> &crate::ffi::HandleGeom2dCurve {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Curve_curve2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Curve.hxx`:90 - `TopOpeBRepDS_Curve::Curve2()`
     pub fn curve2_handlegeom2dcurve(&mut self, PC2: &crate::ffi::HandleGeom2dCurve) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Curve_curve2_handlegeom2dcurve(self as *mut Self, PC2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1886,16 +2229,22 @@ impl Curve {
     pub fn is_walk(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Curve_is_walk(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Curve.hxx`:94 - `TopOpeBRepDS_Curve::ChangeIsWalk()`
     pub fn change_is_walk(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Curve_change_is_walk(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_Curve_change_is_walk(self as *mut Self, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1903,16 +2252,21 @@ impl Curve {
     pub fn keep(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Curve_keep(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Curve.hxx`:98 - `TopOpeBRepDS_Curve::ChangeKeep()`
     pub fn change_keep(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Curve_change_keep(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRepDS_Curve_change_keep(self as *mut Self, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1920,16 +2274,22 @@ impl Curve {
     pub fn mother(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Curve_mother(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Curve.hxx`:102 - `TopOpeBRepDS_Curve::ChangeMother()`
     pub fn change_mother(&mut self, I: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Curve_change_mother(self as *mut Self, I) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_Curve_change_mother(self as *mut Self, I) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1937,16 +2297,22 @@ impl Curve {
     pub fn ds_index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Curve_ds_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Curve.hxx`:106 - `TopOpeBRepDS_Curve::ChangeDSIndex()`
     pub fn change_ds_index(&mut self, I: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Curve_change_ds_index(self as *mut Self, I) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_Curve_change_ds_index(self as *mut Self, I) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1969,8 +2335,10 @@ impl CurveData {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_CurveData_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1978,42 +2346,44 @@ impl CurveData {
     pub fn new_curve(C: &Curve) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_CurveData_ctor_curve(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to TopOpeBRepDS_GeometryData
     pub fn as_geometry_data(&self) -> &GeometryData {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_CurveData_as_TopOpeBRepDS_GeometryData(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_CurveData_as_TopOpeBRepDS_GeometryData(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopOpeBRepDS_GeometryData (mutable)
     pub fn as_geometry_data_mut(&mut self) -> &mut GeometryData {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_CurveData_as_TopOpeBRepDS_GeometryData_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_CurveData_as_TopOpeBRepDS_GeometryData_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:37 - `TopOpeBRepDS_GeometryData::Assign()`
     pub fn assign(&mut self, Other: &GeometryData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_CurveData_inherited_Assign(self as *mut Self, Other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2023,8 +2393,11 @@ impl CurveData {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_CurveData_inherited_Interferences(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2034,18 +2407,23 @@ impl CurveData {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_CurveData_inherited_ChangeInterferences(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:45 - `TopOpeBRepDS_GeometryData::AddInterference()`
     pub fn add_interference(&mut self, I: &crate::ffi::HandleTopOpeBRepDSInterference) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_CurveData_inherited_AddInterference(self as *mut Self, I)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2068,8 +2446,10 @@ impl CurveExplorer {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_CurveExplorer_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2079,8 +2459,10 @@ impl CurveExplorer {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_CurveExplorer_ctor_datastructure_bool(DS, FindOnlyKeep)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2092,10 +2474,12 @@ impl CurveExplorer {
     /// **Source:** `TopOpeBRepDS_CurveExplorer.hxx`:37 - `TopOpeBRepDS_CurveExplorer::Init()`
     pub fn init(&mut self, DS: &DataStructure, FindOnlyKeep: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_CurveExplorer_init(self as *mut Self, DS, FindOnlyKeep)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2104,16 +2488,21 @@ impl CurveExplorer {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_CurveExplorer_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_CurveExplorer.hxx`:42 - `TopOpeBRepDS_CurveExplorer::Next()`
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_CurveExplorer_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRepDS_CurveExplorer_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2122,8 +2511,11 @@ impl CurveExplorer {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_CurveExplorer_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2132,8 +2524,11 @@ impl CurveExplorer {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_CurveExplorer_is_curve(self as *const Self, I) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2143,8 +2538,11 @@ impl CurveExplorer {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_CurveExplorer_is_curve_keep(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2153,8 +2551,11 @@ impl CurveExplorer {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_CurveExplorer_curve_int(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2163,8 +2564,11 @@ impl CurveExplorer {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_CurveExplorer_nb_curve(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2173,8 +2577,11 @@ impl CurveExplorer {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_CurveExplorer_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2202,8 +2609,10 @@ impl CurveIterator {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_CurveIterator_ctor_listofinterference(L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2216,8 +2625,11 @@ impl CurveIterator {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_CurveIterator_match_interference(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2227,8 +2639,11 @@ impl CurveIterator {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_CurveIterator_current(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2238,8 +2653,11 @@ impl CurveIterator {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_CurveIterator_orientation(self as *const Self, S.into())
             };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -2248,96 +2666,115 @@ impl CurveIterator {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_CurveIterator_p_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TopOpeBRepDS_InterferenceIterator
     pub fn as_interference_iterator(&self) -> &InterferenceIterator {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_CurveIterator_as_TopOpeBRepDS_InterferenceIterator(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_CurveIterator_as_TopOpeBRepDS_InterferenceIterator(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopOpeBRepDS_InterferenceIterator (mutable)
     pub fn as_interference_iterator_mut(&mut self) -> &mut InterferenceIterator {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_CurveIterator_as_TopOpeBRepDS_InterferenceIterator_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_CurveIterator_as_TopOpeBRepDS_InterferenceIterator_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:53 - `TopOpeBRepDS_InterferenceIterator::Init()`
     pub fn init(&mut self, L: &crate::ffi::TopOpeBRepDS_ListOfInterference) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_CurveIterator_inherited_Init(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_CurveIterator_inherited_Init(self as *mut Self, L)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:57 - `TopOpeBRepDS_InterferenceIterator::GeometryKind()`
     pub fn geometry_kind(&mut self, GK: crate::top_ope_b_rep_ds::Kind) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_CurveIterator_inherited_GeometryKind(
                     self as *mut Self,
                     GK.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:61 - `TopOpeBRepDS_InterferenceIterator::Geometry()`
     pub fn geometry(&mut self, G: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_CurveIterator_inherited_Geometry(self as *mut Self, G)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:65 - `TopOpeBRepDS_InterferenceIterator::SupportKind()`
     pub fn support_kind(&mut self, ST: crate::top_ope_b_rep_ds::Kind) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_CurveIterator_inherited_SupportKind(
                     self as *mut Self,
                     ST.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:69 - `TopOpeBRepDS_InterferenceIterator::Support()`
     pub fn support(&mut self, S: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_CurveIterator_inherited_Support(self as *mut Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:73 - `TopOpeBRepDS_InterferenceIterator::Match()`
     pub fn match_(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_CurveIterator_inherited_Match(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_CurveIterator_inherited_Match(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2347,16 +2784,22 @@ impl CurveIterator {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_CurveIterator_inherited_More(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:86 - `TopOpeBRepDS_InterferenceIterator::Next()`
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_CurveIterator_inherited_Next(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_CurveIterator_inherited_Next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2366,8 +2809,11 @@ impl CurveIterator {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_CurveIterator_inherited_Value(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2379,8 +2825,11 @@ impl CurveIterator {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_CurveIterator_inherited_ChangeIterator(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 }
@@ -2413,8 +2862,10 @@ impl CurvePointInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_CurvePointInterference_ctor_transition_kind_int_kind_int_real(T, ST.into(), S, GT.into(), G, P)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2424,18 +2875,23 @@ impl CurvePointInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_CurvePointInterference_parameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_CurvePointInterference.hxx`:46 - `TopOpeBRepDS_CurvePointInterference::Parameter()`
     pub fn parameter_real(&mut self, P: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_CurvePointInterference_parameter_real(self as *mut Self, P)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2445,8 +2901,11 @@ impl CurvePointInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_CurvePointInterference_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2455,8 +2914,11 @@ impl CurvePointInterference {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_CurvePointInterference_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2465,74 +2927,76 @@ impl CurvePointInterference {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_CurvePointInterference_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TopOpeBRepDS_Interference
     pub fn as_interference(&self) -> &Interference {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_CurvePointInterference_as_TopOpeBRepDS_Interference(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_CurvePointInterference_as_TopOpeBRepDS_Interference(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopOpeBRepDS_Interference (mutable)
     pub fn as_interference_mut(&mut self) -> &mut Interference {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_CurvePointInterference_as_TopOpeBRepDS_Interference_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_CurvePointInterference_as_TopOpeBRepDS_Interference_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_CurvePointInterference_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_CurvePointInterference_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_CurvePointInterference_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_CurvePointInterference_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSCurvePointInterference> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_CurvePointInterference_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::TopOpeBRepDS_CurvePointInterference_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:67 - `TopOpeBRepDS_Interference::Transition()`
@@ -2543,8 +3007,11 @@ impl CurvePointInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2556,8 +3023,11 @@ impl CurvePointInterference {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2569,8 +3039,11 @@ impl CurvePointInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            crate::top_ope_b_rep_ds::Kind::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep_ds::Kind::try_from(__val).unwrap()
         }
     }
 
@@ -2582,8 +3055,11 @@ impl CurvePointInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2595,8 +3071,11 @@ impl CurvePointInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            crate::top_ope_b_rep_ds::Kind::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep_ds::Kind::try_from(__val).unwrap()
         }
     }
 
@@ -2608,21 +3087,26 @@ impl CurvePointInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:87 - `TopOpeBRepDS_Interference::SetGeometry()`
     pub fn set_geometry(&mut self, GI: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_CurvePointInterference_inherited_SetGeometry(
                     self as *mut Self,
                     GI,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2635,8 +3119,11 @@ impl CurvePointInterference {
                     Other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2649,8 +3136,11 @@ impl CurvePointInterference {
                     Other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2663,8 +3153,11 @@ impl CurvePointInterference {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2677,8 +3170,11 @@ impl CurvePointInterference {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2688,11 +3184,14 @@ impl CurvePointInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_CurvePointInterference_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2705,20 +3204,25 @@ impl CurvePointInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_CurvePointInterference_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2730,20 +3234,25 @@ impl CurvePointInterference {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_CurvePointInterference_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2759,50 +3268,52 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepDSCurvePointInterference {
 impl HandleTopOpeBRepDSCurvePointInterference {
     /// Dereference this Handle to access the underlying TopOpeBRepDS_CurvePointInterference
     pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_CurvePointInterference {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSCurvePointInterference_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSCurvePointInterference_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_CurvePointInterference
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_CurvePointInterference {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSCurvePointInterference_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSCurvePointInterference_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopOpeBRepDS_CurvePointInterference> to Handle<TopOpeBRepDS_Interference>
     pub fn to_handle_interference(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSCurvePointInterference_to_HandleTopOpeBRepDSInterference(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSCurvePointInterference_to_HandleTopOpeBRepDSInterference(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopOpeBRepDS_CurvePointInterference> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSCurvePointInterference_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSCurvePointInterference_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2829,8 +3340,10 @@ impl DataStructure {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_DataStructure_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2838,8 +3351,10 @@ impl DataStructure {
     /// reset the data structure
     pub fn init(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_DataStructure_init(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRepDS_DataStructure_init(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2849,16 +3364,23 @@ impl DataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_DataStructure_add_surface(self as *mut Self, S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:62 - `TopOpeBRepDS_DataStructure::RemoveSurface()`
     pub fn remove_surface(&mut self, I: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_DataStructure_remove_surface(self as *mut Self, I) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_DataStructure_remove_surface(self as *mut Self, I)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2868,8 +3390,11 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_keep_surface_int(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2879,36 +3404,43 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_keep_surface_surface(self as *const Self, S)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:68 - `TopOpeBRepDS_DataStructure::ChangeKeepSurface()`
     pub fn change_keep_surface_int_bool(&mut self, I: i32, FindKeep: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_change_keep_surface_int_bool(
                     self as *mut Self,
                     I,
                     FindKeep,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:70 - `TopOpeBRepDS_DataStructure::ChangeKeepSurface()`
     pub fn change_keep_surface_surface_bool(&mut self, S: &mut Surface, FindKeep: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_change_keep_surface_surface_bool(
                     self as *mut Self,
                     S,
                     FindKeep,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2918,16 +3450,23 @@ impl DataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_DataStructure_add_curve(self as *mut Self, S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:75 - `TopOpeBRepDS_DataStructure::RemoveCurve()`
     pub fn remove_curve(&mut self, I: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_DataStructure_remove_curve(self as *mut Self, I) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_DataStructure_remove_curve(self as *mut Self, I)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2937,8 +3476,11 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_keep_curve_int(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2948,36 +3490,43 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_keep_curve_curve(self as *const Self, C)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:81 - `TopOpeBRepDS_DataStructure::ChangeKeepCurve()`
     pub fn change_keep_curve_int_bool(&mut self, I: i32, FindKeep: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_change_keep_curve_int_bool(
                     self as *mut Self,
                     I,
                     FindKeep,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:83 - `TopOpeBRepDS_DataStructure::ChangeKeepCurve()`
     pub fn change_keep_curve_curve_bool(&mut self, C: &mut Curve, FindKeep: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_change_keep_curve_curve_bool(
                     self as *mut Self,
                     C,
                     FindKeep,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2987,8 +3536,11 @@ impl DataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_DataStructure_add_point(self as *mut Self, PDS) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3004,16 +3556,23 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_add_point_ss(self as *mut Self, PDS, S1, S2)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:93 - `TopOpeBRepDS_DataStructure::RemovePoint()`
     pub fn remove_point(&mut self, I: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_DataStructure_remove_point(self as *mut Self, I) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_DataStructure_remove_point(self as *mut Self, I)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3023,8 +3582,11 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_keep_point_int(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3034,36 +3596,43 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_keep_point_point(self as *const Self, P)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:99 - `TopOpeBRepDS_DataStructure::ChangeKeepPoint()`
     pub fn change_keep_point_int_bool(&mut self, I: i32, FindKeep: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_change_keep_point_int_bool(
                     self as *mut Self,
                     I,
                     FindKeep,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:101 - `TopOpeBRepDS_DataStructure::ChangeKeepPoint()`
     pub fn change_keep_point_point_bool(&mut self, P: &mut Point, FindKeep: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_change_keep_point_point_bool(
                     self as *mut Self,
                     P,
                     FindKeep,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3074,8 +3643,11 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_add_shape_shape(self as *mut Self, S)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3086,8 +3658,11 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_add_shape_shape_int(self as *mut Self, S, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3101,8 +3676,11 @@ impl DataStructure {
                     FindKeep,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3116,44 +3694,55 @@ impl DataStructure {
                     FindKeep,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:115 - `TopOpeBRepDS_DataStructure::ChangeKeepShape()`
     pub fn change_keep_shape_int_bool(&mut self, I: i32, FindKeep: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_change_keep_shape_int_bool(
                     self as *mut Self,
                     I,
                     FindKeep,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:117 - `TopOpeBRepDS_DataStructure::ChangeKeepShape()`
     pub fn change_keep_shape_shape_bool(&mut self, S: &crate::topo_ds::Shape, FindKeep: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_change_keep_shape_shape_bool(
                     self as *mut Self,
                     S,
                     FindKeep,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:119 - `TopOpeBRepDS_DataStructure::InitSectionEdges()`
     pub fn init_section_edges(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_DataStructure_init_section_edges(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_DataStructure_init_section_edges(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3163,8 +3752,11 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_add_section_edge(self as *mut Self, E)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3174,8 +3766,11 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_surface_interferences(self as *const Self, I)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3191,8 +3786,11 @@ impl DataStructure {
                     I,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3202,8 +3800,11 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_curve_interferences(self as *const Self, I)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3219,8 +3820,11 @@ impl DataStructure {
                     I,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3230,8 +3834,11 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_point_interferences(self as *const Self, I)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3247,8 +3854,11 @@ impl DataStructure {
                     I,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3272,8 +3882,11 @@ impl DataStructure {
                     FindKeep,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3295,8 +3908,11 @@ impl DataStructure {
                     S,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3314,8 +3930,11 @@ impl DataStructure {
                     FindKeep,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3331,8 +3950,11 @@ impl DataStructure {
                     I,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3354,8 +3976,11 @@ impl DataStructure {
                     S,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3377,8 +4002,11 @@ impl DataStructure {
                     S,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3388,8 +4016,11 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_shape_same_domain_int(self as *const Self, I)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3405,8 +4036,11 @@ impl DataStructure {
                     I,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3415,8 +4049,11 @@ impl DataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_DataStructure_change_shapes(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3427,14 +4064,16 @@ impl DataStructure {
         SSD: &crate::topo_ds::Shape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_add_shape_same_domain(
                     self as *mut Self,
                     S,
                     SSD,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3445,14 +4084,16 @@ impl DataStructure {
         SSD: &crate::topo_ds::Shape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_remove_shape_same_domain(
                     self as *mut Self,
                     S,
                     SSD,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3462,8 +4103,11 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_same_domain_ref_int(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3473,36 +4117,43 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_same_domain_ref_shape(self as *const Self, S)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:172 - `TopOpeBRepDS_DataStructure::SameDomainRef()`
     pub fn same_domain_ref_int2(&mut self, I: i32, Ref: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_same_domain_ref_int2(
                     self as *mut Self,
                     I,
                     Ref,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:174 - `TopOpeBRepDS_DataStructure::SameDomainRef()`
     pub fn same_domain_ref_shape_int(&mut self, S: &crate::topo_ds::Shape, Ref: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_same_domain_ref_shape_int(
                     self as *mut Self,
                     S,
                     Ref,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3512,8 +4163,11 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_same_domain_ori_int(self as *const Self, I)
             };
-            crate::check_exception();
-            crate::top_ope_b_rep_ds::Config::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep_ds::Config::try_from(__val).unwrap()
         }
     }
 
@@ -3526,22 +4180,27 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_same_domain_ori_shape(self as *const Self, S)
             };
-            crate::check_exception();
-            crate::top_ope_b_rep_ds::Config::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep_ds::Config::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:180 - `TopOpeBRepDS_DataStructure::SameDomainOri()`
     pub fn same_domain_ori_int_config(&mut self, I: i32, Ori: crate::top_ope_b_rep_ds::Config) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_same_domain_ori_int_config(
                     self as *mut Self,
                     I,
                     Ori.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3552,14 +4211,16 @@ impl DataStructure {
         Ori: crate::top_ope_b_rep_ds::Config,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_same_domain_ori_shape_config(
                     self as *mut Self,
                     S,
                     Ori.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3569,8 +4230,11 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_same_domain_ind_int(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3580,36 +4244,43 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_same_domain_ind_shape(self as *const Self, S)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:188 - `TopOpeBRepDS_DataStructure::SameDomainInd()`
     pub fn same_domain_ind_int2(&mut self, I: i32, Ind: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_same_domain_ind_int2(
                     self as *mut Self,
                     I,
                     Ind,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:190 - `TopOpeBRepDS_DataStructure::SameDomainInd()`
     pub fn same_domain_ind_shape_int(&mut self, S: &crate::topo_ds::Shape, Ind: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_same_domain_ind_shape_int(
                     self as *mut Self,
                     S,
                     Ind,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3619,8 +4290,11 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_ancestor_rank_int(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3630,36 +4304,43 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_ancestor_rank_shape(self as *const Self, S)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:196 - `TopOpeBRepDS_DataStructure::AncestorRank()`
     pub fn ancestor_rank_int2(&mut self, I: i32, Ianc: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_ancestor_rank_int2(
                     self as *mut Self,
                     I,
                     Ianc,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:198 - `TopOpeBRepDS_DataStructure::AncestorRank()`
     pub fn ancestor_rank_shape_int(&mut self, S: &crate::topo_ds::Shape, Ianc: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_ancestor_rank_shape_int(
                     self as *mut Self,
                     S,
                     Ianc,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3670,14 +4351,16 @@ impl DataStructure {
         I: &crate::ffi::HandleTopOpeBRepDSInterference,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_add_shape_interference(
                     self as *mut Self,
                     S,
                     I,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3688,14 +4371,16 @@ impl DataStructure {
         I: &crate::ffi::HandleTopOpeBRepDSInterference,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_remove_shape_interference(
                     self as *mut Self,
                     S,
                     I,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3707,7 +4392,7 @@ impl DataStructure {
         refFirst: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_fill_shapes_same_domain_shape2_bool(
                     self as *mut Self,
                     S1,
@@ -3715,7 +4400,9 @@ impl DataStructure {
                     refFirst,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3729,7 +4416,7 @@ impl DataStructure {
         refFirst: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_fill_shapes_same_domain_shape2_config2_bool(
                     self as *mut Self,
                     S1,
@@ -3739,7 +4426,9 @@ impl DataStructure {
                     refFirst,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3750,14 +4439,16 @@ impl DataStructure {
         S2: &crate::topo_ds::Shape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_unfill_shapes_same_domain(
                     self as *mut Self,
                     S1,
                     S2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3766,8 +4457,11 @@ impl DataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_DataStructure_nb_surfaces(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3776,18 +4470,23 @@ impl DataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_DataStructure_nb_curves(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:222 - `TopOpeBRepDS_DataStructure::ChangeNbCurves()`
     pub fn change_nb_curves(&mut self, N: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_change_nb_curves(self as *mut Self, N)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3796,8 +4495,11 @@ impl DataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_DataStructure_nb_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3806,8 +4508,11 @@ impl DataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_DataStructure_nb_shapes(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3817,8 +4522,11 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_nb_section_edges(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3828,8 +4536,11 @@ impl DataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_DataStructure_surface(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3840,8 +4551,11 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_change_surface(self as *mut Self, I)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3851,8 +4565,11 @@ impl DataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_DataStructure_curve(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3863,8 +4580,11 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_change_curve(self as *mut Self, I)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3874,8 +4594,11 @@ impl DataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_DataStructure_point(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3886,8 +4609,11 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_change_point(self as *mut Self, I)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3903,8 +4629,11 @@ impl DataStructure {
                     FindKeep,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3921,8 +4650,11 @@ impl DataStructure {
                     FindKeep,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3936,8 +4668,11 @@ impl DataStructure {
                     FindKeep,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3951,8 +4686,11 @@ impl DataStructure {
                     FindKeep,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3966,8 +4704,11 @@ impl DataStructure {
                     FindKeep,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3983,8 +4724,11 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_has_geometry(self as *const Self, S)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3995,8 +4739,11 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_has_shape(self as *const Self, S, FindKeep)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4007,10 +4754,12 @@ impl DataStructure {
         S: &crate::ffi::HandleGeomSurface,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_set_new_surface(self as *mut Self, F, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4020,8 +4769,11 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_has_new_surface(self as *const Self, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4037,18 +4789,23 @@ impl DataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_new_surface(self as *const Self, F)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_DataStructure.hxx`:287 - `TopOpeBRepDS_DataStructure::Isfafa()`
     pub fn isfafa_bool(&mut self, isfafa: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_DataStructure_isfafa_bool(self as *mut Self, isfafa)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4057,8 +4814,11 @@ impl DataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_DataStructure_isfafa(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4072,8 +4832,11 @@ impl DataStructure {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4087,8 +4850,11 @@ impl DataStructure {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4112,8 +4878,11 @@ impl DataStructure {
                     aFlag,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4132,8 +4901,11 @@ impl DataStructure {
                     aShape,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4147,8 +4919,11 @@ impl DataStructure {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4162,8 +4937,11 @@ impl DataStructure {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 }
@@ -4190,8 +4968,10 @@ impl Dumper {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Dumper_ctor_handletopopebrepdshdatastructure(HDS)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4209,8 +4989,11 @@ impl Dumper {
                     I,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4223,8 +5006,11 @@ impl Dumper {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Dumper_s_dump_ref_ori_shape(self as *const Self, S)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4234,8 +5020,11 @@ impl Dumper {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Dumper_s_print_shape_int(self as *const Self, I)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4248,8 +5037,11 @@ impl Dumper {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Dumper_s_print_shape_shape(self as *const Self, S)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4267,8 +5059,11 @@ impl Dumper {
                     B,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4286,8 +5081,11 @@ impl Dumper {
                     B,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -4314,26 +5112,34 @@ impl EIR {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_EIR_ctor_handletopopebrepdshdatastructure(HDS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_EIR.hxx`:33 - `TopOpeBRepDS_EIR::ProcessEdgeInterferences()`
     pub fn process_edge_interferences(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_EIR_process_edge_interferences(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_EIR_process_edge_interferences(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_EIR.hxx`:35 - `TopOpeBRepDS_EIR::ProcessEdgeInterferences()`
     pub fn process_edge_interferences_int(&mut self, I: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_EIR_process_edge_interferences_int(self as *mut Self, I)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4359,22 +5165,26 @@ impl Edge3dInterferenceTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Edge3dInterferenceTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Edge3dInterferenceTool.hxx`:41 - `TopOpeBRepDS_Edge3dInterferenceTool::InitPointVertex()`
     pub fn init_point_vertex(&mut self, IsVertex: i32, VonOO: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Edge3dInterferenceTool_init_point_vertex(
                     self as *mut Self,
                     IsVertex,
                     VonOO,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4387,7 +5197,7 @@ impl Edge3dInterferenceTool {
         I: &crate::ffi::HandleTopOpeBRepDSInterference,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Edge3dInterferenceTool_init(
                     self as *mut Self,
                     Eref,
@@ -4396,7 +5206,9 @@ impl Edge3dInterferenceTool {
                     I,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4409,7 +5221,7 @@ impl Edge3dInterferenceTool {
         I: &crate::ffi::HandleTopOpeBRepDSInterference,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Edge3dInterferenceTool_add(
                     self as *mut Self,
                     Eref,
@@ -4418,17 +5230,21 @@ impl Edge3dInterferenceTool {
                     I,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Edge3dInterferenceTool.hxx`:53 - `TopOpeBRepDS_Edge3dInterferenceTool::Transition()`
     pub fn transition(&self, I: &crate::ffi::HandleTopOpeBRepDSInterference) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Edge3dInterferenceTool_transition(self as *const Self, I)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4452,8 +5268,10 @@ impl EdgeInterferenceTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_EdgeInterferenceTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4464,8 +5282,12 @@ impl EdgeInterferenceTool {
         I: &crate::ffi::HandleTopOpeBRepDSInterference,
     ) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_EdgeInterferenceTool_init(self as *mut Self, E, I) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_EdgeInterferenceTool_init(self as *mut Self, E, I)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4477,10 +5299,12 @@ impl EdgeInterferenceTool {
         I: &crate::ffi::HandleTopOpeBRepDSInterference,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_EdgeInterferenceTool_add_shape2_handletopopebrepdsinterference(self as *mut Self, E, V, I)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4492,20 +5316,24 @@ impl EdgeInterferenceTool {
         I: &crate::ffi::HandleTopOpeBRepDSInterference,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_EdgeInterferenceTool_add_shape_point_handletopopebrepdsinterference(self as *mut Self, E, P, I)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_EdgeInterferenceTool.hxx`:49 - `TopOpeBRepDS_EdgeInterferenceTool::Transition()`
     pub fn transition(&self, I: &crate::ffi::HandleTopOpeBRepDSInterference) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_EdgeInterferenceTool_transition(self as *const Self, I)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4549,8 +5377,10 @@ impl EdgeVertexInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_EdgeVertexInterference_ctor_transition_kind_int2_bool_config_real(T, ST.into(), S, G, GIsBound, C.into(), P)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4577,8 +5407,10 @@ impl EdgeVertexInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_EdgeVertexInterference_ctor_transition_int2_bool_config_real(T, S, G, GIsBound, C.into(), P)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4588,18 +5420,23 @@ impl EdgeVertexInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_EdgeVertexInterference_parameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_EdgeVertexInterference.hxx`:76 - `TopOpeBRepDS_EdgeVertexInterference::Parameter()`
     pub fn parameter_real(&mut self, P: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_EdgeVertexInterference_parameter_real(self as *mut Self, P)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4609,8 +5446,11 @@ impl EdgeVertexInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_EdgeVertexInterference_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4619,8 +5459,11 @@ impl EdgeVertexInterference {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_EdgeVertexInterference_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4629,96 +5472,100 @@ impl EdgeVertexInterference {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_EdgeVertexInterference_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TopOpeBRepDS_ShapeShapeInterference
     pub fn as_shape_shape_interference(&self) -> &ShapeShapeInterference {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_EdgeVertexInterference_as_TopOpeBRepDS_ShapeShapeInterference(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeVertexInterference_as_TopOpeBRepDS_ShapeShapeInterference(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopOpeBRepDS_ShapeShapeInterference (mutable)
     pub fn as_shape_shape_interference_mut(&mut self) -> &mut ShapeShapeInterference {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_EdgeVertexInterference_as_TopOpeBRepDS_ShapeShapeInterference_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeVertexInterference_as_TopOpeBRepDS_ShapeShapeInterference_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to TopOpeBRepDS_Interference
     pub fn as_interference(&self) -> &Interference {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_EdgeVertexInterference_as_TopOpeBRepDS_Interference(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeVertexInterference_as_TopOpeBRepDS_Interference(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopOpeBRepDS_Interference (mutable)
     pub fn as_interference_mut(&mut self) -> &mut Interference {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_EdgeVertexInterference_as_TopOpeBRepDS_Interference_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeVertexInterference_as_TopOpeBRepDS_Interference_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_EdgeVertexInterference_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeVertexInterference_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_EdgeVertexInterference_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_EdgeVertexInterference_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_EdgeVertexInterference_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::TopOpeBRepDS_EdgeVertexInterference_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_ShapeShapeInterference.hxx`:68 - `TopOpeBRepDS_ShapeShapeInterference::Config()`
@@ -4729,8 +5576,11 @@ impl EdgeVertexInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            crate::top_ope_b_rep_ds::Config::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep_ds::Config::try_from(__val).unwrap()
         }
     }
 
@@ -4742,21 +5592,26 @@ impl EdgeVertexInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_ShapeShapeInterference.hxx`:72 - `TopOpeBRepDS_ShapeShapeInterference::SetGBound()`
     pub fn set_g_bound(&mut self, b: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_SetGBound(
                     self as *mut Self,
                     b,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4768,8 +5623,11 @@ impl EdgeVertexInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4781,8 +5639,11 @@ impl EdgeVertexInterference {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4794,8 +5655,11 @@ impl EdgeVertexInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            crate::top_ope_b_rep_ds::Kind::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep_ds::Kind::try_from(__val).unwrap()
         }
     }
 
@@ -4807,8 +5671,11 @@ impl EdgeVertexInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4820,8 +5687,11 @@ impl EdgeVertexInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            crate::top_ope_b_rep_ds::Kind::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep_ds::Kind::try_from(__val).unwrap()
         }
     }
 
@@ -4833,21 +5703,26 @@ impl EdgeVertexInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:87 - `TopOpeBRepDS_Interference::SetGeometry()`
     pub fn set_geometry(&mut self, GI: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_SetGeometry(
                     self as *mut Self,
                     GI,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4860,8 +5735,11 @@ impl EdgeVertexInterference {
                     Other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4874,8 +5752,11 @@ impl EdgeVertexInterference {
                     Other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4888,8 +5769,11 @@ impl EdgeVertexInterference {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4902,8 +5786,11 @@ impl EdgeVertexInterference {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4913,11 +5800,14 @@ impl EdgeVertexInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4930,20 +5820,25 @@ impl EdgeVertexInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4955,20 +5850,25 @@ impl EdgeVertexInterference {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_EdgeVertexInterference_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4984,63 +5884,65 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepDSEdgeVertexInterference {
 impl HandleTopOpeBRepDSEdgeVertexInterference {
     /// Dereference this Handle to access the underlying TopOpeBRepDS_EdgeVertexInterference
     pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_EdgeVertexInterference {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_EdgeVertexInterference
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_EdgeVertexInterference {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopOpeBRepDS_EdgeVertexInterference> to Handle<TopOpeBRepDS_ShapeShapeInterference>
     pub fn to_handle_shape_shape_interference(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSShapeShapeInterference> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference_to_HandleTopOpeBRepDSShapeShapeInterference(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference_to_HandleTopOpeBRepDSShapeShapeInterference(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopOpeBRepDS_EdgeVertexInterference> to Handle<TopOpeBRepDS_Interference>
     pub fn to_handle_interference(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference_to_HandleTopOpeBRepDSInterference(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference_to_HandleTopOpeBRepDSInterference(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopOpeBRepDS_EdgeVertexInterference> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5062,8 +5964,10 @@ impl Explorer {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Explorer_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5077,8 +5981,10 @@ impl Explorer {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Explorer_ctor_handletopopebrepdshdatastructure_shapeenum_bool(HDS, T.into(), findkeep)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5098,10 +6004,12 @@ impl Explorer {
         findkeep: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Explorer_init(self as *mut Self, HDS, T.into(), findkeep)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5109,8 +6017,11 @@ impl Explorer {
     pub fn type_(&self) -> crate::top_abs::ShapeEnum {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Explorer_type_(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -5118,16 +6029,21 @@ impl Explorer {
     pub fn more(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Explorer_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Explorer.hxx`:51 - `TopOpeBRepDS_Explorer::Next()`
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Explorer_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRepDS_Explorer_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5136,8 +6052,11 @@ impl Explorer {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Explorer_current(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5145,8 +6064,11 @@ impl Explorer {
     pub fn index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Explorer_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5154,8 +6076,11 @@ impl Explorer {
     pub fn face(&self) -> &crate::topo_ds::Face {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Explorer_face(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5163,8 +6088,11 @@ impl Explorer {
     pub fn edge(&self) -> &crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Explorer_edge(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5172,8 +6100,11 @@ impl Explorer {
     pub fn vertex(&self) -> &crate::topo_ds::Vertex {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Explorer_vertex(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -5200,8 +6131,10 @@ impl FIR {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_FIR_ctor_handletopopebrepdshdatastructure(HDS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5211,10 +6144,12 @@ impl FIR {
         M: &crate::ffi::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_FIR_process_face_interferences_datamapofshapelistofshapeon1state(self as *mut Self, M)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5225,10 +6160,12 @@ impl FIR {
         M: &crate::ffi::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_FIR_process_face_interferences_int_datamapofshapelistofshapeon1state(self as *mut Self, I, M)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5267,8 +6204,10 @@ impl FaceEdgeInterference {
                     C.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5278,8 +6217,11 @@ impl FaceEdgeInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_FaceEdgeInterference_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5287,8 +6229,11 @@ impl FaceEdgeInterference {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_FaceEdgeInterference_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5297,97 +6242,100 @@ impl FaceEdgeInterference {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_FaceEdgeInterference_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TopOpeBRepDS_ShapeShapeInterference
     pub fn as_shape_shape_interference(&self) -> &ShapeShapeInterference {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_FaceEdgeInterference_as_TopOpeBRepDS_ShapeShapeInterference(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_FaceEdgeInterference_as_TopOpeBRepDS_ShapeShapeInterference(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopOpeBRepDS_ShapeShapeInterference (mutable)
     pub fn as_shape_shape_interference_mut(&mut self) -> &mut ShapeShapeInterference {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_FaceEdgeInterference_as_TopOpeBRepDS_ShapeShapeInterference_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_FaceEdgeInterference_as_TopOpeBRepDS_ShapeShapeInterference_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to TopOpeBRepDS_Interference
     pub fn as_interference(&self) -> &Interference {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_FaceEdgeInterference_as_TopOpeBRepDS_Interference(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_FaceEdgeInterference_as_TopOpeBRepDS_Interference(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopOpeBRepDS_Interference (mutable)
     pub fn as_interference_mut(&mut self) -> &mut Interference {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_FaceEdgeInterference_as_TopOpeBRepDS_Interference_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_FaceEdgeInterference_as_TopOpeBRepDS_Interference_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_FaceEdgeInterference_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_FaceEdgeInterference_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_FaceEdgeInterference_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_FaceEdgeInterference_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference> {
-        {
-            let __result =
-                unsafe { crate::ffi::TopOpeBRepDS_FaceEdgeInterference_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::TopOpeBRepDS_FaceEdgeInterference_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_ShapeShapeInterference.hxx`:68 - `TopOpeBRepDS_ShapeShapeInterference::Config()`
@@ -5396,8 +6344,11 @@ impl FaceEdgeInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_Config(self as *const Self)
             };
-            crate::check_exception();
-            crate::top_ope_b_rep_ds::Config::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep_ds::Config::try_from(__val).unwrap()
         }
     }
 
@@ -5407,21 +6358,26 @@ impl FaceEdgeInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_GBound(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_ShapeShapeInterference.hxx`:72 - `TopOpeBRepDS_ShapeShapeInterference::SetGBound()`
     pub fn set_g_bound(&mut self, b: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_SetGBound(
                     self as *mut Self,
                     b,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5433,8 +6389,11 @@ impl FaceEdgeInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5446,8 +6405,11 @@ impl FaceEdgeInterference {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5459,8 +6421,11 @@ impl FaceEdgeInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            crate::top_ope_b_rep_ds::Kind::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep_ds::Kind::try_from(__val).unwrap()
         }
     }
 
@@ -5470,8 +6435,11 @@ impl FaceEdgeInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_Support(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5483,8 +6451,11 @@ impl FaceEdgeInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            crate::top_ope_b_rep_ds::Kind::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep_ds::Kind::try_from(__val).unwrap()
         }
     }
 
@@ -5496,21 +6467,26 @@ impl FaceEdgeInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:87 - `TopOpeBRepDS_Interference::SetGeometry()`
     pub fn set_geometry(&mut self, GI: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_SetGeometry(
                     self as *mut Self,
                     GI,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5523,8 +6499,11 @@ impl FaceEdgeInterference {
                     Other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5537,8 +6516,11 @@ impl FaceEdgeInterference {
                     Other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5551,8 +6533,11 @@ impl FaceEdgeInterference {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5565,8 +6550,11 @@ impl FaceEdgeInterference {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5576,11 +6564,14 @@ impl FaceEdgeInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5593,20 +6584,25 @@ impl FaceEdgeInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5618,18 +6614,23 @@ impl FaceEdgeInterference {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_FaceEdgeInterference_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5645,65 +6646,64 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepDSFaceEdgeInterference {
 impl HandleTopOpeBRepDSFaceEdgeInterference {
     /// Dereference this Handle to access the underlying TopOpeBRepDS_FaceEdgeInterference
     pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_FaceEdgeInterference {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_FaceEdgeInterference
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_FaceEdgeInterference {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopOpeBRepDS_FaceEdgeInterference> to Handle<TopOpeBRepDS_ShapeShapeInterference>
     pub fn to_handle_shape_shape_interference(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSShapeShapeInterference> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference_to_HandleTopOpeBRepDSShapeShapeInterference(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference_to_HandleTopOpeBRepDSShapeShapeInterference(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopOpeBRepDS_FaceEdgeInterference> to Handle<TopOpeBRepDS_Interference>
     pub fn to_handle_interference(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference_to_HandleTopOpeBRepDSInterference(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference_to_HandleTopOpeBRepDSInterference(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopOpeBRepDS_FaceEdgeInterference> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5727,8 +6727,10 @@ impl FaceInterferenceTool {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_FaceInterferenceTool_ctor_datastructureptr(P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5743,7 +6745,7 @@ impl FaceInterferenceTool {
         I: &crate::ffi::HandleTopOpeBRepDSInterference,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_FaceInterferenceTool_init(
                     self as *mut Self,
                     FI,
@@ -5752,7 +6754,9 @@ impl FaceInterferenceTool {
                     I,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5768,10 +6772,12 @@ impl FaceInterferenceTool {
         I: &crate::ffi::HandleTopOpeBRepDSInterference,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_FaceInterferenceTool_add_shape3_bool_handletopopebrepdsinterference(self as *mut Self, FI, F, E, Eisnew, I)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5783,38 +6789,44 @@ impl FaceInterferenceTool {
         I: &crate::ffi::HandleTopOpeBRepDSInterference,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_FaceInterferenceTool_add_shape_curve_handletopopebrepdsinterference(self as *mut Self, E, C, I)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_FaceInterferenceTool.hxx`:60 - `TopOpeBRepDS_FaceInterferenceTool::SetEdgePntPar()`
     pub fn set_edge_pnt_par(&mut self, P: &crate::gp::Pnt, par: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_FaceInterferenceTool_set_edge_pnt_par(
                     self as *mut Self,
                     P,
                     par,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_FaceInterferenceTool.hxx`:62 - `TopOpeBRepDS_FaceInterferenceTool::GetEdgePntPar()`
     pub fn get_edge_pnt_par(&self, P: &mut crate::gp::Pnt, par: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_FaceInterferenceTool_get_edge_pnt_par(
                     self as *const Self,
                     P,
                     par,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5826,18 +6838,23 @@ impl FaceInterferenceTool {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_FaceInterferenceTool.hxx`:66 - `TopOpeBRepDS_FaceInterferenceTool::Transition()`
     pub fn transition(&self, I: &crate::ffi::HandleTopOpeBRepDSInterference) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_FaceInterferenceTool_transition(self as *const Self, I)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5865,16 +6882,21 @@ impl Filter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Filter_ctor_handletopopebrepdshdatastructure_shapeclassifierptr(HDS, pClassif)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Filter.hxx`:37 - `TopOpeBRepDS_Filter::ProcessInterferences()`
     pub fn process_interferences(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Filter_process_interferences(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_Filter_process_interferences(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5884,10 +6906,12 @@ impl Filter {
         MEsp: &crate::ffi::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Filter_process_face_interferences_datamapofshapelistofshapeon1state(self as *mut Self, MEsp)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5898,53 +6922,63 @@ impl Filter {
         MEsp: &crate::ffi::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Filter_process_face_interferences_int_datamapofshapelistofshapeon1state(self as *mut Self, I, MEsp)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Filter.hxx`:46 - `TopOpeBRepDS_Filter::ProcessEdgeInterferences()`
     pub fn process_edge_interferences(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Filter_process_edge_interferences(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Filter.hxx`:48 - `TopOpeBRepDS_Filter::ProcessEdgeInterferences()`
     pub fn process_edge_interferences_int(&mut self, I: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Filter_process_edge_interferences_int(self as *mut Self, I)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Filter.hxx`:50 - `TopOpeBRepDS_Filter::ProcessCurveInterferences()`
     pub fn process_curve_interferences(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Filter_process_curve_interferences(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Filter.hxx`:52 - `TopOpeBRepDS_Filter::ProcessCurveInterferences()`
     pub fn process_curve_interferences_int(&mut self, I: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Filter_process_curve_interferences_int(
                     self as *mut Self,
                     I,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5971,16 +7005,20 @@ impl GapFiller {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_GapFiller_ctor_handletopopebrepdshdatastructure(HDS)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:41 - `TopOpeBRepDS_GapFiller::Perform()`
     pub fn perform(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_GapFiller_perform(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRepDS_GapFiller_perform(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5993,10 +7031,12 @@ impl GapFiller {
         LI: &mut crate::ffi::TopOpeBRepDS_ListOfInterference,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_GapFiller_find_associated_points(self as *mut Self, I, LI)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6013,8 +7053,11 @@ impl GapFiller {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_GapFiller_check_connexity(self as *mut Self, LI)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6025,10 +7068,12 @@ impl GapFiller {
         LI: &mut crate::ffi::TopOpeBRepDS_ListOfInterference,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_GapFiller_add_points_on_shape(self as *mut Self, S, LI)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6041,14 +7086,16 @@ impl GapFiller {
         LI: &crate::ffi::TopOpeBRepDS_ListOfInterference,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_GapFiller_add_points_on_connex_shape(
                     self as *mut Self,
                     F,
                     LI,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6059,8 +7106,12 @@ impl GapFiller {
         LI: &mut crate::ffi::TopOpeBRepDS_ListOfInterference,
     ) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_GapFiller_filter_by_face(self as *mut Self, F, LI) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_GapFiller_filter_by_face(self as *mut Self, F, LI)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6071,8 +7122,12 @@ impl GapFiller {
         LI: &mut crate::ffi::TopOpeBRepDS_ListOfInterference,
     ) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_GapFiller_filter_by_edge(self as *mut Self, E, LI) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_GapFiller_filter_by_edge(self as *mut Self, E, LI)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6084,7 +7139,7 @@ impl GapFiller {
         LI: &mut crate::ffi::TopOpeBRepDS_ListOfInterference,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_GapFiller_filter_by_incident_distance(
                     self as *mut Self,
                     F,
@@ -6092,7 +7147,9 @@ impl GapFiller {
                     LI,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6107,8 +7164,11 @@ impl GapFiller {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_GapFiller_is_on_face(self as *const Self, I, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6125,16 +7185,23 @@ impl GapFiller {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_GapFiller_is_on_edge(self as *const Self, I, E) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_GapFiller.hxx`:81 - `TopOpeBRepDS_GapFiller::BuildNewGeometries()`
     pub fn build_new_geometries(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_GapFiller_build_new_geometries(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_GapFiller_build_new_geometries(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6145,10 +7212,12 @@ impl GapFiller {
         Done: &mut crate::ffi::TColStd_MapOfInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_GapFiller_re_build_geom(self as *mut Self, I1, Done)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6171,8 +7240,10 @@ impl GapTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_GapTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6184,16 +7255,20 @@ impl GapTool {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_GapTool_ctor_handletopopebrepdshdatastructure(HDS)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_GapTool.hxx`:44 - `TopOpeBRepDS_GapTool::Init()`
     pub fn init(&mut self, HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_GapTool_init(self as *mut Self, HDS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRepDS_GapTool_init(self as *mut Self, HDS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6203,8 +7278,11 @@ impl GapTool {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_GapTool_interferences(self as *const Self, IndexPoint)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6223,8 +7301,11 @@ impl GapTool {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_GapTool_same_interferences(self as *const Self, I)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6243,8 +7324,11 @@ impl GapTool {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_GapTool_change_same_interferences(self as *mut Self, I)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -6253,8 +7337,11 @@ impl GapTool {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_GapTool_curve(self as *const Self, I, C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6267,8 +7354,11 @@ impl GapTool {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_GapTool_edge_support(self as *const Self, I, E) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6285,8 +7375,11 @@ impl GapTool {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_GapTool_faces_support(self as *const Self, I, F1, F2)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6301,16 +7394,23 @@ impl GapTool {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_GapTool_parameter_on_edge(self as *const Self, I, E, U)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_GapTool.hxx`:71 - `TopOpeBRepDS_GapTool::SetPoint()`
     pub fn set_point(&mut self, I: &crate::ffi::HandleTopOpeBRepDSInterference, IndexPoint: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_GapTool_set_point(self as *mut Self, I, IndexPoint) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_GapTool_set_point(self as *mut Self, I, IndexPoint)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6322,10 +7422,12 @@ impl GapTool {
         U: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_GapTool_set_parameter_on_edge(self as *mut Self, I, E, U)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6334,8 +7436,11 @@ impl GapTool {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_GapTool_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6343,8 +7448,11 @@ impl GapTool {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_GapTool_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6352,42 +7460,44 @@ impl GapTool {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_GapTool_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_GapTool_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopOpeBRepDS_GapTool_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_GapTool_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_GapTool_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSGapTool> {
-        {
-            let __result = unsafe { crate::ffi::TopOpeBRepDS_GapTool_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopOpeBRepDS_GapTool_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -6396,8 +7506,11 @@ impl GapTool {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_GapTool_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6407,8 +7520,11 @@ impl GapTool {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_GapTool_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6417,11 +7533,14 @@ impl GapTool {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_GapTool_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6432,18 +7551,23 @@ impl GapTool {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_GapTool_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_GapTool_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6453,16 +7577,22 @@ impl GapTool {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_GapTool_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_GapTool_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_GapTool_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6478,35 +7608,31 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepDSGapTool {
 impl HandleTopOpeBRepDSGapTool {
     /// Dereference this Handle to access the underlying TopOpeBRepDS_GapTool
     pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_GapTool {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopOpeBRepDSGapTool_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopOpeBRepDSGapTool_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_GapTool
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_GapTool {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopOpeBRepDSGapTool_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTopOpeBRepDSGapTool_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopOpeBRepDS_GapTool> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSGapTool_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSGapTool_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6529,16 +7655,21 @@ impl GeometryData {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_GeometryData_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_GeometryData.hxx`:37 - `TopOpeBRepDS_GeometryData::Assign()`
     pub fn assign(&mut self, Other: &GeometryData) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_GeometryData_assign(self as *mut Self, Other) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_GeometryData_assign(self as *mut Self, Other) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6547,8 +7678,11 @@ impl GeometryData {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_GeometryData_interferences(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6558,27 +7692,34 @@ impl GeometryData {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_GeometryData_change_interferences(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_GeometryData.hxx`:45 - `TopOpeBRepDS_GeometryData::AddInterference()`
     pub fn add_interference(&mut self, I: &crate::ffi::HandleTopOpeBRepDSInterference) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_GeometryData_add_interference(self as *mut Self, I) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_GeometryData_add_interference(self as *mut Self, I)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::TopOpeBRepDS_GeometryData_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::TopOpeBRepDS_GeometryData_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6602,8 +7743,10 @@ impl HArray1OfDataMapOfIntegerListOfInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_ctor()
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6615,8 +7758,10 @@ impl HArray1OfDataMapOfIntegerListOfInterference {
                     theLower, theUpper,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6632,8 +7777,10 @@ impl HArray1OfDataMapOfIntegerListOfInterference {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6648,8 +7795,10 @@ impl HArray1OfDataMapOfIntegerListOfInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_ctor_type_int2_bool(theBegin, theLower, theUpper, arg3)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6661,8 +7810,10 @@ impl HArray1OfDataMapOfIntegerListOfInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_ctor_array1ofdatamapofintegerlistofinterference(theOther)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6674,8 +7825,11 @@ impl HArray1OfDataMapOfIntegerListOfInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6689,8 +7843,11 @@ impl HArray1OfDataMapOfIntegerListOfInterference {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -6702,8 +7859,11 @@ impl HArray1OfDataMapOfIntegerListOfInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6713,8 +7873,11 @@ impl HArray1OfDataMapOfIntegerListOfInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_get_type_name()
             };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6724,31 +7887,34 @@ impl HArray1OfDataMapOfIntegerListOfInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_get_type_descriptor()
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
@@ -6756,15 +7922,15 @@ impl HArray1OfDataMapOfIntegerListOfInterference {
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference>
     {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_to_handle(
-                    obj.into_raw(),
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_to_handle(
+                obj.into_raw(),
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -6773,8 +7939,11 @@ impl HArray1OfDataMapOfIntegerListOfInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6784,8 +7953,11 @@ impl HArray1OfDataMapOfIntegerListOfInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6797,11 +7969,14 @@ impl HArray1OfDataMapOfIntegerListOfInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6812,18 +7987,23 @@ impl HArray1OfDataMapOfIntegerListOfInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6833,18 +8013,23 @@ impl HArray1OfDataMapOfIntegerListOfInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6860,41 +8045,41 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepDSHArray1OfDataMapOfIntegerL
 impl HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference {
     /// Dereference this Handle to access the underlying TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference
     pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_get(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_get(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference
     pub fn get_mut(
         &mut self,
     ) -> &mut crate::ffi::TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_get_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_get_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopOpeBRepDS_HArray1OfDataMapOfIntegerListOfInterference> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSHArray1OfDataMapOfIntegerListOfInterference_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6916,18 +8101,22 @@ impl HDataStructure {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:49 - `TopOpeBRepDS_HDataStructure::AddAncestors()`
     pub fn add_ancestors_shape(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_add_ancestors_shape(self as *mut Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6943,7 +8132,7 @@ impl HDataStructure {
         T2: crate::top_abs::ShapeEnum,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_add_ancestors_shape_shapeenum2(
                     self as *mut Self,
                     S,
@@ -6951,7 +8140,9 @@ impl HDataStructure {
                     T2.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6959,8 +8150,11 @@ impl HDataStructure {
     /// Check the integrity of the DS
     pub fn chk_intg(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_chk_intg(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_chk_intg(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6969,8 +8163,11 @@ impl HDataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_ds(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6979,8 +8176,11 @@ impl HDataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_change_ds(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -6989,8 +8189,11 @@ impl HDataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_nb_surfaces(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6999,8 +8202,11 @@ impl HDataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_nb_curves(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7009,8 +8215,11 @@ impl HDataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_nb_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7020,8 +8229,11 @@ impl HDataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_surface(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7033,8 +8245,11 @@ impl HDataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_surface_curves(self as *const Self, I)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7044,8 +8259,11 @@ impl HDataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_curve(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7056,8 +8274,11 @@ impl HDataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_change_curve(self as *mut Self, I)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7069,8 +8290,11 @@ impl HDataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_curve_points(self as *const Self, I)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7080,8 +8304,11 @@ impl HDataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_point(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7090,8 +8317,11 @@ impl HDataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_nb_shapes(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7106,8 +8336,11 @@ impl HDataStructure {
                     FindKeep,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7123,8 +8356,11 @@ impl HDataStructure {
                     FindKeep,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7135,8 +8371,11 @@ impl HDataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_has_geometry(self as *const Self, S)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7149,8 +8388,11 @@ impl HDataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_has_shape(self as *const Self, S, FindKeep)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7166,8 +8408,11 @@ impl HDataStructure {
                     FindKeep,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7182,8 +8427,11 @@ impl HDataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_same_domain(self as *const Self, S)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7201,8 +8449,11 @@ impl HDataStructure {
                     S,
                 )
             };
-            crate::check_exception();
-            crate::top_ope_b_rep_ds::Config::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep_ds::Config::try_from(__val).unwrap()
         }
     }
 
@@ -7217,8 +8468,11 @@ impl HDataStructure {
                     S,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7233,8 +8487,11 @@ impl HDataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_solid_surfaces_shape(self as *const Self, S)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7246,8 +8503,11 @@ impl HDataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_solid_surfaces_int(self as *const Self, I)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7259,8 +8519,11 @@ impl HDataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_face_curves_shape(self as *const Self, F)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7272,8 +8535,11 @@ impl HDataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_face_curves_int(self as *const Self, I)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7285,8 +8551,11 @@ impl HDataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_edge_points(self as *const Self, E)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7296,16 +8565,23 @@ impl HDataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_make_curve(self as *mut Self, C1, C2)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_HDataStructure.hxx`:151 - `TopOpeBRepDS_HDataStructure::RemoveCurve()`
     pub fn remove_curve(&mut self, iC: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_remove_curve(self as *mut Self, iC) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_HDataStructure_remove_curve(self as *mut Self, iC)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7315,8 +8591,11 @@ impl HDataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_nb_geometry(self as *const Self, K.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7329,8 +8608,11 @@ impl HDataStructure {
                     K.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7339,8 +8621,11 @@ impl HDataStructure {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_nb_topology(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7352,8 +8637,11 @@ impl HDataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_edges_same_parameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7364,14 +8652,16 @@ impl HDataStructure {
         L2: &mut crate::ffi::TopOpeBRepDS_ListOfInterference,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_sort_on_parameter_listofinterference2(
                     self as *const Self,
                     L1,
                     L2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7381,13 +8671,15 @@ impl HDataStructure {
         L: &mut crate::ffi::TopOpeBRepDS_ListOfInterference,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_sort_on_parameter_listofinterference(
                     self as *const Self,
                     L,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7399,7 +8691,7 @@ impl HDataStructure {
         Max: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_min_max_on_parameter(
                     self as *const Self,
                     L,
@@ -7407,7 +8699,9 @@ impl HDataStructure {
                     Max,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7431,8 +8725,11 @@ impl HDataStructure {
                     PDS,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7459,8 +8756,11 @@ impl HDataStructure {
                     &mut K_i32_,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         };
         *K = crate::top_ope_b_rep_ds::Kind::try_from(K_i32_).unwrap();
         result_
@@ -7475,10 +8775,12 @@ impl HDataStructure {
         str: &crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_store_interference_handletopopebrepdsinterference_listofinterference_asciistring(self as *mut Self, I, LI, str)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7491,10 +8793,12 @@ impl HDataStructure {
         str: &crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_store_interference_handletopopebrepdsinterference_shape_asciistring(self as *mut Self, I, S, str)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7507,10 +8811,12 @@ impl HDataStructure {
         str: &crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_store_interference_handletopopebrepdsinterference_int_asciistring(self as *mut Self, I, IS, str)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7522,10 +8828,12 @@ impl HDataStructure {
         str: &crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_store_interferences_listofinterference_shape_asciistring(self as *mut Self, LI, S, str)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7537,10 +8845,12 @@ impl HDataStructure {
         str: &crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_store_interferences_listofinterference_int_asciistring(self as *mut Self, LI, IS, str)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7552,10 +8862,12 @@ impl HDataStructure {
         str: &crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_clear_store_interferences_listofinterference_shape_asciistring(self as *mut Self, LI, S, str)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7567,10 +8879,12 @@ impl HDataStructure {
         str: &crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_clear_store_interferences_listofinterference_int_asciistring(self as *mut Self, LI, IS, str)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7580,8 +8894,11 @@ impl HDataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7589,8 +8906,11 @@ impl HDataStructure {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -7598,43 +8918,45 @@ impl HDataStructure {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_HDataStructure_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_HDataStructure_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_HDataStructure_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSHDataStructure> {
-        {
-            let __result =
-                unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopOpeBRepDS_HDataStructure_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -7646,8 +8968,11 @@ impl HDataStructure {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7660,8 +8985,11 @@ impl HDataStructure {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7671,11 +8999,14 @@ impl HDataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7686,20 +9017,25 @@ impl HDataStructure {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7711,18 +9047,23 @@ impl HDataStructure {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_HDataStructure_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7738,35 +9079,35 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepDSHDataStructure {
 impl HandleTopOpeBRepDSHDataStructure {
     /// Dereference this Handle to access the underlying TopOpeBRepDS_HDataStructure
     pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_HDataStructure {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopOpeBRepDSHDataStructure_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleTopOpeBRepDSHDataStructure_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_HDataStructure
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_HDataStructure {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopOpeBRepDSHDataStructure_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTopOpeBRepDSHDataStructure_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopOpeBRepDS_HDataStructure> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSHDataStructure_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSHDataStructure_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -7809,8 +9150,10 @@ impl Interference {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Interference_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7832,8 +9175,10 @@ impl Interference {
                     Geometry,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7845,8 +9190,10 @@ impl Interference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Interference_ctor_handletopopebrepdsinterference(I)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7855,8 +9202,11 @@ impl Interference {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Interference_transition(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7866,18 +9216,23 @@ impl Interference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Interference_change_transition(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Interference.hxx`:71 - `TopOpeBRepDS_Interference::Transition()`
     pub fn transition_transition(&mut self, T: &Transition) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Interference_transition_transition(self as *mut Self, T)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7893,7 +9248,7 @@ impl Interference {
         let mut GK_i32_: i32 = (*GK).into();
         let mut SK_i32_: i32 = (*SK).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Interference_gkgsks(
                     self as *const Self,
                     &mut GK_i32_,
@@ -7902,7 +9257,9 @@ impl Interference {
                     S,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *GK = crate::top_ope_b_rep_ds::Kind::try_from(GK_i32_).unwrap();
         *SK = crate::top_ope_b_rep_ds::Kind::try_from(SK_i32_).unwrap();
@@ -7913,8 +9270,11 @@ impl Interference {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Interference_support_type(self as *const Self) };
-            crate::check_exception();
-            crate::top_ope_b_rep_ds::Kind::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep_ds::Kind::try_from(__val).unwrap()
         }
     }
 
@@ -7923,8 +9283,11 @@ impl Interference {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Interference_support(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7933,8 +9296,11 @@ impl Interference {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Interference_geometry_type(self as *const Self) };
-            crate::check_exception();
-            crate::top_ope_b_rep_ds::Kind::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep_ds::Kind::try_from(__val).unwrap()
         }
     }
 
@@ -7943,58 +9309,75 @@ impl Interference {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Interference_geometry(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Interference.hxx`:87 - `TopOpeBRepDS_Interference::SetGeometry()`
     pub fn set_geometry(&mut self, GI: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Interference_set_geometry(self as *mut Self, GI) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_Interference_set_geometry(self as *mut Self, GI)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Interference.hxx`:89 - `TopOpeBRepDS_Interference::SupportType()`
     pub fn support_type_kind(&mut self, ST: crate::top_ope_b_rep_ds::Kind) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Interference_support_type_kind(
                     self as *mut Self,
                     ST.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Interference.hxx`:91 - `TopOpeBRepDS_Interference::Support()`
     pub fn support_int(&mut self, S: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Interference_support_int(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_Interference_support_int(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Interference.hxx`:93 - `TopOpeBRepDS_Interference::GeometryType()`
     pub fn geometry_type_kind(&mut self, GT: crate::top_ope_b_rep_ds::Kind) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Interference_geometry_type_kind(
                     self as *mut Self,
                     GT.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Interference.hxx`:95 - `TopOpeBRepDS_Interference::Geometry()`
     pub fn geometry_int(&mut self, G: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Interference_geometry_int(self as *mut Self, G) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_Interference_geometry_int(self as *mut Self, G) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8004,8 +9387,11 @@ impl Interference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Interference_has_same_support(self as *const Self, Other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8015,8 +9401,11 @@ impl Interference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Interference_has_same_geometry(self as *const Self, Other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8025,8 +9414,11 @@ impl Interference {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Interference_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8034,8 +9426,11 @@ impl Interference {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Interference_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8043,43 +9438,45 @@ impl Interference {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Interference_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_Interference_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_Interference_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_Interference_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_Interference_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
-        {
-            let __result =
-                unsafe { crate::ffi::TopOpeBRepDS_Interference_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopOpeBRepDS_Interference_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -8091,8 +9488,11 @@ impl Interference {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8102,8 +9502,11 @@ impl Interference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Interference_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8113,11 +9516,14 @@ impl Interference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Interference_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -8128,20 +9534,25 @@ impl Interference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Interference_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Interference_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8153,16 +9564,23 @@ impl Interference {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Interference_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_Interference_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8178,35 +9596,35 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepDSInterference {
 impl HandleTopOpeBRepDSInterference {
     /// Dereference this Handle to access the underlying TopOpeBRepDS_Interference
     pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_Interference {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopOpeBRepDSInterference_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleTopOpeBRepDSInterference_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_Interference
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_Interference {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopOpeBRepDSInterference_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTopOpeBRepDSInterference_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopOpeBRepDS_Interference> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSInterference_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSInterference_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<TopOpeBRepDS_Interference> to Handle<TopOpeBRepDS_CurvePointInterference>
@@ -8215,14 +9633,16 @@ impl HandleTopOpeBRepDSInterference {
     pub fn downcast_to_curve_point_interference(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSCurvePointInterference>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopOpeBRepDSInterference_downcast_to_HandleTopOpeBRepDSCurvePointInterference(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8232,14 +9652,16 @@ impl HandleTopOpeBRepDSInterference {
     pub fn downcast_to_edge_vertex_interference(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopOpeBRepDSInterference_downcast_to_HandleTopOpeBRepDSEdgeVertexInterference(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8249,14 +9671,16 @@ impl HandleTopOpeBRepDSInterference {
     pub fn downcast_to_face_edge_interference(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopOpeBRepDSInterference_downcast_to_HandleTopOpeBRepDSFaceEdgeInterference(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8266,14 +9690,16 @@ impl HandleTopOpeBRepDSInterference {
     pub fn downcast_to_shape_shape_interference(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSShapeShapeInterference>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopOpeBRepDSInterference_downcast_to_HandleTopOpeBRepDSShapeShapeInterference(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8283,14 +9709,16 @@ impl HandleTopOpeBRepDSInterference {
     pub fn downcast_to_solid_surface_interference(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSSolidSurfaceInterference>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopOpeBRepDSInterference_downcast_to_HandleTopOpeBRepDSSolidSurfaceInterference(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8300,14 +9728,16 @@ impl HandleTopOpeBRepDSInterference {
     pub fn downcast_to_surface_curve_interference(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSSurfaceCurveInterference>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopOpeBRepDSInterference_downcast_to_HandleTopOpeBRepDSSurfaceCurveInterference(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -8339,8 +9769,10 @@ impl InterferenceIterator {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_InterferenceIterator_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8352,8 +9784,10 @@ impl InterferenceIterator {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_InterferenceIterator_ctor_listofinterference(L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8363,8 +9797,11 @@ impl InterferenceIterator {
     /// Conditions are not modified.
     pub fn init(&mut self, L: &crate::ffi::TopOpeBRepDS_ListOfInterference) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_InterferenceIterator_init(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_InterferenceIterator_init(self as *mut Self, L) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8373,13 +9810,15 @@ impl InterferenceIterator {
     /// Interference must match the Geometry Kind <ST>
     pub fn geometry_kind(&mut self, GK: crate::top_ope_b_rep_ds::Kind) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_InterferenceIterator_geometry_kind(
                     self as *mut Self,
                     GK.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8388,8 +9827,12 @@ impl InterferenceIterator {
     /// Interference must match the Geometry <G>
     pub fn geometry(&mut self, G: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_InterferenceIterator_geometry(self as *mut Self, G) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_InterferenceIterator_geometry(self as *mut Self, G)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8398,13 +9841,15 @@ impl InterferenceIterator {
     /// Interference must match the Support Kind <ST>
     pub fn support_kind(&mut self, ST: crate::top_ope_b_rep_ds::Kind) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_InterferenceIterator_support_kind(
                     self as *mut Self,
                     ST.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8413,8 +9858,12 @@ impl InterferenceIterator {
     /// Interference must match the Support <S>
     pub fn support(&mut self, S: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_InterferenceIterator_support(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_InterferenceIterator_support(self as *mut Self, S)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8423,8 +9872,11 @@ impl InterferenceIterator {
     /// (if  defined).
     pub fn match_(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_InterferenceIterator_match_(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_InterferenceIterator_match_(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8440,8 +9892,11 @@ impl InterferenceIterator {
                     I,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8452,8 +9907,11 @@ impl InterferenceIterator {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_InterferenceIterator_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8461,8 +9919,11 @@ impl InterferenceIterator {
     /// Move to the next Interference.
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_InterferenceIterator_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_InterferenceIterator_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8473,8 +9934,11 @@ impl InterferenceIterator {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_InterferenceIterator_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8486,8 +9950,11 @@ impl InterferenceIterator {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_InterferenceIterator_change_iterator(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 }
@@ -8511,8 +9978,10 @@ impl InterferenceTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_InterferenceTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8536,8 +10005,11 @@ impl InterferenceTool {
                     P,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8561,8 +10033,11 @@ impl InterferenceTool {
                     P,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8575,8 +10050,11 @@ impl InterferenceTool {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_InterferenceTool_duplicate_curve_point_interference(I)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8593,8 +10071,11 @@ impl InterferenceTool {
                     Transition, FaceI, CurveI, PC,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8610,8 +10091,11 @@ impl InterferenceTool {
                     Transition, SolidI, SurfaceI,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8635,8 +10119,11 @@ impl InterferenceTool {
                     param,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8658,8 +10145,11 @@ impl InterferenceTool {
                     Config.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8673,8 +10163,11 @@ impl InterferenceTool {
                     CPI,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8684,10 +10177,12 @@ impl InterferenceTool {
         Par: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_InterferenceTool_parameter_handletopopebrepdsinterference_real(CPI, Par)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8711,8 +10206,10 @@ impl ListOfShapeOn1State {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_ListOfShapeOn1State_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8722,8 +10219,11 @@ impl ListOfShapeOn1State {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_ListOfShapeOn1State_list_on_state(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8733,8 +10233,11 @@ impl ListOfShapeOn1State {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_ListOfShapeOn1State_change_list_on_state(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -8744,24 +10247,33 @@ impl ListOfShapeOn1State {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_ListOfShapeOn1State_is_split(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_ListOfShapeOn1State.hxx`:41 - `TopOpeBRepDS_ListOfShapeOn1State::Split()`
     pub fn split(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_ListOfShapeOn1State_split(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_ListOfShapeOn1State_split(self as *mut Self, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_ListOfShapeOn1State.hxx`:43 - `TopOpeBRepDS_ListOfShapeOn1State::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_ListOfShapeOn1State_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_ListOfShapeOn1State_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8784,34 +10296,43 @@ impl Marker {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Marker_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Marker.hxx`:36 - `TopOpeBRepDS_Marker::Reset()`
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Marker_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRepDS_Marker_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Marker.hxx`:38 - `TopOpeBRepDS_Marker::Set()`
     pub fn set_int_bool(&mut self, i: i32, b: bool) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Marker_set_int_bool(self as *mut Self, i, b) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_Marker_set_int_bool(self as *mut Self, i, b) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Marker.hxx`:40 - `TopOpeBRepDS_Marker::Set()`
     pub unsafe fn set_bool_int_address(&mut self, b: bool, n: i32, a: *mut std::ffi::c_void) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Marker_set_bool_int_address(self as *mut Self, b, n, a)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8819,16 +10340,21 @@ impl Marker {
     pub fn get_i(&self, i: i32) -> bool {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Marker_get_i(self as *const Self, i) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Marker.hxx`:46 - `TopOpeBRepDS_Marker::Allocate()`
     pub fn allocate(&mut self, n: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Marker_allocate(self as *mut Self, n) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRepDS_Marker_allocate(self as *mut Self, n) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8837,8 +10363,11 @@ impl Marker {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Marker_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8846,8 +10375,11 @@ impl Marker {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Marker_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8855,42 +10387,43 @@ impl Marker {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Marker_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_Marker_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopOpeBRepDS_Marker_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_Marker_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopOpeBRepDS_Marker_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSMarker> {
-        {
-            let __result = unsafe { crate::ffi::TopOpeBRepDS_Marker_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopOpeBRepDS_Marker_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -8899,8 +10432,11 @@ impl Marker {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Marker_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8910,8 +10446,11 @@ impl Marker {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Marker_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8920,11 +10459,14 @@ impl Marker {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Marker_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -8935,18 +10477,23 @@ impl Marker {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Marker_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Marker_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8956,16 +10503,22 @@ impl Marker {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Marker_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Marker_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_Marker_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8981,32 +10534,31 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepDSMarker {
 impl HandleTopOpeBRepDSMarker {
     /// Dereference this Handle to access the underlying TopOpeBRepDS_Marker
     pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_Marker {
-        {
-            let __result = unsafe { crate::ffi::HandleTopOpeBRepDSMarker_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopOpeBRepDSMarker_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_Marker
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_Marker {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopOpeBRepDSMarker_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTopOpeBRepDSMarker_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopOpeBRepDS_Marker> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSMarker_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSMarker_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -9029,8 +10581,10 @@ impl Point {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Point_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9038,8 +10592,10 @@ impl Point {
     pub fn new_pnt_real(P: &crate::gp::Pnt, T: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Point_ctor_pnt_real(P, T) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9047,8 +10603,10 @@ impl Point {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Point_ctor_shape(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9057,8 +10615,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Point_is_equal(self as *const Self, other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9066,8 +10627,11 @@ impl Point {
     pub fn point(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Point_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9076,8 +10640,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Point_change_point(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -9085,16 +10652,22 @@ impl Point {
     pub fn tolerance(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Point_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Point.hxx`:47 - `TopOpeBRepDS_Point::Tolerance()`
     pub fn tolerance_real(&mut self, Tol: f64) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Point_tolerance_real(self as *mut Self, Tol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_Point_tolerance_real(self as *mut Self, Tol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9102,16 +10675,21 @@ impl Point {
     pub fn keep(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Point_keep(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Point.hxx`:51 - `TopOpeBRepDS_Point::ChangeKeep()`
     pub fn change_keep(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Point_change_keep(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRepDS_Point_change_keep(self as *mut Self, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -9134,8 +10712,10 @@ impl PointData {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_PointData_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9143,8 +10723,10 @@ impl PointData {
     pub fn new_point(P: &Point) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_PointData_ctor_point(P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9152,58 +10734,67 @@ impl PointData {
     pub fn new_point_int2(P: &Point, I1: i32, I2: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_PointData_ctor_point_int2(P, I1, I2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_PointData.hxx`:40 - `TopOpeBRepDS_PointData::SetShapes()`
     pub fn set_shapes(&mut self, I1: i32, I2: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_PointData_set_shapes(self as *mut Self, I1, I2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_PointData_set_shapes(self as *mut Self, I1, I2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_PointData.hxx`:42 - `TopOpeBRepDS_PointData::GetShapes()`
     pub fn get_shapes(&self, I1: &mut i32, I2: &mut i32) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_PointData_get_shapes(self as *const Self, I1, I2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_PointData_get_shapes(self as *const Self, I1, I2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to TopOpeBRepDS_GeometryData
     pub fn as_geometry_data(&self) -> &GeometryData {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_PointData_as_TopOpeBRepDS_GeometryData(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_PointData_as_TopOpeBRepDS_GeometryData(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopOpeBRepDS_GeometryData (mutable)
     pub fn as_geometry_data_mut(&mut self) -> &mut GeometryData {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_PointData_as_TopOpeBRepDS_GeometryData_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_PointData_as_TopOpeBRepDS_GeometryData_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:37 - `TopOpeBRepDS_GeometryData::Assign()`
     pub fn assign(&mut self, Other: &GeometryData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_PointData_inherited_Assign(self as *mut Self, Other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9213,8 +10804,11 @@ impl PointData {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_PointData_inherited_Interferences(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9224,18 +10818,23 @@ impl PointData {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_PointData_inherited_ChangeInterferences(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:45 - `TopOpeBRepDS_GeometryData::AddInterference()`
     pub fn add_interference(&mut self, I: &crate::ffi::HandleTopOpeBRepDSInterference) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_PointData_inherited_AddInterference(self as *mut Self, I)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -9258,8 +10857,10 @@ impl PointExplorer {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_PointExplorer_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9269,8 +10870,10 @@ impl PointExplorer {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_PointExplorer_ctor_datastructure_bool(DS, FindOnlyKeep)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9282,10 +10885,12 @@ impl PointExplorer {
     /// **Source:** `TopOpeBRepDS_PointExplorer.hxx`:37 - `TopOpeBRepDS_PointExplorer::Init()`
     pub fn init(&mut self, DS: &DataStructure, FindOnlyKeep: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_PointExplorer_init(self as *mut Self, DS, FindOnlyKeep)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9294,16 +10899,21 @@ impl PointExplorer {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_PointExplorer_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_PointExplorer.hxx`:42 - `TopOpeBRepDS_PointExplorer::Next()`
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_PointExplorer_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRepDS_PointExplorer_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9312,8 +10922,11 @@ impl PointExplorer {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_PointExplorer_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9322,8 +10935,11 @@ impl PointExplorer {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_PointExplorer_is_point(self as *const Self, I) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9333,8 +10949,11 @@ impl PointExplorer {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_PointExplorer_is_point_keep(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9343,8 +10962,11 @@ impl PointExplorer {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_PointExplorer_point_int(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9353,8 +10975,11 @@ impl PointExplorer {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_PointExplorer_nb_point(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9363,8 +10988,11 @@ impl PointExplorer {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_PointExplorer_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -9392,8 +11020,10 @@ impl PointIterator {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_PointIterator_ctor_listofinterference(L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9406,8 +11036,11 @@ impl PointIterator {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_PointIterator_match_interference(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9417,8 +11050,11 @@ impl PointIterator {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_PointIterator_current(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9428,8 +11064,11 @@ impl PointIterator {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_PointIterator_orientation(self as *const Self, S.into())
             };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -9438,8 +11077,11 @@ impl PointIterator {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_PointIterator_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9448,8 +11090,11 @@ impl PointIterator {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_PointIterator_is_vertex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9458,8 +11103,11 @@ impl PointIterator {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_PointIterator_is_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9469,8 +11117,11 @@ impl PointIterator {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_PointIterator_diff_oriented(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9480,8 +11131,11 @@ impl PointIterator {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_PointIterator_same_oriented(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9490,86 +11144,103 @@ impl PointIterator {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_PointIterator_support(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to TopOpeBRepDS_InterferenceIterator
     pub fn as_interference_iterator(&self) -> &InterferenceIterator {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_PointIterator_as_TopOpeBRepDS_InterferenceIterator(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_PointIterator_as_TopOpeBRepDS_InterferenceIterator(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopOpeBRepDS_InterferenceIterator (mutable)
     pub fn as_interference_iterator_mut(&mut self) -> &mut InterferenceIterator {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_PointIterator_as_TopOpeBRepDS_InterferenceIterator_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_PointIterator_as_TopOpeBRepDS_InterferenceIterator_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:53 - `TopOpeBRepDS_InterferenceIterator::Init()`
     pub fn init(&mut self, L: &crate::ffi::TopOpeBRepDS_ListOfInterference) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_PointIterator_inherited_Init(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_PointIterator_inherited_Init(self as *mut Self, L)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:57 - `TopOpeBRepDS_InterferenceIterator::GeometryKind()`
     pub fn geometry_kind(&mut self, GK: crate::top_ope_b_rep_ds::Kind) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_PointIterator_inherited_GeometryKind(
                     self as *mut Self,
                     GK.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:61 - `TopOpeBRepDS_InterferenceIterator::Geometry()`
     pub fn geometry(&mut self, G: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_PointIterator_inherited_Geometry(self as *mut Self, G)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:65 - `TopOpeBRepDS_InterferenceIterator::SupportKind()`
     pub fn support_kind(&mut self, ST: crate::top_ope_b_rep_ds::Kind) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_PointIterator_inherited_SupportKind(
                     self as *mut Self,
                     ST.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:73 - `TopOpeBRepDS_InterferenceIterator::Match()`
     pub fn match_(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_PointIterator_inherited_Match(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_PointIterator_inherited_Match(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9579,16 +11250,22 @@ impl PointIterator {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_PointIterator_inherited_More(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:86 - `TopOpeBRepDS_InterferenceIterator::Next()`
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_PointIterator_inherited_Next(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_PointIterator_inherited_Next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9598,8 +11275,11 @@ impl PointIterator {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_PointIterator_inherited_Value(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9611,8 +11291,11 @@ impl PointIterator {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_PointIterator_inherited_ChangeIterator(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 }
@@ -9641,8 +11324,10 @@ impl Reducer {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_Reducer_ctor_handletopopebrepdshdatastructure(HDS)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9652,20 +11337,24 @@ impl Reducer {
         M: &crate::ffi::TopOpeBRepDS_DataMapOfShapeListOfShapeOn1State,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Reducer_process_face_interferences(self as *mut Self, M)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Reducer.hxx`:37 - `TopOpeBRepDS_Reducer::ProcessEdgeInterferences()`
     pub fn process_edge_interferences(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Reducer_process_edge_interferences(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -9688,8 +11377,10 @@ impl ShapeData {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_ShapeData_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9698,8 +11389,11 @@ impl ShapeData {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_ShapeData_interferences(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9709,8 +11403,11 @@ impl ShapeData {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_ShapeData_change_interferences(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -9718,16 +11415,22 @@ impl ShapeData {
     pub fn keep(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_ShapeData_keep(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_ShapeData.hxx`:42 - `TopOpeBRepDS_ShapeData::ChangeKeep()`
     pub fn change_keep(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_ShapeData_change_keep(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_ShapeData_change_keep(self as *mut Self, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -9783,8 +11486,10 @@ impl ShapeShapeInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_ShapeShapeInterference_ctor_transition_kind_int_kind_int_bool_config(T, ST.into(), S, GT.into(), G, GBound, C.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9794,8 +11499,11 @@ impl ShapeShapeInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_ShapeShapeInterference_config(self as *const Self)
             };
-            crate::check_exception();
-            crate::top_ope_b_rep_ds::Config::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep_ds::Config::try_from(__val).unwrap()
         }
     }
 
@@ -9805,18 +11513,23 @@ impl ShapeShapeInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_ShapeShapeInterference_g_bound(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_ShapeShapeInterference.hxx`:72 - `TopOpeBRepDS_ShapeShapeInterference::SetGBound()`
     pub fn set_g_bound(&mut self, b: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_ShapeShapeInterference_set_g_bound(self as *mut Self, b)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9826,8 +11539,11 @@ impl ShapeShapeInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_ShapeShapeInterference_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9836,8 +11552,11 @@ impl ShapeShapeInterference {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_ShapeShapeInterference_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -9846,74 +11565,76 @@ impl ShapeShapeInterference {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_ShapeShapeInterference_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TopOpeBRepDS_Interference
     pub fn as_interference(&self) -> &Interference {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_ShapeShapeInterference_as_TopOpeBRepDS_Interference(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_ShapeShapeInterference_as_TopOpeBRepDS_Interference(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopOpeBRepDS_Interference (mutable)
     pub fn as_interference_mut(&mut self) -> &mut Interference {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_ShapeShapeInterference_as_TopOpeBRepDS_Interference_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_ShapeShapeInterference_as_TopOpeBRepDS_Interference_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_ShapeShapeInterference_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_ShapeShapeInterference_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_ShapeShapeInterference_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_ShapeShapeInterference_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSShapeShapeInterference> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_ShapeShapeInterference_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::TopOpeBRepDS_ShapeShapeInterference_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:67 - `TopOpeBRepDS_Interference::Transition()`
@@ -9924,8 +11645,11 @@ impl ShapeShapeInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9937,8 +11661,11 @@ impl ShapeShapeInterference {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -9950,8 +11677,11 @@ impl ShapeShapeInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            crate::top_ope_b_rep_ds::Kind::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep_ds::Kind::try_from(__val).unwrap()
         }
     }
 
@@ -9963,8 +11693,11 @@ impl ShapeShapeInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9976,8 +11709,11 @@ impl ShapeShapeInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            crate::top_ope_b_rep_ds::Kind::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep_ds::Kind::try_from(__val).unwrap()
         }
     }
 
@@ -9989,21 +11725,26 @@ impl ShapeShapeInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:87 - `TopOpeBRepDS_Interference::SetGeometry()`
     pub fn set_geometry(&mut self, GI: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_ShapeShapeInterference_inherited_SetGeometry(
                     self as *mut Self,
                     GI,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10016,8 +11757,11 @@ impl ShapeShapeInterference {
                     Other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10030,8 +11774,11 @@ impl ShapeShapeInterference {
                     Other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10044,8 +11791,11 @@ impl ShapeShapeInterference {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10058,8 +11808,11 @@ impl ShapeShapeInterference {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10069,11 +11822,14 @@ impl ShapeShapeInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_ShapeShapeInterference_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -10086,20 +11842,25 @@ impl ShapeShapeInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_ShapeShapeInterference_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10111,20 +11872,25 @@ impl ShapeShapeInterference {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_ShapeShapeInterference_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -10140,50 +11906,52 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepDSShapeShapeInterference {
 impl HandleTopOpeBRepDSShapeShapeInterference {
     /// Dereference this Handle to access the underlying TopOpeBRepDS_ShapeShapeInterference
     pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_ShapeShapeInterference {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSShapeShapeInterference_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSShapeShapeInterference_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_ShapeShapeInterference
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_ShapeShapeInterference {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSShapeShapeInterference_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSShapeShapeInterference_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopOpeBRepDS_ShapeShapeInterference> to Handle<TopOpeBRepDS_Interference>
     pub fn to_handle_interference(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSShapeShapeInterference_to_HandleTopOpeBRepDSInterference(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSShapeShapeInterference_to_HandleTopOpeBRepDSInterference(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopOpeBRepDS_ShapeShapeInterference> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSShapeShapeInterference_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSShapeShapeInterference_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<TopOpeBRepDS_ShapeShapeInterference> to Handle<TopOpeBRepDS_EdgeVertexInterference>
@@ -10192,14 +11960,16 @@ impl HandleTopOpeBRepDSShapeShapeInterference {
     pub fn downcast_to_edge_vertex_interference(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSEdgeVertexInterference>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopOpeBRepDSShapeShapeInterference_downcast_to_HandleTopOpeBRepDSEdgeVertexInterference(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -10209,14 +11979,16 @@ impl HandleTopOpeBRepDSShapeShapeInterference {
     pub fn downcast_to_face_edge_interference(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSFaceEdgeInterference>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTopOpeBRepDSShapeShapeInterference_downcast_to_HandleTopOpeBRepDSFaceEdgeInterference(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -10239,8 +12011,10 @@ impl ShapeWithState {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_ShapeWithState_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10250,22 +12024,27 @@ impl ShapeWithState {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_ShapeWithState_part(self as *const Self, aState.into())
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_ShapeWithState.hxx`:38 - `TopOpeBRepDS_ShapeWithState::AddPart()`
     pub fn add_part(&mut self, aShape: &crate::topo_ds::Shape, aState: crate::top_abs::State) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_ShapeWithState_add_part(
                     self as *mut Self,
                     aShape,
                     aState.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10276,24 +12055,28 @@ impl ShapeWithState {
         aState: crate::top_abs::State,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_ShapeWithState_add_parts(
                     self as *mut Self,
                     aListOfShape,
                     aState.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_ShapeWithState.hxx`:43 - `TopOpeBRepDS_ShapeWithState::SetState()`
     pub fn set_state(&mut self, aState: crate::top_abs::State) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_ShapeWithState_set_state(self as *mut Self, aState.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10302,21 +12085,26 @@ impl ShapeWithState {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_ShapeWithState_state(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `TopOpeBRepDS_ShapeWithState.hxx`:47 - `TopOpeBRepDS_ShapeWithState::SetIsSplitted()`
     pub fn set_is_splitted(&mut self, anIsSplitted: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_ShapeWithState_set_is_splitted(
                     self as *mut Self,
                     anIsSplitted,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10325,8 +12113,11 @@ impl ShapeWithState {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_ShapeWithState_is_splitted(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -10364,8 +12155,10 @@ impl SolidSurfaceInterference {
                     Geometry,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10375,8 +12168,11 @@ impl SolidSurfaceInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10385,8 +12181,11 @@ impl SolidSurfaceInterference {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -10395,74 +12194,76 @@ impl SolidSurfaceInterference {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TopOpeBRepDS_Interference
     pub fn as_interference(&self) -> &Interference {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_as_TopOpeBRepDS_Interference(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_as_TopOpeBRepDS_Interference(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopOpeBRepDS_Interference (mutable)
     pub fn as_interference_mut(&mut self) -> &mut Interference {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_as_TopOpeBRepDS_Interference_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_as_TopOpeBRepDS_Interference_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSSolidSurfaceInterference> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:67 - `TopOpeBRepDS_Interference::Transition()`
@@ -10473,8 +12274,11 @@ impl SolidSurfaceInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10486,8 +12290,11 @@ impl SolidSurfaceInterference {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -10499,8 +12306,11 @@ impl SolidSurfaceInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            crate::top_ope_b_rep_ds::Kind::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep_ds::Kind::try_from(__val).unwrap()
         }
     }
 
@@ -10512,8 +12322,11 @@ impl SolidSurfaceInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10525,8 +12338,11 @@ impl SolidSurfaceInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            crate::top_ope_b_rep_ds::Kind::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep_ds::Kind::try_from(__val).unwrap()
         }
     }
 
@@ -10538,21 +12354,26 @@ impl SolidSurfaceInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:87 - `TopOpeBRepDS_Interference::SetGeometry()`
     pub fn set_geometry(&mut self, GI: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_inherited_SetGeometry(
                     self as *mut Self,
                     GI,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10565,8 +12386,11 @@ impl SolidSurfaceInterference {
                     Other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10579,8 +12403,11 @@ impl SolidSurfaceInterference {
                     Other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10593,8 +12420,11 @@ impl SolidSurfaceInterference {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10607,8 +12437,11 @@ impl SolidSurfaceInterference {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10620,11 +12453,14 @@ impl SolidSurfaceInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -10637,20 +12473,25 @@ impl SolidSurfaceInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10662,20 +12503,25 @@ impl SolidSurfaceInterference {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_SolidSurfaceInterference_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -10691,50 +12537,52 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepDSSolidSurfaceInterference {
 impl HandleTopOpeBRepDSSolidSurfaceInterference {
     /// Dereference this Handle to access the underlying TopOpeBRepDS_SolidSurfaceInterference
     pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_SolidSurfaceInterference {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSSolidSurfaceInterference_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSSolidSurfaceInterference_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_SolidSurfaceInterference
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_SolidSurfaceInterference {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSSolidSurfaceInterference_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSSolidSurfaceInterference_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopOpeBRepDS_SolidSurfaceInterference> to Handle<TopOpeBRepDS_Interference>
     pub fn to_handle_interference(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSSolidSurfaceInterference_to_HandleTopOpeBRepDSInterference(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSSolidSurfaceInterference_to_HandleTopOpeBRepDSInterference(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopOpeBRepDS_SolidSurfaceInterference> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSSolidSurfaceInterference_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSSolidSurfaceInterference_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -10757,8 +12605,10 @@ impl Surface {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Surface_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10770,16 +12620,21 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Surface_ctor_handlegeomsurface_real(P, T) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Surface.hxx`:40 - `TopOpeBRepDS_Surface::Assign()`
     pub fn assign(&mut self, Other: &Surface) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Surface_assign(self as *mut Self, Other) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_Surface_assign(self as *mut Self, Other) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10787,8 +12642,11 @@ impl Surface {
     pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Surface_surface(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10797,8 +12655,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Surface_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10806,8 +12667,12 @@ impl Surface {
     /// Update the tolerance
     pub fn tolerance_real(&mut self, theTol: f64) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Surface_tolerance_real(self as *mut Self, theTol) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_Surface_tolerance_real(self as *mut Self, theTol)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10815,27 +12680,33 @@ impl Surface {
     pub fn keep(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Surface_keep(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Surface.hxx`:53 - `TopOpeBRepDS_Surface::ChangeKeep()`
     pub fn change_keep(&mut self, theToKeep: bool) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Surface_change_keep(self as *mut Self, theToKeep) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_Surface_change_keep(self as *mut Self, theToKeep)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::TopOpeBRepDS_Surface_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopOpeBRepDS_Surface_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -10858,8 +12729,10 @@ impl SurfaceCurveInterference {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10876,8 +12749,10 @@ impl SurfaceCurveInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_ctor_transition_kind_int_kind_int_handlegeom2dcurve(Transition, SupportType.into(), Support, GeometryType.into(), Geometry, PC)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10889,8 +12764,10 @@ impl SurfaceCurveInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_ctor_handletopopebrepdsinterference(I)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10900,21 +12777,26 @@ impl SurfaceCurveInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_p_curve(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_SurfaceCurveInterference.hxx`:50 - `TopOpeBRepDS_SurfaceCurveInterference::PCurve()`
     pub fn p_curve_handlegeom2dcurve(&mut self, PC: &crate::ffi::HandleGeom2dCurve) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_p_curve_handlegeom2dcurve(
                     self as *mut Self,
                     PC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10924,8 +12806,11 @@ impl SurfaceCurveInterference {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10934,8 +12819,11 @@ impl SurfaceCurveInterference {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -10944,74 +12832,76 @@ impl SurfaceCurveInterference {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TopOpeBRepDS_Interference
     pub fn as_interference(&self) -> &Interference {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_as_TopOpeBRepDS_Interference(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_as_TopOpeBRepDS_Interference(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopOpeBRepDS_Interference (mutable)
     pub fn as_interference_mut(&mut self) -> &mut Interference {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_as_TopOpeBRepDS_Interference_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_as_TopOpeBRepDS_Interference_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSSurfaceCurveInterference> {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:67 - `TopOpeBRepDS_Interference::Transition()`
@@ -11022,8 +12912,11 @@ impl SurfaceCurveInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11035,8 +12928,11 @@ impl SurfaceCurveInterference {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -11048,8 +12944,11 @@ impl SurfaceCurveInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            crate::top_ope_b_rep_ds::Kind::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep_ds::Kind::try_from(__val).unwrap()
         }
     }
 
@@ -11061,8 +12960,11 @@ impl SurfaceCurveInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11074,8 +12976,11 @@ impl SurfaceCurveInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            crate::top_ope_b_rep_ds::Kind::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep_ds::Kind::try_from(__val).unwrap()
         }
     }
 
@@ -11087,21 +12992,26 @@ impl SurfaceCurveInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_Interference.hxx`:87 - `TopOpeBRepDS_Interference::SetGeometry()`
     pub fn set_geometry(&mut self, GI: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_inherited_SetGeometry(
                     self as *mut Self,
                     GI,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11114,8 +13024,11 @@ impl SurfaceCurveInterference {
                     Other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11128,8 +13041,11 @@ impl SurfaceCurveInterference {
                     Other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11142,8 +13058,11 @@ impl SurfaceCurveInterference {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11156,8 +13075,11 @@ impl SurfaceCurveInterference {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11169,11 +13091,14 @@ impl SurfaceCurveInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -11186,20 +13111,25 @@ impl SurfaceCurveInterference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11211,20 +13141,25 @@ impl SurfaceCurveInterference {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceCurveInterference_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -11240,50 +13175,52 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepDSSurfaceCurveInterference {
 impl HandleTopOpeBRepDSSurfaceCurveInterference {
     /// Dereference this Handle to access the underlying TopOpeBRepDS_SurfaceCurveInterference
     pub fn get(&self) -> &crate::ffi::TopOpeBRepDS_SurfaceCurveInterference {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSSurfaceCurveInterference_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSSurfaceCurveInterference_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRepDS_SurfaceCurveInterference
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRepDS_SurfaceCurveInterference {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSSurfaceCurveInterference_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSSurfaceCurveInterference_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopOpeBRepDS_SurfaceCurveInterference> to Handle<TopOpeBRepDS_Interference>
     pub fn to_handle_interference(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSInterference> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSSurfaceCurveInterference_to_HandleTopOpeBRepDSInterference(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSSurfaceCurveInterference_to_HandleTopOpeBRepDSInterference(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TopOpeBRepDS_SurfaceCurveInterference> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepDSSurfaceCurveInterference_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepDSSurfaceCurveInterference_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -11305,8 +13242,10 @@ impl SurfaceData {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_SurfaceData_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11314,44 +13253,44 @@ impl SurfaceData {
     pub fn new_surface(S: &Surface) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_SurfaceData_ctor_surface(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to TopOpeBRepDS_GeometryData
     pub fn as_geometry_data(&self) -> &GeometryData {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_SurfaceData_as_TopOpeBRepDS_GeometryData(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_SurfaceData_as_TopOpeBRepDS_GeometryData(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopOpeBRepDS_GeometryData (mutable)
     pub fn as_geometry_data_mut(&mut self) -> &mut GeometryData {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_SurfaceData_as_TopOpeBRepDS_GeometryData_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_SurfaceData_as_TopOpeBRepDS_GeometryData_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:37 - `TopOpeBRepDS_GeometryData::Assign()`
     pub fn assign(&mut self, Other: &GeometryData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceData_inherited_Assign(self as *mut Self, Other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11361,8 +13300,11 @@ impl SurfaceData {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceData_inherited_Interferences(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11374,18 +13316,23 @@ impl SurfaceData {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_GeometryData.hxx`:45 - `TopOpeBRepDS_GeometryData::AddInterference()`
     pub fn add_interference(&mut self, I: &crate::ffi::HandleTopOpeBRepDSInterference) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceData_inherited_AddInterference(self as *mut Self, I)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -11408,8 +13355,10 @@ impl SurfaceExplorer {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_SurfaceExplorer_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11419,8 +13368,10 @@ impl SurfaceExplorer {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceExplorer_ctor_datastructure_bool(DS, FindOnlyKeep)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11432,10 +13383,12 @@ impl SurfaceExplorer {
     /// **Source:** `TopOpeBRepDS_SurfaceExplorer.hxx`:37 - `TopOpeBRepDS_SurfaceExplorer::Init()`
     pub fn init(&mut self, DS: &DataStructure, FindOnlyKeep: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceExplorer_init(self as *mut Self, DS, FindOnlyKeep)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11444,16 +13397,21 @@ impl SurfaceExplorer {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_SurfaceExplorer_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_SurfaceExplorer.hxx`:42 - `TopOpeBRepDS_SurfaceExplorer::Next()`
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_SurfaceExplorer_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRepDS_SurfaceExplorer_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11462,8 +13420,11 @@ impl SurfaceExplorer {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_SurfaceExplorer_surface(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11473,8 +13434,11 @@ impl SurfaceExplorer {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceExplorer_is_surface(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11484,8 +13448,11 @@ impl SurfaceExplorer {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceExplorer_is_surface_keep(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11495,8 +13462,11 @@ impl SurfaceExplorer {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceExplorer_surface_int(self as *const Self, I)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11505,8 +13475,11 @@ impl SurfaceExplorer {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_SurfaceExplorer_nb_surface(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11515,8 +13488,11 @@ impl SurfaceExplorer {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_SurfaceExplorer_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -11544,8 +13520,10 @@ impl SurfaceIterator {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_SurfaceIterator_ctor_listofinterference(L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11555,8 +13533,11 @@ impl SurfaceIterator {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_SurfaceIterator_current(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11566,98 +13547,115 @@ impl SurfaceIterator {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceIterator_orientation(self as *const Self, S.into())
             };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
     /// Upcast to TopOpeBRepDS_InterferenceIterator
     pub fn as_interference_iterator(&self) -> &InterferenceIterator {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_SurfaceIterator_as_TopOpeBRepDS_InterferenceIterator(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_SurfaceIterator_as_TopOpeBRepDS_InterferenceIterator(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopOpeBRepDS_InterferenceIterator (mutable)
     pub fn as_interference_iterator_mut(&mut self) -> &mut InterferenceIterator {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRepDS_SurfaceIterator_as_TopOpeBRepDS_InterferenceIterator_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRepDS_SurfaceIterator_as_TopOpeBRepDS_InterferenceIterator_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:53 - `TopOpeBRepDS_InterferenceIterator::Init()`
     pub fn init(&mut self, L: &crate::ffi::TopOpeBRepDS_ListOfInterference) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_Init(self as *mut Self, L)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:57 - `TopOpeBRepDS_InterferenceIterator::GeometryKind()`
     pub fn geometry_kind(&mut self, GK: crate::top_ope_b_rep_ds::Kind) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_GeometryKind(
                     self as *mut Self,
                     GK.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:61 - `TopOpeBRepDS_InterferenceIterator::Geometry()`
     pub fn geometry(&mut self, G: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_Geometry(self as *mut Self, G)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:65 - `TopOpeBRepDS_InterferenceIterator::SupportKind()`
     pub fn support_kind(&mut self, ST: crate::top_ope_b_rep_ds::Kind) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_SupportKind(
                     self as *mut Self,
                     ST.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:69 - `TopOpeBRepDS_InterferenceIterator::Support()`
     pub fn support(&mut self, S: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_Support(self as *mut Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:73 - `TopOpeBRepDS_InterferenceIterator::Match()`
     pub fn match_(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_Match(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_Match(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11670,8 +13668,11 @@ impl SurfaceIterator {
                     I,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11681,16 +13682,23 @@ impl SurfaceIterator {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_More(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TopOpeBRepDS_InterferenceIterator.hxx`:86 - `TopOpeBRepDS_InterferenceIterator::Next()`
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_Next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_Next(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11700,8 +13708,11 @@ impl SurfaceIterator {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_Value(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11713,8 +13724,11 @@ impl SurfaceIterator {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_SurfaceIterator_inherited_ChangeIterator(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 }
@@ -11737,32 +13751,42 @@ impl TKI {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_TKI_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_TKI.hxx`:38 - `TopOpeBRepDS_TKI::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_TKI_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRepDS_TKI_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_TKI.hxx`:40 - `TopOpeBRepDS_TKI::FillOnGeometry()`
     pub fn fill_on_geometry(&mut self, L: &crate::ffi::TopOpeBRepDS_ListOfInterference) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_TKI_fill_on_geometry(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_TKI_fill_on_geometry(self as *mut Self, L) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_TKI.hxx`:42 - `TopOpeBRepDS_TKI::FillOnSupport()`
     pub fn fill_on_support(&mut self, L: &crate::ffi::TopOpeBRepDS_ListOfInterference) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_TKI_fill_on_support(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_TKI_fill_on_support(self as *mut Self, L) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11771,8 +13795,11 @@ impl TKI {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_TKI_is_bound(self as *const Self, K.into(), G) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11786,8 +13813,11 @@ impl TKI {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_TKI_interferences(self as *const Self, K.into(), G)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11801,8 +13831,11 @@ impl TKI {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_TKI_change_interferences(self as *mut Self, K.into(), G)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -11812,16 +13845,23 @@ impl TKI {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_TKI_has_interferences(self as *const Self, K.into(), G)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_TKI.hxx`:57 - `TopOpeBRepDS_TKI::Add()`
     pub fn add_kind_int(&mut self, K: crate::top_ope_b_rep_ds::Kind, G: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_TKI_add_kind_int(self as *mut Self, K.into(), G) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_TKI_add_kind_int(self as *mut Self, K.into(), G)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11833,7 +13873,7 @@ impl TKI {
         HI: &crate::ffi::HandleTopOpeBRepDSInterference,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_TKI_add_kind_int_handletopopebrepdsinterference(
                     self as *mut Self,
                     K.into(),
@@ -11841,7 +13881,9 @@ impl TKI {
                     HI,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11852,16 +13894,22 @@ impl TKI {
         s2: &crate::t_collection::AsciiString,
     ) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_TKI_dump_tki_iterator(self as *mut Self, s1, s2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_TKI_dump_tki_iterator(self as *mut Self, s1, s2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_TKI.hxx`:66 - `TopOpeBRepDS_TKI::Init()`
     pub fn init(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_TKI_init(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRepDS_TKI_init(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11869,16 +13917,21 @@ impl TKI {
     pub fn more(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_TKI_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRepDS_TKI.hxx`:70 - `TopOpeBRepDS_TKI::Next()`
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_TKI_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRepDS_TKI_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11898,8 +13951,11 @@ impl TKI {
         let result_ = {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_TKI_value(self as *const Self, &mut K_i32_, G) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         };
         *K = crate::top_ope_b_rep_ds::Kind::try_from(K_i32_).unwrap();
         result_
@@ -11922,8 +13978,11 @@ impl TKI {
             let __result = unsafe {
                 crate::ffi::TopOpeBRepDS_TKI_change_value(self as *mut Self, &mut K_i32_, G)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         };
         *K = crate::top_ope_b_rep_ds::Kind::try_from(K_i32_).unwrap();
         result_
@@ -11949,8 +14008,10 @@ impl TOOL {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_TOOL_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11962,8 +14023,11 @@ impl TOOL {
     ) -> i32 {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_TOOL_e_share_g(HDS, E, lEsd) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11971,8 +14035,11 @@ impl TOOL {
     pub fn share_g(HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure, is1: i32, is2: i32) -> bool {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_TOOL_share_g(HDS, is1, is2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11985,8 +14052,11 @@ impl TOOL {
     ) -> bool {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_TOOL_get_esd(HDS, S, ie, iesd) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12001,8 +14071,11 @@ impl TOOL {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_TOOL_share_split_on(HDS, MspON, i1, i2, spON) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12017,8 +14090,11 @@ impl TOOL {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_TOOL_get_config(HDS, MEspON, ie, iesd, conf) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -12041,8 +14117,10 @@ impl Transition {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRepDS_Transition_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12062,8 +14140,10 @@ impl Transition {
                     ShapeAfter.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12072,8 +14152,10 @@ impl Transition {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Transition_ctor_orientation(O.into()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12086,7 +14168,7 @@ impl Transition {
         ShapeAfter: crate::top_abs::ShapeEnum,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Transition_set_state2_shapeenum2(
                     self as *mut Self,
                     StateBefore.into(),
@@ -12095,51 +14177,63 @@ impl Transition {
                     ShapeAfter.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Transition.hxx`:47 - `TopOpeBRepDS_Transition::StateBefore()`
     pub fn state_before(&mut self, S: crate::top_abs::State) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Transition_state_before(self as *mut Self, S.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Transition.hxx`:49 - `TopOpeBRepDS_Transition::StateAfter()`
     pub fn state_after(&mut self, S: crate::top_abs::State) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Transition_state_after(self as *mut Self, S.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_Transition_state_after(self as *mut Self, S.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Transition.hxx`:51 - `TopOpeBRepDS_Transition::ShapeBefore()`
     pub fn shape_before_shapeenum(&mut self, SE: crate::top_abs::ShapeEnum) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Transition_shape_before_shapeenum(
                     self as *mut Self,
                     SE.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Transition.hxx`:53 - `TopOpeBRepDS_Transition::ShapeAfter()`
     pub fn shape_after_shapeenum(&mut self, SE: crate::top_abs::ShapeEnum) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Transition_shape_after_shapeenum(
                     self as *mut Self,
                     SE.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12150,14 +14244,16 @@ impl Transition {
         ShapeBefore: crate::top_abs::ShapeEnum,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Transition_before_state_shapeenum(
                     self as *mut Self,
                     S.into(),
                     ShapeBefore.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12168,38 +14264,51 @@ impl Transition {
         ShapeAfter: crate::top_abs::ShapeEnum,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Transition_after_state_shapeenum(
                     self as *mut Self,
                     S.into(),
                     ShapeAfter.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Transition.hxx`:60 - `TopOpeBRepDS_Transition::Index()`
     pub fn index_int(&mut self, I: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Transition_index_int(self as *mut Self, I) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRepDS_Transition_index_int(self as *mut Self, I) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Transition.hxx`:62 - `TopOpeBRepDS_Transition::IndexBefore()`
     pub fn index_before_int(&mut self, I: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Transition_index_before_int(self as *mut Self, I) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_Transition_index_before_int(self as *mut Self, I)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRepDS_Transition.hxx`:64 - `TopOpeBRepDS_Transition::IndexAfter()`
     pub fn index_after_int(&mut self, I: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRepDS_Transition_index_after_int(self as *mut Self, I) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRepDS_Transition_index_after_int(self as *mut Self, I)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12208,8 +14317,11 @@ impl Transition {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Transition_before(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -12218,8 +14330,11 @@ impl Transition {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Transition_on_before(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -12228,8 +14343,11 @@ impl Transition {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Transition_after(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -12238,8 +14356,11 @@ impl Transition {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Transition_on_after(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -12248,8 +14369,11 @@ impl Transition {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Transition_shape_before(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -12258,8 +14382,11 @@ impl Transition {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Transition_shape_after(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -12268,8 +14395,11 @@ impl Transition {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Transition_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12278,8 +14408,11 @@ impl Transition {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Transition_index_before(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12288,8 +14421,11 @@ impl Transition {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Transition_index_after(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12304,10 +14440,12 @@ impl Transition {
     /// EXTERNAL      OUT    OUT
     pub fn set_orientation(&mut self, O: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRepDS_Transition_set_orientation(self as *mut Self, O.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12335,8 +14473,11 @@ impl Transition {
                     T.into(),
                 )
             };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -12345,8 +14486,11 @@ impl Transition {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Transition_complement(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12356,8 +14500,11 @@ impl Transition {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRepDS_Transition_is_unknown(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

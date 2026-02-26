@@ -14,8 +14,11 @@ pub fn set_drawer_for_b_rep_owner(
     aDrawer: &crate::ffi::HandlePrs3dDrawer,
 ) {
     {
-        unsafe { crate::ffi::StdSelect_set_drawer_for_b_rep_owner(aSelection, aDrawer) };
-        crate::check_exception();
+        let __exc =
+            unsafe { crate::ffi::StdSelect_set_drawer_for_b_rep_owner(aSelection, aDrawer) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 
@@ -172,8 +175,10 @@ impl BRepOwner {
     pub fn new_int(aPriority: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdSelect_BRepOwner_ctor_int(aPriority) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -196,8 +201,10 @@ impl BRepOwner {
                     ComesFromDecomposition,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -224,8 +231,10 @@ impl BRepOwner {
                     FromDecomposition,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -287,8 +296,11 @@ impl BRepOwner {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_BRepOwner_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -298,8 +310,11 @@ impl BRepOwner {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_BRepOwner_has_shape(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -308,8 +323,11 @@ impl BRepOwner {
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::StdSelect_BRepOwner_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -319,8 +337,11 @@ impl BRepOwner {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_BRepOwner_has_hilight_mode(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -331,8 +352,12 @@ impl BRepOwner {
     /// The default type of display is wireframe, defined by the index 0.
     pub fn set_hilight_mode(&mut self, theMode: i32) {
         {
-            unsafe { crate::ffi::StdSelect_BRepOwner_set_hilight_mode(self as *mut Self, theMode) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdSelect_BRepOwner_set_hilight_mode(self as *mut Self, theMode)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -343,8 +368,11 @@ impl BRepOwner {
     /// The default type of display is wireframe, defined by the index 0.
     pub fn reset_hilight_mode(&mut self) {
         {
-            unsafe { crate::ffi::StdSelect_BRepOwner_reset_hilight_mode(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdSelect_BRepOwner_reset_hilight_mode(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -357,8 +385,11 @@ impl BRepOwner {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_BRepOwner_hilight_mode(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -374,8 +405,11 @@ impl BRepOwner {
             let __result = unsafe {
                 crate::ffi::StdSelect_BRepOwner_is_hilighted(self as *const Self, aPM, aMode)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -387,7 +421,7 @@ impl BRepOwner {
         theMode: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_BRepOwner_hilight_with_color(
                     self as *mut Self,
                     thePM,
@@ -395,7 +429,9 @@ impl BRepOwner {
                     theMode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -404,8 +440,11 @@ impl BRepOwner {
     /// identified the selection mode aMode in the presentation manager aPM.
     pub fn unhilight(&mut self, aPM: &crate::ffi::HandlePrsMgrPresentationManager, aMode: i32) {
         {
-            unsafe { crate::ffi::StdSelect_BRepOwner_unhilight(self as *mut Self, aPM, aMode) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdSelect_BRepOwner_unhilight(self as *mut Self, aPM, aMode) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -414,16 +453,22 @@ impl BRepOwner {
     /// shapes with the selection mode aMode.
     pub fn clear(&mut self, aPM: &crate::ffi::HandlePrsMgrPresentationManager, aMode: i32) {
         {
-            unsafe { crate::ffi::StdSelect_BRepOwner_clear(self as *mut Self, aPM, aMode) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdSelect_BRepOwner_clear(self as *mut Self, aPM, aMode) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `StdSelect_BRepOwner.hxx`:118 - `StdSelect_BRepOwner::SetLocation()`
     pub fn set_location(&mut self, aLoc: &crate::top_loc::Location) {
         {
-            unsafe { crate::ffi::StdSelect_BRepOwner_set_location(self as *mut Self, aLoc) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdSelect_BRepOwner_set_location(self as *mut Self, aLoc) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -437,7 +482,7 @@ impl BRepOwner {
         theDispMode: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_BRepOwner_update_highlight_trsf(
                     self as *mut Self,
                     theViewer,
@@ -445,7 +490,9 @@ impl BRepOwner {
                     theDispMode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -453,8 +500,11 @@ impl BRepOwner {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StdSelect_BRepOwner_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -462,64 +512,65 @@ impl BRepOwner {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StdSelect_BRepOwner_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to SelectMgr_EntityOwner
     pub fn as_select_mgr_entity_owner(&self) -> &crate::select_mgr::EntityOwner {
-        {
-            let __result = unsafe {
-                crate::ffi::StdSelect_BRepOwner_as_SelectMgr_EntityOwner(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StdSelect_BRepOwner_as_SelectMgr_EntityOwner(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to SelectMgr_EntityOwner (mutable)
     pub fn as_select_mgr_entity_owner_mut(&mut self) -> &mut crate::select_mgr::EntityOwner {
-        {
-            let __result = unsafe {
-                crate::ffi::StdSelect_BRepOwner_as_SelectMgr_EntityOwner_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StdSelect_BRepOwner_as_SelectMgr_EntityOwner_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdSelect_BRepOwner_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StdSelect_BRepOwner_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdSelect_BRepOwner_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::StdSelect_BRepOwner_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStdSelectBRepOwner> {
-        {
-            let __result = unsafe { crate::ffi::StdSelect_BRepOwner_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StdSelect_BRepOwner_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:54 - `SelectMgr_EntityOwner::Priority()`
@@ -527,21 +578,26 @@ impl BRepOwner {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_BRepOwner_inherited_Priority(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:57 - `SelectMgr_EntityOwner::SetPriority()`
     pub fn set_priority(&mut self, thePriority: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_BRepOwner_inherited_SetPriority(
                     self as *mut Self,
                     thePriority,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -551,8 +607,11 @@ impl BRepOwner {
             let __result = unsafe {
                 crate::ffi::StdSelect_BRepOwner_inherited_HasSelectable(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -562,21 +621,26 @@ impl BRepOwner {
             let __result = unsafe {
                 crate::ffi::StdSelect_BRepOwner_inherited_Selectable(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:66 - `SelectMgr_EntityOwner::SetSelectable()`
     pub fn set_selectable(&mut self, theSelObj: &crate::ffi::HandleSelectMgrSelectableObject) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_BRepOwner_inherited_SetSelectable(
                     self as *mut Self,
                     theSelObj,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -598,8 +662,11 @@ impl BRepOwner {
                     theIsDoubleClick,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -609,8 +676,11 @@ impl BRepOwner {
             let __result = unsafe {
                 crate::ffi::StdSelect_BRepOwner_inherited_HasLocation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -619,8 +689,11 @@ impl BRepOwner {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_BRepOwner_inherited_Location(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -630,21 +703,26 @@ impl BRepOwner {
             let __result = unsafe {
                 crate::ffi::StdSelect_BRepOwner_inherited_IsSelected(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:151 - `SelectMgr_EntityOwner::SetSelected()`
     pub fn set_selected(&mut self, theIsSelected: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_BRepOwner_inherited_SetSelected(
                     self as *mut Self,
                     theIsSelected,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -658,18 +736,23 @@ impl BRepOwner {
                     theIsDetected,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:166 - `SelectMgr_EntityOwner::State()`
     pub fn state(&mut self, theStatus: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_BRepOwner_inherited_State(self as *mut Self, theStatus)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -679,8 +762,11 @@ impl BRepOwner {
             let __result = unsafe {
                 crate::ffi::StdSelect_BRepOwner_inherited_IsAutoHilight(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -690,18 +776,23 @@ impl BRepOwner {
             let __result = unsafe {
                 crate::ffi::StdSelect_BRepOwner_inherited_IsForcedHilight(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:180 - `SelectMgr_EntityOwner::SetZLayer()`
     pub fn set_z_layer(&mut self, theLayerId: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_BRepOwner_inherited_SetZLayer(self as *mut Self, theLayerId)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -717,8 +808,11 @@ impl BRepOwner {
                     theOther,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -730,21 +824,26 @@ impl BRepOwner {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:204 - `SelectMgr_EntityOwner::SetComesFromDecomposition()`
     pub fn set_comes_from_decomposition(&mut self, theIsFromDecomposition: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_BRepOwner_inherited_SetComesFromDecomposition(
                     self as *mut Self,
                     theIsFromDecomposition,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -754,8 +853,11 @@ impl BRepOwner {
             let __result = unsafe {
                 crate::ffi::StdSelect_BRepOwner_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -765,8 +867,11 @@ impl BRepOwner {
             let __result = unsafe {
                 crate::ffi::StdSelect_BRepOwner_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -775,11 +880,14 @@ impl BRepOwner {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_BRepOwner_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -790,18 +898,23 @@ impl BRepOwner {
             let __result = unsafe {
                 crate::ffi::StdSelect_BRepOwner_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_BRepOwner_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -811,16 +924,22 @@ impl BRepOwner {
             let __result = unsafe {
                 crate::ffi::StdSelect_BRepOwner_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StdSelect_BRepOwner_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdSelect_BRepOwner_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -836,47 +955,44 @@ unsafe impl crate::CppDeletable for HandleStdSelectBRepOwner {
 impl HandleStdSelectBRepOwner {
     /// Dereference this Handle to access the underlying StdSelect_BRepOwner
     pub fn get(&self) -> &crate::ffi::StdSelect_BRepOwner {
-        {
-            let __result = unsafe { crate::ffi::HandleStdSelectBRepOwner_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleStdSelectBRepOwner_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StdSelect_BRepOwner
     pub fn get_mut(&mut self) -> &mut crate::ffi::StdSelect_BRepOwner {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStdSelectBRepOwner_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleStdSelectBRepOwner_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StdSelect_BRepOwner> to Handle<SelectMgr_EntityOwner>
     pub fn to_handle_entity_owner(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrEntityOwner> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdSelectBRepOwner_to_HandleSelectMgrEntityOwner(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdSelectBRepOwner_to_HandleSelectMgrEntityOwner(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StdSelect_BRepOwner> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdSelectBRepOwner_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdSelectBRepOwner_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -927,8 +1043,10 @@ impl BRepSelectionTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdSelect_BRepSelectionTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -957,10 +1075,12 @@ impl BRepSelectionTool {
         MaximalParameter: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_BRepSelectionTool_load_handleselectmgrselection_shape_shapeenum_real2_bool_int2_real(aSelection, aShape, aType.into(), theDeflection, theDeviationAngle, AutoTriangulation, aPriority, NbPOnEdge, MaximalParameter)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -986,10 +1106,12 @@ impl BRepSelectionTool {
         MaximalParameter: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_BRepSelectionTool_load_handleselectmgrselection_handleselectmgrselectableobject_shape_shapeenum_real2_bool_int2_real(aSelection, Origin, aShape, aType.into(), theDeflection, theDeviationAngle, AutoTriangulation, aPriority, NbPOnEdge, MaximalParameter)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1010,8 +1132,11 @@ impl BRepSelectionTool {
                     theType.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1038,7 +1163,7 @@ impl BRepSelectionTool {
         theAutoTriang: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_BRepSelectionTool_compute_sensitive(
                     theShape,
                     theOwner,
@@ -1050,7 +1175,9 @@ impl BRepSelectionTool {
                     theAutoTriang,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1085,8 +1212,11 @@ impl BRepSelectionTool {
                     theInteriorFlag,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1108,8 +1238,11 @@ impl BRepSelectionTool {
                     theSelection,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1133,7 +1266,7 @@ impl BRepSelectionTool {
         theSensitive: &mut crate::ffi::HandleSelect3DSensitiveEntity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_BRepSelectionTool_get_edge_sensitive(
                     theShape,
                     theOwner,
@@ -1145,7 +1278,9 @@ impl BRepSelectionTool {
                     theSensitive,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1155,8 +1290,11 @@ impl BRepSelectionTool {
     /// sub-elements.
     pub fn pre_build_bvh(theSelection: &crate::ffi::HandleSelectMgrSelection) {
         {
-            unsafe { crate::ffi::StdSelect_BRepSelectionTool_pre_build_bvh(theSelection) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdSelect_BRepSelectionTool_pre_build_bvh(theSelection) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1185,8 +1323,10 @@ impl EdgeFilter {
     pub fn new_typeofedge(Edge: crate::std_select::TypeOfEdge) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdSelect_EdgeFilter_ctor_typeofedge(Edge.into()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1194,10 +1334,12 @@ impl EdgeFilter {
     /// Sets the type of edge aNewType. aNewType is to be highlighted in selection.
     pub fn set_type(&mut self, aNewType: crate::std_select::TypeOfEdge) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_EdgeFilter_set_type(self as *mut Self, aNewType.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1206,8 +1348,11 @@ impl EdgeFilter {
     pub fn type_(&self) -> crate::std_select::TypeOfEdge {
         {
             let __result = unsafe { crate::ffi::StdSelect_EdgeFilter_type_(self as *const Self) };
-            crate::check_exception();
-            crate::std_select::TypeOfEdge::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::std_select::TypeOfEdge::try_from(__val).unwrap()
         }
     }
 
@@ -1216,8 +1361,11 @@ impl EdgeFilter {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_EdgeFilter_is_ok(self as *const Self, anobj) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1227,8 +1375,11 @@ impl EdgeFilter {
             let __result = unsafe {
                 crate::ffi::StdSelect_EdgeFilter_acts_on(self as *const Self, aStandardMode.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1237,8 +1388,11 @@ impl EdgeFilter {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_EdgeFilter_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1246,8 +1400,11 @@ impl EdgeFilter {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StdSelect_EdgeFilter_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1255,64 +1412,64 @@ impl EdgeFilter {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StdSelect_EdgeFilter_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to SelectMgr_Filter
     pub fn as_select_mgr_filter(&self) -> &crate::select_mgr::Filter {
-        {
-            let __result = unsafe {
-                crate::ffi::StdSelect_EdgeFilter_as_SelectMgr_Filter(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StdSelect_EdgeFilter_as_SelectMgr_Filter(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to SelectMgr_Filter (mutable)
     pub fn as_select_mgr_filter_mut(&mut self) -> &mut crate::select_mgr::Filter {
-        {
-            let __result = unsafe {
-                crate::ffi::StdSelect_EdgeFilter_as_SelectMgr_Filter_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::StdSelect_EdgeFilter_as_SelectMgr_Filter_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdSelect_EdgeFilter_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StdSelect_EdgeFilter_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdSelect_EdgeFilter_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StdSelect_EdgeFilter_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStdSelectEdgeFilter> {
-        {
-            let __result = unsafe { crate::ffi::StdSelect_EdgeFilter_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StdSelect_EdgeFilter_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1321,8 +1478,11 @@ impl EdgeFilter {
             let __result = unsafe {
                 crate::ffi::StdSelect_EdgeFilter_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1332,8 +1492,11 @@ impl EdgeFilter {
             let __result = unsafe {
                 crate::ffi::StdSelect_EdgeFilter_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1342,11 +1505,14 @@ impl EdgeFilter {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_EdgeFilter_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1357,18 +1523,23 @@ impl EdgeFilter {
             let __result = unsafe {
                 crate::ffi::StdSelect_EdgeFilter_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_EdgeFilter_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1378,16 +1549,22 @@ impl EdgeFilter {
             let __result = unsafe {
                 crate::ffi::StdSelect_EdgeFilter_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StdSelect_EdgeFilter_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdSelect_EdgeFilter_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1403,46 +1580,42 @@ unsafe impl crate::CppDeletable for HandleStdSelectEdgeFilter {
 impl HandleStdSelectEdgeFilter {
     /// Dereference this Handle to access the underlying StdSelect_EdgeFilter
     pub fn get(&self) -> &crate::ffi::StdSelect_EdgeFilter {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStdSelectEdgeFilter_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleStdSelectEdgeFilter_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StdSelect_EdgeFilter
     pub fn get_mut(&mut self) -> &mut crate::ffi::StdSelect_EdgeFilter {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStdSelectEdgeFilter_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleStdSelectEdgeFilter_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StdSelect_EdgeFilter> to Handle<SelectMgr_Filter>
     pub fn to_handle_filter(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrFilter> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdSelectEdgeFilter_to_HandleSelectMgrFilter(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdSelectEdgeFilter_to_HandleSelectMgrFilter(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StdSelect_EdgeFilter> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdSelectEdgeFilter_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdSelectEdgeFilter_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1474,8 +1647,10 @@ impl FaceFilter {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_FaceFilter_ctor_typeofface(aTypeOfFace.into()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1483,10 +1658,12 @@ impl FaceFilter {
     /// Sets the type of face aNewType. aNewType is to be highlighted in selection.
     pub fn set_type(&mut self, aNewType: crate::std_select::TypeOfFace) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_FaceFilter_set_type(self as *mut Self, aNewType.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1495,8 +1672,11 @@ impl FaceFilter {
     pub fn type_(&self) -> crate::std_select::TypeOfFace {
         {
             let __result = unsafe { crate::ffi::StdSelect_FaceFilter_type_(self as *const Self) };
-            crate::check_exception();
-            crate::std_select::TypeOfFace::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::std_select::TypeOfFace::try_from(__val).unwrap()
         }
     }
 
@@ -1505,8 +1685,11 @@ impl FaceFilter {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_FaceFilter_is_ok(self as *const Self, anobj) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1516,8 +1699,11 @@ impl FaceFilter {
             let __result = unsafe {
                 crate::ffi::StdSelect_FaceFilter_acts_on(self as *const Self, aStandardMode.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1526,8 +1712,11 @@ impl FaceFilter {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_FaceFilter_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1535,8 +1724,11 @@ impl FaceFilter {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StdSelect_FaceFilter_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1544,64 +1736,64 @@ impl FaceFilter {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StdSelect_FaceFilter_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to SelectMgr_Filter
     pub fn as_select_mgr_filter(&self) -> &crate::select_mgr::Filter {
-        {
-            let __result = unsafe {
-                crate::ffi::StdSelect_FaceFilter_as_SelectMgr_Filter(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StdSelect_FaceFilter_as_SelectMgr_Filter(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to SelectMgr_Filter (mutable)
     pub fn as_select_mgr_filter_mut(&mut self) -> &mut crate::select_mgr::Filter {
-        {
-            let __result = unsafe {
-                crate::ffi::StdSelect_FaceFilter_as_SelectMgr_Filter_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::StdSelect_FaceFilter_as_SelectMgr_Filter_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdSelect_FaceFilter_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StdSelect_FaceFilter_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdSelect_FaceFilter_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StdSelect_FaceFilter_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStdSelectFaceFilter> {
-        {
-            let __result = unsafe { crate::ffi::StdSelect_FaceFilter_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StdSelect_FaceFilter_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1610,8 +1802,11 @@ impl FaceFilter {
             let __result = unsafe {
                 crate::ffi::StdSelect_FaceFilter_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1621,8 +1816,11 @@ impl FaceFilter {
             let __result = unsafe {
                 crate::ffi::StdSelect_FaceFilter_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1631,11 +1829,14 @@ impl FaceFilter {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_FaceFilter_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1646,18 +1847,23 @@ impl FaceFilter {
             let __result = unsafe {
                 crate::ffi::StdSelect_FaceFilter_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_FaceFilter_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1667,16 +1873,22 @@ impl FaceFilter {
             let __result = unsafe {
                 crate::ffi::StdSelect_FaceFilter_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StdSelect_FaceFilter_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdSelect_FaceFilter_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1692,46 +1904,42 @@ unsafe impl crate::CppDeletable for HandleStdSelectFaceFilter {
 impl HandleStdSelectFaceFilter {
     /// Dereference this Handle to access the underlying StdSelect_FaceFilter
     pub fn get(&self) -> &crate::ffi::StdSelect_FaceFilter {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStdSelectFaceFilter_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleStdSelectFaceFilter_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StdSelect_FaceFilter
     pub fn get_mut(&mut self) -> &mut crate::ffi::StdSelect_FaceFilter {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStdSelectFaceFilter_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleStdSelectFaceFilter_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StdSelect_FaceFilter> to Handle<SelectMgr_Filter>
     pub fn to_handle_filter(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrFilter> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdSelectFaceFilter_to_HandleSelectMgrFilter(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdSelectFaceFilter_to_HandleSelectMgrFilter(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StdSelect_FaceFilter> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdSelectFaceFilter_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdSelectFaceFilter_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1759,8 +1967,10 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::StdSelect_Shape_ctor_shape_handleprs3ddrawer(theShape, theDrawer)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1768,8 +1978,11 @@ impl Shape {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StdSelect_Shape_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1781,10 +1994,12 @@ impl Shape {
         theMode: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_compute(self as *mut Self, thePrsMgr, thePrs, theMode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1792,16 +2007,22 @@ impl Shape {
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::StdSelect_Shape_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `StdSelect_Shape.hxx`:37 - `StdSelect_Shape::Shape()`
     pub fn shape_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::StdSelect_Shape_shape_shape(self as *mut Self, theShape) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdSelect_Shape_shape_shape(self as *mut Self, theShape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1809,8 +2030,11 @@ impl Shape {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StdSelect_Shape_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1818,62 +2042,64 @@ impl Shape {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StdSelect_Shape_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to PrsMgr_PresentableObject
     pub fn as_prs_mgr_presentable_object(&self) -> &crate::prs_mgr::PresentableObject {
-        {
-            let __result = unsafe {
-                crate::ffi::StdSelect_Shape_as_PrsMgr_PresentableObject(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StdSelect_Shape_as_PrsMgr_PresentableObject(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to PrsMgr_PresentableObject (mutable)
     pub fn as_prs_mgr_presentable_object_mut(&mut self) -> &mut crate::prs_mgr::PresentableObject {
-        {
-            let __result = unsafe {
-                crate::ffi::StdSelect_Shape_as_PrsMgr_PresentableObject_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StdSelect_Shape_as_PrsMgr_PresentableObject_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::StdSelect_Shape_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StdSelect_Shape_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::StdSelect_Shape_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::StdSelect_Shape_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStdSelectShape> {
-        {
-            let __result = unsafe { crate::ffi::StdSelect_Shape_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StdSelect_Shape_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
@@ -1881,8 +2107,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_Shape_inherited_Presentations(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1891,18 +2120,23 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_Shape_inherited_ZLayer(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:67 - `PrsMgr_PresentableObject::SetZLayer()`
     pub fn set_z_layer(&mut self, theLayerId: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_SetZLayer(self as *mut Self, theLayerId)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1911,18 +2145,23 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_Shape_inherited_IsMutable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:75 - `PrsMgr_PresentableObject::SetMutable()`
     pub fn set_mutable(&mut self, theIsMutable: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_SetMutable(self as *mut Self, theIsMutable)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1931,8 +2170,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_Shape_inherited_ViewAffinity(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1942,8 +2184,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_HasDisplayMode(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1952,26 +2197,35 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_Shape_inherited_DisplayMode(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:94 - `PrsMgr_PresentableObject::SetDisplayMode()`
     pub fn set_display_mode(&mut self, theMode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_SetDisplayMode(self as *mut Self, theMode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:103 - `PrsMgr_PresentableObject::UnsetDisplayMode()`
     pub fn unset_display_mode(&mut self) {
         {
-            unsafe { crate::ffi::StdSelect_Shape_inherited_UnsetDisplayMode(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdSelect_Shape_inherited_UnsetDisplayMode(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1981,8 +2235,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_HasHilightMode(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1991,26 +2248,35 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_Shape_inherited_HilightMode(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:125 - `PrsMgr_PresentableObject::SetHilightMode()`
     pub fn set_hilight_mode(&mut self, theMode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_SetHilightMode(self as *mut Self, theMode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:129 - `PrsMgr_PresentableObject::UnsetHilightMode()`
     pub fn unset_hilight_mode(&mut self) {
         {
-            unsafe { crate::ffi::StdSelect_Shape_inherited_UnsetHilightMode(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdSelect_Shape_inherited_UnsetHilightMode(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2023,8 +2289,11 @@ impl Shape {
                     theMode,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2034,8 +2303,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_DefaultDisplayMode(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2048,18 +2320,23 @@ impl Shape {
                     theToIncludeHidden,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:165 - `PrsMgr_PresentableObject::SetToUpdate()`
     pub fn set_to_update(&mut self, theMode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_SetToUpdate(self as *mut Self, theMode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2068,18 +2345,23 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_Shape_inherited_IsInfinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:178 - `PrsMgr_PresentableObject::SetInfiniteState()`
     pub fn set_infinite_state(&mut self, theFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_SetInfiniteState(self as *mut Self, theFlag)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2089,21 +2371,26 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_TypeOfPresentation3d(self as *const Self)
             };
-            crate::check_exception();
-            crate::prs_mgr::TypeOfPresentation3d::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::prs_mgr::TypeOfPresentation3d::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:184 - `PrsMgr_PresentableObject::SetTypeOfPresentation()`
     pub fn set_type_of_presentation(&mut self, theType: crate::prs_mgr::TypeOfPresentation3d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_SetTypeOfPresentation(
                     self as *mut Self,
                     theType.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2112,8 +2399,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_Shape_inherited_DisplayStatus(self as *const Self) };
-            crate::check_exception();
-            crate::prs_mgr::DisplayStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::prs_mgr::DisplayStatus::try_from(__val).unwrap()
         }
     }
 
@@ -2122,18 +2412,23 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_Shape_inherited_Attributes(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:194 - `PrsMgr_PresentableObject::SetAttributes()`
     pub fn set_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_SetAttributes(self as *mut Self, theDrawer)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2143,21 +2438,26 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_HilightAttributes(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:203 - `PrsMgr_PresentableObject::SetHilightAttributes()`
     pub fn set_hilight_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_SetHilightAttributes(
                     self as *mut Self,
                     theDrawer,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2167,39 +2467,50 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_DynamicHilightAttributes(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:215 - `PrsMgr_PresentableObject::SetDynamicHilightAttributes()`
     pub fn set_dynamic_hilight_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_SetDynamicHilightAttributes(
                     self as *mut Self,
                     theDrawer,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:221 - `PrsMgr_PresentableObject::UnsetHilightAttributes()`
     pub fn unset_hilight_attributes(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_UnsetHilightAttributes(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:228 - `PrsMgr_PresentableObject::SynchronizeAspects()`
     pub fn synchronize_aspects(&mut self) {
         {
-            unsafe { crate::ffi::StdSelect_Shape_inherited_SynchronizeAspects(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdSelect_Shape_inherited_SynchronizeAspects(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2209,8 +2520,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_TransformPersistence(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2220,13 +2534,15 @@ impl Shape {
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_SetTransformPersistence(
                     self as *mut Self,
                     theTrsfPers,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2236,21 +2552,26 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_LocalTransformationGeom(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:257 - `PrsMgr_PresentableObject::SetLocalTransformation()`
     pub fn set_local_transformation(&mut self, theTrsf: &crate::gp::Trsf) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_SetLocalTransformation(
                     self as *mut Self,
                     theTrsf,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2260,8 +2581,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_HasTransformation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2271,8 +2595,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_TransformationGeom(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2282,8 +2609,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_LocalTransformation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2293,8 +2623,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_Transformation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2304,8 +2637,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_InversedTransformation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2317,39 +2653,50 @@ impl Shape {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:307 - `PrsMgr_PresentableObject::ResetTransformation()`
     pub fn reset_transformation(&mut self) {
         {
-            unsafe { crate::ffi::StdSelect_Shape_inherited_ResetTransformation(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdSelect_Shape_inherited_ResetTransformation(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:310 - `PrsMgr_PresentableObject::UpdateTransformation()`
     pub fn update_transformation(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_UpdateTransformation(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:316 - `PrsMgr_PresentableObject::RecomputeTransformation()`
     pub fn recompute_transformation(&mut self, theProjector: &crate::ffi::HandleGraphic3dCamera) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_RecomputeTransformation(
                     self as *mut Self,
                     theProjector,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2358,38 +2705,47 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_Shape_inherited_ClipPlanes(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:333 - `PrsMgr_PresentableObject::SetClipPlanes()`
     pub fn set_clip_planes(&mut self, thePlanes: &crate::ffi::HandleGraphic3dSequenceOfHClipPlane) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_SetClipPlanes(self as *mut Self, thePlanes)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:344 - `PrsMgr_PresentableObject::AddClipPlane()`
     pub fn add_clip_plane(&mut self, thePlane: &crate::ffi::HandleGraphic3dClipPlane) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_AddClipPlane(self as *mut Self, thePlane)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:348 - `PrsMgr_PresentableObject::RemoveClipPlane()`
     pub fn remove_clip_plane(&mut self, thePlane: &crate::ffi::HandleGraphic3dClipPlane) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_RemoveClipPlane(self as *mut Self, thePlane)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2398,11 +2754,14 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_Shape_inherited_Parent(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2412,16 +2771,23 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_Shape_inherited_Children(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:358 - `PrsMgr_PresentableObject::AddChild()`
     pub fn add_child(&mut self, theObject: &crate::ffi::HandlePrsMgrPresentableObject) {
         {
-            unsafe { crate::ffi::StdSelect_Shape_inherited_AddChild(self as *mut Self, theObject) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdSelect_Shape_inherited_AddChild(self as *mut Self, theObject)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2431,23 +2797,27 @@ impl Shape {
         theObject: &crate::ffi::HandlePrsMgrPresentableObject,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_AddChildWithCurrentTransformation(
                     self as *mut Self,
                     theObject,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:366 - `PrsMgr_PresentableObject::RemoveChild()`
     pub fn remove_child(&mut self, theObject: &crate::ffi::HandlePrsMgrPresentableObject) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_RemoveChild(self as *mut Self, theObject)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2457,13 +2827,15 @@ impl Shape {
         theObject: &crate::ffi::HandlePrsMgrPresentableObject,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_RemoveChildWithRestoreTransformation(
                     self as *mut Self,
                     theObject,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2473,31 +2845,38 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_HasOwnPresentations(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:380 - `PrsMgr_PresentableObject::BoundingBox()`
     pub fn bounding_box(&mut self, theBndBox: &mut crate::bnd::Box) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_BoundingBox(self as *mut Self, theBndBox)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:457 - `PrsMgr_PresentableObject::SetIsoOnTriangulation()`
     pub fn set_iso_on_triangulation(&mut self, theIsEnabled: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_SetIsoOnTriangulation(
                     self as *mut Self,
                     theIsEnabled,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2507,21 +2886,26 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_CurrentFacingModel(self as *const Self)
             };
-            crate::check_exception();
-            crate::aspect::TypeOfFacingModel::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::aspect::TypeOfFacingModel::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:468 - `PrsMgr_PresentableObject::SetCurrentFacingModel()`
     pub fn set_current_facing_model(&mut self, theModel: crate::aspect::TypeOfFacingModel) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_SetCurrentFacingModel(
                     self as *mut Self,
                     theModel.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2530,32 +2914,46 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_Shape_inherited_HasColor(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:477 - `PrsMgr_PresentableObject::Color()`
     pub fn color(&self, theColor: &mut crate::quantity::Color) {
         {
-            unsafe { crate::ffi::StdSelect_Shape_inherited_Color(self as *const Self, theColor) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdSelect_Shape_inherited_Color(self as *const Self, theColor)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:483 - `PrsMgr_PresentableObject::SetColor()`
     pub fn set_color(&mut self, theColor: &crate::quantity::Color) {
         {
-            unsafe { crate::ffi::StdSelect_Shape_inherited_SetColor(self as *mut Self, theColor) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdSelect_Shape_inherited_SetColor(self as *mut Self, theColor)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:494 - `PrsMgr_PresentableObject::UnsetColor()`
     pub fn unset_color(&mut self) {
         {
-            unsafe { crate::ffi::StdSelect_Shape_inherited_UnsetColor(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdSelect_Shape_inherited_UnsetColor(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2564,8 +2962,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_Shape_inherited_HasWidth(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2574,24 +2975,34 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_Shape_inherited_Width(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:504 - `PrsMgr_PresentableObject::SetWidth()`
     pub fn set_width(&mut self, theWidth: f64) {
         {
-            unsafe { crate::ffi::StdSelect_Shape_inherited_SetWidth(self as *mut Self, theWidth) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdSelect_Shape_inherited_SetWidth(self as *mut Self, theWidth)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:507 - `PrsMgr_PresentableObject::UnsetWidth()`
     pub fn unset_width(&mut self) {
         {
-            unsafe { crate::ffi::StdSelect_Shape_inherited_UnsetWidth(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdSelect_Shape_inherited_UnsetWidth(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2600,8 +3011,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_Shape_inherited_HasMaterial(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2610,24 +3024,34 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_Shape_inherited_Material(self as *const Self) };
-            crate::check_exception();
-            crate::graphic3d::NameOfMaterial::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::graphic3d::NameOfMaterial::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:519 - `PrsMgr_PresentableObject::SetMaterial()`
     pub fn set_material(&mut self, aName: &crate::graphic3d::MaterialAspect) {
         {
-            unsafe { crate::ffi::StdSelect_Shape_inherited_SetMaterial(self as *mut Self, aName) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdSelect_Shape_inherited_SetMaterial(self as *mut Self, aName)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:522 - `PrsMgr_PresentableObject::UnsetMaterial()`
     pub fn unset_material(&mut self) {
         {
-            unsafe { crate::ffi::StdSelect_Shape_inherited_UnsetMaterial(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdSelect_Shape_inherited_UnsetMaterial(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2636,8 +3060,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_Shape_inherited_IsTransparent(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2646,26 +3073,35 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_Shape_inherited_Transparency(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:539 - `PrsMgr_PresentableObject::SetTransparency()`
     pub fn set_transparency(&mut self, aValue: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_SetTransparency(self as *mut Self, aValue)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:542 - `PrsMgr_PresentableObject::UnsetTransparency()`
     pub fn unset_transparency(&mut self) {
         {
-            unsafe { crate::ffi::StdSelect_Shape_inherited_UnsetTransparency(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdSelect_Shape_inherited_UnsetTransparency(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2675,15 +3111,18 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_HasPolygonOffsets(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:548 - `PrsMgr_PresentableObject::PolygonOffsets()`
     pub fn polygon_offsets(&self, aMode: &mut i32, aFactor: &mut f32, aUnits: &mut f32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_PolygonOffsets(
                     self as *const Self,
                     aMode,
@@ -2691,14 +3130,16 @@ impl Shape {
                     aUnits,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:554 - `PrsMgr_PresentableObject::SetPolygonOffsets()`
     pub fn set_polygon_offsets(&mut self, aMode: i32, aFactor: f32, aUnits: f32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_SetPolygonOffsets(
                     self as *mut Self,
                     aMode,
@@ -2706,15 +3147,20 @@ impl Shape {
                     aUnits,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:559 - `PrsMgr_PresentableObject::UnsetAttributes()`
     pub fn unset_attributes(&mut self) {
         {
-            unsafe { crate::ffi::StdSelect_Shape_inherited_UnsetAttributes(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdSelect_Shape_inherited_UnsetAttributes(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2724,21 +3170,26 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_ToPropagateVisualState(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:576 - `PrsMgr_PresentableObject::SetPropagateVisualState()`
     pub fn set_propagate_visual_state(&mut self, theFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_SetPropagateVisualState(
                     self as *mut Self,
                     theFlag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2748,8 +3199,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2759,8 +3213,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2769,11 +3226,14 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_Shape_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2783,16 +3243,23 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_Shape_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::StdSelect_Shape_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdSelect_Shape_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2802,16 +3269,22 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::StdSelect_Shape_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StdSelect_Shape_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdSelect_Shape_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2827,46 +3300,44 @@ unsafe impl crate::CppDeletable for HandleStdSelectShape {
 impl HandleStdSelectShape {
     /// Dereference this Handle to access the underlying StdSelect_Shape
     pub fn get(&self) -> &crate::ffi::StdSelect_Shape {
-        {
-            let __result = unsafe { crate::ffi::HandleStdSelectShape_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleStdSelectShape_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StdSelect_Shape
     pub fn get_mut(&mut self) -> &mut crate::ffi::StdSelect_Shape {
-        {
-            let __result = unsafe { crate::ffi::HandleStdSelectShape_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleStdSelectShape_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StdSelect_Shape> to Handle<PrsMgr_PresentableObject>
     pub fn to_handle_presentable_object(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrsMgrPresentableObject> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdSelectShape_to_HandlePrsMgrPresentableObject(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdSelectShape_to_HandlePrsMgrPresentableObject(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StdSelect_Shape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdSelectShape_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdSelectShape_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2891,8 +3362,10 @@ impl ShapeTypeFilter {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_ShapeTypeFilter_ctor_shapeenum(aType.into()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2901,8 +3374,11 @@ impl ShapeTypeFilter {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_ShapeTypeFilter_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2912,8 +3388,11 @@ impl ShapeTypeFilter {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_ShapeTypeFilter_type_(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -2922,8 +3401,11 @@ impl ShapeTypeFilter {
         {
             let __result =
                 unsafe { crate::ffi::StdSelect_ShapeTypeFilter_is_ok(self as *const Self, anobj) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2936,8 +3418,11 @@ impl ShapeTypeFilter {
                     aStandardMode.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2945,8 +3430,11 @@ impl ShapeTypeFilter {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StdSelect_ShapeTypeFilter_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2954,65 +3442,67 @@ impl ShapeTypeFilter {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StdSelect_ShapeTypeFilter_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to SelectMgr_Filter
     pub fn as_select_mgr_filter(&self) -> &crate::select_mgr::Filter {
-        {
-            let __result = unsafe {
-                crate::ffi::StdSelect_ShapeTypeFilter_as_SelectMgr_Filter(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StdSelect_ShapeTypeFilter_as_SelectMgr_Filter(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to SelectMgr_Filter (mutable)
     pub fn as_select_mgr_filter_mut(&mut self) -> &mut crate::select_mgr::Filter {
-        {
-            let __result = unsafe {
-                crate::ffi::StdSelect_ShapeTypeFilter_as_SelectMgr_Filter_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StdSelect_ShapeTypeFilter_as_SelectMgr_Filter_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdSelect_ShapeTypeFilter_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StdSelect_ShapeTypeFilter_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdSelect_ShapeTypeFilter_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StdSelect_ShapeTypeFilter_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStdSelectShapeTypeFilter> {
-        {
-            let __result =
-                unsafe { crate::ffi::StdSelect_ShapeTypeFilter_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StdSelect_ShapeTypeFilter_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3024,8 +3514,11 @@ impl ShapeTypeFilter {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3035,8 +3528,11 @@ impl ShapeTypeFilter {
             let __result = unsafe {
                 crate::ffi::StdSelect_ShapeTypeFilter_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3046,11 +3542,14 @@ impl ShapeTypeFilter {
             let __result = unsafe {
                 crate::ffi::StdSelect_ShapeTypeFilter_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3061,20 +3560,25 @@ impl ShapeTypeFilter {
             let __result = unsafe {
                 crate::ffi::StdSelect_ShapeTypeFilter_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdSelect_ShapeTypeFilter_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3086,16 +3590,23 @@ impl ShapeTypeFilter {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StdSelect_ShapeTypeFilter_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdSelect_ShapeTypeFilter_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3111,47 +3622,45 @@ unsafe impl crate::CppDeletable for HandleStdSelectShapeTypeFilter {
 impl HandleStdSelectShapeTypeFilter {
     /// Dereference this Handle to access the underlying StdSelect_ShapeTypeFilter
     pub fn get(&self) -> &crate::ffi::StdSelect_ShapeTypeFilter {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStdSelectShapeTypeFilter_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleStdSelectShapeTypeFilter_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StdSelect_ShapeTypeFilter
     pub fn get_mut(&mut self) -> &mut crate::ffi::StdSelect_ShapeTypeFilter {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStdSelectShapeTypeFilter_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleStdSelectShapeTypeFilter_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StdSelect_ShapeTypeFilter> to Handle<SelectMgr_Filter>
     pub fn to_handle_filter(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrFilter> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdSelectShapeTypeFilter_to_HandleSelectMgrFilter(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdSelectShapeTypeFilter_to_HandleSelectMgrFilter(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StdSelect_ShapeTypeFilter> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdSelectShapeTypeFilter_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdSelectShapeTypeFilter_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

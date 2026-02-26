@@ -28,8 +28,11 @@ pub fn collapse_singularities(
         let __result = unsafe {
             crate::ffi::BRepOffset_collapse_singularities(theSurface, theFace, thePrecision)
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 
@@ -212,8 +215,10 @@ impl Analyse {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepOffset_Analyse_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -223,8 +228,10 @@ impl Analyse {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_Analyse_ctor_shape_real(theS, theAngle) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -238,10 +245,12 @@ impl Analyse {
         theRange: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Analyse_perform(self as *mut Self, theS, theAngle, theRange)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -251,8 +260,11 @@ impl Analyse {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepOffset_Analyse_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -271,8 +283,11 @@ impl Analyse {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_Analyse_type_(self as *const Self, theE) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -286,7 +301,7 @@ impl Analyse {
         theL: &mut crate::ffi::TopTools_ListOfShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Analyse_edges_vertex_typeofconcavity_listofshape(
                     self as *const Self,
                     theV,
@@ -294,7 +309,9 @@ impl Analyse {
                     theL,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -308,7 +325,7 @@ impl Analyse {
         theL: &mut crate::ffi::TopTools_ListOfShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Analyse_edges_face_typeofconcavity_listofshape(
                     self as *const Self,
                     theF,
@@ -316,7 +333,9 @@ impl Analyse {
                     theL,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -330,7 +349,7 @@ impl Analyse {
         theEdges: &mut crate::ffi::TopTools_ListOfShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Analyse_tangent_edges(
                     self as *const Self,
                     theEdge,
@@ -338,7 +357,9 @@ impl Analyse {
                     theEdges,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -348,8 +369,11 @@ impl Analyse {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_Analyse_has_ancestor(self as *const Self, theS) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -368,8 +392,11 @@ impl Analyse {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_Analyse_ancestors(self as *const Self, theS) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -382,14 +409,16 @@ impl Analyse {
         theType: crate::ch_fi_ds::TypeOfConcavity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Analyse_explode_listofshape_typeofconcavity(
                     self as *const Self,
                     theL,
                     theType.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -403,7 +432,7 @@ impl Analyse {
         theType2: crate::ch_fi_ds::TypeOfConcavity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Analyse_explode_listofshape_typeofconcavity2(
                     self as *const Self,
                     theL,
@@ -411,7 +440,9 @@ impl Analyse {
                     theType2.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -426,7 +457,7 @@ impl Analyse {
         theType: crate::ch_fi_ds::TypeOfConcavity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Analyse_add_faces_face_compound_mapofshape_typeofconcavity(
                     self as *const Self,
                     theFace,
@@ -435,7 +466,9 @@ impl Analyse {
                     theType.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -451,7 +484,7 @@ impl Analyse {
         theType2: crate::ch_fi_ds::TypeOfConcavity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Analyse_add_faces_face_compound_mapofshape_typeofconcavity2(
                     self as *const Self,
                     theFace,
@@ -461,17 +494,21 @@ impl Analyse {
                     theType2.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepOffset_Analyse.hxx`:124 - `BRepOffset_Analyse::SetOffsetValue()`
     pub fn set_offset_value(&mut self, theOffset: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Analyse_set_offset_value(self as *mut Self, theOffset)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -479,10 +516,12 @@ impl Analyse {
     /// Sets the face-offset data map to analyze tangential cases
     pub fn set_face_offset_map(&mut self, theMap: &crate::ffi::TopTools_DataMapOfShapeReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Analyse_set_face_offset_map(self as *mut Self, theMap)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -492,8 +531,11 @@ impl Analyse {
     pub fn new_faces(&self) -> &crate::ffi::TopTools_ListOfShape {
         {
             let __result = unsafe { crate::ffi::BRepOffset_Analyse_new_faces(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -507,8 +549,11 @@ impl Analyse {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_Analyse_generated(self as *const Self, theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -518,8 +563,11 @@ impl Analyse {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_Analyse_has_generated(self as *const Self, theS) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -545,8 +593,11 @@ impl Analyse {
                     theEdge,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -561,11 +612,14 @@ impl Analyse {
             let __result = unsafe {
                 crate::ffi::BRepOffset_Analyse_descendants(self as *const Self, theS, theUpdate)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -575,8 +629,10 @@ impl Analyse {
     /// Clears the content of the algorithm
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::BRepOffset_Analyse_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepOffset_Analyse_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -602,8 +658,10 @@ impl Inter2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepOffset_Inter2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -624,7 +682,7 @@ impl Inter2d {
         theRange: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Inter2d_compute(
                     AsDes,
                     F,
@@ -635,7 +693,9 @@ impl Inter2d {
                     theRange,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -680,8 +740,11 @@ impl Inter2d {
                     theRange,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -705,12 +768,14 @@ impl Inter2d {
         theRange: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Inter2d_connex_int_by_int_in_vert(
                     FI, OFI, MES, Build, AsDes, AsDes2d, Tol, Analyse, theDMVV, theRange,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -727,8 +792,11 @@ impl Inter2d {
             let __result = unsafe {
                 crate::ffi::BRepOffset_Inter2d_fuse_vertices(theDMVV, theAsDes, theImageVV)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -741,8 +809,11 @@ impl Inter2d {
     ) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepOffset_Inter2d_extent_edge(E, NE, theOffset) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -779,8 +850,10 @@ impl Inter3d {
                     Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -792,7 +865,7 @@ impl Inter3d {
         theRange: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Inter3d_complet_int(
                     self as *mut Self,
                     SetOfFaces,
@@ -800,7 +873,9 @@ impl Inter3d {
                     theRange,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -813,10 +888,12 @@ impl Inter3d {
         InitOffsetFace: &crate::b_rep_algo::Image,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Inter3d_face_inter(self as *mut Self, F1, F2, InitOffsetFace)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -831,7 +908,7 @@ impl Inter3d {
         theRange: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Inter3d_connex_int_by_arc(
                     self as *mut Self,
                     SetOfFaces,
@@ -841,7 +918,9 @@ impl Inter3d {
                     theRange,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -860,7 +939,7 @@ impl Inter3d {
         bIsPlanar: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Inter3d_connex_int_by_int(
                     self as *mut Self,
                     SI,
@@ -873,7 +952,9 @@ impl Inter3d {
                     bIsPlanar,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -892,7 +973,7 @@ impl Inter3d {
         bIsPlanar: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Inter3d_context_int_by_int(
                     self as *mut Self,
                     ContextFaces,
@@ -906,7 +987,9 @@ impl Inter3d {
                     bIsPlanar,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -922,7 +1005,7 @@ impl Inter3d {
         theRange: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Inter3d_context_int_by_arc(
                     self as *mut Self,
                     ContextFaces,
@@ -933,7 +1016,9 @@ impl Inter3d {
                     theRange,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -941,8 +1026,11 @@ impl Inter3d {
     /// Marks the pair of faces as already intersected
     pub fn set_done(&mut self, F1: &crate::topo_ds::Face, F2: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::BRepOffset_Inter3d_set_done(self as *mut Self, F1, F2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepOffset_Inter3d_set_done(self as *mut Self, F1, F2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -952,8 +1040,11 @@ impl Inter3d {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_Inter3d_is_done(self as *const Self, F1, F2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -963,8 +1054,11 @@ impl Inter3d {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_Inter3d_touched_faces(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -973,8 +1067,11 @@ impl Inter3d {
     pub fn as_des(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepAlgoAsDes> {
         {
             let __result = unsafe { crate::ffi::BRepOffset_Inter3d_as_des(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -983,8 +1080,11 @@ impl Inter3d {
     pub fn new_edges(&mut self) -> &mut crate::ffi::TopTools_IndexedMapOfShape {
         {
             let __result = unsafe { crate::ffi::BRepOffset_Inter3d_new_edges(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 }
@@ -1007,8 +1107,10 @@ impl Interval {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepOffset_Interval_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1022,34 +1124,42 @@ impl Interval {
             let __result = unsafe {
                 crate::ffi::BRepOffset_Interval_ctor_real2_typeofconcavity(U1, U2, Type.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BRepOffset_Interval.hxx`:38 - `BRepOffset_Interval::First()`
     pub fn first_real(&mut self, U: f64) {
         {
-            unsafe { crate::ffi::BRepOffset_Interval_first_real(self as *mut Self, U) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepOffset_Interval_first_real(self as *mut Self, U) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepOffset_Interval.hxx`:40 - `BRepOffset_Interval::Last()`
     pub fn last_real(&mut self, U: f64) {
         {
-            unsafe { crate::ffi::BRepOffset_Interval_last_real(self as *mut Self, U) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepOffset_Interval_last_real(self as *mut Self, U) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepOffset_Interval.hxx`:42 - `BRepOffset_Interval::Type()`
     pub fn type_typeofconcavity(&mut self, T: crate::ch_fi_ds::TypeOfConcavity) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Interval_type_typeofconcavity(self as *mut Self, T.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1057,8 +1167,11 @@ impl Interval {
     pub fn first(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepOffset_Interval_first(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1066,8 +1179,11 @@ impl Interval {
     pub fn last(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepOffset_Interval_last(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1075,8 +1191,11 @@ impl Interval {
     pub fn type_(&self) -> crate::ch_fi_ds::TypeOfConcavity {
         {
             let __result = unsafe { crate::ffi::BRepOffset_Interval_type_(self as *const Self) };
-            crate::check_exception();
-            crate::ch_fi_ds::TypeOfConcavity::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ch_fi_ds::TypeOfConcavity::try_from(__val).unwrap()
         }
     }
 }
@@ -1099,8 +1218,10 @@ impl MakeLoops {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepOffset_MakeLoops_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1114,7 +1235,7 @@ impl MakeLoops {
         theRange: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_MakeLoops_build(
                     self as *mut Self,
                     LF,
@@ -1124,7 +1245,9 @@ impl MakeLoops {
                     theRange,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1139,7 +1262,7 @@ impl MakeLoops {
         theRange: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_MakeLoops_build_on_context(
                     self as *mut Self,
                     LContext,
@@ -1150,7 +1273,9 @@ impl MakeLoops {
                     theRange,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1163,7 +1288,7 @@ impl MakeLoops {
         theRange: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_MakeLoops_build_faces(
                     self as *mut Self,
                     LF,
@@ -1172,7 +1297,9 @@ impl MakeLoops {
                     theRange,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1195,8 +1322,10 @@ impl MakeOffset {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepOffset_MakeOffset_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1217,8 +1346,10 @@ impl MakeOffset {
             let __result = unsafe {
                 crate::ffi::BRepOffset_MakeOffset_ctor_shape_real2_mode_bool2_jointype_bool2_progressrange(S, Offset, Tol, Mode.into(), Intersection, SelfInter, Join.into(), Thickening, RemoveIntEdges, theRange)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1236,7 +1367,7 @@ impl MakeOffset {
         RemoveIntEdges: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_MakeOffset_initialize(
                     self as *mut Self,
                     S,
@@ -1250,15 +1381,19 @@ impl MakeOffset {
                     RemoveIntEdges,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepOffset_MakeOffset.hxx`:72 - `BRepOffset_MakeOffset::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::BRepOffset_MakeOffset_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepOffset_MakeOffset_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1266,13 +1401,15 @@ impl MakeOffset {
     /// Changes the flag allowing the linearization
     pub fn allow_linearization(&mut self, theIsAllowed: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_MakeOffset_allow_linearization(
                     self as *mut Self,
                     theIsAllowed,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1281,8 +1418,10 @@ impl MakeOffset {
     /// shape S.
     pub fn add_face(&mut self, F: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::BRepOffset_MakeOffset_add_face(self as *mut Self, F) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepOffset_MakeOffset_add_face(self as *mut Self, F) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1290,30 +1429,36 @@ impl MakeOffset {
     /// set the offset <Off> on the Face <F>
     pub fn set_offset_on_face(&mut self, F: &crate::topo_ds::Face, Off: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_MakeOffset_set_offset_on_face(self as *mut Self, F, Off)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepOffset_MakeOffset.hxx`:84 - `BRepOffset_MakeOffset::MakeOffsetShape()`
     pub fn make_offset_shape(&mut self, theRange: &crate::message::ProgressRange) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_MakeOffset_make_offset_shape(self as *mut Self, theRange)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepOffset_MakeOffset.hxx`:87 - `BRepOffset_MakeOffset::MakeThickSolid()`
     pub fn make_thick_solid(&mut self, theRange: &crate::message::ProgressRange) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_MakeOffset_make_thick_solid(self as *mut Self, theRange)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1322,8 +1467,11 @@ impl MakeOffset {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_MakeOffset_get_analyse(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1332,8 +1480,11 @@ impl MakeOffset {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_MakeOffset_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1341,8 +1492,11 @@ impl MakeOffset {
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::BRepOffset_MakeOffset_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1351,8 +1505,11 @@ impl MakeOffset {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_MakeOffset_init_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1361,8 +1518,11 @@ impl MakeOffset {
     pub fn error(&self) -> crate::b_rep_offset::Error {
         {
             let __result = unsafe { crate::ffi::BRepOffset_MakeOffset_error(self as *const Self) };
-            crate::check_exception();
-            crate::b_rep_offset::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_offset::Error::try_from(__val).unwrap()
         }
     }
 
@@ -1374,8 +1534,11 @@ impl MakeOffset {
             let __result = unsafe {
                 crate::ffi::BRepOffset_MakeOffset_offset_faces_from_shapes(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1385,8 +1548,11 @@ impl MakeOffset {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_MakeOffset_get_join_type(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::JoinType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::JoinType::try_from(__val).unwrap()
         }
     }
 
@@ -1398,8 +1564,11 @@ impl MakeOffset {
             let __result = unsafe {
                 crate::ffi::BRepOffset_MakeOffset_offset_edges_from_shapes(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1409,8 +1578,11 @@ impl MakeOffset {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_MakeOffset_closing_faces(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1427,8 +1599,11 @@ impl MakeOffset {
             let __result = unsafe {
                 crate::ffi::BRepOffset_MakeOffset_check_input_data(self as *mut Self, theRange)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1438,8 +1613,11 @@ impl MakeOffset {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_MakeOffset_get_bad_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1459,8 +1637,11 @@ impl MakeOffset {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_MakeOffset_generated(self as *mut Self, theS) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1479,8 +1660,11 @@ impl MakeOffset {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_MakeOffset_modified(self as *mut Self, theS) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1490,8 +1674,11 @@ impl MakeOffset {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_MakeOffset_is_deleted(self as *mut Self, S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1525,8 +1712,10 @@ impl MakeSimpleOffset {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepOffset_MakeSimpleOffset_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1543,8 +1732,10 @@ impl MakeSimpleOffset {
                     theOffsetValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1552,14 +1743,16 @@ impl MakeSimpleOffset {
     /// Initialise shape for modifications.
     pub fn initialize(&mut self, theInputShape: &crate::topo_ds::Shape, theOffsetValue: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_MakeSimpleOffset_initialize(
                     self as *mut Self,
                     theInputShape,
                     theOffsetValue,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1567,8 +1760,11 @@ impl MakeSimpleOffset {
     /// Computes offset shape.
     pub fn perform(&mut self) {
         {
-            unsafe { crate::ffi::BRepOffset_MakeSimpleOffset_perform(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepOffset_MakeSimpleOffset_perform(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1579,8 +1775,11 @@ impl MakeSimpleOffset {
             let __result = unsafe {
                 crate::ffi::BRepOffset_MakeSimpleOffset_get_error_message(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1590,8 +1789,11 @@ impl MakeSimpleOffset {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_MakeSimpleOffset_get_error(self as *const Self) };
-            crate::check_exception();
-            crate::b_rep_offset::Simple_Status::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_offset::Simple_Status::try_from(__val).unwrap()
         }
     }
 
@@ -1602,8 +1804,11 @@ impl MakeSimpleOffset {
             let __result = unsafe {
                 crate::ffi::BRepOffset_MakeSimpleOffset_get_build_solid_flag(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1611,13 +1816,15 @@ impl MakeSimpleOffset {
     /// Sets solid building flag.
     pub fn set_build_solid_flag(&mut self, theBuildFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_MakeSimpleOffset_set_build_solid_flag(
                     self as *mut Self,
                     theBuildFlag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1628,8 +1835,11 @@ impl MakeSimpleOffset {
             let __result = unsafe {
                 crate::ffi::BRepOffset_MakeSimpleOffset_get_offset_value(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1637,13 +1847,15 @@ impl MakeSimpleOffset {
     /// Sets offset value.
     pub fn set_offset_value(&mut self, theOffsetValue: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_MakeSimpleOffset_set_offset_value(
                     self as *mut Self,
                     theOffsetValue,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1654,8 +1866,11 @@ impl MakeSimpleOffset {
             let __result = unsafe {
                 crate::ffi::BRepOffset_MakeSimpleOffset_get_tolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1663,10 +1878,12 @@ impl MakeSimpleOffset {
     /// Sets tolerance (used for handling singularities).
     pub fn set_tolerance(&mut self, theValue: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_MakeSimpleOffset_set_tolerance(self as *mut Self, theValue)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1676,8 +1893,11 @@ impl MakeSimpleOffset {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_MakeSimpleOffset_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1688,8 +1908,11 @@ impl MakeSimpleOffset {
             let __result = unsafe {
                 crate::ffi::BRepOffset_MakeSimpleOffset_get_result_shape(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1703,8 +1926,11 @@ impl MakeSimpleOffset {
                     theExpectedToler,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1718,8 +1944,11 @@ impl MakeSimpleOffset {
             let __result = unsafe {
                 crate::ffi::BRepOffset_MakeSimpleOffset_generated(self as *const Self, theShape)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1733,8 +1962,11 @@ impl MakeSimpleOffset {
             let __result = unsafe {
                 crate::ffi::BRepOffset_MakeSimpleOffset_modified(self as *const Self, theShape)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -1762,8 +1994,10 @@ impl Offset {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepOffset_Offset_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1783,8 +2017,10 @@ impl Offset {
                     JoinType.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1818,8 +2054,10 @@ impl Offset {
                     JoinType.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1845,8 +2083,10 @@ impl Offset {
                     Conti.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1876,8 +2116,10 @@ impl Offset {
                     Conti.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1903,8 +2145,10 @@ impl Offset {
                     Conti.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1917,7 +2161,7 @@ impl Offset {
         JoinType: crate::geom_abs::JoinType,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Offset_init_face_real_bool_jointype(
                     self as *mut Self,
                     Face,
@@ -1926,7 +2170,9 @@ impl Offset {
                     JoinType.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1940,7 +2186,7 @@ impl Offset {
         JoinType: crate::geom_abs::JoinType,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Offset_init_face_real_datamapofshapeshape_bool_jointype(
                     self as *mut Self,
                     Face,
@@ -1950,7 +2196,9 @@ impl Offset {
                     JoinType.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1966,7 +2214,7 @@ impl Offset {
         Conti: crate::geom_abs::Shape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Offset_init_edge3_real_bool_real_shape(
                     self as *mut Self,
                     Path,
@@ -1978,7 +2226,9 @@ impl Offset {
                     Conti.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1996,7 +2246,7 @@ impl Offset {
         Conti: crate::geom_abs::Shape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Offset_init_edge3_real_edge2_bool_real_shape(
                     self as *mut Self,
                     Path,
@@ -2010,7 +2260,9 @@ impl Offset {
                     Conti.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2027,7 +2279,7 @@ impl Offset {
         Conti: crate::geom_abs::Shape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Offset_init_vertex_listofshape_real_bool_real_shape(
                     self as *mut Self,
                     Vertex,
@@ -2038,7 +2290,9 @@ impl Offset {
                     Conti.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2046,10 +2300,12 @@ impl Offset {
     /// Only used in Rolling Ball. Pipe on Free Boundary
     pub fn init_edge_real(&mut self, Edge: &crate::topo_ds::Edge, Offset: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Offset_init_edge_real(self as *mut Self, Edge, Offset)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2058,8 +2314,11 @@ impl Offset {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_Offset_initial_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2067,8 +2326,11 @@ impl Offset {
     pub fn face(&self) -> &crate::topo_ds::Face {
         {
             let __result = unsafe { crate::ffi::BRepOffset_Offset_face(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2080,8 +2342,11 @@ impl Offset {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_Offset_generated(self as *const Self, Shape) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2089,8 +2354,11 @@ impl Offset {
     pub fn status(&self) -> crate::b_rep_offset::Status {
         {
             let __result = unsafe { crate::ffi::BRepOffset_Offset_status(self as *const Self) };
-            crate::check_exception();
-            crate::b_rep_offset::Status::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_offset::Status::try_from(__val).unwrap()
         }
     }
 }
@@ -2137,8 +2405,10 @@ impl SimpleOffset {
                     theTolerance,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2147,8 +2417,11 @@ impl SimpleOffset {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_SimpleOffset_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2185,8 +2458,11 @@ impl SimpleOffset {
                     RevFace,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2208,8 +2484,11 @@ impl SimpleOffset {
             let __result = unsafe {
                 crate::ffi::BRepOffset_SimpleOffset_new_curve(self as *mut Self, E, C, L, Tol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2229,8 +2508,11 @@ impl SimpleOffset {
             let __result = unsafe {
                 crate::ffi::BRepOffset_SimpleOffset_new_point(self as *mut Self, V, P, Tol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2262,8 +2544,11 @@ impl SimpleOffset {
                     Tol,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2284,8 +2569,11 @@ impl SimpleOffset {
             let __result = unsafe {
                 crate::ffi::BRepOffset_SimpleOffset_new_parameter(self as *mut Self, V, E, P, Tol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2317,8 +2605,11 @@ impl SimpleOffset {
                     NewF2,
                 )
             };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -2326,8 +2617,11 @@ impl SimpleOffset {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::BRepOffset_SimpleOffset_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2335,64 +2629,67 @@ impl SimpleOffset {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepOffset_SimpleOffset_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to BRepTools_Modification
     pub fn as_b_rep_tools_modification(&self) -> &crate::b_rep_tools::Modification {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepOffset_SimpleOffset_as_BRepTools_Modification(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepOffset_SimpleOffset_as_BRepTools_Modification(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepTools_Modification (mutable)
     pub fn as_b_rep_tools_modification_mut(&mut self) -> &mut crate::b_rep_tools::Modification {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepOffset_SimpleOffset_as_BRepTools_Modification_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepOffset_SimpleOffset_as_BRepTools_Modification_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepOffset_SimpleOffset_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepOffset_SimpleOffset_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepOffset_SimpleOffset_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepOffset_SimpleOffset_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepOffsetSimpleOffset> {
-        {
-            let __result = unsafe { crate::ffi::BRepOffset_SimpleOffset_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::BRepOffset_SimpleOffset_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `BRepTools_Modification.hxx`:71 - `BRepTools_Modification::NewTriangulation()`
@@ -2409,8 +2706,11 @@ impl SimpleOffset {
                     T,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2424,8 +2724,11 @@ impl SimpleOffset {
             let __result = unsafe {
                 crate::ffi::BRepOffset_SimpleOffset_inherited_NewPolygon(self as *mut Self, E, P)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2445,8 +2748,11 @@ impl SimpleOffset {
                     P,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2459,8 +2765,11 @@ impl SimpleOffset {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2470,8 +2779,11 @@ impl SimpleOffset {
             let __result = unsafe {
                 crate::ffi::BRepOffset_SimpleOffset_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2480,11 +2792,14 @@ impl SimpleOffset {
         {
             let __result =
                 unsafe { crate::ffi::BRepOffset_SimpleOffset_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2495,18 +2810,23 @@ impl SimpleOffset {
             let __result = unsafe {
                 crate::ffi::BRepOffset_SimpleOffset_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_SimpleOffset_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2516,16 +2836,23 @@ impl SimpleOffset {
             let __result = unsafe {
                 crate::ffi::BRepOffset_SimpleOffset_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::BRepOffset_SimpleOffset_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepOffset_SimpleOffset_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2541,50 +2868,47 @@ unsafe impl crate::CppDeletable for HandleBRepOffsetSimpleOffset {
 impl HandleBRepOffsetSimpleOffset {
     /// Dereference this Handle to access the underlying BRepOffset_SimpleOffset
     pub fn get(&self) -> &crate::ffi::BRepOffset_SimpleOffset {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleBRepOffsetSimpleOffset_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBRepOffsetSimpleOffset_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepOffset_SimpleOffset
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepOffset_SimpleOffset {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleBRepOffsetSimpleOffset_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleBRepOffsetSimpleOffset_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepOffset_SimpleOffset> to Handle<BRepTools_Modification>
     pub fn to_handle_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepOffsetSimpleOffset_to_HandleBRepToolsModification(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepOffsetSimpleOffset_to_HandleBRepToolsModification(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepOffset_SimpleOffset> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepOffsetSimpleOffset_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepOffsetSimpleOffset_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2607,8 +2931,10 @@ impl Tool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepOffset_Tool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2621,8 +2947,10 @@ impl Tool {
         V2: &mut crate::topo_ds::Vertex,
     ) {
         {
-            unsafe { crate::ffi::BRepOffset_Tool_edge_vertices(E, V1, V2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepOffset_Tool_edge_vertices(E, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2640,10 +2968,12 @@ impl Tool {
         let mut O1_i32_: i32 = (*O1).into();
         let mut O2_i32_: i32 = (*O2).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Tool_orient_section(E, F1, F2, &mut O1_i32_, &mut O2_i32_)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *O1 = crate::top_abs::Orientation::try_from(O1_i32_).unwrap();
         *O2 = crate::top_abs::Orientation::try_from(O2_i32_).unwrap();
@@ -2666,8 +2996,11 @@ impl Tool {
                     theF1, theF2, theLE, theLV,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2690,8 +3023,11 @@ impl Tool {
                     theLSC,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2711,7 +3047,7 @@ impl Tool {
         RefFace2: &crate::topo_ds::Face,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Tool_inter3_d(
                     F1,
                     F2,
@@ -2723,7 +3059,9 @@ impl Tool {
                     RefFace2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2753,8 +3091,11 @@ impl Tool {
                     TolConf,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2767,8 +3108,12 @@ impl Tool {
         Side: crate::top_abs::State,
     ) {
         {
-            unsafe { crate::ffi::BRepOffset_Tool_pipe_inter(F1, F2, LInt1, LInt2, Side.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepOffset_Tool_pipe_inter(F1, F2, LInt1, LInt2, Side.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2781,8 +3126,10 @@ impl Tool {
         Tol: f64,
     ) {
         {
-            unsafe { crate::ffi::BRepOffset_Tool_inter2d(F, E1, E2, LV, Tol) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepOffset_Tool_inter2d(F, E1, E2, LV, Tol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2795,10 +3142,12 @@ impl Tool {
         Side: crate::top_abs::State,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Tool_inter_or_extent(F1, F2, LInt1, LInt2, Side.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2811,7 +3160,7 @@ impl Tool {
         enlargeVlast: &mut bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Tool_check_bounds(
                     F,
                     Analyse,
@@ -2820,7 +3169,9 @@ impl Tool {
                     enlargeVlast,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2872,8 +3223,11 @@ impl Tool {
                     theLenAfterVlast,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2887,7 +3241,7 @@ impl Tool {
         NF: &mut crate::topo_ds::Face,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Tool_extent_face(
                     F,
                     ConstShapes,
@@ -2897,7 +3251,9 @@ impl Tool {
                     NF,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2914,8 +3270,10 @@ impl Tool {
         NOnV2: &mut crate::ffi::TopTools_DataMapOfShapeShape,
     ) {
         {
-            unsafe { crate::ffi::BRepOffset_Tool_build_neighbour(W, F, NOnV1, NOnV2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepOffset_Tool_build_neighbour(W, F, NOnV1, NOnV2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2928,8 +3286,10 @@ impl Tool {
         MVE: &mut crate::ffi::TopTools_DataMapOfShapeListOfShape,
     ) {
         {
-            unsafe { crate::ffi::BRepOffset_Tool_map_vertex_edges(S, MVE) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepOffset_Tool_map_vertex_edges(S, MVE) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2946,8 +3306,11 @@ impl Tool {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::BRepOffset_Tool_deboucle3_d(S, Boundary) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2960,12 +3323,14 @@ impl Tool {
         Offset: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepOffset_Tool_correct_orientation(
                     SI, NewEdges, AsDes, InitOffset, Offset,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2973,8 +3338,11 @@ impl Tool {
     pub fn gabarit(aCurve: &crate::ffi::HandleGeomCurve) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepOffset_Tool_gabarit(aCurve) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2990,8 +3358,11 @@ impl Tool {
             let __result = unsafe {
                 crate::ffi::BRepOffset_Tool_check_planes_normals(theFace1, theFace2, theTolAng)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

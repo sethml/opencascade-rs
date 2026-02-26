@@ -20,8 +20,11 @@ pub fn write_shape_charptr_int(
         let __result = unsafe {
             crate::ffi::VrmlAPI_write_shape_charptr_int(aShape, c_aFileName.as_ptr(), aVersion)
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 
@@ -85,8 +88,10 @@ impl CafReader {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::VrmlAPI_CafReader_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -95,8 +100,11 @@ impl CafReader {
         {
             let __result =
                 unsafe { crate::ffi::VrmlAPI_CafReader_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -104,8 +112,11 @@ impl CafReader {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::VrmlAPI_CafReader_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -113,61 +124,63 @@ impl CafReader {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::VrmlAPI_CafReader_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to RWMesh_CafReader
     pub fn as_rw_mesh_caf_reader(&self) -> &crate::rw_mesh::CafReader {
-        {
-            let __result =
-                unsafe { crate::ffi::VrmlAPI_CafReader_as_RWMesh_CafReader(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::VrmlAPI_CafReader_as_RWMesh_CafReader(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to RWMesh_CafReader (mutable)
     pub fn as_rw_mesh_caf_reader_mut(&mut self) -> &mut crate::rw_mesh::CafReader {
-        {
-            let __result =
-                unsafe { crate::ffi::VrmlAPI_CafReader_as_RWMesh_CafReader_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::VrmlAPI_CafReader_as_RWMesh_CafReader_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::VrmlAPI_CafReader_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::VrmlAPI_CafReader_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::VrmlAPI_CafReader_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::VrmlAPI_CafReader_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleVrmlAPICafReader> {
-        {
-            let __result = unsafe { crate::ffi::VrmlAPI_CafReader_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::VrmlAPI_CafReader_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:72 - `RWMesh_CafReader::Document()`
@@ -175,18 +188,23 @@ impl CafReader {
         {
             let __result =
                 unsafe { crate::ffi::VrmlAPI_CafReader_inherited_Document(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:76 - `RWMesh_CafReader::SetDocument()`
     pub fn set_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::VrmlAPI_CafReader_inherited_SetDocument(self as *mut Self, theDoc)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -195,21 +213,26 @@ impl CafReader {
         {
             let __result =
                 unsafe { crate::ffi::VrmlAPI_CafReader_inherited_RootPrefix(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:82 - `RWMesh_CafReader::SetRootPrefix()`
     pub fn set_root_prefix(&mut self, theRootPrefix: &crate::t_collection::AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::VrmlAPI_CafReader_inherited_SetRootPrefix(
                     self as *mut Self,
                     theRootPrefix,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -221,21 +244,26 @@ impl CafReader {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:98 - `RWMesh_CafReader::SetFillIncompleteDocument()`
     pub fn set_fill_incomplete_document(&mut self, theToFillIncomplete: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::VrmlAPI_CafReader_inherited_SetFillIncompleteDocument(
                     self as *mut Self,
                     theToFillIncomplete,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -245,21 +273,26 @@ impl CafReader {
             let __result = unsafe {
                 crate::ffi::VrmlAPI_CafReader_inherited_MemoryLimitMiB(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:107 - `RWMesh_CafReader::SetMemoryLimitMiB()`
     pub fn set_memory_limit_mi_b(&mut self, theLimitMiB: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::VrmlAPI_CafReader_inherited_SetMemoryLimitMiB(
                     self as *mut Self,
                     theLimitMiB,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -271,8 +304,11 @@ impl CafReader {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -282,13 +318,15 @@ impl CafReader {
         theConverter: &crate::rw_mesh::CoordinateSystemConverter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::VrmlAPI_CafReader_inherited_SetCoordinateSystemConverter(
                     self as *mut Self,
                     theConverter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -298,21 +336,26 @@ impl CafReader {
             let __result = unsafe {
                 crate::ffi::VrmlAPI_CafReader_inherited_SystemLengthUnit(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:128 - `RWMesh_CafReader::SetSystemLengthUnit()`
     pub fn set_system_length_unit(&mut self, theUnits: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::VrmlAPI_CafReader_inherited_SetSystemLengthUnit(
                     self as *mut Self,
                     theUnits,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -324,8 +367,11 @@ impl CafReader {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -335,21 +381,26 @@ impl CafReader {
             let __result = unsafe {
                 crate::ffi::VrmlAPI_CafReader_inherited_SystemCoordinateSystem(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:147 - `RWMesh_CafReader::SetSystemCoordinateSystem()`
     pub fn set_system_coordinate_system(&mut self, theCS: &crate::gp::Ax3) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::VrmlAPI_CafReader_inherited_SetSystemCoordinateSystem(
                     self as *mut Self,
                     theCS,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -359,21 +410,26 @@ impl CafReader {
             let __result = unsafe {
                 crate::ffi::VrmlAPI_CafReader_inherited_FileLengthUnit(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:164 - `RWMesh_CafReader::SetFileLengthUnit()`
     pub fn set_file_length_unit(&mut self, theUnits: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::VrmlAPI_CafReader_inherited_SetFileLengthUnit(
                     self as *mut Self,
                     theUnits,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -383,8 +439,11 @@ impl CafReader {
             let __result = unsafe {
                 crate::ffi::VrmlAPI_CafReader_inherited_HasFileCoordinateSystem(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -394,21 +453,26 @@ impl CafReader {
             let __result = unsafe {
                 crate::ffi::VrmlAPI_CafReader_inherited_FileCoordinateSystem(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `RWMesh_CafReader.hxx`:180 - `RWMesh_CafReader::SetFileCoordinateSystem()`
     pub fn set_file_coordinate_system(&mut self, theCS: &crate::gp::Ax3) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::VrmlAPI_CafReader_inherited_SetFileCoordinateSystem(
                     self as *mut Self,
                     theCS,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -426,8 +490,11 @@ impl CafReader {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -436,8 +503,11 @@ impl CafReader {
         {
             let __result =
                 unsafe { crate::ffi::VrmlAPI_CafReader_inherited_ExtraStatus(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -446,8 +516,11 @@ impl CafReader {
         {
             let __result =
                 unsafe { crate::ffi::VrmlAPI_CafReader_inherited_SingleShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -457,8 +530,11 @@ impl CafReader {
             let __result = unsafe {
                 crate::ffi::VrmlAPI_CafReader_inherited_ExternalFiles(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -467,8 +543,11 @@ impl CafReader {
         {
             let __result =
                 unsafe { crate::ffi::VrmlAPI_CafReader_inherited_Metadata(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -486,8 +565,11 @@ impl CafReader {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -497,8 +579,11 @@ impl CafReader {
             let __result = unsafe {
                 crate::ffi::VrmlAPI_CafReader_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -508,8 +593,11 @@ impl CafReader {
             let __result = unsafe {
                 crate::ffi::VrmlAPI_CafReader_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -518,11 +606,14 @@ impl CafReader {
         {
             let __result =
                 unsafe { crate::ffi::VrmlAPI_CafReader_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -532,18 +623,23 @@ impl CafReader {
         {
             let __result =
                 unsafe { crate::ffi::VrmlAPI_CafReader_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::VrmlAPI_CafReader_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -553,16 +649,22 @@ impl CafReader {
             let __result = unsafe {
                 crate::ffi::VrmlAPI_CafReader_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::VrmlAPI_CafReader_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::VrmlAPI_CafReader_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -578,42 +680,42 @@ unsafe impl crate::CppDeletable for HandleVrmlAPICafReader {
 impl HandleVrmlAPICafReader {
     /// Dereference this Handle to access the underlying VrmlAPI_CafReader
     pub fn get(&self) -> &crate::ffi::VrmlAPI_CafReader {
-        {
-            let __result = unsafe { crate::ffi::HandleVrmlAPICafReader_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleVrmlAPICafReader_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying VrmlAPI_CafReader
     pub fn get_mut(&mut self) -> &mut crate::ffi::VrmlAPI_CafReader {
-        {
-            let __result = unsafe { crate::ffi::HandleVrmlAPICafReader_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleVrmlAPICafReader_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<VrmlAPI_CafReader> to Handle<RWMesh_CafReader>
     pub fn to_handle_caf_reader(&self) -> crate::OwnedPtr<crate::ffi::HandleRWMeshCafReader> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleVrmlAPICafReader_to_HandleRWMeshCafReader(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleVrmlAPICafReader_to_HandleRWMeshCafReader(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<VrmlAPI_CafReader> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleVrmlAPICafReader_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleVrmlAPICafReader_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -639,8 +741,10 @@ impl Writer {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::VrmlAPI_Writer_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -649,8 +753,10 @@ impl Writer {
     /// to their default values..
     pub fn reset_to_defaults(&mut self) {
         {
-            unsafe { crate::ffi::VrmlAPI_Writer_reset_to_defaults(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::VrmlAPI_Writer_reset_to_defaults(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -659,8 +765,11 @@ impl Writer {
     pub fn drawer(&self) -> crate::OwnedPtr<crate::ffi::HandleVrmlConverterDrawer> {
         {
             let __result = unsafe { crate::ffi::VrmlAPI_Writer_drawer(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -673,8 +782,11 @@ impl Writer {
     /// size of the shaped.
     pub fn set_deflection(&mut self, aDef: f64) {
         {
-            unsafe { crate::ffi::VrmlAPI_Writer_set_deflection(self as *mut Self, aDef) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::VrmlAPI_Writer_set_deflection(self as *mut Self, aDef) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -687,10 +799,12 @@ impl Writer {
     /// defined through the VrmlAPI_RepresentationOfShape enumeration.
     pub fn set_representation(&mut self, aRep: crate::vrml_api::RepresentationOfShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::VrmlAPI_Writer_set_representation(self as *mut Self, aRep.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -702,14 +816,16 @@ impl Writer {
         aTransparency: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::VrmlAPI_Writer_set_transparency_to_material(
                     self as *mut Self,
                     aMaterial,
                     aTransparency,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -720,14 +836,16 @@ impl Writer {
         aShininess: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::VrmlAPI_Writer_set_shininess_to_material(
                     self as *mut Self,
                     aMaterial,
                     aShininess,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -738,14 +856,16 @@ impl Writer {
         Color: &crate::ffi::HandleQuantityHArray1OfColor,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::VrmlAPI_Writer_set_ambient_color_to_material(
                     self as *mut Self,
                     aMaterial,
                     Color,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -756,14 +876,16 @@ impl Writer {
         Color: &crate::ffi::HandleQuantityHArray1OfColor,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::VrmlAPI_Writer_set_diffuse_color_to_material(
                     self as *mut Self,
                     aMaterial,
                     Color,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -774,14 +896,16 @@ impl Writer {
         Color: &crate::ffi::HandleQuantityHArray1OfColor,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::VrmlAPI_Writer_set_specular_color_to_material(
                     self as *mut Self,
                     aMaterial,
                     Color,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -792,14 +916,16 @@ impl Writer {
         Color: &crate::ffi::HandleQuantityHArray1OfColor,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::VrmlAPI_Writer_set_emissive_color_to_material(
                     self as *mut Self,
                     aMaterial,
                     Color,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -811,8 +937,11 @@ impl Writer {
         {
             let __result =
                 unsafe { crate::ffi::VrmlAPI_Writer_get_representation(self as *const Self) };
-            crate::check_exception();
-            crate::vrml_api::RepresentationOfShape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::vrml_api::RepresentationOfShape::try_from(__val).unwrap()
         }
     }
 
@@ -821,8 +950,11 @@ impl Writer {
         {
             let __result =
                 unsafe { crate::ffi::VrmlAPI_Writer_get_front_material(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -831,8 +963,11 @@ impl Writer {
         {
             let __result =
                 unsafe { crate::ffi::VrmlAPI_Writer_get_points_material(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -841,8 +976,11 @@ impl Writer {
         {
             let __result =
                 unsafe { crate::ffi::VrmlAPI_Writer_get_uiso_material(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -851,8 +989,11 @@ impl Writer {
         {
             let __result =
                 unsafe { crate::ffi::VrmlAPI_Writer_get_viso_material(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -861,8 +1002,11 @@ impl Writer {
         {
             let __result =
                 unsafe { crate::ffi::VrmlAPI_Writer_get_line_material(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -871,8 +1015,11 @@ impl Writer {
         {
             let __result =
                 unsafe { crate::ffi::VrmlAPI_Writer_get_wire_material(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -881,8 +1028,11 @@ impl Writer {
         {
             let __result =
                 unsafe { crate::ffi::VrmlAPI_Writer_get_free_bounds_material(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -892,8 +1042,11 @@ impl Writer {
             let __result = unsafe {
                 crate::ffi::VrmlAPI_Writer_get_unfree_bounds_material(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -911,8 +1064,11 @@ impl Writer {
                     aVersion,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -935,8 +1091,11 @@ impl Writer {
                     theScale,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

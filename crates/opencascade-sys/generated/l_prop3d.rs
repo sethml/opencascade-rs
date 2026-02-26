@@ -39,8 +39,10 @@ impl CLProps {
             let __result = unsafe {
                 crate::ffi::LProp3d_CLProps_ctor_handleadaptor3dcurve_int_real(C, N, Resolution)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -60,8 +62,10 @@ impl CLProps {
                     C, U, N, Resolution,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -75,8 +79,10 @@ impl CLProps {
     pub fn new_int_real(N: i32, Resolution: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LProp3d_CLProps_ctor_int_real(N, Resolution) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -85,8 +91,10 @@ impl CLProps {
     /// for the parameter value <U>.
     pub fn set_parameter(&mut self, U: f64) {
         {
-            unsafe { crate::ffi::LProp3d_CLProps_set_parameter(self as *mut Self, U) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::LProp3d_CLProps_set_parameter(self as *mut Self, U) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -95,8 +103,10 @@ impl CLProps {
     /// for the new curve.
     pub fn set_curve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) {
         {
-            unsafe { crate::ffi::LProp3d_CLProps_set_curve(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::LProp3d_CLProps_set_curve(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -105,8 +115,11 @@ impl CLProps {
     pub fn value(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::LProp3d_CLProps_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -116,8 +129,11 @@ impl CLProps {
     pub fn d1(&mut self) -> &crate::gp::Vec {
         {
             let __result = unsafe { crate::ffi::LProp3d_CLProps_d1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -127,8 +143,11 @@ impl CLProps {
     pub fn d2(&mut self) -> &crate::gp::Vec {
         {
             let __result = unsafe { crate::ffi::LProp3d_CLProps_d2(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -138,8 +157,11 @@ impl CLProps {
     pub fn d3(&mut self) -> &crate::gp::Vec {
         {
             let __result = unsafe { crate::ffi::LProp3d_CLProps_d3(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -151,8 +173,11 @@ impl CLProps {
         {
             let __result =
                 unsafe { crate::ffi::LProp3d_CLProps_is_tangent_defined(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -160,8 +185,10 @@ impl CLProps {
     /// output  the tangent direction <D>
     pub fn tangent(&mut self, D: &mut crate::gp::Dir) {
         {
-            unsafe { crate::ffi::LProp3d_CLProps_tangent(self as *mut Self, D) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::LProp3d_CLProps_tangent(self as *mut Self, D) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -170,8 +197,11 @@ impl CLProps {
     pub fn curvature(&mut self) -> f64 {
         {
             let __result = unsafe { crate::ffi::LProp3d_CLProps_curvature(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -179,8 +209,10 @@ impl CLProps {
     /// Returns the normal direction <N>.
     pub fn normal(&mut self, N: &mut crate::gp::Dir) {
         {
-            unsafe { crate::ffi::LProp3d_CLProps_normal(self as *mut Self, N) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::LProp3d_CLProps_normal(self as *mut Self, N) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -188,8 +220,11 @@ impl CLProps {
     /// Returns the centre of curvature <P>.
     pub fn centre_of_curvature(&mut self, P: &mut crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::LProp3d_CLProps_centre_of_curvature(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::LProp3d_CLProps_centre_of_curvature(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -213,8 +248,10 @@ impl CurveTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LProp3d_CurveTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -222,8 +259,10 @@ impl CurveTool {
     /// Computes the point <P> of parameter <U> on the HCurve <C>.
     pub fn value(C: &crate::ffi::HandleAdaptor3dCurve, U: f64, P: &mut crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::LProp3d_CurveTool_value(C, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::LProp3d_CurveTool_value(C, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -237,8 +276,10 @@ impl CurveTool {
         V1: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::LProp3d_CurveTool_d1(C, U, P, V1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::LProp3d_CurveTool_d1(C, U, P, V1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -253,8 +294,10 @@ impl CurveTool {
         V2: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::LProp3d_CurveTool_d2(C, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::LProp3d_CurveTool_d2(C, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -271,8 +314,10 @@ impl CurveTool {
         V3: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::LProp3d_CurveTool_d3(C, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::LProp3d_CurveTool_d3(C, U, P, V1, V2, V3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -284,8 +329,11 @@ impl CurveTool {
     pub fn continuity(C: &crate::ffi::HandleAdaptor3dCurve) -> i32 {
         {
             let __result = unsafe { crate::ffi::LProp3d_CurveTool_continuity(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -294,8 +342,11 @@ impl CurveTool {
     pub fn first_parameter(C: &crate::ffi::HandleAdaptor3dCurve) -> f64 {
         {
             let __result = unsafe { crate::ffi::LProp3d_CurveTool_first_parameter(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -305,8 +356,11 @@ impl CurveTool {
     pub fn last_parameter(C: &crate::ffi::HandleAdaptor3dCurve) -> f64 {
         {
             let __result = unsafe { crate::ffi::LProp3d_CurveTool_last_parameter(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -349,8 +403,10 @@ impl SLProps {
                     S, U, V, N, Resolution,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -366,8 +422,10 @@ impl SLProps {
             let __result = unsafe {
                 crate::ffi::LProp3d_SLProps_ctor_handleadaptor3dsurface_int_real(S, N, Resolution)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -378,8 +436,10 @@ impl SLProps {
     pub fn new_int_real(N: i32, Resolution: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LProp3d_SLProps_ctor_int_real(N, Resolution) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -388,8 +448,10 @@ impl SLProps {
     /// for the new surface.
     pub fn set_surface(&mut self, S: &crate::ffi::HandleAdaptor3dSurface) {
         {
-            unsafe { crate::ffi::LProp3d_SLProps_set_surface(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::LProp3d_SLProps_set_surface(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -398,8 +460,11 @@ impl SLProps {
     /// for the new parameter values (<U>, <V>).
     pub fn set_parameters(&mut self, U: f64, V: f64) {
         {
-            unsafe { crate::ffi::LProp3d_SLProps_set_parameters(self as *mut Self, U, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::LProp3d_SLProps_set_parameters(self as *mut Self, U, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -408,8 +473,11 @@ impl SLProps {
     pub fn value(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::LProp3d_SLProps_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -419,8 +487,11 @@ impl SLProps {
     pub fn d1u(&mut self) -> &crate::gp::Vec {
         {
             let __result = unsafe { crate::ffi::LProp3d_SLProps_d1u(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -430,8 +501,11 @@ impl SLProps {
     pub fn d1v(&mut self) -> &crate::gp::Vec {
         {
             let __result = unsafe { crate::ffi::LProp3d_SLProps_d1v(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -441,8 +515,11 @@ impl SLProps {
     pub fn d2u(&mut self) -> &crate::gp::Vec {
         {
             let __result = unsafe { crate::ffi::LProp3d_SLProps_d2u(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -452,8 +529,11 @@ impl SLProps {
     pub fn d2v(&mut self) -> &crate::gp::Vec {
         {
             let __result = unsafe { crate::ffi::LProp3d_SLProps_d2v(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -463,8 +543,11 @@ impl SLProps {
     pub fn duv(&mut self) -> &crate::gp::Vec {
         {
             let __result = unsafe { crate::ffi::LProp3d_SLProps_duv(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -476,8 +559,11 @@ impl SLProps {
         {
             let __result =
                 unsafe { crate::ffi::LProp3d_SLProps_is_tangent_u_defined(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -485,8 +571,10 @@ impl SLProps {
     /// Returns the tangent direction <D> on the iso-V.
     pub fn tangent_u(&mut self, D: &mut crate::gp::Dir) {
         {
-            unsafe { crate::ffi::LProp3d_SLProps_tangent_u(self as *mut Self, D) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::LProp3d_SLProps_tangent_u(self as *mut Self, D) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -498,8 +586,11 @@ impl SLProps {
         {
             let __result =
                 unsafe { crate::ffi::LProp3d_SLProps_is_tangent_v_defined(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -507,8 +598,10 @@ impl SLProps {
     /// Returns the tangent direction <D> on the iso-V.
     pub fn tangent_v(&mut self, D: &mut crate::gp::Dir) {
         {
-            unsafe { crate::ffi::LProp3d_SLProps_tangent_v(self as *mut Self, D) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::LProp3d_SLProps_tangent_v(self as *mut Self, D) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -518,8 +611,11 @@ impl SLProps {
         {
             let __result =
                 unsafe { crate::ffi::LProp3d_SLProps_is_normal_defined(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -528,8 +624,11 @@ impl SLProps {
     pub fn normal(&mut self) -> &crate::gp::Dir {
         {
             let __result = unsafe { crate::ffi::LProp3d_SLProps_normal(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -539,8 +638,11 @@ impl SLProps {
         {
             let __result =
                 unsafe { crate::ffi::LProp3d_SLProps_is_curvature_defined(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -550,8 +652,11 @@ impl SLProps {
     pub fn is_umbilic(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::LProp3d_SLProps_is_umbilic(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -560,8 +665,11 @@ impl SLProps {
     pub fn max_curvature(&mut self) -> f64 {
         {
             let __result = unsafe { crate::ffi::LProp3d_SLProps_max_curvature(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -570,8 +678,11 @@ impl SLProps {
     pub fn min_curvature(&mut self) -> f64 {
         {
             let __result = unsafe { crate::ffi::LProp3d_SLProps_min_curvature(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -580,10 +691,12 @@ impl SLProps {
     /// <MaxD> and <MinD>
     pub fn curvature_directions(&mut self, MaxD: &mut crate::gp::Dir, MinD: &mut crate::gp::Dir) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::LProp3d_SLProps_curvature_directions(self as *mut Self, MaxD, MinD)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -592,8 +705,11 @@ impl SLProps {
     pub fn mean_curvature(&mut self) -> f64 {
         {
             let __result = unsafe { crate::ffi::LProp3d_SLProps_mean_curvature(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -603,8 +719,11 @@ impl SLProps {
         {
             let __result =
                 unsafe { crate::ffi::LProp3d_SLProps_gaussian_curvature(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -628,8 +747,10 @@ impl SurfaceTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::LProp3d_SurfaceTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -638,8 +759,10 @@ impl SurfaceTool {
     /// HSurface <S>.
     pub fn value(S: &crate::ffi::HandleAdaptor3dSurface, U: f64, V: f64, P: &mut crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::LProp3d_SurfaceTool_value(S, U, V, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::LProp3d_SurfaceTool_value(S, U, V, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -655,8 +778,10 @@ impl SurfaceTool {
         D1V: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::LProp3d_SurfaceTool_d1(S, U, V, P, D1U, D1V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::LProp3d_SurfaceTool_d1(S, U, V, P, D1U, D1V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -675,8 +800,11 @@ impl SurfaceTool {
         DUV: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::LProp3d_SurfaceTool_d2(S, U, V, P, D1U, D1V, D2U, D2V, DUV) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::LProp3d_SurfaceTool_d2(S, U, V, P, D1U, D1V, D2U, D2V, DUV) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -690,8 +818,11 @@ impl SurfaceTool {
     ) -> crate::OwnedPtr<crate::gp::Vec> {
         {
             let __result = unsafe { crate::ffi::LProp3d_SurfaceTool_dn(S, U, V, IU, IV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -702,8 +833,11 @@ impl SurfaceTool {
     pub fn continuity(S: &crate::ffi::HandleAdaptor3dSurface) -> i32 {
         {
             let __result = unsafe { crate::ffi::LProp3d_SurfaceTool_continuity(S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -717,8 +851,10 @@ impl SurfaceTool {
         V2: &mut f64,
     ) {
         {
-            unsafe { crate::ffi::LProp3d_SurfaceTool_bounds(S, U1, V1, U2, V2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::LProp3d_SurfaceTool_bounds(S, U1, V1, U2, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

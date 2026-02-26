@@ -31,8 +31,11 @@ pub fn compose(
 ) -> crate::top_abs::Orientation {
     {
         let __result = unsafe { crate::ffi::TopAbs_compose(Or1.into(), Or2.into()) };
-        crate::check_exception();
-        crate::top_abs::Orientation::try_from(__result).unwrap()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        crate::top_abs::Orientation::try_from(__val).unwrap()
     }
 }
 /// **Source:** `TopAbs.hxx`:82 - `TopAbs::Reverse`
@@ -49,8 +52,11 @@ pub fn compose(
 pub fn reverse_orientation(Or: crate::top_abs::Orientation) -> crate::top_abs::Orientation {
     {
         let __result = unsafe { crate::ffi::TopAbs_reverse_orientation(Or.into()) };
-        crate::check_exception();
-        crate::top_abs::Orientation::try_from(__result).unwrap()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        crate::top_abs::Orientation::try_from(__val).unwrap()
     }
 }
 /// **Source:** `TopAbs.hxx`:97 - `TopAbs::Complement`
@@ -70,8 +76,11 @@ pub fn reverse_orientation(Or: crate::top_abs::Orientation) -> crate::top_abs::O
 pub fn complement(Or: crate::top_abs::Orientation) -> crate::top_abs::Orientation {
     {
         let __result = unsafe { crate::ffi::TopAbs_complement(Or.into()) };
-        crate::check_exception();
-        crate::top_abs::Orientation::try_from(__result).unwrap()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        crate::top_abs::Orientation::try_from(__val).unwrap()
     }
 }
 /// **Source:** `TopAbs.hxx`:100 - `TopAbs::Print`
@@ -83,8 +92,11 @@ pub fn print_shapeenum_ostream(
     {
         let __result =
             unsafe { crate::ffi::TopAbs_print_shapeenum_ostream(theShapeType.into(), theStream) };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 /// **Source:** `TopAbs.hxx`:106 - `TopAbs::Print`
@@ -97,8 +109,11 @@ pub fn print_orientation_ostream(
         let __result = unsafe {
             crate::ffi::TopAbs_print_orientation_ostream(theOrientation.into(), theStream)
         };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 /// **Source:** `TopAbs.hxx`:114 - `TopAbs::Print`
@@ -110,8 +125,11 @@ pub fn print_state_ostream(
 ) -> &mut crate::ffi::Standard_OStream {
     {
         let __result = unsafe { crate::ffi::TopAbs_print_state_ostream(St.into(), S) };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 /// **Source:** `TopAbs.hxx`:120 - `TopAbs::ShapeTypeToString`
@@ -122,8 +140,11 @@ pub fn print_state_ostream(
 pub fn shape_type_to_string(theType: crate::top_abs::ShapeEnum) -> std::string::String {
     {
         let __result = unsafe { crate::ffi::TopAbs_shape_type_to_string(theType.into()) };
-        crate::check_exception();
-        unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
     }
 }
 /// **Source:** `TopAbs.hxx`:125 - `TopAbs::ShapeTypeFromString`
@@ -135,8 +156,11 @@ pub fn shape_type_from_string(theTypeString: &str) -> crate::top_abs::ShapeEnum 
     {
         let __result =
             unsafe { crate::ffi::TopAbs_shape_type_from_string(c_theTypeString.as_ptr()) };
-        crate::check_exception();
-        crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        crate::top_abs::ShapeEnum::try_from(__val).unwrap()
     }
 }
 /// **Source:** `TopAbs.hxx`:143 - `TopAbs::ShapeOrientationToString`
@@ -149,8 +173,11 @@ pub fn shape_orientation_to_string(
     {
         let __result =
             unsafe { crate::ffi::TopAbs_shape_orientation_to_string(theOrientation.into()) };
-        crate::check_exception();
-        unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
     }
 }
 /// **Source:** `TopAbs.hxx`:150 - `TopAbs::ShapeOrientationFromString`
@@ -164,8 +191,11 @@ pub fn shape_orientation_from_string(theOrientationString: &str) -> crate::top_a
         let __result = unsafe {
             crate::ffi::TopAbs_shape_orientation_from_string(c_theOrientationString.as_ptr())
         };
-        crate::check_exception();
-        crate::top_abs::Orientation::try_from(__result).unwrap()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        crate::top_abs::Orientation::try_from(__val).unwrap()
     }
 }
 

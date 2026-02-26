@@ -87,62 +87,79 @@ impl ArcFunction {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Contap_ArcFunction_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `Contap_ArcFunction.hxx`:36 - `Contap_ArcFunction::Set()`
     pub fn set_handleadaptor3dsurface(&mut self, S: &crate::ffi::HandleAdaptor3dSurface) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_ArcFunction_set_handleadaptor3dsurface(self as *mut Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_ArcFunction.hxx`:38 - `Contap_ArcFunction::Set()`
     pub fn set_dir(&mut self, Direction: &crate::gp::Dir) {
         {
-            unsafe { crate::ffi::Contap_ArcFunction_set_dir(self as *mut Self, Direction) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Contap_ArcFunction_set_dir(self as *mut Self, Direction) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_ArcFunction.hxx`:40 - `Contap_ArcFunction::Set()`
     pub fn set_dir_real(&mut self, Direction: &crate::gp::Dir, Angle: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_ArcFunction_set_dir_real(self as *mut Self, Direction, Angle)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_ArcFunction.hxx`:42 - `Contap_ArcFunction::Set()`
     pub fn set_pnt(&mut self, Eye: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Contap_ArcFunction_set_pnt(self as *mut Self, Eye) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_ArcFunction_set_pnt(self as *mut Self, Eye) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_ArcFunction.hxx`:44 - `Contap_ArcFunction::Set()`
     pub fn set_pnt_real(&mut self, Eye: &crate::gp::Pnt, Angle: f64) {
         {
-            unsafe { crate::ffi::Contap_ArcFunction_set_pnt_real(self as *mut Self, Eye, Angle) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Contap_ArcFunction_set_pnt_real(self as *mut Self, Eye, Angle)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_ArcFunction.hxx`:46 - `Contap_ArcFunction::Set()`
     pub fn set_handleadaptor2dcurve2d(&mut self, A: &crate::ffi::HandleAdaptor2dCurve2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_ArcFunction_set_handleadaptor2dcurve2d(self as *mut Self, A)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -150,8 +167,11 @@ impl ArcFunction {
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         {
             let __result = unsafe { crate::ffi::Contap_ArcFunction_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -160,8 +180,11 @@ impl ArcFunction {
         {
             let __result =
                 unsafe { crate::ffi::Contap_ArcFunction_derivative(self as *mut Self, X, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -170,8 +193,11 @@ impl ArcFunction {
         {
             let __result =
                 unsafe { crate::ffi::Contap_ArcFunction_values(self as *mut Self, X, F, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -180,8 +206,11 @@ impl ArcFunction {
         {
             let __result =
                 unsafe { crate::ffi::Contap_ArcFunction_nb_samples(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -190,8 +219,11 @@ impl ArcFunction {
         {
             let __result =
                 unsafe { crate::ffi::Contap_ArcFunction_get_state_number(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -200,8 +232,11 @@ impl ArcFunction {
         {
             let __result =
                 unsafe { crate::ffi::Contap_ArcFunction_valpoint(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -209,8 +244,11 @@ impl ArcFunction {
     pub fn quadric(&self) -> &crate::int_surf::Quadric {
         {
             let __result = unsafe { crate::ffi::Contap_ArcFunction_quadric(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -219,8 +257,11 @@ impl ArcFunction {
     pub fn surface(&self) -> &crate::ffi::HandleAdaptor3dSurface {
         {
             let __result = unsafe { crate::ffi::Contap_ArcFunction_surface(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -231,53 +272,56 @@ impl ArcFunction {
         {
             let __result =
                 unsafe { crate::ffi::Contap_ArcFunction_last_computed_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::Contap_ArcFunction_as_math_FunctionWithDerivative(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Contap_ArcFunction_as_math_FunctionWithDerivative(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::Contap_ArcFunction_as_math_FunctionWithDerivative_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Contap_ArcFunction_as_math_FunctionWithDerivative_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        {
-            let __result =
-                unsafe { crate::ffi::Contap_ArcFunction_as_math_Function(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Contap_ArcFunction_as_math_Function(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        {
-            let __result =
-                unsafe { crate::ffi::Contap_ArcFunction_as_math_Function_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Contap_ArcFunction_as_math_Function_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 }
 
@@ -301,42 +345,55 @@ impl ContAna {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Contap_ContAna_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `Contap_ContAna.hxx`:43 - `Contap_ContAna::Perform()`
     pub fn perform_sphere_dir(&mut self, S: &crate::gp::Sphere, D: &crate::gp::Dir) {
         {
-            unsafe { crate::ffi::Contap_ContAna_perform_sphere_dir(self as *mut Self, S, D) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Contap_ContAna_perform_sphere_dir(self as *mut Self, S, D) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_ContAna.hxx`:45 - `Contap_ContAna::Perform()`
     pub fn perform_sphere_dir_real(&mut self, S: &crate::gp::Sphere, D: &crate::gp::Dir, Ang: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_ContAna_perform_sphere_dir_real(self as *mut Self, S, D, Ang)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_ContAna.hxx`:47 - `Contap_ContAna::Perform()`
     pub fn perform_sphere_pnt(&mut self, S: &crate::gp::Sphere, Eye: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Contap_ContAna_perform_sphere_pnt(self as *mut Self, S, Eye) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Contap_ContAna_perform_sphere_pnt(self as *mut Self, S, Eye) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_ContAna.hxx`:49 - `Contap_ContAna::Perform()`
     pub fn perform_cylinder_dir(&mut self, C: &crate::gp::Cylinder, D: &crate::gp::Dir) {
         {
-            unsafe { crate::ffi::Contap_ContAna_perform_cylinder_dir(self as *mut Self, C, D) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Contap_ContAna_perform_cylinder_dir(self as *mut Self, C, D) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -348,44 +405,58 @@ impl ContAna {
         Ang: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_ContAna_perform_cylinder_dir_real(self as *mut Self, C, D, Ang)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_ContAna.hxx`:53 - `Contap_ContAna::Perform()`
     pub fn perform_cylinder_pnt(&mut self, C: &crate::gp::Cylinder, Eye: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Contap_ContAna_perform_cylinder_pnt(self as *mut Self, C, Eye) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Contap_ContAna_perform_cylinder_pnt(self as *mut Self, C, Eye)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_ContAna.hxx`:55 - `Contap_ContAna::Perform()`
     pub fn perform_cone_dir(&mut self, C: &crate::gp::Cone, D: &crate::gp::Dir) {
         {
-            unsafe { crate::ffi::Contap_ContAna_perform_cone_dir(self as *mut Self, C, D) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Contap_ContAna_perform_cone_dir(self as *mut Self, C, D) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_ContAna.hxx`:57 - `Contap_ContAna::Perform()`
     pub fn perform_cone_dir_real(&mut self, C: &crate::gp::Cone, D: &crate::gp::Dir, Ang: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_ContAna_perform_cone_dir_real(self as *mut Self, C, D, Ang)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_ContAna.hxx`:59 - `Contap_ContAna::Perform()`
     pub fn perform_cone_pnt(&mut self, C: &crate::gp::Cone, Eye: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Contap_ContAna_perform_cone_pnt(self as *mut Self, C, Eye) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Contap_ContAna_perform_cone_pnt(self as *mut Self, C, Eye) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -393,8 +464,11 @@ impl ContAna {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Contap_ContAna_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -402,8 +476,11 @@ impl ContAna {
     pub fn nb_contours(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Contap_ContAna_nb_contours(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -413,8 +490,11 @@ impl ContAna {
     pub fn type_contour(&self) -> crate::geom_abs::CurveType {
         {
             let __result = unsafe { crate::ffi::Contap_ContAna_type_contour(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
@@ -422,8 +502,11 @@ impl ContAna {
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         {
             let __result = unsafe { crate::ffi::Contap_ContAna_circle(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -431,8 +514,11 @@ impl ContAna {
     pub fn line(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Lin> {
         {
             let __result = unsafe { crate::ffi::Contap_ContAna_line(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -455,8 +541,10 @@ impl Contour {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Contap_Contour_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -464,8 +552,10 @@ impl Contour {
     pub fn new_vec(Direction: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Contap_Contour_ctor_vec(Direction) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -473,8 +563,10 @@ impl Contour {
     pub fn new_vec_real(Direction: &crate::gp::Vec, Angle: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Contap_Contour_ctor_vec_real(Direction, Angle) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -482,8 +574,10 @@ impl Contour {
     pub fn new_pnt(Eye: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Contap_Contour_ctor_pnt(Eye) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -500,8 +594,10 @@ impl Contour {
                     Surf, Domain, Direction,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -517,8 +613,10 @@ impl Contour {
             let __result = unsafe {
                 crate::ffi::Contap_Contour_ctor_handleadaptor3dsurface_handleadaptor3dtopoltool_vec_real(Surf, Domain, Direction, Angle)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -535,8 +633,10 @@ impl Contour {
                     Surf, Domain, Eye,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -548,14 +648,16 @@ impl Contour {
         Domain: &crate::ffi::HandleAdaptor3dTopolTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_Contour_perform_handleadaptor3dsurface_handleadaptor3dtopoltool(
                     self as *mut Self,
                     Surf,
                     Domain,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -568,10 +670,12 @@ impl Contour {
         Direction: &crate::gp::Vec,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_Contour_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_vec(self as *mut Self, Surf, Domain, Direction)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -585,10 +689,12 @@ impl Contour {
         Angle: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_Contour_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_vec_real(self as *mut Self, Surf, Domain, Direction, Angle)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -601,36 +707,45 @@ impl Contour {
         Eye: &crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_Contour_perform_handleadaptor3dsurface_handleadaptor3dtopoltool_pnt(self as *mut Self, Surf, Domain, Eye)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_Contour.hxx`:80 - `Contap_Contour::Init()`
     pub fn init_vec(&mut self, Direction: &crate::gp::Vec) {
         {
-            unsafe { crate::ffi::Contap_Contour_init_vec(self as *mut Self, Direction) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Contap_Contour_init_vec(self as *mut Self, Direction) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_Contour.hxx`:82 - `Contap_Contour::Init()`
     pub fn init_vec_real(&mut self, Direction: &crate::gp::Vec, Angle: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_Contour_init_vec_real(self as *mut Self, Direction, Angle)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_Contour.hxx`:84 - `Contap_Contour::Init()`
     pub fn init_pnt(&mut self, Eye: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Contap_Contour_init_pnt(self as *mut Self, Eye) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_Contour_init_pnt(self as *mut Self, Eye) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -638,8 +753,11 @@ impl Contour {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Contap_Contour_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -648,8 +766,11 @@ impl Contour {
     pub fn is_empty(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Contap_Contour_is_empty(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -657,8 +778,11 @@ impl Contour {
     pub fn nb_lines(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Contap_Contour_nb_lines(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -666,8 +790,11 @@ impl Contour {
     pub fn line(&self, Index: i32) -> &Line {
         {
             let __result = unsafe { crate::ffi::Contap_Contour_line(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -679,8 +806,11 @@ impl Contour {
         {
             let __result =
                 unsafe { crate::ffi::Contap_Contour_surface_function(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 }
@@ -706,8 +836,10 @@ impl HContTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Contap_HContTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -715,8 +847,11 @@ impl HContTool {
     pub fn nb_samples_u(S: &crate::ffi::HandleAdaptor3dSurface, u1: f64, u2: f64) -> i32 {
         {
             let __result = unsafe { crate::ffi::Contap_HContTool_nb_samples_u(S, u1, u2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -724,8 +859,11 @@ impl HContTool {
     pub fn nb_samples_v(S: &crate::ffi::HandleAdaptor3dSurface, v1: f64, v2: f64) -> i32 {
         {
             let __result = unsafe { crate::ffi::Contap_HContTool_nb_samples_v(S, v1, v2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -733,8 +871,11 @@ impl HContTool {
     pub fn nb_sample_points(S: &crate::ffi::HandleAdaptor3dSurface) -> i32 {
         {
             let __result = unsafe { crate::ffi::Contap_HContTool_nb_sample_points(S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -746,8 +887,10 @@ impl HContTool {
         V: &mut f64,
     ) {
         {
-            unsafe { crate::ffi::Contap_HContTool_sample_point(S, Index, U, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_HContTool_sample_point(S, Index, U, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -760,8 +903,11 @@ impl HContTool {
     pub fn has_been_seen(C: &crate::ffi::HandleAdaptor2dCurve2d) -> bool {
         {
             let __result = unsafe { crate::ffi::Contap_HContTool_has_been_seen(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -772,8 +918,11 @@ impl HContTool {
     pub fn nb_samples_on_arc(A: &crate::ffi::HandleAdaptor2dCurve2d) -> i32 {
         {
             let __result = unsafe { crate::ffi::Contap_HContTool_nb_samples_on_arc(A) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -784,8 +933,10 @@ impl HContTool {
     /// or a bounding box for an infinite arc.
     pub fn bounds(C: &crate::ffi::HandleAdaptor2dCurve2d, Ufirst: &mut f64, Ulast: &mut f64) {
         {
-            unsafe { crate::ffi::Contap_HContTool_bounds(C, Ufirst, Ulast) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_HContTool_bounds(C, Ufirst, Ulast) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -804,8 +955,11 @@ impl HContTool {
     ) -> bool {
         {
             let __result = unsafe { crate::ffi::Contap_HContTool_project(C, P, Paramproj, Ptproj) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -820,8 +974,11 @@ impl HContTool {
     ) -> f64 {
         {
             let __result = unsafe { crate::ffi::Contap_HContTool_tolerance(V, C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -833,8 +990,11 @@ impl HContTool {
     ) -> f64 {
         {
             let __result = unsafe { crate::ffi::Contap_HContTool_parameter(V, C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -843,8 +1003,11 @@ impl HContTool {
     pub fn nb_points(C: &crate::ffi::HandleAdaptor2dCurve2d) -> i32 {
         {
             let __result = unsafe { crate::ffi::Contap_HContTool_nb_points(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -860,8 +1023,10 @@ impl HContTool {
         U: &mut f64,
     ) {
         {
-            unsafe { crate::ffi::Contap_HContTool_value(C, Index, Pt, Tol, U) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_HContTool_value(C, Index, Pt, Tol, U) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -871,8 +1036,11 @@ impl HContTool {
     pub fn is_vertex(C: &crate::ffi::HandleAdaptor2dCurve2d, Index: i32) -> bool {
         {
             let __result = unsafe { crate::ffi::Contap_HContTool_is_vertex(C, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -885,8 +1053,10 @@ impl HContTool {
         V: &mut crate::ffi::HandleAdaptor3dHVertex,
     ) {
         {
-            unsafe { crate::ffi::Contap_HContTool_vertex(C, Index, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_HContTool_vertex(C, Index, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -896,8 +1066,11 @@ impl HContTool {
     pub fn nb_segments(C: &crate::ffi::HandleAdaptor2dCurve2d) -> i32 {
         {
             let __result = unsafe { crate::ffi::Contap_HContTool_nb_segments(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -916,8 +1089,11 @@ impl HContTool {
         {
             let __result =
                 unsafe { crate::ffi::Contap_HContTool_has_first_point(C, Index, IndFirst) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -936,8 +1112,11 @@ impl HContTool {
         {
             let __result =
                 unsafe { crate::ffi::Contap_HContTool_has_last_point(C, Index, IndLast) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -947,8 +1126,11 @@ impl HContTool {
     pub fn is_all_solution(C: &crate::ffi::HandleAdaptor2dCurve2d) -> bool {
         {
             let __result = unsafe { crate::ffi::Contap_HContTool_is_all_solution(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -972,8 +1154,10 @@ impl HCurve2dTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Contap_HCurve2dTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -981,8 +1165,11 @@ impl HCurve2dTool {
     pub fn first_parameter(C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
         {
             let __result = unsafe { crate::ffi::Contap_HCurve2dTool_first_parameter(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -990,8 +1177,11 @@ impl HCurve2dTool {
     pub fn last_parameter(C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
         {
             let __result = unsafe { crate::ffi::Contap_HCurve2dTool_last_parameter(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -999,8 +1189,11 @@ impl HCurve2dTool {
     pub fn continuity(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::geom_abs::Shape {
         {
             let __result = unsafe { crate::ffi::Contap_HCurve2dTool_continuity(C) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -1010,8 +1203,11 @@ impl HCurve2dTool {
     pub fn nb_intervals(C: &crate::ffi::HandleAdaptor2dCurve2d, S: crate::geom_abs::Shape) -> i32 {
         {
             let __result = unsafe { crate::ffi::Contap_HCurve2dTool_nb_intervals(C, S.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1027,8 +1223,10 @@ impl HCurve2dTool {
         S: crate::geom_abs::Shape,
     ) {
         {
-            unsafe { crate::ffi::Contap_HCurve2dTool_intervals(C, T, S.into()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_HCurve2dTool_intervals(C, T, S.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1036,8 +1234,11 @@ impl HCurve2dTool {
     pub fn is_closed(C: &crate::ffi::HandleAdaptor2dCurve2d) -> bool {
         {
             let __result = unsafe { crate::ffi::Contap_HCurve2dTool_is_closed(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1045,8 +1246,11 @@ impl HCurve2dTool {
     pub fn is_periodic(C: &crate::ffi::HandleAdaptor2dCurve2d) -> bool {
         {
             let __result = unsafe { crate::ffi::Contap_HCurve2dTool_is_periodic(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1054,8 +1258,11 @@ impl HCurve2dTool {
     pub fn period(C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
         {
             let __result = unsafe { crate::ffi::Contap_HCurve2dTool_period(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1067,8 +1274,11 @@ impl HCurve2dTool {
     ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         {
             let __result = unsafe { crate::ffi::Contap_HCurve2dTool_value(C, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1076,8 +1286,10 @@ impl HCurve2dTool {
     /// Computes the point of parameter U on the curve.
     pub fn d0(C: &crate::ffi::HandleAdaptor2dCurve2d, U: f64, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Contap_HCurve2dTool_d0(C, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_HCurve2dTool_d0(C, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1093,8 +1305,10 @@ impl HCurve2dTool {
         V: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Contap_HCurve2dTool_d1(C, U, P, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_HCurve2dTool_d1(C, U, P, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1111,8 +1325,10 @@ impl HCurve2dTool {
         V2: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Contap_HCurve2dTool_d2(C, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_HCurve2dTool_d2(C, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1130,8 +1346,10 @@ impl HCurve2dTool {
         V3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Contap_HCurve2dTool_d3(C, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_HCurve2dTool_d3(C, U, P, V1, V2, V3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1148,8 +1366,11 @@ impl HCurve2dTool {
     ) -> crate::OwnedPtr<crate::gp::Vec2d> {
         {
             let __result = unsafe { crate::ffi::Contap_HCurve2dTool_dn(C, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1159,8 +1380,11 @@ impl HCurve2dTool {
     pub fn resolution(C: &crate::ffi::HandleAdaptor2dCurve2d, R3d: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::Contap_HCurve2dTool_resolution(C, R3d) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1171,8 +1395,11 @@ impl HCurve2dTool {
     pub fn get_type(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::geom_abs::CurveType {
         {
             let __result = unsafe { crate::ffi::Contap_HCurve2dTool_get_type(C) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
@@ -1180,8 +1407,11 @@ impl HCurve2dTool {
     pub fn line(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Lin2d> {
         {
             let __result = unsafe { crate::ffi::Contap_HCurve2dTool_line(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1189,8 +1419,11 @@ impl HCurve2dTool {
     pub fn circle(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Circ2d> {
         {
             let __result = unsafe { crate::ffi::Contap_HCurve2dTool_circle(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1198,8 +1431,11 @@ impl HCurve2dTool {
     pub fn ellipse(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Elips2d> {
         {
             let __result = unsafe { crate::ffi::Contap_HCurve2dTool_ellipse(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1207,8 +1443,11 @@ impl HCurve2dTool {
     pub fn hyperbola(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         {
             let __result = unsafe { crate::ffi::Contap_HCurve2dTool_hyperbola(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1216,8 +1455,11 @@ impl HCurve2dTool {
     pub fn parabola(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Parab2d> {
         {
             let __result = unsafe { crate::ffi::Contap_HCurve2dTool_parabola(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1227,8 +1469,11 @@ impl HCurve2dTool {
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
         {
             let __result = unsafe { crate::ffi::Contap_HCurve2dTool_bezier(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1238,8 +1483,11 @@ impl HCurve2dTool {
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
         {
             let __result = unsafe { crate::ffi::Contap_HCurve2dTool_b_spline(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1247,8 +1495,11 @@ impl HCurve2dTool {
     pub fn nb_samples(C: &crate::ffi::HandleAdaptor2dCurve2d, U0: f64, U1: f64) -> i32 {
         {
             let __result = unsafe { crate::ffi::Contap_HCurve2dTool_nb_samples(C, U0, U1) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1271,24 +1522,30 @@ impl Line {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Contap_Line_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `Contap_Line.hxx`:43 - `Contap_Line::SetLineOn2S()`
     pub fn set_line_on2_s(&mut self, L: &crate::ffi::HandleIntSurfLineOn2S) {
         {
-            unsafe { crate::ffi::Contap_Line_set_line_on2_s(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_Line_set_line_on2_s(self as *mut Self, L) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_Line.hxx`:45 - `Contap_Line::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::Contap_Line_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_Line_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1296,58 +1553,73 @@ impl Line {
     pub fn line_on2_s(&self) -> &crate::ffi::HandleIntSurfLineOn2S {
         {
             let __result = unsafe { crate::ffi::Contap_Line_line_on2_s(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `Contap_Line.hxx`:49 - `Contap_Line::ResetSeqOfVertex()`
     pub fn reset_seq_of_vertex(&mut self) {
         {
-            unsafe { crate::ffi::Contap_Line_reset_seq_of_vertex(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_Line_reset_seq_of_vertex(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_Line.hxx`:51 - `Contap_Line::Add()`
     pub fn add_pnton2s(&mut self, P: &crate::int_surf::PntOn2S) {
         {
-            unsafe { crate::ffi::Contap_Line_add_pnton2s(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_Line_add_pnton2s(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_Line.hxx`:53 - `Contap_Line::SetValue()`
     pub fn set_value_lin(&mut self, L: &crate::gp::Lin) {
         {
-            unsafe { crate::ffi::Contap_Line_set_value_lin(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_Line_set_value_lin(self as *mut Self, L) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_Line.hxx`:55 - `Contap_Line::SetValue()`
     pub fn set_value_circ(&mut self, C: &crate::gp::Circ) {
         {
-            unsafe { crate::ffi::Contap_Line_set_value_circ(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_Line_set_value_circ(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_Line.hxx`:57 - `Contap_Line::SetValue()`
     pub fn set_value_handleadaptor2dcurve2d(&mut self, A: &crate::ffi::HandleAdaptor2dCurve2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_Line_set_value_handleadaptor2dcurve2d(self as *mut Self, A)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_Line.hxx`:59 - `Contap_Line::Add()`
     pub fn add_point(&mut self, P: &Point) {
         {
-            unsafe { crate::ffi::Contap_Line_add_point(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_Line_add_point(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1355,8 +1627,11 @@ impl Line {
     pub fn nb_vertex(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Contap_Line_nb_vertex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1364,8 +1639,11 @@ impl Line {
     pub fn vertex(&mut self, Index: i32) -> &mut Point {
         {
             let __result = unsafe { crate::ffi::Contap_Line_vertex(self as *mut Self, Index) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1376,8 +1654,11 @@ impl Line {
     pub fn type_contour(&self) -> crate::contap::IType {
         {
             let __result = unsafe { crate::ffi::Contap_Line_type_contour(self as *const Self) };
-            crate::check_exception();
-            crate::contap::IType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::contap::IType::try_from(__val).unwrap()
         }
     }
 
@@ -1385,8 +1666,11 @@ impl Line {
     pub fn nb_pnts(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Contap_Line_nb_pnts(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1394,8 +1678,11 @@ impl Line {
     pub fn point(&self, Index: i32) -> &crate::int_surf::PntOn2S {
         {
             let __result = unsafe { crate::ffi::Contap_Line_point(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1403,8 +1690,11 @@ impl Line {
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         {
             let __result = unsafe { crate::ffi::Contap_Line_line(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1412,8 +1702,11 @@ impl Line {
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         {
             let __result = unsafe { crate::ffi::Contap_Line_circle(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1421,8 +1714,11 @@ impl Line {
     pub fn arc(&self) -> &crate::ffi::HandleAdaptor2dCurve2d {
         {
             let __result = unsafe { crate::ffi::Contap_Line_arc(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1430,8 +1726,11 @@ impl Line {
     /// Set The Transition of the line.
     pub fn set_transition_on_s(&mut self, T: crate::int_surf::TypeTrans) {
         {
-            unsafe { crate::ffi::Contap_Line_set_transition_on_s(self as *mut Self, T.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Contap_Line_set_transition_on_s(self as *mut Self, T.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1441,8 +1740,11 @@ impl Line {
     pub fn transition_on_s(&self) -> crate::int_surf::TypeTrans {
         {
             let __result = unsafe { crate::ffi::Contap_Line_transition_on_s(self as *const Self) };
-            crate::check_exception();
-            crate::int_surf::TypeTrans::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_surf::TypeTrans::try_from(__val).unwrap()
         }
     }
 }
@@ -1472,8 +1774,10 @@ impl Point {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Contap_Point_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1482,8 +1786,10 @@ impl Point {
     pub fn new_pnt_real2(Pt: &crate::gp::Pnt, U: f64, V: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Contap_Point_ctor_pnt_real2(Pt, U, V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1491,8 +1797,10 @@ impl Point {
     /// Sets the values for a point.
     pub fn set_value(&mut self, Pt: &crate::gp::Pnt, U: f64, V: f64) {
         {
-            unsafe { crate::ffi::Contap_Point_set_value(self as *mut Self, Pt, U, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_Point_set_value(self as *mut Self, Pt, U, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1500,8 +1808,10 @@ impl Point {
     /// Set the value of the parameter on the intersection line.
     pub fn set_parameter(&mut self, Para: f64) {
         {
-            unsafe { crate::ffi::Contap_Point_set_parameter(self as *mut Self, Para) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_Point_set_parameter(self as *mut Self, Para) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1511,8 +1821,10 @@ impl Point {
     /// of the surface.
     pub fn set_vertex(&mut self, V: &crate::ffi::HandleAdaptor3dHVertex) {
         {
-            unsafe { crate::ffi::Contap_Point_set_vertex(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_Point_set_vertex(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1527,24 +1839,32 @@ impl Point {
         TArc: &crate::int_surf::Transition,
     ) {
         {
-            unsafe { crate::ffi::Contap_Point_set_arc(self as *mut Self, A, Param, TLine, TArc) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Contap_Point_set_arc(self as *mut Self, A, Param, TLine, TArc)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_Point.hxx`:64 - `Contap_Point::SetMultiple()`
     pub fn set_multiple(&mut self) {
         {
-            unsafe { crate::ffi::Contap_Point_set_multiple(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_Point_set_multiple(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_Point.hxx`:66 - `Contap_Point::SetInternal()`
     pub fn set_internal(&mut self) {
         {
-            unsafe { crate::ffi::Contap_Point_set_internal(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_Point_set_internal(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1553,8 +1873,11 @@ impl Point {
     pub fn value(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Contap_Point_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1567,8 +1890,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::Contap_Point_parameter_on_line(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1576,8 +1902,10 @@ impl Point {
     /// Returns the parameters on the surface of the point.
     pub fn parameters(&self, U1: &mut f64, V1: &mut f64) {
         {
-            unsafe { crate::ffi::Contap_Point_parameters(self as *const Self, U1, V1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_Point_parameters(self as *const Self, U1, V1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1587,8 +1915,11 @@ impl Point {
     pub fn is_on_arc(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Contap_Point_is_on_arc(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1598,8 +1929,11 @@ impl Point {
     pub fn arc(&self) -> &crate::ffi::HandleAdaptor2dCurve2d {
         {
             let __result = unsafe { crate::ffi::Contap_Point_arc(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1610,8 +1944,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::Contap_Point_parameter_on_arc(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1621,8 +1958,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::Contap_Point_transition_on_line(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1632,8 +1972,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::Contap_Point_transition_on_arc(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1643,8 +1986,11 @@ impl Point {
     pub fn is_vertex(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Contap_Point_is_vertex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1656,8 +2002,11 @@ impl Point {
     pub fn vertex(&self) -> &crate::ffi::HandleAdaptor3dHVertex {
         {
             let __result = unsafe { crate::ffi::Contap_Point_vertex(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1667,8 +2016,11 @@ impl Point {
     pub fn is_multiple(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Contap_Point_is_multiple(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1679,8 +2031,11 @@ impl Point {
     pub fn is_internal(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Contap_Point_is_internal(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1707,58 +2062,77 @@ impl SurfFunction {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Contap_SurfFunction_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `Contap_SurfFunction.hxx`:42 - `Contap_SurfFunction::Set()`
     pub fn set_handleadaptor3dsurface(&mut self, S: &crate::ffi::HandleAdaptor3dSurface) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_SurfFunction_set_handleadaptor3dsurface(self as *mut Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_SurfFunction.hxx`:44 - `Contap_SurfFunction::Set()`
     pub fn set_pnt(&mut self, Eye: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Contap_SurfFunction_set_pnt(self as *mut Self, Eye) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_SurfFunction_set_pnt(self as *mut Self, Eye) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_SurfFunction.hxx`:46 - `Contap_SurfFunction::Set()`
     pub fn set_dir(&mut self, Dir: &crate::gp::Dir) {
         {
-            unsafe { crate::ffi::Contap_SurfFunction_set_dir(self as *mut Self, Dir) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_SurfFunction_set_dir(self as *mut Self, Dir) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_SurfFunction.hxx`:48 - `Contap_SurfFunction::Set()`
     pub fn set_dir_real(&mut self, Dir: &crate::gp::Dir, Angle: f64) {
         {
-            unsafe { crate::ffi::Contap_SurfFunction_set_dir_real(self as *mut Self, Dir, Angle) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Contap_SurfFunction_set_dir_real(self as *mut Self, Dir, Angle)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_SurfFunction.hxx`:50 - `Contap_SurfFunction::Set()`
     pub fn set_pnt_real(&mut self, Eye: &crate::gp::Pnt, Angle: f64) {
         {
-            unsafe { crate::ffi::Contap_SurfFunction_set_pnt_real(self as *mut Self, Eye, Angle) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Contap_SurfFunction_set_pnt_real(self as *mut Self, Eye, Angle)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_SurfFunction.hxx`:52 - `Contap_SurfFunction::Set()`
     pub fn set_real(&mut self, Tolerance: f64) {
         {
-            unsafe { crate::ffi::Contap_SurfFunction_set_real(self as *mut Self, Tolerance) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Contap_SurfFunction_set_real(self as *mut Self, Tolerance) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1768,8 +2142,11 @@ impl SurfFunction {
         {
             let __result =
                 unsafe { crate::ffi::Contap_SurfFunction_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1779,8 +2156,11 @@ impl SurfFunction {
         {
             let __result =
                 unsafe { crate::ffi::Contap_SurfFunction_nb_equations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1790,8 +2170,11 @@ impl SurfFunction {
         {
             let __result =
                 unsafe { crate::ffi::Contap_SurfFunction_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1805,8 +2188,11 @@ impl SurfFunction {
         {
             let __result =
                 unsafe { crate::ffi::Contap_SurfFunction_derivatives(self as *mut Self, X, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1820,8 +2206,11 @@ impl SurfFunction {
         {
             let __result =
                 unsafe { crate::ffi::Contap_SurfFunction_values(self as *mut Self, X, F, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1831,8 +2220,11 @@ impl SurfFunction {
     pub fn root(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Contap_SurfFunction_root(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1843,8 +2235,11 @@ impl SurfFunction {
         {
             let __result =
                 unsafe { crate::ffi::Contap_SurfFunction_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1853,8 +2248,11 @@ impl SurfFunction {
     pub fn point(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Contap_SurfFunction_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1862,8 +2260,11 @@ impl SurfFunction {
     pub fn is_tangent(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::Contap_SurfFunction_is_tangent(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1872,8 +2273,11 @@ impl SurfFunction {
         {
             let __result =
                 unsafe { crate::ffi::Contap_SurfFunction_direction3d(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1882,8 +2286,11 @@ impl SurfFunction {
         {
             let __result =
                 unsafe { crate::ffi::Contap_SurfFunction_direction2d(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1892,8 +2299,11 @@ impl SurfFunction {
         {
             let __result =
                 unsafe { crate::ffi::Contap_SurfFunction_function_type(self as *const Self) };
-            crate::check_exception();
-            crate::contap::TFunction::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::contap::TFunction::try_from(__val).unwrap()
         }
     }
 
@@ -1901,8 +2311,11 @@ impl SurfFunction {
     pub fn eye(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Contap_SurfFunction_eye(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1911,8 +2324,11 @@ impl SurfFunction {
         {
             let __result =
                 unsafe { crate::ffi::Contap_SurfFunction_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1920,8 +2336,11 @@ impl SurfFunction {
     pub fn angle(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Contap_SurfFunction_angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1929,8 +2348,11 @@ impl SurfFunction {
     pub fn surface(&self) -> &crate::ffi::HandleAdaptor3dSurface {
         {
             let __result = unsafe { crate::ffi::Contap_SurfFunction_surface(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1940,8 +2362,11 @@ impl SurfFunction {
         {
             let __result =
                 unsafe { crate::ffi::Contap_SurfFunction_p_surface(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1949,51 +2374,48 @@ impl SurfFunction {
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Contap_SurfFunction_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Contap_SurfFunction_as_math_FunctionSetWithDerivatives(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Contap_SurfFunction_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Contap_SurfFunction_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result =
-                unsafe { crate::ffi::Contap_SurfFunction_as_math_FunctionSet(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Contap_SurfFunction_as_math_FunctionSet(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Contap_SurfFunction_as_math_FunctionSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Contap_SurfFunction_as_math_FunctionSet_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
@@ -2002,8 +2424,11 @@ impl SurfFunction {
             let __result = unsafe {
                 crate::ffi::Contap_SurfFunction_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2029,8 +2454,10 @@ impl SurfProps {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Contap_SurfProps_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2045,8 +2472,10 @@ impl SurfProps {
         N: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::Contap_SurfProps_normale(S, U, V, P, N) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Contap_SurfProps_normale(S, U, V, P, N) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2063,8 +2492,11 @@ impl SurfProps {
         N: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::Contap_SurfProps_deriv_and_norm(S, U, V, P, d1u, d1v, N) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Contap_SurfProps_deriv_and_norm(S, U, V, P, d1u, d1v, N) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2081,8 +2513,11 @@ impl SurfProps {
         Dnv: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::Contap_SurfProps_norm_and_dn(S, U, V, P, N, Dnu, Dnv) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Contap_SurfProps_norm_and_dn(S, U, V, P, N, Dnu, Dnv) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2105,8 +2540,10 @@ impl TheHSequenceOfPoint {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Contap_TheHSequenceOfPoint_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2117,8 +2554,10 @@ impl TheHSequenceOfPoint {
         {
             let __result =
                 unsafe { crate::ffi::Contap_TheHSequenceOfPoint_ctor_thesequenceofpoint(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2127,18 +2566,23 @@ impl TheHSequenceOfPoint {
         {
             let __result =
                 unsafe { crate::ffi::Contap_TheHSequenceOfPoint_sequence(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `Contap_TheHSequenceOfPoint.hxx`:24 - `Contap_TheHSequenceOfPoint::Append()`
     pub fn append_point(&mut self, theItem: &Point) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheHSequenceOfPoint_append_point(self as *mut Self, theItem)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2148,13 +2592,15 @@ impl TheHSequenceOfPoint {
         theSequence: &mut crate::ffi::Contap_TheSequenceOfPoint,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheHSequenceOfPoint_append_thesequenceofpoint(
                     self as *mut Self,
                     theSequence,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2164,8 +2610,11 @@ impl TheHSequenceOfPoint {
             let __result = unsafe {
                 crate::ffi::Contap_TheHSequenceOfPoint_change_sequence(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2174,8 +2623,11 @@ impl TheHSequenceOfPoint {
         {
             let __result =
                 unsafe { crate::ffi::Contap_TheHSequenceOfPoint_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2183,8 +2635,11 @@ impl TheHSequenceOfPoint {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Contap_TheHSequenceOfPoint_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2192,43 +2647,45 @@ impl TheHSequenceOfPoint {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Contap_TheHSequenceOfPoint_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Contap_TheHSequenceOfPoint_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Contap_TheHSequenceOfPoint_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Contap_TheHSequenceOfPoint_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Contap_TheHSequenceOfPoint_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleContapTheHSequenceOfPoint> {
-        {
-            let __result =
-                unsafe { crate::ffi::Contap_TheHSequenceOfPoint_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Contap_TheHSequenceOfPoint_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2240,8 +2697,11 @@ impl TheHSequenceOfPoint {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2254,8 +2714,11 @@ impl TheHSequenceOfPoint {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2265,11 +2728,14 @@ impl TheHSequenceOfPoint {
             let __result = unsafe {
                 crate::ffi::Contap_TheHSequenceOfPoint_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2280,20 +2746,25 @@ impl TheHSequenceOfPoint {
             let __result = unsafe {
                 crate::ffi::Contap_TheHSequenceOfPoint_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheHSequenceOfPoint_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2305,16 +2776,23 @@ impl TheHSequenceOfPoint {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Contap_TheHSequenceOfPoint_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Contap_TheHSequenceOfPoint_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2330,35 +2808,35 @@ unsafe impl crate::CppDeletable for HandleContapTheHSequenceOfPoint {
 impl HandleContapTheHSequenceOfPoint {
     /// Dereference this Handle to access the underlying Contap_TheHSequenceOfPoint
     pub fn get(&self) -> &crate::ffi::Contap_TheHSequenceOfPoint {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleContapTheHSequenceOfPoint_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleContapTheHSequenceOfPoint_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Contap_TheHSequenceOfPoint
     pub fn get_mut(&mut self) -> &mut crate::ffi::Contap_TheHSequenceOfPoint {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleContapTheHSequenceOfPoint_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleContapTheHSequenceOfPoint_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Contap_TheHSequenceOfPoint> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleContapTheHSequenceOfPoint_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleContapTheHSequenceOfPoint_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2386,8 +2864,10 @@ impl TheIWLineOfTheIWalking {
                     theAllocator,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2395,8 +2875,11 @@ impl TheIWLineOfTheIWalking {
     /// reverse the points in the line. Hasfirst, HasLast are kept.
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::Contap_TheIWLineOfTheIWalking_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Contap_TheIWLineOfTheIWalking_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2404,8 +2887,11 @@ impl TheIWLineOfTheIWalking {
     /// Cut the line at the point of rank Index.
     pub fn cut(&mut self, Index: i32) {
         {
-            unsafe { crate::ffi::Contap_TheIWLineOfTheIWalking_cut(self as *mut Self, Index) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Contap_TheIWLineOfTheIWalking_cut(self as *mut Self, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2413,22 +2899,28 @@ impl TheIWLineOfTheIWalking {
     /// Add a point in the line.
     pub fn add_point(&mut self, P: &crate::int_surf::PntOn2S) {
         {
-            unsafe { crate::ffi::Contap_TheIWLineOfTheIWalking_add_point(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Contap_TheIWLineOfTheIWalking_add_point(self as *mut Self, P)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:55 - `Contap_TheIWLineOfTheIWalking::AddStatusFirst()`
     pub fn add_status_first_bool2(&mut self, Closed: bool, HasFirst: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_add_status_first_bool2(
                     self as *mut Self,
                     Closed,
                     HasFirst,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2441,7 +2933,7 @@ impl TheIWLineOfTheIWalking {
         P: &crate::int_surf::PathPoint,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_add_status_first_bool2_int_pathpoint(
                     self as *mut Self,
                     Closed,
@@ -2450,14 +2942,16 @@ impl TheIWLineOfTheIWalking {
                     P,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:62 - `Contap_TheIWLineOfTheIWalking::AddStatusFirstLast()`
     pub fn add_status_first_last(&mut self, Closed: bool, HasFirst: bool, HasLast: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_add_status_first_last(
                     self as *mut Self,
                     Closed,
@@ -2465,20 +2959,24 @@ impl TheIWLineOfTheIWalking {
                     HasLast,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:66 - `Contap_TheIWLineOfTheIWalking::AddStatusLast()`
     pub fn add_status_last_bool(&mut self, HasLast: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_add_status_last_bool(
                     self as *mut Self,
                     HasLast,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2490,7 +2988,7 @@ impl TheIWLineOfTheIWalking {
         P: &crate::int_surf::PathPoint,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_add_status_last_bool_int_pathpoint(
                     self as *mut Self,
                     HasLast,
@@ -2498,7 +2996,9 @@ impl TheIWLineOfTheIWalking {
                     P,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2507,53 +3007,61 @@ impl TheIWLineOfTheIWalking {
     /// passant dans l'iterateur de depart
     pub fn add_index_passing(&mut self, Index: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_add_index_passing(
                     self as *mut Self,
                     Index,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:76 - `Contap_TheIWLineOfTheIWalking::SetTangentVector()`
     pub fn set_tangent_vector(&mut self, V: &crate::gp::Vec, Index: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_set_tangent_vector(
                     self as *mut Self,
                     V,
                     Index,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:78 - `Contap_TheIWLineOfTheIWalking::SetTangencyAtBegining()`
     pub fn set_tangency_at_begining(&mut self, IsTangent: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_set_tangency_at_begining(
                     self as *mut Self,
                     IsTangent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Contap_TheIWLineOfTheIWalking.hxx`:80 - `Contap_TheIWLineOfTheIWalking::SetTangencyAtEnd()`
     pub fn set_tangency_at_end(&mut self, IsTangent: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_set_tangency_at_end(
                     self as *mut Self,
                     IsTangent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2564,8 +3072,11 @@ impl TheIWLineOfTheIWalking {
         {
             let __result =
                 unsafe { crate::ffi::Contap_TheIWLineOfTheIWalking_nb_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2577,8 +3088,11 @@ impl TheIWLineOfTheIWalking {
             let __result = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_value(self as *const Self, Index)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2588,8 +3102,11 @@ impl TheIWLineOfTheIWalking {
         {
             let __result =
                 unsafe { crate::ffi::Contap_TheIWLineOfTheIWalking_line(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2599,8 +3116,11 @@ impl TheIWLineOfTheIWalking {
         {
             let __result =
                 unsafe { crate::ffi::Contap_TheIWLineOfTheIWalking_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2614,8 +3134,11 @@ impl TheIWLineOfTheIWalking {
             let __result = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_has_first_point(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2630,8 +3153,11 @@ impl TheIWLineOfTheIWalking {
             let __result = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_has_last_point(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2644,8 +3170,11 @@ impl TheIWLineOfTheIWalking {
             let __result = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_first_point(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2659,8 +3188,11 @@ impl TheIWLineOfTheIWalking {
             let __result = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_first_point_index(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2673,8 +3205,11 @@ impl TheIWLineOfTheIWalking {
             let __result = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_last_point(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2688,8 +3223,11 @@ impl TheIWLineOfTheIWalking {
             let __result = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_last_point_index(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2701,8 +3239,11 @@ impl TheIWLineOfTheIWalking {
             let __result = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_nb_passing_point(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2712,7 +3253,7 @@ impl TheIWLineOfTheIWalking {
     /// an exception is raised if Index > NbPassingPoint()
     pub fn passing_point(&self, Index: i32, IndexLine: &mut i32, IndexPnts: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_passing_point(
                     self as *const Self,
                     Index,
@@ -2720,7 +3261,9 @@ impl TheIWLineOfTheIWalking {
                     IndexPnts,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2736,8 +3279,11 @@ impl TheIWLineOfTheIWalking {
             let __result = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_tangent_vector(self as *const Self, Index)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2749,8 +3295,11 @@ impl TheIWLineOfTheIWalking {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2760,8 +3309,11 @@ impl TheIWLineOfTheIWalking {
             let __result = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_is_tangent_at_end(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2771,8 +3323,11 @@ impl TheIWLineOfTheIWalking {
             let __result = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2780,8 +3335,11 @@ impl TheIWLineOfTheIWalking {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Contap_TheIWLineOfTheIWalking_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2790,45 +3348,46 @@ impl TheIWLineOfTheIWalking {
         {
             let __result =
                 unsafe { crate::ffi::Contap_TheIWLineOfTheIWalking_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Contap_TheIWLineOfTheIWalking_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Contap_TheIWLineOfTheIWalking_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Contap_TheIWLineOfTheIWalking_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Contap_TheIWLineOfTheIWalking_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleContapTheIWLineOfTheIWalking> {
-        {
-            let __result =
-                unsafe { crate::ffi::Contap_TheIWLineOfTheIWalking_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::Contap_TheIWLineOfTheIWalking_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2840,8 +3399,11 @@ impl TheIWLineOfTheIWalking {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2854,8 +3416,11 @@ impl TheIWLineOfTheIWalking {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2865,11 +3430,14 @@ impl TheIWLineOfTheIWalking {
             let __result = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2880,20 +3448,25 @@ impl TheIWLineOfTheIWalking {
             let __result = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2905,18 +3478,23 @@ impl TheIWLineOfTheIWalking {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheIWLineOfTheIWalking_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2932,36 +3510,35 @@ unsafe impl crate::CppDeletable for HandleContapTheIWLineOfTheIWalking {
 impl HandleContapTheIWLineOfTheIWalking {
     /// Dereference this Handle to access the underlying Contap_TheIWLineOfTheIWalking
     pub fn get(&self) -> &crate::ffi::Contap_TheIWLineOfTheIWalking {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleContapTheIWLineOfTheIWalking_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleContapTheIWLineOfTheIWalking_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Contap_TheIWLineOfTheIWalking
     pub fn get_mut(&mut self) -> &mut crate::ffi::Contap_TheIWLineOfTheIWalking {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleContapTheIWLineOfTheIWalking_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleContapTheIWLineOfTheIWalking_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Contap_TheIWLineOfTheIWalking> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleContapTheIWLineOfTheIWalking_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleContapTheIWLineOfTheIWalking_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3004,8 +3581,10 @@ impl TheIWalking {
                     theToFillHoles,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3032,7 +3611,7 @@ impl TheIWalking {
     /// are confused
     pub fn set_tolerance(&mut self, Epsilon: f64, Deflection: f64, Step: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheIWalking_set_tolerance(
                     self as *mut Self,
                     Epsilon,
@@ -3040,7 +3619,9 @@ impl TheIWalking {
                     Step,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3057,10 +3638,12 @@ impl TheIWalking {
         Reversed: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheIWalking_perform_sequenceofpathpoint_sequenceofinteriorpoint_surffunction_handleadaptor3dsurface_bool(self as *mut Self, Pnts1, Pnts2, Func, S, Reversed)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3075,10 +3658,12 @@ impl TheIWalking {
         Reversed: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheIWalking_perform_sequenceofpathpoint_surffunction_handleadaptor3dsurface_bool(self as *mut Self, Pnts1, Func, S, Reversed)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3087,8 +3672,11 @@ impl TheIWalking {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Contap_TheIWalking_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3098,8 +3686,11 @@ impl TheIWalking {
     pub fn nb_lines(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Contap_TheIWalking_nb_lines(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3111,8 +3702,11 @@ impl TheIWalking {
         {
             let __result =
                 unsafe { crate::ffi::Contap_TheIWalking_value(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3124,8 +3718,11 @@ impl TheIWalking {
         {
             let __result =
                 unsafe { crate::ffi::Contap_TheIWalking_nb_single_pnts(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3138,8 +3735,11 @@ impl TheIWalking {
         {
             let __result =
                 unsafe { crate::ffi::Contap_TheIWalking_single_pnt(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -3162,8 +3762,10 @@ impl ThePathPointOfTheSearch {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Contap_ThePathPointOfTheSearch_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3179,8 +3781,10 @@ impl ThePathPointOfTheSearch {
             let __result = unsafe {
                 crate::ffi::Contap_ThePathPointOfTheSearch_ctor_pnt_real_handleadaptor3dhvertex_handleadaptor2dcurve2d_real(P, Tol, V, A, Parameter)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3197,8 +3801,10 @@ impl ThePathPointOfTheSearch {
                     P, Tol, A, Parameter,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3212,10 +3818,12 @@ impl ThePathPointOfTheSearch {
         Parameter: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_ThePathPointOfTheSearch_set_value_pnt_real_handleadaptor3dhvertex_handleadaptor2dcurve2d_real(self as *mut Self, P, Tol, V, A, Parameter)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3228,10 +3836,12 @@ impl ThePathPointOfTheSearch {
         Parameter: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_ThePathPointOfTheSearch_set_value_pnt_real_handleadaptor2dcurve2d_real(self as *mut Self, P, Tol, A, Parameter)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3240,8 +3850,11 @@ impl ThePathPointOfTheSearch {
         {
             let __result =
                 unsafe { crate::ffi::Contap_ThePathPointOfTheSearch_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3251,8 +3864,11 @@ impl ThePathPointOfTheSearch {
             let __result = unsafe {
                 crate::ffi::Contap_ThePathPointOfTheSearch_tolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3261,8 +3877,11 @@ impl ThePathPointOfTheSearch {
         {
             let __result =
                 unsafe { crate::ffi::Contap_ThePathPointOfTheSearch_is_new(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3271,8 +3890,11 @@ impl ThePathPointOfTheSearch {
         {
             let __result =
                 unsafe { crate::ffi::Contap_ThePathPointOfTheSearch_vertex(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3281,8 +3903,11 @@ impl ThePathPointOfTheSearch {
         {
             let __result =
                 unsafe { crate::ffi::Contap_ThePathPointOfTheSearch_arc(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3292,8 +3917,11 @@ impl ThePathPointOfTheSearch {
             let __result = unsafe {
                 crate::ffi::Contap_ThePathPointOfTheSearch_parameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3317,8 +3945,10 @@ impl TheSearch {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Contap_TheSearch_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3337,7 +3967,7 @@ impl TheSearch {
         RecheckOnRegularity: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheSearch_perform(
                     self as *mut Self,
                     F,
@@ -3347,7 +3977,9 @@ impl TheSearch {
                     RecheckOnRegularity,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3356,8 +3988,11 @@ impl TheSearch {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Contap_TheSearch_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3369,8 +4004,11 @@ impl TheSearch {
         {
             let __result =
                 unsafe { crate::ffi::Contap_TheSearch_all_arc_solution(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3380,8 +4018,11 @@ impl TheSearch {
     pub fn nb_points(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Contap_TheSearch_nb_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3395,8 +4036,11 @@ impl TheSearch {
         {
             let __result =
                 unsafe { crate::ffi::Contap_TheSearch_point(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3406,8 +4050,11 @@ impl TheSearch {
     pub fn nb_segments(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Contap_TheSearch_nb_segments(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3421,8 +4068,11 @@ impl TheSearch {
         {
             let __result =
                 unsafe { crate::ffi::Contap_TheSearch_segment(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -3445,8 +4095,10 @@ impl TheSearchInside {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Contap_TheSearchInside_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3461,8 +4113,10 @@ impl TheSearchInside {
             let __result = unsafe {
                 crate::ffi::Contap_TheSearchInside_ctor_surffunction_handleadaptor3dsurface_handleadaptor3dtopoltool_real(F, Surf, T, Epsilon)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3475,10 +4129,12 @@ impl TheSearchInside {
         Epsilon: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheSearchInside_perform_surffunction_handleadaptor3dsurface_handleadaptor3dtopoltool_real(self as *mut Self, F, Surf, T, Epsilon)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3491,7 +4147,7 @@ impl TheSearchInside {
         VStart: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheSearchInside_perform_surffunction_handleadaptor3dsurface_real2(
                     self as *mut Self,
                     F,
@@ -3500,7 +4156,9 @@ impl TheSearchInside {
                     VStart,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3509,8 +4167,11 @@ impl TheSearchInside {
         {
             let __result =
                 unsafe { crate::ffi::Contap_TheSearchInside_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3522,8 +4183,11 @@ impl TheSearchInside {
         {
             let __result =
                 unsafe { crate::ffi::Contap_TheSearchInside_nb_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3537,8 +4201,11 @@ impl TheSearchInside {
         {
             let __result =
                 unsafe { crate::ffi::Contap_TheSearchInside_value(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -3562,8 +4229,10 @@ impl TheSegmentOfTheSearch {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Contap_TheSegmentOfTheSearch_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3571,8 +4240,11 @@ impl TheSegmentOfTheSearch {
     /// Defines the concerned arc.
     pub fn set_value(&mut self, A: &crate::ffi::HandleAdaptor2dCurve2d) {
         {
-            unsafe { crate::ffi::Contap_TheSegmentOfTheSearch_set_value(self as *mut Self, A) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Contap_TheSegmentOfTheSearch_set_value(self as *mut Self, A) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3581,14 +4253,16 @@ impl TheSegmentOfTheSearch {
     /// depending on the value of the boolean First.
     pub fn set_limit_point(&mut self, V: &ThePathPointOfTheSearch, First: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Contap_TheSegmentOfTheSearch_set_limit_point(
                     self as *mut Self,
                     V,
                     First,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3599,8 +4273,11 @@ impl TheSegmentOfTheSearch {
         {
             let __result =
                 unsafe { crate::ffi::Contap_TheSegmentOfTheSearch_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3612,8 +4289,11 @@ impl TheSegmentOfTheSearch {
             let __result = unsafe {
                 crate::ffi::Contap_TheSegmentOfTheSearch_has_first_point(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3624,8 +4304,11 @@ impl TheSegmentOfTheSearch {
             let __result = unsafe {
                 crate::ffi::Contap_TheSegmentOfTheSearch_first_point(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3637,8 +4320,11 @@ impl TheSegmentOfTheSearch {
             let __result = unsafe {
                 crate::ffi::Contap_TheSegmentOfTheSearch_has_last_point(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3648,8 +4334,11 @@ impl TheSegmentOfTheSearch {
         {
             let __result =
                 unsafe { crate::ffi::Contap_TheSegmentOfTheSearch_last_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }

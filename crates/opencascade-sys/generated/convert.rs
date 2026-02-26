@@ -143,8 +143,10 @@ impl CircleToBSplineCurve {
                     Parameterisation.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -170,35 +172,37 @@ impl CircleToBSplineCurve {
                     Parameterisation.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to Convert_ConicToBSplineCurve
     pub fn as_conic_to_b_spline_curve(&self) -> &ConicToBSplineCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::Convert_CircleToBSplineCurve_as_Convert_ConicToBSplineCurve(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Convert_CircleToBSplineCurve_as_Convert_ConicToBSplineCurve(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Convert_ConicToBSplineCurve (mutable)
     pub fn as_conic_to_b_spline_curve_mut(&mut self) -> &mut ConicToBSplineCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::Convert_CircleToBSplineCurve_as_Convert_ConicToBSplineCurve_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Convert_CircleToBSplineCurve_as_Convert_ConicToBSplineCurve_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:61 - `Convert_ConicToBSplineCurve::Degree()`
@@ -207,8 +211,11 @@ impl CircleToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_CircleToBSplineCurve_inherited_Degree(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -218,8 +225,11 @@ impl CircleToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_CircleToBSplineCurve_inherited_NbPoles(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -229,8 +239,11 @@ impl CircleToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_CircleToBSplineCurve_inherited_NbKnots(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -240,8 +253,11 @@ impl CircleToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_CircleToBSplineCurve_inherited_IsPeriodic(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -251,8 +267,11 @@ impl CircleToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_CircleToBSplineCurve_inherited_Pole(self as *const Self, Index)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -265,8 +284,11 @@ impl CircleToBSplineCurve {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -276,8 +298,11 @@ impl CircleToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_CircleToBSplineCurve_inherited_Knot(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -290,8 +315,11 @@ impl CircleToBSplineCurve {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -307,7 +335,7 @@ impl CircleToBSplineCurve {
         Mults: &mut crate::ffi::HandleTColStdHArray1OfInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Convert_CircleToBSplineCurve_inherited_BuildCosAndSin(
                     self as *const Self,
                     Parametrisation.into(),
@@ -319,7 +347,9 @@ impl CircleToBSplineCurve {
                     Mults,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -363,8 +393,10 @@ impl CompBezierCurves2dToBSplineCurve2d {
             let __result = unsafe {
                 crate::ffi::Convert_CompBezierCurves2dToBSplineCurve2d_ctor_real(AngularTolerance)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -427,13 +459,15 @@ impl CompBezierCurves2dToBSplineCurve2d {
     /// curves or at the time of computation.
     pub fn add_curve(&mut self, Poles: &crate::ffi::TColgp_Array1OfPnt2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Convert_CompBezierCurves2dToBSplineCurve2d_add_curve(
                     self as *mut Self,
                     Poles,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -461,10 +495,12 @@ impl CompBezierCurves2dToBSplineCurve2d {
     /// defining the Bezier curve sequence or at the time of computation.
     pub fn perform(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Convert_CompBezierCurves2dToBSplineCurve2d_perform(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -480,8 +516,11 @@ impl CompBezierCurves2dToBSplineCurve2d {
             let __result = unsafe {
                 crate::ffi::Convert_CompBezierCurves2dToBSplineCurve2d_degree(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -497,8 +536,11 @@ impl CompBezierCurves2dToBSplineCurve2d {
             let __result = unsafe {
                 crate::ffi::Convert_CompBezierCurves2dToBSplineCurve2d_nb_poles(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -515,13 +557,15 @@ impl CompBezierCurves2dToBSplineCurve2d {
     /// these conditions are not checked, and an error may occur.
     pub fn poles(&self, Poles: &mut crate::ffi::TColgp_Array1OfPnt2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Convert_CompBezierCurves2dToBSplineCurve2d_poles(
                     self as *const Self,
                     Poles,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -537,8 +581,11 @@ impl CompBezierCurves2dToBSplineCurve2d {
             let __result = unsafe {
                 crate::ffi::Convert_CompBezierCurves2dToBSplineCurve2d_nb_knots(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -560,14 +607,16 @@ impl CompBezierCurves2dToBSplineCurve2d {
         Mults: &mut crate::ffi::TColStd_Array1OfInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Convert_CompBezierCurves2dToBSplineCurve2d_knots_and_mults(
                     self as *const Self,
                     Knots,
                     Mults,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -616,8 +665,10 @@ impl CompBezierCurvesToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_CompBezierCurvesToBSplineCurve_ctor_real(AngularTolerance)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -680,13 +731,15 @@ impl CompBezierCurvesToBSplineCurve {
     /// sequence or at the time of computation.
     pub fn add_curve(&mut self, Poles: &crate::ffi::TColgp_Array1OfPnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Convert_CompBezierCurvesToBSplineCurve_add_curve(
                     self as *mut Self,
                     Poles,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -714,10 +767,12 @@ impl CompBezierCurvesToBSplineCurve {
     /// defining the Bezier curve sequence or at the time of computation.
     pub fn perform(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Convert_CompBezierCurvesToBSplineCurve_perform(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -733,8 +788,11 @@ impl CompBezierCurvesToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_CompBezierCurvesToBSplineCurve_degree(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -750,8 +808,11 @@ impl CompBezierCurvesToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_CompBezierCurvesToBSplineCurve_nb_poles(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -768,10 +829,12 @@ impl CompBezierCurvesToBSplineCurve {
     /// these conditions are not checked, and an error may occur.
     pub fn poles(&self, Poles: &mut crate::ffi::TColgp_Array1OfPnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Convert_CompBezierCurvesToBSplineCurve_poles(self as *const Self, Poles)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -787,8 +850,11 @@ impl CompBezierCurvesToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_CompBezierCurvesToBSplineCurve_nb_knots(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -810,14 +876,16 @@ impl CompBezierCurvesToBSplineCurve {
         Mults: &mut crate::ffi::TColStd_Array1OfInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Convert_CompBezierCurvesToBSplineCurve_knots_and_mults(
                     self as *const Self,
                     Knots,
                     Mults,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -897,8 +965,10 @@ impl CompPolynomialToPoles {
             let __result = unsafe {
                 crate::ffi::Convert_CompPolynomialToPoles_ctor_int4_handletcolstdharray1ofinteger_handletcolstdharray1ofreal_handletcolstdharray2ofreal_handletcolstdharray1ofreal(NumCurves, Continuity, Dimension, MaxDegree, NumCoeffPerCurve, Coefficients, PolynomialIntervals, TrueIntervals)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -919,8 +989,10 @@ impl CompPolynomialToPoles {
             let __result = unsafe {
                 crate::ffi::Convert_CompPolynomialToPoles_ctor_int3_array1ofinteger2_array1ofreal_array2ofreal_array1ofreal(NumCurves, Dimension, MaxDegree, Continuity, NumCoeffPerCurve, Coefficients, PolynomialIntervals, TrueIntervals)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -945,8 +1017,10 @@ impl CompPolynomialToPoles {
                     TrueIntervals,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -956,8 +1030,11 @@ impl CompPolynomialToPoles {
         {
             let __result =
                 unsafe { crate::ffi::Convert_CompPolynomialToPoles_nb_poles(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -967,8 +1044,12 @@ impl CompPolynomialToPoles {
     /// [1..NumPoles][1..Dimension]
     pub fn poles(&self, Poles: &mut crate::ffi::HandleTColStdHArray2OfReal) {
         {
-            unsafe { crate::ffi::Convert_CompPolynomialToPoles_poles(self as *const Self, Poles) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Convert_CompPolynomialToPoles_poles(self as *const Self, Poles)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -977,8 +1058,11 @@ impl CompPolynomialToPoles {
         {
             let __result =
                 unsafe { crate::ffi::Convert_CompPolynomialToPoles_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -988,8 +1072,11 @@ impl CompPolynomialToPoles {
         {
             let __result =
                 unsafe { crate::ffi::Convert_CompPolynomialToPoles_nb_knots(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -997,8 +1084,11 @@ impl CompPolynomialToPoles {
     /// Knots of the n-dimensional Bspline
     pub fn knots(&self, K: &mut crate::ffi::HandleTColStdHArray1OfReal) {
         {
-            unsafe { crate::ffi::Convert_CompPolynomialToPoles_knots(self as *const Self, K) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Convert_CompPolynomialToPoles_knots(self as *const Self, K) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1006,10 +1096,12 @@ impl CompPolynomialToPoles {
     /// Multiplicities of the knots in the BSpline
     pub fn multiplicities(&self, M: &mut crate::ffi::HandleTColStdHArray1OfInteger) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Convert_CompPolynomialToPoles_multiplicities(self as *const Self, M)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1018,8 +1110,11 @@ impl CompPolynomialToPoles {
         {
             let __result =
                 unsafe { crate::ffi::Convert_CompPolynomialToPoles_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1067,8 +1162,10 @@ impl ConeToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_ConeToBSplineSurface_ctor_cone_real4(C, U1, U2, V1, V2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1081,33 +1178,37 @@ impl ConeToBSplineSurface {
         {
             let __result =
                 unsafe { crate::ffi::Convert_ConeToBSplineSurface_ctor_cone_real2(C, V1, V2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to Convert_ElementarySurfaceToBSplineSurface
     pub fn as_elementary_surface_to_b_spline_surface(&self) -> &ElementarySurfaceToBSplineSurface {
-        {
-            let __result = unsafe {
-                crate::ffi::Convert_ConeToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Convert_ConeToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Convert_ElementarySurfaceToBSplineSurface (mutable)
     pub fn as_elementary_surface_to_b_spline_surface_mut(
         &mut self,
     ) -> &mut ElementarySurfaceToBSplineSurface {
-        {
-            let __result = unsafe {
-                crate::ffi::Convert_ConeToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Convert_ConeToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:65 - `Convert_ElementarySurfaceToBSplineSurface::UDegree()`
@@ -1116,8 +1217,11 @@ impl ConeToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_ConeToBSplineSurface_inherited_UDegree(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1127,8 +1231,11 @@ impl ConeToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_ConeToBSplineSurface_inherited_VDegree(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1138,8 +1245,11 @@ impl ConeToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_ConeToBSplineSurface_inherited_NbUPoles(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1149,8 +1259,11 @@ impl ConeToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_ConeToBSplineSurface_inherited_NbVPoles(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1160,8 +1273,11 @@ impl ConeToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_ConeToBSplineSurface_inherited_NbUKnots(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1171,8 +1287,11 @@ impl ConeToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_ConeToBSplineSurface_inherited_NbVKnots(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1182,8 +1301,11 @@ impl ConeToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_ConeToBSplineSurface_inherited_IsUPeriodic(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1193,8 +1315,11 @@ impl ConeToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_ConeToBSplineSurface_inherited_IsVPeriodic(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1208,8 +1333,11 @@ impl ConeToBSplineSurface {
                     VIndex,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1223,8 +1351,11 @@ impl ConeToBSplineSurface {
                     VIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1237,8 +1368,11 @@ impl ConeToBSplineSurface {
                     UIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1251,8 +1385,11 @@ impl ConeToBSplineSurface {
                     UIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1265,8 +1402,11 @@ impl ConeToBSplineSurface {
                     UIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1279,8 +1419,11 @@ impl ConeToBSplineSurface {
                     VIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1329,8 +1472,11 @@ impl ConicToBSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Convert_ConicToBSplineCurve_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1341,8 +1487,11 @@ impl ConicToBSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Convert_ConicToBSplineCurve_nb_poles(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1353,8 +1502,11 @@ impl ConicToBSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Convert_ConicToBSplineCurve_nb_knots(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1365,8 +1517,11 @@ impl ConicToBSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Convert_ConicToBSplineCurve_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1380,8 +1535,11 @@ impl ConicToBSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Convert_ConicToBSplineCurve_pole(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1396,8 +1554,11 @@ impl ConicToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_ConicToBSplineCurve_weight(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1411,8 +1572,11 @@ impl ConicToBSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Convert_ConicToBSplineCurve_knot(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1427,8 +1591,11 @@ impl ConicToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_ConicToBSplineCurve_multiplicity(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1444,10 +1611,12 @@ impl ConicToBSplineCurve {
         Mults: &mut crate::ffi::HandleTColStdHArray1OfInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Convert_ConicToBSplineCurve_build_cos_and_sin_parameterisationtype_handletcolstdharray1ofreal3_int_handletcolstdharray1ofreal_handletcolstdharray1ofinteger(self as *const Self, Parametrisation.into(), CosNumerator, SinNumerator, Denominator, Degree, Knots, Mults)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1465,10 +1634,12 @@ impl ConicToBSplineCurve {
         Mults: &mut crate::ffi::HandleTColStdHArray1OfInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Convert_ConicToBSplineCurve_build_cos_and_sin_parameterisationtype_real2_handletcolstdharray1ofreal3_int_handletcolstdharray1ofreal_handletcolstdharray1ofinteger(self as *const Self, Parametrisation.into(), UFirst, ULast, CosNumerator, SinNumerator, Denominator, Degree, Knots, Mults)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1516,8 +1687,10 @@ impl CylinderToBSplineSurface {
                     Cyl, U1, U2, V1, V2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1535,33 +1708,35 @@ impl CylinderToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_CylinderToBSplineSurface_ctor_cylinder_real2(Cyl, V1, V2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to Convert_ElementarySurfaceToBSplineSurface
     pub fn as_elementary_surface_to_b_spline_surface(&self) -> &ElementarySurfaceToBSplineSurface {
-        {
-            let __result = unsafe {
-                crate::ffi::Convert_CylinderToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Convert_CylinderToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Convert_ElementarySurfaceToBSplineSurface (mutable)
     pub fn as_elementary_surface_to_b_spline_surface_mut(
         &mut self,
     ) -> &mut ElementarySurfaceToBSplineSurface {
-        {
-            let __result = unsafe {
-                crate::ffi::Convert_CylinderToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Convert_CylinderToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:65 - `Convert_ElementarySurfaceToBSplineSurface::UDegree()`
@@ -1570,8 +1745,11 @@ impl CylinderToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_CylinderToBSplineSurface_inherited_UDegree(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1581,8 +1759,11 @@ impl CylinderToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_CylinderToBSplineSurface_inherited_VDegree(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1592,8 +1773,11 @@ impl CylinderToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_CylinderToBSplineSurface_inherited_NbUPoles(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1603,8 +1787,11 @@ impl CylinderToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_CylinderToBSplineSurface_inherited_NbVPoles(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1614,8 +1801,11 @@ impl CylinderToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_CylinderToBSplineSurface_inherited_NbUKnots(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1625,8 +1815,11 @@ impl CylinderToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_CylinderToBSplineSurface_inherited_NbVKnots(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1638,8 +1831,11 @@ impl CylinderToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1651,8 +1847,11 @@ impl CylinderToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1666,8 +1865,11 @@ impl CylinderToBSplineSurface {
                     VIndex,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1681,8 +1883,11 @@ impl CylinderToBSplineSurface {
                     VIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1695,8 +1900,11 @@ impl CylinderToBSplineSurface {
                     UIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1709,8 +1917,11 @@ impl CylinderToBSplineSurface {
                     UIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1723,8 +1934,11 @@ impl CylinderToBSplineSurface {
                     UIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1737,8 +1951,11 @@ impl CylinderToBSplineSurface {
                     VIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1792,8 +2009,11 @@ impl ElementarySurfaceToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_ElementarySurfaceToBSplineSurface_u_degree(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1805,8 +2025,11 @@ impl ElementarySurfaceToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_ElementarySurfaceToBSplineSurface_v_degree(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1818,8 +2041,11 @@ impl ElementarySurfaceToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1833,8 +2059,11 @@ impl ElementarySurfaceToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1846,8 +2075,11 @@ impl ElementarySurfaceToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1861,8 +2093,11 @@ impl ElementarySurfaceToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1874,8 +2109,11 @@ impl ElementarySurfaceToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1889,8 +2127,11 @@ impl ElementarySurfaceToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1913,8 +2154,11 @@ impl ElementarySurfaceToBSplineSurface {
                     VIndex,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1937,8 +2181,11 @@ impl ElementarySurfaceToBSplineSurface {
                     VIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1953,8 +2200,11 @@ impl ElementarySurfaceToBSplineSurface {
                     UIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1969,8 +2219,11 @@ impl ElementarySurfaceToBSplineSurface {
                     UIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1985,8 +2238,11 @@ impl ElementarySurfaceToBSplineSurface {
                     UIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2001,8 +2257,11 @@ impl ElementarySurfaceToBSplineSurface {
                     VIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2045,8 +2304,10 @@ impl EllipseToBSplineCurve {
                     Parameterisation.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2071,35 +2332,37 @@ impl EllipseToBSplineCurve {
                     Parameterisation.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to Convert_ConicToBSplineCurve
     pub fn as_conic_to_b_spline_curve(&self) -> &ConicToBSplineCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::Convert_EllipseToBSplineCurve_as_Convert_ConicToBSplineCurve(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Convert_EllipseToBSplineCurve_as_Convert_ConicToBSplineCurve(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Convert_ConicToBSplineCurve (mutable)
     pub fn as_conic_to_b_spline_curve_mut(&mut self) -> &mut ConicToBSplineCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::Convert_EllipseToBSplineCurve_as_Convert_ConicToBSplineCurve_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Convert_EllipseToBSplineCurve_as_Convert_ConicToBSplineCurve_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:61 - `Convert_ConicToBSplineCurve::Degree()`
@@ -2108,8 +2371,11 @@ impl EllipseToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_EllipseToBSplineCurve_inherited_Degree(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2119,8 +2385,11 @@ impl EllipseToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_EllipseToBSplineCurve_inherited_NbPoles(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2130,8 +2399,11 @@ impl EllipseToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_EllipseToBSplineCurve_inherited_NbKnots(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2141,8 +2413,11 @@ impl EllipseToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_EllipseToBSplineCurve_inherited_IsPeriodic(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2152,8 +2427,11 @@ impl EllipseToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_EllipseToBSplineCurve_inherited_Pole(self as *const Self, Index)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2166,8 +2444,11 @@ impl EllipseToBSplineCurve {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2177,8 +2458,11 @@ impl EllipseToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_EllipseToBSplineCurve_inherited_Knot(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2191,8 +2475,11 @@ impl EllipseToBSplineCurve {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2208,7 +2495,7 @@ impl EllipseToBSplineCurve {
         Mults: &mut crate::ffi::HandleTColStdHArray1OfInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Convert_EllipseToBSplineCurve_inherited_BuildCosAndSin(
                     self as *const Self,
                     Parametrisation.into(),
@@ -2220,7 +2507,9 @@ impl EllipseToBSplineCurve {
                     Mults,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2264,8 +2553,10 @@ impl GridPolynomialToPoles {
             let __result = unsafe {
                 crate::ffi::Convert_GridPolynomialToPoles_ctor_int2_handletcolstdharray1ofinteger_handletcolstdharray1ofreal3(MaxUDegree, MaxVDegree, NumCoeff, Coefficients, PolynomialUIntervals, PolynomialVIntervals)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2302,8 +2593,10 @@ impl GridPolynomialToPoles {
             let __result = unsafe {
                 crate::ffi::Convert_GridPolynomialToPoles_ctor_int6_handletcolstdharray2ofinteger_handletcolstdharray1ofreal5(NbUSurfaces, NBVSurfaces, UContinuity, VContinuity, MaxUDegree, MaxVDegree, NumCoeffPerSurface, Coefficients, PolynomialUIntervals, PolynomialVIntervals, TrueUIntervals, TrueVIntervals)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2322,7 +2615,7 @@ impl GridPolynomialToPoles {
         TrueVIntervals: &crate::ffi::HandleTColStdHArray1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Convert_GridPolynomialToPoles_perform(
                     self as *mut Self,
                     UContinuity,
@@ -2337,7 +2630,9 @@ impl GridPolynomialToPoles {
                     TrueVIntervals,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2347,8 +2642,11 @@ impl GridPolynomialToPoles {
             let __result = unsafe {
                 crate::ffi::Convert_GridPolynomialToPoles_nb_u_poles(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2358,8 +2656,11 @@ impl GridPolynomialToPoles {
             let __result = unsafe {
                 crate::ffi::Convert_GridPolynomialToPoles_nb_v_poles(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2369,8 +2670,11 @@ impl GridPolynomialToPoles {
         {
             let __result =
                 unsafe { crate::ffi::Convert_GridPolynomialToPoles_poles(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2379,8 +2683,11 @@ impl GridPolynomialToPoles {
         {
             let __result =
                 unsafe { crate::ffi::Convert_GridPolynomialToPoles_u_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2389,8 +2696,11 @@ impl GridPolynomialToPoles {
         {
             let __result =
                 unsafe { crate::ffi::Convert_GridPolynomialToPoles_v_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2400,8 +2710,11 @@ impl GridPolynomialToPoles {
             let __result = unsafe {
                 crate::ffi::Convert_GridPolynomialToPoles_nb_u_knots(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2411,8 +2724,11 @@ impl GridPolynomialToPoles {
             let __result = unsafe {
                 crate::ffi::Convert_GridPolynomialToPoles_nb_v_knots(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2422,8 +2738,11 @@ impl GridPolynomialToPoles {
         {
             let __result =
                 unsafe { crate::ffi::Convert_GridPolynomialToPoles_u_knots(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2433,8 +2752,11 @@ impl GridPolynomialToPoles {
         {
             let __result =
                 unsafe { crate::ffi::Convert_GridPolynomialToPoles_v_knots(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2445,8 +2767,11 @@ impl GridPolynomialToPoles {
             let __result = unsafe {
                 crate::ffi::Convert_GridPolynomialToPoles_u_multiplicities(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2457,8 +2782,11 @@ impl GridPolynomialToPoles {
             let __result = unsafe {
                 crate::ffi::Convert_GridPolynomialToPoles_v_multiplicities(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2467,8 +2795,11 @@ impl GridPolynomialToPoles {
         {
             let __result =
                 unsafe { crate::ffi::Convert_GridPolynomialToPoles_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2505,35 +2836,37 @@ impl HyperbolaToBSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Convert_HyperbolaToBSplineCurve_ctor_hypr2d_real2(H, U1, U2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to Convert_ConicToBSplineCurve
     pub fn as_conic_to_b_spline_curve(&self) -> &ConicToBSplineCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::Convert_HyperbolaToBSplineCurve_as_Convert_ConicToBSplineCurve(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Convert_HyperbolaToBSplineCurve_as_Convert_ConicToBSplineCurve(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Convert_ConicToBSplineCurve (mutable)
     pub fn as_conic_to_b_spline_curve_mut(&mut self) -> &mut ConicToBSplineCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::Convert_HyperbolaToBSplineCurve_as_Convert_ConicToBSplineCurve_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Convert_HyperbolaToBSplineCurve_as_Convert_ConicToBSplineCurve_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:61 - `Convert_ConicToBSplineCurve::Degree()`
@@ -2542,8 +2875,11 @@ impl HyperbolaToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_HyperbolaToBSplineCurve_inherited_Degree(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2553,8 +2889,11 @@ impl HyperbolaToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_HyperbolaToBSplineCurve_inherited_NbPoles(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2564,8 +2903,11 @@ impl HyperbolaToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_HyperbolaToBSplineCurve_inherited_NbKnots(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2577,8 +2919,11 @@ impl HyperbolaToBSplineCurve {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2591,8 +2936,11 @@ impl HyperbolaToBSplineCurve {
                     Index,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2605,8 +2953,11 @@ impl HyperbolaToBSplineCurve {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2619,8 +2970,11 @@ impl HyperbolaToBSplineCurve {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2633,8 +2987,11 @@ impl HyperbolaToBSplineCurve {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2650,7 +3007,7 @@ impl HyperbolaToBSplineCurve {
         Mults: &mut crate::ffi::HandleTColStdHArray1OfInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Convert_HyperbolaToBSplineCurve_inherited_BuildCosAndSin(
                     self as *const Self,
                     Parametrisation.into(),
@@ -2662,7 +3019,9 @@ impl HyperbolaToBSplineCurve {
                     Mults,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2699,35 +3058,37 @@ impl ParabolaToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_ParabolaToBSplineCurve_ctor_parab2d_real2(Prb, U1, U2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to Convert_ConicToBSplineCurve
     pub fn as_conic_to_b_spline_curve(&self) -> &ConicToBSplineCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::Convert_ParabolaToBSplineCurve_as_Convert_ConicToBSplineCurve(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Convert_ParabolaToBSplineCurve_as_Convert_ConicToBSplineCurve(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Convert_ConicToBSplineCurve (mutable)
     pub fn as_conic_to_b_spline_curve_mut(&mut self) -> &mut ConicToBSplineCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::Convert_ParabolaToBSplineCurve_as_Convert_ConicToBSplineCurve_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Convert_ParabolaToBSplineCurve_as_Convert_ConicToBSplineCurve_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:61 - `Convert_ConicToBSplineCurve::Degree()`
@@ -2736,8 +3097,11 @@ impl ParabolaToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_ParabolaToBSplineCurve_inherited_Degree(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2747,8 +3111,11 @@ impl ParabolaToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_ParabolaToBSplineCurve_inherited_NbPoles(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2758,8 +3125,11 @@ impl ParabolaToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_ParabolaToBSplineCurve_inherited_NbKnots(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2769,8 +3139,11 @@ impl ParabolaToBSplineCurve {
             let __result = unsafe {
                 crate::ffi::Convert_ParabolaToBSplineCurve_inherited_IsPeriodic(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2783,8 +3156,11 @@ impl ParabolaToBSplineCurve {
                     Index,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2797,8 +3173,11 @@ impl ParabolaToBSplineCurve {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2811,8 +3190,11 @@ impl ParabolaToBSplineCurve {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2825,8 +3207,11 @@ impl ParabolaToBSplineCurve {
                     Index,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2842,7 +3227,7 @@ impl ParabolaToBSplineCurve {
         Mults: &mut crate::ffi::HandleTColStdHArray1OfInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Convert_ParabolaToBSplineCurve_inherited_BuildCosAndSin(
                     self as *const Self,
                     Parametrisation.into(),
@@ -2854,7 +3239,9 @@ impl ParabolaToBSplineCurve {
                     Mults,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2901,8 +3288,10 @@ impl SphereToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_SphereToBSplineSurface_ctor_sphere_real4(Sph, U1, U2, V1, V2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2925,8 +3314,10 @@ impl SphereToBSplineSurface {
                     Sph, Param1, Param2, UTrim,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2936,8 +3327,10 @@ impl SphereToBSplineSurface {
     pub fn new_sphere(Sph: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Convert_SphereToBSplineSurface_ctor_sphere(Sph) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2958,26 +3351,28 @@ impl SphereToBSplineSurface {
 
     /// Upcast to Convert_ElementarySurfaceToBSplineSurface
     pub fn as_elementary_surface_to_b_spline_surface(&self) -> &ElementarySurfaceToBSplineSurface {
-        {
-            let __result = unsafe {
-                crate::ffi::Convert_SphereToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Convert_SphereToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Convert_ElementarySurfaceToBSplineSurface (mutable)
     pub fn as_elementary_surface_to_b_spline_surface_mut(
         &mut self,
     ) -> &mut ElementarySurfaceToBSplineSurface {
-        {
-            let __result = unsafe {
-                crate::ffi::Convert_SphereToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Convert_SphereToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:65 - `Convert_ElementarySurfaceToBSplineSurface::UDegree()`
@@ -2986,8 +3381,11 @@ impl SphereToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_SphereToBSplineSurface_inherited_UDegree(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2997,8 +3395,11 @@ impl SphereToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_SphereToBSplineSurface_inherited_VDegree(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3008,8 +3409,11 @@ impl SphereToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_SphereToBSplineSurface_inherited_NbUPoles(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3019,8 +3423,11 @@ impl SphereToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_SphereToBSplineSurface_inherited_NbVPoles(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3030,8 +3437,11 @@ impl SphereToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_SphereToBSplineSurface_inherited_NbUKnots(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3041,8 +3451,11 @@ impl SphereToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_SphereToBSplineSurface_inherited_NbVKnots(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3054,8 +3467,11 @@ impl SphereToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3067,8 +3483,11 @@ impl SphereToBSplineSurface {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3082,8 +3501,11 @@ impl SphereToBSplineSurface {
                     VIndex,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3097,8 +3519,11 @@ impl SphereToBSplineSurface {
                     VIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3111,8 +3536,11 @@ impl SphereToBSplineSurface {
                     UIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3125,8 +3553,11 @@ impl SphereToBSplineSurface {
                     UIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3139,8 +3570,11 @@ impl SphereToBSplineSurface {
                     UIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3153,8 +3587,11 @@ impl SphereToBSplineSurface {
                     VIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3201,8 +3638,10 @@ impl TorusToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_TorusToBSplineSurface_ctor_torus_real4(T, U1, U2, V1, V2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3223,8 +3662,10 @@ impl TorusToBSplineSurface {
                     T, Param1, Param2, UTrim,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3234,8 +3675,10 @@ impl TorusToBSplineSurface {
     pub fn new_torus(T: &crate::gp::Torus) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Convert_TorusToBSplineSurface_ctor_torus(T) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3254,26 +3697,28 @@ impl TorusToBSplineSurface {
 
     /// Upcast to Convert_ElementarySurfaceToBSplineSurface
     pub fn as_elementary_surface_to_b_spline_surface(&self) -> &ElementarySurfaceToBSplineSurface {
-        {
-            let __result = unsafe {
-                crate::ffi::Convert_TorusToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Convert_TorusToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Convert_ElementarySurfaceToBSplineSurface (mutable)
     pub fn as_elementary_surface_to_b_spline_surface_mut(
         &mut self,
     ) -> &mut ElementarySurfaceToBSplineSurface {
-        {
-            let __result = unsafe {
-                crate::ffi::Convert_TorusToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Convert_TorusToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:65 - `Convert_ElementarySurfaceToBSplineSurface::UDegree()`
@@ -3282,8 +3727,11 @@ impl TorusToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_TorusToBSplineSurface_inherited_UDegree(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3293,8 +3741,11 @@ impl TorusToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_TorusToBSplineSurface_inherited_VDegree(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3304,8 +3755,11 @@ impl TorusToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_TorusToBSplineSurface_inherited_NbUPoles(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3315,8 +3769,11 @@ impl TorusToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_TorusToBSplineSurface_inherited_NbVPoles(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3326,8 +3783,11 @@ impl TorusToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_TorusToBSplineSurface_inherited_NbUKnots(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3337,8 +3797,11 @@ impl TorusToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_TorusToBSplineSurface_inherited_NbVKnots(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3348,8 +3811,11 @@ impl TorusToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_TorusToBSplineSurface_inherited_IsUPeriodic(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3359,8 +3825,11 @@ impl TorusToBSplineSurface {
             let __result = unsafe {
                 crate::ffi::Convert_TorusToBSplineSurface_inherited_IsVPeriodic(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3374,8 +3843,11 @@ impl TorusToBSplineSurface {
                     VIndex,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3389,8 +3861,11 @@ impl TorusToBSplineSurface {
                     VIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3403,8 +3878,11 @@ impl TorusToBSplineSurface {
                     UIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3417,8 +3895,11 @@ impl TorusToBSplineSurface {
                     UIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3431,8 +3912,11 @@ impl TorusToBSplineSurface {
                     UIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3445,8 +3929,11 @@ impl TorusToBSplineSurface {
                     VIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

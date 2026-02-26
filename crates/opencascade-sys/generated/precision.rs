@@ -29,8 +29,11 @@
 pub fn angular() -> f64 {
     {
         let __result = unsafe { crate::ffi::Precision_angular() };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `Precision.hxx`:165 - `Precision::Confusion`
@@ -77,8 +80,11 @@ pub fn angular() -> f64 {
 pub fn confusion() -> f64 {
     {
         let __result = unsafe { crate::ffi::Precision_confusion() };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `Precision.hxx`:169 - `Precision::SquareConfusion`
@@ -87,8 +93,11 @@ pub fn confusion() -> f64 {
 pub fn square_confusion() -> f64 {
     {
         let __result = unsafe { crate::ffi::Precision_square_confusion() };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `Precision.hxx`:193 - `Precision::Intersection`
@@ -117,8 +126,11 @@ pub fn square_confusion() -> f64 {
 pub fn intersection() -> f64 {
     {
         let __result = unsafe { crate::ffi::Precision_intersection() };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `Precision.hxx`:208 - `Precision::Approximation`
@@ -138,8 +150,11 @@ pub fn intersection() -> f64 {
 pub fn approximation() -> f64 {
     {
         let __result = unsafe { crate::ffi::Precision_approximation() };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `Precision.hxx`:215 - `Precision::Parametric`
@@ -151,8 +166,11 @@ pub fn approximation() -> f64 {
 pub fn parametric_real2(P: f64, T: f64) -> f64 {
     {
         let __result = unsafe { crate::ffi::Precision_parametric_real2(P, T) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `Precision.hxx`:264 - `Precision::PConfusion`
@@ -203,8 +221,11 @@ pub fn parametric_real2(P: f64, T: f64) -> f64 {
 pub fn p_confusion_real(T: f64) -> f64 {
     {
         let __result = unsafe { crate::ffi::Precision_p_confusion_real(T) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `Precision.hxx`:271 - `Precision::SquarePConfusion`
@@ -213,8 +234,11 @@ pub fn p_confusion_real(T: f64) -> f64 {
 pub fn square_p_confusion() -> f64 {
     {
         let __result = unsafe { crate::ffi::Precision_square_p_confusion() };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `Precision.hxx`:286 - `Precision::PIntersection`
@@ -234,8 +258,11 @@ pub fn square_p_confusion() -> f64 {
 pub fn p_intersection_real(T: f64) -> f64 {
     {
         let __result = unsafe { crate::ffi::Precision_p_intersection_real(T) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `Precision.hxx`:304 - `Precision::PApproximation`
@@ -255,8 +282,11 @@ pub fn p_intersection_real(T: f64) -> f64 {
 pub fn p_approximation_real(T: f64) -> f64 {
     {
         let __result = unsafe { crate::ffi::Precision_p_approximation_real(T) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `Precision.hxx`:313 - `Precision::Parametric`
@@ -267,8 +297,11 @@ pub fn p_approximation_real(T: f64) -> f64 {
 pub fn parametric_real(P: f64) -> f64 {
     {
         let __result = unsafe { crate::ffi::Precision_parametric_real(P) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `Precision.hxx`:319 - `Precision::PConfusion`
@@ -279,8 +312,11 @@ pub fn parametric_real(P: f64) -> f64 {
 pub fn p_confusion() -> f64 {
     {
         let __result = unsafe { crate::ffi::Precision_p_confusion() };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `Precision.hxx`:325 - `Precision::PIntersection`
@@ -291,8 +327,11 @@ pub fn p_confusion() -> f64 {
 pub fn p_intersection() -> f64 {
     {
         let __result = unsafe { crate::ffi::Precision_p_intersection() };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `Precision.hxx`:331 - `Precision::PApproximation`
@@ -303,8 +342,11 @@ pub fn p_intersection() -> f64 {
 pub fn p_approximation() -> f64 {
     {
         let __result = unsafe { crate::ffi::Precision_p_approximation() };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `Precision.hxx`:335 - `Precision::IsInfinite`
@@ -313,8 +355,11 @@ pub fn p_approximation() -> f64 {
 pub fn is_infinite(R: f64) -> bool {
     {
         let __result = unsafe { crate::ffi::Precision_is_infinite(R) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `Precision.hxx`:342 - `Precision::IsPositiveInfinite`
@@ -323,8 +368,11 @@ pub fn is_infinite(R: f64) -> bool {
 pub fn is_positive_infinite(R: f64) -> bool {
     {
         let __result = unsafe { crate::ffi::Precision_is_positive_infinite(R) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `Precision.hxx`:349 - `Precision::IsNegativeInfinite`
@@ -333,8 +381,11 @@ pub fn is_positive_infinite(R: f64) -> bool {
 pub fn is_negative_infinite(R: f64) -> bool {
     {
         let __result = unsafe { crate::ffi::Precision_is_negative_infinite(R) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `Precision.hxx`:356 - `Precision::Infinite`
@@ -343,7 +394,10 @@ pub fn is_negative_infinite(R: f64) -> bool {
 pub fn infinite() -> f64 {
     {
         let __result = unsafe { crate::ffi::Precision_infinite() };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }

@@ -61,8 +61,10 @@ impl Builder {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Builder_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -71,8 +73,10 @@ impl Builder {
     pub fn new_builder(B: &crate::b_rep::Builder) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Builder_ctor_builder(B) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -80,8 +84,11 @@ impl Builder {
     pub fn builder(&self) -> &crate::b_rep::Builder {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Builder_builder(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -89,8 +96,10 @@ impl Builder {
     /// Make a empty Shell.
     pub fn make_shell(&self, S: &mut crate::topo_ds::Shell) {
         {
-            unsafe { crate::ffi::BRepPrim_Builder_make_shell(self as *const Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepPrim_Builder_make_shell(self as *const Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -99,8 +108,11 @@ impl Builder {
     /// equation <P>. Used by all primitives.
     pub fn make_face(&self, F: &mut crate::topo_ds::Face, P: &crate::gp::Pln) {
         {
-            unsafe { crate::ffi::BRepPrim_Builder_make_face(self as *const Self, F, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepPrim_Builder_make_face(self as *const Self, F, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -108,8 +120,10 @@ impl Builder {
     /// Returns in <W> an empty Wire.
     pub fn make_wire(&self, W: &mut crate::topo_ds::Wire) {
         {
-            unsafe { crate::ffi::BRepPrim_Builder_make_wire(self as *const Self, W) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepPrim_Builder_make_wire(self as *const Self, W) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -117,8 +131,12 @@ impl Builder {
     /// Returns in <E> a degenerated edge.
     pub fn make_degenerated_edge(&self, E: &mut crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::BRepPrim_Builder_make_degenerated_edge(self as *const Self, E) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepPrim_Builder_make_degenerated_edge(self as *const Self, E)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -127,8 +145,12 @@ impl Builder {
     /// equation  <L>.
     pub fn make_edge_edge_lin(&self, E: &mut crate::topo_ds::Edge, L: &crate::gp::Lin) {
         {
-            unsafe { crate::ffi::BRepPrim_Builder_make_edge_edge_lin(self as *const Self, E, L) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepPrim_Builder_make_edge_edge_lin(self as *const Self, E, L)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -137,8 +159,12 @@ impl Builder {
     /// equation  <C>.
     pub fn make_edge_edge_circ(&self, E: &mut crate::topo_ds::Edge, C: &crate::gp::Circ) {
         {
-            unsafe { crate::ffi::BRepPrim_Builder_make_edge_edge_circ(self as *const Self, E, C) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepPrim_Builder_make_edge_edge_circ(self as *const Self, E, C)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -153,7 +179,7 @@ impl Builder {
         L: &crate::gp::Lin2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepPrim_Builder_set_p_curve_edge_face_lin2d(
                     self as *const Self,
                     E,
@@ -161,7 +187,9 @@ impl Builder {
                     L,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -177,7 +205,7 @@ impl Builder {
         L2: &crate::gp::Lin2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepPrim_Builder_set_p_curve_edge_face_lin2d2(
                     self as *const Self,
                     E,
@@ -186,7 +214,9 @@ impl Builder {
                     L2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -201,7 +231,7 @@ impl Builder {
         C: &crate::gp::Circ2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepPrim_Builder_set_p_curve_edge_face_circ2d(
                     self as *const Self,
                     E,
@@ -209,7 +239,9 @@ impl Builder {
                     C,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -217,8 +249,11 @@ impl Builder {
     /// Returns in <V> a Vertex built with the point <P>.
     pub fn make_vertex(&self, V: &mut crate::topo_ds::Vertex, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::BRepPrim_Builder_make_vertex(self as *const Self, V, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepPrim_Builder_make_vertex(self as *const Self, V, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -226,8 +261,11 @@ impl Builder {
     /// Reverses the Face <F>.
     pub fn reverse_face(&self, F: &mut crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::BRepPrim_Builder_reverse_face(self as *const Self, F) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepPrim_Builder_reverse_face(self as *const Self, F) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -243,7 +281,7 @@ impl Builder {
         direct: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepPrim_Builder_add_edge_vertex_edge_vertex_real_bool(
                     self as *const Self,
                     E,
@@ -252,7 +290,9 @@ impl Builder {
                     direct,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -268,7 +308,7 @@ impl Builder {
         P2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepPrim_Builder_add_edge_vertex_edge_vertex_real2(
                     self as *const Self,
                     E,
@@ -277,7 +317,9 @@ impl Builder {
                     P2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -292,10 +334,12 @@ impl Builder {
         P2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepPrim_Builder_set_parameters(self as *const Self, E, V, P1, P2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -309,10 +353,12 @@ impl Builder {
         direct: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepPrim_Builder_add_wire_edge(self as *const Self, W, E, direct)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -320,8 +366,11 @@ impl Builder {
     /// Adds the Wire <W> in  the Face <F>.
     pub fn add_face_wire(&self, F: &mut crate::topo_ds::Face, W: &crate::topo_ds::Wire) {
         {
-            unsafe { crate::ffi::BRepPrim_Builder_add_face_wire(self as *const Self, F, W) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepPrim_Builder_add_face_wire(self as *const Self, F, W) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -329,8 +378,11 @@ impl Builder {
     /// Adds the Face <F>  in the Shell <Sh>.
     pub fn add_shell_face(&self, Sh: &mut crate::topo_ds::Shell, F: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::BRepPrim_Builder_add_shell_face(self as *const Self, Sh, F) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepPrim_Builder_add_shell_face(self as *const Self, Sh, F) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -339,8 +391,11 @@ impl Builder {
     /// the opportunity to perform any post treatment.
     pub fn complete_edge(&self, E: &mut crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::BRepPrim_Builder_complete_edge(self as *const Self, E) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepPrim_Builder_complete_edge(self as *const Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -349,8 +404,11 @@ impl Builder {
     /// the opportunity to perform any post treatment.
     pub fn complete_wire(&self, W: &mut crate::topo_ds::Wire) {
         {
-            unsafe { crate::ffi::BRepPrim_Builder_complete_wire(self as *const Self, W) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepPrim_Builder_complete_wire(self as *const Self, W) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -359,8 +417,11 @@ impl Builder {
     /// the opportunity to perform any post treatment.
     pub fn complete_face(&self, F: &mut crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::BRepPrim_Builder_complete_face(self as *const Self, F) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepPrim_Builder_complete_face(self as *const Self, F) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -369,8 +430,11 @@ impl Builder {
     /// the opportunity to perform any post treatment.
     pub fn complete_shell(&self, S: &mut crate::topo_ds::Shell) {
         {
-            unsafe { crate::ffi::BRepPrim_Builder_complete_shell(self as *const Self, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepPrim_Builder_complete_shell(self as *const Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -412,8 +476,10 @@ impl Cone {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Cone_ctor_real_ax2_real2(Angle, Position, Height, Radius)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -422,8 +488,10 @@ impl Cone {
     pub fn new_real(Angle: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Cone_ctor_real(Angle) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -432,8 +500,10 @@ impl Cone {
     pub fn new_real_pnt(Angle: f64, Apex: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Cone_ctor_real_pnt(Angle, Apex) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -442,8 +512,10 @@ impl Cone {
     pub fn new_real_ax2(Angle: f64, Axes: &crate::gp::Ax2) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Cone_ctor_real_ax2(Angle, Axes) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -461,8 +533,10 @@ impl Cone {
     pub fn new_real3(R1: f64, R2: f64, H: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Cone_ctor_real3(R1, R2, H) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -476,8 +550,10 @@ impl Cone {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Cone_ctor_pnt_real3(Center, R1, R2, H) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -486,8 +562,10 @@ impl Cone {
     pub fn new_ax2_real3(Axes: &crate::gp::Ax2, R1: f64, R2: f64, H: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Cone_ctor_ax2_real3(Axes, R1, R2, H) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -518,49 +596,52 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_make_empty_lateral_face(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to BRepPrim_Revolution
     pub fn as_revolution(&self) -> &Revolution {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_as_BRepPrim_Revolution(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepPrim_Cone_as_BRepPrim_Revolution(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepPrim_Revolution (mutable)
     pub fn as_revolution_mut(&mut self) -> &mut Revolution {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_as_BRepPrim_Revolution_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepPrim_Cone_as_BRepPrim_Revolution_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepPrim_OneAxis
     pub fn as_one_axis(&self) -> &OneAxis {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_as_BRepPrim_OneAxis(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepPrim_Cone_as_BRepPrim_OneAxis(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepPrim_OneAxis (mutable)
     pub fn as_one_axis_mut(&mut self) -> &mut OneAxis {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cone_as_BRepPrim_OneAxis_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepPrim_Cone_as_BRepPrim_OneAxis_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:56 - `BRepPrim_Revolution::MakeEmptyMeridianEdge()`
@@ -569,8 +650,11 @@ impl Cone {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Cone_inherited_MakeEmptyMeridianEdge(self as *const Self, Ang)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -580,31 +664,38 @@ impl Cone {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Cone_inherited_MeridianValue(self as *const Self, V)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:65 - `BRepPrim_Revolution::SetMeridianPCurve()`
     pub fn set_meridian_p_curve(&self, E: &mut crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepPrim_Cone_inherited_SetMeridianPCurve(self as *const Self, E, F)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
     pub fn set_meridian_offset(&mut self, MeridianOffset: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepPrim_Cone_inherited_SetMeridianOffset(
                     self as *mut Self,
                     MeridianOffset,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -612,8 +703,11 @@ impl Cone {
     pub fn axes(&self) -> &crate::gp::Ax2 {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Cone_inherited_Axes(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -622,8 +716,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_Angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -631,8 +728,11 @@ impl Cone {
     pub fn v_min(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Cone_inherited_VMin(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -640,8 +740,11 @@ impl Cone {
     pub fn v_max(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Cone_inherited_VMax(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -651,8 +754,11 @@ impl Cone {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Cone_inherited_MeridianOnAxis(self as *const Self, V)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -661,8 +767,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_MeridianClosed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -671,8 +780,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_VMaxInfinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -681,8 +793,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_VMinInfinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -691,8 +806,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_HasTop(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -701,8 +819,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_HasBottom(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -711,8 +832,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_HasSides(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -720,8 +844,11 @@ impl Cone {
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Cone_inherited_Shell(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -730,8 +857,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_LateralFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -740,8 +870,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_TopFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -750,8 +883,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_BottomFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -760,8 +896,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_StartFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -770,8 +909,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_EndFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -780,8 +922,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_LateralWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -790,8 +935,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_LateralStartWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -800,8 +948,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_LateralEndWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -810,8 +961,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_TopWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -820,8 +974,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_BottomWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -830,8 +987,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_StartWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -840,8 +1000,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_AxisStartWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -850,8 +1013,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_EndWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -860,8 +1026,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_AxisEndWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -870,8 +1039,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_AxisEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -880,8 +1052,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_StartEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -890,8 +1065,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_EndEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -900,8 +1078,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_StartTopEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -910,8 +1091,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_StartBottomEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -920,8 +1104,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_EndTopEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -930,8 +1117,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_EndBottomEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -940,8 +1130,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_TopEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -950,8 +1143,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_BottomEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -960,8 +1156,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_AxisTopVertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -970,8 +1169,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_AxisBottomVertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -980,8 +1182,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_TopStartVertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -990,8 +1195,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_TopEndVertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1000,8 +1208,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_BottomStartVertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1010,8 +1221,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cone_inherited_BottomEndVertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -1048,8 +1262,10 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_ctor_ax2_real2(Position, Radius, Height) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1058,8 +1274,10 @@ impl Cylinder {
     pub fn new_real(Radius: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Cylinder_ctor_real(Radius) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1068,8 +1286,10 @@ impl Cylinder {
     pub fn new_pnt_real(Center: &crate::gp::Pnt, Radius: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Cylinder_ctor_pnt_real(Center, Radius) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1078,8 +1298,10 @@ impl Cylinder {
     pub fn new_ax2_real(Axes: &crate::gp::Ax2, Radius: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Cylinder_ctor_ax2_real(Axes, Radius) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1092,8 +1314,10 @@ impl Cylinder {
     pub fn new_real2(R: f64, H: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Cylinder_ctor_real2(R, H) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1102,8 +1326,10 @@ impl Cylinder {
     pub fn new_pnt_real2(Center: &crate::gp::Pnt, R: f64, H: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Cylinder_ctor_pnt_real2(Center, R, H) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1115,51 +1341,52 @@ impl Cylinder {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Cylinder_make_empty_lateral_face(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to BRepPrim_Revolution
     pub fn as_revolution(&self) -> &Revolution {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Cylinder_as_BRepPrim_Revolution(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepPrim_Cylinder_as_BRepPrim_Revolution(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepPrim_Revolution (mutable)
     pub fn as_revolution_mut(&mut self) -> &mut Revolution {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Cylinder_as_BRepPrim_Revolution_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepPrim_Cylinder_as_BRepPrim_Revolution_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepPrim_OneAxis
     pub fn as_one_axis(&self) -> &OneAxis {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_as_BRepPrim_OneAxis(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepPrim_Cylinder_as_BRepPrim_OneAxis(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepPrim_OneAxis (mutable)
     pub fn as_one_axis_mut(&mut self) -> &mut OneAxis {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Cylinder_as_BRepPrim_OneAxis_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepPrim_Cylinder_as_BRepPrim_OneAxis_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:56 - `BRepPrim_Revolution::MakeEmptyMeridianEdge()`
@@ -1171,8 +1398,11 @@ impl Cylinder {
                     Ang,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1182,31 +1412,38 @@ impl Cylinder {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Cylinder_inherited_MeridianValue(self as *const Self, V)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:65 - `BRepPrim_Revolution::SetMeridianPCurve()`
     pub fn set_meridian_p_curve(&self, E: &mut crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepPrim_Cylinder_inherited_SetMeridianPCurve(self as *const Self, E, F)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
     pub fn set_meridian_offset(&mut self, MeridianOffset: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepPrim_Cylinder_inherited_SetMeridianOffset(
                     self as *mut Self,
                     MeridianOffset,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1215,8 +1452,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_Axes(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1225,8 +1465,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_Angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1235,8 +1478,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_VMin(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1245,8 +1491,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_VMax(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1256,8 +1505,11 @@ impl Cylinder {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Cylinder_inherited_MeridianOnAxis(self as *const Self, V)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1267,8 +1519,11 @@ impl Cylinder {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Cylinder_inherited_MeridianClosed(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1278,8 +1533,11 @@ impl Cylinder {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Cylinder_inherited_VMaxInfinite(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1289,8 +1547,11 @@ impl Cylinder {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Cylinder_inherited_VMinInfinite(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1299,8 +1560,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_HasTop(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1309,8 +1573,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_HasBottom(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1319,8 +1586,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_HasSides(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1329,8 +1599,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_Shell(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1339,8 +1612,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_LateralFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1349,8 +1625,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_TopFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1359,8 +1638,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_BottomFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1369,8 +1651,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_StartFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1379,8 +1664,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_EndFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1389,8 +1677,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_LateralWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1400,8 +1691,11 @@ impl Cylinder {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Cylinder_inherited_LateralStartWire(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1411,8 +1705,11 @@ impl Cylinder {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Cylinder_inherited_LateralEndWire(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1421,8 +1718,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_TopWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1431,8 +1731,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_BottomWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1441,8 +1744,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_StartWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1451,8 +1757,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_AxisStartWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1461,8 +1770,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_EndWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1471,8 +1783,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_AxisEndWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1481,8 +1796,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_AxisEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1491,8 +1809,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_StartEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1501,8 +1822,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_EndEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1511,8 +1835,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_StartTopEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1522,8 +1849,11 @@ impl Cylinder {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Cylinder_inherited_StartBottomEdge(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1532,8 +1862,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_EndTopEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1542,8 +1875,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_EndBottomEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1552,8 +1888,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_TopEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1562,8 +1901,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_BottomEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1572,8 +1914,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_AxisTopVertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1583,8 +1928,11 @@ impl Cylinder {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Cylinder_inherited_AxisBottomVertex(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1594,8 +1942,11 @@ impl Cylinder {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Cylinder_inherited_TopStartVertex(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1604,8 +1955,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Cylinder_inherited_TopEndVertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1615,8 +1969,11 @@ impl Cylinder {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Cylinder_inherited_BottomStartVertex(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1626,8 +1983,11 @@ impl Cylinder {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Cylinder_inherited_BottomEndVertex(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -1655,8 +2015,10 @@ impl FaceBuilder {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_FaceBuilder_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1668,8 +2030,10 @@ impl FaceBuilder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_FaceBuilder_ctor_builder_handlegeomsurface(B, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1688,8 +2052,10 @@ impl FaceBuilder {
                     B, S, UMin, UMax, VMin, VMax,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1700,14 +2066,16 @@ impl FaceBuilder {
         S: &crate::ffi::HandleGeomSurface,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepPrim_FaceBuilder_init_builder_handlegeomsurface(
                     self as *mut Self,
                     B,
                     S,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1722,7 +2090,7 @@ impl FaceBuilder {
         VMax: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepPrim_FaceBuilder_init_builder_handlegeomsurface_real4(
                     self as *mut Self,
                     B,
@@ -1733,7 +2101,9 @@ impl FaceBuilder {
                     VMax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1741,8 +2111,11 @@ impl FaceBuilder {
     pub fn face(&self) -> &crate::topo_ds::Face {
         {
             let __result = unsafe { crate::ffi::BRepPrim_FaceBuilder_face(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1755,8 +2128,11 @@ impl FaceBuilder {
     pub fn edge(&self, I: i32) -> &crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::BRepPrim_FaceBuilder_edge(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1770,8 +2146,11 @@ impl FaceBuilder {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_FaceBuilder_vertex(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -1814,8 +2193,10 @@ impl GWedge {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_GWedge_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1841,8 +2222,10 @@ impl GWedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_GWedge_ctor_builder_ax2_real3(B, Axes, dx, dy, dz) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1871,8 +2254,10 @@ impl GWedge {
             let __result = unsafe {
                 crate::ffi::BRepPrim_GWedge_ctor_builder_ax2_real4(B, Axes, dx, dy, dz, ltx)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1903,8 +2288,10 @@ impl GWedge {
                     B, Axes, xmin, ymin, zmin, z2min, x2min, xmax, ymax, zmax, z2max, x2max,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1913,8 +2300,11 @@ impl GWedge {
     pub fn axes(&self) -> crate::OwnedPtr<crate::gp::Ax2> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_GWedge_axes(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1923,8 +2313,11 @@ impl GWedge {
     pub fn get_x_min(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepPrim_GWedge_get_x_min(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1933,8 +2326,11 @@ impl GWedge {
     pub fn get_y_min(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepPrim_GWedge_get_y_min(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1943,8 +2339,11 @@ impl GWedge {
     pub fn get_z_min(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepPrim_GWedge_get_z_min(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1953,8 +2352,11 @@ impl GWedge {
     pub fn get_z2_min(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepPrim_GWedge_get_z2_min(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1963,8 +2365,11 @@ impl GWedge {
     pub fn get_x2_min(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepPrim_GWedge_get_x2_min(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1973,8 +2378,11 @@ impl GWedge {
     pub fn get_x_max(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepPrim_GWedge_get_x_max(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1983,8 +2391,11 @@ impl GWedge {
     pub fn get_y_max(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepPrim_GWedge_get_y_max(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1993,8 +2404,11 @@ impl GWedge {
     pub fn get_z_max(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepPrim_GWedge_get_z_max(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2003,8 +2417,11 @@ impl GWedge {
     pub fn get_z2_max(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepPrim_GWedge_get_z2_max(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2013,8 +2430,11 @@ impl GWedge {
     pub fn get_x2_max(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepPrim_GWedge_get_x2_max(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2023,8 +2443,10 @@ impl GWedge {
     /// or vertices are said nonexistent.
     pub fn open(&mut self, d1: crate::b_rep_prim::Direction) {
         {
-            unsafe { crate::ffi::BRepPrim_GWedge_open(self as *mut Self, d1.into()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepPrim_GWedge_open(self as *mut Self, d1.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2033,8 +2455,10 @@ impl GWedge {
     /// edges or vertices are said existent.
     pub fn close(&mut self, d1: crate::b_rep_prim::Direction) {
         {
-            unsafe { crate::ffi::BRepPrim_GWedge_close(self as *mut Self, d1.into()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepPrim_GWedge_close(self as *mut Self, d1.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2044,8 +2468,11 @@ impl GWedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_GWedge_is_infinite(self as *const Self, d1.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2054,8 +2481,11 @@ impl GWedge {
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
         {
             let __result = unsafe { crate::ffi::BRepPrim_GWedge_shell(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2065,8 +2495,11 @@ impl GWedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_GWedge_has_face(self as *const Self, d1.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2076,8 +2509,11 @@ impl GWedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_GWedge_face(self as *mut Self, d1.into()) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2088,8 +2524,11 @@ impl GWedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_GWedge_plane(self as *mut Self, d1.into()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2099,8 +2538,11 @@ impl GWedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_GWedge_has_wire(self as *const Self, d1.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2110,8 +2552,11 @@ impl GWedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_GWedge_wire(self as *mut Self, d1.into()) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2126,8 +2571,11 @@ impl GWedge {
             let __result = unsafe {
                 crate::ffi::BRepPrim_GWedge_has_edge(self as *const Self, d1.into(), d2.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2142,8 +2590,11 @@ impl GWedge {
             let __result = unsafe {
                 crate::ffi::BRepPrim_GWedge_edge(self as *mut Self, d1.into(), d2.into())
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2159,8 +2610,11 @@ impl GWedge {
             let __result = unsafe {
                 crate::ffi::BRepPrim_GWedge_line(self as *mut Self, d1.into(), d2.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2182,8 +2636,11 @@ impl GWedge {
                     d3.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2205,8 +2662,11 @@ impl GWedge {
                     d3.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2228,8 +2688,11 @@ impl GWedge {
                     d3.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2240,8 +2703,11 @@ impl GWedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_GWedge_is_degenerated_shape(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2299,10 +2765,12 @@ impl OneAxis {
     /// VMin, VMax.
     pub fn set_meridian_offset(&mut self, MeridianOffset: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepPrim_OneAxis_set_meridian_offset(self as *mut Self, MeridianOffset)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2311,16 +2779,21 @@ impl OneAxis {
     pub fn axes(&self) -> &crate::gp::Ax2 {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_axes(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:78 - `BRepPrim_OneAxis::Axes()`
     pub fn axes_ax2(&mut self, A: &crate::gp::Ax2) {
         {
-            unsafe { crate::ffi::BRepPrim_OneAxis_axes_ax2(self as *mut Self, A) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepPrim_OneAxis_axes_ax2(self as *mut Self, A) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2328,16 +2801,21 @@ impl OneAxis {
     pub fn angle(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:82 - `BRepPrim_OneAxis::Angle()`
     pub fn angle_real(&mut self, A: f64) {
         {
-            unsafe { crate::ffi::BRepPrim_OneAxis_angle_real(self as *mut Self, A) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepPrim_OneAxis_angle_real(self as *mut Self, A) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2345,16 +2823,21 @@ impl OneAxis {
     pub fn v_min(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_v_min(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:86 - `BRepPrim_OneAxis::VMin()`
     pub fn v_min_real(&mut self, V: f64) {
         {
-            unsafe { crate::ffi::BRepPrim_OneAxis_v_min_real(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepPrim_OneAxis_v_min_real(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2362,16 +2845,21 @@ impl OneAxis {
     pub fn v_max(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_v_max(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepPrim_OneAxis.hxx`:90 - `BRepPrim_OneAxis::VMax()`
     pub fn v_max_real(&mut self, V: f64) {
         {
-            unsafe { crate::ffi::BRepPrim_OneAxis_v_max_real(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepPrim_OneAxis_v_max_real(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2386,8 +2874,11 @@ impl OneAxis {
             let __result = unsafe {
                 crate::ffi::BRepPrim_OneAxis_make_empty_lateral_face(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2400,8 +2891,11 @@ impl OneAxis {
             let __result = unsafe {
                 crate::ffi::BRepPrim_OneAxis_make_empty_meridian_edge(self as *const Self, Ang)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2411,8 +2905,12 @@ impl OneAxis {
     /// meridian.
     pub fn set_meridian_p_curve(&self, E: &mut crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::BRepPrim_OneAxis_set_meridian_p_curve(self as *const Self, E, F) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepPrim_OneAxis_set_meridian_p_curve(self as *const Self, E, F)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2423,8 +2921,11 @@ impl OneAxis {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_OneAxis_meridian_value(self as *const Self, V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2436,8 +2937,11 @@ impl OneAxis {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_OneAxis_meridian_on_axis(self as *const Self, V) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2450,8 +2954,11 @@ impl OneAxis {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_OneAxis_meridian_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2462,8 +2969,11 @@ impl OneAxis {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_OneAxis_v_max_infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2474,8 +2984,11 @@ impl OneAxis {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_OneAxis_v_min_infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2488,8 +3001,11 @@ impl OneAxis {
     pub fn has_top(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_has_top(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2502,8 +3018,11 @@ impl OneAxis {
     pub fn has_bottom(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_has_bottom(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2514,8 +3033,11 @@ impl OneAxis {
     pub fn has_sides(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_has_sides(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2525,8 +3047,11 @@ impl OneAxis {
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_shell(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2536,8 +3061,11 @@ impl OneAxis {
     pub fn lateral_face(&mut self) -> &crate::topo_ds::Face {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_lateral_face(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2547,8 +3075,11 @@ impl OneAxis {
     pub fn top_face(&mut self) -> &crate::topo_ds::Face {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_top_face(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2558,8 +3089,11 @@ impl OneAxis {
     pub fn bottom_face(&mut self) -> &crate::topo_ds::Face {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_bottom_face(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2569,8 +3103,11 @@ impl OneAxis {
     pub fn start_face(&mut self) -> &crate::topo_ds::Face {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_start_face(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2580,8 +3117,11 @@ impl OneAxis {
     pub fn end_face(&mut self) -> &crate::topo_ds::Face {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_end_face(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2590,8 +3130,11 @@ impl OneAxis {
     pub fn lateral_wire(&mut self) -> &crate::topo_ds::Wire {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_lateral_wire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2602,8 +3145,11 @@ impl OneAxis {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_OneAxis_lateral_start_wire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2614,8 +3160,11 @@ impl OneAxis {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_OneAxis_lateral_end_wire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2624,8 +3173,11 @@ impl OneAxis {
     pub fn top_wire(&mut self) -> &crate::topo_ds::Wire {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_top_wire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2634,8 +3186,11 @@ impl OneAxis {
     pub fn bottom_wire(&mut self) -> &crate::topo_ds::Wire {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_bottom_wire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2644,8 +3199,11 @@ impl OneAxis {
     pub fn start_wire(&mut self) -> &crate::topo_ds::Wire {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_start_wire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2656,8 +3214,11 @@ impl OneAxis {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_OneAxis_axis_start_wire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2666,8 +3227,11 @@ impl OneAxis {
     pub fn end_wire(&mut self) -> &crate::topo_ds::Wire {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_end_wire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2677,8 +3241,11 @@ impl OneAxis {
     pub fn axis_end_wire(&mut self) -> &crate::topo_ds::Wire {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_axis_end_wire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2688,8 +3255,11 @@ impl OneAxis {
     pub fn axis_edge(&mut self) -> &crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_axis_edge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2698,8 +3268,11 @@ impl OneAxis {
     pub fn start_edge(&mut self) -> &crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_start_edge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2709,8 +3282,11 @@ impl OneAxis {
     pub fn end_edge(&mut self) -> &crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_end_edge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2721,8 +3297,11 @@ impl OneAxis {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_OneAxis_start_top_edge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2733,8 +3312,11 @@ impl OneAxis {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_OneAxis_start_bottom_edge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2744,8 +3326,11 @@ impl OneAxis {
     pub fn end_top_edge(&mut self) -> &crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_end_top_edge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2756,8 +3341,11 @@ impl OneAxis {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_OneAxis_end_bottom_edge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2767,8 +3355,11 @@ impl OneAxis {
     pub fn top_edge(&mut self) -> &crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_top_edge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2778,8 +3369,11 @@ impl OneAxis {
     pub fn bottom_edge(&mut self) -> &crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::BRepPrim_OneAxis_bottom_edge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2789,8 +3383,11 @@ impl OneAxis {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_OneAxis_axis_top_vertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2801,8 +3398,11 @@ impl OneAxis {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_OneAxis_axis_bottom_vertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2812,8 +3412,11 @@ impl OneAxis {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_OneAxis_top_start_vertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2823,8 +3426,11 @@ impl OneAxis {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_OneAxis_top_end_vertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2834,8 +3440,11 @@ impl OneAxis {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_OneAxis_bottom_start_vertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2845,8 +3454,11 @@ impl OneAxis {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_OneAxis_bottom_end_vertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -2884,8 +3496,10 @@ impl Revolution {
                     A, VMin, VMax, M, PM,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2897,8 +3511,11 @@ impl Revolution {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Revolution_make_empty_lateral_face(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2911,8 +3528,11 @@ impl Revolution {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Revolution_make_empty_meridian_edge(self as *const Self, Ang)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2923,8 +3543,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_meridian_value(self as *const Self, V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2934,44 +3557,47 @@ impl Revolution {
     /// meridian.
     pub fn set_meridian_p_curve(&self, E: &mut crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepPrim_Revolution_set_meridian_p_curve(self as *const Self, E, F)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to BRepPrim_OneAxis
     pub fn as_one_axis(&self) -> &OneAxis {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Revolution_as_BRepPrim_OneAxis(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepPrim_Revolution_as_BRepPrim_OneAxis(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepPrim_OneAxis (mutable)
     pub fn as_one_axis_mut(&mut self) -> &mut OneAxis {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Revolution_as_BRepPrim_OneAxis_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepPrim_Revolution_as_BRepPrim_OneAxis_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
     pub fn set_meridian_offset(&mut self, MeridianOffset: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepPrim_Revolution_inherited_SetMeridianOffset(
                     self as *mut Self,
                     MeridianOffset,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2980,8 +3606,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_Axes(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2990,8 +3619,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_Angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3000,8 +3632,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_VMin(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3010,8 +3645,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_VMax(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3021,8 +3659,11 @@ impl Revolution {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Revolution_inherited_MeridianOnAxis(self as *const Self, V)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3032,8 +3673,11 @@ impl Revolution {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Revolution_inherited_MeridianClosed(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3043,8 +3687,11 @@ impl Revolution {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Revolution_inherited_VMaxInfinite(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3054,8 +3701,11 @@ impl Revolution {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Revolution_inherited_VMinInfinite(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3064,8 +3714,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_HasTop(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3074,8 +3727,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_HasBottom(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3084,8 +3740,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_HasSides(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3094,8 +3753,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_Shell(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3104,8 +3766,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_LateralFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3114,8 +3779,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_TopFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3124,8 +3792,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_BottomFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3134,8 +3805,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_StartFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3144,8 +3818,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_EndFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3154,8 +3831,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_LateralWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3165,8 +3845,11 @@ impl Revolution {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Revolution_inherited_LateralStartWire(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3176,8 +3859,11 @@ impl Revolution {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Revolution_inherited_LateralEndWire(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3186,8 +3872,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_TopWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3196,8 +3885,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_BottomWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3206,8 +3898,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_StartWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3217,8 +3912,11 @@ impl Revolution {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Revolution_inherited_AxisStartWire(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3227,8 +3925,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_EndWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3237,8 +3938,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_AxisEndWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3247,8 +3951,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_AxisEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3257,8 +3964,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_StartEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3267,8 +3977,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_EndEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3278,8 +3991,11 @@ impl Revolution {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Revolution_inherited_StartTopEdge(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3289,8 +4005,11 @@ impl Revolution {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Revolution_inherited_StartBottomEdge(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3299,8 +4018,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_EndTopEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3310,8 +4032,11 @@ impl Revolution {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Revolution_inherited_EndBottomEdge(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3320,8 +4045,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_TopEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3330,8 +4058,11 @@ impl Revolution {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Revolution_inherited_BottomEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3341,8 +4072,11 @@ impl Revolution {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Revolution_inherited_AxisTopVertex(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3352,8 +4086,11 @@ impl Revolution {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Revolution_inherited_AxisBottomVertex(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3363,8 +4100,11 @@ impl Revolution {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Revolution_inherited_TopStartVertex(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3374,8 +4114,11 @@ impl Revolution {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Revolution_inherited_TopEndVertex(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3385,8 +4128,11 @@ impl Revolution {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Revolution_inherited_BottomStartVertex(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3396,8 +4142,11 @@ impl Revolution {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Revolution_inherited_BottomEndVertex(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -3424,8 +4173,10 @@ impl Sphere {
     pub fn new_real(Radius: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Sphere_ctor_real(Radius) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3436,8 +4187,10 @@ impl Sphere {
     pub fn new_pnt_real(Center: &crate::gp::Pnt, Radius: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Sphere_ctor_pnt_real(Center, Radius) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3446,8 +4199,10 @@ impl Sphere {
     pub fn new_ax2_real(Axes: &crate::gp::Ax2, Radius: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Sphere_ctor_ax2_real(Axes, Radius) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3458,50 +4213,52 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_make_empty_lateral_face(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to BRepPrim_Revolution
     pub fn as_revolution(&self) -> &Revolution {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_as_BRepPrim_Revolution(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepPrim_Sphere_as_BRepPrim_Revolution(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepPrim_Revolution (mutable)
     pub fn as_revolution_mut(&mut self) -> &mut Revolution {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepPrim_Sphere_as_BRepPrim_Revolution_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepPrim_Sphere_as_BRepPrim_Revolution_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepPrim_OneAxis
     pub fn as_one_axis(&self) -> &OneAxis {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_as_BRepPrim_OneAxis(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepPrim_Sphere_as_BRepPrim_OneAxis(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepPrim_OneAxis (mutable)
     pub fn as_one_axis_mut(&mut self) -> &mut OneAxis {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Sphere_as_BRepPrim_OneAxis_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepPrim_Sphere_as_BRepPrim_OneAxis_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:56 - `BRepPrim_Revolution::MakeEmptyMeridianEdge()`
@@ -3513,8 +4270,11 @@ impl Sphere {
                     Ang,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3524,31 +4284,38 @@ impl Sphere {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Sphere_inherited_MeridianValue(self as *const Self, V)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:65 - `BRepPrim_Revolution::SetMeridianPCurve()`
     pub fn set_meridian_p_curve(&self, E: &mut crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepPrim_Sphere_inherited_SetMeridianPCurve(self as *const Self, E, F)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
     pub fn set_meridian_offset(&mut self, MeridianOffset: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepPrim_Sphere_inherited_SetMeridianOffset(
                     self as *mut Self,
                     MeridianOffset,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3557,8 +4324,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_Axes(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3567,8 +4337,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_Angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3577,8 +4350,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_VMin(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3587,8 +4363,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_VMax(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3598,8 +4377,11 @@ impl Sphere {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Sphere_inherited_MeridianOnAxis(self as *const Self, V)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3609,8 +4391,11 @@ impl Sphere {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Sphere_inherited_MeridianClosed(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3619,8 +4404,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_VMaxInfinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3629,8 +4417,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_VMinInfinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3639,8 +4430,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_HasTop(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3649,8 +4443,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_HasBottom(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3659,8 +4456,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_HasSides(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3669,8 +4469,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_Shell(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3679,8 +4482,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_LateralFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3689,8 +4495,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_TopFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3699,8 +4508,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_BottomFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3709,8 +4521,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_StartFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3719,8 +4534,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_EndFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3729,8 +4547,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_LateralWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3740,8 +4561,11 @@ impl Sphere {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Sphere_inherited_LateralStartWire(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3750,8 +4574,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_LateralEndWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3760,8 +4587,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_TopWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3770,8 +4600,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_BottomWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3780,8 +4613,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_StartWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3790,8 +4626,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_AxisStartWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3800,8 +4639,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_EndWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3810,8 +4652,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_AxisEndWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3820,8 +4665,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_AxisEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3830,8 +4678,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_StartEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3840,8 +4691,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_EndEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3850,8 +4704,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_StartTopEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3860,8 +4717,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_StartBottomEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3870,8 +4730,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_EndTopEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3880,8 +4743,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_EndBottomEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3890,8 +4756,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_TopEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3900,8 +4769,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_BottomEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3910,8 +4782,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_AxisTopVertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3921,8 +4796,11 @@ impl Sphere {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Sphere_inherited_AxisBottomVertex(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3931,8 +4809,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_TopStartVertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3941,8 +4822,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_TopEndVertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3952,8 +4836,11 @@ impl Sphere {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Sphere_inherited_BottomStartVertex(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3962,8 +4849,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Sphere_inherited_BottomEndVertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -3998,8 +4888,10 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_ctor_ax2_real2(Position, Major, Minor) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4008,8 +4900,10 @@ impl Torus {
     pub fn new_real2(Major: f64, Minor: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Torus_ctor_real2(Major, Minor) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4019,8 +4913,10 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_ctor_pnt_real2(Center, Major, Minor) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4031,49 +4927,52 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_make_empty_lateral_face(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to BRepPrim_Revolution
     pub fn as_revolution(&self) -> &Revolution {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_as_BRepPrim_Revolution(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepPrim_Torus_as_BRepPrim_Revolution(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepPrim_Revolution (mutable)
     pub fn as_revolution_mut(&mut self) -> &mut Revolution {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_as_BRepPrim_Revolution_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepPrim_Torus_as_BRepPrim_Revolution_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to BRepPrim_OneAxis
     pub fn as_one_axis(&self) -> &OneAxis {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_as_BRepPrim_OneAxis(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepPrim_Torus_as_BRepPrim_OneAxis(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepPrim_OneAxis (mutable)
     pub fn as_one_axis_mut(&mut self) -> &mut OneAxis {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Torus_as_BRepPrim_OneAxis_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepPrim_Torus_as_BRepPrim_OneAxis_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:56 - `BRepPrim_Revolution::MakeEmptyMeridianEdge()`
@@ -4082,8 +4981,11 @@ impl Torus {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Torus_inherited_MakeEmptyMeridianEdge(self as *const Self, Ang)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4093,31 +4995,38 @@ impl Torus {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Torus_inherited_MeridianValue(self as *const Self, V)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_Revolution.hxx`:65 - `BRepPrim_Revolution::SetMeridianPCurve()`
     pub fn set_meridian_p_curve(&self, E: &mut crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepPrim_Torus_inherited_SetMeridianPCurve(self as *const Self, E, F)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_OneAxis.hxx`:73 - `BRepPrim_OneAxis::SetMeridianOffset()`
     pub fn set_meridian_offset(&mut self, MeridianOffset: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepPrim_Torus_inherited_SetMeridianOffset(
                     self as *mut Self,
                     MeridianOffset,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4126,8 +5035,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_Axes(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4136,8 +5048,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_Angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4146,8 +5061,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_VMin(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4156,8 +5074,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_VMax(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4167,8 +5088,11 @@ impl Torus {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Torus_inherited_MeridianOnAxis(self as *const Self, V)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4177,8 +5101,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_MeridianClosed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4187,8 +5114,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_VMaxInfinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4197,8 +5127,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_VMinInfinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4207,8 +5140,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_HasTop(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4217,8 +5153,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_HasBottom(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4227,8 +5166,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_HasSides(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4236,8 +5178,11 @@ impl Torus {
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Torus_inherited_Shell(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4246,8 +5191,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_LateralFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4256,8 +5204,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_TopFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4266,8 +5217,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_BottomFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4276,8 +5230,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_StartFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4286,8 +5243,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_EndFace(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4296,8 +5256,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_LateralWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4306,8 +5269,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_LateralStartWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4316,8 +5282,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_LateralEndWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4326,8 +5295,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_TopWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4336,8 +5308,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_BottomWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4346,8 +5321,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_StartWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4356,8 +5334,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_AxisStartWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4366,8 +5347,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_EndWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4376,8 +5360,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_AxisEndWire(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4386,8 +5373,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_AxisEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4396,8 +5386,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_StartEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4406,8 +5399,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_EndEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4416,8 +5412,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_StartTopEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4426,8 +5425,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_StartBottomEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4436,8 +5438,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_EndTopEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4446,8 +5451,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_EndBottomEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4456,8 +5464,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_TopEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4466,8 +5477,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_BottomEdge(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4476,8 +5490,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_AxisTopVertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4486,8 +5503,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_AxisBottomVertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4496,8 +5516,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_TopStartVertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4506,8 +5529,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_TopEndVertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4517,8 +5543,11 @@ impl Torus {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Torus_inherited_BottomStartVertex(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4527,8 +5556,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Torus_inherited_BottomEndVertex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -4553,8 +5585,10 @@ impl Wedge {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Wedge_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4578,8 +5612,10 @@ impl Wedge {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Wedge_ctor_ax2_real3(Axes, dx, dy, dz) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4606,8 +5642,10 @@ impl Wedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Wedge_ctor_ax2_real4(Axes, dx, dy, dz, ltx) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4637,29 +5675,31 @@ impl Wedge {
                     Axes, xmin, ymin, zmin, z2min, x2min, xmax, ymax, zmax, z2max, x2max,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Upcast to BRepPrim_GWedge
     pub fn as_g_wedge(&self) -> &GWedge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Wedge_as_BRepPrim_GWedge(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepPrim_Wedge_as_BRepPrim_GWedge(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepPrim_GWedge (mutable)
     pub fn as_g_wedge_mut(&mut self) -> &mut GWedge {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepPrim_Wedge_as_BRepPrim_GWedge_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepPrim_Wedge_as_BRepPrim_GWedge_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:120 - `BRepPrim_GWedge::Axes()`
@@ -4667,8 +5707,11 @@ impl Wedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Wedge_inherited_Axes(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4677,8 +5720,11 @@ impl Wedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Wedge_inherited_GetXMin(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4687,8 +5733,11 @@ impl Wedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Wedge_inherited_GetYMin(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4697,8 +5746,11 @@ impl Wedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Wedge_inherited_GetZMin(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4707,8 +5759,11 @@ impl Wedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Wedge_inherited_GetZ2Min(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4717,8 +5772,11 @@ impl Wedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Wedge_inherited_GetX2Min(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4727,8 +5785,11 @@ impl Wedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Wedge_inherited_GetXMax(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4737,8 +5798,11 @@ impl Wedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Wedge_inherited_GetYMax(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4747,8 +5811,11 @@ impl Wedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Wedge_inherited_GetZMax(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4757,8 +5824,11 @@ impl Wedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Wedge_inherited_GetZ2Max(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4767,24 +5837,33 @@ impl Wedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Wedge_inherited_GetX2Max(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:154 - `BRepPrim_GWedge::Open()`
     pub fn open(&mut self, d1: crate::b_rep_prim::Direction) {
         {
-            unsafe { crate::ffi::BRepPrim_Wedge_inherited_Open(self as *mut Self, d1.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepPrim_Wedge_inherited_Open(self as *mut Self, d1.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepPrim_GWedge.hxx`:158 - `BRepPrim_GWedge::Close()`
     pub fn close(&mut self, d1: crate::b_rep_prim::Direction) {
         {
-            unsafe { crate::ffi::BRepPrim_Wedge_inherited_Close(self as *mut Self, d1.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepPrim_Wedge_inherited_Close(self as *mut Self, d1.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4794,8 +5873,11 @@ impl Wedge {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Wedge_inherited_IsInfinite(self as *const Self, d1.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4803,8 +5885,11 @@ impl Wedge {
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
         {
             let __result = unsafe { crate::ffi::BRepPrim_Wedge_inherited_Shell(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4814,8 +5899,11 @@ impl Wedge {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Wedge_inherited_HasFace(self as *const Self, d1.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4824,8 +5912,11 @@ impl Wedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Wedge_inherited_Face(self as *mut Self, d1.into()) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4834,8 +5925,11 @@ impl Wedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Wedge_inherited_Plane(self as *mut Self, d1.into()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4845,8 +5939,11 @@ impl Wedge {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Wedge_inherited_HasWire(self as *const Self, d1.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4855,8 +5952,11 @@ impl Wedge {
         {
             let __result =
                 unsafe { crate::ffi::BRepPrim_Wedge_inherited_Wire(self as *mut Self, d1.into()) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4874,8 +5974,11 @@ impl Wedge {
                     d2.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4889,8 +5992,11 @@ impl Wedge {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Wedge_inherited_Edge(self as *mut Self, d1.into(), d2.into())
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4904,8 +6010,11 @@ impl Wedge {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Wedge_inherited_Line(self as *mut Self, d1.into(), d2.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4925,8 +6034,11 @@ impl Wedge {
                     d3.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4946,8 +6058,11 @@ impl Wedge {
                     d3.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4967,8 +6082,11 @@ impl Wedge {
                     d3.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4978,8 +6096,11 @@ impl Wedge {
             let __result = unsafe {
                 crate::ffi::BRepPrim_Wedge_inherited_IsDegeneratedShape(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

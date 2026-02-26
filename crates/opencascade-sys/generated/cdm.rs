@@ -65,8 +65,11 @@ impl Application {
     pub fn resources(&mut self) -> crate::OwnedPtr<crate::ffi::HandleResourceManager> {
         {
             let __result = unsafe { crate::ffi::CDM_Application_resources(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -75,8 +78,11 @@ impl Application {
     pub fn message_driver(&mut self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
         {
             let __result = unsafe { crate::ffi::CDM_Application_message_driver(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -85,8 +91,12 @@ impl Application {
     /// By default, writes in MessageDriver().
     pub fn begin_of_update(&mut self, aDocument: &crate::ffi::HandleCDMDocument) {
         {
-            unsafe { crate::ffi::CDM_Application_begin_of_update(self as *mut Self, aDocument) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::CDM_Application_begin_of_update(self as *mut Self, aDocument)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -100,7 +110,7 @@ impl Application {
         ErrorString: &crate::t_collection::ExtendedString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::CDM_Application_end_of_update(
                     self as *mut Self,
                     aDocument,
@@ -108,7 +118,9 @@ impl Application {
                     ErrorString,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -116,8 +128,10 @@ impl Application {
     /// writes the string in the application MessagerDriver.
     pub unsafe fn write(&mut self, aString: *const u16) {
         {
-            unsafe { crate::ffi::CDM_Application_write(self as *mut Self, aString) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::CDM_Application_write(self as *mut Self, aString) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -126,8 +140,11 @@ impl Application {
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         {
             let __result = unsafe { crate::ffi::CDM_Application_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -136,8 +153,11 @@ impl Application {
     pub fn version(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::CDM_Application_version(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -147,8 +167,11 @@ impl Application {
         {
             let __result =
                 unsafe { crate::ffi::CDM_Application_meta_data_look_up_table(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -156,8 +179,11 @@ impl Application {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::CDM_Application_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -165,8 +191,11 @@ impl Application {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::CDM_Application_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -174,29 +203,32 @@ impl Application {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::CDM_Application_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::CDM_Application_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::CDM_Application_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::CDM_Application_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::CDM_Application_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -205,8 +237,11 @@ impl Application {
             let __result = unsafe {
                 crate::ffi::CDM_Application_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -216,8 +251,11 @@ impl Application {
             let __result = unsafe {
                 crate::ffi::CDM_Application_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -226,11 +264,14 @@ impl Application {
         {
             let __result =
                 unsafe { crate::ffi::CDM_Application_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -240,16 +281,23 @@ impl Application {
         {
             let __result =
                 unsafe { crate::ffi::CDM_Application_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::CDM_Application_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::CDM_Application_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -259,16 +307,22 @@ impl Application {
             let __result = unsafe {
                 crate::ffi::CDM_Application_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::CDM_Application_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::CDM_Application_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -284,31 +338,31 @@ unsafe impl crate::CppDeletable for HandleCDMApplication {
 impl HandleCDMApplication {
     /// Dereference this Handle to access the underlying CDM_Application
     pub fn get(&self) -> &crate::ffi::CDM_Application {
-        {
-            let __result = unsafe { crate::ffi::HandleCDMApplication_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleCDMApplication_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying CDM_Application
     pub fn get_mut(&mut self) -> &mut crate::ffi::CDM_Application {
-        {
-            let __result = unsafe { crate::ffi::HandleCDMApplication_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleCDMApplication_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<CDM_Application> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleCDMApplication_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleCDMApplication_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<CDM_Application> to Handle<AppStdL_Application>
@@ -317,16 +371,18 @@ impl HandleCDMApplication {
     pub fn downcast_to_app_std_l_application(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleAppStdLApplication>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleCDMApplication_downcast_to_HandleAppStdLApplication(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -336,16 +392,18 @@ impl HandleCDMApplication {
     pub fn downcast_to_app_std_application(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleAppStdApplication>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleCDMApplication_downcast_to_HandleAppStdApplication(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -355,14 +413,16 @@ impl HandleCDMApplication {
     pub fn downcast_to_cdf_application(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleCDFApplication>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleCDMApplication_downcast_to_HandleCDFApplication(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -372,16 +432,18 @@ impl HandleCDMApplication {
     pub fn downcast_to_t_doc_std_application(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdApplication>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleCDMApplication_downcast_to_HandleTDocStdApplication(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -391,14 +453,16 @@ impl HandleCDMApplication {
     pub fn downcast_to_t_obj_application(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjApplication>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleCDMApplication_downcast_to_HandleTObjApplication(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -408,16 +472,18 @@ impl HandleCDMApplication {
     pub fn downcast_to_xcaf_app_application(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFAppApplication>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleCDMApplication_downcast_to_HandleXCAFAppApplication(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -472,7 +538,7 @@ impl Document {
         aModifContext: *mut std::ffi::c_void,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::CDM_Document_update_handlecdmdocument_int_address(
                     self as *mut Self,
                     aToDocument,
@@ -480,7 +546,9 @@ impl Document {
                     aModifContext,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -500,8 +568,11 @@ impl Document {
             let __result = unsafe {
                 crate::ffi::CDM_Document_update_extendedstring(self as *mut Self, ErrorString)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -512,8 +583,11 @@ impl Document {
     pub fn storage_format(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         {
             let __result = unsafe { crate::ffi::CDM_Document_storage_format(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -521,8 +595,11 @@ impl Document {
     /// by default empties the extensions.
     pub fn extensions(&self, Extensions: &mut crate::ffi::TColStd_SequenceOfExtendedString) {
         {
-            unsafe { crate::ffi::CDM_Document_extensions(self as *const Self, Extensions) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::CDM_Document_extensions(self as *const Self, Extensions) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -543,8 +620,11 @@ impl Document {
                     anAlternativeDocument,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -567,8 +647,11 @@ impl Document {
                     anOtherDocument,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -577,10 +660,12 @@ impl Document {
     /// To Document identified by a reference identifier.
     pub fn remove_reference(&mut self, aReferenceIdentifier: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::CDM_Document_remove_reference(self as *mut Self, aReferenceIdentifier)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -588,8 +673,11 @@ impl Document {
     /// Removes all references having this document for From Document.
     pub fn remove_all_references(&mut self) {
         {
-            unsafe { crate::ffi::CDM_Document_remove_all_references(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::CDM_Document_remove_all_references(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -605,8 +693,11 @@ impl Document {
             let __result = unsafe {
                 crate::ffi::CDM_Document_document(self as *const Self, aReferenceIdentifier)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -619,8 +710,11 @@ impl Document {
             let __result = unsafe {
                 crate::ffi::CDM_Document_is_in_session(self as *const Self, aReferenceIdentifier)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -633,8 +727,11 @@ impl Document {
             let __result = unsafe {
                 crate::ffi::CDM_Document_is_stored_int(self as *const Self, aReferenceIdentifier)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -648,8 +745,11 @@ impl Document {
         {
             let __result =
                 unsafe { crate::ffi::CDM_Document_name(self as *const Self, aReferenceIdentifier) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -664,10 +764,12 @@ impl Document {
     /// generate call to Update().
     pub unsafe fn update_from_documents(&self, aModifContext: *mut std::ffi::c_void) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::CDM_Document_update_from_documents(self as *const Self, aModifContext)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -678,8 +780,11 @@ impl Document {
         {
             let __result =
                 unsafe { crate::ffi::CDM_Document_to_references_number(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -690,8 +795,11 @@ impl Document {
         {
             let __result =
                 unsafe { crate::ffi::CDM_Document_from_references_number(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -702,8 +810,11 @@ impl Document {
             let __result = unsafe {
                 crate::ffi::CDM_Document_shallow_references(self as *const Self, aDocument)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -713,8 +824,11 @@ impl Document {
         {
             let __result =
                 unsafe { crate::ffi::CDM_Document_deep_references(self as *const Self, aDocument) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -736,8 +850,11 @@ impl Document {
                     aReferenceIdentifier,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -746,8 +863,11 @@ impl Document {
     pub fn is_read_only(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::CDM_Document_is_read_only(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -758,24 +878,31 @@ impl Document {
             let __result = unsafe {
                 crate::ffi::CDM_Document_is_read_only_int(self as *const Self, aReferenceIdentifier)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `CDM_Document.hxx`:177 - `CDM_Document::SetIsReadOnly()`
     pub fn set_is_read_only(&mut self) {
         {
-            unsafe { crate::ffi::CDM_Document_set_is_read_only(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::CDM_Document_set_is_read_only(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `CDM_Document.hxx`:179 - `CDM_Document::UnsetIsReadOnly()`
     pub fn unset_is_read_only(&mut self) {
         {
-            unsafe { crate::ffi::CDM_Document_unset_is_read_only(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::CDM_Document_unset_is_read_only(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -784,8 +911,10 @@ impl Document {
     /// This method increments the modification counter.
     pub fn modify(&mut self) {
         {
-            unsafe { crate::ffi::CDM_Document_modify(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::CDM_Document_modify(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -794,16 +923,21 @@ impl Document {
     pub fn modifications(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::CDM_Document_modifications(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `CDM_Document.hxx`:188 - `CDM_Document::UnModify()`
     pub fn un_modify(&mut self) {
         {
-            unsafe { crate::ffi::CDM_Document_un_modify(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::CDM_Document_un_modify(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -817,8 +951,11 @@ impl Document {
             let __result = unsafe {
                 crate::ffi::CDM_Document_is_up_to_date(self as *const Self, aReferenceIdentifier)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -829,10 +966,12 @@ impl Document {
     /// this document.
     pub fn set_is_up_to_date(&mut self, aReferenceIdentifier: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::CDM_Document_set_is_up_to_date(self as *mut Self, aReferenceIdentifier)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -840,8 +979,11 @@ impl Document {
     /// associates a comment with this document.
     pub fn set_comment(&mut self, aComment: &crate::t_collection::ExtendedString) {
         {
-            unsafe { crate::ffi::CDM_Document_set_comment(self as *mut Self, aComment) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::CDM_Document_set_comment(self as *mut Self, aComment) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -849,8 +991,11 @@ impl Document {
     /// appends a comment into comments of this document.
     pub fn add_comment(&mut self, aComment: &crate::t_collection::ExtendedString) {
         {
-            unsafe { crate::ffi::CDM_Document_add_comment(self as *mut Self, aComment) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::CDM_Document_add_comment(self as *mut Self, aComment) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -858,8 +1003,11 @@ impl Document {
     /// associates a comments with this document.
     pub fn set_comments(&mut self, aComments: &crate::ffi::TColStd_SequenceOfExtendedString) {
         {
-            unsafe { crate::ffi::CDM_Document_set_comments(self as *mut Self, aComments) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::CDM_Document_set_comments(self as *mut Self, aComments) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -868,8 +1016,11 @@ impl Document {
     /// Returns empty sequence if no comments are associated.
     pub fn comments(&self, aComments: &mut crate::ffi::TColStd_SequenceOfExtendedString) {
         {
-            unsafe { crate::ffi::CDM_Document_comments(self as *const Self, aComments) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::CDM_Document_comments(self as *const Self, aComments) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -879,8 +1030,11 @@ impl Document {
     pub unsafe fn comment(&self) -> *const u16 {
         {
             let __result = unsafe { crate::ffi::CDM_Document_comment(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -888,8 +1042,11 @@ impl Document {
     pub fn is_stored(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::CDM_Document_is_stored(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -899,8 +1056,11 @@ impl Document {
     pub fn storage_version(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::CDM_Document_storage_version(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -910,16 +1070,21 @@ impl Document {
     /// name which has beenused to store the data.
     pub fn set_meta_data(&mut self, aMetaData: &crate::ffi::HandleCDMMetaData) {
         {
-            unsafe { crate::ffi::CDM_Document_set_meta_data(self as *mut Self, aMetaData) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::CDM_Document_set_meta_data(self as *mut Self, aMetaData) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `CDM_Document.hxx`:230 - `CDM_Document::UnsetIsStored()`
     pub fn unset_is_stored(&mut self) {
         {
-            unsafe { crate::ffi::CDM_Document_unset_is_stored(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::CDM_Document_unset_is_stored(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -927,8 +1092,11 @@ impl Document {
     pub fn meta_data(&self) -> crate::OwnedPtr<crate::ffi::HandleCDMMetaData> {
         {
             let __result = unsafe { crate::ffi::CDM_Document_meta_data(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -936,8 +1104,11 @@ impl Document {
     pub fn folder(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         {
             let __result = unsafe { crate::ffi::CDM_Document_folder(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -945,8 +1116,12 @@ impl Document {
     /// defines the folder in which the object should be stored.
     pub fn set_requested_folder(&mut self, aFolder: &crate::t_collection::ExtendedString) {
         {
-            unsafe { crate::ffi::CDM_Document_set_requested_folder(self as *mut Self, aFolder) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::CDM_Document_set_requested_folder(self as *mut Self, aFolder)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -955,8 +1130,11 @@ impl Document {
         {
             let __result =
                 unsafe { crate::ffi::CDM_Document_requested_folder(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -965,8 +1143,11 @@ impl Document {
         {
             let __result =
                 unsafe { crate::ffi::CDM_Document_has_requested_folder(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -974,8 +1155,11 @@ impl Document {
     /// defines the name under which the object should be stored.
     pub fn set_requested_name(&mut self, aName: &crate::t_collection::ExtendedString) {
         {
-            unsafe { crate::ffi::CDM_Document_set_requested_name(self as *mut Self, aName) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::CDM_Document_set_requested_name(self as *mut Self, aName) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -986,8 +1170,11 @@ impl Document {
     pub fn requested_name(&mut self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         {
             let __result = unsafe { crate::ffi::CDM_Document_requested_name(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -997,21 +1184,27 @@ impl Document {
         aPreviousVersion: &crate::t_collection::ExtendedString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::CDM_Document_set_requested_previous_version(
                     self as *mut Self,
                     aPreviousVersion,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `CDM_Document.hxx`:254 - `CDM_Document::UnsetRequestedPreviousVersion()`
     pub fn unset_requested_previous_version(&mut self) {
         {
-            unsafe { crate::ffi::CDM_Document_unset_requested_previous_version(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::CDM_Document_unset_requested_previous_version(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1021,8 +1214,11 @@ impl Document {
             let __result = unsafe {
                 crate::ffi::CDM_Document_has_requested_previous_version(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1033,8 +1229,11 @@ impl Document {
         {
             let __result =
                 unsafe { crate::ffi::CDM_Document_requested_previous_version(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1042,8 +1241,12 @@ impl Document {
     /// defines the Comment with  which the object should be stored.
     pub fn set_requested_comment(&mut self, aComment: &crate::t_collection::ExtendedString) {
         {
-            unsafe { crate::ffi::CDM_Document_set_requested_comment(self as *mut Self, aComment) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::CDM_Document_set_requested_comment(self as *mut Self, aComment)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1052,8 +1255,11 @@ impl Document {
         {
             let __result =
                 unsafe { crate::ffi::CDM_Document_requested_comment(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1061,8 +1267,10 @@ impl Document {
     /// read (or rereads) the following resource.
     pub fn load_resources(&mut self) {
         {
-            unsafe { crate::ffi::CDM_Document_load_resources(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::CDM_Document_load_resources(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1071,8 +1279,11 @@ impl Document {
         {
             let __result =
                 unsafe { crate::ffi::CDM_Document_find_file_extension(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1081,8 +1292,11 @@ impl Document {
     pub fn file_extension(&mut self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         {
             let __result = unsafe { crate::ffi::CDM_Document_file_extension(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1090,8 +1304,11 @@ impl Document {
     pub fn find_description(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::CDM_Document_find_description(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1100,8 +1317,11 @@ impl Document {
     pub fn description(&mut self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         {
             let __result = unsafe { crate::ffi::CDM_Document_description(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1111,8 +1331,11 @@ impl Document {
     pub fn is_modified(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::CDM_Document_is_modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1129,8 +1352,11 @@ impl Document {
     ) -> &mut crate::ffi::Standard_OStream {
         {
             let __result = unsafe { crate::ffi::CDM_Document_print(self as *mut Self, anOStream) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1138,16 +1364,21 @@ impl Document {
     pub fn is_opened(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::CDM_Document_is_opened(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `CDM_Document.hxx`:287 - `CDM_Document::Open()`
     pub fn open(&mut self, anApplication: &crate::ffi::HandleCDMApplication) {
         {
-            unsafe { crate::ffi::CDM_Document_open(self as *mut Self, anApplication) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::CDM_Document_open(self as *mut Self, anApplication) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1155,16 +1386,21 @@ impl Document {
     pub fn can_close(&self) -> crate::cdm::CanCloseStatus {
         {
             let __result = unsafe { crate::ffi::CDM_Document_can_close(self as *const Self) };
-            crate::check_exception();
-            crate::cdm::CanCloseStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::cdm::CanCloseStatus::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `CDM_Document.hxx`:291 - `CDM_Document::Close()`
     pub fn close(&mut self) {
         {
-            unsafe { crate::ffi::CDM_Document_close(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::CDM_Document_close(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1172,8 +1408,11 @@ impl Document {
     pub fn application(&self) -> &crate::ffi::HandleCDMApplication {
         {
             let __result = unsafe { crate::ffi::CDM_Document_application(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1195,8 +1434,11 @@ impl Document {
                     aReferenceIdentifier,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1211,14 +1453,16 @@ impl Document {
         aReferenceIdentifier: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::CDM_Document_close_reference(
                     self as *mut Self,
                     aDocument,
                     aReferenceIdentifier,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1232,8 +1476,11 @@ impl Document {
             let __result = unsafe {
                 crate::ffi::CDM_Document_is_opened_int(self as *const Self, aReferenceIdentifier)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1247,10 +1494,12 @@ impl Document {
         UseStorageConfiguration: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::CDM_Document_create_reference_handlecdmmetadata_int_handlecdmapplication_int_bool(self as *mut Self, aMetaData, aReferenceIdentifier, anApplication, aToDocumentVersion, UseStorageConfiguration)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1266,8 +1515,11 @@ impl Document {
             let __result = unsafe {
                 crate::ffi::CDM_Document_create_reference_handlecdmmetadata_handlecdmapplication_int_bool(self as *mut Self, aMetaData, anApplication, aDocumentVersion, UseStorageConfiguration)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1276,8 +1528,11 @@ impl Document {
         {
             let __result =
                 unsafe { crate::ffi::CDM_Document_reference_counter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1288,8 +1543,10 @@ impl Document {
     /// returns Boolean from Standard
     pub fn update(&mut self) {
         {
-            unsafe { crate::ffi::CDM_Document_update(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::CDM_Document_update(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1302,26 +1559,35 @@ impl Document {
             let __result = unsafe {
                 crate::ffi::CDM_Document_reference(self as *const Self, aReferenceIdentifier)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `CDM_Document.hxx`:338 - `CDM_Document::SetModifications()`
     pub fn set_modifications(&mut self, Modifications: i32) {
         {
-            unsafe { crate::ffi::CDM_Document_set_modifications(self as *mut Self, Modifications) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::CDM_Document_set_modifications(self as *mut Self, Modifications)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `CDM_Document.hxx`:340 - `CDM_Document::SetReferenceCounter()`
     pub fn set_reference_counter(&mut self, aReferenceCounter: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::CDM_Document_set_reference_counter(self as *mut Self, aReferenceCounter)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1329,8 +1595,11 @@ impl Document {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::CDM_Document_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1338,8 +1607,11 @@ impl Document {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::CDM_Document_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1347,29 +1619,32 @@ impl Document {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::CDM_Document_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::CDM_Document_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::CDM_Document_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::CDM_Document_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::CDM_Document_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 }
 
@@ -1384,31 +1659,31 @@ unsafe impl crate::CppDeletable for HandleCDMDocument {
 impl HandleCDMDocument {
     /// Dereference this Handle to access the underlying CDM_Document
     pub fn get(&self) -> &crate::ffi::CDM_Document {
-        {
-            let __result = unsafe { crate::ffi::HandleCDMDocument_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleCDMDocument_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying CDM_Document
     pub fn get_mut(&mut self) -> &mut crate::ffi::CDM_Document {
-        {
-            let __result = unsafe { crate::ffi::HandleCDMDocument_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleCDMDocument_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<CDM_Document> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleCDMDocument_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleCDMDocument_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<CDM_Document> to Handle<TDocStd_Document>
@@ -1417,14 +1692,16 @@ impl HandleCDMDocument {
     pub fn downcast_to_document(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdDocument>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleCDMDocument_downcast_to_HandleTDocStdDocument(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -1447,8 +1724,11 @@ impl MetaData {
     pub fn is_retrieved(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::CDM_MetaData_is_retrieved(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1456,8 +1736,11 @@ impl MetaData {
     pub fn document(&self) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
         {
             let __result = unsafe { crate::ffi::CDM_MetaData_document(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1467,8 +1750,11 @@ impl MetaData {
     pub fn folder(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         {
             let __result = unsafe { crate::ffi::CDM_MetaData_folder(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1478,8 +1764,11 @@ impl MetaData {
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         {
             let __result = unsafe { crate::ffi::CDM_MetaData_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1489,8 +1778,11 @@ impl MetaData {
     pub fn version(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         {
             let __result = unsafe { crate::ffi::CDM_MetaData_version(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1500,8 +1792,11 @@ impl MetaData {
     pub fn has_version(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::CDM_MetaData_has_version(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1509,8 +1804,11 @@ impl MetaData {
     pub fn file_name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         {
             let __result = unsafe { crate::ffi::CDM_MetaData_file_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1527,8 +1825,11 @@ impl MetaData {
     ) -> &mut crate::ffi::Standard_OStream {
         {
             let __result = unsafe { crate::ffi::CDM_MetaData_print(self as *mut Self, anOStream) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1536,16 +1837,21 @@ impl MetaData {
     pub fn path(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         {
             let __result = unsafe { crate::ffi::CDM_MetaData_path(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `CDM_MetaData.hxx`:81 - `CDM_MetaData::UnsetDocument()`
     pub fn unset_document(&mut self) {
         {
-            unsafe { crate::ffi::CDM_MetaData_unset_document(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::CDM_MetaData_unset_document(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1553,24 +1859,31 @@ impl MetaData {
     pub fn is_read_only(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::CDM_MetaData_is_read_only(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `CDM_MetaData.hxx`:85 - `CDM_MetaData::SetIsReadOnly()`
     pub fn set_is_read_only(&mut self) {
         {
-            unsafe { crate::ffi::CDM_MetaData_set_is_read_only(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::CDM_MetaData_set_is_read_only(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `CDM_MetaData.hxx`:87 - `CDM_MetaData::UnsetIsReadOnly()`
     pub fn unset_is_read_only(&mut self) {
         {
-            unsafe { crate::ffi::CDM_MetaData_unset_is_read_only(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::CDM_MetaData_unset_is_read_only(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1578,8 +1891,11 @@ impl MetaData {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::CDM_MetaData_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1603,8 +1919,11 @@ impl MetaData {
                     ReadOnly,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1630,8 +1949,11 @@ impl MetaData {
                     ReadOnly,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1639,8 +1961,11 @@ impl MetaData {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::CDM_MetaData_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1648,38 +1973,41 @@ impl MetaData {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::CDM_MetaData_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::CDM_MetaData_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::CDM_MetaData_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::CDM_MetaData_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::CDM_MetaData_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleCDMMetaData> {
-        {
-            let __result = unsafe { crate::ffi::CDM_MetaData_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::CDM_MetaData_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1688,8 +2016,11 @@ impl MetaData {
             let __result = unsafe {
                 crate::ffi::CDM_MetaData_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1698,8 +2029,11 @@ impl MetaData {
         {
             let __result =
                 unsafe { crate::ffi::CDM_MetaData_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1707,11 +2041,14 @@ impl MetaData {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::CDM_MetaData_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1721,16 +2058,23 @@ impl MetaData {
         {
             let __result =
                 unsafe { crate::ffi::CDM_MetaData_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::CDM_MetaData_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::CDM_MetaData_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1740,16 +2084,21 @@ impl MetaData {
             let __result = unsafe {
                 crate::ffi::CDM_MetaData_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::CDM_MetaData_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::CDM_MetaData_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1765,31 +2114,31 @@ unsafe impl crate::CppDeletable for HandleCDMMetaData {
 impl HandleCDMMetaData {
     /// Dereference this Handle to access the underlying CDM_MetaData
     pub fn get(&self) -> &crate::ffi::CDM_MetaData {
-        {
-            let __result = unsafe { crate::ffi::HandleCDMMetaData_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleCDMMetaData_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying CDM_MetaData
     pub fn get_mut(&mut self) -> &mut crate::ffi::CDM_MetaData {
-        {
-            let __result = unsafe { crate::ffi::HandleCDMMetaData_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleCDMMetaData_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<CDM_MetaData> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleCDMMetaData_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleCDMMetaData_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1811,8 +2160,11 @@ impl Reference {
     pub fn from_document(&mut self) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
         {
             let __result = unsafe { crate::ffi::CDM_Reference_from_document(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1820,8 +2172,11 @@ impl Reference {
     pub fn to_document(&mut self) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
         {
             let __result = unsafe { crate::ffi::CDM_Reference_to_document(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1830,8 +2185,11 @@ impl Reference {
         {
             let __result =
                 unsafe { crate::ffi::CDM_Reference_reference_identifier(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1840,8 +2198,11 @@ impl Reference {
         {
             let __result =
                 unsafe { crate::ffi::CDM_Reference_document_version(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1849,8 +2210,11 @@ impl Reference {
     pub fn is_read_only(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::CDM_Reference_is_read_only(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1858,8 +2222,11 @@ impl Reference {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::CDM_Reference_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1867,8 +2234,11 @@ impl Reference {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::CDM_Reference_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1876,40 +2246,43 @@ impl Reference {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::CDM_Reference_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::CDM_Reference_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::CDM_Reference_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::CDM_Reference_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::CDM_Reference_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleCDMReference> {
-        {
-            let __result = unsafe { crate::ffi::CDM_Reference_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::CDM_Reference_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1918,8 +2291,11 @@ impl Reference {
             let __result = unsafe {
                 crate::ffi::CDM_Reference_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1928,8 +2304,11 @@ impl Reference {
         {
             let __result =
                 unsafe { crate::ffi::CDM_Reference_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1937,11 +2316,14 @@ impl Reference {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::CDM_Reference_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1951,16 +2333,23 @@ impl Reference {
         {
             let __result =
                 unsafe { crate::ffi::CDM_Reference_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::CDM_Reference_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::CDM_Reference_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1970,16 +2359,21 @@ impl Reference {
             let __result = unsafe {
                 crate::ffi::CDM_Reference_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::CDM_Reference_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::CDM_Reference_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1995,31 +2389,31 @@ unsafe impl crate::CppDeletable for HandleCDMReference {
 impl HandleCDMReference {
     /// Dereference this Handle to access the underlying CDM_Reference
     pub fn get(&self) -> &crate::ffi::CDM_Reference {
-        {
-            let __result = unsafe { crate::ffi::HandleCDMReference_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleCDMReference_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying CDM_Reference
     pub fn get_mut(&mut self) -> &mut crate::ffi::CDM_Reference {
-        {
-            let __result = unsafe { crate::ffi::HandleCDMReference_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleCDMReference_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<CDM_Reference> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleCDMReference_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleCDMReference_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2044,8 +2438,10 @@ impl ReferenceIterator {
         {
             let __result =
                 unsafe { crate::ffi::CDM_ReferenceIterator_ctor_handlecdmdocument(aDocument) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2053,16 +2449,21 @@ impl ReferenceIterator {
     pub fn more(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::CDM_ReferenceIterator_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `CDM_ReferenceIterator.hxx`:37 - `CDM_ReferenceIterator::Next()`
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::CDM_ReferenceIterator_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::CDM_ReferenceIterator_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2071,8 +2472,11 @@ impl ReferenceIterator {
         {
             let __result =
                 unsafe { crate::ffi::CDM_ReferenceIterator_document(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2082,8 +2486,11 @@ impl ReferenceIterator {
             let __result = unsafe {
                 crate::ffi::CDM_ReferenceIterator_reference_identifier(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2093,8 +2500,11 @@ impl ReferenceIterator {
         {
             let __result =
                 unsafe { crate::ffi::CDM_ReferenceIterator_document_version(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

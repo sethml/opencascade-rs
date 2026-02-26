@@ -13,8 +13,11 @@ pub fn project_pln_pnt(
 ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
     {
         let __result = unsafe { crate::ffi::ProjLib_project_pln_pnt(Pl, P) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `ProjLib.hxx`:70 - `ProjLib::Project`
@@ -24,8 +27,11 @@ pub fn project_pln_lin(
 ) -> crate::OwnedPtr<crate::gp::Lin2d> {
     {
         let __result = unsafe { crate::ffi::ProjLib_project_pln_lin(Pl, L) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `ProjLib.hxx`:72 - `ProjLib::Project`
@@ -35,8 +41,11 @@ pub fn project_pln_circ(
 ) -> crate::OwnedPtr<crate::gp::Circ2d> {
     {
         let __result = unsafe { crate::ffi::ProjLib_project_pln_circ(Pl, C) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `ProjLib.hxx`:74 - `ProjLib::Project`
@@ -46,8 +55,11 @@ pub fn project_pln_elips(
 ) -> crate::OwnedPtr<crate::gp::Elips2d> {
     {
         let __result = unsafe { crate::ffi::ProjLib_project_pln_elips(Pl, E) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `ProjLib.hxx`:76 - `ProjLib::Project`
@@ -57,8 +69,11 @@ pub fn project_pln_parab(
 ) -> crate::OwnedPtr<crate::gp::Parab2d> {
     {
         let __result = unsafe { crate::ffi::ProjLib_project_pln_parab(Pl, P) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `ProjLib.hxx`:78 - `ProjLib::Project`
@@ -68,8 +83,11 @@ pub fn project_pln_hypr(
 ) -> crate::OwnedPtr<crate::gp::Hypr2d> {
     {
         let __result = unsafe { crate::ffi::ProjLib_project_pln_hypr(Pl, H) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `ProjLib.hxx`:80 - `ProjLib::Project`
@@ -79,8 +97,11 @@ pub fn project_cylinder_pnt(
 ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
     {
         let __result = unsafe { crate::ffi::ProjLib_project_cylinder_pnt(Cy, P) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `ProjLib.hxx`:82 - `ProjLib::Project`
@@ -90,8 +111,11 @@ pub fn project_cylinder_lin(
 ) -> crate::OwnedPtr<crate::gp::Lin2d> {
     {
         let __result = unsafe { crate::ffi::ProjLib_project_cylinder_lin(Cy, L) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `ProjLib.hxx`:84 - `ProjLib::Project`
@@ -101,8 +125,11 @@ pub fn project_cylinder_circ(
 ) -> crate::OwnedPtr<crate::gp::Lin2d> {
     {
         let __result = unsafe { crate::ffi::ProjLib_project_cylinder_circ(Cy, Ci) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `ProjLib.hxx`:86 - `ProjLib::Project`
@@ -112,8 +139,11 @@ pub fn project_cone_pnt(
 ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
     {
         let __result = unsafe { crate::ffi::ProjLib_project_cone_pnt(Co, P) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `ProjLib.hxx`:88 - `ProjLib::Project`
@@ -123,8 +153,11 @@ pub fn project_cone_lin(
 ) -> crate::OwnedPtr<crate::gp::Lin2d> {
     {
         let __result = unsafe { crate::ffi::ProjLib_project_cone_lin(Co, L) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `ProjLib.hxx`:90 - `ProjLib::Project`
@@ -134,8 +167,11 @@ pub fn project_cone_circ(
 ) -> crate::OwnedPtr<crate::gp::Lin2d> {
     {
         let __result = unsafe { crate::ffi::ProjLib_project_cone_circ(Co, Ci) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `ProjLib.hxx`:92 - `ProjLib::Project`
@@ -145,8 +181,11 @@ pub fn project_sphere_pnt(
 ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
     {
         let __result = unsafe { crate::ffi::ProjLib_project_sphere_pnt(Sp, P) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `ProjLib.hxx`:94 - `ProjLib::Project`
@@ -156,8 +195,11 @@ pub fn project_sphere_circ(
 ) -> crate::OwnedPtr<crate::gp::Lin2d> {
     {
         let __result = unsafe { crate::ffi::ProjLib_project_sphere_circ(Sp, Ci) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `ProjLib.hxx`:96 - `ProjLib::Project`
@@ -167,8 +209,11 @@ pub fn project_torus_pnt(
 ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
     {
         let __result = unsafe { crate::ffi::ProjLib_project_torus_pnt(To, P) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `ProjLib.hxx`:98 - `ProjLib::Project`
@@ -178,16 +223,21 @@ pub fn project_torus_circ(
 ) -> crate::OwnedPtr<crate::gp::Lin2d> {
     {
         let __result = unsafe { crate::ffi::ProjLib_project_torus_circ(To, Ci) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `ProjLib.hxx`:101 - `ProjLib::MakePCurveOfType`
 /// Make empty  P-Curve <aC> of relevant to <PC> type
 pub fn make_p_curve_of_type(PC: &ProjectedCurve, aC: &mut crate::ffi::HandleGeom2dCurve) {
     {
-        unsafe { crate::ffi::ProjLib_make_p_curve_of_type(PC, aC) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::ProjLib_make_p_curve_of_type(PC, aC) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `ProjLib.hxx`:107 - `ProjLib::IsAnaSurf`
@@ -197,8 +247,11 @@ pub fn make_p_curve_of_type(PC: &ProjectedCurve, aC: &mut crate::ffi::HandleGeom
 pub fn is_ana_surf(theAS: &crate::ffi::HandleAdaptor3dSurface) -> bool {
     {
         let __result = unsafe { crate::ffi::ProjLib_is_ana_surf(theAS) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 
@@ -223,8 +276,10 @@ impl CompProjectedCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_CompProjectedCurve_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -240,8 +295,10 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_ctor_handleadaptor3dsurface_handleadaptor3dcurve_real2(S, C, TolU, TolV)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -261,8 +318,10 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_ctor_handleadaptor3dsurface_handleadaptor3dcurve_real3(S, C, TolU, TolV, MaxDist)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -282,8 +341,10 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_ctor_real_handleadaptor3dsurface_handleadaptor3dcurve_real(Tol3d, S, C, MaxDist)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -306,8 +367,11 @@ impl CompProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_CompProjectedCurve_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -317,8 +381,11 @@ impl CompProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_CompProjectedCurve_shallow_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -329,8 +396,10 @@ impl CompProjectedCurve {
     /// included  in this set of points.
     pub fn init(&mut self) {
         {
-            unsafe { crate::ffi::ProjLib_CompProjectedCurve_init(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_CompProjectedCurve_init(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -341,8 +410,11 @@ impl CompProjectedCurve {
     /// SetTol3d(...), SeContinuity(...), SetMaxDegree(...), SetMaxSeg(...)
     pub fn perform(&mut self) {
         {
-            unsafe { crate::ffi::ProjLib_CompProjectedCurve_perform(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_CompProjectedCurve_perform(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -350,10 +422,12 @@ impl CompProjectedCurve {
     /// Set the parameter, which defines 3d tolerance of approximation.
     pub fn set_tol3d(&mut self, theTol3d: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_set_tol3d(self as *mut Self, theTol3d)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -362,13 +436,15 @@ impl CompProjectedCurve {
     /// Default value is GeomAbs_C2;
     pub fn set_continuity(&mut self, theContinuity: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_set_continuity(
                     self as *mut Self,
                     theContinuity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -378,13 +454,15 @@ impl CompProjectedCurve {
     /// and surface.
     pub fn set_max_degree(&mut self, theMaxDegree: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_set_max_degree(
                     self as *mut Self,
                     theMaxDegree,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -394,10 +472,12 @@ impl CompProjectedCurve {
     /// value = 16.
     pub fn set_max_seg(&mut self, theMaxSeg: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_set_max_seg(self as *mut Self, theMaxSeg)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -405,10 +485,12 @@ impl CompProjectedCurve {
     /// Set the parameter, which defines necessity of 2d results.
     pub fn set_proj2d(&mut self, theProj2d: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_set_proj2d(self as *mut Self, theProj2d)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -416,10 +498,12 @@ impl CompProjectedCurve {
     /// Set the parameter, which defines necessity of 3d results.
     pub fn set_proj3d(&mut self, theProj3d: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_set_proj3d(self as *mut Self, theProj3d)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -427,13 +511,15 @@ impl CompProjectedCurve {
     /// Changes the surface.
     pub fn load_handleadaptor3dsurface(&mut self, S: &crate::ffi::HandleAdaptor3dSurface) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_load_handleadaptor3dsurface(
                     self as *mut Self,
                     S,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -441,13 +527,15 @@ impl CompProjectedCurve {
     /// Changes the  curve.
     pub fn load_handleadaptor3dcurve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_load_handleadaptor3dcurve(
                     self as *mut Self,
                     C,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -456,8 +544,11 @@ impl CompProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_CompProjectedCurve_get_surface(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -466,22 +557,27 @@ impl CompProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_CompProjectedCurve_get_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `ProjLib_CompProjectedCurve.hxx`:119 - `ProjLib_CompProjectedCurve::GetTolerance()`
     pub fn get_tolerance(&self, TolU: &mut f64, TolV: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_get_tolerance(
                     self as *const Self,
                     TolU,
                     TolV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -491,8 +587,11 @@ impl CompProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_CompProjectedCurve_nb_curves(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -500,7 +599,7 @@ impl CompProjectedCurve {
     /// returns the bounds of the continuous part corresponding to Index
     pub fn bounds(&self, Index: i32, Udeb: &mut f64, Ufin: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_bounds(
                     self as *const Self,
                     Index,
@@ -508,7 +607,9 @@ impl CompProjectedCurve {
                     Ufin,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -520,8 +621,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_is_single_pnt(self as *const Self, Index, P)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -533,8 +637,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_is_u_iso(self as *const Self, Index, U)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -546,8 +653,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_is_v_iso(self as *const Self, Index, V)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -557,8 +667,11 @@ impl CompProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_CompProjectedCurve_value(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -566,8 +679,11 @@ impl CompProjectedCurve {
     /// Computes the point of parameter U on the curve.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::ProjLib_CompProjectedCurve_d0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_CompProjectedCurve_d0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -578,8 +694,11 @@ impl CompProjectedCurve {
     /// is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V: &mut crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::ProjLib_CompProjectedCurve_d1(self as *const Self, U, P, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_CompProjectedCurve_d1(self as *const Self, U, P, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -596,8 +715,12 @@ impl CompProjectedCurve {
         V2: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::ProjLib_CompProjectedCurve_d2(self as *const Self, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ProjLib_CompProjectedCurve_d2(self as *const Self, U, P, V1, V2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -610,8 +733,11 @@ impl CompProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_CompProjectedCurve_dn(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -623,8 +749,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_first_parameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -636,8 +765,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_last_parameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -647,8 +779,11 @@ impl CompProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_CompProjectedCurve_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -660,8 +795,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_nb_intervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -685,8 +823,11 @@ impl CompProjectedCurve {
                     Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -698,10 +839,12 @@ impl CompProjectedCurve {
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_intervals(self as *const Self, T, S.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -713,8 +856,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_max_distance(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -723,8 +869,11 @@ impl CompProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_CompProjectedCurve_get_sequence(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -736,8 +885,11 @@ impl CompProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_CompProjectedCurve_get_type(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
@@ -752,8 +904,11 @@ impl CompProjectedCurve {
                     theIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -768,8 +923,11 @@ impl CompProjectedCurve {
                     theIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -784,8 +942,11 @@ impl CompProjectedCurve {
                     theIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -800,8 +961,11 @@ impl CompProjectedCurve {
                     theIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -813,8 +977,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_get_result2d_c(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -826,8 +993,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_get_result3d_c(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -839,8 +1009,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_get_result2d_p(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -852,8 +1025,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_get_result3d_p(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -863,8 +1039,11 @@ impl CompProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_CompProjectedCurve_get_proj2d(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -874,8 +1053,11 @@ impl CompProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_CompProjectedCurve_get_proj3d(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -883,8 +1065,11 @@ impl CompProjectedCurve {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ProjLib_CompProjectedCurve_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -892,65 +1077,67 @@ impl CompProjectedCurve {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ProjLib_CompProjectedCurve_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Adaptor2d_Curve2d
     pub fn as_adaptor2d_curve2d(&self) -> &crate::adaptor2d::Curve2d {
-        {
-            let __result = unsafe {
-                crate::ffi::ProjLib_CompProjectedCurve_as_Adaptor2d_Curve2d(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ProjLib_CompProjectedCurve_as_Adaptor2d_Curve2d(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Adaptor2d_Curve2d (mutable)
     pub fn as_adaptor2d_curve2d_mut(&mut self) -> &mut crate::adaptor2d::Curve2d {
-        {
-            let __result = unsafe {
-                crate::ffi::ProjLib_CompProjectedCurve_as_Adaptor2d_Curve2d_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ProjLib_CompProjectedCurve_as_Adaptor2d_Curve2d_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ProjLib_CompProjectedCurve_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ProjLib_CompProjectedCurve_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ProjLib_CompProjectedCurve_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ProjLib_CompProjectedCurve_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleProjLibCompProjectedCurve> {
-        {
-            let __result =
-                unsafe { crate::ffi::ProjLib_CompProjectedCurve_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ProjLib_CompProjectedCurve_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:83 - `Adaptor2d_Curve2d::IsClosed()`
@@ -959,8 +1146,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_inherited_IsClosed(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -970,8 +1160,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_inherited_IsPeriodic(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -981,8 +1174,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_inherited_Period(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -996,7 +1192,7 @@ impl CompProjectedCurve {
         V3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_inherited_D3(
                     self as *const Self,
                     U,
@@ -1006,7 +1202,9 @@ impl CompProjectedCurve {
                     V3,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1019,8 +1217,11 @@ impl CompProjectedCurve {
                     R3d,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1030,8 +1231,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_inherited_Line(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1041,8 +1245,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_inherited_Circle(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1052,8 +1259,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_inherited_Ellipse(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1063,8 +1273,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_inherited_Hyperbola(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1074,8 +1287,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_inherited_Parabola(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1085,8 +1301,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_inherited_Degree(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1096,8 +1315,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_inherited_IsRational(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1107,8 +1329,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_inherited_NbPoles(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1118,8 +1343,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_inherited_NbKnots(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1129,8 +1357,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_inherited_NbSamples(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1140,8 +1371,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_inherited_Bezier(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1151,8 +1385,11 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_inherited_BSpline(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1165,8 +1402,11 @@ impl CompProjectedCurve {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1179,8 +1419,11 @@ impl CompProjectedCurve {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1190,11 +1433,14 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1205,20 +1451,25 @@ impl CompProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_CompProjectedCurve_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1230,16 +1481,23 @@ impl CompProjectedCurve {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ProjLib_CompProjectedCurve_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ProjLib_CompProjectedCurve_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1255,48 +1513,48 @@ unsafe impl crate::CppDeletable for HandleProjLibCompProjectedCurve {
 impl HandleProjLibCompProjectedCurve {
     /// Dereference this Handle to access the underlying ProjLib_CompProjectedCurve
     pub fn get(&self) -> &crate::ffi::ProjLib_CompProjectedCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleProjLibCompProjectedCurve_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleProjLibCompProjectedCurve_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ProjLib_CompProjectedCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::ProjLib_CompProjectedCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleProjLibCompProjectedCurve_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleProjLibCompProjectedCurve_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ProjLib_CompProjectedCurve> to Handle<Adaptor2d_Curve2d>
     pub fn to_handle_curve2d(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleProjLibCompProjectedCurve_to_HandleAdaptor2dCurve2d(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleProjLibCompProjectedCurve_to_HandleAdaptor2dCurve2d(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ProjLib_CompProjectedCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleProjLibCompProjectedCurve_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleProjLibCompProjectedCurve_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1329,8 +1587,10 @@ impl ComputeApprox {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_ComputeApprox_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1347,8 +1607,10 @@ impl ComputeApprox {
             let __result = unsafe {
                 crate::ffi::ProjLib_ComputeApprox_ctor_handleadaptor3dcurve_handleadaptor3dsurface_real(C, S, Tol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1362,8 +1624,11 @@ impl ComputeApprox {
         S: &crate::ffi::HandleAdaptor3dSurface,
     ) {
         {
-            unsafe { crate::ffi::ProjLib_ComputeApprox_perform(self as *mut Self, C, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_ComputeApprox_perform(self as *mut Self, C, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1372,10 +1637,12 @@ impl ComputeApprox {
     /// Default value is Precision::Confusion().
     pub fn set_tolerance(&mut self, theTolerance: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ComputeApprox_set_tolerance(self as *mut Self, theTolerance)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1385,14 +1652,16 @@ impl ComputeApprox {
     /// and surface.
     pub fn set_degree(&mut self, theDegMin: i32, theDegMax: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ComputeApprox_set_degree(
                     self as *mut Self,
                     theDegMin,
                     theDegMax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1402,13 +1671,15 @@ impl ComputeApprox {
     /// value = 1000.
     pub fn set_max_segments(&mut self, theMaxSegments: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ComputeApprox_set_max_segments(
                     self as *mut Self,
                     theMaxSegments,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1418,10 +1689,12 @@ impl ComputeApprox {
     /// is AppParCurves_TangencyPoint;
     pub fn set_bnd_pnt(&mut self, theBndPnt: crate::app_par_curves::Constraint) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ComputeApprox_set_bnd_pnt(self as *mut Self, theBndPnt.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1430,8 +1703,11 @@ impl ComputeApprox {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ComputeApprox_b_spline(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1439,8 +1715,11 @@ impl ComputeApprox {
     pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
         {
             let __result = unsafe { crate::ffi::ProjLib_ComputeApprox_bezier(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1450,8 +1729,11 @@ impl ComputeApprox {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ComputeApprox_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1487,8 +1769,10 @@ impl ComputeApproxOnPolarSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_ComputeApproxOnPolarSurface_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1503,8 +1787,10 @@ impl ComputeApproxOnPolarSurface {
             let __result = unsafe {
                 crate::ffi::ProjLib_ComputeApproxOnPolarSurface_ctor_handleadaptor3dcurve_handleadaptor3dsurface_real(C, S, Tol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1521,8 +1807,10 @@ impl ComputeApproxOnPolarSurface {
             let __result = unsafe {
                 crate::ffi::ProjLib_ComputeApproxOnPolarSurface_ctor_handleadaptor2dcurve2d_handleadaptor3dcurve_handleadaptor3dsurface_real(InitCurve2d, C, S, Tol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1541,8 +1829,10 @@ impl ComputeApproxOnPolarSurface {
             let __result = unsafe {
                 crate::ffi::ProjLib_ComputeApproxOnPolarSurface_ctor_handleadaptor2dcurve2d2_handleadaptor3dcurve_handleadaptor3dsurface_real(InitCurve2d, InitCurve2dBis, C, S, Tol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1560,14 +1850,16 @@ impl ComputeApproxOnPolarSurface {
     /// If theDegMin/Max < 0, algorithm uses values min = 2, max = 8.
     pub fn set_degree(&mut self, theDegMin: i32, theDegMax: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ComputeApproxOnPolarSurface_set_degree(
                     self as *mut Self,
                     theDegMin,
                     theDegMax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1577,13 +1869,15 @@ impl ComputeApproxOnPolarSurface {
     /// value = 1000.
     pub fn set_max_segments(&mut self, theMaxSegments: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ComputeApproxOnPolarSurface_set_max_segments(
                     self as *mut Self,
                     theMaxSegments,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1593,13 +1887,15 @@ impl ComputeApproxOnPolarSurface {
     /// is AppParCurves_TangencyPoint.
     pub fn set_bnd_pnt(&mut self, theBndPnt: crate::app_par_curves::Constraint) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ComputeApproxOnPolarSurface_set_bnd_pnt(
                     self as *mut Self,
                     theBndPnt.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1610,13 +1906,15 @@ impl ComputeApproxOnPolarSurface {
     /// then theMaxDist, algorithm stops working.
     pub fn set_max_dist(&mut self, theMaxDist: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ComputeApproxOnPolarSurface_set_max_dist(
                     self as *mut Self,
                     theMaxDist,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1626,13 +1924,15 @@ impl ComputeApproxOnPolarSurface {
     /// Default value is Precision::Approximation().
     pub fn set_tolerance(&mut self, theTolerance: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ComputeApproxOnPolarSurface_set_tolerance(
                     self as *mut Self,
                     theTolerance,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1645,10 +1945,12 @@ impl ComputeApproxOnPolarSurface {
         S: &crate::ffi::HandleAdaptor3dSurface,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ComputeApproxOnPolarSurface_perform_handleadaptor3dcurve_handleadaptor3dsurface(self as *mut Self, C, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1666,8 +1968,11 @@ impl ComputeApproxOnPolarSurface {
             let __result = unsafe {
                 crate::ffi::ProjLib_ComputeApproxOnPolarSurface_perform_handleadaptor2dcurve2d_handleadaptor3dcurve_handleadaptor3dsurface(self as *mut Self, InitCurve2d, C, S)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1687,8 +1992,11 @@ impl ComputeApproxOnPolarSurface {
                     S,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1710,8 +2018,11 @@ impl ComputeApproxOnPolarSurface {
                     InitCurve2d,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1722,8 +2033,11 @@ impl ComputeApproxOnPolarSurface {
             let __result = unsafe {
                 crate::ffi::ProjLib_ComputeApproxOnPolarSurface_b_spline(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1734,8 +2048,11 @@ impl ComputeApproxOnPolarSurface {
             let __result = unsafe {
                 crate::ffi::ProjLib_ComputeApproxOnPolarSurface_curve2d(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1745,8 +2062,11 @@ impl ComputeApproxOnPolarSurface {
             let __result = unsafe {
                 crate::ffi::ProjLib_ComputeApproxOnPolarSurface_is_done(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1757,8 +2077,11 @@ impl ComputeApproxOnPolarSurface {
             let __result = unsafe {
                 crate::ffi::ProjLib_ComputeApproxOnPolarSurface_tolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1783,8 +2106,10 @@ impl Cone {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Cone_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1793,8 +2118,10 @@ impl Cone {
     pub fn new_cone(Co: &crate::gp::Cone) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Cone_ctor_cone(Co) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1803,8 +2130,10 @@ impl Cone {
     pub fn new_cone_lin(Co: &crate::gp::Cone, L: &crate::gp::Lin) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Cone_ctor_cone_lin(Co, L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1813,77 +2142,91 @@ impl Cone {
     pub fn new_cone_circ(Co: &crate::gp::Cone, C: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Cone_ctor_cone_circ(Co, C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `ProjLib_Cone.hxx`:49 - `ProjLib_Cone::Init()`
     pub fn init(&mut self, Co: &crate::gp::Cone) {
         {
-            unsafe { crate::ffi::ProjLib_Cone_init(self as *mut Self, Co) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Cone_init(self as *mut Self, Co) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Cone.hxx`:51 - `ProjLib_Cone::Project()`
     pub fn project_lin(&mut self, L: &crate::gp::Lin) {
         {
-            unsafe { crate::ffi::ProjLib_Cone_project_lin(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Cone_project_lin(self as *mut Self, L) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Cone.hxx`:53 - `ProjLib_Cone::Project()`
     pub fn project_circ(&mut self, C: &crate::gp::Circ) {
         {
-            unsafe { crate::ffi::ProjLib_Cone_project_circ(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Cone_project_circ(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Cone.hxx`:55 - `ProjLib_Cone::Project()`
     pub fn project_elips(&mut self, E: &crate::gp::Elips) {
         {
-            unsafe { crate::ffi::ProjLib_Cone_project_elips(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Cone_project_elips(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Cone.hxx`:57 - `ProjLib_Cone::Project()`
     pub fn project_parab(&mut self, P: &crate::gp::Parab) {
         {
-            unsafe { crate::ffi::ProjLib_Cone_project_parab(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Cone_project_parab(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Cone.hxx`:59 - `ProjLib_Cone::Project()`
     pub fn project_hypr(&mut self, H: &crate::gp::Hypr) {
         {
-            unsafe { crate::ffi::ProjLib_Cone_project_hypr(self as *mut Self, H) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Cone_project_hypr(self as *mut Self, H) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to ProjLib_Projector
     pub fn as_projector(&self) -> &Projector {
-        {
-            let __result =
-                unsafe { crate::ffi::ProjLib_Cone_as_ProjLib_Projector(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ProjLib_Cone_as_ProjLib_Projector(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ProjLib_Projector (mutable)
     pub fn as_projector_mut(&mut self) -> &mut Projector {
-        {
-            let __result =
-                unsafe { crate::ffi::ProjLib_Cone_as_ProjLib_Projector_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ProjLib_Cone_as_ProjLib_Projector_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:48 - `ProjLib_Projector::IsDone()`
@@ -1891,16 +2234,21 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Cone_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:51 - `ProjLib_Projector::Done()`
     pub fn done(&mut self) {
         {
-            unsafe { crate::ffi::ProjLib_Cone_inherited_Done(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Cone_inherited_Done(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1909,32 +2257,45 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Cone_inherited_GetType(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:55 - `ProjLib_Projector::SetBSpline()`
     pub fn set_b_spline(&mut self, C: &crate::ffi::HandleGeom2dBSplineCurve) {
         {
-            unsafe { crate::ffi::ProjLib_Cone_inherited_SetBSpline(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_Cone_inherited_SetBSpline(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:57 - `ProjLib_Projector::SetBezier()`
     pub fn set_bezier(&mut self, C: &crate::ffi::HandleGeom2dBezierCurve) {
         {
-            unsafe { crate::ffi::ProjLib_Cone_inherited_SetBezier(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_Cone_inherited_SetBezier(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:59 - `ProjLib_Projector::SetType()`
     pub fn set_type(&mut self, Type: crate::geom_abs::CurveType) {
         {
-            unsafe { crate::ffi::ProjLib_Cone_inherited_SetType(self as *mut Self, Type.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ProjLib_Cone_inherited_SetType(self as *mut Self, Type.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1943,16 +2304,22 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Cone_inherited_IsPeriodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:63 - `ProjLib_Projector::SetPeriodic()`
     pub fn set_periodic(&mut self) {
         {
-            unsafe { crate::ffi::ProjLib_Cone_inherited_SetPeriodic(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_Cone_inherited_SetPeriodic(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1960,8 +2327,11 @@ impl Cone {
     pub fn line(&self) -> &crate::gp::Lin2d {
         {
             let __result = unsafe { crate::ffi::ProjLib_Cone_inherited_Line(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1970,8 +2340,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Cone_inherited_Circle(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1980,8 +2353,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Cone_inherited_Ellipse(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1990,8 +2366,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Cone_inherited_Hyperbola(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2000,8 +2379,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Cone_inherited_Parabola(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2010,8 +2392,11 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Cone_inherited_Bezier(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2020,15 +2405,18 @@ impl Cone {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Cone_inherited_BSpline(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:92 - `ProjLib_Projector::UFrame()`
     pub fn u_frame(&mut self, CFirst: f64, CLast: f64, UFirst: f64, Period: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_Cone_inherited_UFrame(
                     self as *mut Self,
                     CFirst,
@@ -2037,14 +2425,16 @@ impl Cone {
                     Period,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:100 - `ProjLib_Projector::VFrame()`
     pub fn v_frame(&mut self, CFirst: f64, CLast: f64, VFirst: f64, Period: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_Cone_inherited_VFrame(
                     self as *mut Self,
                     CFirst,
@@ -2053,7 +2443,9 @@ impl Cone {
                     Period,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2078,8 +2470,10 @@ impl Cylinder {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Cylinder_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2088,8 +2482,10 @@ impl Cylinder {
     pub fn new_cylinder(Cyl: &crate::gp::Cylinder) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Cylinder_ctor_cylinder(Cyl) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2101,8 +2497,10 @@ impl Cylinder {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Cylinder_ctor_cylinder_lin(Cyl, L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2114,8 +2512,10 @@ impl Cylinder {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Cylinder_ctor_cylinder_circ(Cyl, C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2127,77 +2527,91 @@ impl Cylinder {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Cylinder_ctor_cylinder_elips(Cyl, E) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `ProjLib_Cylinder.hxx`:52 - `ProjLib_Cylinder::Init()`
     pub fn init(&mut self, Cyl: &crate::gp::Cylinder) {
         {
-            unsafe { crate::ffi::ProjLib_Cylinder_init(self as *mut Self, Cyl) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Cylinder_init(self as *mut Self, Cyl) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Cylinder.hxx`:54 - `ProjLib_Cylinder::Project()`
     pub fn project_lin(&mut self, L: &crate::gp::Lin) {
         {
-            unsafe { crate::ffi::ProjLib_Cylinder_project_lin(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Cylinder_project_lin(self as *mut Self, L) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Cylinder.hxx`:56 - `ProjLib_Cylinder::Project()`
     pub fn project_circ(&mut self, C: &crate::gp::Circ) {
         {
-            unsafe { crate::ffi::ProjLib_Cylinder_project_circ(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Cylinder_project_circ(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Cylinder.hxx`:58 - `ProjLib_Cylinder::Project()`
     pub fn project_elips(&mut self, E: &crate::gp::Elips) {
         {
-            unsafe { crate::ffi::ProjLib_Cylinder_project_elips(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Cylinder_project_elips(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Cylinder.hxx`:60 - `ProjLib_Cylinder::Project()`
     pub fn project_parab(&mut self, P: &crate::gp::Parab) {
         {
-            unsafe { crate::ffi::ProjLib_Cylinder_project_parab(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Cylinder_project_parab(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Cylinder.hxx`:62 - `ProjLib_Cylinder::Project()`
     pub fn project_hypr(&mut self, H: &crate::gp::Hypr) {
         {
-            unsafe { crate::ffi::ProjLib_Cylinder_project_hypr(self as *mut Self, H) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Cylinder_project_hypr(self as *mut Self, H) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to ProjLib_Projector
     pub fn as_projector(&self) -> &Projector {
-        {
-            let __result =
-                unsafe { crate::ffi::ProjLib_Cylinder_as_ProjLib_Projector(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ProjLib_Cylinder_as_ProjLib_Projector(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ProjLib_Projector (mutable)
     pub fn as_projector_mut(&mut self) -> &mut Projector {
-        {
-            let __result =
-                unsafe { crate::ffi::ProjLib_Cylinder_as_ProjLib_Projector_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ProjLib_Cylinder_as_ProjLib_Projector_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:48 - `ProjLib_Projector::IsDone()`
@@ -2205,16 +2619,21 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Cylinder_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:51 - `ProjLib_Projector::Done()`
     pub fn done(&mut self) {
         {
-            unsafe { crate::ffi::ProjLib_Cylinder_inherited_Done(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Cylinder_inherited_Done(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2223,34 +2642,45 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Cylinder_inherited_GetType(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:55 - `ProjLib_Projector::SetBSpline()`
     pub fn set_b_spline(&mut self, C: &crate::ffi::HandleGeom2dBSplineCurve) {
         {
-            unsafe { crate::ffi::ProjLib_Cylinder_inherited_SetBSpline(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_Cylinder_inherited_SetBSpline(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:57 - `ProjLib_Projector::SetBezier()`
     pub fn set_bezier(&mut self, C: &crate::ffi::HandleGeom2dBezierCurve) {
         {
-            unsafe { crate::ffi::ProjLib_Cylinder_inherited_SetBezier(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_Cylinder_inherited_SetBezier(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:59 - `ProjLib_Projector::SetType()`
     pub fn set_type(&mut self, Type: crate::geom_abs::CurveType) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_Cylinder_inherited_SetType(self as *mut Self, Type.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2259,16 +2689,22 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Cylinder_inherited_IsPeriodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:63 - `ProjLib_Projector::SetPeriodic()`
     pub fn set_periodic(&mut self) {
         {
-            unsafe { crate::ffi::ProjLib_Cylinder_inherited_SetPeriodic(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_Cylinder_inherited_SetPeriodic(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2277,8 +2713,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Cylinder_inherited_Line(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2287,8 +2726,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Cylinder_inherited_Circle(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2297,8 +2739,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Cylinder_inherited_Ellipse(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2307,8 +2752,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Cylinder_inherited_Hyperbola(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2317,8 +2765,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Cylinder_inherited_Parabola(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2327,8 +2778,11 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Cylinder_inherited_Bezier(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2337,15 +2791,18 @@ impl Cylinder {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Cylinder_inherited_BSpline(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:92 - `ProjLib_Projector::UFrame()`
     pub fn u_frame(&mut self, CFirst: f64, CLast: f64, UFirst: f64, Period: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_Cylinder_inherited_UFrame(
                     self as *mut Self,
                     CFirst,
@@ -2354,14 +2811,16 @@ impl Cylinder {
                     Period,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:100 - `ProjLib_Projector::VFrame()`
     pub fn v_frame(&mut self, CFirst: f64, CLast: f64, VFirst: f64, Period: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_Cylinder_inherited_VFrame(
                     self as *mut Self,
                     CFirst,
@@ -2370,7 +2829,9 @@ impl Cylinder {
                     Period,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2393,8 +2854,10 @@ impl HSequenceOfHSequenceOfPnt {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2408,8 +2871,10 @@ impl HSequenceOfHSequenceOfPnt {
                     theOther,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2419,8 +2884,11 @@ impl HSequenceOfHSequenceOfPnt {
             let __result = unsafe {
                 crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_sequence(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2430,13 +2898,15 @@ impl HSequenceOfHSequenceOfPnt {
         theItem: &crate::ffi::HandleTColgpHSequenceOfPnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_append_handletcolgphsequenceofpnt(
                     self as *mut Self,
                     theItem,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2446,13 +2916,15 @@ impl HSequenceOfHSequenceOfPnt {
         theSequence: &mut crate::ffi::ProjLib_SequenceOfHSequenceOfPnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_append_sequenceofhsequenceofpnt(
                     self as *mut Self,
                     theSequence,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2462,8 +2934,11 @@ impl HSequenceOfHSequenceOfPnt {
             let __result = unsafe {
                 crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_change_sequence(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2473,8 +2948,11 @@ impl HSequenceOfHSequenceOfPnt {
             let __result = unsafe {
                 crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2482,8 +2960,11 @@ impl HSequenceOfHSequenceOfPnt {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2492,47 +2973,48 @@ impl HSequenceOfHSequenceOfPnt {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleProjLibHSequenceOfHSequenceOfPnt> {
-        {
-            let __result =
-                unsafe { crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2544,8 +3026,11 @@ impl HSequenceOfHSequenceOfPnt {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2558,8 +3043,11 @@ impl HSequenceOfHSequenceOfPnt {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2569,11 +3057,14 @@ impl HSequenceOfHSequenceOfPnt {
             let __result = unsafe {
                 crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2586,20 +3077,25 @@ impl HSequenceOfHSequenceOfPnt {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2611,18 +3107,23 @@ impl HSequenceOfHSequenceOfPnt {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2638,37 +3139,36 @@ unsafe impl crate::CppDeletable for HandleProjLibHSequenceOfHSequenceOfPnt {
 impl HandleProjLibHSequenceOfHSequenceOfPnt {
     /// Dereference this Handle to access the underlying ProjLib_HSequenceOfHSequenceOfPnt
     pub fn get(&self) -> &crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleProjLibHSequenceOfHSequenceOfPnt_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleProjLibHSequenceOfHSequenceOfPnt_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ProjLib_HSequenceOfHSequenceOfPnt
     pub fn get_mut(&mut self) -> &mut crate::ffi::ProjLib_HSequenceOfHSequenceOfPnt {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleProjLibHSequenceOfHSequenceOfPnt_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleProjLibHSequenceOfHSequenceOfPnt_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ProjLib_HSequenceOfHSequenceOfPnt> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleProjLibHSequenceOfHSequenceOfPnt_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleProjLibHSequenceOfHSequenceOfPnt_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2692,8 +3192,10 @@ impl Plane {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Plane_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2702,8 +3204,10 @@ impl Plane {
     pub fn new_pln(Pl: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Plane_ctor_pln(Pl) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2712,8 +3216,10 @@ impl Plane {
     pub fn new_pln_lin(Pl: &crate::gp::Pln, L: &crate::gp::Lin) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Plane_ctor_pln_lin(Pl, L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2722,8 +3228,10 @@ impl Plane {
     pub fn new_pln_circ(Pl: &crate::gp::Pln, C: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Plane_ctor_pln_circ(Pl, C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2732,8 +3240,10 @@ impl Plane {
     pub fn new_pln_elips(Pl: &crate::gp::Pln, E: &crate::gp::Elips) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Plane_ctor_pln_elips(Pl, E) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2742,8 +3252,10 @@ impl Plane {
     pub fn new_pln_parab(Pl: &crate::gp::Pln, P: &crate::gp::Parab) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Plane_ctor_pln_parab(Pl, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2752,77 +3264,91 @@ impl Plane {
     pub fn new_pln_hypr(Pl: &crate::gp::Pln, H: &crate::gp::Hypr) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Plane_ctor_pln_hypr(Pl, H) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `ProjLib_Plane.hxx`:58 - `ProjLib_Plane::Init()`
     pub fn init(&mut self, Pl: &crate::gp::Pln) {
         {
-            unsafe { crate::ffi::ProjLib_Plane_init(self as *mut Self, Pl) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Plane_init(self as *mut Self, Pl) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Plane.hxx`:60 - `ProjLib_Plane::Project()`
     pub fn project_lin(&mut self, L: &crate::gp::Lin) {
         {
-            unsafe { crate::ffi::ProjLib_Plane_project_lin(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Plane_project_lin(self as *mut Self, L) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Plane.hxx`:62 - `ProjLib_Plane::Project()`
     pub fn project_circ(&mut self, C: &crate::gp::Circ) {
         {
-            unsafe { crate::ffi::ProjLib_Plane_project_circ(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Plane_project_circ(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Plane.hxx`:64 - `ProjLib_Plane::Project()`
     pub fn project_elips(&mut self, E: &crate::gp::Elips) {
         {
-            unsafe { crate::ffi::ProjLib_Plane_project_elips(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Plane_project_elips(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Plane.hxx`:66 - `ProjLib_Plane::Project()`
     pub fn project_parab(&mut self, P: &crate::gp::Parab) {
         {
-            unsafe { crate::ffi::ProjLib_Plane_project_parab(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Plane_project_parab(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Plane.hxx`:68 - `ProjLib_Plane::Project()`
     pub fn project_hypr(&mut self, H: &crate::gp::Hypr) {
         {
-            unsafe { crate::ffi::ProjLib_Plane_project_hypr(self as *mut Self, H) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Plane_project_hypr(self as *mut Self, H) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to ProjLib_Projector
     pub fn as_projector(&self) -> &Projector {
-        {
-            let __result =
-                unsafe { crate::ffi::ProjLib_Plane_as_ProjLib_Projector(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ProjLib_Plane_as_ProjLib_Projector(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ProjLib_Projector (mutable)
     pub fn as_projector_mut(&mut self) -> &mut Projector {
-        {
-            let __result =
-                unsafe { crate::ffi::ProjLib_Plane_as_ProjLib_Projector_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ProjLib_Plane_as_ProjLib_Projector_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:48 - `ProjLib_Projector::IsDone()`
@@ -2830,16 +3356,21 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Plane_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:51 - `ProjLib_Projector::Done()`
     pub fn done(&mut self) {
         {
-            unsafe { crate::ffi::ProjLib_Plane_inherited_Done(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Plane_inherited_Done(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2848,32 +3379,45 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Plane_inherited_GetType(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:55 - `ProjLib_Projector::SetBSpline()`
     pub fn set_b_spline(&mut self, C: &crate::ffi::HandleGeom2dBSplineCurve) {
         {
-            unsafe { crate::ffi::ProjLib_Plane_inherited_SetBSpline(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_Plane_inherited_SetBSpline(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:57 - `ProjLib_Projector::SetBezier()`
     pub fn set_bezier(&mut self, C: &crate::ffi::HandleGeom2dBezierCurve) {
         {
-            unsafe { crate::ffi::ProjLib_Plane_inherited_SetBezier(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_Plane_inherited_SetBezier(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:59 - `ProjLib_Projector::SetType()`
     pub fn set_type(&mut self, Type: crate::geom_abs::CurveType) {
         {
-            unsafe { crate::ffi::ProjLib_Plane_inherited_SetType(self as *mut Self, Type.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ProjLib_Plane_inherited_SetType(self as *mut Self, Type.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2882,16 +3426,22 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Plane_inherited_IsPeriodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:63 - `ProjLib_Projector::SetPeriodic()`
     pub fn set_periodic(&mut self) {
         {
-            unsafe { crate::ffi::ProjLib_Plane_inherited_SetPeriodic(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_Plane_inherited_SetPeriodic(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2899,8 +3449,11 @@ impl Plane {
     pub fn line(&self) -> &crate::gp::Lin2d {
         {
             let __result = unsafe { crate::ffi::ProjLib_Plane_inherited_Line(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2909,8 +3462,11 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Plane_inherited_Circle(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2919,8 +3475,11 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Plane_inherited_Ellipse(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2929,8 +3488,11 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Plane_inherited_Hyperbola(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2939,8 +3501,11 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Plane_inherited_Parabola(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2949,8 +3514,11 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Plane_inherited_Bezier(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2959,15 +3527,18 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Plane_inherited_BSpline(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:92 - `ProjLib_Projector::UFrame()`
     pub fn u_frame(&mut self, CFirst: f64, CLast: f64, UFirst: f64, Period: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_Plane_inherited_UFrame(
                     self as *mut Self,
                     CFirst,
@@ -2976,14 +3547,16 @@ impl Plane {
                     Period,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:100 - `ProjLib_Projector::VFrame()`
     pub fn v_frame(&mut self, CFirst: f64, CLast: f64, VFirst: f64, Period: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_Plane_inherited_VFrame(
                     self as *mut Self,
                     CFirst,
@@ -2992,7 +3565,9 @@ impl Plane {
                     Period,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3027,8 +3602,10 @@ impl PrjFunc {
                     Fix,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3037,8 +3614,11 @@ impl PrjFunc {
     pub fn nb_variables(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ProjLib_PrjFunc_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3047,8 +3627,11 @@ impl PrjFunc {
     pub fn nb_equations(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ProjLib_PrjFunc_nb_equations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3060,8 +3643,11 @@ impl PrjFunc {
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
         {
             let __result = unsafe { crate::ffi::ProjLib_PrjFunc_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3078,8 +3664,11 @@ impl PrjFunc {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_PrjFunc_derivatives(self as *mut Self, X, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3097,8 +3686,11 @@ impl PrjFunc {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_PrjFunc_values(self as *mut Self, X, F, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3107,8 +3699,11 @@ impl PrjFunc {
     pub fn solution(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         {
             let __result = unsafe { crate::ffi::ProjLib_PrjFunc_solution(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3116,48 +3711,46 @@ impl PrjFunc {
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::ProjLib_PrjFunc_as_math_FunctionSetWithDerivatives(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ProjLib_PrjFunc_as_math_FunctionSetWithDerivatives(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::ProjLib_PrjFunc_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ProjLib_PrjFunc_as_math_FunctionSetWithDerivatives_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result =
-                unsafe { crate::ffi::ProjLib_PrjFunc_as_math_FunctionSet(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ProjLib_PrjFunc_as_math_FunctionSet(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result =
-                unsafe { crate::ffi::ProjLib_PrjFunc_as_math_FunctionSet_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ProjLib_PrjFunc_as_math_FunctionSet_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
@@ -3165,8 +3758,11 @@ impl PrjFunc {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_PrjFunc_inherited_GetStateNumber(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3194,8 +3790,10 @@ impl PrjResolve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_PrjResolve_ctor_curve_surface_int(C, S, Fix) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3216,7 +3814,7 @@ impl PrjResolve {
         StrictInside: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_PrjResolve_perform(
                     self as *mut Self,
                     t,
@@ -3229,7 +3827,9 @@ impl PrjResolve {
                     StrictInside,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3238,8 +3838,11 @@ impl PrjResolve {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::ProjLib_PrjResolve_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3248,8 +3851,11 @@ impl PrjResolve {
     pub fn solution(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         {
             let __result = unsafe { crate::ffi::ProjLib_PrjResolve_solution(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -3281,8 +3887,10 @@ impl ProjectOnPlane {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_ProjectOnPlane_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3292,8 +3900,10 @@ impl ProjectOnPlane {
     pub fn new_ax3(Pl: &crate::gp::Ax3) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_ProjectOnPlane_ctor_ax3(Pl) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3305,8 +3915,10 @@ impl ProjectOnPlane {
     pub fn new_ax3_dir(Pl: &crate::gp::Ax3, D: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_ProjectOnPlane_ctor_ax3_dir(Pl, D) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3316,8 +3928,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_shallow_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3335,7 +3950,7 @@ impl ProjectOnPlane {
         KeepParametrization: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ProjectOnPlane_load(
                     self as *mut Self,
                     C,
@@ -3343,7 +3958,9 @@ impl ProjectOnPlane {
                     KeepParametrization,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3352,8 +3969,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_get_plane(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3362,8 +3982,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_get_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3372,8 +3995,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_get_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3382,8 +4008,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_get_result(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3392,8 +4021,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3402,8 +4034,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3412,8 +4047,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -3426,8 +4064,11 @@ impl ProjectOnPlane {
             let __result = unsafe {
                 crate::ffi::ProjLib_ProjectOnPlane_nb_intervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3438,10 +4079,12 @@ impl ProjectOnPlane {
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ProjectOnPlane_intervals(self as *const Self, T, S.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3460,8 +4103,11 @@ impl ProjectOnPlane {
             let __result = unsafe {
                 crate::ffi::ProjLib_ProjectOnPlane_trim(self as *const Self, First, Last, Tol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3470,8 +4116,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3480,8 +4129,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3490,8 +4142,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3501,8 +4156,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_value(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3510,8 +4168,10 @@ impl ProjectOnPlane {
     /// Computes the point of parameter U on the curve.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::ProjLib_ProjectOnPlane_d0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_ProjectOnPlane_d0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3522,8 +4182,11 @@ impl ProjectOnPlane {
     /// is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         {
-            unsafe { crate::ffi::ProjLib_ProjectOnPlane_d1(self as *const Self, U, P, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_ProjectOnPlane_d1(self as *const Self, U, P, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3540,8 +4203,11 @@ impl ProjectOnPlane {
         V2: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::ProjLib_ProjectOnPlane_d2(self as *const Self, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_ProjectOnPlane_d2(self as *const Self, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3559,8 +4225,12 @@ impl ProjectOnPlane {
         V3: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::ProjLib_ProjectOnPlane_d3(self as *const Self, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ProjLib_ProjectOnPlane_d3(self as *const Self, U, P, V1, V2, V3)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3574,8 +4244,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_dn(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3586,8 +4259,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_resolution(self as *const Self, R3d) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3599,8 +4275,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_get_type(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
@@ -3608,8 +4287,11 @@ impl ProjectOnPlane {
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         {
             let __result = unsafe { crate::ffi::ProjLib_ProjectOnPlane_line(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3618,8 +4300,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_circle(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3628,8 +4313,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_ellipse(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3638,8 +4326,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_hyperbola(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3648,8 +4339,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_parabola(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3658,8 +4352,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3668,8 +4365,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_is_rational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3678,8 +4378,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_nb_poles(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3688,8 +4391,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_nb_knots(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3703,8 +4409,11 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_bezier(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3718,64 +4427,65 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_b_spline(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to Adaptor3d_Curve
     pub fn as_adaptor3d_curve(&self) -> &crate::adaptor3d::Curve {
-        {
-            let __result = unsafe {
-                crate::ffi::ProjLib_ProjectOnPlane_as_Adaptor3d_Curve(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ProjLib_ProjectOnPlane_as_Adaptor3d_Curve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Adaptor3d_Curve (mutable)
     pub fn as_adaptor3d_curve_mut(&mut self) -> &mut crate::adaptor3d::Curve {
-        {
-            let __result = unsafe {
-                crate::ffi::ProjLib_ProjectOnPlane_as_Adaptor3d_Curve_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ProjLib_ProjectOnPlane_as_Adaptor3d_Curve_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ProjLib_ProjectOnPlane_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ProjLib_ProjectOnPlane_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ProjLib_ProjectOnPlane_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ProjLib_ProjectOnPlane_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleProjLibProjectOnPlane> {
-        {
-            let __result = unsafe { crate::ffi::ProjLib_ProjectOnPlane_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ProjLib_ProjectOnPlane_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:54 - `Adaptor3d_Curve::DynamicType()`
@@ -3784,8 +4494,11 @@ impl ProjectOnPlane {
             let __result = unsafe {
                 crate::ffi::ProjLib_ProjectOnPlane_inherited_DynamicType(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3795,8 +4508,11 @@ impl ProjectOnPlane {
             let __result = unsafe {
                 crate::ffi::ProjLib_ProjectOnPlane_inherited_OffsetCurve(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3809,8 +4525,11 @@ impl ProjectOnPlane {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3820,8 +4539,11 @@ impl ProjectOnPlane {
             let __result = unsafe {
                 crate::ffi::ProjLib_ProjectOnPlane_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3830,11 +4552,14 @@ impl ProjectOnPlane {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnPlane_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3845,18 +4570,23 @@ impl ProjectOnPlane {
             let __result = unsafe {
                 crate::ffi::ProjLib_ProjectOnPlane_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ProjectOnPlane_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3866,16 +4596,22 @@ impl ProjectOnPlane {
             let __result = unsafe {
                 crate::ffi::ProjLib_ProjectOnPlane_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ProjLib_ProjectOnPlane_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_ProjectOnPlane_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3891,46 +4627,43 @@ unsafe impl crate::CppDeletable for HandleProjLibProjectOnPlane {
 impl HandleProjLibProjectOnPlane {
     /// Dereference this Handle to access the underlying ProjLib_ProjectOnPlane
     pub fn get(&self) -> &crate::ffi::ProjLib_ProjectOnPlane {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleProjLibProjectOnPlane_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleProjLibProjectOnPlane_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ProjLib_ProjectOnPlane
     pub fn get_mut(&mut self) -> &mut crate::ffi::ProjLib_ProjectOnPlane {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleProjLibProjectOnPlane_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleProjLibProjectOnPlane_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ProjLib_ProjectOnPlane> to Handle<Adaptor3d_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleProjLibProjectOnPlane_to_HandleAdaptor3dCurve(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleProjLibProjectOnPlane_to_HandleAdaptor3dCurve(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ProjLib_ProjectOnPlane> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleProjLibProjectOnPlane_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleProjLibProjectOnPlane_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3955,8 +4688,10 @@ impl ProjectOnSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_ProjectOnSurface_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3968,8 +4703,10 @@ impl ProjectOnSurface {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnSurface_ctor_handleadaptor3dsurface(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3978,13 +4715,15 @@ impl ProjectOnSurface {
     /// To compute the projection, you have to Load the Curve.
     pub fn load_handleadaptor3dsurface(&mut self, S: &crate::ffi::HandleAdaptor3dSurface) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ProjectOnSurface_load_handleadaptor3dsurface(
                     self as *mut Self,
                     S,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3996,14 +4735,16 @@ impl ProjectOnSurface {
         Tolerance: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ProjectOnSurface_load_handleadaptor3dcurve_real(
                     self as *mut Self,
                     C,
                     Tolerance,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4012,8 +4753,11 @@ impl ProjectOnSurface {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnSurface_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4022,8 +4766,11 @@ impl ProjectOnSurface {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectOnSurface_b_spline(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -4056,8 +4803,10 @@ impl ProjectedCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_ProjectedCurve_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4069,8 +4818,10 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_ctor_handleadaptor3dsurface(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4088,8 +4839,10 @@ impl ProjectedCurve {
                     S, C,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4105,8 +4858,10 @@ impl ProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_ProjectedCurve_ctor_handleadaptor3dsurface_handleadaptor3dcurve_real(S, C, Tol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4115,8 +4870,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4126,8 +4884,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_shallow_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4136,8 +4897,12 @@ impl ProjectedCurve {
     /// the curve on the surface
     pub fn load_real(&mut self, Tolerance: f64) {
         {
-            unsafe { crate::ffi::ProjLib_ProjectedCurve_load_real(self as *mut Self, Tolerance) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ProjLib_ProjectedCurve_load_real(self as *mut Self, Tolerance)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4145,10 +4910,12 @@ impl ProjectedCurve {
     /// Changes the Surface.
     pub fn load_handleadaptor3dsurface(&mut self, S: &crate::ffi::HandleAdaptor3dSurface) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ProjectedCurve_load_handleadaptor3dsurface(self as *mut Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4159,8 +4926,10 @@ impl ProjectedCurve {
     /// SetDegree(...), SetMaxSegmets(...), SetBndPnt(...), SetMaxDist(...)
     pub fn perform(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) {
         {
-            unsafe { crate::ffi::ProjLib_ProjectedCurve_perform(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_ProjectedCurve_perform(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4170,14 +4939,16 @@ impl ProjectedCurve {
     /// and surface.
     pub fn set_degree(&mut self, theDegMin: i32, theDegMax: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ProjectedCurve_set_degree(
                     self as *mut Self,
                     theDegMin,
                     theDegMax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4187,13 +4958,15 @@ impl ProjectedCurve {
     /// value = 1000.
     pub fn set_max_segments(&mut self, theMaxSegments: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ProjectedCurve_set_max_segments(
                     self as *mut Self,
                     theMaxSegments,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4203,10 +4976,12 @@ impl ProjectedCurve {
     /// is AppParCurves_TangencyPoint;
     pub fn set_bnd_pnt(&mut self, theBndPnt: crate::app_par_curves::Constraint) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ProjectedCurve_set_bnd_pnt(self as *mut Self, theBndPnt.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4217,10 +4992,12 @@ impl ProjectedCurve {
     /// theMaxDist, algorithm stops working.
     pub fn set_max_dist(&mut self, theMaxDist: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ProjectedCurve_set_max_dist(self as *mut Self, theMaxDist)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4229,8 +5006,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_get_surface(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4239,8 +5019,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_get_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4251,8 +5034,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_get_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4261,8 +5047,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4271,8 +5060,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4281,8 +5073,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -4295,8 +5090,11 @@ impl ProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_ProjectedCurve_nb_intervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4308,10 +5106,12 @@ impl ProjectedCurve {
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ProjectedCurve_intervals(self as *const Self, T, S.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4330,8 +5130,11 @@ impl ProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_ProjectedCurve_trim(self as *const Self, First, Last, Tol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4340,8 +5143,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4350,8 +5156,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4360,8 +5169,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4371,8 +5183,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_value(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4380,8 +5195,10 @@ impl ProjectedCurve {
     /// Computes the point of parameter U on the curve.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::ProjLib_ProjectedCurve_d0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_ProjectedCurve_d0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4392,8 +5209,11 @@ impl ProjectedCurve {
     /// is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V: &mut crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::ProjLib_ProjectedCurve_d1(self as *const Self, U, P, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_ProjectedCurve_d1(self as *const Self, U, P, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4410,8 +5230,11 @@ impl ProjectedCurve {
         V2: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::ProjLib_ProjectedCurve_d2(self as *const Self, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_ProjectedCurve_d2(self as *const Self, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4429,8 +5252,12 @@ impl ProjectedCurve {
         V3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::ProjLib_ProjectedCurve_d3(self as *const Self, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ProjLib_ProjectedCurve_d3(self as *const Self, U, P, V1, V2, V3)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4444,8 +5271,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_dn(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4456,8 +5286,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_resolution(self as *const Self, R3d) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4469,8 +5302,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_get_type(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
@@ -4478,8 +5314,11 @@ impl ProjectedCurve {
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         {
             let __result = unsafe { crate::ffi::ProjLib_ProjectedCurve_line(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4488,8 +5327,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_circle(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4498,8 +5340,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_ellipse(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4508,8 +5353,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_hyperbola(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4518,8 +5366,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_parabola(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4528,8 +5379,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4538,8 +5392,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_is_rational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4548,8 +5405,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_nb_poles(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4558,8 +5418,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_nb_knots(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4572,8 +5435,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_bezier(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4586,8 +5452,11 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_b_spline(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4595,8 +5464,11 @@ impl ProjectedCurve {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ProjLib_ProjectedCurve_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4604,64 +5476,66 @@ impl ProjectedCurve {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ProjLib_ProjectedCurve_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Adaptor2d_Curve2d
     pub fn as_adaptor2d_curve2d(&self) -> &crate::adaptor2d::Curve2d {
-        {
-            let __result = unsafe {
-                crate::ffi::ProjLib_ProjectedCurve_as_Adaptor2d_Curve2d(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ProjLib_ProjectedCurve_as_Adaptor2d_Curve2d(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Adaptor2d_Curve2d (mutable)
     pub fn as_adaptor2d_curve2d_mut(&mut self) -> &mut crate::adaptor2d::Curve2d {
-        {
-            let __result = unsafe {
-                crate::ffi::ProjLib_ProjectedCurve_as_Adaptor2d_Curve2d_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ProjLib_ProjectedCurve_as_Adaptor2d_Curve2d_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ProjLib_ProjectedCurve_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ProjLib_ProjectedCurve_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ProjLib_ProjectedCurve_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ProjLib_ProjectedCurve_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleProjLibProjectedCurve> {
-        {
-            let __result = unsafe { crate::ffi::ProjLib_ProjectedCurve_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ProjLib_ProjectedCurve_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Adaptor2d_Curve2d.hxx`:154 - `Adaptor2d_Curve2d::NbSamples()`
@@ -4670,8 +5544,11 @@ impl ProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_ProjectedCurve_inherited_NbSamples(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4684,8 +5561,11 @@ impl ProjectedCurve {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4695,8 +5575,11 @@ impl ProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_ProjectedCurve_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4705,11 +5588,14 @@ impl ProjectedCurve {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_ProjectedCurve_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4720,18 +5606,23 @@ impl ProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_ProjectedCurve_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_ProjectedCurve_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4741,16 +5632,22 @@ impl ProjectedCurve {
             let __result = unsafe {
                 crate::ffi::ProjLib_ProjectedCurve_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ProjLib_ProjectedCurve_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_ProjectedCurve_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4766,48 +5663,43 @@ unsafe impl crate::CppDeletable for HandleProjLibProjectedCurve {
 impl HandleProjLibProjectedCurve {
     /// Dereference this Handle to access the underlying ProjLib_ProjectedCurve
     pub fn get(&self) -> &crate::ffi::ProjLib_ProjectedCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleProjLibProjectedCurve_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleProjLibProjectedCurve_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ProjLib_ProjectedCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::ProjLib_ProjectedCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleProjLibProjectedCurve_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleProjLibProjectedCurve_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ProjLib_ProjectedCurve> to Handle<Adaptor2d_Curve2d>
     pub fn to_handle_curve2d(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleProjLibProjectedCurve_to_HandleAdaptor2dCurve2d(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleProjLibProjectedCurve_to_HandleAdaptor2dCurve2d(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ProjLib_ProjectedCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleProjLibProjectedCurve_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleProjLibProjectedCurve_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4831,8 +5723,10 @@ impl Projector {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Projector_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4840,8 +5734,11 @@ impl Projector {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::ProjLib_Projector_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4849,8 +5746,10 @@ impl Projector {
     /// Set isDone = Standard_True;
     pub fn done(&mut self) {
         {
-            unsafe { crate::ffi::ProjLib_Projector_done(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Projector_done(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4858,32 +5757,42 @@ impl Projector {
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         {
             let __result = unsafe { crate::ffi::ProjLib_Projector_get_type(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:55 - `ProjLib_Projector::SetBSpline()`
     pub fn set_b_spline(&mut self, C: &crate::ffi::HandleGeom2dBSplineCurve) {
         {
-            unsafe { crate::ffi::ProjLib_Projector_set_b_spline(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Projector_set_b_spline(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:57 - `ProjLib_Projector::SetBezier()`
     pub fn set_bezier(&mut self, C: &crate::ffi::HandleGeom2dBezierCurve) {
         {
-            unsafe { crate::ffi::ProjLib_Projector_set_bezier(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Projector_set_bezier(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:59 - `ProjLib_Projector::SetType()`
     pub fn set_type(&mut self, Type: crate::geom_abs::CurveType) {
         {
-            unsafe { crate::ffi::ProjLib_Projector_set_type(self as *mut Self, Type.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_Projector_set_type(self as *mut Self, Type.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4892,16 +5801,21 @@ impl Projector {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Projector_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:63 - `ProjLib_Projector::SetPeriodic()`
     pub fn set_periodic(&mut self) {
         {
-            unsafe { crate::ffi::ProjLib_Projector_set_periodic(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Projector_set_periodic(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4909,8 +5823,11 @@ impl Projector {
     pub fn line(&self) -> &crate::gp::Lin2d {
         {
             let __result = unsafe { crate::ffi::ProjLib_Projector_line(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4918,8 +5835,11 @@ impl Projector {
     pub fn circle(&self) -> &crate::gp::Circ2d {
         {
             let __result = unsafe { crate::ffi::ProjLib_Projector_circle(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4927,8 +5847,11 @@ impl Projector {
     pub fn ellipse(&self) -> &crate::gp::Elips2d {
         {
             let __result = unsafe { crate::ffi::ProjLib_Projector_ellipse(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4936,8 +5859,11 @@ impl Projector {
     pub fn hyperbola(&self) -> &crate::gp::Hypr2d {
         {
             let __result = unsafe { crate::ffi::ProjLib_Projector_hyperbola(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4945,8 +5871,11 @@ impl Projector {
     pub fn parabola(&self) -> &crate::gp::Parab2d {
         {
             let __result = unsafe { crate::ffi::ProjLib_Projector_parabola(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4954,8 +5883,11 @@ impl Projector {
     pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Projector_bezier(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4963,48 +5895,63 @@ impl Projector {
     pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Projector_b_spline(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:79 - `ProjLib_Projector::Project()`
     pub fn project_lin(&mut self, L: &crate::gp::Lin) {
         {
-            unsafe { crate::ffi::ProjLib_Projector_project_lin(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Projector_project_lin(self as *mut Self, L) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:81 - `ProjLib_Projector::Project()`
     pub fn project_circ(&mut self, C: &crate::gp::Circ) {
         {
-            unsafe { crate::ffi::ProjLib_Projector_project_circ(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Projector_project_circ(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:83 - `ProjLib_Projector::Project()`
     pub fn project_elips(&mut self, E: &crate::gp::Elips) {
         {
-            unsafe { crate::ffi::ProjLib_Projector_project_elips(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_Projector_project_elips(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:85 - `ProjLib_Projector::Project()`
     pub fn project_parab(&mut self, P: &crate::gp::Parab) {
         {
-            unsafe { crate::ffi::ProjLib_Projector_project_parab(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_Projector_project_parab(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Projector.hxx`:87 - `ProjLib_Projector::Project()`
     pub fn project_hypr(&mut self, H: &crate::gp::Hypr) {
         {
-            unsafe { crate::ffi::ProjLib_Projector_project_hypr(self as *mut Self, H) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Projector_project_hypr(self as *mut Self, H) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5014,7 +5961,7 @@ impl Projector {
     /// in the range [ UFirst, UFirst + Period [
     pub fn u_frame(&mut self, CFirst: f64, CLast: f64, UFirst: f64, Period: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_Projector_u_frame(
                     self as *mut Self,
                     CFirst,
@@ -5023,7 +5970,9 @@ impl Projector {
                     Period,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5033,7 +5982,7 @@ impl Projector {
     /// in the range [ VFirst, VFirst + Period [
     pub fn v_frame(&mut self, CFirst: f64, CLast: f64, VFirst: f64, Period: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_Projector_v_frame(
                     self as *mut Self,
                     CFirst,
@@ -5042,7 +5991,9 @@ impl Projector {
                     Period,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5067,8 +6018,10 @@ impl Sphere {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Sphere_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5077,8 +6030,10 @@ impl Sphere {
     pub fn new_sphere(Sp: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Sphere_ctor_sphere(Sp) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5087,56 +6042,70 @@ impl Sphere {
     pub fn new_sphere_circ(Sp: &crate::gp::Sphere, C: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Sphere_ctor_sphere_circ(Sp, C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `ProjLib_Sphere.hxx`:46 - `ProjLib_Sphere::Init()`
     pub fn init(&mut self, Sp: &crate::gp::Sphere) {
         {
-            unsafe { crate::ffi::ProjLib_Sphere_init(self as *mut Self, Sp) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Sphere_init(self as *mut Self, Sp) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Sphere.hxx`:48 - `ProjLib_Sphere::Project()`
     pub fn project_lin(&mut self, L: &crate::gp::Lin) {
         {
-            unsafe { crate::ffi::ProjLib_Sphere_project_lin(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Sphere_project_lin(self as *mut Self, L) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Sphere.hxx`:50 - `ProjLib_Sphere::Project()`
     pub fn project_circ(&mut self, C: &crate::gp::Circ) {
         {
-            unsafe { crate::ffi::ProjLib_Sphere_project_circ(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Sphere_project_circ(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Sphere.hxx`:52 - `ProjLib_Sphere::Project()`
     pub fn project_elips(&mut self, E: &crate::gp::Elips) {
         {
-            unsafe { crate::ffi::ProjLib_Sphere_project_elips(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Sphere_project_elips(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Sphere.hxx`:54 - `ProjLib_Sphere::Project()`
     pub fn project_parab(&mut self, P: &crate::gp::Parab) {
         {
-            unsafe { crate::ffi::ProjLib_Sphere_project_parab(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Sphere_project_parab(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Sphere.hxx`:56 - `ProjLib_Sphere::Project()`
     pub fn project_hypr(&mut self, H: &crate::gp::Hypr) {
         {
-            unsafe { crate::ffi::ProjLib_Sphere_project_hypr(self as *mut Self, H) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Sphere_project_hypr(self as *mut Self, H) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5145,29 +6114,31 @@ impl Sphere {
     /// restrictions of the sphere.
     pub fn set_in_bounds(&mut self, U: f64) {
         {
-            unsafe { crate::ffi::ProjLib_Sphere_set_in_bounds(self as *mut Self, U) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Sphere_set_in_bounds(self as *mut Self, U) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to ProjLib_Projector
     pub fn as_projector(&self) -> &Projector {
-        {
-            let __result =
-                unsafe { crate::ffi::ProjLib_Sphere_as_ProjLib_Projector(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ProjLib_Sphere_as_ProjLib_Projector(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ProjLib_Projector (mutable)
     pub fn as_projector_mut(&mut self) -> &mut Projector {
-        {
-            let __result =
-                unsafe { crate::ffi::ProjLib_Sphere_as_ProjLib_Projector_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ProjLib_Sphere_as_ProjLib_Projector_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:48 - `ProjLib_Projector::IsDone()`
@@ -5175,16 +6146,21 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Sphere_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:51 - `ProjLib_Projector::Done()`
     pub fn done(&mut self) {
         {
-            unsafe { crate::ffi::ProjLib_Sphere_inherited_Done(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Sphere_inherited_Done(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5193,32 +6169,45 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Sphere_inherited_GetType(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:55 - `ProjLib_Projector::SetBSpline()`
     pub fn set_b_spline(&mut self, C: &crate::ffi::HandleGeom2dBSplineCurve) {
         {
-            unsafe { crate::ffi::ProjLib_Sphere_inherited_SetBSpline(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_Sphere_inherited_SetBSpline(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:57 - `ProjLib_Projector::SetBezier()`
     pub fn set_bezier(&mut self, C: &crate::ffi::HandleGeom2dBezierCurve) {
         {
-            unsafe { crate::ffi::ProjLib_Sphere_inherited_SetBezier(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_Sphere_inherited_SetBezier(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:59 - `ProjLib_Projector::SetType()`
     pub fn set_type(&mut self, Type: crate::geom_abs::CurveType) {
         {
-            unsafe { crate::ffi::ProjLib_Sphere_inherited_SetType(self as *mut Self, Type.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ProjLib_Sphere_inherited_SetType(self as *mut Self, Type.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5227,16 +6216,22 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Sphere_inherited_IsPeriodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:63 - `ProjLib_Projector::SetPeriodic()`
     pub fn set_periodic(&mut self) {
         {
-            unsafe { crate::ffi::ProjLib_Sphere_inherited_SetPeriodic(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_Sphere_inherited_SetPeriodic(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5245,8 +6240,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Sphere_inherited_Line(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5255,8 +6253,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Sphere_inherited_Circle(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5265,8 +6266,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Sphere_inherited_Ellipse(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5275,8 +6279,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Sphere_inherited_Hyperbola(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5285,8 +6292,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Sphere_inherited_Parabola(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5295,8 +6305,11 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Sphere_inherited_Bezier(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5305,15 +6318,18 @@ impl Sphere {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Sphere_inherited_BSpline(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:92 - `ProjLib_Projector::UFrame()`
     pub fn u_frame(&mut self, CFirst: f64, CLast: f64, UFirst: f64, Period: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_Sphere_inherited_UFrame(
                     self as *mut Self,
                     CFirst,
@@ -5322,14 +6338,16 @@ impl Sphere {
                     Period,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:100 - `ProjLib_Projector::VFrame()`
     pub fn v_frame(&mut self, CFirst: f64, CLast: f64, VFirst: f64, Period: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_Sphere_inherited_VFrame(
                     self as *mut Self,
                     CFirst,
@@ -5338,7 +6356,9 @@ impl Sphere {
                     Period,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5363,8 +6383,10 @@ impl Torus {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Torus_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5373,8 +6395,10 @@ impl Torus {
     pub fn new_torus(To: &crate::gp::Torus) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Torus_ctor_torus(To) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5383,77 +6407,91 @@ impl Torus {
     pub fn new_torus_circ(To: &crate::gp::Torus, C: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ProjLib_Torus_ctor_torus_circ(To, C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `ProjLib_Torus.hxx`:46 - `ProjLib_Torus::Init()`
     pub fn init(&mut self, To: &crate::gp::Torus) {
         {
-            unsafe { crate::ffi::ProjLib_Torus_init(self as *mut Self, To) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Torus_init(self as *mut Self, To) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Torus.hxx`:48 - `ProjLib_Torus::Project()`
     pub fn project_lin(&mut self, L: &crate::gp::Lin) {
         {
-            unsafe { crate::ffi::ProjLib_Torus_project_lin(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Torus_project_lin(self as *mut Self, L) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Torus.hxx`:50 - `ProjLib_Torus::Project()`
     pub fn project_circ(&mut self, C: &crate::gp::Circ) {
         {
-            unsafe { crate::ffi::ProjLib_Torus_project_circ(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Torus_project_circ(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Torus.hxx`:52 - `ProjLib_Torus::Project()`
     pub fn project_elips(&mut self, E: &crate::gp::Elips) {
         {
-            unsafe { crate::ffi::ProjLib_Torus_project_elips(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Torus_project_elips(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Torus.hxx`:54 - `ProjLib_Torus::Project()`
     pub fn project_parab(&mut self, P: &crate::gp::Parab) {
         {
-            unsafe { crate::ffi::ProjLib_Torus_project_parab(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Torus_project_parab(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ProjLib_Torus.hxx`:56 - `ProjLib_Torus::Project()`
     pub fn project_hypr(&mut self, H: &crate::gp::Hypr) {
         {
-            unsafe { crate::ffi::ProjLib_Torus_project_hypr(self as *mut Self, H) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Torus_project_hypr(self as *mut Self, H) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to ProjLib_Projector
     pub fn as_projector(&self) -> &Projector {
-        {
-            let __result =
-                unsafe { crate::ffi::ProjLib_Torus_as_ProjLib_Projector(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ProjLib_Torus_as_ProjLib_Projector(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ProjLib_Projector (mutable)
     pub fn as_projector_mut(&mut self) -> &mut Projector {
-        {
-            let __result =
-                unsafe { crate::ffi::ProjLib_Torus_as_ProjLib_Projector_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ProjLib_Torus_as_ProjLib_Projector_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:48 - `ProjLib_Projector::IsDone()`
@@ -5461,16 +6499,21 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Torus_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:51 - `ProjLib_Projector::Done()`
     pub fn done(&mut self) {
         {
-            unsafe { crate::ffi::ProjLib_Torus_inherited_Done(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ProjLib_Torus_inherited_Done(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5479,32 +6522,45 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Torus_inherited_GetType(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:55 - `ProjLib_Projector::SetBSpline()`
     pub fn set_b_spline(&mut self, C: &crate::ffi::HandleGeom2dBSplineCurve) {
         {
-            unsafe { crate::ffi::ProjLib_Torus_inherited_SetBSpline(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_Torus_inherited_SetBSpline(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:57 - `ProjLib_Projector::SetBezier()`
     pub fn set_bezier(&mut self, C: &crate::ffi::HandleGeom2dBezierCurve) {
         {
-            unsafe { crate::ffi::ProjLib_Torus_inherited_SetBezier(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_Torus_inherited_SetBezier(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:59 - `ProjLib_Projector::SetType()`
     pub fn set_type(&mut self, Type: crate::geom_abs::CurveType) {
         {
-            unsafe { crate::ffi::ProjLib_Torus_inherited_SetType(self as *mut Self, Type.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ProjLib_Torus_inherited_SetType(self as *mut Self, Type.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5513,16 +6569,22 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Torus_inherited_IsPeriodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:63 - `ProjLib_Projector::SetPeriodic()`
     pub fn set_periodic(&mut self) {
         {
-            unsafe { crate::ffi::ProjLib_Torus_inherited_SetPeriodic(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ProjLib_Torus_inherited_SetPeriodic(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5530,8 +6592,11 @@ impl Torus {
     pub fn line(&self) -> &crate::gp::Lin2d {
         {
             let __result = unsafe { crate::ffi::ProjLib_Torus_inherited_Line(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5540,8 +6605,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Torus_inherited_Circle(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5550,8 +6618,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Torus_inherited_Ellipse(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5560,8 +6631,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Torus_inherited_Hyperbola(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5570,8 +6644,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Torus_inherited_Parabola(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5580,8 +6657,11 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Torus_inherited_Bezier(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5590,15 +6670,18 @@ impl Torus {
         {
             let __result =
                 unsafe { crate::ffi::ProjLib_Torus_inherited_BSpline(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:92 - `ProjLib_Projector::UFrame()`
     pub fn u_frame(&mut self, CFirst: f64, CLast: f64, UFirst: f64, Period: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_Torus_inherited_UFrame(
                     self as *mut Self,
                     CFirst,
@@ -5607,14 +6690,16 @@ impl Torus {
                     Period,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ProjLib_Projector.hxx`:100 - `ProjLib_Projector::VFrame()`
     pub fn v_frame(&mut self, CFirst: f64, CLast: f64, VFirst: f64, Period: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ProjLib_Torus_inherited_VFrame(
                     self as *mut Self,
                     CFirst,
@@ -5623,7 +6708,9 @@ impl Torus {
                     Period,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

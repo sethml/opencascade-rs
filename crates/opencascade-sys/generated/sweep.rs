@@ -27,8 +27,10 @@ impl NumShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Sweep_NumShape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -61,8 +63,10 @@ impl NumShape {
                     EndInf,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -145,7 +149,7 @@ impl NumShape {
         EndInf: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Sweep_NumShape_init(
                     self as *mut Self,
                     Index,
@@ -155,7 +159,9 @@ impl NumShape {
                     EndInf,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -163,8 +169,11 @@ impl NumShape {
     pub fn index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Sweep_NumShape_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -172,8 +181,11 @@ impl NumShape {
     pub fn type_(&self) -> crate::top_abs::ShapeEnum {
         {
             let __result = unsafe { crate::ffi::Sweep_NumShape_type_(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -181,8 +193,11 @@ impl NumShape {
     pub fn closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Sweep_NumShape_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -190,8 +205,11 @@ impl NumShape {
     pub fn beg_infinite(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Sweep_NumShape_beg_infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -199,8 +217,11 @@ impl NumShape {
     pub fn end_infinite(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Sweep_NumShape_end_infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -208,8 +229,11 @@ impl NumShape {
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         {
             let __result = unsafe { crate::ffi::Sweep_NumShape_orientation(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 }
@@ -235,8 +259,10 @@ impl NumShapeIterator {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Sweep_NumShapeIterator_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -244,8 +270,11 @@ impl NumShapeIterator {
     /// Reset the NumShapeIterator on sub-shapes of <aShape>.
     pub fn init(&mut self, aShape: &NumShape) {
         {
-            unsafe { crate::ffi::Sweep_NumShapeIterator_init(self as *mut Self, aShape) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Sweep_NumShapeIterator_init(self as *mut Self, aShape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -254,8 +283,11 @@ impl NumShapeIterator {
     pub fn more(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Sweep_NumShapeIterator_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -263,8 +295,10 @@ impl NumShapeIterator {
     /// Moves to the next sub-shape.
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::Sweep_NumShapeIterator_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Sweep_NumShapeIterator_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -273,8 +307,11 @@ impl NumShapeIterator {
     pub fn value(&self) -> &NumShape {
         {
             let __result = unsafe { crate::ffi::Sweep_NumShapeIterator_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -284,8 +321,11 @@ impl NumShapeIterator {
         {
             let __result =
                 unsafe { crate::ffi::Sweep_NumShapeIterator_orientation(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 }
@@ -314,8 +354,10 @@ impl NumShapeTool {
     pub fn new_numshape(aShape: &NumShape) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Sweep_NumShapeTool_ctor_numshape(aShape) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -324,8 +366,11 @@ impl NumShapeTool {
     pub fn nb_shapes(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Sweep_NumShapeTool_nb_shapes(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -335,8 +380,11 @@ impl NumShapeTool {
         {
             let __result =
                 unsafe { crate::ffi::Sweep_NumShapeTool_index(self as *const Self, aShape) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -346,8 +394,11 @@ impl NumShapeTool {
         {
             let __result =
                 unsafe { crate::ffi::Sweep_NumShapeTool_shape(self as *const Self, anIndex) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -357,8 +408,11 @@ impl NumShapeTool {
         {
             let __result =
                 unsafe { crate::ffi::Sweep_NumShapeTool_type_(self as *const Self, aShape) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -368,8 +422,11 @@ impl NumShapeTool {
         {
             let __result =
                 unsafe { crate::ffi::Sweep_NumShapeTool_orientation(self as *const Self, aShape) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -379,8 +436,11 @@ impl NumShapeTool {
         {
             let __result =
                 unsafe { crate::ffi::Sweep_NumShapeTool_has_first_vertex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -390,8 +450,11 @@ impl NumShapeTool {
         {
             let __result =
                 unsafe { crate::ffi::Sweep_NumShapeTool_has_last_vertex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -401,8 +464,11 @@ impl NumShapeTool {
         {
             let __result =
                 unsafe { crate::ffi::Sweep_NumShapeTool_first_vertex(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -412,8 +478,11 @@ impl NumShapeTool {
         {
             let __result =
                 unsafe { crate::ffi::Sweep_NumShapeTool_last_vertex(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }

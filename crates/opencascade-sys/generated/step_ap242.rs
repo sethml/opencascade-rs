@@ -28,8 +28,10 @@ impl DraughtingModelItemAssociation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP242_DraughtingModelItemAssociation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -41,8 +43,11 @@ impl DraughtingModelItemAssociation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -51,8 +56,11 @@ impl DraughtingModelItemAssociation {
         {
             let __result =
                 unsafe { crate::ffi::StepAP242_DraughtingModelItemAssociation_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -62,72 +70,75 @@ impl DraughtingModelItemAssociation {
             let __result = unsafe {
                 crate::ffi::StepAP242_DraughtingModelItemAssociation_get_type_descriptor()
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to StepAP242_ItemIdentifiedRepresentationUsage
     pub fn as_item_identified_representation_usage(&self) -> &ItemIdentifiedRepresentationUsage {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP242_DraughtingModelItemAssociation_as_StepAP242_ItemIdentifiedRepresentationUsage(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP242_DraughtingModelItemAssociation_as_StepAP242_ItemIdentifiedRepresentationUsage(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepAP242_ItemIdentifiedRepresentationUsage (mutable)
     pub fn as_item_identified_representation_usage_mut(
         &mut self,
     ) -> &mut ItemIdentifiedRepresentationUsage {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP242_DraughtingModelItemAssociation_as_StepAP242_ItemIdentifiedRepresentationUsage_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP242_DraughtingModelItemAssociation_as_StepAP242_ItemIdentifiedRepresentationUsage_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP242_DraughtingModelItemAssociation_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP242_DraughtingModelItemAssociation_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP242_DraughtingModelItemAssociation_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP242_DraughtingModelItemAssociation_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP242DraughtingModelItemAssociation> {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP242_DraughtingModelItemAssociation_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::StepAP242_DraughtingModelItemAssociation_to_handle(obj.into_raw())
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:41 - `StepAP242_ItemIdentifiedRepresentationUsage::Init()`
@@ -140,7 +151,7 @@ impl DraughtingModelItemAssociation {
         theIdentifiedItem: &crate::ffi::HandleStepReprHArray1OfRepresentationItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_DraughtingModelItemAssociation_inherited_Init(
                     self as *mut Self,
                     theName,
@@ -150,20 +161,24 @@ impl DraughtingModelItemAssociation {
                     theIdentifiedItem,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:49 - `StepAP242_ItemIdentifiedRepresentationUsage::SetName()`
     pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_DraughtingModelItemAssociation_inherited_SetName(
                     self as *mut Self,
                     theName,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -175,21 +190,26 @@ impl DraughtingModelItemAssociation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:55 - `StepAP242_ItemIdentifiedRepresentationUsage::SetDescription()`
     pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_DraughtingModelItemAssociation_inherited_SetDescription(
                     self as *mut Self,
                     theDescription,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -201,21 +221,26 @@ impl DraughtingModelItemAssociation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:64 - `StepAP242_ItemIdentifiedRepresentationUsage::SetDefinition()`
     pub fn set_definition(&mut self, theDefinition: &ItemIdentifiedRepresentationUsageDefinition) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_DraughtingModelItemAssociation_inherited_SetDefinition(
                     self as *mut Self,
                     theDefinition,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -227,8 +252,11 @@ impl DraughtingModelItemAssociation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -238,13 +266,15 @@ impl DraughtingModelItemAssociation {
         theUsedRepresentation: &crate::ffi::HandleStepReprRepresentation,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_DraughtingModelItemAssociation_inherited_SetUsedRepresentation(
                     self as *mut Self,
                     theUsedRepresentation,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -256,8 +286,11 @@ impl DraughtingModelItemAssociation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -271,8 +304,11 @@ impl DraughtingModelItemAssociation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -284,8 +320,11 @@ impl DraughtingModelItemAssociation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -295,13 +334,15 @@ impl DraughtingModelItemAssociation {
         theIdentifiedItem: &crate::ffi::HandleStepReprHArray1OfRepresentationItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_DraughtingModelItemAssociation_inherited_SetIdentifiedItem(
                     self as *mut Self,
                     theIdentifiedItem,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -317,8 +358,11 @@ impl DraughtingModelItemAssociation {
                     num,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -329,10 +373,12 @@ impl DraughtingModelItemAssociation {
         theItem: &crate::ffi::HandleStepReprRepresentationItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_DraughtingModelItemAssociation_inherited_SetIdentifiedItemValue(self as *mut Self, num, theItem)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -345,8 +391,11 @@ impl DraughtingModelItemAssociation {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -359,8 +408,11 @@ impl DraughtingModelItemAssociation {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -372,11 +424,14 @@ impl DraughtingModelItemAssociation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -389,20 +444,25 @@ impl DraughtingModelItemAssociation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_DraughtingModelItemAssociation_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -414,20 +474,25 @@ impl DraughtingModelItemAssociation {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_DraughtingModelItemAssociation_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -443,50 +508,50 @@ unsafe impl crate::CppDeletable for HandleStepAP242DraughtingModelItemAssociatio
 impl HandleStepAP242DraughtingModelItemAssociation {
     /// Dereference this Handle to access the underlying StepAP242_DraughtingModelItemAssociation
     pub fn get(&self) -> &crate::ffi::StepAP242_DraughtingModelItemAssociation {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP242DraughtingModelItemAssociation_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP242DraughtingModelItemAssociation_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP242_DraughtingModelItemAssociation
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP242_DraughtingModelItemAssociation {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP242DraughtingModelItemAssociation_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP242DraughtingModelItemAssociation_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP242_DraughtingModelItemAssociation> to Handle<StepAP242_ItemIdentifiedRepresentationUsage>
     pub fn to_handle_item_identified_representation_usage(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP242ItemIdentifiedRepresentationUsage> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP242DraughtingModelItemAssociation_to_HandleStepAP242ItemIdentifiedRepresentationUsage(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP242DraughtingModelItemAssociation_to_HandleStepAP242ItemIdentifiedRepresentationUsage(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StepAP242_DraughtingModelItemAssociation> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP242DraughtingModelItemAssociation_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP242DraughtingModelItemAssociation_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -509,8 +574,10 @@ impl GeometricItemSpecificUsage {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP242_GeometricItemSpecificUsage_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -520,8 +587,11 @@ impl GeometricItemSpecificUsage {
             let __result = unsafe {
                 crate::ffi::StepAP242_GeometricItemSpecificUsage_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -530,8 +600,11 @@ impl GeometricItemSpecificUsage {
         {
             let __result =
                 unsafe { crate::ffi::StepAP242_GeometricItemSpecificUsage_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -540,72 +613,74 @@ impl GeometricItemSpecificUsage {
         {
             let __result =
                 unsafe { crate::ffi::StepAP242_GeometricItemSpecificUsage_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to StepAP242_ItemIdentifiedRepresentationUsage
     pub fn as_item_identified_representation_usage(&self) -> &ItemIdentifiedRepresentationUsage {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP242_GeometricItemSpecificUsage_as_StepAP242_ItemIdentifiedRepresentationUsage(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP242_GeometricItemSpecificUsage_as_StepAP242_ItemIdentifiedRepresentationUsage(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepAP242_ItemIdentifiedRepresentationUsage (mutable)
     pub fn as_item_identified_representation_usage_mut(
         &mut self,
     ) -> &mut ItemIdentifiedRepresentationUsage {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP242_GeometricItemSpecificUsage_as_StepAP242_ItemIdentifiedRepresentationUsage_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP242_GeometricItemSpecificUsage_as_StepAP242_ItemIdentifiedRepresentationUsage_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP242_GeometricItemSpecificUsage_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP242_GeometricItemSpecificUsage_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP242_GeometricItemSpecificUsage_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP242_GeometricItemSpecificUsage_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP242GeometricItemSpecificUsage> {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP242_GeometricItemSpecificUsage_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::StepAP242_GeometricItemSpecificUsage_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:41 - `StepAP242_ItemIdentifiedRepresentationUsage::Init()`
@@ -618,7 +693,7 @@ impl GeometricItemSpecificUsage {
         theIdentifiedItem: &crate::ffi::HandleStepReprHArray1OfRepresentationItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_GeometricItemSpecificUsage_inherited_Init(
                     self as *mut Self,
                     theName,
@@ -628,20 +703,24 @@ impl GeometricItemSpecificUsage {
                     theIdentifiedItem,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:49 - `StepAP242_ItemIdentifiedRepresentationUsage::SetName()`
     pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_GeometricItemSpecificUsage_inherited_SetName(
                     self as *mut Self,
                     theName,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -651,21 +730,26 @@ impl GeometricItemSpecificUsage {
             let __result = unsafe {
                 crate::ffi::StepAP242_GeometricItemSpecificUsage_inherited_Name(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:55 - `StepAP242_ItemIdentifiedRepresentationUsage::SetDescription()`
     pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_GeometricItemSpecificUsage_inherited_SetDescription(
                     self as *mut Self,
                     theDescription,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -677,21 +761,26 @@ impl GeometricItemSpecificUsage {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `StepAP242_ItemIdentifiedRepresentationUsage.hxx`:64 - `StepAP242_ItemIdentifiedRepresentationUsage::SetDefinition()`
     pub fn set_definition(&mut self, theDefinition: &ItemIdentifiedRepresentationUsageDefinition) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_GeometricItemSpecificUsage_inherited_SetDefinition(
                     self as *mut Self,
                     theDefinition,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -703,8 +792,11 @@ impl GeometricItemSpecificUsage {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -714,13 +806,15 @@ impl GeometricItemSpecificUsage {
         theUsedRepresentation: &crate::ffi::HandleStepReprRepresentation,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_GeometricItemSpecificUsage_inherited_SetUsedRepresentation(
                     self as *mut Self,
                     theUsedRepresentation,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -732,8 +826,11 @@ impl GeometricItemSpecificUsage {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -747,8 +844,11 @@ impl GeometricItemSpecificUsage {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -760,8 +860,11 @@ impl GeometricItemSpecificUsage {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -771,13 +874,15 @@ impl GeometricItemSpecificUsage {
         theIdentifiedItem: &crate::ffi::HandleStepReprHArray1OfRepresentationItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_GeometricItemSpecificUsage_inherited_SetIdentifiedItem(
                     self as *mut Self,
                     theIdentifiedItem,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -793,8 +898,11 @@ impl GeometricItemSpecificUsage {
                     num,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -805,14 +913,16 @@ impl GeometricItemSpecificUsage {
         theItem: &crate::ffi::HandleStepReprRepresentationItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_GeometricItemSpecificUsage_inherited_SetIdentifiedItemValue(
                     self as *mut Self,
                     num,
                     theItem,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -825,8 +935,11 @@ impl GeometricItemSpecificUsage {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -839,8 +952,11 @@ impl GeometricItemSpecificUsage {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -850,11 +966,14 @@ impl GeometricItemSpecificUsage {
             let __result = unsafe {
                 crate::ffi::StepAP242_GeometricItemSpecificUsage_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -867,20 +986,25 @@ impl GeometricItemSpecificUsage {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_GeometricItemSpecificUsage_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -892,20 +1016,25 @@ impl GeometricItemSpecificUsage {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_GeometricItemSpecificUsage_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -921,50 +1050,50 @@ unsafe impl crate::CppDeletable for HandleStepAP242GeometricItemSpecificUsage {
 impl HandleStepAP242GeometricItemSpecificUsage {
     /// Dereference this Handle to access the underlying StepAP242_GeometricItemSpecificUsage
     pub fn get(&self) -> &crate::ffi::StepAP242_GeometricItemSpecificUsage {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP242GeometricItemSpecificUsage_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP242GeometricItemSpecificUsage_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP242_GeometricItemSpecificUsage
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP242_GeometricItemSpecificUsage {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP242GeometricItemSpecificUsage_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP242GeometricItemSpecificUsage_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP242_GeometricItemSpecificUsage> to Handle<StepAP242_ItemIdentifiedRepresentationUsage>
     pub fn to_handle_item_identified_representation_usage(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP242ItemIdentifiedRepresentationUsage> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP242GeometricItemSpecificUsage_to_HandleStepAP242ItemIdentifiedRepresentationUsage(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP242GeometricItemSpecificUsage_to_HandleStepAP242ItemIdentifiedRepresentationUsage(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StepAP242_GeometricItemSpecificUsage> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP242GeometricItemSpecificUsage_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP242GeometricItemSpecificUsage_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -987,8 +1116,10 @@ impl IdAttribute {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP242_IdAttribute_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1000,14 +1131,16 @@ impl IdAttribute {
         theIdentifiedItem: &IdAttributeSelect,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_IdAttribute_init(
                     self as *mut Self,
                     theAttributeValue,
                     theIdentifiedItem,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1017,13 +1150,15 @@ impl IdAttribute {
         theAttributeValue: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_IdAttribute_set_attribute_value(
                     self as *mut Self,
                     theAttributeValue,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1033,8 +1168,11 @@ impl IdAttribute {
         {
             let __result =
                 unsafe { crate::ffi::StepAP242_IdAttribute_attribute_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1042,13 +1180,15 @@ impl IdAttribute {
     /// Set field IdentifiedItem
     pub fn set_identified_item(&mut self, theIdentifiedItem: &IdAttributeSelect) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_IdAttribute_set_identified_item(
                     self as *mut Self,
                     theIdentifiedItem,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1058,8 +1198,11 @@ impl IdAttribute {
         {
             let __result =
                 unsafe { crate::ffi::StepAP242_IdAttribute_identified_item(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1068,8 +1211,11 @@ impl IdAttribute {
         {
             let __result =
                 unsafe { crate::ffi::StepAP242_IdAttribute_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1077,8 +1223,11 @@ impl IdAttribute {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StepAP242_IdAttribute_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1086,42 +1235,44 @@ impl IdAttribute {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StepAP242_IdAttribute_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP242_IdAttribute_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StepAP242_IdAttribute_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP242_IdAttribute_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP242_IdAttribute_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP242IdAttribute> {
-        {
-            let __result = unsafe { crate::ffi::StepAP242_IdAttribute_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StepAP242_IdAttribute_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1130,8 +1281,11 @@ impl IdAttribute {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttribute_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1141,8 +1295,11 @@ impl IdAttribute {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttribute_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1151,11 +1308,14 @@ impl IdAttribute {
         {
             let __result =
                 unsafe { crate::ffi::StepAP242_IdAttribute_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1166,18 +1326,23 @@ impl IdAttribute {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttribute_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_IdAttribute_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1187,16 +1352,22 @@ impl IdAttribute {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttribute_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StepAP242_IdAttribute_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StepAP242_IdAttribute_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1212,35 +1383,31 @@ unsafe impl crate::CppDeletable for HandleStepAP242IdAttribute {
 impl HandleStepAP242IdAttribute {
     /// Dereference this Handle to access the underlying StepAP242_IdAttribute
     pub fn get(&self) -> &crate::ffi::StepAP242_IdAttribute {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStepAP242IdAttribute_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleStepAP242IdAttribute_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP242_IdAttribute
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP242_IdAttribute {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStepAP242IdAttribute_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleStepAP242IdAttribute_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP242_IdAttribute> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP242IdAttribute_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP242IdAttribute_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1263,8 +1430,10 @@ impl IdAttributeSelect {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP242_IdAttributeSelect_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1288,8 +1457,11 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_case_num(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1299,8 +1471,11 @@ impl IdAttributeSelect {
         {
             let __result =
                 unsafe { crate::ffi::StepAP242_IdAttributeSelect_action(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1310,8 +1485,11 @@ impl IdAttributeSelect {
         {
             let __result =
                 unsafe { crate::ffi::StepAP242_IdAttributeSelect_address(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1324,8 +1502,11 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_application_context(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1336,8 +1517,11 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_dimensional_size(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1350,8 +1534,11 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_geometric_tolerance(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1361,8 +1548,11 @@ impl IdAttributeSelect {
         {
             let __result =
                 unsafe { crate::ffi::StepAP242_IdAttributeSelect_group(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1373,8 +1563,11 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_product_category(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1387,8 +1580,11 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_property_definition(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1399,8 +1595,11 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_representation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1411,8 +1610,11 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_shape_aspect(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1427,33 +1629,34 @@ impl IdAttributeSelect {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to StepData_SelectType
     pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP242_IdAttributeSelect_as_StepData_SelectType(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP242_IdAttributeSelect_as_StepData_SelectType(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepData_SelectType (mutable)
     pub fn as_step_data_select_type_mut(&mut self) -> &mut crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP242_IdAttributeSelect_as_StepData_SelectType_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP242_IdAttributeSelect_as_StepData_SelectType_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
@@ -1462,26 +1665,35 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_inherited_Matches(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
     pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_inherited_SetValue(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
     pub fn nullify(&mut self) {
         {
-            unsafe { crate::ffi::StepAP242_IdAttributeSelect_inherited_Nullify(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StepAP242_IdAttributeSelect_inherited_Nullify(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1491,8 +1703,11 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_inherited_Value(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1502,8 +1717,11 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_inherited_IsNull(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1513,8 +1731,11 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_inherited_Type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1524,8 +1745,11 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_inherited_CaseNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1535,8 +1759,11 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_inherited_Description(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1546,8 +1773,11 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_inherited_NewMember(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1557,8 +1787,11 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_inherited_CaseMem(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1568,8 +1801,11 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_inherited_CaseMember(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1579,8 +1815,11 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_inherited_Member(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1590,18 +1829,23 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_inherited_Int(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:131 - `StepData_SelectType::SetInt()`
     pub fn set_int(&mut self, val: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_inherited_SetInt(self as *mut Self, val)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1611,8 +1855,11 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_inherited_Integer(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1622,8 +1869,11 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_inherited_Boolean(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1633,8 +1883,11 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_inherited_Logical(self as *const Self)
             };
-            crate::check_exception();
-            crate::step_data::Logical::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::step_data::Logical::try_from(__val).unwrap()
         }
     }
 
@@ -1644,8 +1897,11 @@ impl IdAttributeSelect {
             let __result = unsafe {
                 crate::ffi::StepAP242_IdAttributeSelect_inherited_Real(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1670,8 +1926,10 @@ impl ItemIdentifiedRepresentationUsage {
         {
             let __result =
                 unsafe { crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1686,7 +1944,7 @@ impl ItemIdentifiedRepresentationUsage {
         theIdentifiedItem: &crate::ffi::HandleStepReprHArray1OfRepresentationItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_init(
                     self as *mut Self,
                     theName,
@@ -1696,7 +1954,9 @@ impl ItemIdentifiedRepresentationUsage {
                     theIdentifiedItem,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1704,13 +1964,15 @@ impl ItemIdentifiedRepresentationUsage {
     /// Set field Name
     pub fn set_name(&mut self, theName: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_set_name(
                     self as *mut Self,
                     theName,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1721,8 +1983,11 @@ impl ItemIdentifiedRepresentationUsage {
             let __result = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_name(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1730,13 +1995,15 @@ impl ItemIdentifiedRepresentationUsage {
     /// Set field Description
     pub fn set_description(&mut self, theDescription: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_set_description(
                     self as *mut Self,
                     theDescription,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1749,8 +2016,11 @@ impl ItemIdentifiedRepresentationUsage {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1758,13 +2028,15 @@ impl ItemIdentifiedRepresentationUsage {
     /// Set field Definition
     pub fn set_definition(&mut self, theDefinition: &ItemIdentifiedRepresentationUsageDefinition) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_set_definition(
                     self as *mut Self,
                     theDefinition,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1777,8 +2049,11 @@ impl ItemIdentifiedRepresentationUsage {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1789,13 +2064,15 @@ impl ItemIdentifiedRepresentationUsage {
         theUsedRepresentation: &crate::ffi::HandleStepReprRepresentation,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_set_used_representation(
                     self as *mut Self,
                     theUsedRepresentation,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1808,8 +2085,11 @@ impl ItemIdentifiedRepresentationUsage {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1824,8 +2104,11 @@ impl ItemIdentifiedRepresentationUsage {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1838,8 +2121,11 @@ impl ItemIdentifiedRepresentationUsage {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1850,13 +2136,15 @@ impl ItemIdentifiedRepresentationUsage {
         theIdentifiedItem: &crate::ffi::HandleStepReprHArray1OfRepresentationItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_set_identified_item(
                     self as *mut Self,
                     theIdentifiedItem,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1873,8 +2161,11 @@ impl ItemIdentifiedRepresentationUsage {
                     num,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1886,14 +2177,16 @@ impl ItemIdentifiedRepresentationUsage {
         theItem: &crate::ffi::HandleStepReprRepresentationItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_set_identified_item_value(
                     self as *mut Self,
                     num,
                     theItem,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1905,8 +2198,11 @@ impl ItemIdentifiedRepresentationUsage {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1915,8 +2211,11 @@ impl ItemIdentifiedRepresentationUsage {
         {
             let __result =
                 unsafe { crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1926,48 +2225,51 @@ impl ItemIdentifiedRepresentationUsage {
             let __result = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_get_type_descriptor()
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP242ItemIdentifiedRepresentationUsage> {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_to_handle(obj.into_raw())
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1979,8 +2281,11 @@ impl ItemIdentifiedRepresentationUsage {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1993,8 +2298,11 @@ impl ItemIdentifiedRepresentationUsage {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2006,11 +2314,14 @@ impl ItemIdentifiedRepresentationUsage {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2023,18 +2334,23 @@ impl ItemIdentifiedRepresentationUsage {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2044,20 +2360,25 @@ impl ItemIdentifiedRepresentationUsage {
             let __result = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2073,39 +2394,37 @@ unsafe impl crate::CppDeletable for HandleStepAP242ItemIdentifiedRepresentationU
 impl HandleStepAP242ItemIdentifiedRepresentationUsage {
     /// Dereference this Handle to access the underlying StepAP242_ItemIdentifiedRepresentationUsage
     pub fn get(&self) -> &crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP242ItemIdentifiedRepresentationUsage_get(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP242ItemIdentifiedRepresentationUsage_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP242_ItemIdentifiedRepresentationUsage
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP242_ItemIdentifiedRepresentationUsage {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP242ItemIdentifiedRepresentationUsage_get_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP242ItemIdentifiedRepresentationUsage_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP242_ItemIdentifiedRepresentationUsage> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP242ItemIdentifiedRepresentationUsage_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP242ItemIdentifiedRepresentationUsage_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<StepAP242_ItemIdentifiedRepresentationUsage> to Handle<StepAP242_DraughtingModelItemAssociation>
@@ -2114,14 +2433,16 @@ impl HandleStepAP242ItemIdentifiedRepresentationUsage {
     pub fn downcast_to_draughting_model_item_association(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP242DraughtingModelItemAssociation>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleStepAP242ItemIdentifiedRepresentationUsage_downcast_to_HandleStepAP242DraughtingModelItemAssociation(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2131,14 +2452,16 @@ impl HandleStepAP242ItemIdentifiedRepresentationUsage {
     pub fn downcast_to_geometric_item_specific_usage(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP242GeometricItemSpecificUsage>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleStepAP242ItemIdentifiedRepresentationUsage_downcast_to_HandleStepAP242GeometricItemSpecificUsage(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -2163,8 +2486,10 @@ impl ItemIdentifiedRepresentationUsageDefinition {
         {
             let __result =
                 unsafe { crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2196,8 +2521,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
                     ent,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2210,8 +2538,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
             let __result = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_applied_approval_assignment(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2224,8 +2555,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
             let __result = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_applied_date_and_time_assignment(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2238,8 +2572,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
             let __result = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_applied_date_assignment(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2252,8 +2589,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
             let __result = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_applied_document_reference(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2266,8 +2606,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
             let __result = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_applied_external_identification_assignment(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2280,8 +2623,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
             let __result = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_applied_group_assignment(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2294,8 +2640,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
             let __result = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_applied_organization_assignment(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2308,8 +2657,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
             let __result = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_applied_person_and_organization_assignment(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2322,8 +2674,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
             let __result = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_applied_security_classification_assignment(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2336,8 +2691,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2350,8 +2708,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2364,8 +2725,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
             let __result = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_geometric_tolerance(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2378,8 +2742,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
             let __result = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_product_definition_relationship(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2392,8 +2759,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
             let __result = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_property_definition(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2406,8 +2776,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
             let __result = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_property_definition_relationship(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2420,8 +2793,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2434,31 +2810,36 @@ impl ItemIdentifiedRepresentationUsageDefinition {
             let __result = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_shape_aspect_relationship(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to StepData_SelectType
     pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_as_StepData_SelectType(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_as_StepData_SelectType(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepData_SelectType (mutable)
     pub fn as_step_data_select_type_mut(&mut self) -> &mut crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_as_StepData_SelectType_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_as_StepData_SelectType_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
@@ -2470,33 +2851,40 @@ impl ItemIdentifiedRepresentationUsageDefinition {
                     ent,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
     pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_inherited_SetValue(
                     self as *mut Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
     pub fn nullify(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_inherited_Nullify(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2508,8 +2896,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2521,8 +2912,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2534,8 +2928,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2545,8 +2942,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
             let __result = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_inherited_CaseNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2556,8 +2956,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
             let __result = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_inherited_Description(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2567,8 +2970,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
             let __result = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_inherited_NewMember(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2581,8 +2987,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
                     ent,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2592,8 +3001,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
             let __result = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_inherited_CaseMember(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2605,8 +3017,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2618,21 +3033,26 @@ impl ItemIdentifiedRepresentationUsageDefinition {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:131 - `StepData_SelectType::SetInt()`
     pub fn set_int(&mut self, val: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP242_ItemIdentifiedRepresentationUsageDefinition_inherited_SetInt(
                     self as *mut Self,
                     val,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2644,8 +3064,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2657,8 +3080,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2670,8 +3096,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            crate::step_data::Logical::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::step_data::Logical::try_from(__val).unwrap()
         }
     }
 
@@ -2683,8 +3112,11 @@ impl ItemIdentifiedRepresentationUsageDefinition {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

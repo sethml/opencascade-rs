@@ -17,8 +17,11 @@ pub unsafe fn read_vec3(
     {
         let __result =
             unsafe { crate::ffi::RWObj_Tools_read_vec3(c_thePos.as_ptr(), theNext, theVec) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `RWObj_Tools.hxx`:50 - `RWObj_Tools::ReadName`
@@ -27,8 +30,11 @@ pub fn read_name(thePos: &str, theName: &mut crate::t_collection::AsciiString) -
     let c_thePos = std::ffi::CString::new(thePos).unwrap();
     {
         let __result = unsafe { crate::ffi::RWObj_Tools_read_name(c_thePos.as_ptr(), theName) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `RWObj_Tools.hxx`:78 - `RWObj_Tools::isSpaceChar`
@@ -36,7 +42,10 @@ pub fn read_name(thePos: &str, theName: &mut crate::t_collection::AsciiString) -
 pub fn is_space_char(theChar: std::ffi::c_char) -> bool {
     {
         let __result = unsafe { crate::ffi::RWObj_Tools_is_space_char(theChar) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }

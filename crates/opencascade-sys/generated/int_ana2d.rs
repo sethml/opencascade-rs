@@ -33,8 +33,10 @@ impl AnaIntersection {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna2d_AnaIntersection_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -43,8 +45,10 @@ impl AnaIntersection {
     pub fn new_lin2d2(L1: &crate::gp::Lin2d, L2: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna2d_AnaIntersection_ctor_lin2d2(L1, L2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -53,8 +57,10 @@ impl AnaIntersection {
     pub fn new_circ2d2(C1: &crate::gp::Circ2d, C2: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna2d_AnaIntersection_ctor_circ2d2(C1, C2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -63,8 +69,10 @@ impl AnaIntersection {
     pub fn new_lin2d_circ2d(L: &crate::gp::Lin2d, C: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna2d_AnaIntersection_ctor_lin2d_circ2d(L, C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -73,8 +81,10 @@ impl AnaIntersection {
     pub fn new_lin2d_conic(L: &crate::gp::Lin2d, C: &Conic) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna2d_AnaIntersection_ctor_lin2d_conic(L, C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -83,8 +93,10 @@ impl AnaIntersection {
     pub fn new_circ2d_conic(C: &crate::gp::Circ2d, Co: &Conic) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna2d_AnaIntersection_ctor_circ2d_conic(C, Co) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -93,8 +105,10 @@ impl AnaIntersection {
     pub fn new_elips2d_conic(E: &crate::gp::Elips2d, C: &Conic) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna2d_AnaIntersection_ctor_elips2d_conic(E, C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -103,8 +117,10 @@ impl AnaIntersection {
     pub fn new_parab2d_conic(P: &crate::gp::Parab2d, C: &Conic) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna2d_AnaIntersection_ctor_parab2d_conic(P, C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -113,8 +129,10 @@ impl AnaIntersection {
     pub fn new_hypr2d_conic(H: &crate::gp::Hypr2d, C: &Conic) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna2d_AnaIntersection_ctor_hypr2d_conic(H, C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -122,10 +140,12 @@ impl AnaIntersection {
     /// Intersection between two lines.
     pub fn perform_lin2d2(&mut self, L1: &crate::gp::Lin2d, L2: &crate::gp::Lin2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna2d_AnaIntersection_perform_lin2d2(self as *mut Self, L1, L2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -133,10 +153,12 @@ impl AnaIntersection {
     /// Intersection between two circles.
     pub fn perform_circ2d2(&mut self, C1: &crate::gp::Circ2d, C2: &crate::gp::Circ2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna2d_AnaIntersection_perform_circ2d2(self as *mut Self, C1, C2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -144,10 +166,12 @@ impl AnaIntersection {
     /// Intersection between a line and a circle.
     pub fn perform_lin2d_circ2d(&mut self, L: &crate::gp::Lin2d, C: &crate::gp::Circ2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna2d_AnaIntersection_perform_lin2d_circ2d(self as *mut Self, L, C)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -155,10 +179,12 @@ impl AnaIntersection {
     /// Intersection between a line and a conic.
     pub fn perform_lin2d_conic(&mut self, L: &crate::gp::Lin2d, C: &Conic) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna2d_AnaIntersection_perform_lin2d_conic(self as *mut Self, L, C)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -166,10 +192,12 @@ impl AnaIntersection {
     /// Intersection between a circle and another conic.
     pub fn perform_circ2d_conic(&mut self, C: &crate::gp::Circ2d, Co: &Conic) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna2d_AnaIntersection_perform_circ2d_conic(self as *mut Self, C, Co)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -177,10 +205,12 @@ impl AnaIntersection {
     /// Intersection between an ellipse and another conic.
     pub fn perform_elips2d_conic(&mut self, E: &crate::gp::Elips2d, C: &Conic) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna2d_AnaIntersection_perform_elips2d_conic(self as *mut Self, E, C)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -188,10 +218,12 @@ impl AnaIntersection {
     /// Intersection between a parabola and another conic.
     pub fn perform_parab2d_conic(&mut self, P: &crate::gp::Parab2d, C: &Conic) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna2d_AnaIntersection_perform_parab2d_conic(self as *mut Self, P, C)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -199,10 +231,12 @@ impl AnaIntersection {
     /// Intersection between an hyperbola and another conic.
     pub fn perform_hypr2d_conic(&mut self, H: &crate::gp::Hypr2d, C: &Conic) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna2d_AnaIntersection_perform_hypr2d_conic(self as *mut Self, H, C)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -212,8 +246,11 @@ impl AnaIntersection {
         {
             let __result =
                 unsafe { crate::ffi::IntAna2d_AnaIntersection_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -226,8 +263,11 @@ impl AnaIntersection {
         {
             let __result =
                 unsafe { crate::ffi::IntAna2d_AnaIntersection_is_empty(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -243,8 +283,11 @@ impl AnaIntersection {
             let __result = unsafe {
                 crate::ffi::IntAna2d_AnaIntersection_identical_elements(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -257,8 +300,11 @@ impl AnaIntersection {
             let __result = unsafe {
                 crate::ffi::IntAna2d_AnaIntersection_parallel_elements(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -268,8 +314,11 @@ impl AnaIntersection {
         {
             let __result =
                 unsafe { crate::ffi::IntAna2d_AnaIntersection_nb_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -280,8 +329,11 @@ impl AnaIntersection {
         {
             let __result =
                 unsafe { crate::ffi::IntAna2d_AnaIntersection_point(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -306,8 +358,10 @@ impl Conic {
     pub fn new_circ2d(C: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna2d_Conic_ctor_circ2d(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -315,8 +369,10 @@ impl Conic {
     pub fn new_lin2d(C: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna2d_Conic_ctor_lin2d(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -324,8 +380,10 @@ impl Conic {
     pub fn new_parab2d(C: &crate::gp::Parab2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna2d_Conic_ctor_parab2d(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -333,8 +391,10 @@ impl Conic {
     pub fn new_hypr2d(C: &crate::gp::Hypr2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna2d_Conic_ctor_hypr2d(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -342,8 +402,10 @@ impl Conic {
     pub fn new_elips2d(C: &crate::gp::Elips2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna2d_Conic_ctor_elips2d(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -352,8 +414,11 @@ impl Conic {
     pub fn value(&self, X: f64, Y: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntAna2d_Conic_value(self as *const Self, X, Y) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -362,8 +427,11 @@ impl Conic {
     pub fn grad(&self, X: f64, Y: f64) -> crate::OwnedPtr<crate::gp::XY> {
         {
             let __result = unsafe { crate::ffi::IntAna2d_Conic_grad(self as *const Self, X, Y) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -372,8 +440,12 @@ impl Conic {
     /// the point X,Y.
     pub fn val_and_grad(&self, X: f64, Y: f64, Val: &mut f64, Grd: &mut crate::gp::XY) {
         {
-            unsafe { crate::ffi::IntAna2d_Conic_val_and_grad(self as *const Self, X, Y, Val, Grd) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntAna2d_Conic_val_and_grad(self as *const Self, X, Y, Val, Grd)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -391,10 +463,12 @@ impl Conic {
         F: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna2d_Conic_coefficients(self as *const Self, A, B, C, D, E, F)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -414,7 +488,7 @@ impl Conic {
         Axis: &crate::gp::Ax2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna2d_Conic_new_coefficients(
                     self as *const Self,
                     A,
@@ -426,7 +500,9 @@ impl Conic {
                     Axis,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -453,8 +529,10 @@ impl IntPoint {
     pub fn new_real4(X: f64, Y: f64, U1: f64, U2: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna2d_IntPoint_ctor_real4(X, Y, U1, U2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -468,8 +546,10 @@ impl IntPoint {
     pub fn new_real3(X: f64, Y: f64, U1: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna2d_IntPoint_ctor_real3(X, Y, U1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -477,8 +557,10 @@ impl IntPoint {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna2d_IntPoint_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -486,10 +568,12 @@ impl IntPoint {
     /// Set the values for a "non-implicit" point.
     pub fn set_value_real4(&mut self, X: f64, Y: f64, U1: f64, U2: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna2d_IntPoint_set_value_real4(self as *mut Self, X, Y, U1, U2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -497,8 +581,12 @@ impl IntPoint {
     /// Set the values for an "implicit" point.
     pub fn set_value_real3(&mut self, X: f64, Y: f64, U1: f64) {
         {
-            unsafe { crate::ffi::IntAna2d_IntPoint_set_value_real3(self as *mut Self, X, Y, U1) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntAna2d_IntPoint_set_value_real3(self as *mut Self, X, Y, U1)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -507,8 +595,11 @@ impl IntPoint {
     pub fn value(&self) -> &crate::gp::Pnt2d {
         {
             let __result = unsafe { crate::ffi::IntAna2d_IntPoint_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -518,8 +609,11 @@ impl IntPoint {
         {
             let __result =
                 unsafe { crate::ffi::IntAna2d_IntPoint_second_is_implicit(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -529,8 +623,11 @@ impl IntPoint {
         {
             let __result =
                 unsafe { crate::ffi::IntAna2d_IntPoint_param_on_first(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -542,8 +639,11 @@ impl IntPoint {
         {
             let __result =
                 unsafe { crate::ffi::IntAna2d_IntPoint_param_on_second(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -567,8 +667,10 @@ impl MyDirectPolynomialRoots {
         {
             let __result =
                 unsafe { crate::ffi::MyDirectPolynomialRoots_ctor_real5(A4, A3, A2, A1, A0) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -576,8 +678,10 @@ impl MyDirectPolynomialRoots {
     pub fn new_real3(A2: f64, A1: f64, A0: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MyDirectPolynomialRoots_ctor_real3(A2, A1, A0) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -586,8 +690,11 @@ impl MyDirectPolynomialRoots {
         {
             let __result =
                 unsafe { crate::ffi::MyDirectPolynomialRoots_nb_solutions(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -596,8 +703,11 @@ impl MyDirectPolynomialRoots {
         {
             let __result =
                 unsafe { crate::ffi::MyDirectPolynomialRoots_value(self as *const Self, i) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -606,8 +716,11 @@ impl MyDirectPolynomialRoots {
         {
             let __result =
                 unsafe { crate::ffi::MyDirectPolynomialRoots_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -616,8 +729,11 @@ impl MyDirectPolynomialRoots {
         {
             let __result =
                 unsafe { crate::ffi::MyDirectPolynomialRoots_infinite_roots(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

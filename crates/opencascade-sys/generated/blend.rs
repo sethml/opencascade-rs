@@ -100,8 +100,11 @@ impl AppFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_AppFunction_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -111,8 +114,11 @@ impl AppFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_AppFunction_nb_equations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -124,8 +130,11 @@ impl AppFunction {
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
         {
             let __result = unsafe { crate::ffi::Blend_AppFunction_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -142,8 +151,11 @@ impl AppFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_AppFunction_derivatives(self as *mut Self, X, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -161,8 +173,11 @@ impl AppFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_AppFunction_values(self as *mut Self, X, F, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -172,8 +187,10 @@ impl AppFunction {
     /// to be found.
     pub fn set_real(&mut self, Param: f64) {
         {
-            unsafe { crate::ffi::Blend_AppFunction_set_real(self as *mut Self, Param) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Blend_AppFunction_set_real(self as *mut Self, Param) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -184,8 +201,11 @@ impl AppFunction {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         {
-            unsafe { crate::ffi::Blend_AppFunction_set_real2(self as *mut Self, First, Last) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Blend_AppFunction_set_real2(self as *mut Self, First, Last) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -195,14 +215,16 @@ impl AppFunction {
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_AppFunction_get_tolerance_vector_real(
                     self as *const Self,
                     Tolerance,
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -217,10 +239,12 @@ impl AppFunction {
         SupBound: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_AppFunction_get_bounds(self as *const Self, InfBound, SupBound)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -233,8 +257,11 @@ impl AppFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_AppFunction_is_solution(self as *mut Self, Sol, Tol) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -245,8 +272,11 @@ impl AppFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_AppFunction_get_minimal_distance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -255,8 +285,11 @@ impl AppFunction {
     pub fn pnt1(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Blend_AppFunction_pnt1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -265,8 +298,11 @@ impl AppFunction {
     pub fn pnt2(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Blend_AppFunction_pnt2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -276,8 +312,11 @@ impl AppFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_AppFunction_is_rational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -287,8 +326,11 @@ impl AppFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_AppFunction_get_section_size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -297,10 +339,12 @@ impl AppFunction {
     /// of all sections.
     pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_AppFunction_get_minimal_weight(self as *const Self, Weigths)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -312,8 +356,11 @@ impl AppFunction {
             let __result = unsafe {
                 crate::ffi::Blend_AppFunction_nb_intervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -327,8 +374,12 @@ impl AppFunction {
     /// OutOfRange from Standard
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe { crate::ffi::Blend_AppFunction_intervals(self as *const Self, T, S.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Blend_AppFunction_intervals(self as *const Self, T, S.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -341,7 +392,7 @@ impl AppFunction {
         NbPoles2d: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_AppFunction_get_shape(
                     self as *mut Self,
                     NbPoles,
@@ -350,7 +401,9 @@ impl AppFunction {
                     NbPoles2d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -369,7 +422,7 @@ impl AppFunction {
         Tol1D: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_AppFunction_get_tolerance_real3_vector2(
                     self as *const Self,
                     BoundTol,
@@ -379,23 +432,29 @@ impl AppFunction {
                     Tol1D,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:154 - `Blend_AppFunction::Knots()`
     pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::Blend_AppFunction_knots(self as *mut Self, TKnots) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Blend_AppFunction_knots(self as *mut Self, TKnots) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:156 - `Blend_AppFunction::Mults()`
     pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
         {
-            unsafe { crate::ffi::Blend_AppFunction_mults(self as *mut Self, TMults) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Blend_AppFunction_mults(self as *mut Self, TMults) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -417,8 +476,11 @@ impl AppFunction {
             let __result = unsafe {
                 crate::ffi::Blend_AppFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -431,7 +493,7 @@ impl AppFunction {
         Weigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_AppFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
                     self as *mut Self,
                     P,
@@ -440,7 +502,9 @@ impl AppFunction {
                     Weigths,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -465,18 +529,23 @@ impl AppFunction {
             let __result = unsafe {
                 crate::ffi::Blend_AppFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_AppFunction_resolution(self as *const Self, IC2d, Tol, TolU, TolV)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -487,8 +556,11 @@ impl AppFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_AppFunction_parameter(self as *const Self, P) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -496,50 +568,46 @@ impl AppFunction {
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_AppFunction_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Blend_AppFunction_as_math_FunctionSetWithDerivatives(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_AppFunction_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Blend_AppFunction_as_math_FunctionSetWithDerivatives_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result =
-                unsafe { crate::ffi::Blend_AppFunction_as_math_FunctionSet(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Blend_AppFunction_as_math_FunctionSet(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result =
-                unsafe { crate::ffi::Blend_AppFunction_as_math_FunctionSet_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Blend_AppFunction_as_math_FunctionSet_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
@@ -548,8 +616,11 @@ impl AppFunction {
             let __result = unsafe {
                 crate::ffi::Blend_AppFunction_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -580,8 +651,11 @@ impl CSFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_CSFunction_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -591,8 +665,11 @@ impl CSFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_CSFunction_nb_equations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -604,8 +681,11 @@ impl CSFunction {
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
         {
             let __result = unsafe { crate::ffi::Blend_CSFunction_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -622,8 +702,11 @@ impl CSFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_CSFunction_derivatives(self as *mut Self, X, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -641,8 +724,11 @@ impl CSFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_CSFunction_values(self as *mut Self, X, F, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -652,8 +738,10 @@ impl CSFunction {
     /// to be found.
     pub fn set_real(&mut self, Param: f64) {
         {
-            unsafe { crate::ffi::Blend_CSFunction_set_real(self as *mut Self, Param) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Blend_CSFunction_set_real(self as *mut Self, Param) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -664,8 +752,11 @@ impl CSFunction {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         {
-            unsafe { crate::ffi::Blend_CSFunction_set_real2(self as *mut Self, First, Last) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Blend_CSFunction_set_real2(self as *mut Self, First, Last) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -675,14 +766,16 @@ impl CSFunction {
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_CSFunction_get_tolerance_vector_real(
                     self as *const Self,
                     Tolerance,
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -697,10 +790,12 @@ impl CSFunction {
         SupBound: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_CSFunction_get_bounds(self as *const Self, InfBound, SupBound)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -713,8 +808,11 @@ impl CSFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_CSFunction_is_solution(self as *mut Self, Sol, Tol) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -725,8 +823,11 @@ impl CSFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_CSFunction_get_minimal_distance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -735,8 +836,11 @@ impl CSFunction {
     pub fn pnt1(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Blend_CSFunction_pnt1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -745,8 +849,11 @@ impl CSFunction {
     pub fn pnt2(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Blend_CSFunction_pnt2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -755,8 +862,11 @@ impl CSFunction {
     pub fn point_on_s(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Blend_CSFunction_point_on_s(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -765,8 +875,11 @@ impl CSFunction {
     pub fn point_on_c(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Blend_CSFunction_point_on_c(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -775,8 +888,11 @@ impl CSFunction {
     pub fn pnt2d(&self) -> &crate::gp::Pnt2d {
         {
             let __result = unsafe { crate::ffi::Blend_CSFunction_pnt2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -786,8 +902,11 @@ impl CSFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_CSFunction_parameter_on_c(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -798,8 +917,11 @@ impl CSFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_CSFunction_is_tangency_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -809,8 +931,11 @@ impl CSFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_CSFunction_tangent_on_s(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -820,8 +945,11 @@ impl CSFunction {
     pub fn tangent2d(&self) -> &crate::gp::Vec2d {
         {
             let __result = unsafe { crate::ffi::Blend_CSFunction_tangent2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -831,8 +959,11 @@ impl CSFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_CSFunction_tangent_on_c(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -843,8 +974,12 @@ impl CSFunction {
     /// these points.
     pub fn tangent(&self, U: f64, V: f64, TgS: &mut crate::gp::Vec, NormS: &mut crate::gp::Vec) {
         {
-            unsafe { crate::ffi::Blend_CSFunction_tangent(self as *const Self, U, V, TgS, NormS) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Blend_CSFunction_tangent(self as *const Self, U, V, TgS, NormS)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -857,7 +992,7 @@ impl CSFunction {
         NbPoles2d: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_CSFunction_get_shape(
                     self as *mut Self,
                     NbPoles,
@@ -866,7 +1001,9 @@ impl CSFunction {
                     NbPoles2d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -885,7 +1022,7 @@ impl CSFunction {
         Tol1D: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_CSFunction_get_tolerance_real3_vector2(
                     self as *const Self,
                     BoundTol,
@@ -895,23 +1032,29 @@ impl CSFunction {
                     Tol1D,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:173 - `Blend_CSFunction::Knots()`
     pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::Blend_CSFunction_knots(self as *mut Self, TKnots) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Blend_CSFunction_knots(self as *mut Self, TKnots) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:175 - `Blend_CSFunction::Mults()`
     pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
         {
-            unsafe { crate::ffi::Blend_CSFunction_mults(self as *mut Self, TMults) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Blend_CSFunction_mults(self as *mut Self, TMults) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -933,8 +1076,11 @@ impl CSFunction {
             let __result = unsafe {
                 crate::ffi::Blend_CSFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -947,7 +1093,7 @@ impl CSFunction {
         Weigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_CSFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
                     self as *mut Self,
                     P,
@@ -956,7 +1102,9 @@ impl CSFunction {
                     Weigths,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -981,77 +1129,78 @@ impl CSFunction {
             let __result = unsafe {
                 crate::ffi::Blend_CSFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to Blend_AppFunction
     pub fn as_app_function(&self) -> &AppFunction {
-        {
-            let __result =
-                unsafe { crate::ffi::Blend_CSFunction_as_Blend_AppFunction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Blend_CSFunction_as_Blend_AppFunction(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Blend_AppFunction (mutable)
     pub fn as_app_function_mut(&mut self) -> &mut AppFunction {
-        {
-            let __result =
-                unsafe { crate::ffi::Blend_CSFunction_as_Blend_AppFunction_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Blend_CSFunction_as_Blend_AppFunction_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_CSFunction_as_math_FunctionSetWithDerivatives(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Blend_CSFunction_as_math_FunctionSetWithDerivatives(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_CSFunction_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Blend_CSFunction_as_math_FunctionSetWithDerivatives_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result =
-                unsafe { crate::ffi::Blend_CSFunction_as_math_FunctionSet(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Blend_CSFunction_as_math_FunctionSet(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result =
-                unsafe { crate::ffi::Blend_CSFunction_as_math_FunctionSet_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Blend_CSFunction_as_math_FunctionSet_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:116 - `Blend_AppFunction::IsRational()`
@@ -1059,8 +1208,11 @@ impl CSFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_CSFunction_inherited_IsRational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1070,21 +1222,26 @@ impl CSFunction {
             let __result = unsafe {
                 crate::ffi::Blend_CSFunction_inherited_GetSectionSize(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:123 - `Blend_AppFunction::GetMinimalWeight()`
     pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_CSFunction_inherited_GetMinimalWeight(
                     self as *const Self,
                     Weigths,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1094,25 +1251,30 @@ impl CSFunction {
             let __result = unsafe {
                 crate::ffi::Blend_CSFunction_inherited_NbIntervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:136 - `Blend_AppFunction::Intervals()`
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_CSFunction_inherited_Intervals(self as *const Self, T, S.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_CSFunction_inherited_Resolution(
                     self as *const Self,
                     IC2d,
@@ -1121,7 +1283,9 @@ impl CSFunction {
                     TolV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1130,8 +1294,11 @@ impl CSFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_CSFunction_inherited_Parameter(self as *const Self, P) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1140,8 +1307,11 @@ impl CSFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_CSFunction_inherited_GetStateNumber(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1175,8 +1345,11 @@ impl CurvPointFuncInv {
         {
             let __result =
                 unsafe { crate::ffi::Blend_CurvPointFuncInv_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1186,8 +1359,11 @@ impl CurvPointFuncInv {
         {
             let __result =
                 unsafe { crate::ffi::Blend_CurvPointFuncInv_nb_equations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1200,8 +1376,11 @@ impl CurvPointFuncInv {
         {
             let __result =
                 unsafe { crate::ffi::Blend_CurvPointFuncInv_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1218,8 +1397,11 @@ impl CurvPointFuncInv {
         {
             let __result =
                 unsafe { crate::ffi::Blend_CurvPointFuncInv_derivatives(self as *mut Self, X, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1237,8 +1419,11 @@ impl CurvPointFuncInv {
         {
             let __result =
                 unsafe { crate::ffi::Blend_CurvPointFuncInv_values(self as *mut Self, X, F, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1246,8 +1431,10 @@ impl CurvPointFuncInv {
     /// Set the Point on which a solution has to be found.
     pub fn set(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Blend_CurvPointFuncInv_set(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Blend_CurvPointFuncInv_set(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1257,14 +1444,16 @@ impl CurvPointFuncInv {
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_CurvPointFuncInv_get_tolerance(
                     self as *const Self,
                     Tolerance,
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1279,14 +1468,16 @@ impl CurvPointFuncInv {
         SupBound: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_CurvPointFuncInv_get_bounds(
                     self as *const Self,
                     InfBound,
                     SupBound,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1298,8 +1489,11 @@ impl CurvPointFuncInv {
             let __result = unsafe {
                 crate::ffi::Blend_CurvPointFuncInv_is_solution(self as *mut Self, Sol, Tol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1307,52 +1501,51 @@ impl CurvPointFuncInv {
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_CurvPointFuncInv_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Blend_CurvPointFuncInv_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_CurvPointFuncInv_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Blend_CurvPointFuncInv_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_CurvPointFuncInv_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Blend_CurvPointFuncInv_as_math_FunctionSet(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_CurvPointFuncInv_as_math_FunctionSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Blend_CurvPointFuncInv_as_math_FunctionSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
@@ -1361,8 +1554,11 @@ impl CurvPointFuncInv {
             let __result = unsafe {
                 crate::ffi::Blend_CurvPointFuncInv_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1396,8 +1592,11 @@ impl FuncInv {
     pub fn nb_variables(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Blend_FuncInv_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1406,8 +1605,11 @@ impl FuncInv {
     pub fn nb_equations(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Blend_FuncInv_nb_equations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1419,8 +1621,11 @@ impl FuncInv {
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
         {
             let __result = unsafe { crate::ffi::Blend_FuncInv_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1437,8 +1642,11 @@ impl FuncInv {
         {
             let __result =
                 unsafe { crate::ffi::Blend_FuncInv_derivatives(self as *mut Self, X, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1455,8 +1663,11 @@ impl FuncInv {
     ) -> bool {
         {
             let __result = unsafe { crate::ffi::Blend_FuncInv_values(self as *mut Self, X, F, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1467,8 +1678,11 @@ impl FuncInv {
     /// curve is on the second one.
     pub fn set(&mut self, OnFirst: bool, COnSurf: &crate::ffi::HandleAdaptor2dCurve2d) {
         {
-            unsafe { crate::ffi::Blend_FuncInv_set(self as *mut Self, OnFirst, COnSurf) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Blend_FuncInv_set(self as *mut Self, OnFirst, COnSurf) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1478,8 +1692,12 @@ impl FuncInv {
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
         {
-            unsafe { crate::ffi::Blend_FuncInv_get_tolerance(self as *const Self, Tolerance, Tol) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Blend_FuncInv_get_tolerance(self as *const Self, Tolerance, Tol)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1494,10 +1712,12 @@ impl FuncInv {
         SupBound: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_FuncInv_get_bounds(self as *const Self, InfBound, SupBound)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1508,8 +1728,11 @@ impl FuncInv {
         {
             let __result =
                 unsafe { crate::ffi::Blend_FuncInv_is_solution(self as *mut Self, Sol, Tol) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1517,46 +1740,46 @@ impl FuncInv {
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_FuncInv_as_math_FunctionSetWithDerivatives(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Blend_FuncInv_as_math_FunctionSetWithDerivatives(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_FuncInv_as_math_FunctionSetWithDerivatives_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Blend_FuncInv_as_math_FunctionSetWithDerivatives_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result =
-                unsafe { crate::ffi::Blend_FuncInv_as_math_FunctionSet(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Blend_FuncInv_as_math_FunctionSet(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result =
-                unsafe { crate::ffi::Blend_FuncInv_as_math_FunctionSet_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Blend_FuncInv_as_math_FunctionSet_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
@@ -1564,8 +1787,11 @@ impl FuncInv {
         {
             let __result =
                 unsafe { crate::ffi::Blend_FuncInv_inherited_GetStateNumber(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1595,8 +1821,11 @@ impl Function {
     pub fn nb_variables(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Blend_Function_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1605,8 +1834,11 @@ impl Function {
     pub fn pnt1(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Blend_Function_pnt1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1615,8 +1847,11 @@ impl Function {
     pub fn pnt2(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Blend_Function_pnt2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1627,8 +1862,11 @@ impl Function {
     pub fn point_on_s1(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Blend_Function_point_on_s1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1639,8 +1877,11 @@ impl Function {
     pub fn point_on_s2(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Blend_Function_point_on_s2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1651,8 +1892,11 @@ impl Function {
         {
             let __result =
                 unsafe { crate::ffi::Blend_Function_is_tangency_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1661,8 +1905,11 @@ impl Function {
     pub fn tangent_on_s1(&self) -> &crate::gp::Vec {
         {
             let __result = unsafe { crate::ffi::Blend_Function_tangent_on_s1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1673,8 +1920,11 @@ impl Function {
         {
             let __result =
                 unsafe { crate::ffi::Blend_Function_tangent2d_on_s1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1683,8 +1933,11 @@ impl Function {
     pub fn tangent_on_s2(&self) -> &crate::gp::Vec {
         {
             let __result = unsafe { crate::ffi::Blend_Function_tangent_on_s2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1695,8 +1948,11 @@ impl Function {
         {
             let __result =
                 unsafe { crate::ffi::Blend_Function_tangent2d_on_s2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1717,7 +1973,7 @@ impl Function {
         NormLast: &mut crate::gp::Vec,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_Function_tangent(
                     self as *const Self,
                     U1,
@@ -1730,7 +1986,9 @@ impl Function {
                     NormLast,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1738,8 +1996,11 @@ impl Function {
     pub fn twist_on_s1(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Blend_Function_twist_on_s1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1747,8 +2008,11 @@ impl Function {
     pub fn twist_on_s2(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Blend_Function_twist_on_s2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1761,7 +2025,7 @@ impl Function {
         Weigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_Function_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
                     self as *mut Self,
                     P,
@@ -1770,7 +2034,9 @@ impl Function {
                     Weigths,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1795,75 +2061,78 @@ impl Function {
             let __result = unsafe {
                 crate::ffi::Blend_Function_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to Blend_AppFunction
     pub fn as_app_function(&self) -> &AppFunction {
-        {
-            let __result =
-                unsafe { crate::ffi::Blend_Function_as_Blend_AppFunction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Blend_Function_as_Blend_AppFunction(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Blend_AppFunction (mutable)
     pub fn as_app_function_mut(&mut self) -> &mut AppFunction {
-        {
-            let __result =
-                unsafe { crate::ffi::Blend_Function_as_Blend_AppFunction_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Blend_Function_as_Blend_AppFunction_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_Function_as_math_FunctionSetWithDerivatives(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Blend_Function_as_math_FunctionSetWithDerivatives(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_Function_as_math_FunctionSetWithDerivatives_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Blend_Function_as_math_FunctionSetWithDerivatives_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result =
-                unsafe { crate::ffi::Blend_Function_as_math_FunctionSet(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Blend_Function_as_math_FunctionSet(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result =
-                unsafe { crate::ffi::Blend_Function_as_math_FunctionSet_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Blend_Function_as_math_FunctionSet_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:53 - `Blend_AppFunction::NbEquations()`
@@ -1871,8 +2140,11 @@ impl Function {
         {
             let __result =
                 unsafe { crate::ffi::Blend_Function_inherited_NbEquations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1881,8 +2153,11 @@ impl Function {
         {
             let __result =
                 unsafe { crate::ffi::Blend_Function_inherited_Value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1896,8 +2171,11 @@ impl Function {
             let __result = unsafe {
                 crate::ffi::Blend_Function_inherited_Derivatives(self as *mut Self, X, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1911,30 +2189,38 @@ impl Function {
         {
             let __result =
                 unsafe { crate::ffi::Blend_Function_inherited_Values(self as *mut Self, X, F, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:78 - `Blend_AppFunction::Set()`
     pub fn set(&mut self, Param: f64) {
         {
-            unsafe { crate::ffi::Blend_Function_inherited_Set(self as *mut Self, Param) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Blend_Function_inherited_Set(self as *mut Self, Param) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:89 - `Blend_AppFunction::GetTolerance()`
     pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_Function_inherited_GetTolerance(
                     self as *const Self,
                     Tolerance,
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1945,14 +2231,16 @@ impl Function {
         SupBound: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_Function_inherited_GetBounds(
                     self as *const Self,
                     InfBound,
                     SupBound,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1962,8 +2250,11 @@ impl Function {
             let __result = unsafe {
                 crate::ffi::Blend_Function_inherited_IsSolution(self as *mut Self, Sol, Tol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1973,8 +2264,11 @@ impl Function {
             let __result = unsafe {
                 crate::ffi::Blend_Function_inherited_GetMinimalDistance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1983,8 +2277,11 @@ impl Function {
         {
             let __result =
                 unsafe { crate::ffi::Blend_Function_inherited_IsRational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1993,18 +2290,23 @@ impl Function {
         {
             let __result =
                 unsafe { crate::ffi::Blend_Function_inherited_GetSectionSize(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:123 - `Blend_AppFunction::GetMinimalWeight()`
     pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_Function_inherited_GetMinimalWeight(self as *const Self, Weigths)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2014,18 +2316,23 @@ impl Function {
             let __result = unsafe {
                 crate::ffi::Blend_Function_inherited_NbIntervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:136 - `Blend_AppFunction::Intervals()`
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_Function_inherited_Intervals(self as *const Self, T, S.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2038,7 +2345,7 @@ impl Function {
         NbPoles2d: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_Function_inherited_GetShape(
                     self as *mut Self,
                     NbPoles,
@@ -2047,30 +2354,38 @@ impl Function {
                     NbPoles2d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:154 - `Blend_AppFunction::Knots()`
     pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::Blend_Function_inherited_Knots(self as *mut Self, TKnots) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Blend_Function_inherited_Knots(self as *mut Self, TKnots) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:156 - `Blend_AppFunction::Mults()`
     pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
         {
-            unsafe { crate::ffi::Blend_Function_inherited_Mults(self as *mut Self, TMults) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Blend_Function_inherited_Mults(self as *mut Self, TMults) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_Function_inherited_Resolution(
                     self as *const Self,
                     IC2d,
@@ -2079,7 +2394,9 @@ impl Function {
                     TolV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2088,8 +2405,11 @@ impl Function {
         {
             let __result =
                 unsafe { crate::ffi::Blend_Function_inherited_Parameter(self as *const Self, P) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2098,8 +2418,11 @@ impl Function {
         {
             let __result =
                 unsafe { crate::ffi::Blend_Function_inherited_GetStateNumber(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2122,8 +2445,10 @@ impl Point {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Blend_Point_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2148,8 +2473,10 @@ impl Point {
                     Pt1, Pt2, Param, U1, V1, U2, V2, Tg1, Tg2, Tg12d, Tg22d,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2167,8 +2494,10 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::Blend_Point_ctor_pnt2_real5(Pt1, Pt2, Param, U1, V1, U2, V2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2191,8 +2520,10 @@ impl Point {
                     Pts, Ptc, Param, U, V, W, Tgs, Tgc, Tg2d,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2209,8 +2540,10 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::Blend_Point_ctor_pnt2_real4(Pts, Ptc, Param, U, V, W) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2237,8 +2570,10 @@ impl Point {
                     Pt1, Pt2, Param, U1, V1, U2, V2, PC, Tg1, Tg2, Tg12d, Tg22d,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2259,8 +2594,10 @@ impl Point {
             let __result = unsafe {
                 crate::ffi::Blend_Point_ctor_pnt2_real6(Pt1, Pt2, Param, U1, V1, U2, V2, PC)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2287,8 +2624,10 @@ impl Point {
                     Pt1, Pt2, Param, U1, V1, U2, V2, PC1, PC2, Tg1, Tg2, Tg12d, Tg22d,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2309,8 +2648,10 @@ impl Point {
             let __result = unsafe {
                 crate::ffi::Blend_Point_ctor_pnt2_real7(Pt1, Pt2, Param, U1, V1, U2, V2, PC1, PC2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2331,7 +2672,7 @@ impl Point {
         Tg22d: &crate::gp::Vec2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_Point_set_value_pnt2_real5_vec2_vec2d2(
                     self as *mut Self,
                     Pt1,
@@ -2347,7 +2688,9 @@ impl Point {
                     Tg22d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2364,7 +2707,7 @@ impl Point {
         V2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_Point_set_value_pnt2_real5(
                     self as *mut Self,
                     Pt1,
@@ -2376,7 +2719,9 @@ impl Point {
                     V2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2396,7 +2741,7 @@ impl Point {
         Tg2d: &crate::gp::Vec2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_Point_set_value_pnt2_real4_vec2_vec2d(
                     self as *mut Self,
                     Pts,
@@ -2410,7 +2755,9 @@ impl Point {
                     Tg2d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2427,7 +2774,7 @@ impl Point {
         W: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_Point_set_value_pnt2_real4(
                     self as *mut Self,
                     Pts,
@@ -2438,7 +2785,9 @@ impl Point {
                     W,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2461,7 +2810,7 @@ impl Point {
         Tg22d: &crate::gp::Vec2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_Point_set_value_pnt2_real6_vec2_vec2d2(
                     self as *mut Self,
                     Pt1,
@@ -2478,7 +2827,9 @@ impl Point {
                     Tg22d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2497,7 +2848,7 @@ impl Point {
         PC: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_Point_set_value_pnt2_real6(
                     self as *mut Self,
                     Pt1,
@@ -2510,7 +2861,9 @@ impl Point {
                     PC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2533,7 +2886,7 @@ impl Point {
         Tg22d: &crate::gp::Vec2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_Point_set_value_pnt2_real7_vec2_vec2d2(
                     self as *mut Self,
                     Pt1,
@@ -2551,7 +2904,9 @@ impl Point {
                     Tg22d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2570,7 +2925,7 @@ impl Point {
         PC2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_Point_set_value_pnt2_real7(
                     self as *mut Self,
                     Pt1,
@@ -2584,7 +2939,9 @@ impl Point {
                     PC2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2599,7 +2956,7 @@ impl Point {
         PC2: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_Point_set_value_pnt2_real3(
                     self as *mut Self,
                     Pt1,
@@ -2609,7 +2966,9 @@ impl Point {
                     PC2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2617,8 +2976,10 @@ impl Point {
     /// Changes parameter on existing point
     pub fn set_parameter(&mut self, Param: f64) {
         {
-            unsafe { crate::ffi::Blend_Point_set_parameter(self as *mut Self, Param) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Blend_Point_set_parameter(self as *mut Self, Param) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2626,8 +2987,11 @@ impl Point {
     pub fn parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Blend_Point_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2638,8 +3002,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::Blend_Point_is_tangency_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2647,8 +3014,11 @@ impl Point {
     pub fn point_on_s1(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Blend_Point_point_on_s1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2656,24 +3026,33 @@ impl Point {
     pub fn point_on_s2(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Blend_Point_point_on_s2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `Blend_Point.hxx`:245 - `Blend_Point::ParametersOnS1()`
     pub fn parameters_on_s1(&self, U: &mut f64, V: &mut f64) {
         {
-            unsafe { crate::ffi::Blend_Point_parameters_on_s1(self as *const Self, U, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Blend_Point_parameters_on_s1(self as *const Self, U, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Blend_Point.hxx`:247 - `Blend_Point::ParametersOnS2()`
     pub fn parameters_on_s2(&self, U: &mut f64, V: &mut f64) {
         {
-            unsafe { crate::ffi::Blend_Point_parameters_on_s2(self as *const Self, U, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Blend_Point_parameters_on_s2(self as *const Self, U, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2681,8 +3060,11 @@ impl Point {
     pub fn tangent_on_s1(&self) -> &crate::gp::Vec {
         {
             let __result = unsafe { crate::ffi::Blend_Point_tangent_on_s1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2690,8 +3072,11 @@ impl Point {
     pub fn tangent_on_s2(&self) -> &crate::gp::Vec {
         {
             let __result = unsafe { crate::ffi::Blend_Point_tangent_on_s2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2699,8 +3084,11 @@ impl Point {
     pub fn tangent2d_on_s1(&self) -> crate::OwnedPtr<crate::gp::Vec2d> {
         {
             let __result = unsafe { crate::ffi::Blend_Point_tangent2d_on_s1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2708,8 +3096,11 @@ impl Point {
     pub fn tangent2d_on_s2(&self) -> crate::OwnedPtr<crate::gp::Vec2d> {
         {
             let __result = unsafe { crate::ffi::Blend_Point_tangent2d_on_s2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2717,8 +3108,11 @@ impl Point {
     pub fn point_on_s(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Blend_Point_point_on_s(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2726,16 +3120,22 @@ impl Point {
     pub fn point_on_c(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Blend_Point_point_on_c(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `Blend_Point.hxx`:261 - `Blend_Point::ParametersOnS()`
     pub fn parameters_on_s(&self, U: &mut f64, V: &mut f64) {
         {
-            unsafe { crate::ffi::Blend_Point_parameters_on_s(self as *const Self, U, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Blend_Point_parameters_on_s(self as *const Self, U, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2743,8 +3143,11 @@ impl Point {
     pub fn parameter_on_c(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Blend_Point_parameter_on_c(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2752,8 +3155,11 @@ impl Point {
     pub fn tangent_on_s(&self) -> &crate::gp::Vec {
         {
             let __result = unsafe { crate::ffi::Blend_Point_tangent_on_s(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2761,8 +3167,11 @@ impl Point {
     pub fn tangent_on_c(&self) -> &crate::gp::Vec {
         {
             let __result = unsafe { crate::ffi::Blend_Point_tangent_on_c(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2770,8 +3179,11 @@ impl Point {
     pub fn tangent2d(&self) -> crate::OwnedPtr<crate::gp::Vec2d> {
         {
             let __result = unsafe { crate::ffi::Blend_Point_tangent2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2779,8 +3191,11 @@ impl Point {
     pub fn point_on_c1(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Blend_Point_point_on_c1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2788,8 +3203,11 @@ impl Point {
     pub fn point_on_c2(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Blend_Point_point_on_c2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2797,8 +3215,11 @@ impl Point {
     pub fn parameter_on_c1(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Blend_Point_parameter_on_c1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2806,8 +3227,11 @@ impl Point {
     pub fn parameter_on_c2(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Blend_Point_parameter_on_c2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2815,8 +3239,11 @@ impl Point {
     pub fn tangent_on_c1(&self) -> &crate::gp::Vec {
         {
             let __result = unsafe { crate::ffi::Blend_Point_tangent_on_c1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2824,8 +3251,11 @@ impl Point {
     pub fn tangent_on_c2(&self) -> &crate::gp::Vec {
         {
             let __result = unsafe { crate::ffi::Blend_Point_tangent_on_c2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -2857,8 +3287,11 @@ impl RstRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_RstRstFunction_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2868,8 +3301,11 @@ impl RstRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_RstRstFunction_nb_equations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2882,8 +3318,11 @@ impl RstRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_RstRstFunction_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2900,8 +3339,11 @@ impl RstRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_RstRstFunction_derivatives(self as *mut Self, X, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2919,8 +3361,11 @@ impl RstRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_RstRstFunction_values(self as *mut Self, X, F, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2930,8 +3375,11 @@ impl RstRstFunction {
     /// to be found.
     pub fn set_real(&mut self, Param: f64) {
         {
-            unsafe { crate::ffi::Blend_RstRstFunction_set_real(self as *mut Self, Param) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Blend_RstRstFunction_set_real(self as *mut Self, Param) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2942,8 +3390,12 @@ impl RstRstFunction {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         {
-            unsafe { crate::ffi::Blend_RstRstFunction_set_real2(self as *mut Self, First, Last) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Blend_RstRstFunction_set_real2(self as *mut Self, First, Last)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2953,14 +3405,16 @@ impl RstRstFunction {
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_RstRstFunction_get_tolerance_vector_real(
                     self as *const Self,
                     Tolerance,
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2975,10 +3429,12 @@ impl RstRstFunction {
         SupBound: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_RstRstFunction_get_bounds(self as *const Self, InfBound, SupBound)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2992,8 +3448,11 @@ impl RstRstFunction {
             let __result = unsafe {
                 crate::ffi::Blend_RstRstFunction_is_solution(self as *mut Self, Sol, Tol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3005,8 +3464,11 @@ impl RstRstFunction {
             let __result = unsafe {
                 crate::ffi::Blend_RstRstFunction_get_minimal_distance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3015,8 +3477,11 @@ impl RstRstFunction {
     pub fn pnt1(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Blend_RstRstFunction_pnt1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3025,8 +3490,11 @@ impl RstRstFunction {
     pub fn pnt2(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Blend_RstRstFunction_pnt2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3036,8 +3504,11 @@ impl RstRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_RstRstFunction_point_on_rst1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3047,8 +3518,11 @@ impl RstRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_RstRstFunction_point_on_rst2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3058,8 +3532,11 @@ impl RstRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_RstRstFunction_pnt2d_on_rst1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3070,8 +3547,11 @@ impl RstRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_RstRstFunction_pnt2d_on_rst2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3081,8 +3561,11 @@ impl RstRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_RstRstFunction_parameter_on_rst1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3092,8 +3575,11 @@ impl RstRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_RstRstFunction_parameter_on_rst2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3104,8 +3590,11 @@ impl RstRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_RstRstFunction_is_tangency_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3115,8 +3604,11 @@ impl RstRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_RstRstFunction_tangent_on_rst1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3127,8 +3619,11 @@ impl RstRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_RstRstFunction_tangent2d_on_rst1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3138,8 +3633,11 @@ impl RstRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_RstRstFunction_tangent_on_rst2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3150,8 +3648,11 @@ impl RstRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_RstRstFunction_tangent2d_on_rst2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3179,8 +3680,11 @@ impl RstRstFunction {
                     TgRst2,
                 )
             };
-            crate::check_exception();
-            crate::blend::DecrochStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::blend::DecrochStatus::try_from(__val).unwrap()
         }
     }
 
@@ -3190,8 +3694,11 @@ impl RstRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_RstRstFunction_is_rational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3201,8 +3708,11 @@ impl RstRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_RstRstFunction_get_section_size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3211,10 +3721,12 @@ impl RstRstFunction {
     /// of all sections.
     pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_RstRstFunction_get_minimal_weight(self as *const Self, Weigths)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3226,8 +3738,11 @@ impl RstRstFunction {
             let __result = unsafe {
                 crate::ffi::Blend_RstRstFunction_nb_intervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3239,8 +3754,12 @@ impl RstRstFunction {
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe { crate::ffi::Blend_RstRstFunction_intervals(self as *const Self, T, S.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Blend_RstRstFunction_intervals(self as *const Self, T, S.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3253,7 +3772,7 @@ impl RstRstFunction {
         NbPoles2d: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_RstRstFunction_get_shape(
                     self as *mut Self,
                     NbPoles,
@@ -3262,7 +3781,9 @@ impl RstRstFunction {
                     NbPoles2d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3281,7 +3802,7 @@ impl RstRstFunction {
         Tol1D: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_RstRstFunction_get_tolerance_real3_vector2(
                     self as *const Self,
                     BoundTol,
@@ -3291,23 +3812,31 @@ impl RstRstFunction {
                     Tol1D,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:201 - `Blend_RstRstFunction::Knots()`
     pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::Blend_RstRstFunction_knots(self as *mut Self, TKnots) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Blend_RstRstFunction_knots(self as *mut Self, TKnots) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:203 - `Blend_RstRstFunction::Mults()`
     pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
         {
-            unsafe { crate::ffi::Blend_RstRstFunction_mults(self as *mut Self, TMults) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Blend_RstRstFunction_mults(self as *mut Self, TMults) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3320,10 +3849,12 @@ impl RstRstFunction {
         Weigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_RstRstFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3345,8 +3876,11 @@ impl RstRstFunction {
             let __result = unsafe {
                 crate::ffi::Blend_RstRstFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3371,89 +3905,86 @@ impl RstRstFunction {
             let __result = unsafe {
                 crate::ffi::Blend_RstRstFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to Blend_AppFunction
     pub fn as_app_function(&self) -> &AppFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_RstRstFunction_as_Blend_AppFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Blend_RstRstFunction_as_Blend_AppFunction(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Blend_AppFunction (mutable)
     pub fn as_app_function_mut(&mut self) -> &mut AppFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_RstRstFunction_as_Blend_AppFunction_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Blend_RstRstFunction_as_Blend_AppFunction_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_RstRstFunction_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Blend_RstRstFunction_as_math_FunctionSetWithDerivatives(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_RstRstFunction_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Blend_RstRstFunction_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_RstRstFunction_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Blend_RstRstFunction_as_math_FunctionSet(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_RstRstFunction_as_math_FunctionSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Blend_RstRstFunction_as_math_FunctionSet_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_RstRstFunction_inherited_Resolution(
                     self as *const Self,
                     IC2d,
@@ -3462,7 +3993,9 @@ impl RstRstFunction {
                     TolV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3472,8 +4005,11 @@ impl RstRstFunction {
             let __result = unsafe {
                 crate::ffi::Blend_RstRstFunction_inherited_Parameter(self as *const Self, P)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3483,8 +4019,11 @@ impl RstRstFunction {
             let __result = unsafe {
                 crate::ffi::Blend_RstRstFunction_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3520,8 +4059,11 @@ impl SurfCurvFuncInv {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfCurvFuncInv_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3531,8 +4073,11 @@ impl SurfCurvFuncInv {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfCurvFuncInv_nb_equations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3545,8 +4090,11 @@ impl SurfCurvFuncInv {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfCurvFuncInv_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3563,8 +4111,11 @@ impl SurfCurvFuncInv {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfCurvFuncInv_derivatives(self as *mut Self, X, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3582,8 +4133,11 @@ impl SurfCurvFuncInv {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfCurvFuncInv_values(self as *mut Self, X, F, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3591,8 +4145,10 @@ impl SurfCurvFuncInv {
     /// Set the Point on which a solution has to be found.
     pub fn set(&mut self, Rst: &crate::ffi::HandleAdaptor2dCurve2d) {
         {
-            unsafe { crate::ffi::Blend_SurfCurvFuncInv_set(self as *mut Self, Rst) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Blend_SurfCurvFuncInv_set(self as *mut Self, Rst) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3602,10 +4158,12 @@ impl SurfCurvFuncInv {
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_SurfCurvFuncInv_get_tolerance(self as *const Self, Tolerance, Tol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3620,14 +4178,16 @@ impl SurfCurvFuncInv {
         SupBound: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_SurfCurvFuncInv_get_bounds(
                     self as *const Self,
                     InfBound,
                     SupBound,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3639,8 +4199,11 @@ impl SurfCurvFuncInv {
             let __result = unsafe {
                 crate::ffi::Blend_SurfCurvFuncInv_is_solution(self as *mut Self, Sol, Tol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3648,52 +4211,50 @@ impl SurfCurvFuncInv {
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_SurfCurvFuncInv_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Blend_SurfCurvFuncInv_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_SurfCurvFuncInv_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Blend_SurfCurvFuncInv_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_SurfCurvFuncInv_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Blend_SurfCurvFuncInv_as_math_FunctionSet(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_SurfCurvFuncInv_as_math_FunctionSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Blend_SurfCurvFuncInv_as_math_FunctionSet_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
@@ -3702,8 +4263,11 @@ impl SurfCurvFuncInv {
             let __result = unsafe {
                 crate::ffi::Blend_SurfCurvFuncInv_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3738,8 +4302,11 @@ impl SurfPointFuncInv {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfPointFuncInv_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3749,8 +4316,11 @@ impl SurfPointFuncInv {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfPointFuncInv_nb_equations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3763,8 +4333,11 @@ impl SurfPointFuncInv {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfPointFuncInv_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3781,8 +4354,11 @@ impl SurfPointFuncInv {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfPointFuncInv_derivatives(self as *mut Self, X, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3800,8 +4376,11 @@ impl SurfPointFuncInv {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfPointFuncInv_values(self as *mut Self, X, F, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3809,8 +4388,10 @@ impl SurfPointFuncInv {
     /// Set the Point on which a solution has to be found.
     pub fn set(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::Blend_SurfPointFuncInv_set(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Blend_SurfPointFuncInv_set(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3820,14 +4401,16 @@ impl SurfPointFuncInv {
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_SurfPointFuncInv_get_tolerance(
                     self as *const Self,
                     Tolerance,
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3842,14 +4425,16 @@ impl SurfPointFuncInv {
         SupBound: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_SurfPointFuncInv_get_bounds(
                     self as *const Self,
                     InfBound,
                     SupBound,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3861,8 +4446,11 @@ impl SurfPointFuncInv {
             let __result = unsafe {
                 crate::ffi::Blend_SurfPointFuncInv_is_solution(self as *mut Self, Sol, Tol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3870,52 +4458,51 @@ impl SurfPointFuncInv {
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_SurfPointFuncInv_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Blend_SurfPointFuncInv_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_SurfPointFuncInv_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Blend_SurfPointFuncInv_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_SurfPointFuncInv_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Blend_SurfPointFuncInv_as_math_FunctionSet(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_SurfPointFuncInv_as_math_FunctionSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Blend_SurfPointFuncInv_as_math_FunctionSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
@@ -3924,8 +4511,11 @@ impl SurfPointFuncInv {
             let __result = unsafe {
                 crate::ffi::Blend_SurfPointFuncInv_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3957,8 +4547,11 @@ impl SurfRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfRstFunction_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3968,8 +4561,11 @@ impl SurfRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfRstFunction_nb_equations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3982,8 +4578,11 @@ impl SurfRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfRstFunction_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4000,8 +4599,11 @@ impl SurfRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfRstFunction_derivatives(self as *mut Self, X, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4019,8 +4621,11 @@ impl SurfRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfRstFunction_values(self as *mut Self, X, F, D) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4030,8 +4635,11 @@ impl SurfRstFunction {
     /// to be found.
     pub fn set_real(&mut self, Param: f64) {
         {
-            unsafe { crate::ffi::Blend_SurfRstFunction_set_real(self as *mut Self, Param) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Blend_SurfRstFunction_set_real(self as *mut Self, Param) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4042,8 +4650,12 @@ impl SurfRstFunction {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         {
-            unsafe { crate::ffi::Blend_SurfRstFunction_set_real2(self as *mut Self, First, Last) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Blend_SurfRstFunction_set_real2(self as *mut Self, First, Last)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4053,14 +4665,16 @@ impl SurfRstFunction {
     /// Tol is the tolerance used in 3d space.
     pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_SurfRstFunction_get_tolerance_vector_real(
                     self as *const Self,
                     Tolerance,
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4075,14 +4689,16 @@ impl SurfRstFunction {
         SupBound: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_SurfRstFunction_get_bounds(
                     self as *const Self,
                     InfBound,
                     SupBound,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4096,8 +4712,11 @@ impl SurfRstFunction {
             let __result = unsafe {
                 crate::ffi::Blend_SurfRstFunction_is_solution(self as *mut Self, Sol, Tol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4109,8 +4728,11 @@ impl SurfRstFunction {
             let __result = unsafe {
                 crate::ffi::Blend_SurfRstFunction_get_minimal_distance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4119,8 +4741,11 @@ impl SurfRstFunction {
     pub fn pnt1(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Blend_SurfRstFunction_pnt1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4129,8 +4754,11 @@ impl SurfRstFunction {
     pub fn pnt2(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::Blend_SurfRstFunction_pnt2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4140,8 +4768,11 @@ impl SurfRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfRstFunction_point_on_s(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4151,8 +4782,11 @@ impl SurfRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfRstFunction_point_on_rst(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4162,8 +4796,11 @@ impl SurfRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfRstFunction_pnt2d_on_s(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4174,8 +4811,11 @@ impl SurfRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfRstFunction_pnt2d_on_rst(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4185,8 +4825,11 @@ impl SurfRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfRstFunction_parameter_on_rst(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4197,8 +4840,11 @@ impl SurfRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfRstFunction_is_tangency_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4208,8 +4854,11 @@ impl SurfRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfRstFunction_tangent_on_s(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4220,8 +4869,11 @@ impl SurfRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfRstFunction_tangent2d_on_s(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4231,8 +4883,11 @@ impl SurfRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfRstFunction_tangent_on_rst(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4243,8 +4898,11 @@ impl SurfRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfRstFunction_tangent2d_on_rst(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4261,8 +4919,11 @@ impl SurfRstFunction {
             let __result = unsafe {
                 crate::ffi::Blend_SurfRstFunction_decroch(self as *const Self, Sol, NS, TgS)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4272,8 +4933,11 @@ impl SurfRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfRstFunction_is_rational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4283,8 +4947,11 @@ impl SurfRstFunction {
         {
             let __result =
                 unsafe { crate::ffi::Blend_SurfRstFunction_get_section_size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4293,10 +4960,12 @@ impl SurfRstFunction {
     /// of all sections.
     pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_SurfRstFunction_get_minimal_weight(self as *const Self, Weigths)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4308,8 +4977,11 @@ impl SurfRstFunction {
             let __result = unsafe {
                 crate::ffi::Blend_SurfRstFunction_nb_intervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4321,10 +4993,12 @@ impl SurfRstFunction {
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_SurfRstFunction_intervals(self as *const Self, T, S.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4337,7 +5011,7 @@ impl SurfRstFunction {
         NbPoles2d: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_SurfRstFunction_get_shape(
                     self as *mut Self,
                     NbPoles,
@@ -4346,7 +5020,9 @@ impl SurfRstFunction {
                     NbPoles2d,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4365,7 +5041,7 @@ impl SurfRstFunction {
         Tol1D: &mut crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_SurfRstFunction_get_tolerance_real3_vector2(
                     self as *const Self,
                     BoundTol,
@@ -4375,23 +5051,31 @@ impl SurfRstFunction {
                     Tol1D,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:193 - `Blend_SurfRstFunction::Knots()`
     pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::Blend_SurfRstFunction_knots(self as *mut Self, TKnots) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Blend_SurfRstFunction_knots(self as *mut Self, TKnots) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:195 - `Blend_SurfRstFunction::Mults()`
     pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
         {
-            unsafe { crate::ffi::Blend_SurfRstFunction_mults(self as *mut Self, TMults) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Blend_SurfRstFunction_mults(self as *mut Self, TMults) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4413,8 +5097,11 @@ impl SurfRstFunction {
             let __result = unsafe {
                 crate::ffi::Blend_SurfRstFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4439,8 +5126,11 @@ impl SurfRstFunction {
             let __result = unsafe {
                 crate::ffi::Blend_SurfRstFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4453,91 +5143,90 @@ impl SurfRstFunction {
         Weigths: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_SurfRstFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to Blend_AppFunction
     pub fn as_app_function(&self) -> &AppFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_SurfRstFunction_as_Blend_AppFunction(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Blend_SurfRstFunction_as_Blend_AppFunction(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Blend_AppFunction (mutable)
     pub fn as_app_function_mut(&mut self) -> &mut AppFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_SurfRstFunction_as_Blend_AppFunction_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Blend_SurfRstFunction_as_Blend_AppFunction_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives
     pub fn as_math_function_set_with_derivatives(
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_SurfRstFunction_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Blend_SurfRstFunction_as_math_FunctionSetWithDerivatives(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSetWithDerivatives (mutable)
     pub fn as_math_function_set_with_derivatives_mut(
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_SurfRstFunction_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Blend_SurfRstFunction_as_math_FunctionSetWithDerivatives_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_SurfRstFunction_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Blend_SurfRstFunction_as_math_FunctionSet(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Blend_SurfRstFunction_as_math_FunctionSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Blend_SurfRstFunction_as_math_FunctionSet_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Blend_SurfRstFunction_inherited_Resolution(
                     self as *const Self,
                     IC2d,
@@ -4546,7 +5235,9 @@ impl SurfRstFunction {
                     TolV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4556,8 +5247,11 @@ impl SurfRstFunction {
             let __result = unsafe {
                 crate::ffi::Blend_SurfRstFunction_inherited_Parameter(self as *const Self, P)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4567,8 +5261,11 @@ impl SurfRstFunction {
             let __result = unsafe {
                 crate::ffi::Blend_SurfRstFunction_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

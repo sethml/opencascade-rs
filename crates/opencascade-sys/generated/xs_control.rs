@@ -14,8 +14,11 @@ pub fn session(
 ) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
     {
         let __result = unsafe { crate::ffi::XSControl_session(pilot) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `XSControl.hxx`:42 - `XSControl::Vars`
@@ -26,8 +29,11 @@ pub fn vars(
 ) -> crate::OwnedPtr<crate::ffi::HandleXSControlVars> {
     {
         let __result = unsafe { crate::ffi::XSControl_vars(pilot) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 
@@ -63,8 +69,10 @@ impl ConnectedShapes {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XSControl_ConnectedShapes_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -78,8 +86,10 @@ impl ConnectedShapes {
             let __result = unsafe {
                 crate::ffi::XSControl_ConnectedShapes_ctor_handlexscontroltransferreader(TR)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -88,8 +98,11 @@ impl ConnectedShapes {
     /// TransferProcess which may change, while the TransferReader does not
     pub fn set_reader(&mut self, TR: &crate::ffi::HandleXSControlTransferReader) {
         {
-            unsafe { crate::ffi::XSControl_ConnectedShapes_set_reader(self as *mut Self, TR) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XSControl_ConnectedShapes_set_reader(self as *mut Self, TR) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -113,8 +126,11 @@ impl ConnectedShapes {
                     explored,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -125,8 +141,11 @@ impl ConnectedShapes {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_ConnectedShapes_explore_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -135,8 +154,11 @@ impl ConnectedShapes {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_ConnectedShapes_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -152,8 +174,11 @@ impl ConnectedShapes {
             let __result = unsafe {
                 crate::ffi::XSControl_ConnectedShapes_adjacent_entities(ashape, TP, type_.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -161,8 +186,11 @@ impl ConnectedShapes {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::XSControl_ConnectedShapes_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -170,113 +198,111 @@ impl ConnectedShapes {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::XSControl_ConnectedShapes_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_SelectExplore
     pub fn as_if_select_select_explore(&self) -> &crate::if_select::SelectExplore {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_ConnectedShapes_as_IFSelect_SelectExplore(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_ConnectedShapes_as_IFSelect_SelectExplore(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectExplore (mutable)
     pub fn as_if_select_select_explore_mut(&mut self) -> &mut crate::if_select::SelectExplore {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_ConnectedShapes_as_IFSelect_SelectExplore_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_ConnectedShapes_as_IFSelect_SelectExplore_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_ConnectedShapes_as_IFSelect_SelectDeduct(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_ConnectedShapes_as_IFSelect_SelectDeduct(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct (mutable)
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_ConnectedShapes_as_IFSelect_SelectDeduct_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_ConnectedShapes_as_IFSelect_SelectDeduct_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_ConnectedShapes_as_IFSelect_Selection(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_ConnectedShapes_as_IFSelect_Selection(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Selection (mutable)
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_ConnectedShapes_as_IFSelect_Selection_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_ConnectedShapes_as_IFSelect_Selection_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_ConnectedShapes_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_ConnectedShapes_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_ConnectedShapes_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_ConnectedShapes_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleXSControlConnectedShapes> {
-        {
-            let __result =
-                unsafe { crate::ffi::XSControl_ConnectedShapes_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::XSControl_ConnectedShapes_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
@@ -285,8 +311,11 @@ impl ConnectedShapes {
             let __result = unsafe {
                 crate::ffi::XSControl_ConnectedShapes_inherited_Level(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -299,8 +328,11 @@ impl ConnectedShapes {
             let __result = unsafe {
                 crate::ffi::XSControl_ConnectedShapes_inherited_RootResult(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -310,18 +342,23 @@ impl ConnectedShapes {
             let __result = unsafe {
                 crate::ffi::XSControl_ConnectedShapes_inherited_Label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_ConnectedShapes_inherited_SetInput(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -331,8 +368,11 @@ impl ConnectedShapes {
             let __result = unsafe {
                 crate::ffi::XSControl_ConnectedShapes_inherited_Input(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -342,8 +382,11 @@ impl ConnectedShapes {
             let __result = unsafe {
                 crate::ffi::XSControl_ConnectedShapes_inherited_HasInput(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -353,8 +396,11 @@ impl ConnectedShapes {
             let __result = unsafe {
                 crate::ffi::XSControl_ConnectedShapes_inherited_HasAlternate(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -364,8 +410,11 @@ impl ConnectedShapes {
             let __result = unsafe {
                 crate::ffi::XSControl_ConnectedShapes_inherited_Alternate(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -378,21 +427,26 @@ impl ConnectedShapes {
             let __result = unsafe {
                 crate::ffi::XSControl_ConnectedShapes_inherited_InputResult(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_ConnectedShapes_inherited_FillIterator(
                     self as *const Self,
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -405,8 +459,11 @@ impl ConnectedShapes {
             let __result = unsafe {
                 crate::ffi::XSControl_ConnectedShapes_inherited_UniqueResult(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -422,8 +479,11 @@ impl ConnectedShapes {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -436,8 +496,11 @@ impl ConnectedShapes {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -447,8 +510,11 @@ impl ConnectedShapes {
             let __result = unsafe {
                 crate::ffi::XSControl_ConnectedShapes_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -458,11 +524,14 @@ impl ConnectedShapes {
             let __result = unsafe {
                 crate::ffi::XSControl_ConnectedShapes_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -473,20 +542,25 @@ impl ConnectedShapes {
             let __result = unsafe {
                 crate::ffi::XSControl_ConnectedShapes_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_ConnectedShapes_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -498,16 +572,23 @@ impl ConnectedShapes {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::XSControl_ConnectedShapes_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XSControl_ConnectedShapes_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -523,78 +604,78 @@ unsafe impl crate::CppDeletable for HandleXSControlConnectedShapes {
 impl HandleXSControlConnectedShapes {
     /// Dereference this Handle to access the underlying XSControl_ConnectedShapes
     pub fn get(&self) -> &crate::ffi::XSControl_ConnectedShapes {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleXSControlConnectedShapes_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleXSControlConnectedShapes_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying XSControl_ConnectedShapes
     pub fn get_mut(&mut self) -> &mut crate::ffi::XSControl_ConnectedShapes {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleXSControlConnectedShapes_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleXSControlConnectedShapes_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<XSControl_ConnectedShapes> to Handle<IFSelect_SelectExplore>
     pub fn to_handle_select_explore(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExplore> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXSControlConnectedShapes_to_HandleIFSelectSelectExplore(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXSControlConnectedShapes_to_HandleIFSelectSelectExplore(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XSControl_ConnectedShapes> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXSControlConnectedShapes_to_HandleIFSelectSelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXSControlConnectedShapes_to_HandleIFSelectSelectDeduct(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XSControl_ConnectedShapes> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXSControlConnectedShapes_to_HandleIFSelectSelection(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXSControlConnectedShapes_to_HandleIFSelectSelection(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XSControl_ConnectedShapes> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXSControlConnectedShapes_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXSControlConnectedShapes_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -635,14 +716,16 @@ impl Controller {
         let c_theLongName = std::ffi::CString::new(theLongName).unwrap();
         let c_theShortName = std::ffi::CString::new(theShortName).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Controller_set_names(
                     self as *mut Self,
                     c_theLongName.as_ptr(),
                     c_theShortName.as_ptr(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -651,8 +734,11 @@ impl Controller {
     /// Names (see method Name)
     pub fn auto_record(&self) {
         {
-            unsafe { crate::ffi::XSControl_Controller_auto_record(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XSControl_Controller_auto_record(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -662,10 +748,12 @@ impl Controller {
     pub fn record(&self, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Controller_record(self as *const Self, c_name.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -677,8 +765,11 @@ impl Controller {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Controller_name(self as *const Self, rsc) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -688,8 +779,11 @@ impl Controller {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Controller_protocol(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -700,8 +794,11 @@ impl Controller {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Controller_work_library(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -712,8 +809,11 @@ impl Controller {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Controller_new_model(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -728,8 +828,11 @@ impl Controller {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Controller_actor_read(self as *const Self, model) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -740,8 +843,11 @@ impl Controller {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Controller_actor_write(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -752,7 +858,7 @@ impl Controller {
     /// Then, for each value a little help can be attached
     pub fn set_mode_write(&mut self, modemin: i32, modemax: i32, shape: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Controller_set_mode_write(
                     self as *mut Self,
                     modemin,
@@ -760,7 +866,9 @@ impl Controller {
                     shape,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -769,7 +877,7 @@ impl Controller {
     pub fn set_mode_write_help(&mut self, modetrans: i32, help: &str, shape: bool) {
         let c_help = std::ffi::CString::new(help).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Controller_set_mode_write_help(
                     self as *mut Self,
                     modetrans,
@@ -777,7 +885,9 @@ impl Controller {
                     shape,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -795,8 +905,11 @@ impl Controller {
                     shape,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -812,8 +925,11 @@ impl Controller {
                     shape,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -829,8 +945,11 @@ impl Controller {
                     shape,
                 )
             };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -852,8 +971,11 @@ impl Controller {
                     modetrans,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -887,8 +1009,11 @@ impl Controller {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            crate::if_select::ReturnStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::ReturnStatus::try_from(__val).unwrap()
         }
     }
 
@@ -904,8 +1029,11 @@ impl Controller {
                     modetrans,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -935,8 +1063,11 @@ impl Controller {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            crate::if_select::ReturnStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::ReturnStatus::try_from(__val).unwrap()
         }
     }
 
@@ -957,7 +1088,7 @@ impl Controller {
     ) {
         let c_theName = std::ffi::CString::new(theName).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Controller_add_session_item(
                     self as *mut Self,
                     theItem,
@@ -965,7 +1096,9 @@ impl Controller {
                     toApply,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -984,8 +1117,11 @@ impl Controller {
                     c_theName.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -993,8 +1129,11 @@ impl Controller {
     /// Customises a WorkSession, by adding to it the recorded items (by AddSessionItem)
     pub fn customise(&mut self, WS: &mut crate::ffi::HandleXSControlWorkSession) {
         {
-            unsafe { crate::ffi::XSControl_Controller_customise(self as *mut Self, WS) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XSControl_Controller_customise(self as *mut Self, WS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1003,8 +1142,11 @@ impl Controller {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Controller_adaptor_session(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1013,8 +1155,11 @@ impl Controller {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Controller_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1025,8 +1170,11 @@ impl Controller {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
             let __result = unsafe { crate::ffi::XSControl_Controller_recorded(c_name.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1034,8 +1182,11 @@ impl Controller {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::XSControl_Controller_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1043,31 +1194,33 @@ impl Controller {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::XSControl_Controller_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_Controller_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::XSControl_Controller_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_Controller_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_Controller_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1076,8 +1229,11 @@ impl Controller {
             let __result = unsafe {
                 crate::ffi::XSControl_Controller_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1087,8 +1243,11 @@ impl Controller {
             let __result = unsafe {
                 crate::ffi::XSControl_Controller_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1097,11 +1256,14 @@ impl Controller {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Controller_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1112,18 +1274,23 @@ impl Controller {
             let __result = unsafe {
                 crate::ffi::XSControl_Controller_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Controller_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1133,16 +1300,22 @@ impl Controller {
             let __result = unsafe {
                 crate::ffi::XSControl_Controller_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::XSControl_Controller_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XSControl_Controller_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1158,35 +1331,31 @@ unsafe impl crate::CppDeletable for HandleXSControlController {
 impl HandleXSControlController {
     /// Dereference this Handle to access the underlying XSControl_Controller
     pub fn get(&self) -> &crate::ffi::XSControl_Controller {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleXSControlController_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleXSControlController_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying XSControl_Controller
     pub fn get_mut(&mut self) -> &mut crate::ffi::XSControl_Controller {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleXSControlController_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleXSControlController_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<XSControl_Controller> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXSControlController_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXSControlController_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<XSControl_Controller> to Handle<IGESControl_Controller>
@@ -1195,16 +1364,18 @@ impl HandleXSControlController {
     pub fn downcast_to_iges_control_controller(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESControlController>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleXSControlController_downcast_to_HandleIGESControlController(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1214,16 +1385,18 @@ impl HandleXSControlController {
     pub fn downcast_to_stepcaf_control_controller(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPCAFControlController>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleXSControlController_downcast_to_HandleSTEPCAFControlController(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1233,16 +1406,18 @@ impl HandleXSControlController {
     pub fn downcast_to_step_control_controller(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPControlController>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleXSControlController_downcast_to_HandleSTEPControlController(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -1276,8 +1451,10 @@ impl FuncShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XSControl_FuncShape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1285,8 +1462,10 @@ impl FuncShape {
     /// Defines and loads all functions which work on shapes for XSControl (as ActFunc)
     pub fn init() {
         {
-            unsafe { crate::ffi::XSControl_FuncShape_init() };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::XSControl_FuncShape_init() };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1311,8 +1490,11 @@ impl FuncShape {
             let __result = unsafe {
                 crate::ffi::XSControl_FuncShape_more_shapes(session, list, c_name.as_ptr())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1350,8 +1532,11 @@ impl FuncShape {
                     resvar,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1380,8 +1565,10 @@ impl Functions {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XSControl_Functions_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1389,8 +1576,10 @@ impl Functions {
     /// Defines and loads all functions for XSControl (as ActFunc)
     pub fn init() {
         {
-            unsafe { crate::ffi::XSControl_Functions_init() };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::XSControl_Functions_init() };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1446,8 +1635,10 @@ impl Reader {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XSControl_Reader_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1458,8 +1649,10 @@ impl Reader {
         let c_norm = std::ffi::CString::new(norm).unwrap();
         {
             let __result = unsafe { crate::ffi::XSControl_Reader_ctor_charptr(c_norm.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1475,8 +1668,10 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::XSControl_Reader_ctor_handlexscontrolworksession_bool(WS, scratch)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1499,8 +1694,11 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::XSControl_Reader_set_norm(self as *mut Self, c_norm.as_ptr())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1508,8 +1706,11 @@ impl Reader {
     /// Sets a specific session to <me>
     pub fn set_ws(&mut self, WS: &crate::ffi::HandleXSControlWorkSession, scratch: bool) {
         {
-            unsafe { crate::ffi::XSControl_Reader_set_ws(self as *mut Self, WS, scratch) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XSControl_Reader_set_ws(self as *mut Self, WS, scratch) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1518,8 +1719,11 @@ impl Reader {
     pub fn ws(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
         {
             let __result = unsafe { crate::ffi::XSControl_Reader_ws(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1532,8 +1736,11 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::XSControl_Reader_read_file(self as *mut Self, c_filename.as_ptr())
             };
-            crate::check_exception();
-            crate::if_select::ReturnStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::ReturnStatus::try_from(__val).unwrap()
         }
     }
 
@@ -1553,8 +1760,11 @@ impl Reader {
                     theIStream,
                 )
             };
-            crate::check_exception();
-            crate::if_select::ReturnStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::ReturnStatus::try_from(__val).unwrap()
         }
     }
 
@@ -1563,8 +1773,11 @@ impl Reader {
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
         {
             let __result = unsafe { crate::ffi::XSControl_Reader_model(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1611,8 +1824,11 @@ impl Reader {
                     c_second.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1636,8 +1852,11 @@ impl Reader {
                     ent,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1649,8 +1868,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Reader_nb_roots_for_transfer(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1665,8 +1887,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Reader_root_for_transfer(self as *mut Self, num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1682,8 +1907,11 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::XSControl_Reader_transfer_one_root(self as *mut Self, num, theProgress)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1696,8 +1924,11 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::XSControl_Reader_transfer_one(self as *mut Self, num, theProgress)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1714,8 +1945,11 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::XSControl_Reader_transfer_entity(self as *mut Self, start, theProgress)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1733,8 +1967,11 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::XSControl_Reader_transfer_list(self as *mut Self, list, theProgress)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1747,8 +1984,11 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::XSControl_Reader_transfer_roots(self as *mut Self, theProgress)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1757,8 +1997,10 @@ impl Reader {
     /// may have accumulated in calls to TransferOne or TransferRoot.C
     pub fn clear_shapes(&mut self) {
         {
-            unsafe { crate::ffi::XSControl_Reader_clear_shapes(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::XSControl_Reader_clear_shapes(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1767,8 +2009,11 @@ impl Reader {
     pub fn nb_shapes(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::XSControl_Reader_nb_shapes(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1780,8 +2025,11 @@ impl Reader {
     pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::XSControl_Reader_shape(self as *const Self, num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1794,8 +2042,11 @@ impl Reader {
     pub fn one_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::XSControl_Reader_one_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1812,14 +2063,16 @@ impl Reader {
         mode: crate::if_select::PrintCount,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Reader_print_check_load_bool_printcount(
                     self as *const Self,
                     failsonly,
                     mode.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1832,7 +2085,7 @@ impl Reader {
         mode: crate::if_select::PrintCount,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Reader_print_check_load_ostream_bool_printcount(
                     self as *const Self,
                     theStream,
@@ -1840,7 +2093,9 @@ impl Reader {
                     mode.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1857,14 +2112,16 @@ impl Reader {
         mode: crate::if_select::PrintCount,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Reader_print_check_transfer_bool_printcount(
                     self as *const Self,
                     failsonly,
                     mode.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1878,7 +2135,7 @@ impl Reader {
         mode: crate::if_select::PrintCount,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Reader_print_check_transfer_ostream_bool_printcount(
                     self as *const Self,
                     theStream,
@@ -1886,7 +2143,9 @@ impl Reader {
                     mode.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1920,14 +2179,16 @@ impl Reader {
     /// If mode is not set, only the list of all entities per warning is given.
     pub fn print_stats_transfer_int2(&self, what: i32, mode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Reader_print_stats_transfer_int2(
                     self as *const Self,
                     what,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1940,7 +2201,7 @@ impl Reader {
         mode: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Reader_print_stats_transfer_ostream_int2(
                     self as *const Self,
                     theStream,
@@ -1948,7 +2209,9 @@ impl Reader {
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1962,7 +2225,7 @@ impl Reader {
         nbWithFail: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Reader_get_stats_transfer(
                     self as *const Self,
                     list,
@@ -1971,7 +2234,9 @@ impl Reader {
                     nbWithFail,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1983,13 +2248,15 @@ impl Reader {
         theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Reader_set_shape_fix_parameters_parametermap(
                     self as *mut Self,
                     theParameters,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2006,10 +2273,12 @@ impl Reader {
         theAdditionalParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Reader_set_shape_fix_parameters_shapefixparameters_parametermap(self as *mut Self, theParameters, theAdditionalParameters)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2021,8 +2290,11 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::XSControl_Reader_get_shape_fix_parameters(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2031,10 +2303,12 @@ impl Reader {
     /// @param theFlags The flags defining operations to be performed on shapes.
     pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Reader_set_shape_process_flags(self as *mut Self, theFlags)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2047,8 +2321,11 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::XSControl_Reader_get_shape_process_flags(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -2095,8 +2372,10 @@ impl SelectForTransfer {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XSControl_SelectForTransfer_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2110,8 +2389,10 @@ impl SelectForTransfer {
             let __result = unsafe {
                 crate::ffi::XSControl_SelectForTransfer_ctor_handlexscontroltransferreader(TR)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2120,8 +2401,12 @@ impl SelectForTransfer {
     /// which may change, while the TransferReader does not
     pub fn set_reader(&mut self, TR: &crate::ffi::HandleXSControlTransferReader) {
         {
-            unsafe { crate::ffi::XSControl_SelectForTransfer_set_reader(self as *mut Self, TR) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XSControl_SelectForTransfer_set_reader(self as *mut Self, TR)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2130,8 +2415,12 @@ impl SelectForTransfer {
     /// This definition oversedes the creation with a TransferReader
     pub fn set_actor(&mut self, act: &crate::ffi::HandleTransferActorOfTransientProcess) {
         {
-            unsafe { crate::ffi::XSControl_SelectForTransfer_set_actor(self as *mut Self, act) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XSControl_SelectForTransfer_set_actor(self as *mut Self, act)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2143,8 +2432,11 @@ impl SelectForTransfer {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_SelectForTransfer_actor(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2155,8 +2447,11 @@ impl SelectForTransfer {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_SelectForTransfer_reader(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2173,8 +2468,11 @@ impl SelectForTransfer {
             let __result = unsafe {
                 crate::ffi::XSControl_SelectForTransfer_sort(self as *const Self, rank, ent, model)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2185,8 +2483,11 @@ impl SelectForTransfer {
             let __result = unsafe {
                 crate::ffi::XSControl_SelectForTransfer_extract_label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2196,8 +2497,11 @@ impl SelectForTransfer {
             let __result = unsafe {
                 crate::ffi::XSControl_SelectForTransfer_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2205,8 +2509,11 @@ impl SelectForTransfer {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::XSControl_SelectForTransfer_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2214,117 +2521,111 @@ impl SelectForTransfer {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::XSControl_SelectForTransfer_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_SelectExtract
     pub fn as_if_select_select_extract(&self) -> &crate::if_select::SelectExtract {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_SelectForTransfer_as_IFSelect_SelectExtract(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_SelectForTransfer_as_IFSelect_SelectExtract(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectExtract (mutable)
     pub fn as_if_select_select_extract_mut(&mut self) -> &mut crate::if_select::SelectExtract {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_SelectForTransfer_as_IFSelect_SelectExtract_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_SelectForTransfer_as_IFSelect_SelectExtract_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_SelectForTransfer_as_IFSelect_SelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_SelectForTransfer_as_IFSelect_SelectDeduct(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct (mutable)
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_SelectForTransfer_as_IFSelect_SelectDeduct_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_SelectForTransfer_as_IFSelect_SelectDeduct_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_SelectForTransfer_as_IFSelect_Selection(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_SelectForTransfer_as_IFSelect_Selection(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Selection (mutable)
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_SelectForTransfer_as_IFSelect_Selection_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_SelectForTransfer_as_IFSelect_Selection_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_SelectForTransfer_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_SelectForTransfer_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_SelectForTransfer_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_SelectForTransfer_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleXSControlSelectForTransfer> {
-        {
-            let __result =
-                unsafe { crate::ffi::XSControl_SelectForTransfer_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::XSControl_SelectForTransfer_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
@@ -2333,21 +2634,26 @@ impl SelectForTransfer {
             let __result = unsafe {
                 crate::ffi::XSControl_SelectForTransfer_inherited_IsDirect(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_SelectForTransfer_inherited_SetDirect(
                     self as *mut Self,
                     direct,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2360,8 +2666,11 @@ impl SelectForTransfer {
             let __result = unsafe {
                 crate::ffi::XSControl_SelectForTransfer_inherited_RootResult(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2381,8 +2690,11 @@ impl SelectForTransfer {
                     G,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2392,18 +2704,23 @@ impl SelectForTransfer {
             let __result = unsafe {
                 crate::ffi::XSControl_SelectForTransfer_inherited_Label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_SelectForTransfer_inherited_SetInput(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2413,8 +2730,11 @@ impl SelectForTransfer {
             let __result = unsafe {
                 crate::ffi::XSControl_SelectForTransfer_inherited_Input(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2424,8 +2744,11 @@ impl SelectForTransfer {
             let __result = unsafe {
                 crate::ffi::XSControl_SelectForTransfer_inherited_HasInput(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2435,8 +2758,11 @@ impl SelectForTransfer {
             let __result = unsafe {
                 crate::ffi::XSControl_SelectForTransfer_inherited_HasAlternate(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2446,8 +2772,11 @@ impl SelectForTransfer {
             let __result = unsafe {
                 crate::ffi::XSControl_SelectForTransfer_inherited_Alternate(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2463,21 +2792,26 @@ impl SelectForTransfer {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_SelectForTransfer_inherited_FillIterator(
                     self as *const Self,
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2493,8 +2827,11 @@ impl SelectForTransfer {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2510,8 +2847,11 @@ impl SelectForTransfer {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2524,8 +2864,11 @@ impl SelectForTransfer {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2538,8 +2881,11 @@ impl SelectForTransfer {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2549,11 +2895,14 @@ impl SelectForTransfer {
             let __result = unsafe {
                 crate::ffi::XSControl_SelectForTransfer_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2564,20 +2913,25 @@ impl SelectForTransfer {
             let __result = unsafe {
                 crate::ffi::XSControl_SelectForTransfer_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_SelectForTransfer_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2589,18 +2943,23 @@ impl SelectForTransfer {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_SelectForTransfer_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2616,78 +2975,78 @@ unsafe impl crate::CppDeletable for HandleXSControlSelectForTransfer {
 impl HandleXSControlSelectForTransfer {
     /// Dereference this Handle to access the underlying XSControl_SelectForTransfer
     pub fn get(&self) -> &crate::ffi::XSControl_SelectForTransfer {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleXSControlSelectForTransfer_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleXSControlSelectForTransfer_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying XSControl_SelectForTransfer
     pub fn get_mut(&mut self) -> &mut crate::ffi::XSControl_SelectForTransfer {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleXSControlSelectForTransfer_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleXSControlSelectForTransfer_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<XSControl_SelectForTransfer> to Handle<IFSelect_SelectExtract>
     pub fn to_handle_select_extract(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExtract> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXSControlSelectForTransfer_to_HandleIFSelectSelectExtract(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXSControlSelectForTransfer_to_HandleIFSelectSelectExtract(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XSControl_SelectForTransfer> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXSControlSelectForTransfer_to_HandleIFSelectSelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXSControlSelectForTransfer_to_HandleIFSelectSelectDeduct(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XSControl_SelectForTransfer> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXSControlSelectForTransfer_to_HandleIFSelectSelection(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXSControlSelectForTransfer_to_HandleIFSelectSelection(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XSControl_SelectForTransfer> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXSControlSelectForTransfer_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXSControlSelectForTransfer_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<XSControl_SelectForTransfer> to Handle<STEPSelections_SelectForTransfer>
@@ -2696,14 +3055,16 @@ impl HandleXSControlSelectForTransfer {
     pub fn downcast_to_select_for_transfer(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectForTransfer>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleXSControlSelectForTransfer_downcast_to_HandleSTEPSelectionsSelectForTransfer(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -2741,8 +3102,10 @@ impl SignTransferStatus {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XSControl_SignTransferStatus_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2756,8 +3119,10 @@ impl SignTransferStatus {
             let __result = unsafe {
                 crate::ffi::XSControl_SignTransferStatus_ctor_handlexscontroltransferreader(TR)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2765,8 +3130,12 @@ impl SignTransferStatus {
     /// Sets a TransferReader to work
     pub fn set_reader(&mut self, TR: &crate::ffi::HandleXSControlTransferReader) {
         {
-            unsafe { crate::ffi::XSControl_SignTransferStatus_set_reader(self as *mut Self, TR) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XSControl_SignTransferStatus_set_reader(self as *mut Self, TR)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2775,8 +3144,11 @@ impl SignTransferStatus {
     /// This definition oversedes the creation with a TransferReader
     pub fn set_map(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
         {
-            unsafe { crate::ffi::XSControl_SignTransferStatus_set_map(self as *mut Self, TP) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XSControl_SignTransferStatus_set_map(self as *mut Self, TP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2788,8 +3160,11 @@ impl SignTransferStatus {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_SignTransferStatus_map(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2800,8 +3175,11 @@ impl SignTransferStatus {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_SignTransferStatus_reader(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2817,8 +3195,11 @@ impl SignTransferStatus {
             let __result = unsafe {
                 crate::ffi::XSControl_SignTransferStatus_value(self as *const Self, ent, model)
             };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2828,8 +3209,11 @@ impl SignTransferStatus {
             let __result = unsafe {
                 crate::ffi::XSControl_SignTransferStatus_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2837,8 +3221,11 @@ impl SignTransferStatus {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::XSControl_SignTransferStatus_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2847,121 +3234,118 @@ impl SignTransferStatus {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_SignTransferStatus_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_Signature
     pub fn as_if_select_signature(&self) -> &crate::if_select::Signature {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_SignTransferStatus_as_IFSelect_Signature(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_SignTransferStatus_as_IFSelect_Signature(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Signature (mutable)
     pub fn as_if_select_signature_mut(&mut self) -> &mut crate::if_select::Signature {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_SignTransferStatus_as_IFSelect_Signature_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_SignTransferStatus_as_IFSelect_Signature_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Interface_SignType
     pub fn as_interface_sign_type(&self) -> &crate::interface::SignType {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_SignTransferStatus_as_Interface_SignType(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_SignTransferStatus_as_Interface_SignType(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Interface_SignType (mutable)
     pub fn as_interface_sign_type_mut(&mut self) -> &mut crate::interface::SignType {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_SignTransferStatus_as_Interface_SignType_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_SignTransferStatus_as_Interface_SignType_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to MoniTool_SignText
     pub fn as_moni_tool_sign_text(&self) -> &crate::moni_tool::SignText {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_SignTransferStatus_as_MoniTool_SignText(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_SignTransferStatus_as_MoniTool_SignText(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to MoniTool_SignText (mutable)
     pub fn as_moni_tool_sign_text_mut(&mut self) -> &mut crate::moni_tool::SignText {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_SignTransferStatus_as_MoniTool_SignText_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_SignTransferStatus_as_MoniTool_SignText_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_SignTransferStatus_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_SignTransferStatus_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_SignTransferStatus_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_SignTransferStatus_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleXSControlSignTransferStatus> {
-        {
-            let __result =
-                unsafe { crate::ffi::XSControl_SignTransferStatus_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::XSControl_SignTransferStatus_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_SignTransferStatus_inherited_SetIntCase(
                     self as *mut Self,
                     hasmin,
@@ -2970,7 +3354,9 @@ impl SignTransferStatus {
                     valmax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2992,8 +3378,11 @@ impl SignTransferStatus {
                     valmax,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3003,8 +3392,11 @@ impl SignTransferStatus {
             let __result = unsafe {
                 crate::ffi::XSControl_SignTransferStatus_inherited_CaseList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3014,8 +3406,11 @@ impl SignTransferStatus {
             let __result = unsafe {
                 crate::ffi::XSControl_SignTransferStatus_inherited_Label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3037,8 +3432,11 @@ impl SignTransferStatus {
                     exact,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3056,8 +3454,11 @@ impl SignTransferStatus {
                     context,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3073,8 +3474,11 @@ impl SignTransferStatus {
                     ent,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3087,8 +3491,11 @@ impl SignTransferStatus {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3101,8 +3508,11 @@ impl SignTransferStatus {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3112,11 +3522,14 @@ impl SignTransferStatus {
             let __result = unsafe {
                 crate::ffi::XSControl_SignTransferStatus_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3127,20 +3540,25 @@ impl SignTransferStatus {
             let __result = unsafe {
                 crate::ffi::XSControl_SignTransferStatus_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_SignTransferStatus_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3152,18 +3570,23 @@ impl SignTransferStatus {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_SignTransferStatus_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3179,74 +3602,74 @@ unsafe impl crate::CppDeletable for HandleXSControlSignTransferStatus {
 impl HandleXSControlSignTransferStatus {
     /// Dereference this Handle to access the underlying XSControl_SignTransferStatus
     pub fn get(&self) -> &crate::ffi::XSControl_SignTransferStatus {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleXSControlSignTransferStatus_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleXSControlSignTransferStatus_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying XSControl_SignTransferStatus
     pub fn get_mut(&mut self) -> &mut crate::ffi::XSControl_SignTransferStatus {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleXSControlSignTransferStatus_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleXSControlSignTransferStatus_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<XSControl_SignTransferStatus> to Handle<IFSelect_Signature>
     pub fn to_handle_signature(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXSControlSignTransferStatus_to_HandleIFSelectSignature(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXSControlSignTransferStatus_to_HandleIFSelectSignature(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XSControl_SignTransferStatus> to Handle<Interface_SignType>
     pub fn to_handle_sign_type(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceSignType> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXSControlSignTransferStatus_to_HandleInterfaceSignType(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXSControlSignTransferStatus_to_HandleInterfaceSignType(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XSControl_SignTransferStatus> to Handle<MoniTool_SignText>
     pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi::HandleMoniToolSignText> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXSControlSignTransferStatus_to_HandleMoniToolSignText(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXSControlSignTransferStatus_to_HandleMoniToolSignText(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XSControl_SignTransferStatus> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXSControlSignTransferStatus_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXSControlSignTransferStatus_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3287,8 +3710,10 @@ impl TransferReader {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XSControl_TransferReader_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3297,10 +3722,12 @@ impl TransferReader {
     /// Elsewhere, the Actor must be provided directly
     pub fn set_controller(&mut self, theControl: &crate::ffi::HandleXSControlController) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_TransferReader_set_controller(self as *mut Self, theControl)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3309,8 +3736,12 @@ impl TransferReader {
     /// Controller is not set
     pub fn set_actor(&mut self, theActor: &crate::ffi::HandleTransferActorOfTransientProcess) {
         {
-            unsafe { crate::ffi::XSControl_TransferReader_set_actor(self as *mut Self, theActor) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XSControl_TransferReader_set_actor(self as *mut Self, theActor)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3321,8 +3752,11 @@ impl TransferReader {
     pub fn actor(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess> {
         {
             let __result = unsafe { crate::ffi::XSControl_TransferReader_actor(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3331,8 +3765,12 @@ impl TransferReader {
     /// from another one, to be lost (see also Clear)
     pub fn set_model(&mut self, theModel: &crate::ffi::HandleInterfaceInterfaceModel) {
         {
-            unsafe { crate::ffi::XSControl_TransferReader_set_model(self as *mut Self, theModel) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XSControl_TransferReader_set_model(self as *mut Self, theModel)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3340,8 +3778,12 @@ impl TransferReader {
     /// Sets a Graph and its InterfaceModel (calls SetModel)
     pub fn set_graph(&mut self, theGraph: &crate::ffi::HandleInterfaceHGraph) {
         {
-            unsafe { crate::ffi::XSControl_TransferReader_set_graph(self as *mut Self, theGraph) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XSControl_TransferReader_set_graph(self as *mut Self, theGraph)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3351,8 +3793,11 @@ impl TransferReader {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_TransferReader_model(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3362,14 +3807,16 @@ impl TransferReader {
     pub fn set_context(&mut self, theName: &str, theCtx: &crate::ffi::HandleStandardTransient) {
         let c_theName = std::ffi::CString::new(theName).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_TransferReader_set_context(
                     self as *mut Self,
                     c_theName.as_ptr(),
                     theCtx,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3393,8 +3840,11 @@ impl TransferReader {
                     theCtx,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3405,8 +3855,11 @@ impl TransferReader {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_TransferReader_context(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3415,13 +3868,15 @@ impl TransferReader {
     pub fn set_file_name(&mut self, theName: &str) {
         let c_theName = std::ffi::CString::new(theName).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_TransferReader_set_file_name(
                     self as *mut Self,
                     c_theName.as_ptr(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3431,8 +3886,11 @@ impl TransferReader {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_TransferReader_file_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3444,8 +3902,11 @@ impl TransferReader {
     /// +2 working data (model, context, transfer process)
     pub fn clear(&mut self, theMode: i32) {
         {
-            unsafe { crate::ffi::XSControl_TransferReader_clear(self as *mut Self, theMode) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XSControl_TransferReader_clear(self as *mut Self, theMode) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3458,8 +3919,11 @@ impl TransferReader {
             let __result = unsafe {
                 crate::ffi::XSControl_TransferReader_transient_process(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3469,10 +3933,12 @@ impl TransferReader {
     /// recorded in the new TransientProcess
     pub fn set_transient_process(&mut self, theTP: &crate::ffi::HandleTransferTransientProcess) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_TransferReader_set_transient_process(self as *mut Self, theTP)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3486,8 +3952,11 @@ impl TransferReader {
             let __result = unsafe {
                 crate::ffi::XSControl_TransferReader_record_result(self as *mut Self, theEnt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3500,8 +3969,11 @@ impl TransferReader {
             let __result = unsafe {
                 crate::ffi::XSControl_TransferReader_is_recorded(self as *const Self, theEnt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3513,8 +3985,11 @@ impl TransferReader {
             let __result = unsafe {
                 crate::ffi::XSControl_TransferReader_has_result(self as *const Self, theEnt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3525,8 +4000,11 @@ impl TransferReader {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_TransferReader_recorded_list(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3539,8 +4017,11 @@ impl TransferReader {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_TransferReader_skip(self as *mut Self, theEnt) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3551,8 +4032,11 @@ impl TransferReader {
             let __result = unsafe {
                 crate::ffi::XSControl_TransferReader_is_skipped(self as *const Self, theEnt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3565,8 +4049,11 @@ impl TransferReader {
             let __result = unsafe {
                 crate::ffi::XSControl_TransferReader_is_marked(self as *const Self, theEnt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3580,8 +4067,11 @@ impl TransferReader {
             let __result = unsafe {
                 crate::ffi::XSControl_TransferReader_final_result(self as *const Self, theEnt)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3596,8 +4086,11 @@ impl TransferReader {
             let __result = unsafe {
                 crate::ffi::XSControl_TransferReader_final_entity_label(self as *const Self, theEnt)
             };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3612,8 +4105,11 @@ impl TransferReader {
                     theEnt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3628,8 +4124,11 @@ impl TransferReader {
             let __result = unsafe {
                 crate::ffi::XSControl_TransferReader_result_from_number(self as *const Self, theNum)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3644,8 +4143,11 @@ impl TransferReader {
             let __result = unsafe {
                 crate::ffi::XSControl_TransferReader_transient_result(self as *const Self, theEnt)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3660,8 +4162,11 @@ impl TransferReader {
             let __result = unsafe {
                 crate::ffi::XSControl_TransferReader_shape_result(self as *const Self, theEnt)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3686,8 +4191,11 @@ impl TransferReader {
                     theMode,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3713,8 +4221,11 @@ impl TransferReader {
                     theMode,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3734,8 +4245,11 @@ impl TransferReader {
                     theMode,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3756,8 +4270,11 @@ impl TransferReader {
                     theMode,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3787,8 +4304,11 @@ impl TransferReader {
                     theLevel,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3810,8 +4330,11 @@ impl TransferReader {
                     FailsOnly,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3844,8 +4367,11 @@ impl TransferReader {
                     theResult,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3857,8 +4383,11 @@ impl TransferReader {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_TransferReader_begin_transfer(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3870,8 +4399,11 @@ impl TransferReader {
             let __result = unsafe {
                 crate::ffi::XSControl_TransferReader_recognize(self as *mut Self, theEnt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3895,8 +4427,11 @@ impl TransferReader {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3920,8 +4455,11 @@ impl TransferReader {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3944,8 +4482,11 @@ impl TransferReader {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3954,14 +4495,16 @@ impl TransferReader {
     /// if <ents> equates the starting model, clears all results
     pub fn transfer_clear(&mut self, theEnt: &crate::ffi::HandleStandardTransient, theLevel: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_TransferReader_transfer_clear(
                     self as *mut Self,
                     theEnt,
                     theLevel,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3975,7 +4518,7 @@ impl TransferReader {
         theMode: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_TransferReader_print_stats(
                     self as *const Self,
                     theStream,
@@ -3983,7 +4526,9 @@ impl TransferReader {
                     theMode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3995,8 +4540,11 @@ impl TransferReader {
             let __result = unsafe {
                 crate::ffi::XSControl_TransferReader_last_check_list(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4016,8 +4564,11 @@ impl TransferReader {
                     theRoots,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4035,8 +4586,11 @@ impl TransferReader {
             let __result = unsafe {
                 crate::ffi::XSControl_TransferReader_shape_result_list(self as *mut Self, theRec)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4045,8 +4599,11 @@ impl TransferReader {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_TransferReader_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4087,10 +4644,12 @@ impl TransferReader {
         theMode: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_TransferReader_print_stats_process(theTP, theWhat, theMode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4104,12 +4663,14 @@ impl TransferReader {
         theMode: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_TransferReader_print_stats_on_list(
                     theTP, theList, theWhat, theMode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4117,8 +4678,11 @@ impl TransferReader {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::XSControl_TransferReader_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4126,43 +4690,45 @@ impl TransferReader {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::XSControl_TransferReader_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_TransferReader_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_TransferReader_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_TransferReader_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_TransferReader_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleXSControlTransferReader> {
-        {
-            let __result =
-                unsafe { crate::ffi::XSControl_TransferReader_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::XSControl_TransferReader_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -4174,8 +4740,11 @@ impl TransferReader {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4185,8 +4754,11 @@ impl TransferReader {
             let __result = unsafe {
                 crate::ffi::XSControl_TransferReader_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4195,11 +4767,14 @@ impl TransferReader {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_TransferReader_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4210,20 +4785,25 @@ impl TransferReader {
             let __result = unsafe {
                 crate::ffi::XSControl_TransferReader_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_TransferReader_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4235,16 +4815,23 @@ impl TransferReader {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::XSControl_TransferReader_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XSControl_TransferReader_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4260,35 +4847,35 @@ unsafe impl crate::CppDeletable for HandleXSControlTransferReader {
 impl HandleXSControlTransferReader {
     /// Dereference this Handle to access the underlying XSControl_TransferReader
     pub fn get(&self) -> &crate::ffi::XSControl_TransferReader {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleXSControlTransferReader_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleXSControlTransferReader_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying XSControl_TransferReader
     pub fn get_mut(&mut self) -> &mut crate::ffi::XSControl_TransferReader {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleXSControlTransferReader_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleXSControlTransferReader_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<XSControl_TransferReader> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXSControlTransferReader_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXSControlTransferReader_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4318,8 +4905,10 @@ impl TransferWriter {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XSControl_TransferWriter_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4329,8 +4918,11 @@ impl TransferWriter {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_TransferWriter_finder_process(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4338,10 +4930,12 @@ impl TransferWriter {
     /// Sets a new FinderProcess and forgets the former one
     pub fn set_finder_process(&mut self, theFP: &crate::ffi::HandleTransferFinderProcess) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_TransferWriter_set_finder_process(self as *mut Self, theFP)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4351,8 +4945,11 @@ impl TransferWriter {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_TransferWriter_controller(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4360,10 +4957,12 @@ impl TransferWriter {
     /// Sets a new Controller, also sets a new FinderProcess
     pub fn set_controller(&mut self, theCtl: &crate::ffi::HandleXSControlController) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_TransferWriter_set_controller(self as *mut Self, theCtl)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4373,8 +4972,11 @@ impl TransferWriter {
     /// -1 create a new FinderProcess
     pub fn clear(&mut self, theMode: i32) {
         {
-            unsafe { crate::ffi::XSControl_TransferWriter_clear(self as *mut Self, theMode) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XSControl_TransferWriter_clear(self as *mut Self, theMode) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4387,8 +4989,11 @@ impl TransferWriter {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_TransferWriter_transfer_mode(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4396,10 +5001,12 @@ impl TransferWriter {
     /// Changes the Transfer Mode
     pub fn set_transfer_mode(&mut self, theMode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_TransferWriter_set_transfer_mode(self as *mut Self, theMode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4408,14 +5015,16 @@ impl TransferWriter {
     /// See PrintStatsProcess for details
     pub fn print_stats(&self, theWhat: i32, theMode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_TransferWriter_print_stats(
                     self as *const Self,
                     theWhat,
                     theMode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4429,8 +5038,11 @@ impl TransferWriter {
             let __result = unsafe {
                 crate::ffi::XSControl_TransferWriter_recognize_transient(self as *mut Self, theObj)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4455,8 +5067,11 @@ impl TransferWriter {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            crate::if_select::ReturnStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::ReturnStatus::try_from(__val).unwrap()
         }
     }
 
@@ -4468,8 +5083,11 @@ impl TransferWriter {
             let __result = unsafe {
                 crate::ffi::XSControl_TransferWriter_recognize_shape(self as *mut Self, theShape)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4494,8 +5112,11 @@ impl TransferWriter {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            crate::if_select::ReturnStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::ReturnStatus::try_from(__val).unwrap()
         }
     }
 
@@ -4506,8 +5127,11 @@ impl TransferWriter {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_TransferWriter_check_list(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4526,8 +5150,11 @@ impl TransferWriter {
                     theModel,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4536,8 +5163,11 @@ impl TransferWriter {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_TransferWriter_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4545,8 +5175,11 @@ impl TransferWriter {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::XSControl_TransferWriter_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4554,43 +5187,45 @@ impl TransferWriter {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::XSControl_TransferWriter_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_TransferWriter_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_TransferWriter_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_TransferWriter_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_TransferWriter_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleXSControlTransferWriter> {
-        {
-            let __result =
-                unsafe { crate::ffi::XSControl_TransferWriter_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::XSControl_TransferWriter_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -4602,8 +5237,11 @@ impl TransferWriter {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4613,8 +5251,11 @@ impl TransferWriter {
             let __result = unsafe {
                 crate::ffi::XSControl_TransferWriter_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4623,11 +5264,14 @@ impl TransferWriter {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_TransferWriter_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4638,20 +5282,25 @@ impl TransferWriter {
             let __result = unsafe {
                 crate::ffi::XSControl_TransferWriter_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_TransferWriter_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4663,16 +5312,23 @@ impl TransferWriter {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::XSControl_TransferWriter_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XSControl_TransferWriter_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4688,35 +5344,35 @@ unsafe impl crate::CppDeletable for HandleXSControlTransferWriter {
 impl HandleXSControlTransferWriter {
     /// Dereference this Handle to access the underlying XSControl_TransferWriter
     pub fn get(&self) -> &crate::ffi::XSControl_TransferWriter {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleXSControlTransferWriter_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleXSControlTransferWriter_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying XSControl_TransferWriter
     pub fn get_mut(&mut self) -> &mut crate::ffi::XSControl_TransferWriter {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleXSControlTransferWriter_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleXSControlTransferWriter_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<XSControl_TransferWriter> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXSControlTransferWriter_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXSControlTransferWriter_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4751,8 +5407,10 @@ impl Utils {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XSControl_Utils_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4762,8 +5420,12 @@ impl Utils {
     pub fn trace_line(&self, line: &str) {
         let c_line = std::ffi::CString::new(line).unwrap();
         {
-            unsafe { crate::ffi::XSControl_Utils_trace_line(self as *const Self, c_line.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XSControl_Utils_trace_line(self as *const Self, c_line.as_ptr())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4774,8 +5436,11 @@ impl Utils {
     /// (one new line per item)
     pub fn trace_lines(&self, lines: &crate::ffi::HandleStandardTransient) {
         {
-            unsafe { crate::ffi::XSControl_Utils_trace_lines(self as *const Self, lines) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XSControl_Utils_trace_lines(self as *const Self, lines) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4788,8 +5453,11 @@ impl Utils {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Utils_is_kind(self as *const Self, item, what) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4808,8 +5476,11 @@ impl Utils {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Utils_type_name(self as *const Self, item, nopk) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4822,8 +5493,11 @@ impl Utils {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Utils_tra_value(self as *const Self, list, num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4831,8 +5505,11 @@ impl Utils {
     pub fn new_seq_tra(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
         {
             let __result = unsafe { crate::ffi::XSControl_Utils_new_seq_tra(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4843,8 +5520,12 @@ impl Utils {
         traval: &crate::ffi::HandleStandardTransient,
     ) {
         {
-            unsafe { crate::ffi::XSControl_Utils_append_tra(self as *const Self, seqval, traval) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XSControl_Utils_append_tra(self as *const Self, seqval, traval)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4862,8 +5543,11 @@ impl Utils {
             let __result = unsafe {
                 crate::ffi::XSControl_Utils_date_string(self as *const Self, yy, mm, dd, hh, mn, ss)
             };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4880,7 +5564,7 @@ impl Utils {
     ) {
         let c_text = std::ffi::CString::new(text).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Utils_date_values(
                     self as *const Self,
                     c_text.as_ptr(),
@@ -4892,7 +5576,9 @@ impl Utils {
                     ss,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4908,8 +5594,11 @@ impl Utils {
                     strval,
                 )
             };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4922,8 +5611,11 @@ impl Utils {
             let __result = unsafe {
                 crate::ffi::XSControl_Utils_to_c_string_asciistring(self as *const Self, strval)
             };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4940,8 +5632,11 @@ impl Utils {
                     c_strcon.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4952,8 +5647,11 @@ impl Utils {
             let __result = unsafe {
                 crate::ffi::XSControl_Utils_to_a_string(self as *const Self, c_strcon.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4969,8 +5667,11 @@ impl Utils {
                     strval,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4983,8 +5684,11 @@ impl Utils {
             let __result = unsafe {
                 crate::ffi::XSControl_Utils_to_e_string_extendedstring(self as *const Self, strval)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4997,8 +5701,11 @@ impl Utils {
             let __result = unsafe {
                 crate::ffi::XSControl_Utils_to_h_string_char16ptr(self as *const Self, strcon)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5010,8 +5717,11 @@ impl Utils {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Utils_to_x_string(self as *const Self, strcon) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5022,8 +5732,11 @@ impl Utils {
             let __result = unsafe {
                 crate::ffi::XSControl_Utils_ascii_to_extended(self as *const Self, c_str.as_ptr())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5032,8 +5745,11 @@ impl Utils {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Utils_is_ascii(self as *const Self, str) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5042,8 +5758,11 @@ impl Utils {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Utils_extended_to_ascii(self as *const Self, str) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5056,8 +5775,11 @@ impl Utils {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Utils_c_str_value(self as *const Self, list, num) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5070,8 +5792,11 @@ impl Utils {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Utils_e_str_value(self as *const Self, list, num) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5082,8 +5807,11 @@ impl Utils {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Utils_new_seq_c_str(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5095,14 +5823,16 @@ impl Utils {
     ) {
         let c_strval = std::ffi::CString::new(strval).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Utils_append_c_str(
                     self as *const Self,
                     seqval,
                     c_strval.as_ptr(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5113,8 +5843,11 @@ impl Utils {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Utils_new_seq_e_str(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5125,10 +5858,12 @@ impl Utils {
         strval: *const u16,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Utils_append_e_str(self as *const Self, seqval, strval)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5142,8 +5877,11 @@ impl Utils {
             let __result = unsafe {
                 crate::ffi::XSControl_Utils_compound_from_seq(self as *const Self, seqval)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5162,8 +5900,11 @@ impl Utils {
             let __result = unsafe {
                 crate::ffi::XSControl_Utils_shape_type(self as *const Self, shape, compound)
             };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -5194,8 +5935,11 @@ impl Utils {
                     compound,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5208,8 +5952,11 @@ impl Utils {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Utils_shape_value(self as *const Self, seqv, num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5218,8 +5965,11 @@ impl Utils {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Utils_new_seq_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5230,8 +5980,12 @@ impl Utils {
         shape: &crate::topo_ds::Shape,
     ) {
         {
-            unsafe { crate::ffi::XSControl_Utils_append_shape(self as *const Self, seqv, shape) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XSControl_Utils_append_shape(self as *const Self, seqv, shape)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5248,8 +6002,11 @@ impl Utils {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Utils_shape_binder(self as *const Self, shape, hs) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5263,8 +6020,11 @@ impl Utils {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Utils_binder_shape(self as *const Self, tr) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5273,8 +6033,11 @@ impl Utils {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Utils_seq_length(self as *const Self, list) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5287,8 +6050,11 @@ impl Utils {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Utils_seq_to_arr(self as *const Self, seq, first) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5300,8 +6066,11 @@ impl Utils {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Utils_arr_to_seq(self as *const Self, arr) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5315,8 +6084,11 @@ impl Utils {
             let __result = unsafe {
                 crate::ffi::XSControl_Utils_seq_int_value(self as *const Self, list, num)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -5349,8 +6121,10 @@ impl Vars {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XSControl_Vars_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5358,8 +6132,11 @@ impl Vars {
     pub fn set(&mut self, name: &str, val: &crate::ffi::HandleStandardTransient) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe { crate::ffi::XSControl_Vars_set(self as *mut Self, c_name.as_ptr(), val) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XSControl_Vars_set(self as *mut Self, c_name.as_ptr(), val) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5370,8 +6147,11 @@ impl Vars {
     ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
         {
             let __result = unsafe { crate::ffi::XSControl_Vars_get(self as *const Self, name) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5383,8 +6163,11 @@ impl Vars {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Vars_get_geom(self as *const Self, name) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5396,8 +6179,11 @@ impl Vars {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Vars_get_curve2d(self as *const Self, name) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5409,8 +6195,11 @@ impl Vars {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Vars_get_curve(self as *const Self, name) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5422,8 +6211,11 @@ impl Vars {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Vars_get_surface(self as *const Self, name) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5431,10 +6223,12 @@ impl Vars {
     pub fn set_point(&mut self, name: &str, val: &crate::gp::Pnt) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Vars_set_point(self as *mut Self, c_name.as_ptr(), val)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5442,10 +6236,12 @@ impl Vars {
     pub fn set_point2d(&mut self, name: &str, val: &crate::gp::Pnt2d) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Vars_set_point2d(self as *mut Self, c_name.as_ptr(), val)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5454,8 +6250,11 @@ impl Vars {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Vars_get_point(self as *const Self, name, pnt) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5468,8 +6267,11 @@ impl Vars {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Vars_get_point2d(self as *const Self, name, pnt) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5477,10 +6279,12 @@ impl Vars {
     pub fn set_shape(&mut self, name: &str, val: &crate::topo_ds::Shape) {
         let c_name = std::ffi::CString::new(name).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Vars_set_shape(self as *mut Self, c_name.as_ptr(), val)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5492,8 +6296,11 @@ impl Vars {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Vars_get_shape(self as *const Self, name) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5501,8 +6308,11 @@ impl Vars {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::XSControl_Vars_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5510,8 +6320,11 @@ impl Vars {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::XSControl_Vars_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5519,40 +6332,43 @@ impl Vars {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::XSControl_Vars_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::XSControl_Vars_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::XSControl_Vars_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::XSControl_Vars_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::XSControl_Vars_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleXSControlVars> {
-        {
-            let __result = unsafe { crate::ffi::XSControl_Vars_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::XSControl_Vars_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -5561,8 +6377,11 @@ impl Vars {
             let __result = unsafe {
                 crate::ffi::XSControl_Vars_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5572,8 +6391,11 @@ impl Vars {
             let __result = unsafe {
                 crate::ffi::XSControl_Vars_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5582,11 +6404,14 @@ impl Vars {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Vars_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5596,16 +6421,23 @@ impl Vars {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_Vars_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::XSControl_Vars_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XSControl_Vars_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5615,16 +6447,21 @@ impl Vars {
             let __result = unsafe {
                 crate::ffi::XSControl_Vars_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::XSControl_Vars_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::XSControl_Vars_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5640,31 +6477,31 @@ unsafe impl crate::CppDeletable for HandleXSControlVars {
 impl HandleXSControlVars {
     /// Dereference this Handle to access the underlying XSControl_Vars
     pub fn get(&self) -> &crate::ffi::XSControl_Vars {
-        {
-            let __result = unsafe { crate::ffi::HandleXSControlVars_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleXSControlVars_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying XSControl_Vars
     pub fn get_mut(&mut self) -> &mut crate::ffi::XSControl_Vars {
-        {
-            let __result = unsafe { crate::ffi::HandleXSControlVars_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleXSControlVars_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<XSControl_Vars> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXSControlVars_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXSControlVars_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5694,8 +6531,10 @@ impl WorkSession {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XSControl_WorkSession_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5707,8 +6546,11 @@ impl WorkSession {
     /// mode = 7 to clear transfers, results
     pub fn clear_data(&mut self, theMode: i32) {
         {
-            unsafe { crate::ffi::XSControl_WorkSession_clear_data(self as *mut Self, theMode) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XSControl_WorkSession_clear_data(self as *mut Self, theMode) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5727,8 +6569,11 @@ impl WorkSession {
                     c_theNormName.as_ptr(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5736,8 +6581,12 @@ impl WorkSession {
     /// Selects a Norm defined by its Controller itself
     pub fn set_controller(&mut self, theCtl: &crate::ffi::HandleXSControlController) {
         {
-            unsafe { crate::ffi::XSControl_WorkSession_set_controller(self as *mut Self, theCtl) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XSControl_WorkSession_set_controller(self as *mut Self, theCtl)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5751,8 +6600,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_selected_norm(self as *const Self, theRsc)
             };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5762,8 +6614,11 @@ impl WorkSession {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_WorkSession_norm_adaptor(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5774,8 +6629,11 @@ impl WorkSession {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_WorkSession_context(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5784,10 +6642,12 @@ impl WorkSession {
     /// Sets it to the TransferReader
     pub fn set_all_context(&mut self, theContext: &crate::ffi::XSControl_WorkSessionMap) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_set_all_context(self as *mut Self, theContext)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5795,8 +6655,11 @@ impl WorkSession {
     /// Clears the whole current Context (nullifies it)
     pub fn clear_context(&mut self) {
         {
-            unsafe { crate::ffi::XSControl_WorkSession_clear_context(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XSControl_WorkSession_clear_context(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5820,8 +6683,11 @@ impl WorkSession {
                     theS,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5834,10 +6700,12 @@ impl WorkSession {
     /// 5 recreates TransferReader then begins a new transfer
     pub fn init_transfer_reader(&mut self, theMode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_init_transfer_reader(self as *mut Self, theMode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5845,10 +6713,12 @@ impl WorkSession {
     /// Sets a Transfer Reader, which manages transfers on reading
     pub fn set_transfer_reader(&mut self, theTR: &crate::ffi::HandleXSControlTransferReader) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_set_transfer_reader(self as *mut Self, theTR)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5858,8 +6728,11 @@ impl WorkSession {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_WorkSession_transfer_reader(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5869,8 +6742,11 @@ impl WorkSession {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_WorkSession_map_reader(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5884,8 +6760,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_set_map_reader(self as *mut Self, theTP)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5908,8 +6787,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_result(self as *const Self, theEnt, theMode)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5935,8 +6817,11 @@ impl WorkSession {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5952,8 +6837,11 @@ impl WorkSession {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5965,8 +6853,11 @@ impl WorkSession {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_WorkSession_new_model(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5976,8 +6867,11 @@ impl WorkSession {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_WorkSession_transfer_writer(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5990,8 +6884,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_set_map_writer(self as *mut Self, theFP)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6015,8 +6912,11 @@ impl WorkSession {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            crate::if_select::ReturnStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::ReturnStatus::try_from(__val).unwrap()
         }
     }
 
@@ -6030,8 +6930,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_transfer_write_check_list(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6039,16 +6942,22 @@ impl WorkSession {
     pub fn vars(&self) -> &crate::ffi::HandleXSControlVars {
         {
             let __result = unsafe { crate::ffi::XSControl_WorkSession_vars(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `XSControl_WorkSession.hxx`:191 - `XSControl_WorkSession::SetVars()`
     pub fn set_vars(&mut self, theVars: &crate::ffi::HandleXSControlVars) {
         {
-            unsafe { crate::ffi::XSControl_WorkSession_set_vars(self as *mut Self, theVars) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XSControl_WorkSession_set_vars(self as *mut Self, theVars) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6057,8 +6966,11 @@ impl WorkSession {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_WorkSession_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6066,8 +6978,11 @@ impl WorkSession {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::XSControl_WorkSession_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6075,76 +6990,80 @@ impl WorkSession {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::XSControl_WorkSession_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_WorkSession
     pub fn as_if_select_work_session(&self) -> &crate::if_select::WorkSession {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_WorkSession_as_IFSelect_WorkSession(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_WorkSession_as_IFSelect_WorkSession(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_WorkSession (mutable)
     pub fn as_if_select_work_session_mut(&mut self) -> &mut crate::if_select::WorkSession {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_WorkSession_as_IFSelect_WorkSession_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_WorkSession_as_IFSelect_WorkSession_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_WorkSession_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::XSControl_WorkSession_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::XSControl_WorkSession_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::XSControl_WorkSession_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
-        {
-            let __result = unsafe { crate::ffi::XSControl_WorkSession_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::XSControl_WorkSession_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:79 - `IFSelect_WorkSession::SetErrorHandle()`
     pub fn set_error_handle(&mut self, toHandle: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_SetErrorHandle(
                     self as *mut Self,
                     toHandle,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6154,8 +7073,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_ErrorHandle(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6165,28 +7087,35 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_ShareOut(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:89 - `IFSelect_WorkSession::SetShareOut()`
     pub fn set_share_out(&mut self, shareout: &crate::ffi::HandleIFSelectShareOut) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_SetShareOut(self as *mut Self, shareout)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:94 - `IFSelect_WorkSession::SetModeStat()`
     pub fn set_mode_stat(&mut self, theMode: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_SetModeStat(self as *mut Self, theMode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6196,18 +7125,23 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_GetModeStat(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:100 - `IFSelect_WorkSession::SetLibrary()`
     pub fn set_library(&mut self, theLib: &crate::ffi::HandleIFSelectWorkLibrary) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_SetLibrary(self as *mut Self, theLib)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6217,18 +7151,23 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_WorkLibrary(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:108 - `IFSelect_WorkSession::SetProtocol()`
     pub fn set_protocol(&mut self, protocol: &crate::ffi::HandleInterfaceProtocol) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_SetProtocol(self as *mut Self, protocol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6238,18 +7177,23 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_Protocol(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:118 - `IFSelect_WorkSession::SetSignType()`
     pub fn set_sign_type(&mut self, signtype: &crate::ffi::HandleIFSelectSignature) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_SetSignType(self as *mut Self, signtype)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6259,8 +7203,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_SignType(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6270,8 +7217,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_HasModel(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6282,14 +7232,16 @@ impl WorkSession {
         clearpointed: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_SetModel(
                     self as *mut Self,
                     model,
                     clearpointed,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6298,8 +7250,11 @@ impl WorkSession {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_WorkSession_inherited_Model(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6309,8 +7264,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_NbStartingEntities(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6323,8 +7281,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_StartingEntity(self as *const Self, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6334,8 +7295,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_StartingNumber(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6348,8 +7312,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_EntityLabel(self as *const Self, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6362,8 +7329,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_EntityName(self as *const Self, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6373,8 +7343,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_CategoryNumber(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6384,8 +7357,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_ComputeGraph(self as *mut Self, enforce)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6394,8 +7370,11 @@ impl WorkSession {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_WorkSession_inherited_HGraph(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6404,8 +7383,11 @@ impl WorkSession {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_WorkSession_inherited_Graph(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6418,8 +7400,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_Shareds(self as *mut Self, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6432,8 +7417,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_Sharings(self as *mut Self, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6443,8 +7431,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_IsLoaded(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6454,8 +7445,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_ComputeCheck(self as *mut Self, enforce)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6471,8 +7465,11 @@ impl WorkSession {
                     complete,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6490,8 +7487,11 @@ impl WorkSession {
                     complete,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6501,8 +7501,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_LastRunCheckList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6512,8 +7515,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_MaxIdent(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6523,8 +7529,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_Item(self as *const Self, id)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6534,8 +7543,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_ItemIdent(self as *const Self, item)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6545,8 +7557,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_HasName(self as *const Self, item)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6559,8 +7574,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_Name(self as *const Self, item)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6570,8 +7588,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_AddItem(self as *mut Self, item, active)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6581,8 +7602,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_SetActive(self as *mut Self, item, mode)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6592,16 +7616,23 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_RemoveItem(self as *mut Self, item)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:362 - `IFSelect_WorkSession::ClearItems()`
     pub fn clear_items(&mut self) {
         {
-            unsafe { crate::ffi::XSControl_WorkSession_inherited_ClearItems(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XSControl_WorkSession_inherited_ClearItems(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6614,8 +7645,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_ItemLabel(self as *const Self, id)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6628,8 +7662,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_ItemIdents(self as *const Self, type_)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6642,8 +7679,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_ItemNames(self as *const Self, type_)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6653,8 +7693,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_IntParam(self as *const Self, id)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6664,8 +7707,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_IntValue(self as *const Self, it)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6675,8 +7721,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_SetIntValue(self as *mut Self, it, val)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6689,8 +7738,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_TextParam(self as *const Self, id)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6703,8 +7755,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_TextValue(self as *const Self, par)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6714,8 +7769,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_Signature(self as *const Self, id)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6725,8 +7783,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_Selection(self as *const Self, id)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6739,8 +7800,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_EvalSelection(self as *const Self, sel)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6753,8 +7817,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_Sources(self as *const Self, sel)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6770,8 +7837,11 @@ impl WorkSession {
                     sel,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6789,8 +7859,11 @@ impl WorkSession {
                     list,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6808,8 +7881,11 @@ impl WorkSession {
                     sel,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6822,8 +7898,11 @@ impl WorkSession {
                     item,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6836,8 +7915,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_ItemSelection(self as *const Self, item)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6847,8 +7929,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_SignCounter(self as *const Self, id)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6866,8 +7951,11 @@ impl WorkSession {
                     forced,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6887,8 +7975,11 @@ impl WorkSession {
                     clear,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6900,21 +7991,26 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_AppliedDispatches(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:553 - `IFSelect_WorkSession::ClearShareOut()`
     pub fn clear_share_out(&mut self, onlydisp: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_ClearShareOut(
                     self as *mut Self,
                     onlydisp,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6924,8 +8020,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_Dispatch(self as *const Self, id)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6935,8 +8034,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_DispatchRank(self as *const Self, disp)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6946,21 +8048,26 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_ModelCopier(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:568 - `IFSelect_WorkSession::SetModelCopier()`
     pub fn set_model_copier(&mut self, copier: &crate::ffi::HandleIFSelectModelCopier) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_SetModelCopier(
                     self as *mut Self,
                     copier,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6973,8 +8080,11 @@ impl WorkSession {
                     formodel,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6990,8 +8100,11 @@ impl WorkSession {
                     formodel,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7004,8 +8117,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_GeneralModifier(self as *const Self, id)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7015,8 +8131,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_ModelModifier(self as *const Self, id)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7026,8 +8145,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_ModifierRank(self as *const Self, item)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7042,18 +8164,23 @@ impl WorkSession {
                     after,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:612 - `IFSelect_WorkSession::ClearFinalModifiers()`
     pub fn clear_final_modifiers(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_ClearFinalModifiers(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7071,8 +8198,11 @@ impl WorkSession {
                     item,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7088,8 +8218,11 @@ impl WorkSession {
                     modif,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7105,8 +8238,11 @@ impl WorkSession {
                     modif,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7116,8 +8252,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_Transformer(self as *const Self, id)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7130,8 +8269,11 @@ impl WorkSession {
                     transf,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7145,8 +8287,11 @@ impl WorkSession {
                     copy,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7166,8 +8311,11 @@ impl WorkSession {
                     copy,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7185,8 +8333,11 @@ impl WorkSession {
                     keep,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7196,8 +8347,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_FilePrefix(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7207,8 +8361,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_DefaultFileRoot(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7218,8 +8375,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_FileExtension(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7232,24 +8392,34 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_FileRoot(self as *const Self, disp)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:747 - `IFSelect_WorkSession::ClearFile()`
     pub fn clear_file(&mut self) {
         {
-            unsafe { crate::ffi::XSControl_WorkSession_inherited_ClearFile(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XSControl_WorkSession_inherited_ClearFile(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:752 - `IFSelect_WorkSession::EvaluateFile()`
     pub fn evaluate_file(&mut self) {
         {
-            unsafe { crate::ffi::XSControl_WorkSession_inherited_EvaluateFile(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XSControl_WorkSession_inherited_EvaluateFile(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7258,8 +8428,11 @@ impl WorkSession {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_WorkSession_inherited_NbFiles(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7272,8 +8445,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_FileModel(self as *const Self, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7283,21 +8459,26 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_FileName(self as *const Self, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:768 - `IFSelect_WorkSession::BeginSentFiles()`
     pub fn begin_sent_files(&mut self, record: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_BeginSentFiles(
                     self as *mut Self,
                     record,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7307,8 +8488,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_SentFiles(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7317,8 +8501,11 @@ impl WorkSession {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_WorkSession_inherited_SendSplit(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7328,8 +8515,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_EvalSplit(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7339,8 +8529,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_SentList(self as *const Self, count)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7350,8 +8543,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_MaxSendingCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7364,8 +8560,11 @@ impl WorkSession {
                     mode.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7375,8 +8574,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_NbSources(self as *const Self, sel)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7390,8 +8592,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_Source(self as *const Self, sel, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7404,8 +8609,11 @@ impl WorkSession {
                     sel,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7418,8 +8626,11 @@ impl WorkSession {
                     sel,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7437,8 +8648,11 @@ impl WorkSession {
                     input,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7458,8 +8672,11 @@ impl WorkSession {
                     formain,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7479,8 +8696,11 @@ impl WorkSession {
                     atnum,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7498,8 +8718,11 @@ impl WorkSession {
                     selrem,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7519,8 +8742,11 @@ impl WorkSession {
                     mode,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7533,8 +8759,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_GiveList(self as *const Self, obj)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7554,18 +8783,23 @@ impl WorkSession {
                     mode,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1006 - `IFSelect_WorkSession::QueryCheckList()`
     pub fn query_check_list(&mut self, chl: &crate::interface::CheckIterator) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_QueryCheckList(self as *mut Self, chl)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7578,8 +8812,11 @@ impl WorkSession {
                     ent,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7597,8 +8834,11 @@ impl WorkSession {
                     entson,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7609,79 +8849,95 @@ impl WorkSession {
         uselist: &crate::ffi::NCollection_Vector_Standard_Integer,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_SetParams(
                     self as *mut Self,
                     params,
                     uselist,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1052 - `IFSelect_WorkSession::TraceStatics()`
     pub fn trace_statics(&self, use_: i32, mode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_TraceStatics(
                     self as *const Self,
                     use_,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1056 - `IFSelect_WorkSession::DumpShare()`
     pub fn dump_share(&self) {
         {
-            unsafe { crate::ffi::XSControl_WorkSession_inherited_DumpShare(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XSControl_WorkSession_inherited_DumpShare(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1066 - `IFSelect_WorkSession::ListFinalModifiers()`
     pub fn list_final_modifiers(&self, formodel: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_ListFinalModifiers(
                     self as *const Self,
                     formodel,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1070 - `IFSelect_WorkSession::DumpSelection()`
     pub fn dump_selection(&self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_DumpSelection(self as *const Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1079 - `IFSelect_WorkSession::DumpModel()`
     pub fn dump_model(&mut self, level: i32, S: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_DumpModel(self as *mut Self, level, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1083 - `IFSelect_WorkSession::TraceDumpModel()`
     pub fn trace_dump_model(&mut self, mode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_TraceDumpModel(self as *mut Self, mode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7693,7 +8949,7 @@ impl WorkSession {
         S: &mut crate::ffi::Standard_OStream,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_DumpEntity(
                     self as *const Self,
                     ent,
@@ -7701,7 +8957,9 @@ impl WorkSession {
                     S,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7712,28 +8970,32 @@ impl WorkSession {
         S: &mut crate::ffi::Standard_OStream,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_PrintEntityStatus(
                     self as *mut Self,
                     ent,
                     S,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1103 - `IFSelect_WorkSession::TraceDumpEntity()`
     pub fn trace_dump_entity(&self, ent: &crate::ffi::HandleStandardTransient, level: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_TraceDumpEntity(
                     self as *const Self,
                     ent,
                     level,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7746,7 +9008,7 @@ impl WorkSession {
         mode: crate::if_select::PrintCount,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_PrintCheckList(
                     self as *const Self,
                     S,
@@ -7755,7 +9017,9 @@ impl WorkSession {
                     mode.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7767,7 +9031,7 @@ impl WorkSession {
         mode: crate::if_select::PrintCount,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_PrintSignatureList(
                     self as *const Self,
                     S,
@@ -7775,47 +9039,55 @@ impl WorkSession {
                     mode.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1128 - `IFSelect_WorkSession::EvaluateSelection()`
     pub fn evaluate_selection(&self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_EvaluateSelection(
                     self as *const Self,
                     sel,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1140 - `IFSelect_WorkSession::EvaluateDispatch()`
     pub fn evaluate_dispatch(&self, disp: &crate::ffi::HandleIFSelectDispatch, mode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_EvaluateDispatch(
                     self as *const Self,
                     disp,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1150 - `IFSelect_WorkSession::EvaluateComplete()`
     pub fn evaluate_complete(&self, mode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_EvaluateComplete(
                     self as *const Self,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7827,7 +9099,7 @@ impl WorkSession {
         S: &mut crate::ffi::Standard_OStream,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_ListEntities(
                     self as *const Self,
                     iter,
@@ -7835,7 +9107,9 @@ impl WorkSession {
                     S,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7845,8 +9119,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7856,8 +9133,11 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7866,11 +9146,14 @@ impl WorkSession {
         {
             let __result =
                 unsafe { crate::ffi::XSControl_WorkSession_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7881,18 +9164,23 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7902,16 +9190,22 @@ impl WorkSession {
             let __result = unsafe {
                 crate::ffi::XSControl_WorkSession_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::XSControl_WorkSession_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XSControl_WorkSession_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7927,48 +9221,42 @@ unsafe impl crate::CppDeletable for HandleXSControlWorkSession {
 impl HandleXSControlWorkSession {
     /// Dereference this Handle to access the underlying XSControl_WorkSession
     pub fn get(&self) -> &crate::ffi::XSControl_WorkSession {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleXSControlWorkSession_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleXSControlWorkSession_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying XSControl_WorkSession
     pub fn get_mut(&mut self) -> &mut crate::ffi::XSControl_WorkSession {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleXSControlWorkSession_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleXSControlWorkSession_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<XSControl_WorkSession> to Handle<IFSelect_WorkSession>
     pub fn to_handle_work_session(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectWorkSession> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXSControlWorkSession_to_HandleIFSelectWorkSession(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXSControlWorkSession_to_HandleIFSelectWorkSession(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XSControl_WorkSession> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXSControlWorkSession_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXSControlWorkSession_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -7994,8 +9282,10 @@ impl Writer {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XSControl_Writer_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8006,8 +9296,10 @@ impl Writer {
         let c_norm = std::ffi::CString::new(norm).unwrap();
         {
             let __result = unsafe { crate::ffi::XSControl_Writer_ctor_charptr(c_norm.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8022,8 +9314,10 @@ impl Writer {
             let __result = unsafe {
                 crate::ffi::XSControl_Writer_ctor_handlexscontrolworksession_bool(WS, scratch)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8045,8 +9339,11 @@ impl Writer {
             let __result = unsafe {
                 crate::ffi::XSControl_Writer_set_norm(self as *mut Self, c_norm.as_ptr())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8054,8 +9351,11 @@ impl Writer {
     /// Sets a specific session to <me>
     pub fn set_ws(&mut self, WS: &crate::ffi::HandleXSControlWorkSession, scratch: bool) {
         {
-            unsafe { crate::ffi::XSControl_Writer_set_ws(self as *mut Self, WS, scratch) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XSControl_Writer_set_ws(self as *mut Self, WS, scratch) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8064,8 +9364,11 @@ impl Writer {
     pub fn ws(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
         {
             let __result = unsafe { crate::ffi::XSControl_Writer_ws(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8080,8 +9383,11 @@ impl Writer {
     ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
         {
             let __result = unsafe { crate::ffi::XSControl_Writer_model(self as *mut Self, newone) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8102,8 +9408,11 @@ impl Writer {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            crate::if_select::ReturnStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::ReturnStatus::try_from(__val).unwrap()
         }
     }
 
@@ -8115,8 +9424,11 @@ impl Writer {
             let __result = unsafe {
                 crate::ffi::XSControl_Writer_write_file(self as *mut Self, c_filename.as_ptr())
             };
-            crate::check_exception();
-            crate::if_select::ReturnStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::ReturnStatus::try_from(__val).unwrap()
         }
     }
 
@@ -8124,10 +9436,12 @@ impl Writer {
     /// Prints Statistics about Transfer
     pub fn print_stats_transfer(&self, what: i32, mode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XSControl_Writer_print_stats_transfer(self as *const Self, what, mode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

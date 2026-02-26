@@ -29,8 +29,10 @@ impl D1 {
     pub fn new_xyz2(du: &crate::gp::XYZ, dv: &crate::gp::XYZ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Plate_D1_ctor_xyz2(du, dv) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -38,8 +40,11 @@ impl D1 {
     pub fn du(&self) -> &crate::gp::XYZ {
         {
             let __result = unsafe { crate::ffi::Plate_D1_du(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -47,18 +52,21 @@ impl D1 {
     pub fn dv(&self) -> &crate::gp::XYZ {
         {
             let __result = unsafe { crate::ffi::Plate_D1_dv(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Plate_D1_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Plate_D1_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -86,18 +94,20 @@ impl D2 {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Plate_D2_ctor_xyz3(duu, duv, dvv) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Plate_D2_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Plate_D2_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -126,18 +136,20 @@ impl D3 {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Plate_D3_ctor_xyz4(duuu, duuv, duvv, dvvv) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Plate_D3_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Plate_D3_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -175,8 +187,10 @@ impl FreeGtoCConstraint {
                     orientation,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -202,8 +216,10 @@ impl FreeGtoCConstraint {
                     orientation,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -233,8 +249,10 @@ impl FreeGtoCConstraint {
                     orientation,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -308,8 +326,11 @@ impl FreeGtoCConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_FreeGtoCConstraint_nb_ppc(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -318,8 +339,11 @@ impl FreeGtoCConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_FreeGtoCConstraint_get_ppc(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -328,8 +352,11 @@ impl FreeGtoCConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_FreeGtoCConstraint_nb_lsc(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -338,8 +365,11 @@ impl FreeGtoCConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_FreeGtoCConstraint_lsc(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -364,8 +394,10 @@ impl GlobalTranslationConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_GlobalTranslationConstraint_ctor_sequenceofxy(SOfXY) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -374,8 +406,11 @@ impl GlobalTranslationConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_GlobalTranslationConstraint_lxyzc(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -400,8 +435,10 @@ impl GtoCConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_GtoCConstraint_ctor_xy_d12(point2d, D1S, D1T) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -415,8 +452,10 @@ impl GtoCConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_xyz(point2d, D1S, D1T, nP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -432,8 +471,10 @@ impl GtoCConstraint {
             let __result = unsafe {
                 crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_d22(point2d, D1S, D1T, D2S, D2T)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -452,8 +493,10 @@ impl GtoCConstraint {
                     point2d, D1S, D1T, D2S, D2T, nP,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -473,8 +516,10 @@ impl GtoCConstraint {
                     point2d, D1S, D1T, D2S, D2T, D3S, D3T,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -495,8 +540,10 @@ impl GtoCConstraint {
                     point2d, D1S, D1T, D2S, D2T, D3S, D3T, nP,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -504,8 +551,11 @@ impl GtoCConstraint {
     pub fn nb_ppc(&self) -> &i32 {
         {
             let __result = unsafe { crate::ffi::Plate_GtoCConstraint_nb_ppc(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -514,8 +564,11 @@ impl GtoCConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_GtoCConstraint_get_ppc(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -524,19 +577,21 @@ impl GtoCConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_GtoCConstraint_d1_surf_init(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Plate_GtoCConstraint_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Plate_GtoCConstraint_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -558,8 +613,10 @@ impl HArray1OfPinpointConstraint {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Plate_HArray1OfPinpointConstraint_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -569,8 +626,10 @@ impl HArray1OfPinpointConstraint {
             let __result = unsafe {
                 crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_int2(theLower, theUpper)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -586,8 +645,10 @@ impl HArray1OfPinpointConstraint {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -604,8 +665,10 @@ impl HArray1OfPinpointConstraint {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -619,8 +682,10 @@ impl HArray1OfPinpointConstraint {
                     theOther,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -630,8 +695,11 @@ impl HArray1OfPinpointConstraint {
             let __result = unsafe {
                 crate::ffi::Plate_HArray1OfPinpointConstraint_array1(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -641,8 +709,11 @@ impl HArray1OfPinpointConstraint {
             let __result = unsafe {
                 crate::ffi::Plate_HArray1OfPinpointConstraint_change_array1(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -652,8 +723,11 @@ impl HArray1OfPinpointConstraint {
             let __result = unsafe {
                 crate::ffi::Plate_HArray1OfPinpointConstraint_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -661,8 +735,11 @@ impl HArray1OfPinpointConstraint {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Plate_HArray1OfPinpointConstraint_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -671,47 +748,48 @@ impl HArray1OfPinpointConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_HArray1OfPinpointConstraint_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Plate_HArray1OfPinpointConstraint_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Plate_HArray1OfPinpointConstraint_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Plate_HArray1OfPinpointConstraint_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Plate_HArray1OfPinpointConstraint_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePlateHArray1OfPinpointConstraint> {
-        {
-            let __result =
-                unsafe { crate::ffi::Plate_HArray1OfPinpointConstraint_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::Plate_HArray1OfPinpointConstraint_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -723,8 +801,11 @@ impl HArray1OfPinpointConstraint {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -737,8 +818,11 @@ impl HArray1OfPinpointConstraint {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -748,11 +832,14 @@ impl HArray1OfPinpointConstraint {
             let __result = unsafe {
                 crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -765,20 +852,25 @@ impl HArray1OfPinpointConstraint {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -790,18 +882,23 @@ impl HArray1OfPinpointConstraint {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -817,37 +914,36 @@ unsafe impl crate::CppDeletable for HandlePlateHArray1OfPinpointConstraint {
 impl HandlePlateHArray1OfPinpointConstraint {
     /// Dereference this Handle to access the underlying Plate_HArray1OfPinpointConstraint
     pub fn get(&self) -> &crate::ffi::Plate_HArray1OfPinpointConstraint {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePlateHArray1OfPinpointConstraint_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandlePlateHArray1OfPinpointConstraint_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Plate_HArray1OfPinpointConstraint
     pub fn get_mut(&mut self) -> &mut crate::ffi::Plate_HArray1OfPinpointConstraint {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePlateHArray1OfPinpointConstraint_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandlePlateHArray1OfPinpointConstraint_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Plate_HArray1OfPinpointConstraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePlateHArray1OfPinpointConstraint_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePlateHArray1OfPinpointConstraint_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -876,8 +972,10 @@ impl LineConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_LineConstraint_ctor_xy_lin_int2(point2d, lin, iu, iv) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -899,8 +997,11 @@ impl LineConstraint {
     pub fn lsc(&self) -> &LinearScalarConstraint {
         {
             let __result = unsafe { crate::ffi::Plate_LineConstraint_lsc(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -925,8 +1026,10 @@ impl LinearScalarConstraint {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Plate_LinearScalarConstraint_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -941,8 +1044,10 @@ impl LinearScalarConstraint {
                     thePPC1, theCoeff,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -957,8 +1062,10 @@ impl LinearScalarConstraint {
                     thePPC, theCoeff,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -973,8 +1080,10 @@ impl LinearScalarConstraint {
                     thePPC, theCoeff,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -983,8 +1092,10 @@ impl LinearScalarConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_LinearScalarConstraint_ctor_int2(ColLen, RowLen) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -993,8 +1104,11 @@ impl LinearScalarConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_LinearScalarConstraint_get_ppc(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1003,8 +1117,11 @@ impl LinearScalarConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_LinearScalarConstraint_coeff(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1014,10 +1131,12 @@ impl LinearScalarConstraint {
     /// PPC or the Row length of coeff or lower  than 1
     pub fn set_ppc(&mut self, Index: i32, Value: &PinpointConstraint) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Plate_LinearScalarConstraint_set_ppc(self as *mut Self, Index, Value)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1027,7 +1146,7 @@ impl LinearScalarConstraint {
     /// Row (respectively Column) length of coeff
     pub fn set_coeff(&mut self, Row: i32, Col: i32, Value: &crate::gp::XYZ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Plate_LinearScalarConstraint_set_coeff(
                     self as *mut Self,
                     Row,
@@ -1035,7 +1154,9 @@ impl LinearScalarConstraint {
                     Value,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1061,8 +1182,10 @@ impl LinearXYZConstraint {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Plate_LinearXYZConstraint_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1077,8 +1200,10 @@ impl LinearXYZConstraint {
                     thePPC, theCoeff,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1093,8 +1218,10 @@ impl LinearXYZConstraint {
                     thePPC, theCoeff,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1103,8 +1230,10 @@ impl LinearXYZConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_LinearXYZConstraint_ctor_int2(ColLen, RowLen) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1113,8 +1242,11 @@ impl LinearXYZConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_LinearXYZConstraint_get_ppc(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1123,8 +1255,11 @@ impl LinearXYZConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_LinearXYZConstraint_coeff(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1134,10 +1269,12 @@ impl LinearXYZConstraint {
     /// PPC or the Row length of coeff or lower  than 1
     pub fn set_ppc(&mut self, Index: i32, Value: &PinpointConstraint) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Plate_LinearXYZConstraint_set_ppc(self as *mut Self, Index, Value)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1147,10 +1284,12 @@ impl LinearXYZConstraint {
     /// Row (respectively Column) length of coeff
     pub fn set_coeff(&mut self, Row: i32, Col: i32, Value: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Plate_LinearXYZConstraint_set_coeff(self as *mut Self, Row, Col, Value)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1174,8 +1313,10 @@ impl PinpointConstraint {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Plate_PinpointConstraint_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1190,8 +1331,10 @@ impl PinpointConstraint {
             let __result = unsafe {
                 crate::ffi::Plate_PinpointConstraint_ctor_xy_xyz_int2(point2d, ImposedValue, iu, iv)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1217,8 +1360,11 @@ impl PinpointConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_PinpointConstraint_pnt2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1226,8 +1372,11 @@ impl PinpointConstraint {
     pub fn idu(&self) -> &i32 {
         {
             let __result = unsafe { crate::ffi::Plate_PinpointConstraint_idu(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1235,8 +1384,11 @@ impl PinpointConstraint {
     pub fn idv(&self) -> &i32 {
         {
             let __result = unsafe { crate::ffi::Plate_PinpointConstraint_idv(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1245,8 +1397,11 @@ impl PinpointConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_PinpointConstraint_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -1276,8 +1431,10 @@ impl PlaneConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_PlaneConstraint_ctor_xy_pln_int2(point2d, pln, iu, iv) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1299,8 +1456,11 @@ impl PlaneConstraint {
     pub fn lsc(&self) -> &LinearScalarConstraint {
         {
             let __result = unsafe { crate::ffi::Plate_PlaneConstraint_lsc(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -1326,8 +1486,10 @@ impl Plate {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Plate_Plate_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1341,90 +1503,117 @@ impl Plate {
     pub unsafe fn copy(&mut self, Ref: &Plate) -> &mut Plate {
         {
             let __result = unsafe { crate::ffi::Plate_Plate_copy(self as *mut Self, Ref) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// **Source:** `Plate_Plate.hxx`:61 - `Plate_Plate::Load()`
     pub fn load_pinpointconstraint(&mut self, PConst: &PinpointConstraint) {
         {
-            unsafe { crate::ffi::Plate_Plate_load_pinpointconstraint(self as *mut Self, PConst) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Plate_Plate_load_pinpointconstraint(self as *mut Self, PConst)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Plate_Plate.hxx`:63 - `Plate_Plate::Load()`
     pub fn load_linearxyzconstraint(&mut self, LXYZConst: &LinearXYZConstraint) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Plate_Plate_load_linearxyzconstraint(self as *mut Self, LXYZConst)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Plate_Plate.hxx`:65 - `Plate_Plate::Load()`
     pub fn load_linearscalarconstraint(&mut self, LScalarConst: &LinearScalarConstraint) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Plate_Plate_load_linearscalarconstraint(self as *mut Self, LScalarConst)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Plate_Plate.hxx`:67 - `Plate_Plate::Load()`
     pub fn load_globaltranslationconstraint(&mut self, GTConst: &GlobalTranslationConstraint) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Plate_Plate_load_globaltranslationconstraint(self as *mut Self, GTConst)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Plate_Plate.hxx`:69 - `Plate_Plate::Load()`
     pub fn load_lineconstraint(&mut self, LConst: &LineConstraint) {
         {
-            unsafe { crate::ffi::Plate_Plate_load_lineconstraint(self as *mut Self, LConst) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Plate_Plate_load_lineconstraint(self as *mut Self, LConst) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Plate_Plate.hxx`:71 - `Plate_Plate::Load()`
     pub fn load_planeconstraint(&mut self, PConst: &PlaneConstraint) {
         {
-            unsafe { crate::ffi::Plate_Plate_load_planeconstraint(self as *mut Self, PConst) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Plate_Plate_load_planeconstraint(self as *mut Self, PConst) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Plate_Plate.hxx`:73 - `Plate_Plate::Load()`
     pub fn load_sampledcurveconstraint(&mut self, SCConst: &SampledCurveConstraint) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Plate_Plate_load_sampledcurveconstraint(self as *mut Self, SCConst)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Plate_Plate.hxx`:75 - `Plate_Plate::Load()`
     pub fn load_gtocconstraint(&mut self, GtoCConst: &GtoCConstraint) {
         {
-            unsafe { crate::ffi::Plate_Plate_load_gtocconstraint(self as *mut Self, GtoCConst) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Plate_Plate_load_gtocconstraint(self as *mut Self, GtoCConst)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Plate_Plate.hxx`:77 - `Plate_Plate::Load()`
     pub fn load_freegtocconstraint(&mut self, FGtoCConst: &FreeGtoCConstraint) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Plate_Plate_load_freegtocconstraint(self as *mut Self, FGtoCConst)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1436,10 +1625,12 @@ impl Plate {
         theProgress: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Plate_Plate_solve_ti(self as *mut Self, ord, anisotropie, theProgress)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1448,16 +1639,21 @@ impl Plate {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Plate_Plate_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Plate_Plate.hxx`:86 - `Plate_Plate::destroy()`
     pub fn destroy(&mut self) {
         {
-            unsafe { crate::ffi::Plate_Plate_destroy(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Plate_Plate_destroy(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1466,8 +1662,10 @@ impl Plate {
     /// ( same as after Create())
     pub fn init(&mut self) {
         {
-            unsafe { crate::ffi::Plate_Plate_init(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Plate_Plate_init(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1476,8 +1674,11 @@ impl Plate {
         {
             let __result =
                 unsafe { crate::ffi::Plate_Plate_evaluate(self as *const Self, point2d) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1492,24 +1693,33 @@ impl Plate {
             let __result = unsafe {
                 crate::ffi::Plate_Plate_evaluate_derivative(self as *const Self, point2d, iu, iv)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `Plate_Plate.hxx`:100 - `Plate_Plate::CoefPol()`
     pub fn coef_pol(&self, Coefs: &mut crate::ffi::HandleTColgpHArray2OfXYZ) {
         {
-            unsafe { crate::ffi::Plate_Plate_coef_pol(self as *const Self, Coefs) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Plate_Plate_coef_pol(self as *const Self, Coefs) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Plate_Plate.hxx`:102 - `Plate_Plate::SetPolynomialPartOnly()`
     pub fn set_polynomial_part_only(&mut self, PPOnly: bool) {
         {
-            unsafe { crate::ffi::Plate_Plate_set_polynomial_part_only(self as *mut Self, PPOnly) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Plate_Plate_set_polynomial_part_only(self as *mut Self, PPOnly)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1517,34 +1727,43 @@ impl Plate {
     pub fn continuity(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Plate_Plate_continuity(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Plate_Plate.hxx`:106 - `Plate_Plate::UVBox()`
     pub fn uv_box(&self, UMin: &mut f64, UMax: &mut f64, VMin: &mut f64, VMax: &mut f64) {
         {
-            unsafe { crate::ffi::Plate_Plate_uv_box(self as *const Self, UMin, UMax, VMin, VMax) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Plate_Plate_uv_box(self as *const Self, UMin, UMax, VMin, VMax)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Plate_Plate.hxx`:111 - `Plate_Plate::UVConstraints()`
     pub fn uv_constraints(&self, Seq: &mut crate::ffi::TColgp_SequenceOfXY) {
         {
-            unsafe { crate::ffi::Plate_Plate_uv_constraints(self as *const Self, Seq) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Plate_Plate_uv_constraints(self as *const Self, Seq) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::Plate_Plate_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Plate_Plate_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1574,8 +1793,10 @@ impl SampledCurveConstraint {
                     SOPPC, n,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1584,8 +1805,11 @@ impl SampledCurveConstraint {
         {
             let __result =
                 unsafe { crate::ffi::Plate_SampledCurveConstraint_lxyzc(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }

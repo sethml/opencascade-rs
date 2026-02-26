@@ -16,8 +16,11 @@ pub fn make_curve_curve(
 ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
     {
         let __result = unsafe { crate::ffi::GeomAdaptor_make_curve_curve(C) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `GeomAdaptor.hxx`:45 - `GeomAdaptor::MakeSurface`
@@ -31,8 +34,11 @@ pub fn make_surface_surface_bool(
     {
         let __result =
             unsafe { crate::ffi::GeomAdaptor_make_surface_surface_bool(theS, theTrimFlag) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 
@@ -64,8 +70,10 @@ impl Curve {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Curve_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -73,8 +81,10 @@ impl Curve {
     pub fn new_handlegeomcurve(theCurve: &crate::ffi::HandleGeomCurve) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Curve_ctor_handlegeomcurve(theCurve) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -91,8 +101,10 @@ impl Curve {
                     theCurve, theUFirst, theULast,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -101,8 +113,11 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Curve_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -112,8 +127,11 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Curve_shallow_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -121,18 +139,22 @@ impl Curve {
     /// Reset currently loaded curve (undone Load()).
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::GeomAdaptor_Curve_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::GeomAdaptor_Curve_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `GeomAdaptor_Curve.hxx`:65 - `GeomAdaptor_Curve::Load()`
     pub fn load_handlegeomcurve(&mut self, theCurve: &crate::ffi::HandleGeomCurve) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_Curve_load_handlegeomcurve(self as *mut Self, theCurve)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -145,7 +167,7 @@ impl Curve {
         theULast: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_Curve_load_handlegeomcurve_real2(
                     self as *mut Self,
                     theCurve,
@@ -153,7 +175,9 @@ impl Curve {
                     theULast,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -163,8 +187,11 @@ impl Curve {
     pub fn curve(&self) -> &crate::ffi::HandleGeomCurve {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Curve_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -173,8 +200,11 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Curve_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -183,8 +213,11 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Curve_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -192,8 +225,11 @@ impl Curve {
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Curve_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -205,8 +241,11 @@ impl Curve {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_Curve_nb_intervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -218,8 +257,12 @@ impl Curve {
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe { crate::ffi::GeomAdaptor_Curve_intervals(self as *const Self, T, S.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::GeomAdaptor_Curve_intervals(self as *const Self, T, S.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -238,8 +281,11 @@ impl Curve {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_Curve_trim(self as *const Self, First, Last, Tol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -247,8 +293,11 @@ impl Curve {
     pub fn is_closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Curve_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -257,8 +306,11 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Curve_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -266,8 +318,11 @@ impl Curve {
     pub fn period(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Curve_period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -276,8 +331,11 @@ impl Curve {
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Curve_value(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -285,8 +343,10 @@ impl Curve {
     /// Computes the point of parameter U.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::GeomAdaptor_Curve_d0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::GeomAdaptor_Curve_d0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -300,8 +360,10 @@ impl Curve {
     /// else the derivatives are computed on the basis curve.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         {
-            unsafe { crate::ffi::GeomAdaptor_Curve_d1(self as *const Self, U, P, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::GeomAdaptor_Curve_d1(self as *const Self, U, P, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -321,8 +383,11 @@ impl Curve {
         V2: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::GeomAdaptor_Curve_d2(self as *const Self, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::GeomAdaptor_Curve_d2(self as *const Self, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -343,8 +408,11 @@ impl Curve {
         V3: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::GeomAdaptor_Curve_d3(self as *const Self, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::GeomAdaptor_Curve_d3(self as *const Self, U, P, V1, V2, V3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -359,8 +427,11 @@ impl Curve {
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Curve_dn(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -370,8 +441,11 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Curve_resolution(self as *const Self, R3d) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -379,8 +453,11 @@ impl Curve {
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Curve_get_type(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::CurveType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::CurveType::try_from(__val).unwrap()
         }
     }
 
@@ -388,8 +465,11 @@ impl Curve {
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Curve_line(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -397,8 +477,11 @@ impl Curve {
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Curve_circle(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -406,8 +489,11 @@ impl Curve {
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Curve_ellipse(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -415,8 +501,11 @@ impl Curve {
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Curve_hyperbola(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -424,8 +513,11 @@ impl Curve {
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Curve_parabola(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -436,8 +528,11 @@ impl Curve {
     pub fn degree(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Curve_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -449,8 +544,11 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Curve_is_rational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -461,8 +559,11 @@ impl Curve {
     pub fn nb_poles(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Curve_nb_poles(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -473,8 +574,11 @@ impl Curve {
     pub fn nb_knots(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Curve_nb_knots(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -487,8 +591,11 @@ impl Curve {
     pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Curve_bezier(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -501,8 +608,11 @@ impl Curve {
     pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Curve_b_spline(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -511,8 +621,11 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Curve_offset_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -520,8 +633,11 @@ impl Curve {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Curve_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -529,61 +645,63 @@ impl Curve {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Curve_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Adaptor3d_Curve
     pub fn as_adaptor3d_curve(&self) -> &crate::adaptor3d::Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomAdaptor_Curve_as_Adaptor3d_Curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::GeomAdaptor_Curve_as_Adaptor3d_Curve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Adaptor3d_Curve (mutable)
     pub fn as_adaptor3d_curve_mut(&mut self) -> &mut crate::adaptor3d::Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomAdaptor_Curve_as_Adaptor3d_Curve_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::GeomAdaptor_Curve_as_Adaptor3d_Curve_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomAdaptor_Curve_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::GeomAdaptor_Curve_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomAdaptor_Curve_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::GeomAdaptor_Curve_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomAdaptorCurve> {
-        {
-            let __result = unsafe { crate::ffi::GeomAdaptor_Curve_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::GeomAdaptor_Curve_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -592,8 +710,11 @@ impl Curve {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_Curve_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -603,8 +724,11 @@ impl Curve {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_Curve_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -613,11 +737,14 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Curve_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -627,18 +754,23 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Curve_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_Curve_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -648,16 +780,22 @@ impl Curve {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_Curve_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::GeomAdaptor_Curve_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::GeomAdaptor_Curve_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -673,42 +811,42 @@ unsafe impl crate::CppDeletable for HandleGeomAdaptorCurve {
 impl HandleGeomAdaptorCurve {
     /// Dereference this Handle to access the underlying GeomAdaptor_Curve
     pub fn get(&self) -> &crate::ffi::GeomAdaptor_Curve {
-        {
-            let __result = unsafe { crate::ffi::HandleGeomAdaptorCurve_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeomAdaptorCurve_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomAdaptor_Curve
     pub fn get_mut(&mut self) -> &mut crate::ffi::GeomAdaptor_Curve {
-        {
-            let __result = unsafe { crate::ffi::HandleGeomAdaptorCurve_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeomAdaptorCurve_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<GeomAdaptor_Curve> to Handle<Adaptor3d_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeomAdaptorCurve_to_HandleAdaptor3dCurve(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeomAdaptorCurve_to_HandleAdaptor3dCurve(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<GeomAdaptor_Curve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeomAdaptorCurve_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeomAdaptorCurve_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -738,8 +876,10 @@ impl Surface {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Surface_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -748,8 +888,10 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_ctor_handlegeomsurface(theSurf) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -770,8 +912,10 @@ impl Surface {
                     theSurf, theUFirst, theULast, theVFirst, theVLast, theTolU, theTolV,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -809,8 +953,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -820,18 +967,23 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_shallow_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `GeomAdaptor_Surface.hxx`:75 - `GeomAdaptor_Surface::Load()`
     pub fn load_handlegeomsurface(&mut self, theSurf: &crate::ffi::HandleGeomSurface) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_Surface_load_handlegeomsurface(self as *mut Self, theSurf)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -848,7 +1000,7 @@ impl Surface {
         theTolV: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_Surface_load_handlegeomsurface_real6(
                     self as *mut Self,
                     theSurf,
@@ -860,7 +1012,9 @@ impl Surface {
                     theTolV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -868,8 +1022,11 @@ impl Surface {
     pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Surface_surface(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -878,8 +1035,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_first_u_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -888,8 +1048,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_last_u_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -898,8 +1061,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_first_v_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -908,8 +1074,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_last_v_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -918,8 +1087,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_u_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -928,8 +1100,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_v_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -941,8 +1116,11 @@ impl Surface {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_Surface_nb_u_intervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -954,8 +1132,11 @@ impl Surface {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_Surface_nb_v_intervals(self as *const Self, S.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -964,10 +1145,12 @@ impl Surface {
     /// in the U direction.
     pub fn u_intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_Surface_u_intervals(self as *const Self, T, S.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -976,10 +1159,12 @@ impl Surface {
     /// in the V direction.
     pub fn v_intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_Surface_v_intervals(self as *const Self, T, S.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -999,8 +1184,11 @@ impl Surface {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_Surface_u_trim(self as *const Self, First, Last, Tol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1019,8 +1207,11 @@ impl Surface {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_Surface_v_trim(self as *const Self, First, Last, Tol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1029,8 +1220,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_is_u_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1039,8 +1233,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_is_v_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1049,8 +1246,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_is_u_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1058,8 +1258,11 @@ impl Surface {
     pub fn u_period(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Surface_u_period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1068,8 +1271,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_is_v_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1077,8 +1283,11 @@ impl Surface {
     pub fn v_period(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Surface_v_period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1088,8 +1297,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_value(self as *const Self, U, V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1097,8 +1309,10 @@ impl Surface {
     /// Computes the point of parameters U,V on the surface.
     pub fn d0(&self, U: f64, V: f64, P: &mut crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::GeomAdaptor_Surface_d0(self as *const Self, U, V, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::GeomAdaptor_Surface_d0(self as *const Self, U, V, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1119,8 +1333,12 @@ impl Surface {
         D1V: &mut crate::gp::Vec,
     ) {
         {
-            unsafe { crate::ffi::GeomAdaptor_Surface_d1(self as *const Self, U, V, P, D1U, D1V) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::GeomAdaptor_Surface_d1(self as *const Self, U, V, P, D1U, D1V)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1144,7 +1362,7 @@ impl Surface {
         D2UV: &mut crate::gp::Vec,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_Surface_d2(
                     self as *const Self,
                     U,
@@ -1157,7 +1375,9 @@ impl Surface {
                     D2UV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1185,7 +1405,7 @@ impl Surface {
         D3UVV: &mut crate::gp::Vec,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_Surface_d3(
                     self as *const Self,
                     U,
@@ -1202,7 +1422,9 @@ impl Surface {
                     D3UVV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1219,8 +1441,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_dn(self as *const Self, U, V, Nu, Nv) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1231,8 +1456,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_u_resolution(self as *const Self, R3d) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1243,8 +1471,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_v_resolution(self as *const Self, R3d) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1256,8 +1487,11 @@ impl Surface {
     pub fn get_type(&self) -> crate::geom_abs::SurfaceType {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Surface_get_type(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::SurfaceType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::SurfaceType::try_from(__val).unwrap()
         }
     }
 
@@ -1265,8 +1499,11 @@ impl Surface {
     pub fn plane(&self) -> crate::OwnedPtr<crate::gp::Pln> {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Surface_plane(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1274,8 +1511,11 @@ impl Surface {
     pub fn cylinder(&self) -> crate::OwnedPtr<crate::gp::Cylinder> {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Surface_cylinder(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1283,8 +1523,11 @@ impl Surface {
     pub fn cone(&self) -> crate::OwnedPtr<crate::gp::Cone> {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Surface_cone(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1292,8 +1535,11 @@ impl Surface {
     pub fn sphere(&self) -> crate::OwnedPtr<crate::gp::Sphere> {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Surface_sphere(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1301,8 +1547,11 @@ impl Surface {
     pub fn torus(&self) -> crate::OwnedPtr<crate::gp::Torus> {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Surface_torus(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1310,8 +1559,11 @@ impl Surface {
     pub fn u_degree(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Surface_u_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1320,8 +1572,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_nb_u_poles(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1329,8 +1584,11 @@ impl Surface {
     pub fn v_degree(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Surface_v_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1339,8 +1597,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_nb_v_poles(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1349,8 +1610,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_nb_u_knots(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1359,8 +1623,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_nb_v_knots(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1369,8 +1636,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_is_u_rational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1379,8 +1649,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_is_v_rational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1393,8 +1666,11 @@ impl Surface {
     pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierSurface> {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Surface_bezier(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1407,8 +1683,11 @@ impl Surface {
     pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Surface_b_spline(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1417,8 +1696,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_axe_of_revolution(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1427,8 +1709,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1437,8 +1722,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_basis_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1447,8 +1735,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_basis_surface(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1457,8 +1748,11 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_offset_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1466,8 +1760,11 @@ impl Surface {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Surface_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1475,64 +1772,63 @@ impl Surface {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_Surface_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Adaptor3d_Surface
     pub fn as_adaptor3d_surface(&self) -> &crate::adaptor3d::Surface {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomAdaptor_Surface_as_Adaptor3d_Surface(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::GeomAdaptor_Surface_as_Adaptor3d_Surface(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Adaptor3d_Surface (mutable)
     pub fn as_adaptor3d_surface_mut(&mut self) -> &mut crate::adaptor3d::Surface {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomAdaptor_Surface_as_Adaptor3d_Surface_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::GeomAdaptor_Surface_as_Adaptor3d_Surface_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomAdaptor_Surface_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::GeomAdaptor_Surface_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomAdaptor_Surface_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::GeomAdaptor_Surface_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomAdaptorSurface> {
-        {
-            let __result = unsafe { crate::ffi::GeomAdaptor_Surface_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::GeomAdaptor_Surface_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1541,8 +1837,11 @@ impl Surface {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_Surface_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1552,8 +1851,11 @@ impl Surface {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_Surface_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1562,11 +1864,14 @@ impl Surface {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_Surface_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1577,18 +1882,23 @@ impl Surface {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_Surface_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_Surface_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1598,16 +1908,22 @@ impl Surface {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_Surface_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::GeomAdaptor_Surface_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::GeomAdaptor_Surface_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1623,43 +1939,42 @@ unsafe impl crate::CppDeletable for HandleGeomAdaptorSurface {
 impl HandleGeomAdaptorSurface {
     /// Dereference this Handle to access the underlying GeomAdaptor_Surface
     pub fn get(&self) -> &crate::ffi::GeomAdaptor_Surface {
-        {
-            let __result = unsafe { crate::ffi::HandleGeomAdaptorSurface_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeomAdaptorSurface_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomAdaptor_Surface
     pub fn get_mut(&mut self) -> &mut crate::ffi::GeomAdaptor_Surface {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeomAdaptorSurface_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeomAdaptorSurface_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<GeomAdaptor_Surface> to Handle<Adaptor3d_Surface>
     pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeomAdaptorSurface_to_HandleAdaptor3dSurface(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeomAdaptorSurface_to_HandleAdaptor3dSurface(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<GeomAdaptor_Surface> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeomAdaptorSurface_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeomAdaptorSurface_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<GeomAdaptor_Surface> to Handle<GeomAdaptor_SurfaceOfLinearExtrusion>
@@ -1668,14 +1983,16 @@ impl HandleGeomAdaptorSurface {
     pub fn downcast_to_surface_of_linear_extrusion(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeomAdaptorSurface_downcast_to_HandleGeomAdaptorSurfaceOfLinearExtrusion(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1685,16 +2002,18 @@ impl HandleGeomAdaptorSurface {
     pub fn downcast_to_surface_of_revolution(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomAdaptorSurfaceOfRevolution>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeomAdaptorSurface_downcast_to_HandleGeomAdaptorSurfaceOfRevolution(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -1724,8 +2043,10 @@ impl SurfaceOfLinearExtrusion {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1736,8 +2057,10 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_ctor_handleadaptor3dcurve(C)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1751,8 +2074,10 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_ctor_handleadaptor3dcurve_dir(C, V)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1762,8 +2087,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1774,8 +2102,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_shallow_copy(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1783,13 +2114,15 @@ impl SurfaceOfLinearExtrusion {
     /// Changes the Curve
     pub fn load_handleadaptor3dcurve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_load_handleadaptor3dcurve(
                     self as *mut Self,
                     C,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1797,10 +2130,12 @@ impl SurfaceOfLinearExtrusion {
     /// Changes the Direction
     pub fn load_dir(&mut self, V: &crate::gp::Dir) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_load_dir(self as *mut Self, V)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1812,8 +2147,11 @@ impl SurfaceOfLinearExtrusion {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1825,8 +2163,11 @@ impl SurfaceOfLinearExtrusion {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1838,8 +2179,11 @@ impl SurfaceOfLinearExtrusion {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1851,8 +2195,11 @@ impl SurfaceOfLinearExtrusion {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1862,8 +2209,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_u_continuity(self as *const Self)
             };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -1874,8 +2224,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_v_continuity(self as *const Self)
             };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -1890,8 +2243,11 @@ impl SurfaceOfLinearExtrusion {
                     S.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1906,8 +2262,11 @@ impl SurfaceOfLinearExtrusion {
                     S.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1916,14 +2275,16 @@ impl SurfaceOfLinearExtrusion {
     /// in the U direction.
     pub fn u_intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_u_intervals(
                     self as *const Self,
                     T,
                     S.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1932,14 +2293,16 @@ impl SurfaceOfLinearExtrusion {
     /// in the V direction.
     pub fn v_intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_v_intervals(
                     self as *const Self,
                     T,
                     S.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1964,8 +2327,11 @@ impl SurfaceOfLinearExtrusion {
                     Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1989,8 +2355,11 @@ impl SurfaceOfLinearExtrusion {
                     Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2000,8 +2369,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_is_u_closed(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2011,8 +2383,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_is_v_closed(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2022,8 +2397,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_is_u_periodic(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2033,8 +2411,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_u_period(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2044,8 +2425,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_is_v_periodic(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2055,8 +2439,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_v_period(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2071,8 +2458,11 @@ impl SurfaceOfLinearExtrusion {
                     R3d,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2087,8 +2477,11 @@ impl SurfaceOfLinearExtrusion {
                     R3d,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2102,8 +2495,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_get_type(self as *const Self)
             };
-            crate::check_exception();
-            crate::geom_abs::SurfaceType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::SurfaceType::try_from(__val).unwrap()
         }
     }
 
@@ -2113,8 +2509,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_plane(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2124,8 +2523,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_cylinder(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2135,8 +2537,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_cone(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2146,8 +2551,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_sphere(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2157,8 +2565,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_torus(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2168,8 +2579,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_u_degree(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2179,8 +2593,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_nb_u_poles(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2190,8 +2607,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_is_u_rational(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2201,8 +2621,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_is_v_rational(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2212,8 +2635,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_bezier(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2223,8 +2649,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_b_spline(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2236,8 +2665,11 @@ impl SurfaceOfLinearExtrusion {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2247,8 +2679,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_direction(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2258,8 +2693,11 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_basis_curve(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2268,8 +2706,11 @@ impl SurfaceOfLinearExtrusion {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2278,100 +2719,102 @@ impl SurfaceOfLinearExtrusion {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomAdaptor_Surface
     pub fn as_surface(&self) -> &Surface {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_as_GeomAdaptor_Surface(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_as_GeomAdaptor_Surface(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomAdaptor_Surface (mutable)
     pub fn as_surface_mut(&mut self) -> &mut Surface {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_as_GeomAdaptor_Surface_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_as_GeomAdaptor_Surface_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Adaptor3d_Surface
     pub fn as_adaptor3d_surface(&self) -> &crate::adaptor3d::Surface {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_as_Adaptor3d_Surface(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_as_Adaptor3d_Surface(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Adaptor3d_Surface (mutable)
     pub fn as_adaptor3d_surface_mut(&mut self) -> &mut crate::adaptor3d::Surface {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_as_Adaptor3d_Surface_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_as_Adaptor3d_Surface_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion> {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:108 - `GeomAdaptor_Surface::Surface()`
@@ -2382,8 +2825,11 @@ impl SurfaceOfLinearExtrusion {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2397,15 +2843,18 @@ impl SurfaceOfLinearExtrusion {
                     V,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:174 - `GeomAdaptor_Surface::D0()`
     pub fn d0(&self, U: f64, V: f64, P: &mut crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_D0(
                     self as *const Self,
                     U,
@@ -2413,7 +2862,9 @@ impl SurfaceOfLinearExtrusion {
                     P,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2427,7 +2878,7 @@ impl SurfaceOfLinearExtrusion {
         D1V: &mut crate::gp::Vec,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_D1(
                     self as *const Self,
                     U,
@@ -2437,7 +2888,9 @@ impl SurfaceOfLinearExtrusion {
                     D1V,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2454,7 +2907,7 @@ impl SurfaceOfLinearExtrusion {
         D2UV: &mut crate::gp::Vec,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_D2(
                     self as *const Self,
                     U,
@@ -2467,7 +2920,9 @@ impl SurfaceOfLinearExtrusion {
                     D2UV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2488,7 +2943,7 @@ impl SurfaceOfLinearExtrusion {
         D3UVV: &mut crate::gp::Vec,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_D3(
                     self as *const Self,
                     U,
@@ -2505,7 +2960,9 @@ impl SurfaceOfLinearExtrusion {
                     D3UVV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2521,8 +2978,11 @@ impl SurfaceOfLinearExtrusion {
                     Nv,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2534,8 +2994,11 @@ impl SurfaceOfLinearExtrusion {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2547,8 +3010,11 @@ impl SurfaceOfLinearExtrusion {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2560,8 +3026,11 @@ impl SurfaceOfLinearExtrusion {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2573,8 +3042,11 @@ impl SurfaceOfLinearExtrusion {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2586,8 +3058,11 @@ impl SurfaceOfLinearExtrusion {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2599,8 +3074,11 @@ impl SurfaceOfLinearExtrusion {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2613,8 +3091,11 @@ impl SurfaceOfLinearExtrusion {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2627,8 +3108,11 @@ impl SurfaceOfLinearExtrusion {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2638,11 +3122,14 @@ impl SurfaceOfLinearExtrusion {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2655,20 +3142,25 @@ impl SurfaceOfLinearExtrusion {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2680,20 +3172,25 @@ impl SurfaceOfLinearExtrusion {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2709,67 +3206,67 @@ unsafe impl crate::CppDeletable for HandleGeomAdaptorSurfaceOfLinearExtrusion {
 impl HandleGeomAdaptorSurfaceOfLinearExtrusion {
     /// Dereference this Handle to access the underlying GeomAdaptor_SurfaceOfLinearExtrusion
     pub fn get(&self) -> &crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomAdaptor_SurfaceOfLinearExtrusion
     pub fn get_mut(&mut self) -> &mut crate::ffi::GeomAdaptor_SurfaceOfLinearExtrusion {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<GeomAdaptor_SurfaceOfLinearExtrusion> to Handle<GeomAdaptor_Surface>
     pub fn to_handle_geom_adaptor_surface(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomAdaptorSurface> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion_to_HandleGeomAdaptorSurface(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion_to_HandleGeomAdaptorSurface(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<GeomAdaptor_SurfaceOfLinearExtrusion> to Handle<Adaptor3d_Surface>
     pub fn to_handle_adaptor3d_surface(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion_to_HandleAdaptor3dSurface(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion_to_HandleAdaptor3dSurface(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<GeomAdaptor_SurfaceOfLinearExtrusion> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2807,8 +3304,10 @@ impl SurfaceOfRevolution {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_SurfaceOfRevolution_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2818,8 +3317,10 @@ impl SurfaceOfRevolution {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_SurfaceOfRevolution_ctor_handleadaptor3dcurve(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2833,8 +3334,10 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_ctor_handleadaptor3dcurve_ax1(C, V)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2844,8 +3347,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2856,8 +3362,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_shallow_copy(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2865,13 +3374,15 @@ impl SurfaceOfRevolution {
     /// Changes the Curve
     pub fn load_handleadaptor3dcurve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_load_handleadaptor3dcurve(
                     self as *mut Self,
                     C,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2879,8 +3390,12 @@ impl SurfaceOfRevolution {
     /// Changes the Direction
     pub fn load_ax1(&mut self, V: &crate::gp::Ax1) {
         {
-            unsafe { crate::ffi::GeomAdaptor_SurfaceOfRevolution_load_ax1(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::GeomAdaptor_SurfaceOfRevolution_load_ax1(self as *mut Self, V)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2890,8 +3405,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_axe_of_revolution(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2901,8 +3419,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_first_u_parameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2912,8 +3433,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_last_u_parameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2923,8 +3447,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_first_v_parameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2934,8 +3461,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_last_v_parameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2945,8 +3475,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_u_continuity(self as *const Self)
             };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -2957,8 +3490,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_v_continuity(self as *const Self)
             };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -2973,8 +3509,11 @@ impl SurfaceOfRevolution {
                     S.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2989,8 +3528,11 @@ impl SurfaceOfRevolution {
                     S.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2999,14 +3541,16 @@ impl SurfaceOfRevolution {
     /// in the U direction.
     pub fn u_intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_u_intervals(
                     self as *const Self,
                     T,
                     S.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3015,14 +3559,16 @@ impl SurfaceOfRevolution {
     /// in the V direction.
     pub fn v_intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_v_intervals(
                     self as *const Self,
                     T,
                     S.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3047,8 +3593,11 @@ impl SurfaceOfRevolution {
                     Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3072,8 +3621,11 @@ impl SurfaceOfRevolution {
                     Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3083,8 +3635,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_is_u_closed(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3094,8 +3649,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_is_v_closed(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3105,8 +3663,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_is_u_periodic(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3116,8 +3677,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_u_period(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3127,8 +3691,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_is_v_periodic(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3138,8 +3705,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_v_period(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3151,8 +3721,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_u_resolution(self as *const Self, R3d)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3164,8 +3737,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_v_resolution(self as *const Self, R3d)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3179,8 +3755,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_get_type(self as *const Self)
             };
-            crate::check_exception();
-            crate::geom_abs::SurfaceType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::SurfaceType::try_from(__val).unwrap()
         }
     }
 
@@ -3189,8 +3768,11 @@ impl SurfaceOfRevolution {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_SurfaceOfRevolution_plane(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3200,8 +3782,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_cylinder(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3212,8 +3797,11 @@ impl SurfaceOfRevolution {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_SurfaceOfRevolution_cone(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3222,8 +3810,11 @@ impl SurfaceOfRevolution {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_SurfaceOfRevolution_sphere(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3232,8 +3823,11 @@ impl SurfaceOfRevolution {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_SurfaceOfRevolution_torus(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3243,8 +3837,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_v_degree(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3254,8 +3851,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_nb_v_poles(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3265,8 +3865,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_nb_v_knots(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3276,8 +3879,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_is_u_rational(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3287,8 +3893,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_is_v_rational(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3297,8 +3906,11 @@ impl SurfaceOfRevolution {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_SurfaceOfRevolution_bezier(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3308,8 +3920,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_b_spline(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3318,8 +3933,11 @@ impl SurfaceOfRevolution {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_SurfaceOfRevolution_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3329,8 +3947,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_basis_curve(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3338,8 +3959,11 @@ impl SurfaceOfRevolution {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::GeomAdaptor_SurfaceOfRevolution_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3348,99 +3972,92 @@ impl SurfaceOfRevolution {
         {
             let __result =
                 unsafe { crate::ffi::GeomAdaptor_SurfaceOfRevolution_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to GeomAdaptor_Surface
     pub fn as_surface(&self) -> &Surface {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomAdaptor_SurfaceOfRevolution_as_GeomAdaptor_Surface(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfRevolution_as_GeomAdaptor_Surface(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomAdaptor_Surface (mutable)
     pub fn as_surface_mut(&mut self) -> &mut Surface {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomAdaptor_SurfaceOfRevolution_as_GeomAdaptor_Surface_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfRevolution_as_GeomAdaptor_Surface_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Adaptor3d_Surface
     pub fn as_adaptor3d_surface(&self) -> &crate::adaptor3d::Surface {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomAdaptor_SurfaceOfRevolution_as_Adaptor3d_Surface(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfRevolution_as_Adaptor3d_Surface(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Adaptor3d_Surface (mutable)
     pub fn as_adaptor3d_surface_mut(&mut self) -> &mut crate::adaptor3d::Surface {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomAdaptor_SurfaceOfRevolution_as_Adaptor3d_Surface_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfRevolution_as_Adaptor3d_Surface_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomAdaptor_SurfaceOfRevolution_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfRevolution_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomAdaptor_SurfaceOfRevolution_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomAdaptor_SurfaceOfRevolution_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomAdaptorSurfaceOfRevolution> {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomAdaptor_SurfaceOfRevolution_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::GeomAdaptor_SurfaceOfRevolution_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:108 - `GeomAdaptor_Surface::Surface()`
@@ -3449,8 +4066,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_Surface(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3464,15 +4084,18 @@ impl SurfaceOfRevolution {
                     V,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `GeomAdaptor_Surface.hxx`:174 - `GeomAdaptor_Surface::D0()`
     pub fn d0(&self, U: f64, V: f64, P: &mut crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_D0(
                     self as *const Self,
                     U,
@@ -3480,7 +4103,9 @@ impl SurfaceOfRevolution {
                     P,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3494,7 +4119,7 @@ impl SurfaceOfRevolution {
         D1V: &mut crate::gp::Vec,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_D1(
                     self as *const Self,
                     U,
@@ -3504,7 +4129,9 @@ impl SurfaceOfRevolution {
                     D1V,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3521,7 +4148,7 @@ impl SurfaceOfRevolution {
         D2UV: &mut crate::gp::Vec,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_D2(
                     self as *const Self,
                     U,
@@ -3534,7 +4161,9 @@ impl SurfaceOfRevolution {
                     D2UV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3555,7 +4184,7 @@ impl SurfaceOfRevolution {
         D3UVV: &mut crate::gp::Vec,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_D3(
                     self as *const Self,
                     U,
@@ -3572,7 +4201,9 @@ impl SurfaceOfRevolution {
                     D3UVV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3588,8 +4219,11 @@ impl SurfaceOfRevolution {
                     Nv,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3599,8 +4233,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_UDegree(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3610,8 +4247,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_NbUPoles(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3621,8 +4261,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_NbUKnots(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3632,8 +4275,11 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_Direction(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3645,8 +4291,11 @@ impl SurfaceOfRevolution {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3658,8 +4307,11 @@ impl SurfaceOfRevolution {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3672,8 +4324,11 @@ impl SurfaceOfRevolution {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3686,8 +4341,11 @@ impl SurfaceOfRevolution {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3697,11 +4355,14 @@ impl SurfaceOfRevolution {
             let __result = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3714,20 +4375,25 @@ impl SurfaceOfRevolution {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3739,18 +4405,23 @@ impl SurfaceOfRevolution {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomAdaptor_SurfaceOfRevolution_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3766,66 +4437,64 @@ unsafe impl crate::CppDeletable for HandleGeomAdaptorSurfaceOfRevolution {
 impl HandleGeomAdaptorSurfaceOfRevolution {
     /// Dereference this Handle to access the underlying GeomAdaptor_SurfaceOfRevolution
     pub fn get(&self) -> &crate::ffi::GeomAdaptor_SurfaceOfRevolution {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeomAdaptorSurfaceOfRevolution_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleGeomAdaptorSurfaceOfRevolution_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomAdaptor_SurfaceOfRevolution
     pub fn get_mut(&mut self) -> &mut crate::ffi::GeomAdaptor_SurfaceOfRevolution {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeomAdaptorSurfaceOfRevolution_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleGeomAdaptorSurfaceOfRevolution_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<GeomAdaptor_SurfaceOfRevolution> to Handle<GeomAdaptor_Surface>
     pub fn to_handle_geom_adaptor_surface(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeomAdaptorSurface> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeomAdaptorSurfaceOfRevolution_to_HandleGeomAdaptorSurface(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeomAdaptorSurfaceOfRevolution_to_HandleGeomAdaptorSurface(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<GeomAdaptor_SurfaceOfRevolution> to Handle<Adaptor3d_Surface>
     pub fn to_handle_adaptor3d_surface(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeomAdaptorSurfaceOfRevolution_to_HandleAdaptor3dSurface(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeomAdaptorSurfaceOfRevolution_to_HandleAdaptor3dSurface(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<GeomAdaptor_SurfaceOfRevolution> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeomAdaptorSurfaceOfRevolution_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeomAdaptorSurfaceOfRevolution_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

@@ -38,8 +38,10 @@ impl GeomCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomToIGES_GeomCurve_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -49,8 +51,10 @@ impl GeomCurve {
     pub fn new_geomentity(GE: &GeomEntity) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomToIGES_GeomCurve_ctor_geomentity(GE) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -73,8 +77,11 @@ impl GeomCurve {
                     Ufin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -94,8 +101,11 @@ impl GeomCurve {
                     Ufin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -115,8 +125,11 @@ impl GeomCurve {
                     Ufin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -136,8 +149,11 @@ impl GeomCurve {
                     Ufin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -157,8 +173,11 @@ impl GeomCurve {
                     Ufin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -178,8 +197,11 @@ impl GeomCurve {
                     Ufin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -199,8 +221,11 @@ impl GeomCurve {
                     Ufin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -220,8 +245,11 @@ impl GeomCurve {
                     Ufin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -241,8 +269,11 @@ impl GeomCurve {
                     Ufin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -262,8 +293,11 @@ impl GeomCurve {
                     Ufin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -283,8 +317,11 @@ impl GeomCurve {
                     Ufin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -304,40 +341,45 @@ impl GeomCurve {
                     Ufin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to GeomToIGES_GeomEntity
     pub fn as_geom_entity(&self) -> &GeomEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToIGES_GeomCurve_as_GeomToIGES_GeomEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToIGES_GeomCurve_as_GeomToIGES_GeomEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToIGES_GeomEntity (mutable)
     pub fn as_geom_entity_mut(&mut self) -> &mut GeomEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToIGES_GeomCurve_as_GeomToIGES_GeomEntity_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToIGES_GeomCurve_as_GeomToIGES_GeomEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:41 - `GeomToIGES_GeomEntity::SetModel()`
     pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomToIGES_GeomCurve_inherited_SetModel(self as *mut Self, model)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -346,16 +388,23 @@ impl GeomCurve {
         {
             let __result =
                 unsafe { crate::ffi::GeomToIGES_GeomCurve_inherited_GetModel(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:47 - `GeomToIGES_GeomEntity::SetUnit()`
     pub fn set_unit(&mut self, unit: f64) {
         {
-            unsafe { crate::ffi::GeomToIGES_GeomCurve_inherited_SetUnit(self as *mut Self, unit) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::GeomToIGES_GeomCurve_inherited_SetUnit(self as *mut Self, unit)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -364,8 +413,11 @@ impl GeomCurve {
         {
             let __result =
                 unsafe { crate::ffi::GeomToIGES_GeomCurve_inherited_GetUnit(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -390,8 +442,10 @@ impl GeomEntity {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomToIGES_GeomEntity_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -399,8 +453,11 @@ impl GeomEntity {
     /// Set the value of "TheModel"
     pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
         {
-            unsafe { crate::ffi::GeomToIGES_GeomEntity_set_model(self as *mut Self, model) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::GeomToIGES_GeomEntity_set_model(self as *mut Self, model) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -410,8 +467,11 @@ impl GeomEntity {
         {
             let __result =
                 unsafe { crate::ffi::GeomToIGES_GeomEntity_get_model(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -419,8 +479,11 @@ impl GeomEntity {
     /// Sets the value of the UnitFlag
     pub fn set_unit(&mut self, unit: f64) {
         {
-            unsafe { crate::ffi::GeomToIGES_GeomEntity_set_unit(self as *mut Self, unit) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::GeomToIGES_GeomEntity_set_unit(self as *mut Self, unit) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -431,19 +494,21 @@ impl GeomEntity {
         {
             let __result =
                 unsafe { crate::ffi::GeomToIGES_GeomEntity_get_unit(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::GeomToIGES_GeomEntity_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::GeomToIGES_GeomEntity_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -469,8 +534,10 @@ impl GeomPoint {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomToIGES_GeomPoint_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -480,8 +547,10 @@ impl GeomPoint {
     pub fn new_geomentity(GE: &GeomEntity) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomToIGES_GeomPoint_ctor_geomentity(GE) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -499,8 +568,11 @@ impl GeomPoint {
                     start,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -518,40 +590,45 @@ impl GeomPoint {
                     start,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to GeomToIGES_GeomEntity
     pub fn as_geom_entity(&self) -> &GeomEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToIGES_GeomPoint_as_GeomToIGES_GeomEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToIGES_GeomPoint_as_GeomToIGES_GeomEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToIGES_GeomEntity (mutable)
     pub fn as_geom_entity_mut(&mut self) -> &mut GeomEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToIGES_GeomPoint_as_GeomToIGES_GeomEntity_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToIGES_GeomPoint_as_GeomToIGES_GeomEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:41 - `GeomToIGES_GeomEntity::SetModel()`
     pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomToIGES_GeomPoint_inherited_SetModel(self as *mut Self, model)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -560,16 +637,23 @@ impl GeomPoint {
         {
             let __result =
                 unsafe { crate::ffi::GeomToIGES_GeomPoint_inherited_GetModel(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:47 - `GeomToIGES_GeomEntity::SetUnit()`
     pub fn set_unit(&mut self, unit: f64) {
         {
-            unsafe { crate::ffi::GeomToIGES_GeomPoint_inherited_SetUnit(self as *mut Self, unit) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::GeomToIGES_GeomPoint_inherited_SetUnit(self as *mut Self, unit)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -578,8 +662,11 @@ impl GeomPoint {
         {
             let __result =
                 unsafe { crate::ffi::GeomToIGES_GeomPoint_inherited_GetUnit(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -618,8 +705,10 @@ impl GeomSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomToIGES_GeomSurface_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -629,8 +718,10 @@ impl GeomSurface {
     pub fn new_geomentity(GE: &GeomEntity) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomToIGES_GeomSurface_ctor_geomentity(GE) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -657,8 +748,11 @@ impl GeomSurface {
                     Vfin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -682,8 +776,11 @@ impl GeomSurface {
                     Vfin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -707,8 +804,11 @@ impl GeomSurface {
                     Vfin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -732,8 +832,11 @@ impl GeomSurface {
                     Vfin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -750,8 +853,11 @@ impl GeomSurface {
             let __result = unsafe {
                 crate::ffi::GeomToIGES_GeomSurface_transfer_surface_handlegeomrectangulartrimmedsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -768,8 +874,11 @@ impl GeomSurface {
             let __result = unsafe {
                 crate::ffi::GeomToIGES_GeomSurface_transfer_surface_handlegeomelementarysurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -793,8 +902,11 @@ impl GeomSurface {
                     Vfin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -811,8 +923,11 @@ impl GeomSurface {
             let __result = unsafe {
                 crate::ffi::GeomToIGES_GeomSurface_transfer_surface_handlegeomcylindricalsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -836,8 +951,11 @@ impl GeomSurface {
                     Vfin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -861,8 +979,11 @@ impl GeomSurface {
                     Vfin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -886,8 +1007,11 @@ impl GeomSurface {
                     Vfin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -911,8 +1035,11 @@ impl GeomSurface {
                     Vfin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -929,8 +1056,11 @@ impl GeomSurface {
             let __result = unsafe {
                 crate::ffi::GeomToIGES_GeomSurface_transfer_surface_handlegeomsurfaceoflinearextrusion_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -947,8 +1077,11 @@ impl GeomSurface {
             let __result = unsafe {
                 crate::ffi::GeomToIGES_GeomSurface_transfer_surface_handlegeomsurfaceofrevolution_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -972,8 +1105,11 @@ impl GeomSurface {
                     Vfin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -997,8 +1133,11 @@ impl GeomSurface {
                     Vfin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1022,8 +1161,11 @@ impl GeomSurface {
                     Vfin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1047,8 +1189,11 @@ impl GeomSurface {
                     Vfin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1072,8 +1217,11 @@ impl GeomSurface {
                     Vfin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1097,8 +1245,11 @@ impl GeomSurface {
                     Vfin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1108,8 +1259,11 @@ impl GeomSurface {
         {
             let __result =
                 unsafe { crate::ffi::GeomToIGES_GeomSurface_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1119,8 +1273,11 @@ impl GeomSurface {
         {
             let __result =
                 unsafe { crate::ffi::GeomToIGES_GeomSurface_get_b_rep_mode(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1128,8 +1285,12 @@ impl GeomSurface {
     /// Sets BRep mode flag.
     pub fn set_b_rep_mode(&mut self, flag: bool) {
         {
-            unsafe { crate::ffi::GeomToIGES_GeomSurface_set_b_rep_mode(self as *mut Self, flag) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::GeomToIGES_GeomSurface_set_b_rep_mode(self as *mut Self, flag)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1140,8 +1301,11 @@ impl GeomSurface {
             let __result = unsafe {
                 crate::ffi::GeomToIGES_GeomSurface_get_analytic_mode(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1149,42 +1313,46 @@ impl GeomSurface {
     /// Setst flag for writing elementary surfaces
     pub fn set_analytic_mode(&mut self, flag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomToIGES_GeomSurface_set_analytic_mode(self as *mut Self, flag)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to GeomToIGES_GeomEntity
     pub fn as_geom_entity(&self) -> &GeomEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToIGES_GeomSurface_as_GeomToIGES_GeomEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToIGES_GeomSurface_as_GeomToIGES_GeomEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToIGES_GeomEntity (mutable)
     pub fn as_geom_entity_mut(&mut self) -> &mut GeomEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToIGES_GeomSurface_as_GeomToIGES_GeomEntity_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToIGES_GeomSurface_as_GeomToIGES_GeomEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:41 - `GeomToIGES_GeomEntity::SetModel()`
     pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomToIGES_GeomSurface_inherited_SetModel(self as *mut Self, model)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1194,18 +1362,23 @@ impl GeomSurface {
             let __result = unsafe {
                 crate::ffi::GeomToIGES_GeomSurface_inherited_GetModel(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:47 - `GeomToIGES_GeomEntity::SetUnit()`
     pub fn set_unit(&mut self, unit: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomToIGES_GeomSurface_inherited_SetUnit(self as *mut Self, unit)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1215,8 +1388,11 @@ impl GeomSurface {
             let __result = unsafe {
                 crate::ffi::GeomToIGES_GeomSurface_inherited_GetUnit(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1244,8 +1420,10 @@ impl GeomVector {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomToIGES_GeomVector_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1255,8 +1433,10 @@ impl GeomVector {
     pub fn new_geomentity(GE: &GeomEntity) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::GeomToIGES_GeomVector_ctor_geomentity(GE) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1275,8 +1455,11 @@ impl GeomVector {
                     start,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1292,8 +1475,11 @@ impl GeomVector {
                     start,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1309,40 +1495,45 @@ impl GeomVector {
                     start,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to GeomToIGES_GeomEntity
     pub fn as_geom_entity(&self) -> &GeomEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToIGES_GeomVector_as_GeomToIGES_GeomEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::GeomToIGES_GeomVector_as_GeomToIGES_GeomEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to GeomToIGES_GeomEntity (mutable)
     pub fn as_geom_entity_mut(&mut self) -> &mut GeomEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::GeomToIGES_GeomVector_as_GeomToIGES_GeomEntity_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::GeomToIGES_GeomVector_as_GeomToIGES_GeomEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:41 - `GeomToIGES_GeomEntity::SetModel()`
     pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::GeomToIGES_GeomVector_inherited_SetModel(self as *mut Self, model)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1352,16 +1543,23 @@ impl GeomVector {
             let __result = unsafe {
                 crate::ffi::GeomToIGES_GeomVector_inherited_GetModel(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:47 - `GeomToIGES_GeomEntity::SetUnit()`
     pub fn set_unit(&mut self, unit: f64) {
         {
-            unsafe { crate::ffi::GeomToIGES_GeomVector_inherited_SetUnit(self as *mut Self, unit) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::GeomToIGES_GeomVector_inherited_SetUnit(self as *mut Self, unit)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1370,8 +1568,11 @@ impl GeomVector {
         {
             let __result =
                 unsafe { crate::ffi::GeomToIGES_GeomVector_inherited_GetUnit(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

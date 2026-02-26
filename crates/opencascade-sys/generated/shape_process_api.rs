@@ -34,8 +34,10 @@ impl ApplySequence {
                     c_seqName.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -46,8 +48,11 @@ impl ApplySequence {
         {
             let __result =
                 unsafe { crate::ffi::ShapeProcessAPI_ApplySequence_context(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -73,8 +78,11 @@ impl ApplySequence {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -82,8 +90,11 @@ impl ApplySequence {
     /// Clears myMap with accumulated history.
     pub fn clear_map(&mut self) {
         {
-            unsafe { crate::ffi::ShapeProcessAPI_ApplySequence_clear_map(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeProcessAPI_ApplySequence_clear_map(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -93,8 +104,11 @@ impl ApplySequence {
         {
             let __result =
                 unsafe { crate::ffi::ShapeProcessAPI_ApplySequence_map(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -104,12 +118,14 @@ impl ApplySequence {
     /// it method ClearMap was not called before PrepareShape.
     pub fn print_preparation_result(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeProcessAPI_ApplySequence_print_preparation_result(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

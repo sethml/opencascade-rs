@@ -12,8 +12,10 @@
 /// stream <S>.
 pub fn dump_mut(Sh: &crate::topo_ds::Shape, S: &mut crate::ffi::Standard_OStream) {
     {
-        unsafe { crate::ffi::TopTools_dump_mut(Sh, S) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::TopTools_dump_mut(Sh, S) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `TopTools.hxx`:81 - `TopTools::Dummy`
@@ -23,8 +25,10 @@ pub fn dump_mut(Sh: &crate::topo_ds::Shape, S: &mut crate::ffi::Standard_OStream
 /// position.
 pub fn dummy(I: i32) {
     {
-        unsafe { crate::ffi::TopTools_dummy(I) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::TopTools_dummy(I) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 
@@ -556,8 +560,10 @@ impl HArray1OfListOfShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopTools_HArray1OfListOfShape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -566,8 +572,10 @@ impl HArray1OfListOfShape {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_HArray1OfListOfShape_ctor_int2(theLower, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -583,8 +591,10 @@ impl HArray1OfListOfShape {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -601,8 +611,10 @@ impl HArray1OfListOfShape {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -614,8 +626,10 @@ impl HArray1OfListOfShape {
             let __result = unsafe {
                 crate::ffi::TopTools_HArray1OfListOfShape_ctor_array1oflistofshape(theOther)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -624,8 +638,11 @@ impl HArray1OfListOfShape {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_HArray1OfListOfShape_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -635,8 +652,11 @@ impl HArray1OfListOfShape {
             let __result = unsafe {
                 crate::ffi::TopTools_HArray1OfListOfShape_change_array1(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -646,8 +666,11 @@ impl HArray1OfListOfShape {
             let __result = unsafe {
                 crate::ffi::TopTools_HArray1OfListOfShape_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -655,8 +678,11 @@ impl HArray1OfListOfShape {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopTools_HArray1OfListOfShape_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -665,45 +691,46 @@ impl HArray1OfListOfShape {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_HArray1OfListOfShape_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopTools_HArray1OfListOfShape_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopTools_HArray1OfListOfShape_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopTools_HArray1OfListOfShape_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopTools_HArray1OfListOfShape_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHArray1OfListOfShape> {
-        {
-            let __result =
-                unsafe { crate::ffi::TopTools_HArray1OfListOfShape_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::TopTools_HArray1OfListOfShape_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -715,8 +742,11 @@ impl HArray1OfListOfShape {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -729,8 +759,11 @@ impl HArray1OfListOfShape {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -740,11 +773,14 @@ impl HArray1OfListOfShape {
             let __result = unsafe {
                 crate::ffi::TopTools_HArray1OfListOfShape_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -755,20 +791,25 @@ impl HArray1OfListOfShape {
             let __result = unsafe {
                 crate::ffi::TopTools_HArray1OfListOfShape_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTools_HArray1OfListOfShape_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -780,18 +821,23 @@ impl HArray1OfListOfShape {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTools_HArray1OfListOfShape_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -807,36 +853,35 @@ unsafe impl crate::CppDeletable for HandleTopToolsHArray1OfListOfShape {
 impl HandleTopToolsHArray1OfListOfShape {
     /// Dereference this Handle to access the underlying TopTools_HArray1OfListOfShape
     pub fn get(&self) -> &crate::ffi::TopTools_HArray1OfListOfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopToolsHArray1OfListOfShape_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleTopToolsHArray1OfListOfShape_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopTools_HArray1OfListOfShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopTools_HArray1OfListOfShape {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopToolsHArray1OfListOfShape_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTopToolsHArray1OfListOfShape_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopTools_HArray1OfListOfShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopToolsHArray1OfListOfShape_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopToolsHArray1OfListOfShape_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -858,8 +903,10 @@ impl HArray1OfShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopTools_HArray1OfShape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -868,8 +915,10 @@ impl HArray1OfShape {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_HArray1OfShape_ctor_int2(theLower, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -883,8 +932,10 @@ impl HArray1OfShape {
             let __result = unsafe {
                 crate::ffi::TopTools_HArray1OfShape_ctor_int2_shape(theLower, theUpper, theValue)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -901,8 +952,10 @@ impl HArray1OfShape {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -913,8 +966,10 @@ impl HArray1OfShape {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_HArray1OfShape_ctor_array1ofshape(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -923,8 +978,11 @@ impl HArray1OfShape {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_HArray1OfShape_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -933,8 +991,11 @@ impl HArray1OfShape {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_HArray1OfShape_change_array1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -943,8 +1004,11 @@ impl HArray1OfShape {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_HArray1OfShape_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -952,8 +1016,11 @@ impl HArray1OfShape {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopTools_HArray1OfShape_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -961,42 +1028,45 @@ impl HArray1OfShape {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopTools_HArray1OfShape_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopTools_HArray1OfShape_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopTools_HArray1OfShape_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopTools_HArray1OfShape_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopTools_HArray1OfShape_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHArray1OfShape> {
-        {
-            let __result = unsafe { crate::ffi::TopTools_HArray1OfShape_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopTools_HArray1OfShape_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1008,8 +1078,11 @@ impl HArray1OfShape {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1019,8 +1092,11 @@ impl HArray1OfShape {
             let __result = unsafe {
                 crate::ffi::TopTools_HArray1OfShape_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1029,11 +1105,14 @@ impl HArray1OfShape {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_HArray1OfShape_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1044,18 +1123,23 @@ impl HArray1OfShape {
             let __result = unsafe {
                 crate::ffi::TopTools_HArray1OfShape_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTools_HArray1OfShape_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1065,16 +1149,23 @@ impl HArray1OfShape {
             let __result = unsafe {
                 crate::ffi::TopTools_HArray1OfShape_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopTools_HArray1OfShape_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopTools_HArray1OfShape_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1090,35 +1181,32 @@ unsafe impl crate::CppDeletable for HandleTopToolsHArray1OfShape {
 impl HandleTopToolsHArray1OfShape {
     /// Dereference this Handle to access the underlying TopTools_HArray1OfShape
     pub fn get(&self) -> &crate::ffi::TopTools_HArray1OfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopToolsHArray1OfShape_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopToolsHArray1OfShape_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopTools_HArray1OfShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopTools_HArray1OfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopToolsHArray1OfShape_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTopToolsHArray1OfShape_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopTools_HArray1OfShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopToolsHArray1OfShape_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopToolsHArray1OfShape_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1149,8 +1237,10 @@ impl HArray2OfShape {
                     theRowLow, theRowUpp, theColLow, theColUpp,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1168,8 +1258,10 @@ impl HArray2OfShape {
                     theRowLow, theRowUpp, theColLow, theColUpp, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1180,8 +1272,10 @@ impl HArray2OfShape {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_HArray2OfShape_ctor_array2ofshape(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1190,8 +1284,11 @@ impl HArray2OfShape {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_HArray2OfShape_array2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1200,8 +1297,11 @@ impl HArray2OfShape {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_HArray2OfShape_change_array2(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1210,8 +1310,11 @@ impl HArray2OfShape {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_HArray2OfShape_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1219,8 +1322,11 @@ impl HArray2OfShape {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopTools_HArray2OfShape_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1228,42 +1334,45 @@ impl HArray2OfShape {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopTools_HArray2OfShape_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopTools_HArray2OfShape_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopTools_HArray2OfShape_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopTools_HArray2OfShape_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopTools_HArray2OfShape_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHArray2OfShape> {
-        {
-            let __result = unsafe { crate::ffi::TopTools_HArray2OfShape_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopTools_HArray2OfShape_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1275,8 +1384,11 @@ impl HArray2OfShape {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1286,8 +1398,11 @@ impl HArray2OfShape {
             let __result = unsafe {
                 crate::ffi::TopTools_HArray2OfShape_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1296,11 +1411,14 @@ impl HArray2OfShape {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_HArray2OfShape_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1311,18 +1429,23 @@ impl HArray2OfShape {
             let __result = unsafe {
                 crate::ffi::TopTools_HArray2OfShape_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTools_HArray2OfShape_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1332,16 +1455,23 @@ impl HArray2OfShape {
             let __result = unsafe {
                 crate::ffi::TopTools_HArray2OfShape_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopTools_HArray2OfShape_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopTools_HArray2OfShape_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1357,35 +1487,32 @@ unsafe impl crate::CppDeletable for HandleTopToolsHArray2OfShape {
 impl HandleTopToolsHArray2OfShape {
     /// Dereference this Handle to access the underlying TopTools_HArray2OfShape
     pub fn get(&self) -> &crate::ffi::TopTools_HArray2OfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopToolsHArray2OfShape_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopToolsHArray2OfShape_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopTools_HArray2OfShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopTools_HArray2OfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopToolsHArray2OfShape_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTopToolsHArray2OfShape_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopTools_HArray2OfShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopToolsHArray2OfShape_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopToolsHArray2OfShape_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1407,8 +1534,10 @@ impl HSequenceOfShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopTools_HSequenceOfShape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1419,8 +1548,10 @@ impl HSequenceOfShape {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_HSequenceOfShape_ctor_sequenceofshape(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1429,18 +1560,23 @@ impl HSequenceOfShape {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_HSequenceOfShape_sequence(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::Append()`
     pub fn append_shape(&mut self, theItem: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTools_HSequenceOfShape_append_shape(self as *mut Self, theItem)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1450,13 +1586,15 @@ impl HSequenceOfShape {
         theSequence: &mut crate::ffi::TopTools_SequenceOfShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTools_HSequenceOfShape_append_sequenceofshape(
                     self as *mut Self,
                     theSequence,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1465,8 +1603,11 @@ impl HSequenceOfShape {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_HSequenceOfShape_change_sequence(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1475,8 +1616,11 @@ impl HSequenceOfShape {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_HSequenceOfShape_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1484,8 +1628,11 @@ impl HSequenceOfShape {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopTools_HSequenceOfShape_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1493,69 +1640,67 @@ impl HSequenceOfShape {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopTools_HSequenceOfShape_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TopTools_SequenceOfShape
     pub fn as_sequence_of_shape(&self) -> &SequenceOfShape {
-        {
-            let __result = unsafe {
-                crate::ffi::TopTools_HSequenceOfShape_as_TopTools_SequenceOfShape(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopTools_HSequenceOfShape_as_TopTools_SequenceOfShape(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TopTools_SequenceOfShape (mutable)
     pub fn as_sequence_of_shape_mut(&mut self) -> &mut SequenceOfShape {
-        {
-            let __result = unsafe {
-                crate::ffi::TopTools_HSequenceOfShape_as_TopTools_SequenceOfShape_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopTools_HSequenceOfShape_as_TopTools_SequenceOfShape_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopTools_HSequenceOfShape_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopTools_HSequenceOfShape_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopTools_HSequenceOfShape_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopTools_HSequenceOfShape_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
-        {
-            let __result =
-                unsafe { crate::ffi::TopTools_HSequenceOfShape_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopTools_HSequenceOfShape_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1567,8 +1712,11 @@ impl HSequenceOfShape {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1578,8 +1726,11 @@ impl HSequenceOfShape {
             let __result = unsafe {
                 crate::ffi::TopTools_HSequenceOfShape_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1589,11 +1740,14 @@ impl HSequenceOfShape {
             let __result = unsafe {
                 crate::ffi::TopTools_HSequenceOfShape_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1604,20 +1758,25 @@ impl HSequenceOfShape {
             let __result = unsafe {
                 crate::ffi::TopTools_HSequenceOfShape_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTools_HSequenceOfShape_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1629,16 +1788,23 @@ impl HSequenceOfShape {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopTools_HSequenceOfShape_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopTools_HSequenceOfShape_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1654,35 +1820,35 @@ unsafe impl crate::CppDeletable for HandleTopToolsHSequenceOfShape {
 impl HandleTopToolsHSequenceOfShape {
     /// Dereference this Handle to access the underlying TopTools_HSequenceOfShape
     pub fn get(&self) -> &crate::ffi::TopTools_HSequenceOfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopToolsHSequenceOfShape_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleTopToolsHSequenceOfShape_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopTools_HSequenceOfShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopTools_HSequenceOfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopToolsHSequenceOfShape_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTopToolsHSequenceOfShape_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopTools_HSequenceOfShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopToolsHSequenceOfShape_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopToolsHSequenceOfShape_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1713,8 +1879,10 @@ impl LocationSet {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopTools_LocationSet_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1722,8 +1890,10 @@ impl LocationSet {
     /// Clears the content of the set.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::TopTools_LocationSet_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopTools_LocationSet_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1733,8 +1903,11 @@ impl LocationSet {
     pub fn add(&mut self, L: &crate::top_loc::Location) -> i32 {
         {
             let __result = unsafe { crate::ffi::TopTools_LocationSet_add(self as *mut Self, L) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1744,8 +1917,11 @@ impl LocationSet {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_LocationSet_location(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1755,8 +1931,11 @@ impl LocationSet {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_LocationSet_index(self as *const Self, L) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1764,8 +1943,10 @@ impl LocationSet {
     /// Dumps the content of me on the stream <OS>.
     pub fn dump(&self, OS: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::TopTools_LocationSet_dump(self as *const Self, OS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopTools_LocationSet_dump(self as *const Self, OS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1778,8 +1959,12 @@ impl LocationSet {
         theProgress: &crate::message::ProgressRange,
     ) {
         {
-            unsafe { crate::ffi::TopTools_LocationSet_write(self as *const Self, OS, theProgress) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopTools_LocationSet_write(self as *const Self, OS, theProgress)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1792,8 +1977,12 @@ impl LocationSet {
         theProgress: &crate::message::ProgressRange,
     ) {
         {
-            unsafe { crate::ffi::TopTools_LocationSet_read(self as *mut Self, IS, theProgress) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopTools_LocationSet_read(self as *mut Self, IS, theProgress)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1819,8 +2008,10 @@ impl MutexForShapeProvider {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopTools_MutexForShapeProvider_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1832,14 +2023,16 @@ impl MutexForShapeProvider {
         theType: crate::top_abs::ShapeEnum,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTools_MutexForShapeProvider_create_mutexes_for_sub_shapes(
                     self as *mut Self,
                     theShape,
                     theType.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1847,13 +2040,15 @@ impl MutexForShapeProvider {
     /// Creates and associates mutex with theShape
     pub fn create_mutex_for_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTools_MutexForShapeProvider_create_mutex_for_shape(
                     self as *mut Self,
                     theShape,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1865,11 +2060,14 @@ impl MutexForShapeProvider {
             let __result = unsafe {
                 crate::ffi::TopTools_MutexForShapeProvider_get_mutex(self as *const Self, theShape)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1878,10 +2076,12 @@ impl MutexForShapeProvider {
     /// Removes all mutexes
     pub fn remove_all_mutexes(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTools_MutexForShapeProvider_remove_all_mutexes(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1910,8 +2110,10 @@ impl ShapeSet {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopTools_ShapeSet_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1919,8 +2121,12 @@ impl ShapeSet {
     /// Sets the TopTools_FormatVersion
     pub fn set_format_nb(&mut self, theFormatNb: i32) {
         {
-            unsafe { crate::ffi::TopTools_ShapeSet_set_format_nb(self as *mut Self, theFormatNb) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopTools_ShapeSet_set_format_nb(self as *mut Self, theFormatNb)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1929,8 +2135,11 @@ impl ShapeSet {
     pub fn format_nb(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TopTools_ShapeSet_format_nb(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1939,8 +2148,10 @@ impl ShapeSet {
     /// redefined.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::TopTools_ShapeSet_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopTools_ShapeSet_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1950,8 +2161,11 @@ impl ShapeSet {
     pub fn add(&mut self, S: &crate::topo_ds::Shape) -> i32 {
         {
             let __result = unsafe { crate::ffi::TopTools_ShapeSet_add(self as *mut Self, S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1960,8 +2174,11 @@ impl ShapeSet {
     pub fn shape(&self, I: i32) -> &crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::TopTools_ShapeSet_shape(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1970,8 +2187,11 @@ impl ShapeSet {
     pub fn index(&self, S: &crate::topo_ds::Shape) -> i32 {
         {
             let __result = unsafe { crate::ffi::TopTools_ShapeSet_index(self as *const Self, S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1979,8 +2199,11 @@ impl ShapeSet {
     pub fn locations(&self) -> &LocationSet {
         {
             let __result = unsafe { crate::ffi::TopTools_ShapeSet_locations(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1989,8 +2212,11 @@ impl ShapeSet {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_ShapeSet_change_locations(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2010,8 +2236,11 @@ impl ShapeSet {
         {
             let __result =
                 unsafe { crate::ffi::TopTools_ShapeSet_dump_extent_ostream(self as *mut Self, OS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2020,10 +2249,12 @@ impl ShapeSet {
     /// (Number of shapes of each type)
     pub fn dump_extent_asciistring(&self, S: &mut crate::t_collection::AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTools_ShapeSet_dump_extent_asciistring(self as *const Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2040,8 +2271,11 @@ impl ShapeSet {
     /// Dumps the locations.
     pub fn dump_ostream(&self, OS: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::TopTools_ShapeSet_dump_ostream(self as *const Self, OS) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopTools_ShapeSet_dump_ostream(self as *const Self, OS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2064,14 +2298,16 @@ impl ShapeSet {
         theProgress: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTools_ShapeSet_write_ostream_progressrange(
                     self as *mut Self,
                     OS,
                     theProgress,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2094,14 +2330,16 @@ impl ShapeSet {
         theProgress: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTools_ShapeSet_read_istream_progressrange(
                     self as *mut Self,
                     IS,
                     theProgress,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2115,8 +2353,12 @@ impl ShapeSet {
         OS: &mut crate::ffi::Standard_OStream,
     ) {
         {
-            unsafe { crate::ffi::TopTools_ShapeSet_dump_shape_ostream(self as *const Self, S, OS) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopTools_ShapeSet_dump_shape_ostream(self as *const Self, S, OS)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2130,10 +2372,12 @@ impl ShapeSet {
         OS: &mut crate::ffi::Standard_OStream,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTools_ShapeSet_write_shape_ostream(self as *const Self, S, OS)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2145,8 +2389,12 @@ impl ShapeSet {
         IS: &mut crate::ffi::Standard_IStream,
     ) {
         {
-            unsafe { crate::ffi::TopTools_ShapeSet_read_shape_istream(self as *const Self, S, IS) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopTools_ShapeSet_read_shape_istream(self as *const Self, S, IS)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2154,8 +2402,10 @@ impl ShapeSet {
     /// Stores the geometry of <S>.
     pub fn add_geometry(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TopTools_ShapeSet_add_geometry(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopTools_ShapeSet_add_geometry(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2163,8 +2413,12 @@ impl ShapeSet {
     /// Dumps the geometry of me on the stream <OS>.
     pub fn dump_geometry_ostream(&self, OS: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::TopTools_ShapeSet_dump_geometry_ostream(self as *const Self, OS) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopTools_ShapeSet_dump_geometry_ostream(self as *const Self, OS)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2177,14 +2431,16 @@ impl ShapeSet {
         theProgress: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTools_ShapeSet_write_geometry_ostream_progressrange(
                     self as *mut Self,
                     OS,
                     theProgress,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2196,14 +2452,16 @@ impl ShapeSet {
         theProgress: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTools_ShapeSet_read_geometry_istream_progressrange(
                     self as *mut Self,
                     IS,
                     theProgress,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2215,14 +2473,16 @@ impl ShapeSet {
         OS: &mut crate::ffi::Standard_OStream,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTools_ShapeSet_dump_geometry_shape_ostream(
                     self as *const Self,
                     S,
                     OS,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2235,14 +2495,16 @@ impl ShapeSet {
         OS: &mut crate::ffi::Standard_OStream,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTools_ShapeSet_write_geometry_shape_ostream(
                     self as *const Self,
                     S,
                     OS,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2256,7 +2518,7 @@ impl ShapeSet {
         S: &mut crate::topo_ds::Shape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopTools_ShapeSet_read_geometry_shapeenum_istream_shape(
                     self as *mut Self,
                     T.into(),
@@ -2264,7 +2526,9 @@ impl ShapeSet {
                     S,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2274,8 +2538,11 @@ impl ShapeSet {
     /// builder.
     pub fn add_shapes(&mut self, S1: &mut crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TopTools_ShapeSet_add_shapes(self as *mut Self, S1, S2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopTools_ShapeSet_add_shapes(self as *mut Self, S1, S2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2287,8 +2554,11 @@ impl ShapeSet {
     /// shapes.
     pub fn check(&mut self, T: crate::top_abs::ShapeEnum, S: &mut crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TopTools_ShapeSet_check(self as *mut Self, T.into(), S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopTools_ShapeSet_check(self as *mut Self, T.into(), S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2297,8 +2567,11 @@ impl ShapeSet {
     pub fn nb_shapes(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TopTools_ShapeSet_nb_shapes(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

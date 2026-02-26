@@ -12,8 +12,11 @@
 pub fn lowest_id() -> crate::OwnedPtr<crate::standard::GUID> {
     {
         let __result = unsafe { crate::ffi::TDF_lowest_id() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TDF.hxx`:47 - `TDF::UppestID`
@@ -21,8 +24,11 @@ pub fn lowest_id() -> crate::OwnedPtr<crate::standard::GUID> {
 pub fn uppest_id() -> crate::OwnedPtr<crate::standard::GUID> {
     {
         let __result = unsafe { crate::ffi::TDF_uppest_id() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TDF.hxx`:50 - `TDF::AddLinkGUIDToProgID`
@@ -32,8 +38,10 @@ pub fn add_link_guid_to_prog_id(
     ProgID: &crate::t_collection::ExtendedString,
 ) {
     {
-        unsafe { crate::ffi::TDF_add_link_guid_to_prog_id(ID, ProgID) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::TDF_add_link_guid_to_prog_id(ID, ProgID) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `TDF.hxx`:54 - `TDF::GUIDFromProgID`
@@ -44,8 +52,11 @@ pub fn guid_from_prog_id(
 ) -> bool {
     {
         let __result = unsafe { crate::ffi::TDF_guid_from_prog_id(ProgID, ID) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `TDF.hxx`:58 - `TDF::ProgIDFromGUID`
@@ -56,8 +67,11 @@ pub fn prog_id_from_guid(
 ) -> bool {
     {
         let __result = unsafe { crate::ffi::TDF_prog_id_from_guid(ID, ProgID) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 
@@ -201,8 +215,11 @@ impl Attribute {
     pub fn id(&self) -> &crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDF_Attribute_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -211,8 +228,10 @@ impl Attribute {
     /// of one type at the same label feature).
     pub fn set_id_guid(&mut self, arg0: &crate::standard::GUID) {
         {
-            unsafe { crate::ffi::TDF_Attribute_set_id_guid(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Attribute_set_id_guid(self as *mut Self, arg0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -220,8 +239,10 @@ impl Attribute {
     /// Sets default ID defined in nested class (to be used for attributes having User ID feature).
     pub fn set_id(&mut self) {
         {
-            unsafe { crate::ffi::TDF_Attribute_set_id(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Attribute_set_id(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -236,8 +257,11 @@ impl Attribute {
     pub fn label(&self) -> crate::OwnedPtr<Label> {
         {
             let __result = unsafe { crate::ffi::TDF_Attribute_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -247,8 +271,11 @@ impl Attribute {
     pub fn transaction(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TDF_Attribute_transaction(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -261,8 +288,11 @@ impl Attribute {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Attribute_until_transaction(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -272,8 +302,11 @@ impl Attribute {
     pub fn is_valid(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_Attribute_is_valid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -282,8 +315,11 @@ impl Attribute {
     pub fn is_new(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_Attribute_is_new(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -296,8 +332,11 @@ impl Attribute {
     pub fn is_forgotten(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_Attribute_is_forgotten(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -308,8 +347,11 @@ impl Attribute {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Attribute_is_attribute(self as *const Self, anID) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -328,8 +370,11 @@ impl Attribute {
             let __result = unsafe {
                 crate::ffi::TDF_Attribute_find_attribute(self as *const Self, anID, anAttribute)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -339,8 +384,11 @@ impl Attribute {
     /// GUID fhan <other>.
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TDF_Attribute_add_attribute(self as *const Self, other) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_Attribute_add_attribute(self as *const Self, other) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -354,8 +402,11 @@ impl Attribute {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Attribute_forget_attribute(self as *const Self, aguid) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -368,10 +419,12 @@ impl Attribute {
     /// null label after this call
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_Attribute_forget_all_attributes(self as *const Self, clearChildren)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -379,8 +432,10 @@ impl Attribute {
     /// Something to do after adding an Attribute to a label.
     pub fn after_addition(&mut self) {
         {
-            unsafe { crate::ffi::TDF_Attribute_after_addition(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Attribute_after_addition(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -389,8 +444,10 @@ impl Attribute {
     /// a label.
     pub fn before_removal(&mut self) {
         {
-            unsafe { crate::ffi::TDF_Attribute_before_removal(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Attribute_before_removal(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -399,8 +456,10 @@ impl Attribute {
     /// label.
     pub fn before_forget(&mut self) {
         {
-            unsafe { crate::ffi::TDF_Attribute_before_forget(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Attribute_before_forget(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -409,8 +468,10 @@ impl Attribute {
     /// a label.
     pub fn after_resume(&mut self) {
         {
-            unsafe { crate::ffi::TDF_Attribute_after_resume(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Attribute_after_resume(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -426,8 +487,11 @@ impl Attribute {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Attribute_after_retrieval(self as *mut Self, forceIt) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -447,8 +511,11 @@ impl Attribute {
             let __result = unsafe {
                 crate::ffi::TDF_Attribute_before_undo(self as *mut Self, anAttDelta, forceIt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -468,8 +535,11 @@ impl Attribute {
             let __result = unsafe {
                 crate::ffi::TDF_Attribute_after_undo(self as *mut Self, anAttDelta, forceIt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -479,8 +549,11 @@ impl Attribute {
     /// It is called by TDF_Data::CommitTransaction() method.
     pub fn before_commit_transaction(&mut self) {
         {
-            unsafe { crate::ffi::TDF_Attribute_before_commit_transaction(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_Attribute_before_commit_transaction(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -497,8 +570,10 @@ impl Attribute {
     /// 2) If the attribute is not attached to a label.
     pub fn backup(&mut self) {
         {
-            unsafe { crate::ffi::TDF_Attribute_backup(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Attribute_backup(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -509,8 +584,11 @@ impl Attribute {
     pub fn is_backuped(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_Attribute_is_backuped(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -520,8 +598,11 @@ impl Attribute {
     pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         {
             let __result = unsafe { crate::ffi::TDF_Attribute_backup_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -531,8 +612,11 @@ impl Attribute {
     /// transaction.
     pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TDF_Attribute_restore(self as *mut Self, anAttribute) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_Attribute_restore(self as *mut Self, anAttribute) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -544,8 +628,11 @@ impl Attribute {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Attribute_delta_on_addition(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -556,8 +643,11 @@ impl Attribute {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Attribute_delta_on_forget(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -568,8 +658,11 @@ impl Attribute {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Attribute_delta_on_resume(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -587,8 +680,11 @@ impl Attribute {
                     anOldAttribute,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -599,13 +695,15 @@ impl Attribute {
         aDelta: &crate::ffi::HandleTDFDeltaOnModification,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_Attribute_delta_on_modification_handletdfdeltaonmodification(
                     self as *mut Self,
                     aDelta,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -616,8 +714,11 @@ impl Attribute {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Attribute_delta_on_removal(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -627,8 +728,11 @@ impl Attribute {
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         {
             let __result = unsafe { crate::ffi::TDF_Attribute_new_empty(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -652,14 +756,16 @@ impl Attribute {
         aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_Attribute_paste(
                     self as *const Self,
                     intoAttribute,
                     aRelocationTable,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -673,8 +779,11 @@ impl Attribute {
     /// If there is none, do not implement the method.
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         {
-            unsafe { crate::ffi::TDF_Attribute_references(self as *const Self, aDataSet) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_Attribute_references(self as *const Self, aDataSet) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -693,8 +802,11 @@ impl Attribute {
     ) -> &mut crate::ffi::Standard_OStream {
         {
             let __result = unsafe { crate::ffi::TDF_Attribute_dump(self as *mut Self, anOS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -711,10 +823,12 @@ impl Attribute {
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_Attribute_extended_dump(self as *const Self, anOS, aFilter, aMap)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -733,8 +847,11 @@ impl Attribute {
     /// Should be private.
     pub fn forget(&mut self, aTransaction: i32) {
         {
-            unsafe { crate::ffi::TDF_Attribute_forget(self as *mut Self, aTransaction) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_Attribute_forget(self as *mut Self, aTransaction) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -742,8 +859,11 @@ impl Attribute {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDF_Attribute_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -751,8 +871,11 @@ impl Attribute {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDF_Attribute_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -760,29 +883,32 @@ impl Attribute {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDF_Attribute_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_Attribute_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDF_Attribute_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_Attribute_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDF_Attribute_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -791,8 +917,11 @@ impl Attribute {
             let __result = unsafe {
                 crate::ffi::TDF_Attribute_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -801,8 +930,11 @@ impl Attribute {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Attribute_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -810,11 +942,14 @@ impl Attribute {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::TDF_Attribute_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -824,16 +959,23 @@ impl Attribute {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Attribute_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::TDF_Attribute_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDF_Attribute_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -843,16 +985,21 @@ impl Attribute {
             let __result = unsafe {
                 crate::ffi::TDF_Attribute_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDF_Attribute_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Attribute_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -868,45 +1015,47 @@ unsafe impl crate::CppDeletable for HandleTDFAttribute {
 impl HandleTDFAttribute {
     /// Dereference this Handle to access the underlying TDF_Attribute
     pub fn get(&self) -> &crate::ffi::TDF_Attribute {
-        {
-            let __result = unsafe { crate::ffi::HandleTDFAttribute_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDFAttribute_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDF_Attribute
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_Attribute {
-        {
-            let __result = unsafe { crate::ffi::HandleTDFAttribute_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDFAttribute_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDF_Attribute> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFAttribute_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFAttribute_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<TDF_Attribute> to Handle<TDF_Reference>
     ///
     /// Returns `None` if the handle does not point to a `TDF_Reference` (or subclass).
     pub fn downcast_to_reference(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFReference>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDFReference(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -916,14 +1065,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_tag_source(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFTagSource>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDFTagSource(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -933,16 +1084,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_ascii_string(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdAsciiString>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdAsciiString(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -952,16 +1105,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_boolean_array(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdBooleanArray>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdBooleanArray(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -971,16 +1126,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_boolean_list(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdBooleanList>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdBooleanList(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -990,14 +1147,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_byte_array(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdByteArray>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdByteArray(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1007,14 +1166,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_comment(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdComment>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdComment(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1024,14 +1185,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_current(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdCurrent>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdCurrent(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1041,14 +1204,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_directory(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDirectory>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdDirectory(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1058,14 +1223,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_expression(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdExpression>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdExpression(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1075,16 +1242,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_ext_string_array(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdExtStringArray>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdExtStringArray(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1094,16 +1263,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_ext_string_list(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdExtStringList>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdExtStringList(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1113,16 +1284,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_generic_empty(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdGenericEmpty(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1132,16 +1305,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_generic_ext_string(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdGenericExtString>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdGenericExtString(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1151,16 +1326,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_int_packed_map(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdIntPackedMap>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdIntPackedMap(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1170,14 +1347,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_integer(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdInteger>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdInteger(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1187,16 +1366,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_integer_array(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdIntegerArray>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdIntegerArray(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1206,16 +1387,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_integer_list(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdIntegerList>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdIntegerList(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1223,14 +1406,16 @@ impl HandleTDFAttribute {
     ///
     /// Returns `None` if the handle does not point to a `TDataStd_Name` (or subclass).
     pub fn downcast_to_name(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdName>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdName(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1240,14 +1425,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_named_data(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdNamedData>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdNamedData(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1257,14 +1444,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_note_book(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdNoteBook>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdNoteBook(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1272,14 +1461,16 @@ impl HandleTDFAttribute {
     ///
     /// Returns `None` if the handle does not point to a `TDataStd_Real` (or subclass).
     pub fn downcast_to_real(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdReal>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdReal(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1289,14 +1480,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_real_array(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdRealArray>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdRealArray(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1306,14 +1499,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_real_list(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdRealList>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdRealList(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1323,16 +1518,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_reference_array(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdReferenceArray>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdReferenceArray(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1342,16 +1539,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_reference_list(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdReferenceList>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdReferenceList(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1361,14 +1560,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_relation(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdRelation>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdRelation(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1376,14 +1577,16 @@ impl HandleTDFAttribute {
     ///
     /// Returns `None` if the handle does not point to a `TDataStd_Tick` (or subclass).
     pub fn downcast_to_tick(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdTick>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdTick(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1393,14 +1596,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_tree_node(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdTreeNode>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdTreeNode(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1410,14 +1615,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_u_attribute(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdUAttribute>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdUAttribute(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1427,14 +1634,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_variable(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdVariable>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataStdVariable(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1442,14 +1651,16 @@ impl HandleTDFAttribute {
     ///
     /// Returns `None` if the handle does not point to a `TDataXtd_Axis` (or subclass).
     pub fn downcast_to_axis(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdAxis>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdAxis(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1459,14 +1670,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_constraint(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdConstraint>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdConstraint(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1476,14 +1689,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_geometry(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdGeometry>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdGeometry(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1493,14 +1708,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_pattern_std(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPatternStd>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdPatternStd(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1510,14 +1727,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_placement(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPlacement>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdPlacement(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1525,14 +1744,16 @@ impl HandleTDFAttribute {
     ///
     /// Returns `None` if the handle does not point to a `TDataXtd_Plane` (or subclass).
     pub fn downcast_to_plane(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPlane>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdPlane(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1540,14 +1761,16 @@ impl HandleTDFAttribute {
     ///
     /// Returns `None` if the handle does not point to a `TDataXtd_Point` (or subclass).
     pub fn downcast_to_point(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPoint>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdPoint(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1557,14 +1780,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_position(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPosition>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdPosition(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1574,16 +1799,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_presentation(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPresentation>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdPresentation(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1591,14 +1818,16 @@ impl HandleTDFAttribute {
     ///
     /// Returns `None` if the handle does not point to a `TDataXtd_Shape` (or subclass).
     pub fn downcast_to_shape(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdShape>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdShape(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1608,16 +1837,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_triangulation(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdTriangulation>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDataXtdTriangulation(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1627,14 +1858,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_modified(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdModified>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDocStdModified(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1642,14 +1875,16 @@ impl HandleTDFAttribute {
     ///
     /// Returns `None` if the handle does not point to a `TDocStd_Owner` (or subclass).
     pub fn downcast_to_owner(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdOwner>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDocStdOwner(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1657,14 +1892,16 @@ impl HandleTDFAttribute {
     ///
     /// Returns `None` if the handle does not point to a `TDocStd_XLink` (or subclass).
     pub fn downcast_to_x_link(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdXLink>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDocStdXLink(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1674,14 +1911,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_x_link_root(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdXLinkRoot>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTDocStdXLinkRoot(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1691,14 +1930,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_function(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTFunctionFunction>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTFunctionFunction(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1708,14 +1949,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_t_function_graph_node(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTFunctionGraphNode>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTFunctionGraphNode(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1725,14 +1968,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_logbook(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTFunctionLogbook>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTFunctionLogbook(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1740,14 +1985,16 @@ impl HandleTDFAttribute {
     ///
     /// Returns `None` if the handle does not point to a `TFunction_Scope` (or subclass).
     pub fn downcast_to_scope(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTFunctionScope>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTFunctionScope(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1757,14 +2004,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_named_shape(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTNamingNamedShape(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1772,14 +2021,16 @@ impl HandleTDFAttribute {
     ///
     /// Returns `None` if the handle does not point to a `TNaming_Naming` (or subclass).
     pub fn downcast_to_naming(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTNamingNaming>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTNamingNaming(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1789,14 +2040,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_used_shapes(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTNamingUsedShapes>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTNamingUsedShapes(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1806,16 +2059,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_t_int_sparse_array(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjTIntSparseArray>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTObjTIntSparseArray(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1823,14 +2078,16 @@ impl HandleTDFAttribute {
     ///
     /// Returns `None` if the handle does not point to a `TObj_TModel` (or subclass).
     pub fn downcast_to_t_model(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjTModel>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTObjTModel(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1840,14 +2097,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_t_name_container(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjTNameContainer>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTObjTNameContainer(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1855,14 +2114,16 @@ impl HandleTDFAttribute {
     ///
     /// Returns `None` if the handle does not point to a `TObj_TObject` (or subclass).
     pub fn downcast_to_t_object(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjTObject>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTObjTObject(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1872,14 +2133,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_t_reference(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjTReference>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTObjTReference(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1887,14 +2150,16 @@ impl HandleTDFAttribute {
     ///
     /// Returns `None` if the handle does not point to a `TObj_TXYZ` (or subclass).
     pub fn downcast_to_txyz(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjTXYZ>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTObjTXYZ(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1904,16 +2169,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_ais_presentation(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTPrsStdAISPresentation>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTPrsStdAISPresentation(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1923,14 +2190,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_ais_viewer(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTPrsStdAISViewer>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleTPrsStdAISViewer(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1938,14 +2207,16 @@ impl HandleTDFAttribute {
     ///
     /// Returns `None` if the handle does not point to a `XCAFDoc_Area` (or subclass).
     pub fn downcast_to_area(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocArea>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocArea(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1955,16 +2226,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_assembly_item_ref(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocAssemblyItemRef>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocAssemblyItemRef(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1974,14 +2247,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_centroid(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocCentroid>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocCentroid(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1991,16 +2266,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_clipping_plane_tool(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocClippingPlaneTool>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocClippingPlaneTool(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2008,14 +2285,16 @@ impl HandleTDFAttribute {
     ///
     /// Returns `None` if the handle does not point to a `XCAFDoc_Color` (or subclass).
     pub fn downcast_to_color(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocColor>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocColor(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2025,14 +2304,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_color_tool(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocColorTool>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocColorTool(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2040,14 +2321,16 @@ impl HandleTDFAttribute {
     ///
     /// Returns `None` if the handle does not point to a `XCAFDoc_Datum` (or subclass).
     pub fn downcast_to_datum(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocDatum>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocDatum(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2055,14 +2338,16 @@ impl HandleTDFAttribute {
     ///
     /// Returns `None` if the handle does not point to a `XCAFDoc_DimTol` (or subclass).
     pub fn downcast_to_dim_tol(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocDimTol>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocDimTol(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2072,14 +2357,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_dim_tol_tool(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocDimTolTool>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocDimTolTool(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2089,14 +2376,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_dimension(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocDimension>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocDimension(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2106,16 +2395,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_document_tool(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocDocumentTool>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocDocumentTool(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2125,16 +2416,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_geom_tolerance(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocGeomTolerance>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocGeomTolerance(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2144,14 +2437,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_xcaf_doc_graph_node(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocGraphNode>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocGraphNode(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2161,14 +2456,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_layer_tool(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocLayerTool>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocLayerTool(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2178,14 +2475,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_length_unit(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocLengthUnit>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocLengthUnit(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2195,14 +2494,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_location(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocLocation>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocLocation(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2212,14 +2513,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_material(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocMaterial>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocMaterial(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2229,16 +2532,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_material_tool(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocMaterialTool>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocMaterialTool(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2246,14 +2551,16 @@ impl HandleTDFAttribute {
     ///
     /// Returns `None` if the handle does not point to a `XCAFDoc_Note` (or subclass).
     pub fn downcast_to_note(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocNote>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocNote(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2263,14 +2570,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_note_balloon(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocNoteBalloon>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocNoteBalloon(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2280,14 +2589,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_note_bin_data(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocNoteBinData>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocNoteBinData(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2297,14 +2608,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_note_comment(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocNoteComment>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocNoteComment(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2314,14 +2627,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_notes_tool(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocNotesTool>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocNotesTool(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2331,16 +2646,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_shape_map_tool(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocShapeMapTool>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocShapeMapTool(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2350,14 +2667,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_shape_tool(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocShapeTool>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocShapeTool(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2365,14 +2684,16 @@ impl HandleTDFAttribute {
     ///
     /// Returns `None` if the handle does not point to a `XCAFDoc_View` (or subclass).
     pub fn downcast_to_view(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocView>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocView(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2382,14 +2703,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_view_tool(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocViewTool>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocViewTool(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2399,14 +2722,16 @@ impl HandleTDFAttribute {
     pub fn downcast_to_vis_material(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocVisMaterial>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocVisMaterial(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2416,16 +2741,18 @@ impl HandleTDFAttribute {
     pub fn downcast_to_vis_material_tool(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocVisMaterialTool>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocVisMaterialTool(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2433,14 +2760,16 @@ impl HandleTDFAttribute {
     ///
     /// Returns `None` if the handle does not point to a `XCAFDoc_Volume` (or subclass).
     pub fn downcast_to_volume(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFDocVolume>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttribute_downcast_to_HandleXCAFDocVolume(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -2475,8 +2804,10 @@ impl AttributeDelta {
     /// Applies the delta to the attribute.
     pub fn apply(&mut self) {
         {
-            unsafe { crate::ffi::TDF_AttributeDelta_apply(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_AttributeDelta_apply(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2485,8 +2816,11 @@ impl AttributeDelta {
     pub fn label(&self) -> crate::OwnedPtr<Label> {
         {
             let __result = unsafe { crate::ffi::TDF_AttributeDelta_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2495,8 +2829,11 @@ impl AttributeDelta {
     pub fn attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         {
             let __result = unsafe { crate::ffi::TDF_AttributeDelta_attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2505,8 +2842,11 @@ impl AttributeDelta {
     pub fn id(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         {
             let __result = unsafe { crate::ffi::TDF_AttributeDelta_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2524,8 +2864,11 @@ impl AttributeDelta {
     ) -> &mut crate::ffi::Standard_OStream {
         {
             let __result = unsafe { crate::ffi::TDF_AttributeDelta_dump(self as *mut Self, OS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2534,8 +2877,11 @@ impl AttributeDelta {
         {
             let __result =
                 unsafe { crate::ffi::TDF_AttributeDelta_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2543,8 +2889,11 @@ impl AttributeDelta {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDF_AttributeDelta_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2552,31 +2901,32 @@ impl AttributeDelta {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDF_AttributeDelta_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_AttributeDelta_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDF_AttributeDelta_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_AttributeDelta_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDF_AttributeDelta_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2585,8 +2935,11 @@ impl AttributeDelta {
             let __result = unsafe {
                 crate::ffi::TDF_AttributeDelta_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2596,8 +2949,11 @@ impl AttributeDelta {
             let __result = unsafe {
                 crate::ffi::TDF_AttributeDelta_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2606,11 +2962,14 @@ impl AttributeDelta {
         {
             let __result =
                 unsafe { crate::ffi::TDF_AttributeDelta_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2621,18 +2980,23 @@ impl AttributeDelta {
             let __result = unsafe {
                 crate::ffi::TDF_AttributeDelta_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_AttributeDelta_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2642,16 +3006,22 @@ impl AttributeDelta {
             let __result = unsafe {
                 crate::ffi::TDF_AttributeDelta_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDF_AttributeDelta_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_AttributeDelta_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2667,32 +3037,31 @@ unsafe impl crate::CppDeletable for HandleTDFAttributeDelta {
 impl HandleTDFAttributeDelta {
     /// Dereference this Handle to access the underlying TDF_AttributeDelta
     pub fn get(&self) -> &crate::ffi::TDF_AttributeDelta {
-        {
-            let __result = unsafe { crate::ffi::HandleTDFAttributeDelta_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDFAttributeDelta_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDF_AttributeDelta
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_AttributeDelta {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTDFAttributeDelta_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDFAttributeDelta_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDF_AttributeDelta> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFAttributeDelta_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFAttributeDelta_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<TDF_AttributeDelta> to Handle<TDF_DefaultDeltaOnModification>
@@ -2701,16 +3070,18 @@ impl HandleTDFAttributeDelta {
     pub fn downcast_to_default_delta_on_modification(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFDefaultDeltaOnModification>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDFDefaultDeltaOnModification(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2720,16 +3091,18 @@ impl HandleTDFAttributeDelta {
     pub fn downcast_to_default_delta_on_removal(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFDefaultDeltaOnRemoval>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDFDefaultDeltaOnRemoval(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2739,16 +3112,18 @@ impl HandleTDFAttributeDelta {
     pub fn downcast_to_delta_on_addition(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDFDeltaOnAddition(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2758,16 +3133,18 @@ impl HandleTDFAttributeDelta {
     pub fn downcast_to_delta_on_forget(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDFDeltaOnForget(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2777,16 +3154,18 @@ impl HandleTDFAttributeDelta {
     pub fn downcast_to_tdf_delta_on_modification(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDFDeltaOnModification(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2796,16 +3175,18 @@ impl HandleTDFAttributeDelta {
     pub fn downcast_to_tdf_delta_on_removal(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDFDeltaOnRemoval(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2815,16 +3196,18 @@ impl HandleTDFAttributeDelta {
     pub fn downcast_to_delta_on_resume(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDFDeltaOnResume(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2834,14 +3217,16 @@ impl HandleTDFAttributeDelta {
     pub fn downcast_to_delta_on_modification_of_byte_array(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfByteArray>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDataStdDeltaOnModificationOfByteArray(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2852,14 +3237,16 @@ impl HandleTDFAttributeDelta {
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfExtStringArray>>
     {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDataStdDeltaOnModificationOfExtStringArray(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2869,14 +3256,16 @@ impl HandleTDFAttributeDelta {
     pub fn downcast_to_delta_on_modification_of_int_array(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfIntArray>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDataStdDeltaOnModificationOfIntArray(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2886,14 +3275,16 @@ impl HandleTDFAttributeDelta {
     pub fn downcast_to_delta_on_modification_of_int_packed_map(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfIntPackedMap>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDataStdDeltaOnModificationOfIntPackedMap(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2903,14 +3294,16 @@ impl HandleTDFAttributeDelta {
     pub fn downcast_to_delta_on_modification_of_real_array(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfRealArray>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTDataStdDeltaOnModificationOfRealArray(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2920,16 +3313,18 @@ impl HandleTDFAttributeDelta {
     pub fn downcast_to_t_naming_delta_on_modification(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTNamingDeltaOnModification>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTNamingDeltaOnModification(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -2939,16 +3334,18 @@ impl HandleTDFAttributeDelta {
     pub fn downcast_to_t_naming_delta_on_removal(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTNamingDeltaOnRemoval>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFAttributeDelta_downcast_to_HandleTNamingDeltaOnRemoval(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -2971,8 +3368,10 @@ impl AttributeIterator {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_AttributeIterator_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2982,8 +3381,10 @@ impl AttributeIterator {
             let __result = unsafe {
                 crate::ffi::TDF_AttributeIterator_ctor_label_bool(aLabel, withoutForgotten)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2995,14 +3396,16 @@ impl AttributeIterator {
     /// **Source:** `TDF_AttributeIterator.hxx`:54 - `TDF_AttributeIterator::Initialize()`
     pub fn initialize(&mut self, aLabel: &Label, withoutForgotten: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_AttributeIterator_initialize(
                     self as *mut Self,
                     aLabel,
                     withoutForgotten,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3010,16 +3413,21 @@ impl AttributeIterator {
     pub fn more(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_AttributeIterator_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TDF_AttributeIterator.hxx`:57 - `TDF_AttributeIterator::Next()`
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TDF_AttributeIterator_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_AttributeIterator_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3027,8 +3435,11 @@ impl AttributeIterator {
     pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         {
             let __result = unsafe { crate::ffi::TDF_AttributeIterator_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3039,11 +3450,14 @@ impl AttributeIterator {
         {
             let __result =
                 unsafe { crate::ffi::TDF_AttributeIterator_ptr_value(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3078,8 +3492,10 @@ impl ChildIDIterator {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_ChildIDIterator_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3096,8 +3512,10 @@ impl ChildIDIterator {
             let __result = unsafe {
                 crate::ffi::TDF_ChildIDIterator_ctor_label_guid_bool(aLabel, anID, allLevels)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3116,7 +3534,7 @@ impl ChildIDIterator {
     /// label levels.
     pub fn initialize(&mut self, aLabel: &Label, anID: &crate::standard::GUID, allLevels: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_ChildIDIterator_initialize(
                     self as *mut Self,
                     aLabel,
@@ -3124,7 +3542,9 @@ impl ChildIDIterator {
                     allLevels,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3134,8 +3554,11 @@ impl ChildIDIterator {
     pub fn more(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_ChildIDIterator_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3143,8 +3566,10 @@ impl ChildIDIterator {
     /// Move to the next Item
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TDF_ChildIDIterator_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_ChildIDIterator_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3155,8 +3580,10 @@ impl ChildIDIterator {
     /// the current label children.
     pub fn next_brother(&mut self) {
         {
-            unsafe { crate::ffi::TDF_ChildIDIterator_next_brother(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_ChildIDIterator_next_brother(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3165,8 +3592,11 @@ impl ChildIDIterator {
     pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         {
             let __result = unsafe { crate::ffi::TDF_ChildIDIterator_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -3195,8 +3625,10 @@ impl ChildIterator {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_ChildIterator_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3209,8 +3641,10 @@ impl ChildIterator {
         {
             let __result =
                 unsafe { crate::ffi::TDF_ChildIterator_ctor_label_bool(aLabel, allLevels) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3249,10 +3683,12 @@ impl ChildIterator {
     /// }
     pub fn initialize(&mut self, aLabel: &Label, allLevels: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_ChildIterator_initialize(self as *mut Self, aLabel, allLevels)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3262,8 +3698,11 @@ impl ChildIterator {
     pub fn more(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_ChildIterator_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3271,8 +3710,10 @@ impl ChildIterator {
     /// Move the  current  iteration  to the next Item.
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TDF_ChildIterator_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_ChildIterator_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3289,8 +3730,10 @@ impl ChildIterator {
     /// the current label children.
     pub fn next_brother(&mut self) {
         {
-            unsafe { crate::ffi::TDF_ChildIterator_next_brother(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_ChildIterator_next_brother(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3300,8 +3743,11 @@ impl ChildIterator {
     pub fn value(&self) -> crate::OwnedPtr<Label> {
         {
             let __result = unsafe { crate::ffi::TDF_ChildIterator_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -3326,8 +3772,10 @@ impl ClosureMode {
     pub fn new_bool(aMode: bool) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_ClosureMode_ctor_bool(aMode) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3346,8 +3794,11 @@ impl ClosureMode {
     /// UpToFirstLevel option.
     pub fn descendants_bool(&mut self, aStatus: bool) {
         {
-            unsafe { crate::ffi::TDF_ClosureMode_descendants_bool(self as *mut Self, aStatus) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_ClosureMode_descendants_bool(self as *mut Self, aStatus) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3356,8 +3807,11 @@ impl ClosureMode {
     pub fn descendants(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_ClosureMode_descendants(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3369,8 +3823,11 @@ impl ClosureMode {
     /// attribute method Descendants().
     pub fn references_bool(&mut self, aStatus: bool) {
         {
-            unsafe { crate::ffi::TDF_ClosureMode_references_bool(self as *mut Self, aStatus) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_ClosureMode_references_bool(self as *mut Self, aStatus) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3379,8 +3836,11 @@ impl ClosureMode {
     pub fn references(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_ClosureMode_references(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3413,8 +3873,10 @@ impl ClosureTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_ClosureTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3423,8 +3885,10 @@ impl ClosureTool {
     /// attribute sets into <aDataSet>.
     pub fn closure_handletdfdataset(aDataSet: &crate::ffi::HandleTDFDataSet) {
         {
-            unsafe { crate::ffi::TDF_ClosureTool_closure_handletdfdataset(aDataSet) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_ClosureTool_closure_handletdfdataset(aDataSet) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3440,12 +3904,14 @@ impl ClosureTool {
         aMode: &ClosureMode,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_ClosureTool_closure_handletdfdataset_idfilter_closuremode(
                     aDataSet, aFilter, aMode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3459,12 +3925,14 @@ impl ClosureTool {
         aMode: &ClosureMode,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_ClosureTool_closure_label_labelmap_attributemap_idfilter_closuremode(
                     aLabel, aLabMap, anAttMap, aFilter, aMode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3505,8 +3973,10 @@ impl ComparisonTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_ComparisonTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3521,7 +3991,7 @@ impl ComparisonTool {
         aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_ComparisonTool_compare(
                     aSourceDataSet,
                     aTargetDataSet,
@@ -3529,7 +3999,9 @@ impl ComparisonTool {
                     aRelocationTable,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3561,8 +4033,11 @@ impl ComparisonTool {
                     anOption,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3594,8 +4069,11 @@ impl ComparisonTool {
                     anOption,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3603,8 +4081,10 @@ impl ComparisonTool {
     /// Removes attributes from <aDataSet>.
     pub fn cut(aDataSet: &crate::ffi::HandleTDFDataSet) {
         {
-            unsafe { crate::ffi::TDF_ComparisonTool_cut(aDataSet) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_ComparisonTool_cut(aDataSet) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3615,8 +4095,11 @@ impl ComparisonTool {
         {
             let __result =
                 unsafe { crate::ffi::TDF_ComparisonTool_is_self_contained(aLabel, aDataSet) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3641,8 +4124,10 @@ impl CopyLabel {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_CopyLabel_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3651,8 +4136,10 @@ impl CopyLabel {
     pub fn new_label2(aSource: &Label, aTarget: &Label) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_CopyLabel_ctor_label2(aSource, aTarget) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3660,8 +4147,11 @@ impl CopyLabel {
     /// Loads  src  and  tgt  labels
     pub fn load(&mut self, aSource: &Label, aTarget: &Label) {
         {
-            unsafe { crate::ffi::TDF_CopyLabel_load(self as *mut Self, aSource, aTarget) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_CopyLabel_load(self as *mut Self, aSource, aTarget) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3669,8 +4159,10 @@ impl CopyLabel {
     /// Sets  filter
     pub fn use_filter(&mut self, aFilter: &IDFilter) {
         {
-            unsafe { crate::ffi::TDF_CopyLabel_use_filter(self as *mut Self, aFilter) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_CopyLabel_use_filter(self as *mut Self, aFilter) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3678,8 +4170,10 @@ impl CopyLabel {
     /// performs  algorithm  of  selfcontained  copy
     pub fn perform(&mut self) {
         {
-            unsafe { crate::ffi::TDF_CopyLabel_perform(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_CopyLabel_perform(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3687,8 +4181,11 @@ impl CopyLabel {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_CopyLabel_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3698,8 +4195,11 @@ impl CopyLabel {
         {
             let __result =
                 unsafe { crate::ffi::TDF_CopyLabel_relocation_table(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3716,8 +4216,11 @@ impl CopyLabel {
                     Lab, aExternals, aFilter,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3731,10 +4234,12 @@ impl CopyLabel {
         aDataSet: &mut crate::ffi::HandleTDFDataSet,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_CopyLabel_external_references_label2_attributemap_idfilter_handletdfdataset(aRefLab, Lab, aExternals, aFilter, aDataSet)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3793,8 +4298,10 @@ impl CopyTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_CopyTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3807,13 +4314,15 @@ impl CopyTool {
         aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_CopyTool_copy_handletdfdataset_handletdfrelocationtable(
                     aSourceDataSet,
                     aRelocationTable,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3828,14 +4337,16 @@ impl CopyTool {
         aPrivilegeFilter: &IDFilter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_CopyTool_copy_handletdfdataset_handletdfrelocationtable_idfilter(
                     aSourceDataSet,
                     aRelocationTable,
                     aPrivilegeFilter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3859,10 +4370,12 @@ impl CopyTool {
         setSelfContained: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_CopyTool_copy_handletdfdataset_handletdfrelocationtable_idfilter2_bool(aSourceDataSet, aRelocationTable, aPrivilegeFilter, aRefFilter, setSelfContained)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3897,8 +4410,10 @@ impl Data {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_Data_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3907,8 +4422,11 @@ impl Data {
     pub fn root(&self) -> crate::OwnedPtr<Label> {
         {
             let __result = unsafe { crate::ffi::TDF_Data_root(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3917,8 +4435,11 @@ impl Data {
     pub fn transaction(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TDF_Data_transaction(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3927,8 +4448,11 @@ impl Data {
     pub fn time(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TDF_Data_time(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3938,8 +4462,11 @@ impl Data {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Data_is_applicable(self as *const Self, aDelta) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3956,16 +4483,21 @@ impl Data {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Data_undo(self as *mut Self, aDelta, withDelta) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `TDF_Data.hxx`:73 - `TDF_Data::Destroy()`
     pub fn destroy(&mut self) {
         {
-            unsafe { crate::ffi::TDF_Data_destroy(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Data_destroy(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3974,8 +4506,11 @@ impl Data {
     pub fn not_undo_mode(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_Data_not_undo_mode(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3993,8 +4528,11 @@ impl Data {
     ) -> &mut crate::ffi::Standard_OStream {
         {
             let __result = unsafe { crate::ffi::TDF_Data_dump(self as *mut Self, anOS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4002,8 +4540,11 @@ impl Data {
     /// Sets modification mode.
     pub fn allow_modification(&mut self, isAllowed: bool) {
         {
-            unsafe { crate::ffi::TDF_Data_allow_modification(self as *mut Self, isAllowed) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_Data_allow_modification(self as *mut Self, isAllowed) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4013,8 +4554,11 @@ impl Data {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Data_is_modification_allowed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4028,8 +4572,11 @@ impl Data {
     /// (no need to re-initialize the mechanism).
     pub fn set_access_by_entries(&mut self, aSet: bool) {
         {
-            unsafe { crate::ffi::TDF_Data_set_access_by_entries(self as *mut Self, aSet) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_Data_set_access_by_entries(self as *mut Self, aSet) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4039,8 +4586,11 @@ impl Data {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Data_is_access_by_entries(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4056,8 +4606,11 @@ impl Data {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Data_get_label(self as *mut Self, anEntry, aLabel) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4066,8 +4619,10 @@ impl Data {
     /// It adds a new label into internal table for fast access to the labels by entry.
     pub fn register_label(&mut self, aLabel: &Label) {
         {
-            unsafe { crate::ffi::TDF_Data_register_label(self as *mut Self, aLabel) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Data_register_label(self as *mut Self, aLabel) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4108,8 +4663,11 @@ impl Data {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Data_label_node_allocator(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4117,8 +4675,11 @@ impl Data {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDF_Data_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4126,8 +4687,11 @@ impl Data {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDF_Data_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4135,38 +4699,39 @@ impl Data {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDF_Data_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_Data_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TDF_Data_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_Data_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::TDF_Data_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleTDFData> {
-        {
-            let __result = unsafe { crate::ffi::TDF_Data_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDF_Data_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -4174,8 +4739,11 @@ impl Data {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Data_inherited_IsInstance(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4184,8 +4752,11 @@ impl Data {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Data_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4193,11 +4764,14 @@ impl Data {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::TDF_Data_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4207,16 +4781,22 @@ impl Data {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Data_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::TDF_Data_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_Data_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4225,16 +4805,21 @@ impl Data {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Data_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDF_Data_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Data_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4250,31 +4835,30 @@ unsafe impl crate::CppDeletable for HandleTDFData {
 impl HandleTDFData {
     /// Dereference this Handle to access the underlying TDF_Data
     pub fn get(&self) -> &crate::ffi::TDF_Data {
-        {
-            let __result = unsafe { crate::ffi::HandleTDFData_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDFData_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDF_Data
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_Data {
-        {
-            let __result = unsafe { crate::ffi::HandleTDFData_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDFData_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDF_Data> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFData_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleTDFData_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4298,8 +4882,10 @@ impl DataSet {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_DataSet_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4307,8 +4893,10 @@ impl DataSet {
     /// Clears all information.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::TDF_DataSet_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_DataSet_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4318,8 +4906,11 @@ impl DataSet {
     pub fn is_empty(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_DataSet_is_empty(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4327,8 +4918,10 @@ impl DataSet {
     /// Adds <aLabel> in  the  current  data  set.
     pub fn add_label(&mut self, aLabel: &Label) {
         {
-            unsafe { crate::ffi::TDF_DataSet_add_label(self as *mut Self, aLabel) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_DataSet_add_label(self as *mut Self, aLabel) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4338,8 +4931,11 @@ impl DataSet {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DataSet_contains_label(self as *const Self, aLabel) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4349,8 +4945,11 @@ impl DataSet {
     pub fn labels(&mut self) -> &mut crate::ffi::TDF_LabelMap {
         {
             let __result = unsafe { crate::ffi::TDF_DataSet_labels(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4358,8 +4957,11 @@ impl DataSet {
     /// Adds <anAttribute> into the current data  set.
     pub fn add_attribute(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TDF_DataSet_add_attribute(self as *mut Self, anAttribute) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_DataSet_add_attribute(self as *mut Self, anAttribute) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4370,8 +4972,11 @@ impl DataSet {
             let __result = unsafe {
                 crate::ffi::TDF_DataSet_contains_attribute(self as *const Self, anAttribute)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4381,8 +4986,11 @@ impl DataSet {
     pub fn attributes(&mut self) -> &mut crate::ffi::TDF_AttributeMap {
         {
             let __result = unsafe { crate::ffi::TDF_DataSet_attributes(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4390,8 +4998,10 @@ impl DataSet {
     /// Adds a root label to <myRootLabels>.
     pub fn add_root(&mut self, aLabel: &Label) {
         {
-            unsafe { crate::ffi::TDF_DataSet_add_root(self as *mut Self, aLabel) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_DataSet_add_root(self as *mut Self, aLabel) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4400,8 +5010,11 @@ impl DataSet {
     pub fn roots(&mut self) -> &mut crate::ffi::TDF_LabelList {
         {
             let __result = unsafe { crate::ffi::TDF_DataSet_roots(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4420,8 +5033,11 @@ impl DataSet {
     ) -> &mut crate::ffi::Standard_OStream {
         {
             let __result = unsafe { crate::ffi::TDF_DataSet_dump(self as *mut Self, anOS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4429,8 +5045,11 @@ impl DataSet {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDF_DataSet_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4438,8 +5057,11 @@ impl DataSet {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDF_DataSet_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4447,38 +5069,41 @@ impl DataSet {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDF_DataSet_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_DataSet_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDF_DataSet_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_DataSet_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDF_DataSet_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleTDFDataSet> {
-        {
-            let __result = unsafe { crate::ffi::TDF_DataSet_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDF_DataSet_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -4487,8 +5112,11 @@ impl DataSet {
             let __result = unsafe {
                 crate::ffi::TDF_DataSet_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4497,8 +5125,11 @@ impl DataSet {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DataSet_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4506,11 +5137,14 @@ impl DataSet {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::TDF_DataSet_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4520,16 +5154,22 @@ impl DataSet {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DataSet_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::TDF_DataSet_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_DataSet_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4538,16 +5178,21 @@ impl DataSet {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DataSet_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDF_DataSet_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_DataSet_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4563,31 +5208,30 @@ unsafe impl crate::CppDeletable for HandleTDFDataSet {
 impl HandleTDFDataSet {
     /// Dereference this Handle to access the underlying TDF_DataSet
     pub fn get(&self) -> &crate::ffi::TDF_DataSet {
-        {
-            let __result = unsafe { crate::ffi::HandleTDFDataSet_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDFDataSet_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDF_DataSet
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_DataSet {
-        {
-            let __result = unsafe { crate::ffi::HandleTDFDataSet_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDFDataSet_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDF_DataSet> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFDataSet_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleTDFDataSet_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4617,8 +5261,10 @@ impl DefaultDeltaOnModification {
             let __result = unsafe {
                 crate::ffi::TDF_DefaultDeltaOnModification_ctor_handletdfattribute(anAttribute)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4626,8 +5272,11 @@ impl DefaultDeltaOnModification {
     /// Applies the delta to the attribute.
     pub fn apply(&mut self) {
         {
-            unsafe { crate::ffi::TDF_DefaultDeltaOnModification_apply(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_DefaultDeltaOnModification_apply(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4637,8 +5286,11 @@ impl DefaultDeltaOnModification {
             let __result = unsafe {
                 crate::ffi::TDF_DefaultDeltaOnModification_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4646,8 +5298,11 @@ impl DefaultDeltaOnModification {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDF_DefaultDeltaOnModification_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4656,99 +5311,94 @@ impl DefaultDeltaOnModification {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DefaultDeltaOnModification_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDF_DeltaOnModification
     pub fn as_delta_on_modification(&self) -> &DeltaOnModification {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DefaultDeltaOnModification_as_TDF_DeltaOnModification(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TDF_DefaultDeltaOnModification_as_TDF_DeltaOnModification(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_DeltaOnModification (mutable)
     pub fn as_delta_on_modification_mut(&mut self) -> &mut DeltaOnModification {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DefaultDeltaOnModification_as_TDF_DeltaOnModification_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TDF_DefaultDeltaOnModification_as_TDF_DeltaOnModification_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to TDF_AttributeDelta
     pub fn as_attribute_delta(&self) -> &AttributeDelta {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DefaultDeltaOnModification_as_TDF_AttributeDelta(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TDF_DefaultDeltaOnModification_as_TDF_AttributeDelta(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_AttributeDelta (mutable)
     pub fn as_attribute_delta_mut(&mut self) -> &mut AttributeDelta {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DefaultDeltaOnModification_as_TDF_AttributeDelta_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TDF_DefaultDeltaOnModification_as_TDF_AttributeDelta_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DefaultDeltaOnModification_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TDF_DefaultDeltaOnModification_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DefaultDeltaOnModification_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TDF_DefaultDeltaOnModification_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFDefaultDeltaOnModification> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_DefaultDeltaOnModification_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::TDF_DefaultDeltaOnModification_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
@@ -4757,8 +5407,11 @@ impl DefaultDeltaOnModification {
             let __result = unsafe {
                 crate::ffi::TDF_DefaultDeltaOnModification_inherited_Label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4768,8 +5421,11 @@ impl DefaultDeltaOnModification {
             let __result = unsafe {
                 crate::ffi::TDF_DefaultDeltaOnModification_inherited_Attribute(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4779,8 +5435,11 @@ impl DefaultDeltaOnModification {
             let __result = unsafe {
                 crate::ffi::TDF_DefaultDeltaOnModification_inherited_ID(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4793,8 +5452,11 @@ impl DefaultDeltaOnModification {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4807,8 +5469,11 @@ impl DefaultDeltaOnModification {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4818,11 +5483,14 @@ impl DefaultDeltaOnModification {
             let __result = unsafe {
                 crate::ffi::TDF_DefaultDeltaOnModification_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4835,20 +5503,25 @@ impl DefaultDeltaOnModification {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_DefaultDeltaOnModification_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4860,18 +5533,23 @@ impl DefaultDeltaOnModification {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_DefaultDeltaOnModification_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4887,66 +5565,65 @@ unsafe impl crate::CppDeletable for HandleTDFDefaultDeltaOnModification {
 impl HandleTDFDefaultDeltaOnModification {
     /// Dereference this Handle to access the underlying TDF_DefaultDeltaOnModification
     pub fn get(&self) -> &crate::ffi::TDF_DefaultDeltaOnModification {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTDFDefaultDeltaOnModification_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleTDFDefaultDeltaOnModification_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDF_DefaultDeltaOnModification
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_DefaultDeltaOnModification {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFDefaultDeltaOnModification_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTDFDefaultDeltaOnModification_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDF_DefaultDeltaOnModification> to Handle<TDF_DeltaOnModification>
     pub fn to_handle_delta_on_modification(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFDefaultDeltaOnModification_to_HandleTDFDeltaOnModification(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFDefaultDeltaOnModification_to_HandleTDFDeltaOnModification(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDF_DefaultDeltaOnModification> to Handle<TDF_AttributeDelta>
     pub fn to_handle_attribute_delta(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFDefaultDeltaOnModification_to_HandleTDFAttributeDelta(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFDefaultDeltaOnModification_to_HandleTDFAttributeDelta(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDF_DefaultDeltaOnModification> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFDefaultDeltaOnModification_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFDefaultDeltaOnModification_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4975,8 +5652,10 @@ impl DefaultDeltaOnRemoval {
             let __result = unsafe {
                 crate::ffi::TDF_DefaultDeltaOnRemoval_ctor_handletdfattribute(anAttribute)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4984,8 +5663,10 @@ impl DefaultDeltaOnRemoval {
     /// Applies the delta to the attribute.
     pub fn apply(&mut self) {
         {
-            unsafe { crate::ffi::TDF_DefaultDeltaOnRemoval_apply(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_DefaultDeltaOnRemoval_apply(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4994,8 +5675,11 @@ impl DefaultDeltaOnRemoval {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DefaultDeltaOnRemoval_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5003,8 +5687,11 @@ impl DefaultDeltaOnRemoval {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDF_DefaultDeltaOnRemoval_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5012,87 +5699,89 @@ impl DefaultDeltaOnRemoval {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDF_DefaultDeltaOnRemoval_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDF_DeltaOnRemoval
     pub fn as_delta_on_removal(&self) -> &DeltaOnRemoval {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DefaultDeltaOnRemoval_as_TDF_DeltaOnRemoval(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TDF_DefaultDeltaOnRemoval_as_TDF_DeltaOnRemoval(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_DeltaOnRemoval (mutable)
     pub fn as_delta_on_removal_mut(&mut self) -> &mut DeltaOnRemoval {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DefaultDeltaOnRemoval_as_TDF_DeltaOnRemoval_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TDF_DefaultDeltaOnRemoval_as_TDF_DeltaOnRemoval_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to TDF_AttributeDelta
     pub fn as_attribute_delta(&self) -> &AttributeDelta {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DefaultDeltaOnRemoval_as_TDF_AttributeDelta(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TDF_DefaultDeltaOnRemoval_as_TDF_AttributeDelta(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_AttributeDelta (mutable)
     pub fn as_attribute_delta_mut(&mut self) -> &mut AttributeDelta {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DefaultDeltaOnRemoval_as_TDF_AttributeDelta_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TDF_DefaultDeltaOnRemoval_as_TDF_AttributeDelta_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DefaultDeltaOnRemoval_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TDF_DefaultDeltaOnRemoval_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DefaultDeltaOnRemoval_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TDF_DefaultDeltaOnRemoval_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFDefaultDeltaOnRemoval> {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_DefaultDeltaOnRemoval_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDF_DefaultDeltaOnRemoval_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
@@ -5101,8 +5790,11 @@ impl DefaultDeltaOnRemoval {
             let __result = unsafe {
                 crate::ffi::TDF_DefaultDeltaOnRemoval_inherited_Label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5112,8 +5804,11 @@ impl DefaultDeltaOnRemoval {
             let __result = unsafe {
                 crate::ffi::TDF_DefaultDeltaOnRemoval_inherited_Attribute(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5122,8 +5817,11 @@ impl DefaultDeltaOnRemoval {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DefaultDeltaOnRemoval_inherited_ID(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5136,8 +5834,11 @@ impl DefaultDeltaOnRemoval {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5147,8 +5848,11 @@ impl DefaultDeltaOnRemoval {
             let __result = unsafe {
                 crate::ffi::TDF_DefaultDeltaOnRemoval_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5158,11 +5862,14 @@ impl DefaultDeltaOnRemoval {
             let __result = unsafe {
                 crate::ffi::TDF_DefaultDeltaOnRemoval_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5173,20 +5880,25 @@ impl DefaultDeltaOnRemoval {
             let __result = unsafe {
                 crate::ffi::TDF_DefaultDeltaOnRemoval_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_DefaultDeltaOnRemoval_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5198,16 +5910,23 @@ impl DefaultDeltaOnRemoval {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDF_DefaultDeltaOnRemoval_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDF_DefaultDeltaOnRemoval_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5223,65 +5942,65 @@ unsafe impl crate::CppDeletable for HandleTDFDefaultDeltaOnRemoval {
 impl HandleTDFDefaultDeltaOnRemoval {
     /// Dereference this Handle to access the underlying TDF_DefaultDeltaOnRemoval
     pub fn get(&self) -> &crate::ffi::TDF_DefaultDeltaOnRemoval {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTDFDefaultDeltaOnRemoval_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleTDFDefaultDeltaOnRemoval_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDF_DefaultDeltaOnRemoval
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_DefaultDeltaOnRemoval {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTDFDefaultDeltaOnRemoval_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTDFDefaultDeltaOnRemoval_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDF_DefaultDeltaOnRemoval> to Handle<TDF_DeltaOnRemoval>
     pub fn to_handle_delta_on_removal(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFDefaultDeltaOnRemoval_to_HandleTDFDeltaOnRemoval(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFDefaultDeltaOnRemoval_to_HandleTDFDeltaOnRemoval(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDF_DefaultDeltaOnRemoval> to Handle<TDF_AttributeDelta>
     pub fn to_handle_attribute_delta(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFDefaultDeltaOnRemoval_to_HandleTDFAttributeDelta(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFDefaultDeltaOnRemoval_to_HandleTDFAttributeDelta(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDF_DefaultDeltaOnRemoval> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFDefaultDeltaOnRemoval_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFDefaultDeltaOnRemoval_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5309,8 +6028,10 @@ impl Delta {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_Delta_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5319,8 +6040,11 @@ impl Delta {
     pub fn is_empty(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_Delta_is_empty(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5331,8 +6055,11 @@ impl Delta {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Delta_is_applicable(self as *const Self, aCurrentTime) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5341,8 +6068,11 @@ impl Delta {
     pub fn begin_time(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TDF_Delta_begin_time(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5351,8 +6081,11 @@ impl Delta {
     pub fn end_time(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TDF_Delta_end_time(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5361,8 +6094,10 @@ impl Delta {
     /// Caution: <aLabelList> is not cleared before use.
     pub fn labels(&self, aLabelList: &mut crate::ffi::TDF_LabelList) {
         {
-            unsafe { crate::ffi::TDF_Delta_labels(self as *const Self, aLabelList) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Delta_labels(self as *const Self, aLabelList) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5371,8 +6106,11 @@ impl Delta {
     pub fn attribute_deltas(&self) -> &crate::ffi::TDF_AttributeDeltaList {
         {
             let __result = unsafe { crate::ffi::TDF_Delta_attribute_deltas(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5381,8 +6119,11 @@ impl Delta {
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         {
             let __result = unsafe { crate::ffi::TDF_Delta_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5390,16 +6131,20 @@ impl Delta {
     /// Associates a name <theName> with this delta
     pub fn set_name(&mut self, theName: &crate::t_collection::ExtendedString) {
         {
-            unsafe { crate::ffi::TDF_Delta_set_name(self as *mut Self, theName) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Delta_set_name(self as *mut Self, theName) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDF_Delta.hxx`:71 - `TDF_Delta::Dump()`
     pub fn dump(&self, OS: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::TDF_Delta_dump(self as *const Self, OS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Delta_dump(self as *const Self, OS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5407,8 +6152,11 @@ impl Delta {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDF_Delta_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5416,8 +6164,11 @@ impl Delta {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDF_Delta_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5425,38 +6176,40 @@ impl Delta {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDF_Delta_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_Delta_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TDF_Delta_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_Delta_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDF_Delta_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleTDFDelta> {
-        {
-            let __result = unsafe { crate::ffi::TDF_Delta_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDF_Delta_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -5464,8 +6217,11 @@ impl Delta {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Delta_inherited_IsInstance(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5474,8 +6230,11 @@ impl Delta {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Delta_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5483,11 +6242,14 @@ impl Delta {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::TDF_Delta_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5497,16 +6259,22 @@ impl Delta {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Delta_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::TDF_Delta_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_Delta_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5515,16 +6283,21 @@ impl Delta {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Delta_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDF_Delta_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Delta_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5540,31 +6313,30 @@ unsafe impl crate::CppDeletable for HandleTDFDelta {
 impl HandleTDFDelta {
     /// Dereference this Handle to access the underlying TDF_Delta
     pub fn get(&self) -> &crate::ffi::TDF_Delta {
-        {
-            let __result = unsafe { crate::ffi::HandleTDFDelta_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDFDelta_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDF_Delta
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_Delta {
-        {
-            let __result = unsafe { crate::ffi::HandleTDFDelta_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDFDelta_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDF_Delta> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFDelta_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleTDFDelta_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<TDF_Delta> to Handle<TDocStd_CompoundDelta>
@@ -5573,14 +6345,16 @@ impl HandleTDFDelta {
     pub fn downcast_to_compound_delta(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdCompoundDelta>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFDelta_downcast_to_HandleTDocStdCompoundDelta(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -5610,8 +6384,10 @@ impl DeltaOnAddition {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnAddition_ctor_handletdfattribute(anAtt) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5619,8 +6395,10 @@ impl DeltaOnAddition {
     /// Applies the delta to the attribute.
     pub fn apply(&mut self) {
         {
-            unsafe { crate::ffi::TDF_DeltaOnAddition_apply(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_DeltaOnAddition_apply(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5629,8 +6407,11 @@ impl DeltaOnAddition {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnAddition_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5638,8 +6419,11 @@ impl DeltaOnAddition {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDF_DeltaOnAddition_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5647,64 +6431,63 @@ impl DeltaOnAddition {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDF_DeltaOnAddition_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDF_AttributeDelta
     pub fn as_attribute_delta(&self) -> &AttributeDelta {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DeltaOnAddition_as_TDF_AttributeDelta(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDF_DeltaOnAddition_as_TDF_AttributeDelta(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_AttributeDelta (mutable)
     pub fn as_attribute_delta_mut(&mut self) -> &mut AttributeDelta {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DeltaOnAddition_as_TDF_AttributeDelta_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDF_DeltaOnAddition_as_TDF_AttributeDelta_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DeltaOnAddition_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDF_DeltaOnAddition_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DeltaOnAddition_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDF_DeltaOnAddition_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
-        {
-            let __result = unsafe { crate::ffi::TDF_DeltaOnAddition_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDF_DeltaOnAddition_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
@@ -5712,8 +6495,11 @@ impl DeltaOnAddition {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnAddition_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5722,8 +6508,11 @@ impl DeltaOnAddition {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnAddition_inherited_Attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5732,8 +6521,11 @@ impl DeltaOnAddition {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnAddition_inherited_ID(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5743,8 +6535,11 @@ impl DeltaOnAddition {
             let __result = unsafe {
                 crate::ffi::TDF_DeltaOnAddition_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5754,8 +6549,11 @@ impl DeltaOnAddition {
             let __result = unsafe {
                 crate::ffi::TDF_DeltaOnAddition_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5764,11 +6562,14 @@ impl DeltaOnAddition {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnAddition_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5779,18 +6580,23 @@ impl DeltaOnAddition {
             let __result = unsafe {
                 crate::ffi::TDF_DeltaOnAddition_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_DeltaOnAddition_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5800,16 +6606,22 @@ impl DeltaOnAddition {
             let __result = unsafe {
                 crate::ffi::TDF_DeltaOnAddition_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDF_DeltaOnAddition_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_DeltaOnAddition_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5825,45 +6637,44 @@ unsafe impl crate::CppDeletable for HandleTDFDeltaOnAddition {
 impl HandleTDFDeltaOnAddition {
     /// Dereference this Handle to access the underlying TDF_DeltaOnAddition
     pub fn get(&self) -> &crate::ffi::TDF_DeltaOnAddition {
-        {
-            let __result = unsafe { crate::ffi::HandleTDFDeltaOnAddition_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDFDeltaOnAddition_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDF_DeltaOnAddition
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_DeltaOnAddition {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTDFDeltaOnAddition_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDFDeltaOnAddition_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDF_DeltaOnAddition> to Handle<TDF_AttributeDelta>
     pub fn to_handle_attribute_delta(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFDeltaOnAddition_to_HandleTDFAttributeDelta(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFDeltaOnAddition_to_HandleTDFAttributeDelta(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDF_DeltaOnAddition> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFDeltaOnAddition_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFDeltaOnAddition_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5891,8 +6702,10 @@ impl DeltaOnForget {
     pub fn new_handletdfattribute(anAtt: &crate::ffi::HandleTDFAttribute) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_DeltaOnForget_ctor_handletdfattribute(anAtt) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5900,8 +6713,10 @@ impl DeltaOnForget {
     /// Applies the delta to the attribute.
     pub fn apply(&mut self) {
         {
-            unsafe { crate::ffi::TDF_DeltaOnForget_apply(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_DeltaOnForget_apply(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5910,8 +6725,11 @@ impl DeltaOnForget {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnForget_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5919,8 +6737,11 @@ impl DeltaOnForget {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDF_DeltaOnForget_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5928,62 +6749,63 @@ impl DeltaOnForget {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDF_DeltaOnForget_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDF_AttributeDelta
     pub fn as_attribute_delta(&self) -> &AttributeDelta {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_DeltaOnForget_as_TDF_AttributeDelta(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDF_DeltaOnForget_as_TDF_AttributeDelta(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_AttributeDelta (mutable)
     pub fn as_attribute_delta_mut(&mut self) -> &mut AttributeDelta {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DeltaOnForget_as_TDF_AttributeDelta_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDF_DeltaOnForget_as_TDF_AttributeDelta_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_DeltaOnForget_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDF_DeltaOnForget_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DeltaOnForget_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDF_DeltaOnForget_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
-        {
-            let __result = unsafe { crate::ffi::TDF_DeltaOnForget_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDF_DeltaOnForget_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
@@ -5991,8 +6813,11 @@ impl DeltaOnForget {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnForget_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6001,8 +6826,11 @@ impl DeltaOnForget {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnForget_inherited_Attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6011,8 +6839,11 @@ impl DeltaOnForget {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnForget_inherited_ID(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6022,8 +6853,11 @@ impl DeltaOnForget {
             let __result = unsafe {
                 crate::ffi::TDF_DeltaOnForget_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6033,8 +6867,11 @@ impl DeltaOnForget {
             let __result = unsafe {
                 crate::ffi::TDF_DeltaOnForget_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6043,11 +6880,14 @@ impl DeltaOnForget {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnForget_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6057,18 +6897,23 @@ impl DeltaOnForget {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnForget_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_DeltaOnForget_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6078,16 +6923,22 @@ impl DeltaOnForget {
             let __result = unsafe {
                 crate::ffi::TDF_DeltaOnForget_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDF_DeltaOnForget_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_DeltaOnForget_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6103,44 +6954,44 @@ unsafe impl crate::CppDeletable for HandleTDFDeltaOnForget {
 impl HandleTDFDeltaOnForget {
     /// Dereference this Handle to access the underlying TDF_DeltaOnForget
     pub fn get(&self) -> &crate::ffi::TDF_DeltaOnForget {
-        {
-            let __result = unsafe { crate::ffi::HandleTDFDeltaOnForget_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDFDeltaOnForget_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDF_DeltaOnForget
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_DeltaOnForget {
-        {
-            let __result = unsafe { crate::ffi::HandleTDFDeltaOnForget_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDFDeltaOnForget_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDF_DeltaOnForget> to Handle<TDF_AttributeDelta>
     pub fn to_handle_attribute_delta(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFDeltaOnForget_to_HandleTDFAttributeDelta(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFDeltaOnForget_to_HandleTDFAttributeDelta(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDF_DeltaOnForget> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFDeltaOnForget_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFDeltaOnForget_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6167,8 +7018,10 @@ impl DeltaOnModification {
     /// Applies the delta to the attribute.
     pub fn apply(&mut self) {
         {
-            unsafe { crate::ffi::TDF_DeltaOnModification_apply(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_DeltaOnModification_apply(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6177,8 +7030,11 @@ impl DeltaOnModification {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnModification_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6186,8 +7042,11 @@ impl DeltaOnModification {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDF_DeltaOnModification_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6195,64 +7054,67 @@ impl DeltaOnModification {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDF_DeltaOnModification_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDF_AttributeDelta
     pub fn as_attribute_delta(&self) -> &AttributeDelta {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DeltaOnModification_as_TDF_AttributeDelta(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TDF_DeltaOnModification_as_TDF_AttributeDelta(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_AttributeDelta (mutable)
     pub fn as_attribute_delta_mut(&mut self) -> &mut AttributeDelta {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DeltaOnModification_as_TDF_AttributeDelta_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TDF_DeltaOnModification_as_TDF_AttributeDelta_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DeltaOnModification_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TDF_DeltaOnModification_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DeltaOnModification_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TDF_DeltaOnModification_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
-        {
-            let __result = unsafe { crate::ffi::TDF_DeltaOnModification_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDF_DeltaOnModification_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
@@ -6260,8 +7122,11 @@ impl DeltaOnModification {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnModification_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6271,8 +7136,11 @@ impl DeltaOnModification {
             let __result = unsafe {
                 crate::ffi::TDF_DeltaOnModification_inherited_Attribute(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6281,8 +7149,11 @@ impl DeltaOnModification {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnModification_inherited_ID(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6295,8 +7166,11 @@ impl DeltaOnModification {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6306,8 +7180,11 @@ impl DeltaOnModification {
             let __result = unsafe {
                 crate::ffi::TDF_DeltaOnModification_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6316,11 +7193,14 @@ impl DeltaOnModification {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnModification_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6331,18 +7211,23 @@ impl DeltaOnModification {
             let __result = unsafe {
                 crate::ffi::TDF_DeltaOnModification_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_DeltaOnModification_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6352,16 +7237,23 @@ impl DeltaOnModification {
             let __result = unsafe {
                 crate::ffi::TDF_DeltaOnModification_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDF_DeltaOnModification_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDF_DeltaOnModification_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6377,50 +7269,45 @@ unsafe impl crate::CppDeletable for HandleTDFDeltaOnModification {
 impl HandleTDFDeltaOnModification {
     /// Dereference this Handle to access the underlying TDF_DeltaOnModification
     pub fn get(&self) -> &crate::ffi::TDF_DeltaOnModification {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTDFDeltaOnModification_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDFDeltaOnModification_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDF_DeltaOnModification
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_DeltaOnModification {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTDFDeltaOnModification_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTDFDeltaOnModification_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDF_DeltaOnModification> to Handle<TDF_AttributeDelta>
     pub fn to_handle_attribute_delta(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFDeltaOnModification_to_HandleTDFAttributeDelta(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFDeltaOnModification_to_HandleTDFAttributeDelta(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDF_DeltaOnModification> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFDeltaOnModification_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFDeltaOnModification_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<TDF_DeltaOnModification> to Handle<TDF_DefaultDeltaOnModification>
@@ -6429,16 +7316,18 @@ impl HandleTDFDeltaOnModification {
     pub fn downcast_to_default_delta_on_modification(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFDefaultDeltaOnModification>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFDeltaOnModification_downcast_to_HandleTDFDefaultDeltaOnModification(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -6448,14 +7337,16 @@ impl HandleTDFDeltaOnModification {
     pub fn downcast_to_delta_on_modification_of_byte_array(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfByteArray>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFDeltaOnModification_downcast_to_HandleTDataStdDeltaOnModificationOfByteArray(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -6466,14 +7357,16 @@ impl HandleTDFDeltaOnModification {
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfExtStringArray>>
     {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFDeltaOnModification_downcast_to_HandleTDataStdDeltaOnModificationOfExtStringArray(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -6483,14 +7376,16 @@ impl HandleTDFDeltaOnModification {
     pub fn downcast_to_delta_on_modification_of_int_array(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfIntArray>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFDeltaOnModification_downcast_to_HandleTDataStdDeltaOnModificationOfIntArray(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -6500,14 +7395,16 @@ impl HandleTDFDeltaOnModification {
     pub fn downcast_to_delta_on_modification_of_int_packed_map(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfIntPackedMap>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFDeltaOnModification_downcast_to_HandleTDataStdDeltaOnModificationOfIntPackedMap(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -6517,14 +7414,16 @@ impl HandleTDFDeltaOnModification {
     pub fn downcast_to_delta_on_modification_of_real_array(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataStdDeltaOnModificationOfRealArray>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFDeltaOnModification_downcast_to_HandleTDataStdDeltaOnModificationOfRealArray(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -6534,16 +7433,18 @@ impl HandleTDFDeltaOnModification {
     pub fn downcast_to_delta_on_modification(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTNamingDeltaOnModification>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFDeltaOnModification_downcast_to_HandleTNamingDeltaOnModification(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -6572,8 +7473,11 @@ impl DeltaOnRemoval {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnRemoval_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6581,8 +7485,11 @@ impl DeltaOnRemoval {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDF_DeltaOnRemoval_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6590,60 +7497,62 @@ impl DeltaOnRemoval {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDF_DeltaOnRemoval_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDF_AttributeDelta
     pub fn as_attribute_delta(&self) -> &AttributeDelta {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DeltaOnRemoval_as_TDF_AttributeDelta(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDF_DeltaOnRemoval_as_TDF_AttributeDelta(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_AttributeDelta (mutable)
     pub fn as_attribute_delta_mut(&mut self) -> &mut AttributeDelta {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DeltaOnRemoval_as_TDF_AttributeDelta_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDF_DeltaOnRemoval_as_TDF_AttributeDelta_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DeltaOnRemoval_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDF_DeltaOnRemoval_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DeltaOnRemoval_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDF_DeltaOnRemoval_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:47 - `TDF_AttributeDelta::Apply()`
     pub fn apply(&mut self) {
         {
-            unsafe { crate::ffi::TDF_DeltaOnRemoval_inherited_Apply(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_DeltaOnRemoval_inherited_Apply(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6652,8 +7561,11 @@ impl DeltaOnRemoval {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnRemoval_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6662,8 +7574,11 @@ impl DeltaOnRemoval {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnRemoval_inherited_Attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6672,8 +7587,11 @@ impl DeltaOnRemoval {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnRemoval_inherited_ID(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6683,8 +7601,11 @@ impl DeltaOnRemoval {
             let __result = unsafe {
                 crate::ffi::TDF_DeltaOnRemoval_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6694,8 +7615,11 @@ impl DeltaOnRemoval {
             let __result = unsafe {
                 crate::ffi::TDF_DeltaOnRemoval_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6704,11 +7628,14 @@ impl DeltaOnRemoval {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnRemoval_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6719,18 +7646,23 @@ impl DeltaOnRemoval {
             let __result = unsafe {
                 crate::ffi::TDF_DeltaOnRemoval_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_DeltaOnRemoval_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6740,16 +7672,22 @@ impl DeltaOnRemoval {
             let __result = unsafe {
                 crate::ffi::TDF_DeltaOnRemoval_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDF_DeltaOnRemoval_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_DeltaOnRemoval_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6765,45 +7703,44 @@ unsafe impl crate::CppDeletable for HandleTDFDeltaOnRemoval {
 impl HandleTDFDeltaOnRemoval {
     /// Dereference this Handle to access the underlying TDF_DeltaOnRemoval
     pub fn get(&self) -> &crate::ffi::TDF_DeltaOnRemoval {
-        {
-            let __result = unsafe { crate::ffi::HandleTDFDeltaOnRemoval_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDFDeltaOnRemoval_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDF_DeltaOnRemoval
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_DeltaOnRemoval {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTDFDeltaOnRemoval_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDFDeltaOnRemoval_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDF_DeltaOnRemoval> to Handle<TDF_AttributeDelta>
     pub fn to_handle_attribute_delta(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFDeltaOnRemoval_to_HandleTDFAttributeDelta(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFDeltaOnRemoval_to_HandleTDFAttributeDelta(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDF_DeltaOnRemoval> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFDeltaOnRemoval_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFDeltaOnRemoval_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<TDF_DeltaOnRemoval> to Handle<TDF_DefaultDeltaOnRemoval>
@@ -6812,16 +7749,18 @@ impl HandleTDFDeltaOnRemoval {
     pub fn downcast_to_default_delta_on_removal(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDFDefaultDeltaOnRemoval>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFDeltaOnRemoval_downcast_to_HandleTDFDefaultDeltaOnRemoval(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -6831,16 +7770,18 @@ impl HandleTDFDeltaOnRemoval {
     pub fn downcast_to_delta_on_removal(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTNamingDeltaOnRemoval>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDFDeltaOnRemoval_downcast_to_HandleTNamingDeltaOnRemoval(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -6869,8 +7810,10 @@ impl DeltaOnResume {
     pub fn new_handletdfattribute(anAtt: &crate::ffi::HandleTDFAttribute) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_DeltaOnResume_ctor_handletdfattribute(anAtt) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6878,8 +7821,10 @@ impl DeltaOnResume {
     /// Applies the delta to the attribute.
     pub fn apply(&mut self) {
         {
-            unsafe { crate::ffi::TDF_DeltaOnResume_apply(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_DeltaOnResume_apply(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6888,8 +7833,11 @@ impl DeltaOnResume {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnResume_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6897,8 +7845,11 @@ impl DeltaOnResume {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDF_DeltaOnResume_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6906,62 +7857,63 @@ impl DeltaOnResume {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDF_DeltaOnResume_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDF_AttributeDelta
     pub fn as_attribute_delta(&self) -> &AttributeDelta {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_DeltaOnResume_as_TDF_AttributeDelta(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDF_DeltaOnResume_as_TDF_AttributeDelta(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_AttributeDelta (mutable)
     pub fn as_attribute_delta_mut(&mut self) -> &mut AttributeDelta {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DeltaOnResume_as_TDF_AttributeDelta_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDF_DeltaOnResume_as_TDF_AttributeDelta_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_DeltaOnResume_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDF_DeltaOnResume_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_DeltaOnResume_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDF_DeltaOnResume_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
-        {
-            let __result = unsafe { crate::ffi::TDF_DeltaOnResume_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDF_DeltaOnResume_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:50 - `TDF_AttributeDelta::Label()`
@@ -6969,8 +7921,11 @@ impl DeltaOnResume {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnResume_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6979,8 +7934,11 @@ impl DeltaOnResume {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnResume_inherited_Attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6989,8 +7947,11 @@ impl DeltaOnResume {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnResume_inherited_ID(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7000,8 +7961,11 @@ impl DeltaOnResume {
             let __result = unsafe {
                 crate::ffi::TDF_DeltaOnResume_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7011,8 +7975,11 @@ impl DeltaOnResume {
             let __result = unsafe {
                 crate::ffi::TDF_DeltaOnResume_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7021,11 +7988,14 @@ impl DeltaOnResume {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnResume_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7035,18 +8005,23 @@ impl DeltaOnResume {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DeltaOnResume_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_DeltaOnResume_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7056,16 +8031,22 @@ impl DeltaOnResume {
             let __result = unsafe {
                 crate::ffi::TDF_DeltaOnResume_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDF_DeltaOnResume_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_DeltaOnResume_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7081,44 +8062,44 @@ unsafe impl crate::CppDeletable for HandleTDFDeltaOnResume {
 impl HandleTDFDeltaOnResume {
     /// Dereference this Handle to access the underlying TDF_DeltaOnResume
     pub fn get(&self) -> &crate::ffi::TDF_DeltaOnResume {
-        {
-            let __result = unsafe { crate::ffi::HandleTDFDeltaOnResume_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDFDeltaOnResume_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDF_DeltaOnResume
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_DeltaOnResume {
-        {
-            let __result = unsafe { crate::ffi::HandleTDFDeltaOnResume_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDFDeltaOnResume_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDF_DeltaOnResume> to Handle<TDF_AttributeDelta>
     pub fn to_handle_attribute_delta(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFDeltaOnResume_to_HandleTDFAttributeDelta(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFDeltaOnResume_to_HandleTDFAttributeDelta(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDF_DeltaOnResume> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFDeltaOnResume_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFDeltaOnResume_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -7144,8 +8125,10 @@ impl DerivedAttribute {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_DerivedAttribute_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7166,8 +8149,11 @@ impl DerivedAttribute {
                     c_theTypeName.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7178,8 +8164,11 @@ impl DerivedAttribute {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DerivedAttribute_attribute(c_theType.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7190,8 +8179,11 @@ impl DerivedAttribute {
         {
             let __result =
                 unsafe { crate::ffi::TDF_DerivedAttribute_type_name(c_theType.as_ptr()) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7199,8 +8191,10 @@ impl DerivedAttribute {
     /// Returns all the derived registered attributes list.
     pub fn attributes(theList: &mut crate::ffi::TDF_AttributeList) {
         {
-            unsafe { crate::ffi::TDF_DerivedAttribute_attributes(theList) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_DerivedAttribute_attributes(theList) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7223,8 +8217,10 @@ impl HAttributeArray1 {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_HAttributeArray1_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7233,8 +8229,10 @@ impl HAttributeArray1 {
         {
             let __result =
                 unsafe { crate::ffi::TDF_HAttributeArray1_ctor_int2(theLower, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7250,8 +8248,10 @@ impl HAttributeArray1 {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7268,8 +8268,10 @@ impl HAttributeArray1 {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7280,8 +8282,10 @@ impl HAttributeArray1 {
         {
             let __result =
                 unsafe { crate::ffi::TDF_HAttributeArray1_ctor_attributearray1(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7289,8 +8293,11 @@ impl HAttributeArray1 {
     pub fn array1(&self) -> &crate::ffi::TDF_AttributeArray1 {
         {
             let __result = unsafe { crate::ffi::TDF_HAttributeArray1_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7299,8 +8306,11 @@ impl HAttributeArray1 {
         {
             let __result =
                 unsafe { crate::ffi::TDF_HAttributeArray1_change_array1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7309,8 +8319,11 @@ impl HAttributeArray1 {
         {
             let __result =
                 unsafe { crate::ffi::TDF_HAttributeArray1_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7318,8 +8331,11 @@ impl HAttributeArray1 {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDF_HAttributeArray1_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -7327,42 +8343,44 @@ impl HAttributeArray1 {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDF_HAttributeArray1_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_HAttributeArray1_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDF_HAttributeArray1_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_HAttributeArray1_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TDF_HAttributeArray1_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFHAttributeArray1> {
-        {
-            let __result = unsafe { crate::ffi::TDF_HAttributeArray1_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDF_HAttributeArray1_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -7371,8 +8389,11 @@ impl HAttributeArray1 {
             let __result = unsafe {
                 crate::ffi::TDF_HAttributeArray1_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7382,8 +8403,11 @@ impl HAttributeArray1 {
             let __result = unsafe {
                 crate::ffi::TDF_HAttributeArray1_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7392,11 +8416,14 @@ impl HAttributeArray1 {
         {
             let __result =
                 unsafe { crate::ffi::TDF_HAttributeArray1_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7407,18 +8434,23 @@ impl HAttributeArray1 {
             let __result = unsafe {
                 crate::ffi::TDF_HAttributeArray1_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_HAttributeArray1_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7428,16 +8460,22 @@ impl HAttributeArray1 {
             let __result = unsafe {
                 crate::ffi::TDF_HAttributeArray1_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDF_HAttributeArray1_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_HAttributeArray1_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7453,35 +8491,31 @@ unsafe impl crate::CppDeletable for HandleTDFHAttributeArray1 {
 impl HandleTDFHAttributeArray1 {
     /// Dereference this Handle to access the underlying TDF_HAttributeArray1
     pub fn get(&self) -> &crate::ffi::TDF_HAttributeArray1 {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTDFHAttributeArray1_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDFHAttributeArray1_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDF_HAttributeArray1
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_HAttributeArray1 {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTDFHAttributeArray1_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDFHAttributeArray1_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDF_HAttributeArray1> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFHAttributeArray1_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFHAttributeArray1_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -7518,8 +8552,10 @@ impl IDFilter {
     pub fn new_bool(ignoreMode: bool) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_IDFilter_ctor_bool(ignoreMode) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7548,8 +8584,11 @@ impl IDFilter {
     /// otherwise.
     pub fn ignore_all_bool(&mut self, ignore: bool) {
         {
-            unsafe { crate::ffi::TDF_IDFilter_ignore_all_bool(self as *mut Self, ignore) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_IDFilter_ignore_all_bool(self as *mut Self, ignore) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7559,8 +8598,11 @@ impl IDFilter {
     pub fn ignore_all(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_IDFilter_ignore_all(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7570,8 +8612,10 @@ impl IDFilter {
     /// IsKept(<anID>).
     pub fn keep_guid(&mut self, anID: &crate::standard::GUID) {
         {
-            unsafe { crate::ffi::TDF_IDFilter_keep_guid(self as *mut Self, anID) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_IDFilter_keep_guid(self as *mut Self, anID) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7581,8 +8625,11 @@ impl IDFilter {
     /// IsKept(<anID>) with ID from <anIDList>.
     pub fn keep_idlist(&mut self, anIDList: &crate::ffi::TDF_IDList) {
         {
-            unsafe { crate::ffi::TDF_IDFilter_keep_idlist(self as *mut Self, anIDList) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_IDFilter_keep_idlist(self as *mut Self, anIDList) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7592,8 +8639,10 @@ impl IDFilter {
     /// IsKept(<anID>).
     pub fn ignore_guid(&mut self, anID: &crate::standard::GUID) {
         {
-            unsafe { crate::ffi::TDF_IDFilter_ignore_guid(self as *mut Self, anID) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_IDFilter_ignore_guid(self as *mut Self, anID) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7603,8 +8652,11 @@ impl IDFilter {
     /// question IsKept(<anID>) with ID from <anIDList>.
     pub fn ignore_idlist(&mut self, anIDList: &crate::ffi::TDF_IDList) {
         {
-            unsafe { crate::ffi::TDF_IDFilter_ignore_idlist(self as *mut Self, anIDList) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_IDFilter_ignore_idlist(self as *mut Self, anIDList) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7614,8 +8666,11 @@ impl IDFilter {
         {
             let __result =
                 unsafe { crate::ffi::TDF_IDFilter_is_kept_guid(self as *const Self, anID) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7626,8 +8681,11 @@ impl IDFilter {
             let __result = unsafe {
                 crate::ffi::TDF_IDFilter_is_kept_handletdfattribute(self as *const Self, anAtt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7637,8 +8695,11 @@ impl IDFilter {
         {
             let __result =
                 unsafe { crate::ffi::TDF_IDFilter_is_ignored_guid(self as *const Self, anID) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7649,8 +8710,11 @@ impl IDFilter {
             let __result = unsafe {
                 crate::ffi::TDF_IDFilter_is_ignored_handletdfattribute(self as *const Self, anAtt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7659,8 +8723,10 @@ impl IDFilter {
     /// <anIDList>. <anIDList> is cleared before use.
     pub fn id_list(&self, anIDList: &mut crate::ffi::TDF_IDList) {
         {
-            unsafe { crate::ffi::TDF_IDFilter_id_list(self as *const Self, anIDList) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_IDFilter_id_list(self as *const Self, anIDList) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7669,8 +8735,10 @@ impl IDFilter {
     /// <fromFilter>. <me> is cleared before copy.
     pub fn copy(&mut self, fromFilter: &IDFilter) {
         {
-            unsafe { crate::ffi::TDF_IDFilter_copy(self as *mut Self, fromFilter) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_IDFilter_copy(self as *mut Self, fromFilter) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7678,8 +8746,10 @@ impl IDFilter {
     /// Writes the contents of <me> to <OS>.
     pub fn dump(&self, anOS: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::TDF_IDFilter_dump(self as *const Self, anOS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_IDFilter_dump(self as *const Self, anOS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7687,8 +8757,10 @@ impl IDFilter {
     /// Assignment
     pub fn assign(&mut self, theFilter: &IDFilter) {
         {
-            unsafe { crate::ffi::TDF_IDFilter_assign(self as *mut Self, theFilter) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_IDFilter_assign(self as *mut Self, theFilter) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7733,8 +8805,10 @@ impl Label {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_Label_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7742,8 +8816,10 @@ impl Label {
     /// Nullifies the label.
     pub fn nullify(&mut self) {
         {
-            unsafe { crate::ffi::TDF_Label_nullify(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Label_nullify(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7752,8 +8828,11 @@ impl Label {
     pub fn data(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFData> {
         {
             let __result = unsafe { crate::ffi::TDF_Label_data(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7765,8 +8844,11 @@ impl Label {
     pub fn tag(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TDF_Label_tag(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7776,8 +8858,11 @@ impl Label {
     pub fn father(&self) -> crate::OwnedPtr<Label> {
         {
             let __result = unsafe { crate::ffi::TDF_Label_father(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7787,8 +8872,11 @@ impl Label {
     pub fn is_null(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_Label_is_null(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7797,8 +8885,10 @@ impl Label {
     /// imported label, according to <aStatus>.
     pub fn imported(&self, aStatus: bool) {
         {
-            unsafe { crate::ffi::TDF_Label_imported(self as *const Self, aStatus) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Label_imported(self as *const Self, aStatus) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7807,8 +8897,11 @@ impl Label {
     pub fn is_imported(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_Label_is_imported(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7818,8 +8911,11 @@ impl Label {
     pub fn is_equal(&self, aLabel: &Label) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_Label_is_equal(self as *const Self, aLabel) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7828,8 +8924,11 @@ impl Label {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Label_is_different(self as *const Self, aLabel) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7837,8 +8936,11 @@ impl Label {
     pub fn is_root(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_Label_is_root(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7847,8 +8949,11 @@ impl Label {
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_Label_is_attribute(self as *const Self, anID) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7857,10 +8962,12 @@ impl Label {
     /// there is already one.
     pub fn add_attribute(&self, anAttribute: &crate::ffi::HandleTDFAttribute, append: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_Label_add_attribute(self as *const Self, anAttribute, append)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7874,13 +8981,15 @@ impl Label {
         anAttribute: &crate::ffi::HandleTDFAttribute,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_Label_forget_attribute_handletdfattribute(
                     self as *const Self,
                     anAttribute,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7892,8 +9001,11 @@ impl Label {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Label_forget_attribute_guid(self as *const Self, aguid) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7904,10 +9016,12 @@ impl Label {
     /// & Delta mechanisms.
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_Label_forget_all_attributes(self as *const Self, clearChildren)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7917,8 +9031,11 @@ impl Label {
     /// attribute is not in the structure.
     pub fn resume_attribute(&self, anAttribute: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TDF_Label_resume_attribute(self as *const Self, anAttribute) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_Label_resume_attribute(self as *const Self, anAttribute) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7943,8 +9060,11 @@ impl Label {
                     anAttribute,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7974,8 +9094,11 @@ impl Label {
                     anAttribute,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7987,8 +9110,11 @@ impl Label {
     pub fn may_be_modified(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_Label_may_be_modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8000,8 +9126,11 @@ impl Label {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Label_attributes_modified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8010,8 +9139,11 @@ impl Label {
     pub fn has_attribute(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_Label_has_attribute(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8020,8 +9152,11 @@ impl Label {
     pub fn nb_attributes(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TDF_Label_nb_attributes(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8036,8 +9171,11 @@ impl Label {
     pub fn depth(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TDF_Label_depth(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8049,8 +9187,11 @@ impl Label {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Label_is_descendant(self as *const Self, aLabel) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8063,8 +9204,11 @@ impl Label {
     pub fn root(&self) -> crate::OwnedPtr<Label> {
         {
             let __result = unsafe { crate::ffi::TDF_Label_root(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8073,8 +9217,11 @@ impl Label {
     pub fn has_child(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_Label_has_child(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8083,8 +9230,11 @@ impl Label {
     pub fn nb_children(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TDF_Label_nb_children(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8102,8 +9252,11 @@ impl Label {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Label_find_child(self as *const Self, aTag, create) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8113,8 +9266,11 @@ impl Label {
     pub fn new_child(&self) -> crate::OwnedPtr<Label> {
         {
             let __result = unsafe { crate::ffi::TDF_Label_new_child(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8123,8 +9279,11 @@ impl Label {
     pub fn transaction(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TDF_Label_transaction(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8138,8 +9297,11 @@ impl Label {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Label_has_lower_node(self as *const Self, otherLabel) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8153,8 +9315,11 @@ impl Label {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Label_has_greater_node(self as *const Self, otherLabel) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8173,8 +9338,11 @@ impl Label {
     ) -> &mut crate::ffi::Standard_OStream {
         {
             let __result = unsafe { crate::ffi::TDF_Label_dump(self as *mut Self, anOS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -8188,10 +9356,12 @@ impl Label {
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_Label_extended_dump(self as *const Self, anOS, aFilter, aMap)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8199,8 +9369,10 @@ impl Label {
     /// Dumps the label entry.
     pub fn entry_dump(&self, anOS: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::TDF_Label_entry_dump(self as *const Self, anOS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Label_entry_dump(self as *const Self, anOS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8225,16 +9397,20 @@ impl Reference {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_Reference_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TDF_Reference.hxx`:41 - `TDF_Reference::Set()`
     pub fn set(&mut self, Origin: &Label) {
         {
-            unsafe { crate::ffi::TDF_Reference_set(self as *mut Self, Origin) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Reference_set(self as *mut Self, Origin) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8242,8 +9418,11 @@ impl Reference {
     pub fn get(&self) -> crate::OwnedPtr<Label> {
         {
             let __result = unsafe { crate::ffi::TDF_Reference_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8251,16 +9430,21 @@ impl Reference {
     pub fn id(&self) -> &crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDF_Reference_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TDF_Reference.hxx`:47 - `TDF_Reference::Restore()`
     pub fn restore(&mut self, With: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TDF_Reference_restore(self as *mut Self, With) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Reference_restore(self as *mut Self, With) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8268,8 +9452,11 @@ impl Reference {
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         {
             let __result = unsafe { crate::ffi::TDF_Reference_new_empty(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8280,16 +9467,20 @@ impl Reference {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         {
-            unsafe { crate::ffi::TDF_Reference_paste(self as *const Self, Into, RT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Reference_paste(self as *const Self, Into, RT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDF_Reference.hxx`:54 - `TDF_Reference::References()`
     pub fn references(&self, DS: &crate::ffi::HandleTDFDataSet) {
         {
-            unsafe { crate::ffi::TDF_Reference_references(self as *const Self, DS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Reference_references(self as *const Self, DS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8306,8 +9497,11 @@ impl Reference {
     ) -> &mut crate::ffi::Standard_OStream {
         {
             let __result = unsafe { crate::ffi::TDF_Reference_dump(self as *mut Self, anOS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -8315,8 +9509,11 @@ impl Reference {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDF_Reference_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8324,8 +9521,11 @@ impl Reference {
     pub fn get_id() -> &'static crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDF_Reference_get_id() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8336,8 +9536,11 @@ impl Reference {
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFReference> {
         {
             let __result = unsafe { crate::ffi::TDF_Reference_set_label2(I, Origin) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8345,8 +9548,11 @@ impl Reference {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDF_Reference_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8354,67 +9560,71 @@ impl Reference {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDF_Reference_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_attribute(&self) -> &Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_Reference_as_TDF_Attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TDF_Reference_as_TDF_Attribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_attribute_mut(&mut self) -> &mut Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_Reference_as_TDF_Attribute_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::TDF_Reference_as_TDF_Attribute_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_Reference_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDF_Reference_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_Reference_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDF_Reference_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFReference> {
-        {
-            let __result = unsafe { crate::ffi::TDF_Reference_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDF_Reference_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         {
-            unsafe { crate::ffi::TDF_Reference_inherited_SetID(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_Reference_inherited_SetID(self as *mut Self, arg0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8423,8 +9633,11 @@ impl Reference {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Reference_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8433,8 +9646,11 @@ impl Reference {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Reference_inherited_Transaction(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8444,8 +9660,11 @@ impl Reference {
             let __result = unsafe {
                 crate::ffi::TDF_Reference_inherited_UntilTransaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8454,8 +9673,11 @@ impl Reference {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Reference_inherited_IsValid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8464,8 +9686,11 @@ impl Reference {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Reference_inherited_IsNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8474,8 +9699,11 @@ impl Reference {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Reference_inherited_IsForgotten(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8485,8 +9713,11 @@ impl Reference {
             let __result = unsafe {
                 crate::ffi::TDF_Reference_inherited_IsAttribute(self as *const Self, anID)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8504,16 +9735,23 @@ impl Reference {
                     anAttribute,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TDF_Reference_inherited_AddAttribute(self as *const Self, other) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDF_Reference_inherited_AddAttribute(self as *const Self, other)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8523,53 +9761,70 @@ impl Reference {
             let __result = unsafe {
                 crate::ffi::TDF_Reference_inherited_ForgetAttribute(self as *const Self, aguid)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_Reference_inherited_ForgetAllAttributes(
                     self as *const Self,
                     clearChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         {
-            unsafe { crate::ffi::TDF_Reference_inherited_AfterAddition(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_Reference_inherited_AfterAddition(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         {
-            unsafe { crate::ffi::TDF_Reference_inherited_BeforeRemoval(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_Reference_inherited_BeforeRemoval(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         {
-            unsafe { crate::ffi::TDF_Reference_inherited_BeforeForget(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_Reference_inherited_BeforeForget(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         {
-            unsafe { crate::ffi::TDF_Reference_inherited_AfterResume(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_Reference_inherited_AfterResume(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8579,8 +9834,11 @@ impl Reference {
             let __result = unsafe {
                 crate::ffi::TDF_Reference_inherited_AfterRetrieval(self as *mut Self, forceIt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8598,8 +9856,11 @@ impl Reference {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8617,26 +9878,33 @@ impl Reference {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_Reference_inherited_BeforeCommitTransaction(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         {
-            unsafe { crate::ffi::TDF_Reference_inherited_Backup(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Reference_inherited_Backup(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8645,8 +9913,11 @@ impl Reference {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Reference_inherited_IsBackuped(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8655,8 +9926,11 @@ impl Reference {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Reference_inherited_BackupCopy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8665,8 +9939,11 @@ impl Reference {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Reference_inherited_DeltaOnAddition(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8675,8 +9952,11 @@ impl Reference {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Reference_inherited_DeltaOnForget(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8685,8 +9965,11 @@ impl Reference {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Reference_inherited_DeltaOnResume(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8702,8 +9985,11 @@ impl Reference {
                     anOldAttribute,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8712,8 +9998,11 @@ impl Reference {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Reference_inherited_DeltaOnRemoval(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8725,7 +10014,7 @@ impl Reference {
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_Reference_inherited_ExtendedDump(
                     self as *const Self,
                     anOS,
@@ -8733,15 +10022,21 @@ impl Reference {
                     aMap,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         {
-            unsafe { crate::ffi::TDF_Reference_inherited_Forget(self as *mut Self, aTransaction) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDF_Reference_inherited_Forget(self as *mut Self, aTransaction)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8751,8 +10046,11 @@ impl Reference {
             let __result = unsafe {
                 crate::ffi::TDF_Reference_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8761,8 +10059,11 @@ impl Reference {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Reference_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8770,11 +10071,14 @@ impl Reference {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::TDF_Reference_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -8784,16 +10088,23 @@ impl Reference {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Reference_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::TDF_Reference_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDF_Reference_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8803,16 +10114,21 @@ impl Reference {
             let __result = unsafe {
                 crate::ffi::TDF_Reference_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDF_Reference_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Reference_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8828,42 +10144,41 @@ unsafe impl crate::CppDeletable for HandleTDFReference {
 impl HandleTDFReference {
     /// Dereference this Handle to access the underlying TDF_Reference
     pub fn get(&self) -> &crate::ffi::TDF_Reference {
-        {
-            let __result = unsafe { crate::ffi::HandleTDFReference_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDFReference_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDF_Reference
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_Reference {
-        {
-            let __result = unsafe { crate::ffi::HandleTDFReference_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDFReference_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDF_Reference> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFReference_to_HandleTDFAttribute(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleTDFReference_to_HandleTDFAttribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDF_Reference> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFReference_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFReference_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -8900,8 +10215,10 @@ impl RelocationTable {
     pub fn new_bool(selfRelocate: bool) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_RelocationTable_ctor_bool(selfRelocate) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8932,10 +10249,12 @@ impl RelocationTable {
     /// object.
     pub fn self_relocate_bool(&mut self, selfRelocate: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_RelocationTable_self_relocate_bool(self as *mut Self, selfRelocate)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8945,21 +10264,26 @@ impl RelocationTable {
         {
             let __result =
                 unsafe { crate::ffi::TDF_RelocationTable_self_relocate(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TDF_RelocationTable.hxx`:76 - `TDF_RelocationTable::AfterRelocate()`
     pub fn after_relocate_bool(&mut self, afterRelocate: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_RelocationTable_after_relocate_bool(
                     self as *mut Self,
                     afterRelocate,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8969,8 +10293,11 @@ impl RelocationTable {
         {
             let __result =
                 unsafe { crate::ffi::TDF_RelocationTable_after_relocate(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8979,14 +10306,16 @@ impl RelocationTable {
     /// <aTargetLabel>.
     pub fn set_relocation_label2(&mut self, aSourceLabel: &Label, aTargetLabel: &Label) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_RelocationTable_set_relocation_label2(
                     self as *mut Self,
                     aSourceLabel,
                     aTargetLabel,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9005,8 +10334,11 @@ impl RelocationTable {
                     aTargetLabel,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9019,14 +10351,16 @@ impl RelocationTable {
         aTargetAttribute: &crate::ffi::HandleTDFAttribute,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_RelocationTable_set_relocation_handletdfattribute2(
                     self as *mut Self,
                     aSourceAttribute,
                     aTargetAttribute,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9049,8 +10383,11 @@ impl RelocationTable {
                     aTargetAttribute,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9063,14 +10400,16 @@ impl RelocationTable {
         aTargetTransient: &crate::ffi::HandleStandardTransient,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_RelocationTable_set_transient_relocation(
                     self as *mut Self,
                     aSourceTransient,
                     aTargetTransient,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9093,8 +10432,11 @@ impl RelocationTable {
                     aTargetTransient,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9103,8 +10445,10 @@ impl RelocationTable {
     /// self relocation flag to its current value.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::TDF_RelocationTable_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_RelocationTable_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9113,10 +10457,12 @@ impl RelocationTable {
     /// labels. <aLabelMap> is not cleared before use.
     pub fn target_label_map(&self, aLabelMap: &mut crate::ffi::TDF_LabelMap) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_RelocationTable_target_label_map(self as *const Self, aLabelMap)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9126,13 +10472,15 @@ impl RelocationTable {
     /// use.
     pub fn target_attribute_map(&self, anAttributeMap: &mut crate::ffi::TDF_AttributeMap) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_RelocationTable_target_attribute_map(
                     self as *const Self,
                     anAttributeMap,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9142,8 +10490,11 @@ impl RelocationTable {
         {
             let __result =
                 unsafe { crate::ffi::TDF_RelocationTable_label_table(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -9153,8 +10504,11 @@ impl RelocationTable {
         {
             let __result =
                 unsafe { crate::ffi::TDF_RelocationTable_attribute_table(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -9166,8 +10520,11 @@ impl RelocationTable {
         {
             let __result =
                 unsafe { crate::ffi::TDF_RelocationTable_transient_table(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -9196,8 +10553,11 @@ impl RelocationTable {
                     anOS,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -9206,8 +10566,11 @@ impl RelocationTable {
         {
             let __result =
                 unsafe { crate::ffi::TDF_RelocationTable_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9215,8 +10578,11 @@ impl RelocationTable {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDF_RelocationTable_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -9224,42 +10590,43 @@ impl RelocationTable {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDF_RelocationTable_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_RelocationTable_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDF_RelocationTable_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDF_RelocationTable_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDF_RelocationTable_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFRelocationTable> {
-        {
-            let __result = unsafe { crate::ffi::TDF_RelocationTable_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDF_RelocationTable_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -9268,8 +10635,11 @@ impl RelocationTable {
             let __result = unsafe {
                 crate::ffi::TDF_RelocationTable_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9279,8 +10649,11 @@ impl RelocationTable {
             let __result = unsafe {
                 crate::ffi::TDF_RelocationTable_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9289,11 +10662,14 @@ impl RelocationTable {
         {
             let __result =
                 unsafe { crate::ffi::TDF_RelocationTable_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -9304,18 +10680,23 @@ impl RelocationTable {
             let __result = unsafe {
                 crate::ffi::TDF_RelocationTable_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_RelocationTable_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9325,16 +10706,22 @@ impl RelocationTable {
             let __result = unsafe {
                 crate::ffi::TDF_RelocationTable_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDF_RelocationTable_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_RelocationTable_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -9350,32 +10737,31 @@ unsafe impl crate::CppDeletable for HandleTDFRelocationTable {
 impl HandleTDFRelocationTable {
     /// Dereference this Handle to access the underlying TDF_RelocationTable
     pub fn get(&self) -> &crate::ffi::TDF_RelocationTable {
-        {
-            let __result = unsafe { crate::ffi::HandleTDFRelocationTable_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDFRelocationTable_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDF_RelocationTable
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_RelocationTable {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTDFRelocationTable_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDFRelocationTable_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDF_RelocationTable> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFRelocationTable_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFRelocationTable_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -9399,8 +10785,10 @@ impl TagSource {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_TagSource_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9408,8 +10796,11 @@ impl TagSource {
     pub fn new_tag(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TDF_TagSource_new_tag(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9417,8 +10808,11 @@ impl TagSource {
     pub fn new_child(&mut self) -> crate::OwnedPtr<Label> {
         {
             let __result = unsafe { crate::ffi::TDF_TagSource_new_child(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9426,8 +10820,11 @@ impl TagSource {
     pub fn get(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TDF_TagSource_get(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9436,8 +10833,10 @@ impl TagSource {
     /// =====================
     pub fn set(&mut self, T: i32) {
         {
-            unsafe { crate::ffi::TDF_TagSource_set(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_TagSource_set(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9445,16 +10844,21 @@ impl TagSource {
     pub fn id(&self) -> &crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDF_TagSource_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TDF_TagSource.hxx`:66 - `TDF_TagSource::Restore()`
     pub fn restore(&mut self, with: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TDF_TagSource_restore(self as *mut Self, with) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_TagSource_restore(self as *mut Self, with) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9462,8 +10866,11 @@ impl TagSource {
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         {
             let __result = unsafe { crate::ffi::TDF_TagSource_new_empty(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9474,8 +10881,10 @@ impl TagSource {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         {
-            unsafe { crate::ffi::TDF_TagSource_paste(self as *const Self, Into, RT) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_TagSource_paste(self as *const Self, Into, RT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9483,8 +10892,11 @@ impl TagSource {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDF_TagSource_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9494,8 +10906,11 @@ impl TagSource {
     pub fn get_id() -> &'static crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDF_TagSource_get_id() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9505,8 +10920,11 @@ impl TagSource {
     pub fn set_label(label: &Label) -> crate::OwnedPtr<crate::ffi::HandleTDFTagSource> {
         {
             let __result = unsafe { crate::ffi::TDF_TagSource_set_label(label) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9518,8 +10936,11 @@ impl TagSource {
     pub fn new_child_label(L: &Label) -> crate::OwnedPtr<Label> {
         {
             let __result = unsafe { crate::ffi::TDF_TagSource_new_child_label(L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9527,8 +10948,11 @@ impl TagSource {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDF_TagSource_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -9536,67 +10960,71 @@ impl TagSource {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDF_TagSource_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_attribute(&self) -> &Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_TagSource_as_TDF_Attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TDF_TagSource_as_TDF_Attribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_attribute_mut(&mut self) -> &mut Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_TagSource_as_TDF_Attribute_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::TDF_TagSource_as_TDF_Attribute_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_TagSource_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDF_TagSource_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDF_TagSource_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDF_TagSource_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDFTagSource> {
-        {
-            let __result = unsafe { crate::ffi::TDF_TagSource_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDF_TagSource_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         {
-            unsafe { crate::ffi::TDF_TagSource_inherited_SetID(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_TagSource_inherited_SetID(self as *mut Self, arg0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9605,8 +11033,11 @@ impl TagSource {
         {
             let __result =
                 unsafe { crate::ffi::TDF_TagSource_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9615,8 +11046,11 @@ impl TagSource {
         {
             let __result =
                 unsafe { crate::ffi::TDF_TagSource_inherited_Transaction(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9626,8 +11060,11 @@ impl TagSource {
             let __result = unsafe {
                 crate::ffi::TDF_TagSource_inherited_UntilTransaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9636,8 +11073,11 @@ impl TagSource {
         {
             let __result =
                 unsafe { crate::ffi::TDF_TagSource_inherited_IsValid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9646,8 +11086,11 @@ impl TagSource {
         {
             let __result =
                 unsafe { crate::ffi::TDF_TagSource_inherited_IsNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9656,8 +11099,11 @@ impl TagSource {
         {
             let __result =
                 unsafe { crate::ffi::TDF_TagSource_inherited_IsForgotten(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9667,8 +11113,11 @@ impl TagSource {
             let __result = unsafe {
                 crate::ffi::TDF_TagSource_inherited_IsAttribute(self as *const Self, anID)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9686,16 +11135,23 @@ impl TagSource {
                     anAttribute,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TDF_TagSource_inherited_AddAttribute(self as *const Self, other) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDF_TagSource_inherited_AddAttribute(self as *const Self, other)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9705,53 +11161,70 @@ impl TagSource {
             let __result = unsafe {
                 crate::ffi::TDF_TagSource_inherited_ForgetAttribute(self as *const Self, aguid)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_TagSource_inherited_ForgetAllAttributes(
                     self as *const Self,
                     clearChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         {
-            unsafe { crate::ffi::TDF_TagSource_inherited_AfterAddition(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_TagSource_inherited_AfterAddition(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         {
-            unsafe { crate::ffi::TDF_TagSource_inherited_BeforeRemoval(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_TagSource_inherited_BeforeRemoval(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         {
-            unsafe { crate::ffi::TDF_TagSource_inherited_BeforeForget(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_TagSource_inherited_BeforeForget(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         {
-            unsafe { crate::ffi::TDF_TagSource_inherited_AfterResume(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_TagSource_inherited_AfterResume(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9761,8 +11234,11 @@ impl TagSource {
             let __result = unsafe {
                 crate::ffi::TDF_TagSource_inherited_AfterRetrieval(self as *mut Self, forceIt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9780,8 +11256,11 @@ impl TagSource {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9799,26 +11278,33 @@ impl TagSource {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_TagSource_inherited_BeforeCommitTransaction(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         {
-            unsafe { crate::ffi::TDF_TagSource_inherited_Backup(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_TagSource_inherited_Backup(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9827,8 +11313,11 @@ impl TagSource {
         {
             let __result =
                 unsafe { crate::ffi::TDF_TagSource_inherited_IsBackuped(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9837,8 +11326,11 @@ impl TagSource {
         {
             let __result =
                 unsafe { crate::ffi::TDF_TagSource_inherited_BackupCopy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9847,8 +11339,11 @@ impl TagSource {
         {
             let __result =
                 unsafe { crate::ffi::TDF_TagSource_inherited_DeltaOnAddition(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9857,8 +11352,11 @@ impl TagSource {
         {
             let __result =
                 unsafe { crate::ffi::TDF_TagSource_inherited_DeltaOnForget(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9867,8 +11365,11 @@ impl TagSource {
         {
             let __result =
                 unsafe { crate::ffi::TDF_TagSource_inherited_DeltaOnResume(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9884,8 +11385,11 @@ impl TagSource {
                     anOldAttribute,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9894,18 +11398,23 @@ impl TagSource {
         {
             let __result =
                 unsafe { crate::ffi::TDF_TagSource_inherited_DeltaOnRemoval(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_TagSource_inherited_References(self as *const Self, aDataSet)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9917,7 +11426,7 @@ impl TagSource {
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_TagSource_inherited_ExtendedDump(
                     self as *const Self,
                     anOS,
@@ -9925,15 +11434,21 @@ impl TagSource {
                     aMap,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         {
-            unsafe { crate::ffi::TDF_TagSource_inherited_Forget(self as *mut Self, aTransaction) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDF_TagSource_inherited_Forget(self as *mut Self, aTransaction)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9943,8 +11458,11 @@ impl TagSource {
             let __result = unsafe {
                 crate::ffi::TDF_TagSource_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9953,8 +11471,11 @@ impl TagSource {
         {
             let __result =
                 unsafe { crate::ffi::TDF_TagSource_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9962,11 +11483,14 @@ impl TagSource {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::TDF_TagSource_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -9976,16 +11500,23 @@ impl TagSource {
         {
             let __result =
                 unsafe { crate::ffi::TDF_TagSource_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::TDF_TagSource_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDF_TagSource_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9995,16 +11526,21 @@ impl TagSource {
             let __result = unsafe {
                 crate::ffi::TDF_TagSource_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDF_TagSource_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_TagSource_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -10020,42 +11556,41 @@ unsafe impl crate::CppDeletable for HandleTDFTagSource {
 impl HandleTDFTagSource {
     /// Dereference this Handle to access the underlying TDF_TagSource
     pub fn get(&self) -> &crate::ffi::TDF_TagSource {
-        {
-            let __result = unsafe { crate::ffi::HandleTDFTagSource_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDFTagSource_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDF_TagSource
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDF_TagSource {
-        {
-            let __result = unsafe { crate::ffi::HandleTDFTagSource_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDFTagSource_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDF_TagSource> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFTagSource_to_HandleTDFAttribute(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleTDFTagSource_to_HandleTDFAttribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDF_TagSource> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDFTagSource_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDFTagSource_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -10079,8 +11614,10 @@ impl Tool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_Tool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10091,8 +11628,11 @@ impl Tool {
     pub fn nb_labels(aLabel: &Label) -> i32 {
         {
             let __result = unsafe { crate::ffi::TDF_Tool_nb_labels(aLabel) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10104,8 +11644,11 @@ impl Tool {
     pub fn nb_attributes_label(aLabel: &Label) -> i32 {
         {
             let __result = unsafe { crate::ffi::TDF_Tool_nb_attributes_label(aLabel) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10117,8 +11660,11 @@ impl Tool {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Tool_nb_attributes_label_idfilter(aLabel, aFilter) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10129,8 +11675,11 @@ impl Tool {
     pub fn is_self_contained_label(aLabel: &Label) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_Tool_is_self_contained_label(aLabel) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10142,8 +11691,11 @@ impl Tool {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Tool_is_self_contained_label_idfilter(aLabel, aFilter) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10157,8 +11709,11 @@ impl Tool {
         theAtts: &mut crate::ffi::TDF_AttributeMap,
     ) {
         {
-            unsafe { crate::ffi::TDF_Tool_out_referers_label_attributemap(theLabel, theAtts) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_Tool_out_referers_label_attributemap(theLabel, theAtts) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10174,7 +11729,7 @@ impl Tool {
         atts: &mut crate::ffi::TDF_AttributeMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_Tool_out_referers_label_idfilter2_attributemap(
                     aLabel,
                     aFilterForReferers,
@@ -10182,7 +11737,9 @@ impl Tool {
                     atts,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10194,8 +11751,11 @@ impl Tool {
         atts: &mut crate::ffi::TDF_AttributeMap,
     ) {
         {
-            unsafe { crate::ffi::TDF_Tool_out_references_label_attributemap(aLabel, atts) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_Tool_out_references_label_attributemap(aLabel, atts) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10210,7 +11770,7 @@ impl Tool {
         atts: &mut crate::ffi::TDF_AttributeMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_Tool_out_references_label_idfilter2_attributemap(
                     aLabel,
                     aFilterForReferers,
@@ -10218,7 +11778,9 @@ impl Tool {
                     atts,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10241,7 +11803,7 @@ impl Tool {
         create: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_Tool_relocate_label(
                     aSourceLabel,
                     fromRoot,
@@ -10250,7 +11812,9 @@ impl Tool {
                     create,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10260,8 +11824,10 @@ impl Tool {
     /// the tag list for aLabel.
     pub fn entry(aLabel: &Label, anEntry: &mut crate::t_collection::AsciiString) {
         {
-            unsafe { crate::ffi::TDF_Tool_entry(aLabel, anEntry) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Tool_entry(aLabel, anEntry) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10273,8 +11839,11 @@ impl Tool {
         aTagList: &mut crate::ffi::TColStd_ListOfInteger,
     ) {
         {
-            unsafe { crate::ffi::TDF_Tool_tag_list_label_listofinteger(aLabel, aTagList) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDF_Tool_tag_list_label_listofinteger(aLabel, aTagList) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10286,8 +11855,12 @@ impl Tool {
         aTagList: &mut crate::ffi::TColStd_ListOfInteger,
     ) {
         {
-            unsafe { crate::ffi::TDF_Tool_tag_list_asciistring_listofinteger(anEntry, aTagList) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDF_Tool_tag_list_asciistring_listofinteger(anEntry, aTagList)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10302,12 +11875,14 @@ impl Tool {
         create: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_Tool_label_handletdfdata_asciistring_label_bool(
                     aDF, anEntry, aLabel, create,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10323,7 +11898,7 @@ impl Tool {
     ) {
         let c_anEntry = std::ffi::CString::new(anEntry).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_Tool_label_handletdfdata_charptr_label_bool(
                     aDF,
                     c_anEntry.as_ptr(),
@@ -10331,7 +11906,9 @@ impl Tool {
                     create,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10346,12 +11923,14 @@ impl Tool {
         create: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_Tool_label_handletdfdata_listofinteger_label_bool(
                     aDF, aTagList, aLabel, create,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10365,8 +11944,10 @@ impl Tool {
         aLabelMap: &mut crate::ffi::TDF_LabelIntegerMap,
     ) {
         {
-            unsafe { crate::ffi::TDF_Tool_count_labels(aLabelList, aLabelMap) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Tool_count_labels(aLabelList, aLabelMap) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10380,8 +11961,10 @@ impl Tool {
         aLabelMap: &mut crate::ffi::TDF_LabelIntegerMap,
     ) {
         {
-            unsafe { crate::ffi::TDF_Tool_deduct_labels(aLabelList, aLabelMap) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Tool_deduct_labels(aLabelList, aLabelMap) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10392,8 +11975,10 @@ impl Tool {
         aDF: &crate::ffi::HandleTDFData,
     ) {
         {
-            unsafe { crate::ffi::TDF_Tool_deep_dump_ostream_handletdfdata(anOS, aDF) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Tool_deep_dump_ostream_handletdfdata(anOS, aDF) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10407,12 +11992,14 @@ impl Tool {
         aFilter: &IDFilter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_Tool_extended_deep_dump_ostream_handletdfdata_idfilter(
                     anOS, aDF, aFilter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10420,8 +12007,10 @@ impl Tool {
     /// Dumps <aLabel>, its children and their attributes.
     pub fn deep_dump_ostream_label(anOS: &mut crate::ffi::Standard_OStream, aLabel: &Label) {
         {
-            unsafe { crate::ffi::TDF_Tool_deep_dump_ostream_label(anOS, aLabel) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Tool_deep_dump_ostream_label(anOS, aLabel) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10435,12 +12024,14 @@ impl Tool {
         aFilter: &IDFilter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDF_Tool_extended_deep_dump_ostream_label_idfilter(
                     anOS, aLabel, aFilter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -10475,8 +12066,10 @@ impl Transaction {
     pub fn new_asciistring(aName: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDF_Transaction_ctor_asciistring(aName) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10490,8 +12083,10 @@ impl Transaction {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Transaction_ctor_handletdfdata_asciistring(aDF, aName) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10501,8 +12096,10 @@ impl Transaction {
     /// ready to be opened.
     pub fn initialize(&mut self, aDF: &crate::ffi::HandleTDFData) {
         {
-            unsafe { crate::ffi::TDF_Transaction_initialize(self as *mut Self, aDF) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Transaction_initialize(self as *mut Self, aDF) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10517,8 +12114,11 @@ impl Transaction {
     pub fn open(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TDF_Transaction_open(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10529,8 +12129,11 @@ impl Transaction {
         {
             let __result =
                 unsafe { crate::ffi::TDF_Transaction_commit(self as *mut Self, withDelta) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10539,8 +12142,10 @@ impl Transaction {
     /// current opened one.
     pub fn abort(&mut self) {
         {
-            unsafe { crate::ffi::TDF_Transaction_abort(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDF_Transaction_abort(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10549,8 +12154,11 @@ impl Transaction {
     pub fn data(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFData> {
         {
             let __result = unsafe { crate::ffi::TDF_Transaction_data(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10559,8 +12167,11 @@ impl Transaction {
     pub fn transaction(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TDF_Transaction_transaction(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10569,8 +12180,11 @@ impl Transaction {
     pub fn name(&self) -> &crate::t_collection::AsciiString {
         {
             let __result = unsafe { crate::ffi::TDF_Transaction_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10579,8 +12193,11 @@ impl Transaction {
     pub fn is_open(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDF_Transaction_is_open(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

@@ -38,8 +38,10 @@ impl Geom2dCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2dToIGES_Geom2dCurve_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -49,8 +51,10 @@ impl Geom2dCurve {
     pub fn new_geom2dentity(G2dE: &Geom2dEntity) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2dToIGES_Geom2dCurve_ctor_geom2dentity(G2dE) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -72,44 +76,45 @@ impl Geom2dCurve {
                     Ufin,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to Geom2dToIGES_Geom2dEntity
     pub fn as_geom2d_entity(&self) -> &Geom2dEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dToIGES_Geom2dCurve_as_Geom2dToIGES_Geom2dEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Geom2dToIGES_Geom2dCurve_as_Geom2dToIGES_Geom2dEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2dToIGES_Geom2dEntity (mutable)
     pub fn as_geom2d_entity_mut(&mut self) -> &mut Geom2dEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dToIGES_Geom2dCurve_as_Geom2dToIGES_Geom2dEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Geom2dToIGES_Geom2dCurve_as_Geom2dToIGES_Geom2dEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:40 - `Geom2dToIGES_Geom2dEntity::SetModel()`
     pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2dToIGES_Geom2dCurve_inherited_SetModel(self as *mut Self, model)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -119,18 +124,23 @@ impl Geom2dCurve {
             let __result = unsafe {
                 crate::ffi::Geom2dToIGES_Geom2dCurve_inherited_GetModel(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:46 - `Geom2dToIGES_Geom2dEntity::SetUnit()`
     pub fn set_unit(&mut self, unit: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2dToIGES_Geom2dCurve_inherited_SetUnit(self as *mut Self, unit)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -140,8 +150,11 @@ impl Geom2dCurve {
             let __result = unsafe {
                 crate::ffi::Geom2dToIGES_Geom2dCurve_inherited_GetUnit(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -166,8 +179,10 @@ impl Geom2dEntity {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2dToIGES_Geom2dEntity_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -175,8 +190,12 @@ impl Geom2dEntity {
     /// Set the value of "TheModel"
     pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
         {
-            unsafe { crate::ffi::Geom2dToIGES_Geom2dEntity_set_model(self as *mut Self, model) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2dToIGES_Geom2dEntity_set_model(self as *mut Self, model)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -186,8 +205,11 @@ impl Geom2dEntity {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dToIGES_Geom2dEntity_get_model(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -195,8 +217,11 @@ impl Geom2dEntity {
     /// Sets the value of the UnitFlag
     pub fn set_unit(&mut self, unit: f64) {
         {
-            unsafe { crate::ffi::Geom2dToIGES_Geom2dEntity_set_unit(self as *mut Self, unit) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2dToIGES_Geom2dEntity_set_unit(self as *mut Self, unit) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -207,19 +232,22 @@ impl Geom2dEntity {
         {
             let __result =
                 unsafe { crate::ffi::Geom2dToIGES_Geom2dEntity_get_unit(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2dToIGES_Geom2dEntity_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::Geom2dToIGES_Geom2dEntity_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -245,8 +273,10 @@ impl Geom2dPoint {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2dToIGES_Geom2dPoint_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -256,8 +286,10 @@ impl Geom2dPoint {
     pub fn new_geom2dentity(G2dE: &Geom2dEntity) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2dToIGES_Geom2dPoint_ctor_geom2dentity(G2dE) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -275,8 +307,11 @@ impl Geom2dPoint {
                     start,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -294,44 +329,45 @@ impl Geom2dPoint {
                     start,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to Geom2dToIGES_Geom2dEntity
     pub fn as_geom2d_entity(&self) -> &Geom2dEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dToIGES_Geom2dPoint_as_Geom2dToIGES_Geom2dEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Geom2dToIGES_Geom2dPoint_as_Geom2dToIGES_Geom2dEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2dToIGES_Geom2dEntity (mutable)
     pub fn as_geom2d_entity_mut(&mut self) -> &mut Geom2dEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dToIGES_Geom2dPoint_as_Geom2dToIGES_Geom2dEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Geom2dToIGES_Geom2dPoint_as_Geom2dToIGES_Geom2dEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:40 - `Geom2dToIGES_Geom2dEntity::SetModel()`
     pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2dToIGES_Geom2dPoint_inherited_SetModel(self as *mut Self, model)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -341,18 +377,23 @@ impl Geom2dPoint {
             let __result = unsafe {
                 crate::ffi::Geom2dToIGES_Geom2dPoint_inherited_GetModel(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:46 - `Geom2dToIGES_Geom2dEntity::SetUnit()`
     pub fn set_unit(&mut self, unit: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2dToIGES_Geom2dPoint_inherited_SetUnit(self as *mut Self, unit)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -362,8 +403,11 @@ impl Geom2dPoint {
             let __result = unsafe {
                 crate::ffi::Geom2dToIGES_Geom2dPoint_inherited_GetUnit(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -391,8 +435,10 @@ impl Geom2dVector {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2dToIGES_Geom2dVector_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -402,8 +448,10 @@ impl Geom2dVector {
     pub fn new_geom2dentity(G2dE: &Geom2dEntity) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2dToIGES_Geom2dVector_ctor_geom2dentity(G2dE) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -422,8 +470,11 @@ impl Geom2dVector {
                     start,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -436,8 +487,11 @@ impl Geom2dVector {
             let __result = unsafe {
                 crate::ffi::Geom2dToIGES_Geom2dVector_transfer2d_vector_handlegeom2dvectorwithmagnitude(self as *mut Self, start)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -453,44 +507,47 @@ impl Geom2dVector {
                     start,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to Geom2dToIGES_Geom2dEntity
     pub fn as_geom2d_entity(&self) -> &Geom2dEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dToIGES_Geom2dVector_as_Geom2dToIGES_Geom2dEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Geom2dToIGES_Geom2dVector_as_Geom2dToIGES_Geom2dEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2dToIGES_Geom2dEntity (mutable)
     pub fn as_geom2d_entity_mut(&mut self) -> &mut Geom2dEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2dToIGES_Geom2dVector_as_Geom2dToIGES_Geom2dEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Geom2dToIGES_Geom2dVector_as_Geom2dToIGES_Geom2dEntity_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:40 - `Geom2dToIGES_Geom2dEntity::SetModel()`
     pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2dToIGES_Geom2dVector_inherited_SetModel(self as *mut Self, model)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -500,18 +557,23 @@ impl Geom2dVector {
             let __result = unsafe {
                 crate::ffi::Geom2dToIGES_Geom2dVector_inherited_GetModel(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:46 - `Geom2dToIGES_Geom2dEntity::SetUnit()`
     pub fn set_unit(&mut self, unit: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2dToIGES_Geom2dVector_inherited_SetUnit(self as *mut Self, unit)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -521,8 +583,11 @@ impl Geom2dVector {
             let __result = unsafe {
                 crate::ffi::Geom2dToIGES_Geom2dVector_inherited_GetUnit(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

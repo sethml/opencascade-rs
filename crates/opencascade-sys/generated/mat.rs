@@ -67,8 +67,10 @@ impl Arc {
                     SecondElement,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -77,8 +79,11 @@ impl Arc {
     pub fn index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT_Arc_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -88,8 +93,11 @@ impl Arc {
     pub fn geom_index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT_Arc_geom_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -98,8 +106,11 @@ impl Arc {
     pub fn first_element(&self) -> crate::OwnedPtr<crate::ffi::HandleMATBasicElt> {
         {
             let __result = unsafe { crate::ffi::MAT_Arc_first_element(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -108,8 +119,11 @@ impl Arc {
     pub fn second_element(&self) -> crate::OwnedPtr<crate::ffi::HandleMATBasicElt> {
         {
             let __result = unsafe { crate::ffi::MAT_Arc_second_element(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -118,8 +132,11 @@ impl Arc {
     pub fn first_node(&self) -> crate::OwnedPtr<crate::ffi::HandleMATNode> {
         {
             let __result = unsafe { crate::ffi::MAT_Arc_first_node(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -128,8 +145,11 @@ impl Arc {
     pub fn second_node(&self) -> crate::OwnedPtr<crate::ffi::HandleMATNode> {
         {
             let __result = unsafe { crate::ffi::MAT_Arc_second_node(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -145,8 +165,11 @@ impl Arc {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Arc_the_other_node(self as *const Self, aNode) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -163,8 +186,11 @@ impl Arc {
             let __result = unsafe {
                 crate::ffi::MAT_Arc_has_neighbour(self as *const Self, aNode, aSide.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -180,72 +206,97 @@ impl Arc {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Arc_neighbour(self as *const Self, aNode, aSide.into()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `MAT_Arc.hxx`:79 - `MAT_Arc::SetIndex()`
     pub fn set_index(&mut self, anInteger: i32) {
         {
-            unsafe { crate::ffi::MAT_Arc_set_index(self as *mut Self, anInteger) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_Arc_set_index(self as *mut Self, anInteger) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Arc.hxx`:81 - `MAT_Arc::SetGeomIndex()`
     pub fn set_geom_index(&mut self, anInteger: i32) {
         {
-            unsafe { crate::ffi::MAT_Arc_set_geom_index(self as *mut Self, anInteger) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_Arc_set_geom_index(self as *mut Self, anInteger) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Arc.hxx`:83 - `MAT_Arc::SetFirstElement()`
     pub fn set_first_element(&mut self, aBasicElt: &crate::ffi::HandleMATBasicElt) {
         {
-            unsafe { crate::ffi::MAT_Arc_set_first_element(self as *mut Self, aBasicElt) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_Arc_set_first_element(self as *mut Self, aBasicElt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Arc.hxx`:85 - `MAT_Arc::SetSecondElement()`
     pub fn set_second_element(&mut self, aBasicElt: &crate::ffi::HandleMATBasicElt) {
         {
-            unsafe { crate::ffi::MAT_Arc_set_second_element(self as *mut Self, aBasicElt) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_Arc_set_second_element(self as *mut Self, aBasicElt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Arc.hxx`:87 - `MAT_Arc::SetFirstNode()`
     pub fn set_first_node(&mut self, aNode: &crate::ffi::HandleMATNode) {
         {
-            unsafe { crate::ffi::MAT_Arc_set_first_node(self as *mut Self, aNode) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_Arc_set_first_node(self as *mut Self, aNode) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Arc.hxx`:89 - `MAT_Arc::SetSecondNode()`
     pub fn set_second_node(&mut self, aNode: &crate::ffi::HandleMATNode) {
         {
-            unsafe { crate::ffi::MAT_Arc_set_second_node(self as *mut Self, aNode) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_Arc_set_second_node(self as *mut Self, aNode) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Arc.hxx`:91 - `MAT_Arc::SetFirstArc()`
     pub fn set_first_arc(&mut self, aSide: crate::mat::Side, anArc: &crate::ffi::HandleMATArc) {
         {
-            unsafe { crate::ffi::MAT_Arc_set_first_arc(self as *mut Self, aSide.into(), anArc) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MAT_Arc_set_first_arc(self as *mut Self, aSide.into(), anArc)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Arc.hxx`:93 - `MAT_Arc::SetSecondArc()`
     pub fn set_second_arc(&mut self, aSide: crate::mat::Side, anArc: &crate::ffi::HandleMATArc) {
         {
-            unsafe { crate::ffi::MAT_Arc_set_second_arc(self as *mut Self, aSide.into(), anArc) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MAT_Arc_set_second_arc(self as *mut Self, aSide.into(), anArc)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -257,10 +308,12 @@ impl Arc {
         anArc: &crate::ffi::HandleMATArc,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT_Arc_set_neighbour(self as *mut Self, aSide.into(), aNode, anArc)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -268,8 +321,11 @@ impl Arc {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT_Arc_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -277,8 +333,11 @@ impl Arc {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MAT_Arc_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -286,38 +345,39 @@ impl Arc {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT_Arc_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT_Arc_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::MAT_Arc_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT_Arc_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::MAT_Arc_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleMATArc> {
-        {
-            let __result = unsafe { crate::ffi::MAT_Arc_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MAT_Arc_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -325,8 +385,11 @@ impl Arc {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Arc_inherited_IsInstance(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -335,8 +398,11 @@ impl Arc {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Arc_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -344,11 +410,14 @@ impl Arc {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::MAT_Arc_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -358,16 +427,22 @@ impl Arc {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Arc_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::MAT_Arc_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_Arc_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -376,16 +451,21 @@ impl Arc {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Arc_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::MAT_Arc_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_Arc_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -401,30 +481,30 @@ unsafe impl crate::CppDeletable for HandleMATArc {
 impl HandleMATArc {
     /// Dereference this Handle to access the underlying MAT_Arc
     pub fn get(&self) -> &crate::ffi::MAT_Arc {
-        {
-            let __result = unsafe { crate::ffi::HandleMATArc_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleMATArc_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MAT_Arc
     pub fn get_mut(&mut self) -> &mut crate::ffi::MAT_Arc {
-        {
-            let __result = unsafe { crate::ffi::HandleMATArc_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleMATArc_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MAT_Arc> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleMATArc_to_HandleStandardTransient(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleMATArc_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -449,8 +529,10 @@ impl BasicElt {
     pub fn new_int(anInteger: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MAT_BasicElt_ctor_int(anInteger) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -460,8 +542,11 @@ impl BasicElt {
     pub fn start_arc(&self) -> crate::OwnedPtr<crate::ffi::HandleMATArc> {
         {
             let __result = unsafe { crate::ffi::MAT_BasicElt_start_arc(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -471,8 +556,11 @@ impl BasicElt {
     pub fn end_arc(&self) -> crate::OwnedPtr<crate::ffi::HandleMATArc> {
         {
             let __result = unsafe { crate::ffi::MAT_BasicElt_end_arc(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -481,8 +569,11 @@ impl BasicElt {
     pub fn index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT_BasicElt_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -491,40 +582,52 @@ impl BasicElt {
     pub fn geom_index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT_BasicElt_geom_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `MAT_BasicElt.hxx`:53 - `MAT_BasicElt::SetStartArc()`
     pub fn set_start_arc(&mut self, anArc: &crate::ffi::HandleMATArc) {
         {
-            unsafe { crate::ffi::MAT_BasicElt_set_start_arc(self as *mut Self, anArc) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_BasicElt_set_start_arc(self as *mut Self, anArc) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_BasicElt.hxx`:55 - `MAT_BasicElt::SetEndArc()`
     pub fn set_end_arc(&mut self, anArc: &crate::ffi::HandleMATArc) {
         {
-            unsafe { crate::ffi::MAT_BasicElt_set_end_arc(self as *mut Self, anArc) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_BasicElt_set_end_arc(self as *mut Self, anArc) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_BasicElt.hxx`:57 - `MAT_BasicElt::SetIndex()`
     pub fn set_index(&mut self, anInteger: i32) {
         {
-            unsafe { crate::ffi::MAT_BasicElt_set_index(self as *mut Self, anInteger) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_BasicElt_set_index(self as *mut Self, anInteger) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_BasicElt.hxx`:59 - `MAT_BasicElt::SetGeomIndex()`
     pub fn set_geom_index(&mut self, anInteger: i32) {
         {
-            unsafe { crate::ffi::MAT_BasicElt_set_geom_index(self as *mut Self, anInteger) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_BasicElt_set_geom_index(self as *mut Self, anInteger) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -532,8 +635,11 @@ impl BasicElt {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT_BasicElt_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -541,8 +647,11 @@ impl BasicElt {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MAT_BasicElt_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -550,38 +659,41 @@ impl BasicElt {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT_BasicElt_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT_BasicElt_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::MAT_BasicElt_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT_BasicElt_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::MAT_BasicElt_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleMATBasicElt> {
-        {
-            let __result = unsafe { crate::ffi::MAT_BasicElt_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MAT_BasicElt_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -590,8 +702,11 @@ impl BasicElt {
             let __result = unsafe {
                 crate::ffi::MAT_BasicElt_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -600,8 +715,11 @@ impl BasicElt {
         {
             let __result =
                 unsafe { crate::ffi::MAT_BasicElt_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -609,11 +727,14 @@ impl BasicElt {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::MAT_BasicElt_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -623,16 +744,23 @@ impl BasicElt {
         {
             let __result =
                 unsafe { crate::ffi::MAT_BasicElt_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::MAT_BasicElt_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MAT_BasicElt_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -642,16 +770,21 @@ impl BasicElt {
             let __result = unsafe {
                 crate::ffi::MAT_BasicElt_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::MAT_BasicElt_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_BasicElt_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -667,31 +800,31 @@ unsafe impl crate::CppDeletable for HandleMATBasicElt {
 impl HandleMATBasicElt {
     /// Dereference this Handle to access the underlying MAT_BasicElt
     pub fn get(&self) -> &crate::ffi::MAT_BasicElt {
-        {
-            let __result = unsafe { crate::ffi::HandleMATBasicElt_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleMATBasicElt_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MAT_BasicElt
     pub fn get_mut(&mut self) -> &mut crate::ffi::MAT_BasicElt {
-        {
-            let __result = unsafe { crate::ffi::HandleMATBasicElt_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleMATBasicElt_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MAT_BasicElt> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMATBasicElt_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleMATBasicElt_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -713,16 +846,21 @@ impl Bisector {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MAT_Bisector_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `MAT_Bisector.hxx`:38 - `MAT_Bisector::AddBisector()`
     pub fn add_bisector(&self, abisector: &crate::ffi::HandleMATBisector) {
         {
-            unsafe { crate::ffi::MAT_Bisector_add_bisector(self as *const Self, abisector) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_Bisector_add_bisector(self as *const Self, abisector) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -730,8 +868,11 @@ impl Bisector {
     pub fn list(&self) -> crate::OwnedPtr<crate::ffi::HandleMATListOfBisector> {
         {
             let __result = unsafe { crate::ffi::MAT_Bisector_list(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -739,8 +880,11 @@ impl Bisector {
     pub fn first_bisector(&self) -> crate::OwnedPtr<crate::ffi::HandleMATBisector> {
         {
             let __result = unsafe { crate::ffi::MAT_Bisector_first_bisector(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -748,108 +892,146 @@ impl Bisector {
     pub fn last_bisector(&self) -> crate::OwnedPtr<crate::ffi::HandleMATBisector> {
         {
             let __result = unsafe { crate::ffi::MAT_Bisector_last_bisector(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `MAT_Bisector.hxx`:46 - `MAT_Bisector::BisectorNumber()`
     pub fn bisector_number_int(&mut self, anumber: i32) {
         {
-            unsafe { crate::ffi::MAT_Bisector_bisector_number_int(self as *mut Self, anumber) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_Bisector_bisector_number_int(self as *mut Self, anumber) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Bisector.hxx`:48 - `MAT_Bisector::IndexNumber()`
     pub fn index_number_int(&mut self, anumber: i32) {
         {
-            unsafe { crate::ffi::MAT_Bisector_index_number_int(self as *mut Self, anumber) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_Bisector_index_number_int(self as *mut Self, anumber) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Bisector.hxx`:50 - `MAT_Bisector::FirstEdge()`
     pub fn first_edge_handlematedge(&mut self, anedge: &crate::ffi::HandleMATEdge) {
         {
-            unsafe { crate::ffi::MAT_Bisector_first_edge_handlematedge(self as *mut Self, anedge) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MAT_Bisector_first_edge_handlematedge(self as *mut Self, anedge)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Bisector.hxx`:52 - `MAT_Bisector::SecondEdge()`
     pub fn second_edge_handlematedge(&mut self, anedge: &crate::ffi::HandleMATEdge) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT_Bisector_second_edge_handlematedge(self as *mut Self, anedge)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Bisector.hxx`:54 - `MAT_Bisector::IssuePoint()`
     pub fn issue_point_int(&mut self, apoint: i32) {
         {
-            unsafe { crate::ffi::MAT_Bisector_issue_point_int(self as *mut Self, apoint) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_Bisector_issue_point_int(self as *mut Self, apoint) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Bisector.hxx`:56 - `MAT_Bisector::EndPoint()`
     pub fn end_point_int(&mut self, apoint: i32) {
         {
-            unsafe { crate::ffi::MAT_Bisector_end_point_int(self as *mut Self, apoint) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_Bisector_end_point_int(self as *mut Self, apoint) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Bisector.hxx`:58 - `MAT_Bisector::DistIssuePoint()`
     pub fn dist_issue_point_real(&mut self, areal: f64) {
         {
-            unsafe { crate::ffi::MAT_Bisector_dist_issue_point_real(self as *mut Self, areal) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_Bisector_dist_issue_point_real(self as *mut Self, areal) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Bisector.hxx`:60 - `MAT_Bisector::FirstVector()`
     pub fn first_vector_int(&mut self, avector: i32) {
         {
-            unsafe { crate::ffi::MAT_Bisector_first_vector_int(self as *mut Self, avector) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_Bisector_first_vector_int(self as *mut Self, avector) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Bisector.hxx`:62 - `MAT_Bisector::SecondVector()`
     pub fn second_vector_int(&mut self, avector: i32) {
         {
-            unsafe { crate::ffi::MAT_Bisector_second_vector_int(self as *mut Self, avector) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_Bisector_second_vector_int(self as *mut Self, avector) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Bisector.hxx`:64 - `MAT_Bisector::Sense()`
     pub fn sense_real(&mut self, asense: f64) {
         {
-            unsafe { crate::ffi::MAT_Bisector_sense_real(self as *mut Self, asense) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_Bisector_sense_real(self as *mut Self, asense) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Bisector.hxx`:66 - `MAT_Bisector::FirstParameter()`
     pub fn first_parameter_real(&mut self, aparameter: f64) {
         {
-            unsafe { crate::ffi::MAT_Bisector_first_parameter_real(self as *mut Self, aparameter) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MAT_Bisector_first_parameter_real(self as *mut Self, aparameter)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Bisector.hxx`:68 - `MAT_Bisector::SecondParameter()`
     pub fn second_parameter_real(&mut self, aparameter: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT_Bisector_second_parameter_real(self as *mut Self, aparameter)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -857,8 +1039,11 @@ impl Bisector {
     pub fn bisector_number(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT_Bisector_bisector_number(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -866,8 +1051,11 @@ impl Bisector {
     pub fn index_number(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT_Bisector_index_number(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -875,8 +1063,11 @@ impl Bisector {
     pub fn first_edge(&self) -> crate::OwnedPtr<crate::ffi::HandleMATEdge> {
         {
             let __result = unsafe { crate::ffi::MAT_Bisector_first_edge(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -884,8 +1075,11 @@ impl Bisector {
     pub fn second_edge(&self) -> crate::OwnedPtr<crate::ffi::HandleMATEdge> {
         {
             let __result = unsafe { crate::ffi::MAT_Bisector_second_edge(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -893,8 +1087,11 @@ impl Bisector {
     pub fn issue_point(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT_Bisector_issue_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -902,8 +1099,11 @@ impl Bisector {
     pub fn end_point(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT_Bisector_end_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -912,8 +1112,11 @@ impl Bisector {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Bisector_dist_issue_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -921,8 +1124,11 @@ impl Bisector {
     pub fn first_vector(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT_Bisector_first_vector(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -930,8 +1136,11 @@ impl Bisector {
     pub fn second_vector(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT_Bisector_second_vector(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -939,8 +1148,11 @@ impl Bisector {
     pub fn sense(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::MAT_Bisector_sense(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -948,8 +1160,11 @@ impl Bisector {
     pub fn first_parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::MAT_Bisector_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -958,16 +1173,22 @@ impl Bisector {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Bisector_second_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `MAT_Bisector.hxx`:94 - `MAT_Bisector::Dump()`
     pub fn dump(&self, ashift: i32, alevel: i32) {
         {
-            unsafe { crate::ffi::MAT_Bisector_dump(self as *const Self, ashift, alevel) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_Bisector_dump(self as *const Self, ashift, alevel) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -975,8 +1196,11 @@ impl Bisector {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT_Bisector_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -984,8 +1208,11 @@ impl Bisector {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MAT_Bisector_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -993,38 +1220,41 @@ impl Bisector {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT_Bisector_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT_Bisector_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::MAT_Bisector_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT_Bisector_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::MAT_Bisector_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleMATBisector> {
-        {
-            let __result = unsafe { crate::ffi::MAT_Bisector_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MAT_Bisector_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1033,8 +1263,11 @@ impl Bisector {
             let __result = unsafe {
                 crate::ffi::MAT_Bisector_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1043,8 +1276,11 @@ impl Bisector {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Bisector_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1052,11 +1288,14 @@ impl Bisector {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::MAT_Bisector_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1066,16 +1305,23 @@ impl Bisector {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Bisector_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::MAT_Bisector_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MAT_Bisector_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1085,16 +1331,21 @@ impl Bisector {
             let __result = unsafe {
                 crate::ffi::MAT_Bisector_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::MAT_Bisector_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_Bisector_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1110,31 +1361,31 @@ unsafe impl crate::CppDeletable for HandleMATBisector {
 impl HandleMATBisector {
     /// Dereference this Handle to access the underlying MAT_Bisector
     pub fn get(&self) -> &crate::ffi::MAT_Bisector {
-        {
-            let __result = unsafe { crate::ffi::HandleMATBisector_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleMATBisector_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MAT_Bisector
     pub fn get_mut(&mut self) -> &mut crate::ffi::MAT_Bisector {
-        {
-            let __result = unsafe { crate::ffi::HandleMATBisector_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleMATBisector_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MAT_Bisector> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMATBisector_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleMATBisector_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1156,52 +1407,65 @@ impl Edge {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MAT_Edge_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `MAT_Edge.hxx`:36 - `MAT_Edge::EdgeNumber()`
     pub fn edge_number_int(&mut self, anumber: i32) {
         {
-            unsafe { crate::ffi::MAT_Edge_edge_number_int(self as *mut Self, anumber) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_Edge_edge_number_int(self as *mut Self, anumber) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Edge.hxx`:38 - `MAT_Edge::FirstBisector()`
     pub fn first_bisector_handlematbisector(&mut self, abisector: &crate::ffi::HandleMATBisector) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT_Edge_first_bisector_handlematbisector(self as *mut Self, abisector)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Edge.hxx`:40 - `MAT_Edge::SecondBisector()`
     pub fn second_bisector_handlematbisector(&mut self, abisector: &crate::ffi::HandleMATBisector) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT_Edge_second_bisector_handlematbisector(self as *mut Self, abisector)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Edge.hxx`:42 - `MAT_Edge::Distance()`
     pub fn distance_real(&mut self, adistance: f64) {
         {
-            unsafe { crate::ffi::MAT_Edge_distance_real(self as *mut Self, adistance) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_Edge_distance_real(self as *mut Self, adistance) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Edge.hxx`:44 - `MAT_Edge::IntersectionPoint()`
     pub fn intersection_point_int(&mut self, apoint: i32) {
         {
-            unsafe { crate::ffi::MAT_Edge_intersection_point_int(self as *mut Self, apoint) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_Edge_intersection_point_int(self as *mut Self, apoint) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1209,8 +1473,11 @@ impl Edge {
     pub fn edge_number(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT_Edge_edge_number(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1218,8 +1485,11 @@ impl Edge {
     pub fn first_bisector(&self) -> crate::OwnedPtr<crate::ffi::HandleMATBisector> {
         {
             let __result = unsafe { crate::ffi::MAT_Edge_first_bisector(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1227,8 +1497,11 @@ impl Edge {
     pub fn second_bisector(&self) -> crate::OwnedPtr<crate::ffi::HandleMATBisector> {
         {
             let __result = unsafe { crate::ffi::MAT_Edge_second_bisector(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1236,8 +1509,11 @@ impl Edge {
     pub fn distance(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::MAT_Edge_distance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1245,16 +1521,21 @@ impl Edge {
     pub fn intersection_point(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT_Edge_intersection_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `MAT_Edge.hxx`:56 - `MAT_Edge::Dump()`
     pub fn dump(&self, ashift: i32, alevel: i32) {
         {
-            unsafe { crate::ffi::MAT_Edge_dump(self as *const Self, ashift, alevel) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_Edge_dump(self as *const Self, ashift, alevel) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1262,8 +1543,11 @@ impl Edge {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT_Edge_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1271,8 +1555,11 @@ impl Edge {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MAT_Edge_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1280,38 +1567,39 @@ impl Edge {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT_Edge_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT_Edge_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::MAT_Edge_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT_Edge_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::MAT_Edge_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleMATEdge> {
-        {
-            let __result = unsafe { crate::ffi::MAT_Edge_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MAT_Edge_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1319,8 +1607,11 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Edge_inherited_IsInstance(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1329,8 +1620,11 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Edge_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1338,11 +1632,14 @@ impl Edge {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::MAT_Edge_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1352,16 +1649,22 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Edge_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::MAT_Edge_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_Edge_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1370,16 +1673,21 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Edge_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::MAT_Edge_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_Edge_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1395,31 +1703,30 @@ unsafe impl crate::CppDeletable for HandleMATEdge {
 impl HandleMATEdge {
     /// Dereference this Handle to access the underlying MAT_Edge
     pub fn get(&self) -> &crate::ffi::MAT_Edge {
-        {
-            let __result = unsafe { crate::ffi::HandleMATEdge_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleMATEdge_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MAT_Edge
     pub fn get_mut(&mut self) -> &mut crate::ffi::MAT_Edge {
-        {
-            let __result = unsafe { crate::ffi::HandleMATEdge_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleMATEdge_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MAT_Edge> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMATEdge_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleMATEdge_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1444,8 +1751,10 @@ impl Graph {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MAT_Graph_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1465,7 +1774,7 @@ impl Graph {
         NbArcs: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT_Graph_perform(
                     self as *mut Self,
                     SemiInfinite,
@@ -1474,7 +1783,9 @@ impl Graph {
                     NbArcs,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1483,8 +1794,11 @@ impl Graph {
     pub fn arc(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleMATArc> {
         {
             let __result = unsafe { crate::ffi::MAT_Graph_arc(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1493,8 +1807,11 @@ impl Graph {
     pub fn basic_elt(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleMATBasicElt> {
         {
             let __result = unsafe { crate::ffi::MAT_Graph_basic_elt(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1503,8 +1820,11 @@ impl Graph {
     pub fn node(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleMATNode> {
         {
             let __result = unsafe { crate::ffi::MAT_Graph_node(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1513,8 +1833,11 @@ impl Graph {
     pub fn number_of_arcs(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT_Graph_number_of_arcs(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1523,8 +1846,11 @@ impl Graph {
     pub fn number_of_nodes(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT_Graph_number_of_nodes(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1534,8 +1860,11 @@ impl Graph {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Graph_number_of_basic_elts(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1545,8 +1874,11 @@ impl Graph {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Graph_number_of_infinite_nodes(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1579,7 +1911,7 @@ impl Graph {
         GeomIndexArc4: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT_Graph_fusion_of_basic_elts(
                     self as *mut Self,
                     IndexElt1,
@@ -1592,31 +1924,40 @@ impl Graph {
                     GeomIndexArc4,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Graph.hxx`:103 - `MAT_Graph::CompactArcs()`
     pub fn compact_arcs(&mut self) {
         {
-            unsafe { crate::ffi::MAT_Graph_compact_arcs(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_Graph_compact_arcs(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Graph.hxx`:105 - `MAT_Graph::CompactNodes()`
     pub fn compact_nodes(&mut self) {
         {
-            unsafe { crate::ffi::MAT_Graph_compact_nodes(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_Graph_compact_nodes(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Graph.hxx`:107 - `MAT_Graph::ChangeBasicElts()`
     pub fn change_basic_elts(&mut self, NewMap: &crate::ffi::MAT_DataMapOfIntegerBasicElt) {
         {
-            unsafe { crate::ffi::MAT_Graph_change_basic_elts(self as *mut Self, NewMap) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_Graph_change_basic_elts(self as *mut Self, NewMap) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1628,8 +1969,11 @@ impl Graph {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Graph_change_basic_elt(self as *mut Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1637,8 +1981,11 @@ impl Graph {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT_Graph_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1646,8 +1993,11 @@ impl Graph {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MAT_Graph_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1655,38 +2005,40 @@ impl Graph {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT_Graph_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT_Graph_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::MAT_Graph_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT_Graph_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::MAT_Graph_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleMATGraph> {
-        {
-            let __result = unsafe { crate::ffi::MAT_Graph_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MAT_Graph_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1694,8 +2046,11 @@ impl Graph {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Graph_inherited_IsInstance(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1704,8 +2059,11 @@ impl Graph {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Graph_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1713,11 +2071,14 @@ impl Graph {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::MAT_Graph_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1727,16 +2088,22 @@ impl Graph {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Graph_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::MAT_Graph_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_Graph_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1745,16 +2112,21 @@ impl Graph {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Graph_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::MAT_Graph_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_Graph_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1770,31 +2142,30 @@ unsafe impl crate::CppDeletable for HandleMATGraph {
 impl HandleMATGraph {
     /// Dereference this Handle to access the underlying MAT_Graph
     pub fn get(&self) -> &crate::ffi::MAT_Graph {
-        {
-            let __result = unsafe { crate::ffi::HandleMATGraph_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleMATGraph_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MAT_Graph
     pub fn get_mut(&mut self) -> &mut crate::ffi::MAT_Graph {
-        {
-            let __result = unsafe { crate::ffi::HandleMATGraph_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleMATGraph_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MAT_Graph> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMATGraph_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleMATGraph_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1816,48 +2187,60 @@ impl ListOfBisector {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfBisector_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `MAT_ListOfBisector.hxx`:39 - `MAT_ListOfBisector::First()`
     pub fn first(&mut self) {
         {
-            unsafe { crate::ffi::MAT_ListOfBisector_first(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_ListOfBisector_first(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_ListOfBisector.hxx`:41 - `MAT_ListOfBisector::Last()`
     pub fn last(&mut self) {
         {
-            unsafe { crate::ffi::MAT_ListOfBisector_last(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_ListOfBisector_last(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_ListOfBisector.hxx`:43 - `MAT_ListOfBisector::Init()`
     pub fn init(&mut self, aniten: &crate::ffi::HandleMATBisector) {
         {
-            unsafe { crate::ffi::MAT_ListOfBisector_init(self as *mut Self, aniten) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_ListOfBisector_init(self as *mut Self, aniten) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_ListOfBisector.hxx`:45 - `MAT_ListOfBisector::Next()`
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::MAT_ListOfBisector_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_ListOfBisector_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_ListOfBisector.hxx`:47 - `MAT_ListOfBisector::Previous()`
     pub fn previous(&mut self) {
         {
-            unsafe { crate::ffi::MAT_ListOfBisector_previous(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_ListOfBisector_previous(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1865,8 +2248,11 @@ impl ListOfBisector {
     pub fn more(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfBisector_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1874,21 +2260,26 @@ impl ListOfBisector {
     pub fn current(&self) -> crate::OwnedPtr<crate::ffi::HandleMATBisector> {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfBisector_current(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `MAT_ListOfBisector.hxx`:53 - `MAT_ListOfBisector::Current()`
     pub fn current_handlematbisector(&self, anitem: &crate::ffi::HandleMATBisector) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT_ListOfBisector_current_handlematbisector(
                     self as *const Self,
                     anitem,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1897,8 +2288,11 @@ impl ListOfBisector {
         {
             let __result =
                 unsafe { crate::ffi::MAT_ListOfBisector_first_item(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1906,8 +2300,11 @@ impl ListOfBisector {
     pub fn last_item(&self) -> crate::OwnedPtr<crate::ffi::HandleMATBisector> {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfBisector_last_item(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1916,8 +2313,11 @@ impl ListOfBisector {
         {
             let __result =
                 unsafe { crate::ffi::MAT_ListOfBisector_previous_item(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1925,8 +2325,11 @@ impl ListOfBisector {
     pub fn next_item(&self) -> crate::OwnedPtr<crate::ffi::HandleMATBisector> {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfBisector_next_item(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1934,8 +2337,11 @@ impl ListOfBisector {
     pub fn number(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfBisector_number(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1943,8 +2349,11 @@ impl ListOfBisector {
     pub fn index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfBisector_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1953,64 +2362,85 @@ impl ListOfBisector {
         {
             let __result =
                 unsafe { crate::ffi::MAT_ListOfBisector_brackets(self as *mut Self, anindex) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `MAT_ListOfBisector.hxx`:71 - `MAT_ListOfBisector::Unlink()`
     pub fn unlink(&mut self) {
         {
-            unsafe { crate::ffi::MAT_ListOfBisector_unlink(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_ListOfBisector_unlink(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_ListOfBisector.hxx`:73 - `MAT_ListOfBisector::LinkBefore()`
     pub fn link_before(&mut self, anitem: &crate::ffi::HandleMATBisector) {
         {
-            unsafe { crate::ffi::MAT_ListOfBisector_link_before(self as *mut Self, anitem) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_ListOfBisector_link_before(self as *mut Self, anitem) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_ListOfBisector.hxx`:75 - `MAT_ListOfBisector::LinkAfter()`
     pub fn link_after(&mut self, anitem: &crate::ffi::HandleMATBisector) {
         {
-            unsafe { crate::ffi::MAT_ListOfBisector_link_after(self as *mut Self, anitem) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_ListOfBisector_link_after(self as *mut Self, anitem) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_ListOfBisector.hxx`:77 - `MAT_ListOfBisector::FrontAdd()`
     pub fn front_add(&mut self, anitem: &crate::ffi::HandleMATBisector) {
         {
-            unsafe { crate::ffi::MAT_ListOfBisector_front_add(self as *mut Self, anitem) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_ListOfBisector_front_add(self as *mut Self, anitem) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_ListOfBisector.hxx`:79 - `MAT_ListOfBisector::BackAdd()`
     pub fn back_add(&mut self, anitem: &crate::ffi::HandleMATBisector) {
         {
-            unsafe { crate::ffi::MAT_ListOfBisector_back_add(self as *mut Self, anitem) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_ListOfBisector_back_add(self as *mut Self, anitem) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_ListOfBisector.hxx`:81 - `MAT_ListOfBisector::Permute()`
     pub fn permute(&mut self) {
         {
-            unsafe { crate::ffi::MAT_ListOfBisector_permute(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_ListOfBisector_permute(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_ListOfBisector.hxx`:83 - `MAT_ListOfBisector::Loop()`
     pub fn loop_(&self) {
         {
-            unsafe { crate::ffi::MAT_ListOfBisector_loop_(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_ListOfBisector_loop_(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2018,16 +2448,22 @@ impl ListOfBisector {
     pub fn is_empty(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfBisector_is_empty(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `MAT_ListOfBisector.hxx`:87 - `MAT_ListOfBisector::Dump()`
     pub fn dump(&mut self, ashift: i32, alevel: i32) {
         {
-            unsafe { crate::ffi::MAT_ListOfBisector_dump(self as *mut Self, ashift, alevel) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_ListOfBisector_dump(self as *mut Self, ashift, alevel) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2036,8 +2472,11 @@ impl ListOfBisector {
         {
             let __result =
                 unsafe { crate::ffi::MAT_ListOfBisector_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2045,8 +2484,11 @@ impl ListOfBisector {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfBisector_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2054,42 +2496,43 @@ impl ListOfBisector {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfBisector_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::MAT_ListOfBisector_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::MAT_ListOfBisector_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::MAT_ListOfBisector_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::MAT_ListOfBisector_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMATListOfBisector> {
-        {
-            let __result = unsafe { crate::ffi::MAT_ListOfBisector_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MAT_ListOfBisector_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2098,8 +2541,11 @@ impl ListOfBisector {
             let __result = unsafe {
                 crate::ffi::MAT_ListOfBisector_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2109,8 +2555,11 @@ impl ListOfBisector {
             let __result = unsafe {
                 crate::ffi::MAT_ListOfBisector_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2119,11 +2568,14 @@ impl ListOfBisector {
         {
             let __result =
                 unsafe { crate::ffi::MAT_ListOfBisector_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2134,18 +2586,23 @@ impl ListOfBisector {
             let __result = unsafe {
                 crate::ffi::MAT_ListOfBisector_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT_ListOfBisector_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2155,16 +2612,22 @@ impl ListOfBisector {
             let __result = unsafe {
                 crate::ffi::MAT_ListOfBisector_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::MAT_ListOfBisector_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_ListOfBisector_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2180,32 +2643,31 @@ unsafe impl crate::CppDeletable for HandleMATListOfBisector {
 impl HandleMATListOfBisector {
     /// Dereference this Handle to access the underlying MAT_ListOfBisector
     pub fn get(&self) -> &crate::ffi::MAT_ListOfBisector {
-        {
-            let __result = unsafe { crate::ffi::HandleMATListOfBisector_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleMATListOfBisector_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MAT_ListOfBisector
     pub fn get_mut(&mut self) -> &mut crate::ffi::MAT_ListOfBisector {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleMATListOfBisector_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleMATListOfBisector_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MAT_ListOfBisector> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMATListOfBisector_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleMATListOfBisector_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2227,48 +2689,60 @@ impl ListOfEdge {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfEdge_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `MAT_ListOfEdge.hxx`:39 - `MAT_ListOfEdge::First()`
     pub fn first(&mut self) {
         {
-            unsafe { crate::ffi::MAT_ListOfEdge_first(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_ListOfEdge_first(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_ListOfEdge.hxx`:41 - `MAT_ListOfEdge::Last()`
     pub fn last(&mut self) {
         {
-            unsafe { crate::ffi::MAT_ListOfEdge_last(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_ListOfEdge_last(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_ListOfEdge.hxx`:43 - `MAT_ListOfEdge::Init()`
     pub fn init(&mut self, aniten: &crate::ffi::HandleMATEdge) {
         {
-            unsafe { crate::ffi::MAT_ListOfEdge_init(self as *mut Self, aniten) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_ListOfEdge_init(self as *mut Self, aniten) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_ListOfEdge.hxx`:45 - `MAT_ListOfEdge::Next()`
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::MAT_ListOfEdge_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_ListOfEdge_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_ListOfEdge.hxx`:47 - `MAT_ListOfEdge::Previous()`
     pub fn previous(&mut self) {
         {
-            unsafe { crate::ffi::MAT_ListOfEdge_previous(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_ListOfEdge_previous(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2276,8 +2750,11 @@ impl ListOfEdge {
     pub fn more(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfEdge_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2285,18 +2762,23 @@ impl ListOfEdge {
     pub fn current(&self) -> crate::OwnedPtr<crate::ffi::HandleMATEdge> {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfEdge_current(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `MAT_ListOfEdge.hxx`:53 - `MAT_ListOfEdge::Current()`
     pub fn current_handlematedge(&self, anitem: &crate::ffi::HandleMATEdge) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT_ListOfEdge_current_handlematedge(self as *const Self, anitem)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2304,8 +2786,11 @@ impl ListOfEdge {
     pub fn first_item(&self) -> crate::OwnedPtr<crate::ffi::HandleMATEdge> {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfEdge_first_item(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2313,8 +2798,11 @@ impl ListOfEdge {
     pub fn last_item(&self) -> crate::OwnedPtr<crate::ffi::HandleMATEdge> {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfEdge_last_item(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2322,8 +2810,11 @@ impl ListOfEdge {
     pub fn previous_item(&self) -> crate::OwnedPtr<crate::ffi::HandleMATEdge> {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfEdge_previous_item(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2331,8 +2822,11 @@ impl ListOfEdge {
     pub fn next_item(&self) -> crate::OwnedPtr<crate::ffi::HandleMATEdge> {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfEdge_next_item(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2340,8 +2834,11 @@ impl ListOfEdge {
     pub fn number(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfEdge_number(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2349,8 +2846,11 @@ impl ListOfEdge {
     pub fn index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfEdge_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2359,64 +2859,82 @@ impl ListOfEdge {
         {
             let __result =
                 unsafe { crate::ffi::MAT_ListOfEdge_brackets(self as *mut Self, anindex) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `MAT_ListOfEdge.hxx`:71 - `MAT_ListOfEdge::Unlink()`
     pub fn unlink(&mut self) {
         {
-            unsafe { crate::ffi::MAT_ListOfEdge_unlink(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_ListOfEdge_unlink(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_ListOfEdge.hxx`:73 - `MAT_ListOfEdge::LinkBefore()`
     pub fn link_before(&mut self, anitem: &crate::ffi::HandleMATEdge) {
         {
-            unsafe { crate::ffi::MAT_ListOfEdge_link_before(self as *mut Self, anitem) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_ListOfEdge_link_before(self as *mut Self, anitem) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_ListOfEdge.hxx`:75 - `MAT_ListOfEdge::LinkAfter()`
     pub fn link_after(&mut self, anitem: &crate::ffi::HandleMATEdge) {
         {
-            unsafe { crate::ffi::MAT_ListOfEdge_link_after(self as *mut Self, anitem) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_ListOfEdge_link_after(self as *mut Self, anitem) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_ListOfEdge.hxx`:77 - `MAT_ListOfEdge::FrontAdd()`
     pub fn front_add(&mut self, anitem: &crate::ffi::HandleMATEdge) {
         {
-            unsafe { crate::ffi::MAT_ListOfEdge_front_add(self as *mut Self, anitem) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_ListOfEdge_front_add(self as *mut Self, anitem) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_ListOfEdge.hxx`:79 - `MAT_ListOfEdge::BackAdd()`
     pub fn back_add(&mut self, anitem: &crate::ffi::HandleMATEdge) {
         {
-            unsafe { crate::ffi::MAT_ListOfEdge_back_add(self as *mut Self, anitem) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_ListOfEdge_back_add(self as *mut Self, anitem) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_ListOfEdge.hxx`:81 - `MAT_ListOfEdge::Permute()`
     pub fn permute(&mut self) {
         {
-            unsafe { crate::ffi::MAT_ListOfEdge_permute(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_ListOfEdge_permute(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_ListOfEdge.hxx`:83 - `MAT_ListOfEdge::Loop()`
     pub fn loop_(&self) {
         {
-            unsafe { crate::ffi::MAT_ListOfEdge_loop_(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_ListOfEdge_loop_(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2424,16 +2942,22 @@ impl ListOfEdge {
     pub fn is_empty(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfEdge_is_empty(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `MAT_ListOfEdge.hxx`:87 - `MAT_ListOfEdge::Dump()`
     pub fn dump(&mut self, ashift: i32, alevel: i32) {
         {
-            unsafe { crate::ffi::MAT_ListOfEdge_dump(self as *mut Self, ashift, alevel) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_ListOfEdge_dump(self as *mut Self, ashift, alevel) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2441,8 +2965,11 @@ impl ListOfEdge {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfEdge_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2450,8 +2977,11 @@ impl ListOfEdge {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfEdge_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2459,40 +2989,43 @@ impl ListOfEdge {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT_ListOfEdge_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT_ListOfEdge_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::MAT_ListOfEdge_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT_ListOfEdge_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::MAT_ListOfEdge_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMATListOfEdge> {
-        {
-            let __result = unsafe { crate::ffi::MAT_ListOfEdge_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MAT_ListOfEdge_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2501,8 +3034,11 @@ impl ListOfEdge {
             let __result = unsafe {
                 crate::ffi::MAT_ListOfEdge_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2512,8 +3048,11 @@ impl ListOfEdge {
             let __result = unsafe {
                 crate::ffi::MAT_ListOfEdge_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2522,11 +3061,14 @@ impl ListOfEdge {
         {
             let __result =
                 unsafe { crate::ffi::MAT_ListOfEdge_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2536,16 +3078,23 @@ impl ListOfEdge {
         {
             let __result =
                 unsafe { crate::ffi::MAT_ListOfEdge_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::MAT_ListOfEdge_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MAT_ListOfEdge_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2555,16 +3104,21 @@ impl ListOfEdge {
             let __result = unsafe {
                 crate::ffi::MAT_ListOfEdge_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::MAT_ListOfEdge_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_ListOfEdge_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2580,31 +3134,31 @@ unsafe impl crate::CppDeletable for HandleMATListOfEdge {
 impl HandleMATListOfEdge {
     /// Dereference this Handle to access the underlying MAT_ListOfEdge
     pub fn get(&self) -> &crate::ffi::MAT_ListOfEdge {
-        {
-            let __result = unsafe { crate::ffi::HandleMATListOfEdge_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleMATListOfEdge_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MAT_ListOfEdge
     pub fn get_mut(&mut self) -> &mut crate::ffi::MAT_ListOfEdge {
-        {
-            let __result = unsafe { crate::ffi::HandleMATListOfEdge_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleMATListOfEdge_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MAT_ListOfEdge> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMATListOfEdge_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleMATListOfEdge_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2633,8 +3187,10 @@ impl Node {
             let __result = unsafe {
                 crate::ffi::MAT_Node_ctor_int_handlematarc_real(GeomIndex, LinkedArc, Distance)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2644,8 +3200,11 @@ impl Node {
     pub fn geom_index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT_Node_geom_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2654,8 +3213,11 @@ impl Node {
     pub fn index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT_Node_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2663,8 +3225,10 @@ impl Node {
     /// Returns in <S> the Arcs linked to <me>.
     pub fn linked_arcs(&self, S: &mut crate::ffi::MAT_SequenceOfArc) {
         {
-            unsafe { crate::ffi::MAT_Node_linked_arcs(self as *const Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_Node_linked_arcs(self as *const Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2673,8 +3237,10 @@ impl Node {
     /// to <me>.
     pub fn near_elts(&self, S: &mut crate::ffi::MAT_SequenceOfBasicElt) {
         {
-            unsafe { crate::ffi::MAT_Node_near_elts(self as *const Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_Node_near_elts(self as *const Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2682,8 +3248,11 @@ impl Node {
     pub fn distance(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::MAT_Node_distance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2693,8 +3262,11 @@ impl Node {
     pub fn pending_node(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::MAT_Node_pending_node(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2703,8 +3275,11 @@ impl Node {
     pub fn on_basic_elt(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::MAT_Node_on_basic_elt(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2713,8 +3288,11 @@ impl Node {
     pub fn infinite(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::MAT_Node_infinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2722,16 +3300,20 @@ impl Node {
     /// Set the index associated of the node
     pub fn set_index(&mut self, anIndex: i32) {
         {
-            unsafe { crate::ffi::MAT_Node_set_index(self as *mut Self, anIndex) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_Node_set_index(self as *mut Self, anIndex) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_Node.hxx`:71 - `MAT_Node::SetLinkedArc()`
     pub fn set_linked_arc(&mut self, anArc: &crate::ffi::HandleMATArc) {
         {
-            unsafe { crate::ffi::MAT_Node_set_linked_arc(self as *mut Self, anArc) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_Node_set_linked_arc(self as *mut Self, anArc) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2739,8 +3321,11 @@ impl Node {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT_Node_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2748,8 +3333,11 @@ impl Node {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MAT_Node_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2757,38 +3345,39 @@ impl Node {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT_Node_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT_Node_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::MAT_Node_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT_Node_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::MAT_Node_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleMATNode> {
-        {
-            let __result = unsafe { crate::ffi::MAT_Node_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MAT_Node_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2796,8 +3385,11 @@ impl Node {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Node_inherited_IsInstance(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2806,8 +3398,11 @@ impl Node {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Node_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2815,11 +3410,14 @@ impl Node {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::MAT_Node_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2829,16 +3427,22 @@ impl Node {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Node_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::MAT_Node_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_Node_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2847,16 +3451,21 @@ impl Node {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Node_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::MAT_Node_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_Node_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2872,31 +3481,30 @@ unsafe impl crate::CppDeletable for HandleMATNode {
 impl HandleMATNode {
     /// Dereference this Handle to access the underlying MAT_Node
     pub fn get(&self) -> &crate::ffi::MAT_Node {
-        {
-            let __result = unsafe { crate::ffi::HandleMATNode_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleMATNode_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MAT_Node
     pub fn get_mut(&mut self) -> &mut crate::ffi::MAT_Node {
-        {
-            let __result = unsafe { crate::ffi::HandleMATNode_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleMATNode_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MAT_Node> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMATNode_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleMATNode_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2918,8 +3526,10 @@ impl TListNodeOfListOfBisector {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MAT_TListNodeOfListOfBisector_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2928,8 +3538,10 @@ impl TListNodeOfListOfBisector {
         {
             let __result =
                 unsafe { crate::ffi::MAT_TListNodeOfListOfBisector_ctor_handlematbisector(anitem) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2938,8 +3550,11 @@ impl TListNodeOfListOfBisector {
         {
             let __result =
                 unsafe { crate::ffi::MAT_TListNodeOfListOfBisector_get_item(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2948,8 +3563,11 @@ impl TListNodeOfListOfBisector {
         {
             let __result =
                 unsafe { crate::ffi::MAT_TListNodeOfListOfBisector_next(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2958,18 +3576,23 @@ impl TListNodeOfListOfBisector {
         {
             let __result =
                 unsafe { crate::ffi::MAT_TListNodeOfListOfBisector_previous(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:44 - `MAT_TListNodeOfListOfBisector::SetItem()`
     pub fn set_item(&mut self, anitem: &crate::ffi::HandleMATBisector) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT_TListNodeOfListOfBisector_set_item(self as *mut Self, anitem)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2979,13 +3602,15 @@ impl TListNodeOfListOfBisector {
         atlistnode: &crate::ffi::HandleMATTListNodeOfListOfBisector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT_TListNodeOfListOfBisector_next_handlemattlistnodeoflistofbisector(
                     self as *mut Self,
                     atlistnode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2995,18 +3620,23 @@ impl TListNodeOfListOfBisector {
         atlistnode: &crate::ffi::HandleMATTListNodeOfListOfBisector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT_TListNodeOfListOfBisector_previous_handlemattlistnodeoflistofbisector(self as *mut Self, atlistnode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_TListNodeOfListOfBisector.hxx`:50 - `MAT_TListNodeOfListOfBisector::Dummy()`
     pub fn dummy(&self) {
         {
-            unsafe { crate::ffi::MAT_TListNodeOfListOfBisector_dummy(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_TListNodeOfListOfBisector_dummy(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3016,8 +3646,11 @@ impl TListNodeOfListOfBisector {
             let __result = unsafe {
                 crate::ffi::MAT_TListNodeOfListOfBisector_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3025,8 +3658,11 @@ impl TListNodeOfListOfBisector {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MAT_TListNodeOfListOfBisector_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3035,45 +3671,46 @@ impl TListNodeOfListOfBisector {
         {
             let __result =
                 unsafe { crate::ffi::MAT_TListNodeOfListOfBisector_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::MAT_TListNodeOfListOfBisector_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::MAT_TListNodeOfListOfBisector_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::MAT_TListNodeOfListOfBisector_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::MAT_TListNodeOfListOfBisector_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMATTListNodeOfListOfBisector> {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT_TListNodeOfListOfBisector_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::MAT_TListNodeOfListOfBisector_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3085,8 +3722,11 @@ impl TListNodeOfListOfBisector {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3099,8 +3739,11 @@ impl TListNodeOfListOfBisector {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3110,11 +3753,14 @@ impl TListNodeOfListOfBisector {
             let __result = unsafe {
                 crate::ffi::MAT_TListNodeOfListOfBisector_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3125,20 +3771,25 @@ impl TListNodeOfListOfBisector {
             let __result = unsafe {
                 crate::ffi::MAT_TListNodeOfListOfBisector_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT_TListNodeOfListOfBisector_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3150,18 +3801,23 @@ impl TListNodeOfListOfBisector {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT_TListNodeOfListOfBisector_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3177,36 +3833,35 @@ unsafe impl crate::CppDeletable for HandleMATTListNodeOfListOfBisector {
 impl HandleMATTListNodeOfListOfBisector {
     /// Dereference this Handle to access the underlying MAT_TListNodeOfListOfBisector
     pub fn get(&self) -> &crate::ffi::MAT_TListNodeOfListOfBisector {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleMATTListNodeOfListOfBisector_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleMATTListNodeOfListOfBisector_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MAT_TListNodeOfListOfBisector
     pub fn get_mut(&mut self) -> &mut crate::ffi::MAT_TListNodeOfListOfBisector {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMATTListNodeOfListOfBisector_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleMATTListNodeOfListOfBisector_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MAT_TListNodeOfListOfBisector> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMATTListNodeOfListOfBisector_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleMATTListNodeOfListOfBisector_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3228,8 +3883,10 @@ impl TListNodeOfListOfEdge {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MAT_TListNodeOfListOfEdge_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3238,8 +3895,10 @@ impl TListNodeOfListOfEdge {
         {
             let __result =
                 unsafe { crate::ffi::MAT_TListNodeOfListOfEdge_ctor_handlematedge(anitem) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3248,8 +3907,11 @@ impl TListNodeOfListOfEdge {
         {
             let __result =
                 unsafe { crate::ffi::MAT_TListNodeOfListOfEdge_get_item(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3258,8 +3920,11 @@ impl TListNodeOfListOfEdge {
         {
             let __result =
                 unsafe { crate::ffi::MAT_TListNodeOfListOfEdge_next(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3268,16 +3933,23 @@ impl TListNodeOfListOfEdge {
         {
             let __result =
                 unsafe { crate::ffi::MAT_TListNodeOfListOfEdge_previous(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:44 - `MAT_TListNodeOfListOfEdge::SetItem()`
     pub fn set_item(&mut self, anitem: &crate::ffi::HandleMATEdge) {
         {
-            unsafe { crate::ffi::MAT_TListNodeOfListOfEdge_set_item(self as *mut Self, anitem) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MAT_TListNodeOfListOfEdge_set_item(self as *mut Self, anitem)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3287,13 +3959,15 @@ impl TListNodeOfListOfEdge {
         atlistnode: &crate::ffi::HandleMATTListNodeOfListOfEdge,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT_TListNodeOfListOfEdge_next_handlemattlistnodeoflistofedge(
                     self as *mut Self,
                     atlistnode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3303,21 +3977,25 @@ impl TListNodeOfListOfEdge {
         atlistnode: &crate::ffi::HandleMATTListNodeOfListOfEdge,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT_TListNodeOfListOfEdge_previous_handlemattlistnodeoflistofedge(
                     self as *mut Self,
                     atlistnode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `MAT_TListNodeOfListOfEdge.hxx`:50 - `MAT_TListNodeOfListOfEdge::Dummy()`
     pub fn dummy(&self) {
         {
-            unsafe { crate::ffi::MAT_TListNodeOfListOfEdge_dummy(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_TListNodeOfListOfEdge_dummy(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3326,8 +4004,11 @@ impl TListNodeOfListOfEdge {
         {
             let __result =
                 unsafe { crate::ffi::MAT_TListNodeOfListOfEdge_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3335,8 +4016,11 @@ impl TListNodeOfListOfEdge {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MAT_TListNodeOfListOfEdge_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3344,43 +4028,45 @@ impl TListNodeOfListOfEdge {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT_TListNodeOfListOfEdge_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::MAT_TListNodeOfListOfEdge_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::MAT_TListNodeOfListOfEdge_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::MAT_TListNodeOfListOfEdge_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::MAT_TListNodeOfListOfEdge_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleMATTListNodeOfListOfEdge> {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT_TListNodeOfListOfEdge_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MAT_TListNodeOfListOfEdge_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3392,8 +4078,11 @@ impl TListNodeOfListOfEdge {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3403,8 +4092,11 @@ impl TListNodeOfListOfEdge {
             let __result = unsafe {
                 crate::ffi::MAT_TListNodeOfListOfEdge_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3414,11 +4106,14 @@ impl TListNodeOfListOfEdge {
             let __result = unsafe {
                 crate::ffi::MAT_TListNodeOfListOfEdge_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3429,20 +4124,25 @@ impl TListNodeOfListOfEdge {
             let __result = unsafe {
                 crate::ffi::MAT_TListNodeOfListOfEdge_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::MAT_TListNodeOfListOfEdge_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3454,16 +4154,23 @@ impl TListNodeOfListOfEdge {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::MAT_TListNodeOfListOfEdge_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::MAT_TListNodeOfListOfEdge_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3479,35 +4186,35 @@ unsafe impl crate::CppDeletable for HandleMATTListNodeOfListOfEdge {
 impl HandleMATTListNodeOfListOfEdge {
     /// Dereference this Handle to access the underlying MAT_TListNodeOfListOfEdge
     pub fn get(&self) -> &crate::ffi::MAT_TListNodeOfListOfEdge {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleMATTListNodeOfListOfEdge_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleMATTListNodeOfListOfEdge_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MAT_TListNodeOfListOfEdge
     pub fn get_mut(&mut self) -> &mut crate::ffi::MAT_TListNodeOfListOfEdge {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleMATTListNodeOfListOfEdge_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleMATTListNodeOfListOfEdge_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MAT_TListNodeOfListOfEdge> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMATTListNodeOfListOfEdge_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleMATTListNodeOfListOfEdge_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3533,8 +4240,10 @@ impl Zone {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MAT_Zone_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3545,8 +4254,10 @@ impl Zone {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::MAT_Zone_ctor_handlematbasicelt(aBasicElt) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3554,8 +4265,10 @@ impl Zone {
     /// Compute the frontier of the Zone of proximity.
     pub fn perform(&mut self, aBasicElt: &crate::ffi::HandleMATBasicElt) {
         {
-            unsafe { crate::ffi::MAT_Zone_perform(self as *mut Self, aBasicElt) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_Zone_perform(self as *mut Self, aBasicElt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3564,8 +4277,11 @@ impl Zone {
     pub fn number_of_arcs(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::MAT_Zone_number_of_arcs(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3576,8 +4292,11 @@ impl Zone {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Zone_arc_on_frontier(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3586,8 +4305,11 @@ impl Zone {
     pub fn no_empty_zone(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::MAT_Zone_no_empty_zone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3596,8 +4318,11 @@ impl Zone {
     pub fn limited(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::MAT_Zone_limited(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3605,8 +4330,11 @@ impl Zone {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT_Zone_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3614,8 +4342,11 @@ impl Zone {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::MAT_Zone_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3623,38 +4354,39 @@ impl Zone {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::MAT_Zone_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT_Zone_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::MAT_Zone_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::MAT_Zone_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::MAT_Zone_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleMATZone> {
-        {
-            let __result = unsafe { crate::ffi::MAT_Zone_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::MAT_Zone_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3662,8 +4394,11 @@ impl Zone {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Zone_inherited_IsInstance(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3672,8 +4407,11 @@ impl Zone {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Zone_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3681,11 +4419,14 @@ impl Zone {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::MAT_Zone_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3695,16 +4436,22 @@ impl Zone {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Zone_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::MAT_Zone_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::MAT_Zone_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3713,16 +4460,21 @@ impl Zone {
         {
             let __result =
                 unsafe { crate::ffi::MAT_Zone_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::MAT_Zone_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::MAT_Zone_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3738,31 +4490,30 @@ unsafe impl crate::CppDeletable for HandleMATZone {
 impl HandleMATZone {
     /// Dereference this Handle to access the underlying MAT_Zone
     pub fn get(&self) -> &crate::ffi::MAT_Zone {
-        {
-            let __result = unsafe { crate::ffi::HandleMATZone_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleMATZone_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying MAT_Zone
     pub fn get_mut(&mut self) -> &mut crate::ffi::MAT_Zone {
-        {
-            let __result = unsafe { crate::ffi::HandleMATZone_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleMATZone_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<MAT_Zone> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleMATZone_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleMATZone_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

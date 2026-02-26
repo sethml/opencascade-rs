@@ -91,8 +91,10 @@ impl ActorRead {
             let __result = unsafe {
                 crate::ffi::STEPControl_ActorRead_ctor_handleinterfaceinterfacemodel(theModel)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -101,8 +103,11 @@ impl ActorRead {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_ActorRead_recognize(self as *mut Self, start) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -122,8 +127,11 @@ impl ActorRead {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -151,8 +159,11 @@ impl ActorRead {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -165,7 +176,7 @@ impl ActorRead {
         theLocalFactors: &mut crate::step_data::Factors,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_ActorRead_prepare_units(
                     self as *mut Self,
                     rep,
@@ -173,7 +184,9 @@ impl ActorRead {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -186,14 +199,16 @@ impl ActorRead {
         theLocalFactors: &mut crate::step_data::Factors,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_ActorRead_reset_units(
                     self as *mut Self,
                     theModel,
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -201,8 +216,11 @@ impl ActorRead {
     /// Set model
     pub fn set_model(&mut self, theModel: &crate::ffi::HandleInterfaceInterfaceModel) {
         {
-            unsafe { crate::ffi::STEPControl_ActorRead_set_model(self as *mut Self, theModel) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPControl_ActorRead_set_model(self as *mut Self, theModel) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -234,8 +252,11 @@ impl ActorRead {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -259,8 +280,11 @@ impl ActorRead {
                     theLocalFactors,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -269,8 +293,11 @@ impl ActorRead {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_ActorRead_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -278,8 +305,11 @@ impl ActorRead {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::STEPControl_ActorRead_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -287,8 +317,11 @@ impl ActorRead {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::STEPControl_ActorRead_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -296,93 +329,92 @@ impl ActorRead {
     pub fn as_transfer_actor_of_transient_process(
         &self,
     ) -> &crate::transfer::ActorOfTransientProcess {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfTransientProcess(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfTransientProcess(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Transfer_ActorOfTransientProcess (mutable)
     pub fn as_transfer_actor_of_transient_process_mut(
         &mut self,
     ) -> &mut crate::transfer::ActorOfTransientProcess {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfTransientProcess_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfTransientProcess_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Transfer_ActorOfProcessForTransient
     pub fn as_transfer_actor_of_process_for_transient(
         &self,
     ) -> &crate::transfer::ActorOfProcessForTransient {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfProcessForTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfProcessForTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Transfer_ActorOfProcessForTransient (mutable)
     pub fn as_transfer_actor_of_process_for_transient_mut(
         &mut self,
     ) -> &mut crate::transfer::ActorOfProcessForTransient {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfProcessForTransient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfProcessForTransient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPControl_ActorRead_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::STEPControl_ActorRead_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPControl_ActorRead_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::STEPControl_ActorRead_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPControlActorRead> {
-        {
-            let __result = unsafe { crate::ffi::STEPControl_ActorRead_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::STEPControl_ActorRead_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:40 - `Transfer_ActorOfTransientProcess::Transferring()`
@@ -401,8 +433,11 @@ impl ActorRead {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -422,8 +457,11 @@ impl ActorRead {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -433,13 +471,15 @@ impl ActorRead {
         theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_ActorRead_inherited_SetShapeFixParameters(
                     self as *mut Self,
                     theParameters,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -451,21 +491,26 @@ impl ActorRead {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:84 - `Transfer_ActorOfTransientProcess::SetProcessingFlags()`
     pub fn set_processing_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_ActorRead_inherited_SetProcessingFlags(
                     self as *mut Self,
                     theFlags,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -475,8 +520,11 @@ impl ActorRead {
             let __result = unsafe {
                 crate::ffi::STEPControl_ActorRead_inherited_GetProcessingFlags(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -492,8 +540,11 @@ impl ActorRead {
                     res,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -503,16 +554,23 @@ impl ActorRead {
             let __result = unsafe {
                 crate::ffi::STEPControl_ActorRead_inherited_NullResult(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:79 - `Transfer_ActorOfProcessForTransient::SetLast()`
     pub fn set_last(&mut self, mode: bool) {
         {
-            unsafe { crate::ffi::STEPControl_ActorRead_inherited_SetLast(self as *mut Self, mode) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::STEPControl_ActorRead_inherited_SetLast(self as *mut Self, mode)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -521,16 +579,23 @@ impl ActorRead {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_ActorRead_inherited_IsLast(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:89 - `Transfer_ActorOfProcessForTransient::SetNext()`
     pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForTransient) {
         {
-            unsafe { crate::ffi::STEPControl_ActorRead_inherited_SetNext(self as *mut Self, next) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::STEPControl_ActorRead_inherited_SetNext(self as *mut Self, next)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -539,8 +604,11 @@ impl ActorRead {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_ActorRead_inherited_Next(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -550,8 +618,11 @@ impl ActorRead {
             let __result = unsafe {
                 crate::ffi::STEPControl_ActorRead_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -561,8 +632,11 @@ impl ActorRead {
             let __result = unsafe {
                 crate::ffi::STEPControl_ActorRead_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -571,11 +645,14 @@ impl ActorRead {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_ActorRead_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -586,18 +663,23 @@ impl ActorRead {
             let __result = unsafe {
                 crate::ffi::STEPControl_ActorRead_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_ActorRead_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -607,16 +689,22 @@ impl ActorRead {
             let __result = unsafe {
                 crate::ffi::STEPControl_ActorRead_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::STEPControl_ActorRead_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPControl_ActorRead_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -632,65 +720,61 @@ unsafe impl crate::CppDeletable for HandleSTEPControlActorRead {
 impl HandleSTEPControlActorRead {
     /// Dereference this Handle to access the underlying STEPControl_ActorRead
     pub fn get(&self) -> &crate::ffi::STEPControl_ActorRead {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSTEPControlActorRead_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleSTEPControlActorRead_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying STEPControl_ActorRead
     pub fn get_mut(&mut self) -> &mut crate::ffi::STEPControl_ActorRead {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSTEPControlActorRead_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleSTEPControlActorRead_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<STEPControl_ActorRead> to Handle<Transfer_ActorOfTransientProcess>
     pub fn to_handle_actor_of_transient_process(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSTEPControlActorRead_to_HandleTransferActorOfTransientProcess(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSTEPControlActorRead_to_HandleTransferActorOfTransientProcess(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPControl_ActorRead> to Handle<Transfer_ActorOfProcessForTransient>
     pub fn to_handle_actor_of_process_for_transient(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSTEPControlActorRead_to_HandleTransferActorOfProcessForTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSTEPControlActorRead_to_HandleTransferActorOfProcessForTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPControl_ActorRead> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSTEPControlActorRead_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSTEPControlActorRead_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -714,8 +798,10 @@ impl ActorWrite {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::STEPControl_ActorWrite_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -724,8 +810,11 @@ impl ActorWrite {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_ActorWrite_recognize(self as *mut Self, start) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -745,8 +834,11 @@ impl ActorWrite {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -776,8 +868,11 @@ impl ActorWrite {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -805,8 +900,11 @@ impl ActorWrite {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -830,16 +928,22 @@ impl ActorWrite {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `STEPControl_ActorWrite.hxx`:81 - `STEPControl_ActorWrite::SetMode()`
     pub fn set_mode(&mut self, M: crate::step_control::StepModelType) {
         {
-            unsafe { crate::ffi::STEPControl_ActorWrite_set_mode(self as *mut Self, M.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPControl_ActorWrite_set_mode(self as *mut Self, M.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -847,16 +951,23 @@ impl ActorWrite {
     pub fn mode(&self) -> crate::step_control::StepModelType {
         {
             let __result = unsafe { crate::ffi::STEPControl_ActorWrite_mode(self as *const Self) };
-            crate::check_exception();
-            crate::step_control::StepModelType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::step_control::StepModelType::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `STEPControl_ActorWrite.hxx`:85 - `STEPControl_ActorWrite::SetGroupMode()`
     pub fn set_group_mode(&mut self, mode: i32) {
         {
-            unsafe { crate::ffi::STEPControl_ActorWrite_set_group_mode(self as *mut Self, mode) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::STEPControl_ActorWrite_set_group_mode(self as *mut Self, mode)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -865,16 +976,22 @@ impl ActorWrite {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_ActorWrite_group_mode(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `STEPControl_ActorWrite.hxx`:89 - `STEPControl_ActorWrite::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol: f64) {
         {
-            unsafe { crate::ffi::STEPControl_ActorWrite_set_tolerance(self as *mut Self, Tol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPControl_ActorWrite_set_tolerance(self as *mut Self, Tol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -893,8 +1010,11 @@ impl ActorWrite {
             let __result = unsafe {
                 crate::ffi::STEPControl_ActorWrite_is_assembly(self as *const Self, theModel, S)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -903,8 +1023,11 @@ impl ActorWrite {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_ActorWrite_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -912,8 +1035,11 @@ impl ActorWrite {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::STEPControl_ActorWrite_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -921,100 +1047,101 @@ impl ActorWrite {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::STEPControl_ActorWrite_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Transfer_ActorOfFinderProcess
     pub fn as_transfer_actor_of_finder_process(&self) -> &crate::transfer::ActorOfFinderProcess {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfFinderProcess(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfFinderProcess(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Transfer_ActorOfFinderProcess (mutable)
     pub fn as_transfer_actor_of_finder_process_mut(
         &mut self,
     ) -> &mut crate::transfer::ActorOfFinderProcess {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfFinderProcess_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfFinderProcess_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Transfer_ActorOfProcessForFinder
     pub fn as_transfer_actor_of_process_for_finder(
         &self,
     ) -> &crate::transfer::ActorOfProcessForFinder {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfProcessForFinder(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfProcessForFinder(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Transfer_ActorOfProcessForFinder (mutable)
     pub fn as_transfer_actor_of_process_for_finder_mut(
         &mut self,
     ) -> &mut crate::transfer::ActorOfProcessForFinder {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfProcessForFinder_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfProcessForFinder_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPControl_ActorWrite_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::STEPControl_ActorWrite_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPControl_ActorWrite_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::STEPControl_ActorWrite_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPControlActorWrite> {
-        {
-            let __result = unsafe { crate::ffi::STEPControl_ActorWrite_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::STEPControl_ActorWrite_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:45 - `Transfer_ActorOfFinderProcess::ModeTrans()`
@@ -1023,8 +1150,11 @@ impl ActorWrite {
             let __result = unsafe {
                 crate::ffi::STEPControl_ActorWrite_inherited_ModeTrans(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1044,8 +1174,11 @@ impl ActorWrite {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1065,8 +1198,11 @@ impl ActorWrite {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1076,13 +1212,15 @@ impl ActorWrite {
         theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_ActorWrite_inherited_SetShapeFixParameters(
                     self as *mut Self,
                     theParameters,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1094,21 +1232,26 @@ impl ActorWrite {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:91 - `Transfer_ActorOfFinderProcess::SetShapeProcessFlags()`
     pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_ActorWrite_inherited_SetShapeProcessFlags(
                     self as *mut Self,
                     theFlags,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1120,8 +1263,11 @@ impl ActorWrite {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1137,8 +1283,11 @@ impl ActorWrite {
                     res,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1148,18 +1297,23 @@ impl ActorWrite {
             let __result = unsafe {
                 crate::ffi::STEPControl_ActorWrite_inherited_NullResult(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:80 - `Transfer_ActorOfProcessForFinder::SetLast()`
     pub fn set_last(&mut self, mode: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_ActorWrite_inherited_SetLast(self as *mut Self, mode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1168,18 +1322,23 @@ impl ActorWrite {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_ActorWrite_inherited_IsLast(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:90 - `Transfer_ActorOfProcessForFinder::SetNext()`
     pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForFinder) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_ActorWrite_inherited_SetNext(self as *mut Self, next)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1188,8 +1347,11 @@ impl ActorWrite {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_ActorWrite_inherited_Next(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1202,8 +1364,11 @@ impl ActorWrite {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1213,8 +1378,11 @@ impl ActorWrite {
             let __result = unsafe {
                 crate::ffi::STEPControl_ActorWrite_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1223,11 +1391,14 @@ impl ActorWrite {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_ActorWrite_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1238,18 +1409,23 @@ impl ActorWrite {
             let __result = unsafe {
                 crate::ffi::STEPControl_ActorWrite_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_ActorWrite_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1259,16 +1435,22 @@ impl ActorWrite {
             let __result = unsafe {
                 crate::ffi::STEPControl_ActorWrite_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::STEPControl_ActorWrite_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPControl_ActorWrite_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1284,65 +1466,62 @@ unsafe impl crate::CppDeletable for HandleSTEPControlActorWrite {
 impl HandleSTEPControlActorWrite {
     /// Dereference this Handle to access the underlying STEPControl_ActorWrite
     pub fn get(&self) -> &crate::ffi::STEPControl_ActorWrite {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSTEPControlActorWrite_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleSTEPControlActorWrite_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying STEPControl_ActorWrite
     pub fn get_mut(&mut self) -> &mut crate::ffi::STEPControl_ActorWrite {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSTEPControlActorWrite_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleSTEPControlActorWrite_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<STEPControl_ActorWrite> to Handle<Transfer_ActorOfFinderProcess>
     pub fn to_handle_actor_of_finder_process(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfFinderProcess> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSTEPControlActorWrite_to_HandleTransferActorOfFinderProcess(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSTEPControlActorWrite_to_HandleTransferActorOfFinderProcess(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPControl_ActorWrite> to Handle<Transfer_ActorOfProcessForFinder>
     pub fn to_handle_actor_of_process_for_finder(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSTEPControlActorWrite_to_HandleTransferActorOfProcessForFinder(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSTEPControlActorWrite_to_HandleTransferActorOfProcessForFinder(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPControl_ActorWrite> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSTEPControlActorWrite_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSTEPControlActorWrite_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<STEPControl_ActorWrite> to Handle<STEPCAFControl_ActorWrite>
@@ -1351,16 +1530,18 @@ impl HandleSTEPControlActorWrite {
     pub fn downcast_to_actor_write(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPCAFControlActorWrite>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSTEPControlActorWrite_downcast_to_HandleSTEPCAFControlActorWrite(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -1386,8 +1567,10 @@ impl Controller {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::STEPControl_Controller_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1398,8 +1581,11 @@ impl Controller {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_Controller_new_model(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1413,16 +1599,22 @@ impl Controller {
             let __result = unsafe {
                 crate::ffi::STEPControl_Controller_actor_read(self as *const Self, theModel)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `STEPControl_Controller.hxx`:51 - `STEPControl_Controller::Customise()`
     pub fn customise(&mut self, WS: &mut crate::ffi::HandleXSControlWorkSession) {
         {
-            unsafe { crate::ffi::STEPControl_Controller_customise(self as *mut Self, WS) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPControl_Controller_customise(self as *mut Self, WS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1452,8 +1644,11 @@ impl Controller {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            crate::if_select::ReturnStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::ReturnStatus::try_from(__val).unwrap()
         }
     }
 
@@ -1462,8 +1657,11 @@ impl Controller {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_Controller_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1474,8 +1672,11 @@ impl Controller {
     pub fn init() -> bool {
         {
             let __result = unsafe { crate::ffi::STEPControl_Controller_init() };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1483,8 +1684,11 @@ impl Controller {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::STEPControl_Controller_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1492,71 +1696,78 @@ impl Controller {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::STEPControl_Controller_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to XSControl_Controller
     pub fn as_xs_control_controller(&self) -> &crate::xs_control::Controller {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPControl_Controller_as_XSControl_Controller(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::STEPControl_Controller_as_XSControl_Controller(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to XSControl_Controller (mutable)
     pub fn as_xs_control_controller_mut(&mut self) -> &mut crate::xs_control::Controller {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPControl_Controller_as_XSControl_Controller_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::STEPControl_Controller_as_XSControl_Controller_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPControl_Controller_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::STEPControl_Controller_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPControl_Controller_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::STEPControl_Controller_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSTEPControlController> {
-        {
-            let __result = unsafe { crate::ffi::STEPControl_Controller_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::STEPControl_Controller_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:71 - `XSControl_Controller::AutoRecord()`
     pub fn auto_record(&self) {
         {
-            unsafe { crate::ffi::STEPControl_Controller_inherited_AutoRecord(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::STEPControl_Controller_inherited_AutoRecord(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1566,8 +1777,11 @@ impl Controller {
             let __result = unsafe {
                 crate::ffi::STEPControl_Controller_inherited_Protocol(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1577,8 +1791,11 @@ impl Controller {
             let __result = unsafe {
                 crate::ffi::STEPControl_Controller_inherited_WorkLibrary(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1588,15 +1805,18 @@ impl Controller {
             let __result = unsafe {
                 crate::ffi::STEPControl_Controller_inherited_ActorWrite(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:122 - `XSControl_Controller::SetModeWrite()`
     pub fn set_mode_write(&mut self, modemin: i32, modemax: i32, shape: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_Controller_inherited_SetModeWrite(
                     self as *mut Self,
                     modemin,
@@ -1604,7 +1824,9 @@ impl Controller {
                     shape,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1619,8 +1841,11 @@ impl Controller {
                     shape,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1634,8 +1859,11 @@ impl Controller {
                     shape,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1653,8 +1881,11 @@ impl Controller {
                     modetrans,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1678,8 +1909,11 @@ impl Controller {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            crate::if_select::ReturnStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::ReturnStatus::try_from(__val).unwrap()
         }
     }
 
@@ -1693,8 +1927,11 @@ impl Controller {
                     modetrans,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1704,8 +1941,11 @@ impl Controller {
             let __result = unsafe {
                 crate::ffi::STEPControl_Controller_inherited_AdaptorSession(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1718,8 +1958,11 @@ impl Controller {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1729,8 +1972,11 @@ impl Controller {
             let __result = unsafe {
                 crate::ffi::STEPControl_Controller_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1739,11 +1985,14 @@ impl Controller {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_Controller_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1754,18 +2003,23 @@ impl Controller {
             let __result = unsafe {
                 crate::ffi::STEPControl_Controller_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_Controller_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1775,16 +2029,22 @@ impl Controller {
             let __result = unsafe {
                 crate::ffi::STEPControl_Controller_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::STEPControl_Controller_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPControl_Controller_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1800,48 +2060,45 @@ unsafe impl crate::CppDeletable for HandleSTEPControlController {
 impl HandleSTEPControlController {
     /// Dereference this Handle to access the underlying STEPControl_Controller
     pub fn get(&self) -> &crate::ffi::STEPControl_Controller {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSTEPControlController_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleSTEPControlController_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying STEPControl_Controller
     pub fn get_mut(&mut self) -> &mut crate::ffi::STEPControl_Controller {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSTEPControlController_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleSTEPControlController_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<STEPControl_Controller> to Handle<XSControl_Controller>
     pub fn to_handle_controller(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlController> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSTEPControlController_to_HandleXSControlController(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSTEPControlController_to_HandleXSControlController(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<STEPControl_Controller> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSTEPControlController_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSTEPControlController_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<STEPControl_Controller> to Handle<STEPCAFControl_Controller>
@@ -1850,16 +2107,18 @@ impl HandleSTEPControlController {
     pub fn downcast_to_controller(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPCAFControlController>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSTEPControlController_downcast_to_HandleSTEPCAFControlController(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -1918,8 +2177,10 @@ impl Reader {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::STEPControl_Reader_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1934,8 +2195,10 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::STEPControl_Reader_ctor_handlexscontrolworksession_bool(WS, scratch)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1955,8 +2218,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_Reader_step_model(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1972,8 +2238,11 @@ impl Reader {
                     c_filename.as_ptr(),
                 )
             };
-            crate::check_exception();
-            crate::if_select::ReturnStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::ReturnStatus::try_from(__val).unwrap()
         }
     }
 
@@ -1993,8 +2262,11 @@ impl Reader {
                     theIStream,
                 )
             };
-            crate::check_exception();
-            crate::if_select::ReturnStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::ReturnStatus::try_from(__val).unwrap()
         }
     }
 
@@ -2015,8 +2287,11 @@ impl Reader {
                     theParams,
                 )
             };
-            crate::check_exception();
-            crate::if_select::ReturnStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::ReturnStatus::try_from(__val).unwrap()
         }
     }
 
@@ -2038,8 +2313,11 @@ impl Reader {
                     theIStream,
                 )
             };
-            crate::check_exception();
-            crate::if_select::ReturnStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::ReturnStatus::try_from(__val).unwrap()
         }
     }
 
@@ -2053,8 +2331,11 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::STEPControl_Reader_transfer_root(self as *mut Self, num, theProgress)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2065,8 +2346,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_Reader_nb_roots_for_transfer(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2080,7 +2364,7 @@ impl Reader {
         theUnitSolidAngleNames: &mut crate::ffi::TColStd_SequenceOfAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_Reader_file_units(
                     self as *mut Self,
                     theUnitLengthNames,
@@ -2088,7 +2372,9 @@ impl Reader {
                     theUnitSolidAngleNames,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2097,13 +2383,15 @@ impl Reader {
     /// Performs only if a model is not NULL
     pub fn set_system_length_unit(&mut self, theLengthUnit: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_Reader_set_system_length_unit(
                     self as *mut Self,
                     theLengthUnit,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2114,39 +2402,43 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_Reader_system_length_unit(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to XSControl_Reader
     pub fn as_xs_control_reader(&self) -> &crate::xs_control::Reader {
-        {
-            let __result =
-                unsafe { crate::ffi::STEPControl_Reader_as_XSControl_Reader(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::STEPControl_Reader_as_XSControl_Reader(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to XSControl_Reader (mutable)
     pub fn as_xs_control_reader_mut(&mut self) -> &mut crate::xs_control::Reader {
-        {
-            let __result = unsafe {
-                crate::ffi::STEPControl_Reader_as_XSControl_Reader_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::STEPControl_Reader_as_XSControl_Reader_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:99 - `XSControl_Reader::SetWS()`
     pub fn set_ws(&mut self, WS: &crate::ffi::HandleXSControlWorkSession, scratch: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_Reader_inherited_SetWS(self as *mut Self, WS, scratch)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2155,8 +2447,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_Reader_inherited_WS(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2165,8 +2460,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_Reader_inherited_Model(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2179,8 +2477,11 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::STEPControl_Reader_inherited_RootForTransfer(self as *mut Self, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2198,8 +2499,11 @@ impl Reader {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2213,8 +2517,11 @@ impl Reader {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2232,8 +2539,11 @@ impl Reader {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2251,8 +2561,11 @@ impl Reader {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2265,16 +2578,22 @@ impl Reader {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:201 - `XSControl_Reader::ClearShapes()`
     pub fn clear_shapes(&mut self) {
         {
-            unsafe { crate::ffi::STEPControl_Reader_inherited_ClearShapes(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPControl_Reader_inherited_ClearShapes(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2283,8 +2602,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_Reader_inherited_NbShapes(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2293,8 +2615,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_Reader_inherited_Shape(self as *const Self, num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2303,50 +2628,59 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_Reader_inherited_OneShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:225 - `XSControl_Reader::PrintCheckLoad()`
     pub fn print_check_load(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_Reader_inherited_PrintCheckLoad(
                     self as *const Self,
                     failsonly,
                     mode.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:239 - `XSControl_Reader::PrintCheckTransfer()`
     pub fn print_check_transfer(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_Reader_inherited_PrintCheckTransfer(
                     self as *const Self,
                     failsonly,
                     mode.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:275 - `XSControl_Reader::PrintStatsTransfer()`
     pub fn print_stats_transfer(&self, what: i32, mode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_Reader_inherited_PrintStatsTransfer(
                     self as *const Self,
                     what,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2359,7 +2693,7 @@ impl Reader {
         nbWithFail: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_Reader_inherited_GetStatsTransfer(
                     self as *const Self,
                     list,
@@ -2368,7 +2702,9 @@ impl Reader {
                     nbWithFail,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2378,13 +2714,15 @@ impl Reader {
         theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_Reader_inherited_SetShapeFixParameters(
                     self as *mut Self,
                     theParameters,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2394,21 +2732,26 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::STEPControl_Reader_inherited_GetShapeFixParameters(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:315 - `XSControl_Reader::SetShapeProcessFlags()`
     pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_Reader_inherited_SetShapeProcessFlags(
                     self as *mut Self,
                     theFlags,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2418,8 +2761,11 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::STEPControl_Reader_inherited_GetShapeProcessFlags(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -2448,8 +2794,10 @@ impl Writer {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::STEPControl_Writer_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2464,8 +2812,10 @@ impl Writer {
             let __result = unsafe {
                 crate::ffi::STEPControl_Writer_ctor_handlexscontrolworksession_bool(WS, scratch)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2484,8 +2834,11 @@ impl Writer {
     /// when the next shape is translated.
     pub fn set_tolerance(&mut self, Tol: f64) {
         {
-            unsafe { crate::ffi::STEPControl_Writer_set_tolerance(self as *mut Self, Tol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPControl_Writer_set_tolerance(self as *mut Self, Tol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2493,8 +2846,11 @@ impl Writer {
     /// Unsets the tolerance formerly forced by SetTolerance
     pub fn unset_tolerance(&mut self) {
         {
-            unsafe { crate::ffi::STEPControl_Writer_unset_tolerance(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPControl_Writer_unset_tolerance(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2502,8 +2858,11 @@ impl Writer {
     /// Sets a specific session to <me>
     pub fn set_ws(&mut self, WS: &crate::ffi::HandleXSControlWorkSession, scratch: bool) {
         {
-            unsafe { crate::ffi::STEPControl_Writer_set_ws(self as *mut Self, WS, scratch) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::STEPControl_Writer_set_ws(self as *mut Self, WS, scratch) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2512,8 +2871,11 @@ impl Writer {
     pub fn ws(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
         {
             let __result = unsafe { crate::ffi::STEPControl_Writer_ws(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2526,8 +2888,11 @@ impl Writer {
         {
             let __result =
                 unsafe { crate::ffi::STEPControl_Writer_model(self as *mut Self, newone) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2561,8 +2926,11 @@ impl Writer {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            crate::if_select::ReturnStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::ReturnStatus::try_from(__val).unwrap()
         }
     }
 
@@ -2580,8 +2948,11 @@ impl Writer {
             let __result = unsafe {
                 crate::ffi::STEPControl_Writer_transfer_shape_stepmodeltype_parameters_bool_progressrange(self as *mut Self, sh, mode.into(), theParams, compgraph, theProgress)
             };
-            crate::check_exception();
-            crate::if_select::ReturnStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::ReturnStatus::try_from(__val).unwrap()
         }
     }
 
@@ -2593,8 +2964,11 @@ impl Writer {
             let __result = unsafe {
                 crate::ffi::STEPControl_Writer_write(self as *mut Self, c_theFileName.as_ptr())
             };
-            crate::check_exception();
-            crate::if_select::ReturnStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::ReturnStatus::try_from(__val).unwrap()
         }
     }
 
@@ -2608,8 +2982,11 @@ impl Writer {
             let __result = unsafe {
                 crate::ffi::STEPControl_Writer_write_stream(self as *mut Self, theOStream)
             };
-            crate::check_exception();
-            crate::if_select::ReturnStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::ReturnStatus::try_from(__val).unwrap()
         }
     }
 
@@ -2636,10 +3013,12 @@ impl Writer {
     /// AND the list of entity numbers in the STEP model.
     pub fn print_stats_transfer(&self, what: i32, mode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_Writer_print_stats_transfer(self as *const Self, what, mode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2651,13 +3030,15 @@ impl Writer {
         theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_Writer_set_shape_fix_parameters_parametermap(
                     self as *mut Self,
                     theParameters,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2674,10 +3055,12 @@ impl Writer {
         theAdditionalParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_Writer_set_shape_fix_parameters_shapefixparameters_parametermap(self as *mut Self, theParameters, theAdditionalParameters)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2689,8 +3072,11 @@ impl Writer {
             let __result = unsafe {
                 crate::ffi::STEPControl_Writer_get_shape_fix_parameters(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2699,10 +3085,12 @@ impl Writer {
     /// @param theFlags The flags defining operations to be performed on shapes.
     pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::STEPControl_Writer_set_shape_process_flags(self as *mut Self, theFlags)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2715,8 +3103,11 @@ impl Writer {
             let __result = unsafe {
                 crate::ffi::STEPControl_Writer_get_shape_process_flags(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }

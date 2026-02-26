@@ -20,8 +20,11 @@ pub fn match_segment(
 ) -> bool {
     {
         let __result = unsafe { crate::ffi::Prs3d_match_segment(X, Y, Z, aDistance, p1, p2, dist) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `Prs3d.hxx`:80 - `Prs3d::GetDeflection`
@@ -47,8 +50,11 @@ pub fn get_deflection(
                 theMaximalChordialDeviation,
             )
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 
@@ -471,8 +477,10 @@ impl Arrow {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Prs3d_Arrow_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -503,8 +511,11 @@ impl Arrow {
                     theNbFacettes,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -532,8 +543,11 @@ impl Arrow {
                     theNbSegments,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -553,7 +567,7 @@ impl Arrow {
         theLength: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Arrow_draw(
                     theGroup,
                     theLocation,
@@ -562,7 +576,9 @@ impl Arrow {
                     theLength,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -590,8 +606,10 @@ impl ArrowAspect {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Prs3d_ArrowAspect_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -602,8 +620,10 @@ impl ArrowAspect {
     pub fn new_real2(anAngle: f64, aLength: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Prs3d_ArrowAspect_ctor_real2(anAngle, aLength) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -615,8 +635,10 @@ impl ArrowAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_ArrowAspect_ctor_handlegraphic3daspectline3d(theAspect)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -625,8 +647,11 @@ impl ArrowAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_ArrowAspect_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -634,8 +659,11 @@ impl ArrowAspect {
     /// defines the angle of the arrows.
     pub fn set_angle(&mut self, anAngle: f64) {
         {
-            unsafe { crate::ffi::Prs3d_ArrowAspect_set_angle(self as *mut Self, anAngle) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_ArrowAspect_set_angle(self as *mut Self, anAngle) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -644,8 +672,11 @@ impl ArrowAspect {
     pub fn angle(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Prs3d_ArrowAspect_angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -653,8 +684,11 @@ impl ArrowAspect {
     /// Defines the length of the arrows.
     pub fn set_length(&mut self, theLength: f64) {
         {
-            unsafe { crate::ffi::Prs3d_ArrowAspect_set_length(self as *mut Self, theLength) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_ArrowAspect_set_length(self as *mut Self, theLength) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -663,8 +697,11 @@ impl ArrowAspect {
     pub fn length(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Prs3d_ArrowAspect_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -672,8 +709,12 @@ impl ArrowAspect {
     /// Turns usage of arrow zoomable on/off
     pub fn set_zoomable(&mut self, theIsZoomable: bool) {
         {
-            unsafe { crate::ffi::Prs3d_ArrowAspect_set_zoomable(self as *mut Self, theIsZoomable) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_ArrowAspect_set_zoomable(self as *mut Self, theIsZoomable)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -683,16 +724,22 @@ impl ArrowAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_ArrowAspect_is_zoomable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Prs3d_ArrowAspect.hxx`:59 - `Prs3d_ArrowAspect::SetColor()`
     pub fn set_color(&mut self, theColor: &crate::quantity::Color) {
         {
-            unsafe { crate::ffi::Prs3d_ArrowAspect_set_color(self as *mut Self, theColor) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_ArrowAspect_set_color(self as *mut Self, theColor) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -700,16 +747,22 @@ impl ArrowAspect {
     pub fn aspect(&self) -> &crate::ffi::HandleGraphic3dAspectLine3d {
         {
             let __result = unsafe { crate::ffi::Prs3d_ArrowAspect_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `Prs3d_ArrowAspect.hxx`:63 - `Prs3d_ArrowAspect::SetAspect()`
     pub fn set_aspect(&mut self, theAspect: &crate::ffi::HandleGraphic3dAspectLine3d) {
         {
-            unsafe { crate::ffi::Prs3d_ArrowAspect_set_aspect(self as *mut Self, theAspect) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_ArrowAspect_set_aspect(self as *mut Self, theAspect) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -717,8 +770,11 @@ impl ArrowAspect {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Prs3d_ArrowAspect_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -726,62 +782,63 @@ impl ArrowAspect {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Prs3d_ArrowAspect_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Prs3d_BasicAspect
     pub fn as_basic_aspect(&self) -> &BasicAspect {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_ArrowAspect_as_Prs3d_BasicAspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_ArrowAspect_as_Prs3d_BasicAspect(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Prs3d_BasicAspect (mutable)
     pub fn as_basic_aspect_mut(&mut self) -> &mut BasicAspect {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_ArrowAspect_as_Prs3d_BasicAspect_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_ArrowAspect_as_Prs3d_BasicAspect_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_ArrowAspect_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_ArrowAspect_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_ArrowAspect_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_ArrowAspect_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrs3dArrowAspect> {
-        {
-            let __result = unsafe { crate::ffi::Prs3d_ArrowAspect_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Prs3d_ArrowAspect_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -790,8 +847,11 @@ impl ArrowAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_ArrowAspect_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -801,8 +861,11 @@ impl ArrowAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_ArrowAspect_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -811,11 +874,14 @@ impl ArrowAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_ArrowAspect_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -825,18 +891,23 @@ impl ArrowAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_ArrowAspect_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_ArrowAspect_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -846,16 +917,22 @@ impl ArrowAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_ArrowAspect_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Prs3d_ArrowAspect_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_ArrowAspect_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -871,42 +948,42 @@ unsafe impl crate::CppDeletable for HandlePrs3dArrowAspect {
 impl HandlePrs3dArrowAspect {
     /// Dereference this Handle to access the underlying Prs3d_ArrowAspect
     pub fn get(&self) -> &crate::ffi::Prs3d_ArrowAspect {
-        {
-            let __result = unsafe { crate::ffi::HandlePrs3dArrowAspect_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dArrowAspect_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Prs3d_ArrowAspect
     pub fn get_mut(&mut self) -> &mut crate::ffi::Prs3d_ArrowAspect {
-        {
-            let __result = unsafe { crate::ffi::HandlePrs3dArrowAspect_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dArrowAspect_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Prs3d_ArrowAspect> to Handle<Prs3d_BasicAspect>
     pub fn to_handle_basic_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandlePrs3dBasicAspect> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dArrowAspect_to_HandlePrs3dBasicAspect(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dArrowAspect_to_HandlePrs3dBasicAspect(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Prs3d_ArrowAspect> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dArrowAspect_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dArrowAspect_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -931,8 +1008,11 @@ impl BasicAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_BasicAspect_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -940,8 +1020,11 @@ impl BasicAspect {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Prs3d_BasicAspect_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -949,30 +1032,32 @@ impl BasicAspect {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Prs3d_BasicAspect_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_BasicAspect_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_BasicAspect_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_BasicAspect_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_BasicAspect_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -981,8 +1066,11 @@ impl BasicAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_BasicAspect_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -992,8 +1080,11 @@ impl BasicAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_BasicAspect_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1002,11 +1093,14 @@ impl BasicAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_BasicAspect_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1016,18 +1110,23 @@ impl BasicAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_BasicAspect_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_BasicAspect_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1037,16 +1136,22 @@ impl BasicAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_BasicAspect_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Prs3d_BasicAspect_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_BasicAspect_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1062,31 +1167,31 @@ unsafe impl crate::CppDeletable for HandlePrs3dBasicAspect {
 impl HandlePrs3dBasicAspect {
     /// Dereference this Handle to access the underlying Prs3d_BasicAspect
     pub fn get(&self) -> &crate::ffi::Prs3d_BasicAspect {
-        {
-            let __result = unsafe { crate::ffi::HandlePrs3dBasicAspect_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dBasicAspect_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Prs3d_BasicAspect
     pub fn get_mut(&mut self) -> &mut crate::ffi::Prs3d_BasicAspect {
-        {
-            let __result = unsafe { crate::ffi::HandlePrs3dBasicAspect_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dBasicAspect_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Prs3d_BasicAspect> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dBasicAspect_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dBasicAspect_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Prs3d_BasicAspect> to Handle<Prs3d_ArrowAspect>
@@ -1095,16 +1200,18 @@ impl HandlePrs3dBasicAspect {
     pub fn downcast_to_arrow_aspect(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dArrowAspect>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePrs3dBasicAspect_downcast_to_HandlePrs3dArrowAspect(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1114,16 +1221,18 @@ impl HandlePrs3dBasicAspect {
     pub fn downcast_to_datum_aspect(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dDatumAspect>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePrs3dBasicAspect_downcast_to_HandlePrs3dDatumAspect(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1133,16 +1242,18 @@ impl HandlePrs3dBasicAspect {
     pub fn downcast_to_dimension_aspect(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dDimensionAspect>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePrs3dBasicAspect_downcast_to_HandlePrs3dDimensionAspect(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1152,14 +1263,16 @@ impl HandlePrs3dBasicAspect {
     pub fn downcast_to_iso_aspect(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dIsoAspect>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePrs3dBasicAspect_downcast_to_HandlePrs3dIsoAspect(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1169,16 +1282,18 @@ impl HandlePrs3dBasicAspect {
     pub fn downcast_to_line_aspect(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dLineAspect>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePrs3dBasicAspect_downcast_to_HandlePrs3dLineAspect(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1188,16 +1303,18 @@ impl HandlePrs3dBasicAspect {
     pub fn downcast_to_plane_aspect(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dPlaneAspect>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePrs3dBasicAspect_downcast_to_HandlePrs3dPlaneAspect(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1207,16 +1324,18 @@ impl HandlePrs3dBasicAspect {
     pub fn downcast_to_point_aspect(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dPointAspect>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePrs3dBasicAspect_downcast_to_HandlePrs3dPointAspect(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1226,16 +1345,18 @@ impl HandlePrs3dBasicAspect {
     pub fn downcast_to_shading_aspect(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dShadingAspect>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePrs3dBasicAspect_downcast_to_HandlePrs3dShadingAspect(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1245,16 +1366,18 @@ impl HandlePrs3dBasicAspect {
     pub fn downcast_to_text_aspect(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dTextAspect>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePrs3dBasicAspect_downcast_to_HandlePrs3dTextAspect(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -1279,8 +1402,10 @@ impl BndBox {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Prs3d_BndBox_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1295,14 +1420,16 @@ impl BndBox {
         theDrawer: &crate::ffi::HandlePrs3dDrawer,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_BndBox_add_handlegraphic3dstructure_box_handleprs3ddrawer(
                     thePresentation,
                     theBndBox,
                     theDrawer,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1317,14 +1444,16 @@ impl BndBox {
         theDrawer: &crate::ffi::HandlePrs3dDrawer,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_BndBox_add_handlegraphic3dstructure_obb_handleprs3ddrawer(
                     thePresentation,
                     theBndBox,
                     theDrawer,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1336,8 +1465,11 @@ impl BndBox {
     ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfSegments> {
         {
             let __result = unsafe { crate::ffi::Prs3d_BndBox_fill_segments_obb(theBox) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1349,8 +1481,11 @@ impl BndBox {
     ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfSegments> {
         {
             let __result = unsafe { crate::ffi::Prs3d_BndBox_fill_segments_box(theBox) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1364,13 +1499,15 @@ impl BndBox {
         theBox: &crate::bnd::OBB,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_BndBox_fill_segments_handlegraphic3darrayofsegments_obb(
                     theSegments,
                     theBox,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1384,13 +1521,15 @@ impl BndBox {
         theBox: &crate::bnd::Box,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_BndBox_fill_segments_handlegraphic3darrayofsegments_box(
                     theSegments,
                     theBox,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1404,8 +1543,11 @@ impl BndBox {
         theBox: &crate::gp::Pnt,
     ) {
         {
-            unsafe { crate::ffi::Prs3d_BndBox_fill_segments(theSegments, theBox as *const _) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_BndBox_fill_segments(theSegments, theBox as *const _) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1430,8 +1572,10 @@ impl DatumAspect {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Prs3d_DatumAspect_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1440,8 +1584,11 @@ impl DatumAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_DatumAspect_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1455,8 +1602,11 @@ impl DatumAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_DatumAspect_line_aspect(self as *const Self, thePart.into())
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1470,8 +1620,11 @@ impl DatumAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_DatumAspect_shading_aspect(self as *const Self, thePart.into())
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1486,8 +1639,11 @@ impl DatumAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_DatumAspect_text_aspect(self as *const Self, thePart.into())
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1495,10 +1651,12 @@ impl DatumAspect {
     /// Sets text attributes for rendering labels.
     pub fn set_text_aspect(&mut self, theTextAspect: &crate::ffi::HandlePrs3dTextAspect) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DatumAspect_set_text_aspect(self as *mut Self, theTextAspect)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1508,8 +1666,11 @@ impl DatumAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_DatumAspect_point_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1517,8 +1678,12 @@ impl DatumAspect {
     /// Returns the point aspect of origin wireframe presentation
     pub fn set_point_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dPointAspect) {
         {
-            unsafe { crate::ffi::Prs3d_DatumAspect_set_point_aspect(self as *mut Self, theAspect) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_DatumAspect_set_point_aspect(self as *mut Self, theAspect)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1528,8 +1693,11 @@ impl DatumAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_DatumAspect_arrow_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1537,8 +1705,12 @@ impl DatumAspect {
     /// Sets the arrow aspect of presentation
     pub fn set_arrow_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dArrowAspect) {
         {
-            unsafe { crate::ffi::Prs3d_DatumAspect_set_arrow_aspect(self as *mut Self, theAspect) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_DatumAspect_set_arrow_aspect(self as *mut Self, theAspect)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1549,8 +1721,11 @@ impl DatumAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_DatumAspect_draw_datum_part(self as *const Self, thePart.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1558,10 +1733,12 @@ impl DatumAspect {
     /// Sets the axes used in the datum aspect
     pub fn set_draw_datum_axes(&mut self, theType: crate::prs3d::DatumAxes) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DatumAspect_set_draw_datum_axes(self as *mut Self, theType.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1570,8 +1747,11 @@ impl DatumAspect {
     pub fn datum_axes(&self) -> crate::prs3d::DatumAxes {
         {
             let __result = unsafe { crate::ffi::Prs3d_DatumAspect_datum_axes(self as *const Self) };
-            crate::check_exception();
-            crate::prs3d::DatumAxes::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::prs3d::DatumAxes::try_from(__val).unwrap()
         }
     }
 
@@ -1582,8 +1762,11 @@ impl DatumAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_DatumAspect_attribute(self as *const Self, theType.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1591,14 +1774,16 @@ impl DatumAspect {
     /// Sets the attribute of the datum type
     pub fn set_attribute(&mut self, theType: crate::prs3d::DatumAttribute, theValue: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DatumAspect_set_attribute(
                     self as *mut Self,
                     theType.into(),
                     theValue,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1609,8 +1794,11 @@ impl DatumAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_DatumAspect_axis_length(self as *const Self, thePart.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1618,7 +1806,7 @@ impl DatumAspect {
     /// Sets the lengths of the three axes.
     pub fn set_axis_length(&mut self, theL1: f64, theL2: f64, theL3: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DatumAspect_set_axis_length(
                     self as *mut Self,
                     theL1,
@@ -1626,7 +1814,9 @@ impl DatumAspect {
                     theL3,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1636,8 +1826,11 @@ impl DatumAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_DatumAspect_to_draw_labels(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1645,18 +1838,24 @@ impl DatumAspect {
     /// Sets option to draw or not to draw text labels for axes
     pub fn set_draw_labels(&mut self, theToDraw: bool) {
         {
-            unsafe { crate::ffi::Prs3d_DatumAspect_set_draw_labels(self as *mut Self, theToDraw) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_DatumAspect_set_draw_labels(self as *mut Self, theToDraw)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Prs3d_DatumAspect.hxx`:111 - `Prs3d_DatumAspect::SetToDrawLabels()`
     pub fn set_to_draw_labels(&mut self, theToDraw: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DatumAspect_set_to_draw_labels(self as *mut Self, theToDraw)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1666,8 +1865,11 @@ impl DatumAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_DatumAspect_to_draw_arrows(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1675,8 +1877,12 @@ impl DatumAspect {
     /// Sets option to draw or not arrows for axes
     pub fn set_draw_arrows(&mut self, theToDraw: bool) {
         {
-            unsafe { crate::ffi::Prs3d_DatumAspect_set_draw_arrows(self as *mut Self, theToDraw) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_DatumAspect_set_draw_arrows(self as *mut Self, theToDraw)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1684,8 +1890,12 @@ impl DatumAspect {
     /// Performs deep copy of attributes from another aspect instance.
     pub fn copy_aspects_from(&mut self, theOther: &crate::ffi::HandlePrs3dDatumAspect) {
         {
-            unsafe { crate::ffi::Prs3d_DatumAspect_copy_aspects_from(self as *mut Self, theOther) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_DatumAspect_copy_aspects_from(self as *mut Self, theOther)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1693,8 +1903,11 @@ impl DatumAspect {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Prs3d_DatumAspect_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1702,8 +1915,11 @@ impl DatumAspect {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Prs3d_DatumAspect_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1713,62 +1929,63 @@ impl DatumAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_DatumAspect_arrow_part_for_axis(thePart.into()) };
-            crate::check_exception();
-            crate::prs3d::DatumParts::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::prs3d::DatumParts::try_from(__val).unwrap()
         }
     }
 
     /// Upcast to Prs3d_BasicAspect
     pub fn as_basic_aspect(&self) -> &BasicAspect {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_DatumAspect_as_Prs3d_BasicAspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_DatumAspect_as_Prs3d_BasicAspect(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Prs3d_BasicAspect (mutable)
     pub fn as_basic_aspect_mut(&mut self) -> &mut BasicAspect {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_DatumAspect_as_Prs3d_BasicAspect_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_DatumAspect_as_Prs3d_BasicAspect_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_DatumAspect_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_DatumAspect_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_DatumAspect_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_DatumAspect_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrs3dDatumAspect> {
-        {
-            let __result = unsafe { crate::ffi::Prs3d_DatumAspect_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Prs3d_DatumAspect_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1777,8 +1994,11 @@ impl DatumAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_DatumAspect_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1788,8 +2008,11 @@ impl DatumAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_DatumAspect_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1798,11 +2021,14 @@ impl DatumAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_DatumAspect_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1812,18 +2038,23 @@ impl DatumAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_DatumAspect_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DatumAspect_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1833,16 +2064,22 @@ impl DatumAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_DatumAspect_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Prs3d_DatumAspect_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_DatumAspect_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1858,42 +2095,42 @@ unsafe impl crate::CppDeletable for HandlePrs3dDatumAspect {
 impl HandlePrs3dDatumAspect {
     /// Dereference this Handle to access the underlying Prs3d_DatumAspect
     pub fn get(&self) -> &crate::ffi::Prs3d_DatumAspect {
-        {
-            let __result = unsafe { crate::ffi::HandlePrs3dDatumAspect_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dDatumAspect_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Prs3d_DatumAspect
     pub fn get_mut(&mut self) -> &mut crate::ffi::Prs3d_DatumAspect {
-        {
-            let __result = unsafe { crate::ffi::HandlePrs3dDatumAspect_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dDatumAspect_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Prs3d_DatumAspect> to Handle<Prs3d_BasicAspect>
     pub fn to_handle_basic_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandlePrs3dBasicAspect> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dDatumAspect_to_HandlePrs3dBasicAspect(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dDatumAspect_to_HandlePrs3dBasicAspect(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Prs3d_DatumAspect> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dDatumAspect_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dDatumAspect_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1917,8 +2154,10 @@ impl DimensionAspect {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Prs3d_DimensionAspect_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1927,8 +2166,11 @@ impl DimensionAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_DimensionAspect_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1938,8 +2180,11 @@ impl DimensionAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_DimensionAspect_line_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1947,10 +2192,12 @@ impl DimensionAspect {
     /// Sets the display attributes of lines used in presentation of dimensions.
     pub fn set_line_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dLineAspect) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_set_line_aspect(self as *mut Self, theAspect)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1960,8 +2207,11 @@ impl DimensionAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_DimensionAspect_text_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1969,10 +2219,12 @@ impl DimensionAspect {
     /// Sets the display attributes of text used in presentation of dimensions.
     pub fn set_text_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dTextAspect) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_set_text_aspect(self as *mut Self, theAspect)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1982,8 +2234,11 @@ impl DimensionAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_DimensionAspect_is_text3d(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1991,8 +2246,12 @@ impl DimensionAspect {
     /// Sets type of text.
     pub fn make_text3d(&mut self, isText3d: bool) {
         {
-            unsafe { crate::ffi::Prs3d_DimensionAspect_make_text3d(self as *mut Self, isText3d) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_DimensionAspect_make_text3d(self as *mut Self, isText3d)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2002,8 +2261,11 @@ impl DimensionAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_DimensionAspect_is_text_shaded(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2011,13 +2273,15 @@ impl DimensionAspect {
     /// Turns on/off text shading for 3d text.
     pub fn make_text_shaded(&mut self, theIsTextShaded: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_make_text_shaded(
                     self as *mut Self,
                     theIsTextShaded,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2027,8 +2291,11 @@ impl DimensionAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_DimensionAspect_is_arrows3d(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2036,10 +2303,12 @@ impl DimensionAspect {
     /// Sets type of arrows.
     pub fn make_arrows3d(&mut self, theIsArrows3d: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_make_arrows3d(self as *mut Self, theIsArrows3d)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2050,8 +2319,11 @@ impl DimensionAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_is_units_displayed(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2060,13 +2332,15 @@ impl DimensionAspect {
     /// along with value label or not.
     pub fn make_units_displayed(&mut self, theIsDisplayed: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_make_units_displayed(
                     self as *mut Self,
                     theIsDisplayed,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2078,13 +2352,15 @@ impl DimensionAspect {
         theArrowOrient: crate::prs3d::DimensionArrowOrientation,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_set_arrow_orientation(
                     self as *mut Self,
                     theArrowOrient.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2094,8 +2370,11 @@ impl DimensionAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_DimensionAspect_arrow_orientation(self as *const Self) };
-            crate::check_exception();
-            crate::prs3d::DimensionArrowOrientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::prs3d::DimensionArrowOrientation::try_from(__val).unwrap()
         }
     }
 
@@ -2106,13 +2385,15 @@ impl DimensionAspect {
         thePosition: crate::prs3d::DimensionTextVerticalPosition,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_set_text_vertical_position(
                     self as *mut Self,
                     thePosition.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2123,8 +2404,11 @@ impl DimensionAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_text_vertical_position(self as *const Self)
             };
-            crate::check_exception();
-            crate::prs3d::DimensionTextVerticalPosition::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::prs3d::DimensionTextVerticalPosition::try_from(__val).unwrap()
         }
     }
 
@@ -2135,13 +2419,15 @@ impl DimensionAspect {
         thePosition: crate::prs3d::DimensionTextHorizontalPosition,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_set_text_horizontal_position(
                     self as *mut Self,
                     thePosition.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2152,8 +2438,11 @@ impl DimensionAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_text_horizontal_position(self as *const Self)
             };
-            crate::check_exception();
-            crate::prs3d::DimensionTextHorizontalPosition::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::prs3d::DimensionTextHorizontalPosition::try_from(__val).unwrap()
         }
     }
 
@@ -2163,8 +2452,11 @@ impl DimensionAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_DimensionAspect_arrow_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2172,10 +2464,12 @@ impl DimensionAspect {
     /// Sets the display attributes of arrows used in presentation of dimensions.
     pub fn set_arrow_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dArrowAspect) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_set_arrow_aspect(self as *mut Self, theAspect)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2183,10 +2477,12 @@ impl DimensionAspect {
     /// Sets the same color for all parts of dimension: lines, arrows and text.
     pub fn set_common_color(&mut self, theColor: &crate::quantity::Color) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_set_common_color(self as *mut Self, theColor)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2194,10 +2490,12 @@ impl DimensionAspect {
     /// Sets extension size.
     pub fn set_extension_size(&mut self, theSize: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_set_extension_size(self as *mut Self, theSize)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2207,8 +2505,11 @@ impl DimensionAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_DimensionAspect_extension_size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2216,10 +2517,12 @@ impl DimensionAspect {
     /// Set size for arrow tail (extension without text).
     pub fn set_arrow_tail_size(&mut self, theSize: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_set_arrow_tail_size(self as *mut Self, theSize)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2229,8 +2532,11 @@ impl DimensionAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_DimensionAspect_arrow_tail_size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2238,13 +2544,15 @@ impl DimensionAspect {
     /// Sets "sprintf"-syntax format for formatting dimension value labels.
     pub fn set_value_string_format(&mut self, theFormat: &crate::t_collection::AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_set_value_string_format(
                     self as *mut Self,
                     theFormat,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2255,8 +2563,11 @@ impl DimensionAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_value_string_format(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2264,8 +2575,11 @@ impl DimensionAspect {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Prs3d_DimensionAspect_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2273,64 +2587,65 @@ impl DimensionAspect {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Prs3d_DimensionAspect_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Prs3d_BasicAspect
     pub fn as_basic_aspect(&self) -> &BasicAspect {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_DimensionAspect_as_Prs3d_BasicAspect(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_DimensionAspect_as_Prs3d_BasicAspect(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Prs3d_BasicAspect (mutable)
     pub fn as_basic_aspect_mut(&mut self) -> &mut BasicAspect {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_DimensionAspect_as_Prs3d_BasicAspect_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Prs3d_DimensionAspect_as_Prs3d_BasicAspect_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_DimensionAspect_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_DimensionAspect_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_DimensionAspect_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Prs3d_DimensionAspect_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrs3dDimensionAspect> {
-        {
-            let __result = unsafe { crate::ffi::Prs3d_DimensionAspect_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Prs3d_DimensionAspect_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2339,8 +2654,11 @@ impl DimensionAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2350,8 +2668,11 @@ impl DimensionAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2360,11 +2681,14 @@ impl DimensionAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_DimensionAspect_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2375,18 +2699,23 @@ impl DimensionAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2396,16 +2725,22 @@ impl DimensionAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_DimensionAspect_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Prs3d_DimensionAspect_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_DimensionAspect_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2421,48 +2756,42 @@ unsafe impl crate::CppDeletable for HandlePrs3dDimensionAspect {
 impl HandlePrs3dDimensionAspect {
     /// Dereference this Handle to access the underlying Prs3d_DimensionAspect
     pub fn get(&self) -> &crate::ffi::Prs3d_DimensionAspect {
-        {
-            let __result =
-                unsafe { crate::ffi::HandlePrs3dDimensionAspect_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dDimensionAspect_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Prs3d_DimensionAspect
     pub fn get_mut(&mut self) -> &mut crate::ffi::Prs3d_DimensionAspect {
-        {
-            let __result =
-                unsafe { crate::ffi::HandlePrs3dDimensionAspect_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dDimensionAspect_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Prs3d_DimensionAspect> to Handle<Prs3d_BasicAspect>
     pub fn to_handle_basic_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandlePrs3dBasicAspect> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dDimensionAspect_to_HandlePrs3dBasicAspect(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dDimensionAspect_to_HandlePrs3dBasicAspect(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Prs3d_DimensionAspect> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dDimensionAspect_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dDimensionAspect_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2489,8 +2818,10 @@ impl DimensionUnits {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Prs3d_DimensionUnits_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2498,10 +2829,12 @@ impl DimensionUnits {
     /// Sets angle units
     pub fn set_angle_units(&mut self, theUnits: &crate::t_collection::AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DimensionUnits_set_angle_units(self as *mut Self, theUnits)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2511,8 +2844,11 @@ impl DimensionUnits {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_DimensionUnits_get_angle_units(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2520,10 +2856,12 @@ impl DimensionUnits {
     /// Sets length units
     pub fn set_length_units(&mut self, theUnits: &crate::t_collection::AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_DimensionUnits_set_length_units(self as *mut Self, theUnits)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2533,19 +2871,21 @@ impl DimensionUnits {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_DimensionUnits_get_length_units(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_DimensionUnits_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Prs3d_DimensionUnits_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2571,8 +2911,10 @@ impl Drawer {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2580,8 +2922,11 @@ impl Drawer {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2589,8 +2934,10 @@ impl Drawer {
     /// Setup all own aspects with default values.
     pub fn setup_own_defaults(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_setup_own_defaults(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Prs3d_Drawer_setup_own_defaults(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2599,13 +2946,15 @@ impl Drawer {
     /// This indicates whether the deflection value is absolute or relative to the size of the object.
     pub fn set_type_of_deflection(&mut self, theTypeOfDeflection: crate::aspect::TypeOfDeflection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_type_of_deflection(
                     self as *mut Self,
                     theTypeOfDeflection.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2616,8 +2965,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_type_of_deflection(self as *const Self) };
-            crate::check_exception();
-            crate::aspect::TypeOfDeflection::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::aspect::TypeOfDeflection::try_from(__val).unwrap()
         }
     }
 
@@ -2627,8 +2979,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_type_of_deflection(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2636,8 +2991,11 @@ impl Drawer {
     /// Resets HasOwnTypeOfDeflection() flag, e.g. undoes SetTypeOfDeflection().
     pub fn unset_own_type_of_deflection(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_unset_own_type_of_deflection(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_unset_own_type_of_deflection(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2649,13 +3007,15 @@ impl Drawer {
     /// Prs3d_WFDeflectionRestrictedFace
     pub fn set_maximal_chordial_deviation(&mut self, theChordialDeviation: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_maximal_chordial_deviation(
                     self as *mut Self,
                     theChordialDeviation,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2666,8 +3026,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_maximal_chordial_deviation(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2678,8 +3041,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_has_own_maximal_chordial_deviation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2687,10 +3053,12 @@ impl Drawer {
     /// Resets HasOwnMaximalChordialDeviation() flag, e.g. undoes SetMaximalChordialDeviation().
     pub fn unset_own_maximal_chordial_deviation(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_unset_own_maximal_chordial_deviation(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2698,10 +3066,12 @@ impl Drawer {
     /// Sets the type of HLR algorithm used by drawer's interactive objects
     pub fn set_type_of_hlr(&mut self, theTypeOfHLR: crate::prs3d::TypeOfHLR) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_type_of_hlr(self as *mut Self, theTypeOfHLR.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2710,8 +3080,11 @@ impl Drawer {
     pub fn type_of_hlr(&self) -> crate::prs3d::TypeOfHLR {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_type_of_hlr(self as *const Self) };
-            crate::check_exception();
-            crate::prs3d::TypeOfHLR::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::prs3d::TypeOfHLR::try_from(__val).unwrap()
         }
     }
 
@@ -2721,8 +3094,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_type_of_hlr(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2731,10 +3107,12 @@ impl Drawer {
     /// parameters of an infinite curve.
     pub fn set_maximal_parameter_value(&mut self, theValue: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_maximal_parameter_value(self as *mut Self, theValue)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2745,8 +3123,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_maximal_parameter_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2758,8 +3139,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_has_own_maximal_parameter_value(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2767,10 +3151,12 @@ impl Drawer {
     /// Resets HasOwnMaximalParameterValue() flag, e.g. undoes SetMaximalParameterValue().
     pub fn unset_own_maximal_parameter_value(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_unset_own_maximal_parameter_value(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2778,8 +3164,12 @@ impl Drawer {
     /// Sets IsoOnPlane on or off by setting the parameter theIsEnabled to true or false.
     pub fn set_iso_on_plane(&mut self, theIsEnabled: bool) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_set_iso_on_plane(self as *mut Self, theIsEnabled) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_Drawer_set_iso_on_plane(self as *mut Self, theIsEnabled)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2788,8 +3178,11 @@ impl Drawer {
     pub fn iso_on_plane(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_iso_on_plane(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2799,8 +3192,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_iso_on_plane(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2808,8 +3204,11 @@ impl Drawer {
     /// Resets HasOwnIsoOnPlane() flag, e.g. undoes SetIsoOnPlane().
     pub fn unset_own_iso_on_plane(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_unset_own_iso_on_plane(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_unset_own_iso_on_plane(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2819,8 +3218,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_iso_on_triangulation(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2831,8 +3233,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_has_own_iso_on_triangulation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2840,8 +3245,12 @@ impl Drawer {
     /// Resets HasOwnIsoOnTriangulation() flag, e.g. undoes SetIsoOnTriangulation().
     pub fn unset_own_iso_on_triangulation(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_unset_own_iso_on_triangulation(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_Drawer_unset_own_iso_on_triangulation(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2850,10 +3259,12 @@ impl Drawer {
     /// false.
     pub fn set_iso_on_triangulation(&mut self, theToEnable: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_iso_on_triangulation(self as *mut Self, theToEnable)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2861,8 +3272,11 @@ impl Drawer {
     /// Sets the discretisation parameter theValue.
     pub fn set_discretisation(&mut self, theValue: i32) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_set_discretisation(self as *mut Self, theValue) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_set_discretisation(self as *mut Self, theValue) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2871,8 +3285,11 @@ impl Drawer {
     pub fn discretisation(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_discretisation(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2882,8 +3299,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_discretisation(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2891,8 +3311,11 @@ impl Drawer {
     /// Resets HasOwnDiscretisation() flag, e.g. undoes SetDiscretisation().
     pub fn unset_own_discretisation(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_unset_own_discretisation(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_unset_own_discretisation(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2902,13 +3325,15 @@ impl Drawer {
     /// myPreviousDeviationCoefficient
     pub fn set_deviation_coefficient_real(&mut self, theCoefficient: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_deviation_coefficient_real(
                     self as *mut Self,
                     theCoefficient,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2933,8 +3358,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_deviation_coefficient(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2942,8 +3370,11 @@ impl Drawer {
     /// Resets HasOwnDeviationCoefficient() flag, e.g. undoes previous SetDeviationCoefficient().
     pub fn set_deviation_coefficient(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_set_deviation_coefficient(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_set_deviation_coefficient(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2955,8 +3386,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_has_own_deviation_coefficient(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2968,8 +3402,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_previous_deviation_coefficient(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2977,10 +3414,12 @@ impl Drawer {
     /// Updates the previous value used for the chordal deviation coefficient to the current state.
     pub fn update_previous_deviation_coefficient(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_update_previous_deviation_coefficient(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2989,10 +3428,12 @@ impl Drawer {
     /// Also sets the hasOwnDeviationAngle flag to Standard_True, and myPreviousDeviationAngle.
     pub fn set_deviation_angle_real(&mut self, theAngle: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_deviation_angle_real(self as *mut Self, theAngle)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3001,8 +3442,11 @@ impl Drawer {
     pub fn deviation_angle(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_deviation_angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3010,8 +3454,10 @@ impl Drawer {
     /// Resets HasOwnDeviationAngle() flag, e.g. undoes previous SetDeviationAngle().
     pub fn set_deviation_angle(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_set_deviation_angle(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Prs3d_Drawer_set_deviation_angle(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3022,8 +3468,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_deviation_angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3033,8 +3482,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_previous_deviation_angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3042,8 +3494,12 @@ impl Drawer {
     /// Updates the previous deviation angle to the current value
     pub fn update_previous_deviation_angle(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_update_previous_deviation_angle(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_Drawer_update_previous_deviation_angle(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3054,10 +3510,12 @@ impl Drawer {
     /// itself and no shading presentation at all if unavailable.
     pub fn set_auto_triangulation(&mut self, theIsEnabled: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_auto_triangulation(self as *mut Self, theIsEnabled)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3067,8 +3525,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_is_auto_triangulation(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3079,8 +3540,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_has_own_is_auto_triangulation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3088,8 +3552,12 @@ impl Drawer {
     /// Resets HasOwnIsAutoTriangulation() flag, e.g. undoes SetAutoTriangulation().
     pub fn unset_own_is_auto_triangulation(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_unset_own_is_auto_triangulation(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_Drawer_unset_own_is_auto_triangulation(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3103,16 +3571,22 @@ impl Drawer {
     pub fn u_iso_aspect(&self) -> &crate::ffi::HandlePrs3dIsoAspect {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_u_iso_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `Prs3d_Drawer.hxx`:308 - `Prs3d_Drawer::SetUIsoAspect()`
     pub fn set_u_iso_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dIsoAspect) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_set_u_iso_aspect(self as *mut Self, theAspect) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_set_u_iso_aspect(self as *mut Self, theAspect) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3123,8 +3597,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_u_iso_aspect(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3138,8 +3615,11 @@ impl Drawer {
     pub fn v_iso_aspect(&self) -> &crate::ffi::HandlePrs3dIsoAspect {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_v_iso_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3147,8 +3627,11 @@ impl Drawer {
     /// Sets the appearance of V isoparameters - theAspect.
     pub fn set_v_iso_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dIsoAspect) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_set_v_iso_aspect(self as *mut Self, theAspect) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_set_v_iso_aspect(self as *mut Self, theAspect) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3159,8 +3642,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_v_iso_aspect(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3170,8 +3656,11 @@ impl Drawer {
     pub fn wire_aspect(&self) -> &crate::ffi::HandlePrs3dLineAspect {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_wire_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3179,8 +3668,11 @@ impl Drawer {
     /// Sets the parameter theAspect for display of wires.
     pub fn set_wire_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dLineAspect) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_set_wire_aspect(self as *mut Self, theAspect) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_set_wire_aspect(self as *mut Self, theAspect) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3191,8 +3683,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_wire_aspect(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3200,8 +3695,11 @@ impl Drawer {
     /// Sets WireDraw on or off by setting the parameter theIsEnabled to true or false.
     pub fn set_wire_draw(&mut self, theIsEnabled: bool) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_set_wire_draw(self as *mut Self, theIsEnabled) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_set_wire_draw(self as *mut Self, theIsEnabled) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3210,8 +3708,11 @@ impl Drawer {
     pub fn wire_draw(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_wire_draw(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3222,8 +3723,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_wire_draw(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3231,8 +3735,10 @@ impl Drawer {
     /// Resets HasOwnWireDraw() flag, e.g. undoes SetWireDraw().
     pub fn unset_own_wire_draw(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_unset_own_wire_draw(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Prs3d_Drawer_unset_own_wire_draw(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3242,8 +3748,11 @@ impl Drawer {
     pub fn point_aspect(&self) -> &crate::ffi::HandlePrs3dPointAspect {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_point_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3251,8 +3760,11 @@ impl Drawer {
     /// Sets the parameter theAspect for display attributes of points
     pub fn set_point_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dPointAspect) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_set_point_aspect(self as *mut Self, theAspect) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_set_point_aspect(self as *mut Self, theAspect) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3263,8 +3775,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_point_aspect(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3276,8 +3791,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_setup_own_point_aspect(self as *mut Self, theDefaults)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3290,8 +3808,11 @@ impl Drawer {
     pub fn line_aspect(&self) -> &crate::ffi::HandlePrs3dLineAspect {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_line_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3299,8 +3820,11 @@ impl Drawer {
     /// Sets the parameter theAspect for display attributes of lines.
     pub fn set_line_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dLineAspect) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_set_line_aspect(self as *mut Self, theAspect) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_set_line_aspect(self as *mut Self, theAspect) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3311,8 +3835,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_line_aspect(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3328,8 +3855,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_set_own_line_aspects(self as *mut Self, theDefaults)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3341,8 +3871,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_set_own_datum_aspects(self as *mut Self, theDefaults)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3351,8 +3884,11 @@ impl Drawer {
     pub fn text_aspect(&self) -> &crate::ffi::HandlePrs3dTextAspect {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_text_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3360,8 +3896,11 @@ impl Drawer {
     /// Sets the parameter theAspect for display attributes of text.
     pub fn set_text_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dTextAspect) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_set_text_aspect(self as *mut Self, theAspect) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_set_text_aspect(self as *mut Self, theAspect) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3372,8 +3911,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_text_aspect(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3383,8 +3925,11 @@ impl Drawer {
     pub fn shading_aspect(&self) -> &crate::ffi::HandlePrs3dShadingAspect {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_shading_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3392,8 +3937,12 @@ impl Drawer {
     /// Sets the parameter theAspect for display attributes of shading.
     pub fn set_shading_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dShadingAspect) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_set_shading_aspect(self as *mut Self, theAspect) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_Drawer_set_shading_aspect(self as *mut Self, theAspect)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3404,8 +3953,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_shading_aspect(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3420,8 +3972,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_setup_own_shading_aspect(self as *mut Self, theDefaults)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3432,8 +3987,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_seen_line_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3441,8 +3999,12 @@ impl Drawer {
     /// Sets the parameter theAspect for the display of seen lines in hidden line removal mode.
     pub fn set_seen_line_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dLineAspect) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_set_seen_line_aspect(self as *mut Self, theAspect) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_Drawer_set_seen_line_aspect(self as *mut Self, theAspect)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3453,8 +4015,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_seen_line_aspect(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3464,8 +4029,11 @@ impl Drawer {
     pub fn plane_aspect(&self) -> &crate::ffi::HandlePrs3dPlaneAspect {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_plane_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3473,8 +4041,11 @@ impl Drawer {
     /// Sets the parameter theAspect for the display of planes.
     pub fn set_plane_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dPlaneAspect) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_set_plane_aspect(self as *mut Self, theAspect) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_set_plane_aspect(self as *mut Self, theAspect) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3485,8 +4056,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_plane_aspect(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3496,8 +4070,11 @@ impl Drawer {
     pub fn arrow_aspect(&self) -> &crate::ffi::HandlePrs3dArrowAspect {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_arrow_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3505,8 +4082,11 @@ impl Drawer {
     /// Sets the parameter theAspect for display attributes of arrows.
     pub fn set_arrow_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dArrowAspect) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_set_arrow_aspect(self as *mut Self, theAspect) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_set_arrow_aspect(self as *mut Self, theAspect) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3517,8 +4097,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_arrow_aspect(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3527,10 +4110,12 @@ impl Drawer {
     /// By default the arrows are not drawn.
     pub fn set_line_arrow_draw(&mut self, theIsEnabled: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_line_arrow_draw(self as *mut Self, theIsEnabled)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3540,8 +4125,11 @@ impl Drawer {
     pub fn line_arrow_draw(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_line_arrow_draw(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3552,8 +4140,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_line_arrow_draw(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3561,8 +4152,11 @@ impl Drawer {
     /// Reset HasOwnLineArrowDraw() flag, e.g. undoes SetLineArrowDraw().
     pub fn unset_own_line_arrow_draw(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_unset_own_line_arrow_draw(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_unset_own_line_arrow_draw(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3573,8 +4167,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_hidden_line_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3582,10 +4179,12 @@ impl Drawer {
     /// Sets the parameter theAspect for the display of hidden lines in hidden line removal mode.
     pub fn set_hidden_line_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dLineAspect) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_hidden_line_aspect(self as *mut Self, theAspect)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3596,8 +4195,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_hidden_line_aspect(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3608,8 +4210,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_draw_hidden_line(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3617,8 +4222,11 @@ impl Drawer {
     /// Enables the DrawHiddenLine function.
     pub fn enable_draw_hidden_line(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_enable_draw_hidden_line(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_enable_draw_hidden_line(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3626,8 +4234,11 @@ impl Drawer {
     /// Disables the DrawHiddenLine function.
     pub fn disable_draw_hidden_line(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_disable_draw_hidden_line(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_disable_draw_hidden_line(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3638,8 +4249,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_draw_hidden_line(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3648,8 +4262,11 @@ impl Drawer {
     /// EnableDrawHiddenLine()/DisableDrawHiddenLine().
     pub fn unset_own_draw_hidden_line(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_unset_own_draw_hidden_line(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_unset_own_draw_hidden_line(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3659,8 +4276,11 @@ impl Drawer {
     pub fn vector_aspect(&self) -> &crate::ffi::HandlePrs3dLineAspect {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_vector_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3668,8 +4288,11 @@ impl Drawer {
     /// Sets the modality theAspect for the display of vectors.
     pub fn set_vector_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dLineAspect) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_set_vector_aspect(self as *mut Self, theAspect) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_set_vector_aspect(self as *mut Self, theAspect) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3680,8 +4303,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_vector_aspect(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3694,10 +4320,12 @@ impl Drawer {
     /// Prs3d_VDM_Inherited value should be used.
     pub fn set_vertex_draw_mode(&mut self, theMode: crate::prs3d::VertexDrawMode) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_vertex_draw_mode(self as *mut Self, theMode.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3707,8 +4335,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_vertex_draw_mode(self as *const Self) };
-            crate::check_exception();
-            crate::prs3d::VertexDrawMode::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::prs3d::VertexDrawMode::try_from(__val).unwrap()
         }
     }
 
@@ -3720,8 +4351,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_vertex_draw_mode(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3731,8 +4365,11 @@ impl Drawer {
     pub fn datum_aspect(&self) -> &crate::ffi::HandlePrs3dDatumAspect {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_datum_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3740,8 +4377,11 @@ impl Drawer {
     /// Sets the modality theAspect for the display of datums.
     pub fn set_datum_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dDatumAspect) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_set_datum_aspect(self as *mut Self, theAspect) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_set_datum_aspect(self as *mut Self, theAspect) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3752,8 +4392,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_datum_aspect(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3763,8 +4406,11 @@ impl Drawer {
     pub fn section_aspect(&self) -> &crate::ffi::HandlePrs3dLineAspect {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_section_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3772,8 +4418,12 @@ impl Drawer {
     /// Sets the parameter theAspect for display attributes of sections.
     pub fn set_section_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dLineAspect) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_set_section_aspect(self as *mut Self, theAspect) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_Drawer_set_section_aspect(self as *mut Self, theAspect)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3784,8 +4434,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_section_aspect(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3795,10 +4448,12 @@ impl Drawer {
     /// visualization instead of the one set in link.
     pub fn set_free_boundary_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dLineAspect) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_free_boundary_aspect(self as *mut Self, theAspect)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3810,8 +4465,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_free_boundary_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3823,8 +4481,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_has_own_free_boundary_aspect(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3836,10 +4497,12 @@ impl Drawer {
     /// drawn or not.
     pub fn set_free_boundary_draw(&mut self, theIsEnabled: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_free_boundary_draw(self as *mut Self, theIsEnabled)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3850,8 +4513,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_free_boundary_draw(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3862,8 +4528,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_free_boundary_draw(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3871,8 +4540,11 @@ impl Drawer {
     /// Resets HasOwnFreeBoundaryDraw() flag, e.g. undoes SetFreeBoundaryDraw().
     pub fn unset_own_free_boundary_draw(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_unset_own_free_boundary_draw(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_unset_own_free_boundary_draw(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3882,10 +4554,12 @@ impl Drawer {
     /// visualization instead of the one set in link.
     pub fn set_un_free_boundary_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dLineAspect) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_un_free_boundary_aspect(self as *mut Self, theAspect)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3896,8 +4570,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_un_free_boundary_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3909,8 +4586,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_has_own_un_free_boundary_aspect(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3922,10 +4602,12 @@ impl Drawer {
     /// not.
     pub fn set_un_free_boundary_draw(&mut self, theIsEnabled: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_un_free_boundary_draw(self as *mut Self, theIsEnabled)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3936,8 +4618,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_un_free_boundary_draw(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3949,8 +4634,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_has_own_un_free_boundary_draw(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3958,8 +4646,12 @@ impl Drawer {
     /// Resets HasOwnUnFreeBoundaryDraw() flag, e.g. undoes SetUnFreeBoundaryDraw().
     pub fn unset_own_un_free_boundary_draw(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_unset_own_un_free_boundary_draw(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_Drawer_unset_own_un_free_boundary_draw(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3970,10 +4662,12 @@ impl Drawer {
     /// theAspect is the line aspect that determines the look of the face boundaries.
     pub fn set_face_boundary_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dLineAspect) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_face_boundary_aspect(self as *mut Self, theAspect)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3984,8 +4678,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_face_boundary_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3997,8 +4694,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_has_own_face_boundary_aspect(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4016,8 +4716,11 @@ impl Drawer {
                     theDefaults,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4028,10 +4731,12 @@ impl Drawer {
     /// theIsEnabled is a boolean flag indicating whether the face boundaries should be drawn or not.
     pub fn set_face_boundary_draw(&mut self, theIsEnabled: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_face_boundary_draw(self as *mut Self, theIsEnabled)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4041,8 +4746,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_face_boundary_draw(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4053,8 +4761,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_face_boundary_draw(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4062,8 +4773,11 @@ impl Drawer {
     /// Resets HasOwnFaceBoundaryDraw() flag, e.g. undoes SetFaceBoundaryDraw().
     pub fn unset_own_face_boundary_draw(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_unset_own_face_boundary_draw(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_unset_own_face_boundary_draw(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4075,8 +4789,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_has_own_face_boundary_upper_continuity(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4087,8 +4804,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_face_boundary_upper_continuity(self as *const Self)
             };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -4099,13 +4819,15 @@ impl Drawer {
         theMostAllowedEdgeClass: crate::geom_abs::Shape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_face_boundary_upper_continuity(
                     self as *mut Self,
                     theMostAllowedEdgeClass.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4113,10 +4835,12 @@ impl Drawer {
     /// Unset the most edge continuity class for face boundaries.
     pub fn unset_face_boundary_upper_continuity(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_unset_face_boundary_upper_continuity(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4127,8 +4851,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_dimension_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4138,8 +4865,12 @@ impl Drawer {
     /// visualization instead of the one set in link.
     pub fn set_dimension_aspect(&mut self, theAspect: &crate::ffi::HandlePrs3dDimensionAspect) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_set_dimension_aspect(self as *mut Self, theAspect) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_Drawer_set_dimension_aspect(self as *mut Self, theAspect)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4150,8 +4881,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_has_own_dimension_aspect(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4161,10 +4895,12 @@ impl Drawer {
     /// visualization instead of the one set in link.
     pub fn set_dim_length_model_units(&mut self, theUnits: &crate::t_collection::AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_dim_length_model_units(self as *mut Self, theUnits)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4174,10 +4910,12 @@ impl Drawer {
     /// visualization instead of the one set in link.
     pub fn set_dim_angle_model_units(&mut self, theUnits: &crate::t_collection::AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_dim_angle_model_units(self as *mut Self, theUnits)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4187,8 +4925,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_dim_length_model_units(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4198,8 +4939,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_dim_angle_model_units(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4211,8 +4955,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_has_own_dim_length_model_units(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4220,8 +4967,12 @@ impl Drawer {
     /// Resets HasOwnDimLengthModelUnits() flag, e.g. undoes SetDimLengthModelUnits().
     pub fn unset_own_dim_length_model_units(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_unset_own_dim_length_model_units(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_Drawer_unset_own_dim_length_model_units(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4233,8 +4984,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_has_own_dim_angle_model_units(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4242,8 +4996,12 @@ impl Drawer {
     /// Resets HasOwnDimAngleModelUnits() flag, e.g. undoes SetDimAngleModelUnits().
     pub fn unset_own_dim_angle_model_units(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_unset_own_dim_angle_model_units(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_Drawer_unset_own_dim_angle_model_units(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4253,10 +5011,12 @@ impl Drawer {
     /// visualization instead of the one set in link.
     pub fn set_dim_length_display_units(&mut self, theUnits: &crate::t_collection::AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_dim_length_display_units(self as *mut Self, theUnits)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4266,10 +5026,12 @@ impl Drawer {
     /// visualization instead of the one set in link.
     pub fn set_dim_angle_display_units(&mut self, theUnits: &crate::t_collection::AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_set_dim_angle_display_units(self as *mut Self, theUnits)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4279,8 +5041,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_dim_length_display_units(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4290,8 +5055,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_dim_angle_display_units(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4304,8 +5072,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_has_own_dim_length_display_units(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4313,10 +5084,12 @@ impl Drawer {
     /// Resets HasOwnDimLengthModelUnits() flag, e.g. undoes SetDimLengthDisplayUnits().
     pub fn unset_own_dim_length_display_units(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_unset_own_dim_length_display_units(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4329,8 +5102,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_has_own_dim_angle_display_units(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4338,10 +5114,12 @@ impl Drawer {
     /// Resets HasOwnDimAngleDisplayUnits() flag, e.g. undoes SetDimLengthDisplayUnits().
     pub fn unset_own_dim_angle_display_units(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_unset_own_dim_angle_display_units(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4350,8 +5128,11 @@ impl Drawer {
     pub fn link(&self) -> &crate::ffi::HandlePrs3dDrawer {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_link(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4360,8 +5141,11 @@ impl Drawer {
     pub fn has_link(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_has_link(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4369,10 +5153,12 @@ impl Drawer {
     /// Sets theDrawer as a link to which the current object references.
     pub fn link_handleprs3ddrawer(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_link_handleprs3ddrawer(self as *mut Self, theDrawer)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4380,8 +5166,10 @@ impl Drawer {
     /// Sets theDrawer as a link to which the current object references.
     pub fn set_link(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_set_link(self as *mut Self, theDrawer) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Prs3d_Drawer_set_link(self as *mut Self, theDrawer) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4389,8 +5177,11 @@ impl Drawer {
     /// Removes local attributes.
     pub fn clear_local_attributes(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_clear_local_attributes(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_clear_local_attributes(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4418,8 +5209,11 @@ impl Drawer {
                     theToOverrideDefaults,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4438,8 +5232,11 @@ impl Drawer {
                     theToOverrideDefaults,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4447,8 +5244,11 @@ impl Drawer {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4456,8 +5256,11 @@ impl Drawer {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4465,55 +5268,55 @@ impl Drawer {
     pub fn as_graphic3d_presentation_attributes(
         &self,
     ) -> &crate::graphic3d::PresentationAttributes {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_Drawer_as_Graphic3d_PresentationAttributes(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Prs3d_Drawer_as_Graphic3d_PresentationAttributes(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Graphic3d_PresentationAttributes (mutable)
     pub fn as_graphic3d_presentation_attributes_mut(
         &mut self,
     ) -> &mut crate::graphic3d::PresentationAttributes {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_Drawer_as_Graphic3d_PresentationAttributes_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Prs3d_Drawer_as_Graphic3d_PresentationAttributes_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_Drawer_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_Drawer_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_Drawer_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_Drawer_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandlePrs3dDrawer> {
-        {
-            let __result = unsafe { crate::ffi::Prs3d_Drawer_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Prs3d_Drawer_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Graphic3d_PresentationAttributes.hxx`:45 - `Graphic3d_PresentationAttributes::Method()`
@@ -4521,18 +5324,23 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_inherited_Method(self as *const Self) };
-            crate::check_exception();
-            crate::aspect::TypeOfHighlightMethod::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::aspect::TypeOfHighlightMethod::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_PresentationAttributes.hxx`:48 - `Graphic3d_PresentationAttributes::SetMethod()`
     pub fn set_method(&mut self, theMethod: crate::aspect::TypeOfHighlightMethod) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_inherited_SetMethod(self as *mut Self, theMethod.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4541,8 +5349,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_inherited_ColorRGBA(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4550,16 +5361,22 @@ impl Drawer {
     pub fn color(&self) -> &crate::quantity::Color {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_inherited_Color(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_PresentationAttributes.hxx`:57 - `Graphic3d_PresentationAttributes::SetColor()`
     pub fn set_color(&mut self, theColor: &crate::quantity::Color) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_inherited_SetColor(self as *mut Self, theColor) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_Drawer_inherited_SetColor(self as *mut Self, theColor) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4568,18 +5385,23 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_inherited_Transparency(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_PresentationAttributes.hxx`:64 - `Graphic3d_PresentationAttributes::SetTransparency()`
     pub fn set_transparency(&mut self, theTranspCoef: f32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_inherited_SetTransparency(self as *mut Self, theTranspCoef)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4588,16 +5410,23 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_inherited_ZLayer(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_PresentationAttributes.hxx`:74 - `Graphic3d_PresentationAttributes::SetZLayer()`
     pub fn set_z_layer(&mut self, theLayer: i32) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_inherited_SetZLayer(self as *mut Self, theLayer) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_Drawer_inherited_SetZLayer(self as *mut Self, theLayer)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4606,18 +5435,23 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_inherited_DisplayMode(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_PresentationAttributes.hxx`:81 - `Graphic3d_PresentationAttributes::SetDisplayMode()`
     pub fn set_display_mode(&mut self, theMode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_inherited_SetDisplayMode(self as *mut Self, theMode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4627,8 +5461,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_inherited_BasicFillAreaAspect(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4638,13 +5475,15 @@ impl Drawer {
         theAspect: &crate::ffi::HandleGraphic3dAspectFillArea3d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_Drawer_inherited_SetBasicFillAreaAspect(
                     self as *mut Self,
                     theAspect,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4654,8 +5493,11 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4664,8 +5506,11 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4673,11 +5518,14 @@ impl Drawer {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::Prs3d_Drawer_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4687,16 +5535,23 @@ impl Drawer {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_Drawer_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_Drawer_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4706,16 +5561,21 @@ impl Drawer {
             let __result = unsafe {
                 crate::ffi::Prs3d_Drawer_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Prs3d_Drawer_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Prs3d_Drawer_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4731,46 +5591,46 @@ unsafe impl crate::CppDeletable for HandlePrs3dDrawer {
 impl HandlePrs3dDrawer {
     /// Dereference this Handle to access the underlying Prs3d_Drawer
     pub fn get(&self) -> &crate::ffi::Prs3d_Drawer {
-        {
-            let __result = unsafe { crate::ffi::HandlePrs3dDrawer_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dDrawer_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Prs3d_Drawer
     pub fn get_mut(&mut self) -> &mut crate::ffi::Prs3d_Drawer {
-        {
-            let __result = unsafe { crate::ffi::HandlePrs3dDrawer_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dDrawer_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Prs3d_Drawer> to Handle<Graphic3d_PresentationAttributes>
     pub fn to_handle_presentation_attributes(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dPresentationAttributes> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dDrawer_to_HandleGraphic3dPresentationAttributes(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dDrawer_to_HandleGraphic3dPresentationAttributes(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Prs3d_Drawer> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dDrawer_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dDrawer_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Prs3d_Drawer> to Handle<AIS_ColoredDrawer>
@@ -4779,14 +5639,16 @@ impl HandlePrs3dDrawer {
     pub fn downcast_to_colored_drawer(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISColoredDrawer>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePrs3dDrawer_downcast_to_HandleAISColoredDrawer(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -4809,8 +5671,10 @@ impl InvalidAngle {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Prs3d_InvalidAngle_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4820,8 +5684,10 @@ impl InvalidAngle {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_InvalidAngle_ctor_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4836,8 +5702,10 @@ impl InvalidAngle {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4846,8 +5714,11 @@ impl InvalidAngle {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_InvalidAngle_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4855,16 +5726,21 @@ impl InvalidAngle {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::Prs3d_InvalidAngle_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_InvalidAngle_raise_charptr(c_theMessage.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Prs3d_InvalidAngle.hxx`:36 - `Prs3d_InvalidAngle::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::Prs3d_InvalidAngle_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Prs3d_InvalidAngle_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4877,8 +5753,11 @@ impl InvalidAngle {
             let __result = unsafe {
                 crate::ffi::Prs3d_InvalidAngle_new_instance_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4896,8 +5775,11 @@ impl InvalidAngle {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4905,8 +5787,11 @@ impl InvalidAngle {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Prs3d_InvalidAngle_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4914,132 +5799,136 @@ impl InvalidAngle {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Prs3d_InvalidAngle_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_RangeError
     pub fn as_standard_range_error(&self) -> &crate::standard::RangeError {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_InvalidAngle_as_Standard_RangeError(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_InvalidAngle_as_Standard_RangeError(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_RangeError (mutable)
     pub fn as_standard_range_error_mut(&mut self) -> &mut crate::standard::RangeError {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_InvalidAngle_as_Standard_RangeError_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_InvalidAngle_as_Standard_RangeError_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_InvalidAngle_as_Standard_DomainError(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_InvalidAngle_as_Standard_DomainError(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_InvalidAngle_as_Standard_DomainError_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Prs3d_InvalidAngle_as_Standard_DomainError_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_InvalidAngle_as_Standard_Failure(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_InvalidAngle_as_Standard_Failure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_InvalidAngle_as_Standard_Failure_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_InvalidAngle_as_Standard_Failure_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_InvalidAngle_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_InvalidAngle_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_InvalidAngle_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_InvalidAngle_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrs3dInvalidAngle> {
-        {
-            let __result = unsafe { crate::ffi::Prs3d_InvalidAngle_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Prs3d_InvalidAngle_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_InvalidAngle_inherited_Print(self as *const Self, theStream)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_InvalidAngle_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_InvalidAngle_inherited_Reraise(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_InvalidAngle_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Prs3d_InvalidAngle_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5049,8 +5938,11 @@ impl InvalidAngle {
             let __result = unsafe {
                 crate::ffi::Prs3d_InvalidAngle_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5060,8 +5952,11 @@ impl InvalidAngle {
             let __result = unsafe {
                 crate::ffi::Prs3d_InvalidAngle_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5070,11 +5965,14 @@ impl InvalidAngle {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_InvalidAngle_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5085,18 +5983,23 @@ impl InvalidAngle {
             let __result = unsafe {
                 crate::ffi::Prs3d_InvalidAngle_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_InvalidAngle_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5106,16 +6009,22 @@ impl InvalidAngle {
             let __result = unsafe {
                 crate::ffi::Prs3d_InvalidAngle_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Prs3d_InvalidAngle_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_InvalidAngle_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5131,67 +6040,64 @@ unsafe impl crate::CppDeletable for HandlePrs3dInvalidAngle {
 impl HandlePrs3dInvalidAngle {
     /// Dereference this Handle to access the underlying Prs3d_InvalidAngle
     pub fn get(&self) -> &crate::ffi::Prs3d_InvalidAngle {
-        {
-            let __result = unsafe { crate::ffi::HandlePrs3dInvalidAngle_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dInvalidAngle_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Prs3d_InvalidAngle
     pub fn get_mut(&mut self) -> &mut crate::ffi::Prs3d_InvalidAngle {
-        {
-            let __result =
-                unsafe { crate::ffi::HandlePrs3dInvalidAngle_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dInvalidAngle_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Prs3d_InvalidAngle> to Handle<Standard_RangeError>
     pub fn to_handle_range_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardRangeError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dInvalidAngle_to_HandleStandardRangeError(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dInvalidAngle_to_HandleStandardRangeError(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Prs3d_InvalidAngle> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dInvalidAngle_to_HandleStandardDomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dInvalidAngle_to_HandleStandardDomainError(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Prs3d_InvalidAngle> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dInvalidAngle_to_HandleStandardFailure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dInvalidAngle_to_HandleStandardFailure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Prs3d_InvalidAngle> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dInvalidAngle_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dInvalidAngle_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5234,8 +6140,10 @@ impl IsoAspect {
                     theNumber,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5243,8 +6151,11 @@ impl IsoAspect {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Prs3d_IsoAspect_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5254,8 +6165,11 @@ impl IsoAspect {
     /// Default value: 10
     pub fn set_number(&mut self, theNumber: i32) {
         {
-            unsafe { crate::ffi::Prs3d_IsoAspect_set_number(self as *mut Self, theNumber) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_IsoAspect_set_number(self as *mut Self, theNumber) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5264,8 +6178,11 @@ impl IsoAspect {
     pub fn number(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Prs3d_IsoAspect_number(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5273,8 +6190,11 @@ impl IsoAspect {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Prs3d_IsoAspect_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5282,108 +6202,121 @@ impl IsoAspect {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Prs3d_IsoAspect_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Prs3d_LineAspect
     pub fn as_line_aspect(&self) -> &LineAspect {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_IsoAspect_as_Prs3d_LineAspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_IsoAspect_as_Prs3d_LineAspect(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Prs3d_LineAspect (mutable)
     pub fn as_line_aspect_mut(&mut self) -> &mut LineAspect {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_IsoAspect_as_Prs3d_LineAspect_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_IsoAspect_as_Prs3d_LineAspect_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Prs3d_BasicAspect
     pub fn as_basic_aspect(&self) -> &BasicAspect {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_IsoAspect_as_Prs3d_BasicAspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_IsoAspect_as_Prs3d_BasicAspect(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Prs3d_BasicAspect (mutable)
     pub fn as_basic_aspect_mut(&mut self) -> &mut BasicAspect {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_IsoAspect_as_Prs3d_BasicAspect_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_IsoAspect_as_Prs3d_BasicAspect_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_IsoAspect_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_IsoAspect_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_IsoAspect_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_IsoAspect_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrs3dIsoAspect> {
-        {
-            let __result = unsafe { crate::ffi::Prs3d_IsoAspect_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Prs3d_IsoAspect_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Prs3d_LineAspect.hxx`:52 - `Prs3d_LineAspect::SetColor()`
     pub fn set_color(&mut self, theColor: &crate::quantity::Color) {
         {
-            unsafe { crate::ffi::Prs3d_IsoAspect_inherited_SetColor(self as *mut Self, theColor) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_IsoAspect_inherited_SetColor(self as *mut Self, theColor)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Prs3d_LineAspect.hxx`:57 - `Prs3d_LineAspect::SetTypeOfLine()`
     pub fn set_type_of_line(&mut self, theType: crate::aspect::TypeOfLine) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_IsoAspect_inherited_SetTypeOfLine(
                     self as *mut Self,
                     theType.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Prs3d_LineAspect.hxx`:61 - `Prs3d_LineAspect::SetWidth()`
     pub fn set_width(&mut self, theWidth: f64) {
         {
-            unsafe { crate::ffi::Prs3d_IsoAspect_inherited_SetWidth(self as *mut Self, theWidth) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_IsoAspect_inherited_SetWidth(self as *mut Self, theWidth)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5392,18 +6325,23 @@ impl IsoAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_IsoAspect_inherited_Aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Prs3d_LineAspect.hxx`:67 - `Prs3d_LineAspect::SetAspect()`
     pub fn set_aspect(&mut self, theAspect: &crate::ffi::HandleGraphic3dAspectLine3d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_IsoAspect_inherited_SetAspect(self as *mut Self, theAspect)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5413,8 +6351,11 @@ impl IsoAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_IsoAspect_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5424,8 +6365,11 @@ impl IsoAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_IsoAspect_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5434,11 +6378,14 @@ impl IsoAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_IsoAspect_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5448,16 +6395,23 @@ impl IsoAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_IsoAspect_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_IsoAspect_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_IsoAspect_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5467,16 +6421,22 @@ impl IsoAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_IsoAspect_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Prs3d_IsoAspect_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_IsoAspect_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5492,53 +6452,53 @@ unsafe impl crate::CppDeletable for HandlePrs3dIsoAspect {
 impl HandlePrs3dIsoAspect {
     /// Dereference this Handle to access the underlying Prs3d_IsoAspect
     pub fn get(&self) -> &crate::ffi::Prs3d_IsoAspect {
-        {
-            let __result = unsafe { crate::ffi::HandlePrs3dIsoAspect_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dIsoAspect_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Prs3d_IsoAspect
     pub fn get_mut(&mut self) -> &mut crate::ffi::Prs3d_IsoAspect {
-        {
-            let __result = unsafe { crate::ffi::HandlePrs3dIsoAspect_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dIsoAspect_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Prs3d_IsoAspect> to Handle<Prs3d_LineAspect>
     pub fn to_handle_line_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandlePrs3dLineAspect> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dIsoAspect_to_HandlePrs3dLineAspect(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dIsoAspect_to_HandlePrs3dLineAspect(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Prs3d_IsoAspect> to Handle<Prs3d_BasicAspect>
     pub fn to_handle_basic_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandlePrs3dBasicAspect> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dIsoAspect_to_HandlePrs3dBasicAspect(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dIsoAspect_to_HandlePrs3dBasicAspect(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Prs3d_IsoAspect> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dIsoAspect_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dIsoAspect_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5583,8 +6543,10 @@ impl LineAspect {
                     theWidth,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5595,8 +6557,10 @@ impl LineAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_LineAspect_ctor_handlegraphic3daspectline3d(theAspect) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5605,8 +6569,11 @@ impl LineAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_LineAspect_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5615,8 +6582,11 @@ impl LineAspect {
     /// Default value: Quantity_NOC_YELLOW
     pub fn set_color(&mut self, theColor: &crate::quantity::Color) {
         {
-            unsafe { crate::ffi::Prs3d_LineAspect_set_color(self as *mut Self, theColor) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_LineAspect_set_color(self as *mut Self, theColor) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5626,10 +6596,12 @@ impl LineAspect {
     /// Default value: Aspect_TOL_SOLID
     pub fn set_type_of_line(&mut self, theType: crate::aspect::TypeOfLine) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_LineAspect_set_type_of_line(self as *mut Self, theType.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5638,8 +6610,11 @@ impl LineAspect {
     /// Default value: 1.
     pub fn set_width(&mut self, theWidth: f64) {
         {
-            unsafe { crate::ffi::Prs3d_LineAspect_set_width(self as *mut Self, theWidth) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_LineAspect_set_width(self as *mut Self, theWidth) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5649,16 +6624,22 @@ impl LineAspect {
     pub fn aspect(&self) -> &crate::ffi::HandleGraphic3dAspectLine3d {
         {
             let __result = unsafe { crate::ffi::Prs3d_LineAspect_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `Prs3d_LineAspect.hxx`:67 - `Prs3d_LineAspect::SetAspect()`
     pub fn set_aspect(&mut self, theAspect: &crate::ffi::HandleGraphic3dAspectLine3d) {
         {
-            unsafe { crate::ffi::Prs3d_LineAspect_set_aspect(self as *mut Self, theAspect) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_LineAspect_set_aspect(self as *mut Self, theAspect) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5666,8 +6647,11 @@ impl LineAspect {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Prs3d_LineAspect_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5675,61 +6659,63 @@ impl LineAspect {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Prs3d_LineAspect_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Prs3d_BasicAspect
     pub fn as_basic_aspect(&self) -> &BasicAspect {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_LineAspect_as_Prs3d_BasicAspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_LineAspect_as_Prs3d_BasicAspect(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Prs3d_BasicAspect (mutable)
     pub fn as_basic_aspect_mut(&mut self) -> &mut BasicAspect {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_LineAspect_as_Prs3d_BasicAspect_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_LineAspect_as_Prs3d_BasicAspect_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_LineAspect_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_LineAspect_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_LineAspect_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_LineAspect_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrs3dLineAspect> {
-        {
-            let __result = unsafe { crate::ffi::Prs3d_LineAspect_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Prs3d_LineAspect_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -5738,8 +6724,11 @@ impl LineAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_LineAspect_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5749,8 +6738,11 @@ impl LineAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_LineAspect_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5759,11 +6751,14 @@ impl LineAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_LineAspect_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5773,18 +6768,23 @@ impl LineAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_LineAspect_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_LineAspect_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5794,16 +6794,22 @@ impl LineAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_LineAspect_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Prs3d_LineAspect_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_LineAspect_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5819,42 +6825,42 @@ unsafe impl crate::CppDeletable for HandlePrs3dLineAspect {
 impl HandlePrs3dLineAspect {
     /// Dereference this Handle to access the underlying Prs3d_LineAspect
     pub fn get(&self) -> &crate::ffi::Prs3d_LineAspect {
-        {
-            let __result = unsafe { crate::ffi::HandlePrs3dLineAspect_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dLineAspect_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Prs3d_LineAspect
     pub fn get_mut(&mut self) -> &mut crate::ffi::Prs3d_LineAspect {
-        {
-            let __result = unsafe { crate::ffi::HandlePrs3dLineAspect_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dLineAspect_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Prs3d_LineAspect> to Handle<Prs3d_BasicAspect>
     pub fn to_handle_basic_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandlePrs3dBasicAspect> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dLineAspect_to_HandlePrs3dBasicAspect(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dLineAspect_to_HandlePrs3dBasicAspect(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Prs3d_LineAspect> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dLineAspect_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dLineAspect_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Prs3d_LineAspect> to Handle<Prs3d_IsoAspect>
@@ -5863,14 +6869,16 @@ impl HandlePrs3dLineAspect {
     pub fn downcast_to_iso_aspect(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrs3dIsoAspect>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePrs3dLineAspect_downcast_to_HandlePrs3dIsoAspect(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -5895,8 +6903,10 @@ impl PlaneAspect {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Prs3d_PlaneAspect_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5905,8 +6915,11 @@ impl PlaneAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PlaneAspect_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5916,8 +6929,11 @@ impl PlaneAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PlaneAspect_edges_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5926,8 +6942,11 @@ impl PlaneAspect {
     pub fn iso_aspect(&self) -> &crate::ffi::HandlePrs3dLineAspect {
         {
             let __result = unsafe { crate::ffi::Prs3d_PlaneAspect_iso_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5937,18 +6956,23 @@ impl PlaneAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PlaneAspect_arrow_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `Prs3d_PlaneAspect.hxx`:39 - `Prs3d_PlaneAspect::SetArrowsLength()`
     pub fn set_arrows_length(&mut self, theLength: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PlaneAspect_set_arrows_length(self as *mut Self, theLength)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5958,8 +6982,11 @@ impl PlaneAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PlaneAspect_arrows_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5967,8 +6994,12 @@ impl PlaneAspect {
     /// Sets the angle of the arrowhead used in the display of planes.
     pub fn set_arrows_size(&mut self, theSize: f64) {
         {
-            unsafe { crate::ffi::Prs3d_PlaneAspect_set_arrows_size(self as *mut Self, theSize) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_PlaneAspect_set_arrows_size(self as *mut Self, theSize)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5978,8 +7009,11 @@ impl PlaneAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PlaneAspect_arrows_size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5988,8 +7022,12 @@ impl PlaneAspect {
     /// of arrows involved in the presentation of planes.
     pub fn set_arrows_angle(&mut self, theAngle: f64) {
         {
-            unsafe { crate::ffi::Prs3d_PlaneAspect_set_arrows_angle(self as *mut Self, theAngle) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_PlaneAspect_set_arrows_angle(self as *mut Self, theAngle)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6000,8 +7038,11 @@ impl PlaneAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PlaneAspect_arrows_angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6009,10 +7050,12 @@ impl PlaneAspect {
     /// Sets the display attributes defined in DisplayCenterArrow to active.
     pub fn set_display_center_arrow(&mut self, theToDraw: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PlaneAspect_set_display_center_arrow(self as *mut Self, theToDraw)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6022,8 +7065,11 @@ impl PlaneAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PlaneAspect_display_center_arrow(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6031,10 +7077,12 @@ impl PlaneAspect {
     /// Sets the display attributes defined in DisplayEdgesArrows to active.
     pub fn set_display_edges_arrows(&mut self, theToDraw: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PlaneAspect_set_display_edges_arrows(self as *mut Self, theToDraw)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6044,18 +7092,23 @@ impl PlaneAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PlaneAspect_display_edges_arrows(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Prs3d_PlaneAspect.hxx`:70 - `Prs3d_PlaneAspect::SetDisplayEdges()`
     pub fn set_display_edges(&mut self, theToDraw: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PlaneAspect_set_display_edges(self as *mut Self, theToDraw)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6064,8 +7117,11 @@ impl PlaneAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PlaneAspect_display_edges(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6073,8 +7129,12 @@ impl PlaneAspect {
     /// Sets the display attributes defined in DisplayIso to active.
     pub fn set_display_iso(&mut self, theToDraw: bool) {
         {
-            unsafe { crate::ffi::Prs3d_PlaneAspect_set_display_iso(self as *mut Self, theToDraw) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_PlaneAspect_set_display_iso(self as *mut Self, theToDraw)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6084,18 +7144,23 @@ impl PlaneAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PlaneAspect_display_iso(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Prs3d_PlaneAspect.hxx`:80 - `Prs3d_PlaneAspect::SetPlaneLength()`
     pub fn set_plane_length(&mut self, theLX: f64, theLY: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PlaneAspect_set_plane_length(self as *mut Self, theLX, theLY)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6105,8 +7170,11 @@ impl PlaneAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PlaneAspect_plane_x_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6116,8 +7184,11 @@ impl PlaneAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PlaneAspect_plane_y_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6125,8 +7196,11 @@ impl PlaneAspect {
     /// Sets the distance L between isoparameters used in the display of planes.
     pub fn set_iso_distance(&mut self, theL: f64) {
         {
-            unsafe { crate::ffi::Prs3d_PlaneAspect_set_iso_distance(self as *mut Self, theL) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_PlaneAspect_set_iso_distance(self as *mut Self, theL) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6136,8 +7210,11 @@ impl PlaneAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PlaneAspect_iso_distance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6145,8 +7222,11 @@ impl PlaneAspect {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Prs3d_PlaneAspect_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6154,62 +7234,63 @@ impl PlaneAspect {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Prs3d_PlaneAspect_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Prs3d_BasicAspect
     pub fn as_basic_aspect(&self) -> &BasicAspect {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_PlaneAspect_as_Prs3d_BasicAspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_PlaneAspect_as_Prs3d_BasicAspect(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Prs3d_BasicAspect (mutable)
     pub fn as_basic_aspect_mut(&mut self) -> &mut BasicAspect {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_PlaneAspect_as_Prs3d_BasicAspect_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_PlaneAspect_as_Prs3d_BasicAspect_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_PlaneAspect_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_PlaneAspect_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_PlaneAspect_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_PlaneAspect_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrs3dPlaneAspect> {
-        {
-            let __result = unsafe { crate::ffi::Prs3d_PlaneAspect_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Prs3d_PlaneAspect_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -6218,8 +7299,11 @@ impl PlaneAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_PlaneAspect_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6229,8 +7313,11 @@ impl PlaneAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_PlaneAspect_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6239,11 +7326,14 @@ impl PlaneAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PlaneAspect_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6253,18 +7343,23 @@ impl PlaneAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PlaneAspect_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PlaneAspect_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6274,16 +7369,22 @@ impl PlaneAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_PlaneAspect_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Prs3d_PlaneAspect_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_PlaneAspect_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6299,42 +7400,42 @@ unsafe impl crate::CppDeletable for HandlePrs3dPlaneAspect {
 impl HandlePrs3dPlaneAspect {
     /// Dereference this Handle to access the underlying Prs3d_PlaneAspect
     pub fn get(&self) -> &crate::ffi::Prs3d_PlaneAspect {
-        {
-            let __result = unsafe { crate::ffi::HandlePrs3dPlaneAspect_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dPlaneAspect_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Prs3d_PlaneAspect
     pub fn get_mut(&mut self) -> &mut crate::ffi::Prs3d_PlaneAspect {
-        {
-            let __result = unsafe { crate::ffi::HandlePrs3dPlaneAspect_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dPlaneAspect_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Prs3d_PlaneAspect> to Handle<Prs3d_BasicAspect>
     pub fn to_handle_basic_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandlePrs3dBasicAspect> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dPlaneAspect_to_HandlePrs3dBasicAspect(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dPlaneAspect_to_HandlePrs3dBasicAspect(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Prs3d_PlaneAspect> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dPlaneAspect_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dPlaneAspect_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6369,8 +7470,10 @@ impl PointAspect {
                     theScale,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6388,8 +7491,10 @@ impl PointAspect {
                     theColor, theWidth, theHeight, theTexture,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6401,8 +7506,10 @@ impl PointAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_PointAspect_ctor_handlegraphic3daspectmarker3d(theAspect)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6411,8 +7518,11 @@ impl PointAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PointAspect_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6421,8 +7531,11 @@ impl PointAspect {
     /// Default value: Quantity_NOC_YELLOW
     pub fn set_color(&mut self, theColor: &crate::quantity::Color) {
         {
-            unsafe { crate::ffi::Prs3d_PointAspect_set_color(self as *mut Self, theColor) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_PointAspect_set_color(self as *mut Self, theColor) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6431,10 +7544,12 @@ impl PointAspect {
     /// Default value: Aspect_TOM_PLUS
     pub fn set_type_of_marker(&mut self, theType: crate::aspect::TypeOfMarker) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PointAspect_set_type_of_marker(self as *mut Self, theType.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6443,8 +7558,11 @@ impl PointAspect {
     /// Default value: 1.
     pub fn set_scale(&mut self, theScale: f64) {
         {
-            unsafe { crate::ffi::Prs3d_PointAspect_set_scale(self as *mut Self, theScale) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_PointAspect_set_scale(self as *mut Self, theScale) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6452,16 +7570,22 @@ impl PointAspect {
     pub fn aspect(&self) -> &crate::ffi::HandleGraphic3dAspectMarker3d {
         {
             let __result = unsafe { crate::ffi::Prs3d_PointAspect_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `Prs3d_PointAspect.hxx`:60 - `Prs3d_PointAspect::SetAspect()`
     pub fn set_aspect(&mut self, theAspect: &crate::ffi::HandleGraphic3dAspectMarker3d) {
         {
-            unsafe { crate::ffi::Prs3d_PointAspect_set_aspect(self as *mut Self, theAspect) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_PointAspect_set_aspect(self as *mut Self, theAspect) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6469,14 +7593,16 @@ impl PointAspect {
     /// Returns marker's texture size.
     pub fn get_texture_size(&self, theWidth: &mut i32, theHeight: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PointAspect_get_texture_size(
                     self as *const Self,
                     theWidth,
                     theHeight,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6486,8 +7612,11 @@ impl PointAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PointAspect_get_texture(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6495,8 +7624,11 @@ impl PointAspect {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Prs3d_PointAspect_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6504,62 +7636,63 @@ impl PointAspect {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Prs3d_PointAspect_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Prs3d_BasicAspect
     pub fn as_basic_aspect(&self) -> &BasicAspect {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_PointAspect_as_Prs3d_BasicAspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_PointAspect_as_Prs3d_BasicAspect(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Prs3d_BasicAspect (mutable)
     pub fn as_basic_aspect_mut(&mut self) -> &mut BasicAspect {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_PointAspect_as_Prs3d_BasicAspect_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_PointAspect_as_Prs3d_BasicAspect_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_PointAspect_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_PointAspect_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_PointAspect_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_PointAspect_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrs3dPointAspect> {
-        {
-            let __result = unsafe { crate::ffi::Prs3d_PointAspect_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Prs3d_PointAspect_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -6568,8 +7701,11 @@ impl PointAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_PointAspect_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6579,8 +7715,11 @@ impl PointAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_PointAspect_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6589,11 +7728,14 @@ impl PointAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PointAspect_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6603,18 +7745,23 @@ impl PointAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PointAspect_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PointAspect_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6624,16 +7771,22 @@ impl PointAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_PointAspect_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Prs3d_PointAspect_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_PointAspect_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6649,42 +7802,42 @@ unsafe impl crate::CppDeletable for HandlePrs3dPointAspect {
 impl HandlePrs3dPointAspect {
     /// Dereference this Handle to access the underlying Prs3d_PointAspect
     pub fn get(&self) -> &crate::ffi::Prs3d_PointAspect {
-        {
-            let __result = unsafe { crate::ffi::HandlePrs3dPointAspect_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dPointAspect_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Prs3d_PointAspect
     pub fn get_mut(&mut self) -> &mut crate::ffi::Prs3d_PointAspect {
-        {
-            let __result = unsafe { crate::ffi::HandlePrs3dPointAspect_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dPointAspect_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Prs3d_PointAspect> to Handle<Prs3d_BasicAspect>
     pub fn to_handle_basic_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandlePrs3dBasicAspect> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dPointAspect_to_HandlePrs3dBasicAspect(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dPointAspect_to_HandlePrs3dBasicAspect(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Prs3d_PointAspect> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dPointAspect_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dPointAspect_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6713,8 +7866,10 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_ctor_handlegraphic3dstructuremanager_handlegraphic3dstructure(theViewer, thePrs)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6723,8 +7878,11 @@ impl PresentationShadow {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PresentationShadow_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6734,8 +7892,11 @@ impl PresentationShadow {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PresentationShadow_parent_id(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6746,8 +7907,11 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_parent_affinity(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6755,8 +7919,12 @@ impl PresentationShadow {
     /// Do nothing - axis-aligned bounding box should be initialized from parent structure.
     pub fn calculate_bound_box(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_PresentationShadow_calculate_bound_box(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_PresentationShadow_calculate_bound_box(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6764,8 +7932,11 @@ impl PresentationShadow {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Prs3d_PresentationShadow_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6773,85 +7944,93 @@ impl PresentationShadow {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Prs3d_PresentationShadow_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Graphic3d_Structure
     pub fn as_graphic3d_structure(&self) -> &crate::graphic3d::Structure {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_PresentationShadow_as_Graphic3d_Structure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Prs3d_PresentationShadow_as_Graphic3d_Structure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Graphic3d_Structure (mutable)
     pub fn as_graphic3d_structure_mut(&mut self) -> &mut crate::graphic3d::Structure {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_PresentationShadow_as_Graphic3d_Structure_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Prs3d_PresentationShadow_as_Graphic3d_Structure_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_PresentationShadow_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Prs3d_PresentationShadow_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_PresentationShadow_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Prs3d_PresentationShadow_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrs3dPresentationShadow> {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_PresentationShadow_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Prs3d_PresentationShadow_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:64 - `Graphic3d_Structure::Clear()`
     pub fn clear(&mut self, WithDestruction: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_Clear(
                     self as *mut Self,
                     WithDestruction,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:74 - `Graphic3d_Structure::Display()`
     pub fn display(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_PresentationShadow_inherited_Display(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_PresentationShadow_inherited_Display(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6861,41 +8040,51 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_DisplayPriority(self as *const Self)
             };
-            crate::check_exception();
-            crate::graphic3d::DisplayPriority::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::graphic3d::DisplayPriority::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:87 - `Graphic3d_Structure::SetDisplayPriority()`
     pub fn set_display_priority(&mut self, thePriority: crate::graphic3d::DisplayPriority) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_SetDisplayPriority(
                     self as *mut Self,
                     thePriority.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:100 - `Graphic3d_Structure::ResetDisplayPriority()`
     pub fn reset_display_priority(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_ResetDisplayPriority(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:103 - `Graphic3d_Structure::Erase()`
     pub fn erase(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_PresentationShadow_inherited_Erase(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_PresentationShadow_inherited_Erase(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6906,48 +8095,57 @@ impl PresentationShadow {
         theToUpdateMgr: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_Highlight(
                     self as *mut Self,
                     theStyle,
                     theToUpdateMgr,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:116 - `Graphic3d_Structure::Remove()`
     pub fn remove(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_PresentationShadow_inherited_Remove(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_PresentationShadow_inherited_Remove(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:126 - `Graphic3d_Structure::SetInfiniteState()`
     pub fn set_infinite_state(&mut self, theToSet: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_SetInfiniteState(
                     self as *mut Self,
                     theToSet,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:138 - `Graphic3d_Structure::SetZLayer()`
     pub fn set_z_layer(&mut self, theLayerId: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_SetZLayer(
                     self as *mut Self,
                     theLayerId,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6957,21 +8155,26 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_GetZLayer(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:146 - `Graphic3d_Structure::SetClipPlanes()`
     pub fn set_clip_planes(&mut self, thePlanes: &crate::ffi::HandleGraphic3dSequenceOfHClipPlane) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_SetClipPlanes(
                     self as *mut Self,
                     thePlanes,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6981,76 +8184,93 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_ClipPlanes(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:165 - `Graphic3d_Structure::SetVisible()`
     pub fn set_visible(&mut self, AValue: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_SetVisible(self as *mut Self, AValue)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:168 - `Graphic3d_Structure::SetVisual()`
     pub fn set_visual(&mut self, AVisual: crate::graphic3d::TypeOfStructure) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_SetVisual(
                     self as *mut Self,
                     AVisual.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:177 - `Graphic3d_Structure::SetZoomLimit()`
     pub fn set_zoom_limit(&mut self, LimitInf: f64, LimitSup: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_SetZoomLimit(
                     self as *mut Self,
                     LimitInf,
                     LimitSup,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:181 - `Graphic3d_Structure::SetIsForHighlight()`
     pub fn set_is_for_highlight(&mut self, isForHighlight: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_SetIsForHighlight(
                     self as *mut Self,
                     isForHighlight,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:191 - `Graphic3d_Structure::UnHighlight()`
     pub fn un_highlight(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_UnHighlight(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:193 - `Graphic3d_Structure::Compute()`
     pub fn compute(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_PresentationShadow_inherited_Compute(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_PresentationShadow_inherited_Compute(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7061,35 +8281,43 @@ impl PresentationShadow {
         theStructure: &mut crate::ffi::HandleGraphic3dStructure,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_computeHLR(
                     self as *mut Self,
                     theProjector,
                     theStructure,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:207 - `Graphic3d_Structure::RecomputeTransformation()`
     pub fn recompute_transformation(&mut self, theProjector: &crate::ffi::HandleGraphic3dCamera) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_RecomputeTransformation(
                     self as *mut Self,
                     theProjector,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:214 - `Graphic3d_Structure::ReCompute()`
     pub fn re_compute(&mut self) {
         {
-            unsafe { crate::ffi::Prs3d_PresentationShadow_inherited_ReCompute(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_PresentationShadow_inherited_ReCompute(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7099,8 +8327,11 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_Groups(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7110,8 +8341,11 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_NumberOfGroups(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7121,8 +8355,11 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_NewGroup(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7132,8 +8369,11 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_CurrentGroup(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7143,8 +8383,11 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_HighlightStyle(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7154,8 +8397,11 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_IsDeleted(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7165,8 +8411,11 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_IsDisplayed(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7176,8 +8425,11 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_IsEmpty(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7187,8 +8439,11 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_IsInfinite(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7198,8 +8453,11 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_IsHighlighted(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7209,8 +8467,11 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_IsTransformed(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7220,8 +8481,11 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_IsVisible(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7237,8 +8501,11 @@ impl PresentationShadow {
                     theToIgnoreInfiniteFlag,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7248,18 +8515,23 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_Visual(self as *const Self)
             };
-            crate::check_exception();
-            crate::graphic3d::TypeOfStructure::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::graphic3d::TypeOfStructure::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:316 - `Graphic3d_Structure::Ancestors()`
     pub fn ancestors(&self, SG: &mut crate::ffi::Graphic3d_MapOfStructure) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_Ancestors(self as *const Self, SG)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7271,7 +8543,7 @@ impl PresentationShadow {
         theWithCheck: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_Connect(
                     self as *mut Self,
                     theStructure as *mut _,
@@ -7279,66 +8551,78 @@ impl PresentationShadow {
                     theWithCheck,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:338 - `Graphic3d_Structure::Descendants()`
     pub fn descendants(&self, SG: &mut crate::ffi::Graphic3d_MapOfStructure) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_Descendants(self as *const Self, SG)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:341 - `Graphic3d_Structure::Disconnect()`
     pub fn disconnect(&mut self, theStructure: &mut crate::graphic3d::Structure) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_Disconnect(
                     self as *mut Self,
                     theStructure as *mut _,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:351 - `Graphic3d_Structure::DisconnectAll()`
     pub fn disconnect_all(&mut self, AType: crate::graphic3d::TypeOfConnection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_DisconnectAll(
                     self as *mut Self,
                     AType.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:366 - `Graphic3d_Structure::SetOwner()`
     pub unsafe fn set_owner(&mut self, theOwner: *mut std::ffi::c_void) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_SetOwner(self as *mut Self, theOwner)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:370 - `Graphic3d_Structure::SetHLRValidation()`
     pub fn set_hlr_validation(&mut self, theFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_SetHLRValidation(
                     self as *mut Self,
                     theFlag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7348,8 +8632,11 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_HLRValidation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7359,21 +8646,26 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_Transformation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:390 - `Graphic3d_Structure::SetTransformation()`
     pub fn set_transformation(&mut self, theTrsf: &crate::ffi::HandleTopLocDatum3D) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_SetTransformation(
                     self as *mut Self,
                     theTrsf,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7383,13 +8675,15 @@ impl PresentationShadow {
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_SetTransformPersistence(
                     self as *mut Self,
                     theTrsfPers,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7401,21 +8695,26 @@ impl PresentationShadow {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:403 - `Graphic3d_Structure::SetMutable()`
     pub fn set_mutable(&mut self, theIsMutable: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_SetMutable(
                     self as *mut Self,
                     theIsMutable,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7425,8 +8724,11 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_IsMutable(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7436,60 +8738,71 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_ComputeVisual(self as *const Self)
             };
-            crate::check_exception();
-            crate::graphic3d::TypeOfStructure::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::graphic3d::TypeOfStructure::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:418 - `Graphic3d_Structure::GraphicClear()`
     pub fn graphic_clear(&mut self, WithDestruction: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_GraphicClear(
                     self as *mut Self,
                     WithDestruction,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:420 - `Graphic3d_Structure::GraphicConnect()`
     pub fn graphic_connect(&mut self, theDaughter: &crate::ffi::HandleGraphic3dStructure) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_GraphicConnect(
                     self as *mut Self,
                     theDaughter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:428 - `Graphic3d_Structure::GraphicDisconnect()`
     pub fn graphic_disconnect(&mut self, theDaughter: &crate::ffi::HandleGraphic3dStructure) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_GraphicDisconnect(
                     self as *mut Self,
                     theDaughter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:437 - `Graphic3d_Structure::GraphicTransform()`
     pub fn graphic_transform(&mut self, theTrsf: &crate::ffi::HandleTopLocDatum3D) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_GraphicTransform(
                     self as *mut Self,
                     theTrsf,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7499,21 +8812,26 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_Identification(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Structure.hxx`:457 - `Graphic3d_Structure::SetComputeVisual()`
     pub fn set_compute_visual(&mut self, theVisual: crate::graphic3d::TypeOfStructure) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_SetComputeVisual(
                     self as *mut Self,
                     theVisual.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7523,8 +8841,11 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_CStructure(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7537,8 +8858,11 @@ impl PresentationShadow {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7548,8 +8872,11 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7558,11 +8885,14 @@ impl PresentationShadow {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_PresentationShadow_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7573,20 +8903,25 @@ impl PresentationShadow {
             let __result = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_PresentationShadow_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7598,16 +8933,23 @@ impl PresentationShadow {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Prs3d_PresentationShadow_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_PresentationShadow_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7623,48 +8965,48 @@ unsafe impl crate::CppDeletable for HandlePrs3dPresentationShadow {
 impl HandlePrs3dPresentationShadow {
     /// Dereference this Handle to access the underlying Prs3d_PresentationShadow
     pub fn get(&self) -> &crate::ffi::Prs3d_PresentationShadow {
-        {
-            let __result =
-                unsafe { crate::ffi::HandlePrs3dPresentationShadow_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandlePrs3dPresentationShadow_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Prs3d_PresentationShadow
     pub fn get_mut(&mut self) -> &mut crate::ffi::Prs3d_PresentationShadow {
-        {
-            let __result =
-                unsafe { crate::ffi::HandlePrs3dPresentationShadow_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandlePrs3dPresentationShadow_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Prs3d_PresentationShadow> to Handle<Graphic3d_Structure>
     pub fn to_handle_structure(&self) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dStructure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dPresentationShadow_to_HandleGraphic3dStructure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dPresentationShadow_to_HandleGraphic3dStructure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Prs3d_PresentationShadow> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dPresentationShadow_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dPresentationShadow_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -7692,8 +9034,10 @@ impl ShadingAspect {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Prs3d_ShadingAspect_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7706,8 +9050,10 @@ impl ShadingAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_ShadingAspect_ctor_handlegraphic3daspectfillarea3d(theAspect)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7716,8 +9062,11 @@ impl ShadingAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_ShadingAspect_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7729,10 +9078,12 @@ impl ShadingAspect {
         aModel: crate::aspect::TypeOfFacingModel,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_ShadingAspect_set_color(self as *mut Self, aColor, aModel.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7744,14 +9095,16 @@ impl ShadingAspect {
         aModel: crate::aspect::TypeOfFacingModel,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_ShadingAspect_set_material(
                     self as *mut Self,
                     aMaterial,
                     aModel.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7760,14 +9113,16 @@ impl ShadingAspect {
     /// Warning : aValue must be in the range 0,1. 0 is the default (NO transparent)
     pub fn set_transparency(&mut self, aValue: f64, aModel: crate::aspect::TypeOfFacingModel) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_ShadingAspect_set_transparency(
                     self as *mut Self,
                     aValue,
                     aModel.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7778,8 +9133,11 @@ impl ShadingAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_ShadingAspect_color(self as *const Self, aModel.into())
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7793,8 +9151,11 @@ impl ShadingAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_ShadingAspect_material(self as *const Self, aModel.into())
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7805,8 +9166,11 @@ impl ShadingAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_ShadingAspect_transparency(self as *const Self, aModel.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7815,16 +9179,22 @@ impl ShadingAspect {
     pub fn aspect(&self) -> &crate::ffi::HandleGraphic3dAspectFillArea3d {
         {
             let __result = unsafe { crate::ffi::Prs3d_ShadingAspect_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `Prs3d_ShadingAspect.hxx`:72 - `Prs3d_ShadingAspect::SetAspect()`
     pub fn set_aspect(&mut self, theAspect: &crate::ffi::HandleGraphic3dAspectFillArea3d) {
         {
-            unsafe { crate::ffi::Prs3d_ShadingAspect_set_aspect(self as *mut Self, theAspect) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_ShadingAspect_set_aspect(self as *mut Self, theAspect) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7832,8 +9202,11 @@ impl ShadingAspect {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Prs3d_ShadingAspect_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -7841,64 +9214,63 @@ impl ShadingAspect {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Prs3d_ShadingAspect_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Prs3d_BasicAspect
     pub fn as_basic_aspect(&self) -> &BasicAspect {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_ShadingAspect_as_Prs3d_BasicAspect(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_ShadingAspect_as_Prs3d_BasicAspect(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Prs3d_BasicAspect (mutable)
     pub fn as_basic_aspect_mut(&mut self) -> &mut BasicAspect {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_ShadingAspect_as_Prs3d_BasicAspect_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_ShadingAspect_as_Prs3d_BasicAspect_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_ShadingAspect_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_ShadingAspect_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_ShadingAspect_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_ShadingAspect_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrs3dShadingAspect> {
-        {
-            let __result = unsafe { crate::ffi::Prs3d_ShadingAspect_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Prs3d_ShadingAspect_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -7907,8 +9279,11 @@ impl ShadingAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_ShadingAspect_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7918,8 +9293,11 @@ impl ShadingAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_ShadingAspect_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7928,11 +9306,14 @@ impl ShadingAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_ShadingAspect_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7943,18 +9324,23 @@ impl ShadingAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_ShadingAspect_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_ShadingAspect_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7964,16 +9350,22 @@ impl ShadingAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_ShadingAspect_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Prs3d_ShadingAspect_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_ShadingAspect_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7989,43 +9381,42 @@ unsafe impl crate::CppDeletable for HandlePrs3dShadingAspect {
 impl HandlePrs3dShadingAspect {
     /// Dereference this Handle to access the underlying Prs3d_ShadingAspect
     pub fn get(&self) -> &crate::ffi::Prs3d_ShadingAspect {
-        {
-            let __result = unsafe { crate::ffi::HandlePrs3dShadingAspect_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dShadingAspect_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Prs3d_ShadingAspect
     pub fn get_mut(&mut self) -> &mut crate::ffi::Prs3d_ShadingAspect {
-        {
-            let __result =
-                unsafe { crate::ffi::HandlePrs3dShadingAspect_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dShadingAspect_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Prs3d_ShadingAspect> to Handle<Prs3d_BasicAspect>
     pub fn to_handle_basic_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandlePrs3dBasicAspect> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dShadingAspect_to_HandlePrs3dBasicAspect(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dShadingAspect_to_HandlePrs3dBasicAspect(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Prs3d_ShadingAspect> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dShadingAspect_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dShadingAspect_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -8049,8 +9440,10 @@ impl Text {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Prs3d_Text_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8071,8 +9464,11 @@ impl Text {
             let __result = unsafe {
                 crate::ffi::Prs3d_Text_draw_handlegraphic3dgroup_handleprs3dtextaspect_extendedstring_pnt(theGroup, theAspect, theText, theAttachmentPoint)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8095,8 +9491,11 @@ impl Text {
             let __result = unsafe {
                 crate::ffi::Prs3d_Text_draw_handlegraphic3dgroup_handleprs3dtextaspect_extendedstring_ax2_bool(theGroup, theAspect, theText, theOrientation, theHasOwnAnchor)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -8121,8 +9520,10 @@ impl TextAspect {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Prs3d_TextAspect_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8133,8 +9534,10 @@ impl TextAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_TextAspect_ctor_handlegraphic3daspecttext3d(theAspect) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8143,8 +9546,11 @@ impl TextAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_TextAspect_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8152,8 +9558,11 @@ impl TextAspect {
     /// Sets the color of the type used in text display.
     pub fn set_color(&mut self, theColor: &crate::quantity::Color) {
         {
-            unsafe { crate::ffi::Prs3d_TextAspect_set_color(self as *mut Self, theColor) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_TextAspect_set_color(self as *mut Self, theColor) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8162,8 +9571,12 @@ impl TextAspect {
     pub fn set_font(&mut self, theFont: &str) {
         let c_theFont = std::ffi::CString::new(theFont).unwrap();
         {
-            unsafe { crate::ffi::Prs3d_TextAspect_set_font(self as *mut Self, c_theFont.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Prs3d_TextAspect_set_font(self as *mut Self, c_theFont.as_ptr())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8171,8 +9584,11 @@ impl TextAspect {
     /// Sets the height of the text.
     pub fn set_height(&mut self, theHeight: f64) {
         {
-            unsafe { crate::ffi::Prs3d_TextAspect_set_height(self as *mut Self, theHeight) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_TextAspect_set_height(self as *mut Self, theHeight) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8180,8 +9596,11 @@ impl TextAspect {
     /// Sets the angle
     pub fn set_angle(&mut self, theAngle: f64) {
         {
-            unsafe { crate::ffi::Prs3d_TextAspect_set_angle(self as *mut Self, theAngle) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_TextAspect_set_angle(self as *mut Self, theAngle) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8190,8 +9609,11 @@ impl TextAspect {
     pub fn height(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Prs3d_TextAspect_height(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8200,8 +9622,11 @@ impl TextAspect {
     pub fn angle(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Prs3d_TextAspect_angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8212,13 +9637,15 @@ impl TextAspect {
         theJustification: crate::graphic3d::HorizontalTextAlignment,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_TextAspect_set_horizontal_justification(
                     self as *mut Self,
                     theJustification.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8229,13 +9656,15 @@ impl TextAspect {
         theJustification: crate::graphic3d::VerticalTextAlignment,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_TextAspect_set_vertical_justification(
                     self as *mut Self,
                     theJustification.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8243,13 +9672,15 @@ impl TextAspect {
     /// Sets the orientation of text.
     pub fn set_orientation(&mut self, theOrientation: crate::graphic3d::TextPath) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_TextAspect_set_orientation(
                     self as *mut Self,
                     theOrientation.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8265,8 +9696,11 @@ impl TextAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_TextAspect_horizontal_justification(self as *const Self)
             };
-            crate::check_exception();
-            crate::graphic3d::HorizontalTextAlignment::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::graphic3d::HorizontalTextAlignment::try_from(__val).unwrap()
         }
     }
 
@@ -8283,8 +9717,11 @@ impl TextAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_TextAspect_vertical_justification(self as *const Self) };
-            crate::check_exception();
-            crate::graphic3d::VerticalTextAlignment::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::graphic3d::VerticalTextAlignment::try_from(__val).unwrap()
         }
     }
 
@@ -8298,8 +9735,11 @@ impl TextAspect {
     pub fn orientation(&self) -> crate::graphic3d::TextPath {
         {
             let __result = unsafe { crate::ffi::Prs3d_TextAspect_orientation(self as *const Self) };
-            crate::check_exception();
-            crate::graphic3d::TextPath::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::graphic3d::TextPath::try_from(__val).unwrap()
         }
     }
 
@@ -8313,16 +9753,22 @@ impl TextAspect {
     pub fn aspect(&self) -> &crate::ffi::HandleGraphic3dAspectText3d {
         {
             let __result = unsafe { crate::ffi::Prs3d_TextAspect_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `Prs3d_TextAspect.hxx`:106 - `Prs3d_TextAspect::SetAspect()`
     pub fn set_aspect(&mut self, theAspect: &crate::ffi::HandleGraphic3dAspectText3d) {
         {
-            unsafe { crate::ffi::Prs3d_TextAspect_set_aspect(self as *mut Self, theAspect) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_TextAspect_set_aspect(self as *mut Self, theAspect) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8330,8 +9776,11 @@ impl TextAspect {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Prs3d_TextAspect_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8339,61 +9788,63 @@ impl TextAspect {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Prs3d_TextAspect_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Prs3d_BasicAspect
     pub fn as_basic_aspect(&self) -> &BasicAspect {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_TextAspect_as_Prs3d_BasicAspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_TextAspect_as_Prs3d_BasicAspect(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Prs3d_BasicAspect (mutable)
     pub fn as_basic_aspect_mut(&mut self) -> &mut BasicAspect {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_TextAspect_as_Prs3d_BasicAspect_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_TextAspect_as_Prs3d_BasicAspect_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_TextAspect_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_TextAspect_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_TextAspect_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_TextAspect_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrs3dTextAspect> {
-        {
-            let __result = unsafe { crate::ffi::Prs3d_TextAspect_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Prs3d_TextAspect_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -8402,8 +9853,11 @@ impl TextAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_TextAspect_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8413,8 +9867,11 @@ impl TextAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_TextAspect_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8423,11 +9880,14 @@ impl TextAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_TextAspect_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -8437,18 +9897,23 @@ impl TextAspect {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_TextAspect_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_TextAspect_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8458,16 +9923,22 @@ impl TextAspect {
             let __result = unsafe {
                 crate::ffi::Prs3d_TextAspect_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Prs3d_TextAspect_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Prs3d_TextAspect_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8483,42 +9954,42 @@ unsafe impl crate::CppDeletable for HandlePrs3dTextAspect {
 impl HandlePrs3dTextAspect {
     /// Dereference this Handle to access the underlying Prs3d_TextAspect
     pub fn get(&self) -> &crate::ffi::Prs3d_TextAspect {
-        {
-            let __result = unsafe { crate::ffi::HandlePrs3dTextAspect_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dTextAspect_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Prs3d_TextAspect
     pub fn get_mut(&mut self) -> &mut crate::ffi::Prs3d_TextAspect {
-        {
-            let __result = unsafe { crate::ffi::HandlePrs3dTextAspect_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePrs3dTextAspect_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Prs3d_TextAspect> to Handle<Prs3d_BasicAspect>
     pub fn to_handle_basic_aspect(&self) -> crate::OwnedPtr<crate::ffi::HandlePrs3dBasicAspect> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dTextAspect_to_HandlePrs3dBasicAspect(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dTextAspect_to_HandlePrs3dBasicAspect(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Prs3d_TextAspect> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePrs3dTextAspect_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePrs3dTextAspect_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -8561,8 +10032,10 @@ impl ToolCylinder {
                     theNbStacks,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8594,30 +10067,32 @@ impl ToolCylinder {
                     theTrsf,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to Prs3d_ToolQuadric
     pub fn as_tool_quadric(&self) -> &ToolQuadric {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_ToolCylinder_as_Prs3d_ToolQuadric(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_ToolCylinder_as_Prs3d_ToolQuadric(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Prs3d_ToolQuadric (mutable)
     pub fn as_tool_quadric_mut(&mut self) -> &mut ToolQuadric {
-        {
-            let __result = unsafe {
-                crate::ffi::Prs3d_ToolCylinder_as_Prs3d_ToolQuadric_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_ToolCylinder_as_Prs3d_ToolQuadric_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Prs3d_ToolQuadric.hxx`:48 - `Prs3d_ToolQuadric::CreateTriangulation()`
@@ -8632,8 +10107,11 @@ impl ToolCylinder {
                     theTrsf,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8649,8 +10127,11 @@ impl ToolCylinder {
                     theTrsf,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8661,14 +10142,16 @@ impl ToolCylinder {
         theTrsf: &crate::gp::Trsf,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_ToolCylinder_inherited_FillArray(
                     self as *const Self,
                     theArray,
                     theTrsf,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8678,8 +10161,11 @@ impl ToolCylinder {
             let __result = unsafe {
                 crate::ffi::Prs3d_ToolCylinder_inherited_TrianglesNb(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8692,8 +10178,11 @@ impl ToolCylinder {
                     theIsIndexed,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -8734,8 +10223,10 @@ impl ToolDisk {
                     theNbStacks,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8745,14 +10236,16 @@ impl ToolDisk {
     /// @param[in] theEndAngle    End   angle in counter clockwise order
     pub fn set_angle_range(&mut self, theStartAngle: f64, theEndAngle: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_ToolDisk_set_angle_range(
                     self as *mut Self,
                     theStartAngle,
                     theEndAngle,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8781,29 +10274,32 @@ impl ToolDisk {
                     theTrsf,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to Prs3d_ToolQuadric
     pub fn as_tool_quadric(&self) -> &ToolQuadric {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_ToolDisk_as_Prs3d_ToolQuadric(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_ToolDisk_as_Prs3d_ToolQuadric(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Prs3d_ToolQuadric (mutable)
     pub fn as_tool_quadric_mut(&mut self) -> &mut ToolQuadric {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_ToolDisk_as_Prs3d_ToolQuadric_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_ToolDisk_as_Prs3d_ToolQuadric_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Prs3d_ToolQuadric.hxx`:48 - `Prs3d_ToolQuadric::CreateTriangulation()`
@@ -8818,8 +10314,11 @@ impl ToolDisk {
                     theTrsf,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8835,8 +10334,11 @@ impl ToolDisk {
                     theTrsf,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8847,14 +10349,16 @@ impl ToolDisk {
         theTrsf: &crate::gp::Trsf,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_ToolDisk_inherited_FillArray(
                     self as *const Self,
                     theArray,
                     theTrsf,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8863,8 +10367,11 @@ impl ToolDisk {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_ToolDisk_inherited_TrianglesNb(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8874,8 +10381,11 @@ impl ToolDisk {
             let __result = unsafe {
                 crate::ffi::Prs3d_ToolDisk_inherited_VerticesNb(self as *const Self, theIsIndexed)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -8907,8 +10417,11 @@ impl ToolQuadric {
             let __result = unsafe {
                 crate::ffi::Prs3d_ToolQuadric_create_triangulation(self as *const Self, theTrsf)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8927,8 +10440,11 @@ impl ToolQuadric {
                     theTrsf,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8945,10 +10461,12 @@ impl ToolQuadric {
         theTrsf: &crate::gp::Trsf,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_ToolQuadric_fill_array(self as *const Self, theArray, theTrsf)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8958,8 +10476,11 @@ impl ToolQuadric {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_ToolQuadric_triangles_nb(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8970,8 +10491,11 @@ impl ToolQuadric {
             let __result = unsafe {
                 crate::ffi::Prs3d_ToolQuadric_vertices_nb(self as *const Self, theIsIndexed)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8982,8 +10506,11 @@ impl ToolQuadric {
             let __result = unsafe {
                 crate::ffi::Prs3d_ToolQuadric_triangles_nb_int2(theSlicesNb, theStacksNb)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8998,8 +10525,11 @@ impl ToolQuadric {
                     theIsIndexed,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -9033,8 +10563,10 @@ impl ToolSector {
             let __result = unsafe {
                 crate::ffi::Prs3d_ToolSector_ctor_real_int2(theRadius, theNbSlices, theNbStacks)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9055,29 +10587,32 @@ impl ToolSector {
             let __result = unsafe {
                 crate::ffi::Prs3d_ToolSector_create(theRadius, theNbSlices, theNbStacks, theTrsf)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to Prs3d_ToolQuadric
     pub fn as_tool_quadric(&self) -> &ToolQuadric {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_ToolSector_as_Prs3d_ToolQuadric(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_ToolSector_as_Prs3d_ToolQuadric(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Prs3d_ToolQuadric (mutable)
     pub fn as_tool_quadric_mut(&mut self) -> &mut ToolQuadric {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_ToolSector_as_Prs3d_ToolQuadric_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_ToolSector_as_Prs3d_ToolQuadric_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Prs3d_ToolQuadric.hxx`:48 - `Prs3d_ToolQuadric::CreateTriangulation()`
@@ -9092,8 +10627,11 @@ impl ToolSector {
                     theTrsf,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9109,8 +10647,11 @@ impl ToolSector {
                     theTrsf,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9121,14 +10662,16 @@ impl ToolSector {
         theTrsf: &crate::gp::Trsf,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_ToolSector_inherited_FillArray(
                     self as *const Self,
                     theArray,
                     theTrsf,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9137,8 +10680,11 @@ impl ToolSector {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_ToolSector_inherited_TrianglesNb(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9148,8 +10694,11 @@ impl ToolSector {
             let __result = unsafe {
                 crate::ffi::Prs3d_ToolSector_inherited_VerticesNb(self as *const Self, theIsIndexed)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -9183,8 +10732,10 @@ impl ToolSphere {
             let __result = unsafe {
                 crate::ffi::Prs3d_ToolSphere_ctor_real_int2(theRadius, theNbSlices, theNbStacks)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9205,29 +10756,32 @@ impl ToolSphere {
             let __result = unsafe {
                 crate::ffi::Prs3d_ToolSphere_create(theRadius, theNbSlices, theNbStacks, theTrsf)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to Prs3d_ToolQuadric
     pub fn as_tool_quadric(&self) -> &ToolQuadric {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_ToolSphere_as_Prs3d_ToolQuadric(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_ToolSphere_as_Prs3d_ToolQuadric(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Prs3d_ToolQuadric (mutable)
     pub fn as_tool_quadric_mut(&mut self) -> &mut ToolQuadric {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_ToolSphere_as_Prs3d_ToolQuadric_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_ToolSphere_as_Prs3d_ToolQuadric_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Prs3d_ToolQuadric.hxx`:48 - `Prs3d_ToolQuadric::CreateTriangulation()`
@@ -9242,8 +10796,11 @@ impl ToolSphere {
                     theTrsf,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9259,8 +10816,11 @@ impl ToolSphere {
                     theTrsf,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9271,14 +10831,16 @@ impl ToolSphere {
         theTrsf: &crate::gp::Trsf,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_ToolSphere_inherited_FillArray(
                     self as *const Self,
                     theArray,
                     theTrsf,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9287,8 +10849,11 @@ impl ToolSphere {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_ToolSphere_inherited_TrianglesNb(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9298,8 +10863,11 @@ impl ToolSphere {
             let __result = unsafe {
                 crate::ffi::Prs3d_ToolSphere_inherited_VerticesNb(self as *const Self, theIsIndexed)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -9340,8 +10908,10 @@ impl ToolTorus {
                     theNbStacks,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9369,8 +10939,10 @@ impl ToolTorus {
                     theNbStacks,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9401,8 +10973,10 @@ impl ToolTorus {
                     theNbStacks,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9436,8 +11010,10 @@ impl ToolTorus {
                     theNbStacks,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9466,8 +11042,11 @@ impl ToolTorus {
                     theTrsf,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9499,8 +11078,11 @@ impl ToolTorus {
                     theTrsf,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9535,8 +11117,11 @@ impl ToolTorus {
                     theTrsf,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9574,29 +11159,32 @@ impl ToolTorus {
                     theTrsf,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to Prs3d_ToolQuadric
     pub fn as_tool_quadric(&self) -> &ToolQuadric {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_ToolTorus_as_Prs3d_ToolQuadric(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_ToolTorus_as_Prs3d_ToolQuadric(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Prs3d_ToolQuadric (mutable)
     pub fn as_tool_quadric_mut(&mut self) -> &mut ToolQuadric {
-        {
-            let __result =
-                unsafe { crate::ffi::Prs3d_ToolTorus_as_Prs3d_ToolQuadric_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Prs3d_ToolTorus_as_Prs3d_ToolQuadric_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Prs3d_ToolQuadric.hxx`:48 - `Prs3d_ToolQuadric::CreateTriangulation()`
@@ -9611,8 +11199,11 @@ impl ToolTorus {
                     theTrsf,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9628,8 +11219,11 @@ impl ToolTorus {
                     theTrsf,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9640,14 +11234,16 @@ impl ToolTorus {
         theTrsf: &crate::gp::Trsf,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Prs3d_ToolTorus_inherited_FillArray(
                     self as *const Self,
                     theArray,
                     theTrsf,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9656,8 +11252,11 @@ impl ToolTorus {
         {
             let __result =
                 unsafe { crate::ffi::Prs3d_ToolTorus_inherited_TrianglesNb(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9667,8 +11266,11 @@ impl ToolTorus {
             let __result = unsafe {
                 crate::ffi::Prs3d_ToolTorus_inherited_VerticesNb(self as *const Self, theIsIndexed)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

@@ -11,8 +11,11 @@
 pub fn version() -> crate::OwnedPtr<crate::t_collection::AsciiString> {
     {
         let __result = unsafe { crate::ffi::StdStorage_version() };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `StdStorage.hxx`:51 - `StdStorage::Read`
@@ -29,8 +32,11 @@ pub fn read_asciistring_handlestdstoragedata(
         let __result = unsafe {
             crate::ffi::StdStorage_read_asciistring_handlestdstoragedata(theFileName, theData)
         };
-        crate::check_exception();
-        crate::storage::Error::try_from(__result).unwrap()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        crate::storage::Error::try_from(__val).unwrap()
     }
 }
 /// **Source:** `StdStorage.hxx`:59 - `StdStorage::Read`
@@ -49,8 +55,11 @@ pub fn read_handlestoragebasedriver_handlestdstoragedata(
                 theDriver, theData,
             )
         };
-        crate::check_exception();
-        crate::storage::Error::try_from(__result).unwrap()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        crate::storage::Error::try_from(__val).unwrap()
     }
 }
 /// **Source:** `StdStorage.hxx`:66 - `StdStorage::Write`
@@ -68,8 +77,11 @@ pub fn write_handlestoragebasedriver_handlestdstoragedata(
                 theDriver, theData,
             )
         };
-        crate::check_exception();
-        crate::storage::Error::try_from(__result).unwrap()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        crate::storage::Error::try_from(__val).unwrap()
     }
 }
 
@@ -94,8 +106,10 @@ impl Bucket {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdStorage_Bucket_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -103,16 +117,20 @@ impl Bucket {
     pub fn new_int(theSpaceSize: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdStorage_Bucket_ctor_int(theSpaceSize) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `StdStorage_BacketOfPersistent.hxx`:55 - `StdStorage_Bucket::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::StdStorage_Bucket_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdStorage_Bucket_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -133,8 +151,10 @@ impl BucketOfPersistent {
             let __result = unsafe {
                 crate::ffi::StdStorage_BucketOfPersistent_ctor_int2(theBucketSize, theBucketNumber)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -153,16 +173,22 @@ impl BucketOfPersistent {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_BucketOfPersistent_length(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `StdStorage_BacketOfPersistent.hxx`:77 - `StdStorage_BucketOfPersistent::Append()`
     pub fn append(&mut self, sp: &crate::ffi::HandleStdObjMgtPersistent) {
         {
-            unsafe { crate::ffi::StdStorage_BucketOfPersistent_append(self as *mut Self, sp) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdStorage_BucketOfPersistent_append(self as *mut Self, sp) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -172,11 +198,14 @@ impl BucketOfPersistent {
             let __result = unsafe {
                 crate::ffi::StdStorage_BucketOfPersistent_value(self as *mut Self, theIndex)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &mut *__result })
+                Some(unsafe { &mut *__val })
             }
         }
     }
@@ -184,8 +213,11 @@ impl BucketOfPersistent {
     /// **Source:** `StdStorage_BacketOfPersistent.hxx`:81 - `StdStorage_BucketOfPersistent::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::StdStorage_BucketOfPersistent_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdStorage_BucketOfPersistent_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -206,26 +238,32 @@ impl BucketIterator {
             let __result = unsafe {
                 crate::ffi::StdStorage_BucketIterator_ctor_bucketofpersistentptr(arg0 as *mut _)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `StdStorage_BacketOfPersistent.hxx`:98 - `StdStorage_BucketIterator::Init()`
     pub fn init(&mut self, arg0: &mut BucketOfPersistent) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdStorage_BucketIterator_init(self as *mut Self, arg0 as *mut _)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `StdStorage_BacketOfPersistent.hxx`:99 - `StdStorage_BucketIterator::Reset()`
     pub fn reset(&mut self) {
         {
-            unsafe { crate::ffi::StdStorage_BucketIterator_reset(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdStorage_BucketIterator_reset(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -234,11 +272,14 @@ impl BucketIterator {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_BucketIterator_value(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -248,16 +289,21 @@ impl BucketIterator {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_BucketIterator_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `StdStorage_BacketOfPersistent.hxx`:113 - `StdStorage_BucketIterator::Next()`
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::StdStorage_BucketIterator_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdStorage_BucketIterator_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -319,8 +365,10 @@ impl Data {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdStorage_Data_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -328,8 +376,10 @@ impl Data {
     /// Makes the container empty
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::StdStorage_Data_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdStorage_Data_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -338,8 +388,11 @@ impl Data {
     pub fn header_data(&mut self) -> crate::OwnedPtr<crate::ffi::HandleStdStorageHeaderData> {
         {
             let __result = unsafe { crate::ffi::StdStorage_Data_header_data(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -348,8 +401,11 @@ impl Data {
     pub fn type_data(&mut self) -> crate::OwnedPtr<crate::ffi::HandleStdStorageTypeData> {
         {
             let __result = unsafe { crate::ffi::StdStorage_Data_type_data(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -358,40 +414,43 @@ impl Data {
     pub fn root_data(&mut self) -> crate::OwnedPtr<crate::ffi::HandleStdStorageRootData> {
         {
             let __result = unsafe { crate::ffi::StdStorage_Data_root_data(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::StdStorage_Data_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StdStorage_Data_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::StdStorage_Data_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::StdStorage_Data_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStdStorageData> {
-        {
-            let __result = unsafe { crate::ffi::StdStorage_Data_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StdStorage_Data_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
@@ -399,8 +458,11 @@ impl Data {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_Data_inherited_DynamicType(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -410,8 +472,11 @@ impl Data {
             let __result = unsafe {
                 crate::ffi::StdStorage_Data_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -421,8 +486,11 @@ impl Data {
             let __result = unsafe {
                 crate::ffi::StdStorage_Data_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -431,11 +499,14 @@ impl Data {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_Data_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -445,16 +516,23 @@ impl Data {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_Data_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::StdStorage_Data_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdStorage_Data_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -464,16 +542,22 @@ impl Data {
             let __result = unsafe {
                 crate::ffi::StdStorage_Data_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StdStorage_Data_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdStorage_Data_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -489,31 +573,31 @@ unsafe impl crate::CppDeletable for HandleStdStorageData {
 impl HandleStdStorageData {
     /// Dereference this Handle to access the underlying StdStorage_Data
     pub fn get(&self) -> &crate::ffi::StdStorage_Data {
-        {
-            let __result = unsafe { crate::ffi::HandleStdStorageData_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleStdStorageData_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StdStorage_Data
     pub fn get_mut(&mut self) -> &mut crate::ffi::StdStorage_Data {
-        {
-            let __result = unsafe { crate::ffi::HandleStdStorageData_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleStdStorageData_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StdStorage_Data> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdStorageData_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdStorageData_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -535,8 +619,10 @@ impl HSequenceOfRoots {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdStorage_HSequenceOfRoots_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -547,8 +633,10 @@ impl HSequenceOfRoots {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_HSequenceOfRoots_ctor_sequenceofroots(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -557,21 +645,26 @@ impl HSequenceOfRoots {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_HSequenceOfRoots_sequence(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `StdStorage_HSequenceOfRoots.hxx`:20 - `StdStorage_HSequenceOfRoots::Append()`
     pub fn append_handlestdstorageroot(&mut self, theItem: &crate::ffi::HandleStdStorageRoot) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdStorage_HSequenceOfRoots_append_handlestdstorageroot(
                     self as *mut Self,
                     theItem,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -581,13 +674,15 @@ impl HSequenceOfRoots {
         theSequence: &mut crate::ffi::StdStorage_SequenceOfRoots,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdStorage_HSequenceOfRoots_append_sequenceofroots(
                     self as *mut Self,
                     theSequence,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -597,8 +692,11 @@ impl HSequenceOfRoots {
             let __result = unsafe {
                 crate::ffi::StdStorage_HSequenceOfRoots_change_sequence(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -608,8 +706,11 @@ impl HSequenceOfRoots {
             let __result = unsafe {
                 crate::ffi::StdStorage_HSequenceOfRoots_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -617,8 +718,11 @@ impl HSequenceOfRoots {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StdStorage_HSequenceOfRoots_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -626,43 +730,45 @@ impl HSequenceOfRoots {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StdStorage_HSequenceOfRoots_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdStorage_HSequenceOfRoots_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StdStorage_HSequenceOfRoots_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdStorage_HSequenceOfRoots_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StdStorage_HSequenceOfRoots_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStdStorageHSequenceOfRoots> {
-        {
-            let __result =
-                unsafe { crate::ffi::StdStorage_HSequenceOfRoots_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StdStorage_HSequenceOfRoots_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -674,8 +780,11 @@ impl HSequenceOfRoots {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -688,8 +797,11 @@ impl HSequenceOfRoots {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -699,11 +811,14 @@ impl HSequenceOfRoots {
             let __result = unsafe {
                 crate::ffi::StdStorage_HSequenceOfRoots_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -714,20 +829,25 @@ impl HSequenceOfRoots {
             let __result = unsafe {
                 crate::ffi::StdStorage_HSequenceOfRoots_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdStorage_HSequenceOfRoots_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -739,18 +859,23 @@ impl HSequenceOfRoots {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdStorage_HSequenceOfRoots_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -766,35 +891,35 @@ unsafe impl crate::CppDeletable for HandleStdStorageHSequenceOfRoots {
 impl HandleStdStorageHSequenceOfRoots {
     /// Dereference this Handle to access the underlying StdStorage_HSequenceOfRoots
     pub fn get(&self) -> &crate::ffi::StdStorage_HSequenceOfRoots {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStdStorageHSequenceOfRoots_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleStdStorageHSequenceOfRoots_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StdStorage_HSequenceOfRoots
     pub fn get_mut(&mut self) -> &mut crate::ffi::StdStorage_HSequenceOfRoots {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStdStorageHSequenceOfRoots_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleStdStorageHSequenceOfRoots_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StdStorage_HSequenceOfRoots> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdStorageHSequenceOfRoots_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdStorageHSequenceOfRoots_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -820,8 +945,11 @@ impl HeaderData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_HeaderData_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -834,8 +962,11 @@ impl HeaderData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_HeaderData_read(self as *mut Self, theDriver) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -848,8 +979,11 @@ impl HeaderData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_HeaderData_write(self as *mut Self, theDriver) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -859,8 +993,11 @@ impl HeaderData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_HeaderData_creation_date(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -870,8 +1007,11 @@ impl HeaderData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_HeaderData_storage_version(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -881,8 +1021,11 @@ impl HeaderData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_HeaderData_schema_version(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -890,13 +1033,15 @@ impl HeaderData {
     /// Set the version of the application
     pub fn set_application_version(&mut self, aVersion: &crate::t_collection::AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdStorage_HeaderData_set_application_version(
                     self as *mut Self,
                     aVersion,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -907,8 +1052,11 @@ impl HeaderData {
             let __result = unsafe {
                 crate::ffi::StdStorage_HeaderData_application_version(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -916,10 +1064,12 @@ impl HeaderData {
     /// Set the name of the application
     pub fn set_application_name(&mut self, aName: &crate::t_collection::ExtendedString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdStorage_HeaderData_set_application_name(self as *mut Self, aName)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -929,8 +1079,11 @@ impl HeaderData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_HeaderData_application_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -938,8 +1091,12 @@ impl HeaderData {
     /// Set the data type
     pub fn set_data_type(&mut self, aType: &crate::t_collection::ExtendedString) {
         {
-            unsafe { crate::ffi::StdStorage_HeaderData_set_data_type(self as *mut Self, aType) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdStorage_HeaderData_set_data_type(self as *mut Self, aType)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -949,8 +1106,11 @@ impl HeaderData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_HeaderData_data_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -958,10 +1118,12 @@ impl HeaderData {
     /// Add <theUserInfo> to the user information
     pub fn add_to_user_info(&mut self, theUserInfo: &crate::t_collection::AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdStorage_HeaderData_add_to_user_info(self as *mut Self, theUserInfo)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -971,8 +1133,11 @@ impl HeaderData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_HeaderData_user_info(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -980,10 +1145,12 @@ impl HeaderData {
     /// Add <theUserInfo> to the user information
     pub fn add_to_comments(&mut self, aComment: &crate::t_collection::ExtendedString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdStorage_HeaderData_add_to_comments(self as *mut Self, aComment)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -993,8 +1160,11 @@ impl HeaderData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_HeaderData_comments(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1004,8 +1174,11 @@ impl HeaderData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_HeaderData_number_of_objects(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1015,8 +1188,11 @@ impl HeaderData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_HeaderData_error_status(self as *const Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -1027,8 +1203,11 @@ impl HeaderData {
             let __result = unsafe {
                 crate::ffi::StdStorage_HeaderData_error_status_extension(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1036,59 +1215,74 @@ impl HeaderData {
     /// Clears error status
     pub fn clear_error_status(&mut self) {
         {
-            unsafe { crate::ffi::StdStorage_HeaderData_clear_error_status(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdStorage_HeaderData_clear_error_status(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `StdStorage_HeaderData.hxx`:103 - `StdStorage_HeaderData::SetNumberOfObjects()`
     pub fn set_number_of_objects(&mut self, anObjectNumber: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdStorage_HeaderData_set_number_of_objects(
                     self as *mut Self,
                     anObjectNumber,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `StdStorage_HeaderData.hxx`:105 - `StdStorage_HeaderData::SetStorageVersion()`
     pub fn set_storage_version(&mut self, aVersion: &crate::t_collection::AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdStorage_HeaderData_set_storage_version(self as *mut Self, aVersion)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `StdStorage_HeaderData.hxx`:107 - `StdStorage_HeaderData::SetCreationDate()`
     pub fn set_creation_date(&mut self, aDate: &crate::t_collection::AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdStorage_HeaderData_set_creation_date(self as *mut Self, aDate)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `StdStorage_HeaderData.hxx`:109 - `StdStorage_HeaderData::SetSchemaVersion()`
     pub fn set_schema_version(&mut self, aVersion: &crate::t_collection::AsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdStorage_HeaderData_set_schema_version(self as *mut Self, aVersion)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `StdStorage_HeaderData.hxx`:111 - `StdStorage_HeaderData::SetSchemaName()`
     pub fn set_schema_name(&mut self, aName: &crate::t_collection::AsciiString) {
         {
-            unsafe { crate::ffi::StdStorage_HeaderData_set_schema_name(self as *mut Self, aName) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdStorage_HeaderData_set_schema_name(self as *mut Self, aName)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1096,8 +1290,11 @@ impl HeaderData {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StdStorage_HeaderData_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1105,42 +1302,44 @@ impl HeaderData {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StdStorage_HeaderData_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdStorage_HeaderData_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StdStorage_HeaderData_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdStorage_HeaderData_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StdStorage_HeaderData_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStdStorageHeaderData> {
-        {
-            let __result = unsafe { crate::ffi::StdStorage_HeaderData_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StdStorage_HeaderData_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1149,8 +1348,11 @@ impl HeaderData {
             let __result = unsafe {
                 crate::ffi::StdStorage_HeaderData_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1160,8 +1362,11 @@ impl HeaderData {
             let __result = unsafe {
                 crate::ffi::StdStorage_HeaderData_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1170,11 +1375,14 @@ impl HeaderData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_HeaderData_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1185,18 +1393,23 @@ impl HeaderData {
             let __result = unsafe {
                 crate::ffi::StdStorage_HeaderData_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdStorage_HeaderData_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1206,16 +1419,22 @@ impl HeaderData {
             let __result = unsafe {
                 crate::ffi::StdStorage_HeaderData_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StdStorage_HeaderData_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdStorage_HeaderData_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1231,35 +1450,31 @@ unsafe impl crate::CppDeletable for HandleStdStorageHeaderData {
 impl HandleStdStorageHeaderData {
     /// Dereference this Handle to access the underlying StdStorage_HeaderData
     pub fn get(&self) -> &crate::ffi::StdStorage_HeaderData {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStdStorageHeaderData_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleStdStorageHeaderData_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StdStorage_HeaderData
     pub fn get_mut(&mut self) -> &mut crate::ffi::StdStorage_HeaderData {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStdStorageHeaderData_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleStdStorageHeaderData_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StdStorage_HeaderData> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdStorageHeaderData_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdStorageHeaderData_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1283,8 +1498,10 @@ impl Root {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdStorage_Root_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1300,8 +1517,10 @@ impl Root {
                     theName, theObject,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1309,8 +1528,11 @@ impl Root {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StdStorage_Root_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1319,8 +1541,11 @@ impl Root {
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::StdStorage_Root_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1328,8 +1553,10 @@ impl Root {
     /// Sets a name to the root object
     pub fn set_name(&mut self, theName: &crate::t_collection::AsciiString) {
         {
-            unsafe { crate::ffi::StdStorage_Root_set_name(self as *mut Self, theName) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdStorage_Root_set_name(self as *mut Self, theName) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1338,8 +1565,11 @@ impl Root {
     pub fn object(&self) -> crate::OwnedPtr<crate::ffi::HandleStdObjMgtPersistent> {
         {
             let __result = unsafe { crate::ffi::StdStorage_Root_object(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1347,8 +1577,11 @@ impl Root {
     /// Sets a root's persistent object
     pub fn set_object(&mut self, anObject: &crate::ffi::HandleStdObjMgtPersistent) {
         {
-            unsafe { crate::ffi::StdStorage_Root_set_object(self as *mut Self, anObject) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdStorage_Root_set_object(self as *mut Self, anObject) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1357,8 +1590,11 @@ impl Root {
     pub fn type_(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::StdStorage_Root_type_(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1366,8 +1602,10 @@ impl Root {
     /// Sets a root's persistent type
     pub fn set_type(&mut self, aType: &crate::t_collection::AsciiString) {
         {
-            unsafe { crate::ffi::StdStorage_Root_set_type(self as *mut Self, aType) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdStorage_Root_set_type(self as *mut Self, aType) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1376,8 +1614,11 @@ impl Root {
     pub fn reference(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::StdStorage_Root_reference(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1385,8 +1626,11 @@ impl Root {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StdStorage_Root_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1394,40 +1638,43 @@ impl Root {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StdStorage_Root_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::StdStorage_Root_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StdStorage_Root_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::StdStorage_Root_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::StdStorage_Root_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStdStorageRoot> {
-        {
-            let __result = unsafe { crate::ffi::StdStorage_Root_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StdStorage_Root_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1436,8 +1683,11 @@ impl Root {
             let __result = unsafe {
                 crate::ffi::StdStorage_Root_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1447,8 +1697,11 @@ impl Root {
             let __result = unsafe {
                 crate::ffi::StdStorage_Root_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1457,11 +1710,14 @@ impl Root {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_Root_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1471,16 +1727,23 @@ impl Root {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_Root_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::StdStorage_Root_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdStorage_Root_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1490,16 +1753,22 @@ impl Root {
             let __result = unsafe {
                 crate::ffi::StdStorage_Root_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StdStorage_Root_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdStorage_Root_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1515,31 +1784,31 @@ unsafe impl crate::CppDeletable for HandleStdStorageRoot {
 impl HandleStdStorageRoot {
     /// Dereference this Handle to access the underlying StdStorage_Root
     pub fn get(&self) -> &crate::ffi::StdStorage_Root {
-        {
-            let __result = unsafe { crate::ffi::HandleStdStorageRoot_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleStdStorageRoot_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StdStorage_Root
     pub fn get_mut(&mut self) -> &mut crate::ffi::StdStorage_Root {
-        {
-            let __result = unsafe { crate::ffi::HandleStdStorageRoot_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleStdStorageRoot_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StdStorage_Root> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdStorageRoot_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdStorageRoot_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1563,8 +1832,11 @@ impl RootData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_RootData_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1577,8 +1849,11 @@ impl RootData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_RootData_read(self as *mut Self, theDriver) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1591,8 +1866,11 @@ impl RootData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_RootData_write(self as *mut Self, theDriver) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1602,8 +1880,11 @@ impl RootData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_RootData_number_of_roots(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1612,8 +1893,11 @@ impl RootData {
     /// will be replaced by <aRoot>.
     pub fn add_root(&mut self, aRoot: &crate::ffi::HandleStdStorageRoot) {
         {
-            unsafe { crate::ffi::StdStorage_RootData_add_root(self as *mut Self, aRoot) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdStorage_RootData_add_root(self as *mut Self, aRoot) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1622,8 +1906,11 @@ impl RootData {
     pub fn roots(&self) -> crate::OwnedPtr<crate::ffi::HandleStdStorageHSequenceOfRoots> {
         {
             let __result = unsafe { crate::ffi::StdStorage_RootData_roots(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1636,8 +1923,11 @@ impl RootData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_RootData_find(self as *const Self, aName) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1647,8 +1937,11 @@ impl RootData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_RootData_is_root(self as *const Self, aName) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1656,8 +1949,11 @@ impl RootData {
     /// Removes the root named <aName>.
     pub fn remove_root(&mut self, aName: &crate::t_collection::AsciiString) {
         {
-            unsafe { crate::ffi::StdStorage_RootData_remove_root(self as *mut Self, aName) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdStorage_RootData_remove_root(self as *mut Self, aName) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1667,8 +1963,11 @@ impl RootData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_RootData_error_status(self as *const Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -1679,8 +1978,11 @@ impl RootData {
             let __result = unsafe {
                 crate::ffi::StdStorage_RootData_error_status_extension(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1688,8 +1990,11 @@ impl RootData {
     /// Clears error status
     pub fn clear_error_status(&mut self) {
         {
-            unsafe { crate::ffi::StdStorage_RootData_clear_error_status(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdStorage_RootData_clear_error_status(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1697,8 +2002,10 @@ impl RootData {
     /// Removes all persistent root objects
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::StdStorage_RootData_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdStorage_RootData_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1706,8 +2013,11 @@ impl RootData {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StdStorage_RootData_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1715,42 +2025,43 @@ impl RootData {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StdStorage_RootData_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdStorage_RootData_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StdStorage_RootData_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdStorage_RootData_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::StdStorage_RootData_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStdStorageRootData> {
-        {
-            let __result = unsafe { crate::ffi::StdStorage_RootData_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StdStorage_RootData_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1759,8 +2070,11 @@ impl RootData {
             let __result = unsafe {
                 crate::ffi::StdStorage_RootData_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1770,8 +2084,11 @@ impl RootData {
             let __result = unsafe {
                 crate::ffi::StdStorage_RootData_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1780,11 +2097,14 @@ impl RootData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_RootData_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1795,18 +2115,23 @@ impl RootData {
             let __result = unsafe {
                 crate::ffi::StdStorage_RootData_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdStorage_RootData_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1816,16 +2141,22 @@ impl RootData {
             let __result = unsafe {
                 crate::ffi::StdStorage_RootData_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StdStorage_RootData_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdStorage_RootData_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1841,32 +2172,31 @@ unsafe impl crate::CppDeletable for HandleStdStorageRootData {
 impl HandleStdStorageRootData {
     /// Dereference this Handle to access the underlying StdStorage_RootData
     pub fn get(&self) -> &crate::ffi::StdStorage_RootData {
-        {
-            let __result = unsafe { crate::ffi::HandleStdStorageRootData_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleStdStorageRootData_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StdStorage_RootData
     pub fn get_mut(&mut self) -> &mut crate::ffi::StdStorage_RootData {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStdStorageRootData_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleStdStorageRootData_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StdStorage_RootData> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdStorageRootData_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdStorageRootData_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1891,8 +2221,11 @@ impl TypeData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_TypeData_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1905,8 +2238,11 @@ impl TypeData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_TypeData_read(self as *mut Self, theDriver) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1919,8 +2255,11 @@ impl TypeData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_TypeData_write(self as *mut Self, theDriver) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1930,8 +2269,11 @@ impl TypeData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_TypeData_number_of_types(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1943,14 +2285,16 @@ impl TypeData {
         aTypeNum: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdStorage_TypeData_add_type_asciistring_int(
                     self as *mut Self,
                     aTypeName,
                     aTypeNum,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1967,8 +2311,11 @@ impl TypeData {
                     aPObj,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1978,8 +2325,11 @@ impl TypeData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_TypeData_type_int(self as *const Self, aTypeNum) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1990,8 +2340,11 @@ impl TypeData {
             let __result = unsafe {
                 crate::ffi::StdStorage_TypeData_type_asciistring(self as *const Self, aTypeName)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2005,8 +2358,11 @@ impl TypeData {
             let __result = unsafe {
                 crate::ffi::StdStorage_TypeData_instantiator(self as *const Self, aTypeNum)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2016,8 +2372,11 @@ impl TypeData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_TypeData_is_type(self as *const Self, aName) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2026,8 +2385,11 @@ impl TypeData {
     pub fn types(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
         {
             let __result = unsafe { crate::ffi::StdStorage_TypeData_types(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2037,8 +2399,11 @@ impl TypeData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_TypeData_error_status(self as *const Self) };
-            crate::check_exception();
-            crate::storage::Error::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::storage::Error::try_from(__val).unwrap()
         }
     }
 
@@ -2049,8 +2414,11 @@ impl TypeData {
             let __result = unsafe {
                 crate::ffi::StdStorage_TypeData_error_status_extension(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2058,8 +2426,11 @@ impl TypeData {
     /// Clears error status
     pub fn clear_error_status(&mut self) {
         {
-            unsafe { crate::ffi::StdStorage_TypeData_clear_error_status(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdStorage_TypeData_clear_error_status(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2067,8 +2438,10 @@ impl TypeData {
     /// Unregisters all types
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::StdStorage_TypeData_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdStorage_TypeData_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2076,8 +2449,11 @@ impl TypeData {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StdStorage_TypeData_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2085,42 +2461,43 @@ impl TypeData {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StdStorage_TypeData_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdStorage_TypeData_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StdStorage_TypeData_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdStorage_TypeData_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::StdStorage_TypeData_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStdStorageTypeData> {
-        {
-            let __result = unsafe { crate::ffi::StdStorage_TypeData_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StdStorage_TypeData_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2129,8 +2506,11 @@ impl TypeData {
             let __result = unsafe {
                 crate::ffi::StdStorage_TypeData_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2140,8 +2520,11 @@ impl TypeData {
             let __result = unsafe {
                 crate::ffi::StdStorage_TypeData_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2150,11 +2533,14 @@ impl TypeData {
         {
             let __result =
                 unsafe { crate::ffi::StdStorage_TypeData_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2165,18 +2551,23 @@ impl TypeData {
             let __result = unsafe {
                 crate::ffi::StdStorage_TypeData_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdStorage_TypeData_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2186,16 +2577,22 @@ impl TypeData {
             let __result = unsafe {
                 crate::ffi::StdStorage_TypeData_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StdStorage_TypeData_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdStorage_TypeData_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2211,32 +2608,31 @@ unsafe impl crate::CppDeletable for HandleStdStorageTypeData {
 impl HandleStdStorageTypeData {
     /// Dereference this Handle to access the underlying StdStorage_TypeData
     pub fn get(&self) -> &crate::ffi::StdStorage_TypeData {
-        {
-            let __result = unsafe { crate::ffi::HandleStdStorageTypeData_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleStdStorageTypeData_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StdStorage_TypeData
     pub fn get_mut(&mut self) -> &mut crate::ffi::StdStorage_TypeData {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStdStorageTypeData_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleStdStorageTypeData_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StdStorage_TypeData> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdStorageTypeData_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdStorageTypeData_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

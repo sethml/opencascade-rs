@@ -33,8 +33,10 @@ impl ComputeData {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ChFiKPart_ComputeData_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -64,8 +66,11 @@ impl ComputeData {
                     Iedge,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -91,8 +96,11 @@ impl ComputeData {
             let __result = unsafe {
                 crate::ffi::ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface2_orientation4_real2_pnt2d4(DStr, Data, S1, S2, OrFace1.into(), OrFace2.into(), Or1.into(), Or2.into(), minRad, majRad, P1S1, P2S1, P1S2, P2S2)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -116,8 +124,11 @@ impl ComputeData {
             let __result = unsafe {
                 crate::ffi::ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface2_orientation4_real_pnt2d3(DStr, Data, S1, S2, OrFace1.into(), OrFace2.into(), Or1.into(), Or2.into(), Rad, PS1, P1S2, P2S2)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -139,8 +150,11 @@ impl ComputeData {
             let __result = unsafe {
                 crate::ffi::ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface3_orientation4_real(DStr, Data, S, S1, S2, OfS.into(), OS.into(), OS1.into(), OS2.into(), Radius)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

@@ -17,8 +17,11 @@ pub fn write_binary(
 ) -> bool {
     {
         let __result = unsafe { crate::ffi::RWStl_write_binary(theMesh, thePath, theProgress) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `RWStl.hxx`:40 - `RWStl::WriteAscii`
@@ -32,8 +35,11 @@ pub fn write_ascii(
 ) -> bool {
     {
         let __result = unsafe { crate::ffi::RWStl_write_ascii(theMesh, thePath, theProgress) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `RWStl.hxx`:47 - `RWStl::ReadFile`
@@ -46,8 +52,11 @@ pub fn read_file_path_progressrange(
     {
         let __result =
             unsafe { crate::ffi::RWStl_read_file_path_progressrange(theFile, theProgress) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `RWStl.hxx`:53 - `RWStl::ReadFile`
@@ -62,8 +71,11 @@ pub fn read_file_charptr_progressrange_2(
         let __result = unsafe {
             crate::ffi::RWStl_read_file_charptr_progressrange_2(c_theFile.as_ptr(), theProgress)
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `RWStl.hxx`:66 - `RWStl::ReadFile`
@@ -87,8 +99,11 @@ pub fn read_file_charptr_real_progressrange(
                 theProgress,
             )
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `RWStl.hxx`:77 - `RWStl::ReadFile`
@@ -106,10 +121,12 @@ pub fn read_file_charptr_real_sequence_opencascade_handle_poly_triangulation_pro
 ) {
     let c_theFile = std::ffi::CString::new(theFile).unwrap();
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::RWStl_read_file_charptr_real_sequence_opencascade_handle_poly_triangulation_progressrange(c_theFile.as_ptr(), theMergeAngle, theTriangList, theProgress)
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `RWStl.hxx`:85 - `RWStl::ReadBinary`
@@ -121,8 +138,11 @@ pub fn read_binary(
 ) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
     {
         let __result = unsafe { crate::ffi::RWStl_read_binary(thePath, theProgress) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `RWStl.hxx`:91 - `RWStl::ReadAscii`
@@ -134,8 +154,11 @@ pub fn read_ascii(
 ) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
     {
         let __result = unsafe { crate::ffi::RWStl_read_ascii(thePath, theProgress) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 
@@ -170,8 +193,11 @@ impl Reader {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::RWStl_Reader_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -189,8 +215,11 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::RWStl_Reader_read(self as *mut Self, c_theFile.as_ptr(), theProgress)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -209,8 +238,11 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::RWStl_Reader_is_ascii(self as *mut Self, theStream, isSeekgAvailable)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -228,8 +260,11 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::RWStl_Reader_read_binary(self as *mut Self, theStream, theProgress)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -240,8 +275,11 @@ impl Reader {
     pub fn add_node(&mut self, thePnt: &crate::gp::XYZ) -> i32 {
         {
             let __result = unsafe { crate::ffi::RWStl_Reader_add_node(self as *mut Self, thePnt) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -250,10 +288,12 @@ impl Reader {
     /// Should create new triangle built on specified nodes in the target model.
     pub fn add_triangle(&mut self, theN1: i32, theN2: i32, theN3: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::RWStl_Reader_add_triangle(self as *mut Self, theN1, theN2, theN3)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -262,8 +302,10 @@ impl Reader {
     /// Should create a new triangulation for a solid in multi-domain case.
     pub fn add_solid(&mut self) {
         {
-            unsafe { crate::ffi::RWStl_Reader_add_solid(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::RWStl_Reader_add_solid(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -273,8 +315,11 @@ impl Reader {
     pub fn merge_angle(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::RWStl_Reader_merge_angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -284,8 +329,11 @@ impl Reader {
     /// corners.
     pub fn set_merge_angle(&mut self, theAngleRad: f64) {
         {
-            unsafe { crate::ffi::RWStl_Reader_set_merge_angle(self as *mut Self, theAngleRad) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::RWStl_Reader_set_merge_angle(self as *mut Self, theAngleRad) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -295,8 +343,11 @@ impl Reader {
     pub fn merge_tolerance(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::RWStl_Reader_merge_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -304,10 +355,12 @@ impl Reader {
     /// Set linear merge tolerance.
     pub fn set_merge_tolerance(&mut self, theTolerance: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::RWStl_Reader_set_merge_tolerance(self as *mut Self, theTolerance)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -315,8 +368,11 @@ impl Reader {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::RWStl_Reader_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -324,29 +380,32 @@ impl Reader {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::RWStl_Reader_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::RWStl_Reader_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::RWStl_Reader_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::RWStl_Reader_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::RWStl_Reader_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -355,8 +414,11 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::RWStl_Reader_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -365,8 +427,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::RWStl_Reader_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -374,11 +439,14 @@ impl Reader {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::RWStl_Reader_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -388,16 +456,23 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::RWStl_Reader_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::RWStl_Reader_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::RWStl_Reader_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -407,16 +482,21 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::RWStl_Reader_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::RWStl_Reader_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::RWStl_Reader_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -432,31 +512,31 @@ unsafe impl crate::CppDeletable for HandleRWStlReader {
 impl HandleRWStlReader {
     /// Dereference this Handle to access the underlying RWStl_Reader
     pub fn get(&self) -> &crate::ffi::RWStl_Reader {
-        {
-            let __result = unsafe { crate::ffi::HandleRWStlReader_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleRWStlReader_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying RWStl_Reader
     pub fn get_mut(&mut self) -> &mut crate::ffi::RWStl_Reader {
-        {
-            let __result = unsafe { crate::ffi::HandleRWStlReader_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleRWStlReader_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<RWStl_Reader> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleRWStlReader_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleRWStlReader_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

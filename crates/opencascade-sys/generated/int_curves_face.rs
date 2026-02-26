@@ -49,8 +49,10 @@ impl Intersector {
                     F, aTol, aRestr, UseBToler,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -99,8 +101,11 @@ impl Intersector {
         {
             let __result =
                 unsafe { crate::ffi::IntCurvesFace_Intersector_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -115,7 +120,7 @@ impl Intersector {
     /// +/- RealLast.
     pub fn perform_lin_real2(&mut self, L: &crate::gp::Lin, PInf: f64, PSup: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurvesFace_Intersector_perform_lin_real2(
                     self as *mut Self,
                     L,
@@ -123,7 +128,9 @@ impl Intersector {
                     PSup,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -137,7 +144,7 @@ impl Intersector {
         PSup: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurvesFace_Intersector_perform_handleadaptor3dcurve_real2(
                     self as *mut Self,
                     HCu,
@@ -145,7 +152,9 @@ impl Intersector {
                     PSup,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -155,8 +164,11 @@ impl Intersector {
         {
             let __result =
                 unsafe { crate::ffi::IntCurvesFace_Intersector_surface_type(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::SurfaceType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::SurfaceType::try_from(__val).unwrap()
         }
     }
 
@@ -166,8 +178,11 @@ impl Intersector {
         {
             let __result =
                 unsafe { crate::ffi::IntCurvesFace_Intersector_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -176,8 +191,11 @@ impl Intersector {
         {
             let __result =
                 unsafe { crate::ffi::IntCurvesFace_Intersector_nb_pnt(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -189,8 +207,11 @@ impl Intersector {
             let __result = unsafe {
                 crate::ffi::IntCurvesFace_Intersector_u_parameter(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -202,8 +223,11 @@ impl Intersector {
             let __result = unsafe {
                 crate::ffi::IntCurvesFace_Intersector_v_parameter(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -215,8 +239,11 @@ impl Intersector {
             let __result = unsafe {
                 crate::ffi::IntCurvesFace_Intersector_w_parameter(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -227,8 +254,11 @@ impl Intersector {
         {
             let __result =
                 unsafe { crate::ffi::IntCurvesFace_Intersector_pnt(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -238,8 +268,11 @@ impl Intersector {
         {
             let __result =
                 unsafe { crate::ffi::IntCurvesFace_Intersector_transition(self as *const Self, I) };
-            crate::check_exception();
-            crate::int_curve_surface::TransitionOnCurve::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_curve_surface::TransitionOnCurve::try_from(__val).unwrap()
         }
     }
 
@@ -253,8 +286,11 @@ impl Intersector {
         {
             let __result =
                 unsafe { crate::ffi::IntCurvesFace_Intersector_state(self as *const Self, I) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -266,8 +302,11 @@ impl Intersector {
         {
             let __result =
                 unsafe { crate::ffi::IntCurvesFace_Intersector_is_parallel(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -278,8 +317,11 @@ impl Intersector {
         {
             let __result =
                 unsafe { crate::ffi::IntCurvesFace_Intersector_face(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -289,8 +331,11 @@ impl Intersector {
             let __result = unsafe {
                 crate::ffi::IntCurvesFace_Intersector_classify_uv_point(self as *const Self, Puv)
             };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -299,8 +344,11 @@ impl Intersector {
         {
             let __result =
                 unsafe { crate::ffi::IntCurvesFace_Intersector_bounding(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -308,13 +356,15 @@ impl Intersector {
     /// Sets the boundary tolerance flag
     pub fn set_use_bound_toler(&mut self, UseBToler: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurvesFace_Intersector_set_use_bound_toler(
                     self as *mut Self,
                     UseBToler,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -325,8 +375,11 @@ impl Intersector {
             let __result = unsafe {
                 crate::ffi::IntCurvesFace_Intersector_get_use_bound_toler(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -334,8 +387,11 @@ impl Intersector {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IntCurvesFace_Intersector_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -343,43 +399,45 @@ impl Intersector {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IntCurvesFace_Intersector_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurvesFace_Intersector_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IntCurvesFace_Intersector_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IntCurvesFace_Intersector_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IntCurvesFace_Intersector_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIntCurvesFaceIntersector> {
-        {
-            let __result =
-                unsafe { crate::ffi::IntCurvesFace_Intersector_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IntCurvesFace_Intersector_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -391,8 +449,11 @@ impl Intersector {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -402,8 +463,11 @@ impl Intersector {
             let __result = unsafe {
                 crate::ffi::IntCurvesFace_Intersector_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -413,11 +477,14 @@ impl Intersector {
             let __result = unsafe {
                 crate::ffi::IntCurvesFace_Intersector_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -428,20 +495,25 @@ impl Intersector {
             let __result = unsafe {
                 crate::ffi::IntCurvesFace_Intersector_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurvesFace_Intersector_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -453,16 +525,23 @@ impl Intersector {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IntCurvesFace_Intersector_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntCurvesFace_Intersector_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -478,35 +557,35 @@ unsafe impl crate::CppDeletable for HandleIntCurvesFaceIntersector {
 impl HandleIntCurvesFaceIntersector {
     /// Dereference this Handle to access the underlying IntCurvesFace_Intersector
     pub fn get(&self) -> &crate::ffi::IntCurvesFace_Intersector {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIntCurvesFaceIntersector_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIntCurvesFaceIntersector_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IntCurvesFace_Intersector
     pub fn get_mut(&mut self) -> &mut crate::ffi::IntCurvesFace_Intersector {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIntCurvesFaceIntersector_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIntCurvesFaceIntersector_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IntCurvesFace_Intersector> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIntCurvesFaceIntersector_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIntCurvesFaceIntersector_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -528,16 +607,22 @@ impl ShapeIntersector {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:47 - `IntCurvesFace_ShapeIntersector::Load()`
     pub fn load(&mut self, Sh: &crate::topo_ds::Shape, Tol: f64) {
         {
-            unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_load(self as *mut Self, Sh, Tol) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntCurvesFace_ShapeIntersector_load(self as *mut Self, Sh, Tol)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -552,7 +637,7 @@ impl ShapeIntersector {
     /// +/- RealLast.
     pub fn perform_lin_real2(&mut self, L: &crate::gp::Lin, PInf: f64, PSup: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurvesFace_ShapeIntersector_perform_lin_real2(
                     self as *mut Self,
                     L,
@@ -560,7 +645,9 @@ impl ShapeIntersector {
                     PSup,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -575,7 +662,7 @@ impl ShapeIntersector {
     /// +/- RealLast.
     pub fn perform_nearest(&mut self, L: &crate::gp::Lin, PInf: f64, PSup: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurvesFace_ShapeIntersector_perform_nearest(
                     self as *mut Self,
                     L,
@@ -583,7 +670,9 @@ impl ShapeIntersector {
                     PSup,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -597,7 +686,7 @@ impl ShapeIntersector {
         PSup: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntCurvesFace_ShapeIntersector_perform_handleadaptor3dcurve_real2(
                     self as *mut Self,
                     HCu,
@@ -605,7 +694,9 @@ impl ShapeIntersector {
                     PSup,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -615,8 +706,11 @@ impl ShapeIntersector {
         {
             let __result =
                 unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -626,8 +720,11 @@ impl ShapeIntersector {
         {
             let __result =
                 unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_nb_pnt(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -639,8 +736,11 @@ impl ShapeIntersector {
             let __result = unsafe {
                 crate::ffi::IntCurvesFace_ShapeIntersector_u_parameter(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -652,8 +752,11 @@ impl ShapeIntersector {
             let __result = unsafe {
                 crate::ffi::IntCurvesFace_ShapeIntersector_v_parameter(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -665,8 +768,11 @@ impl ShapeIntersector {
             let __result = unsafe {
                 crate::ffi::IntCurvesFace_ShapeIntersector_w_parameter(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -677,8 +783,11 @@ impl ShapeIntersector {
         {
             let __result =
                 unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_pnt(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -689,8 +798,11 @@ impl ShapeIntersector {
             let __result = unsafe {
                 crate::ffi::IntCurvesFace_ShapeIntersector_transition(self as *const Self, I)
             };
-            crate::check_exception();
-            crate::int_curve_surface::TransitionOnCurve::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_curve_surface::TransitionOnCurve::try_from(__val).unwrap()
         }
     }
 
@@ -704,8 +816,11 @@ impl ShapeIntersector {
         {
             let __result =
                 unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_state(self as *const Self, I) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -716,8 +831,11 @@ impl ShapeIntersector {
         {
             let __result =
                 unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_face(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -726,8 +844,12 @@ impl ShapeIntersector {
     /// parameter.
     pub fn sort_result(&mut self) {
         {
-            unsafe { crate::ffi::IntCurvesFace_ShapeIntersector_sort_result(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntCurvesFace_ShapeIntersector_sort_result(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

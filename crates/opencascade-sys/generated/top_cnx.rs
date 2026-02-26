@@ -28,8 +28,10 @@ impl EdgeFaceTransition {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopCnx_EdgeFaceTransition_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -38,7 +40,7 @@ impl EdgeFaceTransition {
     /// description of the edge.
     pub fn reset_dir2_real(&mut self, Tgt: &crate::gp::Dir, Norm: &crate::gp::Dir, Curv: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopCnx_EdgeFaceTransition_reset_dir2_real(
                     self as *mut Self,
                     Tgt,
@@ -46,7 +48,9 @@ impl EdgeFaceTransition {
                     Curv,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -54,8 +58,11 @@ impl EdgeFaceTransition {
     /// Initialize the algorithm with a linear Edge.
     pub fn reset_dir(&mut self, Tgt: &crate::gp::Dir) {
         {
-            unsafe { crate::ffi::TopCnx_EdgeFaceTransition_reset_dir(self as *mut Self, Tgt) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopCnx_EdgeFaceTransition_reset_dir(self as *mut Self, Tgt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -76,7 +83,7 @@ impl EdgeFaceTransition {
         BTr: crate::top_abs::Orientation,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopCnx_EdgeFaceTransition_add_interference(
                     self as *mut Self,
                     Tole,
@@ -88,7 +95,9 @@ impl EdgeFaceTransition {
                     BTr.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -98,8 +107,11 @@ impl EdgeFaceTransition {
         {
             let __result =
                 unsafe { crate::ffi::TopCnx_EdgeFaceTransition_transition(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -110,8 +122,11 @@ impl EdgeFaceTransition {
             let __result = unsafe {
                 crate::ffi::TopCnx_EdgeFaceTransition_boundary_transition(self as *const Self)
             };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 }

@@ -44,8 +44,10 @@ impl AxisPlacement {
     pub fn new_ax2d(A: &crate::gp::Ax2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_AxisPlacement_ctor_ax2d(A) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -54,16 +56,20 @@ impl AxisPlacement {
     pub fn new_pnt2d_dir2d(P: &crate::gp::Pnt2d, V: &crate::gp::Dir2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_AxisPlacement_ctor_pnt2d_dir2d(P, V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `Geom2d_AxisPlacement.hxx`:55 - `Geom2d_AxisPlacement::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_AxisPlacement_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_AxisPlacement_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -76,8 +82,11 @@ impl AxisPlacement {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_AxisPlacement_reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -85,8 +94,10 @@ impl AxisPlacement {
     /// Changes the complete definition of the axis placement.
     pub fn set_axis(&mut self, A: &crate::gp::Ax2d) {
         {
-            unsafe { crate::ffi::Geom2d_AxisPlacement_set_axis(self as *mut Self, A) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_AxisPlacement_set_axis(self as *mut Self, A) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -94,8 +105,11 @@ impl AxisPlacement {
     /// Changes the "Direction" of the axis placement.
     pub fn set_direction(&mut self, V: &crate::gp::Dir2d) {
         {
-            unsafe { crate::ffi::Geom2d_AxisPlacement_set_direction(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_AxisPlacement_set_direction(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -103,8 +117,11 @@ impl AxisPlacement {
     /// Changes the "Location" point (origin) of the axis placement.
     pub fn set_location(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_AxisPlacement_set_location(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_AxisPlacement_set_location(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -116,8 +133,11 @@ impl AxisPlacement {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_AxisPlacement_angle(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -126,8 +146,11 @@ impl AxisPlacement {
     pub fn ax2d(&self) -> crate::OwnedPtr<crate::gp::Ax2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_AxisPlacement_ax2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -138,8 +161,11 @@ impl AxisPlacement {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_AxisPlacement_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -150,8 +176,11 @@ impl AxisPlacement {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_AxisPlacement_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -159,8 +188,10 @@ impl AxisPlacement {
     /// Applies the transformation T to this axis.
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
         {
-            unsafe { crate::ffi::Geom2d_AxisPlacement_transform(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_AxisPlacement_transform(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -169,8 +200,11 @@ impl AxisPlacement {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         {
             let __result = unsafe { crate::ffi::Geom2d_AxisPlacement_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -179,8 +213,11 @@ impl AxisPlacement {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_AxisPlacement_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -188,8 +225,11 @@ impl AxisPlacement {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_AxisPlacement_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -197,94 +237,110 @@ impl AxisPlacement {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_AxisPlacement_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_AxisPlacement_as_Geom2d_Geometry(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_AxisPlacement_as_Geom2d_Geometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_AxisPlacement_as_Geom2d_Geometry_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_AxisPlacement_as_Geom2d_Geometry_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_AxisPlacement_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_AxisPlacement_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_AxisPlacement_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Geom2d_AxisPlacement_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dAxisPlacement> {
-        {
-            let __result = unsafe { crate::ffi::Geom2d_AxisPlacement_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Geom2d_AxisPlacement_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_AxisPlacement_inherited_Mirror(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_AxisPlacement_inherited_Mirror(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         {
-            unsafe { crate::ffi::Geom2d_AxisPlacement_inherited_Rotate(self as *mut Self, P, Ang) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_AxisPlacement_inherited_Rotate(self as *mut Self, P, Ang)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         {
-            unsafe { crate::ffi::Geom2d_AxisPlacement_inherited_Scale(self as *mut Self, P, S) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_AxisPlacement_inherited_Scale(self as *mut Self, P, S)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_AxisPlacement_inherited_Translate(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_AxisPlacement_inherited_Translate(self as *mut Self, V)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -297,8 +353,11 @@ impl AxisPlacement {
             let __result = unsafe {
                 crate::ffi::Geom2d_AxisPlacement_inherited_Mirrored(self as *const Self, P)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -312,8 +371,11 @@ impl AxisPlacement {
             let __result = unsafe {
                 crate::ffi::Geom2d_AxisPlacement_inherited_Rotated(self as *const Self, P, Ang)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -327,8 +389,11 @@ impl AxisPlacement {
             let __result = unsafe {
                 crate::ffi::Geom2d_AxisPlacement_inherited_Scaled(self as *const Self, P, S)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -341,8 +406,11 @@ impl AxisPlacement {
             let __result = unsafe {
                 crate::ffi::Geom2d_AxisPlacement_inherited_Transformed(self as *const Self, T)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -355,8 +423,11 @@ impl AxisPlacement {
             let __result = unsafe {
                 crate::ffi::Geom2d_AxisPlacement_inherited_Translated(self as *const Self, V)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -366,8 +437,11 @@ impl AxisPlacement {
             let __result = unsafe {
                 crate::ffi::Geom2d_AxisPlacement_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -377,8 +451,11 @@ impl AxisPlacement {
             let __result = unsafe {
                 crate::ffi::Geom2d_AxisPlacement_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -387,11 +464,14 @@ impl AxisPlacement {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_AxisPlacement_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -402,18 +482,23 @@ impl AxisPlacement {
             let __result = unsafe {
                 crate::ffi::Geom2d_AxisPlacement_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_AxisPlacement_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -423,16 +508,22 @@ impl AxisPlacement {
             let __result = unsafe {
                 crate::ffi::Geom2d_AxisPlacement_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_AxisPlacement_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_AxisPlacement_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -448,46 +539,42 @@ unsafe impl crate::CppDeletable for HandleGeom2dAxisPlacement {
 impl HandleGeom2dAxisPlacement {
     /// Dereference this Handle to access the underlying Geom2d_AxisPlacement
     pub fn get(&self) -> &crate::ffi::Geom2d_AxisPlacement {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeom2dAxisPlacement_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dAxisPlacement_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_AxisPlacement
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_AxisPlacement {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeom2dAxisPlacement_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dAxisPlacement_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_AxisPlacement> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dAxisPlacement_to_HandleGeom2dGeometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dAxisPlacement_to_HandleGeom2dGeometry(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_AxisPlacement> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dAxisPlacement_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dAxisPlacement_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -632,8 +719,10 @@ impl BSplineCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_ctor_array1ofpnt2d_array1ofreal_array1ofinteger_int_bool(Poles, Knots, Multiplicities, Degree, Periodic)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -675,8 +764,10 @@ impl BSplineCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_ctor_array1ofpnt2d_array1ofreal2_array1ofinteger_int_bool(Poles, Weights, Knots, Multiplicities, Degree, Periodic)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -775,8 +866,12 @@ impl BSplineCurve {
     /// Geom2d_BSplineCurve::MaxDegree().
     pub fn increase_degree(&mut self, Degree: i32) {
         {
-            unsafe { crate::ffi::Geom2d_BSplineCurve_increase_degree(self as *mut Self, Degree) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_BSplineCurve_increase_degree(self as *mut Self, Degree)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -790,14 +885,16 @@ impl BSplineCurve {
     /// If <Index> is not in [FirstUKnotIndex, LastUKnotIndex]
     pub fn increase_multiplicity_int2(&mut self, Index: i32, M: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_increase_multiplicity_int2(
                     self as *mut Self,
                     Index,
                     M,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -818,7 +915,7 @@ impl BSplineCurve {
     /// outside the bounds of the knots table.
     pub fn increase_multiplicity_int3(&mut self, I1: i32, I2: i32, M: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_increase_multiplicity_int3(
                     self as *mut Self,
                     I1,
@@ -826,7 +923,9 @@ impl BSplineCurve {
                     M,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -846,10 +945,12 @@ impl BSplineCurve {
     /// bounds of the knots table.
     pub fn increment_multiplicity(&mut self, I1: i32, I2: i32, M: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_increment_multiplicity(self as *mut Self, I1, I2, M)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -875,7 +976,7 @@ impl BSplineCurve {
     /// this BSpline curve.
     pub fn insert_knot(&mut self, U: f64, M: i32, ParametricTolerance: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_insert_knot(
                     self as *mut Self,
                     U,
@@ -883,7 +984,9 @@ impl BSplineCurve {
                     ParametricTolerance,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -914,7 +1017,7 @@ impl BSplineCurve {
         Add: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_insert_knots(
                     self as *mut Self,
                     Knots,
@@ -923,7 +1026,9 @@ impl BSplineCurve {
                     Add,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -949,8 +1054,11 @@ impl BSplineCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_remove_knot(self as *mut Self, Index, M, Tolerance)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -963,7 +1071,7 @@ impl BSplineCurve {
     /// Raised if Index is not in the range [1, Number of Poles]
     pub fn insert_pole_after(&mut self, Index: i32, P: &crate::gp::Pnt2d, Weight: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_insert_pole_after(
                     self as *mut Self,
                     Index,
@@ -971,7 +1079,9 @@ impl BSplineCurve {
                     Weight,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -984,7 +1094,7 @@ impl BSplineCurve {
     /// Raised if Index is not in the range [1, Number of Poles]
     pub fn insert_pole_before(&mut self, Index: i32, P: &crate::gp::Pnt2d, Weight: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_insert_pole_before(
                     self as *mut Self,
                     Index,
@@ -992,7 +1102,9 @@ impl BSplineCurve {
                     Weight,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1006,8 +1118,11 @@ impl BSplineCurve {
     /// Raised if Index is not in the range [1, Number of Poles]
     pub fn remove_pole(&mut self, Index: i32) {
         {
-            unsafe { crate::ffi::Geom2d_BSplineCurve_remove_pole(self as *mut Self, Index) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BSplineCurve_remove_pole(self as *mut Self, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1020,8 +1135,10 @@ impl BSplineCurve {
     /// point of the reversed curve.
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_BSplineCurve_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_BSplineCurve_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1036,8 +1153,11 @@ impl BSplineCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_reversed_parameter(self as *const Self, U)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1067,10 +1187,12 @@ impl BSplineCurve {
     /// i.e. ((U2 - U1) - Period) > Precision::PConfusion().
     pub fn segment(&mut self, U1: f64, U2: f64, theTolerance: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_segment(self as *mut Self, U1, U2, theTolerance)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1089,10 +1211,12 @@ impl BSplineCurve {
     /// Standard_OutOfRange if Index is outside the bounds of the knots table.
     pub fn set_knot_int_real(&mut self, Index: i32, K: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_set_knot_int_real(self as *mut Self, Index, K)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1106,8 +1230,10 @@ impl BSplineCurve {
     /// K are not respectively 1 and the number of knots of this BSpline curve.
     pub fn set_knots(&mut self, K: &crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::Geom2d_BSplineCurve_set_knots(self as *mut Self, K) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_BSplineCurve_set_knots(self as *mut Self, K) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1129,7 +1255,7 @@ impl BSplineCurve {
     /// Standard_OutOfRange if Index is outside the bounds of the knots table.
     pub fn set_knot_int_real_int(&mut self, Index: i32, K: f64, M: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_set_knot_int_real_int(
                     self as *mut Self,
                     Index,
@@ -1137,7 +1263,9 @@ impl BSplineCurve {
                     M,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1151,10 +1279,12 @@ impl BSplineCurve {
     /// Note: If this curve is not periodic, U is not modified.
     pub fn periodic_normalization(&self, U: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_periodic_normalization(self as *const Self, U)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1172,8 +1302,10 @@ impl BSplineCurve {
     /// Standard_ConstructionError if this BSpline curve is not closed.
     pub fn set_periodic(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_BSplineCurve_set_periodic(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_BSplineCurve_set_periodic(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1187,8 +1319,11 @@ impl BSplineCurve {
     /// bounds of the knots table.
     pub fn set_origin(&mut self, Index: i32) {
         {
-            unsafe { crate::ffi::Geom2d_BSplineCurve_set_origin(self as *mut Self, Index) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BSplineCurve_set_origin(self as *mut Self, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1204,8 +1339,11 @@ impl BSplineCurve {
     /// curve are not its first and last poles.
     pub fn set_not_periodic(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_BSplineCurve_set_not_periodic(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BSplineCurve_set_not_periodic(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1218,10 +1356,12 @@ impl BSplineCurve {
     /// Standard_ConstructionError if Weight is negative or null.
     pub fn set_pole_int_pnt2d(&mut self, Index: i32, P: &crate::gp::Pnt2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_set_pole_int_pnt2d(self as *mut Self, Index, P)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1238,7 +1378,7 @@ impl BSplineCurve {
     /// Standard_ConstructionError if Weight is negative or null.
     pub fn set_pole_int_pnt2d_real(&mut self, Index: i32, P: &crate::gp::Pnt2d, Weight: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_set_pole_int_pnt2d_real(
                     self as *mut Self,
                     Index,
@@ -1246,7 +1386,9 @@ impl BSplineCurve {
                     Weight,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1260,8 +1402,12 @@ impl BSplineCurve {
     /// Standard_ConstructionError if Weight is negative or null.
     pub fn set_weight(&mut self, Index: i32, Weight: f64) {
         {
-            unsafe { crate::ffi::Geom2d_BSplineCurve_set_weight(self as *mut Self, Index, Weight) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_BSplineCurve_set_weight(self as *mut Self, Index, Weight)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1292,7 +1438,7 @@ impl BSplineCurve {
         LastModifiedPole: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_move_point(
                     self as *mut Self,
                     U,
@@ -1303,7 +1449,9 @@ impl BSplineCurve {
                     LastModifiedPole,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1330,7 +1478,7 @@ impl BSplineCurve {
         ErrorStatus: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_move_point_and_tangent(
                     self as *mut Self,
                     U,
@@ -1342,7 +1490,9 @@ impl BSplineCurve {
                     ErrorStatus,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1353,8 +1503,11 @@ impl BSplineCurve {
     pub fn is_cn(&self, N: i32) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2d_BSplineCurve_is_cn(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1370,8 +1523,11 @@ impl BSplineCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_is_g1(self as *const Self, theTf, theTl, theAngTol)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1386,8 +1542,11 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1397,8 +1556,11 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1409,8 +1571,11 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_is_rational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1431,8 +1596,11 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -1444,16 +1612,21 @@ impl BSplineCurve {
     pub fn degree(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Geom2d_BSplineCurve_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Geom2d_BSplineCurve.hxx`:597 - `Geom2d_BSplineCurve::D0()`
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_BSplineCurve_d0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_BSplineCurve_d0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1461,8 +1634,11 @@ impl BSplineCurve {
     /// Raised if the continuity of the curve is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_BSplineCurve_d1(self as *const Self, U, P, V1) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BSplineCurve_d1(self as *const Self, U, P, V1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1476,8 +1652,11 @@ impl BSplineCurve {
         V2: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_BSplineCurve_d2(self as *const Self, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BSplineCurve_d2(self as *const Self, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1503,8 +1682,12 @@ impl BSplineCurve {
         V3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_BSplineCurve_d3(self as *const Self, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_BSplineCurve_d3(self as *const Self, U, P, V1, V2, V3)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1533,8 +1716,11 @@ impl BSplineCurve {
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_BSplineCurve_dn(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1545,8 +1731,11 @@ impl BSplineCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_local_value(self as *const Self, U, FromK1, ToK2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1554,10 +1743,12 @@ impl BSplineCurve {
     /// Raised if FromK1 = ToK2.
     pub fn local_d0(&self, U: f64, FromK1: i32, ToK2: i32, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_local_d0(self as *const Self, U, FromK1, ToK2, P)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1574,7 +1765,7 @@ impl BSplineCurve {
         V1: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_local_d1(
                     self as *const Self,
                     U,
@@ -1584,7 +1775,9 @@ impl BSplineCurve {
                     V1,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1602,7 +1795,7 @@ impl BSplineCurve {
         V2: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_local_d2(
                     self as *const Self,
                     U,
@@ -1613,7 +1806,9 @@ impl BSplineCurve {
                     V2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1632,7 +1827,7 @@ impl BSplineCurve {
         V3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_local_d3(
                     self as *const Self,
                     U,
@@ -1644,7 +1839,9 @@ impl BSplineCurve {
                     V3,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1664,8 +1861,11 @@ impl BSplineCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_local_dn(self as *const Self, U, FromK1, ToK2, N)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1679,8 +1879,11 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_end_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1694,8 +1897,11 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_first_u_knot_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1706,8 +1912,11 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1721,8 +1930,11 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_knot(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1733,8 +1945,12 @@ impl BSplineCurve {
     /// K.Upper() is more than number of last knot.
     pub fn knots_array1ofreal(&self, K: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::Geom2d_BSplineCurve_knots_array1ofreal(self as *const Self, K) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_BSplineCurve_knots_array1ofreal(self as *const Self, K)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1743,8 +1959,11 @@ impl BSplineCurve {
     pub fn knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
         {
             let __result = unsafe { crate::ffi::Geom2d_BSplineCurve_knots(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1760,10 +1979,12 @@ impl BSplineCurve {
     /// than number of last knot in knot sequence with repetitions.
     pub fn knot_sequence_array1ofreal(&self, K: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_knot_sequence_array1ofreal(self as *const Self, K)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1777,8 +1998,11 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_knot_sequence(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1798,8 +2022,11 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_knot_distribution(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::BSplKnotDistribution::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::BSplKnotDistribution::try_from(__val).unwrap()
         }
     }
 
@@ -1814,8 +2041,11 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_last_u_knot_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1826,8 +2056,11 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1851,7 +2084,7 @@ impl BSplineCurve {
         WithKnotRepetition: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_locate_u(
                     self as *const Self,
                     U,
@@ -1861,7 +2094,9 @@ impl BSplineCurve {
                     WithKnotRepetition,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1872,8 +2107,11 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_multiplicity(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1883,13 +2121,15 @@ impl BSplineCurve {
     /// Raised if the length of M is not equal to NbKnots.
     pub fn multiplicities_array1ofinteger(&self, M: &mut crate::ffi::TColStd_Array1OfInteger) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_multiplicities_array1ofinteger(
                     self as *const Self,
                     M,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1899,8 +2139,11 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_multiplicities(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1910,8 +2153,11 @@ impl BSplineCurve {
     pub fn nb_knots(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Geom2d_BSplineCurve_nb_knots(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1920,8 +2166,11 @@ impl BSplineCurve {
     pub fn nb_poles(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Geom2d_BSplineCurve_nb_poles(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1932,8 +2181,11 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_pole(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1943,8 +2195,12 @@ impl BSplineCurve {
     /// Raised if the length of P is not equal to the number of poles.
     pub fn poles_array1ofpnt2d(&self, P: &mut crate::ffi::TColgp_Array1OfPnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_BSplineCurve_poles_array1ofpnt2d(self as *const Self, P) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_BSplineCurve_poles_array1ofpnt2d(self as *const Self, P)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1953,8 +2209,11 @@ impl BSplineCurve {
     pub fn poles(&self) -> &crate::ffi::TColgp_Array1OfPnt2d {
         {
             let __result = unsafe { crate::ffi::Geom2d_BSplineCurve_poles(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1967,8 +2226,11 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_start_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1979,8 +2241,11 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_weight(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1990,8 +2255,12 @@ impl BSplineCurve {
     /// Raised if the length of W is not equal to NbPoles.
     pub fn weights_array1ofreal(&self, W: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::Geom2d_BSplineCurve_weights_array1ofreal(self as *const Self, W) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_BSplineCurve_weights_array1ofreal(self as *const Self, W)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2000,11 +2269,14 @@ impl BSplineCurve {
     pub fn weights(&self) -> Option<&crate::ffi::TColStd_Array1OfReal> {
         {
             let __result = unsafe { crate::ffi::Geom2d_BSplineCurve_weights(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2013,8 +2285,10 @@ impl BSplineCurve {
     /// Applies the transformation T to this BSpline curve.
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
         {
-            unsafe { crate::ffi::Geom2d_BSplineCurve_transform(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_BSplineCurve_transform(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2028,14 +2302,16 @@ impl BSplineCurve {
     /// |f(t1) - f(t0)| < ToleranceUV
     pub fn resolution(&mut self, ToleranceUV: f64, UTolerance: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_resolution(
                     self as *mut Self,
                     ToleranceUV,
                     UTolerance,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2044,8 +2320,11 @@ impl BSplineCurve {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         {
             let __result = unsafe { crate::ffi::Geom2d_BSplineCurve_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2054,8 +2333,11 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2065,8 +2347,11 @@ impl BSplineCurve {
     pub fn max_degree() -> i32 {
         {
             let __result = unsafe { crate::ffi::Geom2d_BSplineCurve_max_degree() };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2074,8 +2359,11 @@ impl BSplineCurve {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_BSplineCurve_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2083,105 +2371,104 @@ impl BSplineCurve {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_BSplineCurve_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Geom2d_BoundedCurve
     pub fn as_bounded_curve(&self) -> &BoundedCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_BSplineCurve_as_Geom2d_BoundedCurve(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_BSplineCurve_as_Geom2d_BoundedCurve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_BoundedCurve (mutable)
     pub fn as_bounded_curve_mut(&mut self) -> &mut BoundedCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_BSplineCurve_as_Geom2d_BoundedCurve_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Geom2d_BSplineCurve_as_Geom2d_BoundedCurve_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Curve
     pub fn as_curve(&self) -> &Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_BSplineCurve_as_Geom2d_Curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_BSplineCurve_as_Geom2d_Curve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Curve (mutable)
     pub fn as_curve_mut(&mut self) -> &mut Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_BSplineCurve_as_Geom2d_Curve_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_BSplineCurve_as_Geom2d_Curve_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_BSplineCurve_as_Geom2d_Geometry(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_BSplineCurve_as_Geom2d_Geometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_BSplineCurve_as_Geom2d_Geometry_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_BSplineCurve_as_Geom2d_Geometry_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_BSplineCurve_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_BSplineCurve_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_BSplineCurve_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_BSplineCurve_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
-        {
-            let __result = unsafe { crate::ffi::Geom2d_BSplineCurve_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Geom2d_BSplineCurve_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:83 - `Geom2d_Curve::TransformedParameter()`
@@ -2194,8 +2481,11 @@ impl BSplineCurve {
                     T,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2208,8 +2498,11 @@ impl BSplineCurve {
                     T,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2218,8 +2511,11 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_Reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2228,8 +2524,11 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_Period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2238,40 +2537,57 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_Value(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_Mirror(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_Mirror(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         {
-            unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_Rotate(self as *mut Self, P, Ang) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_BSplineCurve_inherited_Rotate(self as *mut Self, P, Ang)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         {
-            unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_Scale(self as *mut Self, P, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_Scale(self as *mut Self, P, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_Translate(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_BSplineCurve_inherited_Translate(self as *mut Self, V)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2284,8 +2600,11 @@ impl BSplineCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_inherited_Mirrored(self as *const Self, P)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2299,8 +2618,11 @@ impl BSplineCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_inherited_Rotated(self as *const Self, P, Ang)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2314,8 +2636,11 @@ impl BSplineCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_inherited_Scaled(self as *const Self, P, S)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2328,8 +2653,11 @@ impl BSplineCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_inherited_Transformed(self as *const Self, T)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2342,8 +2670,11 @@ impl BSplineCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_inherited_Translated(self as *const Self, V)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2353,8 +2684,11 @@ impl BSplineCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2364,8 +2698,11 @@ impl BSplineCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2374,11 +2711,14 @@ impl BSplineCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2389,18 +2729,23 @@ impl BSplineCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2410,16 +2755,22 @@ impl BSplineCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BSplineCurve_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BSplineCurve_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2435,67 +2786,64 @@ unsafe impl crate::CppDeletable for HandleGeom2dBSplineCurve {
 impl HandleGeom2dBSplineCurve {
     /// Dereference this Handle to access the underlying Geom2d_BSplineCurve
     pub fn get(&self) -> &crate::ffi::Geom2d_BSplineCurve {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dBSplineCurve_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dBSplineCurve_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_BSplineCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_BSplineCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeom2dBSplineCurve_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dBSplineCurve_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_BSplineCurve> to Handle<Geom2d_BoundedCurve>
     pub fn to_handle_bounded_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBoundedCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dBSplineCurve_to_HandleGeom2dBoundedCurve(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dBSplineCurve_to_HandleGeom2dBoundedCurve(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_BSplineCurve> to Handle<Geom2d_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dBSplineCurve_to_HandleGeom2dCurve(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dBSplineCurve_to_HandleGeom2dCurve(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_BSplineCurve> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dBSplineCurve_to_HandleGeom2dGeometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dBSplineCurve_to_HandleGeom2dGeometry(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_BSplineCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dBSplineCurve_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dBSplineCurve_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2575,8 +2923,10 @@ impl BezierCurve {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_BezierCurve_ctor_array1ofpnt2d(CurvePoles) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2600,8 +2950,10 @@ impl BezierCurve {
                     PoleWeights,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2612,8 +2964,11 @@ impl BezierCurve {
     /// or lower than the initial degree of <me>.
     pub fn increase(&mut self, Degree: i32) {
         {
-            unsafe { crate::ffi::Geom2d_BezierCurve_increase(self as *mut Self, Degree) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BezierCurve_increase(self as *mut Self, Degree) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2627,7 +2982,7 @@ impl BezierCurve {
     /// MaxDegree + 1.
     pub fn insert_pole_after(&mut self, Index: i32, P: &crate::gp::Pnt2d, Weight: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BezierCurve_insert_pole_after(
                     self as *mut Self,
                     Index,
@@ -2635,7 +2990,9 @@ impl BezierCurve {
                     Weight,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2649,7 +3006,7 @@ impl BezierCurve {
     /// MaxDegree + 1.
     pub fn insert_pole_before(&mut self, Index: i32, P: &crate::gp::Pnt2d, Weight: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BezierCurve_insert_pole_before(
                     self as *mut Self,
                     Index,
@@ -2657,7 +3014,9 @@ impl BezierCurve {
                     Weight,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2667,8 +3026,11 @@ impl BezierCurve {
     /// Raised if Index is not in the range [1, NbPoles]
     pub fn remove_pole(&mut self, Index: i32) {
         {
-            unsafe { crate::ffi::Geom2d_BezierCurve_remove_pole(self as *mut Self, Index) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BezierCurve_remove_pole(self as *mut Self, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2677,8 +3039,10 @@ impl BezierCurve {
     /// Value (NewU) =  Value (1 - OldU)
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_BezierCurve_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_BezierCurve_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2692,8 +3056,11 @@ impl BezierCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BezierCurve_reversed_parameter(self as *const Self, U)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2711,8 +3078,11 @@ impl BezierCurve {
     /// After the segmentation the length of a curve can be null.
     pub fn segment(&mut self, U1: f64, U2: f64) {
         {
-            unsafe { crate::ffi::Geom2d_BezierCurve_segment(self as *mut Self, U1, U2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BezierCurve_segment(self as *mut Self, U1, U2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2723,10 +3093,12 @@ impl BezierCurve {
     /// raiseD if Index is not in the range [1, NbPoles]
     pub fn set_pole_int_pnt2d(&mut self, Index: i32, P: &crate::gp::Pnt2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BezierCurve_set_pole_int_pnt2d(self as *mut Self, Index, P)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2740,7 +3112,7 @@ impl BezierCurve {
     /// Raised if Weight <= Resolution from package gp
     pub fn set_pole_int_pnt2d_real(&mut self, Index: i32, P: &crate::gp::Pnt2d, Weight: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BezierCurve_set_pole_int_pnt2d_real(
                     self as *mut Self,
                     Index,
@@ -2748,7 +3120,9 @@ impl BezierCurve {
                     Weight,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2762,8 +3136,12 @@ impl BezierCurve {
     /// Raised if Weight <= Resolution from package gp
     pub fn set_weight(&mut self, Index: i32, Weight: f64) {
         {
-            unsafe { crate::ffi::Geom2d_BezierCurve_set_weight(self as *mut Self, Index, Weight) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_BezierCurve_set_weight(self as *mut Self, Index, Weight)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2774,8 +3152,11 @@ impl BezierCurve {
     pub fn is_closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2d_BezierCurve_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2784,8 +3165,11 @@ impl BezierCurve {
     pub fn is_cn(&self, N: i32) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2d_BezierCurve_is_cn(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2796,8 +3180,11 @@ impl BezierCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BezierCurve_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2808,8 +3195,11 @@ impl BezierCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BezierCurve_is_rational(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2819,8 +3209,11 @@ impl BezierCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BezierCurve_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -2831,24 +3224,31 @@ impl BezierCurve {
     pub fn degree(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Geom2d_BezierCurve_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Geom2d_BezierCurve.hxx`:217 - `Geom2d_BezierCurve::D0()`
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_BezierCurve_d0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_BezierCurve_d0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Geom2d_BezierCurve.hxx`:219 - `Geom2d_BezierCurve::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_BezierCurve_d1(self as *const Self, U, P, V1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_BezierCurve_d1(self as *const Self, U, P, V1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2861,8 +3261,11 @@ impl BezierCurve {
         V2: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_BezierCurve_d2(self as *const Self, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BezierCurve_d2(self as *const Self, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2876,8 +3279,11 @@ impl BezierCurve {
         V3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_BezierCurve_d3(self as *const Self, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BezierCurve_d3(self as *const Self, U, P, V1, V2, V3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2893,8 +3299,11 @@ impl BezierCurve {
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_BezierCurve_dn(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2903,8 +3312,11 @@ impl BezierCurve {
     pub fn end_point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_BezierCurve_end_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2915,8 +3327,11 @@ impl BezierCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BezierCurve_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2927,8 +3342,11 @@ impl BezierCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BezierCurve_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2937,8 +3355,11 @@ impl BezierCurve {
     pub fn nb_poles(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Geom2d_BezierCurve_nb_poles(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2949,8 +3370,11 @@ impl BezierCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BezierCurve_pole(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2960,8 +3384,12 @@ impl BezierCurve {
     /// Raised if the length of P is not equal to the number of poles.
     pub fn poles_array1ofpnt2d(&self, P: &mut crate::ffi::TColgp_Array1OfPnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_BezierCurve_poles_array1ofpnt2d(self as *const Self, P) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_BezierCurve_poles_array1ofpnt2d(self as *const Self, P)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2970,8 +3398,11 @@ impl BezierCurve {
     pub fn poles(&self) -> &crate::ffi::TColgp_Array1OfPnt2d {
         {
             let __result = unsafe { crate::ffi::Geom2d_BezierCurve_poles(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2982,8 +3413,11 @@ impl BezierCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BezierCurve_start_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2994,8 +3428,11 @@ impl BezierCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BezierCurve_weight(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3005,8 +3442,12 @@ impl BezierCurve {
     /// Raised if the length of W is not equal to the number of poles.
     pub fn weights_array1ofreal(&self, W: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::Geom2d_BezierCurve_weights_array1ofreal(self as *const Self, W) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_BezierCurve_weights_array1ofreal(self as *const Self, W)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3015,11 +3456,14 @@ impl BezierCurve {
     pub fn weights(&self) -> Option<&crate::ffi::TColStd_Array1OfReal> {
         {
             let __result = unsafe { crate::ffi::Geom2d_BezierCurve_weights(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3028,8 +3472,10 @@ impl BezierCurve {
     /// Applies the transformation T to this Bezier curve.
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
         {
-            unsafe { crate::ffi::Geom2d_BezierCurve_transform(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_BezierCurve_transform(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3043,14 +3489,16 @@ impl BezierCurve {
     /// |f(t1) - f(t0)| < ToleranceUV
     pub fn resolution(&mut self, ToleranceUV: f64, UTolerance: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BezierCurve_resolution(
                     self as *mut Self,
                     ToleranceUV,
                     UTolerance,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3059,8 +3507,11 @@ impl BezierCurve {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         {
             let __result = unsafe { crate::ffi::Geom2d_BezierCurve_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3069,8 +3520,11 @@ impl BezierCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BezierCurve_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3080,8 +3534,11 @@ impl BezierCurve {
     pub fn max_degree() -> i32 {
         {
             let __result = unsafe { crate::ffi::Geom2d_BezierCurve_max_degree() };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3089,8 +3546,11 @@ impl BezierCurve {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_BezierCurve_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3098,104 +3558,103 @@ impl BezierCurve {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_BezierCurve_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Geom2d_BoundedCurve
     pub fn as_bounded_curve(&self) -> &BoundedCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_BezierCurve_as_Geom2d_BoundedCurve(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_BezierCurve_as_Geom2d_BoundedCurve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_BoundedCurve (mutable)
     pub fn as_bounded_curve_mut(&mut self) -> &mut BoundedCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_BezierCurve_as_Geom2d_BoundedCurve_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_BezierCurve_as_Geom2d_BoundedCurve_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Curve
     pub fn as_curve(&self) -> &Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_BezierCurve_as_Geom2d_Curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_BezierCurve_as_Geom2d_Curve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Curve (mutable)
     pub fn as_curve_mut(&mut self) -> &mut Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_BezierCurve_as_Geom2d_Curve_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_BezierCurve_as_Geom2d_Curve_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_BezierCurve_as_Geom2d_Geometry(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_BezierCurve_as_Geom2d_Geometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_BezierCurve_as_Geom2d_Geometry_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_BezierCurve_as_Geom2d_Geometry_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_BezierCurve_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_BezierCurve_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_BezierCurve_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_BezierCurve_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
-        {
-            let __result = unsafe { crate::ffi::Geom2d_BezierCurve_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Geom2d_BezierCurve_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:83 - `Geom2d_Curve::TransformedParameter()`
@@ -3208,8 +3667,11 @@ impl BezierCurve {
                     T,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3222,8 +3684,11 @@ impl BezierCurve {
                     T,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3232,8 +3697,11 @@ impl BezierCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BezierCurve_inherited_Reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3242,8 +3710,11 @@ impl BezierCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BezierCurve_inherited_Period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3252,40 +3723,56 @@ impl BezierCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BezierCurve_inherited_Value(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_BezierCurve_inherited_Mirror(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BezierCurve_inherited_Mirror(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         {
-            unsafe { crate::ffi::Geom2d_BezierCurve_inherited_Rotate(self as *mut Self, P, Ang) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_BezierCurve_inherited_Rotate(self as *mut Self, P, Ang)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         {
-            unsafe { crate::ffi::Geom2d_BezierCurve_inherited_Scale(self as *mut Self, P, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BezierCurve_inherited_Scale(self as *mut Self, P, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_BezierCurve_inherited_Translate(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BezierCurve_inherited_Translate(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3298,8 +3785,11 @@ impl BezierCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BezierCurve_inherited_Mirrored(self as *const Self, P)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3313,8 +3803,11 @@ impl BezierCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BezierCurve_inherited_Rotated(self as *const Self, P, Ang)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3328,8 +3821,11 @@ impl BezierCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BezierCurve_inherited_Scaled(self as *const Self, P, S)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3342,8 +3838,11 @@ impl BezierCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BezierCurve_inherited_Transformed(self as *const Self, T)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3356,8 +3855,11 @@ impl BezierCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BezierCurve_inherited_Translated(self as *const Self, V)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3367,8 +3869,11 @@ impl BezierCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BezierCurve_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3378,8 +3883,11 @@ impl BezierCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BezierCurve_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3388,11 +3896,14 @@ impl BezierCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BezierCurve_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3403,18 +3914,23 @@ impl BezierCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BezierCurve_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BezierCurve_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3424,16 +3940,22 @@ impl BezierCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BezierCurve_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_BezierCurve_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BezierCurve_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3449,65 +3971,64 @@ unsafe impl crate::CppDeletable for HandleGeom2dBezierCurve {
 impl HandleGeom2dBezierCurve {
     /// Dereference this Handle to access the underlying Geom2d_BezierCurve
     pub fn get(&self) -> &crate::ffi::Geom2d_BezierCurve {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dBezierCurve_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dBezierCurve_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_BezierCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_BezierCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeom2dBezierCurve_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dBezierCurve_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_BezierCurve> to Handle<Geom2d_BoundedCurve>
     pub fn to_handle_bounded_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBoundedCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dBezierCurve_to_HandleGeom2dBoundedCurve(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dBezierCurve_to_HandleGeom2dBoundedCurve(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_BezierCurve> to Handle<Geom2d_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dBezierCurve_to_HandleGeom2dCurve(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dBezierCurve_to_HandleGeom2dCurve(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_BezierCurve> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dBezierCurve_to_HandleGeom2dGeometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dBezierCurve_to_HandleGeom2dGeometry(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_BezierCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dBezierCurve_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dBezierCurve_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3549,8 +4070,11 @@ impl BoundedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BoundedCurve_end_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3562,8 +4086,11 @@ impl BoundedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BoundedCurve_start_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3572,8 +4099,11 @@ impl BoundedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BoundedCurve_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3581,8 +4111,11 @@ impl BoundedCurve {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_BoundedCurve_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3590,79 +4123,82 @@ impl BoundedCurve {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_BoundedCurve_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Geom2d_Curve
     pub fn as_curve(&self) -> &Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_BoundedCurve_as_Geom2d_Curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_BoundedCurve_as_Geom2d_Curve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Curve (mutable)
     pub fn as_curve_mut(&mut self) -> &mut Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_BoundedCurve_as_Geom2d_Curve_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_BoundedCurve_as_Geom2d_Curve_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_BoundedCurve_as_Geom2d_Geometry(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_BoundedCurve_as_Geom2d_Geometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_BoundedCurve_as_Geom2d_Geometry_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_BoundedCurve_as_Geom2d_Geometry_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_BoundedCurve_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_BoundedCurve_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_BoundedCurve_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_BoundedCurve_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:70 - `Geom2d_Curve::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3672,8 +4208,11 @@ impl BoundedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BoundedCurve_inherited_ReversedParameter(self as *const Self, U)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3687,8 +4226,11 @@ impl BoundedCurve {
                     T,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3701,8 +4243,11 @@ impl BoundedCurve {
                     T,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3711,8 +4256,11 @@ impl BoundedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3722,8 +4270,11 @@ impl BoundedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BoundedCurve_inherited_FirstParameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3733,8 +4284,11 @@ impl BoundedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BoundedCurve_inherited_LastParameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3743,8 +4297,11 @@ impl BoundedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_IsClosed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3754,8 +4311,11 @@ impl BoundedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BoundedCurve_inherited_IsPeriodic(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3764,8 +4324,11 @@ impl BoundedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3775,8 +4338,11 @@ impl BoundedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BoundedCurve_inherited_Continuity(self as *const Self)
             };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -3785,24 +4351,34 @@ impl BoundedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_IsCN(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:174 - `Geom2d_Curve::D0()`
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_D0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_D0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:178 - `Geom2d_Curve::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_D1(self as *const Self, U, P, V1) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_BoundedCurve_inherited_D1(self as *const Self, U, P, V1)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3815,10 +4391,12 @@ impl BoundedCurve {
         V2: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BoundedCurve_inherited_D2(self as *const Self, U, P, V1, V2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3832,10 +4410,12 @@ impl BoundedCurve {
         V3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BoundedCurve_inherited_D3(self as *const Self, U, P, V1, V2, V3)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3844,8 +4424,11 @@ impl BoundedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_DN(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3854,48 +4437,69 @@ impl BoundedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Value(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Mirror(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Mirror(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         {
-            unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Rotate(self as *mut Self, P, Ang) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_BoundedCurve_inherited_Rotate(self as *mut Self, P, Ang)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         {
-            unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Scale(self as *mut Self, P, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Scale(self as *mut Self, P, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Translate(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_BoundedCurve_inherited_Translate(self as *mut Self, V)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:90 - `Geom2d_Geometry::Transform()`
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
         {
-            unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Transform(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_BoundedCurve_inherited_Transform(self as *mut Self, T)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3908,8 +4512,11 @@ impl BoundedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BoundedCurve_inherited_Mirrored(self as *const Self, P)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3923,8 +4530,11 @@ impl BoundedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BoundedCurve_inherited_Rotated(self as *const Self, P, Ang)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3938,8 +4548,11 @@ impl BoundedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BoundedCurve_inherited_Scaled(self as *const Self, P, S)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3952,8 +4565,11 @@ impl BoundedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BoundedCurve_inherited_Transformed(self as *const Self, T)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3966,8 +4582,11 @@ impl BoundedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BoundedCurve_inherited_Translated(self as *const Self, V)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3976,8 +4595,11 @@ impl BoundedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3987,8 +4609,11 @@ impl BoundedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BoundedCurve_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3998,8 +4623,11 @@ impl BoundedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BoundedCurve_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4008,11 +4636,14 @@ impl BoundedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4023,18 +4654,23 @@ impl BoundedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BoundedCurve_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_BoundedCurve_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4044,16 +4680,22 @@ impl BoundedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_BoundedCurve_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_BoundedCurve_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4069,54 +4711,53 @@ unsafe impl crate::CppDeletable for HandleGeom2dBoundedCurve {
 impl HandleGeom2dBoundedCurve {
     /// Dereference this Handle to access the underlying Geom2d_BoundedCurve
     pub fn get(&self) -> &crate::ffi::Geom2d_BoundedCurve {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dBoundedCurve_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dBoundedCurve_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_BoundedCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_BoundedCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeom2dBoundedCurve_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dBoundedCurve_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_BoundedCurve> to Handle<Geom2d_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dBoundedCurve_to_HandleGeom2dCurve(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dBoundedCurve_to_HandleGeom2dCurve(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_BoundedCurve> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dBoundedCurve_to_HandleGeom2dGeometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dBoundedCurve_to_HandleGeom2dGeometry(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_BoundedCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dBoundedCurve_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dBoundedCurve_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Geom2d_BoundedCurve> to Handle<Geom2d_BSplineCurve>
@@ -4125,16 +4766,18 @@ impl HandleGeom2dBoundedCurve {
     pub fn downcast_to_b_spline_curve(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dBoundedCurve_downcast_to_HandleGeom2dBSplineCurve(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4144,16 +4787,18 @@ impl HandleGeom2dBoundedCurve {
     pub fn downcast_to_bezier_curve(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dBoundedCurve_downcast_to_HandleGeom2dBezierCurve(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4163,16 +4808,18 @@ impl HandleGeom2dBoundedCurve {
     pub fn downcast_to_trimmed_curve(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dTrimmedCurve>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dBoundedCurve_downcast_to_HandleGeom2dTrimmedCurve(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -4199,8 +4846,10 @@ impl CartesianPoint {
     pub fn new_pnt2d(P: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_CartesianPoint_ctor_pnt2d(P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4208,8 +4857,10 @@ impl CartesianPoint {
     pub fn new_real2(X: f64, Y: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_CartesianPoint_ctor_real2(X, Y) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4217,8 +4868,11 @@ impl CartesianPoint {
     /// Set <me> to X, Y coordinates.
     pub fn set_coord(&mut self, X: f64, Y: f64) {
         {
-            unsafe { crate::ffi::Geom2d_CartesianPoint_set_coord(self as *mut Self, X, Y) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_CartesianPoint_set_coord(self as *mut Self, X, Y) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4226,8 +4880,11 @@ impl CartesianPoint {
     /// Set <me> to P.X(), P.Y() coordinates.
     pub fn set_pnt2d(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_CartesianPoint_set_pnt2d(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_CartesianPoint_set_pnt2d(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4235,8 +4892,10 @@ impl CartesianPoint {
     /// Changes the X coordinate of me.
     pub fn set_x(&mut self, X: f64) {
         {
-            unsafe { crate::ffi::Geom2d_CartesianPoint_set_x(self as *mut Self, X) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_CartesianPoint_set_x(self as *mut Self, X) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4244,8 +4903,10 @@ impl CartesianPoint {
     /// Changes the Y coordinate of me.
     pub fn set_y(&mut self, Y: f64) {
         {
-            unsafe { crate::ffi::Geom2d_CartesianPoint_set_y(self as *mut Self, Y) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_CartesianPoint_set_y(self as *mut Self, Y) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4253,8 +4914,11 @@ impl CartesianPoint {
     /// Returns the coordinates of <me>.
     pub fn coord(&self, X: &mut f64, Y: &mut f64) {
         {
-            unsafe { crate::ffi::Geom2d_CartesianPoint_coord(self as *const Self, X, Y) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_CartesianPoint_coord(self as *const Self, X, Y) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4265,8 +4929,11 @@ impl CartesianPoint {
     pub fn pnt2d(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_CartesianPoint_pnt2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4275,8 +4942,11 @@ impl CartesianPoint {
     pub fn x(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_CartesianPoint_x(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4285,16 +4955,22 @@ impl CartesianPoint {
     pub fn y(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_CartesianPoint_y(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `Geom2d_CartesianPoint.hxx`:69 - `Geom2d_CartesianPoint::Transform()`
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
         {
-            unsafe { crate::ffi::Geom2d_CartesianPoint_transform(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_CartesianPoint_transform(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4302,8 +4978,11 @@ impl CartesianPoint {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         {
             let __result = unsafe { crate::ffi::Geom2d_CartesianPoint_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4312,8 +4991,11 @@ impl CartesianPoint {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_CartesianPoint_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4321,8 +5003,11 @@ impl CartesianPoint {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_CartesianPoint_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4330,84 +5015,84 @@ impl CartesianPoint {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_CartesianPoint_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Geom2d_Point
     pub fn as_point(&self) -> &Point {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_CartesianPoint_as_Geom2d_Point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_CartesianPoint_as_Geom2d_Point(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Point (mutable)
     pub fn as_point_mut(&mut self) -> &mut Point {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_CartesianPoint_as_Geom2d_Point_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_CartesianPoint_as_Geom2d_Point_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_CartesianPoint_as_Geom2d_Geometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_CartesianPoint_as_Geom2d_Geometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_CartesianPoint_as_Geom2d_Geometry_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_CartesianPoint_as_Geom2d_Geometry_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_CartesianPoint_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_CartesianPoint_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_CartesianPoint_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Geom2d_CartesianPoint_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCartesianPoint> {
-        {
-            let __result = unsafe { crate::ffi::Geom2d_CartesianPoint_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Geom2d_CartesianPoint_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Geom2d_Point.hxx`:51 - `Geom2d_Point::Distance()`
@@ -4416,8 +5101,11 @@ impl CartesianPoint {
             let __result = unsafe {
                 crate::ffi::Geom2d_CartesianPoint_inherited_Distance(self as *const Self, Other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4430,42 +5118,58 @@ impl CartesianPoint {
                     Other,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_CartesianPoint_inherited_Mirror(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_CartesianPoint_inherited_Mirror(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_CartesianPoint_inherited_Rotate(self as *mut Self, P, Ang)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         {
-            unsafe { crate::ffi::Geom2d_CartesianPoint_inherited_Scale(self as *mut Self, P, S) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_CartesianPoint_inherited_Scale(self as *mut Self, P, S)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_CartesianPoint_inherited_Translate(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_CartesianPoint_inherited_Translate(self as *mut Self, V)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4478,8 +5182,11 @@ impl CartesianPoint {
             let __result = unsafe {
                 crate::ffi::Geom2d_CartesianPoint_inherited_Mirrored(self as *const Self, P)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4493,8 +5200,11 @@ impl CartesianPoint {
             let __result = unsafe {
                 crate::ffi::Geom2d_CartesianPoint_inherited_Rotated(self as *const Self, P, Ang)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4508,8 +5218,11 @@ impl CartesianPoint {
             let __result = unsafe {
                 crate::ffi::Geom2d_CartesianPoint_inherited_Scaled(self as *const Self, P, S)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4522,8 +5235,11 @@ impl CartesianPoint {
             let __result = unsafe {
                 crate::ffi::Geom2d_CartesianPoint_inherited_Transformed(self as *const Self, T)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4536,8 +5252,11 @@ impl CartesianPoint {
             let __result = unsafe {
                 crate::ffi::Geom2d_CartesianPoint_inherited_Translated(self as *const Self, V)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4547,8 +5266,11 @@ impl CartesianPoint {
             let __result = unsafe {
                 crate::ffi::Geom2d_CartesianPoint_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4558,8 +5280,11 @@ impl CartesianPoint {
             let __result = unsafe {
                 crate::ffi::Geom2d_CartesianPoint_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4568,11 +5293,14 @@ impl CartesianPoint {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_CartesianPoint_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4583,18 +5311,23 @@ impl CartesianPoint {
             let __result = unsafe {
                 crate::ffi::Geom2d_CartesianPoint_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_CartesianPoint_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4604,16 +5337,22 @@ impl CartesianPoint {
             let __result = unsafe {
                 crate::ffi::Geom2d_CartesianPoint_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_CartesianPoint_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_CartesianPoint_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4629,57 +5368,53 @@ unsafe impl crate::CppDeletable for HandleGeom2dCartesianPoint {
 impl HandleGeom2dCartesianPoint {
     /// Dereference this Handle to access the underlying Geom2d_CartesianPoint
     pub fn get(&self) -> &crate::ffi::Geom2d_CartesianPoint {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeom2dCartesianPoint_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dCartesianPoint_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_CartesianPoint
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_CartesianPoint {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeom2dCartesianPoint_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dCartesianPoint_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_CartesianPoint> to Handle<Geom2d_Point>
     pub fn to_handle_point(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dPoint> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dCartesianPoint_to_HandleGeom2dPoint(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dCartesianPoint_to_HandleGeom2dPoint(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_CartesianPoint> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dCartesianPoint_to_HandleGeom2dGeometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dCartesianPoint_to_HandleGeom2dGeometry(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_CartesianPoint> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dCartesianPoint_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dCartesianPoint_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4729,8 +5464,10 @@ impl Circle {
     pub fn new_circ2d(C: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Circle_ctor_circ2d(C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4749,8 +5486,10 @@ impl Circle {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Circle_ctor_ax2d_real_bool(A, Radius, Sense) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4764,8 +5503,10 @@ impl Circle {
     pub fn new_ax22d_real(A: &crate::gp::Ax22d, Radius: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Circle_ctor_ax22d_real(A, Radius) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4784,16 +5525,20 @@ impl Circle {
     /// Converts the gp_Circ2d circle C into this circle.
     pub fn set_circ2d(&mut self, C: &crate::gp::Circ2d) {
         {
-            unsafe { crate::ffi::Geom2d_Circle_set_circ2d(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Circle_set_circ2d(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Geom2d_Circle.hxx`:91 - `Geom2d_Circle::SetRadius()`
     pub fn set_radius(&mut self, R: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Circle_set_radius(self as *mut Self, R) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Circle_set_radius(self as *mut Self, R) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4803,8 +5548,11 @@ impl Circle {
     pub fn circ2d(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Circle_circ2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4813,8 +5561,11 @@ impl Circle {
     pub fn radius(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Circle_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4826,8 +5577,11 @@ impl Circle {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Circle_reversed_parameter(self as *const Self, U) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4836,8 +5590,11 @@ impl Circle {
     pub fn eccentricity(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Circle_eccentricity(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4847,8 +5604,11 @@ impl Circle {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Circle_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4857,8 +5617,11 @@ impl Circle {
     pub fn last_parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Circle_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4867,8 +5630,11 @@ impl Circle {
     pub fn is_closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2d_Circle_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4877,8 +5643,11 @@ impl Circle {
     pub fn is_periodic(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2d_Circle_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4889,8 +5658,10 @@ impl Circle {
     /// YDir the YDirection of the circle's local coordinate system.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Circle_d0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Circle_d0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4898,8 +5669,10 @@ impl Circle {
     /// Returns the point P of parameter U and the first derivative V1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_Circle_d1(self as *const Self, U, P, V1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Circle_d1(self as *const Self, U, P, V1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4914,8 +5687,10 @@ impl Circle {
         V2: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_Circle_d2(self as *const Self, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Circle_d2(self as *const Self, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4931,8 +5706,11 @@ impl Circle {
         V3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_Circle_d3(self as *const Self, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Circle_d3(self as *const Self, U, P, V1, V2, V3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4943,8 +5721,11 @@ impl Circle {
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Circle_dn(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4952,8 +5733,10 @@ impl Circle {
     /// Applies the transformation T to this circle.
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
         {
-            unsafe { crate::ffi::Geom2d_Circle_transform(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Circle_transform(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4962,8 +5745,11 @@ impl Circle {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Circle_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4971,8 +5757,11 @@ impl Circle {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_Circle_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4980,8 +5769,11 @@ impl Circle {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_Circle_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4989,131 +5781,141 @@ impl Circle {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_Circle_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Geom2d_Conic
     pub fn as_conic(&self) -> &Conic {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Circle_as_Geom2d_Conic(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Geom2d_Circle_as_Geom2d_Conic(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Conic (mutable)
     pub fn as_conic_mut(&mut self) -> &mut Conic {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Circle_as_Geom2d_Conic_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::Geom2d_Circle_as_Geom2d_Conic_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Curve
     pub fn as_curve(&self) -> &Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Circle_as_Geom2d_Curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Geom2d_Circle_as_Geom2d_Curve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Curve (mutable)
     pub fn as_curve_mut(&mut self) -> &mut Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Circle_as_Geom2d_Curve_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::Geom2d_Circle_as_Geom2d_Curve_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Circle_as_Geom2d_Geometry(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Geom2d_Circle_as_Geom2d_Geometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Circle_as_Geom2d_Geometry_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Circle_as_Geom2d_Geometry_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Circle_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Circle_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Circle_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Circle_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCircle> {
-        {
-            let __result = unsafe { crate::ffi::Geom2d_Circle_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Geom2d_Circle_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Geom2d_Conic.hxx`:46 - `Geom2d_Conic::SetAxis()`
     pub fn set_axis(&mut self, theA: &crate::gp::Ax22d) {
         {
-            unsafe { crate::ffi::Geom2d_Circle_inherited_SetAxis(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Circle_inherited_SetAxis(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Conic.hxx`:54 - `Geom2d_Conic::SetXAxis()`
     pub fn set_x_axis(&mut self, theAX: &crate::gp::Ax2d) {
         {
-            unsafe { crate::ffi::Geom2d_Circle_inherited_SetXAxis(self as *mut Self, theAX) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Circle_inherited_SetXAxis(self as *mut Self, theAX) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Conic.hxx`:62 - `Geom2d_Conic::SetYAxis()`
     pub fn set_y_axis(&mut self, theAY: &crate::gp::Ax2d) {
         {
-            unsafe { crate::ffi::Geom2d_Circle_inherited_SetYAxis(self as *mut Self, theAY) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Circle_inherited_SetYAxis(self as *mut Self, theAY) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Conic.hxx`:66 - `Geom2d_Conic::SetLocation()`
     pub fn set_location(&mut self, theP: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Circle_inherited_SetLocation(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Circle_inherited_SetLocation(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5122,8 +5924,11 @@ impl Circle {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Circle_inherited_XAxis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5132,8 +5937,11 @@ impl Circle {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Circle_inherited_YAxis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5142,8 +5950,11 @@ impl Circle {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Circle_inherited_Location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5152,16 +5963,21 @@ impl Circle {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Circle_inherited_Position(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Conic.hxx`:96 - `Geom2d_Conic::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_Circle_inherited_Reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Circle_inherited_Reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5170,8 +5986,11 @@ impl Circle {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Circle_inherited_Continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -5180,8 +5999,11 @@ impl Circle {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Circle_inherited_IsCN(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5191,8 +6013,11 @@ impl Circle {
             let __result = unsafe {
                 crate::ffi::Geom2d_Circle_inherited_TransformedParameter(self as *const Self, U, T)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5202,8 +6027,11 @@ impl Circle {
             let __result = unsafe {
                 crate::ffi::Geom2d_Circle_inherited_ParametricTransformation(self as *const Self, T)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5212,8 +6040,11 @@ impl Circle {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Circle_inherited_Reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5222,8 +6053,11 @@ impl Circle {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Circle_inherited_Period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5232,40 +6066,54 @@ impl Circle {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Circle_inherited_Value(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Circle_inherited_Mirror(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Circle_inherited_Mirror(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Circle_inherited_Rotate(self as *mut Self, P, Ang) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Circle_inherited_Rotate(self as *mut Self, P, Ang) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Circle_inherited_Scale(self as *mut Self, P, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Circle_inherited_Scale(self as *mut Self, P, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_Circle_inherited_Translate(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Circle_inherited_Translate(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5277,8 +6125,11 @@ impl Circle {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Circle_inherited_Mirrored(self as *const Self, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5291,8 +6142,11 @@ impl Circle {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Circle_inherited_Rotated(self as *const Self, P, Ang) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5305,8 +6159,11 @@ impl Circle {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Circle_inherited_Scaled(self as *const Self, P, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5318,8 +6175,11 @@ impl Circle {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Circle_inherited_Transformed(self as *const Self, T) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5331,8 +6191,11 @@ impl Circle {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Circle_inherited_Translated(self as *const Self, V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5342,8 +6205,11 @@ impl Circle {
             let __result = unsafe {
                 crate::ffi::Geom2d_Circle_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5352,8 +6218,11 @@ impl Circle {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Circle_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5361,11 +6230,14 @@ impl Circle {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Circle_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5375,16 +6247,23 @@ impl Circle {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Circle_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_Circle_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_Circle_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5394,16 +6273,21 @@ impl Circle {
             let __result = unsafe {
                 crate::ffi::Geom2d_Circle_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_Circle_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Circle_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5419,62 +6303,61 @@ unsafe impl crate::CppDeletable for HandleGeom2dCircle {
 impl HandleGeom2dCircle {
     /// Dereference this Handle to access the underlying Geom2d_Circle
     pub fn get(&self) -> &crate::ffi::Geom2d_Circle {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dCircle_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dCircle_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_Circle
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_Circle {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dCircle_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dCircle_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_Circle> to Handle<Geom2d_Conic>
     pub fn to_handle_conic(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dConic> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeom2dCircle_to_HandleGeom2dConic(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dCircle_to_HandleGeom2dConic(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_Circle> to Handle<Geom2d_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeom2dCircle_to_HandleGeom2dCurve(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dCircle_to_HandleGeom2dCurve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_Circle> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dCircle_to_HandleGeom2dGeometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dCircle_to_HandleGeom2dGeometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_Circle> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dCircle_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dCircle_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5512,8 +6395,10 @@ impl Conic {
     /// partially, by assigning theA as its axis
     pub fn set_axis(&mut self, theA: &crate::gp::Ax22d) {
         {
-            unsafe { crate::ffi::Geom2d_Conic_set_axis(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Conic_set_axis(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5526,8 +6411,10 @@ impl Conic {
     /// system (right-handed or left-handed).
     pub fn set_x_axis(&mut self, theAX: &crate::gp::Ax2d) {
         {
-            unsafe { crate::ffi::Geom2d_Conic_set_x_axis(self as *mut Self, theAX) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Conic_set_x_axis(self as *mut Self, theAX) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5540,8 +6427,10 @@ impl Conic {
     /// system (right-handed or left-handed).
     pub fn set_y_axis(&mut self, theAY: &crate::gp::Ax2d) {
         {
-            unsafe { crate::ffi::Geom2d_Conic_set_y_axis(self as *mut Self, theAY) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Conic_set_y_axis(self as *mut Self, theAY) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5550,8 +6439,10 @@ impl Conic {
     /// system partially, by assigning theP as its origin.
     pub fn set_location(&mut self, theP: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Conic_set_location(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Conic_set_location(self as *mut Self, theP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5564,8 +6455,11 @@ impl Conic {
     pub fn x_axis(&self) -> crate::OwnedPtr<crate::gp::Ax2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Conic_x_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5575,8 +6469,11 @@ impl Conic {
     pub fn y_axis(&self) -> crate::OwnedPtr<crate::gp::Ax2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Conic_y_axis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5589,8 +6486,11 @@ impl Conic {
     pub fn eccentricity(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Conic_eccentricity(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5601,8 +6501,11 @@ impl Conic {
     pub fn location(&self) -> &crate::gp::Pnt2d {
         {
             let __result = unsafe { crate::ffi::Geom2d_Conic_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5611,8 +6514,11 @@ impl Conic {
     pub fn position(&self) -> &crate::gp::Ax22d {
         {
             let __result = unsafe { crate::ffi::Geom2d_Conic_position(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5621,8 +6527,10 @@ impl Conic {
     /// The local coordinate system of the conic is modified.
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_Conic_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Conic_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5633,8 +6541,11 @@ impl Conic {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Conic_reversed_parameter(self as *const Self, U) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5643,8 +6554,11 @@ impl Conic {
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         {
             let __result = unsafe { crate::ffi::Geom2d_Conic_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -5653,8 +6567,11 @@ impl Conic {
     pub fn is_cn(&self, N: i32) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2d_Conic_is_cn(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5662,8 +6579,11 @@ impl Conic {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_Conic_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5671,8 +6591,11 @@ impl Conic {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_Conic_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5680,68 +6603,69 @@ impl Conic {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_Conic_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Geom2d_Curve
     pub fn as_curve(&self) -> &Curve {
-        {
-            let __result = unsafe { crate::ffi::Geom2d_Conic_as_Geom2d_Curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Geom2d_Conic_as_Geom2d_Curve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Curve (mutable)
     pub fn as_curve_mut(&mut self) -> &mut Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Conic_as_Geom2d_Curve_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::Geom2d_Conic_as_Geom2d_Curve_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Conic_as_Geom2d_Geometry(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Geom2d_Conic_as_Geom2d_Geometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Conic_as_Geom2d_Geometry_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Conic_as_Geom2d_Geometry_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Conic_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Conic_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Conic_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Conic_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:83 - `Geom2d_Curve::TransformedParameter()`
@@ -5750,8 +6674,11 @@ impl Conic {
             let __result = unsafe {
                 crate::ffi::Geom2d_Conic_inherited_TransformedParameter(self as *const Self, U, T)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5761,8 +6688,11 @@ impl Conic {
             let __result = unsafe {
                 crate::ffi::Geom2d_Conic_inherited_ParametricTransformation(self as *const Self, T)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5771,8 +6701,11 @@ impl Conic {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Conic_inherited_Reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5781,8 +6714,11 @@ impl Conic {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Conic_inherited_FirstParameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5791,8 +6727,11 @@ impl Conic {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Conic_inherited_LastParameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5801,8 +6740,11 @@ impl Conic {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Conic_inherited_IsClosed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5811,8 +6753,11 @@ impl Conic {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Conic_inherited_IsPeriodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5821,24 +6766,32 @@ impl Conic {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Conic_inherited_Period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:174 - `Geom2d_Curve::D0()`
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Conic_inherited_D0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Conic_inherited_D0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:178 - `Geom2d_Curve::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_Conic_inherited_D1(self as *const Self, U, P, V1) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Conic_inherited_D1(self as *const Self, U, P, V1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5851,8 +6804,11 @@ impl Conic {
         V2: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_Conic_inherited_D2(self as *const Self, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Conic_inherited_D2(self as *const Self, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5866,8 +6822,12 @@ impl Conic {
         V3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_Conic_inherited_D3(self as *const Self, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_Conic_inherited_D3(self as *const Self, U, P, V1, V2, V3)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5876,8 +6836,11 @@ impl Conic {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Conic_inherited_DN(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5886,48 +6849,65 @@ impl Conic {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Conic_inherited_Value(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Conic_inherited_Mirror(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Conic_inherited_Mirror(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Conic_inherited_Rotate(self as *mut Self, P, Ang) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Conic_inherited_Rotate(self as *mut Self, P, Ang) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Conic_inherited_Scale(self as *mut Self, P, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Conic_inherited_Scale(self as *mut Self, P, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_Conic_inherited_Translate(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Conic_inherited_Translate(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:90 - `Geom2d_Geometry::Transform()`
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
         {
-            unsafe { crate::ffi::Geom2d_Conic_inherited_Transform(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Conic_inherited_Transform(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5939,8 +6919,11 @@ impl Conic {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Conic_inherited_Mirrored(self as *const Self, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5953,8 +6936,11 @@ impl Conic {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Conic_inherited_Rotated(self as *const Self, P, Ang) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5967,8 +6953,11 @@ impl Conic {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Conic_inherited_Scaled(self as *const Self, P, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5980,8 +6969,11 @@ impl Conic {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Conic_inherited_Transformed(self as *const Self, T) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5993,8 +6985,11 @@ impl Conic {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Conic_inherited_Translated(self as *const Self, V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6002,8 +6997,11 @@ impl Conic {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Conic_inherited_Copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6013,8 +7011,11 @@ impl Conic {
             let __result = unsafe {
                 crate::ffi::Geom2d_Conic_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6023,8 +7024,11 @@ impl Conic {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Conic_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6032,11 +7036,14 @@ impl Conic {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Conic_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6046,16 +7053,23 @@ impl Conic {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Conic_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_Conic_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_Conic_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6065,16 +7079,21 @@ impl Conic {
             let __result = unsafe {
                 crate::ffi::Geom2d_Conic_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_Conic_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Conic_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6090,66 +7109,67 @@ unsafe impl crate::CppDeletable for HandleGeom2dConic {
 impl HandleGeom2dConic {
     /// Dereference this Handle to access the underlying Geom2d_Conic
     pub fn get(&self) -> &crate::ffi::Geom2d_Conic {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dConic_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dConic_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_Conic
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_Conic {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dConic_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dConic_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_Conic> to Handle<Geom2d_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeom2dConic_to_HandleGeom2dCurve(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dConic_to_HandleGeom2dCurve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_Conic> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dConic_to_HandleGeom2dGeometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dConic_to_HandleGeom2dGeometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_Conic> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dConic_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dConic_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Geom2d_Conic> to Handle<Geom2d_Circle>
     ///
     /// Returns `None` if the handle does not point to a `Geom2d_Circle` (or subclass).
     pub fn downcast_to_circle(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dCircle>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dConic_downcast_to_HandleGeom2dCircle(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -6157,14 +7177,16 @@ impl HandleGeom2dConic {
     ///
     /// Returns `None` if the handle does not point to a `Geom2d_Ellipse` (or subclass).
     pub fn downcast_to_ellipse(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dEllipse>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dConic_downcast_to_HandleGeom2dEllipse(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -6174,14 +7196,16 @@ impl HandleGeom2dConic {
     pub fn downcast_to_hyperbola(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dHyperbola>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dConic_downcast_to_HandleGeom2dHyperbola(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -6191,14 +7215,16 @@ impl HandleGeom2dConic {
     pub fn downcast_to_parabola(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dParabola>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dConic_downcast_to_HandleGeom2dParabola(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -6252,8 +7278,10 @@ impl Curve {
     /// curve becomes the StartPoint of the reversed curve.
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_Curve_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Curve_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6267,8 +7295,11 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Curve_reversed_parameter(self as *const Self, U) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6282,8 +7313,11 @@ impl Curve {
             let __result = unsafe {
                 crate::ffi::Geom2d_Curve_transformed_parameter(self as *const Self, U, T)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6301,8 +7335,11 @@ impl Curve {
             let __result = unsafe {
                 crate::ffi::Geom2d_Curve_parametric_transformation(self as *const Self, T)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6319,8 +7356,11 @@ impl Curve {
     pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Curve_reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6332,8 +7372,11 @@ impl Curve {
     pub fn first_parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Curve_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6345,8 +7388,11 @@ impl Curve {
     pub fn last_parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Curve_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6363,8 +7409,11 @@ impl Curve {
     pub fn is_closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2d_Curve_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6387,8 +7436,11 @@ impl Curve {
     pub fn is_periodic(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2d_Curve_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6398,8 +7450,11 @@ impl Curve {
     pub fn period(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Curve_period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6415,8 +7470,11 @@ impl Curve {
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         {
             let __result = unsafe { crate::ffi::Geom2d_Curve_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -6426,8 +7484,11 @@ impl Curve {
     pub fn is_cn(&self, N: i32) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2d_Curve_is_cn(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6443,8 +7504,10 @@ impl Curve {
     /// are parallel.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Curve_d0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Curve_d0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6453,8 +7516,10 @@ impl Curve {
     /// Raised if the continuity of the curve is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_Curve_d1(self as *const Self, U, P, V1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Curve_d1(self as *const Self, U, P, V1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6470,8 +7535,10 @@ impl Curve {
         V2: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_Curve_d2(self as *const Self, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Curve_d2(self as *const Self, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6488,8 +7555,11 @@ impl Curve {
         V3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_Curve_d3(self as *const Self, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Curve_d3(self as *const Self, U, P, V1, V2, V3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6506,8 +7576,11 @@ impl Curve {
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Curve_dn(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6526,8 +7599,11 @@ impl Curve {
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Curve_value(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6535,8 +7611,11 @@ impl Curve {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_Curve_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6544,8 +7623,11 @@ impl Curve {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_Curve_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6553,88 +7635,104 @@ impl Curve {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_Curve_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Curve_as_Geom2d_Geometry(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Geom2d_Curve_as_Geom2d_Geometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Curve_as_Geom2d_Geometry_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Curve_as_Geom2d_Geometry_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Curve_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Curve_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Curve_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Curve_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Curve_inherited_Mirror(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Curve_inherited_Mirror(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Curve_inherited_Rotate(self as *mut Self, P, Ang) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Curve_inherited_Rotate(self as *mut Self, P, Ang) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Curve_inherited_Scale(self as *mut Self, P, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Curve_inherited_Scale(self as *mut Self, P, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_Curve_inherited_Translate(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Curve_inherited_Translate(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:90 - `Geom2d_Geometry::Transform()`
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
         {
-            unsafe { crate::ffi::Geom2d_Curve_inherited_Transform(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Curve_inherited_Transform(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6646,8 +7744,11 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Curve_inherited_Mirrored(self as *const Self, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6660,8 +7761,11 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Curve_inherited_Rotated(self as *const Self, P, Ang) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6674,8 +7778,11 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Curve_inherited_Scaled(self as *const Self, P, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6687,8 +7794,11 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Curve_inherited_Transformed(self as *const Self, T) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6700,8 +7810,11 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Curve_inherited_Translated(self as *const Self, V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6709,8 +7822,11 @@ impl Curve {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Curve_inherited_Copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6720,8 +7836,11 @@ impl Curve {
             let __result = unsafe {
                 crate::ffi::Geom2d_Curve_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6730,8 +7849,11 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Curve_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6739,11 +7861,14 @@ impl Curve {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Curve_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6753,16 +7878,23 @@ impl Curve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Curve_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_Curve_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_Curve_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6772,16 +7904,21 @@ impl Curve {
             let __result = unsafe {
                 crate::ffi::Geom2d_Curve_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_Curve_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Curve_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6797,42 +7934,41 @@ unsafe impl crate::CppDeletable for HandleGeom2dCurve {
 impl HandleGeom2dCurve {
     /// Dereference this Handle to access the underlying Geom2d_Curve
     pub fn get(&self) -> &crate::ffi::Geom2d_Curve {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dCurve_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dCurve_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_Curve
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_Curve {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dCurve_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dCurve_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_Curve> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dCurve_to_HandleGeom2dGeometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dCurve_to_HandleGeom2dGeometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_Curve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dCurve_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dCurve_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Geom2d_Curve> to Handle<Bisector_BisecAna>
@@ -6841,14 +7977,16 @@ impl HandleGeom2dCurve {
     pub fn downcast_to_bisec_ana(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBisectorBisecAna>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dCurve_downcast_to_HandleBisectorBisecAna(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -6858,14 +7996,16 @@ impl HandleGeom2dCurve {
     pub fn downcast_to_bisec_cc(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBisectorBisecCC>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dCurve_downcast_to_HandleBisectorBisecCC(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -6875,14 +8015,16 @@ impl HandleGeom2dCurve {
     pub fn downcast_to_bisec_pc(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBisectorBisecPC>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dCurve_downcast_to_HandleBisectorBisecPC(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -6892,14 +8034,16 @@ impl HandleGeom2dCurve {
     pub fn downcast_to_b_spline_curve(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dCurve_downcast_to_HandleGeom2dBSplineCurve(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -6909,14 +8053,16 @@ impl HandleGeom2dCurve {
     pub fn downcast_to_bezier_curve(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dCurve_downcast_to_HandleGeom2dBezierCurve(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -6924,14 +8070,16 @@ impl HandleGeom2dCurve {
     ///
     /// Returns `None` if the handle does not point to a `Geom2d_Circle` (or subclass).
     pub fn downcast_to_circle(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dCircle>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dCurve_downcast_to_HandleGeom2dCircle(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -6939,14 +8087,16 @@ impl HandleGeom2dCurve {
     ///
     /// Returns `None` if the handle does not point to a `Geom2d_Ellipse` (or subclass).
     pub fn downcast_to_ellipse(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dEllipse>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dCurve_downcast_to_HandleGeom2dEllipse(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -6956,14 +8106,16 @@ impl HandleGeom2dCurve {
     pub fn downcast_to_hyperbola(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dHyperbola>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dCurve_downcast_to_HandleGeom2dHyperbola(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -6971,14 +8123,16 @@ impl HandleGeom2dCurve {
     ///
     /// Returns `None` if the handle does not point to a `Geom2d_Line` (or subclass).
     pub fn downcast_to_line(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dLine>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dCurve_downcast_to_HandleGeom2dLine(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -6988,14 +8142,16 @@ impl HandleGeom2dCurve {
     pub fn downcast_to_offset_curve(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dOffsetCurve>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dCurve_downcast_to_HandleGeom2dOffsetCurve(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -7005,14 +8161,16 @@ impl HandleGeom2dCurve {
     pub fn downcast_to_parabola(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dParabola>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dCurve_downcast_to_HandleGeom2dParabola(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -7022,14 +8180,16 @@ impl HandleGeom2dCurve {
     pub fn downcast_to_trimmed_curve(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dTrimmedCurve>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dCurve_downcast_to_HandleGeom2dTrimmedCurve(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -7057,8 +8217,10 @@ impl Direction {
     pub fn new_real2(X: f64, Y: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Direction_ctor_real2(X, Y) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7067,8 +8229,10 @@ impl Direction {
     pub fn new_dir2d(V: &crate::gp::Dir2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Direction_ctor_dir2d(V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7080,8 +8244,10 @@ impl Direction {
     /// Y*Y) is less than or equal to gp::Resolution().
     pub fn set_coord(&mut self, X: f64, Y: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Direction_set_coord(self as *mut Self, X, Y) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Direction_set_coord(self as *mut Self, X, Y) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7089,8 +8255,10 @@ impl Direction {
     /// Converts the gp_Dir2d unit vector V into this unit vector.
     pub fn set_dir2d(&mut self, V: &crate::gp::Dir2d) {
         {
-            unsafe { crate::ffi::Geom2d_Direction_set_dir2d(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Direction_set_dir2d(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7102,8 +8270,10 @@ impl Direction {
     /// than or equal to gp::Resolution().
     pub fn set_x(&mut self, X: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Direction_set_x(self as *mut Self, X) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Direction_set_x(self as *mut Self, X) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7115,8 +8285,10 @@ impl Direction {
     /// than or equal to gp::Resolution().
     pub fn set_y(&mut self, Y: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Direction_set_y(self as *mut Self, Y) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Direction_set_y(self as *mut Self, Y) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7125,8 +8297,11 @@ impl Direction {
     pub fn dir2d(&self) -> crate::OwnedPtr<crate::gp::Dir2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Direction_dir2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7135,8 +8310,11 @@ impl Direction {
     pub fn magnitude(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Direction_magnitude(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7146,8 +8324,11 @@ impl Direction {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Direction_square_magnitude(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7157,8 +8338,11 @@ impl Direction {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Direction_crossed(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7166,8 +8350,10 @@ impl Direction {
     /// Applies the transformation T to this unit vector, then normalizes it.
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
         {
-            unsafe { crate::ffi::Geom2d_Direction_transform(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Direction_transform(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7176,8 +8362,11 @@ impl Direction {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Direction_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7186,8 +8375,11 @@ impl Direction {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Direction_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7195,8 +8387,11 @@ impl Direction {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_Direction_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -7204,88 +8399,93 @@ impl Direction {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_Direction_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Geom2d_Vector
     pub fn as_vector(&self) -> &Vector {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Direction_as_Geom2d_Vector(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Direction_as_Geom2d_Vector(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Vector (mutable)
     pub fn as_vector_mut(&mut self) -> &mut Vector {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Direction_as_Geom2d_Vector_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Direction_as_Geom2d_Vector_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Direction_as_Geom2d_Geometry(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Direction_as_Geom2d_Geometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Direction_as_Geom2d_Geometry_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Direction_as_Geom2d_Geometry_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Direction_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Direction_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_Direction_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Direction_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dDirection> {
-        {
-            let __result = unsafe { crate::ffi::Geom2d_Direction_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Geom2d_Direction_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Geom2d_Vector.hxx`:39 - `Geom2d_Vector::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_Direction_inherited_Reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Direction_inherited_Reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7294,8 +8494,11 @@ impl Direction {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Direction_inherited_Reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7304,16 +8507,22 @@ impl Direction {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Direction_inherited_Angle(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Vector.hxx`:53 - `Geom2d_Vector::Coord()`
     pub fn coord(&self, X: &mut f64, Y: &mut f64) {
         {
-            unsafe { crate::ffi::Geom2d_Direction_inherited_Coord(self as *const Self, X, Y) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Direction_inherited_Coord(self as *const Self, X, Y) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7321,8 +8530,11 @@ impl Direction {
     pub fn x(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Direction_inherited_X(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7330,8 +8542,11 @@ impl Direction {
     pub fn y(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Direction_inherited_Y(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7340,8 +8555,11 @@ impl Direction {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Direction_inherited_Dot(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7350,40 +8568,55 @@ impl Direction {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Direction_inherited_Vec2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Direction_inherited_Mirror(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Direction_inherited_Mirror(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Direction_inherited_Rotate(self as *mut Self, P, Ang) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Direction_inherited_Rotate(self as *mut Self, P, Ang) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Direction_inherited_Scale(self as *mut Self, P, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Direction_inherited_Scale(self as *mut Self, P, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_Direction_inherited_Translate(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Direction_inherited_Translate(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7395,8 +8628,11 @@ impl Direction {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Direction_inherited_Mirrored(self as *const Self, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7410,8 +8646,11 @@ impl Direction {
             let __result = unsafe {
                 crate::ffi::Geom2d_Direction_inherited_Rotated(self as *const Self, P, Ang)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7424,8 +8663,11 @@ impl Direction {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Direction_inherited_Scaled(self as *const Self, P, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7438,8 +8680,11 @@ impl Direction {
             let __result = unsafe {
                 crate::ffi::Geom2d_Direction_inherited_Transformed(self as *const Self, T)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7452,8 +8697,11 @@ impl Direction {
             let __result = unsafe {
                 crate::ffi::Geom2d_Direction_inherited_Translated(self as *const Self, V)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7463,8 +8711,11 @@ impl Direction {
             let __result = unsafe {
                 crate::ffi::Geom2d_Direction_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7474,8 +8725,11 @@ impl Direction {
             let __result = unsafe {
                 crate::ffi::Geom2d_Direction_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7484,11 +8738,14 @@ impl Direction {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Direction_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7498,18 +8755,23 @@ impl Direction {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Direction_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_Direction_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7519,16 +8781,22 @@ impl Direction {
             let __result = unsafe {
                 crate::ffi::Geom2d_Direction_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_Direction_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Direction_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7544,53 +8812,52 @@ unsafe impl crate::CppDeletable for HandleGeom2dDirection {
 impl HandleGeom2dDirection {
     /// Dereference this Handle to access the underlying Geom2d_Direction
     pub fn get(&self) -> &crate::ffi::Geom2d_Direction {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dDirection_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dDirection_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_Direction
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_Direction {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dDirection_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dDirection_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_Direction> to Handle<Geom2d_Vector>
     pub fn to_handle_vector(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dVector> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dDirection_to_HandleGeom2dVector(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dDirection_to_HandleGeom2dVector(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_Direction> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dDirection_to_HandleGeom2dGeometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dDirection_to_HandleGeom2dGeometry(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_Direction> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dDirection_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dDirection_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -7642,8 +8909,10 @@ impl Ellipse {
     pub fn new_elips2d(E: &crate::gp::Elips2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Ellipse_ctor_elips2d(E) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7678,8 +8947,10 @@ impl Ellipse {
                     Sense,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7711,8 +8982,10 @@ impl Ellipse {
             let __result = unsafe {
                 crate::ffi::Geom2d_Ellipse_ctor_ax22d_real2(Axis, MajorRadius, MinorRadius)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7744,8 +9017,10 @@ impl Ellipse {
     /// Converts the gp_Elips2d ellipse E into this ellipse.
     pub fn set_elips2d(&mut self, E: &crate::gp::Elips2d) {
         {
-            unsafe { crate::ffi::Geom2d_Ellipse_set_elips2d(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Ellipse_set_elips2d(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7758,8 +9033,12 @@ impl Ellipse {
     /// - MinorRadius is less than 0.
     pub fn set_major_radius(&mut self, MajorRadius: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Ellipse_set_major_radius(self as *mut Self, MajorRadius) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_Ellipse_set_major_radius(self as *mut Self, MajorRadius)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7772,8 +9051,12 @@ impl Ellipse {
     /// - MinorRadius is less than 0.
     pub fn set_minor_radius(&mut self, MinorRadius: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Ellipse_set_minor_radius(self as *mut Self, MinorRadius) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_Ellipse_set_minor_radius(self as *mut Self, MinorRadius)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7782,8 +9065,11 @@ impl Ellipse {
     pub fn elips2d(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Ellipse_elips2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7795,8 +9081,11 @@ impl Ellipse {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Ellipse_reversed_parameter(self as *const Self, U) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7815,8 +9104,11 @@ impl Ellipse {
     pub fn directrix1(&self) -> crate::OwnedPtr<crate::gp::Ax2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Ellipse_directrix1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7828,8 +9120,11 @@ impl Ellipse {
     pub fn directrix2(&self) -> crate::OwnedPtr<crate::gp::Ax2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Ellipse_directrix2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7841,8 +9136,11 @@ impl Ellipse {
     pub fn eccentricity(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Ellipse_eccentricity(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7852,8 +9150,11 @@ impl Ellipse {
     pub fn focal(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Ellipse_focal(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7863,8 +9164,11 @@ impl Ellipse {
     pub fn focus1(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Ellipse_focus1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7874,8 +9178,11 @@ impl Ellipse {
     pub fn focus2(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Ellipse_focus2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7884,8 +9191,11 @@ impl Ellipse {
     pub fn major_radius(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Ellipse_major_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7894,8 +9204,11 @@ impl Ellipse {
     pub fn minor_radius(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Ellipse_minor_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7907,8 +9220,11 @@ impl Ellipse {
     pub fn parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Ellipse_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7920,8 +9236,11 @@ impl Ellipse {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Ellipse_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7933,8 +9252,11 @@ impl Ellipse {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Ellipse_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7943,8 +9265,11 @@ impl Ellipse {
     pub fn is_closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2d_Ellipse_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7953,8 +9278,11 @@ impl Ellipse {
     pub fn is_periodic(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2d_Ellipse_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7965,16 +9293,20 @@ impl Ellipse {
     /// the "XAxis" and "YDir" the "YAxis" of the ellipse.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Ellipse_d0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Ellipse_d0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Geom2d_Ellipse.hxx`:212 - `Geom2d_Ellipse::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_Ellipse_d1(self as *const Self, U, P, V1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Ellipse_d1(self as *const Self, U, P, V1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7989,8 +9321,10 @@ impl Ellipse {
         V2: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_Ellipse_d2(self as *const Self, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Ellipse_d2(self as *const Self, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8006,8 +9340,11 @@ impl Ellipse {
         V3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_Ellipse_d3(self as *const Self, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Ellipse_d3(self as *const Self, U, P, V1, V2, V3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8018,8 +9355,11 @@ impl Ellipse {
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Ellipse_dn(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8027,8 +9367,10 @@ impl Ellipse {
     /// Applies the transformation T to this ellipse.
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
         {
-            unsafe { crate::ffi::Geom2d_Ellipse_transform(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Ellipse_transform(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8037,8 +9379,11 @@ impl Ellipse {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Ellipse_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8046,8 +9391,11 @@ impl Ellipse {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_Ellipse_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8055,8 +9403,11 @@ impl Ellipse {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_Ellipse_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8064,131 +9415,143 @@ impl Ellipse {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_Ellipse_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Geom2d_Conic
     pub fn as_conic(&self) -> &Conic {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Ellipse_as_Geom2d_Conic(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Geom2d_Ellipse_as_Geom2d_Conic(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Conic (mutable)
     pub fn as_conic_mut(&mut self) -> &mut Conic {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Ellipse_as_Geom2d_Conic_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::Geom2d_Ellipse_as_Geom2d_Conic_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Curve
     pub fn as_curve(&self) -> &Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Ellipse_as_Geom2d_Curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Geom2d_Ellipse_as_Geom2d_Curve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Curve (mutable)
     pub fn as_curve_mut(&mut self) -> &mut Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Ellipse_as_Geom2d_Curve_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::Geom2d_Ellipse_as_Geom2d_Curve_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Ellipse_as_Geom2d_Geometry(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Ellipse_as_Geom2d_Geometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Ellipse_as_Geom2d_Geometry_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Ellipse_as_Geom2d_Geometry_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Ellipse_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Ellipse_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Ellipse_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Ellipse_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dEllipse> {
-        {
-            let __result = unsafe { crate::ffi::Geom2d_Ellipse_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Geom2d_Ellipse_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Geom2d_Conic.hxx`:46 - `Geom2d_Conic::SetAxis()`
     pub fn set_axis(&mut self, theA: &crate::gp::Ax22d) {
         {
-            unsafe { crate::ffi::Geom2d_Ellipse_inherited_SetAxis(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Ellipse_inherited_SetAxis(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Conic.hxx`:54 - `Geom2d_Conic::SetXAxis()`
     pub fn set_x_axis(&mut self, theAX: &crate::gp::Ax2d) {
         {
-            unsafe { crate::ffi::Geom2d_Ellipse_inherited_SetXAxis(self as *mut Self, theAX) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Ellipse_inherited_SetXAxis(self as *mut Self, theAX) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Conic.hxx`:62 - `Geom2d_Conic::SetYAxis()`
     pub fn set_y_axis(&mut self, theAY: &crate::gp::Ax2d) {
         {
-            unsafe { crate::ffi::Geom2d_Ellipse_inherited_SetYAxis(self as *mut Self, theAY) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Ellipse_inherited_SetYAxis(self as *mut Self, theAY) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Conic.hxx`:66 - `Geom2d_Conic::SetLocation()`
     pub fn set_location(&mut self, theP: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Ellipse_inherited_SetLocation(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_Ellipse_inherited_SetLocation(self as *mut Self, theP)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8197,8 +9560,11 @@ impl Ellipse {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Ellipse_inherited_XAxis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8207,8 +9573,11 @@ impl Ellipse {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Ellipse_inherited_YAxis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8217,8 +9586,11 @@ impl Ellipse {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Ellipse_inherited_Location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8227,16 +9599,21 @@ impl Ellipse {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Ellipse_inherited_Position(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Conic.hxx`:96 - `Geom2d_Conic::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_Ellipse_inherited_Reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Ellipse_inherited_Reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8245,8 +9622,11 @@ impl Ellipse {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Ellipse_inherited_Continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -8255,8 +9635,11 @@ impl Ellipse {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Ellipse_inherited_IsCN(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8266,8 +9649,11 @@ impl Ellipse {
             let __result = unsafe {
                 crate::ffi::Geom2d_Ellipse_inherited_TransformedParameter(self as *const Self, U, T)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8280,8 +9666,11 @@ impl Ellipse {
                     T,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8290,8 +9679,11 @@ impl Ellipse {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Ellipse_inherited_Reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8300,8 +9692,11 @@ impl Ellipse {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Ellipse_inherited_Period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8310,40 +9705,55 @@ impl Ellipse {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Ellipse_inherited_Value(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Ellipse_inherited_Mirror(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Ellipse_inherited_Mirror(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Ellipse_inherited_Rotate(self as *mut Self, P, Ang) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Ellipse_inherited_Rotate(self as *mut Self, P, Ang) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Ellipse_inherited_Scale(self as *mut Self, P, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Ellipse_inherited_Scale(self as *mut Self, P, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_Ellipse_inherited_Translate(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Ellipse_inherited_Translate(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8355,8 +9765,11 @@ impl Ellipse {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Ellipse_inherited_Mirrored(self as *const Self, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8370,8 +9783,11 @@ impl Ellipse {
             let __result = unsafe {
                 crate::ffi::Geom2d_Ellipse_inherited_Rotated(self as *const Self, P, Ang)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8384,8 +9800,11 @@ impl Ellipse {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Ellipse_inherited_Scaled(self as *const Self, P, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8397,8 +9816,11 @@ impl Ellipse {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Ellipse_inherited_Transformed(self as *const Self, T) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8410,8 +9832,11 @@ impl Ellipse {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Ellipse_inherited_Translated(self as *const Self, V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8421,8 +9846,11 @@ impl Ellipse {
             let __result = unsafe {
                 crate::ffi::Geom2d_Ellipse_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8432,8 +9860,11 @@ impl Ellipse {
             let __result = unsafe {
                 crate::ffi::Geom2d_Ellipse_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8442,11 +9873,14 @@ impl Ellipse {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Ellipse_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -8456,16 +9890,23 @@ impl Ellipse {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Ellipse_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_Ellipse_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_Ellipse_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8475,16 +9916,21 @@ impl Ellipse {
             let __result = unsafe {
                 crate::ffi::Geom2d_Ellipse_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_Ellipse_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Ellipse_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8500,64 +9946,61 @@ unsafe impl crate::CppDeletable for HandleGeom2dEllipse {
 impl HandleGeom2dEllipse {
     /// Dereference this Handle to access the underlying Geom2d_Ellipse
     pub fn get(&self) -> &crate::ffi::Geom2d_Ellipse {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dEllipse_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dEllipse_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_Ellipse
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_Ellipse {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dEllipse_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dEllipse_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_Ellipse> to Handle<Geom2d_Conic>
     pub fn to_handle_conic(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dConic> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dEllipse_to_HandleGeom2dConic(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dEllipse_to_HandleGeom2dConic(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_Ellipse> to Handle<Geom2d_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dEllipse_to_HandleGeom2dCurve(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dEllipse_to_HandleGeom2dCurve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_Ellipse> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dEllipse_to_HandleGeom2dGeometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dEllipse_to_HandleGeom2dGeometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_Ellipse> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dEllipse_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dEllipse_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -8604,8 +10047,10 @@ impl Geometry {
     /// symmetry and assigns the result to this geometric object.
     pub fn mirror_pnt2d(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Geometry_mirror_pnt2d(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Geometry_mirror_pnt2d(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8614,8 +10059,10 @@ impl Geometry {
     /// with respect to an axis placement which is the axis of the symmetry.
     pub fn mirror_ax2d(&mut self, A: &crate::gp::Ax2d) {
         {
-            unsafe { crate::ffi::Geom2d_Geometry_mirror_ax2d(self as *mut Self, A) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Geometry_mirror_ax2d(self as *mut Self, A) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8624,8 +10071,10 @@ impl Geometry {
     /// Ang is the angular value of the rotation in radians.
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Geometry_rotate(self as *mut Self, P, Ang) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Geometry_rotate(self as *mut Self, P, Ang) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8633,8 +10082,10 @@ impl Geometry {
     /// Scales a Geometry. S is the scaling value.
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Geometry_scale(self as *mut Self, P, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Geometry_scale(self as *mut Self, P, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8642,8 +10093,11 @@ impl Geometry {
     /// Translates a Geometry.  V is the vector of the translation.
     pub fn translate_vec2d(&mut self, V: &crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_Geometry_translate_vec2d(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Geometry_translate_vec2d(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8651,8 +10105,11 @@ impl Geometry {
     /// Translates a Geometry from the point P1 to the point P2.
     pub fn translate_pnt2d2(&mut self, P1: &crate::gp::Pnt2d, P2: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Geometry_translate_pnt2d2(self as *mut Self, P1, P2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Geometry_translate_pnt2d2(self as *mut Self, P1, P2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8667,8 +10124,10 @@ impl Geometry {
     /// itself. A copy of the object is returned.
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
         {
-            unsafe { crate::ffi::Geom2d_Geometry_transform(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Geometry_transform(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8680,8 +10139,11 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Geometry_mirrored_pnt2d(self as *const Self, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8693,8 +10155,11 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Geometry_mirrored_ax2d(self as *const Self, A) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8707,8 +10172,11 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Geometry_rotated(self as *const Self, P, Ang) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8720,8 +10188,11 @@ impl Geometry {
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Geometry_scaled(self as *const Self, P, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8733,8 +10204,11 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Geometry_transformed(self as *const Self, T) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8746,8 +10220,11 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Geometry_translated_vec2d(self as *const Self, V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8761,8 +10238,11 @@ impl Geometry {
             let __result = unsafe {
                 crate::ffi::Geom2d_Geometry_translated_pnt2d2(self as *const Self, P1, P2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8770,8 +10250,11 @@ impl Geometry {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Geometry_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8779,8 +10262,11 @@ impl Geometry {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_Geometry_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8788,8 +10274,11 @@ impl Geometry {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_Geometry_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8797,29 +10286,32 @@ impl Geometry {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_Geometry_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Geometry_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Geometry_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Geometry_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Geometry_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -8828,8 +10320,11 @@ impl Geometry {
             let __result = unsafe {
                 crate::ffi::Geom2d_Geometry_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8839,8 +10334,11 @@ impl Geometry {
             let __result = unsafe {
                 crate::ffi::Geom2d_Geometry_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8849,11 +10347,14 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Geometry_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -8863,16 +10364,23 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Geometry_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_Geometry_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_Geometry_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8882,16 +10390,22 @@ impl Geometry {
             let __result = unsafe {
                 crate::ffi::Geom2d_Geometry_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_Geometry_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Geometry_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8907,31 +10421,31 @@ unsafe impl crate::CppDeletable for HandleGeom2dGeometry {
 impl HandleGeom2dGeometry {
     /// Dereference this Handle to access the underlying Geom2d_Geometry
     pub fn get(&self) -> &crate::ffi::Geom2d_Geometry {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dGeometry_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dGeometry_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_Geometry
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_Geometry {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dGeometry_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dGeometry_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_Geometry> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dGeometry_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dGeometry_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Geom2d_Geometry> to Handle<Bisector_BisecAna>
@@ -8940,14 +10454,16 @@ impl HandleGeom2dGeometry {
     pub fn downcast_to_bisec_ana(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBisectorBisecAna>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dGeometry_downcast_to_HandleBisectorBisecAna(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8957,14 +10473,16 @@ impl HandleGeom2dGeometry {
     pub fn downcast_to_bisec_cc(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBisectorBisecCC>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dGeometry_downcast_to_HandleBisectorBisecCC(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8974,14 +10492,16 @@ impl HandleGeom2dGeometry {
     pub fn downcast_to_bisec_pc(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleBisectorBisecPC>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dGeometry_downcast_to_HandleBisectorBisecPC(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8991,16 +10511,18 @@ impl HandleGeom2dGeometry {
     pub fn downcast_to_axis_placement(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dAxisPlacement>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dAxisPlacement(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -9010,16 +10532,18 @@ impl HandleGeom2dGeometry {
     pub fn downcast_to_b_spline_curve(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dBSplineCurve(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -9029,16 +10553,18 @@ impl HandleGeom2dGeometry {
     pub fn downcast_to_bezier_curve(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dBezierCurve(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -9048,16 +10574,18 @@ impl HandleGeom2dGeometry {
     pub fn downcast_to_cartesian_point(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dCartesianPoint>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dCartesianPoint(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -9065,14 +10593,16 @@ impl HandleGeom2dGeometry {
     ///
     /// Returns `None` if the handle does not point to a `Geom2d_Circle` (or subclass).
     pub fn downcast_to_circle(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dCircle>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dCircle(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -9082,14 +10612,16 @@ impl HandleGeom2dGeometry {
     pub fn downcast_to_direction(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dDirection>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dDirection(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -9097,14 +10629,16 @@ impl HandleGeom2dGeometry {
     ///
     /// Returns `None` if the handle does not point to a `Geom2d_Ellipse` (or subclass).
     pub fn downcast_to_ellipse(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dEllipse>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dEllipse(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -9114,14 +10648,16 @@ impl HandleGeom2dGeometry {
     pub fn downcast_to_hyperbola(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dHyperbola>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dHyperbola(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -9129,14 +10665,16 @@ impl HandleGeom2dGeometry {
     ///
     /// Returns `None` if the handle does not point to a `Geom2d_Line` (or subclass).
     pub fn downcast_to_line(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dLine>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dLine(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -9146,16 +10684,18 @@ impl HandleGeom2dGeometry {
     pub fn downcast_to_offset_curve(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dOffsetCurve>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dOffsetCurve(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -9165,14 +10705,16 @@ impl HandleGeom2dGeometry {
     pub fn downcast_to_parabola(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dParabola>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dParabola(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -9182,16 +10724,18 @@ impl HandleGeom2dGeometry {
     pub fn downcast_to_trimmed_curve(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dTrimmedCurve>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dTrimmedCurve(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -9201,16 +10745,18 @@ impl HandleGeom2dGeometry {
     pub fn downcast_to_vector_with_magnitude(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dVectorWithMagnitude>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dGeometry_downcast_to_HandleGeom2dVectorWithMagnitude(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -9284,8 +10830,10 @@ impl Hyperbola {
     pub fn new_hypr2d(H: &crate::gp::Hypr2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Hyperbola_ctor_hypr2d(H) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9310,8 +10858,10 @@ impl Hyperbola {
                     Sense,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9330,8 +10880,10 @@ impl Hyperbola {
             let __result = unsafe {
                 crate::ffi::Geom2d_Hyperbola_ctor_ax22d_real2(Axis, MajorRadius, MinorRadius)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9353,8 +10905,10 @@ impl Hyperbola {
     /// Converts the gp_Hypr2d hyperbola H into this hyperbola.
     pub fn set_hypr2d(&mut self, H: &crate::gp::Hypr2d) {
         {
-            unsafe { crate::ffi::Geom2d_Hyperbola_set_hypr2d(self as *mut Self, H) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Hyperbola_set_hypr2d(self as *mut Self, H) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9366,10 +10920,12 @@ impl Hyperbola {
     /// - MinorRadius is less than 0.0.
     pub fn set_major_radius(&mut self, MajorRadius: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_Hyperbola_set_major_radius(self as *mut Self, MajorRadius)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9381,10 +10937,12 @@ impl Hyperbola {
     /// - MinorRadius is less than 0.0.
     pub fn set_minor_radius(&mut self, MinorRadius: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_Hyperbola_set_minor_radius(self as *mut Self, MinorRadius)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9393,8 +10951,11 @@ impl Hyperbola {
     pub fn hypr2d(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Hyperbola_hypr2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9406,8 +10967,11 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_reversed_parameter(self as *const Self, U) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9417,8 +10981,11 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9428,8 +10995,11 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9438,8 +11008,11 @@ impl Hyperbola {
     pub fn is_closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2d_Hyperbola_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9448,8 +11021,11 @@ impl Hyperbola {
     pub fn is_periodic(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2d_Hyperbola_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9463,8 +11039,11 @@ impl Hyperbola {
     pub fn asymptote1(&self) -> crate::OwnedPtr<crate::gp::Ax2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Hyperbola_asymptote1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9478,8 +11057,11 @@ impl Hyperbola {
     pub fn asymptote2(&self) -> crate::OwnedPtr<crate::gp::Ax2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Hyperbola_asymptote2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9492,8 +11074,11 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_conjugate_branch1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9506,8 +11091,11 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_conjugate_branch2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9522,8 +11110,11 @@ impl Hyperbola {
     pub fn directrix1(&self) -> crate::OwnedPtr<crate::gp::Ax2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Hyperbola_directrix1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9533,8 +11124,11 @@ impl Hyperbola {
     pub fn directrix2(&self) -> crate::OwnedPtr<crate::gp::Ax2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Hyperbola_directrix2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9547,8 +11141,11 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_eccentricity(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9558,8 +11155,11 @@ impl Hyperbola {
     pub fn focal(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Hyperbola_focal(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9569,8 +11169,11 @@ impl Hyperbola {
     pub fn focus1(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Hyperbola_focus1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9580,8 +11183,11 @@ impl Hyperbola {
     pub fn focus2(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Hyperbola_focus2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9594,8 +11200,11 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_major_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9608,8 +11217,11 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_minor_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9637,8 +11249,11 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_other_branch(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9654,8 +11269,11 @@ impl Hyperbola {
     pub fn parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Hyperbola_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9667,8 +11285,10 @@ impl Hyperbola {
     /// YDir the YDirection of the hyperbola's local coordinate system.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Hyperbola_d0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Hyperbola_d0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9676,8 +11296,10 @@ impl Hyperbola {
     /// Returns the point P of parameter U and the first derivative V1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_Hyperbola_d1(self as *const Self, U, P, V1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Hyperbola_d1(self as *const Self, U, P, V1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9692,8 +11314,11 @@ impl Hyperbola {
         V2: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_Hyperbola_d2(self as *const Self, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Hyperbola_d2(self as *const Self, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9709,8 +11334,11 @@ impl Hyperbola {
         V3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_Hyperbola_d3(self as *const Self, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Hyperbola_d3(self as *const Self, U, P, V1, V2, V3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9721,8 +11349,11 @@ impl Hyperbola {
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Hyperbola_dn(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9730,8 +11361,10 @@ impl Hyperbola {
     /// Applies the transformation T to this hyperbola.
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
         {
-            unsafe { crate::ffi::Geom2d_Hyperbola_transform(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Hyperbola_transform(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9740,8 +11373,11 @@ impl Hyperbola {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Hyperbola_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9750,8 +11386,11 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9759,8 +11398,11 @@ impl Hyperbola {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_Hyperbola_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -9768,132 +11410,147 @@ impl Hyperbola {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_Hyperbola_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Geom2d_Conic
     pub fn as_conic(&self) -> &Conic {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Hyperbola_as_Geom2d_Conic(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Geom2d_Hyperbola_as_Geom2d_Conic(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Conic (mutable)
     pub fn as_conic_mut(&mut self) -> &mut Conic {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Hyperbola_as_Geom2d_Conic_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Hyperbola_as_Geom2d_Conic_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Curve
     pub fn as_curve(&self) -> &Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Hyperbola_as_Geom2d_Curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Geom2d_Hyperbola_as_Geom2d_Curve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Curve (mutable)
     pub fn as_curve_mut(&mut self) -> &mut Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Hyperbola_as_Geom2d_Curve_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Hyperbola_as_Geom2d_Curve_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Hyperbola_as_Geom2d_Geometry(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Hyperbola_as_Geom2d_Geometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Hyperbola_as_Geom2d_Geometry_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Hyperbola_as_Geom2d_Geometry_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Hyperbola_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Hyperbola_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_Hyperbola_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Hyperbola_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dHyperbola> {
-        {
-            let __result = unsafe { crate::ffi::Geom2d_Hyperbola_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Geom2d_Hyperbola_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Geom2d_Conic.hxx`:46 - `Geom2d_Conic::SetAxis()`
     pub fn set_axis(&mut self, theA: &crate::gp::Ax22d) {
         {
-            unsafe { crate::ffi::Geom2d_Hyperbola_inherited_SetAxis(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Hyperbola_inherited_SetAxis(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Conic.hxx`:54 - `Geom2d_Conic::SetXAxis()`
     pub fn set_x_axis(&mut self, theAX: &crate::gp::Ax2d) {
         {
-            unsafe { crate::ffi::Geom2d_Hyperbola_inherited_SetXAxis(self as *mut Self, theAX) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_Hyperbola_inherited_SetXAxis(self as *mut Self, theAX)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Conic.hxx`:62 - `Geom2d_Conic::SetYAxis()`
     pub fn set_y_axis(&mut self, theAY: &crate::gp::Ax2d) {
         {
-            unsafe { crate::ffi::Geom2d_Hyperbola_inherited_SetYAxis(self as *mut Self, theAY) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_Hyperbola_inherited_SetYAxis(self as *mut Self, theAY)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Conic.hxx`:66 - `Geom2d_Conic::SetLocation()`
     pub fn set_location(&mut self, theP: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Hyperbola_inherited_SetLocation(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_Hyperbola_inherited_SetLocation(self as *mut Self, theP)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9902,8 +11559,11 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_inherited_XAxis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9912,8 +11572,11 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_inherited_YAxis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9922,8 +11585,11 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_inherited_Location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9932,16 +11598,22 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_inherited_Position(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Conic.hxx`:96 - `Geom2d_Conic::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_Hyperbola_inherited_Reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Hyperbola_inherited_Reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9950,8 +11622,11 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_inherited_Continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -9960,8 +11635,11 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_inherited_IsCN(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9975,8 +11653,11 @@ impl Hyperbola {
                     T,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9989,8 +11670,11 @@ impl Hyperbola {
                     T,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9999,8 +11683,11 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_inherited_Reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10009,8 +11696,11 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_inherited_Period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10019,40 +11709,55 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_inherited_Value(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Hyperbola_inherited_Mirror(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Hyperbola_inherited_Mirror(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Hyperbola_inherited_Rotate(self as *mut Self, P, Ang) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Hyperbola_inherited_Rotate(self as *mut Self, P, Ang) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Hyperbola_inherited_Scale(self as *mut Self, P, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Hyperbola_inherited_Scale(self as *mut Self, P, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_Hyperbola_inherited_Translate(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Hyperbola_inherited_Translate(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10064,8 +11769,11 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_inherited_Mirrored(self as *const Self, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10079,8 +11787,11 @@ impl Hyperbola {
             let __result = unsafe {
                 crate::ffi::Geom2d_Hyperbola_inherited_Rotated(self as *const Self, P, Ang)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10093,8 +11804,11 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_inherited_Scaled(self as *const Self, P, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10107,8 +11821,11 @@ impl Hyperbola {
             let __result = unsafe {
                 crate::ffi::Geom2d_Hyperbola_inherited_Transformed(self as *const Self, T)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10121,8 +11838,11 @@ impl Hyperbola {
             let __result = unsafe {
                 crate::ffi::Geom2d_Hyperbola_inherited_Translated(self as *const Self, V)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10132,8 +11852,11 @@ impl Hyperbola {
             let __result = unsafe {
                 crate::ffi::Geom2d_Hyperbola_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10143,8 +11866,11 @@ impl Hyperbola {
             let __result = unsafe {
                 crate::ffi::Geom2d_Hyperbola_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10153,11 +11879,14 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -10167,18 +11896,23 @@ impl Hyperbola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Hyperbola_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_Hyperbola_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10188,16 +11922,22 @@ impl Hyperbola {
             let __result = unsafe {
                 crate::ffi::Geom2d_Hyperbola_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_Hyperbola_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Hyperbola_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -10213,64 +11953,62 @@ unsafe impl crate::CppDeletable for HandleGeom2dHyperbola {
 impl HandleGeom2dHyperbola {
     /// Dereference this Handle to access the underlying Geom2d_Hyperbola
     pub fn get(&self) -> &crate::ffi::Geom2d_Hyperbola {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dHyperbola_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dHyperbola_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_Hyperbola
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_Hyperbola {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dHyperbola_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dHyperbola_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_Hyperbola> to Handle<Geom2d_Conic>
     pub fn to_handle_conic(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dConic> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dHyperbola_to_HandleGeom2dConic(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dHyperbola_to_HandleGeom2dConic(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_Hyperbola> to Handle<Geom2d_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dHyperbola_to_HandleGeom2dCurve(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dHyperbola_to_HandleGeom2dCurve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_Hyperbola> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dHyperbola_to_HandleGeom2dGeometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dHyperbola_to_HandleGeom2dGeometry(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_Hyperbola> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dHyperbola_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dHyperbola_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -10310,8 +12048,10 @@ impl Line {
     pub fn new_ax2d(A: &crate::gp::Ax2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Line_ctor_ax2d(A) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10320,8 +12060,10 @@ impl Line {
     pub fn new_lin2d(L: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Line_ctor_lin2d(L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10332,8 +12074,10 @@ impl Line {
     pub fn new_pnt2d_dir2d(P: &crate::gp::Pnt2d, V: &crate::gp::Dir2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Line_ctor_pnt2d_dir2d(P, V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10341,8 +12085,10 @@ impl Line {
     /// Set <me> so that <me> has the same geometric properties as L.
     pub fn set_lin2d(&mut self, L: &crate::gp::Lin2d) {
         {
-            unsafe { crate::ffi::Geom2d_Line_set_lin2d(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Line_set_lin2d(self as *mut Self, L) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10350,8 +12096,10 @@ impl Line {
     /// changes the direction of the line.
     pub fn set_direction(&mut self, V: &crate::gp::Dir2d) {
         {
-            unsafe { crate::ffi::Geom2d_Line_set_direction(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Line_set_direction(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10360,8 +12108,11 @@ impl Line {
     pub fn direction(&self) -> &crate::gp::Dir2d {
         {
             let __result = unsafe { crate::ffi::Geom2d_Line_direction(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10369,8 +12120,10 @@ impl Line {
     /// Changes the "Location" point (origin) of the line.
     pub fn set_location(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Line_set_location(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Line_set_location(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10379,8 +12132,11 @@ impl Line {
     pub fn location(&self) -> &crate::gp::Pnt2d {
         {
             let __result = unsafe { crate::ffi::Geom2d_Line_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10388,8 +12144,10 @@ impl Line {
     /// Changes the "Location" and a the "Direction" of <me>.
     pub fn set_position(&mut self, A: &crate::gp::Ax2d) {
         {
-            unsafe { crate::ffi::Geom2d_Line_set_position(self as *mut Self, A) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Line_set_position(self as *mut Self, A) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10397,8 +12155,11 @@ impl Line {
     pub fn position(&self) -> &crate::gp::Ax2d {
         {
             let __result = unsafe { crate::ffi::Geom2d_Line_position(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10408,8 +12169,11 @@ impl Line {
     pub fn lin2d(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Line_lin2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10418,8 +12182,10 @@ impl Line {
     /// unit vector of the positioning axis of this line is reversed.
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_Line_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Line_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10431,8 +12197,11 @@ impl Line {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Line_reversed_parameter(self as *const Self, U) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10441,8 +12210,11 @@ impl Line {
     pub fn first_parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Line_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10451,8 +12223,11 @@ impl Line {
     pub fn last_parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Line_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10461,8 +12236,11 @@ impl Line {
     pub fn is_closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2d_Line_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10471,8 +12249,11 @@ impl Line {
     pub fn is_periodic(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2d_Line_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10481,8 +12262,11 @@ impl Line {
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         {
             let __result = unsafe { crate::ffi::Geom2d_Line_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -10491,8 +12275,11 @@ impl Line {
     pub fn distance(&self, P: &crate::gp::Pnt2d) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Line_distance(self as *const Self, P) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10501,8 +12288,11 @@ impl Line {
     pub fn is_cn(&self, N: i32) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2d_Line_is_cn(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10512,8 +12302,10 @@ impl Line {
     /// line and Dir the direction of the line.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Line_d0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Line_d0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10521,8 +12313,10 @@ impl Line {
     /// Returns the point P of parameter u and the first derivative V1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_Line_d1(self as *const Self, U, P, V1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Line_d1(self as *const Self, U, P, V1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10538,8 +12332,10 @@ impl Line {
         V2: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_Line_d2(self as *const Self, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Line_d2(self as *const Self, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10554,8 +12350,11 @@ impl Line {
         V3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_Line_d3(self as *const Self, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Line_d3(self as *const Self, U, P, V1, V2, V3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10568,8 +12367,11 @@ impl Line {
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Line_dn(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10577,8 +12379,10 @@ impl Line {
     /// Applies the transformation T to this line.
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
         {
-            unsafe { crate::ffi::Geom2d_Line_transform(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Line_transform(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10591,8 +12395,11 @@ impl Line {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Line_transformed_parameter(self as *const Self, U, T) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10609,8 +12416,11 @@ impl Line {
             let __result = unsafe {
                 crate::ffi::Geom2d_Line_parametric_transformation(self as *const Self, T)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10619,8 +12429,11 @@ impl Line {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Line_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10628,8 +12441,11 @@ impl Line {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_Line_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10637,8 +12453,11 @@ impl Line {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_Line_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -10646,77 +12465,77 @@ impl Line {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_Line_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Geom2d_Curve
     pub fn as_curve(&self) -> &Curve {
-        {
-            let __result = unsafe { crate::ffi::Geom2d_Line_as_Geom2d_Curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Geom2d_Line_as_Geom2d_Curve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Curve (mutable)
     pub fn as_curve_mut(&mut self) -> &mut Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Line_as_Geom2d_Curve_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::Geom2d_Line_as_Geom2d_Curve_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Line_as_Geom2d_Geometry(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Geom2d_Line_as_Geom2d_Geometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Line_as_Geom2d_Geometry_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::Geom2d_Line_as_Geom2d_Geometry_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Line_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Line_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Line_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Line_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleGeom2dLine> {
-        {
-            let __result = unsafe { crate::ffi::Geom2d_Line_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Geom2d_Line_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::Reversed()`
@@ -10724,8 +12543,11 @@ impl Line {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Line_inherited_Reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10733,8 +12555,11 @@ impl Line {
     pub fn period(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Line_inherited_Period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10743,40 +12568,53 @@ impl Line {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Line_inherited_Value(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Line_inherited_Mirror(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Line_inherited_Mirror(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Line_inherited_Rotate(self as *mut Self, P, Ang) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Line_inherited_Rotate(self as *mut Self, P, Ang) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Line_inherited_Scale(self as *mut Self, P, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Line_inherited_Scale(self as *mut Self, P, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_Line_inherited_Translate(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Line_inherited_Translate(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10788,8 +12626,11 @@ impl Line {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Line_inherited_Mirrored(self as *const Self, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10802,8 +12643,11 @@ impl Line {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Line_inherited_Rotated(self as *const Self, P, Ang) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10816,8 +12660,11 @@ impl Line {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Line_inherited_Scaled(self as *const Self, P, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10829,8 +12676,11 @@ impl Line {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Line_inherited_Transformed(self as *const Self, T) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10842,8 +12692,11 @@ impl Line {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Line_inherited_Translated(self as *const Self, V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10853,8 +12706,11 @@ impl Line {
             let __result = unsafe {
                 crate::ffi::Geom2d_Line_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10863,8 +12719,11 @@ impl Line {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Line_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10872,11 +12731,14 @@ impl Line {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Line_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -10886,16 +12748,22 @@ impl Line {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Line_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_Line_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Line_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10904,16 +12772,21 @@ impl Line {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Line_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_Line_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Line_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -10929,52 +12802,50 @@ unsafe impl crate::CppDeletable for HandleGeom2dLine {
 impl HandleGeom2dLine {
     /// Dereference this Handle to access the underlying Geom2d_Line
     pub fn get(&self) -> &crate::ffi::Geom2d_Line {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dLine_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dLine_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_Line
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_Line {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dLine_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dLine_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_Line> to Handle<Geom2d_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeom2dLine_to_HandleGeom2dCurve(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dLine_to_HandleGeom2dCurve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_Line> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dLine_to_HandleGeom2dGeometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dLine_to_HandleGeom2dGeometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_Line> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dLine_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dLine_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -11063,8 +12934,10 @@ impl OffsetCurve {
                     isNotCheckC0,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11107,8 +12980,10 @@ impl OffsetCurve {
     /// - the first and last parameters are recomputed.
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_OffsetCurve_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_OffsetCurve_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11120,8 +12995,11 @@ impl OffsetCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_OffsetCurve_reversed_parameter(self as *const Self, U)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11135,10 +13013,12 @@ impl OffsetCurve {
     /// Standard_ConstructionError if the curve C is not at least "C1" continuous.
     pub fn set_basis_curve(&mut self, C: &crate::ffi::HandleGeom2dCurve, isNotCheckC0: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_OffsetCurve_set_basis_curve(self as *mut Self, C, isNotCheckC0)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11146,8 +13026,11 @@ impl OffsetCurve {
     /// Changes this offset curve by assigning D as the offset value.
     pub fn set_offset_value(&mut self, D: f64) {
         {
-            unsafe { crate::ffi::Geom2d_OffsetCurve_set_offset_value(self as *mut Self, D) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_OffsetCurve_set_offset_value(self as *mut Self, D) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11157,8 +13040,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_OffsetCurve_basis_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11191,8 +13077,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_OffsetCurve_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -11202,8 +13091,10 @@ impl OffsetCurve {
     /// if used on portion where the curve is C1, it is OK
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_OffsetCurve_d0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_OffsetCurve_d0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11214,8 +13105,10 @@ impl OffsetCurve {
     /// where the curve is C2
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_OffsetCurve_d1(self as *const Self, U, P, V1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_OffsetCurve_d1(self as *const Self, U, P, V1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11232,8 +13125,11 @@ impl OffsetCurve {
         V2: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_OffsetCurve_d2(self as *const Self, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_OffsetCurve_d2(self as *const Self, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11251,8 +13147,11 @@ impl OffsetCurve {
         V3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_OffsetCurve_d3(self as *const Self, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_OffsetCurve_d3(self as *const Self, U, P, V1, V2, V3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11276,8 +13175,11 @@ impl OffsetCurve {
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_OffsetCurve_dn(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11291,8 +13193,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_OffsetCurve_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11306,8 +13211,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_OffsetCurve_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11316,8 +13224,11 @@ impl OffsetCurve {
     pub fn offset(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_OffsetCurve_offset(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11328,8 +13239,11 @@ impl OffsetCurve {
     pub fn is_closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2d_OffsetCurve_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11344,8 +13258,11 @@ impl OffsetCurve {
     pub fn is_cn(&self, N: i32) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2d_OffsetCurve_is_cn(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11358,8 +13275,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_OffsetCurve_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11371,8 +13291,11 @@ impl OffsetCurve {
     pub fn period(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_OffsetCurve_period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11381,8 +13304,10 @@ impl OffsetCurve {
     /// Note: the basis curve is also modified.
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
         {
-            unsafe { crate::ffi::Geom2d_OffsetCurve_transform(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_OffsetCurve_transform(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11402,8 +13327,11 @@ impl OffsetCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_OffsetCurve_transformed_parameter(self as *const Self, U, T)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11424,8 +13352,11 @@ impl OffsetCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_OffsetCurve_parametric_transformation(self as *const Self, T)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11434,8 +13365,11 @@ impl OffsetCurve {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         {
             let __result = unsafe { crate::ffi::Geom2d_OffsetCurve_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11446,8 +13380,11 @@ impl OffsetCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_OffsetCurve_get_basis_curve_continuity(self as *const Self)
             };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -11456,8 +13393,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_OffsetCurve_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11465,8 +13405,11 @@ impl OffsetCurve {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_OffsetCurve_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -11474,82 +13417,83 @@ impl OffsetCurve {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_OffsetCurve_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Geom2d_Curve
     pub fn as_curve(&self) -> &Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_OffsetCurve_as_Geom2d_Curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_OffsetCurve_as_Geom2d_Curve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Curve (mutable)
     pub fn as_curve_mut(&mut self) -> &mut Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_OffsetCurve_as_Geom2d_Curve_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_OffsetCurve_as_Geom2d_Curve_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_OffsetCurve_as_Geom2d_Geometry(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_OffsetCurve_as_Geom2d_Geometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_OffsetCurve_as_Geom2d_Geometry_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_OffsetCurve_as_Geom2d_Geometry_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_OffsetCurve_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_OffsetCurve_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_OffsetCurve_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_OffsetCurve_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dOffsetCurve> {
-        {
-            let __result = unsafe { crate::ffi::Geom2d_OffsetCurve_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Geom2d_OffsetCurve_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::Reversed()`
@@ -11557,8 +13501,11 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_OffsetCurve_inherited_Reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11567,40 +13514,56 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_OffsetCurve_inherited_Value(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_OffsetCurve_inherited_Mirror(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_OffsetCurve_inherited_Mirror(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         {
-            unsafe { crate::ffi::Geom2d_OffsetCurve_inherited_Rotate(self as *mut Self, P, Ang) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_OffsetCurve_inherited_Rotate(self as *mut Self, P, Ang)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         {
-            unsafe { crate::ffi::Geom2d_OffsetCurve_inherited_Scale(self as *mut Self, P, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_OffsetCurve_inherited_Scale(self as *mut Self, P, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_OffsetCurve_inherited_Translate(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_OffsetCurve_inherited_Translate(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11613,8 +13576,11 @@ impl OffsetCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_OffsetCurve_inherited_Mirrored(self as *const Self, P)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11628,8 +13594,11 @@ impl OffsetCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_OffsetCurve_inherited_Rotated(self as *const Self, P, Ang)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11643,8 +13612,11 @@ impl OffsetCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_OffsetCurve_inherited_Scaled(self as *const Self, P, S)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11657,8 +13629,11 @@ impl OffsetCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_OffsetCurve_inherited_Transformed(self as *const Self, T)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11671,8 +13646,11 @@ impl OffsetCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_OffsetCurve_inherited_Translated(self as *const Self, V)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11682,8 +13660,11 @@ impl OffsetCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_OffsetCurve_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11693,8 +13674,11 @@ impl OffsetCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_OffsetCurve_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11703,11 +13687,14 @@ impl OffsetCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_OffsetCurve_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -11718,18 +13705,23 @@ impl OffsetCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_OffsetCurve_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_OffsetCurve_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11739,16 +13731,22 @@ impl OffsetCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_OffsetCurve_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_OffsetCurve_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_OffsetCurve_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -11764,54 +13762,53 @@ unsafe impl crate::CppDeletable for HandleGeom2dOffsetCurve {
 impl HandleGeom2dOffsetCurve {
     /// Dereference this Handle to access the underlying Geom2d_OffsetCurve
     pub fn get(&self) -> &crate::ffi::Geom2d_OffsetCurve {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dOffsetCurve_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dOffsetCurve_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_OffsetCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_OffsetCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeom2dOffsetCurve_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dOffsetCurve_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_OffsetCurve> to Handle<Geom2d_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dOffsetCurve_to_HandleGeom2dCurve(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dOffsetCurve_to_HandleGeom2dCurve(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_OffsetCurve> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dOffsetCurve_to_HandleGeom2dGeometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dOffsetCurve_to_HandleGeom2dGeometry(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_OffsetCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dOffsetCurve_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dOffsetCurve_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -11859,8 +13856,10 @@ impl Parabola {
     pub fn new_parab2d(Prb: &crate::gp::Parab2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Parabola_ctor_parab2d(Prb) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11881,8 +13880,10 @@ impl Parabola {
             let __result = unsafe {
                 crate::ffi::Geom2d_Parabola_ctor_ax2d_real_bool(MirrorAxis, Focal, Sense)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11897,8 +13898,10 @@ impl Parabola {
     pub fn new_ax22d_real(Axis: &crate::gp::Ax22d, Focal: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Parabola_ctor_ax22d_real(Axis, Focal) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11912,8 +13915,10 @@ impl Parabola {
     pub fn new_ax2d_pnt2d(D: &crate::gp::Ax2d, F: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Parabola_ctor_ax2d_pnt2d(D, F) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11934,8 +13939,10 @@ impl Parabola {
     /// Exceptions Standard_ConstructionError if Focal is negative.
     pub fn set_focal(&mut self, Focal: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Parabola_set_focal(self as *mut Self, Focal) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Parabola_set_focal(self as *mut Self, Focal) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11943,8 +13950,10 @@ impl Parabola {
     /// Converts the gp_Parab2d parabola Prb into this parabola.
     pub fn set_parab2d(&mut self, Prb: &crate::gp::Parab2d) {
         {
-            unsafe { crate::ffi::Geom2d_Parabola_set_parab2d(self as *mut Self, Prb) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Parabola_set_parab2d(self as *mut Self, Prb) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11954,8 +13963,11 @@ impl Parabola {
     pub fn parab2d(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Parabola_parab2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11967,8 +13979,11 @@ impl Parabola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Parabola_reversed_parameter(self as *const Self, U) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11978,8 +13993,11 @@ impl Parabola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Parabola_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11989,8 +14007,11 @@ impl Parabola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Parabola_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11999,8 +14020,11 @@ impl Parabola {
     pub fn is_closed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2d_Parabola_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12009,8 +14033,11 @@ impl Parabola {
     pub fn is_periodic(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2d_Parabola_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12021,8 +14048,11 @@ impl Parabola {
     pub fn directrix(&self) -> crate::OwnedPtr<crate::gp::Ax2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Parabola_directrix(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12031,8 +14061,11 @@ impl Parabola {
     pub fn eccentricity(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Parabola_eccentricity(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12042,8 +14075,11 @@ impl Parabola {
     pub fn focus(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Parabola_focus(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12053,8 +14089,11 @@ impl Parabola {
     pub fn focal(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Parabola_focal(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12067,8 +14106,11 @@ impl Parabola {
     pub fn parameter(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Parabola_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12081,8 +14123,10 @@ impl Parabola {
     /// YDir the YDirection of the parabola's local coordinate system.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Parabola_d0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Parabola_d0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12090,8 +14134,10 @@ impl Parabola {
     /// Returns the point P of parameter U and the first derivative V1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_Parabola_d1(self as *const Self, U, P, V1) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Parabola_d1(self as *const Self, U, P, V1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12106,8 +14152,11 @@ impl Parabola {
         V2: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_Parabola_d2(self as *const Self, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Parabola_d2(self as *const Self, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12123,8 +14172,11 @@ impl Parabola {
         V3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_Parabola_d3(self as *const Self, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Parabola_d3(self as *const Self, U, P, V1, V2, V3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12135,8 +14187,11 @@ impl Parabola {
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Parabola_dn(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12144,8 +14199,10 @@ impl Parabola {
     /// Applies the transformation T to this parabola.
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
         {
-            unsafe { crate::ffi::Geom2d_Parabola_transform(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Parabola_transform(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12159,8 +14216,11 @@ impl Parabola {
             let __result = unsafe {
                 crate::ffi::Geom2d_Parabola_transformed_parameter(self as *const Self, U, T)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12181,8 +14241,11 @@ impl Parabola {
             let __result = unsafe {
                 crate::ffi::Geom2d_Parabola_parametric_transformation(self as *const Self, T)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12191,8 +14254,11 @@ impl Parabola {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Parabola_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12200,8 +14266,11 @@ impl Parabola {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_Parabola_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -12209,8 +14278,11 @@ impl Parabola {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_Parabola_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -12218,131 +14290,145 @@ impl Parabola {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_Parabola_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Geom2d_Conic
     pub fn as_conic(&self) -> &Conic {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Parabola_as_Geom2d_Conic(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Geom2d_Parabola_as_Geom2d_Conic(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Conic (mutable)
     pub fn as_conic_mut(&mut self) -> &mut Conic {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Parabola_as_Geom2d_Conic_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Parabola_as_Geom2d_Conic_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Curve
     pub fn as_curve(&self) -> &Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Parabola_as_Geom2d_Curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Geom2d_Parabola_as_Geom2d_Curve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Curve (mutable)
     pub fn as_curve_mut(&mut self) -> &mut Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Parabola_as_Geom2d_Curve_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Parabola_as_Geom2d_Curve_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Parabola_as_Geom2d_Geometry(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Parabola_as_Geom2d_Geometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Parabola_as_Geom2d_Geometry_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Parabola_as_Geom2d_Geometry_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Parabola_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Parabola_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Parabola_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Parabola_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dParabola> {
-        {
-            let __result = unsafe { crate::ffi::Geom2d_Parabola_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Geom2d_Parabola_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Geom2d_Conic.hxx`:46 - `Geom2d_Conic::SetAxis()`
     pub fn set_axis(&mut self, theA: &crate::gp::Ax22d) {
         {
-            unsafe { crate::ffi::Geom2d_Parabola_inherited_SetAxis(self as *mut Self, theA) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Parabola_inherited_SetAxis(self as *mut Self, theA) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Conic.hxx`:54 - `Geom2d_Conic::SetXAxis()`
     pub fn set_x_axis(&mut self, theAX: &crate::gp::Ax2d) {
         {
-            unsafe { crate::ffi::Geom2d_Parabola_inherited_SetXAxis(self as *mut Self, theAX) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Parabola_inherited_SetXAxis(self as *mut Self, theAX) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Conic.hxx`:62 - `Geom2d_Conic::SetYAxis()`
     pub fn set_y_axis(&mut self, theAY: &crate::gp::Ax2d) {
         {
-            unsafe { crate::ffi::Geom2d_Parabola_inherited_SetYAxis(self as *mut Self, theAY) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Parabola_inherited_SetYAxis(self as *mut Self, theAY) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Conic.hxx`:66 - `Geom2d_Conic::SetLocation()`
     pub fn set_location(&mut self, theP: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Parabola_inherited_SetLocation(self as *mut Self, theP) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_Parabola_inherited_SetLocation(self as *mut Self, theP)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12351,8 +14437,11 @@ impl Parabola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Parabola_inherited_XAxis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12361,8 +14450,11 @@ impl Parabola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Parabola_inherited_YAxis(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12371,8 +14463,11 @@ impl Parabola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Parabola_inherited_Location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -12381,16 +14476,21 @@ impl Parabola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Parabola_inherited_Position(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Conic.hxx`:96 - `Geom2d_Conic::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_Parabola_inherited_Reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Parabola_inherited_Reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12399,8 +14499,11 @@ impl Parabola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Parabola_inherited_Continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -12409,8 +14512,11 @@ impl Parabola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Parabola_inherited_IsCN(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12419,8 +14525,11 @@ impl Parabola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Parabola_inherited_Reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12429,8 +14538,11 @@ impl Parabola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Parabola_inherited_Period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12439,40 +14551,55 @@ impl Parabola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Parabola_inherited_Value(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Parabola_inherited_Mirror(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Parabola_inherited_Mirror(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Parabola_inherited_Rotate(self as *mut Self, P, Ang) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Parabola_inherited_Rotate(self as *mut Self, P, Ang) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Parabola_inherited_Scale(self as *mut Self, P, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Parabola_inherited_Scale(self as *mut Self, P, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_Parabola_inherited_Translate(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Parabola_inherited_Translate(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12484,8 +14611,11 @@ impl Parabola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Parabola_inherited_Mirrored(self as *const Self, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12499,8 +14629,11 @@ impl Parabola {
             let __result = unsafe {
                 crate::ffi::Geom2d_Parabola_inherited_Rotated(self as *const Self, P, Ang)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12513,8 +14646,11 @@ impl Parabola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Parabola_inherited_Scaled(self as *const Self, P, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12527,8 +14663,11 @@ impl Parabola {
             let __result = unsafe {
                 crate::ffi::Geom2d_Parabola_inherited_Transformed(self as *const Self, T)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12540,8 +14679,11 @@ impl Parabola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Parabola_inherited_Translated(self as *const Self, V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12551,8 +14693,11 @@ impl Parabola {
             let __result = unsafe {
                 crate::ffi::Geom2d_Parabola_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12562,8 +14707,11 @@ impl Parabola {
             let __result = unsafe {
                 crate::ffi::Geom2d_Parabola_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12572,11 +14720,14 @@ impl Parabola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Parabola_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -12586,16 +14737,23 @@ impl Parabola {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Parabola_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_Parabola_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_Parabola_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12605,16 +14763,22 @@ impl Parabola {
             let __result = unsafe {
                 crate::ffi::Geom2d_Parabola_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_Parabola_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Parabola_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -12630,64 +14794,62 @@ unsafe impl crate::CppDeletable for HandleGeom2dParabola {
 impl HandleGeom2dParabola {
     /// Dereference this Handle to access the underlying Geom2d_Parabola
     pub fn get(&self) -> &crate::ffi::Geom2d_Parabola {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dParabola_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dParabola_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_Parabola
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_Parabola {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dParabola_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dParabola_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_Parabola> to Handle<Geom2d_Conic>
     pub fn to_handle_conic(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dConic> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dParabola_to_HandleGeom2dConic(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dParabola_to_HandleGeom2dConic(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_Parabola> to Handle<Geom2d_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dParabola_to_HandleGeom2dCurve(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dParabola_to_HandleGeom2dCurve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_Parabola> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dParabola_to_HandleGeom2dGeometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dParabola_to_HandleGeom2dGeometry(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_Parabola> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dParabola_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dParabola_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -12713,8 +14875,10 @@ impl Point {
     /// returns the Coordinates of <me>.
     pub fn coord(&self, X: &mut f64, Y: &mut f64) {
         {
-            unsafe { crate::ffi::Geom2d_Point_coord(self as *const Self, X, Y) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Point_coord(self as *const Self, X, Y) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12723,8 +14887,11 @@ impl Point {
     pub fn pnt2d(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Point_pnt2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12733,8 +14900,11 @@ impl Point {
     pub fn x(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Point_x(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12743,8 +14913,11 @@ impl Point {
     pub fn y(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Point_y(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12753,8 +14926,11 @@ impl Point {
     pub fn distance(&self, Other: &crate::ffi::HandleGeom2dPoint) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Point_distance(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12764,8 +14940,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Point_square_distance(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12773,8 +14952,11 @@ impl Point {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_Point_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -12782,8 +14964,11 @@ impl Point {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_Point_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -12791,88 +14976,104 @@ impl Point {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_Point_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Point_as_Geom2d_Geometry(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Geom2d_Point_as_Geom2d_Geometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Point_as_Geom2d_Geometry_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Point_as_Geom2d_Geometry_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Point_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Point_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Point_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Point_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Point_inherited_Mirror(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Point_inherited_Mirror(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Point_inherited_Rotate(self as *mut Self, P, Ang) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Point_inherited_Rotate(self as *mut Self, P, Ang) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Point_inherited_Scale(self as *mut Self, P, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Point_inherited_Scale(self as *mut Self, P, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_Point_inherited_Translate(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Point_inherited_Translate(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:90 - `Geom2d_Geometry::Transform()`
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
         {
-            unsafe { crate::ffi::Geom2d_Point_inherited_Transform(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Point_inherited_Transform(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12884,8 +15085,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Point_inherited_Mirrored(self as *const Self, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12898,8 +15102,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Point_inherited_Rotated(self as *const Self, P, Ang) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12912,8 +15119,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Point_inherited_Scaled(self as *const Self, P, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12925,8 +15135,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Point_inherited_Transformed(self as *const Self, T) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12938,8 +15151,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Point_inherited_Translated(self as *const Self, V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12947,8 +15163,11 @@ impl Point {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Point_inherited_Copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12958,8 +15177,11 @@ impl Point {
             let __result = unsafe {
                 crate::ffi::Geom2d_Point_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12968,8 +15190,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Point_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12977,11 +15202,14 @@ impl Point {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Point_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -12991,16 +15219,23 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Point_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_Point_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_Point_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13010,16 +15245,21 @@ impl Point {
             let __result = unsafe {
                 crate::ffi::Geom2d_Point_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_Point_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Point_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -13035,42 +15275,41 @@ unsafe impl crate::CppDeletable for HandleGeom2dPoint {
 impl HandleGeom2dPoint {
     /// Dereference this Handle to access the underlying Geom2d_Point
     pub fn get(&self) -> &crate::ffi::Geom2d_Point {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dPoint_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dPoint_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_Point
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_Point {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dPoint_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dPoint_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_Point> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dPoint_to_HandleGeom2dGeometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dPoint_to_HandleGeom2dGeometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_Point> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dPoint_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dPoint_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Geom2d_Point> to Handle<Geom2d_CartesianPoint>
@@ -13079,16 +15318,18 @@ impl HandleGeom2dPoint {
     pub fn downcast_to_cartesian_point(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dCartesianPoint>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dPoint_downcast_to_HandleGeom2dCartesianPoint(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -13144,8 +15385,10 @@ impl Transformation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Transformation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13154,8 +15397,10 @@ impl Transformation {
     pub fn new_trsf2d(T: &crate::gp::Trsf2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Transformation_ctor_trsf2d(T) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13165,8 +15410,11 @@ impl Transformation {
     /// P is the center of the symmetry.
     pub fn set_mirror_pnt2d(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Transformation_set_mirror_pnt2d(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Transformation_set_mirror_pnt2d(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13176,8 +15424,11 @@ impl Transformation {
     /// A is the center of the axial symmetry.
     pub fn set_mirror_ax2d(&mut self, A: &crate::gp::Ax2d) {
         {
-            unsafe { crate::ffi::Geom2d_Transformation_set_mirror_ax2d(self as *mut Self, A) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Transformation_set_mirror_ax2d(self as *mut Self, A) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13186,8 +15437,12 @@ impl Transformation {
     /// properties of a rotation at angle Ang (in radians) about point P.
     pub fn set_rotation(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Transformation_set_rotation(self as *mut Self, P, Ang) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_Transformation_set_rotation(self as *mut Self, P, Ang)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13196,8 +15451,11 @@ impl Transformation {
     /// the scale and S is the scaling value.
     pub fn set_scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Transformation_set_scale(self as *mut Self, P, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Transformation_set_scale(self as *mut Self, P, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13210,14 +15468,16 @@ impl Transformation {
         ToSystem2: &crate::gp::Ax2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_Transformation_set_transformation_ax2d2(
                     self as *mut Self,
                     FromSystem1,
                     ToSystem2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13228,13 +15488,15 @@ impl Transformation {
     /// to the local coordinate system defined with the Ax2d ToSystem.
     pub fn set_transformation_ax2d(&mut self, ToSystem: &crate::gp::Ax2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_Transformation_set_transformation_ax2d(
                     self as *mut Self,
                     ToSystem,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13243,10 +15505,12 @@ impl Transformation {
     /// V is the vector of the translation.
     pub fn set_translation_vec2d(&mut self, V: &crate::gp::Vec2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_Transformation_set_translation_vec2d(self as *mut Self, V)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13255,10 +15519,12 @@ impl Transformation {
     /// P1 to the point P2.
     pub fn set_translation_pnt2d2(&mut self, P1: &crate::gp::Pnt2d, P2: &crate::gp::Pnt2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_Transformation_set_translation_pnt2d2(self as *mut Self, P1, P2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13267,8 +15533,11 @@ impl Transformation {
     /// package gp.
     pub fn set_trsf2d(&mut self, T: &crate::gp::Trsf2d) {
         {
-            unsafe { crate::ffi::Geom2d_Transformation_set_trsf2d(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Transformation_set_trsf2d(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13280,8 +15549,11 @@ impl Transformation {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Transformation_is_negative(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13294,8 +15566,11 @@ impl Transformation {
     pub fn form(&self) -> crate::gp::TrsfForm {
         {
             let __result = unsafe { crate::ffi::Geom2d_Transformation_form(self as *const Self) };
-            crate::check_exception();
-            crate::gp::TrsfForm::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::gp::TrsfForm::try_from(__val).unwrap()
         }
     }
 
@@ -13305,8 +15580,11 @@ impl Transformation {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Transformation_scale_factor(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13317,8 +15595,11 @@ impl Transformation {
     pub fn trsf2d(&self) -> crate::OwnedPtr<crate::gp::Trsf2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Transformation_trsf2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13333,8 +15614,11 @@ impl Transformation {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Transformation_value(self as *const Self, Row, Col) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13347,8 +15631,10 @@ impl Transformation {
     /// package gp.
     pub fn invert(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_Transformation_invert(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Transformation_invert(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13360,8 +15646,11 @@ impl Transformation {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Transformation_inverted(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13376,8 +15665,11 @@ impl Transformation {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Transformation_multiplied(self as *const Self, Other) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13391,8 +15683,11 @@ impl Transformation {
     /// if N < 0  <me>.Invert() * .........* <me>.Invert()
     pub fn multiply(&mut self, Other: &crate::ffi::HandleGeom2dTransformation) {
         {
-            unsafe { crate::ffi::Geom2d_Transformation_multiply(self as *mut Self, Other) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Transformation_multiply(self as *mut Self, Other) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13400,8 +15695,10 @@ impl Transformation {
     /// Raised if N < 0 and if the transformation is not inversible
     pub fn power(&mut self, N: i32) {
         {
-            unsafe { crate::ffi::Geom2d_Transformation_power(self as *mut Self, N) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Transformation_power(self as *mut Self, N) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13411,8 +15708,11 @@ impl Transformation {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Transformation_powered(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13421,8 +15721,11 @@ impl Transformation {
     /// <me> and Other.     <me> = Other * <me>
     pub fn pre_multiply(&mut self, Other: &crate::ffi::HandleGeom2dTransformation) {
         {
-            unsafe { crate::ffi::Geom2d_Transformation_pre_multiply(self as *mut Self, Other) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Transformation_pre_multiply(self as *mut Self, Other) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13430,8 +15733,11 @@ impl Transformation {
     /// Applies the transformation <me> to the triplet {X, Y}.
     pub fn transforms(&self, X: &mut f64, Y: &mut f64) {
         {
-            unsafe { crate::ffi::Geom2d_Transformation_transforms(self as *const Self, X, Y) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Transformation_transforms(self as *const Self, X, Y) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13440,8 +15746,11 @@ impl Transformation {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dTransformation> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Transformation_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13450,8 +15759,11 @@ impl Transformation {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Transformation_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13459,8 +15771,11 @@ impl Transformation {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_Transformation_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -13468,42 +15783,44 @@ impl Transformation {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_Transformation_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_Transformation_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Transformation_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_Transformation_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Geom2d_Transformation_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dTransformation> {
-        {
-            let __result = unsafe { crate::ffi::Geom2d_Transformation_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Geom2d_Transformation_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -13512,8 +15829,11 @@ impl Transformation {
             let __result = unsafe {
                 crate::ffi::Geom2d_Transformation_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13523,8 +15843,11 @@ impl Transformation {
             let __result = unsafe {
                 crate::ffi::Geom2d_Transformation_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13533,11 +15856,14 @@ impl Transformation {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Transformation_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -13548,18 +15874,23 @@ impl Transformation {
             let __result = unsafe {
                 crate::ffi::Geom2d_Transformation_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_Transformation_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13569,16 +15900,22 @@ impl Transformation {
             let __result = unsafe {
                 crate::ffi::Geom2d_Transformation_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_Transformation_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Transformation_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -13594,35 +15931,31 @@ unsafe impl crate::CppDeletable for HandleGeom2dTransformation {
 impl HandleGeom2dTransformation {
     /// Dereference this Handle to access the underlying Geom2d_Transformation
     pub fn get(&self) -> &crate::ffi::Geom2d_Transformation {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeom2dTransformation_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dTransformation_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_Transformation
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_Transformation {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeom2dTransformation_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dTransformation_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_Transformation> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dTransformation_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dTransformation_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -13697,8 +16030,10 @@ impl TrimmedCurve {
                     theAdjustPeriodic,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13800,8 +16135,10 @@ impl TrimmedCurve {
     /// and 1. - U1 (last parameter).
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_TrimmedCurve_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_TrimmedCurve_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13815,8 +16152,11 @@ impl TrimmedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_TrimmedCurve_reversed_parameter(self as *const Self, U)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13840,7 +16180,7 @@ impl TrimmedCurve {
     /// - U1 is equal to U2.
     pub fn set_trim(&mut self, U1: f64, U2: f64, Sense: bool, theAdjustPeriodic: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_TrimmedCurve_set_trim(
                     self as *mut Self,
                     U1,
@@ -13849,7 +16189,9 @@ impl TrimmedCurve {
                     theAdjustPeriodic,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13863,8 +16205,11 @@ impl TrimmedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_TrimmedCurve_basis_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13879,8 +16224,11 @@ impl TrimmedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_TrimmedCurve_continuity(self as *const Self) };
-            crate::check_exception();
-            crate::geom_abs::Shape::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::geom_abs::Shape::try_from(__val).unwrap()
         }
     }
 
@@ -13896,8 +16244,11 @@ impl TrimmedCurve {
     pub fn is_cn(&self, N: i32) -> bool {
         {
             let __result = unsafe { crate::ffi::Geom2d_TrimmedCurve_is_cn(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13908,8 +16259,11 @@ impl TrimmedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_TrimmedCurve_end_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13921,8 +16275,11 @@ impl TrimmedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_TrimmedCurve_first_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13934,8 +16291,11 @@ impl TrimmedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_TrimmedCurve_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13945,8 +16305,11 @@ impl TrimmedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_TrimmedCurve_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13957,8 +16320,11 @@ impl TrimmedCurve {
     pub fn period(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_TrimmedCurve_period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13970,8 +16336,11 @@ impl TrimmedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_TrimmedCurve_last_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13987,8 +16356,11 @@ impl TrimmedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_TrimmedCurve_start_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13998,8 +16370,10 @@ impl TrimmedCurve {
     /// U (see class OffsetCurve).
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_TrimmedCurve_d0(self as *const Self, U, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_TrimmedCurve_d0(self as *const Self, U, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14007,8 +16381,11 @@ impl TrimmedCurve {
     /// Raised if the continuity of the curve is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_TrimmedCurve_d1(self as *const Self, U, P, V1) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_TrimmedCurve_d1(self as *const Self, U, P, V1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14022,8 +16399,11 @@ impl TrimmedCurve {
         V2: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_TrimmedCurve_d2(self as *const Self, U, P, V1, V2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_TrimmedCurve_d2(self as *const Self, U, P, V1, V2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14038,8 +16418,12 @@ impl TrimmedCurve {
         V3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::Geom2d_TrimmedCurve_d3(self as *const Self, U, P, V1, V2, V3) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_TrimmedCurve_d3(self as *const Self, U, P, V1, V2, V3)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14057,8 +16441,11 @@ impl TrimmedCurve {
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_TrimmedCurve_dn(self as *const Self, U, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14067,8 +16454,10 @@ impl TrimmedCurve {
     /// Warning The basis curve is also modified.
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
         {
-            unsafe { crate::ffi::Geom2d_TrimmedCurve_transform(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_TrimmedCurve_transform(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14088,8 +16477,11 @@ impl TrimmedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_TrimmedCurve_transformed_parameter(self as *const Self, U, T)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14110,8 +16502,11 @@ impl TrimmedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_TrimmedCurve_parametric_transformation(self as *const Self, T)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14120,8 +16515,11 @@ impl TrimmedCurve {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         {
             let __result = unsafe { crate::ffi::Geom2d_TrimmedCurve_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14130,8 +16528,11 @@ impl TrimmedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_TrimmedCurve_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -14139,8 +16540,11 @@ impl TrimmedCurve {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_TrimmedCurve_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -14148,105 +16552,104 @@ impl TrimmedCurve {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_TrimmedCurve_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Geom2d_BoundedCurve
     pub fn as_bounded_curve(&self) -> &BoundedCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_TrimmedCurve_as_Geom2d_BoundedCurve(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_TrimmedCurve_as_Geom2d_BoundedCurve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_BoundedCurve (mutable)
     pub fn as_bounded_curve_mut(&mut self) -> &mut BoundedCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_TrimmedCurve_as_Geom2d_BoundedCurve_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Geom2d_TrimmedCurve_as_Geom2d_BoundedCurve_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Curve
     pub fn as_curve(&self) -> &Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_TrimmedCurve_as_Geom2d_Curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_TrimmedCurve_as_Geom2d_Curve(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Curve (mutable)
     pub fn as_curve_mut(&mut self) -> &mut Curve {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_TrimmedCurve_as_Geom2d_Curve_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_TrimmedCurve_as_Geom2d_Curve_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_TrimmedCurve_as_Geom2d_Geometry(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_TrimmedCurve_as_Geom2d_Geometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_TrimmedCurve_as_Geom2d_Geometry_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_TrimmedCurve_as_Geom2d_Geometry_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_TrimmedCurve_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_TrimmedCurve_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_TrimmedCurve_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_TrimmedCurve_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dTrimmedCurve> {
-        {
-            let __result = unsafe { crate::ffi::Geom2d_TrimmedCurve_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Geom2d_TrimmedCurve_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Geom2d_Curve.hxx`:105 - `Geom2d_Curve::Reversed()`
@@ -14254,8 +16657,11 @@ impl TrimmedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_TrimmedCurve_inherited_Reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14264,40 +16670,57 @@ impl TrimmedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_TrimmedCurve_inherited_Value(self as *const Self, U) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_TrimmedCurve_inherited_Mirror(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_TrimmedCurve_inherited_Mirror(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         {
-            unsafe { crate::ffi::Geom2d_TrimmedCurve_inherited_Rotate(self as *mut Self, P, Ang) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_TrimmedCurve_inherited_Rotate(self as *mut Self, P, Ang)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         {
-            unsafe { crate::ffi::Geom2d_TrimmedCurve_inherited_Scale(self as *mut Self, P, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_TrimmedCurve_inherited_Scale(self as *mut Self, P, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_TrimmedCurve_inherited_Translate(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_TrimmedCurve_inherited_Translate(self as *mut Self, V)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14310,8 +16733,11 @@ impl TrimmedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_TrimmedCurve_inherited_Mirrored(self as *const Self, P)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14325,8 +16751,11 @@ impl TrimmedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_TrimmedCurve_inherited_Rotated(self as *const Self, P, Ang)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14340,8 +16769,11 @@ impl TrimmedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_TrimmedCurve_inherited_Scaled(self as *const Self, P, S)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14354,8 +16786,11 @@ impl TrimmedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_TrimmedCurve_inherited_Transformed(self as *const Self, T)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14368,8 +16803,11 @@ impl TrimmedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_TrimmedCurve_inherited_Translated(self as *const Self, V)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14379,8 +16817,11 @@ impl TrimmedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_TrimmedCurve_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14390,8 +16831,11 @@ impl TrimmedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_TrimmedCurve_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14400,11 +16844,14 @@ impl TrimmedCurve {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_TrimmedCurve_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -14415,18 +16862,23 @@ impl TrimmedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_TrimmedCurve_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_TrimmedCurve_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14436,16 +16888,22 @@ impl TrimmedCurve {
             let __result = unsafe {
                 crate::ffi::Geom2d_TrimmedCurve_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_TrimmedCurve_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_TrimmedCurve_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -14461,67 +16919,64 @@ unsafe impl crate::CppDeletable for HandleGeom2dTrimmedCurve {
 impl HandleGeom2dTrimmedCurve {
     /// Dereference this Handle to access the underlying Geom2d_TrimmedCurve
     pub fn get(&self) -> &crate::ffi::Geom2d_TrimmedCurve {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dTrimmedCurve_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dTrimmedCurve_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_TrimmedCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_TrimmedCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeom2dTrimmedCurve_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dTrimmedCurve_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_TrimmedCurve> to Handle<Geom2d_BoundedCurve>
     pub fn to_handle_bounded_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBoundedCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dTrimmedCurve_to_HandleGeom2dBoundedCurve(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dTrimmedCurve_to_HandleGeom2dBoundedCurve(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_TrimmedCurve> to Handle<Geom2d_Curve>
     pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dTrimmedCurve_to_HandleGeom2dCurve(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dTrimmedCurve_to_HandleGeom2dCurve(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_TrimmedCurve> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dTrimmedCurve_to_HandleGeom2dGeometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dTrimmedCurve_to_HandleGeom2dGeometry(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_TrimmedCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dTrimmedCurve_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dTrimmedCurve_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -14543,8 +16998,10 @@ impl UndefinedDerivative {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_UndefinedDerivative_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -14555,8 +17012,10 @@ impl UndefinedDerivative {
             let __result = unsafe {
                 crate::ffi::Geom2d_UndefinedDerivative_ctor_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -14571,8 +17030,10 @@ impl UndefinedDerivative {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -14581,8 +17042,11 @@ impl UndefinedDerivative {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_UndefinedDerivative_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -14590,16 +17054,22 @@ impl UndefinedDerivative {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::Geom2d_UndefinedDerivative_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_UndefinedDerivative_raise_charptr(c_theMessage.as_ptr())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Geom2d_UndefinedDerivative.hxx`:36 - `Geom2d_UndefinedDerivative::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::Geom2d_UndefinedDerivative_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_UndefinedDerivative_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14612,8 +17082,11 @@ impl UndefinedDerivative {
             let __result = unsafe {
                 crate::ffi::Geom2d_UndefinedDerivative_new_instance_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14631,8 +17104,11 @@ impl UndefinedDerivative {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14640,8 +17116,11 @@ impl UndefinedDerivative {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_UndefinedDerivative_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -14649,117 +17128,126 @@ impl UndefinedDerivative {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_UndefinedDerivative_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_UndefinedDerivative_as_Standard_DomainError(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Geom2d_UndefinedDerivative_as_Standard_DomainError(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_UndefinedDerivative_as_Standard_DomainError_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Geom2d_UndefinedDerivative_as_Standard_DomainError_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_UndefinedDerivative_as_Standard_Failure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Geom2d_UndefinedDerivative_as_Standard_Failure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_UndefinedDerivative_as_Standard_Failure_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Geom2d_UndefinedDerivative_as_Standard_Failure_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_UndefinedDerivative_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Geom2d_UndefinedDerivative_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_UndefinedDerivative_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Geom2d_UndefinedDerivative_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dUndefinedDerivative> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_UndefinedDerivative_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Geom2d_UndefinedDerivative_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_UndefinedDerivative_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_UndefinedDerivative_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_UndefinedDerivative_inherited_Reraise(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_UndefinedDerivative_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_UndefinedDerivative_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14772,8 +17260,11 @@ impl UndefinedDerivative {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14786,8 +17277,11 @@ impl UndefinedDerivative {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14797,11 +17291,14 @@ impl UndefinedDerivative {
             let __result = unsafe {
                 crate::ffi::Geom2d_UndefinedDerivative_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -14812,20 +17309,25 @@ impl UndefinedDerivative {
             let __result = unsafe {
                 crate::ffi::Geom2d_UndefinedDerivative_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_UndefinedDerivative_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14837,16 +17339,23 @@ impl UndefinedDerivative {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_UndefinedDerivative_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_UndefinedDerivative_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -14862,61 +17371,61 @@ unsafe impl crate::CppDeletable for HandleGeom2dUndefinedDerivative {
 impl HandleGeom2dUndefinedDerivative {
     /// Dereference this Handle to access the underlying Geom2d_UndefinedDerivative
     pub fn get(&self) -> &crate::ffi::Geom2d_UndefinedDerivative {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeom2dUndefinedDerivative_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dUndefinedDerivative_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_UndefinedDerivative
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_UndefinedDerivative {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeom2dUndefinedDerivative_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dUndefinedDerivative_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_UndefinedDerivative> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dUndefinedDerivative_to_HandleStandardDomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dUndefinedDerivative_to_HandleStandardDomainError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_UndefinedDerivative> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dUndefinedDerivative_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dUndefinedDerivative_to_HandleStandardFailure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_UndefinedDerivative> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dUndefinedDerivative_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dUndefinedDerivative_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -14938,8 +17447,10 @@ impl UndefinedValue {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_UndefinedValue_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -14949,8 +17460,10 @@ impl UndefinedValue {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_UndefinedValue_ctor_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -14965,8 +17478,10 @@ impl UndefinedValue {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -14975,8 +17490,11 @@ impl UndefinedValue {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_UndefinedValue_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -14984,16 +17502,21 @@ impl UndefinedValue {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::Geom2d_UndefinedValue_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_UndefinedValue_raise_charptr(c_theMessage.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Geom2d_UndefinedValue.hxx`:36 - `Geom2d_UndefinedValue::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::Geom2d_UndefinedValue_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_UndefinedValue_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15006,8 +17529,11 @@ impl UndefinedValue {
             let __result = unsafe {
                 crate::ffi::Geom2d_UndefinedValue_new_instance_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15025,8 +17551,11 @@ impl UndefinedValue {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15034,8 +17563,11 @@ impl UndefinedValue {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_UndefinedValue_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -15043,111 +17575,119 @@ impl UndefinedValue {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_UndefinedValue_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_UndefinedValue_as_Standard_DomainError(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Geom2d_UndefinedValue_as_Standard_DomainError(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_UndefinedValue_as_Standard_DomainError_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Geom2d_UndefinedValue_as_Standard_DomainError_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_UndefinedValue_as_Standard_Failure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_UndefinedValue_as_Standard_Failure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_UndefinedValue_as_Standard_Failure_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_UndefinedValue_as_Standard_Failure_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_UndefinedValue_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_UndefinedValue_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_UndefinedValue_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Geom2d_UndefinedValue_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dUndefinedValue> {
-        {
-            let __result = unsafe { crate::ffi::Geom2d_UndefinedValue_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Geom2d_UndefinedValue_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_UndefinedValue_inherited_Print(self as *const Self, theStream)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_UndefinedValue_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_UndefinedValue_inherited_Reraise(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_UndefinedValue_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_UndefinedValue_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15157,8 +17697,11 @@ impl UndefinedValue {
             let __result = unsafe {
                 crate::ffi::Geom2d_UndefinedValue_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15168,8 +17711,11 @@ impl UndefinedValue {
             let __result = unsafe {
                 crate::ffi::Geom2d_UndefinedValue_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15178,11 +17724,14 @@ impl UndefinedValue {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_UndefinedValue_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -15193,18 +17742,23 @@ impl UndefinedValue {
             let __result = unsafe {
                 crate::ffi::Geom2d_UndefinedValue_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_UndefinedValue_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15214,16 +17768,22 @@ impl UndefinedValue {
             let __result = unsafe {
                 crate::ffi::Geom2d_UndefinedValue_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_UndefinedValue_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_UndefinedValue_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -15239,59 +17799,53 @@ unsafe impl crate::CppDeletable for HandleGeom2dUndefinedValue {
 impl HandleGeom2dUndefinedValue {
     /// Dereference this Handle to access the underlying Geom2d_UndefinedValue
     pub fn get(&self) -> &crate::ffi::Geom2d_UndefinedValue {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeom2dUndefinedValue_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dUndefinedValue_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_UndefinedValue
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_UndefinedValue {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeom2dUndefinedValue_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dUndefinedValue_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_UndefinedValue> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dUndefinedValue_to_HandleStandardDomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dUndefinedValue_to_HandleStandardDomainError(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_UndefinedValue> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dUndefinedValue_to_HandleStandardFailure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dUndefinedValue_to_HandleStandardFailure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_UndefinedValue> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dUndefinedValue_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dUndefinedValue_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -15318,8 +17872,10 @@ impl Vector {
     /// Reverses the vector <me>.
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_Vector_reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Vector_reverse(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15328,8 +17884,11 @@ impl Vector {
     pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dVector> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Vector_reversed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15343,8 +17902,11 @@ impl Vector {
     pub fn angle(&self, Other: &crate::ffi::HandleGeom2dVector) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Vector_angle(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15352,8 +17914,10 @@ impl Vector {
     /// Returns the coordinates of <me>.
     pub fn coord(&self, X: &mut f64, Y: &mut f64) {
         {
-            unsafe { crate::ffi::Geom2d_Vector_coord(self as *const Self, X, Y) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Vector_coord(self as *const Self, X, Y) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15362,8 +17926,11 @@ impl Vector {
     pub fn magnitude(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Vector_magnitude(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15373,8 +17940,11 @@ impl Vector {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Vector_square_magnitude(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15383,8 +17953,11 @@ impl Vector {
     pub fn x(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Vector_x(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15393,8 +17966,11 @@ impl Vector {
     pub fn y(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Vector_y(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15403,8 +17979,11 @@ impl Vector {
     pub fn crossed(&self, Other: &crate::ffi::HandleGeom2dVector) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Vector_crossed(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15413,8 +17992,11 @@ impl Vector {
     pub fn dot(&self, Other: &crate::ffi::HandleGeom2dVector) -> f64 {
         {
             let __result = unsafe { crate::ffi::Geom2d_Vector_dot(self as *const Self, Other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15423,8 +18005,11 @@ impl Vector {
     pub fn vec2d(&self) -> crate::OwnedPtr<crate::gp::Vec2d> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Vector_vec2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15432,8 +18017,11 @@ impl Vector {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_Vector_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -15441,8 +18029,11 @@ impl Vector {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_Vector_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -15450,88 +18041,104 @@ impl Vector {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_Vector_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Vector_as_Geom2d_Geometry(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::Geom2d_Vector_as_Geom2d_Geometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Vector_as_Geom2d_Geometry_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Vector_as_Geom2d_Geometry_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Vector_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Vector_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_Vector_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_Vector_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::Geom2d_Vector_inherited_Mirror(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Vector_inherited_Mirror(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Vector_inherited_Rotate(self as *mut Self, P, Ang) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Vector_inherited_Rotate(self as *mut Self, P, Ang) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         {
-            unsafe { crate::ffi::Geom2d_Vector_inherited_Scale(self as *mut Self, P, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Vector_inherited_Scale(self as *mut Self, P, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_Vector_inherited_Translate(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Vector_inherited_Translate(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:90 - `Geom2d_Geometry::Transform()`
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
         {
-            unsafe { crate::ffi::Geom2d_Vector_inherited_Transform(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_Vector_inherited_Transform(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15543,8 +18150,11 @@ impl Vector {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Vector_inherited_Mirrored(self as *const Self, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15557,8 +18167,11 @@ impl Vector {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Vector_inherited_Rotated(self as *const Self, P, Ang) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15571,8 +18184,11 @@ impl Vector {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Vector_inherited_Scaled(self as *const Self, P, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15584,8 +18200,11 @@ impl Vector {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Vector_inherited_Transformed(self as *const Self, T) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15597,8 +18216,11 @@ impl Vector {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Vector_inherited_Translated(self as *const Self, V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15606,8 +18228,11 @@ impl Vector {
     pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Vector_inherited_Copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15617,8 +18242,11 @@ impl Vector {
             let __result = unsafe {
                 crate::ffi::Geom2d_Vector_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15627,8 +18255,11 @@ impl Vector {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Vector_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15636,11 +18267,14 @@ impl Vector {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::Geom2d_Vector_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -15650,16 +18284,23 @@ impl Vector {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_Vector_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_Vector_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_Vector_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15669,16 +18310,21 @@ impl Vector {
             let __result = unsafe {
                 crate::ffi::Geom2d_Vector_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_Vector_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Geom2d_Vector_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -15694,42 +18340,41 @@ unsafe impl crate::CppDeletable for HandleGeom2dVector {
 impl HandleGeom2dVector {
     /// Dereference this Handle to access the underlying Geom2d_Vector
     pub fn get(&self) -> &crate::ffi::Geom2d_Vector {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dVector_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dVector_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_Vector
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_Vector {
-        {
-            let __result = unsafe { crate::ffi::HandleGeom2dVector_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleGeom2dVector_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_Vector> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dVector_to_HandleGeom2dGeometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dVector_to_HandleGeom2dGeometry(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_Vector> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dVector_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dVector_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Geom2d_Vector> to Handle<Geom2d_Direction>
@@ -15738,14 +18383,16 @@ impl HandleGeom2dVector {
     pub fn downcast_to_direction(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dDirection>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dVector_downcast_to_HandleGeom2dDirection(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -15755,16 +18402,18 @@ impl HandleGeom2dVector {
     pub fn downcast_to_vector_with_magnitude(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dVectorWithMagnitude>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleGeom2dVector_downcast_to_HandleGeom2dVectorWithMagnitude(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -15790,8 +18439,10 @@ impl VectorWithMagnitude {
     pub fn new_vec2d(V: &crate::gp::Vec2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_VectorWithMagnitude_ctor_vec2d(V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -15800,8 +18451,10 @@ impl VectorWithMagnitude {
     pub fn new_real2(X: f64, Y: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_VectorWithMagnitude_ctor_real2(X, Y) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -15811,8 +18464,10 @@ impl VectorWithMagnitude {
     pub fn new_pnt2d2(P1: &crate::gp::Pnt2d, P2: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Geom2d_VectorWithMagnitude_ctor_pnt2d2(P1, P2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -15820,16 +18475,23 @@ impl VectorWithMagnitude {
     /// Set <me> to X, Y coordinates.
     pub fn set_coord(&mut self, X: f64, Y: f64) {
         {
-            unsafe { crate::ffi::Geom2d_VectorWithMagnitude_set_coord(self as *mut Self, X, Y) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_VectorWithMagnitude_set_coord(self as *mut Self, X, Y)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Geom2d_VectorWithMagnitude.hxx`:51 - `Geom2d_VectorWithMagnitude::SetVec2d()`
     pub fn set_vec2d(&mut self, V: &crate::gp::Vec2d) {
         {
-            unsafe { crate::ffi::Geom2d_VectorWithMagnitude_set_vec2d(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_VectorWithMagnitude_set_vec2d(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15837,8 +18499,11 @@ impl VectorWithMagnitude {
     /// Changes the X coordinate of <me>.
     pub fn set_x(&mut self, X: f64) {
         {
-            unsafe { crate::ffi::Geom2d_VectorWithMagnitude_set_x(self as *mut Self, X) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_VectorWithMagnitude_set_x(self as *mut Self, X) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15846,8 +18511,11 @@ impl VectorWithMagnitude {
     /// Changes the Y coordinate of <me>
     pub fn set_y(&mut self, Y: f64) {
         {
-            unsafe { crate::ffi::Geom2d_VectorWithMagnitude_set_y(self as *mut Self, Y) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_VectorWithMagnitude_set_y(self as *mut Self, Y) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15857,8 +18525,11 @@ impl VectorWithMagnitude {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_VectorWithMagnitude_magnitude(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15869,8 +18540,11 @@ impl VectorWithMagnitude {
             let __result = unsafe {
                 crate::ffi::Geom2d_VectorWithMagnitude_square_magnitude(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15878,8 +18552,11 @@ impl VectorWithMagnitude {
     /// Adds the Vector Other to <me>.
     pub fn add(&mut self, Other: &crate::ffi::HandleGeom2dVector) {
         {
-            unsafe { crate::ffi::Geom2d_VectorWithMagnitude_add(self as *mut Self, Other) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_VectorWithMagnitude_add(self as *mut Self, Other) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15892,8 +18569,11 @@ impl VectorWithMagnitude {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_VectorWithMagnitude_added(self as *const Self, Other) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15905,8 +18585,11 @@ impl VectorWithMagnitude {
             let __result = unsafe {
                 crate::ffi::Geom2d_VectorWithMagnitude_crossed(self as *const Self, Other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15914,8 +18597,11 @@ impl VectorWithMagnitude {
     /// Divides <me> by a scalar.
     pub fn divide(&mut self, Scalar: f64) {
         {
-            unsafe { crate::ffi::Geom2d_VectorWithMagnitude_divide(self as *mut Self, Scalar) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_VectorWithMagnitude_divide(self as *mut Self, Scalar) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15929,8 +18615,11 @@ impl VectorWithMagnitude {
             let __result = unsafe {
                 crate::ffi::Geom2d_VectorWithMagnitude_divided(self as *const Self, Scalar)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15948,8 +18637,11 @@ impl VectorWithMagnitude {
             let __result = unsafe {
                 crate::ffi::Geom2d_VectorWithMagnitude_multiplied(self as *const Self, Scalar)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15957,8 +18649,12 @@ impl VectorWithMagnitude {
     /// Computes the product of the vector <me> by a scalar.
     pub fn multiply(&mut self, Scalar: f64) {
         {
-            unsafe { crate::ffi::Geom2d_VectorWithMagnitude_multiply(self as *mut Self, Scalar) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_VectorWithMagnitude_multiply(self as *mut Self, Scalar)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15969,8 +18665,11 @@ impl VectorWithMagnitude {
     /// Resolution from package gp.
     pub fn normalize(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_VectorWithMagnitude_normalize(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_VectorWithMagnitude_normalize(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15983,8 +18682,11 @@ impl VectorWithMagnitude {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_VectorWithMagnitude_normalized(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15992,8 +18694,12 @@ impl VectorWithMagnitude {
     /// Subtracts the Vector Other to <me>.
     pub fn subtract(&mut self, Other: &crate::ffi::HandleGeom2dVector) {
         {
-            unsafe { crate::ffi::Geom2d_VectorWithMagnitude_subtract(self as *mut Self, Other) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_VectorWithMagnitude_subtract(self as *mut Self, Other)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16007,8 +18713,11 @@ impl VectorWithMagnitude {
             let __result = unsafe {
                 crate::ffi::Geom2d_VectorWithMagnitude_subtracted(self as *const Self, Other)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16016,8 +18725,11 @@ impl VectorWithMagnitude {
     /// Applies the transformation T to this vector.
     pub fn transform(&mut self, T: &crate::gp::Trsf2d) {
         {
-            unsafe { crate::ffi::Geom2d_VectorWithMagnitude_transform(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Geom2d_VectorWithMagnitude_transform(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16027,8 +18739,11 @@ impl VectorWithMagnitude {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_VectorWithMagnitude_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16037,8 +18752,11 @@ impl VectorWithMagnitude {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_VectorWithMagnitude_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -16046,8 +18764,11 @@ impl VectorWithMagnitude {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Geom2d_VectorWithMagnitude_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -16055,94 +18776,99 @@ impl VectorWithMagnitude {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Geom2d_VectorWithMagnitude_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Geom2d_Vector
     pub fn as_vector(&self) -> &Vector {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_VectorWithMagnitude_as_Geom2d_Vector(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Geom2d_VectorWithMagnitude_as_Geom2d_Vector(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Vector (mutable)
     pub fn as_vector_mut(&mut self) -> &mut Vector {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_VectorWithMagnitude_as_Geom2d_Vector_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Geom2d_VectorWithMagnitude_as_Geom2d_Vector_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry
     pub fn as_geometry(&self) -> &Geometry {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_VectorWithMagnitude_as_Geom2d_Geometry(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Geom2d_VectorWithMagnitude_as_Geom2d_Geometry(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Geom2d_Geometry (mutable)
     pub fn as_geometry_mut(&mut self) -> &mut Geometry {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_VectorWithMagnitude_as_Geom2d_Geometry_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Geom2d_VectorWithMagnitude_as_Geom2d_Geometry_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_VectorWithMagnitude_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Geom2d_VectorWithMagnitude_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Geom2d_VectorWithMagnitude_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Geom2d_VectorWithMagnitude_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dVectorWithMagnitude> {
-        {
-            let __result =
-                unsafe { crate::ffi::Geom2d_VectorWithMagnitude_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Geom2d_VectorWithMagnitude_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Geom2d_Vector.hxx`:39 - `Geom2d_Vector::Reverse()`
     pub fn reverse(&mut self) {
         {
-            unsafe { crate::ffi::Geom2d_VectorWithMagnitude_inherited_Reverse(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_VectorWithMagnitude_inherited_Reverse(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16152,8 +18878,11 @@ impl VectorWithMagnitude {
             let __result = unsafe {
                 crate::ffi::Geom2d_VectorWithMagnitude_inherited_Reversed(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16163,18 +18892,23 @@ impl VectorWithMagnitude {
             let __result = unsafe {
                 crate::ffi::Geom2d_VectorWithMagnitude_inherited_Angle(self as *const Self, Other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Vector.hxx`:53 - `Geom2d_Vector::Coord()`
     pub fn coord(&self, X: &mut f64, Y: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_VectorWithMagnitude_inherited_Coord(self as *const Self, X, Y)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16183,8 +18917,11 @@ impl VectorWithMagnitude {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_VectorWithMagnitude_inherited_X(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16193,8 +18930,11 @@ impl VectorWithMagnitude {
         {
             let __result =
                 unsafe { crate::ffi::Geom2d_VectorWithMagnitude_inherited_Y(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16204,8 +18944,11 @@ impl VectorWithMagnitude {
             let __result = unsafe {
                 crate::ffi::Geom2d_VectorWithMagnitude_inherited_Dot(self as *const Self, Other)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16215,48 +18958,59 @@ impl VectorWithMagnitude {
             let __result = unsafe {
                 crate::ffi::Geom2d_VectorWithMagnitude_inherited_Vec2d(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:63 - `Geom2d_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_VectorWithMagnitude_inherited_Mirror(self as *mut Self, P)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:71 - `Geom2d_Geometry::Rotate()`
     pub fn rotate(&mut self, P: &crate::gp::Pnt2d, Ang: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_VectorWithMagnitude_inherited_Rotate(self as *mut Self, P, Ang)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:74 - `Geom2d_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt2d, S: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_VectorWithMagnitude_inherited_Scale(self as *mut Self, P, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Geom2d_Geometry.hxx`:77 - `Geom2d_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_VectorWithMagnitude_inherited_Translate(self as *mut Self, V)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16269,8 +19023,11 @@ impl VectorWithMagnitude {
             let __result = unsafe {
                 crate::ffi::Geom2d_VectorWithMagnitude_inherited_Mirrored(self as *const Self, P)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16288,8 +19045,11 @@ impl VectorWithMagnitude {
                     Ang,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16303,8 +19063,11 @@ impl VectorWithMagnitude {
             let __result = unsafe {
                 crate::ffi::Geom2d_VectorWithMagnitude_inherited_Scaled(self as *const Self, P, S)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16317,8 +19080,11 @@ impl VectorWithMagnitude {
             let __result = unsafe {
                 crate::ffi::Geom2d_VectorWithMagnitude_inherited_Transformed(self as *const Self, T)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16331,8 +19097,11 @@ impl VectorWithMagnitude {
             let __result = unsafe {
                 crate::ffi::Geom2d_VectorWithMagnitude_inherited_Translated(self as *const Self, V)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16345,8 +19114,11 @@ impl VectorWithMagnitude {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16359,8 +19131,11 @@ impl VectorWithMagnitude {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16370,11 +19145,14 @@ impl VectorWithMagnitude {
             let __result = unsafe {
                 crate::ffi::Geom2d_VectorWithMagnitude_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -16385,20 +19163,25 @@ impl VectorWithMagnitude {
             let __result = unsafe {
                 crate::ffi::Geom2d_VectorWithMagnitude_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Geom2d_VectorWithMagnitude_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16410,16 +19193,23 @@ impl VectorWithMagnitude {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Geom2d_VectorWithMagnitude_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Geom2d_VectorWithMagnitude_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -16435,60 +19225,56 @@ unsafe impl crate::CppDeletable for HandleGeom2dVectorWithMagnitude {
 impl HandleGeom2dVectorWithMagnitude {
     /// Dereference this Handle to access the underlying Geom2d_VectorWithMagnitude
     pub fn get(&self) -> &crate::ffi::Geom2d_VectorWithMagnitude {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeom2dVectorWithMagnitude_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dVectorWithMagnitude_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2d_VectorWithMagnitude
     pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2d_VectorWithMagnitude {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleGeom2dVectorWithMagnitude_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleGeom2dVectorWithMagnitude_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Geom2d_VectorWithMagnitude> to Handle<Geom2d_Vector>
     pub fn to_handle_vector(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dVector> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dVectorWithMagnitude_to_HandleGeom2dVector(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dVectorWithMagnitude_to_HandleGeom2dVector(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_VectorWithMagnitude> to Handle<Geom2d_Geometry>
     pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dVectorWithMagnitude_to_HandleGeom2dGeometry(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dVectorWithMagnitude_to_HandleGeom2dGeometry(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Geom2d_VectorWithMagnitude> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleGeom2dVectorWithMagnitude_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleGeom2dVectorWithMagnitude_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

@@ -12,16 +12,22 @@
 pub fn max_owner_priority() -> i32 {
     {
         let __result = unsafe { crate::ffi::SelectBasics_max_owner_priority() };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `SelectBasics.hxx`:30 - `SelectBasics::MinOwnerPriority`
 pub fn min_owner_priority() -> i32 {
     {
         let __result = unsafe { crate::ffi::SelectBasics_min_owner_priority() };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 
@@ -47,8 +53,10 @@ impl PickResult {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::SelectBasics_PickResult_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -67,8 +75,10 @@ impl PickResult {
                     theObjPickedPnt,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -78,8 +88,11 @@ impl PickResult {
         {
             let __result =
                 unsafe { crate::ffi::SelectBasics_PickResult_is_valid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -87,8 +100,11 @@ impl PickResult {
     /// Reset depth value.
     pub fn invalidate(&mut self) {
         {
-            unsafe { crate::ffi::SelectBasics_PickResult_invalidate(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::SelectBasics_PickResult_invalidate(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -98,8 +114,11 @@ impl PickResult {
         {
             let __result =
                 unsafe { crate::ffi::SelectBasics_PickResult_depth(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -107,8 +126,12 @@ impl PickResult {
     /// Set depth along picking ray.
     pub fn set_depth(&mut self, theDepth: f64) {
         {
-            unsafe { crate::ffi::SelectBasics_PickResult_set_depth(self as *mut Self, theDepth) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::SelectBasics_PickResult_set_depth(self as *mut Self, theDepth)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -119,8 +142,11 @@ impl PickResult {
             let __result = unsafe {
                 crate::ffi::SelectBasics_PickResult_has_picked_point(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -132,8 +158,11 @@ impl PickResult {
         {
             let __result =
                 unsafe { crate::ffi::SelectBasics_PickResult_picked_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -141,13 +170,15 @@ impl PickResult {
     /// Set picked point.
     pub fn set_picked_point(&mut self, theObjPickedPnt: &crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::SelectBasics_PickResult_set_picked_point(
                     self as *mut Self,
                     theObjPickedPnt,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -158,8 +189,11 @@ impl PickResult {
             let __result = unsafe {
                 crate::ffi::SelectBasics_PickResult_dist_to_geom_center(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -167,13 +201,15 @@ impl PickResult {
     /// Set distance to geometry center.
     pub fn set_dist_to_geom_center(&mut self, theDistToCenter: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::SelectBasics_PickResult_set_dist_to_geom_center(
                     self as *mut Self,
                     theDistToCenter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -185,8 +221,11 @@ impl PickResult {
         {
             let __result =
                 unsafe { crate::ffi::SelectBasics_PickResult_surface_normal(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -194,13 +233,15 @@ impl PickResult {
     /// Set surface normal at picked point.
     pub fn set_surface_normal_vec3f(&mut self, theNormal: &crate::ffi::gp_Vec3f) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::SelectBasics_PickResult_set_surface_normal_vec3f(
                     self as *mut Self,
                     theNormal,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -208,13 +249,15 @@ impl PickResult {
     /// Set surface normal at picked point.
     pub fn set_surface_normal_vec(&mut self, theNormal: &crate::gp::Vec) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::SelectBasics_PickResult_set_surface_normal_vec(
                     self as *mut Self,
                     theNormal,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -224,8 +267,11 @@ impl PickResult {
         {
             let __result =
                 unsafe { crate::ffi::SelectBasics_PickResult_min(thePickResult1, thePickResult2) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -257,8 +303,11 @@ impl SelectingVolumeManager {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -279,8 +328,11 @@ impl SelectingVolumeManager {
                     thePickResult,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -302,8 +354,11 @@ impl SelectingVolumeManager {
                     theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -322,8 +377,11 @@ impl SelectingVolumeManager {
                     thePickResult,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -339,8 +397,11 @@ impl SelectingVolumeManager {
                     thePnt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -362,8 +423,11 @@ impl SelectingVolumeManager {
                     thePickResult,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -385,8 +449,11 @@ impl SelectingVolumeManager {
                     thePickResult,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -412,8 +479,11 @@ impl SelectingVolumeManager {
                     thePickResult,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -435,8 +505,11 @@ impl SelectingVolumeManager {
                     thePickResult,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -458,8 +531,11 @@ impl SelectingVolumeManager {
                     theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -480,8 +556,11 @@ impl SelectingVolumeManager {
             let __result = unsafe {
                 crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_cylinder_real3_trsf_bool_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, thePickResult)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -502,8 +581,11 @@ impl SelectingVolumeManager {
             let __result = unsafe {
                 crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_cylinder_real3_trsf_bool_boolptr(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -523,8 +605,11 @@ impl SelectingVolumeManager {
             let __result = unsafe {
                 crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_circle_real_trsf_bool_pickresult(self as *const Self, theRadius, theTrsf, theIsFilled, thePickResult)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -544,8 +629,11 @@ impl SelectingVolumeManager {
             let __result = unsafe {
                 crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_circle_real_trsf_bool_boolptr(self as *const Self, theRadius, theTrsf, theIsFilled, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -560,8 +648,11 @@ impl SelectingVolumeManager {
                     theCOG,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -575,8 +666,11 @@ impl SelectingVolumeManager {
                     theDepth,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -589,8 +683,11 @@ impl SelectingVolumeManager {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -606,8 +703,11 @@ impl SelectingVolumeManager {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -623,8 +723,11 @@ impl SelectingVolumeManager {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -638,8 +741,11 @@ impl SelectingVolumeManager {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -652,8 +758,11 @@ impl SelectingVolumeManager {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -668,8 +777,11 @@ impl SelectingVolumeManager {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -681,13 +793,15 @@ impl SelectingVolumeManager {
         thePlaneEquations: &mut crate::ffi::NCollection_Vector_NCollection_Vec4_Standard_Real,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::SelectBasics_SelectingVolumeManager_get_planes(
                     self as *const Self,
                     thePlaneEquations,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

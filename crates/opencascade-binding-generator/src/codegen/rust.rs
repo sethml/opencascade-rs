@@ -377,17 +377,17 @@ fn generate_functions_from_bindings(
             .collect::<Vec<_>>()
             .join(", ");
 
-        let ret_str = func.return_type.as_ref()
-            .map(|rt| format!(" -> {}", rt.rust_ffi_type))
-            .unwrap_or_default();
-
         let source_attr = format_source_attribution(
             &func.source_header,
             func.source_line,
             &format!("{}::{}", func.namespace, func.short_name),
         );
         writeln!(out, "    /// {}", source_attr).unwrap();
-        writeln!(out, "    pub fn {}({}){};\n", func.cpp_wrapper_name, params_str, ret_str).unwrap();
+        if let Some(ref rt) = func.return_type {
+            writeln!(out, "    pub fn {}({}) -> crate::OcctResult<{}>;", func.cpp_wrapper_name, params_str, rt.rust_ffi_type).unwrap();
+        } else {
+            writeln!(out, "    pub fn {}({}) -> *const std::ffi::c_char;", func.cpp_wrapper_name, params_str).unwrap();
+        }
     }
     out
 }
@@ -660,12 +660,13 @@ fn emit_free_function_wrapper(
         })
         .unwrap_or_default();
 
-    // Build call expression
-    let call_expr = format!("crate::ffi::{}({})", func.cpp_wrapper_name, args.join(", "));
+    // Build call expression args
+    let args_str = args.join(", ");
 
     // Build body with proper conversions: enum returns, OwnedPtr wrapping, pointer-to-reference, class ptr returns
     let body = super::bindings::build_reexport_body(
-        &call_expr,
+        &func.cpp_wrapper_name,
+        &args_str,
         func.return_type.as_ref(),
     );
 

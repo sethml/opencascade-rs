@@ -11,8 +11,11 @@
 pub fn bin(N: i32, P: i32) -> f64 {
     {
         let __result = unsafe { crate::ffi::PLib_bin(N, P) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `PLib.hxx`:116 - `PLib::RationalDerivative`
@@ -56,12 +59,14 @@ pub fn rational_derivative_int3_real2_bool(
     All: bool,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::PLib_rational_derivative_int3_real2_bool(
                 Degree, N, Dimension, Ders, RDers, All,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `PLib.hxx`:152 - `PLib::RationalDerivatives`
@@ -102,7 +107,7 @@ pub fn rational_derivatives(
     RationalDerivates: &mut f64,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::PLib_rational_derivatives(
                 DerivativesRequest,
                 Dimension,
@@ -111,7 +116,9 @@ pub fn rational_derivatives(
                 RationalDerivates,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `PLib.hxx`:184 - `PLib::EvalPolynomial`
@@ -150,7 +157,7 @@ pub fn eval_polynomial(
     Results: &mut f64,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::PLib_eval_polynomial(
                 U,
                 DerivativeOrder,
@@ -160,7 +167,9 @@ pub fn eval_polynomial(
                 Results,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `PLib.hxx`:192 - `PLib::NoDerivativeEvalPolynomial`
@@ -174,7 +183,7 @@ pub fn no_derivative_eval_polynomial(
     Results: &mut f64,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::PLib_no_derivative_eval_polynomial(
                 U,
                 Degree,
@@ -184,7 +193,9 @@ pub fn no_derivative_eval_polynomial(
                 Results,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `PLib.hxx`:236 - `PLib::EvalPoly2Var`
@@ -237,7 +248,7 @@ pub fn eval_poly2_var(
     Results: &mut f64,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::PLib_eval_poly2_var(
                 U,
                 V,
@@ -250,7 +261,9 @@ pub fn eval_poly2_var(
                 Results,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `PLib.hxx`:257 - `PLib::EvalLagrange`
@@ -286,8 +299,11 @@ pub fn eval_lagrange(
                 Results,
             )
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `PLib.hxx`:301 - `PLib::EvalCubicHermite`
@@ -348,8 +364,11 @@ pub fn eval_cubic_hermite(
                 Results,
             )
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `PLib.hxx`:327 - `PLib::HermiteCoefficients`
@@ -388,8 +407,11 @@ pub fn hermite_coefficients(
                 MatrixCoefs,
             )
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `PLib.hxx`:420 - `PLib::JacobiParameters`
@@ -415,7 +437,7 @@ pub fn jacobi_parameters(
     WorkDegree: &mut i32,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::PLib_jacobi_parameters(
                 ConstraintOrder.into(),
                 MaxDegree,
@@ -424,7 +446,9 @@ pub fn jacobi_parameters(
                 WorkDegree,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `PLib.hxx`:427 - `PLib::NivConstr`
@@ -432,8 +456,11 @@ pub fn jacobi_parameters(
 pub fn niv_constr(ConstraintOrder: crate::geom_abs::Shape) -> i32 {
     {
         let __result = unsafe { crate::ffi::PLib_niv_constr(ConstraintOrder.into()) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `PLib.hxx`:430 - `PLib::ConstraintOrder`
@@ -441,8 +468,11 @@ pub fn niv_constr(ConstraintOrder: crate::geom_abs::Shape) -> i32 {
 pub fn constraint_order(NivConstr: i32) -> crate::geom_abs::Shape {
     {
         let __result = unsafe { crate::ffi::PLib_constraint_order(NivConstr) };
-        crate::check_exception();
-        crate::geom_abs::Shape::try_from(__result).unwrap()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        crate::geom_abs::Shape::try_from(__val).unwrap()
     }
 }
 /// **Source:** `PLib.hxx`:432 - `PLib::EvalLength`
@@ -455,7 +485,7 @@ pub fn eval_length_int2_real4(
     Length: &mut f64,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::PLib_eval_length_int2_real4(
                 Degree,
                 Dimension,
@@ -465,7 +495,9 @@ pub fn eval_length_int2_real4(
                 Length,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `PLib.hxx`:439 - `PLib::EvalLength`
@@ -480,7 +512,7 @@ pub fn eval_length_int2_real6(
     Error: &mut f64,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::PLib_eval_length_int2_real6(
                 Degree,
                 Dimension,
@@ -492,7 +524,9 @@ pub fn eval_length_int2_real6(
                 Error,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 
@@ -524,7 +558,7 @@ impl Base {
         Coefficients: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PLib_Base_to_coefficients(
                     self as *const Self,
                     Dimension,
@@ -533,7 +567,9 @@ impl Base {
                     Coefficients,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -541,8 +577,10 @@ impl Base {
     /// Compute the values of the basis functions in u
     pub fn d0(&mut self, U: f64, BasisValue: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::PLib_Base_d0(self as *mut Self, U, BasisValue) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::PLib_Base_d0(self as *mut Self, U, BasisValue) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -556,8 +594,11 @@ impl Base {
         BasisD1: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe { crate::ffi::PLib_Base_d1(self as *mut Self, U, BasisValue, BasisD1) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PLib_Base_d1(self as *mut Self, U, BasisValue, BasisD1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -572,8 +613,12 @@ impl Base {
         BasisD2: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe { crate::ffi::PLib_Base_d2(self as *mut Self, U, BasisValue, BasisD1, BasisD2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::PLib_Base_d2(self as *mut Self, U, BasisValue, BasisD1, BasisD2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -589,7 +634,7 @@ impl Base {
         BasisD3: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PLib_Base_d3(
                     self as *mut Self,
                     U,
@@ -599,7 +644,9 @@ impl Base {
                     BasisD3,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -608,8 +655,11 @@ impl Base {
     pub fn work_degree(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::PLib_Base_work_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -629,7 +679,7 @@ impl Base {
         MaxError: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PLib_Base_reduce_degree(
                     self as *const Self,
                     Dimension,
@@ -640,7 +690,9 @@ impl Base {
                     MaxError,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -648,8 +700,11 @@ impl Base {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::PLib_Base_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -657,8 +712,11 @@ impl Base {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::PLib_Base_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -666,29 +724,31 @@ impl Base {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::PLib_Base_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::PLib_Base_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::PLib_Base_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::PLib_Base_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::PLib_Base_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -696,8 +756,11 @@ impl Base {
         {
             let __result =
                 unsafe { crate::ffi::PLib_Base_inherited_IsInstance(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -706,8 +769,11 @@ impl Base {
         {
             let __result =
                 unsafe { crate::ffi::PLib_Base_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -715,11 +781,14 @@ impl Base {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::PLib_Base_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -729,16 +798,22 @@ impl Base {
         {
             let __result =
                 unsafe { crate::ffi::PLib_Base_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::PLib_Base_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PLib_Base_inherited_IncrementRefCounter(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -747,16 +822,21 @@ impl Base {
         {
             let __result =
                 unsafe { crate::ffi::PLib_Base_inherited_DecrementRefCounter(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::PLib_Base_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::PLib_Base_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -772,31 +852,30 @@ unsafe impl crate::CppDeletable for HandlePLibBase {
 impl HandlePLibBase {
     /// Dereference this Handle to access the underlying PLib_Base
     pub fn get(&self) -> &crate::ffi::PLib_Base {
-        {
-            let __result = unsafe { crate::ffi::HandlePLibBase_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePLibBase_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying PLib_Base
     pub fn get_mut(&mut self) -> &mut crate::ffi::PLib_Base {
-        {
-            let __result = unsafe { crate::ffi::HandlePLibBase_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePLibBase_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<PLib_Base> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePLibBase_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandlePLibBase_to_HandleStandardTransient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<PLib_Base> to Handle<PLib_HermitJacobi>
@@ -805,14 +884,16 @@ impl HandlePLibBase {
     pub fn downcast_to_hermit_jacobi(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandlePLibHermitJacobi>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePLibBase_downcast_to_HandlePLibHermitJacobi(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -822,14 +903,16 @@ impl HandlePLibBase {
     pub fn downcast_to_jacobi_polynomial(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandlePLibJacobiPolynomial>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandlePLibBase_downcast_to_HandlePLibJacobiPolynomial(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -852,8 +935,10 @@ impl DoubleJacobiPolynomial {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::PLib_DoubleJacobiPolynomial_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -868,8 +953,10 @@ impl DoubleJacobiPolynomial {
                     JacPolU, JacPolV,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -893,8 +980,11 @@ impl DoubleJacobiPolynomial {
                     JacCoeff,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -918,8 +1008,11 @@ impl DoubleJacobiPolynomial {
                     JacCoeff,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -949,8 +1042,11 @@ impl DoubleJacobiPolynomial {
                     Error,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -970,7 +1066,7 @@ impl DoubleJacobiPolynomial {
         NewDegreeV: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PLib_DoubleJacobiPolynomial_reduce_degree(
                     self as *const Self,
                     Dimension,
@@ -986,7 +1082,9 @@ impl DoubleJacobiPolynomial {
                     NewDegreeV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1010,8 +1108,11 @@ impl DoubleJacobiPolynomial {
                     JacCoeff,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1025,7 +1126,7 @@ impl DoubleJacobiPolynomial {
         Coefficients: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PLib_DoubleJacobiPolynomial_w_double_jacobi_to_coefficients(
                     self as *const Self,
                     Dimension,
@@ -1035,7 +1136,9 @@ impl DoubleJacobiPolynomial {
                     Coefficients,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1045,8 +1148,11 @@ impl DoubleJacobiPolynomial {
         {
             let __result =
                 unsafe { crate::ffi::PLib_DoubleJacobiPolynomial_u(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1056,8 +1162,11 @@ impl DoubleJacobiPolynomial {
         {
             let __result =
                 unsafe { crate::ffi::PLib_DoubleJacobiPolynomial_v(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1067,8 +1176,11 @@ impl DoubleJacobiPolynomial {
         {
             let __result =
                 unsafe { crate::ffi::PLib_DoubleJacobiPolynomial_tab_max_u(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1078,8 +1190,11 @@ impl DoubleJacobiPolynomial {
         {
             let __result =
                 unsafe { crate::ffi::PLib_DoubleJacobiPolynomial_tab_max_v(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -1143,8 +1258,10 @@ impl HermitJacobi {
             let __result = unsafe {
                 crate::ffi::PLib_HermitJacobi_ctor_int_shape(WorkDegree, ConstraintOrder.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1162,8 +1279,11 @@ impl HermitJacobi {
                     NewDegree,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1183,7 +1303,7 @@ impl HermitJacobi {
         MaxError: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PLib_HermitJacobi_reduce_degree(
                     self as *const Self,
                     Dimension,
@@ -1194,7 +1314,9 @@ impl HermitJacobi {
                     MaxError,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1209,8 +1331,11 @@ impl HermitJacobi {
                     NewDegree,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1224,7 +1349,7 @@ impl HermitJacobi {
         Coefficients: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PLib_HermitJacobi_to_coefficients(
                     self as *const Self,
                     Dimension,
@@ -1233,7 +1358,9 @@ impl HermitJacobi {
                     Coefficients,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1241,8 +1368,11 @@ impl HermitJacobi {
     /// Compute the values of the basis functions in u
     pub fn d0(&mut self, U: f64, BasisValue: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::PLib_HermitJacobi_d0(self as *mut Self, U, BasisValue) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PLib_HermitJacobi_d0(self as *mut Self, U, BasisValue) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1256,8 +1386,12 @@ impl HermitJacobi {
         BasisD1: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe { crate::ffi::PLib_HermitJacobi_d1(self as *mut Self, U, BasisValue, BasisD1) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::PLib_HermitJacobi_d1(self as *mut Self, U, BasisValue, BasisD1)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1272,10 +1406,12 @@ impl HermitJacobi {
         BasisD2: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PLib_HermitJacobi_d2(self as *mut Self, U, BasisValue, BasisD1, BasisD2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1291,7 +1427,7 @@ impl HermitJacobi {
         BasisD3: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PLib_HermitJacobi_d3(
                     self as *mut Self,
                     U,
@@ -1301,7 +1437,9 @@ impl HermitJacobi {
                     BasisD3,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1311,8 +1449,11 @@ impl HermitJacobi {
         {
             let __result =
                 unsafe { crate::ffi::PLib_HermitJacobi_work_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1321,8 +1462,11 @@ impl HermitJacobi {
     pub fn niv_constr(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::PLib_HermitJacobi_niv_constr(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1331,8 +1475,11 @@ impl HermitJacobi {
         {
             let __result =
                 unsafe { crate::ffi::PLib_HermitJacobi_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1340,8 +1487,11 @@ impl HermitJacobi {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::PLib_HermitJacobi_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1349,61 +1499,61 @@ impl HermitJacobi {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::PLib_HermitJacobi_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to PLib_Base
     pub fn as_base(&self) -> &Base {
-        {
-            let __result =
-                unsafe { crate::ffi::PLib_HermitJacobi_as_PLib_Base(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::PLib_HermitJacobi_as_PLib_Base(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to PLib_Base (mutable)
     pub fn as_base_mut(&mut self) -> &mut Base {
-        {
-            let __result =
-                unsafe { crate::ffi::PLib_HermitJacobi_as_PLib_Base_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::PLib_HermitJacobi_as_PLib_Base_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::PLib_HermitJacobi_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::PLib_HermitJacobi_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::PLib_HermitJacobi_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::PLib_HermitJacobi_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePLibHermitJacobi> {
-        {
-            let __result = unsafe { crate::ffi::PLib_HermitJacobi_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::PLib_HermitJacobi_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1412,8 +1562,11 @@ impl HermitJacobi {
             let __result = unsafe {
                 crate::ffi::PLib_HermitJacobi_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1423,8 +1576,11 @@ impl HermitJacobi {
             let __result = unsafe {
                 crate::ffi::PLib_HermitJacobi_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1433,11 +1589,14 @@ impl HermitJacobi {
         {
             let __result =
                 unsafe { crate::ffi::PLib_HermitJacobi_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1447,18 +1606,23 @@ impl HermitJacobi {
         {
             let __result =
                 unsafe { crate::ffi::PLib_HermitJacobi_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PLib_HermitJacobi_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1468,16 +1632,22 @@ impl HermitJacobi {
             let __result = unsafe {
                 crate::ffi::PLib_HermitJacobi_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::PLib_HermitJacobi_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PLib_HermitJacobi_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1493,42 +1663,41 @@ unsafe impl crate::CppDeletable for HandlePLibHermitJacobi {
 impl HandlePLibHermitJacobi {
     /// Dereference this Handle to access the underlying PLib_HermitJacobi
     pub fn get(&self) -> &crate::ffi::PLib_HermitJacobi {
-        {
-            let __result = unsafe { crate::ffi::HandlePLibHermitJacobi_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePLibHermitJacobi_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying PLib_HermitJacobi
     pub fn get_mut(&mut self) -> &mut crate::ffi::PLib_HermitJacobi {
-        {
-            let __result = unsafe { crate::ffi::HandlePLibHermitJacobi_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePLibHermitJacobi_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<PLib_HermitJacobi> to Handle<PLib_Base>
     pub fn to_handle_base(&self) -> crate::OwnedPtr<crate::ffi::HandlePLibBase> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePLibHermitJacobi_to_HandlePLibBase(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandlePLibHermitJacobi_to_HandlePLibBase(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<PLib_HermitJacobi> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePLibHermitJacobi_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePLibHermitJacobi_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1586,8 +1755,10 @@ impl JacobiPolynomial {
             let __result = unsafe {
                 crate::ffi::PLib_JacobiPolynomial_ctor_int_shape(WorkDegree, ConstraintOrder.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1603,14 +1774,16 @@ impl JacobiPolynomial {
     /// NbGaussPoints must be greater than Degree
     pub fn points(&self, NbGaussPoints: i32, TabPoints: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PLib_JacobiPolynomial_points(
                     self as *const Self,
                     NbGaussPoints,
                     TabPoints,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1626,14 +1799,16 @@ impl JacobiPolynomial {
     /// 35 , 40 , 50 , 61 NbGaussPoints must be greater than Degree
     pub fn weights(&self, NbGaussPoints: i32, TabWeights: &mut crate::ffi::TColStd_Array2OfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PLib_JacobiPolynomial_weights(
                     self as *const Self,
                     NbGaussPoints,
                     TabWeights,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1644,8 +1819,11 @@ impl JacobiPolynomial {
     /// MaxValue ( me ; TabMaxPointer : in  out  Real );
     pub fn max_value(&self, TabMax: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::PLib_JacobiPolynomial_max_value(self as *const Self, TabMax) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PLib_JacobiPolynomial_max_value(self as *const Self, TabMax) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1663,8 +1841,11 @@ impl JacobiPolynomial {
                     NewDegree,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1684,7 +1865,7 @@ impl JacobiPolynomial {
         MaxError: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PLib_JacobiPolynomial_reduce_degree(
                     self as *const Self,
                     Dimension,
@@ -1695,7 +1876,9 @@ impl JacobiPolynomial {
                     MaxError,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1710,8 +1893,11 @@ impl JacobiPolynomial {
                     NewDegree,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1725,7 +1911,7 @@ impl JacobiPolynomial {
         Coefficients: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PLib_JacobiPolynomial_to_coefficients(
                     self as *const Self,
                     Dimension,
@@ -1734,7 +1920,9 @@ impl JacobiPolynomial {
                     Coefficients,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1742,8 +1930,11 @@ impl JacobiPolynomial {
     /// Compute the values of the basis functions in u
     pub fn d0(&mut self, U: f64, BasisValue: &mut crate::ffi::TColStd_Array1OfReal) {
         {
-            unsafe { crate::ffi::PLib_JacobiPolynomial_d0(self as *mut Self, U, BasisValue) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PLib_JacobiPolynomial_d0(self as *mut Self, U, BasisValue) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1757,10 +1948,12 @@ impl JacobiPolynomial {
         BasisD1: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PLib_JacobiPolynomial_d1(self as *mut Self, U, BasisValue, BasisD1)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1775,7 +1968,7 @@ impl JacobiPolynomial {
         BasisD2: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PLib_JacobiPolynomial_d2(
                     self as *mut Self,
                     U,
@@ -1784,7 +1977,9 @@ impl JacobiPolynomial {
                     BasisD2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1800,7 +1995,7 @@ impl JacobiPolynomial {
         BasisD3: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PLib_JacobiPolynomial_d3(
                     self as *mut Self,
                     U,
@@ -1810,7 +2005,9 @@ impl JacobiPolynomial {
                     BasisD3,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1820,8 +2017,11 @@ impl JacobiPolynomial {
         {
             let __result =
                 unsafe { crate::ffi::PLib_JacobiPolynomial_work_degree(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1831,8 +2031,11 @@ impl JacobiPolynomial {
         {
             let __result =
                 unsafe { crate::ffi::PLib_JacobiPolynomial_niv_constr(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1841,8 +2044,11 @@ impl JacobiPolynomial {
         {
             let __result =
                 unsafe { crate::ffi::PLib_JacobiPolynomial_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1850,8 +2056,11 @@ impl JacobiPolynomial {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::PLib_JacobiPolynomial_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1859,62 +2068,64 @@ impl JacobiPolynomial {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::PLib_JacobiPolynomial_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to PLib_Base
     pub fn as_base(&self) -> &Base {
-        {
-            let __result =
-                unsafe { crate::ffi::PLib_JacobiPolynomial_as_PLib_Base(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::PLib_JacobiPolynomial_as_PLib_Base(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to PLib_Base (mutable)
     pub fn as_base_mut(&mut self) -> &mut Base {
-        {
-            let __result =
-                unsafe { crate::ffi::PLib_JacobiPolynomial_as_PLib_Base_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::PLib_JacobiPolynomial_as_PLib_Base_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::PLib_JacobiPolynomial_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::PLib_JacobiPolynomial_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::PLib_JacobiPolynomial_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::PLib_JacobiPolynomial_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlePLibJacobiPolynomial> {
-        {
-            let __result = unsafe { crate::ffi::PLib_JacobiPolynomial_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::PLib_JacobiPolynomial_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1923,8 +2134,11 @@ impl JacobiPolynomial {
             let __result = unsafe {
                 crate::ffi::PLib_JacobiPolynomial_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1934,8 +2148,11 @@ impl JacobiPolynomial {
             let __result = unsafe {
                 crate::ffi::PLib_JacobiPolynomial_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1944,11 +2161,14 @@ impl JacobiPolynomial {
         {
             let __result =
                 unsafe { crate::ffi::PLib_JacobiPolynomial_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1959,18 +2179,23 @@ impl JacobiPolynomial {
             let __result = unsafe {
                 crate::ffi::PLib_JacobiPolynomial_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::PLib_JacobiPolynomial_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1980,16 +2205,22 @@ impl JacobiPolynomial {
             let __result = unsafe {
                 crate::ffi::PLib_JacobiPolynomial_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::PLib_JacobiPolynomial_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::PLib_JacobiPolynomial_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2005,45 +2236,41 @@ unsafe impl crate::CppDeletable for HandlePLibJacobiPolynomial {
 impl HandlePLibJacobiPolynomial {
     /// Dereference this Handle to access the underlying PLib_JacobiPolynomial
     pub fn get(&self) -> &crate::ffi::PLib_JacobiPolynomial {
-        {
-            let __result =
-                unsafe { crate::ffi::HandlePLibJacobiPolynomial_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlePLibJacobiPolynomial_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying PLib_JacobiPolynomial
     pub fn get_mut(&mut self) -> &mut crate::ffi::PLib_JacobiPolynomial {
-        {
-            let __result =
-                unsafe { crate::ffi::HandlePLibJacobiPolynomial_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlePLibJacobiPolynomial_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<PLib_JacobiPolynomial> to Handle<PLib_Base>
     pub fn to_handle_base(&self) -> crate::OwnedPtr<crate::ffi::HandlePLibBase> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePLibJacobiPolynomial_to_HandlePLibBase(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePLibJacobiPolynomial_to_HandlePLibBase(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<PLib_JacobiPolynomial> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlePLibJacobiPolynomial_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlePLibJacobiPolynomial_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

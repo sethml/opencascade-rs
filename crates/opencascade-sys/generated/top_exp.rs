@@ -18,8 +18,12 @@ pub fn map_shapes_shape_shapeenum_indexedmapofshape(
     M: &mut crate::ffi::TopTools_IndexedMapOfShape,
 ) {
     {
-        unsafe { crate::ffi::TopExp_map_shapes_shape_shapeenum_indexedmapofshape(S, T.into(), M) };
-        crate::check_exception();
+        let __exc = unsafe {
+            crate::ffi::TopExp_map_shapes_shape_shapeenum_indexedmapofshape(S, T.into(), M)
+        };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `TopExp.hxx`:64 - `TopExp::MapShapes`
@@ -36,10 +40,12 @@ pub fn map_shapes_shape_indexedmapofshape_bool2(
     cumLoc: bool,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::TopExp_map_shapes_shape_indexedmapofshape_bool2(S, M, cumOri, cumLoc)
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `TopExp.hxx`:75 - `TopExp::MapShapes`
@@ -56,8 +62,11 @@ pub fn map_shapes_shape_mapofshape_bool2(
     cumLoc: bool,
 ) {
     {
-        unsafe { crate::ffi::TopExp_map_shapes_shape_mapofshape_bool2(S, M, cumOri, cumLoc) };
-        crate::check_exception();
+        let __exc =
+            unsafe { crate::ffi::TopExp_map_shapes_shape_mapofshape_bool2(S, M, cumOri, cumLoc) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `TopExp.hxx`:85 - `TopExp::MapShapesAndAncestors`
@@ -73,8 +82,11 @@ pub fn map_shapes_and_ancestors(
     M: &mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
 ) {
     {
-        unsafe { crate::ffi::TopExp_map_shapes_and_ancestors(S, TS.into(), TA.into(), M) };
-        crate::check_exception();
+        let __exc =
+            unsafe { crate::ffi::TopExp_map_shapes_and_ancestors(S, TS.into(), TA.into(), M) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `TopExp.hxx`:96 - `TopExp::MapShapesAndUniqueAncestors`
@@ -92,7 +104,7 @@ pub fn map_shapes_and_unique_ancestors(
     useOrientation: bool,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::TopExp_map_shapes_and_unique_ancestors(
                 S,
                 TS.into(),
@@ -101,7 +113,9 @@ pub fn map_shapes_and_unique_ancestors(
                 useOrientation,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `TopExp.hxx`:106 - `TopExp::FirstVertex`
@@ -114,8 +128,11 @@ pub fn first_vertex(
 ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
     {
         let __result = unsafe { crate::ffi::TopExp_first_vertex(E, CumOri) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TopExp.hxx`:112 - `TopExp::LastVertex`
@@ -128,8 +145,11 @@ pub fn last_vertex(
 ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
     {
         let __result = unsafe { crate::ffi::TopExp_last_vertex(E, CumOri) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TopExp.hxx`:118 - `TopExp::Vertices`
@@ -143,8 +163,11 @@ pub fn vertices_edge_vertex2_bool(
     CumOri: bool,
 ) {
     {
-        unsafe { crate::ffi::TopExp_vertices_edge_vertex2_bool(E, Vfirst, Vlast, CumOri) };
-        crate::check_exception();
+        let __exc =
+            unsafe { crate::ffi::TopExp_vertices_edge_vertex2_bool(E, Vfirst, Vlast, CumOri) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `TopExp.hxx`:129 - `TopExp::Vertices`
@@ -160,8 +183,10 @@ pub fn vertices_wire_vertex2(
     Vlast: &mut crate::topo_ds::Vertex,
 ) {
     {
-        unsafe { crate::ffi::TopExp_vertices_wire_vertex2(W, Vfirst, Vlast) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::TopExp_vertices_wire_vertex2(W, Vfirst, Vlast) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `TopExp.hxx`:137 - `TopExp::CommonVertex`
@@ -176,8 +201,11 @@ pub fn common_vertex_mut(
 ) -> bool {
     {
         let __result = unsafe { crate::ffi::TopExp_common_vertex_mut(E1, E2, V) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 
@@ -257,8 +285,10 @@ impl Explorer {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopExp_Explorer_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -281,8 +311,10 @@ impl Explorer {
             let __result = unsafe {
                 crate::ffi::TopExp_Explorer_ctor_shape_shapeenum2(S, ToFind.into(), ToAvoid.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -300,7 +332,7 @@ impl Explorer {
         ToAvoid: crate::top_abs::ShapeEnum,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopExp_Explorer_init(
                     self as *mut Self,
                     S,
@@ -308,7 +340,9 @@ impl Explorer {
                     ToAvoid.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -317,8 +351,11 @@ impl Explorer {
     pub fn more(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopExp_Explorer_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -328,8 +365,10 @@ impl Explorer {
     /// Standard_NoMoreObject if there are no more shapes to explore.
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TopExp_Explorer_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopExp_Explorer_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -340,8 +379,11 @@ impl Explorer {
     pub fn value(&self) -> &crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::TopExp_Explorer_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -352,8 +394,11 @@ impl Explorer {
     pub fn current(&self) -> &crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::TopExp_Explorer_current(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -361,8 +406,10 @@ impl Explorer {
     /// Reinitialize the exploration with the original arguments.
     pub fn re_init(&mut self) {
         {
-            unsafe { crate::ffi::TopExp_Explorer_re_init(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopExp_Explorer_re_init(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -372,8 +419,11 @@ impl Explorer {
         {
             let __result =
                 unsafe { crate::ffi::TopExp_Explorer_explored_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -383,8 +433,11 @@ impl Explorer {
     pub fn depth(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TopExp_Explorer_depth(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -393,8 +446,10 @@ impl Explorer {
     /// False on More().
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::TopExp_Explorer_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopExp_Explorer_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

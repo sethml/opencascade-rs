@@ -15,8 +15,11 @@ pub fn print_geometryenum_ostream(
 ) -> &mut crate::ffi::Standard_OStream {
     {
         let __result = unsafe { crate::ffi::TDataXtd_print_geometryenum_ostream(GEO.into(), S) };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 /// **Source:** `TDataXtd.hxx`:49 - `TDataXtd::Print`
@@ -28,8 +31,11 @@ pub fn print_constraintenum_ostream(
 ) -> &mut crate::ffi::Standard_OStream {
     {
         let __result = unsafe { crate::ffi::TDataXtd_print_constraintenum_ostream(CTR.into(), S) };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 
@@ -174,8 +180,10 @@ impl Axis {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Axis_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -183,8 +191,11 @@ impl Axis {
     pub fn id(&self) -> &crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Axis_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -201,8 +212,11 @@ impl Axis {
     ) -> &mut crate::ffi::Standard_OStream {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Axis_dump(self as *mut Self, anOS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -210,8 +224,11 @@ impl Axis {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Axis_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -219,8 +236,11 @@ impl Axis {
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Axis_new_empty(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -231,8 +251,11 @@ impl Axis {
     pub fn get_id() -> &'static crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Axis_get_id() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -246,8 +269,11 @@ impl Axis {
     pub fn set_label(label: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdAxis> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Axis_set_label(label) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -262,8 +288,11 @@ impl Axis {
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdAxis> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Axis_set_label_lin(label, L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -271,8 +300,11 @@ impl Axis {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Axis_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -280,88 +312,91 @@ impl Axis {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Axis_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDataStd_GenericEmpty
     pub fn as_t_data_std_generic_empty(&self) -> &crate::t_data_std::GenericEmpty {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Axis_as_TDataStd_GenericEmpty(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Axis_as_TDataStd_GenericEmpty(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDataStd_GenericEmpty (mutable)
     pub fn as_t_data_std_generic_empty_mut(&mut self) -> &mut crate::t_data_std::GenericEmpty {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_Axis_as_TDataStd_GenericEmpty_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Axis_as_TDataStd_GenericEmpty_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Axis_as_TDF_Attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TDataXtd_Axis_as_TDF_Attribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Axis_as_TDF_Attribute_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::TDataXtd_Axis_as_TDF_Attribute_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Axis_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Axis_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Axis_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Axis_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdAxis> {
-        {
-            let __result = unsafe { crate::ffi::TDataXtd_Axis_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDataXtd_Axis_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
     pub fn restore(&mut self, arg0: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TDataXtd_Axis_inherited_Restore(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Axis_inherited_Restore(self as *mut Self, arg0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -372,16 +407,23 @@ impl Axis {
         arg1: &crate::ffi::HandleTDFRelocationTable,
     ) {
         {
-            unsafe { crate::ffi::TDataXtd_Axis_inherited_Paste(self as *const Self, arg0, arg1) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Axis_inherited_Paste(self as *const Self, arg0, arg1)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         {
-            unsafe { crate::ffi::TDataXtd_Axis_inherited_SetID(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Axis_inherited_SetID(self as *mut Self, arg0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -390,8 +432,11 @@ impl Axis {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Axis_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -400,8 +445,11 @@ impl Axis {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Axis_inherited_Transaction(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -411,8 +459,11 @@ impl Axis {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Axis_inherited_UntilTransaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -421,8 +472,11 @@ impl Axis {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Axis_inherited_IsValid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -431,8 +485,11 @@ impl Axis {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Axis_inherited_IsNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -441,8 +498,11 @@ impl Axis {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Axis_inherited_IsForgotten(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -452,8 +512,11 @@ impl Axis {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Axis_inherited_IsAttribute(self as *const Self, anID)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -471,16 +534,23 @@ impl Axis {
                     anAttribute,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TDataXtd_Axis_inherited_AddAttribute(self as *const Self, other) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Axis_inherited_AddAttribute(self as *const Self, other)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -490,53 +560,70 @@ impl Axis {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Axis_inherited_ForgetAttribute(self as *const Self, aguid)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Axis_inherited_ForgetAllAttributes(
                     self as *const Self,
                     clearChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Axis_inherited_AfterAddition(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Axis_inherited_AfterAddition(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Axis_inherited_BeforeRemoval(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Axis_inherited_BeforeRemoval(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Axis_inherited_BeforeForget(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Axis_inherited_BeforeForget(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Axis_inherited_AfterResume(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Axis_inherited_AfterResume(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -546,8 +633,11 @@ impl Axis {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Axis_inherited_AfterRetrieval(self as *mut Self, forceIt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -565,8 +655,11 @@ impl Axis {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -584,26 +677,33 @@ impl Axis {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Axis_inherited_BeforeCommitTransaction(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Axis_inherited_Backup(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDataXtd_Axis_inherited_Backup(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -612,8 +712,11 @@ impl Axis {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Axis_inherited_IsBackuped(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -622,8 +725,11 @@ impl Axis {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Axis_inherited_BackupCopy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -632,8 +738,11 @@ impl Axis {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Axis_inherited_DeltaOnAddition(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -642,8 +751,11 @@ impl Axis {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Axis_inherited_DeltaOnForget(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -652,8 +764,11 @@ impl Axis {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Axis_inherited_DeltaOnResume(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -669,8 +784,11 @@ impl Axis {
                     anOldAttribute,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -679,18 +797,23 @@ impl Axis {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Axis_inherited_DeltaOnRemoval(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Axis_inherited_References(self as *const Self, aDataSet)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -702,7 +825,7 @@ impl Axis {
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Axis_inherited_ExtendedDump(
                     self as *const Self,
                     anOS,
@@ -710,15 +833,21 @@ impl Axis {
                     aMap,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         {
-            unsafe { crate::ffi::TDataXtd_Axis_inherited_Forget(self as *mut Self, aTransaction) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Axis_inherited_Forget(self as *mut Self, aTransaction)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -728,8 +857,11 @@ impl Axis {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Axis_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -738,8 +870,11 @@ impl Axis {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Axis_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -747,11 +882,14 @@ impl Axis {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Axis_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -761,16 +899,23 @@ impl Axis {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Axis_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Axis_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Axis_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -780,16 +925,21 @@ impl Axis {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Axis_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDataXtd_Axis_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDataXtd_Axis_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -805,55 +955,54 @@ unsafe impl crate::CppDeletable for HandleTDataXtdAxis {
 impl HandleTDataXtdAxis {
     /// Dereference this Handle to access the underlying TDataXtd_Axis
     pub fn get(&self) -> &crate::ffi::TDataXtd_Axis {
-        {
-            let __result = unsafe { crate::ffi::HandleTDataXtdAxis_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdAxis_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDataXtd_Axis
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Axis {
-        {
-            let __result = unsafe { crate::ffi::HandleTDataXtdAxis_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdAxis_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDataXtd_Axis> to Handle<TDataStd_GenericEmpty>
     pub fn to_handle_generic_empty(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdAxis_to_HandleTDataStdGenericEmpty(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdAxis_to_HandleTDataStdGenericEmpty(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDataXtd_Axis> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdAxis_to_HandleTDFAttribute(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleTDataXtdAxis_to_HandleTDFAttribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDataXtd_Axis> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdAxis_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdAxis_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -885,8 +1034,10 @@ impl Constraint {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Constraint_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -899,14 +1050,16 @@ impl Constraint {
         G1: &crate::ffi::HandleTNamingNamedShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Constraint_set_constraintenum_handletnamingnamedshape(
                     self as *mut Self,
                     type_.into(),
                     G1,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -921,7 +1074,7 @@ impl Constraint {
         G2: &crate::ffi::HandleTNamingNamedShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Constraint_set_constraintenum_handletnamingnamedshape2(
                     self as *mut Self,
                     type_.into(),
@@ -929,7 +1082,9 @@ impl Constraint {
                     G2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -945,7 +1100,7 @@ impl Constraint {
         G3: &crate::ffi::HandleTNamingNamedShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Constraint_set_constraintenum_handletnamingnamedshape3(
                     self as *mut Self,
                     type_.into(),
@@ -954,7 +1109,9 @@ impl Constraint {
                     G3,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -973,7 +1130,7 @@ impl Constraint {
         G4: &crate::ffi::HandleTNamingNamedShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Constraint_set_constraintenum_handletnamingnamedshape4(
                     self as *mut Self,
                     type_.into(),
@@ -983,7 +1140,9 @@ impl Constraint {
                     G4,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -996,8 +1155,11 @@ impl Constraint {
     pub fn verified(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Constraint_verified(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1008,8 +1170,11 @@ impl Constraint {
     pub fn get_type(&self) -> crate::t_data_xtd::ConstraintEnum {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Constraint_get_type(self as *const Self) };
-            crate::check_exception();
-            crate::t_data_xtd::ConstraintEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::t_data_xtd::ConstraintEnum::try_from(__val).unwrap()
         }
     }
 
@@ -1020,8 +1185,11 @@ impl Constraint {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Constraint_is_planar(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1035,8 +1203,11 @@ impl Constraint {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Constraint_get_plane(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1047,8 +1218,11 @@ impl Constraint {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Constraint_is_dimension(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1061,8 +1235,11 @@ impl Constraint {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Constraint_get_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1073,8 +1250,11 @@ impl Constraint {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Constraint_nb_geometries(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1088,8 +1268,11 @@ impl Constraint {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Constraint_get_geometry(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1099,8 +1282,11 @@ impl Constraint {
     /// topological attributes where they are stored.
     pub fn clear_geometries(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Constraint_clear_geometries(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Constraint_clear_geometries(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1108,8 +1294,11 @@ impl Constraint {
     /// Finds or creates the type of constraint CTR.
     pub fn set_type(&mut self, CTR: crate::t_data_xtd::ConstraintEnum) {
         {
-            unsafe { crate::ffi::TDataXtd_Constraint_set_type(self as *mut Self, CTR.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Constraint_set_type(self as *mut Self, CTR.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1118,8 +1307,11 @@ impl Constraint {
     /// attribute, defined by the planar topological attribute plane.
     pub fn set_plane(&mut self, plane: &crate::ffi::HandleTNamingNamedShape) {
         {
-            unsafe { crate::ffi::TDataXtd_Constraint_set_plane(self as *mut Self, plane) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Constraint_set_plane(self as *mut Self, plane) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1127,8 +1319,10 @@ impl Constraint {
     /// Finds or creates the real number value V of the dimension constraint attribute.
     pub fn set_value(&mut self, V: &crate::ffi::HandleTDataStdReal) {
         {
-            unsafe { crate::ffi::TDataXtd_Constraint_set_value(self as *mut Self, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDataXtd_Constraint_set_value(self as *mut Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1138,8 +1332,12 @@ impl Constraint {
     /// and the integer index Index.
     pub fn set_geometry(&mut self, Index: i32, G: &crate::ffi::HandleTNamingNamedShape) {
         {
-            unsafe { crate::ffi::TDataXtd_Constraint_set_geometry(self as *mut Self, Index, G) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Constraint_set_geometry(self as *mut Self, Index, G)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1152,16 +1350,22 @@ impl Constraint {
     /// If status is false, Verified is set to false.
     pub fn verified_bool(&mut self, status: bool) {
         {
-            unsafe { crate::ffi::TDataXtd_Constraint_verified_bool(self as *mut Self, status) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Constraint_verified_bool(self as *mut Self, status) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDataXtd_Constraint.hxx`:168 - `TDataXtd_Constraint::Inverted()`
     pub fn inverted_bool(&mut self, status: bool) {
         {
-            unsafe { crate::ffi::TDataXtd_Constraint_inverted_bool(self as *mut Self, status) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Constraint_inverted_bool(self as *mut Self, status) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1169,16 +1373,22 @@ impl Constraint {
     pub fn inverted(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Constraint_inverted(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TDataXtd_Constraint.hxx`:172 - `TDataXtd_Constraint::Reversed()`
     pub fn reversed_bool(&mut self, status: bool) {
         {
-            unsafe { crate::ffi::TDataXtd_Constraint_reversed_bool(self as *mut Self, status) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Constraint_reversed_bool(self as *mut Self, status) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1186,8 +1396,11 @@ impl Constraint {
     pub fn reversed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Constraint_reversed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1195,16 +1408,21 @@ impl Constraint {
     pub fn id(&self) -> &crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Constraint_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TDataXtd_Constraint.hxx`:182 - `TDataXtd_Constraint::Restore()`
     pub fn restore(&mut self, With: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TDataXtd_Constraint_restore(self as *mut Self, With) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDataXtd_Constraint_restore(self as *mut Self, With) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1213,8 +1431,11 @@ impl Constraint {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Constraint_new_empty(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1225,8 +1446,11 @@ impl Constraint {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         {
-            unsafe { crate::ffi::TDataXtd_Constraint_paste(self as *const Self, Into, RT) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Constraint_paste(self as *const Self, Into, RT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1243,16 +1467,22 @@ impl Constraint {
     ) -> &mut crate::ffi::Standard_OStream {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Constraint_dump(self as *mut Self, anOS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// **Source:** `TDataXtd_Constraint.hxx`:191 - `TDataXtd_Constraint::References()`
     pub fn references(&self, DS: &crate::ffi::HandleTDFDataSet) {
         {
-            unsafe { crate::ffi::TDataXtd_Constraint_references(self as *const Self, DS) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Constraint_references(self as *const Self, DS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1261,8 +1491,11 @@ impl Constraint {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Constraint_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1271,8 +1504,11 @@ impl Constraint {
     pub fn get_id() -> &'static crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Constraint_get_id() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1285,8 +1521,11 @@ impl Constraint {
     pub fn set(label: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdConstraint> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Constraint_set(label) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1297,8 +1536,12 @@ impl Constraint {
         TheList: &mut crate::ffi::TDF_LabelList,
     ) {
         {
-            unsafe { crate::ffi::TDataXtd_Constraint_collect_child_constraints(aLabel, TheList) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Constraint_collect_child_constraints(aLabel, TheList)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1306,8 +1549,11 @@ impl Constraint {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Constraint_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1315,69 +1561,73 @@ impl Constraint {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Constraint_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Constraint_as_TDF_Attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Constraint_as_TDF_Attribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Constraint_as_TDF_Attribute_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Constraint_as_TDF_Attribute_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_Constraint_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Constraint_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_Constraint_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Constraint_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdConstraint> {
-        {
-            let __result = unsafe { crate::ffi::TDataXtd_Constraint_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDataXtd_Constraint_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         {
-            unsafe { crate::ffi::TDataXtd_Constraint_inherited_SetID(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Constraint_inherited_SetID(self as *mut Self, arg0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1386,8 +1636,11 @@ impl Constraint {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Constraint_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1397,8 +1650,11 @@ impl Constraint {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Constraint_inherited_Transaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1408,8 +1664,11 @@ impl Constraint {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Constraint_inherited_UntilTransaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1418,8 +1677,11 @@ impl Constraint {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Constraint_inherited_IsValid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1428,8 +1690,11 @@ impl Constraint {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Constraint_inherited_IsNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1439,8 +1704,11 @@ impl Constraint {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Constraint_inherited_IsForgotten(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1450,8 +1718,11 @@ impl Constraint {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Constraint_inherited_IsAttribute(self as *const Self, anID)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1469,18 +1740,23 @@ impl Constraint {
                     anAttribute,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Constraint_inherited_AddAttribute(self as *const Self, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1493,53 +1769,73 @@ impl Constraint {
                     aguid,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Constraint_inherited_ForgetAllAttributes(
                     self as *const Self,
                     clearChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Constraint_inherited_AfterAddition(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Constraint_inherited_AfterAddition(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Constraint_inherited_BeforeRemoval(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Constraint_inherited_BeforeRemoval(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Constraint_inherited_BeforeForget(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Constraint_inherited_BeforeForget(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Constraint_inherited_AfterResume(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Constraint_inherited_AfterResume(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1549,8 +1845,11 @@ impl Constraint {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Constraint_inherited_AfterRetrieval(self as *mut Self, forceIt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1568,8 +1867,11 @@ impl Constraint {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1587,26 +1889,34 @@ impl Constraint {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Constraint_inherited_BeforeCommitTransaction(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Constraint_inherited_Backup(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Constraint_inherited_Backup(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1616,8 +1926,11 @@ impl Constraint {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Constraint_inherited_IsBackuped(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1627,8 +1940,11 @@ impl Constraint {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Constraint_inherited_BackupCopy(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1638,8 +1954,11 @@ impl Constraint {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Constraint_inherited_DeltaOnAddition(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1649,8 +1968,11 @@ impl Constraint {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Constraint_inherited_DeltaOnForget(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1660,8 +1982,11 @@ impl Constraint {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Constraint_inherited_DeltaOnResume(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1677,8 +2002,11 @@ impl Constraint {
                     anOldAttribute,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1688,8 +2016,11 @@ impl Constraint {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Constraint_inherited_DeltaOnRemoval(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1701,7 +2032,7 @@ impl Constraint {
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Constraint_inherited_ExtendedDump(
                     self as *const Self,
                     anOS,
@@ -1709,17 +2040,21 @@ impl Constraint {
                     aMap,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Constraint_inherited_Forget(self as *mut Self, aTransaction)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1729,8 +2064,11 @@ impl Constraint {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Constraint_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1740,8 +2078,11 @@ impl Constraint {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Constraint_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1750,11 +2091,14 @@ impl Constraint {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Constraint_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1765,18 +2109,23 @@ impl Constraint {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Constraint_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Constraint_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1786,16 +2135,22 @@ impl Constraint {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Constraint_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDataXtd_Constraint_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Constraint_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1811,43 +2166,42 @@ unsafe impl crate::CppDeletable for HandleTDataXtdConstraint {
 impl HandleTDataXtdConstraint {
     /// Dereference this Handle to access the underlying TDataXtd_Constraint
     pub fn get(&self) -> &crate::ffi::TDataXtd_Constraint {
-        {
-            let __result = unsafe { crate::ffi::HandleTDataXtdConstraint_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdConstraint_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDataXtd_Constraint
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Constraint {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTDataXtdConstraint_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdConstraint_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDataXtd_Constraint> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdConstraint_to_HandleTDFAttribute(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdConstraint_to_HandleTDFAttribute(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDataXtd_Constraint> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdConstraint_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdConstraint_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1879,8 +2233,10 @@ impl Geometry {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Geometry_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1889,8 +2245,11 @@ impl Geometry {
     /// T will be a value of the enumeration TDataXtd_GeometryEnum.
     pub fn set_type(&mut self, T: crate::t_data_xtd::GeometryEnum) {
         {
-            unsafe { crate::ffi::TDataXtd_Geometry_set_type(self as *mut Self, T.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Geometry_set_type(self as *mut Self, T.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1899,8 +2258,11 @@ impl Geometry {
     pub fn get_type(&self) -> crate::t_data_xtd::GeometryEnum {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Geometry_get_type(self as *const Self) };
-            crate::check_exception();
-            crate::t_data_xtd::GeometryEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::t_data_xtd::GeometryEnum::try_from(__val).unwrap()
         }
     }
 
@@ -1908,16 +2270,21 @@ impl Geometry {
     pub fn id(&self) -> &crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Geometry_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TDataXtd_Geometry.hxx`:131 - `TDataXtd_Geometry::Restore()`
     pub fn restore(&mut self, with: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TDataXtd_Geometry_restore(self as *mut Self, with) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDataXtd_Geometry_restore(self as *mut Self, with) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1925,8 +2292,11 @@ impl Geometry {
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Geometry_new_empty(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1937,8 +2307,11 @@ impl Geometry {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         {
-            unsafe { crate::ffi::TDataXtd_Geometry_paste(self as *const Self, into, RT) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Geometry_paste(self as *const Self, into, RT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1955,8 +2328,11 @@ impl Geometry {
     ) -> &mut crate::ffi::Standard_OStream {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Geometry_dump(self as *mut Self, anOS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1965,8 +2341,11 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Geometry_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1981,8 +2360,11 @@ impl Geometry {
     pub fn set(label: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdGeometry> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Geometry_set(label) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1992,8 +2374,11 @@ impl Geometry {
     pub fn type_label(L: &crate::tdf::Label) -> crate::t_data_xtd::GeometryEnum {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Geometry_type_label(L) };
-            crate::check_exception();
-            crate::t_data_xtd::GeometryEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::t_data_xtd::GeometryEnum::try_from(__val).unwrap()
         }
     }
 
@@ -2005,8 +2390,11 @@ impl Geometry {
     ) -> crate::t_data_xtd::GeometryEnum {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Geometry_type_handletnamingnamedshape(S) };
-            crate::check_exception();
-            crate::t_data_xtd::GeometryEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::t_data_xtd::GeometryEnum::try_from(__val).unwrap()
         }
     }
 
@@ -2015,8 +2403,11 @@ impl Geometry {
     pub fn point_label_pnt(L: &crate::tdf::Label, G: &mut crate::gp::Pnt) -> bool {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Geometry_point_label_pnt(L, G) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2029,8 +2420,11 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Geometry_point_handletnamingnamedshape_pnt(S, G) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2039,8 +2433,11 @@ impl Geometry {
     pub fn axis_label_ax1(L: &crate::tdf::Label, G: &mut crate::gp::Ax1) -> bool {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Geometry_axis_label_ax1(L, G) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2053,8 +2450,11 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Geometry_axis_handletnamingnamedshape_ax1(S, G) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2063,8 +2463,11 @@ impl Geometry {
     pub fn line_label_lin(L: &crate::tdf::Label, G: &mut crate::gp::Lin) -> bool {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Geometry_line_label_lin(L, G) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2077,8 +2480,11 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Geometry_line_handletnamingnamedshape_lin(S, G) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2087,8 +2493,11 @@ impl Geometry {
     pub fn circle_label_circ(L: &crate::tdf::Label, G: &mut crate::gp::Circ) -> bool {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Geometry_circle_label_circ(L, G) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2101,8 +2510,11 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Geometry_circle_handletnamingnamedshape_circ(S, G) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2111,8 +2523,11 @@ impl Geometry {
     pub fn ellipse_label_elips(L: &crate::tdf::Label, G: &mut crate::gp::Elips) -> bool {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Geometry_ellipse_label_elips(L, G) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2127,8 +2542,11 @@ impl Geometry {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Geometry_ellipse_handletnamingnamedshape_elips(S, G)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2137,8 +2555,11 @@ impl Geometry {
     pub fn plane_label_pln(L: &crate::tdf::Label, G: &mut crate::gp::Pln) -> bool {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Geometry_plane_label_pln(L, G) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2152,8 +2573,11 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Geometry_plane_handletnamingnamedshape_pln(S, G) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2162,8 +2586,11 @@ impl Geometry {
     pub fn cylinder_label_cylinder(L: &crate::tdf::Label, G: &mut crate::gp::Cylinder) -> bool {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Geometry_cylinder_label_cylinder(L, G) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2178,8 +2605,11 @@ impl Geometry {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Geometry_cylinder_handletnamingnamedshape_cylinder(S, G)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2188,8 +2618,11 @@ impl Geometry {
     pub fn get_id() -> &'static crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Geometry_get_id() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2197,8 +2630,11 @@ impl Geometry {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Geometry_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2206,68 +2642,73 @@ impl Geometry {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Geometry_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Geometry_as_TDF_Attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Geometry_as_TDF_Attribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Geometry_as_TDF_Attribute_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Geometry_as_TDF_Attribute_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Geometry_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Geometry_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_Geometry_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Geometry_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdGeometry> {
-        {
-            let __result = unsafe { crate::ffi::TDataXtd_Geometry_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDataXtd_Geometry_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         {
-            unsafe { crate::ffi::TDataXtd_Geometry_inherited_SetID(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Geometry_inherited_SetID(self as *mut Self, arg0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2276,8 +2717,11 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Geometry_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2286,8 +2730,11 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Geometry_inherited_Transaction(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2297,8 +2744,11 @@ impl Geometry {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Geometry_inherited_UntilTransaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2307,8 +2757,11 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Geometry_inherited_IsValid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2317,8 +2770,11 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Geometry_inherited_IsNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2327,8 +2783,11 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Geometry_inherited_IsForgotten(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2338,8 +2797,11 @@ impl Geometry {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Geometry_inherited_IsAttribute(self as *const Self, anID)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2357,18 +2819,23 @@ impl Geometry {
                     anAttribute,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Geometry_inherited_AddAttribute(self as *const Self, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2378,53 +2845,70 @@ impl Geometry {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Geometry_inherited_ForgetAttribute(self as *const Self, aguid)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Geometry_inherited_ForgetAllAttributes(
                     self as *const Self,
                     clearChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Geometry_inherited_AfterAddition(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Geometry_inherited_AfterAddition(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Geometry_inherited_BeforeRemoval(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Geometry_inherited_BeforeRemoval(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Geometry_inherited_BeforeForget(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Geometry_inherited_BeforeForget(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Geometry_inherited_AfterResume(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Geometry_inherited_AfterResume(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2434,8 +2918,11 @@ impl Geometry {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Geometry_inherited_AfterRetrieval(self as *mut Self, forceIt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2453,8 +2940,11 @@ impl Geometry {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2472,26 +2962,34 @@ impl Geometry {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Geometry_inherited_BeforeCommitTransaction(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Geometry_inherited_Backup(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Geometry_inherited_Backup(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2500,8 +2998,11 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Geometry_inherited_IsBackuped(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2510,8 +3011,11 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Geometry_inherited_BackupCopy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2521,8 +3025,11 @@ impl Geometry {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Geometry_inherited_DeltaOnAddition(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2532,8 +3039,11 @@ impl Geometry {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Geometry_inherited_DeltaOnForget(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2543,8 +3053,11 @@ impl Geometry {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Geometry_inherited_DeltaOnResume(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2560,8 +3073,11 @@ impl Geometry {
                     anOldAttribute,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2571,18 +3087,23 @@ impl Geometry {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Geometry_inherited_DeltaOnRemoval(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Geometry_inherited_References(self as *const Self, aDataSet)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2594,7 +3115,7 @@ impl Geometry {
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Geometry_inherited_ExtendedDump(
                     self as *const Self,
                     anOS,
@@ -2602,17 +3123,21 @@ impl Geometry {
                     aMap,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Geometry_inherited_Forget(self as *mut Self, aTransaction)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2622,8 +3147,11 @@ impl Geometry {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Geometry_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2633,8 +3161,11 @@ impl Geometry {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Geometry_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2643,11 +3174,14 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Geometry_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2657,18 +3191,23 @@ impl Geometry {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Geometry_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Geometry_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2678,16 +3217,22 @@ impl Geometry {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Geometry_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDataXtd_Geometry_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Geometry_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2703,42 +3248,42 @@ unsafe impl crate::CppDeletable for HandleTDataXtdGeometry {
 impl HandleTDataXtdGeometry {
     /// Dereference this Handle to access the underlying TDataXtd_Geometry
     pub fn get(&self) -> &crate::ffi::TDataXtd_Geometry {
-        {
-            let __result = unsafe { crate::ffi::HandleTDataXtdGeometry_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdGeometry_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDataXtd_Geometry
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Geometry {
-        {
-            let __result = unsafe { crate::ffi::HandleTDataXtdGeometry_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdGeometry_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDataXtd_Geometry> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdGeometry_to_HandleTDFAttribute(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdGeometry_to_HandleTDFAttribute(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDataXtd_Geometry> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdGeometry_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdGeometry_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2760,8 +3305,10 @@ impl HArray1OfTrsf {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_HArray1OfTrsf_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2770,8 +3317,10 @@ impl HArray1OfTrsf {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_HArray1OfTrsf_ctor_int2(theLower, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2785,8 +3334,10 @@ impl HArray1OfTrsf {
             let __result = unsafe {
                 crate::ffi::TDataXtd_HArray1OfTrsf_ctor_int2_type(theLower, theUpper, theValue)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2803,8 +3354,10 @@ impl HArray1OfTrsf {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2813,8 +3366,10 @@ impl HArray1OfTrsf {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_HArray1OfTrsf_ctor_array1oftrsf(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2823,8 +3378,11 @@ impl HArray1OfTrsf {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_HArray1OfTrsf_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2833,8 +3391,11 @@ impl HArray1OfTrsf {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_HArray1OfTrsf_change_array1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2843,8 +3404,11 @@ impl HArray1OfTrsf {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_HArray1OfTrsf_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2852,8 +3416,11 @@ impl HArray1OfTrsf {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDataXtd_HArray1OfTrsf_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2861,42 +3428,45 @@ impl HArray1OfTrsf {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDataXtd_HArray1OfTrsf_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_HArray1OfTrsf_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TDataXtd_HArray1OfTrsf_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_HArray1OfTrsf_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TDataXtd_HArray1OfTrsf_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdHArray1OfTrsf> {
-        {
-            let __result = unsafe { crate::ffi::TDataXtd_HArray1OfTrsf_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDataXtd_HArray1OfTrsf_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2908,8 +3478,11 @@ impl HArray1OfTrsf {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2919,8 +3492,11 @@ impl HArray1OfTrsf {
             let __result = unsafe {
                 crate::ffi::TDataXtd_HArray1OfTrsf_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2929,11 +3505,14 @@ impl HArray1OfTrsf {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_HArray1OfTrsf_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2944,18 +3523,23 @@ impl HArray1OfTrsf {
             let __result = unsafe {
                 crate::ffi::TDataXtd_HArray1OfTrsf_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_HArray1OfTrsf_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2965,16 +3549,22 @@ impl HArray1OfTrsf {
             let __result = unsafe {
                 crate::ffi::TDataXtd_HArray1OfTrsf_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDataXtd_HArray1OfTrsf_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_HArray1OfTrsf_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2990,35 +3580,32 @@ unsafe impl crate::CppDeletable for HandleTDataXtdHArray1OfTrsf {
 impl HandleTDataXtdHArray1OfTrsf {
     /// Dereference this Handle to access the underlying TDataXtd_HArray1OfTrsf
     pub fn get(&self) -> &crate::ffi::TDataXtd_HArray1OfTrsf {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTDataXtdHArray1OfTrsf_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdHArray1OfTrsf_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDataXtd_HArray1OfTrsf
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_HArray1OfTrsf {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTDataXtdHArray1OfTrsf_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTDataXtdHArray1OfTrsf_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDataXtd_HArray1OfTrsf> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdHArray1OfTrsf_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdHArray1OfTrsf_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3042,8 +3629,11 @@ impl Pattern {
     pub fn id(&self) -> &crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Pattern_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3052,8 +3642,11 @@ impl Pattern {
     pub fn pattern_id(&self) -> &crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Pattern_pattern_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3062,8 +3655,11 @@ impl Pattern {
     pub fn nb_trsfs(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Pattern_nb_trsfs(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3071,8 +3667,11 @@ impl Pattern {
     /// Give the transformations
     pub fn compute_trsfs(&self, Trsfs: &mut crate::ffi::TDataXtd_Array1OfTrsf) {
         {
-            unsafe { crate::ffi::TDataXtd_Pattern_compute_trsfs(self as *const Self, Trsfs) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Pattern_compute_trsfs(self as *const Self, Trsfs) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3081,8 +3680,11 @@ impl Pattern {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Pattern_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3090,8 +3692,11 @@ impl Pattern {
     pub fn get_id() -> &'static crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Pattern_get_id() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3099,8 +3704,11 @@ impl Pattern {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Pattern_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3108,57 +3716,62 @@ impl Pattern {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Pattern_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Pattern_as_TDF_Attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Pattern_as_TDF_Attribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Pattern_as_TDF_Attribute_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Pattern_as_TDF_Attribute_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Pattern_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Pattern_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_Pattern_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Pattern_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         {
-            unsafe { crate::ffi::TDataXtd_Pattern_inherited_SetID(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Pattern_inherited_SetID(self as *mut Self, arg0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3167,8 +3780,11 @@ impl Pattern {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Pattern_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3177,8 +3793,11 @@ impl Pattern {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Pattern_inherited_Transaction(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3188,8 +3807,11 @@ impl Pattern {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Pattern_inherited_UntilTransaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3198,8 +3820,11 @@ impl Pattern {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Pattern_inherited_IsValid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3208,8 +3833,11 @@ impl Pattern {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Pattern_inherited_IsNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3218,8 +3846,11 @@ impl Pattern {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Pattern_inherited_IsForgotten(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3229,8 +3860,11 @@ impl Pattern {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Pattern_inherited_IsAttribute(self as *const Self, anID)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3248,18 +3882,23 @@ impl Pattern {
                     anAttribute,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Pattern_inherited_AddAttribute(self as *const Self, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3269,53 +3908,70 @@ impl Pattern {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Pattern_inherited_ForgetAttribute(self as *const Self, aguid)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Pattern_inherited_ForgetAllAttributes(
                     self as *const Self,
                     clearChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Pattern_inherited_AfterAddition(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Pattern_inherited_AfterAddition(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Pattern_inherited_BeforeRemoval(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Pattern_inherited_BeforeRemoval(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Pattern_inherited_BeforeForget(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Pattern_inherited_BeforeForget(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Pattern_inherited_AfterResume(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Pattern_inherited_AfterResume(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3325,8 +3981,11 @@ impl Pattern {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Pattern_inherited_AfterRetrieval(self as *mut Self, forceIt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3344,8 +4003,11 @@ impl Pattern {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3363,26 +4025,33 @@ impl Pattern {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Pattern_inherited_BeforeCommitTransaction(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Pattern_inherited_Backup(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDataXtd_Pattern_inherited_Backup(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3391,8 +4060,11 @@ impl Pattern {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Pattern_inherited_IsBackuped(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3401,18 +4073,23 @@ impl Pattern {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Pattern_inherited_BackupCopy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:291 - `TDF_Attribute::Restore()`
     pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Pattern_inherited_Restore(self as *mut Self, anAttribute)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3422,8 +4099,11 @@ impl Pattern {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Pattern_inherited_DeltaOnAddition(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3433,8 +4113,11 @@ impl Pattern {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Pattern_inherited_DeltaOnForget(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3444,8 +4127,11 @@ impl Pattern {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Pattern_inherited_DeltaOnResume(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3461,8 +4147,11 @@ impl Pattern {
                     anOldAttribute,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3472,8 +4161,11 @@ impl Pattern {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Pattern_inherited_DeltaOnRemoval(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3482,8 +4174,11 @@ impl Pattern {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Pattern_inherited_NewEmpty(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3494,24 +4189,28 @@ impl Pattern {
         aRelocationTable: &crate::ffi::HandleTDFRelocationTable,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Pattern_inherited_Paste(
                     self as *const Self,
                     intoAttribute,
                     aRelocationTable,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Pattern_inherited_References(self as *const Self, aDataSet)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3523,7 +4222,7 @@ impl Pattern {
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Pattern_inherited_ExtendedDump(
                     self as *const Self,
                     anOS,
@@ -3531,17 +4230,21 @@ impl Pattern {
                     aMap,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Pattern_inherited_Forget(self as *mut Self, aTransaction)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3551,8 +4254,11 @@ impl Pattern {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Pattern_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3562,8 +4268,11 @@ impl Pattern {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Pattern_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3572,11 +4281,14 @@ impl Pattern {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Pattern_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3586,18 +4298,23 @@ impl Pattern {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Pattern_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Pattern_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3607,16 +4324,22 @@ impl Pattern {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Pattern_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDataXtd_Pattern_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Pattern_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3632,42 +4355,41 @@ unsafe impl crate::CppDeletable for HandleTDataXtdPattern {
 impl HandleTDataXtdPattern {
     /// Dereference this Handle to access the underlying TDataXtd_Pattern
     pub fn get(&self) -> &crate::ffi::TDataXtd_Pattern {
-        {
-            let __result = unsafe { crate::ffi::HandleTDataXtdPattern_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdPattern_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDataXtd_Pattern
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Pattern {
-        {
-            let __result = unsafe { crate::ffi::HandleTDataXtdPattern_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdPattern_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDataXtd_Pattern> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdPattern_to_HandleTDFAttribute(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleTDataXtdPattern_to_HandleTDFAttribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDataXtd_Pattern> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdPattern_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdPattern_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<TDataXtd_Pattern> to Handle<TDataXtd_PatternStd>
@@ -3676,16 +4398,18 @@ impl HandleTDataXtdPattern {
     pub fn downcast_to_pattern_std(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDataXtdPatternStd>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTDataXtdPattern_downcast_to_HandleTDataXtdPatternStd(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -3711,88 +4435,106 @@ impl PatternStd {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_PatternStd_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TDataXtd_PatternStd.hxx`:52 - `TDataXtd_PatternStd::Signature()`
     pub fn signature_int(&mut self, signature: i32) {
         {
-            unsafe { crate::ffi::TDataXtd_PatternStd_signature_int(self as *mut Self, signature) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_PatternStd_signature_int(self as *mut Self, signature)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDataXtd_PatternStd.hxx`:54 - `TDataXtd_PatternStd::Axis1()`
     pub fn axis1_handletnamingnamedshape(&mut self, Axis1: &crate::ffi::HandleTNamingNamedShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_PatternStd_axis1_handletnamingnamedshape(
                     self as *mut Self,
                     Axis1,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDataXtd_PatternStd.hxx`:56 - `TDataXtd_PatternStd::Axis2()`
     pub fn axis2_handletnamingnamedshape(&mut self, Axis2: &crate::ffi::HandleTNamingNamedShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_PatternStd_axis2_handletnamingnamedshape(
                     self as *mut Self,
                     Axis2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDataXtd_PatternStd.hxx`:58 - `TDataXtd_PatternStd::Axis1Reversed()`
     pub fn axis1_reversed_bool(&mut self, Axis1Reversed: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_PatternStd_axis1_reversed_bool(
                     self as *mut Self,
                     Axis1Reversed,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDataXtd_PatternStd.hxx`:60 - `TDataXtd_PatternStd::Axis2Reversed()`
     pub fn axis2_reversed_bool(&mut self, Axis2Reversed: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_PatternStd_axis2_reversed_bool(
                     self as *mut Self,
                     Axis2Reversed,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDataXtd_PatternStd.hxx`:62 - `TDataXtd_PatternStd::Value1()`
     pub fn value1_handletdatastdreal(&mut self, value: &crate::ffi::HandleTDataStdReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_PatternStd_value1_handletdatastdreal(self as *mut Self, value)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDataXtd_PatternStd.hxx`:64 - `TDataXtd_PatternStd::Value2()`
     pub fn value2_handletdatastdreal(&mut self, value: &crate::ffi::HandleTDataStdReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_PatternStd_value2_handletdatastdreal(self as *mut Self, value)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3802,13 +4544,15 @@ impl PatternStd {
         NbInstances1: &crate::ffi::HandleTDataStdInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_PatternStd_nb_instances1_handletdatastdinteger(
                     self as *mut Self,
                     NbInstances1,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3818,26 +4562,30 @@ impl PatternStd {
         NbInstances2: &crate::ffi::HandleTDataStdInteger,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_PatternStd_nb_instances2_handletdatastdinteger(
                     self as *mut Self,
                     NbInstances2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDataXtd_PatternStd.hxx`:70 - `TDataXtd_PatternStd::Mirror()`
     pub fn mirror_handletnamingnamedshape(&mut self, plane: &crate::ffi::HandleTNamingNamedShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_PatternStd_mirror_handletnamingnamedshape(
                     self as *mut Self,
                     plane,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3846,8 +4594,11 @@ impl PatternStd {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_PatternStd_signature(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3855,8 +4606,11 @@ impl PatternStd {
     pub fn axis1(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_PatternStd_axis1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3864,8 +4618,11 @@ impl PatternStd {
     pub fn axis2(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_PatternStd_axis2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3874,8 +4631,11 @@ impl PatternStd {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_PatternStd_axis1_reversed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3884,8 +4644,11 @@ impl PatternStd {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_PatternStd_axis2_reversed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3893,8 +4656,11 @@ impl PatternStd {
     pub fn value1(&self) -> crate::OwnedPtr<crate::ffi::HandleTDataStdReal> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_PatternStd_value1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3902,8 +4668,11 @@ impl PatternStd {
     pub fn value2(&self) -> crate::OwnedPtr<crate::ffi::HandleTDataStdReal> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_PatternStd_value2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3912,8 +4681,11 @@ impl PatternStd {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_PatternStd_nb_instances1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3922,8 +4694,11 @@ impl PatternStd {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_PatternStd_nb_instances2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3931,8 +4706,11 @@ impl PatternStd {
     pub fn mirror(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_PatternStd_mirror(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3940,16 +4718,23 @@ impl PatternStd {
     pub fn nb_trsfs(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TDataXtd_PatternStd_nb_trsfs(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TDataXtd_PatternStd.hxx`:94 - `TDataXtd_PatternStd::ComputeTrsfs()`
     pub fn compute_trsfs(&self, Trsfs: &mut crate::ffi::TDataXtd_Array1OfTrsf) {
         {
-            unsafe { crate::ffi::TDataXtd_PatternStd_compute_trsfs(self as *const Self, Trsfs) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_PatternStd_compute_trsfs(self as *const Self, Trsfs)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3958,16 +4743,21 @@ impl PatternStd {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_PatternStd_pattern_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TDataXtd_PatternStd.hxx`:98 - `TDataXtd_PatternStd::Restore()`
     pub fn restore(&mut self, With: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TDataXtd_PatternStd_restore(self as *mut Self, With) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDataXtd_PatternStd_restore(self as *mut Self, With) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3976,8 +4766,11 @@ impl PatternStd {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_PatternStd_new_empty(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3988,16 +4781,23 @@ impl PatternStd {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         {
-            unsafe { crate::ffi::TDataXtd_PatternStd_paste(self as *const Self, Into, RT) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_PatternStd_paste(self as *const Self, Into, RT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDataXtd_PatternStd.hxx`:105 - `TDataXtd_PatternStd::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         {
-            unsafe { crate::ffi::TDataXtd_PatternStd_references(self as *const Self, aDataSet) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_PatternStd_references(self as *const Self, aDataSet)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4014,8 +4814,11 @@ impl PatternStd {
     ) -> &mut crate::ffi::Standard_OStream {
         {
             let __result = unsafe { crate::ffi::TDataXtd_PatternStd_dump(self as *mut Self, anOS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4024,8 +4827,11 @@ impl PatternStd {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_PatternStd_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4033,8 +4839,11 @@ impl PatternStd {
     pub fn get_pattern_id() -> &'static crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_PatternStd_get_pattern_id() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4043,8 +4852,11 @@ impl PatternStd {
     pub fn set(label: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPatternStd> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_PatternStd_set(label) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4052,8 +4864,11 @@ impl PatternStd {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDataXtd_PatternStd_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4061,83 +4876,83 @@ impl PatternStd {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDataXtd_PatternStd_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDataXtd_Pattern
     pub fn as_pattern(&self) -> &Pattern {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_PatternStd_as_TDataXtd_Pattern(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_PatternStd_as_TDataXtd_Pattern(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDataXtd_Pattern (mutable)
     pub fn as_pattern_mut(&mut self) -> &mut Pattern {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_PatternStd_as_TDataXtd_Pattern_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_PatternStd_as_TDataXtd_Pattern_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_PatternStd_as_TDF_Attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_PatternStd_as_TDF_Attribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_PatternStd_as_TDF_Attribute_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_PatternStd_as_TDF_Attribute_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_PatternStd_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_PatternStd_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_PatternStd_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_PatternStd_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPatternStd> {
-        {
-            let __result = unsafe { crate::ffi::TDataXtd_PatternStd_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDataXtd_PatternStd_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDataXtd_Pattern.hxx`:38 - `TDataXtd_Pattern::ID()`
@@ -4145,16 +4960,22 @@ impl PatternStd {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_PatternStd_inherited_ID(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         {
-            unsafe { crate::ffi::TDataXtd_PatternStd_inherited_SetID(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_PatternStd_inherited_SetID(self as *mut Self, arg0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4163,8 +4984,11 @@ impl PatternStd {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_PatternStd_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4174,8 +4998,11 @@ impl PatternStd {
             let __result = unsafe {
                 crate::ffi::TDataXtd_PatternStd_inherited_Transaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4185,8 +5012,11 @@ impl PatternStd {
             let __result = unsafe {
                 crate::ffi::TDataXtd_PatternStd_inherited_UntilTransaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4195,8 +5025,11 @@ impl PatternStd {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_PatternStd_inherited_IsValid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4205,8 +5038,11 @@ impl PatternStd {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_PatternStd_inherited_IsNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4216,8 +5052,11 @@ impl PatternStd {
             let __result = unsafe {
                 crate::ffi::TDataXtd_PatternStd_inherited_IsForgotten(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4227,8 +5066,11 @@ impl PatternStd {
             let __result = unsafe {
                 crate::ffi::TDataXtd_PatternStd_inherited_IsAttribute(self as *const Self, anID)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4246,18 +5088,23 @@ impl PatternStd {
                     anAttribute,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_PatternStd_inherited_AddAttribute(self as *const Self, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4270,53 +5117,73 @@ impl PatternStd {
                     aguid,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_PatternStd_inherited_ForgetAllAttributes(
                     self as *const Self,
                     clearChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_PatternStd_inherited_AfterAddition(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_PatternStd_inherited_AfterAddition(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_PatternStd_inherited_BeforeRemoval(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_PatternStd_inherited_BeforeRemoval(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_PatternStd_inherited_BeforeForget(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_PatternStd_inherited_BeforeForget(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_PatternStd_inherited_AfterResume(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_PatternStd_inherited_AfterResume(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4326,8 +5193,11 @@ impl PatternStd {
             let __result = unsafe {
                 crate::ffi::TDataXtd_PatternStd_inherited_AfterRetrieval(self as *mut Self, forceIt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4345,8 +5215,11 @@ impl PatternStd {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4364,26 +5237,34 @@ impl PatternStd {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_PatternStd_inherited_BeforeCommitTransaction(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_PatternStd_inherited_Backup(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_PatternStd_inherited_Backup(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4393,8 +5274,11 @@ impl PatternStd {
             let __result = unsafe {
                 crate::ffi::TDataXtd_PatternStd_inherited_IsBackuped(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4404,8 +5288,11 @@ impl PatternStd {
             let __result = unsafe {
                 crate::ffi::TDataXtd_PatternStd_inherited_BackupCopy(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4415,8 +5302,11 @@ impl PatternStd {
             let __result = unsafe {
                 crate::ffi::TDataXtd_PatternStd_inherited_DeltaOnAddition(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4426,8 +5316,11 @@ impl PatternStd {
             let __result = unsafe {
                 crate::ffi::TDataXtd_PatternStd_inherited_DeltaOnForget(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4437,8 +5330,11 @@ impl PatternStd {
             let __result = unsafe {
                 crate::ffi::TDataXtd_PatternStd_inherited_DeltaOnResume(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4454,8 +5350,11 @@ impl PatternStd {
                     anOldAttribute,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4465,8 +5364,11 @@ impl PatternStd {
             let __result = unsafe {
                 crate::ffi::TDataXtd_PatternStd_inherited_DeltaOnRemoval(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4478,7 +5380,7 @@ impl PatternStd {
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_PatternStd_inherited_ExtendedDump(
                     self as *const Self,
                     anOS,
@@ -4486,17 +5388,21 @@ impl PatternStd {
                     aMap,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_PatternStd_inherited_Forget(self as *mut Self, aTransaction)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4506,8 +5412,11 @@ impl PatternStd {
             let __result = unsafe {
                 crate::ffi::TDataXtd_PatternStd_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4517,8 +5426,11 @@ impl PatternStd {
             let __result = unsafe {
                 crate::ffi::TDataXtd_PatternStd_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4527,11 +5439,14 @@ impl PatternStd {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_PatternStd_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4542,18 +5457,23 @@ impl PatternStd {
             let __result = unsafe {
                 crate::ffi::TDataXtd_PatternStd_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_PatternStd_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4563,16 +5483,22 @@ impl PatternStd {
             let __result = unsafe {
                 crate::ffi::TDataXtd_PatternStd_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDataXtd_PatternStd_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_PatternStd_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4588,54 +5514,53 @@ unsafe impl crate::CppDeletable for HandleTDataXtdPatternStd {
 impl HandleTDataXtdPatternStd {
     /// Dereference this Handle to access the underlying TDataXtd_PatternStd
     pub fn get(&self) -> &crate::ffi::TDataXtd_PatternStd {
-        {
-            let __result = unsafe { crate::ffi::HandleTDataXtdPatternStd_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdPatternStd_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDataXtd_PatternStd
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_PatternStd {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTDataXtdPatternStd_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdPatternStd_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDataXtd_PatternStd> to Handle<TDataXtd_Pattern>
     pub fn to_handle_pattern(&self) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPattern> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdPatternStd_to_HandleTDataXtdPattern(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdPatternStd_to_HandleTDataXtdPattern(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDataXtd_PatternStd> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdPatternStd_to_HandleTDFAttribute(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdPatternStd_to_HandleTDFAttribute(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDataXtd_PatternStd> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdPatternStd_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdPatternStd_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4657,8 +5582,10 @@ impl Placement {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Placement_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4666,8 +5593,11 @@ impl Placement {
     pub fn id(&self) -> &crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Placement_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4684,8 +5614,11 @@ impl Placement {
     ) -> &mut crate::ffi::Standard_OStream {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Placement_dump(self as *mut Self, anOS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4694,8 +5627,11 @@ impl Placement {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Placement_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4703,8 +5639,11 @@ impl Placement {
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Placement_new_empty(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4714,8 +5653,11 @@ impl Placement {
     pub fn get_id() -> &'static crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Placement_get_id() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4727,8 +5669,11 @@ impl Placement {
     pub fn set(label: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPlacement> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Placement_set(label) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4736,8 +5681,11 @@ impl Placement {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Placement_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4745,91 +5693,95 @@ impl Placement {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Placement_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDataStd_GenericEmpty
     pub fn as_t_data_std_generic_empty(&self) -> &crate::t_data_std::GenericEmpty {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_Placement_as_TDataStd_GenericEmpty(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Placement_as_TDataStd_GenericEmpty(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDataStd_GenericEmpty (mutable)
     pub fn as_t_data_std_generic_empty_mut(&mut self) -> &mut crate::t_data_std::GenericEmpty {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_Placement_as_TDataStd_GenericEmpty_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TDataXtd_Placement_as_TDataStd_GenericEmpty_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Placement_as_TDF_Attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Placement_as_TDF_Attribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Placement_as_TDF_Attribute_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Placement_as_TDF_Attribute_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_Placement_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Placement_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_Placement_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Placement_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPlacement> {
-        {
-            let __result = unsafe { crate::ffi::TDataXtd_Placement_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDataXtd_Placement_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
     pub fn restore(&mut self, arg0: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TDataXtd_Placement_inherited_Restore(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Placement_inherited_Restore(self as *mut Self, arg0)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4840,18 +5792,23 @@ impl Placement {
         arg1: &crate::ffi::HandleTDFRelocationTable,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_Paste(self as *const Self, arg0, arg1)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         {
-            unsafe { crate::ffi::TDataXtd_Placement_inherited_SetID(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Placement_inherited_SetID(self as *mut Self, arg0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4860,8 +5817,11 @@ impl Placement {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Placement_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4871,8 +5831,11 @@ impl Placement {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_Transaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4882,8 +5845,11 @@ impl Placement {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_UntilTransaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4892,8 +5858,11 @@ impl Placement {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Placement_inherited_IsValid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4902,8 +5871,11 @@ impl Placement {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Placement_inherited_IsNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4913,8 +5885,11 @@ impl Placement {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_IsForgotten(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4924,8 +5899,11 @@ impl Placement {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_IsAttribute(self as *const Self, anID)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4943,18 +5921,23 @@ impl Placement {
                     anAttribute,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_AddAttribute(self as *const Self, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4964,53 +5947,72 @@ impl Placement {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_ForgetAttribute(self as *const Self, aguid)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_ForgetAllAttributes(
                     self as *const Self,
                     clearChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Placement_inherited_AfterAddition(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Placement_inherited_AfterAddition(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Placement_inherited_BeforeRemoval(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Placement_inherited_BeforeRemoval(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Placement_inherited_BeforeForget(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Placement_inherited_BeforeForget(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Placement_inherited_AfterResume(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Placement_inherited_AfterResume(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5020,8 +6022,11 @@ impl Placement {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_AfterRetrieval(self as *mut Self, forceIt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5039,8 +6044,11 @@ impl Placement {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5058,26 +6066,34 @@ impl Placement {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_BeforeCommitTransaction(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Placement_inherited_Backup(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Placement_inherited_Backup(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5086,8 +6102,11 @@ impl Placement {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Placement_inherited_IsBackuped(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5096,8 +6115,11 @@ impl Placement {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Placement_inherited_BackupCopy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5107,8 +6129,11 @@ impl Placement {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_DeltaOnAddition(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5118,8 +6143,11 @@ impl Placement {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_DeltaOnForget(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5129,8 +6157,11 @@ impl Placement {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_DeltaOnResume(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5146,8 +6177,11 @@ impl Placement {
                     anOldAttribute,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5157,18 +6191,23 @@ impl Placement {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_DeltaOnRemoval(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_References(self as *const Self, aDataSet)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5180,7 +6219,7 @@ impl Placement {
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_ExtendedDump(
                     self as *const Self,
                     anOS,
@@ -5188,17 +6227,21 @@ impl Placement {
                     aMap,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_Forget(self as *mut Self, aTransaction)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5208,8 +6251,11 @@ impl Placement {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5219,8 +6265,11 @@ impl Placement {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5229,11 +6278,14 @@ impl Placement {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Placement_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5244,18 +6296,23 @@ impl Placement {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5265,16 +6322,22 @@ impl Placement {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Placement_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDataXtd_Placement_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Placement_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5290,58 +6353,55 @@ unsafe impl crate::CppDeletable for HandleTDataXtdPlacement {
 impl HandleTDataXtdPlacement {
     /// Dereference this Handle to access the underlying TDataXtd_Placement
     pub fn get(&self) -> &crate::ffi::TDataXtd_Placement {
-        {
-            let __result = unsafe { crate::ffi::HandleTDataXtdPlacement_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdPlacement_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDataXtd_Placement
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Placement {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTDataXtdPlacement_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdPlacement_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDataXtd_Placement> to Handle<TDataStd_GenericEmpty>
     pub fn to_handle_generic_empty(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdPlacement_to_HandleTDataStdGenericEmpty(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdPlacement_to_HandleTDataStdGenericEmpty(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDataXtd_Placement> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdPlacement_to_HandleTDFAttribute(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdPlacement_to_HandleTDFAttribute(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDataXtd_Placement> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdPlacement_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdPlacement_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5366,8 +6426,10 @@ impl Plane {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Plane_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5375,8 +6437,11 @@ impl Plane {
     pub fn id(&self) -> &crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Plane_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5393,8 +6458,11 @@ impl Plane {
     ) -> &mut crate::ffi::Standard_OStream {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Plane_dump(self as *mut Self, anOS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5402,8 +6470,11 @@ impl Plane {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Plane_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5411,8 +6482,11 @@ impl Plane {
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Plane_new_empty(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5424,8 +6498,11 @@ impl Plane {
     pub fn get_id() -> &'static crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Plane_get_id() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5440,8 +6517,11 @@ impl Plane {
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPlane> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Plane_set_label(label) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5456,8 +6536,11 @@ impl Plane {
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPlane> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Plane_set_label_pln(label, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5465,8 +6548,11 @@ impl Plane {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Plane_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5474,88 +6560,92 @@ impl Plane {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Plane_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDataStd_GenericEmpty
     pub fn as_t_data_std_generic_empty(&self) -> &crate::t_data_std::GenericEmpty {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Plane_as_TDataStd_GenericEmpty(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Plane_as_TDataStd_GenericEmpty(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDataStd_GenericEmpty (mutable)
     pub fn as_t_data_std_generic_empty_mut(&mut self) -> &mut crate::t_data_std::GenericEmpty {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_Plane_as_TDataStd_GenericEmpty_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Plane_as_TDataStd_GenericEmpty_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Plane_as_TDF_Attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TDataXtd_Plane_as_TDF_Attribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Plane_as_TDF_Attribute_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Plane_as_TDF_Attribute_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Plane_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Plane_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Plane_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Plane_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPlane> {
-        {
-            let __result = unsafe { crate::ffi::TDataXtd_Plane_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDataXtd_Plane_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
     pub fn restore(&mut self, arg0: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TDataXtd_Plane_inherited_Restore(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Plane_inherited_Restore(self as *mut Self, arg0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5566,16 +6656,23 @@ impl Plane {
         arg1: &crate::ffi::HandleTDFRelocationTable,
     ) {
         {
-            unsafe { crate::ffi::TDataXtd_Plane_inherited_Paste(self as *const Self, arg0, arg1) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Plane_inherited_Paste(self as *const Self, arg0, arg1)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         {
-            unsafe { crate::ffi::TDataXtd_Plane_inherited_SetID(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Plane_inherited_SetID(self as *mut Self, arg0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5584,8 +6681,11 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Plane_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5594,8 +6694,11 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Plane_inherited_Transaction(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5605,8 +6708,11 @@ impl Plane {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Plane_inherited_UntilTransaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5615,8 +6721,11 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Plane_inherited_IsValid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5625,8 +6734,11 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Plane_inherited_IsNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5635,8 +6747,11 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Plane_inherited_IsForgotten(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5646,8 +6761,11 @@ impl Plane {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Plane_inherited_IsAttribute(self as *const Self, anID)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5665,18 +6783,23 @@ impl Plane {
                     anAttribute,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Plane_inherited_AddAttribute(self as *const Self, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5686,53 +6809,70 @@ impl Plane {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Plane_inherited_ForgetAttribute(self as *const Self, aguid)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Plane_inherited_ForgetAllAttributes(
                     self as *const Self,
                     clearChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Plane_inherited_AfterAddition(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Plane_inherited_AfterAddition(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Plane_inherited_BeforeRemoval(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Plane_inherited_BeforeRemoval(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Plane_inherited_BeforeForget(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Plane_inherited_BeforeForget(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Plane_inherited_AfterResume(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Plane_inherited_AfterResume(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5742,8 +6882,11 @@ impl Plane {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Plane_inherited_AfterRetrieval(self as *mut Self, forceIt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5761,8 +6904,11 @@ impl Plane {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5780,26 +6926,33 @@ impl Plane {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Plane_inherited_BeforeCommitTransaction(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Plane_inherited_Backup(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDataXtd_Plane_inherited_Backup(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5808,8 +6961,11 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Plane_inherited_IsBackuped(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5818,8 +6974,11 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Plane_inherited_BackupCopy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5829,8 +6988,11 @@ impl Plane {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Plane_inherited_DeltaOnAddition(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5839,8 +7001,11 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Plane_inherited_DeltaOnForget(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5849,8 +7014,11 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Plane_inherited_DeltaOnResume(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5866,8 +7034,11 @@ impl Plane {
                     anOldAttribute,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5876,18 +7047,23 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Plane_inherited_DeltaOnRemoval(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Plane_inherited_References(self as *const Self, aDataSet)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5899,7 +7075,7 @@ impl Plane {
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Plane_inherited_ExtendedDump(
                     self as *const Self,
                     anOS,
@@ -5907,15 +7083,21 @@ impl Plane {
                     aMap,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         {
-            unsafe { crate::ffi::TDataXtd_Plane_inherited_Forget(self as *mut Self, aTransaction) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Plane_inherited_Forget(self as *mut Self, aTransaction)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5925,8 +7107,11 @@ impl Plane {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Plane_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5936,8 +7121,11 @@ impl Plane {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Plane_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5946,11 +7134,14 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Plane_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5960,16 +7151,23 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Plane_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Plane_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Plane_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5979,16 +7177,21 @@ impl Plane {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Plane_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDataXtd_Plane_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDataXtd_Plane_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6004,55 +7207,54 @@ unsafe impl crate::CppDeletable for HandleTDataXtdPlane {
 impl HandleTDataXtdPlane {
     /// Dereference this Handle to access the underlying TDataXtd_Plane
     pub fn get(&self) -> &crate::ffi::TDataXtd_Plane {
-        {
-            let __result = unsafe { crate::ffi::HandleTDataXtdPlane_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdPlane_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDataXtd_Plane
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Plane {
-        {
-            let __result = unsafe { crate::ffi::HandleTDataXtdPlane_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdPlane_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDataXtd_Plane> to Handle<TDataStd_GenericEmpty>
     pub fn to_handle_generic_empty(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdPlane_to_HandleTDataStdGenericEmpty(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdPlane_to_HandleTDataStdGenericEmpty(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDataXtd_Plane> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdPlane_to_HandleTDFAttribute(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleTDataXtdPlane_to_HandleTDFAttribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDataXtd_Plane> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdPlane_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdPlane_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6080,8 +7282,10 @@ impl Point {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Point_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6089,8 +7293,11 @@ impl Point {
     pub fn id(&self) -> &crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Point_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6107,8 +7314,11 @@ impl Point {
     ) -> &mut crate::ffi::Standard_OStream {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Point_dump(self as *mut Self, anOS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -6116,8 +7326,11 @@ impl Point {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Point_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6125,8 +7338,11 @@ impl Point {
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Point_new_empty(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6138,8 +7354,11 @@ impl Point {
     pub fn get_id() -> &'static crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Point_get_id() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6151,8 +7370,11 @@ impl Point {
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPoint> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Point_set_label(label) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6167,8 +7389,11 @@ impl Point {
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPoint> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Point_set_label_pnt(label, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6176,8 +7401,11 @@ impl Point {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Point_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6185,88 +7413,92 @@ impl Point {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Point_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDataStd_GenericEmpty
     pub fn as_t_data_std_generic_empty(&self) -> &crate::t_data_std::GenericEmpty {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Point_as_TDataStd_GenericEmpty(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Point_as_TDataStd_GenericEmpty(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDataStd_GenericEmpty (mutable)
     pub fn as_t_data_std_generic_empty_mut(&mut self) -> &mut crate::t_data_std::GenericEmpty {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_Point_as_TDataStd_GenericEmpty_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Point_as_TDataStd_GenericEmpty_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Point_as_TDF_Attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TDataXtd_Point_as_TDF_Attribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Point_as_TDF_Attribute_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Point_as_TDF_Attribute_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Point_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Point_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Point_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Point_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPoint> {
-        {
-            let __result = unsafe { crate::ffi::TDataXtd_Point_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDataXtd_Point_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
     pub fn restore(&mut self, arg0: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TDataXtd_Point_inherited_Restore(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Point_inherited_Restore(self as *mut Self, arg0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6277,16 +7509,23 @@ impl Point {
         arg1: &crate::ffi::HandleTDFRelocationTable,
     ) {
         {
-            unsafe { crate::ffi::TDataXtd_Point_inherited_Paste(self as *const Self, arg0, arg1) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Point_inherited_Paste(self as *const Self, arg0, arg1)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         {
-            unsafe { crate::ffi::TDataXtd_Point_inherited_SetID(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Point_inherited_SetID(self as *mut Self, arg0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6295,8 +7534,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Point_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6305,8 +7547,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Point_inherited_Transaction(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6316,8 +7561,11 @@ impl Point {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Point_inherited_UntilTransaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6326,8 +7574,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Point_inherited_IsValid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6336,8 +7587,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Point_inherited_IsNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6346,8 +7600,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Point_inherited_IsForgotten(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6357,8 +7614,11 @@ impl Point {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Point_inherited_IsAttribute(self as *const Self, anID)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6376,18 +7636,23 @@ impl Point {
                     anAttribute,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Point_inherited_AddAttribute(self as *const Self, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6397,53 +7662,70 @@ impl Point {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Point_inherited_ForgetAttribute(self as *const Self, aguid)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Point_inherited_ForgetAllAttributes(
                     self as *const Self,
                     clearChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Point_inherited_AfterAddition(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Point_inherited_AfterAddition(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Point_inherited_BeforeRemoval(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Point_inherited_BeforeRemoval(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Point_inherited_BeforeForget(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Point_inherited_BeforeForget(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Point_inherited_AfterResume(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Point_inherited_AfterResume(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6453,8 +7735,11 @@ impl Point {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Point_inherited_AfterRetrieval(self as *mut Self, forceIt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6472,8 +7757,11 @@ impl Point {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6491,26 +7779,33 @@ impl Point {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Point_inherited_BeforeCommitTransaction(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Point_inherited_Backup(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDataXtd_Point_inherited_Backup(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6519,8 +7814,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Point_inherited_IsBackuped(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6529,8 +7827,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Point_inherited_BackupCopy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6540,8 +7841,11 @@ impl Point {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Point_inherited_DeltaOnAddition(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6550,8 +7854,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Point_inherited_DeltaOnForget(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6560,8 +7867,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Point_inherited_DeltaOnResume(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6577,8 +7887,11 @@ impl Point {
                     anOldAttribute,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6587,18 +7900,23 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Point_inherited_DeltaOnRemoval(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Point_inherited_References(self as *const Self, aDataSet)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6610,7 +7928,7 @@ impl Point {
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Point_inherited_ExtendedDump(
                     self as *const Self,
                     anOS,
@@ -6618,15 +7936,21 @@ impl Point {
                     aMap,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         {
-            unsafe { crate::ffi::TDataXtd_Point_inherited_Forget(self as *mut Self, aTransaction) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Point_inherited_Forget(self as *mut Self, aTransaction)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6636,8 +7960,11 @@ impl Point {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Point_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6647,8 +7974,11 @@ impl Point {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Point_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6657,11 +7987,14 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Point_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6671,16 +8004,23 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Point_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Point_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Point_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6690,16 +8030,21 @@ impl Point {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Point_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDataXtd_Point_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDataXtd_Point_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6715,55 +8060,54 @@ unsafe impl crate::CppDeletable for HandleTDataXtdPoint {
 impl HandleTDataXtdPoint {
     /// Dereference this Handle to access the underlying TDataXtd_Point
     pub fn get(&self) -> &crate::ffi::TDataXtd_Point {
-        {
-            let __result = unsafe { crate::ffi::HandleTDataXtdPoint_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdPoint_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDataXtd_Point
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Point {
-        {
-            let __result = unsafe { crate::ffi::HandleTDataXtdPoint_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdPoint_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDataXtd_Point> to Handle<TDataStd_GenericEmpty>
     pub fn to_handle_generic_empty(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdPoint_to_HandleTDataStdGenericEmpty(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdPoint_to_HandleTDataStdGenericEmpty(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDataXtd_Point> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdPoint_to_HandleTDFAttribute(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleTDataXtdPoint_to_HandleTDFAttribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDataXtd_Point> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdPoint_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdPoint_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6786,8 +8130,10 @@ impl Position {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Position_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6796,8 +8142,11 @@ impl Position {
     pub fn id(&self) -> &crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Position_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6806,8 +8155,11 @@ impl Position {
     /// one. It is used when aborting a transaction.
     pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TDataXtd_Position_restore(self as *mut Self, anAttribute) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Position_restore(self as *mut Self, anAttribute) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6817,8 +8169,11 @@ impl Position {
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Position_new_empty(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6836,14 +8191,16 @@ impl Position {
         aRelocTationable: &crate::ffi::HandleTDFRelocationTable,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Position_paste(
                     self as *const Self,
                     intoAttribute,
                     aRelocTationable,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6852,16 +8209,22 @@ impl Position {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Position_get_position(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TDataXtd_Position.hxx`:76 - `TDataXtd_Position::SetPosition()`
     pub fn set_position(&mut self, aPos: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::TDataXtd_Position_set_position(self as *mut Self, aPos) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Position_set_position(self as *mut Self, aPos) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6870,8 +8233,11 @@ impl Position {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Position_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6879,8 +8245,10 @@ impl Position {
     /// Create if not found the TDataXtd_Position attribute set its position to <aPos>
     pub fn set_label_pnt(aLabel: &crate::tdf::Label, aPos: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::TDataXtd_Position_set_label_pnt(aLabel, aPos) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDataXtd_Position_set_label_pnt(aLabel, aPos) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6892,8 +8260,11 @@ impl Position {
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPosition> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Position_set_label(aLabel) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6903,8 +8274,11 @@ impl Position {
     pub fn get(aLabel: &crate::tdf::Label, aPos: &mut crate::gp::Pnt) -> bool {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Position_get(aLabel, aPos) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6913,8 +8287,11 @@ impl Position {
     pub fn get_id() -> &'static crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Position_get_id() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6922,8 +8299,11 @@ impl Position {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Position_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6931,68 +8311,73 @@ impl Position {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Position_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Position_as_TDF_Attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Position_as_TDF_Attribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Position_as_TDF_Attribute_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Position_as_TDF_Attribute_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Position_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Position_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_Position_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Position_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPosition> {
-        {
-            let __result = unsafe { crate::ffi::TDataXtd_Position_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDataXtd_Position_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         {
-            unsafe { crate::ffi::TDataXtd_Position_inherited_SetID(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Position_inherited_SetID(self as *mut Self, arg0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7001,8 +8386,11 @@ impl Position {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Position_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7011,8 +8399,11 @@ impl Position {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Position_inherited_Transaction(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7022,8 +8413,11 @@ impl Position {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Position_inherited_UntilTransaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7032,8 +8426,11 @@ impl Position {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Position_inherited_IsValid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7042,8 +8439,11 @@ impl Position {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Position_inherited_IsNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7052,8 +8452,11 @@ impl Position {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Position_inherited_IsForgotten(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7063,8 +8466,11 @@ impl Position {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Position_inherited_IsAttribute(self as *const Self, anID)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7082,18 +8488,23 @@ impl Position {
                     anAttribute,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Position_inherited_AddAttribute(self as *const Self, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7103,53 +8514,70 @@ impl Position {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Position_inherited_ForgetAttribute(self as *const Self, aguid)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Position_inherited_ForgetAllAttributes(
                     self as *const Self,
                     clearChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Position_inherited_AfterAddition(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Position_inherited_AfterAddition(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Position_inherited_BeforeRemoval(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Position_inherited_BeforeRemoval(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Position_inherited_BeforeForget(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Position_inherited_BeforeForget(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Position_inherited_AfterResume(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Position_inherited_AfterResume(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7159,8 +8587,11 @@ impl Position {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Position_inherited_AfterRetrieval(self as *mut Self, forceIt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7178,8 +8609,11 @@ impl Position {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7197,26 +8631,34 @@ impl Position {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Position_inherited_BeforeCommitTransaction(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Position_inherited_Backup(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Position_inherited_Backup(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7225,8 +8667,11 @@ impl Position {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Position_inherited_IsBackuped(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7235,8 +8680,11 @@ impl Position {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Position_inherited_BackupCopy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7246,8 +8694,11 @@ impl Position {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Position_inherited_DeltaOnAddition(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7257,8 +8708,11 @@ impl Position {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Position_inherited_DeltaOnForget(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7268,8 +8722,11 @@ impl Position {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Position_inherited_DeltaOnResume(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7285,8 +8742,11 @@ impl Position {
                     anOldAttribute,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7296,18 +8756,23 @@ impl Position {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Position_inherited_DeltaOnRemoval(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Position_inherited_References(self as *const Self, aDataSet)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7319,7 +8784,7 @@ impl Position {
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Position_inherited_ExtendedDump(
                     self as *const Self,
                     anOS,
@@ -7327,17 +8792,21 @@ impl Position {
                     aMap,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Position_inherited_Forget(self as *mut Self, aTransaction)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7347,8 +8816,11 @@ impl Position {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Position_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7358,8 +8830,11 @@ impl Position {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Position_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7368,11 +8843,14 @@ impl Position {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Position_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7382,18 +8860,23 @@ impl Position {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Position_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Position_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7403,16 +8886,22 @@ impl Position {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Position_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDataXtd_Position_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Position_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7428,42 +8917,42 @@ unsafe impl crate::CppDeletable for HandleTDataXtdPosition {
 impl HandleTDataXtdPosition {
     /// Dereference this Handle to access the underlying TDataXtd_Position
     pub fn get(&self) -> &crate::ffi::TDataXtd_Position {
-        {
-            let __result = unsafe { crate::ffi::HandleTDataXtdPosition_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdPosition_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDataXtd_Position
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Position {
-        {
-            let __result = unsafe { crate::ffi::HandleTDataXtdPosition_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdPosition_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDataXtd_Position> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdPosition_to_HandleTDFAttribute(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdPosition_to_HandleTDFAttribute(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDataXtd_Position> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdPosition_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdPosition_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -7489,8 +8978,10 @@ impl Presentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Presentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7499,8 +8990,11 @@ impl Presentation {
     pub fn id(&self) -> &crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Presentation_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7509,8 +9003,12 @@ impl Presentation {
     /// one. It is used when aborting a transaction.
     pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TDataXtd_Presentation_restore(self as *mut Self, anAttribute) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Presentation_restore(self as *mut Self, anAttribute)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7521,8 +9019,11 @@ impl Presentation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Presentation_new_empty(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7540,14 +9041,16 @@ impl Presentation {
         aRelocTationable: &crate::ffi::HandleTDFRelocationTable,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Presentation_paste(
                     self as *const Self,
                     intoAttribute,
                     aRelocTationable,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7556,8 +9059,11 @@ impl Presentation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Presentation_backup_copy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7566,8 +9072,11 @@ impl Presentation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Presentation_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7577,8 +9086,11 @@ impl Presentation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Presentation_get_driver_guid(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7586,10 +9098,12 @@ impl Presentation {
     /// Sets the GUID of the driver managing display of associated AIS object
     pub fn set_driver_guid(&mut self, theGUID: &crate::standard::GUID) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Presentation_set_driver_guid(self as *mut Self, theGUID)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7598,8 +9112,11 @@ impl Presentation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Presentation_is_displayed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7608,8 +9125,11 @@ impl Presentation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Presentation_has_own_material(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7619,8 +9139,11 @@ impl Presentation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Presentation_has_own_transparency(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7629,8 +9152,11 @@ impl Presentation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Presentation_has_own_color(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7639,8 +9165,11 @@ impl Presentation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Presentation_has_own_width(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7649,8 +9178,11 @@ impl Presentation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Presentation_has_own_mode(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7660,67 +9192,84 @@ impl Presentation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Presentation_has_own_selection_mode(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TDataXtd_Presentation.hxx`:103 - `TDataXtd_Presentation::SetDisplayed()`
     pub fn set_displayed(&mut self, theIsDisplayed: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Presentation_set_displayed(self as *mut Self, theIsDisplayed)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDataXtd_Presentation.hxx`:105 - `TDataXtd_Presentation::SetMaterialIndex()`
     pub fn set_material_index(&mut self, theMaterialIndex: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Presentation_set_material_index(
                     self as *mut Self,
                     theMaterialIndex,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDataXtd_Presentation.hxx`:107 - `TDataXtd_Presentation::SetTransparency()`
     pub fn set_transparency(&mut self, theValue: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Presentation_set_transparency(self as *mut Self, theValue)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDataXtd_Presentation.hxx`:109 - `TDataXtd_Presentation::SetColor()`
     pub fn set_color(&mut self, theColor: crate::quantity::NameOfColor) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Presentation_set_color(self as *mut Self, theColor.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDataXtd_Presentation.hxx`:111 - `TDataXtd_Presentation::SetWidth()`
     pub fn set_width(&mut self, theWidth: f64) {
         {
-            unsafe { crate::ffi::TDataXtd_Presentation_set_width(self as *mut Self, theWidth) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Presentation_set_width(self as *mut Self, theWidth) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDataXtd_Presentation.hxx`:113 - `TDataXtd_Presentation::SetMode()`
     pub fn set_mode(&mut self, theMode: i32) {
         {
-            unsafe { crate::ffi::TDataXtd_Presentation_set_mode(self as *mut Self, theMode) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Presentation_set_mode(self as *mut Self, theMode) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7732,8 +9281,11 @@ impl Presentation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Presentation_get_nb_selection_modes(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7745,28 +9297,32 @@ impl Presentation {
     /// ...), the attribute will be included into undo/redo.
     pub fn set_selection_mode(&mut self, theSelectionMode: i32, theTransaction: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Presentation_set_selection_mode(
                     self as *mut Self,
                     theSelectionMode,
                     theTransaction,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDataXtd_Presentation.hxx`:126 - `TDataXtd_Presentation::AddSelectionMode()`
     pub fn add_selection_mode(&mut self, theSelectionMode: i32, theTransaction: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Presentation_add_selection_mode(
                     self as *mut Self,
                     theSelectionMode,
                     theTransaction,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7775,8 +9331,11 @@ impl Presentation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Presentation_material_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7785,8 +9344,11 @@ impl Presentation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Presentation_transparency(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7794,8 +9356,11 @@ impl Presentation {
     pub fn color(&self) -> crate::quantity::NameOfColor {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Presentation_color(self as *const Self) };
-            crate::check_exception();
-            crate::quantity::NameOfColor::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::quantity::NameOfColor::try_from(__val).unwrap()
         }
     }
 
@@ -7803,8 +9368,11 @@ impl Presentation {
     pub fn width(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Presentation_width(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7812,8 +9380,11 @@ impl Presentation {
     pub fn mode(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Presentation_mode(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7823,56 +9394,75 @@ impl Presentation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Presentation_selection_mode(self as *const Self, index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TDataXtd_Presentation.hxx`:141 - `TDataXtd_Presentation::UnsetMaterial()`
     pub fn unset_material(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Presentation_unset_material(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Presentation_unset_material(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDataXtd_Presentation.hxx`:143 - `TDataXtd_Presentation::UnsetTransparency()`
     pub fn unset_transparency(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Presentation_unset_transparency(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Presentation_unset_transparency(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDataXtd_Presentation.hxx`:145 - `TDataXtd_Presentation::UnsetColor()`
     pub fn unset_color(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Presentation_unset_color(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDataXtd_Presentation_unset_color(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDataXtd_Presentation.hxx`:147 - `TDataXtd_Presentation::UnsetWidth()`
     pub fn unset_width(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Presentation_unset_width(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDataXtd_Presentation_unset_width(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDataXtd_Presentation.hxx`:149 - `TDataXtd_Presentation::UnsetMode()`
     pub fn unset_mode(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Presentation_unset_mode(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDataXtd_Presentation_unset_mode(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TDataXtd_Presentation.hxx`:151 - `TDataXtd_Presentation::UnsetSelectionMode()`
     pub fn unset_selection_mode(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Presentation_unset_selection_mode(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Presentation_unset_selection_mode(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7884,8 +9474,11 @@ impl Presentation {
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPresentation> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Presentation_set(theLabel, theDriverId) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7893,8 +9486,10 @@ impl Presentation {
     /// Remove attribute of this type from the label
     pub fn unset(theLabel: &crate::tdf::Label) {
         {
-            unsafe { crate::ffi::TDataXtd_Presentation_unset(theLabel) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDataXtd_Presentation_unset(theLabel) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7903,8 +9498,11 @@ impl Presentation {
     pub fn get_id() -> &'static crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Presentation_get_id() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7912,8 +9510,11 @@ impl Presentation {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Presentation_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -7921,8 +9522,11 @@ impl Presentation {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Presentation_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7933,8 +9537,11 @@ impl Presentation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Presentation_get_color_name_from_old_enum(theOld) };
-            crate::check_exception();
-            crate::quantity::NameOfColor::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::quantity::NameOfColor::try_from(__val).unwrap()
         }
     }
 
@@ -7946,70 +9553,75 @@ impl Presentation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Presentation_get_old_color_name_from_new_enum(theNew.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Presentation_as_TDF_Attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Presentation_as_TDF_Attribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_Presentation_as_TDF_Attribute_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Presentation_as_TDF_Attribute_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_Presentation_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Presentation_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_Presentation_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TDataXtd_Presentation_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdPresentation> {
-        {
-            let __result = unsafe { crate::ffi::TDataXtd_Presentation_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDataXtd_Presentation_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         {
-            unsafe { crate::ffi::TDataXtd_Presentation_inherited_SetID(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Presentation_inherited_SetID(self as *mut Self, arg0)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8018,8 +9630,11 @@ impl Presentation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Presentation_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8029,8 +9644,11 @@ impl Presentation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Presentation_inherited_Transaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8040,8 +9658,11 @@ impl Presentation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Presentation_inherited_UntilTransaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8050,8 +9671,11 @@ impl Presentation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Presentation_inherited_IsValid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8060,8 +9684,11 @@ impl Presentation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Presentation_inherited_IsNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8071,8 +9698,11 @@ impl Presentation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Presentation_inherited_IsForgotten(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8082,8 +9712,11 @@ impl Presentation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Presentation_inherited_IsAttribute(self as *const Self, anID)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8101,18 +9734,23 @@ impl Presentation {
                     anAttribute,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Presentation_inherited_AddAttribute(self as *const Self, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8125,53 +9763,74 @@ impl Presentation {
                     aguid,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Presentation_inherited_ForgetAllAttributes(
                     self as *const Self,
                     clearChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Presentation_inherited_AfterAddition(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Presentation_inherited_AfterAddition(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Presentation_inherited_BeforeRemoval(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Presentation_inherited_BeforeRemoval(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Presentation_inherited_BeforeForget(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Presentation_inherited_BeforeForget(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Presentation_inherited_AfterResume(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Presentation_inherited_AfterResume(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8184,8 +9843,11 @@ impl Presentation {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8203,8 +9865,11 @@ impl Presentation {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8222,28 +9887,36 @@ impl Presentation {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Presentation_inherited_BeforeCommitTransaction(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Presentation_inherited_Backup(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Presentation_inherited_Backup(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8253,8 +9926,11 @@ impl Presentation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Presentation_inherited_IsBackuped(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8264,8 +9940,11 @@ impl Presentation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Presentation_inherited_DeltaOnAddition(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8275,8 +9954,11 @@ impl Presentation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Presentation_inherited_DeltaOnForget(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8286,8 +9968,11 @@ impl Presentation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Presentation_inherited_DeltaOnResume(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8303,8 +9988,11 @@ impl Presentation {
                     anOldAttribute,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8314,21 +10002,26 @@ impl Presentation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Presentation_inherited_DeltaOnRemoval(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Presentation_inherited_References(
                     self as *const Self,
                     aDataSet,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8340,7 +10033,7 @@ impl Presentation {
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Presentation_inherited_ExtendedDump(
                     self as *const Self,
                     anOS,
@@ -8348,17 +10041,21 @@ impl Presentation {
                     aMap,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Presentation_inherited_Forget(self as *mut Self, aTransaction)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8368,8 +10065,11 @@ impl Presentation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Presentation_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8379,8 +10079,11 @@ impl Presentation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Presentation_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8389,11 +10092,14 @@ impl Presentation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Presentation_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -8404,18 +10110,23 @@ impl Presentation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Presentation_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Presentation_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8425,16 +10136,22 @@ impl Presentation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Presentation_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDataXtd_Presentation_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Presentation_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8450,46 +10167,42 @@ unsafe impl crate::CppDeletable for HandleTDataXtdPresentation {
 impl HandleTDataXtdPresentation {
     /// Dereference this Handle to access the underlying TDataXtd_Presentation
     pub fn get(&self) -> &crate::ffi::TDataXtd_Presentation {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTDataXtdPresentation_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdPresentation_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDataXtd_Presentation
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Presentation {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTDataXtdPresentation_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdPresentation_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDataXtd_Presentation> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdPresentation_to_HandleTDFAttribute(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdPresentation_to_HandleTDFAttribute(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDataXtd_Presentation> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdPresentation_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdPresentation_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -8513,8 +10226,10 @@ impl Shape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Shape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8522,16 +10237,21 @@ impl Shape {
     pub fn id(&self) -> &crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Shape_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TDataXtd_Shape.hxx`:60 - `TDataXtd_Shape::References()`
     pub fn references(&self, DS: &crate::ffi::HandleTDFDataSet) {
         {
-            unsafe { crate::ffi::TDataXtd_Shape_references(self as *const Self, DS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDataXtd_Shape_references(self as *const Self, DS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8548,8 +10268,11 @@ impl Shape {
     ) -> &mut crate::ffi::Standard_OStream {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Shape_dump(self as *mut Self, anOS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -8557,8 +10280,11 @@ impl Shape {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Shape_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8566,8 +10292,11 @@ impl Shape {
     pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Shape_new_empty(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8580,8 +10309,11 @@ impl Shape {
     pub fn find(current: &crate::tdf::Label, S: &mut crate::ffi::HandleTDataXtdShape) -> bool {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Shape_find(current, S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8593,8 +10325,11 @@ impl Shape {
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdShape> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Shape_new(label) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8607,8 +10342,11 @@ impl Shape {
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdShape> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Shape_set(label, shape) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8618,8 +10356,11 @@ impl Shape {
     pub fn get(label: &crate::tdf::Label) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Shape_get(label) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8629,8 +10370,11 @@ impl Shape {
     pub fn get_id() -> &'static crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Shape_get_id() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8638,8 +10382,11 @@ impl Shape {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Shape_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8647,88 +10394,92 @@ impl Shape {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Shape_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDataStd_GenericEmpty
     pub fn as_t_data_std_generic_empty(&self) -> &crate::t_data_std::GenericEmpty {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Shape_as_TDataStd_GenericEmpty(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Shape_as_TDataStd_GenericEmpty(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDataStd_GenericEmpty (mutable)
     pub fn as_t_data_std_generic_empty_mut(&mut self) -> &mut crate::t_data_std::GenericEmpty {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_Shape_as_TDataStd_GenericEmpty_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Shape_as_TDataStd_GenericEmpty_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Shape_as_TDF_Attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::TDataXtd_Shape_as_TDF_Attribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Shape_as_TDF_Attribute_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Shape_as_TDF_Attribute_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Shape_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Shape_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Shape_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Shape_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdShape> {
-        {
-            let __result = unsafe { crate::ffi::TDataXtd_Shape_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDataXtd_Shape_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDataStd_GenericEmpty.hxx`:33 - `TDataStd_GenericEmpty::Restore()`
     pub fn restore(&mut self, arg0: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TDataXtd_Shape_inherited_Restore(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Shape_inherited_Restore(self as *mut Self, arg0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8739,16 +10490,23 @@ impl Shape {
         arg1: &crate::ffi::HandleTDFRelocationTable,
     ) {
         {
-            unsafe { crate::ffi::TDataXtd_Shape_inherited_Paste(self as *const Self, arg0, arg1) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Shape_inherited_Paste(self as *const Self, arg0, arg1)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         {
-            unsafe { crate::ffi::TDataXtd_Shape_inherited_SetID(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Shape_inherited_SetID(self as *mut Self, arg0) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8757,8 +10515,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Shape_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8767,8 +10528,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Shape_inherited_Transaction(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8778,8 +10542,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Shape_inherited_UntilTransaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8788,8 +10555,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Shape_inherited_IsValid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8798,8 +10568,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Shape_inherited_IsNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8808,8 +10581,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Shape_inherited_IsForgotten(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8819,8 +10595,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Shape_inherited_IsAttribute(self as *const Self, anID)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8838,18 +10617,23 @@ impl Shape {
                     anAttribute,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Shape_inherited_AddAttribute(self as *const Self, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8859,53 +10643,70 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Shape_inherited_ForgetAttribute(self as *const Self, aguid)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Shape_inherited_ForgetAllAttributes(
                     self as *const Self,
                     clearChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Shape_inherited_AfterAddition(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Shape_inherited_AfterAddition(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Shape_inherited_BeforeRemoval(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Shape_inherited_BeforeRemoval(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Shape_inherited_BeforeForget(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Shape_inherited_BeforeForget(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Shape_inherited_AfterResume(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Shape_inherited_AfterResume(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8915,8 +10716,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Shape_inherited_AfterRetrieval(self as *mut Self, forceIt)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8934,8 +10738,11 @@ impl Shape {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8953,26 +10760,33 @@ impl Shape {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Shape_inherited_BeforeCommitTransaction(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Shape_inherited_Backup(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDataXtd_Shape_inherited_Backup(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8981,8 +10795,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Shape_inherited_IsBackuped(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8991,8 +10808,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Shape_inherited_BackupCopy(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9002,8 +10822,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Shape_inherited_DeltaOnAddition(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9012,8 +10835,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Shape_inherited_DeltaOnForget(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9022,8 +10848,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Shape_inherited_DeltaOnResume(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9039,8 +10868,11 @@ impl Shape {
                     anOldAttribute,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9049,8 +10881,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Shape_inherited_DeltaOnRemoval(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9062,7 +10897,7 @@ impl Shape {
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Shape_inherited_ExtendedDump(
                     self as *const Self,
                     anOS,
@@ -9070,15 +10905,21 @@ impl Shape {
                     aMap,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         {
-            unsafe { crate::ffi::TDataXtd_Shape_inherited_Forget(self as *mut Self, aTransaction) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Shape_inherited_Forget(self as *mut Self, aTransaction)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9088,8 +10929,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Shape_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9099,8 +10943,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Shape_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9109,11 +10956,14 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Shape_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -9123,16 +10973,23 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Shape_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Shape_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Shape_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9142,16 +10999,21 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Shape_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDataXtd_Shape_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TDataXtd_Shape_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -9167,55 +11029,54 @@ unsafe impl crate::CppDeletable for HandleTDataXtdShape {
 impl HandleTDataXtdShape {
     /// Dereference this Handle to access the underlying TDataXtd_Shape
     pub fn get(&self) -> &crate::ffi::TDataXtd_Shape {
-        {
-            let __result = unsafe { crate::ffi::HandleTDataXtdShape_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdShape_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDataXtd_Shape
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Shape {
-        {
-            let __result = unsafe { crate::ffi::HandleTDataXtdShape_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdShape_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDataXtd_Shape> to Handle<TDataStd_GenericEmpty>
     pub fn to_handle_generic_empty(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataStdGenericEmpty> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdShape_to_HandleTDataStdGenericEmpty(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdShape_to_HandleTDataStdGenericEmpty(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDataXtd_Shape> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdShape_to_HandleTDFAttribute(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleTDataXtdShape_to_HandleTDFAttribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDataXtd_Shape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdShape_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdShape_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -9246,8 +11107,10 @@ impl Triangulation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Triangulation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9255,8 +11118,12 @@ impl Triangulation {
     /// Sets the triangulation.
     pub fn set(&mut self, theTriangulation: &crate::ffi::HandlePolyTriangulation) {
         {
-            unsafe { crate::ffi::TDataXtd_Triangulation_set(self as *mut Self, theTriangulation) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Triangulation_set(self as *mut Self, theTriangulation)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9265,8 +11132,11 @@ impl Triangulation {
     pub fn get(&self) -> &crate::ffi::HandlePolyTriangulation {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Triangulation_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9276,8 +11146,11 @@ impl Triangulation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Triangulation_deflection(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9286,10 +11159,12 @@ impl Triangulation {
     /// See more on deflection in Polygon2D
     pub fn deflection_real(&mut self, theDeflection: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Triangulation_deflection_real(self as *mut Self, theDeflection)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9297,8 +11172,11 @@ impl Triangulation {
     /// Deallocates the UV nodes.
     pub fn remove_uv_nodes(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Triangulation_remove_uv_nodes(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Triangulation_remove_uv_nodes(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9308,8 +11186,11 @@ impl Triangulation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Triangulation_nb_nodes(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9319,8 +11200,11 @@ impl Triangulation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Triangulation_nb_triangles(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9330,8 +11214,11 @@ impl Triangulation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Triangulation_has_uv_nodes(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9342,8 +11229,11 @@ impl Triangulation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Triangulation_node(self as *const Self, theIndex) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9353,10 +11243,12 @@ impl Triangulation {
     /// Raises Standard_OutOfRange exception if theIndex is less than 1 or greater than NbNodes.
     pub fn set_node(&mut self, theIndex: i32, theNode: &crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Triangulation_set_node(self as *mut Self, theIndex, theNode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9368,8 +11260,11 @@ impl Triangulation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Triangulation_uv_node(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9379,14 +11274,16 @@ impl Triangulation {
     /// Raises Standard_OutOfRange exception if theIndex is less than 1 or greater than NbNodes.
     pub fn set_uv_node(&mut self, theIndex: i32, theUVNode: &crate::gp::Pnt2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Triangulation_set_uv_node(
                     self as *mut Self,
                     theIndex,
                     theUVNode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9398,8 +11295,11 @@ impl Triangulation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Triangulation_triangle(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9409,14 +11309,16 @@ impl Triangulation {
     /// Raises Standard_OutOfRange exception if theIndex is less than 1 or greater than NbTriangles.
     pub fn set_triangle(&mut self, theIndex: i32, theTriangle: &crate::poly::Triangle) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Triangulation_set_triangle(
                     self as *mut Self,
                     theIndex,
                     theTriangle,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9425,14 +11327,16 @@ impl Triangulation {
     /// Raises Standard_OutOfRange exception.
     pub fn set_normal(&mut self, theIndex: i32, theNormal: &crate::gp::Dir) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Triangulation_set_normal(
                     self as *mut Self,
                     theIndex,
                     theNormal,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9442,8 +11346,11 @@ impl Triangulation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Triangulation_has_normals(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9454,8 +11361,11 @@ impl Triangulation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Triangulation_normal(self as *const Self, theIndex) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9464,16 +11374,23 @@ impl Triangulation {
     pub fn id(&self) -> &crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Triangulation_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TDataXtd_Triangulation.hxx`:140 - `TDataXtd_Triangulation::Restore()`
     pub fn restore(&mut self, theAttribute: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe { crate::ffi::TDataXtd_Triangulation_restore(self as *mut Self, theAttribute) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Triangulation_restore(self as *mut Self, theAttribute)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9482,8 +11399,11 @@ impl Triangulation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Triangulation_new_empty(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9494,8 +11414,11 @@ impl Triangulation {
         RT: &crate::ffi::HandleTDFRelocationTable,
     ) {
         {
-            unsafe { crate::ffi::TDataXtd_Triangulation_paste(self as *const Self, Into, RT) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Triangulation_paste(self as *const Self, Into, RT) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9513,8 +11436,11 @@ impl Triangulation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Triangulation_dump(self as *mut Self, anOS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -9523,8 +11449,11 @@ impl Triangulation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Triangulation_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9533,8 +11462,11 @@ impl Triangulation {
     pub fn get_id() -> &'static crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Triangulation_get_id() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9545,8 +11477,11 @@ impl Triangulation {
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdTriangulation> {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Triangulation_set_label(theLabel) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9564,8 +11499,11 @@ impl Triangulation {
                     theTriangulation,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9573,8 +11511,11 @@ impl Triangulation {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Triangulation_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -9582,70 +11523,76 @@ impl Triangulation {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TDataXtd_Triangulation_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
-        {
-            let __result =
-                unsafe { crate::ffi::TDataXtd_Triangulation_as_TDF_Attribute(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Triangulation_as_TDF_Attribute(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_Triangulation_as_TDF_Attribute_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TDataXtd_Triangulation_as_TDF_Attribute_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_Triangulation_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TDataXtd_Triangulation_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TDataXtd_Triangulation_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TDataXtd_Triangulation_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTDataXtdTriangulation> {
-        {
-            let __result = unsafe { crate::ffi::TDataXtd_Triangulation_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TDataXtd_Triangulation_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         {
-            unsafe { crate::ffi::TDataXtd_Triangulation_inherited_SetID(self as *mut Self, arg0) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Triangulation_inherited_SetID(self as *mut Self, arg0)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9654,8 +11601,11 @@ impl Triangulation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Triangulation_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9665,8 +11615,11 @@ impl Triangulation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_Transaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9676,8 +11629,11 @@ impl Triangulation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_UntilTransaction(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9687,8 +11643,11 @@ impl Triangulation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_IsValid(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9697,8 +11656,11 @@ impl Triangulation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Triangulation_inherited_IsNew(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9708,8 +11670,11 @@ impl Triangulation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_IsForgotten(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9719,8 +11684,11 @@ impl Triangulation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_IsAttribute(self as *const Self, anID)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9738,21 +11706,26 @@ impl Triangulation {
                     anAttribute,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
     pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_AddAttribute(
                     self as *const Self,
                     other,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9765,57 +11738,74 @@ impl Triangulation {
                     aguid,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_ForgetAllAttributes(
                     self as *const Self,
                     clearChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_AfterAddition(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_BeforeRemoval(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Triangulation_inherited_BeforeForget(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Triangulation_inherited_BeforeForget(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Triangulation_inherited_AfterResume(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TDataXtd_Triangulation_inherited_AfterResume(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9828,8 +11818,11 @@ impl Triangulation {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9847,8 +11840,11 @@ impl Triangulation {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9866,28 +11862,36 @@ impl Triangulation {
                     forceIt,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_BeforeCommitTransaction(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         {
-            unsafe { crate::ffi::TDataXtd_Triangulation_inherited_Backup(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Triangulation_inherited_Backup(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9897,8 +11901,11 @@ impl Triangulation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_IsBackuped(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9908,8 +11915,11 @@ impl Triangulation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_BackupCopy(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9919,8 +11929,11 @@ impl Triangulation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_DeltaOnAddition(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9930,8 +11943,11 @@ impl Triangulation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_DeltaOnForget(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9941,8 +11957,11 @@ impl Triangulation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_DeltaOnResume(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9958,8 +11977,11 @@ impl Triangulation {
                     anOldAttribute,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9969,21 +11991,26 @@ impl Triangulation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_DeltaOnRemoval(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
     pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_References(
                     self as *const Self,
                     aDataSet,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9995,7 +12022,7 @@ impl Triangulation {
         aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_ExtendedDump(
                     self as *const Self,
                     anOS,
@@ -10003,17 +12030,21 @@ impl Triangulation {
                     aMap,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_Forget(self as *mut Self, aTransaction)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10026,8 +12057,11 @@ impl Triangulation {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10037,8 +12071,11 @@ impl Triangulation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10047,11 +12084,14 @@ impl Triangulation {
         {
             let __result =
                 unsafe { crate::ffi::TDataXtd_Triangulation_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -10062,18 +12102,23 @@ impl Triangulation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10083,16 +12128,22 @@ impl Triangulation {
             let __result = unsafe {
                 crate::ffi::TDataXtd_Triangulation_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TDataXtd_Triangulation_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TDataXtd_Triangulation_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -10108,46 +12159,43 @@ unsafe impl crate::CppDeletable for HandleTDataXtdTriangulation {
 impl HandleTDataXtdTriangulation {
     /// Dereference this Handle to access the underlying TDataXtd_Triangulation
     pub fn get(&self) -> &crate::ffi::TDataXtd_Triangulation {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTDataXtdTriangulation_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTDataXtdTriangulation_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TDataXtd_Triangulation
     pub fn get_mut(&mut self) -> &mut crate::ffi::TDataXtd_Triangulation {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTDataXtdTriangulation_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTDataXtdTriangulation_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TDataXtd_Triangulation> to Handle<TDF_Attribute>
     pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdTriangulation_to_HandleTDFAttribute(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdTriangulation_to_HandleTDFAttribute(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TDataXtd_Triangulation> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTDataXtdTriangulation_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTDataXtdTriangulation_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

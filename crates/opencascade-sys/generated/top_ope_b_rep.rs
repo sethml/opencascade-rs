@@ -16,8 +16,11 @@ pub fn print_typelinecurve_ostream(
     {
         let __result =
             unsafe { crate::ffi::TopOpeBRep_print_typelinecurve_ostream(TLC.into(), OS) };
-        crate::check_exception();
-        unsafe { &mut *(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { &mut *(__val) }
     }
 }
 
@@ -114,8 +117,10 @@ impl Bipoint {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Bipoint_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -123,8 +128,10 @@ impl Bipoint {
     pub fn new_int2(I1: i32, I2: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Bipoint_ctor_int2(I1, I2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -132,8 +139,11 @@ impl Bipoint {
     pub fn i1(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Bipoint_i1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -141,8 +151,11 @@ impl Bipoint {
     pub fn i2(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Bipoint_i2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -176,8 +189,10 @@ impl DSFiller {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_DSFiller_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -188,11 +203,14 @@ impl DSFiller {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_DSFiller_p_shape_classifier(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -210,7 +228,7 @@ impl DSFiller {
         orientFORWARD: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_DSFiller_insert(
                     self as *mut Self,
                     S1,
@@ -219,7 +237,9 @@ impl DSFiller {
                     orientFORWARD,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -236,7 +256,7 @@ impl DSFiller {
         orientFORWARD: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_DSFiller_insert_intersection(
                     self as *mut Self,
                     S1,
@@ -245,15 +265,19 @@ impl DSFiller {
                     orientFORWARD,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_DSFiller.hxx`:76 - `TopOpeBRep_DSFiller::Complete()`
     pub fn complete(&mut self, HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
         {
-            unsafe { crate::ffi::TopOpeBRep_DSFiller_complete(self as *mut Self, HDS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRep_DSFiller_complete(self as *mut Self, HDS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -267,8 +291,11 @@ impl DSFiller {
         HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
     ) {
         {
-            unsafe { crate::ffi::TopOpeBRep_DSFiller_insert2d(self as *mut Self, S1, S2, HDS) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_DSFiller_insert2d(self as *mut Self, S1, S2, HDS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -283,7 +310,7 @@ impl DSFiller {
         HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_DSFiller_insert_intersection2d(
                     self as *mut Self,
                     S1,
@@ -291,7 +318,9 @@ impl DSFiller {
                     HDS,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -300,8 +329,11 @@ impl DSFiller {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_DSFiller_is_made_of1d(self as *const Self, S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -310,8 +342,11 @@ impl DSFiller {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_DSFiller_is_context1d(self as *const Self, S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -335,7 +370,7 @@ impl DSFiller {
         orientFORWARD: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_DSFiller_insert1d(
                     self as *mut Self,
                     S1,
@@ -346,7 +381,9 @@ impl DSFiller {
                     orientFORWARD,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -356,8 +393,11 @@ impl DSFiller {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_DSFiller_change_shape_intersector(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -367,8 +407,11 @@ impl DSFiller {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_DSFiller_change_shape_intersector2d(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -377,8 +420,11 @@ impl DSFiller {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_DSFiller_change_faces_filler(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -387,8 +433,11 @@ impl DSFiller {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_DSFiller_change_edges_filler(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -398,16 +447,22 @@ impl DSFiller {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_DSFiller_change_face_edge_filler(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// **Source:** `TopOpeBRep_DSFiller.hxx`:121 - `TopOpeBRep_DSFiller::GapFiller()`
     pub fn gap_filler(&self, HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
         {
-            unsafe { crate::ffi::TopOpeBRep_DSFiller_gap_filler(self as *const Self, HDS) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_DSFiller_gap_filler(self as *const Self, HDS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -419,42 +474,55 @@ impl DSFiller {
     /// Wires  containing an intersected edge.
     pub fn complete_ds(&self, HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
         {
-            unsafe { crate::ffi::TopOpeBRep_DSFiller_complete_ds(self as *const Self, HDS) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_DSFiller_complete_ds(self as *const Self, HDS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_DSFiller.hxx`:130 - `TopOpeBRep_DSFiller::Filter()`
     pub fn filter(&self, HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
         {
-            unsafe { crate::ffi::TopOpeBRep_DSFiller_filter(self as *const Self, HDS) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRep_DSFiller_filter(self as *const Self, HDS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_DSFiller.hxx`:132 - `TopOpeBRep_DSFiller::Reducer()`
     pub fn reducer(&self, HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
         {
-            unsafe { crate::ffi::TopOpeBRep_DSFiller_reducer(self as *const Self, HDS) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_DSFiller_reducer(self as *const Self, HDS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_DSFiller.hxx`:134 - `TopOpeBRep_DSFiller::RemoveUnsharedGeometry()`
     pub fn remove_unshared_geometry(&mut self, HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_DSFiller_remove_unshared_geometry(self as *mut Self, HDS)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_DSFiller.hxx`:136 - `TopOpeBRep_DSFiller::Checker()`
     pub fn checker(&self, HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
         {
-            unsafe { crate::ffi::TopOpeBRep_DSFiller_checker(self as *const Self, HDS) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_DSFiller_checker(self as *const Self, HDS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -468,8 +536,11 @@ impl DSFiller {
     /// search for interference identity using edge connexity //NYI
     pub fn complete_ds2d(&self, HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
         {
-            unsafe { crate::ffi::TopOpeBRep_DSFiller_complete_ds2d(self as *const Self, HDS) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_DSFiller_complete_ds2d(self as *const Self, HDS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -494,8 +565,10 @@ impl EdgesFiller {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_EdgesFiller_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -508,18 +581,24 @@ impl EdgesFiller {
         HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_EdgesFiller_insert(self as *mut Self, E1, E2, EI, HDS)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_EdgesFiller.hxx`:52 - `TopOpeBRep_EdgesFiller::Face()`
     pub fn face_int_shape(&mut self, I: i32, F: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TopOpeBRep_EdgesFiller_face_int_shape(self as *mut Self, I, F) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRep_EdgesFiller_face_int_shape(self as *mut Self, I, F)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -528,8 +607,11 @@ impl EdgesFiller {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_EdgesFiller_face_int(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -553,18 +635,22 @@ impl EdgesIntersector {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_EdgesIntersector_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:52 - `TopOpeBRep_EdgesIntersector::SetFaces()`
     pub fn set_faces_shape2(&mut self, F1: &crate::topo_ds::Shape, F2: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_EdgesIntersector_set_faces_shape2(self as *mut Self, F1, F2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -577,7 +663,7 @@ impl EdgesIntersector {
         B2: &crate::bnd::Box,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_EdgesIntersector_set_faces_shape2_box2(
                     self as *mut Self,
                     F1,
@@ -586,29 +672,37 @@ impl EdgesIntersector {
                     B2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:59 - `TopOpeBRep_EdgesIntersector::ForceTolerances()`
     pub fn force_tolerances(&mut self, Tol1: f64, Tol2: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_EdgesIntersector_force_tolerances(
                     self as *mut Self,
                     Tol1,
                     Tol2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:61 - `TopOpeBRep_EdgesIntersector::Dimension()`
     pub fn dimension_int(&mut self, D: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRep_EdgesIntersector_dimension_int(self as *mut Self, D) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRep_EdgesIntersector_dimension_int(self as *mut Self, D)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -618,8 +712,11 @@ impl EdgesIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_EdgesIntersector_dimension(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -631,7 +728,7 @@ impl EdgesIntersector {
         ReduceSegments: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_EdgesIntersector_perform(
                     self as *mut Self,
                     E1,
@@ -639,7 +736,9 @@ impl EdgesIntersector {
                     ReduceSegments,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -648,8 +747,11 @@ impl EdgesIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_EdgesIntersector_is_empty(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -659,8 +761,11 @@ impl EdgesIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_EdgesIntersector_has_segment(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -670,8 +775,11 @@ impl EdgesIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_EdgesIntersector_same_domain(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -680,8 +788,11 @@ impl EdgesIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_EdgesIntersector_edge(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -691,8 +802,11 @@ impl EdgesIntersector {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_EdgesIntersector_curve(self as *const Self, Index)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -701,8 +815,11 @@ impl EdgesIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_EdgesIntersector_face(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -712,8 +829,11 @@ impl EdgesIntersector {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_EdgesIntersector_surface(self as *const Self, Index)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -723,8 +843,11 @@ impl EdgesIntersector {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_EdgesIntersector_surfaces_same_oriented(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -734,8 +857,11 @@ impl EdgesIntersector {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_EdgesIntersector_faces_same_oriented(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -745,18 +871,23 @@ impl EdgesIntersector {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_EdgesIntersector_tolerance_max(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:92 - `TopOpeBRep_EdgesIntersector::Tolerances()`
     pub fn tolerances(&self, tol1: &mut f64, tol2: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_EdgesIntersector_tolerances(self as *const Self, tol1, tol2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -765,8 +896,11 @@ impl EdgesIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_EdgesIntersector_nb_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -775,28 +909,35 @@ impl EdgesIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_EdgesIntersector_nb_segments(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:98 - `TopOpeBRep_EdgesIntersector::Dump()`
     pub fn dump(&mut self, str: &crate::t_collection::AsciiString, ie1: i32, ie2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_EdgesIntersector_dump(self as *mut Self, str, ie1, ie2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:102 - `TopOpeBRep_EdgesIntersector::InitPoint()`
     pub fn init_point(&mut self, selectkeep: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_EdgesIntersector_init_point(self as *mut Self, selectkeep)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -805,16 +946,22 @@ impl EdgesIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_EdgesIntersector_more_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:106 - `TopOpeBRep_EdgesIntersector::NextPoint()`
     pub fn next_point(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_EdgesIntersector_next_point(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_EdgesIntersector_next_point(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -823,8 +970,11 @@ impl EdgesIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_EdgesIntersector_points(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -833,8 +983,11 @@ impl EdgesIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_EdgesIntersector_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -844,8 +997,11 @@ impl EdgesIntersector {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_EdgesIntersector_point_int(self as *const Self, I)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -860,8 +1016,11 @@ impl EdgesIntersector {
                     Pn,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -870,8 +1029,11 @@ impl EdgesIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_EdgesIntersector_status1(self as *const Self) };
-            crate::check_exception();
-            crate::top_ope_b_rep::P2Dstatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep::P2Dstatus::try_from(__val).unwrap()
         }
     }
 }
@@ -894,50 +1056,67 @@ impl FFDumper {
     pub unsafe fn new_facesfillerptr(PFF: &*mut FacesFiller) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_FFDumper_ctor_facesfillerptr(PFF) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRep_FFDumper.hxx`:42 - `TopOpeBRep_FFDumper::Init()`
     pub unsafe fn init(&mut self, PFF: &*mut FacesFiller) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FFDumper_init(self as *mut Self, PFF) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRep_FFDumper_init(self as *mut Self, PFF) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_FFDumper.hxx`:44 - `TopOpeBRep_FFDumper::DumpLine()`
     pub fn dump_line_int(&mut self, I: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FFDumper_dump_line_int(self as *mut Self, I) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_FFDumper_dump_line_int(self as *mut Self, I) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_FFDumper.hxx`:46 - `TopOpeBRep_FFDumper::DumpLine()`
     pub fn dump_line_lineinter(&mut self, L: &LineInter) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FFDumper_dump_line_lineinter(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRep_FFDumper_dump_line_lineinter(self as *mut Self, L)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_FFDumper.hxx`:48 - `TopOpeBRep_FFDumper::DumpVP()`
     pub fn dump_vp_vpointinter(&mut self, VP: &VPointInter) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FFDumper_dump_vp_vpointinter(self as *mut Self, VP) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRep_FFDumper_dump_vp_vpointinter(self as *mut Self, VP)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_FFDumper.hxx`:50 - `TopOpeBRep_FFDumper::DumpVP()`
     pub fn dump_vp_vpointinter_int(&mut self, VP: &VPointInter, ISI: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_FFDumper_dump_vp_vpointinter_int(self as *mut Self, VP, ISI)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -947,8 +1126,11 @@ impl FFDumper {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FFDumper_explore_index(self as *const Self, S, ISI)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -961,7 +1143,7 @@ impl FFDumper {
         newinDS: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_FFDumper_dump_dsp(
                     self as *const Self,
                     VP,
@@ -970,7 +1152,9 @@ impl FFDumper {
                     newinDS,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -980,11 +1164,14 @@ impl FFDumper {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FFDumper_p_faces_filler_dummy(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -994,8 +1181,11 @@ impl FFDumper {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_FFDumper_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1003,8 +1193,11 @@ impl FFDumper {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_FFDumper_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1012,42 +1205,43 @@ impl FFDumper {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_FFDumper_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRep_FFDumper_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopOpeBRep_FFDumper_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRep_FFDumper_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopOpeBRep_FFDumper_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepFFDumper> {
-        {
-            let __result = unsafe { crate::ffi::TopOpeBRep_FFDumper_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopOpeBRep_FFDumper_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1056,8 +1250,11 @@ impl FFDumper {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FFDumper_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1067,8 +1264,11 @@ impl FFDumper {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FFDumper_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1077,11 +1277,14 @@ impl FFDumper {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_FFDumper_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1092,18 +1295,23 @@ impl FFDumper {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FFDumper_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_FFDumper_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1113,16 +1321,22 @@ impl FFDumper {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FFDumper_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FFDumper_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_FFDumper_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1138,32 +1352,31 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepFFDumper {
 impl HandleTopOpeBRepFFDumper {
     /// Dereference this Handle to access the underlying TopOpeBRep_FFDumper
     pub fn get(&self) -> &crate::ffi::TopOpeBRep_FFDumper {
-        {
-            let __result = unsafe { crate::ffi::HandleTopOpeBRepFFDumper_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopOpeBRepFFDumper_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRep_FFDumper
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRep_FFDumper {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopOpeBRepFFDumper_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTopOpeBRepFFDumper_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopOpeBRep_FFDumper> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepFFDumper_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepFFDumper_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1186,8 +1399,10 @@ impl FFTransitionTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_FFTransitionTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1201,8 +1416,11 @@ impl FFTransitionTool {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FFTransitionTool_process_line_transition_vpointinter_int_orientation(P, Index, EdgeOrientation.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1215,8 +1433,11 @@ impl FFTransitionTool {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FFTransitionTool_process_line_transition_vpointinter_lineinter(P, L)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1234,8 +1455,11 @@ impl FFTransitionTool {
                     LineOrientation.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1253,8 +1477,11 @@ impl FFTransitionTool {
                     FaceOrientation.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1279,8 +1506,11 @@ impl FFTransitionTool {
                     VP, Index, R, E, F,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -1303,8 +1533,10 @@ impl FaceEdgeFiller {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_FaceEdgeFiller_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1317,10 +1549,12 @@ impl FaceEdgeFiller {
         HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_FaceEdgeFiller_insert(self as *mut Self, F, E, FEINT, HDS)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1344,16 +1578,22 @@ impl FaceEdgeIntersector {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_FaceEdgeIntersector_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRep_FaceEdgeIntersector.hxx`:47 - `TopOpeBRep_FaceEdgeIntersector::Perform()`
     pub fn perform(&mut self, F: &crate::topo_ds::Shape, E: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FaceEdgeIntersector_perform(self as *mut Self, F, E) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRep_FaceEdgeIntersector_perform(self as *mut Self, F, E)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1362,8 +1602,11 @@ impl FaceEdgeIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_FaceEdgeIntersector_is_empty(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1375,8 +1618,11 @@ impl FaceEdgeIntersector {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FaceEdgeIntersector_shape(self as *const Self, Index)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1384,10 +1630,12 @@ impl FaceEdgeIntersector {
     /// Force the tolerance values used by the next Perform(S1,S2) call.
     pub fn force_tolerance(&mut self, tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_FaceEdgeIntersector_force_tolerance(self as *mut Self, tol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1400,8 +1648,11 @@ impl FaceEdgeIntersector {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FaceEdgeIntersector_tolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1411,16 +1662,22 @@ impl FaceEdgeIntersector {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FaceEdgeIntersector_nb_points(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_FaceEdgeIntersector.hxx`:65 - `TopOpeBRep_FaceEdgeIntersector::InitPoint()`
     pub fn init_point(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FaceEdgeIntersector_init_point(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_FaceEdgeIntersector_init_point(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1430,16 +1687,22 @@ impl FaceEdgeIntersector {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FaceEdgeIntersector_more_point(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_FaceEdgeIntersector.hxx`:69 - `TopOpeBRep_FaceEdgeIntersector::NextPoint()`
     pub fn next_point(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FaceEdgeIntersector_next_point(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_FaceEdgeIntersector_next_point(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1449,8 +1712,11 @@ impl FaceEdgeIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_FaceEdgeIntersector_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1461,8 +1727,11 @@ impl FaceEdgeIntersector {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FaceEdgeIntersector_parameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1470,8 +1739,12 @@ impl FaceEdgeIntersector {
     /// parametre de Value() sur la face
     pub fn uv_point(&self, P: &mut crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FaceEdgeIntersector_uv_point(self as *const Self, P) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRep_FaceEdgeIntersector_uv_point(self as *const Self, P)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1481,8 +1754,11 @@ impl FaceEdgeIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_FaceEdgeIntersector_state(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -1501,8 +1777,11 @@ impl FaceEdgeIntersector {
                     FaceOrientation.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1524,8 +1803,11 @@ impl FaceEdgeIntersector {
                     V,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1539,8 +1821,11 @@ impl FaceEdgeIntersector {
                     V,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1550,8 +1835,11 @@ impl FaceEdgeIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_FaceEdgeIntersector_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1579,8 +1867,10 @@ impl FacesFiller {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_FacesFiller_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1594,18 +1884,24 @@ impl FacesFiller {
         HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_FacesFiller_insert(self as *mut Self, F1, F2, FACINT, HDS)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:62 - `TopOpeBRep_FacesFiller::ProcessSectionEdges()`
     pub fn process_section_edges(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FacesFiller_process_section_edges(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRep_FacesFiller_process_section_edges(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1615,8 +1911,11 @@ impl FacesFiller {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FacesFiller_change_point_classifier(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1627,11 +1926,14 @@ impl FacesFiller {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FacesFiller_p_shape_classifier(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1643,18 +1945,23 @@ impl FacesFiller {
         PSC: &*mut crate::top_ope_b_rep_tool::ShapeClassifier,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_FacesFiller_set_p_shape_classifier(self as *mut Self, PSC)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:72 - `TopOpeBRep_FacesFiller::LoadLine()`
     pub fn load_line(&mut self, L: &mut LineInter) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FacesFiller_load_line(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_FacesFiller_load_line(self as *mut Self, L) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1663,8 +1970,11 @@ impl FacesFiller {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_FacesFiller_check_line(self as *const Self, L) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1672,13 +1982,15 @@ impl FacesFiller {
     /// compute position of VPoints of lines
     pub fn vp_position_facesintersector(&mut self, FACINT: &mut FacesIntersector) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_FacesFiller_vp_position_facesintersector(
                     self as *mut Self,
                     FACINT,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1686,10 +1998,12 @@ impl FacesFiller {
     /// compute position of VPoints of line L
     pub fn vp_position_lineinter(&mut self, L: &mut LineInter) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_FacesFiller_vp_position_lineinter(self as *mut Self, L)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1697,8 +2011,12 @@ impl FacesFiller {
     /// compute position of VPoints of non-restriction line L.
     pub fn vp_position_on_l(&mut self, L: &mut LineInter) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FacesFiller_vp_position_on_l(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRep_FacesFiller_vp_position_on_l(self as *mut Self, L)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1706,8 +2024,12 @@ impl FacesFiller {
     /// compute position of VPoints of restriction line L.
     pub fn vp_position_on_r(&mut self, L: &mut LineInter) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FacesFiller_vp_position_on_r(self as *mut Self, L) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRep_FacesFiller_vp_position_on_r(self as *mut Self, L)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1720,14 +2042,16 @@ impl FacesFiller {
         VPC: &mut VPointInterClassifier,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_FacesFiller_vp_position_vpointinter_vpointinterclassifier(
                     self as *mut Self,
                     VP,
                     VPC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1735,16 +2059,21 @@ impl FacesFiller {
     /// Process current intersection line (set by LoadLine)
     pub fn process_line(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FacesFiller_process_line(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_FacesFiller_process_line(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:96 - `TopOpeBRep_FacesFiller::ResetDSC()`
     pub fn reset_dsc(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FacesFiller_reset_dsc(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRep_FacesFiller_reset_dsc(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1753,8 +2082,11 @@ impl FacesFiller {
     /// and computing face/edge interference.
     pub fn process_r_line(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FacesFiller_process_r_line(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_FacesFiller_process_r_line(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1770,16 +2102,21 @@ impl FacesFiller {
     /// interference for VP boundaries.
     pub fn fill_line_v_pon_r(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FacesFiller_fill_line_v_pon_r(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_FacesFiller_fill_line_v_pon_r(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:113 - `TopOpeBRep_FacesFiller::FillLine()`
     pub fn fill_line(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FacesFiller_fill_line(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRep_FacesFiller_fill_line(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1788,8 +2125,11 @@ impl FacesFiller {
     /// for current NDSC. Add them to the DS.
     pub fn add_shapes_line(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FacesFiller_add_shapes_line(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_FacesFiller_add_shapes_line(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1798,8 +2138,11 @@ impl FacesFiller {
     /// of the 2 faces.
     pub fn get_esl(&mut self, LES: &mut crate::ffi::TopTools_ListOfShape) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FacesFiller_get_esl(self as *mut Self, LES) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_FacesFiller_get_esl(self as *mut Self, LES) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1807,8 +2150,12 @@ impl FacesFiller {
     /// calling the following ProcessVPIonR and ProcessVPonR.
     pub fn process_vpr(&mut self, FF: &mut FacesFiller, VP: &VPointInter) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FacesFiller_process_vpr(self as *mut Self, FF, VP) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRep_FacesFiller_process_vpr(self as *mut Self, FF, VP)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1822,7 +2169,7 @@ impl FacesFiller {
         ShapeIndex: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_FacesFiller_process_vp_ion_r(
                     self as *mut Self,
                     VPI,
@@ -1831,7 +2178,9 @@ impl FacesFiller {
                     ShapeIndex,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1846,7 +2195,7 @@ impl FacesFiller {
         ShapeIndex: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_FacesFiller_process_v_pon_r(
                     self as *mut Self,
                     VP,
@@ -1855,7 +2204,9 @@ impl FacesFiller {
                     ShapeIndex,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1873,7 +2224,7 @@ impl FacesFiller {
         IEPI: &crate::ffi::HandleTopOpeBRepDSInterference,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_FacesFiller_process_v_ponclosing_r(
                     self as *mut Self,
                     VP,
@@ -1886,7 +2237,9 @@ impl FacesFiller {
                     IEPI,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1918,8 +2271,11 @@ impl FacesFiller {
                     ICPI,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         };
         *PVKind = crate::top_ope_b_rep_ds::Kind::try_from(PVKind_i32_).unwrap();
         result_
@@ -1929,10 +2285,12 @@ impl FacesFiller {
     /// processing ProcessVPnotonR for VPI.
     pub fn process_vp_inoton_r(&mut self, VPI: &mut VPointInterIterator) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_FacesFiller_process_vp_inoton_r(self as *mut Self, VPI)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1941,8 +2299,12 @@ impl FacesFiller {
     /// and computes curve point interference.
     pub fn process_v_pnoton_r(&mut self, VP: &VPointInter) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FacesFiller_process_v_pnoton_r(self as *mut Self, VP) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRep_FacesFiller_process_v_pnoton_r(self as *mut Self, VP)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1971,8 +2333,11 @@ impl FacesFiller {
                     &mut K_i32_,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         };
         *K = crate::top_ope_b_rep_ds::Kind::try_from(K_i32_).unwrap();
         result_
@@ -1995,8 +2360,11 @@ impl FacesFiller {
                     &mut K_i32_,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         };
         *K = crate::top_ope_b_rep_ds::Kind::try_from(K_i32_).unwrap();
         result_
@@ -2007,10 +2375,12 @@ impl FacesFiller {
     /// on a given line, at first call, add a new DS curve.
     pub fn store_curve_interference(&mut self, I: &crate::ffi::HandleTopOpeBRepDSInterference) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_FacesFiller_store_curve_interference(self as *mut Self, I)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2034,8 +2404,11 @@ impl FacesFiller {
                     G,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         };
         *K = crate::top_ope_b_rep_ds::Kind::try_from(K_i32_).unwrap();
         result_
@@ -2061,8 +2434,11 @@ impl FacesFiller {
                     G,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         };
         *K = crate::top_ope_b_rep_ds::Kind::try_from(K_i32_).unwrap();
         result_
@@ -2074,8 +2450,11 @@ impl FacesFiller {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FacesFiller_change_faces_intersector(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2086,8 +2465,11 @@ impl FacesFiller {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_FacesFiller_h_data_structure(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2097,8 +2479,11 @@ impl FacesFiller {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FacesFiller_change_data_structure(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2107,8 +2492,11 @@ impl FacesFiller {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_FacesFiller_face(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2132,8 +2520,11 @@ impl FacesFiller {
                     I,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2143,8 +2534,11 @@ impl FacesFiller {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FacesFiller_face_face_transition_int(self as *const Self, I)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2154,11 +2548,14 @@ impl FacesFiller {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FacesFiller_p_faces_intersector_dummy(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2169,11 +2566,14 @@ impl FacesFiller {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FacesFiller_p_data_structure_dummy(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2184,11 +2584,14 @@ impl FacesFiller {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FacesFiller_p_line_inter_dummy(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2196,20 +2599,24 @@ impl FacesFiller {
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:218 - `TopOpeBRep_FacesFiller::SetTraceIndex()`
     pub fn set_trace_index(&mut self, exF1: i32, exF2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_FacesFiller_set_trace_index(self as *mut Self, exF1, exF2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:220 - `TopOpeBRep_FacesFiller::GetTraceIndex()`
     pub fn get_trace_index(&self, exF1: &mut i32, exF2: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_FacesFiller_get_trace_index(self as *const Self, exF1, exF2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2218,8 +2625,10 @@ impl FacesFiller {
     /// enclosing all vpoints.
     pub fn lminmax(L: &LineInter, pmin: &mut f64, pmax: &mut f64) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FacesFiller_lminmax(L, pmin, pmax) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRep_FacesFiller_lminmax(L, pmin, pmax) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2229,8 +2638,11 @@ impl FacesFiller {
     pub fn l_same_domain_erl(L: &LineInter, ERL: &crate::ffi::TopTools_ListOfShape) -> bool {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_FacesFiller_l_same_domain_erl(L, ERL) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2246,8 +2658,11 @@ impl FacesFiller {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_FacesFiller_is_v_ptrans_lok(L, iVP, SI12, T) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2260,8 +2675,11 @@ impl FacesFiller {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_FacesFiller_transvp_ok(L, iVP, SI, isINOUT) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2270,8 +2688,11 @@ impl FacesFiller {
     pub fn vp_param_on_er(vp: &VPointInter, Lrest: &LineInter) -> f64 {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_FacesFiller_vp_param_on_er(vp, Lrest) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2280,8 +2701,11 @@ impl FacesFiller {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_FacesFiller_equalp_pon_r(Lrest, VP1, VP2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2305,8 +2729,10 @@ impl FacesIntersector {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_FacesIntersector_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2314,10 +2740,12 @@ impl FacesIntersector {
     /// Computes the intersection of faces S1 and S2.
     pub fn perform_shape2(&mut self, S1: &crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_FacesIntersector_perform_shape2(self as *mut Self, S1, S2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2331,7 +2759,7 @@ impl FacesIntersector {
         B2: &crate::bnd::Box,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_FacesIntersector_perform_shape2_box2(
                     self as *mut Self,
                     S1,
@@ -2340,7 +2768,9 @@ impl FacesIntersector {
                     B2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2349,8 +2779,11 @@ impl FacesIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_FacesIntersector_is_empty(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2359,8 +2792,11 @@ impl FacesIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_FacesIntersector_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2371,8 +2807,11 @@ impl FacesIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_FacesIntersector_same_domain(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2382,8 +2821,11 @@ impl FacesIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_FacesIntersector_face(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2396,8 +2838,11 @@ impl FacesIntersector {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FacesIntersector_surfaces_same_oriented(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2409,8 +2854,11 @@ impl FacesIntersector {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FacesIntersector_is_restriction(self as *const Self, E)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2421,16 +2869,22 @@ impl FacesIntersector {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FacesIntersector_restrictions(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TopOpeBRep_FacesIntersector.hxx`:71 - `TopOpeBRep_FacesIntersector::PrepareLines()`
     pub fn prepare_lines(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FacesIntersector_prepare_lines(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_FacesIntersector_prepare_lines(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2439,8 +2893,11 @@ impl FacesIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_FacesIntersector_lines(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2449,16 +2906,22 @@ impl FacesIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_FacesIntersector_nb_lines(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_FacesIntersector.hxx`:77 - `TopOpeBRep_FacesIntersector::InitLine()`
     pub fn init_line(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FacesIntersector_init_line(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_FacesIntersector_init_line(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2467,16 +2930,22 @@ impl FacesIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_FacesIntersector_more_line(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_FacesIntersector.hxx`:81 - `TopOpeBRep_FacesIntersector::NextLine()`
     pub fn next_line(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_FacesIntersector_next_line(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_FacesIntersector_next_line(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2485,8 +2954,11 @@ impl FacesIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_FacesIntersector_current_line(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2496,8 +2968,11 @@ impl FacesIntersector {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FacesIntersector_current_line_index(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2507,8 +2982,11 @@ impl FacesIntersector {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_FacesIntersector_change_line(self as *mut Self, IL)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2516,14 +2994,16 @@ impl FacesIntersector {
     /// Force the tolerance values used by the next Perform(S1,S2) call.
     pub fn force_tolerances(&mut self, tolarc: f64, toltang: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_FacesIntersector_force_tolerances(
                     self as *mut Self,
                     tolarc,
                     toltang,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2533,14 +3013,16 @@ impl FacesIntersector {
     /// If not, return values extracted from shapes.
     pub fn get_tolerances(&self, tolarc: &mut f64, toltang: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_FacesIntersector_get_tolerances(
                     self as *const Self,
                     tolarc,
                     toltang,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2565,8 +3047,10 @@ impl GeomTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_GeomTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2584,18 +3068,22 @@ impl GeomTool {
         PC2: &mut crate::ffi::HandleGeom2dCurve,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_GeomTool_make_curves(min, max, L, S1, S2, C, PC1, PC2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_GeomTool.hxx`:48 - `TopOpeBRep_GeomTool::MakeCurve()`
     pub fn make_curve(min: f64, max: f64, L: &LineInter, C: &mut crate::ffi::HandleGeomCurve) {
         {
-            unsafe { crate::ffi::TopOpeBRep_GeomTool_make_curve(min, max, L, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRep_GeomTool_make_curve(min, max, L, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2606,8 +3094,11 @@ impl GeomTool {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_GeomTool_make_b_spline1from_walking3d(L) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2619,8 +3110,11 @@ impl GeomTool {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_GeomTool_make_b_spline1from_walking2d(L, SI) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -2643,8 +3137,10 @@ impl HArray1OfLineInter {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_HArray1OfLineInter_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2653,8 +3149,10 @@ impl HArray1OfLineInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_HArray1OfLineInter_ctor_int2(theLower, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2670,8 +3168,10 @@ impl HArray1OfLineInter {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2688,8 +3188,10 @@ impl HArray1OfLineInter {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2701,8 +3203,10 @@ impl HArray1OfLineInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_HArray1OfLineInter_ctor_array1oflineinter(theOther)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2711,8 +3215,11 @@ impl HArray1OfLineInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_HArray1OfLineInter_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2722,8 +3229,11 @@ impl HArray1OfLineInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_HArray1OfLineInter_change_array1(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2733,8 +3243,11 @@ impl HArray1OfLineInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_HArray1OfLineInter_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2742,8 +3255,11 @@ impl HArray1OfLineInter {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_HArray1OfLineInter_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2752,45 +3268,46 @@ impl HArray1OfLineInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_HArray1OfLineInter_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRep_HArray1OfLineInter_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRep_HArray1OfLineInter_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRep_HArray1OfLineInter_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRep_HArray1OfLineInter_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepHArray1OfLineInter> {
-        {
-            let __result =
-                unsafe { crate::ffi::TopOpeBRep_HArray1OfLineInter_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::TopOpeBRep_HArray1OfLineInter_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2802,8 +3319,11 @@ impl HArray1OfLineInter {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2816,8 +3336,11 @@ impl HArray1OfLineInter {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2827,11 +3350,14 @@ impl HArray1OfLineInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_HArray1OfLineInter_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2842,20 +3368,25 @@ impl HArray1OfLineInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_HArray1OfLineInter_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_HArray1OfLineInter_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2867,18 +3398,23 @@ impl HArray1OfLineInter {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_HArray1OfLineInter_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2894,36 +3430,35 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepHArray1OfLineInter {
 impl HandleTopOpeBRepHArray1OfLineInter {
     /// Dereference this Handle to access the underlying TopOpeBRep_HArray1OfLineInter
     pub fn get(&self) -> &crate::ffi::TopOpeBRep_HArray1OfLineInter {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopOpeBRepHArray1OfLineInter_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleTopOpeBRepHArray1OfLineInter_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRep_HArray1OfLineInter
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRep_HArray1OfLineInter {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepHArray1OfLineInter_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTopOpeBRepHArray1OfLineInter_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopOpeBRep_HArray1OfLineInter> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepHArray1OfLineInter_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepHArray1OfLineInter_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2945,8 +3480,10 @@ impl HArray1OfVPointInter {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_HArray1OfVPointInter_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2956,8 +3493,10 @@ impl HArray1OfVPointInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_HArray1OfVPointInter_ctor_int2(theLower, theUpper)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2973,8 +3512,10 @@ impl HArray1OfVPointInter {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2991,8 +3532,10 @@ impl HArray1OfVPointInter {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3004,8 +3547,10 @@ impl HArray1OfVPointInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_HArray1OfVPointInter_ctor_array1ofvpointinter(theOther)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3014,8 +3559,11 @@ impl HArray1OfVPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_HArray1OfVPointInter_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3025,8 +3573,11 @@ impl HArray1OfVPointInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_HArray1OfVPointInter_change_array1(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3036,8 +3587,11 @@ impl HArray1OfVPointInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_HArray1OfVPointInter_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3045,8 +3599,11 @@ impl HArray1OfVPointInter {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_HArray1OfVPointInter_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3055,47 +3612,46 @@ impl HArray1OfVPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_HArray1OfVPointInter_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRep_HArray1OfVPointInter_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRep_HArray1OfVPointInter_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRep_HArray1OfVPointInter_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TopOpeBRep_HArray1OfVPointInter_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepHArray1OfVPointInter> {
-        {
-            let __result =
-                unsafe { crate::ffi::TopOpeBRep_HArray1OfVPointInter_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::TopOpeBRep_HArray1OfVPointInter_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3107,8 +3663,11 @@ impl HArray1OfVPointInter {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3121,8 +3680,11 @@ impl HArray1OfVPointInter {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3132,11 +3694,14 @@ impl HArray1OfVPointInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_HArray1OfVPointInter_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3149,20 +3714,25 @@ impl HArray1OfVPointInter {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_HArray1OfVPointInter_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3174,18 +3744,23 @@ impl HArray1OfVPointInter {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_HArray1OfVPointInter_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3201,37 +3776,35 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepHArray1OfVPointInter {
 impl HandleTopOpeBRepHArray1OfVPointInter {
     /// Dereference this Handle to access the underlying TopOpeBRep_HArray1OfVPointInter
     pub fn get(&self) -> &crate::ffi::TopOpeBRep_HArray1OfVPointInter {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepHArray1OfVPointInter_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleTopOpeBRepHArray1OfVPointInter_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRep_HArray1OfVPointInter
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRep_HArray1OfVPointInter {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepHArray1OfVPointInter_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTopOpeBRepHArray1OfVPointInter_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopOpeBRep_HArray1OfVPointInter> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepHArray1OfVPointInter_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepHArray1OfVPointInter_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3253,8 +3826,10 @@ impl Hctxee2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Hctxee2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3267,10 +3842,12 @@ impl Hctxee2d {
         BAS2: &crate::b_rep_adaptor::Surface,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_Hctxee2d_set_edges(self as *mut Self, E1, E2, BAS1, BAS2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3278,8 +3855,11 @@ impl Hctxee2d {
     pub fn edge(&self, I: i32) -> &crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Hctxee2d_edge(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3287,8 +3867,11 @@ impl Hctxee2d {
     pub fn curve(&self, I: i32) -> &crate::geom2d_adaptor::Curve {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Hctxee2d_curve(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3297,8 +3880,11 @@ impl Hctxee2d {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_Hctxee2d_domain(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3307,8 +3893,11 @@ impl Hctxee2d {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_Hctxee2d_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3316,8 +3905,11 @@ impl Hctxee2d {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Hctxee2d_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3325,42 +3917,43 @@ impl Hctxee2d {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Hctxee2d_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRep_Hctxee2d_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopOpeBRep_Hctxee2d_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRep_Hctxee2d_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopOpeBRep_Hctxee2d_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepHctxee2d> {
-        {
-            let __result = unsafe { crate::ffi::TopOpeBRep_Hctxee2d_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopOpeBRep_Hctxee2d_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3369,8 +3962,11 @@ impl Hctxee2d {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_Hctxee2d_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3380,8 +3976,11 @@ impl Hctxee2d {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_Hctxee2d_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3390,11 +3989,14 @@ impl Hctxee2d {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_Hctxee2d_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3405,18 +4007,23 @@ impl Hctxee2d {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_Hctxee2d_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_Hctxee2d_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3426,16 +4033,22 @@ impl Hctxee2d {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_Hctxee2d_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_Hctxee2d_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_Hctxee2d_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3451,32 +4064,31 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepHctxee2d {
 impl HandleTopOpeBRepHctxee2d {
     /// Dereference this Handle to access the underlying TopOpeBRep_Hctxee2d
     pub fn get(&self) -> &crate::ffi::TopOpeBRep_Hctxee2d {
-        {
-            let __result = unsafe { crate::ffi::HandleTopOpeBRepHctxee2d_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopOpeBRepHctxee2d_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRep_Hctxee2d
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRep_Hctxee2d {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopOpeBRepHctxee2d_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTopOpeBRepHctxee2d_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopOpeBRep_Hctxee2d> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepHctxee2d_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepHctxee2d_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3498,16 +4110,21 @@ impl Hctxff2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Hctxff2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRep_Hctxff2d.hxx`:32 - `TopOpeBRep_Hctxff2d::SetFaces()`
     pub fn set_faces(&mut self, F1: &crate::topo_ds::Face, F2: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::TopOpeBRep_Hctxff2d_set_faces(self as *mut Self, F1, F2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_Hctxff2d_set_faces(self as *mut Self, F1, F2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3518,28 +4135,36 @@ impl Hctxff2d {
         S2: &crate::ffi::HandleBRepAdaptorSurface,
     ) {
         {
-            unsafe { crate::ffi::TopOpeBRep_Hctxff2d_set_h_surfaces(self as *mut Self, S1, S2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRep_Hctxff2d_set_h_surfaces(self as *mut Self, S1, S2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_Hctxff2d.hxx`:37 - `TopOpeBRep_Hctxff2d::SetTolerances()`
     pub fn set_tolerances(&mut self, Tol1: f64, Tol2: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_Hctxff2d_set_tolerances(self as *mut Self, Tol1, Tol2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_Hctxff2d.hxx`:39 - `TopOpeBRep_Hctxff2d::GetTolerances()`
     pub fn get_tolerances(&self, Tol1: &mut f64, Tol2: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_Hctxff2d_get_tolerances(self as *const Self, Tol1, Tol2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3548,8 +4173,11 @@ impl Hctxff2d {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_Hctxff2d_get_max_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3557,8 +4185,11 @@ impl Hctxff2d {
     pub fn face(&self, I: i32) -> &crate::topo_ds::Face {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Hctxff2d_face(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3567,8 +4198,11 @@ impl Hctxff2d {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_Hctxff2d_h_surface(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3578,8 +4212,11 @@ impl Hctxff2d {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_Hctxff2d_surfaces_same_oriented(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3588,8 +4225,11 @@ impl Hctxff2d {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_Hctxff2d_faces_same_oriented(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3599,8 +4239,11 @@ impl Hctxff2d {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_Hctxff2d_face_same_oriented_with_ref(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3609,8 +4252,11 @@ impl Hctxff2d {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_Hctxff2d_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3618,8 +4264,11 @@ impl Hctxff2d {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Hctxff2d_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3627,42 +4276,43 @@ impl Hctxff2d {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Hctxff2d_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRep_Hctxff2d_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TopOpeBRep_Hctxff2d_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TopOpeBRep_Hctxff2d_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::TopOpeBRep_Hctxff2d_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepHctxff2d> {
-        {
-            let __result = unsafe { crate::ffi::TopOpeBRep_Hctxff2d_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TopOpeBRep_Hctxff2d_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3671,8 +4321,11 @@ impl Hctxff2d {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_Hctxff2d_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3682,8 +4335,11 @@ impl Hctxff2d {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_Hctxff2d_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3692,11 +4348,14 @@ impl Hctxff2d {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_Hctxff2d_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3707,18 +4366,23 @@ impl Hctxff2d {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_Hctxff2d_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_Hctxff2d_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3728,16 +4392,22 @@ impl Hctxff2d {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_Hctxff2d_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_Hctxff2d_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_Hctxff2d_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3753,32 +4423,31 @@ unsafe impl crate::CppDeletable for HandleTopOpeBRepHctxff2d {
 impl HandleTopOpeBRepHctxff2d {
     /// Dereference this Handle to access the underlying TopOpeBRep_Hctxff2d
     pub fn get(&self) -> &crate::ffi::TopOpeBRep_Hctxff2d {
-        {
-            let __result = unsafe { crate::ffi::HandleTopOpeBRepHctxff2d_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleTopOpeBRepHctxff2d_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRep_Hctxff2d
     pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRep_Hctxff2d {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTopOpeBRepHctxff2d_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleTopOpeBRepHctxff2d_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TopOpeBRep_Hctxff2d> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTopOpeBRepHctxff2d_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTopOpeBRepHctxff2d_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3800,8 +4469,10 @@ impl LineInter {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_LineInter_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3813,16 +4484,22 @@ impl LineInter {
         S2: &crate::b_rep_adaptor::Surface,
     ) {
         {
-            unsafe { crate::ffi::TopOpeBRep_LineInter_set_line(self as *mut Self, L, S1, S2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_LineInter_set_line(self as *mut Self, L, S1, S2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:58 - `TopOpeBRep_LineInter::SetFaces()`
     pub fn set_faces(&mut self, F1: &crate::topo_ds::Face, F2: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::TopOpeBRep_LineInter_set_faces(self as *mut Self, F1, F2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_LineInter_set_faces(self as *mut Self, F1, F2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3831,8 +4508,11 @@ impl LineInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_LineInter_type_line_curve(self as *const Self) };
-            crate::check_exception();
-            crate::top_ope_b_rep::TypeLineCurve::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep::TypeLineCurve::try_from(__val).unwrap()
         }
     }
 
@@ -3841,8 +4521,11 @@ impl LineInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_LineInter_nb_v_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3851,8 +4534,11 @@ impl LineInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_LineInter_v_point(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3861,16 +4547,21 @@ impl LineInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_LineInter_change_v_point(self as *mut Self, I) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:68 - `TopOpeBRep_LineInter::SetINL()`
     pub fn set_inl(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_LineInter_set_inl(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRep_LineInter_set_inl(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3878,16 +4569,22 @@ impl LineInter {
     pub fn inl(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_LineInter_inl(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:72 - `TopOpeBRep_LineInter::SetIsVClosed()`
     pub fn set_is_v_closed(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_LineInter_set_is_v_closed(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_LineInter_set_is_v_closed(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3896,16 +4593,21 @@ impl LineInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_LineInter_is_v_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:76 - `TopOpeBRep_LineInter::SetOK()`
     pub fn set_ok(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::TopOpeBRep_LineInter_set_ok(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRep_LineInter_set_ok(self as *mut Self, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3913,16 +4615,22 @@ impl LineInter {
     pub fn ok(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_LineInter_ok(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:80 - `TopOpeBRep_LineInter::SetHasVPonR()`
     pub fn set_has_v_pon_r(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_LineInter_set_has_v_pon_r(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_LineInter_set_has_v_pon_r(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3931,24 +4639,33 @@ impl LineInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_LineInter_has_v_pon_r(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:84 - `TopOpeBRep_LineInter::SetVPBounds()`
     pub fn set_vp_bounds(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_LineInter_set_vp_bounds(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_LineInter_set_vp_bounds(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:86 - `TopOpeBRep_LineInter::VPBounds()`
     pub fn vp_bounds(&self, f: &mut i32, l: &mut i32, n: &mut i32) {
         {
-            unsafe { crate::ffi::TopOpeBRep_LineInter_vp_bounds(self as *const Self, f, l, n) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_LineInter_vp_bounds(self as *const Self, f, l, n) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3957,8 +4674,11 @@ impl LineInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_LineInter_is_periodic(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3966,16 +4686,22 @@ impl LineInter {
     pub fn period(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_LineInter_period(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:94 - `TopOpeBRep_LineInter::Bounds()`
     pub fn bounds(&self, f: &mut f64, l: &mut f64) {
         {
-            unsafe { crate::ffi::TopOpeBRep_LineInter_bounds(self as *const Self, f, l) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_LineInter_bounds(self as *const Self, f, l) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3984,8 +4710,11 @@ impl LineInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_LineInter_has_v_internal(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3994,8 +4723,11 @@ impl LineInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_LineInter_nb_w_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4004,8 +4736,11 @@ impl LineInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_LineInter_w_point(self as *mut Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4014,8 +4749,11 @@ impl LineInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_LineInter_transition_on_s1(self as *const Self) };
-            crate::check_exception();
-            crate::int_surf::TypeTrans::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_surf::TypeTrans::try_from(__val).unwrap()
         }
     }
 
@@ -4024,8 +4762,11 @@ impl LineInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_LineInter_transition_on_s2(self as *const Self) };
-            crate::check_exception();
-            crate::int_surf::TypeTrans::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_surf::TypeTrans::try_from(__val).unwrap()
         }
     }
 
@@ -4034,8 +4775,11 @@ impl LineInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_LineInter_situation_s1(self as *const Self) };
-            crate::check_exception();
-            crate::int_surf::Situation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_surf::Situation::try_from(__val).unwrap()
         }
     }
 
@@ -4044,8 +4788,11 @@ impl LineInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_LineInter_situation_s2(self as *const Self) };
-            crate::check_exception();
-            crate::int_surf::Situation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_surf::Situation::try_from(__val).unwrap()
         }
     }
 
@@ -4053,8 +4800,11 @@ impl LineInter {
     pub fn curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_LineInter_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4068,8 +4818,11 @@ impl LineInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_LineInter_curve_real2(self as *const Self, parmin, parmax)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4078,8 +4831,11 @@ impl LineInter {
     pub fn arc(&self) -> &crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_LineInter_arc(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4090,8 +4846,11 @@ impl LineInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_LineInter_arc_is_edge(self as *const Self, I) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4099,8 +4858,11 @@ impl LineInter {
     pub fn line_w(&self) -> &crate::ffi::HandleIntPatchWLine {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_LineInter_line_w(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4108,8 +4870,11 @@ impl LineInter {
     pub fn line_g(&self) -> &crate::ffi::HandleIntPatchGLine {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_LineInter_line_g(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4117,8 +4882,11 @@ impl LineInter {
     pub fn line_r(&self) -> &crate::ffi::HandleIntPatchRLine {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_LineInter_line_r(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4127,8 +4895,11 @@ impl LineInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_LineInter_has_first_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4137,18 +4908,23 @@ impl LineInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_LineInter_has_last_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:132 - `TopOpeBRep_LineInter::ComputeFaceFaceTransition()`
     pub fn compute_face_face_transition(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_LineInter_compute_face_face_transition(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4158,16 +4934,21 @@ impl LineInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_LineInter_face_face_transition(self as *const Self, I)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:136 - `TopOpeBRep_LineInter::Index()`
     pub fn index_int(&mut self, I: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRep_LineInter_index_int(self as *mut Self, I) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRep_LineInter_index_int(self as *mut Self, I) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4175,16 +4956,21 @@ impl LineInter {
     pub fn index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_LineInter_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:140 - `TopOpeBRep_LineInter::DumpType()`
     pub fn dump_type(&self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_LineInter_dump_type(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRep_LineInter_dump_type(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4196,10 +4982,12 @@ impl LineInter {
         s2: &crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_LineInter_dump_v_point(self as *const Self, I, s1, s2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4211,30 +4999,36 @@ impl LineInter {
         s2: &crate::t_collection::AsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_LineInter_dump_bipoint(self as *const Self, B, s1, s2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:150 - `TopOpeBRep_LineInter::SetTraceIndex()`
     pub fn set_trace_index(&mut self, exF1: i32, exF2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_LineInter_set_trace_index(self as *mut Self, exF1, exF2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:152 - `TopOpeBRep_LineInter::GetTraceIndex()`
     pub fn get_trace_index(&self, exF1: &mut i32, exF2: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_LineInter_get_trace_index(self as *const Self, exF1, exF2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4253,8 +5047,11 @@ impl LineInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_LineInter_dump_line_transitions(self as *mut Self, OS)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 }
@@ -4277,24 +5074,31 @@ impl Point2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Point2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:47 - `TopOpeBRep_Point2d::Dump()`
     pub fn dump(&self, ie1: i32, ie2: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRep_Point2d_dump(self as *const Self, ie1, ie2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_Point2d_dump(self as *const Self, ie1, ie2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:49 - `TopOpeBRep_Point2d::SetPint()`
     pub fn set_pint(&mut self, P: &crate::int_res2d::IntersectionPoint) {
         {
-            unsafe { crate::ffi::TopOpeBRep_Point2d_set_pint(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRep_Point2d_set_pint(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4302,8 +5106,11 @@ impl Point2d {
     pub fn has_pint(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Point2d_has_pint(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4311,16 +5118,22 @@ impl Point2d {
     pub fn pint(&self) -> &crate::int_res2d::IntersectionPoint {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Point2d_pint(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:55 - `TopOpeBRep_Point2d::SetIsVertex()`
     pub fn set_is_vertex(&mut self, I: i32, B: bool) {
         {
-            unsafe { crate::ffi::TopOpeBRep_Point2d_set_is_vertex(self as *mut Self, I, B) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_Point2d_set_is_vertex(self as *mut Self, I, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4329,16 +5142,22 @@ impl Point2d {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_Point2d_is_vertex(self as *const Self, I) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:59 - `TopOpeBRep_Point2d::SetVertex()`
     pub fn set_vertex(&mut self, I: i32, V: &crate::topo_ds::Vertex) {
         {
-            unsafe { crate::ffi::TopOpeBRep_Point2d_set_vertex(self as *mut Self, I, V) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_Point2d_set_vertex(self as *mut Self, I, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4346,16 +5165,22 @@ impl Point2d {
     pub fn vertex(&self, I: i32) -> &crate::topo_ds::Vertex {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Point2d_vertex(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:63 - `TopOpeBRep_Point2d::SetTransition()`
     pub fn set_transition(&mut self, I: i32, T: &crate::top_ope_b_rep_ds::Transition) {
         {
-            unsafe { crate::ffi::TopOpeBRep_Point2d_set_transition(self as *mut Self, I, T) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_Point2d_set_transition(self as *mut Self, I, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4364,8 +5189,11 @@ impl Point2d {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_Point2d_transition(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4374,16 +5202,22 @@ impl Point2d {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_Point2d_change_transition(self as *mut Self, I) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:69 - `TopOpeBRep_Point2d::SetParameter()`
     pub fn set_parameter(&mut self, I: i32, P: f64) {
         {
-            unsafe { crate::ffi::TopOpeBRep_Point2d_set_parameter(self as *mut Self, I, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_Point2d_set_parameter(self as *mut Self, I, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4392,16 +5226,23 @@ impl Point2d {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_Point2d_parameter(self as *const Self, I) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:73 - `TopOpeBRep_Point2d::SetIsPointOfSegment()`
     pub fn set_is_point_of_segment(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::TopOpeBRep_Point2d_set_is_point_of_segment(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRep_Point2d_set_is_point_of_segment(self as *mut Self, B)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4410,18 +5251,23 @@ impl Point2d {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_Point2d_is_point_of_segment(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:77 - `TopOpeBRep_Point2d::SetSegmentAncestors()`
     pub fn set_segment_ancestors(&mut self, IP1: i32, IP2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_Point2d_set_segment_ancestors(self as *mut Self, IP1, IP2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4431,16 +5277,22 @@ impl Point2d {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_Point2d_segment_ancestors(self as *const Self, IP1, IP2)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:81 - `TopOpeBRep_Point2d::SetStatus()`
     pub fn set_status(&mut self, S: crate::top_ope_b_rep::P2Dstatus) {
         {
-            unsafe { crate::ffi::TopOpeBRep_Point2d_set_status(self as *mut Self, S.into()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_Point2d_set_status(self as *mut Self, S.into()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4448,16 +5300,21 @@ impl Point2d {
     pub fn status(&self) -> crate::top_ope_b_rep::P2Dstatus {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Point2d_status(self as *const Self) };
-            crate::check_exception();
-            crate::top_ope_b_rep::P2Dstatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep::P2Dstatus::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:85 - `TopOpeBRep_Point2d::SetIndex()`
     pub fn set_index(&mut self, X: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRep_Point2d_set_index(self as *mut Self, X) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRep_Point2d_set_index(self as *mut Self, X) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4465,16 +5322,21 @@ impl Point2d {
     pub fn index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Point2d_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:89 - `TopOpeBRep_Point2d::SetValue()`
     pub fn set_value(&mut self, P: &crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::TopOpeBRep_Point2d_set_value(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRep_Point2d_set_value(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4482,16 +5344,21 @@ impl Point2d {
     pub fn value(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Point2d_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:93 - `TopOpeBRep_Point2d::SetValue2d()`
     pub fn set_value2d(&mut self, P: &crate::gp::Pnt2d) {
         {
-            unsafe { crate::ffi::TopOpeBRep_Point2d_set_value2d(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRep_Point2d_set_value2d(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4499,16 +5366,21 @@ impl Point2d {
     pub fn value2d(&self) -> &crate::gp::Pnt2d {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Point2d_value2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:97 - `TopOpeBRep_Point2d::SetKeep()`
     pub fn set_keep(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::TopOpeBRep_Point2d_set_keep(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRep_Point2d_set_keep(self as *mut Self, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4516,16 +5388,23 @@ impl Point2d {
     pub fn keep(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Point2d_keep(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:101 - `TopOpeBRep_Point2d::SetEdgesConfig()`
     pub fn set_edges_config(&mut self, C: crate::top_ope_b_rep_ds::Config) {
         {
-            unsafe { crate::ffi::TopOpeBRep_Point2d_set_edges_config(self as *mut Self, C.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRep_Point2d_set_edges_config(self as *mut Self, C.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4534,16 +5413,22 @@ impl Point2d {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_Point2d_edges_config(self as *const Self) };
-            crate::check_exception();
-            crate::top_ope_b_rep_ds::Config::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_ope_b_rep_ds::Config::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:105 - `TopOpeBRep_Point2d::SetTolerance()`
     pub fn set_tolerance(&mut self, T: f64) {
         {
-            unsafe { crate::ffi::TopOpeBRep_Point2d_set_tolerance(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_Point2d_set_tolerance(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4551,16 +5436,22 @@ impl Point2d {
     pub fn tolerance(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Point2d_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:109 - `TopOpeBRep_Point2d::SetHctxff2d()`
     pub fn set_hctxff2d(&mut self, ff2d: &crate::ffi::HandleTopOpeBRepHctxff2d) {
         {
-            unsafe { crate::ffi::TopOpeBRep_Point2d_set_hctxff2d(self as *mut Self, ff2d) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_Point2d_set_hctxff2d(self as *mut Self, ff2d) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4568,16 +5459,22 @@ impl Point2d {
     pub fn hctxff2d(&self) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepHctxff2d> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Point2d_hctxff2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:113 - `TopOpeBRep_Point2d::SetHctxee2d()`
     pub fn set_hctxee2d(&mut self, ee2d: &crate::ffi::HandleTopOpeBRepHctxee2d) {
         {
-            unsafe { crate::ffi::TopOpeBRep_Point2d_set_hctxee2d(self as *mut Self, ee2d) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_Point2d_set_hctxee2d(self as *mut Self, ee2d) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4585,8 +5482,11 @@ impl Point2d {
     pub fn hctxee2d(&self) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepHctxee2d> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_Point2d_hctxee2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -4609,24 +5509,31 @@ impl PointClassifier {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_PointClassifier_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRep_PointClassifier.hxx`:35 - `TopOpeBRep_PointClassifier::Init()`
     pub fn init(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_PointClassifier_init(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRep_PointClassifier_init(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_PointClassifier.hxx`:37 - `TopOpeBRep_PointClassifier::Load()`
     pub fn load(&mut self, F: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::TopOpeBRep_PointClassifier_load(self as *mut Self, F) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_PointClassifier_load(self as *mut Self, F) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4642,8 +5549,11 @@ impl PointClassifier {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_PointClassifier_classify(self as *mut Self, F, P, Tol)
             };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -4652,8 +5562,11 @@ impl PointClassifier {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_PointClassifier_state(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 }
@@ -4678,8 +5591,10 @@ impl PointGeomTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_PointGeomTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4690,8 +5605,11 @@ impl PointGeomTool {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_PointGeomTool_make_point_vpointinter(IP) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4699,8 +5617,11 @@ impl PointGeomTool {
     pub fn make_point_point2d(P2D: &Point2d) -> crate::OwnedPtr<crate::top_ope_b_rep_ds::Point> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_PointGeomTool_make_point_point2d(P2D) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4711,8 +5632,11 @@ impl PointGeomTool {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_PointGeomTool_make_point_faceedgeintersector(FEI) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4722,8 +5646,11 @@ impl PointGeomTool {
     ) -> crate::OwnedPtr<crate::top_ope_b_rep_ds::Point> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_PointGeomTool_make_point_shape(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4734,8 +5661,11 @@ impl PointGeomTool {
     ) -> bool {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_PointGeomTool_is_equal(DSP1, DSP2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -4777,8 +5707,10 @@ impl ShapeIntersector {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_ShapeIntersector_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4790,14 +5722,16 @@ impl ShapeIntersector {
         S2: &crate::topo_ds::Shape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_ShapeIntersector_init_intersection_shape2(
                     self as *mut Self,
                     S1,
                     S2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4811,7 +5745,7 @@ impl ShapeIntersector {
         F2: &crate::topo_ds::Face,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_ShapeIntersector_init_intersection_shape2_face2(
                     self as *mut Self,
                     S1,
@@ -4820,7 +5754,9 @@ impl ShapeIntersector {
                     F2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4833,8 +5769,11 @@ impl ShapeIntersector {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_ShapeIntersector_shape(self as *const Self, Index)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4846,8 +5785,11 @@ impl ShapeIntersector {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_ShapeIntersector_more_intersection(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4855,8 +5797,12 @@ impl ShapeIntersector {
     /// search for the next intersection between the two shapes.
     pub fn next_intersection(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_ShapeIntersector_next_intersection(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRep_ShapeIntersector_next_intersection(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4867,8 +5813,11 @@ impl ShapeIntersector {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_ShapeIntersector_change_faces_intersector(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4879,8 +5828,11 @@ impl ShapeIntersector {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_ShapeIntersector_change_edges_intersector(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4893,8 +5845,11 @@ impl ShapeIntersector {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4909,8 +5864,11 @@ impl ShapeIntersector {
                     Index,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4919,22 +5877,28 @@ impl ShapeIntersector {
     /// which FacesIntersector from TopOpeBRep was working.
     pub fn get_tolerances(&self, tol1: &mut f64, tol2: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_ShapeIntersector_get_tolerances(
                     self as *const Self,
                     tol1,
                     tol2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_ShapeIntersector.hxx`:98 - `TopOpeBRep_ShapeIntersector::DumpCurrent()`
     pub fn dump_current(&self, K: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRep_ShapeIntersector_dump_current(self as *const Self, K) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRep_ShapeIntersector_dump_current(self as *const Self, K)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4943,8 +5907,11 @@ impl ShapeIntersector {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_ShapeIntersector_index(self as *const Self, K) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4956,7 +5923,7 @@ impl ShapeIntersector {
         aListOfShape: &mut crate::ffi::TopTools_ListOfShape,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_ShapeIntersector_rejected_faces(
                     self as *mut Self,
                     anObj,
@@ -4964,7 +5931,9 @@ impl ShapeIntersector {
                     aListOfShape,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5006,8 +5975,10 @@ impl ShapeIntersector2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_ShapeIntersector2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5015,14 +5986,16 @@ impl ShapeIntersector2d {
     /// Initialize the intersection of shapes S1,S2.
     pub fn init_intersection(&mut self, S1: &crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_ShapeIntersector2d_init_intersection(
                     self as *mut Self,
                     S1,
                     S2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5035,8 +6008,11 @@ impl ShapeIntersector2d {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_ShapeIntersector2d_shape(self as *const Self, Index)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5048,8 +6024,11 @@ impl ShapeIntersector2d {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_ShapeIntersector2d_more_intersection(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5057,10 +6036,12 @@ impl ShapeIntersector2d {
     /// search for the next intersection between the two shapes.
     pub fn next_intersection(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_ShapeIntersector2d_next_intersection(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5073,8 +6054,11 @@ impl ShapeIntersector2d {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5089,18 +6073,23 @@ impl ShapeIntersector2d {
                     Index,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `TopOpeBRep_ShapeIntersector2d.hxx`:80 - `TopOpeBRep_ShapeIntersector2d::DumpCurrent()`
     pub fn dump_current(&self, K: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_ShapeIntersector2d_dump_current(self as *const Self, K)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5109,8 +6098,11 @@ impl ShapeIntersector2d {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_ShapeIntersector2d_index(self as *const Self, K) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -5136,16 +6128,20 @@ impl ShapeScanner {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_ShapeScanner_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRep_ShapeScanner.hxx`:42 - `TopOpeBRep_ShapeScanner::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_ShapeScanner_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRep_ShapeScanner_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5157,7 +6153,7 @@ impl ShapeScanner {
         TA: crate::top_abs::ShapeEnum,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_ShapeScanner_add_boxes_make_cob(
                     self as *mut Self,
                     S,
@@ -5165,23 +6161,32 @@ impl ShapeScanner {
                     TA.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_ShapeScanner.hxx`:48 - `TopOpeBRep_ShapeScanner::Init()`
     pub fn init_shape(&mut self, E: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TopOpeBRep_ShapeScanner_init_shape(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_ShapeScanner_init_shape(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_ShapeScanner.hxx`:50 - `TopOpeBRep_ShapeScanner::Init()`
     pub fn init_shapeexplorer(&mut self, X: &mut crate::top_ope_b_rep_tool::ShapeExplorer) {
         {
-            unsafe { crate::ffi::TopOpeBRep_ShapeScanner_init_shapeexplorer(self as *mut Self, X) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRep_ShapeScanner_init_shapeexplorer(self as *mut Self, X)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5189,16 +6194,21 @@ impl ShapeScanner {
     pub fn more(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_ShapeScanner_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_ShapeScanner.hxx`:54 - `TopOpeBRep_ShapeScanner::Next()`
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_ShapeScanner_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRep_ShapeScanner_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5207,8 +6217,11 @@ impl ShapeScanner {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_ShapeScanner_current(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5217,8 +6230,11 @@ impl ShapeScanner {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_ShapeScanner_box_sort(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5227,8 +6243,11 @@ impl ShapeScanner {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_ShapeScanner_change_box_sort(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5237,8 +6256,11 @@ impl ShapeScanner {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_ShapeScanner_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5256,8 +6278,11 @@ impl ShapeScanner {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_ShapeScanner_dump_current(self as *mut Self, OS) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 }
@@ -5280,32 +6305,44 @@ impl VPointInter {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_VPointInter_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:41 - `TopOpeBRep_VPointInter::SetPoint()`
     pub fn set_point(&mut self, P: &crate::int_patch::Point) {
         {
-            unsafe { crate::ffi::TopOpeBRep_VPointInter_set_point(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_VPointInter_set_point(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:43 - `TopOpeBRep_VPointInter::SetShapes()`
     pub fn set_shapes(&mut self, I1: i32, I2: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRep_VPointInter_set_shapes(self as *mut Self, I1, I2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_VPointInter_set_shapes(self as *mut Self, I1, I2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:45 - `TopOpeBRep_VPointInter::GetShapes()`
     pub fn get_shapes(&self, I1: &mut i32, I2: &mut i32) {
         {
-            unsafe { crate::ffi::TopOpeBRep_VPointInter_get_shapes(self as *const Self, I1, I2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TopOpeBRep_VPointInter_get_shapes(self as *const Self, I1, I2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5314,8 +6351,11 @@ impl VPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInter_transition_on_s1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5324,8 +6364,11 @@ impl VPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInter_transition_on_s2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5335,8 +6378,11 @@ impl VPointInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_VPointInter_transition_line_arc1(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5346,8 +6392,11 @@ impl VPointInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_VPointInter_transition_line_arc2(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5356,8 +6405,11 @@ impl VPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInter_is_on_dom_s1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5366,28 +6418,35 @@ impl VPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInter_is_on_dom_s2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:59 - `TopOpeBRep_VPointInter::ParametersOnS1()`
     pub fn parameters_on_s1(&self, u: &mut f64, v: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_VPointInter_parameters_on_s1(self as *const Self, u, v)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:61 - `TopOpeBRep_VPointInter::ParametersOnS2()`
     pub fn parameters_on_s2(&self, u: &mut f64, v: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_VPointInter_parameters_on_s2(self as *const Self, u, v)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5395,8 +6454,11 @@ impl VPointInter {
     pub fn value(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_VPointInter_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5405,8 +6467,11 @@ impl VPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInter_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5415,8 +6480,11 @@ impl VPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInter_arc_on_s1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5425,8 +6493,11 @@ impl VPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInter_arc_on_s2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5436,8 +6507,11 @@ impl VPointInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_VPointInter_parameter_on_line(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5447,8 +6521,11 @@ impl VPointInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_VPointInter_parameter_on_arc1(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5459,8 +6536,11 @@ impl VPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInter_is_vertex_on_s1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5473,8 +6553,11 @@ impl VPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInter_vertex_on_s1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5484,8 +6567,11 @@ impl VPointInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_VPointInter_parameter_on_arc2(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5496,8 +6582,11 @@ impl VPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInter_is_vertex_on_s2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5510,8 +6599,11 @@ impl VPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInter_vertex_on_s2(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5520,8 +6612,11 @@ impl VPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInter_is_internal(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5532,8 +6627,11 @@ impl VPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInter_is_multiple(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5544,8 +6642,11 @@ impl VPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInter_state_int(self as *const Self, I) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -5554,10 +6655,12 @@ impl VPointInter {
     /// the geometric shape <I> (= 1 or 2).
     pub fn state_state_int(&mut self, S: crate::top_abs::State, I: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_VPointInter_state_state_int(self as *mut Self, S.into(), I)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5566,7 +6669,7 @@ impl VPointInter {
     /// and parameter <Par> of point on <Eon>.
     pub fn edge_on_shape_real_int(&mut self, Eon: &crate::topo_ds::Shape, Par: f64, I: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_VPointInter_edge_on_shape_real_int(
                     self as *mut Self,
                     Eon,
@@ -5574,7 +6677,9 @@ impl VPointInter {
                     I,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5584,8 +6689,11 @@ impl VPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInter_edge_on_int(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5596,8 +6704,11 @@ impl VPointInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_VPointInter_edge_on_parameter(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5611,8 +6722,11 @@ impl VPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInter_shape_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5620,8 +6734,11 @@ impl VPointInter {
     /// set value of shape supporting me (0,1,2,3).
     pub fn shape_index_int(&mut self, I: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRep_VPointInter_shape_index_int(self as *mut Self, I) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_VPointInter_shape_index_int(self as *mut Self, I) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5633,8 +6750,11 @@ impl VPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInter_edge(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5645,8 +6765,11 @@ impl VPointInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_VPointInter_edge_parameter(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5657,8 +6780,11 @@ impl VPointInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_VPointInter_surface_parameters(self as *const Self, I)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5667,8 +6793,11 @@ impl VPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInter_is_vertex(self as *const Self, I) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5677,8 +6806,11 @@ impl VPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInter_vertex(self as *const Self, I) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5686,8 +6818,11 @@ impl VPointInter {
     /// set myKeep value according to current states.
     pub fn update_keep(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_VPointInter_update_keep(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_VPointInter_update_keep(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5698,8 +6833,11 @@ impl VPointInter {
     pub fn keep(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_VPointInter_keep(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5707,8 +6845,11 @@ impl VPointInter {
     /// updates VPointInter flag "keep" with <keep>.
     pub fn change_keep(&mut self, keep: bool) {
         {
-            unsafe { crate::ffi::TopOpeBRep_VPointInter_change_keep(self as *mut Self, keep) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_VPointInter_change_keep(self as *mut Self, keep) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5719,8 +6860,11 @@ impl VPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInter_equalp_p(self as *const Self, VP) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5731,16 +6875,22 @@ impl VPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInter_paron_e(self as *const Self, E, par) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:167 - `TopOpeBRep_VPointInter::Index()`
     pub fn index_int(&mut self, I: i32) {
         {
-            unsafe { crate::ffi::TopOpeBRep_VPointInter_index_int(self as *mut Self, I) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_VPointInter_index_int(self as *mut Self, I) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5748,8 +6898,11 @@ impl VPointInter {
     pub fn index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_VPointInter_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5775,8 +6928,11 @@ impl VPointInter {
                     OS,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5797,8 +6953,11 @@ impl VPointInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_VPointInter_dump_face2_ostream(self as *mut Self, F1, F2, OS)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5810,11 +6969,14 @@ impl VPointInter {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5838,8 +7000,10 @@ impl VPointInterClassifier {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_VPointInterClassifier_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5870,8 +7034,11 @@ impl VPointInterClassifier {
                     Tol,
                 )
             };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 
@@ -5883,8 +7050,11 @@ impl VPointInterClassifier {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInterClassifier_edge(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5895,8 +7065,11 @@ impl VPointInterClassifier {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_VPointInterClassifier_edge_parameter(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -5919,8 +7092,10 @@ impl VPointInterIterator {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_VPointInterIterator_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5928,30 +7103,37 @@ impl VPointInterIterator {
     pub fn new_lineinter(LI: &LineInter) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_VPointInterIterator_ctor_lineinter(LI) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRep_VPointInterIterator.hxx`:36 - `TopOpeBRep_VPointInterIterator::Init()`
     pub fn init_lineinter_bool(&mut self, LI: &LineInter, checkkeep: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_VPointInterIterator_init_lineinter_bool(
                     self as *mut Self,
                     LI,
                     checkkeep,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_VPointInterIterator.hxx`:39 - `TopOpeBRep_VPointInterIterator::Init()`
     pub fn init(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_VPointInterIterator_init(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_VPointInterIterator_init(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5960,16 +7142,22 @@ impl VPointInterIterator {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInterIterator_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_VPointInterIterator.hxx`:43 - `TopOpeBRep_VPointInterIterator::Next()`
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_VPointInterIterator_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_VPointInterIterator_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5978,8 +7166,11 @@ impl VPointInterIterator {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_VPointInterIterator_current_vp(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5989,8 +7180,11 @@ impl VPointInterIterator {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_VPointInterIterator_current_vp_index(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6000,8 +7194,11 @@ impl VPointInterIterator {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_VPointInterIterator_change_current_vp(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -6011,11 +7208,14 @@ impl VPointInterIterator {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_VPointInterIterator_p_line_inter_dummy(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6039,46 +7239,56 @@ impl WPointInter {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_WPointInter_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRep_WPointInter.hxx`:34 - `TopOpeBRep_WPointInter::Set()`
     pub fn set(&mut self, P: &crate::int_surf::PntOn2S) {
         {
-            unsafe { crate::ffi::TopOpeBRep_WPointInter_set(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TopOpeBRep_WPointInter_set(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_WPointInter.hxx`:36 - `TopOpeBRep_WPointInter::ParametersOnS1()`
     pub fn parameters_on_s1(&self, U: &mut f64, V: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_WPointInter_parameters_on_s1(self as *const Self, U, V)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_WPointInter.hxx`:38 - `TopOpeBRep_WPointInter::ParametersOnS2()`
     pub fn parameters_on_s2(&self, U: &mut f64, V: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_WPointInter_parameters_on_s2(self as *const Self, U, V)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_WPointInter.hxx`:40 - `TopOpeBRep_WPointInter::Parameters()`
     pub fn parameters(&self, U1: &mut f64, V1: &mut f64, U2: &mut f64, V2: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_WPointInter_parameters(self as *const Self, U1, V1, U2, V2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6087,8 +7297,11 @@ impl WPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_WPointInter_value_on_s1(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6097,8 +7310,11 @@ impl WPointInter {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_WPointInter_value_on_s2(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6106,8 +7322,11 @@ impl WPointInter {
     pub fn value(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_WPointInter_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6117,11 +7336,14 @@ impl WPointInter {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_WPointInter_p_pnt_on2_s_dummy(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6145,8 +7367,10 @@ impl WPointInterIterator {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_WPointInterIterator_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6154,26 +7378,33 @@ impl WPointInterIterator {
     pub fn new_lineinter(LI: &LineInter) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TopOpeBRep_WPointInterIterator_ctor_lineinter(LI) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `TopOpeBRep_WPointInterIterator.hxx`:36 - `TopOpeBRep_WPointInterIterator::Init()`
     pub fn init_lineinter(&mut self, LI: &LineInter) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TopOpeBRep_WPointInterIterator_init_lineinter(self as *mut Self, LI)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `TopOpeBRep_WPointInterIterator.hxx`:38 - `TopOpeBRep_WPointInterIterator::Init()`
     pub fn init(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_WPointInterIterator_init(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_WPointInterIterator_init(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6182,16 +7413,22 @@ impl WPointInterIterator {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_WPointInterIterator_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `TopOpeBRep_WPointInterIterator.hxx`:42 - `TopOpeBRep_WPointInterIterator::Next()`
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::TopOpeBRep_WPointInterIterator_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TopOpeBRep_WPointInterIterator_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6200,8 +7437,11 @@ impl WPointInterIterator {
         {
             let __result =
                 unsafe { crate::ffi::TopOpeBRep_WPointInterIterator_current_wp(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6211,11 +7451,14 @@ impl WPointInterIterator {
             let __result = unsafe {
                 crate::ffi::TopOpeBRep_WPointInterIterator_p_line_inter_dummy(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }

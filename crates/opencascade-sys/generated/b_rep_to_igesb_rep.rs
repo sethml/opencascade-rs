@@ -26,8 +26,10 @@ impl Entity {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepToIGESBRep_Entity_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -35,8 +37,10 @@ impl Entity {
     /// Clears the contents of the fields
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::BRepToIGESBRep_Entity_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepToIGESBRep_Entity_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -44,8 +48,12 @@ impl Entity {
     /// Create the VertexList entity
     pub fn transfer_vertex_list(&mut self) {
         {
-            unsafe { crate::ffi::BRepToIGESBRep_Entity_transfer_vertex_list(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepToIGESBRep_Entity_transfer_vertex_list(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -56,8 +64,11 @@ impl Entity {
             let __result = unsafe {
                 crate::ffi::BRepToIGESBRep_Entity_index_vertex(self as *const Self, myvertex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -69,8 +80,11 @@ impl Entity {
             let __result = unsafe {
                 crate::ffi::BRepToIGESBRep_Entity_add_vertex(self as *mut Self, myvertex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -78,8 +92,11 @@ impl Entity {
     /// Transfert an Edge entity from TopoDS to IGES
     pub fn transfer_edge_list(&mut self) {
         {
-            unsafe { crate::ffi::BRepToIGESBRep_Entity_transfer_edge_list(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepToIGESBRep_Entity_transfer_edge_list(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -90,8 +107,11 @@ impl Entity {
             let __result = unsafe {
                 crate::ffi::BRepToIGESBRep_Entity_index_edge(self as *const Self, myedge)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -107,8 +127,11 @@ impl Entity {
             let __result = unsafe {
                 crate::ffi::BRepToIGESBRep_Entity_add_edge(self as *mut Self, myedge, mycurve3d)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -128,8 +151,11 @@ impl Entity {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -144,8 +170,11 @@ impl Entity {
             let __result = unsafe {
                 crate::ffi::BRepToIGESBRep_Entity_transfer_edge_edge(self as *mut Self, myedge)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -167,8 +196,11 @@ impl Entity {
                     length,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -191,8 +223,11 @@ impl Entity {
                     length,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -207,8 +242,11 @@ impl Entity {
             let __result = unsafe {
                 crate::ffi::BRepToIGESBRep_Entity_transfer_face(self as *mut Self, start)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -228,8 +266,11 @@ impl Entity {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -249,8 +290,11 @@ impl Entity {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -270,8 +314,11 @@ impl Entity {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -291,48 +338,56 @@ impl Entity {
                     theProgress,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to BRepToIGES_BREntity
     pub fn as_b_rep_to_iges_br_entity(&self) -> &crate::b_rep_to_iges::BREntity {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepToIGESBRep_Entity_as_BRepToIGES_BREntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::BRepToIGESBRep_Entity_as_BRepToIGES_BREntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepToIGES_BREntity (mutable)
     pub fn as_b_rep_to_iges_br_entity_mut(&mut self) -> &mut crate::b_rep_to_iges::BREntity {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepToIGESBRep_Entity_as_BRepToIGES_BREntity_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::BRepToIGESBRep_Entity_as_BRepToIGES_BREntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:44 - `BRepToIGES_BREntity::Init()`
     pub fn init(&mut self) {
         {
-            unsafe { crate::ffi::BRepToIGESBRep_Entity_inherited_Init(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepToIGESBRep_Entity_inherited_Init(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:47 - `BRepToIGES_BREntity::SetModel()`
     pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepToIGESBRep_Entity_inherited_SetModel(self as *mut Self, model)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -342,8 +397,11 @@ impl Entity {
             let __result = unsafe {
                 crate::ffi::BRepToIGESBRep_Entity_inherited_GetModel(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -352,21 +410,26 @@ impl Entity {
         {
             let __result =
                 unsafe { crate::ffi::BRepToIGESBRep_Entity_inherited_GetUnit(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:57 - `BRepToIGES_BREntity::SetTransferProcess()`
     pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferFinderProcess) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepToIGESBRep_Entity_inherited_SetTransferProcess(
                     self as *mut Self,
                     TP,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -376,8 +439,11 @@ impl Entity {
             let __result = unsafe {
                 crate::ffi::BRepToIGESBRep_Entity_inherited_GetTransferProcess(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -390,8 +456,11 @@ impl Entity {
                     start,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -407,8 +476,11 @@ impl Entity {
                     start,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -419,14 +491,16 @@ impl Entity {
         result: &crate::ffi::HandleStandardTransient,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepToIGESBRep_Entity_inherited_SetShapeResult(
                     self as *mut Self,
                     start,
                     result,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -438,8 +512,11 @@ impl Entity {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -449,8 +526,11 @@ impl Entity {
             let __result = unsafe {
                 crate::ffi::BRepToIGESBRep_Entity_inherited_GetPCurveMode(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

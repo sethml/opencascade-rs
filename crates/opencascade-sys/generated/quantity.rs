@@ -1147,8 +1147,10 @@ impl Color {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1157,8 +1159,10 @@ impl Color {
     pub fn new_nameofcolor(theName: crate::quantity::NameOfColor) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_ctor_nameofcolor(theName.into()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1180,8 +1184,10 @@ impl Color {
                     theType.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1190,8 +1196,10 @@ impl Color {
     pub fn new_vec3f(theRgb: &crate::ffi::gp_Vec3f) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_ctor_vec3f(theRgb) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1200,8 +1208,11 @@ impl Color {
     pub fn name(&self) -> crate::quantity::NameOfColor {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_name(self as *const Self) };
-            crate::check_exception();
-            crate::quantity::NameOfColor::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::quantity::NameOfColor::try_from(__val).unwrap()
         }
     }
 
@@ -1209,10 +1220,12 @@ impl Color {
     /// Updates the color from specified named color.
     pub fn set_values_nameofcolor(&mut self, theName: crate::quantity::NameOfColor) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Quantity_Color_set_values_nameofcolor(self as *mut Self, theName.into())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1221,8 +1234,11 @@ impl Color {
     pub fn rgb(&self) -> &crate::ffi::gp_Vec3f {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_rgb(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1237,7 +1253,7 @@ impl Color {
         theType: crate::quantity::TypeOfColor,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Quantity_Color_values(
                     self as *const Self,
                     theC1,
@@ -1246,7 +1262,9 @@ impl Color {
                     theType.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1261,7 +1279,7 @@ impl Color {
         theType: crate::quantity::TypeOfColor,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Quantity_Color_set_values_real3_typeofcolor(
                     self as *mut Self,
                     theC1,
@@ -1270,7 +1288,9 @@ impl Color {
                     theType.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1279,8 +1299,11 @@ impl Color {
     pub fn red(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_red(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1289,8 +1312,11 @@ impl Color {
     pub fn green(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_green(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1299,8 +1325,11 @@ impl Color {
     pub fn blue(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_blue(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1311,8 +1340,11 @@ impl Color {
     pub fn hue(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_hue(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1321,8 +1353,11 @@ impl Color {
     pub fn light(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_light(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1332,8 +1367,11 @@ impl Color {
     /// The variation is expressed as a percentage of the current value.
     pub fn change_intensity(&mut self, theDelta: f64) {
         {
-            unsafe { crate::ffi::Quantity_Color_change_intensity(self as *mut Self, theDelta) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Quantity_Color_change_intensity(self as *mut Self, theDelta) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1343,8 +1381,11 @@ impl Color {
     pub fn saturation(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_saturation(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1354,8 +1395,11 @@ impl Color {
     /// The variation is expressed as a percentage of the current value.
     pub fn change_contrast(&mut self, theDelta: f64) {
         {
-            unsafe { crate::ffi::Quantity_Color_change_contrast(self as *mut Self, theDelta) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Quantity_Color_change_contrast(self as *mut Self, theDelta) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1365,8 +1409,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_Color_is_different(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1376,8 +1423,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_Color_is_equal(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1388,8 +1438,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_Color_distance(self as *const Self, theColor) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1400,8 +1453,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::Quantity_Color_square_distance(self as *const Self, theColor)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1413,8 +1469,11 @@ impl Color {
     /// If <DI> is positive then <me> is more intense.
     pub fn delta(&self, theColor: &Color, DC: &mut f64, DI: &mut f64) {
         {
-            unsafe { crate::ffi::Quantity_Color_delta(self as *const Self, theColor, DC, DI) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Quantity_Color_delta(self as *const Self, theColor, DC, DI) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1428,8 +1487,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_Color_delta_e2000(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1438,8 +1500,11 @@ impl Color {
     pub fn name_real3(theR: f64, theG: f64, theB: f64) -> crate::quantity::NameOfColor {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_name_real3(theR, theG, theB) };
-            crate::check_exception();
-            crate::quantity::NameOfColor::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::quantity::NameOfColor::try_from(__val).unwrap()
         }
     }
 
@@ -1448,8 +1513,11 @@ impl Color {
     pub fn string_name(theColor: crate::quantity::NameOfColor) -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_string_name(theColor.into()) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1470,8 +1538,11 @@ impl Color {
                     &mut theColor_i32_,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         };
         *theColor = crate::quantity::NameOfColor::try_from(theColor_i32_).unwrap();
         result_
@@ -1491,8 +1562,11 @@ impl Color {
                     theColor,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1508,8 +1582,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::Quantity_Color_color_from_hex(c_theHexColorString.as_ptr(), theColor)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1522,8 +1599,11 @@ impl Color {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_Color_color_to_hex(theColor, theToPrefixHash) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1534,8 +1614,11 @@ impl Color {
     ) -> crate::OwnedPtr<crate::ffi::gp_Vec3f> {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_convert_s_rgb_to_hls(theRgb) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1546,8 +1629,11 @@ impl Color {
     ) -> crate::OwnedPtr<crate::ffi::gp_Vec3f> {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_convert_hls_to_s_rgb(theHls) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1558,8 +1644,11 @@ impl Color {
     ) -> crate::OwnedPtr<crate::ffi::gp_Vec3f> {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_convert_linear_rgb_to_hls(theRgb) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1570,8 +1659,11 @@ impl Color {
     ) -> crate::OwnedPtr<crate::ffi::gp_Vec3f> {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_convert_hls_to_linear_rgb(theHls) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1582,8 +1674,11 @@ impl Color {
     ) -> crate::OwnedPtr<crate::ffi::gp_Vec3f> {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_convert_linear_rgb_to_lab(theRgb) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1594,8 +1689,11 @@ impl Color {
     ) -> crate::OwnedPtr<crate::ffi::gp_Vec3f> {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_convert_lab_to_lch(theLab) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1607,8 +1705,11 @@ impl Color {
     ) -> crate::OwnedPtr<crate::ffi::gp_Vec3f> {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_convert_lab_to_linear_rgb(theLab) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1619,8 +1720,11 @@ impl Color {
     ) -> crate::OwnedPtr<crate::ffi::gp_Vec3f> {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_convert_lch_to_lab(theLch) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1633,8 +1737,10 @@ impl Color {
     /// @param[out] theARGB  result color encoded as integer
     pub fn color2argb(theColor: &Color, theARGB: &mut i32) {
         {
-            unsafe { crate::ffi::Quantity_Color_color2argb(theColor, theARGB) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Quantity_Color_color2argb(theColor, theARGB) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1644,8 +1750,10 @@ impl Color {
     /// as would be usually expected to preserve higher (for human eye) color precision in 4 bytes.
     pub fn argb2color(theARGB: i32, theColor: &mut Color) {
         {
-            unsafe { crate::ffi::Quantity_Color_argb2color(theARGB, theColor) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Quantity_Color_argb2color(theARGB, theColor) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1657,8 +1765,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::Quantity_Color_convert_linear_rgb_to_s_rgb_real(theLinearValue)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1670,8 +1781,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::Quantity_Color_convert_linear_rgb_to_s_rgb_float(theLinearValue)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1683,8 +1797,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::Quantity_Color_convert_s_rgb_to_linear_rgb_real(thesRGBValue)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1696,8 +1813,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::Quantity_Color_convert_s_rgb_to_linear_rgb_float(thesRGBValue)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1710,8 +1830,11 @@ impl Color {
                     theLinearValue,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1722,8 +1845,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::Quantity_Color_convert_s_rgb_to_linear_rgb_approx22_float(thesRGBValue)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1736,8 +1862,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::Quantity_Color_convert_linear_rgb_to_s_rgb_approx22_vec3f(theRGB)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1750,8 +1879,11 @@ impl Color {
             let __result = unsafe {
                 crate::ffi::Quantity_Color_convert_s_rgb_to_linear_rgb_approx22_vec3f(theRGB)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1766,8 +1898,11 @@ impl Color {
         theB: &mut f64,
     ) {
         {
-            unsafe { crate::ffi::Quantity_Color_hls_rgb(theH, theL, theS, theR, theG, theB) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Quantity_Color_hls_rgb(theH, theL, theS, theR, theG, theB) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1782,8 +1917,11 @@ impl Color {
         theS: &mut f64,
     ) {
         {
-            unsafe { crate::ffi::Quantity_Color_rgb_hls(theR, theG, theB, theH, theL, theS) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Quantity_Color_rgb_hls(theR, theG, theB, theH, theL, theS) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1792,8 +1930,11 @@ impl Color {
     pub fn epsilon() -> f64 {
         {
             let __result = unsafe { crate::ffi::Quantity_Color_epsilon() };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1801,8 +1942,10 @@ impl Color {
     /// Set the value used to compare two colors for equality.
     pub fn set_epsilon(theEpsilon: f64) {
         {
-            unsafe { crate::ffi::Quantity_Color_set_epsilon(theEpsilon) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Quantity_Color_set_epsilon(theEpsilon) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1827,8 +1970,10 @@ impl ColorRGBA {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Quantity_ColorRGBA_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1837,8 +1982,10 @@ impl ColorRGBA {
     pub fn new_color(theRgb: &Color) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Quantity_ColorRGBA_ctor_color(theRgb) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1848,8 +1995,10 @@ impl ColorRGBA {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_ColorRGBA_ctor_color_float(theRgb, theAlpha) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1858,8 +2007,10 @@ impl ColorRGBA {
     pub fn new_vec4f(theRgba: &crate::ffi::BVH_Vec4f) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Quantity_ColorRGBA_ctor_vec4f(theRgba) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1875,8 +2026,10 @@ impl ColorRGBA {
             let __result = unsafe {
                 crate::ffi::Quantity_ColorRGBA_ctor_float4(theRed, theGreen, theBlue, theAlpha)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1884,7 +2037,7 @@ impl ColorRGBA {
     /// Assign new values to the color.
     pub fn set_values(&mut self, theRed: f32, theGreen: f32, theBlue: f32, theAlpha: f32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Quantity_ColorRGBA_set_values(
                     self as *mut Self,
                     theRed,
@@ -1893,7 +2046,9 @@ impl ColorRGBA {
                     theAlpha,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1902,8 +2057,11 @@ impl ColorRGBA {
     pub fn get_rgb(&self) -> &Color {
         {
             let __result = unsafe { crate::ffi::Quantity_ColorRGBA_get_rgb(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1912,8 +2070,11 @@ impl ColorRGBA {
     pub fn change_rgb(&mut self) -> &mut Color {
         {
             let __result = unsafe { crate::ffi::Quantity_ColorRGBA_change_rgb(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1921,8 +2082,11 @@ impl ColorRGBA {
     /// Assign RGB color components without affecting alpha value.
     pub fn set_rgb(&mut self, theRgb: &Color) {
         {
-            unsafe { crate::ffi::Quantity_ColorRGBA_set_rgb(self as *mut Self, theRgb) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Quantity_ColorRGBA_set_rgb(self as *mut Self, theRgb) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1931,8 +2095,11 @@ impl ColorRGBA {
     pub fn alpha(&self) -> f32 {
         {
             let __result = unsafe { crate::ffi::Quantity_ColorRGBA_alpha(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1940,8 +2107,11 @@ impl ColorRGBA {
     /// Assign the alpha value.
     pub fn set_alpha(&mut self, theAlpha: f32) {
         {
-            unsafe { crate::ffi::Quantity_ColorRGBA_set_alpha(self as *mut Self, theAlpha) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Quantity_ColorRGBA_set_alpha(self as *mut Self, theAlpha) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1952,8 +2122,11 @@ impl ColorRGBA {
             let __result = unsafe {
                 crate::ffi::Quantity_ColorRGBA_is_different(self as *const Self, theOther)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1963,8 +2136,11 @@ impl ColorRGBA {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_ColorRGBA_is_equal(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1984,8 +2160,11 @@ impl ColorRGBA {
                     theColor,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2012,8 +2191,11 @@ impl ColorRGBA {
                     theAlphaComponentIsOff,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2026,8 +2208,11 @@ impl ColorRGBA {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_ColorRGBA_color_to_hex(theColor, theToPrefixHash) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2039,8 +2224,11 @@ impl ColorRGBA {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_ColorRGBA_convert_linear_rgb_to_s_rgb(theRGB) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2052,8 +2240,11 @@ impl ColorRGBA {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_ColorRGBA_convert_s_rgb_to_linear_rgb(theRGB) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -2088,8 +2279,10 @@ impl Date {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Quantity_Date_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2122,8 +2315,10 @@ impl Date {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_Date_ctor_int8(mm, dd, yyyy, hh, mn, ss, mis, mics) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2204,7 +2399,7 @@ impl Date {
         mics: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Quantity_Date_values(
                     self as *const Self,
                     mm,
@@ -2217,7 +2412,9 @@ impl Date {
                     mics,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2241,7 +2438,7 @@ impl Date {
         mics: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Quantity_Date_set_values(
                     self as *mut Self,
                     mm,
@@ -2254,7 +2451,9 @@ impl Date {
                     mics,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2267,8 +2466,11 @@ impl Date {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_Date_difference(self as *mut Self, anOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2280,8 +2482,11 @@ impl Date {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_Date_subtract(self as *mut Self, aPeriod) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2290,8 +2495,11 @@ impl Date {
     pub fn add(&mut self, aPeriod: &Period) -> crate::OwnedPtr<Date> {
         {
             let __result = unsafe { crate::ffi::Quantity_Date_add(self as *mut Self, aPeriod) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2300,8 +2508,11 @@ impl Date {
     pub fn year(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Quantity_Date_year(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2310,8 +2521,11 @@ impl Date {
     pub fn month(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Quantity_Date_month(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2320,8 +2534,11 @@ impl Date {
     pub fn day(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Quantity_Date_day(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2330,8 +2547,11 @@ impl Date {
     pub fn hour(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Quantity_Date_hour(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2340,8 +2560,11 @@ impl Date {
     pub fn minute(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Quantity_Date_minute(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2350,8 +2573,11 @@ impl Date {
     pub fn second(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Quantity_Date_second(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2360,8 +2586,11 @@ impl Date {
     pub fn milli_second(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Quantity_Date_milli_second(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2370,8 +2599,11 @@ impl Date {
     pub fn micro_second(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Quantity_Date_micro_second(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2382,8 +2614,11 @@ impl Date {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_Date_is_equal(self as *const Self, anOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2393,8 +2628,11 @@ impl Date {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_Date_is_earlier(self as *const Self, anOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2404,8 +2642,11 @@ impl Date {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_Date_is_later(self as *const Self, anOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2440,8 +2681,11 @@ impl Date {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_Date_is_valid(mm, dd, yy, hh, mn, ss, mis, mics) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2452,8 +2696,11 @@ impl Date {
     pub fn is_leap(yy: i32) -> bool {
         {
             let __result = unsafe { crate::ffi::Quantity_Date_is_leap(yy) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2476,8 +2723,10 @@ impl DateDefinitionError {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Quantity_DateDefinitionError_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2488,8 +2737,10 @@ impl DateDefinitionError {
             let __result = unsafe {
                 crate::ffi::Quantity_DateDefinitionError_ctor_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2504,8 +2755,10 @@ impl DateDefinitionError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2515,8 +2768,11 @@ impl DateDefinitionError {
             let __result = unsafe {
                 crate::ffi::Quantity_DateDefinitionError_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2524,18 +2780,23 @@ impl DateDefinitionError {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Quantity_DateDefinitionError_raise_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Quantity_DateDefinitionError.hxx`:35 - `Quantity_DateDefinitionError::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::Quantity_DateDefinitionError_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Quantity_DateDefinitionError_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2548,8 +2809,11 @@ impl DateDefinitionError {
             let __result = unsafe {
                 crate::ffi::Quantity_DateDefinitionError_new_instance_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2567,8 +2831,11 @@ impl DateDefinitionError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2576,8 +2843,11 @@ impl DateDefinitionError {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Quantity_DateDefinitionError_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2586,123 +2856,128 @@ impl DateDefinitionError {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_DateDefinitionError_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Quantity_DateDefinitionError_as_Standard_DomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Quantity_DateDefinitionError_as_Standard_DomainError(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Quantity_DateDefinitionError_as_Standard_DomainError_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Quantity_DateDefinitionError_as_Standard_DomainError_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Quantity_DateDefinitionError_as_Standard_Failure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Quantity_DateDefinitionError_as_Standard_Failure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Quantity_DateDefinitionError_as_Standard_Failure_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Quantity_DateDefinitionError_as_Standard_Failure_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Quantity_DateDefinitionError_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Quantity_DateDefinitionError_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Quantity_DateDefinitionError_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Quantity_DateDefinitionError_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleQuantityDateDefinitionError> {
-        {
-            let __result =
-                unsafe { crate::ffi::Quantity_DateDefinitionError_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::Quantity_DateDefinitionError_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Quantity_DateDefinitionError_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Quantity_DateDefinitionError_inherited_Reraise(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::Quantity_DateDefinitionError_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Quantity_DateDefinitionError_inherited_Jump(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2715,8 +2990,11 @@ impl DateDefinitionError {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2729,8 +3007,11 @@ impl DateDefinitionError {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2740,11 +3021,14 @@ impl DateDefinitionError {
             let __result = unsafe {
                 crate::ffi::Quantity_DateDefinitionError_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2755,20 +3039,25 @@ impl DateDefinitionError {
             let __result = unsafe {
                 crate::ffi::Quantity_DateDefinitionError_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Quantity_DateDefinitionError_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2780,18 +3069,23 @@ impl DateDefinitionError {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Quantity_DateDefinitionError_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2807,61 +3101,61 @@ unsafe impl crate::CppDeletable for HandleQuantityDateDefinitionError {
 impl HandleQuantityDateDefinitionError {
     /// Dereference this Handle to access the underlying Quantity_DateDefinitionError
     pub fn get(&self) -> &crate::ffi::Quantity_DateDefinitionError {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleQuantityDateDefinitionError_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleQuantityDateDefinitionError_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Quantity_DateDefinitionError
     pub fn get_mut(&mut self) -> &mut crate::ffi::Quantity_DateDefinitionError {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleQuantityDateDefinitionError_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleQuantityDateDefinitionError_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Quantity_DateDefinitionError> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleQuantityDateDefinitionError_to_HandleStandardDomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleQuantityDateDefinitionError_to_HandleStandardDomainError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Quantity_DateDefinitionError> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleQuantityDateDefinitionError_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleQuantityDateDefinitionError_to_HandleStandardFailure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Quantity_DateDefinitionError> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleQuantityDateDefinitionError_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleQuantityDateDefinitionError_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2883,8 +3177,10 @@ impl HArray1OfColor {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Quantity_HArray1OfColor_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2893,8 +3189,10 @@ impl HArray1OfColor {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_HArray1OfColor_ctor_int2(theLower, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2904,8 +3202,10 @@ impl HArray1OfColor {
             let __result = unsafe {
                 crate::ffi::Quantity_HArray1OfColor_ctor_int2_color(theLower, theUpper, theValue)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2922,8 +3222,10 @@ impl HArray1OfColor {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2934,8 +3236,10 @@ impl HArray1OfColor {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_HArray1OfColor_ctor_array1ofcolor(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2944,8 +3248,11 @@ impl HArray1OfColor {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_HArray1OfColor_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2954,8 +3261,11 @@ impl HArray1OfColor {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_HArray1OfColor_change_array1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2964,8 +3274,11 @@ impl HArray1OfColor {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_HArray1OfColor_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2973,8 +3286,11 @@ impl HArray1OfColor {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Quantity_HArray1OfColor_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2982,42 +3298,45 @@ impl HArray1OfColor {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Quantity_HArray1OfColor_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Quantity_HArray1OfColor_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Quantity_HArray1OfColor_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Quantity_HArray1OfColor_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Quantity_HArray1OfColor_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleQuantityHArray1OfColor> {
-        {
-            let __result = unsafe { crate::ffi::Quantity_HArray1OfColor_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Quantity_HArray1OfColor_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3029,8 +3348,11 @@ impl HArray1OfColor {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3040,8 +3362,11 @@ impl HArray1OfColor {
             let __result = unsafe {
                 crate::ffi::Quantity_HArray1OfColor_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3050,11 +3375,14 @@ impl HArray1OfColor {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_HArray1OfColor_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3065,18 +3393,23 @@ impl HArray1OfColor {
             let __result = unsafe {
                 crate::ffi::Quantity_HArray1OfColor_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Quantity_HArray1OfColor_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3086,16 +3419,23 @@ impl HArray1OfColor {
             let __result = unsafe {
                 crate::ffi::Quantity_HArray1OfColor_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Quantity_HArray1OfColor_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Quantity_HArray1OfColor_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3111,35 +3451,32 @@ unsafe impl crate::CppDeletable for HandleQuantityHArray1OfColor {
 impl HandleQuantityHArray1OfColor {
     /// Dereference this Handle to access the underlying Quantity_HArray1OfColor
     pub fn get(&self) -> &crate::ffi::Quantity_HArray1OfColor {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleQuantityHArray1OfColor_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleQuantityHArray1OfColor_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Quantity_HArray1OfColor
     pub fn get_mut(&mut self) -> &mut crate::ffi::Quantity_HArray1OfColor {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleQuantityHArray1OfColor_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleQuantityHArray1OfColor_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Quantity_HArray1OfColor> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleQuantityHArray1OfColor_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleQuantityHArray1OfColor_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3179,8 +3516,10 @@ impl Period {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_Period_ctor_int6(dd, hh, mn, ss, mis, mics) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3199,8 +3538,10 @@ impl Period {
     pub fn new_int2(ss: i32, mics: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Quantity_Period_ctor_int2(ss, mics) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3260,7 +3601,7 @@ impl Period {
         mics: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Quantity_Period_values_int6(
                     self as *const Self,
                     dd,
@@ -3271,7 +3612,9 @@ impl Period {
                     mics,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3281,8 +3624,11 @@ impl Period {
     /// Example of return values: 3600 seconds and 0 microseconds
     pub fn values_int2(&self, ss: &mut i32, mics: &mut i32) {
         {
-            unsafe { crate::ffi::Quantity_Period_values_int2(self as *const Self, ss, mics) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Quantity_Period_values_int2(self as *const Self, ss, mics) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3293,7 +3639,7 @@ impl Period {
     /// mics (defaulted to 0) microseconds; or
     pub fn set_values_int6(&mut self, dd: i32, hh: i32, mn: i32, ss: i32, mis: i32, mics: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Quantity_Period_set_values_int6(
                     self as *mut Self,
                     dd,
@@ -3304,7 +3650,9 @@ impl Period {
                     mics,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3323,8 +3671,11 @@ impl Period {
     /// is less than 0.
     pub fn set_values_int2(&mut self, ss: i32, mics: i32) {
         {
-            unsafe { crate::ffi::Quantity_Period_set_values_int2(self as *mut Self, ss, mics) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Quantity_Period_set_values_int2(self as *mut Self, ss, mics) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3334,8 +3685,11 @@ impl Period {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_Period_subtract(self as *const Self, anOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3344,8 +3698,11 @@ impl Period {
     pub fn add(&self, anOther: &Period) -> crate::OwnedPtr<Period> {
         {
             let __result = unsafe { crate::ffi::Quantity_Period_add(self as *const Self, anOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3355,8 +3712,11 @@ impl Period {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_Period_is_equal(self as *const Self, anOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3366,8 +3726,11 @@ impl Period {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_Period_is_shorter(self as *const Self, anOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3377,8 +3740,11 @@ impl Period {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_Period_is_longer(self as *const Self, anOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3394,8 +3760,11 @@ impl Period {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_Period_is_valid_int6(dd, hh, mn, ss, mis, mics) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3406,8 +3775,11 @@ impl Period {
     pub fn is_valid_int2(ss: i32, mics: i32) -> bool {
         {
             let __result = unsafe { crate::ffi::Quantity_Period_is_valid_int2(ss, mics) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3430,8 +3802,10 @@ impl PeriodDefinitionError {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Quantity_PeriodDefinitionError_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3442,8 +3816,10 @@ impl PeriodDefinitionError {
             let __result = unsafe {
                 crate::ffi::Quantity_PeriodDefinitionError_ctor_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3458,8 +3834,10 @@ impl PeriodDefinitionError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3469,8 +3847,11 @@ impl PeriodDefinitionError {
             let __result = unsafe {
                 crate::ffi::Quantity_PeriodDefinitionError_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3478,18 +3859,23 @@ impl PeriodDefinitionError {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Quantity_PeriodDefinitionError_raise_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Quantity_PeriodDefinitionError.hxx`:35 - `Quantity_PeriodDefinitionError::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::Quantity_PeriodDefinitionError_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Quantity_PeriodDefinitionError_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3504,8 +3890,11 @@ impl PeriodDefinitionError {
                     c_theMessage.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3523,8 +3912,11 @@ impl PeriodDefinitionError {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3532,8 +3924,11 @@ impl PeriodDefinitionError {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Quantity_PeriodDefinitionError_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3542,127 +3937,130 @@ impl PeriodDefinitionError {
         {
             let __result =
                 unsafe { crate::ffi::Quantity_PeriodDefinitionError_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Quantity_PeriodDefinitionError_as_Standard_DomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Quantity_PeriodDefinitionError_as_Standard_DomainError(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::Quantity_PeriodDefinitionError_as_Standard_DomainError_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Quantity_PeriodDefinitionError_as_Standard_DomainError_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Quantity_PeriodDefinitionError_as_Standard_Failure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Quantity_PeriodDefinitionError_as_Standard_Failure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::Quantity_PeriodDefinitionError_as_Standard_Failure_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Quantity_PeriodDefinitionError_as_Standard_Failure_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Quantity_PeriodDefinitionError_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Quantity_PeriodDefinitionError_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Quantity_PeriodDefinitionError_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Quantity_PeriodDefinitionError_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleQuantityPeriodDefinitionError> {
-        {
-            let __result =
-                unsafe { crate::ffi::Quantity_PeriodDefinitionError_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::Quantity_PeriodDefinitionError_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Quantity_PeriodDefinitionError_inherited_Print(
                     self as *const Self,
                     theStream,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Quantity_PeriodDefinitionError_inherited_Reraise(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::Quantity_PeriodDefinitionError_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Quantity_PeriodDefinitionError_inherited_Jump(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3675,8 +4073,11 @@ impl PeriodDefinitionError {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3689,8 +4090,11 @@ impl PeriodDefinitionError {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3700,11 +4104,14 @@ impl PeriodDefinitionError {
             let __result = unsafe {
                 crate::ffi::Quantity_PeriodDefinitionError_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3717,20 +4124,25 @@ impl PeriodDefinitionError {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Quantity_PeriodDefinitionError_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3742,18 +4154,23 @@ impl PeriodDefinitionError {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Quantity_PeriodDefinitionError_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3769,62 +4186,61 @@ unsafe impl crate::CppDeletable for HandleQuantityPeriodDefinitionError {
 impl HandleQuantityPeriodDefinitionError {
     /// Dereference this Handle to access the underlying Quantity_PeriodDefinitionError
     pub fn get(&self) -> &crate::ffi::Quantity_PeriodDefinitionError {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleQuantityPeriodDefinitionError_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleQuantityPeriodDefinitionError_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Quantity_PeriodDefinitionError
     pub fn get_mut(&mut self) -> &mut crate::ffi::Quantity_PeriodDefinitionError {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleQuantityPeriodDefinitionError_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleQuantityPeriodDefinitionError_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Quantity_PeriodDefinitionError> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleQuantityPeriodDefinitionError_to_HandleStandardDomainError(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleQuantityPeriodDefinitionError_to_HandleStandardDomainError(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Quantity_PeriodDefinitionError> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleQuantityPeriodDefinitionError_to_HandleStandardFailure(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleQuantityPeriodDefinitionError_to_HandleStandardFailure(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Quantity_PeriodDefinitionError> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleQuantityPeriodDefinitionError_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleQuantityPeriodDefinitionError_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

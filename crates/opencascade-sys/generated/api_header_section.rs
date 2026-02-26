@@ -27,8 +27,10 @@ impl EditHeader {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::APIHeaderSection_EditHeader_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -37,8 +39,11 @@ impl EditHeader {
         {
             let __result =
                 unsafe { crate::ffi::APIHeaderSection_EditHeader_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -48,8 +53,11 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_EditHeader_recognize(self as *const Self, form)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -63,8 +71,11 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_EditHeader_string_value(self as *const Self, form, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -79,8 +90,11 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_EditHeader_apply(self as *const Self, form, ent, model)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -95,8 +109,11 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_EditHeader_load(self as *const Self, form, ent, model)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -106,8 +123,11 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_EditHeader_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -115,8 +135,11 @@ impl EditHeader {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::APIHeaderSection_EditHeader_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -124,78 +147,82 @@ impl EditHeader {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::APIHeaderSection_EditHeader_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_Editor
     pub fn as_if_select_editor(&self) -> &crate::if_select::Editor {
-        {
-            let __result = unsafe {
-                crate::ffi::APIHeaderSection_EditHeader_as_IFSelect_Editor(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::APIHeaderSection_EditHeader_as_IFSelect_Editor(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Editor (mutable)
     pub fn as_if_select_editor_mut(&mut self) -> &mut crate::if_select::Editor {
-        {
-            let __result = unsafe {
-                crate::ffi::APIHeaderSection_EditHeader_as_IFSelect_Editor_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::APIHeaderSection_EditHeader_as_IFSelect_Editor_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::APIHeaderSection_EditHeader_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::APIHeaderSection_EditHeader_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::APIHeaderSection_EditHeader_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::APIHeaderSection_EditHeader_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleAPIHeaderSectionEditHeader> {
-        {
-            let __result =
-                unsafe { crate::ffi::APIHeaderSection_EditHeader_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::APIHeaderSection_EditHeader_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:62 - `IFSelect_Editor::SetList()`
     pub fn set_list(&mut self, num: i32, max: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::APIHeaderSection_EditHeader_inherited_SetList(
                     self as *mut Self,
                     num,
                     max,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -205,8 +232,11 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_EditHeader_inherited_NbValues(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -219,8 +249,11 @@ impl EditHeader {
                     num,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -230,8 +263,11 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_EditHeader_inherited_IsList(self as *const Self, num)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -241,8 +277,11 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_EditHeader_inherited_MaxList(self as *const Self, num)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -252,32 +291,39 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_EditHeader_inherited_EditMode(self as *const Self, num)
             };
-            crate::check_exception();
-            crate::if_select::EditValue::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::EditValue::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:90 - `IFSelect_Editor::PrintNames()`
     pub fn print_names(&self, S: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::APIHeaderSection_EditHeader_inherited_PrintNames(self as *const Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:92 - `IFSelect_Editor::PrintDefs()`
     pub fn print_defs(&self, S: &mut crate::ffi::Standard_OStream, labels: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::APIHeaderSection_EditHeader_inherited_PrintDefs(
                     self as *const Self,
                     S,
                     labels,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -290,8 +336,11 @@ impl EditHeader {
                     what,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -309,8 +358,11 @@ impl EditHeader {
                     undoable,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -323,8 +375,11 @@ impl EditHeader {
                     num,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -342,8 +397,11 @@ impl EditHeader {
                     num,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -365,8 +423,11 @@ impl EditHeader {
                     enforce,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -388,8 +449,11 @@ impl EditHeader {
                     enforce,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -402,8 +466,11 @@ impl EditHeader {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -416,8 +483,11 @@ impl EditHeader {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -427,11 +497,14 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_EditHeader_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -442,20 +515,25 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_EditHeader_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::APIHeaderSection_EditHeader_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -467,18 +545,23 @@ impl EditHeader {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::APIHeaderSection_EditHeader_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -494,48 +577,48 @@ unsafe impl crate::CppDeletable for HandleAPIHeaderSectionEditHeader {
 impl HandleAPIHeaderSectionEditHeader {
     /// Dereference this Handle to access the underlying APIHeaderSection_EditHeader
     pub fn get(&self) -> &crate::ffi::APIHeaderSection_EditHeader {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleAPIHeaderSectionEditHeader_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleAPIHeaderSectionEditHeader_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying APIHeaderSection_EditHeader
     pub fn get_mut(&mut self) -> &mut crate::ffi::APIHeaderSection_EditHeader {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleAPIHeaderSectionEditHeader_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleAPIHeaderSectionEditHeader_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<APIHeaderSection_EditHeader> to Handle<IFSelect_Editor>
     pub fn to_handle_editor(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectEditor> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAPIHeaderSectionEditHeader_to_HandleIFSelectEditor(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAPIHeaderSectionEditHeader_to_HandleIFSelectEditor(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<APIHeaderSection_EditHeader> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleAPIHeaderSectionEditHeader_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleAPIHeaderSectionEditHeader_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -560,8 +643,10 @@ impl MakeHeader {
     pub fn new_int(shapetype: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::APIHeaderSection_MakeHeader_ctor_int(shapetype) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -575,8 +660,10 @@ impl MakeHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_ctor_handlestepdatastepmodel(model)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -592,10 +679,12 @@ impl MakeHeader {
     pub fn init(&mut self, nameval: &str) {
         let c_nameval = std::ffi::CString::new(nameval).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_init(self as *mut Self, c_nameval.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -606,8 +695,11 @@ impl MakeHeader {
         {
             let __result =
                 unsafe { crate::ffi::APIHeaderSection_MakeHeader_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -616,8 +708,12 @@ impl MakeHeader {
     /// STEP model and allows the header fields to be completed.
     pub fn apply(&self, model: &crate::ffi::HandleStepDataStepModel) {
         {
-            unsafe { crate::ffi::APIHeaderSection_MakeHeader_apply(self as *const Self, model) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_apply(self as *const Self, model)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -634,8 +730,11 @@ impl MakeHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_new_model(self as *const Self, protocol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -646,8 +745,11 @@ impl MakeHeader {
         {
             let __result =
                 unsafe { crate::ffi::APIHeaderSection_MakeHeader_has_fn(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -658,16 +760,23 @@ impl MakeHeader {
         {
             let __result =
                 unsafe { crate::ffi::APIHeaderSection_MakeHeader_fn_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:75 - `APIHeaderSection_MakeHeader::SetName()`
     pub fn set_name(&mut self, aName: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe { crate::ffi::APIHeaderSection_MakeHeader_set_name(self as *mut Self, aName) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::APIHeaderSection_MakeHeader_set_name(self as *mut Self, aName)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -677,21 +786,26 @@ impl MakeHeader {
         {
             let __result =
                 unsafe { crate::ffi::APIHeaderSection_MakeHeader_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:80 - `APIHeaderSection_MakeHeader::SetTimeStamp()`
     pub fn set_time_stamp(&mut self, aTimeStamp: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_set_time_stamp(
                     self as *mut Self,
                     aTimeStamp,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -701,18 +815,23 @@ impl MakeHeader {
         {
             let __result =
                 unsafe { crate::ffi::APIHeaderSection_MakeHeader_time_stamp(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `APIHeaderSection_MakeHeader.hxx`:85 - `APIHeaderSection_MakeHeader::SetAuthor()`
     pub fn set_author(&mut self, aAuthor: &crate::ffi::HandleInterfaceHArray1OfHAsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_set_author(self as *mut Self, aAuthor)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -723,14 +842,16 @@ impl MakeHeader {
         aAuthor: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_set_author_value(
                     self as *mut Self,
                     num,
                     aAuthor,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -739,8 +860,11 @@ impl MakeHeader {
         {
             let __result =
                 unsafe { crate::ffi::APIHeaderSection_MakeHeader_author(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -754,8 +878,11 @@ impl MakeHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_author_value(self as *const Self, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -765,8 +892,11 @@ impl MakeHeader {
         {
             let __result =
                 unsafe { crate::ffi::APIHeaderSection_MakeHeader_nb_author(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -776,13 +906,15 @@ impl MakeHeader {
         aOrganization: &crate::ffi::HandleInterfaceHArray1OfHAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_set_organization(
                     self as *mut Self,
                     aOrganization,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -793,14 +925,16 @@ impl MakeHeader {
         aOrganization: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_set_organization_value(
                     self as *mut Self,
                     num,
                     aOrganization,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -812,8 +946,11 @@ impl MakeHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_organization(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -828,8 +965,11 @@ impl MakeHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_organization_value(self as *const Self, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -841,8 +981,11 @@ impl MakeHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_nb_organization(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -852,13 +995,15 @@ impl MakeHeader {
         aPreprocessorVersion: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_set_preprocessor_version(
                     self as *mut Self,
                     aPreprocessorVersion,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -871,8 +1016,11 @@ impl MakeHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_preprocessor_version(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -882,13 +1030,15 @@ impl MakeHeader {
         aOriginatingSystem: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_set_originating_system(
                     self as *mut Self,
                     aOriginatingSystem,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -898,8 +1048,11 @@ impl MakeHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_originating_system(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -909,13 +1062,15 @@ impl MakeHeader {
         aAuthorisation: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_set_authorisation(
                     self as *mut Self,
                     aAuthorisation,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -926,8 +1081,11 @@ impl MakeHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_authorisation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -937,8 +1095,11 @@ impl MakeHeader {
         {
             let __result =
                 unsafe { crate::ffi::APIHeaderSection_MakeHeader_has_fs(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -949,8 +1110,11 @@ impl MakeHeader {
         {
             let __result =
                 unsafe { crate::ffi::APIHeaderSection_MakeHeader_fs_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -960,13 +1124,15 @@ impl MakeHeader {
         aSchemaIdentifiers: &crate::ffi::HandleInterfaceHArray1OfHAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_set_schema_identifiers(
                     self as *mut Self,
                     aSchemaIdentifiers,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -977,14 +1143,16 @@ impl MakeHeader {
         aSchemaIdentifier: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_set_schema_identifiers_value(
                     self as *mut Self,
                     num,
                     aSchemaIdentifier,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -996,8 +1164,11 @@ impl MakeHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_schema_identifiers(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1014,8 +1185,11 @@ impl MakeHeader {
                     num,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1026,8 +1200,11 @@ impl MakeHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_nb_schema_identifiers(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1038,13 +1215,15 @@ impl MakeHeader {
         aSchemaIdentifier: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_add_schema_identifier(
                     self as *mut Self,
                     aSchemaIdentifier,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1054,8 +1233,11 @@ impl MakeHeader {
         {
             let __result =
                 unsafe { crate::ffi::APIHeaderSection_MakeHeader_has_fd(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1066,8 +1248,11 @@ impl MakeHeader {
         {
             let __result =
                 unsafe { crate::ffi::APIHeaderSection_MakeHeader_fd_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1077,13 +1262,15 @@ impl MakeHeader {
         aDescription: &crate::ffi::HandleInterfaceHArray1OfHAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_set_description(
                     self as *mut Self,
                     aDescription,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1094,14 +1281,16 @@ impl MakeHeader {
         aDescription: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_set_description_value(
                     self as *mut Self,
                     num,
                     aDescription,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1110,8 +1299,11 @@ impl MakeHeader {
         {
             let __result =
                 unsafe { crate::ffi::APIHeaderSection_MakeHeader_description(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1126,8 +1318,11 @@ impl MakeHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_description_value(self as *const Self, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1139,8 +1334,11 @@ impl MakeHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_nb_description(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1150,13 +1348,15 @@ impl MakeHeader {
         aImplementationLevel: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_set_implementation_level(
                     self as *mut Self,
                     aImplementationLevel,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1170,8 +1370,11 @@ impl MakeHeader {
             let __result = unsafe {
                 crate::ffi::APIHeaderSection_MakeHeader_implementation_level(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }

@@ -67,8 +67,10 @@ impl BVHIndexBuffer {
             let __result = unsafe {
                 crate::ffi::Select3D_BVHIndexBuffer_ctor_handlencollectionbaseallocator(theAlloc)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -77,8 +79,11 @@ impl BVHIndexBuffer {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_BVHIndexBuffer_has_patches(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -93,8 +98,11 @@ impl BVHIndexBuffer {
                     theHasPatches,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -104,8 +112,11 @@ impl BVHIndexBuffer {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_BVHIndexBuffer_index(self as *const Self, theIndex) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -116,8 +127,11 @@ impl BVHIndexBuffer {
             let __result = unsafe {
                 crate::ffi::Select3D_BVHIndexBuffer_patch_size(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -125,14 +139,16 @@ impl BVHIndexBuffer {
     /// Change index at specified position
     pub fn set_index_int2(&mut self, theIndex: i32, theValue: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_BVHIndexBuffer_set_index_int2(
                     self as *mut Self,
                     theIndex,
                     theValue,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -140,7 +156,7 @@ impl BVHIndexBuffer {
     /// Change index at specified position
     pub fn set_index_int3(&mut self, theIndex: i32, theValue: i32, thePatchSize: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_BVHIndexBuffer_set_index_int3(
                     self as *mut Self,
                     theIndex,
@@ -148,7 +164,9 @@ impl BVHIndexBuffer {
                     thePatchSize,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -157,8 +175,11 @@ impl BVHIndexBuffer {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_BVHIndexBuffer_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -166,8 +187,11 @@ impl BVHIndexBuffer {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Select3D_BVHIndexBuffer_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -175,86 +199,88 @@ impl BVHIndexBuffer {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Select3D_BVHIndexBuffer_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Graphic3d_Buffer
     pub fn as_graphic3d_buffer(&self) -> &crate::graphic3d::Buffer {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_BVHIndexBuffer_as_Graphic3d_Buffer(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Select3D_BVHIndexBuffer_as_Graphic3d_Buffer(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Graphic3d_Buffer (mutable)
     pub fn as_graphic3d_buffer_mut(&mut self) -> &mut crate::graphic3d::Buffer {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_BVHIndexBuffer_as_Graphic3d_Buffer_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_BVHIndexBuffer_as_Graphic3d_Buffer_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to NCollection_Buffer
     pub fn as_n_collection_buffer(&self) -> &crate::n_collection::Buffer {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_BVHIndexBuffer_as_NCollection_Buffer(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_BVHIndexBuffer_as_NCollection_Buffer(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to NCollection_Buffer (mutable)
     pub fn as_n_collection_buffer_mut(&mut self) -> &mut crate::n_collection::Buffer {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_BVHIndexBuffer_as_NCollection_Buffer_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_BVHIndexBuffer_as_NCollection_Buffer_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_BVHIndexBuffer_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_BVHIndexBuffer_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_BVHIndexBuffer_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_BVHIndexBuffer_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DBVHIndexBuffer> {
-        {
-            let __result = unsafe { crate::ffi::Select3D_BVHIndexBuffer_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Select3D_BVHIndexBuffer_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Graphic3d_Buffer.hxx`:102 - `Graphic3d_Buffer::NbMaxElements()`
@@ -263,8 +289,11 @@ impl BVHIndexBuffer {
             let __result = unsafe {
                 crate::ffi::Select3D_BVHIndexBuffer_inherited_NbMaxElements(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -274,11 +303,14 @@ impl BVHIndexBuffer {
             let __result = unsafe {
                 crate::ffi::Select3D_BVHIndexBuffer_inherited_AttributesArray(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -292,8 +324,11 @@ impl BVHIndexBuffer {
                     theAttribIndex,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -306,8 +341,11 @@ impl BVHIndexBuffer {
                     theAttribIndex,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -320,8 +358,11 @@ impl BVHIndexBuffer {
                     theAttrib.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -334,16 +375,22 @@ impl BVHIndexBuffer {
                     theAttribIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Buffer.hxx`:257 - `Graphic3d_Buffer::release()`
     pub fn release(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_BVHIndexBuffer_inherited_release(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_BVHIndexBuffer_inherited_release(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -353,8 +400,11 @@ impl BVHIndexBuffer {
             let __result = unsafe {
                 crate::ffi::Select3D_BVHIndexBuffer_inherited_IsInterleaved(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -364,8 +414,11 @@ impl BVHIndexBuffer {
             let __result = unsafe {
                 crate::ffi::Select3D_BVHIndexBuffer_inherited_IsMutable(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -375,24 +428,35 @@ impl BVHIndexBuffer {
             let __result = unsafe {
                 crate::ffi::Select3D_BVHIndexBuffer_inherited_InvalidatedRange(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Buffer.hxx`:324 - `Graphic3d_Buffer::Validate()`
     pub fn validate(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_BVHIndexBuffer_inherited_Validate(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_BVHIndexBuffer_inherited_Validate(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Buffer.hxx`:327 - `Graphic3d_Buffer::Invalidate()`
     pub fn invalidate(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_BVHIndexBuffer_inherited_Invalidate(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_BVHIndexBuffer_inherited_Invalidate(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -402,8 +466,11 @@ impl BVHIndexBuffer {
             let __result = unsafe {
                 crate::ffi::Select3D_BVHIndexBuffer_inherited_IsEmpty(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -412,8 +479,11 @@ impl BVHIndexBuffer {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_BVHIndexBuffer_inherited_Size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -423,21 +493,26 @@ impl BVHIndexBuffer {
             let __result = unsafe {
                 crate::ffi::Select3D_BVHIndexBuffer_inherited_Allocator(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `NCollection_Buffer.hxx`:69 - `NCollection_Buffer::SetAllocator()`
     pub fn set_allocator(&mut self, theAlloc: &crate::ffi::HandleNCollectionBaseAllocator) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_BVHIndexBuffer_inherited_SetAllocator(
                     self as *mut Self,
                     theAlloc,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -447,16 +522,22 @@ impl BVHIndexBuffer {
             let __result = unsafe {
                 crate::ffi::Select3D_BVHIndexBuffer_inherited_Allocate(self as *mut Self, theSize)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `NCollection_Buffer.hxx`:95 - `NCollection_Buffer::Free()`
     pub fn free(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_BVHIndexBuffer_inherited_Free(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_BVHIndexBuffer_inherited_Free(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -469,8 +550,11 @@ impl BVHIndexBuffer {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -480,8 +564,11 @@ impl BVHIndexBuffer {
             let __result = unsafe {
                 crate::ffi::Select3D_BVHIndexBuffer_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -490,11 +577,14 @@ impl BVHIndexBuffer {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_BVHIndexBuffer_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -505,18 +595,23 @@ impl BVHIndexBuffer {
             let __result = unsafe {
                 crate::ffi::Select3D_BVHIndexBuffer_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_BVHIndexBuffer_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -526,16 +621,23 @@ impl BVHIndexBuffer {
             let __result = unsafe {
                 crate::ffi::Select3D_BVHIndexBuffer_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Select3D_BVHIndexBuffer_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_BVHIndexBuffer_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -551,63 +653,56 @@ unsafe impl crate::CppDeletable for HandleSelect3DBVHIndexBuffer {
 impl HandleSelect3DBVHIndexBuffer {
     /// Dereference this Handle to access the underlying Select3D_BVHIndexBuffer
     pub fn get(&self) -> &crate::ffi::Select3D_BVHIndexBuffer {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DBVHIndexBuffer_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleSelect3DBVHIndexBuffer_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_BVHIndexBuffer
     pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_BVHIndexBuffer {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DBVHIndexBuffer_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DBVHIndexBuffer_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Select3D_BVHIndexBuffer> to Handle<Graphic3d_Buffer>
     pub fn to_handle_graphic3d_buffer(&self) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dBuffer> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DBVHIndexBuffer_to_HandleGraphic3dBuffer(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DBVHIndexBuffer_to_HandleGraphic3dBuffer(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_BVHIndexBuffer> to Handle<NCollection_Buffer>
     pub fn to_handle_n_collection_buffer(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionBuffer> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DBVHIndexBuffer_to_HandleNCollectionBuffer(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DBVHIndexBuffer_to_HandleNCollectionBuffer(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_BVHIndexBuffer> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DBVHIndexBuffer_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DBVHIndexBuffer_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -638,8 +733,10 @@ impl InteriorSensitivePointSet {
             let __result = unsafe {
                 crate::ffi::Select3D_InteriorSensitivePointSet_ctor_handleselectmgrentityowner_array1ofpnt(theOwnerId, thePoints)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -648,13 +745,15 @@ impl InteriorSensitivePointSet {
     /// whole point set
     pub fn get_points(&mut self, theHArrayOfPnt: &mut crate::ffi::HandleTColgpHArray1OfPnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_InteriorSensitivePointSet_get_points(
                     self as *mut Self,
                     theHArrayOfPnt,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -664,8 +763,11 @@ impl InteriorSensitivePointSet {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_InteriorSensitivePointSet_size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -676,8 +778,11 @@ impl InteriorSensitivePointSet {
             let __result = unsafe {
                 crate::ffi::Select3D_InteriorSensitivePointSet_box_(self as *const Self, theIdx)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -693,8 +798,11 @@ impl InteriorSensitivePointSet {
                     theAxis,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -702,14 +810,16 @@ impl InteriorSensitivePointSet {
     /// Swaps items with indexes theIdx1 and theIdx2 in the vector
     pub fn swap(&mut self, theIdx1: i32, theIdx2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_InteriorSensitivePointSet_swap(
                     self as *mut Self,
                     theIdx1,
                     theIdx2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -721,8 +831,11 @@ impl InteriorSensitivePointSet {
             let __result = unsafe {
                 crate::ffi::Select3D_InteriorSensitivePointSet_bounding_box(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -736,8 +849,11 @@ impl InteriorSensitivePointSet {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -748,8 +864,11 @@ impl InteriorSensitivePointSet {
             let __result = unsafe {
                 crate::ffi::Select3D_InteriorSensitivePointSet_nb_sub_elements(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -759,8 +878,11 @@ impl InteriorSensitivePointSet {
             let __result = unsafe {
                 crate::ffi::Select3D_InteriorSensitivePointSet_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -769,8 +891,11 @@ impl InteriorSensitivePointSet {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_InteriorSensitivePointSet_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -779,99 +904,102 @@ impl InteriorSensitivePointSet {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_InteriorSensitivePointSet_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Select3D_SensitiveSet
     pub fn as_sensitive_set(&self) -> &SensitiveSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_InteriorSensitivePointSet_as_Select3D_SensitiveSet(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_InteriorSensitivePointSet_as_Select3D_SensitiveSet(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveSet (mutable)
     pub fn as_sensitive_set_mut(&mut self) -> &mut SensitiveSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_InteriorSensitivePointSet_as_Select3D_SensitiveSet_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_InteriorSensitivePointSet_as_Select3D_SensitiveSet_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_InteriorSensitivePointSet_as_Select3D_SensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_InteriorSensitivePointSet_as_Select3D_SensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_InteriorSensitivePointSet_as_Select3D_SensitiveEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_InteriorSensitivePointSet_as_Select3D_SensitiveEntity_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_InteriorSensitivePointSet_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_InteriorSensitivePointSet_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_InteriorSensitivePointSet_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_InteriorSensitivePointSet_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DInteriorSensitivePointSet> {
-        {
-            let __result =
-                unsafe { crate::ffi::Select3D_InteriorSensitivePointSet_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::Select3D_InteriorSensitivePointSet_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:62 - `Select3D_SensitiveSet::Matches()`
@@ -888,18 +1016,23 @@ impl InteriorSensitivePointSet {
                     thePickResult,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:72 - `Select3D_SensitiveSet::BVH()`
     pub fn bvh(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_InteriorSensitivePointSet_inherited_BVH(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -911,43 +1044,52 @@ impl InteriorSensitivePointSet {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
     pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_InteriorSensitivePointSet_inherited_SetBuilder(
                     self as *mut Self,
                     theBuilder,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_InteriorSensitivePointSet_inherited_MarkDirty(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:96 - `Select3D_SensitiveSet::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_InteriorSensitivePointSet_inherited_Clear(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -959,8 +1101,11 @@ impl InteriorSensitivePointSet {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -972,21 +1117,26 @@ impl InteriorSensitivePointSet {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_InteriorSensitivePointSet_inherited_Set(
                     self as *mut Self,
                     theOwnerId,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -998,21 +1148,26 @@ impl InteriorSensitivePointSet {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_InteriorSensitivePointSet_inherited_SetSensitivityFactor(
                     self as *mut Self,
                     theNewSens,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1024,8 +1179,11 @@ impl InteriorSensitivePointSet {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1037,8 +1195,11 @@ impl InteriorSensitivePointSet {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1050,8 +1211,11 @@ impl InteriorSensitivePointSet {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1063,8 +1227,11 @@ impl InteriorSensitivePointSet {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1074,13 +1241,15 @@ impl InteriorSensitivePointSet {
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_InteriorSensitivePointSet_inherited_SetTransformPersistence(
                     self as *mut Self,
                     theTrsfPers,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1093,8 +1262,11 @@ impl InteriorSensitivePointSet {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1107,8 +1279,11 @@ impl InteriorSensitivePointSet {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1118,11 +1293,14 @@ impl InteriorSensitivePointSet {
             let __result = unsafe {
                 crate::ffi::Select3D_InteriorSensitivePointSet_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1135,20 +1313,25 @@ impl InteriorSensitivePointSet {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_InteriorSensitivePointSet_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1160,18 +1343,23 @@ impl InteriorSensitivePointSet {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_InteriorSensitivePointSet_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1187,67 +1375,66 @@ unsafe impl crate::CppDeletable for HandleSelect3DInteriorSensitivePointSet {
 impl HandleSelect3DInteriorSensitivePointSet {
     /// Dereference this Handle to access the underlying Select3D_InteriorSensitivePointSet
     pub fn get(&self) -> &crate::ffi::Select3D_InteriorSensitivePointSet {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DInteriorSensitivePointSet_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DInteriorSensitivePointSet_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_InteriorSensitivePointSet
     pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_InteriorSensitivePointSet {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DInteriorSensitivePointSet_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DInteriorSensitivePointSet_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Select3D_InteriorSensitivePointSet> to Handle<Select3D_SensitiveSet>
     pub fn to_handle_sensitive_set(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSet> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DInteriorSensitivePointSet_to_HandleSelect3DSensitiveSet(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DInteriorSensitivePointSet_to_HandleSelect3DSensitiveSet(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_InteriorSensitivePointSet> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DInteriorSensitivePointSet_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DInteriorSensitivePointSet_to_HandleSelect3DSensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_InteriorSensitivePointSet> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DInteriorSensitivePointSet_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DInteriorSensitivePointSet_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1282,36 +1469,42 @@ impl PointData {
     pub fn new_int(theNbPoints: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::Select3D_PointData_ctor_int(theNbPoints) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `Select3D_PointData.hxx`:40 - `Select3D_PointData::SetPnt()`
     pub fn set_pnt_int_pnt(&mut self, theIndex: i32, theValue: &Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_PointData_set_pnt_int_pnt(
                     self as *mut Self,
                     theIndex,
                     theValue,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Select3D_PointData.hxx`:49 - `Select3D_PointData::SetPnt()`
     pub fn set_pnt_int_pnt_2(&mut self, theIndex: i32, theValue: &crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_PointData_set_pnt_int_pnt_2(
                     self as *mut Self,
                     theIndex,
                     theValue,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1320,8 +1513,11 @@ impl PointData {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_PointData_pnt(self as *const Self, theIndex) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1330,8 +1526,11 @@ impl PointData {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_PointData_pnt3d(self as *const Self, theIndex) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1339,8 +1538,11 @@ impl PointData {
     pub fn size(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Select3D_PointData_size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1373,8 +1575,10 @@ impl SensitiveBox {
                     theOwnerId, theBox,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1400,8 +1604,10 @@ impl SensitiveBox {
                     theOwnerId, theXMin, theYMin, theZMin, theXMax, theYMax, theZMax,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1410,8 +1616,11 @@ impl SensitiveBox {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveBox_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1421,8 +1630,11 @@ impl SensitiveBox {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveBox_nb_sub_elements(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1431,8 +1643,11 @@ impl SensitiveBox {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveBox_get_connected(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1447,8 +1662,11 @@ impl SensitiveBox {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveBox_matches(self as *mut Self, theMgr, thePickResult)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1456,8 +1674,11 @@ impl SensitiveBox {
     pub fn box_(&self) -> crate::OwnedPtr<crate::bnd::Box> {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveBox_box_(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1469,8 +1690,11 @@ impl SensitiveBox {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveBox_center_of_geometry(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1481,8 +1705,11 @@ impl SensitiveBox {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveBox_bounding_box(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1492,8 +1719,11 @@ impl SensitiveBox {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveBox_to_build_bvh(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1501,8 +1731,11 @@ impl SensitiveBox {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveBox_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1510,64 +1743,66 @@ impl SensitiveBox {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveBox_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveBox_as_Select3D_SensitiveEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveBox_as_Select3D_SensitiveEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveBox_as_Select3D_SensitiveEntity_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveBox_as_Select3D_SensitiveEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveBox_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Select3D_SensitiveBox_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveBox_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveBox_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveBox> {
-        {
-            let __result = unsafe { crate::ffi::Select3D_SensitiveBox_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Select3D_SensitiveBox_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
@@ -1575,18 +1810,23 @@ impl SensitiveBox {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveBox_inherited_OwnerId(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveBox_inherited_Set(self as *mut Self, theOwnerId)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1596,37 +1836,48 @@ impl SensitiveBox {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveBox_inherited_SensitivityFactor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveBox_inherited_SetSensitivityFactor(
                     self as *mut Self,
                     theNewSens,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:81 - `Select3D_SensitiveEntity::BVH()`
     pub fn bvh(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveBox_inherited_BVH(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveBox_inherited_BVH(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:87 - `Select3D_SensitiveEntity::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveBox_inherited_Clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveBox_inherited_Clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1636,8 +1887,11 @@ impl SensitiveBox {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveBox_inherited_HasInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1647,8 +1901,11 @@ impl SensitiveBox {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveBox_inherited_InvInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1660,8 +1917,11 @@ impl SensitiveBox {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1671,13 +1931,15 @@ impl SensitiveBox {
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveBox_inherited_SetTransformPersistence(
                     self as *mut Self,
                     theTrsfPers,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1687,8 +1949,11 @@ impl SensitiveBox {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveBox_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1698,8 +1963,11 @@ impl SensitiveBox {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveBox_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1708,11 +1976,14 @@ impl SensitiveBox {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveBox_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1723,18 +1994,23 @@ impl SensitiveBox {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveBox_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveBox_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1744,16 +2020,22 @@ impl SensitiveBox {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveBox_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveBox_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveBox_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1769,50 +2051,46 @@ unsafe impl crate::CppDeletable for HandleSelect3DSensitiveBox {
 impl HandleSelect3DSensitiveBox {
     /// Dereference this Handle to access the underlying Select3D_SensitiveBox
     pub fn get(&self) -> &crate::ffi::Select3D_SensitiveBox {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveBox_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleSelect3DSensitiveBox_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveBox
     pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveBox {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveBox_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleSelect3DSensitiveBox_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Select3D_SensitiveBox> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveBox_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveBox_to_HandleSelect3DSensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitiveBox> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveBox_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveBox_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1847,8 +2125,10 @@ impl SensitiveCircle {
                     theIsFilled,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1867,8 +2147,11 @@ impl SensitiveCircle {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveCircle_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1887,8 +2170,11 @@ impl SensitiveCircle {
                     thePickResult,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1898,8 +2184,11 @@ impl SensitiveCircle {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveCircle_get_connected(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1910,8 +2199,11 @@ impl SensitiveCircle {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveCircle_bounding_box(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1921,8 +2213,11 @@ impl SensitiveCircle {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveCircle_to_build_bvh(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1933,8 +2228,11 @@ impl SensitiveCircle {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCircle_nb_sub_elements(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1945,8 +2243,11 @@ impl SensitiveCircle {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCircle_center_of_geometry(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1957,8 +2258,11 @@ impl SensitiveCircle {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveCircle_transformation(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1968,8 +2272,11 @@ impl SensitiveCircle {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveCircle_circle(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1979,8 +2286,11 @@ impl SensitiveCircle {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveCircle_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1988,8 +2298,11 @@ impl SensitiveCircle {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveCircle_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1997,69 +2310,67 @@ impl SensitiveCircle {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveCircle_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveCircle_as_Select3D_SensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveCircle_as_Select3D_SensitiveEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveCircle_as_Select3D_SensitiveEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveCircle_as_Select3D_SensitiveEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveCircle_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveCircle_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveCircle_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveCircle_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveCircle> {
-        {
-            let __result =
-                unsafe { crate::ffi::Select3D_SensitiveCircle_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Select3D_SensitiveCircle_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
@@ -2068,18 +2379,23 @@ impl SensitiveCircle {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCircle_inherited_OwnerId(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveCircle_inherited_Set(self as *mut Self, theOwnerId)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2091,37 +2407,48 @@ impl SensitiveCircle {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveCircle_inherited_SetSensitivityFactor(
                     self as *mut Self,
                     theNewSens,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:81 - `Select3D_SensitiveEntity::BVH()`
     pub fn bvh(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveCircle_inherited_BVH(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveCircle_inherited_BVH(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:87 - `Select3D_SensitiveEntity::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveCircle_inherited_Clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveCircle_inherited_Clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2131,8 +2458,11 @@ impl SensitiveCircle {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCircle_inherited_HasInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2142,8 +2472,11 @@ impl SensitiveCircle {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCircle_inherited_InvInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2155,8 +2488,11 @@ impl SensitiveCircle {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2166,13 +2502,15 @@ impl SensitiveCircle {
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveCircle_inherited_SetTransformPersistence(
                     self as *mut Self,
                     theTrsfPers,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2185,8 +2523,11 @@ impl SensitiveCircle {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2196,8 +2537,11 @@ impl SensitiveCircle {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCircle_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2206,11 +2550,14 @@ impl SensitiveCircle {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveCircle_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2221,20 +2568,25 @@ impl SensitiveCircle {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCircle_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveCircle_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2246,16 +2598,23 @@ impl SensitiveCircle {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveCircle_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_SensitiveCircle_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2271,50 +2630,50 @@ unsafe impl crate::CppDeletable for HandleSelect3DSensitiveCircle {
 impl HandleSelect3DSensitiveCircle {
     /// Dereference this Handle to access the underlying Select3D_SensitiveCircle
     pub fn get(&self) -> &crate::ffi::Select3D_SensitiveCircle {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveCircle_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitiveCircle_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveCircle
     pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveCircle {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveCircle_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitiveCircle_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Select3D_SensitiveCircle> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveCircle_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveCircle_to_HandleSelect3DSensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitiveCircle> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveCircle_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveCircle_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2348,8 +2707,10 @@ impl SensitiveCurve {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_ctor_handleselectmgrentityowner_handlegeomcurve_int(theOwnerId, theCurve, theNbPnts)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2364,8 +2725,10 @@ impl SensitiveCurve {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_ctor_handleselectmgrentityowner_handletcolgpharray1ofpnt(theOwnerId, thePoints)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2382,8 +2745,10 @@ impl SensitiveCurve {
                     theOwnerId, thePoints,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2403,8 +2768,11 @@ impl SensitiveCurve {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveCurve_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2414,8 +2782,11 @@ impl SensitiveCurve {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveCurve_get_connected(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2423,8 +2794,11 @@ impl SensitiveCurve {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveCurve_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2432,110 +2806,111 @@ impl SensitiveCurve {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveCurve_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Select3D_SensitivePoly
     pub fn as_sensitive_poly(&self) -> &SensitivePoly {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveCurve_as_Select3D_SensitivePoly(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveCurve_as_Select3D_SensitivePoly(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitivePoly (mutable)
     pub fn as_sensitive_poly_mut(&mut self) -> &mut SensitivePoly {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveCurve_as_Select3D_SensitivePoly_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveCurve_as_Select3D_SensitivePoly_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveSet
     pub fn as_sensitive_set(&self) -> &SensitiveSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveCurve_as_Select3D_SensitiveSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveCurve_as_Select3D_SensitiveSet(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveSet (mutable)
     pub fn as_sensitive_set_mut(&mut self) -> &mut SensitiveSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveCurve_as_Select3D_SensitiveSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveCurve_as_Select3D_SensitiveSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveCurve_as_Select3D_SensitiveEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveCurve_as_Select3D_SensitiveEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveCurve_as_Select3D_SensitiveEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveCurve_as_Select3D_SensitiveEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveCurve_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveCurve_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveCurve_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveCurve_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveCurve> {
-        {
-            let __result = unsafe { crate::ffi::Select3D_SensitiveCurve_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Select3D_SensitiveCurve_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitivePoly.hxx`:67 - `Select3D_SensitivePoly::Matches()`
@@ -2552,8 +2927,11 @@ impl SensitiveCurve {
                     thePickResult,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2563,35 +2941,42 @@ impl SensitiveCurve {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_inherited_NbSubElements(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitivePoly.hxx`:75 - `Select3D_SensitivePoly::Points3D()`
     pub fn points3_d(&mut self, theHArrayOfPnt: &mut crate::ffi::HandleTColgpHArray1OfPnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_inherited_Points3D(
                     self as *mut Self,
                     theHArrayOfPnt,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitivePoly.hxx`:86 - `Select3D_SensitivePoly::ArrayBounds()`
     pub fn array_bounds(&self, theLow: &mut i32, theUp: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_inherited_ArrayBounds(
                     self as *const Self,
                     theLow,
                     theUp,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2604,8 +2989,11 @@ impl SensitiveCurve {
                     thePntIdx,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2615,8 +3003,11 @@ impl SensitiveCurve {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_inherited_BoundingBox(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2626,8 +3017,11 @@ impl SensitiveCurve {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_inherited_CenterOfGeometry(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2636,8 +3030,11 @@ impl SensitiveCurve {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveCurve_inherited_Size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2647,8 +3044,11 @@ impl SensitiveCurve {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_inherited_Box(self as *const Self, theIdx)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2662,30 +3062,38 @@ impl SensitiveCurve {
                     theAxis,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitivePoly.hxx`:120 - `Select3D_SensitivePoly::Swap()`
     pub fn swap(&mut self, theIdx1: i32, theIdx2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_inherited_Swap(
                     self as *mut Self,
                     theIdx1,
                     theIdx2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:72 - `Select3D_SensitiveSet::BVH()`
     pub fn bvh(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveCurve_inherited_BVH(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveCurve_inherited_BVH(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2695,37 +3103,49 @@ impl SensitiveCurve {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_inherited_ToBuildBVH(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
     pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_inherited_SetBuilder(
                     self as *mut Self,
                     theBuilder,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveCurve_inherited_MarkDirty(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_SensitiveCurve_inherited_MarkDirty(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:96 - `Select3D_SensitiveSet::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveCurve_inherited_Clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveCurve_inherited_Clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2735,8 +3155,11 @@ impl SensitiveCurve {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_inherited_GetLeafNodeSize(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2746,18 +3169,23 @@ impl SensitiveCurve {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_inherited_OwnerId(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_inherited_Set(self as *mut Self, theOwnerId)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2767,21 +3195,26 @@ impl SensitiveCurve {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_inherited_SensitivityFactor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_inherited_SetSensitivityFactor(
                     self as *mut Self,
                     theNewSens,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2791,8 +3224,11 @@ impl SensitiveCurve {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_inherited_HasInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2802,8 +3238,11 @@ impl SensitiveCurve {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_inherited_InvInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2815,8 +3254,11 @@ impl SensitiveCurve {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2826,13 +3268,15 @@ impl SensitiveCurve {
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_inherited_SetTransformPersistence(
                     self as *mut Self,
                     theTrsfPers,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2845,8 +3289,11 @@ impl SensitiveCurve {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2856,8 +3303,11 @@ impl SensitiveCurve {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2866,11 +3316,14 @@ impl SensitiveCurve {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveCurve_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2881,18 +3334,23 @@ impl SensitiveCurve {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2902,16 +3360,23 @@ impl SensitiveCurve {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCurve_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveCurve_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_SensitiveCurve_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2927,80 +3392,77 @@ unsafe impl crate::CppDeletable for HandleSelect3DSensitiveCurve {
 impl HandleSelect3DSensitiveCurve {
     /// Dereference this Handle to access the underlying Select3D_SensitiveCurve
     pub fn get(&self) -> &crate::ffi::Select3D_SensitiveCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveCurve_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleSelect3DSensitiveCurve_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveCurve_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitiveCurve_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Select3D_SensitiveCurve> to Handle<Select3D_SensitivePoly>
     pub fn to_handle_sensitive_poly(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitivePoly> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveCurve_to_HandleSelect3DSensitivePoly(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveCurve_to_HandleSelect3DSensitivePoly(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitiveCurve> to Handle<Select3D_SensitiveSet>
     pub fn to_handle_sensitive_set(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSet> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveCurve_to_HandleSelect3DSensitiveSet(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveCurve_to_HandleSelect3DSensitiveSet(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitiveCurve> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveCurve_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveCurve_to_HandleSelect3DSensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitiveCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveCurve_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveCurve_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3036,8 +3498,10 @@ impl SensitiveCylinder {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCylinder_ctor_handleselectmgrentityowner_real3_trsf_bool(theOwnerId, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3068,8 +3532,11 @@ impl SensitiveCylinder {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveCylinder_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3088,8 +3555,11 @@ impl SensitiveCylinder {
                     thePickResult,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3099,8 +3569,11 @@ impl SensitiveCylinder {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveCylinder_get_connected(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3111,8 +3584,11 @@ impl SensitiveCylinder {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveCylinder_bounding_box(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3122,8 +3598,11 @@ impl SensitiveCylinder {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveCylinder_to_build_bvh(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3134,8 +3613,11 @@ impl SensitiveCylinder {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCylinder_nb_sub_elements(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3146,8 +3628,11 @@ impl SensitiveCylinder {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCylinder_center_of_geometry(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3158,8 +3643,11 @@ impl SensitiveCylinder {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCylinder_transformation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3169,8 +3657,11 @@ impl SensitiveCylinder {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveCylinder_top_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3181,8 +3672,11 @@ impl SensitiveCylinder {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCylinder_bottom_radius(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3192,8 +3686,11 @@ impl SensitiveCylinder {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveCylinder_height(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3203,8 +3700,11 @@ impl SensitiveCylinder {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveCylinder_is_hollow(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3212,8 +3712,11 @@ impl SensitiveCylinder {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveCylinder_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3221,69 +3724,69 @@ impl SensitiveCylinder {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveCylinder_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveCylinder_as_Select3D_SensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveCylinder_as_Select3D_SensitiveEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveCylinder_as_Select3D_SensitiveEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveCylinder_as_Select3D_SensitiveEntity_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveCylinder_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveCylinder_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveCylinder_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveCylinder_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveCylinder> {
-        {
-            let __result =
-                unsafe { crate::ffi::Select3D_SensitiveCylinder_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Select3D_SensitiveCylinder_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
@@ -3292,18 +3795,23 @@ impl SensitiveCylinder {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCylinder_inherited_OwnerId(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveCylinder_inherited_Set(self as *mut Self, theOwnerId)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3315,37 +3823,49 @@ impl SensitiveCylinder {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveCylinder_inherited_SetSensitivityFactor(
                     self as *mut Self,
                     theNewSens,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:81 - `Select3D_SensitiveEntity::BVH()`
     pub fn bvh(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveCylinder_inherited_BVH(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveCylinder_inherited_BVH(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:87 - `Select3D_SensitiveEntity::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveCylinder_inherited_Clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_SensitiveCylinder_inherited_Clear(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3357,8 +3877,11 @@ impl SensitiveCylinder {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3370,8 +3893,11 @@ impl SensitiveCylinder {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3383,8 +3909,11 @@ impl SensitiveCylinder {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3394,13 +3923,15 @@ impl SensitiveCylinder {
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveCylinder_inherited_SetTransformPersistence(
                     self as *mut Self,
                     theTrsfPers,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3413,8 +3944,11 @@ impl SensitiveCylinder {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3427,8 +3961,11 @@ impl SensitiveCylinder {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3438,11 +3975,14 @@ impl SensitiveCylinder {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCylinder_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3453,20 +3993,25 @@ impl SensitiveCylinder {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveCylinder_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveCylinder_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3478,16 +4023,23 @@ impl SensitiveCylinder {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveCylinder_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_SensitiveCylinder_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3503,50 +4055,50 @@ unsafe impl crate::CppDeletable for HandleSelect3DSensitiveCylinder {
 impl HandleSelect3DSensitiveCylinder {
     /// Dereference this Handle to access the underlying Select3D_SensitiveCylinder
     pub fn get(&self) -> &crate::ffi::Select3D_SensitiveCylinder {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveCylinder_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitiveCylinder_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveCylinder
     pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveCylinder {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveCylinder_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitiveCylinder_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Select3D_SensitiveCylinder> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveCylinder_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveCylinder_to_HandleSelect3DSensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitiveCylinder> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveCylinder_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveCylinder_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3570,8 +4122,11 @@ impl SensitiveEntity {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveEntity_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3581,8 +4136,11 @@ impl SensitiveEntity {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveEntity_owner_id(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3590,8 +4148,11 @@ impl SensitiveEntity {
     /// Sets owner of the entity
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveEntity_set(self as *mut Self, theOwnerId) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveEntity_set(self as *mut Self, theOwnerId) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3603,8 +4164,11 @@ impl SensitiveEntity {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveEntity_sensitivity_factor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3612,13 +4176,15 @@ impl SensitiveEntity {
     /// Allows to manage sensitivity of a particular sensitive entity
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveEntity_set_sensitivity_factor(
                     self as *mut Self,
                     theNewSens,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3633,8 +4199,11 @@ impl SensitiveEntity {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveEntity_get_connected(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3655,8 +4224,11 @@ impl SensitiveEntity {
                     thePickResult,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3670,8 +4242,11 @@ impl SensitiveEntity {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveEntity_nb_sub_elements(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3681,8 +4256,11 @@ impl SensitiveEntity {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveEntity_bounding_box(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3693,8 +4271,11 @@ impl SensitiveEntity {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveEntity_center_of_geometry(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3702,8 +4283,10 @@ impl SensitiveEntity {
     /// Builds BVH tree for a sensitive if needed
     pub fn bvh(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveEntity_bvh(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Select3D_SensitiveEntity_bvh(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3713,8 +4296,11 @@ impl SensitiveEntity {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveEntity_to_build_bvh(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3722,8 +4308,10 @@ impl SensitiveEntity {
     /// Clears up all resources and memory
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveEntity_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Select3D_SensitiveEntity_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3734,8 +4322,11 @@ impl SensitiveEntity {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveEntity_has_init_location(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3747,8 +4338,11 @@ impl SensitiveEntity {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveEntity_inv_init_location(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3759,8 +4353,11 @@ impl SensitiveEntity {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveEntity_transform_persistence(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3771,13 +4368,15 @@ impl SensitiveEntity {
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveEntity_set_transform_persistence(
                     self as *mut Self,
                     theTrsfPers,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3785,8 +4384,11 @@ impl SensitiveEntity {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveEntity_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3794,31 +4396,34 @@ impl SensitiveEntity {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveEntity_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveEntity_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveEntity_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveEntity_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveEntity_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3830,8 +4435,11 @@ impl SensitiveEntity {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3841,8 +4449,11 @@ impl SensitiveEntity {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveEntity_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3851,11 +4462,14 @@ impl SensitiveEntity {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveEntity_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3866,20 +4480,25 @@ impl SensitiveEntity {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveEntity_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveEntity_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3891,16 +4510,23 @@ impl SensitiveEntity {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveEntity_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_SensitiveEntity_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3916,35 +4542,35 @@ unsafe impl crate::CppDeletable for HandleSelect3DSensitiveEntity {
 impl HandleSelect3DSensitiveEntity {
     /// Dereference this Handle to access the underlying Select3D_SensitiveEntity
     pub fn get(&self) -> &crate::ffi::Select3D_SensitiveEntity {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveEntity_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitiveEntity_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveEntity
     pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveEntity {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveEntity_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitiveEntity_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Select3D_SensitiveEntity> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveEntity_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveEntity_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Select3D_SensitiveEntity> to Handle<AIS_ViewCubeSensitive>
@@ -3953,16 +4579,18 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_view_cube_sensitive(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISViewCubeSensitive>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleAISViewCubeSensitive(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3972,16 +4600,18 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_common_sensitive_entity(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSCommonSensitiveEntity>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleMeshVSCommonSensitiveEntity(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3991,16 +4621,18 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_dummy_sensitive_entity(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSDummySensitiveEntity>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleMeshVSDummySensitiveEntity(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4010,16 +4642,18 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_mesh_vs_sensitive_face(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSSensitiveFace>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleMeshVSSensitiveFace(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4029,16 +4663,18 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_sensitive_mesh(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSSensitiveMesh>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleMeshVSSensitiveMesh(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4048,16 +4684,18 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_sensitive_polyhedron(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSSensitivePolyhedron>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleMeshVSSensitivePolyhedron(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4067,16 +4705,18 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_sensitive_quad(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSSensitiveQuad>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleMeshVSSensitiveQuad(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4086,16 +4726,18 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_mesh_vs_sensitive_segment(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSSensitiveSegment>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleMeshVSSensitiveSegment(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4105,14 +4747,16 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_interior_sensitive_point_set(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DInteriorSensitivePointSet>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DInteriorSensitivePointSet(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4122,16 +4766,18 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_sensitive_box(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveBox>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveBox(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4141,16 +4787,18 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_sensitive_circle(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveCircle>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveCircle(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4160,16 +4808,18 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_sensitive_curve(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveCurve>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveCurve(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4179,16 +4829,18 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_sensitive_cylinder(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveCylinder>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveCylinder(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4198,16 +4850,18 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_select3_d_sensitive_face(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveFace>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveFace(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4217,16 +4871,18 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_sensitive_group(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveGroup>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveGroup(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4236,16 +4892,18 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_sensitive_point(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitivePoint>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitivePoint(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4255,16 +4913,18 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_sensitive_poly(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitivePoly>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitivePoly(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4274,14 +4934,16 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_sensitive_primitive_array(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitivePrimitiveArray>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitivePrimitiveArray(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4291,16 +4953,18 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_select3_d_sensitive_segment(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSegment>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveSegment(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4310,16 +4974,18 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_sensitive_sphere(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSphere>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveSphere(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4329,16 +4995,18 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_sensitive_triangle(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveTriangle>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveTriangle(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4348,14 +5016,16 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_sensitive_triangulation(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveTriangulation>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveTriangulation(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4365,16 +5035,18 @@ impl HandleSelect3DSensitiveEntity {
     pub fn downcast_to_sensitive_wire(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveWire>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveWire(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -4410,8 +5082,10 @@ impl SensitiveFace {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveFace_ctor_handleselectmgrentityowner_array1ofpnt_typeofsensitivity(theOwnerId, thePoints, theType.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4429,8 +5103,10 @@ impl SensitiveFace {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveFace_ctor_handleselectmgrentityowner_handletcolgpharray1ofpnt_typeofsensitivity(theOwnerId, thePoints, theType.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4439,8 +5115,11 @@ impl SensitiveFace {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveFace_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4449,10 +5128,12 @@ impl SensitiveFace {
     /// coordinates of vertices of the face
     pub fn get_points(&mut self, theHArrayOfPnt: &mut crate::ffi::HandleTColgpHArray1OfPnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveFace_get_points(self as *mut Self, theHArrayOfPnt)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4467,8 +5148,11 @@ impl SensitiveFace {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveFace_matches(self as *mut Self, theMgr, thePickResult)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4477,8 +5161,11 @@ impl SensitiveFace {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveFace_get_connected(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4489,8 +5176,11 @@ impl SensitiveFace {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveFace_bounding_box(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4502,8 +5192,11 @@ impl SensitiveFace {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveFace_center_of_geometry(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4511,8 +5204,10 @@ impl SensitiveFace {
     /// Builds BVH tree for the face
     pub fn bvh(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveFace_bvh(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Select3D_SensitiveFace_bvh(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4522,8 +5217,11 @@ impl SensitiveFace {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveFace_to_build_bvh(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4533,8 +5231,11 @@ impl SensitiveFace {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveFace_nb_sub_elements(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4542,8 +5243,11 @@ impl SensitiveFace {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveFace_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4551,66 +5255,67 @@ impl SensitiveFace {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveFace_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveFace_as_Select3D_SensitiveEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveFace_as_Select3D_SensitiveEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveFace_as_Select3D_SensitiveEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveFace_as_Select3D_SensitiveEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveFace_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveFace_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveFace_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveFace_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveFace> {
-        {
-            let __result = unsafe { crate::ffi::Select3D_SensitiveFace_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Select3D_SensitiveFace_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
@@ -4619,18 +5324,23 @@ impl SensitiveFace {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveFace_inherited_OwnerId(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveFace_inherited_Set(self as *mut Self, theOwnerId)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4640,29 +5350,37 @@ impl SensitiveFace {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveFace_inherited_SensitivityFactor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveFace_inherited_SetSensitivityFactor(
                     self as *mut Self,
                     theNewSens,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:87 - `Select3D_SensitiveEntity::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveFace_inherited_Clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveFace_inherited_Clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4672,8 +5390,11 @@ impl SensitiveFace {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveFace_inherited_HasInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4683,8 +5404,11 @@ impl SensitiveFace {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveFace_inherited_InvInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4696,8 +5420,11 @@ impl SensitiveFace {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4707,13 +5434,15 @@ impl SensitiveFace {
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveFace_inherited_SetTransformPersistence(
                     self as *mut Self,
                     theTrsfPers,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4726,8 +5455,11 @@ impl SensitiveFace {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4737,8 +5469,11 @@ impl SensitiveFace {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveFace_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4747,11 +5482,14 @@ impl SensitiveFace {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveFace_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4762,18 +5500,23 @@ impl SensitiveFace {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveFace_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveFace_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4783,16 +5526,22 @@ impl SensitiveFace {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveFace_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveFace_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveFace_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4808,50 +5557,47 @@ unsafe impl crate::CppDeletable for HandleSelect3DSensitiveFace {
 impl HandleSelect3DSensitiveFace {
     /// Dereference this Handle to access the underlying Select3D_SensitiveFace
     pub fn get(&self) -> &crate::ffi::Select3D_SensitiveFace {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveFace_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleSelect3DSensitiveFace_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveFace
     pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveFace {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveFace_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitiveFace_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Select3D_SensitiveFace> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveFace_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveFace_to_HandleSelect3DSensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitiveFace> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveFace_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveFace_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Select3D_SensitiveFace> to Handle<MeshVS_SensitiveFace>
@@ -4860,16 +5606,18 @@ impl HandleSelect3DSensitiveFace {
     pub fn downcast_to_sensitive_face(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSSensitiveFace>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveFace_downcast_to_HandleMeshVSSensitiveFace(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -4911,8 +5659,10 @@ impl SensitiveGroup {
                     theIsMustMatchAll,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4928,8 +5678,10 @@ impl SensitiveGroup {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_ctor_handleselectmgrentityowner_entitysequence_bool(theOwnerId, theEntities, theIsMustMatchAll)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4959,8 +5711,11 @@ impl SensitiveGroup {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveGroup_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4970,8 +5725,11 @@ impl SensitiveGroup {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveGroup_entities(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4982,8 +5740,11 @@ impl SensitiveGroup {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_sub_entity(self as *const Self, theIndex)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4996,8 +5757,11 @@ impl SensitiveGroup {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_last_detected_entity(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5008,8 +5772,11 @@ impl SensitiveGroup {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_last_detected_entity_index(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5018,13 +5785,15 @@ impl SensitiveGroup {
     /// sensitive group object created at construction time.
     pub fn add_entitysequence(&mut self, theEntities: &mut crate::ffi::Select3D_EntitySequence) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_add_entitysequence(
                     self as *mut Self,
                     theEntities,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5036,21 +5805,27 @@ impl SensitiveGroup {
         theSensitive: &crate::ffi::HandleSelect3DSensitiveEntity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_add_handleselect3dsensitiveentity(
                     self as *mut Self,
                     theSensitive,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `Select3D_SensitiveGroup.hxx`:79 - `Select3D_SensitiveGroup::Remove()`
     pub fn remove(&mut self, theSensitive: &crate::ffi::HandleSelect3DSensitiveEntity) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveGroup_remove(self as *mut Self, theSensitive) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_SensitiveGroup_remove(self as *mut Self, theSensitive)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5059,8 +5834,10 @@ impl SensitiveGroup {
     /// time of construction, or added using the function Add.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveGroup_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Select3D_SensitiveGroup_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5072,8 +5849,11 @@ impl SensitiveGroup {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_is_in(self as *const Self, theSensitive)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5083,13 +5863,15 @@ impl SensitiveGroup {
     /// the function Add must be matched.
     pub fn set_match_type(&mut self, theIsMustMatchAll: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_set_match_type(
                     self as *mut Self,
                     theIsMustMatchAll,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5100,8 +5882,11 @@ impl SensitiveGroup {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveGroup_must_match_all(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5114,8 +5899,11 @@ impl SensitiveGroup {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_to_check_overlap_all(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5125,13 +5913,15 @@ impl SensitiveGroup {
     /// class property.
     pub fn set_check_overlap_all(&mut self, theToCheckAll: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_set_check_overlap_all(
                     self as *mut Self,
                     theToCheckAll,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5150,8 +5940,11 @@ impl SensitiveGroup {
                     thePickResult,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5161,8 +5954,11 @@ impl SensitiveGroup {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveGroup_nb_sub_elements(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5171,8 +5967,11 @@ impl SensitiveGroup {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveGroup_get_connected(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5180,8 +5979,11 @@ impl SensitiveGroup {
     /// Sets the owner for all entities in group
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveGroup_set(self as *mut Self, theOwnerId) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveGroup_set(self as *mut Self, theOwnerId) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5192,8 +5994,11 @@ impl SensitiveGroup {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveGroup_bounding_box(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5205,8 +6010,11 @@ impl SensitiveGroup {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_center_of_geometry(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5216,8 +6024,11 @@ impl SensitiveGroup {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveGroup_box_(self as *const Self, theIdx) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5229,8 +6040,11 @@ impl SensitiveGroup {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_center(self as *const Self, theIdx, theAxis)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5238,10 +6052,12 @@ impl SensitiveGroup {
     /// Swaps items with indexes theIdx1 and theIdx2 in the vector
     pub fn swap(&mut self, theIdx1: i32, theIdx2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_swap(self as *mut Self, theIdx1, theIdx2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5250,8 +6066,11 @@ impl SensitiveGroup {
     pub fn size(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveGroup_size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5259,8 +6078,11 @@ impl SensitiveGroup {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveGroup_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5268,95 +6090,99 @@ impl SensitiveGroup {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveGroup_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Select3D_SensitiveSet
     pub fn as_sensitive_set(&self) -> &SensitiveSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveGroup_as_Select3D_SensitiveSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveGroup_as_Select3D_SensitiveSet(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveSet (mutable)
     pub fn as_sensitive_set_mut(&mut self) -> &mut SensitiveSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveGroup_as_Select3D_SensitiveSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveGroup_as_Select3D_SensitiveSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveGroup_as_Select3D_SensitiveEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveGroup_as_Select3D_SensitiveEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveGroup_as_Select3D_SensitiveEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveGroup_as_Select3D_SensitiveEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveGroup_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveGroup_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveGroup_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveGroup_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveGroup> {
-        {
-            let __result = unsafe { crate::ffi::Select3D_SensitiveGroup_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Select3D_SensitiveGroup_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:72 - `Select3D_SensitiveSet::BVH()`
     pub fn bvh(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveGroup_inherited_BVH(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveGroup_inherited_BVH(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5366,29 +6192,38 @@ impl SensitiveGroup {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_inherited_ToBuildBVH(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
     pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_inherited_SetBuilder(
                     self as *mut Self,
                     theBuilder,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveGroup_inherited_MarkDirty(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_SensitiveGroup_inherited_MarkDirty(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5398,8 +6233,11 @@ impl SensitiveGroup {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_inherited_GetLeafNodeSize(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5409,8 +6247,11 @@ impl SensitiveGroup {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_inherited_OwnerId(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5420,21 +6261,26 @@ impl SensitiveGroup {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_inherited_SensitivityFactor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_inherited_SetSensitivityFactor(
                     self as *mut Self,
                     theNewSens,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5444,8 +6290,11 @@ impl SensitiveGroup {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_inherited_HasInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5455,8 +6304,11 @@ impl SensitiveGroup {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_inherited_InvInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5468,8 +6320,11 @@ impl SensitiveGroup {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5479,13 +6334,15 @@ impl SensitiveGroup {
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_inherited_SetTransformPersistence(
                     self as *mut Self,
                     theTrsfPers,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5498,8 +6355,11 @@ impl SensitiveGroup {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5509,8 +6369,11 @@ impl SensitiveGroup {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5519,11 +6382,14 @@ impl SensitiveGroup {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveGroup_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5534,18 +6400,23 @@ impl SensitiveGroup {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5555,16 +6426,23 @@ impl SensitiveGroup {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveGroup_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveGroup_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_SensitiveGroup_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5580,65 +6458,62 @@ unsafe impl crate::CppDeletable for HandleSelect3DSensitiveGroup {
 impl HandleSelect3DSensitiveGroup {
     /// Dereference this Handle to access the underlying Select3D_SensitiveGroup
     pub fn get(&self) -> &crate::ffi::Select3D_SensitiveGroup {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveGroup_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleSelect3DSensitiveGroup_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveGroup
     pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveGroup {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveGroup_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitiveGroup_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Select3D_SensitiveGroup> to Handle<Select3D_SensitiveSet>
     pub fn to_handle_sensitive_set(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSet> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveGroup_to_HandleSelect3DSensitiveSet(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveGroup_to_HandleSelect3DSensitiveSet(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitiveGroup> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveGroup_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveGroup_to_HandleSelect3DSensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitiveGroup> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveGroup_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveGroup_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5670,8 +6545,10 @@ impl SensitivePoint {
                     theOwnerId, thePoint,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5680,8 +6557,11 @@ impl SensitivePoint {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitivePoint_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5691,8 +6571,11 @@ impl SensitivePoint {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitivePoint_nb_sub_elements(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5701,8 +6584,11 @@ impl SensitivePoint {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitivePoint_get_connected(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5721,8 +6607,11 @@ impl SensitivePoint {
                     thePickResult,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5732,8 +6621,11 @@ impl SensitivePoint {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitivePoint_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5745,8 +6637,11 @@ impl SensitivePoint {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoint_center_of_geometry(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5757,8 +6652,11 @@ impl SensitivePoint {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitivePoint_bounding_box(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5768,8 +6666,11 @@ impl SensitivePoint {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitivePoint_to_build_bvh(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5777,8 +6678,11 @@ impl SensitivePoint {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitivePoint_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5786,66 +6690,67 @@ impl SensitivePoint {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitivePoint_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitivePoint_as_Select3D_SensitiveEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitivePoint_as_Select3D_SensitiveEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitivePoint_as_Select3D_SensitiveEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitivePoint_as_Select3D_SensitiveEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitivePoint_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitivePoint_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitivePoint_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitivePoint_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitivePoint> {
-        {
-            let __result = unsafe { crate::ffi::Select3D_SensitivePoint_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Select3D_SensitivePoint_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
@@ -5854,18 +6759,23 @@ impl SensitivePoint {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoint_inherited_OwnerId(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePoint_inherited_Set(self as *mut Self, theOwnerId)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5875,37 +6785,48 @@ impl SensitivePoint {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoint_inherited_SensitivityFactor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePoint_inherited_SetSensitivityFactor(
                     self as *mut Self,
                     theNewSens,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:81 - `Select3D_SensitiveEntity::BVH()`
     pub fn bvh(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitivePoint_inherited_BVH(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitivePoint_inherited_BVH(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:87 - `Select3D_SensitiveEntity::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitivePoint_inherited_Clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitivePoint_inherited_Clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5915,8 +6836,11 @@ impl SensitivePoint {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoint_inherited_HasInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5926,8 +6850,11 @@ impl SensitivePoint {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoint_inherited_InvInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5939,8 +6866,11 @@ impl SensitivePoint {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5950,13 +6880,15 @@ impl SensitivePoint {
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePoint_inherited_SetTransformPersistence(
                     self as *mut Self,
                     theTrsfPers,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5969,8 +6901,11 @@ impl SensitivePoint {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5980,8 +6915,11 @@ impl SensitivePoint {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoint_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5990,11 +6928,14 @@ impl SensitivePoint {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitivePoint_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6005,18 +6946,23 @@ impl SensitivePoint {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoint_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePoint_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6026,16 +6972,23 @@ impl SensitivePoint {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoint_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Select3D_SensitivePoint_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_SensitivePoint_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6051,50 +7004,47 @@ unsafe impl crate::CppDeletable for HandleSelect3DSensitivePoint {
 impl HandleSelect3DSensitivePoint {
     /// Dereference this Handle to access the underlying Select3D_SensitivePoint
     pub fn get(&self) -> &crate::ffi::Select3D_SensitivePoint {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitivePoint_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleSelect3DSensitivePoint_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitivePoint
     pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitivePoint {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitivePoint_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitivePoint_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Select3D_SensitivePoint> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitivePoint_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitivePoint_to_HandleSelect3DSensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitivePoint> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitivePoint_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitivePoint_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6134,8 +7084,10 @@ impl SensitivePoly {
                     theIsBVHEnabled,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6153,8 +7105,10 @@ impl SensitivePoly {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoly_ctor_handleselectmgrentityowner_handletcolgpharray1ofpnt_bool(theOwnerId, thePoints, theIsBVHEnabled)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6175,8 +7129,10 @@ impl SensitivePoly {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoly_ctor_handleselectmgrentityowner_circ_real2_bool_int(theOwnerId, theCircle, theU1, theU2, theIsFilled, theNbPnts)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6197,8 +7153,10 @@ impl SensitivePoly {
                     theNbPnts,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6256,8 +7214,11 @@ impl SensitivePoly {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitivePoly_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6272,8 +7233,11 @@ impl SensitivePoly {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoly_matches(self as *mut Self, theMgr, thePickResult)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6283,8 +7247,11 @@ impl SensitivePoly {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitivePoly_nb_sub_elements(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6292,10 +7259,12 @@ impl SensitivePoly {
     /// Returns the 3D points of the array used at construction time.
     pub fn points3_d(&mut self, theHArrayOfPnt: &mut crate::ffi::HandleTColgpHArray1OfPnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePoly_points3_d(self as *mut Self, theHArrayOfPnt)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6303,10 +7272,12 @@ impl SensitivePoly {
     /// Return array bounds.
     pub fn array_bounds(&self, theLow: &mut i32, theUp: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePoly_array_bounds(self as *const Self, theLow, theUp)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6317,8 +7288,11 @@ impl SensitivePoly {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoly_get_point3d(self as *const Self, thePntIdx)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6329,8 +7303,11 @@ impl SensitivePoly {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitivePoly_bounding_box(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6342,8 +7319,11 @@ impl SensitivePoly {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoly_center_of_geometry(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6352,8 +7332,11 @@ impl SensitivePoly {
     pub fn size(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitivePoly_size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6363,8 +7346,11 @@ impl SensitivePoly {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitivePoly_box_(self as *const Self, theIdx) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6376,8 +7362,11 @@ impl SensitivePoly {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoly_center(self as *const Self, theIdx, theAxis)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6385,8 +7374,12 @@ impl SensitivePoly {
     /// Swaps items with indexes theIdx1 and theIdx2 in the vector
     pub fn swap(&mut self, theIdx1: i32, theIdx2: i32) {
         {
-            unsafe { crate::ffi::Select3D_SensitivePoly_swap(self as *mut Self, theIdx1, theIdx2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_SensitivePoly_swap(self as *mut Self, theIdx1, theIdx2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6394,8 +7387,11 @@ impl SensitivePoly {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitivePoly_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6403,95 +7399,99 @@ impl SensitivePoly {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitivePoly_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Select3D_SensitiveSet
     pub fn as_sensitive_set(&self) -> &SensitiveSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitivePoly_as_Select3D_SensitiveSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitivePoly_as_Select3D_SensitiveSet(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveSet (mutable)
     pub fn as_sensitive_set_mut(&mut self) -> &mut SensitiveSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitivePoly_as_Select3D_SensitiveSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitivePoly_as_Select3D_SensitiveSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitivePoly_as_Select3D_SensitiveEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitivePoly_as_Select3D_SensitiveEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitivePoly_as_Select3D_SensitiveEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitivePoly_as_Select3D_SensitiveEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitivePoly_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitivePoly_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitivePoly_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitivePoly_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitivePoly> {
-        {
-            let __result = unsafe { crate::ffi::Select3D_SensitivePoly_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Select3D_SensitivePoly_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:72 - `Select3D_SensitiveSet::BVH()`
     pub fn bvh(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitivePoly_inherited_BVH(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitivePoly_inherited_BVH(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6501,37 +7501,49 @@ impl SensitivePoly {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoly_inherited_ToBuildBVH(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
     pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePoly_inherited_SetBuilder(
                     self as *mut Self,
                     theBuilder,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitivePoly_inherited_MarkDirty(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_SensitivePoly_inherited_MarkDirty(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:96 - `Select3D_SensitiveSet::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitivePoly_inherited_Clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitivePoly_inherited_Clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6541,8 +7553,11 @@ impl SensitivePoly {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoly_inherited_GetLeafNodeSize(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6552,18 +7567,23 @@ impl SensitivePoly {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoly_inherited_OwnerId(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePoly_inherited_Set(self as *mut Self, theOwnerId)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6573,21 +7593,26 @@ impl SensitivePoly {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoly_inherited_SensitivityFactor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePoly_inherited_SetSensitivityFactor(
                     self as *mut Self,
                     theNewSens,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6597,8 +7622,11 @@ impl SensitivePoly {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoly_inherited_GetConnected(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6608,8 +7636,11 @@ impl SensitivePoly {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoly_inherited_HasInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6619,8 +7650,11 @@ impl SensitivePoly {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoly_inherited_InvInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6632,8 +7666,11 @@ impl SensitivePoly {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6643,13 +7680,15 @@ impl SensitivePoly {
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePoly_inherited_SetTransformPersistence(
                     self as *mut Self,
                     theTrsfPers,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6662,8 +7701,11 @@ impl SensitivePoly {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6673,8 +7715,11 @@ impl SensitivePoly {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoly_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6683,11 +7728,14 @@ impl SensitivePoly {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitivePoly_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6698,18 +7746,23 @@ impl SensitivePoly {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoly_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePoly_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6719,16 +7772,22 @@ impl SensitivePoly {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePoly_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Select3D_SensitivePoly_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitivePoly_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6744,65 +7803,62 @@ unsafe impl crate::CppDeletable for HandleSelect3DSensitivePoly {
 impl HandleSelect3DSensitivePoly {
     /// Dereference this Handle to access the underlying Select3D_SensitivePoly
     pub fn get(&self) -> &crate::ffi::Select3D_SensitivePoly {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitivePoly_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleSelect3DSensitivePoly_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitivePoly
     pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitivePoly {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitivePoly_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitivePoly_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Select3D_SensitivePoly> to Handle<Select3D_SensitiveSet>
     pub fn to_handle_sensitive_set(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSet> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitivePoly_to_HandleSelect3DSensitiveSet(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitivePoly_to_HandleSelect3DSensitiveSet(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitivePoly> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitivePoly_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitivePoly_to_HandleSelect3DSensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitivePoly> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitivePoly_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitivePoly_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Select3D_SensitivePoly> to Handle<Select3D_SensitiveCurve>
@@ -6811,16 +7867,18 @@ impl HandleSelect3DSensitivePoly {
     pub fn downcast_to_sensitive_curve(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveCurve>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitivePoly_downcast_to_HandleSelect3DSensitiveCurve(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -6853,8 +7911,10 @@ impl SensitivePrimitiveArray {
                     theOwnerId,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6865,8 +7925,11 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_patch_size_max(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6875,13 +7938,15 @@ impl SensitivePrimitiveArray {
     /// Should be set before initialization.
     pub fn set_patch_size_max(&mut self, thePatchSizeMax: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_set_patch_size_max(
                     self as *mut Self,
                     thePatchSizeMax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6893,8 +7958,11 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_patch_distance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6903,13 +7971,15 @@ impl SensitivePrimitiveArray {
     /// Should be set before initialization.
     pub fn set_patch_distance(&mut self, thePatchDistMax: f32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_set_patch_distance(
                     self as *mut Self,
                     thePatchDistMax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6941,8 +8011,11 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_init_triangulation_handlegraphic3dbuffer_handlegraphic3dindexbuffer_location_int2_bool_int(self as *mut Self, theVerts, theIndices, theInitLoc, theIndexLower, theIndexUpper, theToEvalMinMax, theNbGroups)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6966,8 +8039,11 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_init_triangulation_handlegraphic3dbuffer_handlegraphic3dindexbuffer_location_bool_int(self as *mut Self, theVerts, theIndices, theInitLoc, theToEvalMinMax, theNbGroups)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6998,8 +8074,11 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_init_points_handlegraphic3dbuffer_handlegraphic3dindexbuffer_location_int2_bool_int(self as *mut Self, theVerts, theIndices, theInitLoc, theIndexLower, theIndexUpper, theToEvalMinMax, theNbGroups)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7023,8 +8102,11 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_init_points_handlegraphic3dbuffer_handlegraphic3dindexbuffer_location_bool_int(self as *mut Self, theVerts, theIndices, theInitLoc, theToEvalMinMax, theNbGroups)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7046,8 +8128,11 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_init_points_handlegraphic3dbuffer_location_bool_int(self as *mut Self, theVerts, theInitLoc, theToEvalMinMax, theNbGroups)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7063,7 +8148,7 @@ impl SensitivePrimitiveArray {
         theMaxZ: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_set_min_max(
                     self as *mut Self,
                     theMinX,
@@ -7074,7 +8159,9 @@ impl SensitivePrimitiveArray {
                     theMaxZ,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7085,8 +8172,11 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_to_detect_elements(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7094,13 +8184,15 @@ impl SensitivePrimitiveArray {
     /// Setup keeping of the index of last topmost detected element (axis picking).
     pub fn set_detect_elements(&mut self, theToDetect: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_set_detect_elements(
                     self as *mut Self,
                     theToDetect,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7114,8 +8206,11 @@ impl SensitivePrimitiveArray {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7123,13 +8218,15 @@ impl SensitivePrimitiveArray {
     /// Setup keeping of the index map of last detected elements (rectangle selection).
     pub fn set_detect_element_map(&mut self, theToDetect: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_set_detect_element_map(
                     self as *mut Self,
                     theToDetect,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7140,8 +8237,11 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_to_detect_nodes(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7149,13 +8249,15 @@ impl SensitivePrimitiveArray {
     /// Setup keeping of the index of last topmost detected node (for axis picking).
     pub fn set_detect_nodes(&mut self, theToDetect: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_set_detect_nodes(
                     self as *mut Self,
                     theToDetect,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7166,8 +8268,11 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_to_detect_node_map(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7175,13 +8280,15 @@ impl SensitivePrimitiveArray {
     /// Setup keeping of the index map of last detected nodes (rectangle selection).
     pub fn set_detect_node_map(&mut self, theToDetect: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_set_detect_node_map(
                     self as *mut Self,
                     theToDetect,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7192,8 +8299,11 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_to_detect_edges(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7201,13 +8311,15 @@ impl SensitivePrimitiveArray {
     /// Setup keeping of the index of last topmost detected edge (axis picking).
     pub fn set_detect_edges(&mut self, theToDetect: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_set_detect_edges(
                     self as *mut Self,
                     theToDetect,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7220,8 +8332,11 @@ impl SensitivePrimitiveArray {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7234,8 +8349,11 @@ impl SensitivePrimitiveArray {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7246,8 +8364,11 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_last_detected_node(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7260,8 +8381,11 @@ impl SensitivePrimitiveArray {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7274,8 +8398,11 @@ impl SensitivePrimitiveArray {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7288,8 +8415,11 @@ impl SensitivePrimitiveArray {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7308,8 +8438,11 @@ impl SensitivePrimitiveArray {
                     thePickResult,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7319,8 +8452,11 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_get_connected(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7330,8 +8466,11 @@ impl SensitivePrimitiveArray {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitivePrimitiveArray_size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7342,8 +8481,11 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_nb_sub_elements(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7354,8 +8496,11 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_box_(self as *const Self, theIdx)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7371,8 +8516,11 @@ impl SensitivePrimitiveArray {
                     theAxis,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7380,14 +8528,16 @@ impl SensitivePrimitiveArray {
     /// Swaps items with indexes theIdx1 and theIdx2 in array
     pub fn swap(&mut self, theIdx1: i32, theIdx2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_swap(
                     self as *mut Self,
                     theIdx1,
                     theIdx2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7399,8 +8549,11 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_bounding_box(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7412,8 +8565,11 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_center_of_geometry(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7424,8 +8580,11 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_has_init_location(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7437,8 +8596,11 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_inv_init_location(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7446,10 +8608,12 @@ impl SensitivePrimitiveArray {
     /// Sets the owner for all entities in group
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_set(self as *mut Self, theOwnerId)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7457,8 +8621,11 @@ impl SensitivePrimitiveArray {
     /// Builds BVH tree for sensitive set.
     pub fn bvh(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitivePrimitiveArray_bvh(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitivePrimitiveArray_bvh(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7468,8 +8635,11 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7477,8 +8647,11 @@ impl SensitivePrimitiveArray {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitivePrimitiveArray_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -7487,99 +8660,100 @@ impl SensitivePrimitiveArray {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitivePrimitiveArray_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Select3D_SensitiveSet
     pub fn as_sensitive_set(&self) -> &SensitiveSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitivePrimitiveArray_as_Select3D_SensitiveSet(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitivePrimitiveArray_as_Select3D_SensitiveSet(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveSet (mutable)
     pub fn as_sensitive_set_mut(&mut self) -> &mut SensitiveSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitivePrimitiveArray_as_Select3D_SensitiveSet_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitivePrimitiveArray_as_Select3D_SensitiveSet_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitivePrimitiveArray_as_Select3D_SensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitivePrimitiveArray_as_Select3D_SensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitivePrimitiveArray_as_Select3D_SensitiveEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitivePrimitiveArray_as_Select3D_SensitiveEntity_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitivePrimitiveArray_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitivePrimitiveArray_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitivePrimitiveArray_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitivePrimitiveArray_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitivePrimitiveArray> {
-        {
-            let __result =
-                unsafe { crate::ffi::Select3D_SensitivePrimitiveArray_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::Select3D_SensitivePrimitiveArray_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:75 - `Select3D_SensitiveSet::ToBuildBVH()`
@@ -7590,41 +8764,50 @@ impl SensitivePrimitiveArray {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
     pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_inherited_SetBuilder(
                     self as *mut Self,
                     theBuilder,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_inherited_MarkDirty(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:96 - `Select3D_SensitiveSet::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_inherited_Clear(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7636,8 +8819,11 @@ impl SensitivePrimitiveArray {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7647,8 +8833,11 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_inherited_OwnerId(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7660,21 +8849,26 @@ impl SensitivePrimitiveArray {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_inherited_SetSensitivityFactor(
                     self as *mut Self,
                     theNewSens,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7686,8 +8880,11 @@ impl SensitivePrimitiveArray {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7697,13 +8894,15 @@ impl SensitivePrimitiveArray {
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_inherited_SetTransformPersistence(
                     self as *mut Self,
                     theTrsfPers,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7716,8 +8915,11 @@ impl SensitivePrimitiveArray {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7730,8 +8932,11 @@ impl SensitivePrimitiveArray {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7741,11 +8946,14 @@ impl SensitivePrimitiveArray {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7758,20 +8966,25 @@ impl SensitivePrimitiveArray {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7783,18 +8996,23 @@ impl SensitivePrimitiveArray {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitivePrimitiveArray_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7810,67 +9028,65 @@ unsafe impl crate::CppDeletable for HandleSelect3DSensitivePrimitiveArray {
 impl HandleSelect3DSensitivePrimitiveArray {
     /// Dereference this Handle to access the underlying Select3D_SensitivePrimitiveArray
     pub fn get(&self) -> &crate::ffi::Select3D_SensitivePrimitiveArray {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitivePrimitiveArray_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitivePrimitiveArray_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitivePrimitiveArray
     pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitivePrimitiveArray {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitivePrimitiveArray_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitivePrimitiveArray_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Select3D_SensitivePrimitiveArray> to Handle<Select3D_SensitiveSet>
     pub fn to_handle_sensitive_set(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSet> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitivePrimitiveArray_to_HandleSelect3DSensitiveSet(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitivePrimitiveArray_to_HandleSelect3DSensitiveSet(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitivePrimitiveArray> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitivePrimitiveArray_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitivePrimitiveArray_to_HandleSelect3DSensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitivePrimitiveArray> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitivePrimitiveArray_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitivePrimitiveArray_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Select3D_SensitivePrimitiveArray> to Handle<AIS_ViewCubeSensitive>
@@ -7879,16 +9095,18 @@ impl HandleSelect3DSensitivePrimitiveArray {
     pub fn downcast_to_view_cube_sensitive(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISViewCubeSensitive>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitivePrimitiveArray_downcast_to_HandleAISViewCubeSensitive(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -7925,8 +9143,10 @@ impl SensitiveSegment {
                     theLastPnt,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7935,8 +9155,11 @@ impl SensitiveSegment {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveSegment_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7944,10 +9167,12 @@ impl SensitiveSegment {
     /// changes the start Point of the Segment;
     pub fn set_start_point(&mut self, thePnt: &crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveSegment_set_start_point(self as *mut Self, thePnt)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7955,10 +9180,12 @@ impl SensitiveSegment {
     /// changes the end point of the segment
     pub fn set_end_point(&mut self, thePnt: &crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveSegment_set_end_point(self as *mut Self, thePnt)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7968,8 +9195,11 @@ impl SensitiveSegment {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveSegment_start_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7979,8 +9209,11 @@ impl SensitiveSegment {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveSegment_end_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7991,8 +9224,11 @@ impl SensitiveSegment {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSegment_nb_sub_elements(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8001,8 +9237,11 @@ impl SensitiveSegment {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveSegment_get_connected(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8021,8 +9260,11 @@ impl SensitiveSegment {
                     thePickResult,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8034,8 +9276,11 @@ impl SensitiveSegment {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSegment_center_of_geometry(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8046,8 +9291,11 @@ impl SensitiveSegment {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveSegment_bounding_box(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8057,8 +9305,11 @@ impl SensitiveSegment {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveSegment_to_build_bvh(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8066,10 +9317,12 @@ impl SensitiveSegment {
     /// changes the start Point of the Segment;
     pub fn start_point_pnt(&mut self, thePnt: &crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveSegment_start_point_pnt(self as *mut Self, thePnt)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8077,10 +9330,12 @@ impl SensitiveSegment {
     /// changes the end point of the segment
     pub fn end_point_pnt(&mut self, thePnt: &crate::gp::Pnt) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveSegment_end_point_pnt(self as *mut Self, thePnt)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8088,8 +9343,11 @@ impl SensitiveSegment {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveSegment_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8097,69 +9355,67 @@ impl SensitiveSegment {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveSegment_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveSegment_as_Select3D_SensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveSegment_as_Select3D_SensitiveEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveSegment_as_Select3D_SensitiveEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveSegment_as_Select3D_SensitiveEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveSegment_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveSegment_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveSegment_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveSegment_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSegment> {
-        {
-            let __result =
-                unsafe { crate::ffi::Select3D_SensitiveSegment_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Select3D_SensitiveSegment_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
@@ -8168,18 +9424,23 @@ impl SensitiveSegment {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSegment_inherited_OwnerId(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveSegment_inherited_Set(self as *mut Self, theOwnerId)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8191,37 +9452,48 @@ impl SensitiveSegment {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveSegment_inherited_SetSensitivityFactor(
                     self as *mut Self,
                     theNewSens,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:81 - `Select3D_SensitiveEntity::BVH()`
     pub fn bvh(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveSegment_inherited_BVH(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveSegment_inherited_BVH(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:87 - `Select3D_SensitiveEntity::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveSegment_inherited_Clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveSegment_inherited_Clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8231,8 +9503,11 @@ impl SensitiveSegment {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSegment_inherited_HasInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8242,8 +9517,11 @@ impl SensitiveSegment {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSegment_inherited_InvInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8255,8 +9533,11 @@ impl SensitiveSegment {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8266,13 +9547,15 @@ impl SensitiveSegment {
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveSegment_inherited_SetTransformPersistence(
                     self as *mut Self,
                     theTrsfPers,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8285,8 +9568,11 @@ impl SensitiveSegment {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8296,8 +9582,11 @@ impl SensitiveSegment {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSegment_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8307,11 +9596,14 @@ impl SensitiveSegment {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSegment_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -8322,20 +9614,25 @@ impl SensitiveSegment {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSegment_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveSegment_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8347,16 +9644,23 @@ impl SensitiveSegment {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveSegment_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_SensitiveSegment_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8372,50 +9676,50 @@ unsafe impl crate::CppDeletable for HandleSelect3DSensitiveSegment {
 impl HandleSelect3DSensitiveSegment {
     /// Dereference this Handle to access the underlying Select3D_SensitiveSegment
     pub fn get(&self) -> &crate::ffi::Select3D_SensitiveSegment {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveSegment_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitiveSegment_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveSegment
     pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveSegment {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveSegment_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitiveSegment_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Select3D_SensitiveSegment> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveSegment_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveSegment_to_HandleSelect3DSensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitiveSegment> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveSegment_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveSegment_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Select3D_SensitiveSegment> to Handle<MeshVS_SensitiveSegment>
@@ -8424,16 +9728,18 @@ impl HandleSelect3DSensitiveSegment {
     pub fn downcast_to_sensitive_segment(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSSensitiveSegment>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveSegment_downcast_to_HandleMeshVSSensitiveSegment(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -8465,8 +9771,11 @@ impl SensitiveSet {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveSet_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8475,8 +9784,11 @@ impl SensitiveSet {
     pub fn size(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveSet_size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8486,8 +9798,11 @@ impl SensitiveSet {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveSet_box_(self as *const Self, theIdx) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8498,8 +9813,11 @@ impl SensitiveSet {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSet_center(self as *const Self, theIdx, theAxis)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8507,8 +9825,12 @@ impl SensitiveSet {
     /// Swaps items with indexes theIdx1 and theIdx2
     pub fn swap(&mut self, theIdx1: i32, theIdx2: i32) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveSet_swap(self as *mut Self, theIdx1, theIdx2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_SensitiveSet_swap(self as *mut Self, theIdx1, theIdx2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8524,8 +9846,11 @@ impl SensitiveSet {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSet_matches(self as *mut Self, theMgr, thePickResult)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8536,8 +9861,10 @@ impl SensitiveSet {
     /// but element by element
     pub fn bvh(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveSet_bvh(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Select3D_SensitiveSet_bvh(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8547,8 +9874,11 @@ impl SensitiveSet {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveSet_to_build_bvh(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8556,8 +9886,12 @@ impl SensitiveSet {
     /// Sets the method (builder) used to construct BVH.
     pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveSet_set_builder(self as *mut Self, theBuilder) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_SensitiveSet_set_builder(self as *mut Self, theBuilder)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8566,8 +9900,10 @@ impl SensitiveSet {
     /// at the next call of BVH()
     pub fn mark_dirty(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveSet_mark_dirty(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Select3D_SensitiveSet_mark_dirty(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8578,8 +9914,11 @@ impl SensitiveSet {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveSet_bounding_box(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8591,8 +9930,11 @@ impl SensitiveSet {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSet_center_of_geometry(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8600,8 +9942,10 @@ impl SensitiveSet {
     /// Destroys cross-reference to avoid memory leak
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveSet_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::Select3D_SensitiveSet_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8612,8 +9956,11 @@ impl SensitiveSet {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSet_get_leaf_node_size(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8621,8 +9968,11 @@ impl SensitiveSet {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveSet_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8630,8 +9980,11 @@ impl SensitiveSet {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveSet_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8640,8 +9993,11 @@ impl SensitiveSet {
     pub fn default_bvh_builder() -> &'static crate::ffi::HandleBVHBuilderdouble3 {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveSet_default_bvh_builder() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8650,53 +10006,55 @@ impl SensitiveSet {
     /// thread-safe!).
     pub fn set_default_bvh_builder(theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveSet_set_default_bvh_builder(theBuilder) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveSet_set_default_bvh_builder(theBuilder) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveSet_as_Select3D_SensitiveEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveSet_as_Select3D_SensitiveEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveSet_as_Select3D_SensitiveEntity_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveSet_as_Select3D_SensitiveEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveSet_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::Select3D_SensitiveSet_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveSet_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveSet_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
@@ -8704,18 +10062,23 @@ impl SensitiveSet {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveSet_inherited_OwnerId(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveSet_inherited_Set(self as *mut Self, theOwnerId)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8725,21 +10088,26 @@ impl SensitiveSet {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSet_inherited_SensitivityFactor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveSet_inherited_SetSensitivityFactor(
                     self as *mut Self,
                     theNewSens,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8749,8 +10117,11 @@ impl SensitiveSet {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSet_inherited_GetConnected(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8760,8 +10131,11 @@ impl SensitiveSet {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSet_inherited_NbSubElements(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8771,8 +10145,11 @@ impl SensitiveSet {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSet_inherited_HasInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8782,8 +10159,11 @@ impl SensitiveSet {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSet_inherited_InvInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8795,8 +10175,11 @@ impl SensitiveSet {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8806,13 +10189,15 @@ impl SensitiveSet {
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveSet_inherited_SetTransformPersistence(
                     self as *mut Self,
                     theTrsfPers,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8822,8 +10207,11 @@ impl SensitiveSet {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSet_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8833,8 +10221,11 @@ impl SensitiveSet {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSet_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8843,11 +10234,14 @@ impl SensitiveSet {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveSet_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -8858,18 +10252,23 @@ impl SensitiveSet {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSet_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveSet_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8879,16 +10278,22 @@ impl SensitiveSet {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSet_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveSet_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveSet_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8904,50 +10309,46 @@ unsafe impl crate::CppDeletable for HandleSelect3DSensitiveSet {
 impl HandleSelect3DSensitiveSet {
     /// Dereference this Handle to access the underlying Select3D_SensitiveSet
     pub fn get(&self) -> &crate::ffi::Select3D_SensitiveSet {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveSet_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleSelect3DSensitiveSet_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveSet
     pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveSet {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveSet_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleSelect3DSensitiveSet_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Select3D_SensitiveSet> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveSet_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveSet_to_HandleSelect3DSensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitiveSet> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveSet_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveSet_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<Select3D_SensitiveSet> to Handle<AIS_ViewCubeSensitive>
@@ -8956,16 +10357,18 @@ impl HandleSelect3DSensitiveSet {
     pub fn downcast_to_view_cube_sensitive(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISViewCubeSensitive>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveSet_downcast_to_HandleAISViewCubeSensitive(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8975,16 +10378,18 @@ impl HandleSelect3DSensitiveSet {
     pub fn downcast_to_common_sensitive_entity(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSCommonSensitiveEntity>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveSet_downcast_to_HandleMeshVSCommonSensitiveEntity(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8994,14 +10399,16 @@ impl HandleSelect3DSensitiveSet {
     pub fn downcast_to_interior_sensitive_point_set(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DInteriorSensitivePointSet>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveSet_downcast_to_HandleSelect3DInteriorSensitivePointSet(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -9011,16 +10418,18 @@ impl HandleSelect3DSensitiveSet {
     pub fn downcast_to_sensitive_curve(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveCurve>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveSet_downcast_to_HandleSelect3DSensitiveCurve(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -9030,16 +10439,18 @@ impl HandleSelect3DSensitiveSet {
     pub fn downcast_to_sensitive_group(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveGroup>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveSet_downcast_to_HandleSelect3DSensitiveGroup(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -9049,16 +10460,18 @@ impl HandleSelect3DSensitiveSet {
     pub fn downcast_to_sensitive_poly(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitivePoly>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveSet_downcast_to_HandleSelect3DSensitivePoly(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -9068,16 +10481,18 @@ impl HandleSelect3DSensitiveSet {
     pub fn downcast_to_sensitive_primitive_array(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitivePrimitiveArray>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveSet_downcast_to_HandleSelect3DSensitivePrimitiveArray(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -9087,16 +10502,18 @@ impl HandleSelect3DSensitiveSet {
     pub fn downcast_to_sensitive_triangulation(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveTriangulation>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveSet_downcast_to_HandleSelect3DSensitiveTriangulation(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -9106,16 +10523,18 @@ impl HandleSelect3DSensitiveSet {
     pub fn downcast_to_sensitive_wire(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveWire>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleSelect3DSensitiveSet_downcast_to_HandleSelect3DSensitiveWire(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -9149,8 +10568,10 @@ impl SensitiveSphere {
                     theOwnerId, theCenter, theRadius,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9159,8 +10580,11 @@ impl SensitiveSphere {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveSphere_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9170,8 +10594,11 @@ impl SensitiveSphere {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveSphere_radius(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9190,8 +10617,11 @@ impl SensitiveSphere {
                     thePickResult,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9201,8 +10631,11 @@ impl SensitiveSphere {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveSphere_get_connected(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9213,8 +10646,11 @@ impl SensitiveSphere {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveSphere_bounding_box(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9224,8 +10660,11 @@ impl SensitiveSphere {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveSphere_to_build_bvh(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9236,8 +10675,11 @@ impl SensitiveSphere {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSphere_nb_sub_elements(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9248,8 +10690,11 @@ impl SensitiveSphere {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSphere_center_of_geometry(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9260,8 +10705,11 @@ impl SensitiveSphere {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSphere_last_detected_point(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9269,10 +10717,12 @@ impl SensitiveSphere {
     /// Invalidate the position of detected point on the sphere.
     pub fn reset_last_detected_point(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveSphere_reset_last_detected_point(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9280,8 +10730,11 @@ impl SensitiveSphere {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveSphere_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -9289,69 +10742,67 @@ impl SensitiveSphere {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveSphere_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveSphere_as_Select3D_SensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveSphere_as_Select3D_SensitiveEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveSphere_as_Select3D_SensitiveEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveSphere_as_Select3D_SensitiveEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveSphere_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveSphere_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveSphere_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveSphere_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSphere> {
-        {
-            let __result =
-                unsafe { crate::ffi::Select3D_SensitiveSphere_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Select3D_SensitiveSphere_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
@@ -9360,18 +10811,23 @@ impl SensitiveSphere {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSphere_inherited_OwnerId(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveSphere_inherited_Set(self as *mut Self, theOwnerId)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9383,37 +10839,48 @@ impl SensitiveSphere {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveSphere_inherited_SetSensitivityFactor(
                     self as *mut Self,
                     theNewSens,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:81 - `Select3D_SensitiveEntity::BVH()`
     pub fn bvh(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveSphere_inherited_BVH(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveSphere_inherited_BVH(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:87 - `Select3D_SensitiveEntity::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveSphere_inherited_Clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveSphere_inherited_Clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9423,8 +10890,11 @@ impl SensitiveSphere {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSphere_inherited_HasInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9434,8 +10904,11 @@ impl SensitiveSphere {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSphere_inherited_InvInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9447,8 +10920,11 @@ impl SensitiveSphere {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9458,13 +10934,15 @@ impl SensitiveSphere {
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveSphere_inherited_SetTransformPersistence(
                     self as *mut Self,
                     theTrsfPers,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9477,8 +10955,11 @@ impl SensitiveSphere {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9488,8 +10969,11 @@ impl SensitiveSphere {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSphere_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9498,11 +10982,14 @@ impl SensitiveSphere {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveSphere_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -9513,20 +11000,25 @@ impl SensitiveSphere {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveSphere_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveSphere_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9538,16 +11030,23 @@ impl SensitiveSphere {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveSphere_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_SensitiveSphere_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -9563,50 +11062,50 @@ unsafe impl crate::CppDeletable for HandleSelect3DSensitiveSphere {
 impl HandleSelect3DSensitiveSphere {
     /// Dereference this Handle to access the underlying Select3D_SensitiveSphere
     pub fn get(&self) -> &crate::ffi::Select3D_SensitiveSphere {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveSphere_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitiveSphere_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveSphere
     pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveSphere {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveSphere_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitiveSphere_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Select3D_SensitiveSphere> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveSphere_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveSphere_to_HandleSelect3DSensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitiveSphere> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveSphere_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveSphere_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -9642,8 +11141,10 @@ impl SensitiveTriangle {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveTriangle_ctor_handleselectmgrentityowner_pnt3_typeofsensitivity(theOwnerId, thePnt0, thePnt1, thePnt2, theType.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9662,8 +11163,11 @@ impl SensitiveTriangle {
                     thePickResult,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9676,7 +11180,7 @@ impl SensitiveTriangle {
         thePnt2: &mut crate::gp::Pnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveTriangle_points3_d(
                     self as *const Self,
                     thePnt0,
@@ -9684,7 +11188,9 @@ impl SensitiveTriangle {
                     thePnt2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9694,8 +11200,11 @@ impl SensitiveTriangle {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveTriangle_center3_d(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9705,8 +11214,11 @@ impl SensitiveTriangle {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveTriangle_get_connected(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9717,8 +11229,11 @@ impl SensitiveTriangle {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveTriangle_bounding_box(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9728,8 +11243,11 @@ impl SensitiveTriangle {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveTriangle_to_build_bvh(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9740,8 +11258,11 @@ impl SensitiveTriangle {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveTriangle_nb_sub_elements(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9751,8 +11272,11 @@ impl SensitiveTriangle {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveTriangle_center_of_geometry(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9761,8 +11285,11 @@ impl SensitiveTriangle {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveTriangle_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9770,8 +11297,11 @@ impl SensitiveTriangle {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveTriangle_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -9779,69 +11309,69 @@ impl SensitiveTriangle {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveTriangle_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveTriangle_as_Select3D_SensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveTriangle_as_Select3D_SensitiveEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveTriangle_as_Select3D_SensitiveEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveTriangle_as_Select3D_SensitiveEntity_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveTriangle_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveTriangle_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveTriangle_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveTriangle_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveTriangle> {
-        {
-            let __result =
-                unsafe { crate::ffi::Select3D_SensitiveTriangle_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Select3D_SensitiveTriangle_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
@@ -9850,18 +11380,23 @@ impl SensitiveTriangle {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveTriangle_inherited_OwnerId(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveTriangle_inherited_Set(self as *mut Self, theOwnerId)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9873,37 +11408,49 @@ impl SensitiveTriangle {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveTriangle_inherited_SetSensitivityFactor(
                     self as *mut Self,
                     theNewSens,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:81 - `Select3D_SensitiveEntity::BVH()`
     pub fn bvh(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveTriangle_inherited_BVH(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveTriangle_inherited_BVH(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:87 - `Select3D_SensitiveEntity::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveTriangle_inherited_Clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_SensitiveTriangle_inherited_Clear(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9915,8 +11462,11 @@ impl SensitiveTriangle {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9928,8 +11478,11 @@ impl SensitiveTriangle {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9941,8 +11494,11 @@ impl SensitiveTriangle {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9952,13 +11508,15 @@ impl SensitiveTriangle {
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveTriangle_inherited_SetTransformPersistence(
                     self as *mut Self,
                     theTrsfPers,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9971,8 +11529,11 @@ impl SensitiveTriangle {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9985,8 +11546,11 @@ impl SensitiveTriangle {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9996,11 +11560,14 @@ impl SensitiveTriangle {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveTriangle_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -10011,20 +11578,25 @@ impl SensitiveTriangle {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveTriangle_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveTriangle_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10036,16 +11608,23 @@ impl SensitiveTriangle {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveTriangle_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_SensitiveTriangle_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -10061,50 +11640,50 @@ unsafe impl crate::CppDeletable for HandleSelect3DSensitiveTriangle {
 impl HandleSelect3DSensitiveTriangle {
     /// Dereference this Handle to access the underlying Select3D_SensitiveTriangle
     pub fn get(&self) -> &crate::ffi::Select3D_SensitiveTriangle {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveTriangle_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitiveTriangle_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveTriangle
     pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveTriangle {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveTriangle_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitiveTriangle_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Select3D_SensitiveTriangle> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveTriangle_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveTriangle_to_HandleSelect3DSensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitiveTriangle> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveTriangle_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveTriangle_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -10137,8 +11716,10 @@ impl SensitiveTriangulation {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_ctor_handleselectmgrentityowner_handlepolytriangulation_location_bool(theOwnerId, theTrg, theInitLoc, theIsInterior)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10161,8 +11742,10 @@ impl SensitiveTriangulation {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_ctor_handleselectmgrentityowner_handlepolytriangulation_location_handletcolstdharray1ofinteger_pnt_bool(theOwnerId, theTrg, theInitLoc, theFreeEdges, theCOG, theIsInterior)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10186,8 +11769,11 @@ impl SensitiveTriangulation {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10203,8 +11789,11 @@ impl SensitiveTriangulation {
                     theTriangle,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10226,8 +11815,11 @@ impl SensitiveTriangulation {
                     theTriNodes.as_mut_ptr(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10240,8 +11832,11 @@ impl SensitiveTriangulation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10252,8 +11847,11 @@ impl SensitiveTriangulation {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_nb_sub_elements(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10263,8 +11861,11 @@ impl SensitiveTriangulation {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_get_connected(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10274,8 +11875,11 @@ impl SensitiveTriangulation {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_triangulation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10285,8 +11889,11 @@ impl SensitiveTriangulation {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveTriangulation_size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10297,8 +11904,11 @@ impl SensitiveTriangulation {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_box_(self as *const Self, theIdx)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10314,8 +11924,11 @@ impl SensitiveTriangulation {
                     theAxis,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10323,14 +11936,16 @@ impl SensitiveTriangulation {
     /// Swaps items with indexes theIdx1 and theIdx2 in array
     pub fn swap(&mut self, theIdx1: i32, theIdx2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_swap(
                     self as *mut Self,
                     theIdx1,
                     theIdx2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10342,8 +11957,11 @@ impl SensitiveTriangulation {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_bounding_box(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10355,8 +11973,11 @@ impl SensitiveTriangulation {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_center_of_geometry(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10367,8 +11988,11 @@ impl SensitiveTriangulation {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_has_init_location(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10380,8 +12004,11 @@ impl SensitiveTriangulation {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_inv_init_location(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10391,8 +12018,11 @@ impl SensitiveTriangulation {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_get_init_location(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10411,8 +12041,11 @@ impl SensitiveTriangulation {
                     thePickResult,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10420,8 +12053,11 @@ impl SensitiveTriangulation {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveTriangulation_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -10430,106 +12066,109 @@ impl SensitiveTriangulation {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveTriangulation_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Select3D_SensitiveSet
     pub fn as_sensitive_set(&self) -> &SensitiveSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveTriangulation_as_Select3D_SensitiveSet(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveTriangulation_as_Select3D_SensitiveSet(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveSet (mutable)
     pub fn as_sensitive_set_mut(&mut self) -> &mut SensitiveSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveTriangulation_as_Select3D_SensitiveSet_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveTriangulation_as_Select3D_SensitiveSet_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveTriangulation_as_Select3D_SensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveTriangulation_as_Select3D_SensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveTriangulation_as_Select3D_SensitiveEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveTriangulation_as_Select3D_SensitiveEntity_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveTriangulation_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveTriangulation_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveTriangulation_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveTriangulation_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveTriangulation> {
-        {
-            let __result =
-                unsafe { crate::ffi::Select3D_SensitiveTriangulation_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::Select3D_SensitiveTriangulation_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:72 - `Select3D_SensitiveSet::BVH()`
     pub fn bvh(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveTriangulation_inherited_BVH(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_SensitiveTriangulation_inherited_BVH(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10541,41 +12180,50 @@ impl SensitiveTriangulation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
     pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_inherited_SetBuilder(
                     self as *mut Self,
                     theBuilder,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_inherited_MarkDirty(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:96 - `Select3D_SensitiveSet::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_inherited_Clear(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10587,8 +12235,11 @@ impl SensitiveTriangulation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10598,21 +12249,26 @@ impl SensitiveTriangulation {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_inherited_OwnerId(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_inherited_Set(
                     self as *mut Self,
                     theOwnerId,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10624,21 +12280,26 @@ impl SensitiveTriangulation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_inherited_SetSensitivityFactor(
                     self as *mut Self,
                     theNewSens,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10650,8 +12311,11 @@ impl SensitiveTriangulation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10661,13 +12325,15 @@ impl SensitiveTriangulation {
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_inherited_SetTransformPersistence(
                     self as *mut Self,
                     theTrsfPers,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10680,8 +12346,11 @@ impl SensitiveTriangulation {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10694,8 +12363,11 @@ impl SensitiveTriangulation {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10705,11 +12377,14 @@ impl SensitiveTriangulation {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -10722,20 +12397,25 @@ impl SensitiveTriangulation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10747,18 +12427,23 @@ impl SensitiveTriangulation {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveTriangulation_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -10774,67 +12459,65 @@ unsafe impl crate::CppDeletable for HandleSelect3DSensitiveTriangulation {
 impl HandleSelect3DSensitiveTriangulation {
     /// Dereference this Handle to access the underlying Select3D_SensitiveTriangulation
     pub fn get(&self) -> &crate::ffi::Select3D_SensitiveTriangulation {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveTriangulation_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitiveTriangulation_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveTriangulation
     pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveTriangulation {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveTriangulation_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitiveTriangulation_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Select3D_SensitiveTriangulation> to Handle<Select3D_SensitiveSet>
     pub fn to_handle_sensitive_set(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSet> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveTriangulation_to_HandleSelect3DSensitiveSet(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveTriangulation_to_HandleSelect3DSensitiveSet(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitiveTriangulation> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveTriangulation_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveTriangulation_to_HandleSelect3DSensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitiveTriangulation> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveTriangulation_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveTriangulation_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -10864,8 +12547,10 @@ impl SensitiveWire {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveWire_ctor_handleselectmgrentityowner(theOwnerId)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10873,8 +12558,11 @@ impl SensitiveWire {
     /// Adds the sensitive entity theSensitive to this framework.
     pub fn add(&mut self, theSensitive: &crate::ffi::HandleSelect3DSensitiveEntity) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveWire_add(self as *mut Self, theSensitive) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveWire_add(self as *mut Self, theSensitive) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10884,8 +12572,11 @@ impl SensitiveWire {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveWire_nb_sub_elements(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10894,8 +12585,11 @@ impl SensitiveWire {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveWire_get_connected(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10907,8 +12601,11 @@ impl SensitiveWire {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveWire_get_edges(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10916,8 +12613,11 @@ impl SensitiveWire {
     /// Sets the owner for all entities in wire
     pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveWire_set(self as *mut Self, theOwnerId) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveWire_set(self as *mut Self, theOwnerId) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10927,8 +12627,11 @@ impl SensitiveWire {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveWire_get_last_detected(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10939,8 +12642,11 @@ impl SensitiveWire {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveWire_bounding_box(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10952,8 +12658,11 @@ impl SensitiveWire {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveWire_center_of_geometry(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10962,8 +12671,11 @@ impl SensitiveWire {
     pub fn size(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveWire_size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10973,8 +12685,11 @@ impl SensitiveWire {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveWire_box_(self as *const Self, theIdx) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10986,8 +12701,11 @@ impl SensitiveWire {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveWire_center(self as *const Self, theIdx, theAxis)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10995,8 +12713,12 @@ impl SensitiveWire {
     /// Swaps items with indexes theIdx1 and theIdx2 in the vector
     pub fn swap(&mut self, theIdx1: i32, theIdx2: i32) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveWire_swap(self as *mut Self, theIdx1, theIdx2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_SensitiveWire_swap(self as *mut Self, theIdx1, theIdx2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11005,8 +12727,11 @@ impl SensitiveWire {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveWire_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11014,8 +12739,11 @@ impl SensitiveWire {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveWire_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -11023,88 +12751,89 @@ impl SensitiveWire {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::Select3D_SensitiveWire_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Select3D_SensitiveSet
     pub fn as_sensitive_set(&self) -> &SensitiveSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveWire_as_Select3D_SensitiveSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveWire_as_Select3D_SensitiveSet(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveSet (mutable)
     pub fn as_sensitive_set_mut(&mut self) -> &mut SensitiveSet {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveWire_as_Select3D_SensitiveSet_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveWire_as_Select3D_SensitiveSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveWire_as_Select3D_SensitiveEntity(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveWire_as_Select3D_SensitiveEntity(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveWire_as_Select3D_SensitiveEntity_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveWire_as_Select3D_SensitiveEntity_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveWire_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveWire_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::Select3D_SensitiveWire_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::Select3D_SensitiveWire_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveWire> {
-        {
-            let __result = unsafe { crate::ffi::Select3D_SensitiveWire_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::Select3D_SensitiveWire_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:62 - `Select3D_SensitiveSet::Matches()`
@@ -11121,16 +12850,22 @@ impl SensitiveWire {
                     thePickResult,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:72 - `Select3D_SensitiveSet::BVH()`
     pub fn bvh(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveWire_inherited_BVH(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveWire_inherited_BVH(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11140,37 +12875,49 @@ impl SensitiveWire {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveWire_inherited_ToBuildBVH(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
     pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveWire_inherited_SetBuilder(
                     self as *mut Self,
                     theBuilder,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveWire_inherited_MarkDirty(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::Select3D_SensitiveWire_inherited_MarkDirty(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:96 - `Select3D_SensitiveSet::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveWire_inherited_Clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveWire_inherited_Clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11180,8 +12927,11 @@ impl SensitiveWire {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveWire_inherited_GetLeafNodeSize(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11191,8 +12941,11 @@ impl SensitiveWire {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveWire_inherited_OwnerId(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11202,21 +12955,26 @@ impl SensitiveWire {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveWire_inherited_SensitivityFactor(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveWire_inherited_SetSensitivityFactor(
                     self as *mut Self,
                     theNewSens,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11226,8 +12984,11 @@ impl SensitiveWire {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveWire_inherited_HasInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11237,8 +12998,11 @@ impl SensitiveWire {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveWire_inherited_InvInitLocation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11250,8 +13014,11 @@ impl SensitiveWire {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11261,13 +13028,15 @@ impl SensitiveWire {
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveWire_inherited_SetTransformPersistence(
                     self as *mut Self,
                     theTrsfPers,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11280,8 +13049,11 @@ impl SensitiveWire {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11291,8 +13063,11 @@ impl SensitiveWire {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveWire_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11301,11 +13076,14 @@ impl SensitiveWire {
         {
             let __result =
                 unsafe { crate::ffi::Select3D_SensitiveWire_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -11316,18 +13094,23 @@ impl SensitiveWire {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveWire_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::Select3D_SensitiveWire_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11337,16 +13120,22 @@ impl SensitiveWire {
             let __result = unsafe {
                 crate::ffi::Select3D_SensitiveWire_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::Select3D_SensitiveWire_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::Select3D_SensitiveWire_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -11362,65 +13151,62 @@ unsafe impl crate::CppDeletable for HandleSelect3DSensitiveWire {
 impl HandleSelect3DSensitiveWire {
     /// Dereference this Handle to access the underlying Select3D_SensitiveWire
     pub fn get(&self) -> &crate::ffi::Select3D_SensitiveWire {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveWire_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleSelect3DSensitiveWire_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveWire
     pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveWire {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleSelect3DSensitiveWire_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleSelect3DSensitiveWire_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<Select3D_SensitiveWire> to Handle<Select3D_SensitiveSet>
     pub fn to_handle_sensitive_set(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSet> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveWire_to_HandleSelect3DSensitiveSet(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveWire_to_HandleSelect3DSensitiveSet(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitiveWire> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveWire_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveWire_to_HandleSelect3DSensitiveEntity(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<Select3D_SensitiveWire> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleSelect3DSensitiveWire_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleSelect3DSensitiveWire_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

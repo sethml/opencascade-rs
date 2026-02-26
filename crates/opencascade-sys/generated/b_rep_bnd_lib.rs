@@ -30,8 +30,10 @@ pub fn add_shape_box_bool(
     useTriangulation: bool,
 ) {
     {
-        unsafe { crate::ffi::BRepBndLib_add_shape_box_bool(S, B, useTriangulation) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BRepBndLib_add_shape_box_bool(S, B, useTriangulation) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepBndLib.hxx`:67 - `BRepBndLib::AddClose`
@@ -48,8 +50,10 @@ pub fn add_shape_box_bool(
 /// box is closer to the shape S.
 pub fn add_close(S: &crate::topo_ds::Shape, B: &mut crate::bnd::Box) {
     {
-        unsafe { crate::ffi::BRepBndLib_add_close(S, B) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BRepBndLib_add_close(S, B) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepBndLib.hxx`:78 - `BRepBndLib::AddOptimal`
@@ -69,8 +73,12 @@ pub fn add_optimal(
     useShapeTolerance: bool,
 ) {
     {
-        unsafe { crate::ffi::BRepBndLib_add_optimal(S, B, useTriangulation, useShapeTolerance) };
-        crate::check_exception();
+        let __exc = unsafe {
+            crate::ffi::BRepBndLib_add_optimal(S, B, useTriangulation, useShapeTolerance)
+        };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepBndLib.hxx`:95 - `BRepBndLib::AddOBB`
@@ -94,7 +102,7 @@ pub fn add_obb(
     theIsShapeToleranceUsed: bool,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::BRepBndLib_add_obb(
                 theS,
                 theOBB,
@@ -103,6 +111,8 @@ pub fn add_obb(
                 theIsShapeToleranceUsed,
             )
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }

@@ -12,8 +12,10 @@ pub fn print_status_ostream(
     OS: &mut crate::ffi::Standard_OStream,
 ) {
     {
-        unsafe { crate::ffi::BRepCheck_print_status_ostream(Stat.into(), OS) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::BRepCheck_print_status_ostream(Stat.into(), OS) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `BRepCheck.hxx`:41 - `BRepCheck::SelfIntersection`
@@ -25,8 +27,11 @@ pub fn self_intersection(
 ) -> bool {
     {
         let __result = unsafe { crate::ffi::BRepCheck_self_intersection(W, F, E1, E2) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `BRepCheck.hxx`:47 - `BRepCheck::PrecCurve`
@@ -34,8 +39,11 @@ pub fn self_intersection(
 pub fn prec_curve(aAC3D: &crate::adaptor3d::Curve) -> f64 {
     {
         let __result = unsafe { crate::ffi::BRepCheck_prec_curve(aAC3D) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `BRepCheck.hxx`:50 - `BRepCheck::PrecSurface`
@@ -43,8 +51,11 @@ pub fn prec_curve(aAC3D: &crate::adaptor3d::Curve) -> f64 {
 pub fn prec_surface(aAHSurf: &crate::ffi::HandleAdaptor3dSurface) -> f64 {
     {
         let __result = unsafe { crate::ffi::BRepCheck_prec_surface(aAHSurf) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 
@@ -201,8 +212,10 @@ impl Analyzer {
                     theIsExact,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -295,8 +308,11 @@ impl Analyzer {
     /// BRepCheck_SelfIntersectingWire
     pub fn init(&mut self, S: &crate::topo_ds::Shape, GeomControls: bool) {
         {
-            unsafe { crate::ffi::BRepCheck_Analyzer_init(self as *mut Self, S, GeomControls) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepCheck_Analyzer_init(self as *mut Self, S, GeomControls) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -308,10 +324,12 @@ impl Analyzer {
     /// Default method is calculating in finite number of points
     pub fn set_exact_method(&mut self, theIsExact: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepCheck_Analyzer_set_exact_method(self as *mut Self, theIsExact)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -321,8 +339,11 @@ impl Analyzer {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Analyzer_is_exact_method(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -330,10 +351,12 @@ impl Analyzer {
     /// Sets parallel flag
     pub fn set_parallel(&mut self, theIsParallel: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepCheck_Analyzer_set_parallel(self as *mut Self, theIsParallel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -342,8 +365,11 @@ impl Analyzer {
     pub fn is_parallel(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Analyzer_is_parallel(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -355,8 +381,11 @@ impl Analyzer {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Analyzer_is_valid_shape(self as *const Self, S) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -403,8 +432,11 @@ impl Analyzer {
     pub fn is_valid(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Analyzer_is_valid(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -422,8 +454,11 @@ impl Analyzer {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Analyzer_result(self as *const Self, theSubS) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -446,32 +481,41 @@ impl Edge {
     pub fn new_edge(E: &crate::topo_ds::Edge) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Edge_ctor_edge(E) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BRepCheck_Edge.hxx`:37 - `BRepCheck_Edge::InContext()`
     pub fn in_context(&mut self, ContextShape: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepCheck_Edge_in_context(self as *mut Self, ContextShape) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepCheck_Edge_in_context(self as *mut Self, ContextShape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepCheck_Edge.hxx`:39 - `BRepCheck_Edge::Minimum()`
     pub fn minimum(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Edge_minimum(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Edge_minimum(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepCheck_Edge.hxx`:41 - `BRepCheck_Edge::Blind()`
     pub fn blind(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Edge_blind(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Edge_blind(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -480,16 +524,22 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Edge_geometric_controls(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepCheck_Edge.hxx`:45 - `BRepCheck_Edge::GeometricControls()`
     pub fn geometric_controls_bool(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::BRepCheck_Edge_geometric_controls_bool(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepCheck_Edge_geometric_controls_bool(self as *mut Self, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -497,8 +547,11 @@ impl Edge {
     pub fn tolerance(&mut self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Edge_tolerance(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -506,8 +559,12 @@ impl Edge {
     /// Sets status of Edge;
     pub fn set_status(&mut self, theStatus: crate::b_rep_check::Status) {
         {
-            unsafe { crate::ffi::BRepCheck_Edge_set_status(self as *mut Self, theStatus.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Edge_set_status(self as *mut Self, theStatus.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -519,8 +576,12 @@ impl Edge {
     /// Default method is calculating in finite number of points
     pub fn set_exact_method(&mut self, theIsExact: bool) {
         {
-            unsafe { crate::ffi::BRepCheck_Edge_set_exact_method(self as *mut Self, theIsExact) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Edge_set_exact_method(self as *mut Self, theIsExact)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -529,8 +590,11 @@ impl Edge {
     pub fn is_exact_method(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Edge_is_exact_method(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -548,8 +612,11 @@ impl Edge {
                     theEdge,
                 )
             };
-            crate::check_exception();
-            crate::b_rep_check::Status::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_check::Status::try_from(__val).unwrap()
         }
     }
 
@@ -557,8 +624,11 @@ impl Edge {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Edge_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -566,8 +636,11 @@ impl Edge {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Edge_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -575,75 +648,83 @@ impl Edge {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Edge_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to BRepCheck_Result
     pub fn as_result(&self) -> &Result {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Edge_as_BRepCheck_Result(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Edge_as_BRepCheck_Result(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepCheck_Result (mutable)
     pub fn as_result_mut(&mut self) -> &mut Result {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Edge_as_BRepCheck_Result_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Edge_as_BRepCheck_Result_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Edge_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Edge_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Edge_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Edge_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckEdge> {
-        {
-            let __result = unsafe { crate::ffi::BRepCheck_Edge_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::BRepCheck_Edge_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepCheck_Edge_inherited_Init(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Edge_inherited_Init(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::SetFailStatus()`
     pub fn set_fail_status(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepCheck_Edge_inherited_SetFailStatus(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepCheck_Edge_inherited_SetFailStatus(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -652,8 +733,11 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Edge_inherited_Status(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -662,8 +746,11 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Edge_inherited_IsMinimum(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -672,16 +759,23 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Edge_inherited_IsBlind(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::InitContextIterator()`
     pub fn init_context_iterator(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Edge_inherited_InitContextIterator(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Edge_inherited_InitContextIterator(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -691,8 +785,11 @@ impl Edge {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Edge_inherited_MoreShapeInContext(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -702,8 +799,11 @@ impl Edge {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Edge_inherited_ContextualShape(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -712,26 +812,35 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Edge_inherited_StatusOnShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::NextShapeInContext()`
     pub fn next_shape_in_context(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Edge_inherited_NextShapeInContext(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Edge_inherited_NextShapeInContext(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::SetParallel()`
     pub fn set_parallel(&mut self, theIsParallel: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepCheck_Edge_inherited_SetParallel(self as *mut Self, theIsParallel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -741,8 +850,11 @@ impl Edge {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Edge_inherited_IsStatusOnShape(self as *const Self, theShape)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -752,8 +864,11 @@ impl Edge {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Edge_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -763,8 +878,11 @@ impl Edge {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Edge_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -773,11 +891,14 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Edge_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -787,16 +908,23 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Edge_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Edge_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Edge_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -806,16 +934,21 @@ impl Edge {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Edge_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::BRepCheck_Edge_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Edge_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -831,42 +964,42 @@ unsafe impl crate::CppDeletable for HandleBRepCheckEdge {
 impl HandleBRepCheckEdge {
     /// Dereference this Handle to access the underlying BRepCheck_Edge
     pub fn get(&self) -> &crate::ffi::BRepCheck_Edge {
-        {
-            let __result = unsafe { crate::ffi::HandleBRepCheckEdge_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBRepCheckEdge_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepCheck_Edge
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepCheck_Edge {
-        {
-            let __result = unsafe { crate::ffi::HandleBRepCheckEdge_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleBRepCheckEdge_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepCheck_Edge> to Handle<BRepCheck_Result>
     pub fn to_handle_result(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckResult> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepCheckEdge_to_HandleBRepCheckResult(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepCheckEdge_to_HandleBRepCheckResult(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepCheck_Edge> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepCheckEdge_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepCheckEdge_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -888,32 +1021,41 @@ impl Face {
     pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Face_ctor_face(F) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BRepCheck_Face.hxx`:38 - `BRepCheck_Face::InContext()`
     pub fn in_context(&mut self, ContextShape: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepCheck_Face_in_context(self as *mut Self, ContextShape) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepCheck_Face_in_context(self as *mut Self, ContextShape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepCheck_Face.hxx`:40 - `BRepCheck_Face::Minimum()`
     pub fn minimum(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Face_minimum(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Face_minimum(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepCheck_Face.hxx`:42 - `BRepCheck_Face::Blind()`
     pub fn blind(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Face_blind(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Face_blind(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -922,8 +1064,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Face_intersect_wires(self as *mut Self, Update) };
-            crate::check_exception();
-            crate::b_rep_check::Status::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_check::Status::try_from(__val).unwrap()
         }
     }
 
@@ -932,8 +1077,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Face_classify_wires(self as *mut Self, Update) };
-            crate::check_exception();
-            crate::b_rep_check::Status::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_check::Status::try_from(__val).unwrap()
         }
     }
 
@@ -943,16 +1091,21 @@ impl Face {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Face_orientation_of_wires(self as *mut Self, Update)
             };
-            crate::check_exception();
-            crate::b_rep_check::Status::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_check::Status::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `BRepCheck_Face.hxx`:51 - `BRepCheck_Face::SetUnorientable()`
     pub fn set_unorientable(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Face_set_unorientable(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Face_set_unorientable(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -960,8 +1113,12 @@ impl Face {
     /// Sets status of Face;
     pub fn set_status(&mut self, theStatus: crate::b_rep_check::Status) {
         {
-            unsafe { crate::ffi::BRepCheck_Face_set_status(self as *mut Self, theStatus.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Face_set_status(self as *mut Self, theStatus.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -970,8 +1127,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Face_is_unorientable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -980,16 +1140,22 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Face_geometric_controls(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepCheck_Face.hxx`:60 - `BRepCheck_Face::GeometricControls()`
     pub fn geometric_controls_bool(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::BRepCheck_Face_geometric_controls_bool(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepCheck_Face_geometric_controls_bool(self as *mut Self, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -997,8 +1163,11 @@ impl Face {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Face_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1006,8 +1175,11 @@ impl Face {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Face_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1015,75 +1187,83 @@ impl Face {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Face_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to BRepCheck_Result
     pub fn as_result(&self) -> &Result {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Face_as_BRepCheck_Result(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Face_as_BRepCheck_Result(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepCheck_Result (mutable)
     pub fn as_result_mut(&mut self) -> &mut Result {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Face_as_BRepCheck_Result_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Face_as_BRepCheck_Result_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Face_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Face_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Face_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Face_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckFace> {
-        {
-            let __result = unsafe { crate::ffi::BRepCheck_Face_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::BRepCheck_Face_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepCheck_Face_inherited_Init(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Face_inherited_Init(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::SetFailStatus()`
     pub fn set_fail_status(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepCheck_Face_inherited_SetFailStatus(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepCheck_Face_inherited_SetFailStatus(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1092,8 +1272,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Face_inherited_Status(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1102,8 +1285,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Face_inherited_IsMinimum(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1112,16 +1298,23 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Face_inherited_IsBlind(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::InitContextIterator()`
     pub fn init_context_iterator(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Face_inherited_InitContextIterator(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Face_inherited_InitContextIterator(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1131,8 +1324,11 @@ impl Face {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Face_inherited_MoreShapeInContext(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1142,8 +1338,11 @@ impl Face {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Face_inherited_ContextualShape(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1152,26 +1351,35 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Face_inherited_StatusOnShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::NextShapeInContext()`
     pub fn next_shape_in_context(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Face_inherited_NextShapeInContext(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Face_inherited_NextShapeInContext(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::SetParallel()`
     pub fn set_parallel(&mut self, theIsParallel: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepCheck_Face_inherited_SetParallel(self as *mut Self, theIsParallel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1181,8 +1389,11 @@ impl Face {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Face_inherited_IsStatusOnShape(self as *const Self, theShape)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1192,8 +1403,11 @@ impl Face {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Face_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1203,8 +1417,11 @@ impl Face {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Face_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1213,11 +1430,14 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Face_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1227,16 +1447,23 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Face_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Face_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Face_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1246,16 +1473,21 @@ impl Face {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Face_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::BRepCheck_Face_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Face_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1271,42 +1503,42 @@ unsafe impl crate::CppDeletable for HandleBRepCheckFace {
 impl HandleBRepCheckFace {
     /// Dereference this Handle to access the underlying BRepCheck_Face
     pub fn get(&self) -> &crate::ffi::BRepCheck_Face {
-        {
-            let __result = unsafe { crate::ffi::HandleBRepCheckFace_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBRepCheckFace_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepCheck_Face
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepCheck_Face {
-        {
-            let __result = unsafe { crate::ffi::HandleBRepCheckFace_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleBRepCheckFace_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepCheck_Face> to Handle<BRepCheck_Result>
     pub fn to_handle_result(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckResult> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepCheckFace_to_HandleBRepCheckResult(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepCheckFace_to_HandleBRepCheckResult(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepCheck_Face> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepCheckFace_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepCheckFace_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1327,40 +1559,52 @@ impl Result {
     /// **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepCheck_Result_init(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Result_init(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepCheck_Result.hxx`:35 - `BRepCheck_Result::InContext()`
     pub fn in_context(&mut self, ContextShape: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepCheck_Result_in_context(self as *mut Self, ContextShape) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepCheck_Result_in_context(self as *mut Self, ContextShape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepCheck_Result.hxx`:37 - `BRepCheck_Result::Minimum()`
     pub fn minimum(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Result_minimum(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Result_minimum(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepCheck_Result.hxx`:39 - `BRepCheck_Result::Blind()`
     pub fn blind(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Result_blind(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Result_blind(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::SetFailStatus()`
     pub fn set_fail_status(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepCheck_Result_set_fail_status(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepCheck_Result_set_fail_status(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1368,8 +1612,11 @@ impl Result {
     pub fn status(&self) -> &crate::ffi::BRepCheck_ListOfStatus {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Result_status(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1377,8 +1624,11 @@ impl Result {
     pub fn is_minimum(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Result_is_minimum(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1386,16 +1636,22 @@ impl Result {
     pub fn is_blind(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Result_is_blind(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::InitContextIterator()`
     pub fn init_context_iterator(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Result_init_context_iterator(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepCheck_Result_init_context_iterator(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1404,8 +1660,11 @@ impl Result {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Result_more_shape_in_context(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1414,8 +1673,11 @@ impl Result {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Result_contextual_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1424,24 +1686,34 @@ impl Result {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Result_status_on_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::NextShapeInContext()`
     pub fn next_shape_in_context(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Result_next_shape_in_context(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepCheck_Result_next_shape_in_context(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::SetParallel()`
     pub fn set_parallel(&mut self, theIsParallel: bool) {
         {
-            unsafe { crate::ffi::BRepCheck_Result_set_parallel(self as *mut Self, theIsParallel) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Result_set_parallel(self as *mut Self, theIsParallel)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1451,8 +1723,11 @@ impl Result {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Result_is_status_on_shape(self as *const Self, theShape)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1471,8 +1746,11 @@ impl Result {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Result_status_on_shape_shape(self as *const Self, theShape)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1481,8 +1759,11 @@ impl Result {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Result_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1490,8 +1771,11 @@ impl Result {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Result_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1499,30 +1783,32 @@ impl Result {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Result_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Result_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Result_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepCheck_Result_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Result_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1531,8 +1817,11 @@ impl Result {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Result_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1542,8 +1831,11 @@ impl Result {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Result_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1552,11 +1844,14 @@ impl Result {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Result_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1566,18 +1861,23 @@ impl Result {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Result_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepCheck_Result_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1587,16 +1887,22 @@ impl Result {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Result_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::BRepCheck_Result_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepCheck_Result_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1612,45 +1918,47 @@ unsafe impl crate::CppDeletable for HandleBRepCheckResult {
 impl HandleBRepCheckResult {
     /// Dereference this Handle to access the underlying BRepCheck_Result
     pub fn get(&self) -> &crate::ffi::BRepCheck_Result {
-        {
-            let __result = unsafe { crate::ffi::HandleBRepCheckResult_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBRepCheckResult_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepCheck_Result
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepCheck_Result {
-        {
-            let __result = unsafe { crate::ffi::HandleBRepCheckResult_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleBRepCheckResult_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepCheck_Result> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepCheckResult_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepCheckResult_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<BRepCheck_Result> to Handle<BRepCheck_Edge>
     ///
     /// Returns `None` if the handle does not point to a `BRepCheck_Edge` (or subclass).
     pub fn downcast_to_edge(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCheckEdge>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleBRepCheckResult_downcast_to_HandleBRepCheckEdge(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1658,14 +1966,16 @@ impl HandleBRepCheckResult {
     ///
     /// Returns `None` if the handle does not point to a `BRepCheck_Face` (or subclass).
     pub fn downcast_to_face(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCheckFace>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleBRepCheckResult_downcast_to_HandleBRepCheckFace(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1673,14 +1983,16 @@ impl HandleBRepCheckResult {
     ///
     /// Returns `None` if the handle does not point to a `BRepCheck_Shell` (or subclass).
     pub fn downcast_to_shell(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCheckShell>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleBRepCheckResult_downcast_to_HandleBRepCheckShell(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1688,14 +2000,16 @@ impl HandleBRepCheckResult {
     ///
     /// Returns `None` if the handle does not point to a `BRepCheck_Solid` (or subclass).
     pub fn downcast_to_solid(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCheckSolid>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleBRepCheckResult_downcast_to_HandleBRepCheckSolid(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1703,14 +2017,16 @@ impl HandleBRepCheckResult {
     ///
     /// Returns `None` if the handle does not point to a `BRepCheck_Vertex` (or subclass).
     pub fn downcast_to_vertex(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCheckVertex>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleBRepCheckResult_downcast_to_HandleBRepCheckVertex(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1718,14 +2034,16 @@ impl HandleBRepCheckResult {
     ///
     /// Returns `None` if the handle does not point to a `BRepCheck_Wire` (or subclass).
     pub fn downcast_to_wire(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepCheckWire>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleBRepCheckResult_downcast_to_HandleBRepCheckWire(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -1748,32 +2066,41 @@ impl Shell {
     pub fn new_shell(S: &crate::topo_ds::Shell) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Shell_ctor_shell(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BRepCheck_Shell.hxx`:38 - `BRepCheck_Shell::InContext()`
     pub fn in_context(&mut self, ContextShape: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepCheck_Shell_in_context(self as *mut Self, ContextShape) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepCheck_Shell_in_context(self as *mut Self, ContextShape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepCheck_Shell.hxx`:40 - `BRepCheck_Shell::Minimum()`
     pub fn minimum(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Shell_minimum(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Shell_minimum(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepCheck_Shell.hxx`:42 - `BRepCheck_Shell::Blind()`
     pub fn blind(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Shell_blind(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Shell_blind(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1785,8 +2112,11 @@ impl Shell {
     pub fn closed(&mut self, Update: bool) -> crate::b_rep_check::Status {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Shell_closed(self as *mut Self, Update) };
-            crate::check_exception();
-            crate::b_rep_check::Status::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_check::Status::try_from(__val).unwrap()
         }
     }
 
@@ -1799,16 +2129,21 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Shell_orientation(self as *mut Self, Update) };
-            crate::check_exception();
-            crate::b_rep_check::Status::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_check::Status::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `BRepCheck_Shell.hxx`:56 - `BRepCheck_Shell::SetUnorientable()`
     pub fn set_unorientable(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Shell_set_unorientable(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Shell_set_unorientable(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1817,8 +2152,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Shell_is_unorientable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1827,8 +2165,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Shell_nb_connected_set(self as *mut Self, theSets) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1836,8 +2177,11 @@ impl Shell {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Shell_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1845,8 +2189,11 @@ impl Shell {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Shell_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1854,75 +2201,84 @@ impl Shell {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Shell_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to BRepCheck_Result
     pub fn as_result(&self) -> &Result {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Shell_as_BRepCheck_Result(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Shell_as_BRepCheck_Result(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepCheck_Result (mutable)
     pub fn as_result_mut(&mut self) -> &mut Result {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Shell_as_BRepCheck_Result_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Shell_as_BRepCheck_Result_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Shell_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Shell_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Shell_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Shell_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckShell> {
-        {
-            let __result = unsafe { crate::ffi::BRepCheck_Shell_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::BRepCheck_Shell_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepCheck_Shell_inherited_Init(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Shell_inherited_Init(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::SetFailStatus()`
     pub fn set_fail_status(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepCheck_Shell_inherited_SetFailStatus(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Shell_inherited_SetFailStatus(self as *mut Self, S)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1931,8 +2287,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Shell_inherited_Status(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1941,8 +2300,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Shell_inherited_IsMinimum(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1951,16 +2313,23 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Shell_inherited_IsBlind(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::InitContextIterator()`
     pub fn init_context_iterator(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Shell_inherited_InitContextIterator(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Shell_inherited_InitContextIterator(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1970,8 +2339,11 @@ impl Shell {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Shell_inherited_MoreShapeInContext(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1981,8 +2353,11 @@ impl Shell {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Shell_inherited_ContextualShape(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1991,26 +2366,35 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Shell_inherited_StatusOnShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::NextShapeInContext()`
     pub fn next_shape_in_context(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Shell_inherited_NextShapeInContext(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Shell_inherited_NextShapeInContext(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::SetParallel()`
     pub fn set_parallel(&mut self, theIsParallel: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepCheck_Shell_inherited_SetParallel(self as *mut Self, theIsParallel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2020,8 +2404,11 @@ impl Shell {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Shell_inherited_IsStatusOnShape(self as *const Self, theShape)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2031,8 +2418,11 @@ impl Shell {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Shell_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2042,8 +2432,11 @@ impl Shell {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Shell_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2052,11 +2445,14 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Shell_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2066,16 +2462,23 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Shell_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Shell_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Shell_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2085,16 +2488,22 @@ impl Shell {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Shell_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::BRepCheck_Shell_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepCheck_Shell_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2110,42 +2519,42 @@ unsafe impl crate::CppDeletable for HandleBRepCheckShell {
 impl HandleBRepCheckShell {
     /// Dereference this Handle to access the underlying BRepCheck_Shell
     pub fn get(&self) -> &crate::ffi::BRepCheck_Shell {
-        {
-            let __result = unsafe { crate::ffi::HandleBRepCheckShell_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBRepCheckShell_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepCheck_Shell
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepCheck_Shell {
-        {
-            let __result = unsafe { crate::ffi::HandleBRepCheckShell_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleBRepCheckShell_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepCheck_Shell> to Handle<BRepCheck_Result>
     pub fn to_handle_result(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckResult> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepCheckShell_to_HandleBRepCheckResult(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepCheckShell_to_HandleBRepCheckResult(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepCheck_Shell> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepCheckShell_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepCheckShell_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2170,8 +2579,10 @@ impl Solid {
     pub fn new_solid(theS: &crate::topo_ds::Solid) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Solid_ctor_solid(theS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2180,8 +2591,12 @@ impl Solid {
     /// the shape <theContextShape>
     pub fn in_context(&mut self, theContextShape: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepCheck_Solid_in_context(self as *mut Self, theContextShape) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Solid_in_context(self as *mut Self, theContextShape)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2206,8 +2621,10 @@ impl Solid {
     /// Status:  BRepCheck_EnclosedRegion
     pub fn minimum(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Solid_minimum(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Solid_minimum(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2215,8 +2632,10 @@ impl Solid {
     /// see the parent class for more details
     pub fn blind(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Solid_blind(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Solid_blind(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2224,8 +2643,11 @@ impl Solid {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Solid_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2233,8 +2655,11 @@ impl Solid {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Solid_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2242,75 +2667,84 @@ impl Solid {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Solid_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to BRepCheck_Result
     pub fn as_result(&self) -> &Result {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Solid_as_BRepCheck_Result(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Solid_as_BRepCheck_Result(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepCheck_Result (mutable)
     pub fn as_result_mut(&mut self) -> &mut Result {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Solid_as_BRepCheck_Result_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Solid_as_BRepCheck_Result_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Solid_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Solid_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Solid_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Solid_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckSolid> {
-        {
-            let __result = unsafe { crate::ffi::BRepCheck_Solid_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::BRepCheck_Solid_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepCheck_Solid_inherited_Init(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Solid_inherited_Init(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::SetFailStatus()`
     pub fn set_fail_status(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepCheck_Solid_inherited_SetFailStatus(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Solid_inherited_SetFailStatus(self as *mut Self, S)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2319,8 +2753,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Solid_inherited_Status(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2329,8 +2766,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Solid_inherited_IsMinimum(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2339,16 +2779,23 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Solid_inherited_IsBlind(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::InitContextIterator()`
     pub fn init_context_iterator(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Solid_inherited_InitContextIterator(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Solid_inherited_InitContextIterator(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2358,8 +2805,11 @@ impl Solid {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Solid_inherited_MoreShapeInContext(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2369,8 +2819,11 @@ impl Solid {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Solid_inherited_ContextualShape(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2379,26 +2832,35 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Solid_inherited_StatusOnShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::NextShapeInContext()`
     pub fn next_shape_in_context(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Solid_inherited_NextShapeInContext(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Solid_inherited_NextShapeInContext(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::SetParallel()`
     pub fn set_parallel(&mut self, theIsParallel: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepCheck_Solid_inherited_SetParallel(self as *mut Self, theIsParallel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2408,8 +2870,11 @@ impl Solid {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Solid_inherited_IsStatusOnShape(self as *const Self, theShape)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2419,8 +2884,11 @@ impl Solid {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Solid_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2430,8 +2898,11 @@ impl Solid {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Solid_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2440,11 +2911,14 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Solid_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2454,16 +2928,23 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Solid_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Solid_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Solid_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2473,16 +2954,22 @@ impl Solid {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Solid_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::BRepCheck_Solid_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepCheck_Solid_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2498,42 +2985,42 @@ unsafe impl crate::CppDeletable for HandleBRepCheckSolid {
 impl HandleBRepCheckSolid {
     /// Dereference this Handle to access the underlying BRepCheck_Solid
     pub fn get(&self) -> &crate::ffi::BRepCheck_Solid {
-        {
-            let __result = unsafe { crate::ffi::HandleBRepCheckSolid_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBRepCheckSolid_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepCheck_Solid
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepCheck_Solid {
-        {
-            let __result = unsafe { crate::ffi::HandleBRepCheckSolid_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleBRepCheckSolid_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepCheck_Solid> to Handle<BRepCheck_Result>
     pub fn to_handle_result(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckResult> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepCheckSolid_to_HandleBRepCheckResult(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepCheckSolid_to_HandleBRepCheckResult(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepCheck_Solid> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepCheckSolid_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepCheckSolid_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2555,32 +3042,41 @@ impl Vertex {
     pub fn new_vertex(V: &crate::topo_ds::Vertex) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Vertex_ctor_vertex(V) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `BRepCheck_Vertex.hxx`:36 - `BRepCheck_Vertex::InContext()`
     pub fn in_context(&mut self, ContextShape: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepCheck_Vertex_in_context(self as *mut Self, ContextShape) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepCheck_Vertex_in_context(self as *mut Self, ContextShape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepCheck_Vertex.hxx`:38 - `BRepCheck_Vertex::Minimum()`
     pub fn minimum(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Vertex_minimum(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Vertex_minimum(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `BRepCheck_Vertex.hxx`:40 - `BRepCheck_Vertex::Blind()`
     pub fn blind(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Vertex_blind(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Vertex_blind(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2588,8 +3084,11 @@ impl Vertex {
     pub fn tolerance(&mut self) -> f64 {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Vertex_tolerance(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2598,8 +3097,11 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Vertex_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2607,8 +3109,11 @@ impl Vertex {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Vertex_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2616,76 +3121,85 @@ impl Vertex {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Vertex_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to BRepCheck_Result
     pub fn as_result(&self) -> &Result {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Vertex_as_BRepCheck_Result(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Vertex_as_BRepCheck_Result(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepCheck_Result (mutable)
     pub fn as_result_mut(&mut self) -> &mut Result {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Vertex_as_BRepCheck_Result_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Vertex_as_BRepCheck_Result_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Vertex_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Vertex_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::BRepCheck_Vertex_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Vertex_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckVertex> {
-        {
-            let __result = unsafe { crate::ffi::BRepCheck_Vertex_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::BRepCheck_Vertex_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepCheck_Vertex_inherited_Init(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepCheck_Vertex_inherited_Init(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::SetFailStatus()`
     pub fn set_fail_status(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepCheck_Vertex_inherited_SetFailStatus(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Vertex_inherited_SetFailStatus(self as *mut Self, S)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2694,8 +3208,11 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Vertex_inherited_Status(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2704,8 +3221,11 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Vertex_inherited_IsMinimum(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2714,18 +3234,23 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Vertex_inherited_IsBlind(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::InitContextIterator()`
     pub fn init_context_iterator(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepCheck_Vertex_inherited_InitContextIterator(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2735,8 +3260,11 @@ impl Vertex {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Vertex_inherited_MoreShapeInContext(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2746,8 +3274,11 @@ impl Vertex {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Vertex_inherited_ContextualShape(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2757,26 +3288,35 @@ impl Vertex {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Vertex_inherited_StatusOnShape(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::NextShapeInContext()`
     pub fn next_shape_in_context(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Vertex_inherited_NextShapeInContext(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Vertex_inherited_NextShapeInContext(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::SetParallel()`
     pub fn set_parallel(&mut self, theIsParallel: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepCheck_Vertex_inherited_SetParallel(self as *mut Self, theIsParallel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2789,8 +3329,11 @@ impl Vertex {
                     theShape,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2800,8 +3343,11 @@ impl Vertex {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Vertex_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2811,8 +3357,11 @@ impl Vertex {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Vertex_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2821,11 +3370,14 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Vertex_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2835,18 +3387,23 @@ impl Vertex {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Vertex_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepCheck_Vertex_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2856,16 +3413,22 @@ impl Vertex {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Vertex_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::BRepCheck_Vertex_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepCheck_Vertex_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2881,42 +3444,42 @@ unsafe impl crate::CppDeletable for HandleBRepCheckVertex {
 impl HandleBRepCheckVertex {
     /// Dereference this Handle to access the underlying BRepCheck_Vertex
     pub fn get(&self) -> &crate::ffi::BRepCheck_Vertex {
-        {
-            let __result = unsafe { crate::ffi::HandleBRepCheckVertex_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBRepCheckVertex_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepCheck_Vertex
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepCheck_Vertex {
-        {
-            let __result = unsafe { crate::ffi::HandleBRepCheckVertex_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleBRepCheckVertex_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepCheck_Vertex> to Handle<BRepCheck_Result>
     pub fn to_handle_result(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckResult> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepCheckVertex_to_HandleBRepCheckResult(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepCheckVertex_to_HandleBRepCheckResult(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepCheck_Vertex> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepCheckVertex_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepCheckVertex_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2938,8 +3501,10 @@ impl Wire {
     pub fn new_wire(W: &crate::topo_ds::Wire) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Wire_ctor_wire(W) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2949,8 +3514,11 @@ impl Wire {
     /// Closed2d until faulty is found
     pub fn in_context(&mut self, ContextShape: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepCheck_Wire_in_context(self as *mut Self, ContextShape) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepCheck_Wire_in_context(self as *mut Self, ContextShape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2959,8 +3527,10 @@ impl Wire {
     /// Called by constructor
     pub fn minimum(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Wire_minimum(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Wire_minimum(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2968,8 +3538,10 @@ impl Wire {
     /// Does nothing
     pub fn blind(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Wire_blind(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Wire_blind(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2990,8 +3562,11 @@ impl Wire {
     pub fn closed(&mut self, Update: bool) -> crate::b_rep_check::Status {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Wire_closed(self as *mut Self, Update) };
-            crate::check_exception();
-            crate::b_rep_check::Status::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_check::Status::try_from(__val).unwrap()
         }
     }
 
@@ -3009,8 +3584,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Wire_closed2d(self as *mut Self, F, Update) };
-            crate::check_exception();
-            crate::b_rep_check::Status::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_check::Status::try_from(__val).unwrap()
         }
     }
 
@@ -3034,8 +3612,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Wire_orientation(self as *mut Self, F, Update) };
-            crate::check_exception();
-            crate::b_rep_check::Status::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_check::Status::try_from(__val).unwrap()
         }
     }
 
@@ -3062,8 +3643,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Wire_self_intersect(self as *mut Self, F, E1, E2, Update)
             };
-            crate::check_exception();
-            crate::b_rep_check::Status::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::b_rep_check::Status::try_from(__val).unwrap()
         }
     }
 
@@ -3073,8 +3657,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Wire_geometric_controls(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3082,8 +3669,11 @@ impl Wire {
     /// set SelfIntersect() to be checked
     pub fn geometric_controls_bool(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::BRepCheck_Wire_geometric_controls_bool(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepCheck_Wire_geometric_controls_bool(self as *mut Self, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3091,8 +3681,12 @@ impl Wire {
     /// Sets status of Wire;
     pub fn set_status(&mut self, theStatus: crate::b_rep_check::Status) {
         {
-            unsafe { crate::ffi::BRepCheck_Wire_set_status(self as *mut Self, theStatus.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Wire_set_status(self as *mut Self, theStatus.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3100,8 +3694,11 @@ impl Wire {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Wire_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3109,8 +3706,11 @@ impl Wire {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Wire_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3118,75 +3718,83 @@ impl Wire {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::BRepCheck_Wire_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to BRepCheck_Result
     pub fn as_result(&self) -> &Result {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Wire_as_BRepCheck_Result(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Wire_as_BRepCheck_Result(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepCheck_Result (mutable)
     pub fn as_result_mut(&mut self) -> &mut Result {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Wire_as_BRepCheck_Result_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Wire_as_BRepCheck_Result_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Wire_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Wire_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::BRepCheck_Wire_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::BRepCheck_Wire_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckWire> {
-        {
-            let __result = unsafe { crate::ffi::BRepCheck_Wire_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::BRepCheck_Wire_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:33 - `BRepCheck_Result::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepCheck_Wire_inherited_Init(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Wire_inherited_Init(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:41 - `BRepCheck_Result::SetFailStatus()`
     pub fn set_fail_status(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::BRepCheck_Wire_inherited_SetFailStatus(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::BRepCheck_Wire_inherited_SetFailStatus(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3195,8 +3803,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Wire_inherited_Status(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3205,8 +3816,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Wire_inherited_IsMinimum(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3215,16 +3829,23 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Wire_inherited_IsBlind(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:49 - `BRepCheck_Result::InitContextIterator()`
     pub fn init_context_iterator(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Wire_inherited_InitContextIterator(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Wire_inherited_InitContextIterator(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3234,8 +3855,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Wire_inherited_MoreShapeInContext(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3245,8 +3869,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Wire_inherited_ContextualShape(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3255,26 +3882,35 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Wire_inherited_StatusOnShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:57 - `BRepCheck_Result::NextShapeInContext()`
     pub fn next_shape_in_context(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Wire_inherited_NextShapeInContext(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Wire_inherited_NextShapeInContext(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `BRepCheck_Result.hxx`:59 - `BRepCheck_Result::SetParallel()`
     pub fn set_parallel(&mut self, theIsParallel: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::BRepCheck_Wire_inherited_SetParallel(self as *mut Self, theIsParallel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3284,8 +3920,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Wire_inherited_IsStatusOnShape(self as *const Self, theShape)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3295,8 +3934,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Wire_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3306,8 +3948,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Wire_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3316,11 +3961,14 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Wire_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3330,16 +3978,23 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::BRepCheck_Wire_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::BRepCheck_Wire_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::BRepCheck_Wire_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3349,16 +4004,21 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::BRepCheck_Wire_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::BRepCheck_Wire_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepCheck_Wire_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3374,42 +4034,42 @@ unsafe impl crate::CppDeletable for HandleBRepCheckWire {
 impl HandleBRepCheckWire {
     /// Dereference this Handle to access the underlying BRepCheck_Wire
     pub fn get(&self) -> &crate::ffi::BRepCheck_Wire {
-        {
-            let __result = unsafe { crate::ffi::HandleBRepCheckWire_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleBRepCheckWire_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepCheck_Wire
     pub fn get_mut(&mut self) -> &mut crate::ffi::BRepCheck_Wire {
-        {
-            let __result = unsafe { crate::ffi::HandleBRepCheckWire_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleBRepCheckWire_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<BRepCheck_Wire> to Handle<BRepCheck_Result>
     pub fn to_handle_result(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCheckResult> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepCheckWire_to_HandleBRepCheckResult(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepCheckWire_to_HandleBRepCheckResult(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<BRepCheck_Wire> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleBRepCheckWire_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleBRepCheckWire_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

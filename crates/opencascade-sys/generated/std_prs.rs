@@ -67,8 +67,10 @@ impl BRepFont {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_BRepFont_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -90,8 +92,10 @@ impl BRepFont {
                     theFaceId,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -116,8 +120,10 @@ impl BRepFont {
                     theStrictLevel.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -137,8 +143,11 @@ impl BRepFont {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StdPrs_BRepFont_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -146,8 +155,10 @@ impl BRepFont {
     /// Release currently loaded font.
     pub fn release(&mut self) {
         {
-            unsafe { crate::ffi::StdPrs_BRepFont_release(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdPrs_BRepFont_release(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -172,8 +183,11 @@ impl BRepFont {
                     theFaceId,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -205,8 +219,11 @@ impl BRepFont {
                     theStrictLevel.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -215,8 +232,11 @@ impl BRepFont {
     pub fn ft_font(&self) -> &crate::ffi::HandleFontFTFont {
         {
             let __result = unsafe { crate::ffi::StdPrs_BRepFont_ft_font(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -228,8 +248,11 @@ impl BRepFont {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_BRepFont_render_glyph(self as *mut Self, theChar) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -242,13 +265,15 @@ impl BRepFont {
     /// Notice that altering this flag clears currently accumulated cache!
     pub fn set_composite_curve_mode(&mut self, theToConcatenate: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_BRepFont_set_composite_curve_mode(
                     self as *mut Self,
                     theToConcatenate,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -257,10 +282,12 @@ impl BRepFont {
     /// By default glyphs are not scaled (scaling factor = 1.0)
     pub fn set_width_scaling(&mut self, theScaleFactor: f32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_BRepFont_set_width_scaling(self as *mut Self, theScaleFactor)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -269,8 +296,11 @@ impl BRepFont {
     pub fn ascender(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::StdPrs_BRepFont_ascender(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -279,8 +309,11 @@ impl BRepFont {
     pub fn descender(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::StdPrs_BRepFont_descender(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -289,8 +322,11 @@ impl BRepFont {
     pub fn line_spacing(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::StdPrs_BRepFont_line_spacing(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -299,8 +335,11 @@ impl BRepFont {
     pub fn point_size(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::StdPrs_BRepFont_point_size(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -312,8 +351,11 @@ impl BRepFont {
             let __result = unsafe {
                 crate::ffi::StdPrs_BRepFont_advance_x_uint(self as *mut Self, theUCharNext)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -329,8 +371,11 @@ impl BRepFont {
                     theUCharNext,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -342,8 +387,11 @@ impl BRepFont {
             let __result = unsafe {
                 crate::ffi::StdPrs_BRepFont_advance_y_uint(self as *mut Self, theUCharNext)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -359,8 +407,11 @@ impl BRepFont {
                     theUCharNext,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -369,8 +420,11 @@ impl BRepFont {
     pub fn scale(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::StdPrs_BRepFont_scale(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -379,8 +433,11 @@ impl BRepFont {
     pub fn mutex(&mut self) -> &mut crate::standard::Mutex {
         {
             let __result = unsafe { crate::ffi::StdPrs_BRepFont_mutex(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -402,8 +459,11 @@ impl BRepFont {
                     theSize,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -411,8 +471,11 @@ impl BRepFont {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StdPrs_BRepFont_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -420,8 +483,11 @@ impl BRepFont {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StdPrs_BRepFont_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -447,40 +513,43 @@ impl BRepFont {
                     theStrictLevel.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::StdPrs_BRepFont_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StdPrs_BRepFont_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::StdPrs_BRepFont_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::StdPrs_BRepFont_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStdPrsBRepFont> {
-        {
-            let __result = unsafe { crate::ffi::StdPrs_BRepFont_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StdPrs_BRepFont_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -489,8 +558,11 @@ impl BRepFont {
             let __result = unsafe {
                 crate::ffi::StdPrs_BRepFont_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -500,8 +572,11 @@ impl BRepFont {
             let __result = unsafe {
                 crate::ffi::StdPrs_BRepFont_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -510,11 +585,14 @@ impl BRepFont {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_BRepFont_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -524,16 +602,23 @@ impl BRepFont {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_BRepFont_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::StdPrs_BRepFont_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdPrs_BRepFont_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -543,16 +628,22 @@ impl BRepFont {
             let __result = unsafe {
                 crate::ffi::StdPrs_BRepFont_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StdPrs_BRepFont_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdPrs_BRepFont_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -568,31 +659,31 @@ unsafe impl crate::CppDeletable for HandleStdPrsBRepFont {
 impl HandleStdPrsBRepFont {
     /// Dereference this Handle to access the underlying StdPrs_BRepFont
     pub fn get(&self) -> &crate::ffi::StdPrs_BRepFont {
-        {
-            let __result = unsafe { crate::ffi::HandleStdPrsBRepFont_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleStdPrsBRepFont_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StdPrs_BRepFont
     pub fn get_mut(&mut self) -> &mut crate::ffi::StdPrs_BRepFont {
-        {
-            let __result = unsafe { crate::ffi::HandleStdPrsBRepFont_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleStdPrsBRepFont_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StdPrs_BRepFont> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdPrsBRepFont_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdPrsBRepFont_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -616,8 +707,10 @@ impl BRepTextBuilder {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_BRepTextBuilder_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -641,8 +734,11 @@ impl BRepTextBuilder {
                     thePenLoc,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -665,8 +761,11 @@ impl BRepTextBuilder {
             let __result = unsafe {
                 crate::ffi::StdPrs_BRepTextBuilder_perform_brepfont_utf8string_ax3_horizontaltextalignment_verticaltextalignment(self as *mut Self, theFont, theString, thePenLoc, theHAlign.into(), theVAlign.into())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -693,8 +792,10 @@ impl Curve {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_Curve_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -711,7 +812,7 @@ impl Curve {
         drawCurve: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_Curve_add_handlegraphic3dstructure_curve_handleprs3ddrawer_bool(
                     aPresentation,
                     aCurve,
@@ -719,7 +820,9 @@ impl Curve {
                     drawCurve,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -739,10 +842,12 @@ impl Curve {
         drawCurve: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_Curve_add_handlegraphic3dstructure_curve_real2_handleprs3ddrawer_bool(aPresentation, aCurve, U1, U2, aDrawer, drawCurve)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -762,10 +867,12 @@ impl Curve {
         drawCurve: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_Curve_add_handlegraphic3dstructure_curve_handleprs3ddrawer_sequenceofpnt_bool(aPresentation, aCurve, aDrawer, Points, drawCurve)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -790,10 +897,12 @@ impl Curve {
         drawCurve: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_Curve_add_handlegraphic3dstructure_curve_real2_sequenceofpnt_int_bool(aPresentation, aCurve, U1, U2, Points, aNbPoints, drawCurve)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -814,8 +923,11 @@ impl Curve {
                     X, Y, Z, aDistance, aCurve, aDrawer,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -845,8 +957,11 @@ impl Curve {
                     aNbPoints,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -871,8 +986,11 @@ impl Curve {
                     X, Y, Z, aDistance, aCurve, U1, U2, aDrawer,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -906,8 +1024,11 @@ impl Curve {
                     aNbPoints,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -934,8 +1055,10 @@ impl DeflectionCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_DeflectionCurve_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -954,10 +1077,12 @@ impl DeflectionCurve {
         drawCurve: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_DeflectionCurve_add_handlegraphic3dstructure_curve_handleprs3ddrawer_bool(aPresentation, aCurve, aDrawer, drawCurve)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -979,10 +1104,12 @@ impl DeflectionCurve {
         drawCurve: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_DeflectionCurve_add_handlegraphic3dstructure_curve_real2_handleprs3ddrawer_bool(aPresentation, aCurve, U1, U2, aDrawer, drawCurve)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1002,7 +1129,7 @@ impl DeflectionCurve {
         drawCurve: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_DeflectionCurve_add_handlegraphic3dstructure_curve_real3_bool(
                     aPresentation,
                     aCurve,
@@ -1012,7 +1139,9 @@ impl DeflectionCurve {
                     drawCurve,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1033,10 +1162,12 @@ impl DeflectionCurve {
         drawCurve: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_DeflectionCurve_add_handlegraphic3dstructure_curve_real_handleprs3ddrawer_sequenceofpnt_bool(aPresentation, aCurve, aDeflection, aDrawer, Points, drawCurve)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1060,10 +1191,12 @@ impl DeflectionCurve {
         drawCurve: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_DeflectionCurve_add_handlegraphic3dstructure_curve_real3_sequenceofpnt_real_bool(aPresentation, aCurve, U1, U2, aDeflection, Points, anAngle, drawCurve)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1085,8 +1218,11 @@ impl DeflectionCurve {
                     X, Y, Z, aDistance, aCurve, aDrawer,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1112,8 +1248,11 @@ impl DeflectionCurve {
                     X, Y, Z, aDistance, aCurve, U1, U2, aDrawer,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1144,8 +1283,11 @@ impl DeflectionCurve {
                     theAngle,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1178,8 +1320,11 @@ impl DeflectionCurve {
                     theAngle,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1210,8 +1355,10 @@ impl HLRPolyShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_HLRPolyShape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1220,8 +1367,11 @@ impl HLRPolyShape {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_HLRPolyShape_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1235,7 +1385,7 @@ impl HLRPolyShape {
         theProjector: &crate::ffi::HandleGraphic3dCamera,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_HLRPolyShape_compute_hlr(
                     self as *const Self,
                     thePrs,
@@ -1244,7 +1394,9 @@ impl HLRPolyShape {
                     theProjector,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1252,8 +1404,11 @@ impl HLRPolyShape {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StdPrs_HLRPolyShape_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1261,63 +1416,63 @@ impl HLRPolyShape {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StdPrs_HLRPolyShape_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to StdPrs_HLRShapeI
     pub fn as_hlr_shape_i(&self) -> &HLRShapeI {
-        {
-            let __result =
-                unsafe { crate::ffi::StdPrs_HLRPolyShape_as_StdPrs_HLRShapeI(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StdPrs_HLRPolyShape_as_StdPrs_HLRShapeI(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StdPrs_HLRShapeI (mutable)
     pub fn as_hlr_shape_i_mut(&mut self) -> &mut HLRShapeI {
-        {
-            let __result = unsafe {
-                crate::ffi::StdPrs_HLRPolyShape_as_StdPrs_HLRShapeI_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::StdPrs_HLRPolyShape_as_StdPrs_HLRShapeI_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdPrs_HLRPolyShape_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StdPrs_HLRPolyShape_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdPrs_HLRPolyShape_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::StdPrs_HLRPolyShape_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStdPrsHLRPolyShape> {
-        {
-            let __result = unsafe { crate::ffi::StdPrs_HLRPolyShape_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StdPrs_HLRPolyShape_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1326,8 +1481,11 @@ impl HLRPolyShape {
             let __result = unsafe {
                 crate::ffi::StdPrs_HLRPolyShape_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1337,8 +1495,11 @@ impl HLRPolyShape {
             let __result = unsafe {
                 crate::ffi::StdPrs_HLRPolyShape_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1347,11 +1508,14 @@ impl HLRPolyShape {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_HLRPolyShape_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1362,18 +1526,23 @@ impl HLRPolyShape {
             let __result = unsafe {
                 crate::ffi::StdPrs_HLRPolyShape_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_HLRPolyShape_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1383,16 +1552,22 @@ impl HLRPolyShape {
             let __result = unsafe {
                 crate::ffi::StdPrs_HLRPolyShape_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StdPrs_HLRPolyShape_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdPrs_HLRPolyShape_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1408,43 +1583,42 @@ unsafe impl crate::CppDeletable for HandleStdPrsHLRPolyShape {
 impl HandleStdPrsHLRPolyShape {
     /// Dereference this Handle to access the underlying StdPrs_HLRPolyShape
     pub fn get(&self) -> &crate::ffi::StdPrs_HLRPolyShape {
-        {
-            let __result = unsafe { crate::ffi::HandleStdPrsHLRPolyShape_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleStdPrsHLRPolyShape_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StdPrs_HLRPolyShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::StdPrs_HLRPolyShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStdPrsHLRPolyShape_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleStdPrsHLRPolyShape_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StdPrs_HLRPolyShape> to Handle<StdPrs_HLRShapeI>
     pub fn to_handle_hlr_shape_i(&self) -> crate::OwnedPtr<crate::ffi::HandleStdPrsHLRShapeI> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdPrsHLRPolyShape_to_HandleStdPrsHLRShapeI(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdPrsHLRPolyShape_to_HandleStdPrsHLRShapeI(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StdPrs_HLRPolyShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdPrsHLRPolyShape_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdPrsHLRPolyShape_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1469,8 +1643,10 @@ impl HLRShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_HLRShape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1478,8 +1654,11 @@ impl HLRShape {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StdPrs_HLRShape_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1493,7 +1672,7 @@ impl HLRShape {
         theProjector: &crate::ffi::HandleGraphic3dCamera,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_HLRShape_compute_hlr(
                     self as *const Self,
                     thePrs,
@@ -1502,7 +1681,9 @@ impl HLRShape {
                     theProjector,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1510,8 +1691,11 @@ impl HLRShape {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StdPrs_HLRShape_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1519,60 +1703,63 @@ impl HLRShape {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StdPrs_HLRShape_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to StdPrs_HLRShapeI
     pub fn as_hlr_shape_i(&self) -> &HLRShapeI {
-        {
-            let __result =
-                unsafe { crate::ffi::StdPrs_HLRShape_as_StdPrs_HLRShapeI(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StdPrs_HLRShape_as_StdPrs_HLRShapeI(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StdPrs_HLRShapeI (mutable)
     pub fn as_hlr_shape_i_mut(&mut self) -> &mut HLRShapeI {
-        {
-            let __result =
-                unsafe { crate::ffi::StdPrs_HLRShape_as_StdPrs_HLRShapeI_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::StdPrs_HLRShape_as_StdPrs_HLRShapeI_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::StdPrs_HLRShape_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StdPrs_HLRShape_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::StdPrs_HLRShape_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::StdPrs_HLRShape_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStdPrsHLRShape> {
-        {
-            let __result = unsafe { crate::ffi::StdPrs_HLRShape_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StdPrs_HLRShape_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1581,8 +1768,11 @@ impl HLRShape {
             let __result = unsafe {
                 crate::ffi::StdPrs_HLRShape_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1592,8 +1782,11 @@ impl HLRShape {
             let __result = unsafe {
                 crate::ffi::StdPrs_HLRShape_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1602,11 +1795,14 @@ impl HLRShape {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_HLRShape_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1616,16 +1812,23 @@ impl HLRShape {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_HLRShape_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::StdPrs_HLRShape_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdPrs_HLRShape_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1635,16 +1838,22 @@ impl HLRShape {
             let __result = unsafe {
                 crate::ffi::StdPrs_HLRShape_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StdPrs_HLRShape_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdPrs_HLRShape_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1660,42 +1869,42 @@ unsafe impl crate::CppDeletable for HandleStdPrsHLRShape {
 impl HandleStdPrsHLRShape {
     /// Dereference this Handle to access the underlying StdPrs_HLRShape
     pub fn get(&self) -> &crate::ffi::StdPrs_HLRShape {
-        {
-            let __result = unsafe { crate::ffi::HandleStdPrsHLRShape_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleStdPrsHLRShape_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StdPrs_HLRShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::StdPrs_HLRShape {
-        {
-            let __result = unsafe { crate::ffi::HandleStdPrsHLRShape_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleStdPrsHLRShape_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StdPrs_HLRShape> to Handle<StdPrs_HLRShapeI>
     pub fn to_handle_hlr_shape_i(&self) -> crate::OwnedPtr<crate::ffi::HandleStdPrsHLRShapeI> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdPrsHLRShape_to_HandleStdPrsHLRShapeI(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdPrsHLRShape_to_HandleStdPrsHLRShapeI(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StdPrs_HLRShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdPrsHLRShape_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdPrsHLRShape_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1720,8 +1929,11 @@ impl HLRShapeI {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_HLRShapeI_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1735,7 +1947,7 @@ impl HLRShapeI {
         theProjector: &crate::ffi::HandleGraphic3dCamera,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_HLRShapeI_compute_hlr(
                     self as *const Self,
                     thePrs,
@@ -1744,7 +1956,9 @@ impl HLRShapeI {
                     theProjector,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1752,8 +1966,11 @@ impl HLRShapeI {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StdPrs_HLRShapeI_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1761,30 +1978,32 @@ impl HLRShapeI {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StdPrs_HLRShapeI_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::StdPrs_HLRShapeI_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StdPrs_HLRShapeI_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdPrs_HLRShapeI_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::StdPrs_HLRShapeI_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1793,8 +2012,11 @@ impl HLRShapeI {
             let __result = unsafe {
                 crate::ffi::StdPrs_HLRShapeI_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1804,8 +2026,11 @@ impl HLRShapeI {
             let __result = unsafe {
                 crate::ffi::StdPrs_HLRShapeI_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1814,11 +2039,14 @@ impl HLRShapeI {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_HLRShapeI_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1828,18 +2056,23 @@ impl HLRShapeI {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_HLRShapeI_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_HLRShapeI_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1849,16 +2082,22 @@ impl HLRShapeI {
             let __result = unsafe {
                 crate::ffi::StdPrs_HLRShapeI_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StdPrs_HLRShapeI_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdPrs_HLRShapeI_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1874,31 +2113,31 @@ unsafe impl crate::CppDeletable for HandleStdPrsHLRShapeI {
 impl HandleStdPrsHLRShapeI {
     /// Dereference this Handle to access the underlying StdPrs_HLRShapeI
     pub fn get(&self) -> &crate::ffi::StdPrs_HLRShapeI {
-        {
-            let __result = unsafe { crate::ffi::HandleStdPrsHLRShapeI_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleStdPrsHLRShapeI_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StdPrs_HLRShapeI
     pub fn get_mut(&mut self) -> &mut crate::ffi::StdPrs_HLRShapeI {
-        {
-            let __result = unsafe { crate::ffi::HandleStdPrsHLRShapeI_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleStdPrsHLRShapeI_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StdPrs_HLRShapeI> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdPrsHLRShapeI_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdPrsHLRShapeI_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<StdPrs_HLRShapeI> to Handle<StdPrs_HLRPolyShape>
@@ -1907,16 +2146,18 @@ impl HandleStdPrsHLRShapeI {
     pub fn downcast_to_hlr_poly_shape(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdPrsHLRPolyShape>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleStdPrsHLRShapeI_downcast_to_HandleStdPrsHLRPolyShape(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -1926,14 +2167,16 @@ impl HandleStdPrsHLRShapeI {
     pub fn downcast_to_hlr_shape(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdPrsHLRShape>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleStdPrsHLRShapeI_downcast_to_HandleStdPrsHLRShape(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -1961,8 +2204,10 @@ impl HLRToolShape {
             let __result = unsafe {
                 crate::ffi::StdPrs_HLRToolShape_ctor_shape_projector(TheShape, TheProjector)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1970,16 +2215,23 @@ impl HLRToolShape {
     pub fn nb_edges(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::StdPrs_HLRToolShape_nb_edges(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `StdPrs_HLRToolShape.hxx`:41 - `StdPrs_HLRToolShape::InitVisible()`
     pub fn init_visible(&mut self, EdgeNumber: i32) {
         {
-            unsafe { crate::ffi::StdPrs_HLRToolShape_init_visible(self as *mut Self, EdgeNumber) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdPrs_HLRToolShape_init_visible(self as *mut Self, EdgeNumber)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1988,16 +2240,21 @@ impl HLRToolShape {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_HLRToolShape_more_visible(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `StdPrs_HLRToolShape.hxx`:45 - `StdPrs_HLRToolShape::NextVisible()`
     pub fn next_visible(&mut self) {
         {
-            unsafe { crate::ffi::StdPrs_HLRToolShape_next_visible(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdPrs_HLRToolShape_next_visible(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2009,16 +2266,24 @@ impl HLRToolShape {
         U2: &mut f64,
     ) {
         {
-            unsafe { crate::ffi::StdPrs_HLRToolShape_visible(self as *mut Self, TheEdge, U1, U2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdPrs_HLRToolShape_visible(self as *mut Self, TheEdge, U1, U2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `StdPrs_HLRToolShape.hxx`:49 - `StdPrs_HLRToolShape::InitHidden()`
     pub fn init_hidden(&mut self, EdgeNumber: i32) {
         {
-            unsafe { crate::ffi::StdPrs_HLRToolShape_init_hidden(self as *mut Self, EdgeNumber) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdPrs_HLRToolShape_init_hidden(self as *mut Self, EdgeNumber)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2027,16 +2292,21 @@ impl HLRToolShape {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_HLRToolShape_more_hidden(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `StdPrs_HLRToolShape.hxx`:53 - `StdPrs_HLRToolShape::NextHidden()`
     pub fn next_hidden(&mut self) {
         {
-            unsafe { crate::ffi::StdPrs_HLRToolShape_next_hidden(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdPrs_HLRToolShape_next_hidden(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2048,8 +2318,12 @@ impl HLRToolShape {
         U2: &mut f64,
     ) {
         {
-            unsafe { crate::ffi::StdPrs_HLRToolShape_hidden(self as *mut Self, TheEdge, U1, U2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdPrs_HLRToolShape_hidden(self as *mut Self, TheEdge, U1, U2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2078,8 +2352,10 @@ impl Isolines {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_Isolines_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2099,7 +2375,7 @@ impl Isolines {
         theDeflection: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_Isolines_add_handlegraphic3dstructure_face_handleprs3ddrawer_real(
                     thePresentation,
                     theFace,
@@ -2107,7 +2383,9 @@ impl Isolines {
                     theDeflection,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2127,7 +2405,7 @@ impl Isolines {
         theVPolylines: &mut crate::ffi::Prs3d_NListOfSequenceOfPnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_Isolines_add_face_handleprs3ddrawer_real_nlistofsequenceofpnt2(
                     theFace,
                     theDrawer,
@@ -2136,7 +2414,9 @@ impl Isolines {
                     theVPolylines,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2151,10 +2431,12 @@ impl Isolines {
         theDrawer: &crate::ffi::HandlePrs3dDrawer,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_Isolines_add_on_triangulation_handlegraphic3dstructure_face_handleprs3ddrawer(thePresentation, theFace, theDrawer)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2171,10 +2453,12 @@ impl Isolines {
         theVPolylines: &mut crate::ffi::Prs3d_NListOfSequenceOfPnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_Isolines_add_on_triangulation_face_handleprs3ddrawer_nlistofsequenceofpnt2(theFace, theDrawer, theUPolylines, theVPolylines)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2201,10 +2485,12 @@ impl Isolines {
         theVIsoParams: &crate::ffi::TColStd_SequenceOfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_Isolines_add_on_triangulation_handlegraphic3dstructure_handlepolytriangulation_handlegeomsurface_location_handleprs3ddrawer_sequenceofreal2(thePresentation, theTriangulation, theSurface, theLocation, theDrawer, theUIsoParams, theVIsoParams)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2221,10 +2507,12 @@ impl Isolines {
         theDeflection: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_Isolines_add_on_surface_handlegraphic3dstructure_face_handleprs3ddrawer_real(thePresentation, theFace, theDrawer, theDeflection)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2243,10 +2531,12 @@ impl Isolines {
         theVPolylines: &mut crate::ffi::Prs3d_NListOfSequenceOfPnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_Isolines_add_on_surface_face_handleprs3ddrawer_real_nlistofsequenceofpnt2(theFace, theDrawer, theDeflection, theUPolylines, theVPolylines)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2267,10 +2557,12 @@ impl Isolines {
         theVIsoParams: &crate::ffi::TColStd_SequenceOfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_Isolines_add_on_surface_handlegraphic3dstructure_handlebrepadaptorsurface_handleprs3ddrawer_real_sequenceofreal2(thePresentation, theSurface, theDrawer, theDeflection, theUIsoParams, theVIsoParams)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2299,7 +2591,7 @@ impl Isolines {
         theVmax: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_Isolines_uv_iso_parameters(
                     theFace,
                     theNbIsoU,
@@ -2313,7 +2605,9 @@ impl Isolines {
                     theVmax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2334,8 +2628,10 @@ impl Isolines_PntOnIso {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_Isolines_PntOnIso_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -2356,8 +2652,10 @@ impl Isolines_SegOnIso {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_Isolines_SegOnIso_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -2382,8 +2680,10 @@ impl Plane {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_Plane_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2398,8 +2698,10 @@ impl Plane {
         aDrawer: &crate::ffi::HandlePrs3dDrawer,
     ) {
         {
-            unsafe { crate::ffi::StdPrs_Plane_add(aPresentation, aPlane, aDrawer) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdPrs_Plane_add(aPresentation, aPlane, aDrawer) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2417,8 +2719,11 @@ impl Plane {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_Plane_match_(X, Y, Z, aDistance, aPlane, aDrawer) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2444,8 +2749,10 @@ impl PoleCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_PoleCurve_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2464,8 +2771,10 @@ impl PoleCurve {
         aDrawer: &crate::ffi::HandlePrs3dDrawer,
     ) {
         {
-            unsafe { crate::ffi::StdPrs_PoleCurve_add(aPresentation, aCurve, aDrawer) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdPrs_PoleCurve_add(aPresentation, aCurve, aDrawer) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2483,8 +2792,11 @@ impl PoleCurve {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_PoleCurve_match_(X, Y, Z, aDistance, aCurve, aDrawer) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2503,8 +2815,11 @@ impl PoleCurve {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_PoleCurve_pick(X, Y, Z, aDistance, aCurve, aDrawer) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2529,8 +2844,10 @@ impl ShadedShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_ShadedShape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2547,10 +2864,12 @@ impl ShadedShape {
         theGroup: &crate::ffi::HandleGraphic3dGroup,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_ShadedShape_add_handlegraphic3dstructure_shape_handleprs3ddrawer_volume_handlegraphic3dgroup(thePresentation, theShape, theDrawer, theVolume.into(), theGroup)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2571,10 +2890,12 @@ impl ShadedShape {
         theGroup: &crate::ffi::HandleGraphic3dGroup,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_ShadedShape_add_handlegraphic3dstructure_shape_handleprs3ddrawer_bool_pnt2d3_volume_handlegraphic3dgroup(thePresentation, theShape, theDrawer, theHasTexels, theUVOrigin, theUVRepeat, theUVScale, theVolume.into(), theGroup)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2589,7 +2910,7 @@ impl ShadedShape {
         theIgnore1DSubShape: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_ShadedShape_explore_solids(
                     theShape,
                     theBuilder,
@@ -2598,7 +2919,9 @@ impl ShadedShape {
                     theIgnore1DSubShape,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2610,12 +2933,14 @@ impl ShadedShape {
         theDrawer: &crate::ffi::HandlePrs3dDrawer,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_ShadedShape_add_wireframe_for_free_elements(
                     thePrs, theShape, theDrawer,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2627,12 +2952,14 @@ impl ShadedShape {
         theDrawer: &crate::ffi::HandlePrs3dDrawer,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_ShadedShape_add_wireframe_for_faces_without_triangles(
                     thePrs, theShape, theDrawer,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2644,8 +2971,11 @@ impl ShadedShape {
     ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfTriangles> {
         {
             let __result = unsafe { crate::ffi::StdPrs_ShadedShape_fill_triangles_shape(theShape) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2674,8 +3004,11 @@ impl ShadedShape {
                     theUVScale,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2695,8 +3028,11 @@ impl ShadedShape {
                     theUpperContinuity.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -2725,8 +3061,10 @@ impl ShadedSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_ShadedSurface_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2741,8 +3079,11 @@ impl ShadedSurface {
         aDrawer: &crate::ffi::HandlePrs3dDrawer,
     ) {
         {
-            unsafe { crate::ffi::StdPrs_ShadedSurface_add(aPresentation, aSurface, aDrawer) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdPrs_ShadedSurface_add(aPresentation, aSurface, aDrawer) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2774,8 +3115,10 @@ impl ShapeTool {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_ShapeTool_ctor_shape_bool(theShape, theAllVertices) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2791,8 +3134,10 @@ impl ShapeTool {
     /// **Source:** `StdPrs_ShapeTool.hxx`:46 - `StdPrs_ShapeTool::InitFace()`
     pub fn init_face(&mut self) {
         {
-            unsafe { crate::ffi::StdPrs_ShapeTool_init_face(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdPrs_ShapeTool_init_face(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2800,16 +3145,21 @@ impl ShapeTool {
     pub fn more_face(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::StdPrs_ShapeTool_more_face(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:50 - `StdPrs_ShapeTool::NextFace()`
     pub fn next_face(&mut self) {
         {
-            unsafe { crate::ffi::StdPrs_ShapeTool_next_face(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdPrs_ShapeTool_next_face(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2817,8 +3167,11 @@ impl ShapeTool {
     pub fn get_face(&self) -> &crate::topo_ds::Face {
         {
             let __result = unsafe { crate::ffi::StdPrs_ShapeTool_get_face(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2826,8 +3179,11 @@ impl ShapeTool {
     pub fn face_bound(&self) -> crate::OwnedPtr<crate::bnd::Box> {
         {
             let __result = unsafe { crate::ffi::StdPrs_ShapeTool_face_bound(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2836,16 +3192,21 @@ impl ShapeTool {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_ShapeTool_is_planar_face(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:62 - `StdPrs_ShapeTool::InitCurve()`
     pub fn init_curve(&mut self) {
         {
-            unsafe { crate::ffi::StdPrs_ShapeTool_init_curve(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdPrs_ShapeTool_init_curve(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2853,16 +3214,21 @@ impl ShapeTool {
     pub fn more_curve(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::StdPrs_ShapeTool_more_curve(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:66 - `StdPrs_ShapeTool::NextCurve()`
     pub fn next_curve(&mut self) {
         {
-            unsafe { crate::ffi::StdPrs_ShapeTool_next_curve(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdPrs_ShapeTool_next_curve(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2870,8 +3236,11 @@ impl ShapeTool {
     pub fn get_curve(&self) -> &crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::StdPrs_ShapeTool_get_curve(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2879,8 +3248,11 @@ impl ShapeTool {
     pub fn curve_bound(&self) -> crate::OwnedPtr<crate::bnd::Box> {
         {
             let __result = unsafe { crate::ffi::StdPrs_ShapeTool_curve_bound(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2888,8 +3260,11 @@ impl ShapeTool {
     pub fn neighbours(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::StdPrs_ShapeTool_neighbours(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2898,16 +3273,21 @@ impl ShapeTool {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_ShapeTool_faces_of_edge(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:76 - `StdPrs_ShapeTool::InitVertex()`
     pub fn init_vertex(&mut self) {
         {
-            unsafe { crate::ffi::StdPrs_ShapeTool_init_vertex(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdPrs_ShapeTool_init_vertex(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2915,16 +3295,21 @@ impl ShapeTool {
     pub fn more_vertex(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::StdPrs_ShapeTool_more_vertex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:80 - `StdPrs_ShapeTool::NextVertex()`
     pub fn next_vertex(&mut self) {
         {
-            unsafe { crate::ffi::StdPrs_ShapeTool_next_vertex(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdPrs_ShapeTool_next_vertex(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2932,8 +3317,11 @@ impl ShapeTool {
     pub fn get_vertex(&self) -> &crate::topo_ds::Vertex {
         {
             let __result = unsafe { crate::ffi::StdPrs_ShapeTool_get_vertex(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2941,8 +3329,11 @@ impl ShapeTool {
     pub fn has_surface(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::StdPrs_ShapeTool_has_surface(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2955,8 +3346,11 @@ impl ShapeTool {
             let __result = unsafe {
                 crate::ffi::StdPrs_ShapeTool_current_triangulation(self as *const Self, l)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2964,8 +3358,11 @@ impl ShapeTool {
     pub fn has_curve(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::StdPrs_ShapeTool_has_curve(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2977,7 +3374,7 @@ impl ShapeTool {
         l: &mut crate::top_loc::Location,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_ShapeTool_polygon_on_triangulation(
                     self as *const Self,
                     Indices,
@@ -2985,7 +3382,9 @@ impl ShapeTool {
                     l,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2997,8 +3396,11 @@ impl ShapeTool {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_ShapeTool_polygon3_d(self as *const Self, l) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3006,8 +3408,11 @@ impl ShapeTool {
     pub fn is_planar_face_face(theFace: &crate::topo_ds::Face) -> bool {
         {
             let __result = unsafe { crate::ffi::StdPrs_ShapeTool_is_planar_face_face(theFace) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3031,16 +3436,20 @@ impl ToolPoint {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_ToolPoint_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `StdPrs_ToolPoint.hxx`:31 - `StdPrs_ToolPoint::Coord()`
     pub fn coord(aPoint: &crate::ffi::HandleGeomPoint, X: &mut f64, Y: &mut f64, Z: &mut f64) {
         {
-            unsafe { crate::ffi::StdPrs_ToolPoint_coord(aPoint, X, Y, Z) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdPrs_ToolPoint_coord(aPoint, X, Y, Z) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3067,8 +3476,10 @@ impl ToolRFace {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_ToolRFace_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3080,8 +3491,10 @@ impl ToolRFace {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_ToolRFace_ctor_handlebrepadaptorsurface(aSurface) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3090,8 +3503,11 @@ impl ToolRFace {
     pub fn is_oriented(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::StdPrs_ToolRFace_is_oriented(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3099,8 +3515,10 @@ impl ToolRFace {
     /// Move iterator to the first element.
     pub fn init(&mut self) {
         {
-            unsafe { crate::ffi::StdPrs_ToolRFace_init(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdPrs_ToolRFace_init(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3109,8 +3527,11 @@ impl ToolRFace {
     pub fn more(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::StdPrs_ToolRFace_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3118,8 +3539,10 @@ impl ToolRFace {
     /// Go to the next curve in the face.
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::StdPrs_ToolRFace_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdPrs_ToolRFace_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3128,8 +3551,11 @@ impl ToolRFace {
     pub fn value(&self) -> &crate::adaptor2d::Curve2d {
         {
             let __result = unsafe { crate::ffi::StdPrs_ToolRFace_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3138,8 +3564,11 @@ impl ToolRFace {
     pub fn edge(&self) -> &crate::topo_ds::Edge {
         {
             let __result = unsafe { crate::ffi::StdPrs_ToolRFace_edge(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3148,8 +3577,11 @@ impl ToolRFace {
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         {
             let __result = unsafe { crate::ffi::StdPrs_ToolRFace_orientation(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -3159,8 +3591,11 @@ impl ToolRFace {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_ToolRFace_is_invalid_geometry(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3184,8 +3619,10 @@ impl ToolTriangulatedShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_ToolTriangulatedShape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3196,8 +3633,11 @@ impl ToolTriangulatedShape {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_ToolTriangulatedShape_is_triangulated(theShape) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3207,8 +3647,11 @@ impl ToolTriangulatedShape {
     pub fn is_closed(theShape: &crate::topo_ds::Shape) -> bool {
         {
             let __result = unsafe { crate::ffi::StdPrs_ToolTriangulatedShape_is_closed(theShape) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3233,8 +3676,11 @@ impl ToolTriangulatedShape {
             let __result = unsafe {
                 crate::ffi::StdPrs_ToolTriangulatedShape_get_deflection(theShape, theDrawer)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3250,8 +3696,11 @@ impl ToolTriangulatedShape {
             let __result = unsafe {
                 crate::ffi::StdPrs_ToolTriangulatedShape_is_tessellated(theShape, theDrawer)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3267,8 +3716,11 @@ impl ToolTriangulatedShape {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_ToolTriangulatedShape_tessellate(theShape, theDrawer) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3287,43 +3739,45 @@ impl ToolTriangulatedShape {
         theToResetCoeff: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_ToolTriangulatedShape_clear_on_own_deflection_change(
                     theShape,
                     theDrawer,
                     theToResetCoeff,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to BRepLib_ToolTriangulatedShape
     pub fn as_b_rep_lib_tool_triangulated_shape(&self) -> &crate::b_rep_lib::ToolTriangulatedShape {
-        {
-            let __result = unsafe {
-                crate::ffi::StdPrs_ToolTriangulatedShape_as_BRepLib_ToolTriangulatedShape(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StdPrs_ToolTriangulatedShape_as_BRepLib_ToolTriangulatedShape(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to BRepLib_ToolTriangulatedShape (mutable)
     pub fn as_b_rep_lib_tool_triangulated_shape_mut(
         &mut self,
     ) -> &mut crate::b_rep_lib::ToolTriangulatedShape {
-        {
-            let __result = unsafe {
-                crate::ffi::StdPrs_ToolTriangulatedShape_as_BRepLib_ToolTriangulatedShape_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StdPrs_ToolTriangulatedShape_as_BRepLib_ToolTriangulatedShape_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 }
 
@@ -3346,16 +3800,20 @@ impl ToolVertex {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_ToolVertex_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `StdPrs_ToolVertex.hxx`:30 - `StdPrs_ToolVertex::Coord()`
     pub fn coord(aPoint: &crate::topo_ds::Vertex, X: &mut f64, Y: &mut f64, Z: &mut f64) {
         {
-            unsafe { crate::ffi::StdPrs_ToolVertex_coord(aPoint, X, Y, Z) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StdPrs_ToolVertex_coord(aPoint, X, Y, Z) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3387,8 +3845,10 @@ impl WFDeflectionRestrictedFace {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_WFDeflectionRestrictedFace_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3412,10 +3872,12 @@ impl WFDeflectionRestrictedFace {
         aDrawer: &crate::ffi::HandlePrs3dDrawer,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_WFDeflectionRestrictedFace_add_handlegraphic3dstructure_handlebrepadaptorsurface_handleprs3ddrawer(aPresentation, aFace, aDrawer)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3439,14 +3901,16 @@ impl WFDeflectionRestrictedFace {
         aDrawer: &crate::ffi::HandlePrs3dDrawer,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_WFDeflectionRestrictedFace_add_u_iso(
                     aPresentation,
                     aFace,
                     aDrawer,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3470,14 +3934,16 @@ impl WFDeflectionRestrictedFace {
         aDrawer: &crate::ffi::HandlePrs3dDrawer,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_WFDeflectionRestrictedFace_add_v_iso(
                     aPresentation,
                     aFace,
                     aDrawer,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3512,10 +3978,12 @@ impl WFDeflectionRestrictedFace {
         Curves: &mut crate::ffi::Prs3d_NListOfSequenceOfPnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_WFDeflectionRestrictedFace_add_handlegraphic3dstructure_handlebrepadaptorsurface_bool2_real_int2_handleprs3ddrawer_nlistofsequenceofpnt(aPresentation, aFace, DrawUIso, DrawVIso, Deflection, NBUiso, NBViso, aDrawer, Curves)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3532,8 +4000,11 @@ impl WFDeflectionRestrictedFace {
             let __result = unsafe {
                 crate::ffi::StdPrs_WFDeflectionRestrictedFace_match_real4_handlebrepadaptorsurface_handleprs3ddrawer(X, Y, Z, aDistance, aFace, aDrawer)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3552,8 +4023,11 @@ impl WFDeflectionRestrictedFace {
                     X, Y, Z, aDistance, aFace, aDrawer,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3572,8 +4046,11 @@ impl WFDeflectionRestrictedFace {
                     X, Y, Z, aDistance, aFace, aDrawer,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3595,8 +4072,11 @@ impl WFDeflectionRestrictedFace {
             let __result = unsafe {
                 crate::ffi::StdPrs_WFDeflectionRestrictedFace_match_real4_handlebrepadaptorsurface_handleprs3ddrawer_bool2_real_int2(X, Y, Z, aDistance, aFace, aDrawer, DrawUIso, DrawVIso, aDeflection, NBUiso, NBViso)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3624,8 +4104,10 @@ impl WFDeflectionSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_WFDeflectionSurface_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3645,8 +4127,12 @@ impl WFDeflectionSurface {
         aDrawer: &crate::ffi::HandlePrs3dDrawer,
     ) {
         {
-            unsafe { crate::ffi::StdPrs_WFDeflectionSurface_add(aPresentation, aSurface, aDrawer) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdPrs_WFDeflectionSurface_add(aPresentation, aSurface, aDrawer)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3675,8 +4161,10 @@ impl WFPoleSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_WFPoleSurface_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3692,8 +4180,11 @@ impl WFPoleSurface {
         aDrawer: &crate::ffi::HandlePrs3dDrawer,
     ) {
         {
-            unsafe { crate::ffi::StdPrs_WFPoleSurface_add(aPresentation, aSurface, aDrawer) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdPrs_WFPoleSurface_add(aPresentation, aSurface, aDrawer) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3717,8 +4208,10 @@ impl WFRestrictedFace {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_WFRestrictedFace_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3734,10 +4227,12 @@ impl WFRestrictedFace {
         theCurves: &mut crate::ffi::Prs3d_NListOfSequenceOfPnt,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_WFRestrictedFace_add_handlegraphic3dstructure_handlebrepadaptorsurface_bool2_int2_handleprs3ddrawer_nlistofsequenceofpnt(thePresentation, theFace, theDrawUIso, theDrawVIso, theNbUIso, theNbVIso, theDrawer, theCurves)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3748,10 +4243,12 @@ impl WFRestrictedFace {
         theDrawer: &crate::ffi::HandlePrs3dDrawer,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_WFRestrictedFace_add_handlegraphic3dstructure_handlebrepadaptorsurface_handleprs3ddrawer(thePresentation, theFace, theDrawer)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3773,8 +4270,11 @@ impl WFRestrictedFace {
             let __result = unsafe {
                 crate::ffi::StdPrs_WFRestrictedFace_match_real4_handlebrepadaptorsurface_bool2_real_int2_handleprs3ddrawer(theX, theY, theZ, theDistance, theFace, theDrawUIso, theDrawVIso, theDeflection, theNbUIso, theNbVIso, theDrawer)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3791,8 +4291,11 @@ impl WFRestrictedFace {
             let __result = unsafe {
                 crate::ffi::StdPrs_WFRestrictedFace_match_real4_handlebrepadaptorsurface_handleprs3ddrawer(theX, theY, theZ, theDistance, theFace, theDrawer)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3816,8 +4319,11 @@ impl WFRestrictedFace {
                     theDrawer,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3841,8 +4347,11 @@ impl WFRestrictedFace {
                     theDrawer,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3853,10 +4362,12 @@ impl WFRestrictedFace {
         theDrawer: &crate::ffi::HandlePrs3dDrawer,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_WFRestrictedFace_add_u_iso(thePresentation, theFace, theDrawer)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3867,10 +4378,12 @@ impl WFRestrictedFace {
         theDrawer: &crate::ffi::HandlePrs3dDrawer,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_WFRestrictedFace_add_v_iso(thePresentation, theFace, theDrawer)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3895,8 +4408,10 @@ impl WFShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_WFShape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3913,10 +4428,12 @@ impl WFShape {
         theIsParallel: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_WFShape_add(thePresentation, theShape, theDrawer, theIsParallel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3936,8 +4453,11 @@ impl WFShape {
                     theToExcludeGeometric,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3953,14 +4473,16 @@ impl WFShape {
         theToExcludeGeometric: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPrs_WFShape_add_edges_on_triangulation_sequenceofpnt_shape_bool(
                     theSegments,
                     theShape,
                     theToExcludeGeometric,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3974,8 +4496,11 @@ impl WFShape {
     ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfPrimitives> {
         {
             let __result = unsafe { crate::ffi::StdPrs_WFShape_add_all_edges(theShape, theDrawer) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3990,8 +4515,11 @@ impl WFShape {
         {
             let __result =
                 unsafe { crate::ffi::StdPrs_WFShape_add_vertexes(theShape, theVertexMode.into()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -4019,8 +4547,10 @@ impl WFSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPrs_WFSurface_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4035,8 +4565,11 @@ impl WFSurface {
         aDrawer: &crate::ffi::HandlePrs3dDrawer,
     ) {
         {
-            unsafe { crate::ffi::StdPrs_WFSurface_add(aPresentation, aSurface, aDrawer) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdPrs_WFSurface_add(aPresentation, aSurface, aDrawer) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

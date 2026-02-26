@@ -34,8 +34,10 @@ impl Projection {
         {
             let __result =
                 unsafe { crate::ffi::BRepProj_Projection_ctor_shape2_dir(Wire, Shape, D) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -49,8 +51,10 @@ impl Projection {
         {
             let __result =
                 unsafe { crate::ffi::BRepProj_Projection_ctor_shape2_pnt(Wire, Shape, P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -59,8 +63,11 @@ impl Projection {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepProj_Projection_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -68,8 +75,10 @@ impl Projection {
     /// Resets the iterator by resulting wires.
     pub fn init(&mut self) {
         {
-            unsafe { crate::ffi::BRepProj_Projection_init(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepProj_Projection_init(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -78,8 +87,11 @@ impl Projection {
     pub fn more(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::BRepProj_Projection_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -87,8 +99,10 @@ impl Projection {
     /// Move to the next result wire.
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::BRepProj_Projection_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::BRepProj_Projection_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -97,8 +111,11 @@ impl Projection {
     pub fn current(&self) -> crate::OwnedPtr<crate::topo_ds::Wire> {
         {
             let __result = unsafe { crate::ffi::BRepProj_Projection_current(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -107,8 +124,11 @@ impl Projection {
     pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Compound> {
         {
             let __result = unsafe { crate::ffi::BRepProj_Projection_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }

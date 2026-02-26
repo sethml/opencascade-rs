@@ -25,8 +25,10 @@ impl Location {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdObject_Location_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -37,8 +39,12 @@ impl Location {
         theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         {
-            unsafe { crate::ffi::StdObject_Location_p_children(self as *const Self, theChildren) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdObject_Location_p_children(self as *const Self, theChildren)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -47,8 +53,11 @@ impl Location {
     pub fn import(&self) -> crate::OwnedPtr<crate::top_loc::Location> {
         {
             let __result = unsafe { crate::ffi::StdObject_Location_import(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -60,8 +69,11 @@ impl Location {
     ) -> crate::OwnedPtr<Location> {
         {
             let __result = unsafe { crate::ffi::StdObject_Location_translate(theLoc, theMap) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -85,8 +97,10 @@ impl Shape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdObject_Shape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -95,8 +109,11 @@ impl Shape {
     pub fn import(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::StdObject_Shape_import(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -106,8 +123,11 @@ impl Shape {
         theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         {
-            unsafe { crate::ffi::StdObject_Shape_p_children(self as *const Self, theChildren) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StdObject_Shape_p_children(self as *const Self, theChildren) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

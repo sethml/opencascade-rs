@@ -10,16 +10,21 @@
 /// Set ViewNameMode for indicate display names or not.
 pub fn set_view_name_mode(viewNameMode: bool) {
     {
-        unsafe { crate::ffi::XCAFPrs_set_view_name_mode(viewNameMode) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::XCAFPrs_set_view_name_mode(viewNameMode) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `XCAFPrs.hxx`:49 - `XCAFPrs::GetViewNameMode`
 pub fn get_view_name_mode() -> bool {
     {
         let __result = unsafe { crate::ffi::XCAFPrs_get_view_name_mode() };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 
@@ -81,8 +86,10 @@ impl AISObject {
     pub fn new_label(theLabel: &crate::tdf::Label) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XCAFPrs_AISObject_ctor_label(theLabel) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -91,8 +98,11 @@ impl AISObject {
     pub fn get_label(&self) -> &crate::tdf::Label {
         {
             let __result = unsafe { crate::ffi::XCAFPrs_AISObject_get_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -101,8 +111,11 @@ impl AISObject {
     /// (but does not mark it outdated with SetToUpdate()).
     pub fn set_label(&mut self, theLabel: &crate::tdf::Label) {
         {
-            unsafe { crate::ffi::XCAFPrs_AISObject_set_label(self as *mut Self, theLabel) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XCAFPrs_AISObject_set_label(self as *mut Self, theLabel) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -114,10 +127,12 @@ impl AISObject {
     /// on first compute or re-compute
     pub fn dispatch_styles(&mut self, theToSyncStyles: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_dispatch_styles(self as *mut Self, theToSyncStyles)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -127,8 +142,12 @@ impl AISObject {
     /// Re-computation of existing presentation is not required after calling this method.
     pub fn set_material(&mut self, theMaterial: &crate::graphic3d::MaterialAspect) {
         {
-            unsafe { crate::ffi::XCAFPrs_AISObject_set_material(self as *mut Self, theMaterial) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XCAFPrs_AISObject_set_material(self as *mut Self, theMaterial)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -137,8 +156,11 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -146,8 +168,11 @@ impl AISObject {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::XCAFPrs_AISObject_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -155,149 +180,148 @@ impl AISObject {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::XCAFPrs_AISObject_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to AIS_ColoredShape
     pub fn as_ais_colored_shape(&self) -> &crate::ais::ColoredShape {
-        {
-            let __result =
-                unsafe { crate::ffi::XCAFPrs_AISObject_as_AIS_ColoredShape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::XCAFPrs_AISObject_as_AIS_ColoredShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to AIS_ColoredShape (mutable)
     pub fn as_ais_colored_shape_mut(&mut self) -> &mut crate::ais::ColoredShape {
-        {
-            let __result =
-                unsafe { crate::ffi::XCAFPrs_AISObject_as_AIS_ColoredShape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::XCAFPrs_AISObject_as_AIS_ColoredShape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to AIS_Shape
     pub fn as_ais_shape(&self) -> &crate::ais::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::XCAFPrs_AISObject_as_AIS_Shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::XCAFPrs_AISObject_as_AIS_Shape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to AIS_Shape (mutable)
     pub fn as_ais_shape_mut(&mut self) -> &mut crate::ais::Shape {
-        {
-            let __result =
-                unsafe { crate::ffi::XCAFPrs_AISObject_as_AIS_Shape_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::XCAFPrs_AISObject_as_AIS_Shape_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to AIS_InteractiveObject
     pub fn as_ais_interactive_object(&self) -> &crate::ais::InteractiveObject {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFPrs_AISObject_as_AIS_InteractiveObject(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::XCAFPrs_AISObject_as_AIS_InteractiveObject(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to AIS_InteractiveObject (mutable)
     pub fn as_ais_interactive_object_mut(&mut self) -> &mut crate::ais::InteractiveObject {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFPrs_AISObject_as_AIS_InteractiveObject_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::XCAFPrs_AISObject_as_AIS_InteractiveObject_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to SelectMgr_SelectableObject
     pub fn as_select_mgr_selectable_object(&self) -> &crate::select_mgr::SelectableObject {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFPrs_AISObject_as_SelectMgr_SelectableObject(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::XCAFPrs_AISObject_as_SelectMgr_SelectableObject(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to SelectMgr_SelectableObject (mutable)
     pub fn as_select_mgr_selectable_object_mut(
         &mut self,
     ) -> &mut crate::select_mgr::SelectableObject {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFPrs_AISObject_as_SelectMgr_SelectableObject_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::XCAFPrs_AISObject_as_SelectMgr_SelectableObject_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to PrsMgr_PresentableObject
     pub fn as_prs_mgr_presentable_object(&self) -> &crate::prs_mgr::PresentableObject {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFPrs_AISObject_as_PrsMgr_PresentableObject(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::XCAFPrs_AISObject_as_PrsMgr_PresentableObject(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to PrsMgr_PresentableObject (mutable)
     pub fn as_prs_mgr_presentable_object_mut(&mut self) -> &mut crate::prs_mgr::PresentableObject {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFPrs_AISObject_as_PrsMgr_PresentableObject_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::XCAFPrs_AISObject_as_PrsMgr_PresentableObject_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::XCAFPrs_AISObject_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::XCAFPrs_AISObject_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFPrs_AISObject_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::XCAFPrs_AISObject_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleXCAFPrsAISObject> {
-        {
-            let __result = unsafe { crate::ffi::XCAFPrs_AISObject_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::XCAFPrs_AISObject_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `AIS_ColoredShape.hxx`:41 - `AIS_ColoredShape::CustomAspects()`
@@ -309,18 +333,23 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_CustomAspects(self as *mut Self, theShape)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `AIS_ColoredShape.hxx`:44 - `AIS_ColoredShape::ClearCustomAspects()`
     pub fn clear_custom_aspects(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_ClearCustomAspects(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -331,14 +360,16 @@ impl AISObject {
         theToUnregister: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_UnsetCustomAspects(
                     self as *mut Self,
                     theShape,
                     theToUnregister,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -349,14 +380,16 @@ impl AISObject {
         theColor: &crate::quantity::Color,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetCustomColor(
                     self as *mut Self,
                     theShape,
                     theColor,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -367,28 +400,32 @@ impl AISObject {
         theTransparency: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetCustomTransparency(
                     self as *mut Self,
                     theShape,
                     theTransparency,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `AIS_ColoredShape.hxx`:59 - `AIS_ColoredShape::SetCustomWidth()`
     pub fn set_custom_width(&mut self, theShape: &crate::topo_ds::Shape, theLineWidth: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetCustomWidth(
                     self as *mut Self,
                     theShape,
                     theLineWidth,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -398,8 +435,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_CustomAspectsMap(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -409,54 +449,70 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_ChangeCustomAspectsMap(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// Inherited: **Source:** `AIS_ColoredShape.hxx`:70 - `AIS_ColoredShape::SetColor()`
     pub fn set_color(&mut self, theColor: &crate::quantity::Color) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetColor(self as *mut Self, theColor)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `AIS_ColoredShape.hxx`:73 - `AIS_ColoredShape::SetWidth()`
     pub fn set_width(&mut self, theLineWidth: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetWidth(self as *mut Self, theLineWidth)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `AIS_ColoredShape.hxx`:76 - `AIS_ColoredShape::SetTransparency()`
     pub fn set_transparency(&mut self, theValue: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetTransparency(self as *mut Self, theValue)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `AIS_ColoredShape.hxx`:84 - `AIS_ColoredShape::UnsetTransparency()`
     pub fn unset_transparency(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_AISObject_inherited_UnsetTransparency(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XCAFPrs_AISObject_inherited_UnsetTransparency(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `AIS_ColoredShape.hxx`:87 - `AIS_ColoredShape::UnsetWidth()`
     pub fn unset_width(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_AISObject_inherited_UnsetWidth(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XCAFPrs_AISObject_inherited_UnsetWidth(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -465,8 +521,11 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Signature(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -475,8 +534,11 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Type(self as *const Self) };
-            crate::check_exception();
-            crate::ais::KindOfInteractive::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::ais::KindOfInteractive::try_from(__val).unwrap()
         }
     }
 
@@ -488,8 +550,11 @@ impl AISObject {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -502,8 +567,11 @@ impl AISObject {
                     theMode,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -512,26 +580,34 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `AIS_Shape.hxx`:95 - `AIS_Shape::SetShape()`
     pub fn set_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetShape(self as *mut Self, theShape)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `AIS_Shape.hxx`:102 - `AIS_Shape::Set()`
     pub fn set(&mut self, theShape: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Set(self as *mut Self, theShape) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Set(self as *mut Self, theShape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -543,8 +619,11 @@ impl AISObject {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -554,21 +633,26 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetOwnDeviationAngle(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `AIS_Shape.hxx`:115 - `AIS_Shape::SetAngleAndDeviation()`
     pub fn set_angle_and_deviation(&mut self, anAngle: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetAngleAndDeviation(
                     self as *mut Self,
                     anAngle,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -577,8 +661,11 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_UserAngle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -596,8 +683,11 @@ impl AISObject {
                     aPreviousCoefficient,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -611,21 +701,26 @@ impl AISObject {
                     aPreviousAngle,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `AIS_Shape.hxx`:137 - `AIS_Shape::SetTypeOfHLR()`
     pub fn set_type_of_hlr(&mut self, theTypeOfHLR: crate::prs3d::TypeOfHLR) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetTypeOfHLR(
                     self as *mut Self,
                     theTypeOfHLR.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -634,24 +729,33 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_TypeOfHLR(self as *const Self) };
-            crate::check_exception();
-            crate::prs3d::TypeOfHLR::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::prs3d::TypeOfHLR::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `AIS_Shape.hxx`:158 - `AIS_Shape::UnsetColor()`
     pub fn unset_color(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_AISObject_inherited_UnsetColor(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XCAFPrs_AISObject_inherited_UnsetColor(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `AIS_Shape.hxx`:172 - `AIS_Shape::UnsetMaterial()`
     pub fn unset_material(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_AISObject_inherited_UnsetMaterial(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XCAFPrs_AISObject_inherited_UnsetMaterial(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -660,16 +764,23 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_BoundingBox(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `AIS_Shape.hxx`:190 - `AIS_Shape::Color()`
     pub fn color(&self, aColor: &mut crate::quantity::Color) {
         {
-            unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Color(self as *const Self, aColor) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XCAFPrs_AISObject_inherited_Color(self as *const Self, aColor)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -678,8 +789,11 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Material(self as *const Self) };
-            crate::check_exception();
-            crate::graphic3d::NameOfMaterial::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::graphic3d::NameOfMaterial::try_from(__val).unwrap()
         }
     }
 
@@ -689,8 +803,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_Transparency(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -700,21 +817,26 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_TextureRepeatUV(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `AIS_Shape.hxx`:261 - `AIS_Shape::SetTextureRepeatUV()`
     pub fn set_texture_repeat_uv(&mut self, theRepeatUV: &crate::gp::Pnt2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetTextureRepeatUV(
                     self as *mut Self,
                     theRepeatUV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -724,21 +846,26 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_TextureOriginUV(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `AIS_Shape.hxx`:268 - `AIS_Shape::SetTextureOriginUV()`
     pub fn set_texture_origin_uv(&mut self, theOriginUV: &crate::gp::Pnt2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetTextureOriginUV(
                     self as *mut Self,
                     theOriginUV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -748,31 +875,38 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_TextureScaleUV(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `AIS_Shape.hxx`:277 - `AIS_Shape::SetTextureScaleUV()`
     pub fn set_texture_scale_uv(&mut self, theScaleUV: &crate::gp::Pnt2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetTextureScaleUV(
                     self as *mut Self,
                     theScaleUV,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:71 - `AIS_InteractiveObject::Redisplay()`
     pub fn redisplay(&mut self, AllModes: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_Redisplay(self as *mut Self, AllModes)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -782,8 +916,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_HasInteractiveContext(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -793,11 +930,14 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_InteractiveContext(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -805,8 +945,12 @@ impl AISObject {
     /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:81 - `AIS_InteractiveObject::SetContext()`
     pub fn set_context(&mut self, aCtx: &crate::ffi::HandleAISInteractiveContext) {
         {
-            unsafe { crate::ffi::XCAFPrs_AISObject_inherited_SetContext(self as *mut Self, aCtx) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XCAFPrs_AISObject_inherited_SetContext(self as *mut Self, aCtx)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -815,8 +959,11 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_HasOwner(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -825,29 +972,37 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_GetOwner(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:103 - `AIS_InteractiveObject::SetOwner()`
     pub fn set_owner(&mut self, theApplicativeEntity: &crate::ffi::HandleStandardTransient) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetOwner(
                     self as *mut Self,
                     theApplicativeEntity,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `AIS_InteractiveObject.hxx`:110 - `AIS_InteractiveObject::ClearOwner()`
     pub fn clear_owner(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_AISObject_inherited_ClearOwner(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XCAFPrs_AISObject_inherited_ClearOwner(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -873,8 +1028,11 @@ impl AISObject {
                     theAction.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -883,8 +1041,11 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_GetContext(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -894,8 +1055,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_HasPresentation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -905,42 +1069,51 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_Presentation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:69 - `SelectMgr_SelectableObject::RecomputePrimitives()`
     pub fn recompute_primitives(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_RecomputePrimitives(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:80 - `SelectMgr_SelectableObject::AddSelection()`
     pub fn add_selection(&mut self, aSelection: &crate::ffi::HandleSelectMgrSelection, aMode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_AddSelection(
                     self as *mut Self,
                     aSelection,
                     aMode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:89 - `SelectMgr_SelectableObject::ClearSelections()`
     pub fn clear_selections(&mut self, update: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_ClearSelections(self as *mut Self, update)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -950,8 +1123,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_Selection(self as *const Self, theMode)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -961,8 +1137,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_HasSelection(self as *const Self, theMode)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -971,41 +1150,50 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Selections(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:105 - `SelectMgr_SelectableObject::ResetTransformation()`
     pub fn reset_transformation(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_ResetTransformation(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:108 - `SelectMgr_SelectableObject::UpdateTransformation()`
     pub fn update_transformation(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_UpdateTransformation(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:112 - `SelectMgr_SelectableObject::UpdateTransformations()`
     pub fn update_transformations(&mut self, aSelection: &crate::ffi::HandleSelectMgrSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_UpdateTransformations(
                     self as *mut Self,
                     aSelection,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1016,22 +1204,27 @@ impl AISObject {
         theSeq: &crate::ffi::SelectMgr_SequenceOfOwner,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_HilightSelected(
                     self as *mut Self,
                     thePrsMgr,
                     theSeq,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:120 - `SelectMgr_SelectableObject::ClearSelected()`
     pub fn clear_selected(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_AISObject_inherited_ClearSelected(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XCAFPrs_AISObject_inherited_ClearSelected(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1041,13 +1234,15 @@ impl AISObject {
         theMgr: &crate::ffi::HandlePrsMgrPresentationManager,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_ClearDynamicHighlight(
                     self as *mut Self,
                     theMgr,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1059,7 +1254,7 @@ impl AISObject {
         theOwner: &crate::ffi::HandleSelectMgrEntityOwner,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_HilightOwnerWithColor(
                     self as *mut Self,
                     thePM,
@@ -1067,7 +1262,9 @@ impl AISObject {
                     theOwner,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1077,21 +1274,26 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_IsAutoHilight(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:143 - `SelectMgr_SelectableObject::SetAutoHilight()`
     pub fn set_auto_hilight(&mut self, theAutoHilight: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetAutoHilight(
                     self as *mut Self,
                     theAutoHilight,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1107,8 +1309,11 @@ impl AISObject {
                     thePrsMgr,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1124,41 +1329,50 @@ impl AISObject {
                     thePrsMgr,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:161 - `SelectMgr_SelectableObject::ErasePresentations()`
     pub fn erase_presentations(&mut self, theToRemove: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_ErasePresentations(
                     self as *mut Self,
                     theToRemove,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:166 - `SelectMgr_SelectableObject::SetZLayer()`
     pub fn set_z_layer(&mut self, theLayerId: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetZLayer(self as *mut Self, theLayerId)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_SelectableObject.hxx`:170 - `SelectMgr_SelectableObject::UpdateSelection()`
     pub fn update_selection(&mut self, theMode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_UpdateSelection(self as *mut Self, theMode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1169,14 +1383,16 @@ impl AISObject {
         theMode: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetAssemblyOwner(
                     self as *mut Self,
                     theOwner,
                     theMode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1192,8 +1408,11 @@ impl AISObject {
                     theOwners,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1203,8 +1422,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_GlobalSelectionMode(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1214,8 +1436,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_GlobalSelOwner(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1225,8 +1450,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_GetAssemblyOwner(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1235,8 +1463,11 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Presentations(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1245,8 +1476,11 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_ZLayer(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1255,18 +1489,23 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_IsMutable(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:75 - `PrsMgr_PresentableObject::SetMutable()`
     pub fn set_mutable(&mut self, theIsMutable: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetMutable(self as *mut Self, theIsMutable)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1276,8 +1515,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_ViewAffinity(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1287,8 +1529,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_HasDisplayMode(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1297,26 +1542,35 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_DisplayMode(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:94 - `PrsMgr_PresentableObject::SetDisplayMode()`
     pub fn set_display_mode(&mut self, theMode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetDisplayMode(self as *mut Self, theMode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:103 - `PrsMgr_PresentableObject::UnsetDisplayMode()`
     pub fn unset_display_mode(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_AISObject_inherited_UnsetDisplayMode(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XCAFPrs_AISObject_inherited_UnsetDisplayMode(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1326,8 +1580,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_HasHilightMode(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1336,26 +1593,35 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_HilightMode(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:125 - `PrsMgr_PresentableObject::SetHilightMode()`
     pub fn set_hilight_mode(&mut self, theMode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetHilightMode(self as *mut Self, theMode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:129 - `PrsMgr_PresentableObject::UnsetHilightMode()`
     pub fn unset_hilight_mode(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_AISObject_inherited_UnsetHilightMode(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XCAFPrs_AISObject_inherited_UnsetHilightMode(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1365,8 +1631,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_DefaultDisplayMode(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1379,18 +1648,23 @@ impl AISObject {
                     theToIncludeHidden,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:165 - `PrsMgr_PresentableObject::SetToUpdate()`
     pub fn set_to_update(&mut self, theMode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetToUpdate(self as *mut Self, theMode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1399,18 +1673,23 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_IsInfinite(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:178 - `PrsMgr_PresentableObject::SetInfiniteState()`
     pub fn set_infinite_state(&mut self, theFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetInfiniteState(self as *mut Self, theFlag)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1420,21 +1699,26 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_TypeOfPresentation3d(self as *const Self)
             };
-            crate::check_exception();
-            crate::prs_mgr::TypeOfPresentation3d::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::prs_mgr::TypeOfPresentation3d::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:184 - `PrsMgr_PresentableObject::SetTypeOfPresentation()`
     pub fn set_type_of_presentation(&mut self, theType: crate::prs_mgr::TypeOfPresentation3d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetTypeOfPresentation(
                     self as *mut Self,
                     theType.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1444,8 +1728,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_DisplayStatus(self as *const Self)
             };
-            crate::check_exception();
-            crate::prs_mgr::DisplayStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::prs_mgr::DisplayStatus::try_from(__val).unwrap()
         }
     }
 
@@ -1454,18 +1741,23 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Attributes(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:194 - `PrsMgr_PresentableObject::SetAttributes()`
     pub fn set_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetAttributes(self as *mut Self, theDrawer)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1475,21 +1767,26 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_HilightAttributes(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:203 - `PrsMgr_PresentableObject::SetHilightAttributes()`
     pub fn set_hilight_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetHilightAttributes(
                     self as *mut Self,
                     theDrawer,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1501,41 +1798,50 @@ impl AISObject {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:215 - `PrsMgr_PresentableObject::SetDynamicHilightAttributes()`
     pub fn set_dynamic_hilight_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetDynamicHilightAttributes(
                     self as *mut Self,
                     theDrawer,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:221 - `PrsMgr_PresentableObject::UnsetHilightAttributes()`
     pub fn unset_hilight_attributes(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_UnsetHilightAttributes(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:228 - `PrsMgr_PresentableObject::SynchronizeAspects()`
     pub fn synchronize_aspects(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SynchronizeAspects(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1545,8 +1851,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_TransformPersistence(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1556,13 +1865,15 @@ impl AISObject {
         theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetTransformPersistence(
                     self as *mut Self,
                     theTrsfPers,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1572,21 +1883,26 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_LocalTransformationGeom(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:257 - `PrsMgr_PresentableObject::SetLocalTransformation()`
     pub fn set_local_transformation(&mut self, theTrsf: &crate::gp::Trsf) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetLocalTransformation(
                     self as *mut Self,
                     theTrsf,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1596,8 +1912,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_HasTransformation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1607,8 +1926,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_TransformationGeom(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1618,8 +1940,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_LocalTransformation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1629,8 +1954,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_Transformation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1640,8 +1968,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_InversedTransformation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1653,21 +1984,26 @@ impl AISObject {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:316 - `PrsMgr_PresentableObject::RecomputeTransformation()`
     pub fn recompute_transformation(&mut self, theProjector: &crate::ffi::HandleGraphic3dCamera) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_RecomputeTransformation(
                     self as *mut Self,
                     theProjector,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1676,38 +2012,47 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_ClipPlanes(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:333 - `PrsMgr_PresentableObject::SetClipPlanes()`
     pub fn set_clip_planes(&mut self, thePlanes: &crate::ffi::HandleGraphic3dSequenceOfHClipPlane) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetClipPlanes(self as *mut Self, thePlanes)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:344 - `PrsMgr_PresentableObject::AddClipPlane()`
     pub fn add_clip_plane(&mut self, thePlane: &crate::ffi::HandleGraphic3dClipPlane) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_AddClipPlane(self as *mut Self, thePlane)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:348 - `PrsMgr_PresentableObject::RemoveClipPlane()`
     pub fn remove_clip_plane(&mut self, thePlane: &crate::ffi::HandleGraphic3dClipPlane) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_RemoveClipPlane(self as *mut Self, thePlane)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1716,11 +2061,14 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Parent(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1730,18 +2078,23 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Children(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:358 - `PrsMgr_PresentableObject::AddChild()`
     pub fn add_child(&mut self, theObject: &crate::ffi::HandlePrsMgrPresentableObject) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_AddChild(self as *mut Self, theObject)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1751,23 +2104,27 @@ impl AISObject {
         theObject: &crate::ffi::HandlePrsMgrPresentableObject,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_AddChildWithCurrentTransformation(
                     self as *mut Self,
                     theObject,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:366 - `PrsMgr_PresentableObject::RemoveChild()`
     pub fn remove_child(&mut self, theObject: &crate::ffi::HandlePrsMgrPresentableObject) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_RemoveChild(self as *mut Self, theObject)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1777,13 +2134,15 @@ impl AISObject {
         theObject: &crate::ffi::HandlePrsMgrPresentableObject,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_RemoveChildWithRestoreTransformation(
                     self as *mut Self,
                     theObject,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1793,21 +2152,26 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_HasOwnPresentations(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:457 - `PrsMgr_PresentableObject::SetIsoOnTriangulation()`
     pub fn set_iso_on_triangulation(&mut self, theIsEnabled: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetIsoOnTriangulation(
                     self as *mut Self,
                     theIsEnabled,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1817,21 +2181,26 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_CurrentFacingModel(self as *const Self)
             };
-            crate::check_exception();
-            crate::aspect::TypeOfFacingModel::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::aspect::TypeOfFacingModel::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:468 - `PrsMgr_PresentableObject::SetCurrentFacingModel()`
     pub fn set_current_facing_model(&mut self, theModel: crate::aspect::TypeOfFacingModel) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetCurrentFacingModel(
                     self as *mut Self,
                     theModel.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1840,8 +2209,11 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_HasColor(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1850,8 +2222,11 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_HasWidth(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1860,8 +2235,11 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Width(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1870,8 +2248,11 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_HasMaterial(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1881,8 +2262,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_IsTransparent(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1892,15 +2276,18 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_HasPolygonOffsets(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:548 - `PrsMgr_PresentableObject::PolygonOffsets()`
     pub fn polygon_offsets(&self, aMode: &mut i32, aFactor: &mut f32, aUnits: &mut f32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_PolygonOffsets(
                     self as *const Self,
                     aMode,
@@ -1908,14 +2295,16 @@ impl AISObject {
                     aUnits,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:554 - `PrsMgr_PresentableObject::SetPolygonOffsets()`
     pub fn set_polygon_offsets(&mut self, aMode: i32, aFactor: f32, aUnits: f32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetPolygonOffsets(
                     self as *mut Self,
                     aMode,
@@ -1923,15 +2312,21 @@ impl AISObject {
                     aUnits,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:559 - `PrsMgr_PresentableObject::UnsetAttributes()`
     pub fn unset_attributes(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_AISObject_inherited_UnsetAttributes(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XCAFPrs_AISObject_inherited_UnsetAttributes(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1941,21 +2336,26 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_ToPropagateVisualState(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:576 - `PrsMgr_PresentableObject::SetPropagateVisualState()`
     pub fn set_propagate_visual_state(&mut self, theFlag: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_SetPropagateVisualState(
                     self as *mut Self,
                     theFlag,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1965,8 +2365,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1976,8 +2379,11 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1986,11 +2392,14 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2000,18 +2409,23 @@ impl AISObject {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_AISObject_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2021,16 +2435,22 @@ impl AISObject {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_AISObject_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XCAFPrs_AISObject_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2046,98 +2466,93 @@ unsafe impl crate::CppDeletable for HandleXCAFPrsAISObject {
 impl HandleXCAFPrsAISObject {
     /// Dereference this Handle to access the underlying XCAFPrs_AISObject
     pub fn get(&self) -> &crate::ffi::XCAFPrs_AISObject {
-        {
-            let __result = unsafe { crate::ffi::HandleXCAFPrsAISObject_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleXCAFPrsAISObject_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying XCAFPrs_AISObject
     pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFPrs_AISObject {
-        {
-            let __result = unsafe { crate::ffi::HandleXCAFPrsAISObject_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleXCAFPrsAISObject_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<XCAFPrs_AISObject> to Handle<AIS_ColoredShape>
     pub fn to_handle_colored_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleAISColoredShape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXCAFPrsAISObject_to_HandleAISColoredShape(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXCAFPrsAISObject_to_HandleAISColoredShape(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XCAFPrs_AISObject> to Handle<AIS_Shape>
     pub fn to_handle_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleAISShape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXCAFPrsAISObject_to_HandleAISShape(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleXCAFPrsAISObject_to_HandleAISShape(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XCAFPrs_AISObject> to Handle<AIS_InteractiveObject>
     pub fn to_handle_interactive_object(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleAISInteractiveObject> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXCAFPrsAISObject_to_HandleAISInteractiveObject(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXCAFPrsAISObject_to_HandleAISInteractiveObject(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XCAFPrs_AISObject> to Handle<SelectMgr_SelectableObject>
     pub fn to_handle_selectable_object(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrSelectableObject> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXCAFPrsAISObject_to_HandleSelectMgrSelectableObject(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXCAFPrsAISObject_to_HandleSelectMgrSelectableObject(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XCAFPrs_AISObject> to Handle<PrsMgr_PresentableObject>
     pub fn to_handle_presentable_object(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandlePrsMgrPresentableObject> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXCAFPrsAISObject_to_HandlePrsMgrPresentableObject(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXCAFPrsAISObject_to_HandlePrsMgrPresentableObject(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XCAFPrs_AISObject> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXCAFPrsAISObject_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXCAFPrsAISObject_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2161,8 +2576,10 @@ impl DocumentExplorer {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XCAFPrs_DocumentExplorer_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2184,8 +2601,10 @@ impl DocumentExplorer {
                     theDefStyle,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2205,8 +2624,10 @@ impl DocumentExplorer {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_DocumentExplorer_ctor_handletdocstddocument_labelsequence_int_style(theDocument, theRoots, theFlags, theDefStyle)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2224,7 +2645,7 @@ impl DocumentExplorer {
         theDefStyle: &Style,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_DocumentExplorer_init_handletdocstddocument_label_int_style(
                     self as *mut Self,
                     theDocument,
@@ -2233,7 +2654,9 @@ impl DocumentExplorer {
                     theDefStyle,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2251,10 +2674,12 @@ impl DocumentExplorer {
         theDefStyle: &Style,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_DocumentExplorer_init_handletdocstddocument_labelsequence_int_style(self as *mut Self, theDocument, theRoots, theFlags, theDefStyle)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2264,8 +2689,11 @@ impl DocumentExplorer {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_DocumentExplorer_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2275,8 +2703,11 @@ impl DocumentExplorer {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_DocumentExplorer_current(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2286,8 +2717,11 @@ impl DocumentExplorer {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_DocumentExplorer_change_current(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2298,8 +2732,11 @@ impl DocumentExplorer {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_DocumentExplorer_current_int(self as *const Self, theDepth)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2310,8 +2747,11 @@ impl DocumentExplorer {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_DocumentExplorer_current_depth(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2319,8 +2759,10 @@ impl DocumentExplorer {
     /// Go to the next node.
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_DocumentExplorer_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::XCAFPrs_DocumentExplorer_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2330,8 +2772,11 @@ impl DocumentExplorer {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_DocumentExplorer_color_tool(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2342,8 +2787,11 @@ impl DocumentExplorer {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_DocumentExplorer_vis_material_tool(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2367,8 +2815,11 @@ impl DocumentExplorer {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_DocumentExplorer_define_child_id(theLabel, theParentId)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2386,8 +2837,11 @@ impl DocumentExplorer {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_DocumentExplorer_find_label_from_path_id_handletdocstddocument_asciistring_location2(theDocument, theId, theParentLocation, theLocation)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2404,8 +2858,11 @@ impl DocumentExplorer {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_DocumentExplorer_find_label_from_path_id_handletdocstddocument_asciistring_location(theDocument, theId, theLocation)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2421,8 +2878,11 @@ impl DocumentExplorer {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_DocumentExplorer_find_shape_from_path_id(theDocument, theId)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -2448,8 +2908,10 @@ impl DocumentIdIterator {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_DocumentIdIterator_ctor_asciistring(thePath) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2459,8 +2921,11 @@ impl DocumentIdIterator {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_DocumentIdIterator_more(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2470,8 +2935,11 @@ impl DocumentIdIterator {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_DocumentIdIterator_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2479,8 +2947,10 @@ impl DocumentIdIterator {
     /// Find the next value.
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_DocumentIdIterator_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::XCAFPrs_DocumentIdIterator_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2504,8 +2974,10 @@ impl DocumentNode {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XCAFPrs_DocumentNode_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -2532,8 +3004,10 @@ impl Driver {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XCAFPrs_Driver_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2545,8 +3019,11 @@ impl Driver {
     ) -> bool {
         {
             let __result = unsafe { crate::ffi::XCAFPrs_Driver_update(self as *mut Self, L, ais) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2554,8 +3031,11 @@ impl Driver {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::XCAFPrs_Driver_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2564,8 +3044,11 @@ impl Driver {
     pub fn get_id() -> &'static crate::standard::GUID {
         {
             let __result = unsafe { crate::ffi::XCAFPrs_Driver_get_id() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2573,8 +3056,11 @@ impl Driver {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::XCAFPrs_Driver_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2582,60 +3068,62 @@ impl Driver {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::XCAFPrs_Driver_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TPrsStd_Driver
     pub fn as_t_prs_std_driver(&self) -> &crate::t_prs_std::Driver {
-        {
-            let __result =
-                unsafe { crate::ffi::XCAFPrs_Driver_as_TPrsStd_Driver(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::XCAFPrs_Driver_as_TPrsStd_Driver(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TPrsStd_Driver (mutable)
     pub fn as_t_prs_std_driver_mut(&mut self) -> &mut crate::t_prs_std::Driver {
-        {
-            let __result =
-                unsafe { crate::ffi::XCAFPrs_Driver_as_TPrsStd_Driver_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::XCAFPrs_Driver_as_TPrsStd_Driver_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::XCAFPrs_Driver_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::XCAFPrs_Driver_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::XCAFPrs_Driver_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::XCAFPrs_Driver_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleXCAFPrsDriver> {
-        {
-            let __result = unsafe { crate::ffi::XCAFPrs_Driver_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::XCAFPrs_Driver_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2644,8 +3132,11 @@ impl Driver {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_Driver_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2655,8 +3146,11 @@ impl Driver {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_Driver_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2665,11 +3159,14 @@ impl Driver {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Driver_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2679,16 +3176,23 @@ impl Driver {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Driver_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_Driver_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XCAFPrs_Driver_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2698,16 +3202,21 @@ impl Driver {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_Driver_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::XCAFPrs_Driver_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::XCAFPrs_Driver_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2723,42 +3232,41 @@ unsafe impl crate::CppDeletable for HandleXCAFPrsDriver {
 impl HandleXCAFPrsDriver {
     /// Dereference this Handle to access the underlying XCAFPrs_Driver
     pub fn get(&self) -> &crate::ffi::XCAFPrs_Driver {
-        {
-            let __result = unsafe { crate::ffi::HandleXCAFPrsDriver_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleXCAFPrsDriver_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying XCAFPrs_Driver
     pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFPrs_Driver {
-        {
-            let __result = unsafe { crate::ffi::HandleXCAFPrsDriver_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleXCAFPrsDriver_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<XCAFPrs_Driver> to Handle<TPrsStd_Driver>
     pub fn to_handle_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleTPrsStdDriver> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXCAFPrsDriver_to_HandleTPrsStdDriver(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleXCAFPrsDriver_to_HandleTPrsStdDriver(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XCAFPrs_Driver> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXCAFPrsDriver_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXCAFPrsDriver_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2782,8 +3290,10 @@ impl Style {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::XCAFPrs_Style_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2792,8 +3302,11 @@ impl Style {
     pub fn is_empty(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::XCAFPrs_Style_is_empty(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2802,8 +3315,11 @@ impl Style {
     pub fn material(&self) -> &crate::ffi::HandleXCAFDocVisMaterial {
         {
             let __result = unsafe { crate::ffi::XCAFPrs_Style_material(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2811,8 +3327,11 @@ impl Style {
     /// Set material.
     pub fn set_material(&mut self, theMaterial: &crate::ffi::HandleXCAFDocVisMaterial) {
         {
-            unsafe { crate::ffi::XCAFPrs_Style_set_material(self as *mut Self, theMaterial) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XCAFPrs_Style_set_material(self as *mut Self, theMaterial) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2822,8 +3341,11 @@ impl Style {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Style_is_set_color_surf(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2832,8 +3354,11 @@ impl Style {
     pub fn get_color_surf(&self) -> &crate::quantity::Color {
         {
             let __result = unsafe { crate::ffi::XCAFPrs_Style_get_color_surf(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2841,8 +3366,12 @@ impl Style {
     /// Set surface color.
     pub fn set_color_surf_color(&mut self, theColor: &crate::quantity::Color) {
         {
-            unsafe { crate::ffi::XCAFPrs_Style_set_color_surf_color(self as *mut Self, theColor) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XCAFPrs_Style_set_color_surf_color(self as *mut Self, theColor)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2852,8 +3381,11 @@ impl Style {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Style_get_color_surf_rgba(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2861,10 +3393,12 @@ impl Style {
     /// Set surface color.
     pub fn set_color_surf_colorrgba(&mut self, theColor: &crate::quantity::ColorRGBA) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_Style_set_color_surf_colorrgba(self as *mut Self, theColor)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2872,8 +3406,10 @@ impl Style {
     /// Manage surface color setting
     pub fn un_set_color_surf(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_Style_un_set_color_surf(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::XCAFPrs_Style_un_set_color_surf(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2883,8 +3419,11 @@ impl Style {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Style_is_set_color_curv(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2893,8 +3432,11 @@ impl Style {
     pub fn get_color_curv(&self) -> &crate::quantity::Color {
         {
             let __result = unsafe { crate::ffi::XCAFPrs_Style_get_color_curv(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2902,8 +3444,10 @@ impl Style {
     /// Set curve color.
     pub fn set_color_curv(&mut self, col: &crate::quantity::Color) {
         {
-            unsafe { crate::ffi::XCAFPrs_Style_set_color_curv(self as *mut Self, col) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::XCAFPrs_Style_set_color_curv(self as *mut Self, col) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2911,8 +3455,10 @@ impl Style {
     /// Manage curve color setting
     pub fn un_set_color_curv(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_Style_un_set_color_curv(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::XCAFPrs_Style_un_set_color_curv(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2920,8 +3466,12 @@ impl Style {
     /// Assign visibility.
     pub fn set_visibility(&mut self, theVisibility: bool) {
         {
-            unsafe { crate::ffi::XCAFPrs_Style_set_visibility(self as *mut Self, theVisibility) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XCAFPrs_Style_set_visibility(self as *mut Self, theVisibility)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2930,8 +3480,11 @@ impl Style {
     pub fn is_visible(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::XCAFPrs_Style_is_visible(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2941,8 +3494,11 @@ impl Style {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Style_base_color_texture(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2953,8 +3509,11 @@ impl Style {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Style_is_equal(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2987,8 +3546,10 @@ impl Texture {
                     theUnit.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2996,8 +3557,11 @@ impl Texture {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::XCAFPrs_Texture_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3011,8 +3575,11 @@ impl Texture {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_Texture_get_compressed_image(self as *mut Self, theSupported)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3025,8 +3592,11 @@ impl Texture {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Texture_get_image(self as *mut Self, theSupported) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3036,8 +3606,11 @@ impl Texture {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Texture_get_image_source(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3045,8 +3618,11 @@ impl Texture {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::XCAFPrs_Texture_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3054,104 +3630,103 @@ impl Texture {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::XCAFPrs_Texture_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Graphic3d_Texture2D
     pub fn as_graphic3d_texture2_d(&self) -> &crate::graphic3d::Texture2D {
-        {
-            let __result =
-                unsafe { crate::ffi::XCAFPrs_Texture_as_Graphic3d_Texture2D(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::XCAFPrs_Texture_as_Graphic3d_Texture2D(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Graphic3d_Texture2D (mutable)
     pub fn as_graphic3d_texture2_d_mut(&mut self) -> &mut crate::graphic3d::Texture2D {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFPrs_Texture_as_Graphic3d_Texture2D_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::XCAFPrs_Texture_as_Graphic3d_Texture2D_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Graphic3d_TextureMap
     pub fn as_graphic3d_texture_map(&self) -> &crate::graphic3d::TextureMap {
-        {
-            let __result =
-                unsafe { crate::ffi::XCAFPrs_Texture_as_Graphic3d_TextureMap(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::XCAFPrs_Texture_as_Graphic3d_TextureMap(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Graphic3d_TextureMap (mutable)
     pub fn as_graphic3d_texture_map_mut(&mut self) -> &mut crate::graphic3d::TextureMap {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFPrs_Texture_as_Graphic3d_TextureMap_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::XCAFPrs_Texture_as_Graphic3d_TextureMap_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Graphic3d_TextureRoot
     pub fn as_graphic3d_texture_root(&self) -> &crate::graphic3d::TextureRoot {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFPrs_Texture_as_Graphic3d_TextureRoot(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::XCAFPrs_Texture_as_Graphic3d_TextureRoot(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Graphic3d_TextureRoot (mutable)
     pub fn as_graphic3d_texture_root_mut(&mut self) -> &mut crate::graphic3d::TextureRoot {
-        {
-            let __result = unsafe {
-                crate::ffi::XCAFPrs_Texture_as_Graphic3d_TextureRoot_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::XCAFPrs_Texture_as_Graphic3d_TextureRoot_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::XCAFPrs_Texture_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::XCAFPrs_Texture_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::XCAFPrs_Texture_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::XCAFPrs_Texture_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleXCAFPrsTexture> {
-        {
-            let __result = unsafe { crate::ffi::XCAFPrs_Texture_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::XCAFPrs_Texture_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Graphic3d_Texture2D.hxx`:49 - `Graphic3d_Texture2D::Name()`
@@ -3159,24 +3734,34 @@ impl Texture {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Texture_inherited_Name(self as *const Self) };
-            crate::check_exception();
-            crate::graphic3d::NameOfTexture2D::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::graphic3d::NameOfTexture2D::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_Texture2D.hxx`:54 - `Graphic3d_Texture2D::SetImage()`
     pub fn set_image(&mut self, thePixMap: &crate::ffi::HandleImagePixMap) {
         {
-            unsafe { crate::ffi::XCAFPrs_Texture_inherited_SetImage(self as *mut Self, thePixMap) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XCAFPrs_Texture_inherited_SetImage(self as *mut Self, thePixMap)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_TextureMap.hxx`:31 - `Graphic3d_TextureMap::EnableSmooth()`
     pub fn enable_smooth(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_Texture_inherited_EnableSmooth(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XCAFPrs_Texture_inherited_EnableSmooth(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3185,32 +3770,44 @@ impl Texture {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Texture_inherited_IsSmoothed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_TextureMap.hxx`:37 - `Graphic3d_TextureMap::DisableSmooth()`
     pub fn disable_smooth(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_Texture_inherited_DisableSmooth(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XCAFPrs_Texture_inherited_DisableSmooth(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_TextureMap.hxx`:41 - `Graphic3d_TextureMap::EnableModulate()`
     pub fn enable_modulate(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_Texture_inherited_EnableModulate(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XCAFPrs_Texture_inherited_EnableModulate(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_TextureMap.hxx`:45 - `Graphic3d_TextureMap::DisableModulate()`
     pub fn disable_modulate(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_Texture_inherited_DisableModulate(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XCAFPrs_Texture_inherited_DisableModulate(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3219,24 +3816,33 @@ impl Texture {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Texture_inherited_IsModulate(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_TextureMap.hxx`:52 - `Graphic3d_TextureMap::EnableRepeat()`
     pub fn enable_repeat(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_Texture_inherited_EnableRepeat(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XCAFPrs_Texture_inherited_EnableRepeat(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_TextureMap.hxx`:56 - `Graphic3d_TextureMap::DisableRepeat()`
     pub fn disable_repeat(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_Texture_inherited_DisableRepeat(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XCAFPrs_Texture_inherited_DisableRepeat(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3245,8 +3851,11 @@ impl Texture {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Texture_inherited_IsRepeat(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3255,21 +3864,26 @@ impl Texture {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Texture_inherited_AnisoFilter(self as *const Self) };
-            crate::check_exception();
-            crate::graphic3d::LevelOfTextureAnisotropy::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::graphic3d::LevelOfTextureAnisotropy::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_TextureMap.hxx`:66 - `Graphic3d_TextureMap::SetAnisoFilter()`
     pub fn set_aniso_filter(&mut self, theLevel: crate::graphic3d::LevelOfTextureAnisotropy) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_Texture_inherited_SetAnisoFilter(
                     self as *mut Self,
                     theLevel.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3278,8 +3892,11 @@ impl Texture {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Texture_inherited_IsDone(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3288,8 +3905,11 @@ impl Texture {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Texture_inherited_Path(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3298,8 +3918,11 @@ impl Texture {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Texture_inherited_Type(self as *const Self) };
-            crate::check_exception();
-            crate::graphic3d::TypeOfTexture::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::graphic3d::TypeOfTexture::try_from(__val).unwrap()
         }
     }
 
@@ -3308,8 +3931,11 @@ impl Texture {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Texture_inherited_GetId(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3318,16 +3944,22 @@ impl Texture {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Texture_inherited_Revision(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:82 - `Graphic3d_TextureRoot::UpdateRevision()`
     pub fn update_revision(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_Texture_inherited_UpdateRevision(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XCAFPrs_Texture_inherited_UpdateRevision(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3336,8 +3968,11 @@ impl Texture {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Texture_inherited_GetParams(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3346,18 +3981,23 @@ impl Texture {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Texture_inherited_IsColorMap(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:119 - `Graphic3d_TextureRoot::SetColorMap()`
     pub fn set_color_map(&mut self, theIsColor: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_Texture_inherited_SetColorMap(self as *mut Self, theIsColor)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3366,21 +4006,26 @@ impl Texture {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Texture_inherited_HasMipmaps(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_TextureRoot.hxx`:125 - `Graphic3d_TextureRoot::SetMipmapsGeneration()`
     pub fn set_mipmaps_generation(&mut self, theToGenerateMipmaps: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::XCAFPrs_Texture_inherited_SetMipmapsGeneration(
                     self as *mut Self,
                     theToGenerateMipmaps,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3389,8 +4034,11 @@ impl Texture {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Texture_inherited_IsTopDown(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3400,8 +4048,11 @@ impl Texture {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_Texture_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3411,8 +4062,11 @@ impl Texture {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_Texture_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3421,11 +4075,14 @@ impl Texture {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Texture_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3435,16 +4092,23 @@ impl Texture {
         {
             let __result =
                 unsafe { crate::ffi::XCAFPrs_Texture_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::XCAFPrs_Texture_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::XCAFPrs_Texture_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3454,16 +4118,22 @@ impl Texture {
             let __result = unsafe {
                 crate::ffi::XCAFPrs_Texture_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::XCAFPrs_Texture_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::XCAFPrs_Texture_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3479,66 +4149,66 @@ unsafe impl crate::CppDeletable for HandleXCAFPrsTexture {
 impl HandleXCAFPrsTexture {
     /// Dereference this Handle to access the underlying XCAFPrs_Texture
     pub fn get(&self) -> &crate::ffi::XCAFPrs_Texture {
-        {
-            let __result = unsafe { crate::ffi::HandleXCAFPrsTexture_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleXCAFPrsTexture_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying XCAFPrs_Texture
     pub fn get_mut(&mut self) -> &mut crate::ffi::XCAFPrs_Texture {
-        {
-            let __result = unsafe { crate::ffi::HandleXCAFPrsTexture_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleXCAFPrsTexture_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<XCAFPrs_Texture> to Handle<Graphic3d_Texture2D>
     pub fn to_handle_texture2_d(&self) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dTexture2D> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXCAFPrsTexture_to_HandleGraphic3dTexture2D(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXCAFPrsTexture_to_HandleGraphic3dTexture2D(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XCAFPrs_Texture> to Handle<Graphic3d_TextureMap>
     pub fn to_handle_texture_map(&self) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dTextureMap> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXCAFPrsTexture_to_HandleGraphic3dTextureMap(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXCAFPrsTexture_to_HandleGraphic3dTextureMap(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XCAFPrs_Texture> to Handle<Graphic3d_TextureRoot>
     pub fn to_handle_texture_root(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dTextureRoot> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXCAFPrsTexture_to_HandleGraphic3dTextureRoot(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXCAFPrsTexture_to_HandleGraphic3dTextureRoot(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<XCAFPrs_Texture> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleXCAFPrsTexture_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleXCAFPrsTexture_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

@@ -11,8 +11,10 @@
 /// input/output. Returns the status of a
 pub fn run() {
     {
-        unsafe { crate::ffi::IGESSelect_run() };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::IGESSelect_run() };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `IGESSelect.hxx`:49 - `IGESSelect::WhatIges`
@@ -33,8 +35,11 @@ pub fn what_iges(
 ) -> i32 {
     {
         let __result = unsafe { crate::ffi::IGESSelect_what_iges(ent, G, sup, index) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 
@@ -68,8 +73,10 @@ impl Activator {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_Activator_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -83,8 +90,11 @@ impl Activator {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_Activator_do_(self as *mut Self, number, pilot) };
-            crate::check_exception();
-            crate::if_select::ReturnStatus::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::ReturnStatus::try_from(__val).unwrap()
         }
     }
 
@@ -94,8 +104,11 @@ impl Activator {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_Activator_help(self as *const Self, number) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -104,8 +117,11 @@ impl Activator {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_Activator_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -113,8 +129,11 @@ impl Activator {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_Activator_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -122,64 +141,65 @@ impl Activator {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_Activator_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_Activator
     pub fn as_if_select_activator(&self) -> &crate::if_select::Activator {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_Activator_as_IFSelect_Activator(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_Activator_as_IFSelect_Activator(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Activator (mutable)
     pub fn as_if_select_activator_mut(&mut self) -> &mut crate::if_select::Activator {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_Activator_as_IFSelect_Activator_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_Activator_as_IFSelect_Activator_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_Activator_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_Activator_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_Activator_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_Activator_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectActivator> {
-        {
-            let __result = unsafe { crate::ffi::IGESSelect_Activator_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_Activator_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -188,8 +208,11 @@ impl Activator {
             let __result = unsafe {
                 crate::ffi::IGESSelect_Activator_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -199,8 +222,11 @@ impl Activator {
             let __result = unsafe {
                 crate::ffi::IGESSelect_Activator_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -209,11 +235,14 @@ impl Activator {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_Activator_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -224,18 +253,23 @@ impl Activator {
             let __result = unsafe {
                 crate::ffi::IGESSelect_Activator_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_Activator_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -245,16 +279,22 @@ impl Activator {
             let __result = unsafe {
                 crate::ffi::IGESSelect_Activator_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_Activator_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_Activator_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -270,48 +310,42 @@ unsafe impl crate::CppDeletable for HandleIGESSelectActivator {
 impl HandleIGESSelectActivator {
     /// Dereference this Handle to access the underlying IGESSelect_Activator
     pub fn get(&self) -> &crate::ffi::IGESSelect_Activator {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectActivator_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectActivator_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_Activator
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_Activator {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectActivator_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectActivator_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_Activator> to Handle<IFSelect_Activator>
     pub fn to_handle_activator(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectActivator> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectActivator_to_HandleIFSelectActivator(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectActivator_to_HandleIFSelectActivator(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_Activator> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectActivator_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectActivator_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -337,8 +371,10 @@ impl AddFileComment {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_AddFileComment_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -346,8 +382,10 @@ impl AddFileComment {
     /// Clears the list of file comment lines already stored
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::IGESSelect_AddFileComment_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IGESSelect_AddFileComment_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -358,10 +396,12 @@ impl AddFileComment {
     pub fn add_line(&mut self, line: &str) {
         let c_line = std::ffi::CString::new(line).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_AddFileComment_add_line(self as *mut Self, c_line.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -370,8 +410,12 @@ impl AddFileComment {
     /// Each of them must comply with demand of AddLine
     pub fn add_lines(&mut self, lines: &crate::ffi::HandleTColStdHSequenceOfHAsciiString) {
         {
-            unsafe { crate::ffi::IGESSelect_AddFileComment_add_lines(self as *mut Self, lines) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_AddFileComment_add_lines(self as *mut Self, lines)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -381,8 +425,11 @@ impl AddFileComment {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_AddFileComment_nb_lines(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -392,8 +439,11 @@ impl AddFileComment {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_AddFileComment_line(self as *const Self, num) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -403,8 +453,11 @@ impl AddFileComment {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_AddFileComment_lines(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -416,10 +469,12 @@ impl AddFileComment {
         writer: &mut crate::iges_data::IGESWriter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_AddFileComment_perform(self as *const Self, ctx, writer)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -430,8 +485,11 @@ impl AddFileComment {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_AddFileComment_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -440,8 +498,11 @@ impl AddFileComment {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_AddFileComment_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -449,8 +510,11 @@ impl AddFileComment {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_AddFileComment_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -458,95 +522,89 @@ impl AddFileComment {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_AddFileComment_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESSelect_FileModifier
     pub fn as_file_modifier(&self) -> &FileModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AddFileComment_as_IGESSelect_FileModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_AddFileComment_as_IGESSelect_FileModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESSelect_FileModifier (mutable)
     pub fn as_file_modifier_mut(&mut self) -> &mut FileModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AddFileComment_as_IGESSelect_FileModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_AddFileComment_as_IGESSelect_FileModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier
     pub fn as_if_select_general_modifier(&self) -> &crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AddFileComment_as_IFSelect_GeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_AddFileComment_as_IFSelect_GeneralModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier (mutable)
     pub fn as_if_select_general_modifier_mut(&mut self) -> &mut crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AddFileComment_as_IFSelect_GeneralModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_AddFileComment_as_IFSelect_GeneralModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AddFileComment_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_AddFileComment_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AddFileComment_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_AddFileComment_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectAddFileComment> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_AddFileComment_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_AddFileComment_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
@@ -555,18 +613,23 @@ impl AddFileComment {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AddFileComment_inherited_MayChangeGraph(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
     pub fn set_dispatch(&mut self, disp: &crate::ffi::HandleIFSelectDispatch) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_AddFileComment_inherited_SetDispatch(self as *mut Self, disp)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -576,8 +639,11 @@ impl AddFileComment {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AddFileComment_inherited_Dispatch(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -587,28 +653,35 @@ impl AddFileComment {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AddFileComment_inherited_Applies(self as *const Self, disp)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_AddFileComment_inherited_SetSelection(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_AddFileComment_inherited_ResetSelection(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -618,8 +691,11 @@ impl AddFileComment {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AddFileComment_inherited_HasSelection(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -629,8 +705,11 @@ impl AddFileComment {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AddFileComment_inherited_Selection(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -643,8 +722,11 @@ impl AddFileComment {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -654,8 +736,11 @@ impl AddFileComment {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AddFileComment_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -665,11 +750,14 @@ impl AddFileComment {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AddFileComment_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -680,20 +768,25 @@ impl AddFileComment {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AddFileComment_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_AddFileComment_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -705,16 +798,23 @@ impl AddFileComment {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_AddFileComment_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_AddFileComment_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -730,65 +830,65 @@ unsafe impl crate::CppDeletable for HandleIGESSelectAddFileComment {
 impl HandleIGESSelectAddFileComment {
     /// Dereference this Handle to access the underlying IGESSelect_AddFileComment
     pub fn get(&self) -> &crate::ffi::IGESSelect_AddFileComment {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectAddFileComment_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectAddFileComment_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_AddFileComment
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_AddFileComment {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectAddFileComment_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectAddFileComment_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_AddFileComment> to Handle<IGESSelect_FileModifier>
     pub fn to_handle_file_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectFileModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectAddFileComment_to_HandleIGESSelectFileModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectAddFileComment_to_HandleIGESSelectFileModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_AddFileComment> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectAddFileComment_to_HandleIFSelectGeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectAddFileComment_to_HandleIFSelectGeneralModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_AddFileComment> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectAddFileComment_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectAddFileComment_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -813,8 +913,10 @@ impl AddGroup {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_AddGroup_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -827,10 +929,12 @@ impl AddGroup {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_AddGroup_performing(self as *const Self, ctx, target, TC)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -840,8 +944,11 @@ impl AddGroup {
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_AddGroup_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -850,8 +957,11 @@ impl AddGroup {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_AddGroup_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -859,8 +969,11 @@ impl AddGroup {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_AddGroup_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -868,108 +981,107 @@ impl AddGroup {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_AddGroup_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESSelect_ModelModifier
     pub fn as_model_modifier(&self) -> &ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AddGroup_as_IGESSelect_ModelModifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_AddGroup_as_IGESSelect_ModelModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESSelect_ModelModifier (mutable)
     pub fn as_model_modifier_mut(&mut self) -> &mut ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AddGroup_as_IGESSelect_ModelModifier_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_AddGroup_as_IGESSelect_ModelModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier
     pub fn as_if_select_modifier(&self) -> &crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AddGroup_as_IFSelect_Modifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_AddGroup_as_IFSelect_Modifier(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier (mutable)
     pub fn as_if_select_modifier_mut(&mut self) -> &mut crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AddGroup_as_IFSelect_Modifier_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_AddGroup_as_IFSelect_Modifier_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier
     pub fn as_if_select_general_modifier(&self) -> &crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AddGroup_as_IFSelect_GeneralModifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_AddGroup_as_IFSelect_GeneralModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier (mutable)
     pub fn as_if_select_general_modifier_mut(&mut self) -> &mut crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AddGroup_as_IFSelect_GeneralModifier_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_AddGroup_as_IFSelect_GeneralModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AddGroup_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_AddGroup_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AddGroup_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_AddGroup_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectAddGroup> {
-        {
-            let __result = unsafe { crate::ffi::IGESSelect_AddGroup_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_AddGroup_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
@@ -981,7 +1093,7 @@ impl AddGroup {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_AddGroup_inherited_Perform(
                     self as *const Self,
                     ctx,
@@ -990,7 +1102,9 @@ impl AddGroup {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1003,7 +1117,7 @@ impl AddGroup {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_AddGroup_inherited_PerformProtocol(
                     self as *const Self,
                     ctx,
@@ -1012,7 +1126,9 @@ impl AddGroup {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1022,18 +1138,23 @@ impl AddGroup {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AddGroup_inherited_MayChangeGraph(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
     pub fn set_dispatch(&mut self, disp: &crate::ffi::HandleIFSelectDispatch) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_AddGroup_inherited_SetDispatch(self as *mut Self, disp)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1042,8 +1163,11 @@ impl AddGroup {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_AddGroup_inherited_Dispatch(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1053,26 +1177,35 @@ impl AddGroup {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AddGroup_inherited_Applies(self as *const Self, disp)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_AddGroup_inherited_SetSelection(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         {
-            unsafe { crate::ffi::IGESSelect_AddGroup_inherited_ResetSelection(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_AddGroup_inherited_ResetSelection(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1082,8 +1215,11 @@ impl AddGroup {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AddGroup_inherited_HasSelection(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1092,8 +1228,11 @@ impl AddGroup {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_AddGroup_inherited_Selection(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1103,8 +1242,11 @@ impl AddGroup {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AddGroup_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1114,8 +1256,11 @@ impl AddGroup {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AddGroup_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1124,11 +1269,14 @@ impl AddGroup {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_AddGroup_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1139,18 +1287,23 @@ impl AddGroup {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AddGroup_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_AddGroup_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1160,16 +1313,22 @@ impl AddGroup {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AddGroup_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_AddGroup_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_AddGroup_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1185,73 +1344,72 @@ unsafe impl crate::CppDeletable for HandleIGESSelectAddGroup {
 impl HandleIGESSelectAddGroup {
     /// Dereference this Handle to access the underlying IGESSelect_AddGroup
     pub fn get(&self) -> &crate::ffi::IGESSelect_AddGroup {
-        {
-            let __result = unsafe { crate::ffi::HandleIGESSelectAddGroup_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectAddGroup_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_AddGroup
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_AddGroup {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectAddGroup_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectAddGroup_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_AddGroup> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectModelModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectAddGroup_to_HandleIGESSelectModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectAddGroup_to_HandleIGESSelectModelModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_AddGroup> to Handle<IFSelect_Modifier>
     pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectAddGroup_to_HandleIFSelectModifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectAddGroup_to_HandleIFSelectModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_AddGroup> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectAddGroup_to_HandleIFSelectGeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectAddGroup_to_HandleIFSelectGeneralModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_AddGroup> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectAddGroup_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectAddGroup_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1295,8 +1453,10 @@ impl AutoCorrect {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_AutoCorrect_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1311,10 +1471,12 @@ impl AutoCorrect {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_AutoCorrect_performing(self as *const Self, ctx, target, TC)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1324,8 +1486,11 @@ impl AutoCorrect {
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_AutoCorrect_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1334,8 +1499,11 @@ impl AutoCorrect {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_AutoCorrect_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1343,8 +1511,11 @@ impl AutoCorrect {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_AutoCorrect_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1352,112 +1523,110 @@ impl AutoCorrect {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_AutoCorrect_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESSelect_ModelModifier
     pub fn as_model_modifier(&self) -> &ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AutoCorrect_as_IGESSelect_ModelModifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_AutoCorrect_as_IGESSelect_ModelModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESSelect_ModelModifier (mutable)
     pub fn as_model_modifier_mut(&mut self) -> &mut ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AutoCorrect_as_IGESSelect_ModelModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_AutoCorrect_as_IGESSelect_ModelModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier
     pub fn as_if_select_modifier(&self) -> &crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AutoCorrect_as_IFSelect_Modifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_AutoCorrect_as_IFSelect_Modifier(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier (mutable)
     pub fn as_if_select_modifier_mut(&mut self) -> &mut crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AutoCorrect_as_IFSelect_Modifier_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_AutoCorrect_as_IFSelect_Modifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier
     pub fn as_if_select_general_modifier(&self) -> &crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AutoCorrect_as_IFSelect_GeneralModifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_AutoCorrect_as_IFSelect_GeneralModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier (mutable)
     pub fn as_if_select_general_modifier_mut(&mut self) -> &mut crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AutoCorrect_as_IFSelect_GeneralModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_AutoCorrect_as_IFSelect_GeneralModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AutoCorrect_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_AutoCorrect_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_AutoCorrect_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_AutoCorrect_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectAutoCorrect> {
-        {
-            let __result = unsafe { crate::ffi::IGESSelect_AutoCorrect_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_AutoCorrect_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
@@ -1469,7 +1638,7 @@ impl AutoCorrect {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_AutoCorrect_inherited_Perform(
                     self as *const Self,
                     ctx,
@@ -1478,7 +1647,9 @@ impl AutoCorrect {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1491,7 +1662,7 @@ impl AutoCorrect {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_AutoCorrect_inherited_PerformProtocol(
                     self as *const Self,
                     ctx,
@@ -1500,7 +1671,9 @@ impl AutoCorrect {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1510,18 +1683,23 @@ impl AutoCorrect {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AutoCorrect_inherited_MayChangeGraph(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
     pub fn set_dispatch(&mut self, disp: &crate::ffi::HandleIFSelectDispatch) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_AutoCorrect_inherited_SetDispatch(self as *mut Self, disp)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1531,8 +1709,11 @@ impl AutoCorrect {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AutoCorrect_inherited_Dispatch(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1542,28 +1723,35 @@ impl AutoCorrect {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AutoCorrect_inherited_Applies(self as *const Self, disp)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_AutoCorrect_inherited_SetSelection(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_AutoCorrect_inherited_ResetSelection(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1573,8 +1761,11 @@ impl AutoCorrect {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AutoCorrect_inherited_HasSelection(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1584,8 +1775,11 @@ impl AutoCorrect {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AutoCorrect_inherited_Selection(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1598,8 +1792,11 @@ impl AutoCorrect {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1609,8 +1806,11 @@ impl AutoCorrect {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AutoCorrect_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1619,11 +1819,14 @@ impl AutoCorrect {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_AutoCorrect_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1634,18 +1837,23 @@ impl AutoCorrect {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AutoCorrect_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_AutoCorrect_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1655,16 +1863,22 @@ impl AutoCorrect {
             let __result = unsafe {
                 crate::ffi::IGESSelect_AutoCorrect_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_AutoCorrect_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_AutoCorrect_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1680,78 +1894,73 @@ unsafe impl crate::CppDeletable for HandleIGESSelectAutoCorrect {
 impl HandleIGESSelectAutoCorrect {
     /// Dereference this Handle to access the underlying IGESSelect_AutoCorrect
     pub fn get(&self) -> &crate::ffi::IGESSelect_AutoCorrect {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectAutoCorrect_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectAutoCorrect_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_AutoCorrect
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_AutoCorrect {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectAutoCorrect_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectAutoCorrect_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_AutoCorrect> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectModelModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectAutoCorrect_to_HandleIGESSelectModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectAutoCorrect_to_HandleIGESSelectModelModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_AutoCorrect> to Handle<IFSelect_Modifier>
     pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectAutoCorrect_to_HandleIFSelectModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectAutoCorrect_to_HandleIFSelectModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_AutoCorrect> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectAutoCorrect_to_HandleIFSelectGeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectAutoCorrect_to_HandleIFSelectGeneralModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_AutoCorrect> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectAutoCorrect_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectAutoCorrect_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1786,8 +1995,10 @@ impl ChangeLevelList {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_ChangeLevelList_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1800,8 +2011,11 @@ impl ChangeLevelList {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelList_has_old_number(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1812,8 +2026,11 @@ impl ChangeLevelList {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_ChangeLevelList_old_number(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1821,10 +2038,12 @@ impl ChangeLevelList {
     /// Sets a parameter for OldNumber
     pub fn set_old_number(&mut self, param: &crate::ffi::HandleIFSelectIntParam) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelList_set_old_number(self as *mut Self, param)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1837,8 +2056,11 @@ impl ChangeLevelList {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelList_has_new_number(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1849,8 +2071,11 @@ impl ChangeLevelList {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_ChangeLevelList_new_number(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1858,10 +2083,12 @@ impl ChangeLevelList {
     /// Sets a parameter for NewNumber
     pub fn set_new_number(&mut self, param: &crate::ffi::HandleIFSelectIntParam) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelList_set_new_number(self as *mut Self, param)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1880,7 +2107,7 @@ impl ChangeLevelList {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelList_performing(
                     self as *const Self,
                     ctx,
@@ -1888,7 +2115,9 @@ impl ChangeLevelList {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1901,8 +2130,11 @@ impl ChangeLevelList {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_ChangeLevelList_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1911,8 +2143,11 @@ impl ChangeLevelList {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_ChangeLevelList_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1920,8 +2155,11 @@ impl ChangeLevelList {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_ChangeLevelList_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1929,117 +2167,115 @@ impl ChangeLevelList {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_ChangeLevelList_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESSelect_ModelModifier
     pub fn as_model_modifier(&self) -> &ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ChangeLevelList_as_IGESSelect_ModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ChangeLevelList_as_IGESSelect_ModelModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESSelect_ModelModifier (mutable)
     pub fn as_model_modifier_mut(&mut self) -> &mut ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ChangeLevelList_as_IGESSelect_ModelModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ChangeLevelList_as_IGESSelect_ModelModifier_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier
     pub fn as_if_select_modifier(&self) -> &crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ChangeLevelList_as_IFSelect_Modifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ChangeLevelList_as_IFSelect_Modifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier (mutable)
     pub fn as_if_select_modifier_mut(&mut self) -> &mut crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ChangeLevelList_as_IFSelect_Modifier_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ChangeLevelList_as_IFSelect_Modifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier
     pub fn as_if_select_general_modifier(&self) -> &crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ChangeLevelList_as_IFSelect_GeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ChangeLevelList_as_IFSelect_GeneralModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier (mutable)
     pub fn as_if_select_general_modifier_mut(&mut self) -> &mut crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ChangeLevelList_as_IFSelect_GeneralModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ChangeLevelList_as_IFSelect_GeneralModifier_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ChangeLevelList_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ChangeLevelList_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ChangeLevelList_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ChangeLevelList_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectChangeLevelList> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_ChangeLevelList_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_ChangeLevelList_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
@@ -2051,7 +2287,7 @@ impl ChangeLevelList {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelList_inherited_Perform(
                     self as *const Self,
                     ctx,
@@ -2060,7 +2296,9 @@ impl ChangeLevelList {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2073,7 +2311,7 @@ impl ChangeLevelList {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelList_inherited_PerformProtocol(
                     self as *const Self,
                     ctx,
@@ -2082,7 +2320,9 @@ impl ChangeLevelList {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2092,21 +2332,26 @@ impl ChangeLevelList {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelList_inherited_MayChangeGraph(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
     pub fn set_dispatch(&mut self, disp: &crate::ffi::HandleIFSelectDispatch) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelList_inherited_SetDispatch(
                     self as *mut Self,
                     disp,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2116,8 +2361,11 @@ impl ChangeLevelList {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelList_inherited_Dispatch(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2127,31 +2375,38 @@ impl ChangeLevelList {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelList_inherited_Applies(self as *const Self, disp)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelList_inherited_SetSelection(
                     self as *mut Self,
                     sel,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelList_inherited_ResetSelection(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2161,8 +2416,11 @@ impl ChangeLevelList {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelList_inherited_HasSelection(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2172,8 +2430,11 @@ impl ChangeLevelList {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelList_inherited_Selection(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2186,8 +2447,11 @@ impl ChangeLevelList {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2200,8 +2464,11 @@ impl ChangeLevelList {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2211,11 +2478,14 @@ impl ChangeLevelList {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelList_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2226,20 +2496,25 @@ impl ChangeLevelList {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelList_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelList_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2251,16 +2526,23 @@ impl ChangeLevelList {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_ChangeLevelList_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_ChangeLevelList_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2276,78 +2558,78 @@ unsafe impl crate::CppDeletable for HandleIGESSelectChangeLevelList {
 impl HandleIGESSelectChangeLevelList {
     /// Dereference this Handle to access the underlying IGESSelect_ChangeLevelList
     pub fn get(&self) -> &crate::ffi::IGESSelect_ChangeLevelList {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectChangeLevelList_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectChangeLevelList_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_ChangeLevelList
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_ChangeLevelList {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectChangeLevelList_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectChangeLevelList_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_ChangeLevelList> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectModelModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectChangeLevelList_to_HandleIGESSelectModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectChangeLevelList_to_HandleIGESSelectModelModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_ChangeLevelList> to Handle<IFSelect_Modifier>
     pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectChangeLevelList_to_HandleIFSelectModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectChangeLevelList_to_HandleIFSelectModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_ChangeLevelList> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectChangeLevelList_to_HandleIFSelectGeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectChangeLevelList_to_HandleIFSelectGeneralModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_ChangeLevelList> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectChangeLevelList_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectChangeLevelList_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2379,8 +2661,10 @@ impl ChangeLevelNumber {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_ChangeLevelNumber_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2393,8 +2677,11 @@ impl ChangeLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelNumber_has_old_number(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2405,8 +2692,11 @@ impl ChangeLevelNumber {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_ChangeLevelNumber_old_number(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2414,10 +2704,12 @@ impl ChangeLevelNumber {
     /// Sets a parameter for OldNumber
     pub fn set_old_number(&mut self, param: &crate::ffi::HandleIFSelectIntParam) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelNumber_set_old_number(self as *mut Self, param)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2428,8 +2720,11 @@ impl ChangeLevelNumber {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_ChangeLevelNumber_new_number(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2437,10 +2732,12 @@ impl ChangeLevelNumber {
     /// Sets a parameter for NewNumber
     pub fn set_new_number(&mut self, param: &crate::ffi::HandleIFSelectIntParam) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelNumber_set_new_number(self as *mut Self, param)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2459,7 +2756,7 @@ impl ChangeLevelNumber {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelNumber_performing(
                     self as *const Self,
                     ctx,
@@ -2467,7 +2764,9 @@ impl ChangeLevelNumber {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2479,8 +2778,11 @@ impl ChangeLevelNumber {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_ChangeLevelNumber_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2490,8 +2792,11 @@ impl ChangeLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelNumber_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2499,8 +2804,11 @@ impl ChangeLevelNumber {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_ChangeLevelNumber_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2509,119 +2817,120 @@ impl ChangeLevelNumber {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_ChangeLevelNumber_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESSelect_ModelModifier
     pub fn as_model_modifier(&self) -> &ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ChangeLevelNumber_as_IGESSelect_ModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ChangeLevelNumber_as_IGESSelect_ModelModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESSelect_ModelModifier (mutable)
     pub fn as_model_modifier_mut(&mut self) -> &mut ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ChangeLevelNumber_as_IGESSelect_ModelModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ChangeLevelNumber_as_IGESSelect_ModelModifier_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier
     pub fn as_if_select_modifier(&self) -> &crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ChangeLevelNumber_as_IFSelect_Modifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ChangeLevelNumber_as_IFSelect_Modifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier (mutable)
     pub fn as_if_select_modifier_mut(&mut self) -> &mut crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ChangeLevelNumber_as_IFSelect_Modifier_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ChangeLevelNumber_as_IFSelect_Modifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier
     pub fn as_if_select_general_modifier(&self) -> &crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ChangeLevelNumber_as_IFSelect_GeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ChangeLevelNumber_as_IFSelect_GeneralModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier (mutable)
     pub fn as_if_select_general_modifier_mut(&mut self) -> &mut crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ChangeLevelNumber_as_IFSelect_GeneralModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ChangeLevelNumber_as_IFSelect_GeneralModifier_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ChangeLevelNumber_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ChangeLevelNumber_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ChangeLevelNumber_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ChangeLevelNumber_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectChangeLevelNumber> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_ChangeLevelNumber_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_ChangeLevelNumber_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
@@ -2633,7 +2942,7 @@ impl ChangeLevelNumber {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelNumber_inherited_Perform(
                     self as *const Self,
                     ctx,
@@ -2642,7 +2951,9 @@ impl ChangeLevelNumber {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2655,7 +2966,7 @@ impl ChangeLevelNumber {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelNumber_inherited_PerformProtocol(
                     self as *const Self,
                     ctx,
@@ -2664,7 +2975,9 @@ impl ChangeLevelNumber {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2676,21 +2989,26 @@ impl ChangeLevelNumber {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
     pub fn set_dispatch(&mut self, disp: &crate::ffi::HandleIFSelectDispatch) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelNumber_inherited_SetDispatch(
                     self as *mut Self,
                     disp,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2700,8 +3018,11 @@ impl ChangeLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelNumber_inherited_Dispatch(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2714,31 +3035,38 @@ impl ChangeLevelNumber {
                     disp,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelNumber_inherited_SetSelection(
                     self as *mut Self,
                     sel,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelNumber_inherited_ResetSelection(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2748,8 +3076,11 @@ impl ChangeLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelNumber_inherited_HasSelection(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2759,8 +3090,11 @@ impl ChangeLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelNumber_inherited_Selection(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2773,8 +3107,11 @@ impl ChangeLevelNumber {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2787,8 +3124,11 @@ impl ChangeLevelNumber {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2798,11 +3138,14 @@ impl ChangeLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelNumber_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2813,20 +3156,25 @@ impl ChangeLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelNumber_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelNumber_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2838,18 +3186,23 @@ impl ChangeLevelNumber {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ChangeLevelNumber_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2865,78 +3218,78 @@ unsafe impl crate::CppDeletable for HandleIGESSelectChangeLevelNumber {
 impl HandleIGESSelectChangeLevelNumber {
     /// Dereference this Handle to access the underlying IGESSelect_ChangeLevelNumber
     pub fn get(&self) -> &crate::ffi::IGESSelect_ChangeLevelNumber {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectChangeLevelNumber_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectChangeLevelNumber_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_ChangeLevelNumber
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_ChangeLevelNumber {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectChangeLevelNumber_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectChangeLevelNumber_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_ChangeLevelNumber> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectModelModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectChangeLevelNumber_to_HandleIGESSelectModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectChangeLevelNumber_to_HandleIGESSelectModelModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_ChangeLevelNumber> to Handle<IFSelect_Modifier>
     pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectChangeLevelNumber_to_HandleIFSelectModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectChangeLevelNumber_to_HandleIFSelectModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_ChangeLevelNumber> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectChangeLevelNumber_to_HandleIFSelectGeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectChangeLevelNumber_to_HandleIFSelectGeneralModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_ChangeLevelNumber> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectChangeLevelNumber_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectChangeLevelNumber_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2966,8 +3319,10 @@ impl ComputeStatus {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_ComputeStatus_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2983,7 +3338,7 @@ impl ComputeStatus {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ComputeStatus_performing(
                     self as *const Self,
                     ctx,
@@ -2991,7 +3346,9 @@ impl ComputeStatus {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3002,8 +3359,11 @@ impl ComputeStatus {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_ComputeStatus_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3012,8 +3372,11 @@ impl ComputeStatus {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_ComputeStatus_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3021,8 +3384,11 @@ impl ComputeStatus {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_ComputeStatus_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3030,117 +3396,111 @@ impl ComputeStatus {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_ComputeStatus_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESSelect_ModelModifier
     pub fn as_model_modifier(&self) -> &ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ComputeStatus_as_IGESSelect_ModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ComputeStatus_as_IGESSelect_ModelModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESSelect_ModelModifier (mutable)
     pub fn as_model_modifier_mut(&mut self) -> &mut ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ComputeStatus_as_IGESSelect_ModelModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ComputeStatus_as_IGESSelect_ModelModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier
     pub fn as_if_select_modifier(&self) -> &crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ComputeStatus_as_IFSelect_Modifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ComputeStatus_as_IFSelect_Modifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier (mutable)
     pub fn as_if_select_modifier_mut(&mut self) -> &mut crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ComputeStatus_as_IFSelect_Modifier_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ComputeStatus_as_IFSelect_Modifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier
     pub fn as_if_select_general_modifier(&self) -> &crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ComputeStatus_as_IFSelect_GeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ComputeStatus_as_IFSelect_GeneralModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier (mutable)
     pub fn as_if_select_general_modifier_mut(&mut self) -> &mut crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ComputeStatus_as_IFSelect_GeneralModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ComputeStatus_as_IFSelect_GeneralModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ComputeStatus_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ComputeStatus_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ComputeStatus_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ComputeStatus_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectComputeStatus> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_ComputeStatus_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_ComputeStatus_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
@@ -3152,7 +3512,7 @@ impl ComputeStatus {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ComputeStatus_inherited_Perform(
                     self as *const Self,
                     ctx,
@@ -3161,7 +3521,9 @@ impl ComputeStatus {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3174,7 +3536,7 @@ impl ComputeStatus {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ComputeStatus_inherited_PerformProtocol(
                     self as *const Self,
                     ctx,
@@ -3183,7 +3545,9 @@ impl ComputeStatus {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3193,18 +3557,23 @@ impl ComputeStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ComputeStatus_inherited_MayChangeGraph(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
     pub fn set_dispatch(&mut self, disp: &crate::ffi::HandleIFSelectDispatch) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ComputeStatus_inherited_SetDispatch(self as *mut Self, disp)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3214,8 +3583,11 @@ impl ComputeStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ComputeStatus_inherited_Dispatch(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3225,28 +3597,35 @@ impl ComputeStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ComputeStatus_inherited_Applies(self as *const Self, disp)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ComputeStatus_inherited_SetSelection(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ComputeStatus_inherited_ResetSelection(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3256,8 +3635,11 @@ impl ComputeStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ComputeStatus_inherited_HasSelection(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3267,8 +3649,11 @@ impl ComputeStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ComputeStatus_inherited_Selection(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3281,8 +3666,11 @@ impl ComputeStatus {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3292,8 +3680,11 @@ impl ComputeStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ComputeStatus_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3302,11 +3693,14 @@ impl ComputeStatus {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_ComputeStatus_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3317,20 +3711,25 @@ impl ComputeStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ComputeStatus_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ComputeStatus_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3342,16 +3741,23 @@ impl ComputeStatus {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_ComputeStatus_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_ComputeStatus_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3367,78 +3773,76 @@ unsafe impl crate::CppDeletable for HandleIGESSelectComputeStatus {
 impl HandleIGESSelectComputeStatus {
     /// Dereference this Handle to access the underlying IGESSelect_ComputeStatus
     pub fn get(&self) -> &crate::ffi::IGESSelect_ComputeStatus {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectComputeStatus_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectComputeStatus_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_ComputeStatus
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_ComputeStatus {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectComputeStatus_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectComputeStatus_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_ComputeStatus> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectModelModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectComputeStatus_to_HandleIGESSelectModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectComputeStatus_to_HandleIGESSelectModelModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_ComputeStatus> to Handle<IFSelect_Modifier>
     pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectComputeStatus_to_HandleIFSelectModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectComputeStatus_to_HandleIFSelectModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_ComputeStatus> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectComputeStatus_to_HandleIFSelectGeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectComputeStatus_to_HandleIFSelectGeneralModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_ComputeStatus> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectComputeStatus_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectComputeStatus_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3471,8 +3875,10 @@ impl CounterOfLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_ctor_bool2(withmap, withlist)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3494,8 +3900,11 @@ impl CounterOfLevelNumber {
     /// Resets already memorized information : also numeric data
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::IGESSelect_CounterOfLevelNumber_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_CounterOfLevelNumber_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3512,10 +3921,12 @@ impl CounterOfLevelNumber {
         model: &crate::ffi::HandleInterfaceInterfaceModel,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_add_sign(self as *mut Self, ent, model)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3524,10 +3935,12 @@ impl CounterOfLevelNumber {
     /// null (no level) or negative (level list)
     pub fn add_level(&mut self, ent: &crate::ffi::HandleStandardTransient, level: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_add_level(self as *mut Self, ent, level)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3538,8 +3951,11 @@ impl CounterOfLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_highest_level(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3556,8 +3972,11 @@ impl CounterOfLevelNumber {
                     level,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3567,8 +3986,11 @@ impl CounterOfLevelNumber {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_CounterOfLevelNumber_levels(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3585,8 +4007,11 @@ impl CounterOfLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_sign(self as *const Self, ent, model)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3595,10 +4020,12 @@ impl CounterOfLevelNumber {
     /// Level Number recorded
     pub fn print_count(&self, S: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_print_count(self as *const Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3608,8 +4035,11 @@ impl CounterOfLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3617,8 +4047,11 @@ impl CounterOfLevelNumber {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_CounterOfLevelNumber_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3627,99 +4060,96 @@ impl CounterOfLevelNumber {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_CounterOfLevelNumber_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_SignCounter
     pub fn as_if_select_sign_counter(&self) -> &crate::if_select::SignCounter {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_CounterOfLevelNumber_as_IFSelect_SignCounter(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_CounterOfLevelNumber_as_IFSelect_SignCounter(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SignCounter (mutable)
     pub fn as_if_select_sign_counter_mut(&mut self) -> &mut crate::if_select::SignCounter {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_CounterOfLevelNumber_as_IFSelect_SignCounter_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_CounterOfLevelNumber_as_IFSelect_SignCounter_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_SignatureList
     pub fn as_if_select_signature_list(&self) -> &crate::if_select::SignatureList {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_CounterOfLevelNumber_as_IFSelect_SignatureList(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_CounterOfLevelNumber_as_IFSelect_SignatureList(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SignatureList (mutable)
     pub fn as_if_select_signature_list_mut(&mut self) -> &mut crate::if_select::SignatureList {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_CounterOfLevelNumber_as_IFSelect_SignatureList_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_CounterOfLevelNumber_as_IFSelect_SignatureList_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_CounterOfLevelNumber_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_CounterOfLevelNumber_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_CounterOfLevelNumber_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_CounterOfLevelNumber_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectCounterOfLevelNumber> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_CounterOfLevelNumber_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_CounterOfLevelNumber_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:76 - `IFSelect_SignCounter::Signature()`
@@ -3728,21 +4158,26 @@ impl CounterOfLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_inherited_Signature(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:80 - `IFSelect_SignCounter::SetMap()`
     pub fn set_map(&mut self, withmap: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_inherited_SetMap(
                     self as *mut Self,
                     withmap,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3760,8 +4195,11 @@ impl CounterOfLevelNumber {
                     model,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3772,14 +4210,16 @@ impl CounterOfLevelNumber {
         model: &crate::ffi::HandleInterfaceInterfaceModel,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_inherited_AddList(
                     self as *mut Self,
                     list,
                     model,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3790,27 +4230,31 @@ impl CounterOfLevelNumber {
         graph: &crate::interface::Graph,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_inherited_AddWithGraph(
                     self as *mut Self,
                     list,
                     graph,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:109 - `IFSelect_SignCounter::AddModel()`
     pub fn add_model(&mut self, model: &crate::ffi::HandleInterfaceInterfaceModel) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_inherited_AddModel(
                     self as *mut Self,
                     model,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3821,27 +4265,31 @@ impl CounterOfLevelNumber {
         G: &crate::interface::Graph,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_inherited_AddFromSelection(
                     self as *mut Self,
                     sel,
                     G,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:118 - `IFSelect_SignCounter::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_inherited_SetSelection(
                     self as *mut Self,
                     sel,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3851,21 +4299,26 @@ impl CounterOfLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_inherited_Selection(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SignCounter.hxx`:128 - `IFSelect_SignCounter::SetSelMode()`
     pub fn set_sel_mode(&mut self, selmode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_inherited_SetSelMode(
                     self as *mut Self,
                     selmode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3875,8 +4328,11 @@ impl CounterOfLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_inherited_SelMode(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3890,21 +4346,26 @@ impl CounterOfLevelNumber {
                     forced,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:52 - `IFSelect_SignatureList::SetList()`
     pub fn set_list(&mut self, withlist: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_inherited_SetList(
                     self as *mut Self,
                     withlist,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3916,8 +4377,11 @@ impl CounterOfLevelNumber {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3929,8 +4393,11 @@ impl CounterOfLevelNumber {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3940,8 +4407,11 @@ impl CounterOfLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_inherited_NbNulls(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3953,7 +4423,7 @@ impl CounterOfLevelNumber {
         mod_: crate::if_select::PrintCount,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_inherited_PrintList(
                     self as *const Self,
                     S,
@@ -3961,20 +4431,24 @@ impl CounterOfLevelNumber {
                     mod_.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SignatureList.hxx`:136 - `IFSelect_SignatureList::PrintSum()`
     pub fn print_sum(&self, S: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_inherited_PrintSum(
                     self as *const Self,
                     S,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3987,8 +4461,11 @@ impl CounterOfLevelNumber {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4001,8 +4478,11 @@ impl CounterOfLevelNumber {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4012,11 +4492,14 @@ impl CounterOfLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4029,20 +4512,25 @@ impl CounterOfLevelNumber {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4054,18 +4542,23 @@ impl CounterOfLevelNumber {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_CounterOfLevelNumber_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4081,65 +4574,63 @@ unsafe impl crate::CppDeletable for HandleIGESSelectCounterOfLevelNumber {
 impl HandleIGESSelectCounterOfLevelNumber {
     /// Dereference this Handle to access the underlying IGESSelect_CounterOfLevelNumber
     pub fn get(&self) -> &crate::ffi::IGESSelect_CounterOfLevelNumber {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectCounterOfLevelNumber_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectCounterOfLevelNumber_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_CounterOfLevelNumber
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_CounterOfLevelNumber {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectCounterOfLevelNumber_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectCounterOfLevelNumber_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_CounterOfLevelNumber> to Handle<IFSelect_SignCounter>
     pub fn to_handle_sign_counter(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignCounter> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectCounterOfLevelNumber_to_HandleIFSelectSignCounter(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectCounterOfLevelNumber_to_HandleIFSelectSignCounter(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_CounterOfLevelNumber> to Handle<IFSelect_SignatureList>
     pub fn to_handle_signature_list(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignatureList> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectCounterOfLevelNumber_to_HandleIFSelectSignatureList(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectCounterOfLevelNumber_to_HandleIFSelectSignatureList(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_CounterOfLevelNumber> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectCounterOfLevelNumber_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectCounterOfLevelNumber_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4168,8 +4659,10 @@ impl DispPerDrawing {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_DispPerDrawing_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4179,8 +4672,11 @@ impl DispPerDrawing {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_DispPerDrawing_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4193,8 +4689,12 @@ impl DispPerDrawing {
         packs: &mut crate::if_graph::SubPartsIterator,
     ) {
         {
-            unsafe { crate::ffi::IGESSelect_DispPerDrawing_packets(self as *const Self, G, packs) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_DispPerDrawing_packets(self as *const Self, G, packs)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4205,8 +4705,11 @@ impl DispPerDrawing {
             let __result = unsafe {
                 crate::ffi::IGESSelect_DispPerDrawing_can_have_remainder(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4220,8 +4723,11 @@ impl DispPerDrawing {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_DispPerDrawing_remainder(self as *const Self, G) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4230,8 +4736,11 @@ impl DispPerDrawing {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_DispPerDrawing_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4239,8 +4748,11 @@ impl DispPerDrawing {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_DispPerDrawing_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4248,74 +4760,78 @@ impl DispPerDrawing {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_DispPerDrawing_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_Dispatch
     pub fn as_if_select_dispatch(&self) -> &crate::if_select::Dispatch {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_DispPerDrawing_as_IFSelect_Dispatch(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_DispPerDrawing_as_IFSelect_Dispatch(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Dispatch (mutable)
     pub fn as_if_select_dispatch_mut(&mut self) -> &mut crate::if_select::Dispatch {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_DispPerDrawing_as_IFSelect_Dispatch_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_DispPerDrawing_as_IFSelect_Dispatch_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_DispPerDrawing_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_DispPerDrawing_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_DispPerDrawing_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_DispPerDrawing_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectDispPerDrawing> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_DispPerDrawing_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_DispPerDrawing_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:58 - `IFSelect_Dispatch::SetRootName()`
     pub fn set_root_name(&mut self, name: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_DispPerDrawing_inherited_SetRootName(self as *mut Self, name)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4325,8 +4841,11 @@ impl DispPerDrawing {
             let __result = unsafe {
                 crate::ffi::IGESSelect_DispPerDrawing_inherited_HasRootName(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4336,21 +4855,26 @@ impl DispPerDrawing {
             let __result = unsafe {
                 crate::ffi::IGESSelect_DispPerDrawing_inherited_RootName(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:69 - `IFSelect_Dispatch::SetFinalSelection()`
     pub fn set_final_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_DispPerDrawing_inherited_SetFinalSelection(
                     self as *mut Self,
                     sel,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4360,8 +4884,11 @@ impl DispPerDrawing {
             let __result = unsafe {
                 crate::ffi::IGESSelect_DispPerDrawing_inherited_FinalSelection(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4371,8 +4898,11 @@ impl DispPerDrawing {
             let __result = unsafe {
                 crate::ffi::IGESSelect_DispPerDrawing_inherited_Selections(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4386,8 +4916,11 @@ impl DispPerDrawing {
                     max,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4400,8 +4933,11 @@ impl DispPerDrawing {
             let __result = unsafe {
                 crate::ffi::IGESSelect_DispPerDrawing_inherited_GetEntities(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4414,8 +4950,11 @@ impl DispPerDrawing {
             let __result = unsafe {
                 crate::ffi::IGESSelect_DispPerDrawing_inherited_Packeted(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4428,8 +4967,11 @@ impl DispPerDrawing {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4439,8 +4981,11 @@ impl DispPerDrawing {
             let __result = unsafe {
                 crate::ffi::IGESSelect_DispPerDrawing_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4450,11 +4995,14 @@ impl DispPerDrawing {
             let __result = unsafe {
                 crate::ffi::IGESSelect_DispPerDrawing_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4465,20 +5013,25 @@ impl DispPerDrawing {
             let __result = unsafe {
                 crate::ffi::IGESSelect_DispPerDrawing_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_DispPerDrawing_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4490,16 +5043,23 @@ impl DispPerDrawing {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_DispPerDrawing_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_DispPerDrawing_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4515,48 +5075,48 @@ unsafe impl crate::CppDeletable for HandleIGESSelectDispPerDrawing {
 impl HandleIGESSelectDispPerDrawing {
     /// Dereference this Handle to access the underlying IGESSelect_DispPerDrawing
     pub fn get(&self) -> &crate::ffi::IGESSelect_DispPerDrawing {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectDispPerDrawing_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectDispPerDrawing_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_DispPerDrawing
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_DispPerDrawing {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectDispPerDrawing_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectDispPerDrawing_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_DispPerDrawing> to Handle<IFSelect_Dispatch>
     pub fn to_handle_dispatch(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectDispatch> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectDispPerDrawing_to_HandleIFSelectDispatch(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectDispPerDrawing_to_HandleIFSelectDispatch(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_DispPerDrawing> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectDispPerDrawing_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectDispPerDrawing_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4585,8 +5145,10 @@ impl DispPerSingleView {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_DispPerSingleView_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4596,8 +5158,11 @@ impl DispPerSingleView {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_DispPerSingleView_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4610,10 +5175,12 @@ impl DispPerSingleView {
         packs: &mut crate::if_graph::SubPartsIterator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_DispPerSingleView_packets(self as *const Self, G, packs)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4624,8 +5191,11 @@ impl DispPerSingleView {
             let __result = unsafe {
                 crate::ffi::IGESSelect_DispPerSingleView_can_have_remainder(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4640,8 +5210,11 @@ impl DispPerSingleView {
             let __result = unsafe {
                 crate::ffi::IGESSelect_DispPerSingleView_remainder(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4651,8 +5224,11 @@ impl DispPerSingleView {
             let __result = unsafe {
                 crate::ffi::IGESSelect_DispPerSingleView_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4660,8 +5236,11 @@ impl DispPerSingleView {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_DispPerSingleView_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4670,79 +5249,82 @@ impl DispPerSingleView {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_DispPerSingleView_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_Dispatch
     pub fn as_if_select_dispatch(&self) -> &crate::if_select::Dispatch {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_DispPerSingleView_as_IFSelect_Dispatch(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_DispPerSingleView_as_IFSelect_Dispatch(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Dispatch (mutable)
     pub fn as_if_select_dispatch_mut(&mut self) -> &mut crate::if_select::Dispatch {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_DispPerSingleView_as_IFSelect_Dispatch_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_DispPerSingleView_as_IFSelect_Dispatch_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_DispPerSingleView_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_DispPerSingleView_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_DispPerSingleView_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_DispPerSingleView_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectDispPerSingleView> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_DispPerSingleView_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_DispPerSingleView_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:58 - `IFSelect_Dispatch::SetRootName()`
     pub fn set_root_name(&mut self, name: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_DispPerSingleView_inherited_SetRootName(
                     self as *mut Self,
                     name,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4752,8 +5334,11 @@ impl DispPerSingleView {
             let __result = unsafe {
                 crate::ffi::IGESSelect_DispPerSingleView_inherited_HasRootName(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4763,21 +5348,26 @@ impl DispPerSingleView {
             let __result = unsafe {
                 crate::ffi::IGESSelect_DispPerSingleView_inherited_RootName(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Dispatch.hxx`:69 - `IFSelect_Dispatch::SetFinalSelection()`
     pub fn set_final_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_DispPerSingleView_inherited_SetFinalSelection(
                     self as *mut Self,
                     sel,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4789,8 +5379,11 @@ impl DispPerSingleView {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4800,8 +5393,11 @@ impl DispPerSingleView {
             let __result = unsafe {
                 crate::ffi::IGESSelect_DispPerSingleView_inherited_Selections(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4815,8 +5411,11 @@ impl DispPerSingleView {
                     max,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4832,8 +5431,11 @@ impl DispPerSingleView {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4846,8 +5448,11 @@ impl DispPerSingleView {
             let __result = unsafe {
                 crate::ffi::IGESSelect_DispPerSingleView_inherited_Packeted(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4860,8 +5465,11 @@ impl DispPerSingleView {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4874,8 +5482,11 @@ impl DispPerSingleView {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4885,11 +5496,14 @@ impl DispPerSingleView {
             let __result = unsafe {
                 crate::ffi::IGESSelect_DispPerSingleView_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4900,20 +5514,25 @@ impl DispPerSingleView {
             let __result = unsafe {
                 crate::ffi::IGESSelect_DispPerSingleView_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_DispPerSingleView_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4925,18 +5544,23 @@ impl DispPerSingleView {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_DispPerSingleView_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4952,48 +5576,48 @@ unsafe impl crate::CppDeletable for HandleIGESSelectDispPerSingleView {
 impl HandleIGESSelectDispPerSingleView {
     /// Dereference this Handle to access the underlying IGESSelect_DispPerSingleView
     pub fn get(&self) -> &crate::ffi::IGESSelect_DispPerSingleView {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectDispPerSingleView_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectDispPerSingleView_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_DispPerSingleView
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_DispPerSingleView {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectDispPerSingleView_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectDispPerSingleView_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_DispPerSingleView> to Handle<IFSelect_Dispatch>
     pub fn to_handle_dispatch(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectDispatch> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectDispPerSingleView_to_HandleIFSelectDispatch(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectDispPerSingleView_to_HandleIFSelectDispatch(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_DispPerSingleView> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectDispPerSingleView_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectDispPerSingleView_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5019,8 +5643,10 @@ impl Dumper {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_Dumper_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5035,8 +5661,11 @@ impl Dumper {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_Dumper_write_own(self as *const Self, file, item) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5053,8 +5682,11 @@ impl Dumper {
             let __result = unsafe {
                 crate::ffi::IGESSelect_Dumper_read_own(self as *const Self, file, type_, item)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5063,8 +5695,11 @@ impl Dumper {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_Dumper_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5072,8 +5707,11 @@ impl Dumper {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_Dumper_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5081,63 +5719,64 @@ impl Dumper {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_Dumper_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_SessionDumper
     pub fn as_if_select_session_dumper(&self) -> &crate::if_select::SessionDumper {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_Dumper_as_IFSelect_SessionDumper(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_Dumper_as_IFSelect_SessionDumper(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SessionDumper (mutable)
     pub fn as_if_select_session_dumper_mut(&mut self) -> &mut crate::if_select::SessionDumper {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_Dumper_as_IFSelect_SessionDumper_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_Dumper_as_IFSelect_SessionDumper_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_Dumper_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_Dumper_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_Dumper_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_Dumper_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectDumper> {
-        {
-            let __result = unsafe { crate::ffi::IGESSelect_Dumper_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_Dumper_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_SessionDumper.hxx`:65 - `IFSelect_SessionDumper::Next()`
@@ -5145,8 +5784,11 @@ impl Dumper {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_Dumper_inherited_Next(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5156,8 +5798,11 @@ impl Dumper {
             let __result = unsafe {
                 crate::ffi::IGESSelect_Dumper_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5167,8 +5812,11 @@ impl Dumper {
             let __result = unsafe {
                 crate::ffi::IGESSelect_Dumper_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5177,11 +5825,14 @@ impl Dumper {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_Dumper_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5191,18 +5842,23 @@ impl Dumper {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_Dumper_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_Dumper_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5212,16 +5868,22 @@ impl Dumper {
             let __result = unsafe {
                 crate::ffi::IGESSelect_Dumper_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_Dumper_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_Dumper_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5237,46 +5899,44 @@ unsafe impl crate::CppDeletable for HandleIGESSelectDumper {
 impl HandleIGESSelectDumper {
     /// Dereference this Handle to access the underlying IGESSelect_Dumper
     pub fn get(&self) -> &crate::ffi::IGESSelect_Dumper {
-        {
-            let __result = unsafe { crate::ffi::HandleIGESSelectDumper_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectDumper_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_Dumper
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_Dumper {
-        {
-            let __result = unsafe { crate::ffi::HandleIGESSelectDumper_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectDumper_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_Dumper> to Handle<IFSelect_SessionDumper>
     pub fn to_handle_session_dumper(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSessionDumper> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectDumper_to_HandleIFSelectSessionDumper(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectDumper_to_HandleIFSelectSessionDumper(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_Dumper> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectDumper_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectDumper_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5300,8 +5960,10 @@ impl EditDirPart {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_EditDirPart_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5309,8 +5971,11 @@ impl EditDirPart {
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_EditDirPart_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5319,8 +5984,11 @@ impl EditDirPart {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_EditDirPart_recognize(self as *const Self, form) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5334,8 +6002,11 @@ impl EditDirPart {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditDirPart_string_value(self as *const Self, form, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5350,8 +6021,11 @@ impl EditDirPart {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditDirPart_load(self as *const Self, form, ent, model)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5373,8 +6047,11 @@ impl EditDirPart {
                     enforce,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5389,8 +6066,11 @@ impl EditDirPart {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditDirPart_apply(self as *const Self, form, ent, model)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5399,8 +6079,11 @@ impl EditDirPart {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_EditDirPart_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5408,8 +6091,11 @@ impl EditDirPart {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_EditDirPart_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5417,73 +6103,76 @@ impl EditDirPart {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_EditDirPart_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_Editor
     pub fn as_if_select_editor(&self) -> &crate::if_select::Editor {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_EditDirPart_as_IFSelect_Editor(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_EditDirPart_as_IFSelect_Editor(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Editor (mutable)
     pub fn as_if_select_editor_mut(&mut self) -> &mut crate::if_select::Editor {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_EditDirPart_as_IFSelect_Editor_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_EditDirPart_as_IFSelect_Editor_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_EditDirPart_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_EditDirPart_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_EditDirPart_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_EditDirPart_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectEditDirPart> {
-        {
-            let __result = unsafe { crate::ffi::IGESSelect_EditDirPart_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_EditDirPart_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:62 - `IFSelect_Editor::SetList()`
     pub fn set_list(&mut self, num: i32, max: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_EditDirPart_inherited_SetList(self as *mut Self, num, max)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5493,8 +6182,11 @@ impl EditDirPart {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditDirPart_inherited_NbValues(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5504,8 +6196,11 @@ impl EditDirPart {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditDirPart_inherited_TypedValue(self as *const Self, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5515,8 +6210,11 @@ impl EditDirPart {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditDirPart_inherited_IsList(self as *const Self, num)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5526,8 +6224,11 @@ impl EditDirPart {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditDirPart_inherited_MaxList(self as *const Self, num)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5537,32 +6238,39 @@ impl EditDirPart {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditDirPart_inherited_EditMode(self as *const Self, num)
             };
-            crate::check_exception();
-            crate::if_select::EditValue::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::EditValue::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:90 - `IFSelect_Editor::PrintNames()`
     pub fn print_names(&self, S: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_EditDirPart_inherited_PrintNames(self as *const Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:92 - `IFSelect_Editor::PrintDefs()`
     pub fn print_defs(&self, S: &mut crate::ffi::Standard_OStream, labels: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_EditDirPart_inherited_PrintDefs(
                     self as *const Self,
                     S,
                     labels,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5575,8 +6283,11 @@ impl EditDirPart {
                     what,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5594,8 +6305,11 @@ impl EditDirPart {
                     undoable,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5605,8 +6319,11 @@ impl EditDirPart {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditDirPart_inherited_ListEditor(self as *const Self, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5624,8 +6341,11 @@ impl EditDirPart {
                     num,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5647,8 +6367,11 @@ impl EditDirPart {
                     enforce,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5661,8 +6384,11 @@ impl EditDirPart {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5672,8 +6398,11 @@ impl EditDirPart {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditDirPart_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5682,11 +6411,14 @@ impl EditDirPart {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_EditDirPart_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5697,18 +6429,23 @@ impl EditDirPart {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditDirPart_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_EditDirPart_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5718,16 +6455,22 @@ impl EditDirPart {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditDirPart_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_EditDirPart_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_EditDirPart_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5743,46 +6486,43 @@ unsafe impl crate::CppDeletable for HandleIGESSelectEditDirPart {
 impl HandleIGESSelectEditDirPart {
     /// Dereference this Handle to access the underlying IGESSelect_EditDirPart
     pub fn get(&self) -> &crate::ffi::IGESSelect_EditDirPart {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectEditDirPart_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectEditDirPart_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_EditDirPart
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_EditDirPart {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectEditDirPart_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectEditDirPart_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_EditDirPart> to Handle<IFSelect_Editor>
     pub fn to_handle_editor(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectEditor> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectEditDirPart_to_HandleIFSelectEditor(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectEditDirPart_to_HandleIFSelectEditor(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_EditDirPart> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectEditDirPart_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectEditDirPart_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5806,8 +6546,10 @@ impl EditHeader {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_EditHeader_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5815,8 +6557,11 @@ impl EditHeader {
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_EditHeader_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5825,8 +6570,11 @@ impl EditHeader {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_EditHeader_recognize(self as *const Self, form) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5840,8 +6588,11 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditHeader_string_value(self as *const Self, form, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5856,8 +6607,11 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditHeader_load(self as *const Self, form, ent, model)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5879,8 +6633,11 @@ impl EditHeader {
                     enforce,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5895,8 +6652,11 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditHeader_apply(self as *const Self, form, ent, model)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5905,8 +6665,11 @@ impl EditHeader {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_EditHeader_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5914,8 +6677,11 @@ impl EditHeader {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_EditHeader_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5923,73 +6689,75 @@ impl EditHeader {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_EditHeader_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_Editor
     pub fn as_if_select_editor(&self) -> &crate::if_select::Editor {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_EditHeader_as_IFSelect_Editor(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_EditHeader_as_IFSelect_Editor(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Editor (mutable)
     pub fn as_if_select_editor_mut(&mut self) -> &mut crate::if_select::Editor {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_EditHeader_as_IFSelect_Editor_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_EditHeader_as_IFSelect_Editor_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_EditHeader_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_EditHeader_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_EditHeader_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_EditHeader_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectEditHeader> {
-        {
-            let __result = unsafe { crate::ffi::IGESSelect_EditHeader_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_EditHeader_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:62 - `IFSelect_Editor::SetList()`
     pub fn set_list(&mut self, num: i32, max: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_EditHeader_inherited_SetList(self as *mut Self, num, max)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5999,8 +6767,11 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditHeader_inherited_NbValues(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6010,8 +6781,11 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditHeader_inherited_TypedValue(self as *const Self, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6021,8 +6795,11 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditHeader_inherited_IsList(self as *const Self, num)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6032,8 +6809,11 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditHeader_inherited_MaxList(self as *const Self, num)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6043,32 +6823,39 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditHeader_inherited_EditMode(self as *const Self, num)
             };
-            crate::check_exception();
-            crate::if_select::EditValue::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::if_select::EditValue::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:90 - `IFSelect_Editor::PrintNames()`
     pub fn print_names(&self, S: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_EditHeader_inherited_PrintNames(self as *const Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_Editor.hxx`:92 - `IFSelect_Editor::PrintDefs()`
     pub fn print_defs(&self, S: &mut crate::ffi::Standard_OStream, labels: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_EditHeader_inherited_PrintDefs(
                     self as *const Self,
                     S,
                     labels,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6078,8 +6865,11 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditHeader_inherited_MaxNameLength(self as *const Self, what)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6097,8 +6887,11 @@ impl EditHeader {
                     undoable,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6108,8 +6901,11 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditHeader_inherited_ListEditor(self as *const Self, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6127,8 +6923,11 @@ impl EditHeader {
                     num,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6150,8 +6949,11 @@ impl EditHeader {
                     enforce,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6161,8 +6963,11 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditHeader_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6172,8 +6977,11 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditHeader_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6182,11 +6990,14 @@ impl EditHeader {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_EditHeader_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6197,18 +7008,23 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditHeader_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_EditHeader_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6218,16 +7034,22 @@ impl EditHeader {
             let __result = unsafe {
                 crate::ffi::IGESSelect_EditHeader_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_EditHeader_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_EditHeader_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6243,46 +7065,42 @@ unsafe impl crate::CppDeletable for HandleIGESSelectEditHeader {
 impl HandleIGESSelectEditHeader {
     /// Dereference this Handle to access the underlying IGESSelect_EditHeader
     pub fn get(&self) -> &crate::ffi::IGESSelect_EditHeader {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectEditHeader_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectEditHeader_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_EditHeader
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_EditHeader {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectEditHeader_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectEditHeader_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_EditHeader> to Handle<IFSelect_Editor>
     pub fn to_handle_editor(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectEditor> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectEditHeader_to_HandleIFSelectEditor(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectEditHeader_to_HandleIFSelectEditor(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_EditHeader> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectEditHeader_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectEditHeader_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6315,10 +7133,12 @@ impl FileModifier {
         writer: &mut crate::iges_data::IGESWriter,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_FileModifier_perform(self as *const Self, ctx, writer)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6327,8 +7147,11 @@ impl FileModifier {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_FileModifier_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6336,8 +7159,11 @@ impl FileModifier {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_FileModifier_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6345,55 +7171,56 @@ impl FileModifier {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_FileModifier_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_GeneralModifier
     pub fn as_if_select_general_modifier(&self) -> &crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_FileModifier_as_IFSelect_GeneralModifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_FileModifier_as_IFSelect_GeneralModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier (mutable)
     pub fn as_if_select_general_modifier_mut(&mut self) -> &mut crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_FileModifier_as_IFSelect_GeneralModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_FileModifier_as_IFSelect_GeneralModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_FileModifier_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_FileModifier_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_FileModifier_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_FileModifier_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
@@ -6402,18 +7229,23 @@ impl FileModifier {
             let __result = unsafe {
                 crate::ffi::IGESSelect_FileModifier_inherited_MayChangeGraph(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
     pub fn set_dispatch(&mut self, disp: &crate::ffi::HandleIFSelectDispatch) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_FileModifier_inherited_SetDispatch(self as *mut Self, disp)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6423,8 +7255,11 @@ impl FileModifier {
             let __result = unsafe {
                 crate::ffi::IGESSelect_FileModifier_inherited_Dispatch(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6434,28 +7269,35 @@ impl FileModifier {
             let __result = unsafe {
                 crate::ffi::IGESSelect_FileModifier_inherited_Applies(self as *const Self, disp)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_FileModifier_inherited_SetSelection(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_FileModifier_inherited_ResetSelection(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6465,8 +7307,11 @@ impl FileModifier {
             let __result = unsafe {
                 crate::ffi::IGESSelect_FileModifier_inherited_HasSelection(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6476,8 +7321,11 @@ impl FileModifier {
             let __result = unsafe {
                 crate::ffi::IGESSelect_FileModifier_inherited_Selection(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6486,8 +7334,11 @@ impl FileModifier {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_FileModifier_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6500,8 +7351,11 @@ impl FileModifier {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6511,8 +7365,11 @@ impl FileModifier {
             let __result = unsafe {
                 crate::ffi::IGESSelect_FileModifier_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6521,11 +7378,14 @@ impl FileModifier {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_FileModifier_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6536,18 +7396,23 @@ impl FileModifier {
             let __result = unsafe {
                 crate::ffi::IGESSelect_FileModifier_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_FileModifier_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6557,16 +7422,23 @@ impl FileModifier {
             let __result = unsafe {
                 crate::ffi::IGESSelect_FileModifier_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_FileModifier_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_FileModifier_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6582,50 +7454,47 @@ unsafe impl crate::CppDeletable for HandleIGESSelectFileModifier {
 impl HandleIGESSelectFileModifier {
     /// Dereference this Handle to access the underlying IGESSelect_FileModifier
     pub fn get(&self) -> &crate::ffi::IGESSelect_FileModifier {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectFileModifier_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectFileModifier_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_FileModifier
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_FileModifier {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectFileModifier_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectFileModifier_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_FileModifier> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectFileModifier_to_HandleIFSelectGeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectFileModifier_to_HandleIFSelectGeneralModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_FileModifier> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectFileModifier_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectFileModifier_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<IGESSelect_FileModifier> to Handle<IGESSelect_AddFileComment>
@@ -6634,16 +7503,18 @@ impl HandleIGESSelectFileModifier {
     pub fn downcast_to_add_file_comment(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectAddFileComment>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIGESSelectFileModifier_downcast_to_HandleIGESSelectAddFileComment(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -6653,16 +7524,18 @@ impl HandleIGESSelectFileModifier {
     pub fn downcast_to_float_format(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectFloatFormat>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIGESSelectFileModifier_downcast_to_HandleIGESSelectFloatFormat(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -6692,8 +7565,10 @@ impl FloatFormat {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_FloatFormat_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6703,8 +7578,12 @@ impl FloatFormat {
     /// ensure <digits> significant digits to be displayed
     pub fn set_default(&mut self, digits: i32) {
         {
-            unsafe { crate::ffi::IGESSelect_FloatFormat_set_default(self as *mut Self, digits) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_FloatFormat_set_default(self as *mut Self, digits)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6712,10 +7591,12 @@ impl FloatFormat {
     /// Sets ZeroSuppress mode to a new value
     pub fn set_zero_suppress(&mut self, mode: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_FloatFormat_set_zero_suppress(self as *mut Self, mode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6726,10 +7607,12 @@ impl FloatFormat {
     pub fn set_format(&mut self, format: &str) {
         let c_format = std::ffi::CString::new(format).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_FloatFormat_set_format(self as *mut Self, c_format.as_ptr())
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6744,7 +7627,7 @@ impl FloatFormat {
     pub fn set_format_for_range(&mut self, format: &str, Rmin: f64, Rmax: f64) {
         let c_format = std::ffi::CString::new(format).unwrap();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_FloatFormat_set_format_for_range(
                     self as *mut Self,
                     c_format.as_ptr(),
@@ -6752,7 +7635,9 @@ impl FloatFormat {
                     Rmax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6776,7 +7661,7 @@ impl FloatFormat {
         rangemax: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_FloatFormat_format(
                     self as *const Self,
                     zerosup,
@@ -6787,7 +7672,9 @@ impl FloatFormat {
                     rangemax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6800,8 +7687,12 @@ impl FloatFormat {
         writer: &mut crate::iges_data::IGESWriter,
     ) {
         {
-            unsafe { crate::ffi::IGESSelect_FloatFormat_perform(self as *const Self, ctx, writer) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_FloatFormat_perform(self as *const Self, ctx, writer)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6811,8 +7702,11 @@ impl FloatFormat {
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_FloatFormat_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6821,8 +7715,11 @@ impl FloatFormat {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_FloatFormat_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6830,8 +7727,11 @@ impl FloatFormat {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_FloatFormat_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6839,88 +7739,89 @@ impl FloatFormat {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_FloatFormat_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESSelect_FileModifier
     pub fn as_file_modifier(&self) -> &FileModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_FloatFormat_as_IGESSelect_FileModifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_FloatFormat_as_IGESSelect_FileModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESSelect_FileModifier (mutable)
     pub fn as_file_modifier_mut(&mut self) -> &mut FileModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_FloatFormat_as_IGESSelect_FileModifier_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_FloatFormat_as_IGESSelect_FileModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier
     pub fn as_if_select_general_modifier(&self) -> &crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_FloatFormat_as_IFSelect_GeneralModifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_FloatFormat_as_IFSelect_GeneralModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier (mutable)
     pub fn as_if_select_general_modifier_mut(&mut self) -> &mut crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_FloatFormat_as_IFSelect_GeneralModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_FloatFormat_as_IFSelect_GeneralModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_FloatFormat_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_FloatFormat_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_FloatFormat_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_FloatFormat_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectFloatFormat> {
-        {
-            let __result = unsafe { crate::ffi::IGESSelect_FloatFormat_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_FloatFormat_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
@@ -6929,18 +7830,23 @@ impl FloatFormat {
             let __result = unsafe {
                 crate::ffi::IGESSelect_FloatFormat_inherited_MayChangeGraph(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
     pub fn set_dispatch(&mut self, disp: &crate::ffi::HandleIFSelectDispatch) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_FloatFormat_inherited_SetDispatch(self as *mut Self, disp)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6950,8 +7856,11 @@ impl FloatFormat {
             let __result = unsafe {
                 crate::ffi::IGESSelect_FloatFormat_inherited_Dispatch(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6961,28 +7870,35 @@ impl FloatFormat {
             let __result = unsafe {
                 crate::ffi::IGESSelect_FloatFormat_inherited_Applies(self as *const Self, disp)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_FloatFormat_inherited_SetSelection(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_FloatFormat_inherited_ResetSelection(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6992,8 +7908,11 @@ impl FloatFormat {
             let __result = unsafe {
                 crate::ffi::IGESSelect_FloatFormat_inherited_HasSelection(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7003,8 +7922,11 @@ impl FloatFormat {
             let __result = unsafe {
                 crate::ffi::IGESSelect_FloatFormat_inherited_Selection(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7017,8 +7939,11 @@ impl FloatFormat {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7028,8 +7953,11 @@ impl FloatFormat {
             let __result = unsafe {
                 crate::ffi::IGESSelect_FloatFormat_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7038,11 +7966,14 @@ impl FloatFormat {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_FloatFormat_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7053,18 +7984,23 @@ impl FloatFormat {
             let __result = unsafe {
                 crate::ffi::IGESSelect_FloatFormat_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_FloatFormat_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7074,16 +8010,22 @@ impl FloatFormat {
             let __result = unsafe {
                 crate::ffi::IGESSelect_FloatFormat_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_FloatFormat_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_FloatFormat_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7099,65 +8041,62 @@ unsafe impl crate::CppDeletable for HandleIGESSelectFloatFormat {
 impl HandleIGESSelectFloatFormat {
     /// Dereference this Handle to access the underlying IGESSelect_FloatFormat
     pub fn get(&self) -> &crate::ffi::IGESSelect_FloatFormat {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectFloatFormat_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectFloatFormat_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_FloatFormat
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_FloatFormat {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectFloatFormat_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectFloatFormat_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_FloatFormat> to Handle<IGESSelect_FileModifier>
     pub fn to_handle_file_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectFileModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectFloatFormat_to_HandleIGESSelectFileModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectFloatFormat_to_HandleIGESSelectFileModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_FloatFormat> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectFloatFormat_to_HandleIFSelectGeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectFloatFormat_to_HandleIFSelectGeneralModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_FloatFormat> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectFloatFormat_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectFloatFormat_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -7185,8 +8124,10 @@ impl IGESName {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_IGESName_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7201,8 +8142,11 @@ impl IGESName {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_IGESName_value(self as *const Self, ent, model) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -7211,8 +8155,11 @@ impl IGESName {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_IGESName_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7220,8 +8167,11 @@ impl IGESName {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_IGESName_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -7229,114 +8179,109 @@ impl IGESName {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_IGESName_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_Signature
     pub fn as_if_select_signature(&self) -> &crate::if_select::Signature {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_IGESName_as_IFSelect_Signature(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_IGESName_as_IFSelect_Signature(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Signature (mutable)
     pub fn as_if_select_signature_mut(&mut self) -> &mut crate::if_select::Signature {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_IGESName_as_IFSelect_Signature_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_IGESName_as_IFSelect_Signature_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Interface_SignType
     pub fn as_interface_sign_type(&self) -> &crate::interface::SignType {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_IGESName_as_Interface_SignType(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_IGESName_as_Interface_SignType(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Interface_SignType (mutable)
     pub fn as_interface_sign_type_mut(&mut self) -> &mut crate::interface::SignType {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_IGESName_as_Interface_SignType_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_IGESName_as_Interface_SignType_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to MoniTool_SignText
     pub fn as_moni_tool_sign_text(&self) -> &crate::moni_tool::SignText {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_IGESName_as_MoniTool_SignText(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_IGESName_as_MoniTool_SignText(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to MoniTool_SignText (mutable)
     pub fn as_moni_tool_sign_text_mut(&mut self) -> &mut crate::moni_tool::SignText {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_IGESName_as_MoniTool_SignText_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_IGESName_as_MoniTool_SignText_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_IGESName_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_IGESName_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_IGESName_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_IGESName_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectIGESName> {
-        {
-            let __result = unsafe { crate::ffi::IGESSelect_IGESName_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_IGESName_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_IGESName_inherited_SetIntCase(
                     self as *mut Self,
                     hasmin,
@@ -7345,7 +8290,9 @@ impl IGESName {
                     valmax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7367,8 +8314,11 @@ impl IGESName {
                     valmax,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7377,8 +8327,11 @@ impl IGESName {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_IGESName_inherited_CaseList(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7387,8 +8340,11 @@ impl IGESName {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_IGESName_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7410,8 +8366,11 @@ impl IGESName {
                     exact,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7425,8 +8384,11 @@ impl IGESName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_IGESName_inherited_Text(self as *const Self, ent, context)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7439,8 +8401,11 @@ impl IGESName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_IGESName_inherited_TextAlone(self as *const Self, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7450,8 +8415,11 @@ impl IGESName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_IGESName_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7461,8 +8429,11 @@ impl IGESName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_IGESName_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7471,11 +8442,14 @@ impl IGESName {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_IGESName_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7486,18 +8460,23 @@ impl IGESName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_IGESName_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_IGESName_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7507,16 +8486,22 @@ impl IGESName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_IGESName_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_IGESName_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_IGESName_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7532,65 +8517,64 @@ unsafe impl crate::CppDeletable for HandleIGESSelectIGESName {
 impl HandleIGESSelectIGESName {
     /// Dereference this Handle to access the underlying IGESSelect_IGESName
     pub fn get(&self) -> &crate::ffi::IGESSelect_IGESName {
-        {
-            let __result = unsafe { crate::ffi::HandleIGESSelectIGESName_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectIGESName_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_IGESName
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_IGESName {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectIGESName_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectIGESName_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_IGESName> to Handle<IFSelect_Signature>
     pub fn to_handle_signature(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectIGESName_to_HandleIFSelectSignature(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectIGESName_to_HandleIFSelectSignature(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_IGESName> to Handle<Interface_SignType>
     pub fn to_handle_sign_type(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceSignType> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectIGESName_to_HandleInterfaceSignType(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectIGESName_to_HandleInterfaceSignType(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_IGESName> to Handle<MoniTool_SignText>
     pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi::HandleMoniToolSignText> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectIGESName_to_HandleMoniToolSignText(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectIGESName_to_HandleMoniToolSignText(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_IGESName> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectIGESName_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectIGESName_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -7619,8 +8603,10 @@ impl IGESTypeForm {
     pub fn new_bool(withform: bool) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_IGESTypeForm_ctor_bool(withform) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7635,8 +8621,12 @@ impl IGESTypeForm {
     /// Changes the mode for giving the Form Number
     pub fn set_form(&mut self, withform: bool) {
         {
-            unsafe { crate::ffi::IGESSelect_IGESTypeForm_set_form(self as *mut Self, withform) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_IGESTypeForm_set_form(self as *mut Self, withform)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7652,8 +8642,11 @@ impl IGESTypeForm {
             let __result = unsafe {
                 crate::ffi::IGESSelect_IGESTypeForm_value(self as *const Self, ent, model)
             };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -7662,8 +8655,11 @@ impl IGESTypeForm {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_IGESTypeForm_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7671,8 +8667,11 @@ impl IGESTypeForm {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_IGESTypeForm_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -7680,114 +8679,117 @@ impl IGESTypeForm {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_IGESTypeForm_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_Signature
     pub fn as_if_select_signature(&self) -> &crate::if_select::Signature {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_IGESTypeForm_as_IFSelect_Signature(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_IGESTypeForm_as_IFSelect_Signature(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Signature (mutable)
     pub fn as_if_select_signature_mut(&mut self) -> &mut crate::if_select::Signature {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_IGESTypeForm_as_IFSelect_Signature_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_IGESTypeForm_as_IFSelect_Signature_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Interface_SignType
     pub fn as_interface_sign_type(&self) -> &crate::interface::SignType {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_IGESTypeForm_as_Interface_SignType(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_IGESTypeForm_as_Interface_SignType(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Interface_SignType (mutable)
     pub fn as_interface_sign_type_mut(&mut self) -> &mut crate::interface::SignType {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_IGESTypeForm_as_Interface_SignType_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_IGESTypeForm_as_Interface_SignType_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to MoniTool_SignText
     pub fn as_moni_tool_sign_text(&self) -> &crate::moni_tool::SignText {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_IGESTypeForm_as_MoniTool_SignText(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_IGESTypeForm_as_MoniTool_SignText(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to MoniTool_SignText (mutable)
     pub fn as_moni_tool_sign_text_mut(&mut self) -> &mut crate::moni_tool::SignText {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_IGESTypeForm_as_MoniTool_SignText_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_IGESTypeForm_as_MoniTool_SignText_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_IGESTypeForm_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_IGESTypeForm_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_IGESTypeForm_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_IGESTypeForm_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectIGESTypeForm> {
-        {
-            let __result = unsafe { crate::ffi::IGESSelect_IGESTypeForm_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_IGESTypeForm_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_IGESTypeForm_inherited_SetIntCase(
                     self as *mut Self,
                     hasmin,
@@ -7796,7 +8798,9 @@ impl IGESTypeForm {
                     valmax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7818,8 +8822,11 @@ impl IGESTypeForm {
                     valmax,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7829,8 +8836,11 @@ impl IGESTypeForm {
             let __result = unsafe {
                 crate::ffi::IGESSelect_IGESTypeForm_inherited_CaseList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7839,8 +8849,11 @@ impl IGESTypeForm {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_IGESTypeForm_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7862,8 +8875,11 @@ impl IGESTypeForm {
                     exact,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7881,8 +8897,11 @@ impl IGESTypeForm {
                     context,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7895,8 +8914,11 @@ impl IGESTypeForm {
             let __result = unsafe {
                 crate::ffi::IGESSelect_IGESTypeForm_inherited_TextAlone(self as *const Self, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7909,8 +8931,11 @@ impl IGESTypeForm {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7920,8 +8945,11 @@ impl IGESTypeForm {
             let __result = unsafe {
                 crate::ffi::IGESSelect_IGESTypeForm_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7930,11 +8958,14 @@ impl IGESTypeForm {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_IGESTypeForm_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7945,18 +8976,23 @@ impl IGESTypeForm {
             let __result = unsafe {
                 crate::ffi::IGESSelect_IGESTypeForm_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_IGESTypeForm_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7966,16 +9002,23 @@ impl IGESTypeForm {
             let __result = unsafe {
                 crate::ffi::IGESSelect_IGESTypeForm_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_IGESTypeForm_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_IGESTypeForm_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7991,74 +9034,65 @@ unsafe impl crate::CppDeletable for HandleIGESSelectIGESTypeForm {
 impl HandleIGESSelectIGESTypeForm {
     /// Dereference this Handle to access the underlying IGESSelect_IGESTypeForm
     pub fn get(&self) -> &crate::ffi::IGESSelect_IGESTypeForm {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectIGESTypeForm_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectIGESTypeForm_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_IGESTypeForm
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_IGESTypeForm {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectIGESTypeForm_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectIGESTypeForm_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_IGESTypeForm> to Handle<IFSelect_Signature>
     pub fn to_handle_signature(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectIGESTypeForm_to_HandleIFSelectSignature(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectIGESTypeForm_to_HandleIFSelectSignature(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_IGESTypeForm> to Handle<Interface_SignType>
     pub fn to_handle_sign_type(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceSignType> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectIGESTypeForm_to_HandleInterfaceSignType(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectIGESTypeForm_to_HandleInterfaceSignType(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_IGESTypeForm> to Handle<MoniTool_SignText>
     pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi::HandleMoniToolSignText> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectIGESTypeForm_to_HandleMoniToolSignText(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectIGESTypeForm_to_HandleMoniToolSignText(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_IGESTypeForm> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectIGESTypeForm_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectIGESTypeForm_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -8088,7 +9122,7 @@ impl ModelModifier {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ModelModifier_perform(
                     self as *const Self,
                     ctx,
@@ -8097,7 +9131,9 @@ impl ModelModifier {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8114,7 +9150,7 @@ impl ModelModifier {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ModelModifier_perform_protocol(
                     self as *const Self,
                     ctx,
@@ -8123,7 +9159,9 @@ impl ModelModifier {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8139,7 +9177,7 @@ impl ModelModifier {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ModelModifier_performing(
                     self as *const Self,
                     ctx,
@@ -8147,7 +9185,9 @@ impl ModelModifier {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8156,8 +9196,11 @@ impl ModelModifier {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_ModelModifier_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8165,8 +9208,11 @@ impl ModelModifier {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_ModelModifier_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8174,79 +9220,78 @@ impl ModelModifier {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_ModelModifier_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_Modifier
     pub fn as_if_select_modifier(&self) -> &crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ModelModifier_as_IFSelect_Modifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ModelModifier_as_IFSelect_Modifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier (mutable)
     pub fn as_if_select_modifier_mut(&mut self) -> &mut crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ModelModifier_as_IFSelect_Modifier_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ModelModifier_as_IFSelect_Modifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier
     pub fn as_if_select_general_modifier(&self) -> &crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ModelModifier_as_IFSelect_GeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ModelModifier_as_IFSelect_GeneralModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier (mutable)
     pub fn as_if_select_general_modifier_mut(&mut self) -> &mut crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ModelModifier_as_IFSelect_GeneralModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ModelModifier_as_IFSelect_GeneralModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ModelModifier_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ModelModifier_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ModelModifier_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ModelModifier_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:68 - `IFSelect_GeneralModifier::MayChangeGraph()`
@@ -8255,18 +9300,23 @@ impl ModelModifier {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ModelModifier_inherited_MayChangeGraph(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
     pub fn set_dispatch(&mut self, disp: &crate::ffi::HandleIFSelectDispatch) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ModelModifier_inherited_SetDispatch(self as *mut Self, disp)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8276,8 +9326,11 @@ impl ModelModifier {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ModelModifier_inherited_Dispatch(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8287,28 +9340,35 @@ impl ModelModifier {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ModelModifier_inherited_Applies(self as *const Self, disp)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ModelModifier_inherited_SetSelection(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ModelModifier_inherited_ResetSelection(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8318,8 +9378,11 @@ impl ModelModifier {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ModelModifier_inherited_HasSelection(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8329,8 +9392,11 @@ impl ModelModifier {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ModelModifier_inherited_Selection(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8340,8 +9406,11 @@ impl ModelModifier {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ModelModifier_inherited_Label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8354,8 +9423,11 @@ impl ModelModifier {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8365,8 +9437,11 @@ impl ModelModifier {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ModelModifier_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8375,11 +9450,14 @@ impl ModelModifier {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_ModelModifier_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -8390,20 +9468,25 @@ impl ModelModifier {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ModelModifier_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ModelModifier_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8415,16 +9498,23 @@ impl ModelModifier {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_ModelModifier_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_ModelModifier_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8440,63 +9530,61 @@ unsafe impl crate::CppDeletable for HandleIGESSelectModelModifier {
 impl HandleIGESSelectModelModifier {
     /// Dereference this Handle to access the underlying IGESSelect_ModelModifier
     pub fn get(&self) -> &crate::ffi::IGESSelect_ModelModifier {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectModelModifier_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectModelModifier_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_ModelModifier
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_ModelModifier {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectModelModifier_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectModelModifier_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_ModelModifier> to Handle<IFSelect_Modifier>
     pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectModelModifier_to_HandleIFSelectModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectModelModifier_to_HandleIFSelectModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_ModelModifier> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectModelModifier_to_HandleIFSelectGeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectModelModifier_to_HandleIFSelectGeneralModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_ModelModifier> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectModelModifier_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectModelModifier_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<IGESSelect_ModelModifier> to Handle<IGESSelect_AddGroup>
@@ -8505,16 +9593,18 @@ impl HandleIGESSelectModelModifier {
     pub fn downcast_to_add_group(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectAddGroup>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectAddGroup(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8524,16 +9614,18 @@ impl HandleIGESSelectModelModifier {
     pub fn downcast_to_auto_correct(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectAutoCorrect>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectAutoCorrect(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8543,16 +9635,18 @@ impl HandleIGESSelectModelModifier {
     pub fn downcast_to_change_level_list(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectChangeLevelList>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectChangeLevelList(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8562,16 +9656,18 @@ impl HandleIGESSelectModelModifier {
     pub fn downcast_to_change_level_number(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectChangeLevelNumber>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectChangeLevelNumber(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8581,16 +9677,18 @@ impl HandleIGESSelectModelModifier {
     pub fn downcast_to_compute_status(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectComputeStatus>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectComputeStatus(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8600,16 +9698,18 @@ impl HandleIGESSelectModelModifier {
     pub fn downcast_to_rebuild_drawings(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectRebuildDrawings>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectRebuildDrawings(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8619,16 +9719,18 @@ impl HandleIGESSelectModelModifier {
     pub fn downcast_to_rebuild_groups(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectRebuildGroups>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectRebuildGroups(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8638,16 +9740,18 @@ impl HandleIGESSelectModelModifier {
     pub fn downcast_to_remove_curves(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectRemoveCurves>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectRemoveCurves(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8657,16 +9761,18 @@ impl HandleIGESSelectModelModifier {
     pub fn downcast_to_set_global_parameter(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSetGlobalParameter>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectSetGlobalParameter(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8676,16 +9782,18 @@ impl HandleIGESSelectModelModifier {
     pub fn downcast_to_set_label(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSetLabel>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectSetLabel(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8695,16 +9803,18 @@ impl HandleIGESSelectModelModifier {
     pub fn downcast_to_set_version5(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectSetVersion5>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectSetVersion5(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8714,16 +9824,18 @@ impl HandleIGESSelectModelModifier {
     pub fn downcast_to_update_creation_date(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectUpdateCreationDate>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectUpdateCreationDate(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8733,16 +9845,18 @@ impl HandleIGESSelectModelModifier {
     pub fn downcast_to_update_file_name(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectUpdateFileName>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectUpdateFileName(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8752,16 +9866,18 @@ impl HandleIGESSelectModelModifier {
     pub fn downcast_to_update_last_change(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESSelectUpdateLastChange>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleIGESSelectModelModifier_downcast_to_HandleIGESSelectUpdateLastChange(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -8795,8 +9911,10 @@ impl RebuildDrawings {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_RebuildDrawings_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8809,7 +9927,7 @@ impl RebuildDrawings {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_RebuildDrawings_performing(
                     self as *const Self,
                     ctx,
@@ -8817,7 +9935,9 @@ impl RebuildDrawings {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8828,8 +9948,11 @@ impl RebuildDrawings {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_RebuildDrawings_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8838,8 +9961,11 @@ impl RebuildDrawings {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_RebuildDrawings_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8847,8 +9973,11 @@ impl RebuildDrawings {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_RebuildDrawings_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8856,117 +9985,115 @@ impl RebuildDrawings {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_RebuildDrawings_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESSelect_ModelModifier
     pub fn as_model_modifier(&self) -> &ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RebuildDrawings_as_IGESSelect_ModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RebuildDrawings_as_IGESSelect_ModelModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESSelect_ModelModifier (mutable)
     pub fn as_model_modifier_mut(&mut self) -> &mut ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RebuildDrawings_as_IGESSelect_ModelModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RebuildDrawings_as_IGESSelect_ModelModifier_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier
     pub fn as_if_select_modifier(&self) -> &crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RebuildDrawings_as_IFSelect_Modifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RebuildDrawings_as_IFSelect_Modifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier (mutable)
     pub fn as_if_select_modifier_mut(&mut self) -> &mut crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RebuildDrawings_as_IFSelect_Modifier_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RebuildDrawings_as_IFSelect_Modifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier
     pub fn as_if_select_general_modifier(&self) -> &crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RebuildDrawings_as_IFSelect_GeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RebuildDrawings_as_IFSelect_GeneralModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier (mutable)
     pub fn as_if_select_general_modifier_mut(&mut self) -> &mut crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RebuildDrawings_as_IFSelect_GeneralModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RebuildDrawings_as_IFSelect_GeneralModifier_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RebuildDrawings_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RebuildDrawings_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RebuildDrawings_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RebuildDrawings_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectRebuildDrawings> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_RebuildDrawings_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_RebuildDrawings_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
@@ -8978,7 +10105,7 @@ impl RebuildDrawings {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_RebuildDrawings_inherited_Perform(
                     self as *const Self,
                     ctx,
@@ -8987,7 +10114,9 @@ impl RebuildDrawings {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9000,7 +10129,7 @@ impl RebuildDrawings {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_RebuildDrawings_inherited_PerformProtocol(
                     self as *const Self,
                     ctx,
@@ -9009,7 +10138,9 @@ impl RebuildDrawings {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9019,21 +10150,26 @@ impl RebuildDrawings {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RebuildDrawings_inherited_MayChangeGraph(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
     pub fn set_dispatch(&mut self, disp: &crate::ffi::HandleIFSelectDispatch) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_RebuildDrawings_inherited_SetDispatch(
                     self as *mut Self,
                     disp,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9043,8 +10179,11 @@ impl RebuildDrawings {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RebuildDrawings_inherited_Dispatch(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9054,31 +10193,38 @@ impl RebuildDrawings {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RebuildDrawings_inherited_Applies(self as *const Self, disp)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_RebuildDrawings_inherited_SetSelection(
                     self as *mut Self,
                     sel,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_RebuildDrawings_inherited_ResetSelection(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9088,8 +10234,11 @@ impl RebuildDrawings {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RebuildDrawings_inherited_HasSelection(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9099,8 +10248,11 @@ impl RebuildDrawings {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RebuildDrawings_inherited_Selection(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9113,8 +10265,11 @@ impl RebuildDrawings {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9127,8 +10282,11 @@ impl RebuildDrawings {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9138,11 +10296,14 @@ impl RebuildDrawings {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RebuildDrawings_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -9153,20 +10314,25 @@ impl RebuildDrawings {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RebuildDrawings_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_RebuildDrawings_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9178,16 +10344,23 @@ impl RebuildDrawings {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_RebuildDrawings_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_RebuildDrawings_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -9203,78 +10376,78 @@ unsafe impl crate::CppDeletable for HandleIGESSelectRebuildDrawings {
 impl HandleIGESSelectRebuildDrawings {
     /// Dereference this Handle to access the underlying IGESSelect_RebuildDrawings
     pub fn get(&self) -> &crate::ffi::IGESSelect_RebuildDrawings {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectRebuildDrawings_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectRebuildDrawings_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_RebuildDrawings
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_RebuildDrawings {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectRebuildDrawings_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectRebuildDrawings_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_RebuildDrawings> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectModelModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectRebuildDrawings_to_HandleIGESSelectModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectRebuildDrawings_to_HandleIGESSelectModelModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_RebuildDrawings> to Handle<IFSelect_Modifier>
     pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectRebuildDrawings_to_HandleIFSelectModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectRebuildDrawings_to_HandleIFSelectModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_RebuildDrawings> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectRebuildDrawings_to_HandleIFSelectGeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectRebuildDrawings_to_HandleIFSelectGeneralModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_RebuildDrawings> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectRebuildDrawings_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectRebuildDrawings_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -9307,8 +10480,10 @@ impl RebuildGroups {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_RebuildGroups_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9321,7 +10496,7 @@ impl RebuildGroups {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_RebuildGroups_performing(
                     self as *const Self,
                     ctx,
@@ -9329,7 +10504,9 @@ impl RebuildGroups {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9340,8 +10517,11 @@ impl RebuildGroups {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_RebuildGroups_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9350,8 +10530,11 @@ impl RebuildGroups {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_RebuildGroups_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9359,8 +10542,11 @@ impl RebuildGroups {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_RebuildGroups_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -9368,117 +10554,111 @@ impl RebuildGroups {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_RebuildGroups_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESSelect_ModelModifier
     pub fn as_model_modifier(&self) -> &ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RebuildGroups_as_IGESSelect_ModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RebuildGroups_as_IGESSelect_ModelModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESSelect_ModelModifier (mutable)
     pub fn as_model_modifier_mut(&mut self) -> &mut ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RebuildGroups_as_IGESSelect_ModelModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RebuildGroups_as_IGESSelect_ModelModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier
     pub fn as_if_select_modifier(&self) -> &crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RebuildGroups_as_IFSelect_Modifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RebuildGroups_as_IFSelect_Modifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier (mutable)
     pub fn as_if_select_modifier_mut(&mut self) -> &mut crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RebuildGroups_as_IFSelect_Modifier_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RebuildGroups_as_IFSelect_Modifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier
     pub fn as_if_select_general_modifier(&self) -> &crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RebuildGroups_as_IFSelect_GeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RebuildGroups_as_IFSelect_GeneralModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier (mutable)
     pub fn as_if_select_general_modifier_mut(&mut self) -> &mut crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RebuildGroups_as_IFSelect_GeneralModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RebuildGroups_as_IFSelect_GeneralModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RebuildGroups_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RebuildGroups_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RebuildGroups_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RebuildGroups_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectRebuildGroups> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_RebuildGroups_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_RebuildGroups_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
@@ -9490,7 +10670,7 @@ impl RebuildGroups {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_RebuildGroups_inherited_Perform(
                     self as *const Self,
                     ctx,
@@ -9499,7 +10679,9 @@ impl RebuildGroups {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9512,7 +10694,7 @@ impl RebuildGroups {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_RebuildGroups_inherited_PerformProtocol(
                     self as *const Self,
                     ctx,
@@ -9521,7 +10703,9 @@ impl RebuildGroups {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9531,18 +10715,23 @@ impl RebuildGroups {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RebuildGroups_inherited_MayChangeGraph(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
     pub fn set_dispatch(&mut self, disp: &crate::ffi::HandleIFSelectDispatch) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_RebuildGroups_inherited_SetDispatch(self as *mut Self, disp)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9552,8 +10741,11 @@ impl RebuildGroups {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RebuildGroups_inherited_Dispatch(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9563,28 +10755,35 @@ impl RebuildGroups {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RebuildGroups_inherited_Applies(self as *const Self, disp)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_RebuildGroups_inherited_SetSelection(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_RebuildGroups_inherited_ResetSelection(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9594,8 +10793,11 @@ impl RebuildGroups {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RebuildGroups_inherited_HasSelection(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9605,8 +10807,11 @@ impl RebuildGroups {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RebuildGroups_inherited_Selection(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9619,8 +10824,11 @@ impl RebuildGroups {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9630,8 +10838,11 @@ impl RebuildGroups {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RebuildGroups_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9640,11 +10851,14 @@ impl RebuildGroups {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_RebuildGroups_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -9655,20 +10869,25 @@ impl RebuildGroups {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RebuildGroups_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_RebuildGroups_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9680,16 +10899,23 @@ impl RebuildGroups {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_RebuildGroups_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_RebuildGroups_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -9705,78 +10931,76 @@ unsafe impl crate::CppDeletable for HandleIGESSelectRebuildGroups {
 impl HandleIGESSelectRebuildGroups {
     /// Dereference this Handle to access the underlying IGESSelect_RebuildGroups
     pub fn get(&self) -> &crate::ffi::IGESSelect_RebuildGroups {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectRebuildGroups_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectRebuildGroups_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_RebuildGroups
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_RebuildGroups {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectRebuildGroups_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectRebuildGroups_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_RebuildGroups> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectModelModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectRebuildGroups_to_HandleIGESSelectModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectRebuildGroups_to_HandleIGESSelectModelModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_RebuildGroups> to Handle<IFSelect_Modifier>
     pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectRebuildGroups_to_HandleIFSelectModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectRebuildGroups_to_HandleIFSelectModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_RebuildGroups> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectRebuildGroups_to_HandleIFSelectGeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectRebuildGroups_to_HandleIFSelectGeneralModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_RebuildGroups> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectRebuildGroups_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectRebuildGroups_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -9803,8 +11027,10 @@ impl RemoveCurves {
     pub fn new_bool(UV: bool) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_RemoveCurves_ctor_bool(UV) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9817,10 +11043,12 @@ impl RemoveCurves {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_RemoveCurves_performing(self as *const Self, ctx, target, TC)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9831,8 +11059,11 @@ impl RemoveCurves {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_RemoveCurves_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9841,8 +11072,11 @@ impl RemoveCurves {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_RemoveCurves_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9850,8 +11084,11 @@ impl RemoveCurves {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_RemoveCurves_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -9859,112 +11096,111 @@ impl RemoveCurves {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_RemoveCurves_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESSelect_ModelModifier
     pub fn as_model_modifier(&self) -> &ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RemoveCurves_as_IGESSelect_ModelModifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RemoveCurves_as_IGESSelect_ModelModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESSelect_ModelModifier (mutable)
     pub fn as_model_modifier_mut(&mut self) -> &mut ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RemoveCurves_as_IGESSelect_ModelModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RemoveCurves_as_IGESSelect_ModelModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier
     pub fn as_if_select_modifier(&self) -> &crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RemoveCurves_as_IFSelect_Modifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RemoveCurves_as_IFSelect_Modifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier (mutable)
     pub fn as_if_select_modifier_mut(&mut self) -> &mut crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RemoveCurves_as_IFSelect_Modifier_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RemoveCurves_as_IFSelect_Modifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier
     pub fn as_if_select_general_modifier(&self) -> &crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RemoveCurves_as_IFSelect_GeneralModifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RemoveCurves_as_IFSelect_GeneralModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier (mutable)
     pub fn as_if_select_general_modifier_mut(&mut self) -> &mut crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RemoveCurves_as_IFSelect_GeneralModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RemoveCurves_as_IFSelect_GeneralModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RemoveCurves_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RemoveCurves_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_RemoveCurves_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_RemoveCurves_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectRemoveCurves> {
-        {
-            let __result = unsafe { crate::ffi::IGESSelect_RemoveCurves_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_RemoveCurves_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
@@ -9976,7 +11212,7 @@ impl RemoveCurves {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_RemoveCurves_inherited_Perform(
                     self as *const Self,
                     ctx,
@@ -9985,7 +11221,9 @@ impl RemoveCurves {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9998,7 +11236,7 @@ impl RemoveCurves {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_RemoveCurves_inherited_PerformProtocol(
                     self as *const Self,
                     ctx,
@@ -10007,7 +11245,9 @@ impl RemoveCurves {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10017,18 +11257,23 @@ impl RemoveCurves {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RemoveCurves_inherited_MayChangeGraph(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
     pub fn set_dispatch(&mut self, disp: &crate::ffi::HandleIFSelectDispatch) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_RemoveCurves_inherited_SetDispatch(self as *mut Self, disp)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10038,8 +11283,11 @@ impl RemoveCurves {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RemoveCurves_inherited_Dispatch(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10049,28 +11297,35 @@ impl RemoveCurves {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RemoveCurves_inherited_Applies(self as *const Self, disp)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_RemoveCurves_inherited_SetSelection(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_RemoveCurves_inherited_ResetSelection(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10080,8 +11335,11 @@ impl RemoveCurves {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RemoveCurves_inherited_HasSelection(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10091,8 +11349,11 @@ impl RemoveCurves {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RemoveCurves_inherited_Selection(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10105,8 +11366,11 @@ impl RemoveCurves {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10116,8 +11380,11 @@ impl RemoveCurves {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RemoveCurves_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10126,11 +11393,14 @@ impl RemoveCurves {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_RemoveCurves_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -10141,18 +11411,23 @@ impl RemoveCurves {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RemoveCurves_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_RemoveCurves_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10162,16 +11437,23 @@ impl RemoveCurves {
             let __result = unsafe {
                 crate::ffi::IGESSelect_RemoveCurves_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_RemoveCurves_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_RemoveCurves_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -10187,78 +11469,73 @@ unsafe impl crate::CppDeletable for HandleIGESSelectRemoveCurves {
 impl HandleIGESSelectRemoveCurves {
     /// Dereference this Handle to access the underlying IGESSelect_RemoveCurves
     pub fn get(&self) -> &crate::ffi::IGESSelect_RemoveCurves {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectRemoveCurves_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectRemoveCurves_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_RemoveCurves
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_RemoveCurves {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectRemoveCurves_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectRemoveCurves_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_RemoveCurves> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectModelModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectRemoveCurves_to_HandleIGESSelectModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectRemoveCurves_to_HandleIGESSelectModelModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_RemoveCurves> to Handle<IFSelect_Modifier>
     pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectRemoveCurves_to_HandleIFSelectModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectRemoveCurves_to_HandleIFSelectModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_RemoveCurves> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectRemoveCurves_to_HandleIFSelectGeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectRemoveCurves_to_HandleIFSelectGeneralModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_RemoveCurves> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectRemoveCurves_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectRemoveCurves_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -10299,8 +11576,10 @@ impl SelectBasicGeom {
     pub fn new_int(mode: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectBasicGeom_ctor_int(mode) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10309,8 +11588,11 @@ impl SelectBasicGeom {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectBasicGeom_curves_only(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10334,8 +11616,11 @@ impl SelectBasicGeom {
                     explored,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10347,8 +11632,11 @@ impl SelectBasicGeom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBasicGeom_explore_label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10357,8 +11645,11 @@ impl SelectBasicGeom {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectBasicGeom_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10375,8 +11666,11 @@ impl SelectBasicGeom {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectBasicGeom_sub_curves(ent, explored) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10384,8 +11678,11 @@ impl SelectBasicGeom {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectBasicGeom_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -10393,115 +11690,111 @@ impl SelectBasicGeom {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectBasicGeom_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_SelectExplore
     pub fn as_if_select_select_explore(&self) -> &crate::if_select::SelectExplore {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBasicGeom_as_IFSelect_SelectExplore(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBasicGeom_as_IFSelect_SelectExplore(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectExplore (mutable)
     pub fn as_if_select_select_explore_mut(&mut self) -> &mut crate::if_select::SelectExplore {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBasicGeom_as_IFSelect_SelectExplore_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBasicGeom_as_IFSelect_SelectExplore_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBasicGeom_as_IFSelect_SelectDeduct(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBasicGeom_as_IFSelect_SelectDeduct(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct (mutable)
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBasicGeom_as_IFSelect_SelectDeduct_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBasicGeom_as_IFSelect_SelectDeduct_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBasicGeom_as_IFSelect_Selection(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBasicGeom_as_IFSelect_Selection(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Selection (mutable)
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBasicGeom_as_IFSelect_Selection_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBasicGeom_as_IFSelect_Selection_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBasicGeom_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBasicGeom_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBasicGeom_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBasicGeom_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectBasicGeom> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_SelectBasicGeom_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_SelectBasicGeom_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
@@ -10510,8 +11803,11 @@ impl SelectBasicGeom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBasicGeom_inherited_Level(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10524,8 +11820,11 @@ impl SelectBasicGeom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBasicGeom_inherited_RootResult(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10535,18 +11834,23 @@ impl SelectBasicGeom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBasicGeom_inherited_Label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectBasicGeom_inherited_SetInput(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10556,8 +11860,11 @@ impl SelectBasicGeom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBasicGeom_inherited_Input(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10567,8 +11874,11 @@ impl SelectBasicGeom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBasicGeom_inherited_HasInput(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10578,8 +11888,11 @@ impl SelectBasicGeom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBasicGeom_inherited_HasAlternate(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10589,8 +11902,11 @@ impl SelectBasicGeom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBasicGeom_inherited_Alternate(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -10603,21 +11919,26 @@ impl SelectBasicGeom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBasicGeom_inherited_InputResult(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectBasicGeom_inherited_FillIterator(
                     self as *const Self,
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10633,8 +11954,11 @@ impl SelectBasicGeom {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10650,8 +11974,11 @@ impl SelectBasicGeom {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10664,8 +11991,11 @@ impl SelectBasicGeom {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10678,8 +12008,11 @@ impl SelectBasicGeom {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10689,11 +12022,14 @@ impl SelectBasicGeom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBasicGeom_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -10704,20 +12040,25 @@ impl SelectBasicGeom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBasicGeom_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectBasicGeom_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10729,16 +12070,23 @@ impl SelectBasicGeom {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_SelectBasicGeom_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_SelectBasicGeom_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -10754,78 +12102,78 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectBasicGeom {
 impl HandleIGESSelectSelectBasicGeom {
     /// Dereference this Handle to access the underlying IGESSelect_SelectBasicGeom
     pub fn get(&self) -> &crate::ffi::IGESSelect_SelectBasicGeom {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSelectBasicGeom_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectBasicGeom_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_SelectBasicGeom
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_SelectBasicGeom {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSelectBasicGeom_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectBasicGeom_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_SelectBasicGeom> to Handle<IFSelect_SelectExplore>
     pub fn to_handle_select_explore(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExplore> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectBasicGeom_to_HandleIFSelectSelectExplore(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectBasicGeom_to_HandleIFSelectSelectExplore(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectBasicGeom> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectBasicGeom_to_HandleIFSelectSelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectBasicGeom_to_HandleIFSelectSelectDeduct(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectBasicGeom> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectBasicGeom_to_HandleIFSelectSelection(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectBasicGeom_to_HandleIFSelectSelection(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectBasicGeom> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectBasicGeom_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectBasicGeom_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -10857,8 +12205,10 @@ impl SelectBypassGroup {
     pub fn new_int(level: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectBypassGroup_ctor_int(level) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10889,8 +12239,11 @@ impl SelectBypassGroup {
                     explored,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10901,8 +12254,11 @@ impl SelectBypassGroup {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBypassGroup_explore_label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -10912,8 +12268,11 @@ impl SelectBypassGroup {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBypassGroup_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10921,8 +12280,11 @@ impl SelectBypassGroup {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectBypassGroup_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -10931,121 +12293,114 @@ impl SelectBypassGroup {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectBypassGroup_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_SelectExplore
     pub fn as_if_select_select_explore(&self) -> &crate::if_select::SelectExplore {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBypassGroup_as_IFSelect_SelectExplore(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBypassGroup_as_IFSelect_SelectExplore(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectExplore (mutable)
     pub fn as_if_select_select_explore_mut(&mut self) -> &mut crate::if_select::SelectExplore {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBypassGroup_as_IFSelect_SelectExplore_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBypassGroup_as_IFSelect_SelectExplore_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBypassGroup_as_IFSelect_SelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBypassGroup_as_IFSelect_SelectDeduct(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct (mutable)
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBypassGroup_as_IFSelect_SelectDeduct_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBypassGroup_as_IFSelect_SelectDeduct_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBypassGroup_as_IFSelect_Selection(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBypassGroup_as_IFSelect_Selection(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Selection (mutable)
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBypassGroup_as_IFSelect_Selection_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBypassGroup_as_IFSelect_Selection_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBypassGroup_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBypassGroup_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBypassGroup_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBypassGroup_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectBypassGroup> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_SelectBypassGroup_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SelectBypassGroup_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
@@ -11054,8 +12409,11 @@ impl SelectBypassGroup {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBypassGroup_inherited_Level(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11071,8 +12429,11 @@ impl SelectBypassGroup {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11082,18 +12443,23 @@ impl SelectBypassGroup {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBypassGroup_inherited_Label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectBypassGroup_inherited_SetInput(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11103,8 +12469,11 @@ impl SelectBypassGroup {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBypassGroup_inherited_Input(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11114,8 +12483,11 @@ impl SelectBypassGroup {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBypassGroup_inherited_HasInput(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11125,8 +12497,11 @@ impl SelectBypassGroup {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBypassGroup_inherited_HasAlternate(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11136,8 +12511,11 @@ impl SelectBypassGroup {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBypassGroup_inherited_Alternate(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -11153,21 +12531,26 @@ impl SelectBypassGroup {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectBypassGroup_inherited_FillIterator(
                     self as *const Self,
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11183,8 +12566,11 @@ impl SelectBypassGroup {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11200,8 +12586,11 @@ impl SelectBypassGroup {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11214,8 +12603,11 @@ impl SelectBypassGroup {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11228,8 +12620,11 @@ impl SelectBypassGroup {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11239,11 +12634,14 @@ impl SelectBypassGroup {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBypassGroup_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -11254,20 +12652,25 @@ impl SelectBypassGroup {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBypassGroup_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectBypassGroup_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11279,18 +12682,23 @@ impl SelectBypassGroup {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectBypassGroup_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -11306,78 +12714,78 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectBypassGroup {
 impl HandleIGESSelectSelectBypassGroup {
     /// Dereference this Handle to access the underlying IGESSelect_SelectBypassGroup
     pub fn get(&self) -> &crate::ffi::IGESSelect_SelectBypassGroup {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSelectBypassGroup_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectBypassGroup_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_SelectBypassGroup
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_SelectBypassGroup {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSelectBypassGroup_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectBypassGroup_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_SelectBypassGroup> to Handle<IFSelect_SelectExplore>
     pub fn to_handle_select_explore(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExplore> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectBypassGroup_to_HandleIFSelectSelectExplore(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectBypassGroup_to_HandleIFSelectSelectExplore(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectBypassGroup> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectBypassGroup_to_HandleIFSelectSelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectBypassGroup_to_HandleIFSelectSelectDeduct(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectBypassGroup> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectBypassGroup_to_HandleIFSelectSelection(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectBypassGroup_to_HandleIFSelectSelection(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectBypassGroup> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectBypassGroup_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectBypassGroup_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -11415,8 +12823,10 @@ impl SelectBypassSubfigure {
     pub fn new_int(level: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectBypassSubfigure_ctor_int(level) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11447,8 +12857,11 @@ impl SelectBypassSubfigure {
                     explored,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11459,8 +12872,11 @@ impl SelectBypassSubfigure {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBypassSubfigure_explore_label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11470,8 +12886,11 @@ impl SelectBypassSubfigure {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBypassSubfigure_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11479,8 +12898,11 @@ impl SelectBypassSubfigure {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectBypassSubfigure_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -11489,125 +12911,124 @@ impl SelectBypassSubfigure {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectBypassSubfigure_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_SelectExplore
     pub fn as_if_select_select_explore(&self) -> &crate::if_select::SelectExplore {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBypassSubfigure_as_IFSelect_SelectExplore(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBypassSubfigure_as_IFSelect_SelectExplore(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectExplore (mutable)
     pub fn as_if_select_select_explore_mut(&mut self) -> &mut crate::if_select::SelectExplore {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBypassSubfigure_as_IFSelect_SelectExplore_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBypassSubfigure_as_IFSelect_SelectExplore_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBypassSubfigure_as_IFSelect_SelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBypassSubfigure_as_IFSelect_SelectDeduct(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct (mutable)
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBypassSubfigure_as_IFSelect_SelectDeduct_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBypassSubfigure_as_IFSelect_SelectDeduct_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBypassSubfigure_as_IFSelect_Selection(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBypassSubfigure_as_IFSelect_Selection(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Selection (mutable)
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBypassSubfigure_as_IFSelect_Selection_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBypassSubfigure_as_IFSelect_Selection_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBypassSubfigure_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBypassSubfigure_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectBypassSubfigure_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectBypassSubfigure_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectBypassSubfigure> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_SelectBypassSubfigure_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SelectBypassSubfigure_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
@@ -11616,8 +13037,11 @@ impl SelectBypassSubfigure {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBypassSubfigure_inherited_Level(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11633,8 +13057,11 @@ impl SelectBypassSubfigure {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11644,21 +13071,26 @@ impl SelectBypassSubfigure {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBypassSubfigure_inherited_Label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectBypassSubfigure_inherited_SetInput(
                     self as *mut Self,
                     sel,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11668,8 +13100,11 @@ impl SelectBypassSubfigure {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBypassSubfigure_inherited_Input(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11679,8 +13114,11 @@ impl SelectBypassSubfigure {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBypassSubfigure_inherited_HasInput(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11692,8 +13130,11 @@ impl SelectBypassSubfigure {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11703,8 +13144,11 @@ impl SelectBypassSubfigure {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBypassSubfigure_inherited_Alternate(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -11720,21 +13164,26 @@ impl SelectBypassSubfigure {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectBypassSubfigure_inherited_FillIterator(
                     self as *const Self,
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11750,8 +13199,11 @@ impl SelectBypassSubfigure {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11767,8 +13219,11 @@ impl SelectBypassSubfigure {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -11781,8 +13236,11 @@ impl SelectBypassSubfigure {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11795,8 +13253,11 @@ impl SelectBypassSubfigure {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11806,11 +13267,14 @@ impl SelectBypassSubfigure {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectBypassSubfigure_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -11823,20 +13287,25 @@ impl SelectBypassSubfigure {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectBypassSubfigure_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11848,18 +13317,23 @@ impl SelectBypassSubfigure {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectBypassSubfigure_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -11875,80 +13349,78 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectBypassSubfigure {
 impl HandleIGESSelectSelectBypassSubfigure {
     /// Dereference this Handle to access the underlying IGESSelect_SelectBypassSubfigure
     pub fn get(&self) -> &crate::ffi::IGESSelect_SelectBypassSubfigure {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectBypassSubfigure_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectBypassSubfigure_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_SelectBypassSubfigure
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_SelectBypassSubfigure {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectBypassSubfigure_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectBypassSubfigure_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_SelectBypassSubfigure> to Handle<IFSelect_SelectExplore>
     pub fn to_handle_select_explore(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExplore> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectBypassSubfigure_to_HandleIFSelectSelectExplore(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectBypassSubfigure_to_HandleIFSelectSelectExplore(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectBypassSubfigure> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectBypassSubfigure_to_HandleIFSelectSelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectBypassSubfigure_to_HandleIFSelectSelectDeduct(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectBypassSubfigure> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectBypassSubfigure_to_HandleIFSelectSelection(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectBypassSubfigure_to_HandleIFSelectSelection(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectBypassSubfigure> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectBypassSubfigure_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectBypassSubfigure_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -11974,8 +13446,10 @@ impl SelectDrawingFrom {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectDrawingFrom_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11990,8 +13464,11 @@ impl SelectDrawingFrom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectDrawingFrom_root_result(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12001,8 +13478,11 @@ impl SelectDrawingFrom {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectDrawingFrom_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12012,8 +13492,11 @@ impl SelectDrawingFrom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectDrawingFrom_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -12021,8 +13504,11 @@ impl SelectDrawingFrom {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectDrawingFrom_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -12031,104 +13517,101 @@ impl SelectDrawingFrom {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectDrawingFrom_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectDrawingFrom_as_IFSelect_SelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectDrawingFrom_as_IFSelect_SelectDeduct(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct (mutable)
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectDrawingFrom_as_IFSelect_SelectDeduct_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectDrawingFrom_as_IFSelect_SelectDeduct_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectDrawingFrom_as_IFSelect_Selection(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectDrawingFrom_as_IFSelect_Selection(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Selection (mutable)
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectDrawingFrom_as_IFSelect_Selection_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectDrawingFrom_as_IFSelect_Selection_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectDrawingFrom_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectDrawingFrom_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectDrawingFrom_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectDrawingFrom_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectDrawingFrom> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_SelectDrawingFrom_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SelectDrawingFrom_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectDrawingFrom_inherited_SetInput(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12138,8 +13621,11 @@ impl SelectDrawingFrom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectDrawingFrom_inherited_Input(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12149,8 +13635,11 @@ impl SelectDrawingFrom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectDrawingFrom_inherited_HasInput(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12160,8 +13649,11 @@ impl SelectDrawingFrom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectDrawingFrom_inherited_HasAlternate(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12171,8 +13663,11 @@ impl SelectDrawingFrom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectDrawingFrom_inherited_Alternate(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -12188,21 +13683,26 @@ impl SelectDrawingFrom {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectDrawingFrom_inherited_FillIterator(
                     self as *const Self,
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12218,8 +13718,11 @@ impl SelectDrawingFrom {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12235,8 +13738,11 @@ impl SelectDrawingFrom {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12249,8 +13755,11 @@ impl SelectDrawingFrom {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12263,8 +13772,11 @@ impl SelectDrawingFrom {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12274,11 +13786,14 @@ impl SelectDrawingFrom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectDrawingFrom_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -12289,20 +13804,25 @@ impl SelectDrawingFrom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectDrawingFrom_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectDrawingFrom_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12314,18 +13834,23 @@ impl SelectDrawingFrom {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectDrawingFrom_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -12341,63 +13866,63 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectDrawingFrom {
 impl HandleIGESSelectSelectDrawingFrom {
     /// Dereference this Handle to access the underlying IGESSelect_SelectDrawingFrom
     pub fn get(&self) -> &crate::ffi::IGESSelect_SelectDrawingFrom {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSelectDrawingFrom_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectDrawingFrom_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_SelectDrawingFrom
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_SelectDrawingFrom {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSelectDrawingFrom_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectDrawingFrom_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_SelectDrawingFrom> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectDrawingFrom_to_HandleIFSelectSelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectDrawingFrom_to_HandleIFSelectSelectDeduct(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectDrawingFrom> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectDrawingFrom_to_HandleIFSelectSelection(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectDrawingFrom_to_HandleIFSelectSelection(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectDrawingFrom> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectDrawingFrom_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectDrawingFrom_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -12429,8 +13954,10 @@ impl SelectFaces {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectFaces_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12454,8 +13981,11 @@ impl SelectFaces {
                     explored,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12465,8 +13995,11 @@ impl SelectFaces {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectFaces_explore_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12475,8 +14008,11 @@ impl SelectFaces {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectFaces_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -12484,8 +14020,11 @@ impl SelectFaces {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectFaces_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -12493,108 +14032,111 @@ impl SelectFaces {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectFaces_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_SelectExplore
     pub fn as_if_select_select_explore(&self) -> &crate::if_select::SelectExplore {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectFaces_as_IFSelect_SelectExplore(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectFaces_as_IFSelect_SelectExplore(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectExplore (mutable)
     pub fn as_if_select_select_explore_mut(&mut self) -> &mut crate::if_select::SelectExplore {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectFaces_as_IFSelect_SelectExplore_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectFaces_as_IFSelect_SelectExplore_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectFaces_as_IFSelect_SelectDeduct(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectFaces_as_IFSelect_SelectDeduct(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct (mutable)
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectFaces_as_IFSelect_SelectDeduct_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectFaces_as_IFSelect_SelectDeduct_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectFaces_as_IFSelect_Selection(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectFaces_as_IFSelect_Selection(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Selection (mutable)
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectFaces_as_IFSelect_Selection_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectFaces_as_IFSelect_Selection_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectFaces_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectFaces_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectFaces_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectFaces_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectFaces> {
-        {
-            let __result = unsafe { crate::ffi::IGESSelect_SelectFaces_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_SelectFaces_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
@@ -12602,8 +14144,11 @@ impl SelectFaces {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectFaces_inherited_Level(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12616,8 +14161,11 @@ impl SelectFaces {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFaces_inherited_RootResult(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12626,18 +14174,23 @@ impl SelectFaces {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectFaces_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectFaces_inherited_SetInput(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12646,8 +14199,11 @@ impl SelectFaces {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectFaces_inherited_Input(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12657,8 +14213,11 @@ impl SelectFaces {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFaces_inherited_HasInput(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12668,8 +14227,11 @@ impl SelectFaces {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFaces_inherited_HasAlternate(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12679,8 +14241,11 @@ impl SelectFaces {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFaces_inherited_Alternate(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -12693,18 +14258,23 @@ impl SelectFaces {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFaces_inherited_InputResult(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectFaces_inherited_FillIterator(self as *const Self, iter)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12717,8 +14287,11 @@ impl SelectFaces {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFaces_inherited_UniqueResult(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12731,8 +14304,11 @@ impl SelectFaces {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFaces_inherited_CompleteResult(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12745,8 +14321,11 @@ impl SelectFaces {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12756,8 +14335,11 @@ impl SelectFaces {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFaces_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12766,11 +14348,14 @@ impl SelectFaces {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectFaces_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -12781,18 +14366,23 @@ impl SelectFaces {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFaces_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectFaces_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12802,16 +14392,22 @@ impl SelectFaces {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFaces_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_SelectFaces_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_SelectFaces_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -12827,78 +14423,73 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectFaces {
 impl HandleIGESSelectSelectFaces {
     /// Dereference this Handle to access the underlying IGESSelect_SelectFaces
     pub fn get(&self) -> &crate::ffi::IGESSelect_SelectFaces {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSelectFaces_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectSelectFaces_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_SelectFaces
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_SelectFaces {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSelectFaces_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectFaces_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_SelectFaces> to Handle<IFSelect_SelectExplore>
     pub fn to_handle_select_explore(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExplore> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectFaces_to_HandleIFSelectSelectExplore(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectFaces_to_HandleIFSelectSelectExplore(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectFaces> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectFaces_to_HandleIFSelectSelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectFaces_to_HandleIFSelectSelectDeduct(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectFaces> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectFaces_to_HandleIFSelectSelection(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectFaces_to_HandleIFSelectSelection(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectFaces> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectFaces_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectFaces_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -12925,8 +14516,10 @@ impl SelectFromDrawing {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectFromDrawing_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12941,8 +14534,11 @@ impl SelectFromDrawing {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFromDrawing_root_result(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12952,8 +14548,11 @@ impl SelectFromDrawing {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectFromDrawing_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12963,8 +14562,11 @@ impl SelectFromDrawing {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFromDrawing_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -12972,8 +14574,11 @@ impl SelectFromDrawing {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectFromDrawing_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -12982,104 +14587,101 @@ impl SelectFromDrawing {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectFromDrawing_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectFromDrawing_as_IFSelect_SelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectFromDrawing_as_IFSelect_SelectDeduct(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct (mutable)
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectFromDrawing_as_IFSelect_SelectDeduct_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectFromDrawing_as_IFSelect_SelectDeduct_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectFromDrawing_as_IFSelect_Selection(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectFromDrawing_as_IFSelect_Selection(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Selection (mutable)
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectFromDrawing_as_IFSelect_Selection_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectFromDrawing_as_IFSelect_Selection_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectFromDrawing_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectFromDrawing_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectFromDrawing_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectFromDrawing_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectFromDrawing> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_SelectFromDrawing_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SelectFromDrawing_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectFromDrawing_inherited_SetInput(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13089,8 +14691,11 @@ impl SelectFromDrawing {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFromDrawing_inherited_Input(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13100,8 +14705,11 @@ impl SelectFromDrawing {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFromDrawing_inherited_HasInput(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13111,8 +14719,11 @@ impl SelectFromDrawing {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFromDrawing_inherited_HasAlternate(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13122,8 +14733,11 @@ impl SelectFromDrawing {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFromDrawing_inherited_Alternate(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -13139,21 +14753,26 @@ impl SelectFromDrawing {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectFromDrawing_inherited_FillIterator(
                     self as *const Self,
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13169,8 +14788,11 @@ impl SelectFromDrawing {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13186,8 +14808,11 @@ impl SelectFromDrawing {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13200,8 +14825,11 @@ impl SelectFromDrawing {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13214,8 +14842,11 @@ impl SelectFromDrawing {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13225,11 +14856,14 @@ impl SelectFromDrawing {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFromDrawing_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -13240,20 +14874,25 @@ impl SelectFromDrawing {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFromDrawing_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectFromDrawing_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13265,18 +14904,23 @@ impl SelectFromDrawing {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectFromDrawing_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -13292,63 +14936,63 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectFromDrawing {
 impl HandleIGESSelectSelectFromDrawing {
     /// Dereference this Handle to access the underlying IGESSelect_SelectFromDrawing
     pub fn get(&self) -> &crate::ffi::IGESSelect_SelectFromDrawing {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSelectFromDrawing_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectFromDrawing_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_SelectFromDrawing
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_SelectFromDrawing {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSelectFromDrawing_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectFromDrawing_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_SelectFromDrawing> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectFromDrawing_to_HandleIFSelectSelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectFromDrawing_to_HandleIFSelectSelectDeduct(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectFromDrawing> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectFromDrawing_to_HandleIFSelectSelection(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectFromDrawing_to_HandleIFSelectSelection(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectFromDrawing> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectFromDrawing_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectFromDrawing_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -13375,8 +15019,10 @@ impl SelectFromSingleView {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectFromSingleView_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13391,8 +15037,11 @@ impl SelectFromSingleView {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFromSingleView_root_result(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13402,8 +15051,11 @@ impl SelectFromSingleView {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectFromSingleView_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13413,8 +15065,11 @@ impl SelectFromSingleView {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFromSingleView_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13422,8 +15077,11 @@ impl SelectFromSingleView {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectFromSingleView_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -13432,111 +15090,108 @@ impl SelectFromSingleView {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectFromSingleView_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectFromSingleView_as_IFSelect_SelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectFromSingleView_as_IFSelect_SelectDeduct(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct (mutable)
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectFromSingleView_as_IFSelect_SelectDeduct_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectFromSingleView_as_IFSelect_SelectDeduct_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectFromSingleView_as_IFSelect_Selection(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectFromSingleView_as_IFSelect_Selection(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Selection (mutable)
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectFromSingleView_as_IFSelect_Selection_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectFromSingleView_as_IFSelect_Selection_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectFromSingleView_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectFromSingleView_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectFromSingleView_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectFromSingleView_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectFromSingleView> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_SelectFromSingleView_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SelectFromSingleView_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectFromSingleView_inherited_SetInput(
                     self as *mut Self,
                     sel,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13546,8 +15201,11 @@ impl SelectFromSingleView {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFromSingleView_inherited_Input(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13557,8 +15215,11 @@ impl SelectFromSingleView {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFromSingleView_inherited_HasInput(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13570,8 +15231,11 @@ impl SelectFromSingleView {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13581,8 +15245,11 @@ impl SelectFromSingleView {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFromSingleView_inherited_Alternate(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -13598,21 +15265,26 @@ impl SelectFromSingleView {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectFromSingleView_inherited_FillIterator(
                     self as *const Self,
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13628,8 +15300,11 @@ impl SelectFromSingleView {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13645,8 +15320,11 @@ impl SelectFromSingleView {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13659,8 +15337,11 @@ impl SelectFromSingleView {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13673,8 +15354,11 @@ impl SelectFromSingleView {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13684,11 +15368,14 @@ impl SelectFromSingleView {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectFromSingleView_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -13701,20 +15388,25 @@ impl SelectFromSingleView {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectFromSingleView_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13726,18 +15418,23 @@ impl SelectFromSingleView {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectFromSingleView_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -13753,65 +15450,63 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectFromSingleView {
 impl HandleIGESSelectSelectFromSingleView {
     /// Dereference this Handle to access the underlying IGESSelect_SelectFromSingleView
     pub fn get(&self) -> &crate::ffi::IGESSelect_SelectFromSingleView {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectFromSingleView_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectFromSingleView_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_SelectFromSingleView
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_SelectFromSingleView {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectFromSingleView_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectFromSingleView_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_SelectFromSingleView> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectFromSingleView_to_HandleIFSelectSelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectFromSingleView_to_HandleIFSelectSelectDeduct(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectFromSingleView> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectFromSingleView_to_HandleIFSelectSelection(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectFromSingleView_to_HandleIFSelectSelection(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectFromSingleView> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectFromSingleView_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectFromSingleView_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -13843,8 +15538,10 @@ impl SelectLevelNumber {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectLevelNumber_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13852,10 +15549,12 @@ impl SelectLevelNumber {
     /// Sets a Parameter as Level criterium
     pub fn set_level_number(&mut self, levnum: &crate::ffi::HandleIFSelectIntParam) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectLevelNumber_set_level_number(self as *mut Self, levnum)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13867,8 +15566,11 @@ impl SelectLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectLevelNumber_level_number(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13886,8 +15588,11 @@ impl SelectLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectLevelNumber_sort(self as *const Self, rank, ent, model)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13900,8 +15605,11 @@ impl SelectLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectLevelNumber_extract_label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13911,8 +15619,11 @@ impl SelectLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectLevelNumber_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13920,8 +15631,11 @@ impl SelectLevelNumber {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectLevelNumber_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -13930,121 +15644,114 @@ impl SelectLevelNumber {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectLevelNumber_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_SelectExtract
     pub fn as_if_select_select_extract(&self) -> &crate::if_select::SelectExtract {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectLevelNumber_as_IFSelect_SelectExtract(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectLevelNumber_as_IFSelect_SelectExtract(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectExtract (mutable)
     pub fn as_if_select_select_extract_mut(&mut self) -> &mut crate::if_select::SelectExtract {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectLevelNumber_as_IFSelect_SelectExtract_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectLevelNumber_as_IFSelect_SelectExtract_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectLevelNumber_as_IFSelect_SelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectLevelNumber_as_IFSelect_SelectDeduct(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct (mutable)
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectLevelNumber_as_IFSelect_SelectDeduct_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectLevelNumber_as_IFSelect_SelectDeduct_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectLevelNumber_as_IFSelect_Selection(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectLevelNumber_as_IFSelect_Selection(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Selection (mutable)
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectLevelNumber_as_IFSelect_Selection_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectLevelNumber_as_IFSelect_Selection_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectLevelNumber_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectLevelNumber_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectLevelNumber_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectLevelNumber_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectLevelNumber> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_SelectLevelNumber_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SelectLevelNumber_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
@@ -14053,21 +15760,26 @@ impl SelectLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectLevelNumber_inherited_IsDirect(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectLevelNumber_inherited_SetDirect(
                     self as *mut Self,
                     direct,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14083,8 +15795,11 @@ impl SelectLevelNumber {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14104,8 +15819,11 @@ impl SelectLevelNumber {
                     G,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14115,18 +15833,23 @@ impl SelectLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectLevelNumber_inherited_Label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectLevelNumber_inherited_SetInput(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14136,8 +15859,11 @@ impl SelectLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectLevelNumber_inherited_Input(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14147,8 +15873,11 @@ impl SelectLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectLevelNumber_inherited_HasInput(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14158,8 +15887,11 @@ impl SelectLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectLevelNumber_inherited_HasAlternate(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14169,8 +15901,11 @@ impl SelectLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectLevelNumber_inherited_Alternate(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -14186,21 +15921,26 @@ impl SelectLevelNumber {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectLevelNumber_inherited_FillIterator(
                     self as *const Self,
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14216,8 +15956,11 @@ impl SelectLevelNumber {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14233,8 +15976,11 @@ impl SelectLevelNumber {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14247,8 +15993,11 @@ impl SelectLevelNumber {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14261,8 +16010,11 @@ impl SelectLevelNumber {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14272,11 +16024,14 @@ impl SelectLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectLevelNumber_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -14287,20 +16042,25 @@ impl SelectLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectLevelNumber_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectLevelNumber_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14312,18 +16072,23 @@ impl SelectLevelNumber {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectLevelNumber_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -14339,78 +16104,78 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectLevelNumber {
 impl HandleIGESSelectSelectLevelNumber {
     /// Dereference this Handle to access the underlying IGESSelect_SelectLevelNumber
     pub fn get(&self) -> &crate::ffi::IGESSelect_SelectLevelNumber {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSelectLevelNumber_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectLevelNumber_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_SelectLevelNumber
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_SelectLevelNumber {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSelectLevelNumber_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectLevelNumber_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_SelectLevelNumber> to Handle<IFSelect_SelectExtract>
     pub fn to_handle_select_extract(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExtract> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectLevelNumber_to_HandleIFSelectSelectExtract(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectLevelNumber_to_HandleIFSelectSelectExtract(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectLevelNumber> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectLevelNumber_to_HandleIFSelectSelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectLevelNumber_to_HandleIFSelectSelectDeduct(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectLevelNumber> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectLevelNumber_to_HandleIFSelectSelection(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectLevelNumber_to_HandleIFSelectSelection(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectLevelNumber> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectLevelNumber_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectLevelNumber_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -14439,8 +16204,10 @@ impl SelectName {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectName_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -14456,8 +16223,11 @@ impl SelectName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectName_sort(self as *const Self, rank, ent, model)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14467,8 +16237,11 @@ impl SelectName {
     /// one). <name> can be regarded as a Text Parameter
     pub fn set_name(&mut self, name: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe { crate::ffi::IGESSelect_SelectName_set_name(self as *mut Self, name) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_SelectName_set_name(self as *mut Self, name) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14477,8 +16250,11 @@ impl SelectName {
     pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectName_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14488,8 +16264,11 @@ impl SelectName {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectName_extract_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14498,8 +16277,11 @@ impl SelectName {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectName_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -14507,8 +16289,11 @@ impl SelectName {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectName_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -14516,108 +16301,109 @@ impl SelectName {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectName_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_SelectExtract
     pub fn as_if_select_select_extract(&self) -> &crate::if_select::SelectExtract {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectName_as_IFSelect_SelectExtract(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectName_as_IFSelect_SelectExtract(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectExtract (mutable)
     pub fn as_if_select_select_extract_mut(&mut self) -> &mut crate::if_select::SelectExtract {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectName_as_IFSelect_SelectExtract_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectName_as_IFSelect_SelectExtract_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectName_as_IFSelect_SelectDeduct(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectName_as_IFSelect_SelectDeduct(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct (mutable)
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectName_as_IFSelect_SelectDeduct_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectName_as_IFSelect_SelectDeduct_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectName_as_IFSelect_Selection(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SelectName_as_IFSelect_Selection(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Selection (mutable)
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectName_as_IFSelect_Selection_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectName_as_IFSelect_Selection_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectName_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SelectName_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectName_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectName_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectName> {
-        {
-            let __result = unsafe { crate::ffi::IGESSelect_SelectName_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_SelectName_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
@@ -14626,18 +16412,23 @@ impl SelectName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectName_inherited_IsDirect(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectName_inherited_SetDirect(self as *mut Self, direct)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14650,8 +16441,11 @@ impl SelectName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectName_inherited_RootResult(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14671,8 +16465,11 @@ impl SelectName {
                     G,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14681,16 +16478,23 @@ impl SelectName {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectName_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe { crate::ffi::IGESSelect_SelectName_inherited_SetInput(self as *mut Self, sel) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_SelectName_inherited_SetInput(self as *mut Self, sel)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14699,8 +16503,11 @@ impl SelectName {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectName_inherited_Input(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14710,8 +16517,11 @@ impl SelectName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectName_inherited_HasInput(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14721,8 +16531,11 @@ impl SelectName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectName_inherited_HasAlternate(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14731,8 +16544,11 @@ impl SelectName {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectName_inherited_Alternate(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -14745,18 +16561,23 @@ impl SelectName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectName_inherited_InputResult(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectName_inherited_FillIterator(self as *const Self, iter)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14769,8 +16590,11 @@ impl SelectName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectName_inherited_UniqueResult(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14783,8 +16607,11 @@ impl SelectName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectName_inherited_CompleteResult(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -14794,8 +16621,11 @@ impl SelectName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectName_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14805,8 +16635,11 @@ impl SelectName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectName_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -14815,11 +16648,14 @@ impl SelectName {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectName_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -14830,18 +16666,23 @@ impl SelectName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectName_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectName_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -14851,16 +16692,22 @@ impl SelectName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectName_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_SelectName_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_SelectName_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -14876,78 +16723,72 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectName {
 impl HandleIGESSelectSelectName {
     /// Dereference this Handle to access the underlying IGESSelect_SelectName
     pub fn get(&self) -> &crate::ffi::IGESSelect_SelectName {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSelectName_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectSelectName_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_SelectName
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_SelectName {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSelectName_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectSelectName_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_SelectName> to Handle<IFSelect_SelectExtract>
     pub fn to_handle_select_extract(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExtract> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectName_to_HandleIFSelectSelectExtract(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectName_to_HandleIFSelectSelectExtract(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectName> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectName_to_HandleIFSelectSelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectName_to_HandleIFSelectSelectDeduct(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectName> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectName_to_HandleIFSelectSelection(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectName_to_HandleIFSelectSelection(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectName> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectName_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectName_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -14976,8 +16817,10 @@ impl SelectPCurves {
     pub fn new_bool(basic: bool) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectPCurves_ctor_bool(basic) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -15001,8 +16844,11 @@ impl SelectPCurves {
                     explored,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15013,8 +16859,11 @@ impl SelectPCurves {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectPCurves_explore_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15023,8 +16872,11 @@ impl SelectPCurves {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectPCurves_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -15032,8 +16884,11 @@ impl SelectPCurves {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectPCurves_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -15041,111 +16896,111 @@ impl SelectPCurves {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectPCurves_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_SelectExplore
     pub fn as_if_select_select_explore(&self) -> &crate::if_select::SelectExplore {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectPCurves_as_IFSelect_SelectExplore(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectPCurves_as_IFSelect_SelectExplore(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectExplore (mutable)
     pub fn as_if_select_select_explore_mut(&mut self) -> &mut crate::if_select::SelectExplore {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectPCurves_as_IFSelect_SelectExplore_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectPCurves_as_IFSelect_SelectExplore_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectPCurves_as_IFSelect_SelectDeduct(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectPCurves_as_IFSelect_SelectDeduct(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct (mutable)
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectPCurves_as_IFSelect_SelectDeduct_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectPCurves_as_IFSelect_SelectDeduct_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectPCurves_as_IFSelect_Selection(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectPCurves_as_IFSelect_Selection(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Selection (mutable)
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectPCurves_as_IFSelect_Selection_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectPCurves_as_IFSelect_Selection_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectPCurves_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectPCurves_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectPCurves_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectPCurves_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectPCurves> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_SelectPCurves_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_SelectPCurves_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
@@ -15154,8 +17009,11 @@ impl SelectPCurves {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectPCurves_inherited_Level(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15168,8 +17026,11 @@ impl SelectPCurves {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectPCurves_inherited_RootResult(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15179,18 +17040,23 @@ impl SelectPCurves {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectPCurves_inherited_Label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectPCurves_inherited_SetInput(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15200,8 +17066,11 @@ impl SelectPCurves {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectPCurves_inherited_Input(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15211,8 +17080,11 @@ impl SelectPCurves {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectPCurves_inherited_HasInput(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15222,8 +17094,11 @@ impl SelectPCurves {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectPCurves_inherited_HasAlternate(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15233,8 +17108,11 @@ impl SelectPCurves {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectPCurves_inherited_Alternate(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -15247,21 +17125,26 @@ impl SelectPCurves {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectPCurves_inherited_InputResult(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectPCurves_inherited_FillIterator(
                     self as *const Self,
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15274,8 +17157,11 @@ impl SelectPCurves {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectPCurves_inherited_UniqueResult(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15291,8 +17177,11 @@ impl SelectPCurves {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15305,8 +17194,11 @@ impl SelectPCurves {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15316,8 +17208,11 @@ impl SelectPCurves {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectPCurves_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15326,11 +17221,14 @@ impl SelectPCurves {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectPCurves_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -15341,20 +17239,25 @@ impl SelectPCurves {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectPCurves_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectPCurves_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15366,16 +17269,23 @@ impl SelectPCurves {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_SelectPCurves_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_SelectPCurves_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -15391,78 +17301,78 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectPCurves {
 impl HandleIGESSelectSelectPCurves {
     /// Dereference this Handle to access the underlying IGESSelect_SelectPCurves
     pub fn get(&self) -> &crate::ffi::IGESSelect_SelectPCurves {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSelectPCurves_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectPCurves_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_SelectPCurves
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_SelectPCurves {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSelectPCurves_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectPCurves_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_SelectPCurves> to Handle<IFSelect_SelectExplore>
     pub fn to_handle_select_explore(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExplore> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectPCurves_to_HandleIFSelectSelectExplore(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectPCurves_to_HandleIFSelectSelectExplore(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectPCurves> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectPCurves_to_HandleIFSelectSelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectPCurves_to_HandleIFSelectSelectDeduct(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectPCurves> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectPCurves_to_HandleIFSelectSelection(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectPCurves_to_HandleIFSelectSelection(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectPCurves> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectPCurves_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectPCurves_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -15488,8 +17398,10 @@ impl SelectSingleViewFrom {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectSingleViewFrom_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -15504,8 +17416,11 @@ impl SelectSingleViewFrom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectSingleViewFrom_root_result(self as *const Self, G)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15515,8 +17430,11 @@ impl SelectSingleViewFrom {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectSingleViewFrom_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15526,8 +17444,11 @@ impl SelectSingleViewFrom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectSingleViewFrom_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -15535,8 +17456,11 @@ impl SelectSingleViewFrom {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectSingleViewFrom_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -15545,111 +17469,108 @@ impl SelectSingleViewFrom {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectSingleViewFrom_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectSingleViewFrom_as_IFSelect_SelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectSingleViewFrom_as_IFSelect_SelectDeduct(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct (mutable)
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectSingleViewFrom_as_IFSelect_SelectDeduct_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectSingleViewFrom_as_IFSelect_SelectDeduct_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectSingleViewFrom_as_IFSelect_Selection(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectSingleViewFrom_as_IFSelect_Selection(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Selection (mutable)
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectSingleViewFrom_as_IFSelect_Selection_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectSingleViewFrom_as_IFSelect_Selection_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectSingleViewFrom_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectSingleViewFrom_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectSingleViewFrom_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectSingleViewFrom_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectSingleViewFrom> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_SelectSingleViewFrom_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SelectSingleViewFrom_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectSingleViewFrom_inherited_SetInput(
                     self as *mut Self,
                     sel,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15659,8 +17580,11 @@ impl SelectSingleViewFrom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectSingleViewFrom_inherited_Input(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15670,8 +17594,11 @@ impl SelectSingleViewFrom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectSingleViewFrom_inherited_HasInput(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15683,8 +17610,11 @@ impl SelectSingleViewFrom {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15694,8 +17624,11 @@ impl SelectSingleViewFrom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectSingleViewFrom_inherited_Alternate(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -15711,21 +17644,26 @@ impl SelectSingleViewFrom {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectSingleViewFrom_inherited_FillIterator(
                     self as *const Self,
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15741,8 +17679,11 @@ impl SelectSingleViewFrom {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15758,8 +17699,11 @@ impl SelectSingleViewFrom {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -15772,8 +17716,11 @@ impl SelectSingleViewFrom {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15786,8 +17733,11 @@ impl SelectSingleViewFrom {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15797,11 +17747,14 @@ impl SelectSingleViewFrom {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectSingleViewFrom_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -15814,20 +17767,25 @@ impl SelectSingleViewFrom {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectSingleViewFrom_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -15839,18 +17797,23 @@ impl SelectSingleViewFrom {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectSingleViewFrom_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -15866,65 +17829,63 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectSingleViewFrom {
 impl HandleIGESSelectSelectSingleViewFrom {
     /// Dereference this Handle to access the underlying IGESSelect_SelectSingleViewFrom
     pub fn get(&self) -> &crate::ffi::IGESSelect_SelectSingleViewFrom {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectSingleViewFrom_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectSingleViewFrom_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_SelectSingleViewFrom
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_SelectSingleViewFrom {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectSingleViewFrom_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectSingleViewFrom_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_SelectSingleViewFrom> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectSingleViewFrom_to_HandleIFSelectSelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectSingleViewFrom_to_HandleIFSelectSelectDeduct(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectSingleViewFrom> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectSingleViewFrom_to_HandleIFSelectSelection(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectSingleViewFrom_to_HandleIFSelectSelection(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectSingleViewFrom> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectSingleViewFrom_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectSingleViewFrom_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -15958,8 +17919,10 @@ impl SelectSubordinate {
     pub fn new_int(status: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectSubordinate_ctor_int(status) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -15969,8 +17932,11 @@ impl SelectSubordinate {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectSubordinate_status(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -15987,8 +17953,11 @@ impl SelectSubordinate {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectSubordinate_sort(self as *const Self, rank, ent, model)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16000,8 +17969,11 @@ impl SelectSubordinate {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectSubordinate_extract_label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16011,8 +17983,11 @@ impl SelectSubordinate {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectSubordinate_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -16020,8 +17995,11 @@ impl SelectSubordinate {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectSubordinate_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -16030,121 +18008,114 @@ impl SelectSubordinate {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectSubordinate_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_SelectExtract
     pub fn as_if_select_select_extract(&self) -> &crate::if_select::SelectExtract {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectSubordinate_as_IFSelect_SelectExtract(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectSubordinate_as_IFSelect_SelectExtract(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectExtract (mutable)
     pub fn as_if_select_select_extract_mut(&mut self) -> &mut crate::if_select::SelectExtract {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectSubordinate_as_IFSelect_SelectExtract_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectSubordinate_as_IFSelect_SelectExtract_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectSubordinate_as_IFSelect_SelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectSubordinate_as_IFSelect_SelectDeduct(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct (mutable)
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectSubordinate_as_IFSelect_SelectDeduct_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectSubordinate_as_IFSelect_SelectDeduct_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectSubordinate_as_IFSelect_Selection(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectSubordinate_as_IFSelect_Selection(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Selection (mutable)
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectSubordinate_as_IFSelect_Selection_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectSubordinate_as_IFSelect_Selection_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectSubordinate_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectSubordinate_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectSubordinate_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectSubordinate_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectSubordinate> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_SelectSubordinate_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SelectSubordinate_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
@@ -16153,21 +18124,26 @@ impl SelectSubordinate {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectSubordinate_inherited_IsDirect(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectSubordinate_inherited_SetDirect(
                     self as *mut Self,
                     direct,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16183,8 +18159,11 @@ impl SelectSubordinate {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16204,8 +18183,11 @@ impl SelectSubordinate {
                     G,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16215,18 +18197,23 @@ impl SelectSubordinate {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectSubordinate_inherited_Label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectSubordinate_inherited_SetInput(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16236,8 +18223,11 @@ impl SelectSubordinate {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectSubordinate_inherited_Input(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16247,8 +18237,11 @@ impl SelectSubordinate {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectSubordinate_inherited_HasInput(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16258,8 +18251,11 @@ impl SelectSubordinate {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectSubordinate_inherited_HasAlternate(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16269,8 +18265,11 @@ impl SelectSubordinate {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectSubordinate_inherited_Alternate(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -16286,21 +18285,26 @@ impl SelectSubordinate {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectSubordinate_inherited_FillIterator(
                     self as *const Self,
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16316,8 +18320,11 @@ impl SelectSubordinate {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16333,8 +18340,11 @@ impl SelectSubordinate {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16347,8 +18357,11 @@ impl SelectSubordinate {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16361,8 +18374,11 @@ impl SelectSubordinate {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16372,11 +18388,14 @@ impl SelectSubordinate {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectSubordinate_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -16387,20 +18406,25 @@ impl SelectSubordinate {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectSubordinate_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectSubordinate_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16412,18 +18436,23 @@ impl SelectSubordinate {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectSubordinate_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -16439,78 +18468,78 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectSubordinate {
 impl HandleIGESSelectSelectSubordinate {
     /// Dereference this Handle to access the underlying IGESSelect_SelectSubordinate
     pub fn get(&self) -> &crate::ffi::IGESSelect_SelectSubordinate {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSelectSubordinate_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectSubordinate_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_SelectSubordinate
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_SelectSubordinate {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSelectSubordinate_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectSubordinate_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_SelectSubordinate> to Handle<IFSelect_SelectExtract>
     pub fn to_handle_select_extract(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExtract> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectSubordinate_to_HandleIFSelectSelectExtract(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectSubordinate_to_HandleIFSelectSelectExtract(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectSubordinate> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectSubordinate_to_HandleIFSelectSelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectSubordinate_to_HandleIFSelectSelectDeduct(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectSubordinate> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectSubordinate_to_HandleIFSelectSelection(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectSubordinate_to_HandleIFSelectSelection(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectSubordinate> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectSubordinate_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectSubordinate_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -16536,8 +18565,10 @@ impl SelectVisibleStatus {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectVisibleStatus_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -16558,8 +18589,11 @@ impl SelectVisibleStatus {
                     model,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16570,8 +18604,11 @@ impl SelectVisibleStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectVisibleStatus_extract_label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16581,8 +18618,11 @@ impl SelectVisibleStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectVisibleStatus_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -16590,8 +18630,11 @@ impl SelectVisibleStatus {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SelectVisibleStatus_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -16600,125 +18643,118 @@ impl SelectVisibleStatus {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SelectVisibleStatus_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_SelectExtract
     pub fn as_if_select_select_extract(&self) -> &crate::if_select::SelectExtract {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectVisibleStatus_as_IFSelect_SelectExtract(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectVisibleStatus_as_IFSelect_SelectExtract(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectExtract (mutable)
     pub fn as_if_select_select_extract_mut(&mut self) -> &mut crate::if_select::SelectExtract {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectVisibleStatus_as_IFSelect_SelectExtract_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectVisibleStatus_as_IFSelect_SelectExtract_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectVisibleStatus_as_IFSelect_SelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectVisibleStatus_as_IFSelect_SelectDeduct(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_SelectDeduct (mutable)
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectVisibleStatus_as_IFSelect_SelectDeduct_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectVisibleStatus_as_IFSelect_SelectDeduct_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectVisibleStatus_as_IFSelect_Selection(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectVisibleStatus_as_IFSelect_Selection(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Selection (mutable)
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectVisibleStatus_as_IFSelect_Selection_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectVisibleStatus_as_IFSelect_Selection_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectVisibleStatus_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectVisibleStatus_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SelectVisibleStatus_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SelectVisibleStatus_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectSelectVisibleStatus> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_SelectVisibleStatus_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SelectVisibleStatus_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
@@ -16727,21 +18763,26 @@ impl SelectVisibleStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectVisibleStatus_inherited_IsDirect(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectVisibleStatus_inherited_SetDirect(
                     self as *mut Self,
                     direct,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16757,8 +18798,11 @@ impl SelectVisibleStatus {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16778,8 +18822,11 @@ impl SelectVisibleStatus {
                     G,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16789,21 +18836,26 @@ impl SelectVisibleStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectVisibleStatus_inherited_Label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
     pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectVisibleStatus_inherited_SetInput(
                     self as *mut Self,
                     sel,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16813,8 +18865,11 @@ impl SelectVisibleStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectVisibleStatus_inherited_Input(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16824,8 +18879,11 @@ impl SelectVisibleStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectVisibleStatus_inherited_HasInput(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16837,8 +18895,11 @@ impl SelectVisibleStatus {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16848,8 +18909,11 @@ impl SelectVisibleStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectVisibleStatus_inherited_Alternate(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -16865,21 +18929,26 @@ impl SelectVisibleStatus {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectVisibleStatus_inherited_FillIterator(
                     self as *const Self,
                     iter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16895,8 +18964,11 @@ impl SelectVisibleStatus {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16912,8 +18984,11 @@ impl SelectVisibleStatus {
                     G,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -16926,8 +19001,11 @@ impl SelectVisibleStatus {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16940,8 +19018,11 @@ impl SelectVisibleStatus {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -16951,11 +19032,14 @@ impl SelectVisibleStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SelectVisibleStatus_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -16968,20 +19052,25 @@ impl SelectVisibleStatus {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectVisibleStatus_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -16993,18 +19082,23 @@ impl SelectVisibleStatus {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SelectVisibleStatus_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -17020,79 +19114,78 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSelectVisibleStatus {
 impl HandleIGESSelectSelectVisibleStatus {
     /// Dereference this Handle to access the underlying IGESSelect_SelectVisibleStatus
     pub fn get(&self) -> &crate::ffi::IGESSelect_SelectVisibleStatus {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSelectVisibleStatus_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectVisibleStatus_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_SelectVisibleStatus
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_SelectVisibleStatus {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectVisibleStatus_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSelectVisibleStatus_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_SelectVisibleStatus> to Handle<IFSelect_SelectExtract>
     pub fn to_handle_select_extract(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExtract> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectVisibleStatus_to_HandleIFSelectSelectExtract(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectVisibleStatus_to_HandleIFSelectSelectExtract(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectVisibleStatus> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectVisibleStatus_to_HandleIFSelectSelectDeduct(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectVisibleStatus_to_HandleIFSelectSelectDeduct(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectVisibleStatus> to Handle<IFSelect_Selection>
     pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectVisibleStatus_to_HandleIFSelectSelection(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectVisibleStatus_to_HandleIFSelectSelection(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SelectVisibleStatus> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSelectVisibleStatus_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSelectVisibleStatus_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -17126,8 +19219,10 @@ impl SetGlobalParameter {
     pub fn new_int(numpar: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SetGlobalParameter_ctor_int(numpar) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -17139,8 +19234,11 @@ impl SetGlobalParameter {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SetGlobalParameter_global_number(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -17148,8 +19246,12 @@ impl SetGlobalParameter {
     /// Sets a Text Parameter for the new value
     pub fn set_value(&mut self, text: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe { crate::ffi::IGESSelect_SetGlobalParameter_set_value(self as *mut Self, text) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_SetGlobalParameter_set_value(self as *mut Self, text)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17159,8 +19261,11 @@ impl SetGlobalParameter {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SetGlobalParameter_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -17175,7 +19280,7 @@ impl SetGlobalParameter {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SetGlobalParameter_performing(
                     self as *const Self,
                     ctx,
@@ -17183,7 +19288,9 @@ impl SetGlobalParameter {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17194,8 +19301,11 @@ impl SetGlobalParameter {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SetGlobalParameter_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -17205,8 +19315,11 @@ impl SetGlobalParameter {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SetGlobalParameter_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -17214,8 +19327,11 @@ impl SetGlobalParameter {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SetGlobalParameter_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -17224,121 +19340,120 @@ impl SetGlobalParameter {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SetGlobalParameter_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESSelect_ModelModifier
     pub fn as_model_modifier(&self) -> &ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetGlobalParameter_as_IGESSelect_ModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SetGlobalParameter_as_IGESSelect_ModelModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESSelect_ModelModifier (mutable)
     pub fn as_model_modifier_mut(&mut self) -> &mut ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetGlobalParameter_as_IGESSelect_ModelModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SetGlobalParameter_as_IGESSelect_ModelModifier_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier
     pub fn as_if_select_modifier(&self) -> &crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetGlobalParameter_as_IFSelect_Modifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SetGlobalParameter_as_IFSelect_Modifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier (mutable)
     pub fn as_if_select_modifier_mut(&mut self) -> &mut crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetGlobalParameter_as_IFSelect_Modifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SetGlobalParameter_as_IFSelect_Modifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier
     pub fn as_if_select_general_modifier(&self) -> &crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetGlobalParameter_as_IFSelect_GeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SetGlobalParameter_as_IFSelect_GeneralModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier (mutable)
     pub fn as_if_select_general_modifier_mut(&mut self) -> &mut crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetGlobalParameter_as_IFSelect_GeneralModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SetGlobalParameter_as_IFSelect_GeneralModifier_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetGlobalParameter_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SetGlobalParameter_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetGlobalParameter_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SetGlobalParameter_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectSetGlobalParameter> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_SetGlobalParameter_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SetGlobalParameter_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
@@ -17350,7 +19465,7 @@ impl SetGlobalParameter {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SetGlobalParameter_inherited_Perform(
                     self as *const Self,
                     ctx,
@@ -17359,7 +19474,9 @@ impl SetGlobalParameter {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17372,7 +19489,7 @@ impl SetGlobalParameter {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SetGlobalParameter_inherited_PerformProtocol(
                     self as *const Self,
                     ctx,
@@ -17381,7 +19498,9 @@ impl SetGlobalParameter {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17393,21 +19512,26 @@ impl SetGlobalParameter {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
     pub fn set_dispatch(&mut self, disp: &crate::ffi::HandleIFSelectDispatch) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SetGlobalParameter_inherited_SetDispatch(
                     self as *mut Self,
                     disp,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17417,8 +19541,11 @@ impl SetGlobalParameter {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SetGlobalParameter_inherited_Dispatch(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -17431,33 +19558,40 @@ impl SetGlobalParameter {
                     disp,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SetGlobalParameter_inherited_SetSelection(
                     self as *mut Self,
                     sel,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SetGlobalParameter_inherited_ResetSelection(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17469,8 +19603,11 @@ impl SetGlobalParameter {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -17480,8 +19617,11 @@ impl SetGlobalParameter {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SetGlobalParameter_inherited_Selection(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -17494,8 +19634,11 @@ impl SetGlobalParameter {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -17508,8 +19651,11 @@ impl SetGlobalParameter {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -17519,11 +19665,14 @@ impl SetGlobalParameter {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SetGlobalParameter_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -17534,20 +19683,25 @@ impl SetGlobalParameter {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SetGlobalParameter_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SetGlobalParameter_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17559,18 +19713,23 @@ impl SetGlobalParameter {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SetGlobalParameter_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -17586,79 +19745,78 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSetGlobalParameter {
 impl HandleIGESSelectSetGlobalParameter {
     /// Dereference this Handle to access the underlying IGESSelect_SetGlobalParameter
     pub fn get(&self) -> &crate::ffi::IGESSelect_SetGlobalParameter {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSetGlobalParameter_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSetGlobalParameter_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_SetGlobalParameter
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_SetGlobalParameter {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSetGlobalParameter_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSetGlobalParameter_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_SetGlobalParameter> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectModelModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSetGlobalParameter_to_HandleIGESSelectModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSetGlobalParameter_to_HandleIGESSelectModelModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SetGlobalParameter> to Handle<IFSelect_Modifier>
     pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSetGlobalParameter_to_HandleIFSelectModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSetGlobalParameter_to_HandleIFSelectModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SetGlobalParameter> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSetGlobalParameter_to_HandleIFSelectGeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSetGlobalParameter_to_HandleIFSelectGeneralModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SetGlobalParameter> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSetGlobalParameter_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSetGlobalParameter_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -17688,8 +19846,10 @@ impl SetLabel {
     pub fn new_int_bool(mode: i32, enforce: bool) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SetLabel_ctor_int_bool(mode, enforce) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -17702,10 +19862,12 @@ impl SetLabel {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SetLabel_performing(self as *const Self, ctx, target, TC)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17716,8 +19878,11 @@ impl SetLabel {
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SetLabel_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -17726,8 +19891,11 @@ impl SetLabel {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SetLabel_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -17735,8 +19903,11 @@ impl SetLabel {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SetLabel_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -17744,108 +19915,107 @@ impl SetLabel {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SetLabel_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESSelect_ModelModifier
     pub fn as_model_modifier(&self) -> &ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetLabel_as_IGESSelect_ModelModifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SetLabel_as_IGESSelect_ModelModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESSelect_ModelModifier (mutable)
     pub fn as_model_modifier_mut(&mut self) -> &mut ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetLabel_as_IGESSelect_ModelModifier_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SetLabel_as_IGESSelect_ModelModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier
     pub fn as_if_select_modifier(&self) -> &crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetLabel_as_IFSelect_Modifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SetLabel_as_IFSelect_Modifier(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier (mutable)
     pub fn as_if_select_modifier_mut(&mut self) -> &mut crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetLabel_as_IFSelect_Modifier_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SetLabel_as_IFSelect_Modifier_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier
     pub fn as_if_select_general_modifier(&self) -> &crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetLabel_as_IFSelect_GeneralModifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SetLabel_as_IFSelect_GeneralModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier (mutable)
     pub fn as_if_select_general_modifier_mut(&mut self) -> &mut crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetLabel_as_IFSelect_GeneralModifier_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SetLabel_as_IFSelect_GeneralModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetLabel_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SetLabel_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetLabel_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SetLabel_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectSetLabel> {
-        {
-            let __result = unsafe { crate::ffi::IGESSelect_SetLabel_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_SetLabel_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
@@ -17857,7 +20027,7 @@ impl SetLabel {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SetLabel_inherited_Perform(
                     self as *const Self,
                     ctx,
@@ -17866,7 +20036,9 @@ impl SetLabel {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17879,7 +20051,7 @@ impl SetLabel {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SetLabel_inherited_PerformProtocol(
                     self as *const Self,
                     ctx,
@@ -17888,7 +20060,9 @@ impl SetLabel {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17898,18 +20072,23 @@ impl SetLabel {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SetLabel_inherited_MayChangeGraph(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
     pub fn set_dispatch(&mut self, disp: &crate::ffi::HandleIFSelectDispatch) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SetLabel_inherited_SetDispatch(self as *mut Self, disp)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17918,8 +20097,11 @@ impl SetLabel {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SetLabel_inherited_Dispatch(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -17929,26 +20111,35 @@ impl SetLabel {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SetLabel_inherited_Applies(self as *const Self, disp)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SetLabel_inherited_SetSelection(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         {
-            unsafe { crate::ffi::IGESSelect_SetLabel_inherited_ResetSelection(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_SetLabel_inherited_ResetSelection(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -17958,8 +20149,11 @@ impl SetLabel {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SetLabel_inherited_HasSelection(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -17968,8 +20162,11 @@ impl SetLabel {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SetLabel_inherited_Selection(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -17979,8 +20176,11 @@ impl SetLabel {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SetLabel_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -17990,8 +20190,11 @@ impl SetLabel {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SetLabel_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -18000,11 +20203,14 @@ impl SetLabel {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SetLabel_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -18015,18 +20221,23 @@ impl SetLabel {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SetLabel_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SetLabel_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18036,16 +20247,22 @@ impl SetLabel {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SetLabel_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_SetLabel_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_SetLabel_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -18061,73 +20278,72 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSetLabel {
 impl HandleIGESSelectSetLabel {
     /// Dereference this Handle to access the underlying IGESSelect_SetLabel
     pub fn get(&self) -> &crate::ffi::IGESSelect_SetLabel {
-        {
-            let __result = unsafe { crate::ffi::HandleIGESSelectSetLabel_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectSetLabel_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_SetLabel
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_SetLabel {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSetLabel_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectSetLabel_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_SetLabel> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectModelModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSetLabel_to_HandleIGESSelectModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSetLabel_to_HandleIGESSelectModelModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SetLabel> to Handle<IFSelect_Modifier>
     pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSetLabel_to_HandleIFSelectModifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSetLabel_to_HandleIFSelectModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SetLabel> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSetLabel_to_HandleIFSelectGeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSetLabel_to_HandleIFSelectGeneralModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SetLabel> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSetLabel_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSetLabel_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -18156,8 +20372,10 @@ impl SetVersion5 {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SetVersion5_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -18172,10 +20390,12 @@ impl SetVersion5 {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SetVersion5_performing(self as *const Self, ctx, target, TC)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18185,8 +20405,11 @@ impl SetVersion5 {
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SetVersion5_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -18195,8 +20418,11 @@ impl SetVersion5 {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SetVersion5_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -18204,8 +20430,11 @@ impl SetVersion5 {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SetVersion5_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -18213,112 +20442,110 @@ impl SetVersion5 {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SetVersion5_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESSelect_ModelModifier
     pub fn as_model_modifier(&self) -> &ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetVersion5_as_IGESSelect_ModelModifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SetVersion5_as_IGESSelect_ModelModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESSelect_ModelModifier (mutable)
     pub fn as_model_modifier_mut(&mut self) -> &mut ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetVersion5_as_IGESSelect_ModelModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SetVersion5_as_IGESSelect_ModelModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier
     pub fn as_if_select_modifier(&self) -> &crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetVersion5_as_IFSelect_Modifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SetVersion5_as_IFSelect_Modifier(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier (mutable)
     pub fn as_if_select_modifier_mut(&mut self) -> &mut crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetVersion5_as_IFSelect_Modifier_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SetVersion5_as_IFSelect_Modifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier
     pub fn as_if_select_general_modifier(&self) -> &crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetVersion5_as_IFSelect_GeneralModifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SetVersion5_as_IFSelect_GeneralModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier (mutable)
     pub fn as_if_select_general_modifier_mut(&mut self) -> &mut crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetVersion5_as_IFSelect_GeneralModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SetVersion5_as_IFSelect_GeneralModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetVersion5_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SetVersion5_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SetVersion5_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SetVersion5_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectSetVersion5> {
-        {
-            let __result = unsafe { crate::ffi::IGESSelect_SetVersion5_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_SetVersion5_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
@@ -18330,7 +20557,7 @@ impl SetVersion5 {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SetVersion5_inherited_Perform(
                     self as *const Self,
                     ctx,
@@ -18339,7 +20566,9 @@ impl SetVersion5 {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18352,7 +20581,7 @@ impl SetVersion5 {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SetVersion5_inherited_PerformProtocol(
                     self as *const Self,
                     ctx,
@@ -18361,7 +20590,9 @@ impl SetVersion5 {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18371,18 +20602,23 @@ impl SetVersion5 {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SetVersion5_inherited_MayChangeGraph(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
     pub fn set_dispatch(&mut self, disp: &crate::ffi::HandleIFSelectDispatch) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SetVersion5_inherited_SetDispatch(self as *mut Self, disp)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18392,8 +20628,11 @@ impl SetVersion5 {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SetVersion5_inherited_Dispatch(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -18403,28 +20642,35 @@ impl SetVersion5 {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SetVersion5_inherited_Applies(self as *const Self, disp)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SetVersion5_inherited_SetSelection(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SetVersion5_inherited_ResetSelection(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18434,8 +20680,11 @@ impl SetVersion5 {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SetVersion5_inherited_HasSelection(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -18445,8 +20694,11 @@ impl SetVersion5 {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SetVersion5_inherited_Selection(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -18459,8 +20711,11 @@ impl SetVersion5 {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -18470,8 +20725,11 @@ impl SetVersion5 {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SetVersion5_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -18480,11 +20738,14 @@ impl SetVersion5 {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SetVersion5_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -18495,18 +20756,23 @@ impl SetVersion5 {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SetVersion5_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SetVersion5_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18516,16 +20782,22 @@ impl SetVersion5 {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SetVersion5_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_SetVersion5_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_SetVersion5_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -18541,78 +20813,73 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSetVersion5 {
 impl HandleIGESSelectSetVersion5 {
     /// Dereference this Handle to access the underlying IGESSelect_SetVersion5
     pub fn get(&self) -> &crate::ffi::IGESSelect_SetVersion5 {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSetVersion5_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectSetVersion5_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_SetVersion5
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_SetVersion5 {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSetVersion5_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSetVersion5_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_SetVersion5> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectModelModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSetVersion5_to_HandleIGESSelectModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSetVersion5_to_HandleIGESSelectModelModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SetVersion5> to Handle<IFSelect_Modifier>
     pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSetVersion5_to_HandleIFSelectModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSetVersion5_to_HandleIFSelectModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SetVersion5> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSetVersion5_to_HandleIFSelectGeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSetVersion5_to_HandleIFSelectGeneralModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SetVersion5> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSetVersion5_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSetVersion5_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -18649,8 +20916,10 @@ impl SignColor {
     pub fn new_int(mode: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SignColor_ctor_int(mode) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -18664,8 +20933,11 @@ impl SignColor {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SignColor_value(self as *const Self, ent, model) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -18674,8 +20946,11 @@ impl SignColor {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SignColor_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -18683,8 +20958,11 @@ impl SignColor {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SignColor_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -18692,114 +20970,112 @@ impl SignColor {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SignColor_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_Signature
     pub fn as_if_select_signature(&self) -> &crate::if_select::Signature {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignColor_as_IFSelect_Signature(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SignColor_as_IFSelect_Signature(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Signature (mutable)
     pub fn as_if_select_signature_mut(&mut self) -> &mut crate::if_select::Signature {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignColor_as_IFSelect_Signature_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SignColor_as_IFSelect_Signature_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Interface_SignType
     pub fn as_interface_sign_type(&self) -> &crate::interface::SignType {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignColor_as_Interface_SignType(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SignColor_as_Interface_SignType(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Interface_SignType (mutable)
     pub fn as_interface_sign_type_mut(&mut self) -> &mut crate::interface::SignType {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignColor_as_Interface_SignType_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SignColor_as_Interface_SignType_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to MoniTool_SignText
     pub fn as_moni_tool_sign_text(&self) -> &crate::moni_tool::SignText {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignColor_as_MoniTool_SignText(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SignColor_as_MoniTool_SignText(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to MoniTool_SignText (mutable)
     pub fn as_moni_tool_sign_text_mut(&mut self) -> &mut crate::moni_tool::SignText {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignColor_as_MoniTool_SignText_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SignColor_as_MoniTool_SignText_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignColor_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SignColor_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignColor_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SignColor_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectSignColor> {
-        {
-            let __result = unsafe { crate::ffi::IGESSelect_SignColor_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_SignColor_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SignColor_inherited_SetIntCase(
                     self as *mut Self,
                     hasmin,
@@ -18808,7 +21084,9 @@ impl SignColor {
                     valmax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18830,8 +21108,11 @@ impl SignColor {
                     valmax,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -18840,8 +21121,11 @@ impl SignColor {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SignColor_inherited_CaseList(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -18850,8 +21134,11 @@ impl SignColor {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SignColor_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -18873,8 +21160,11 @@ impl SignColor {
                     exact,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -18888,8 +21178,11 @@ impl SignColor {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SignColor_inherited_Text(self as *const Self, ent, context)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -18902,8 +21195,11 @@ impl SignColor {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SignColor_inherited_TextAlone(self as *const Self, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -18913,8 +21209,11 @@ impl SignColor {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SignColor_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -18924,8 +21223,11 @@ impl SignColor {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SignColor_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -18934,11 +21236,14 @@ impl SignColor {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SignColor_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -18949,18 +21254,23 @@ impl SignColor {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SignColor_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SignColor_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -18970,16 +21280,22 @@ impl SignColor {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SignColor_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_SignColor_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_SignColor_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -18995,72 +21311,64 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSignColor {
 impl HandleIGESSelectSignColor {
     /// Dereference this Handle to access the underlying IGESSelect_SignColor
     pub fn get(&self) -> &crate::ffi::IGESSelect_SignColor {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSignColor_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectSignColor_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_SignColor
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_SignColor {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSignColor_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectSignColor_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_SignColor> to Handle<IFSelect_Signature>
     pub fn to_handle_signature(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSignColor_to_HandleIFSelectSignature(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSignColor_to_HandleIFSelectSignature(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SignColor> to Handle<Interface_SignType>
     pub fn to_handle_sign_type(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceSignType> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSignColor_to_HandleInterfaceSignType(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSignColor_to_HandleInterfaceSignType(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SignColor> to Handle<MoniTool_SignText>
     pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi::HandleMoniToolSignText> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSignColor_to_HandleMoniToolSignText(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSignColor_to_HandleMoniToolSignText(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SignColor> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSignColor_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSignColor_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -19092,8 +21400,10 @@ impl SignLevelNumber {
     pub fn new_bool(countmode: bool) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SignLevelNumber_ctor_bool(countmode) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -19108,8 +21418,11 @@ impl SignLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SignLevelNumber_value(self as *const Self, ent, model)
             };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -19118,8 +21431,11 @@ impl SignLevelNumber {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SignLevelNumber_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -19127,8 +21443,11 @@ impl SignLevelNumber {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SignLevelNumber_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -19136,115 +21455,117 @@ impl SignLevelNumber {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SignLevelNumber_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_Signature
     pub fn as_if_select_signature(&self) -> &crate::if_select::Signature {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignLevelNumber_as_IFSelect_Signature(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SignLevelNumber_as_IFSelect_Signature(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Signature (mutable)
     pub fn as_if_select_signature_mut(&mut self) -> &mut crate::if_select::Signature {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignLevelNumber_as_IFSelect_Signature_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SignLevelNumber_as_IFSelect_Signature_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Interface_SignType
     pub fn as_interface_sign_type(&self) -> &crate::interface::SignType {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignLevelNumber_as_Interface_SignType(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SignLevelNumber_as_Interface_SignType(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Interface_SignType (mutable)
     pub fn as_interface_sign_type_mut(&mut self) -> &mut crate::interface::SignType {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignLevelNumber_as_Interface_SignType_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SignLevelNumber_as_Interface_SignType_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to MoniTool_SignText
     pub fn as_moni_tool_sign_text(&self) -> &crate::moni_tool::SignText {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignLevelNumber_as_MoniTool_SignText(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SignLevelNumber_as_MoniTool_SignText(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to MoniTool_SignText (mutable)
     pub fn as_moni_tool_sign_text_mut(&mut self) -> &mut crate::moni_tool::SignText {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignLevelNumber_as_MoniTool_SignText_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SignLevelNumber_as_MoniTool_SignText_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignLevelNumber_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SignLevelNumber_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignLevelNumber_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SignLevelNumber_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectSignLevelNumber> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_SignLevelNumber_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_SignLevelNumber_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SignLevelNumber_inherited_SetIntCase(
                     self as *mut Self,
                     hasmin,
@@ -19253,7 +21574,9 @@ impl SignLevelNumber {
                     valmax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19275,8 +21598,11 @@ impl SignLevelNumber {
                     valmax,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -19286,8 +21612,11 @@ impl SignLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SignLevelNumber_inherited_CaseList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -19297,8 +21626,11 @@ impl SignLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SignLevelNumber_inherited_Label(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -19320,8 +21652,11 @@ impl SignLevelNumber {
                     exact,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -19339,8 +21674,11 @@ impl SignLevelNumber {
                     context,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -19353,8 +21691,11 @@ impl SignLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SignLevelNumber_inherited_TextAlone(self as *const Self, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -19367,8 +21708,11 @@ impl SignLevelNumber {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -19381,8 +21725,11 @@ impl SignLevelNumber {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -19392,11 +21739,14 @@ impl SignLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SignLevelNumber_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -19407,20 +21757,25 @@ impl SignLevelNumber {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SignLevelNumber_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SignLevelNumber_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19432,16 +21787,23 @@ impl SignLevelNumber {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_SignLevelNumber_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_SignLevelNumber_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -19457,74 +21819,74 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSignLevelNumber {
 impl HandleIGESSelectSignLevelNumber {
     /// Dereference this Handle to access the underlying IGESSelect_SignLevelNumber
     pub fn get(&self) -> &crate::ffi::IGESSelect_SignLevelNumber {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSignLevelNumber_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSignLevelNumber_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_SignLevelNumber
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_SignLevelNumber {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSignLevelNumber_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSignLevelNumber_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_SignLevelNumber> to Handle<IFSelect_Signature>
     pub fn to_handle_signature(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSignLevelNumber_to_HandleIFSelectSignature(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSignLevelNumber_to_HandleIFSelectSignature(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SignLevelNumber> to Handle<Interface_SignType>
     pub fn to_handle_sign_type(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceSignType> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSignLevelNumber_to_HandleInterfaceSignType(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSignLevelNumber_to_HandleInterfaceSignType(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SignLevelNumber> to Handle<MoniTool_SignText>
     pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi::HandleMoniToolSignText> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSignLevelNumber_to_HandleMoniToolSignText(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSignLevelNumber_to_HandleMoniToolSignText(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SignLevelNumber> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSignLevelNumber_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSignLevelNumber_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -19560,8 +21922,10 @@ impl SignStatus {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SignStatus_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -19575,8 +21939,11 @@ impl SignStatus {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SignStatus_value(self as *const Self, ent, model) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -19599,8 +21966,11 @@ impl SignStatus {
                     exact,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -19609,8 +21979,11 @@ impl SignStatus {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SignStatus_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -19618,8 +21991,11 @@ impl SignStatus {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SignStatus_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -19627,114 +22003,113 @@ impl SignStatus {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SignStatus_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_Signature
     pub fn as_if_select_signature(&self) -> &crate::if_select::Signature {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignStatus_as_IFSelect_Signature(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SignStatus_as_IFSelect_Signature(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Signature (mutable)
     pub fn as_if_select_signature_mut(&mut self) -> &mut crate::if_select::Signature {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignStatus_as_IFSelect_Signature_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SignStatus_as_IFSelect_Signature_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Interface_SignType
     pub fn as_interface_sign_type(&self) -> &crate::interface::SignType {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignStatus_as_Interface_SignType(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SignStatus_as_Interface_SignType(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Interface_SignType (mutable)
     pub fn as_interface_sign_type_mut(&mut self) -> &mut crate::interface::SignType {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignStatus_as_Interface_SignType_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SignStatus_as_Interface_SignType_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to MoniTool_SignText
     pub fn as_moni_tool_sign_text(&self) -> &crate::moni_tool::SignText {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignStatus_as_MoniTool_SignText(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SignStatus_as_MoniTool_SignText(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to MoniTool_SignText (mutable)
     pub fn as_moni_tool_sign_text_mut(&mut self) -> &mut crate::moni_tool::SignText {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignStatus_as_MoniTool_SignText_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SignStatus_as_MoniTool_SignText_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignStatus_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_SignStatus_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SignStatus_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SignStatus_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectSignStatus> {
-        {
-            let __result = unsafe { crate::ffi::IGESSelect_SignStatus_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_SignStatus_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SignStatus_inherited_SetIntCase(
                     self as *mut Self,
                     hasmin,
@@ -19743,7 +22118,9 @@ impl SignStatus {
                     valmax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19765,8 +22142,11 @@ impl SignStatus {
                     valmax,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -19776,8 +22156,11 @@ impl SignStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SignStatus_inherited_CaseList(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -19786,8 +22169,11 @@ impl SignStatus {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SignStatus_inherited_Label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -19801,8 +22187,11 @@ impl SignStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SignStatus_inherited_Text(self as *const Self, ent, context)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -19815,8 +22204,11 @@ impl SignStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SignStatus_inherited_TextAlone(self as *const Self, ent)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -19826,8 +22218,11 @@ impl SignStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SignStatus_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -19837,8 +22232,11 @@ impl SignStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SignStatus_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -19847,11 +22245,14 @@ impl SignStatus {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SignStatus_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -19862,18 +22263,23 @@ impl SignStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SignStatus_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SignStatus_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -19883,16 +22289,22 @@ impl SignStatus {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SignStatus_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_SignStatus_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_SignStatus_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -19908,74 +22320,64 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSignStatus {
 impl HandleIGESSelectSignStatus {
     /// Dereference this Handle to access the underlying IGESSelect_SignStatus
     pub fn get(&self) -> &crate::ffi::IGESSelect_SignStatus {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSignStatus_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectSignStatus_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_SignStatus
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_SignStatus {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSignStatus_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectSignStatus_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_SignStatus> to Handle<IFSelect_Signature>
     pub fn to_handle_signature(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSignStatus_to_HandleIFSelectSignature(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSignStatus_to_HandleIFSelectSignature(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SignStatus> to Handle<Interface_SignType>
     pub fn to_handle_sign_type(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceSignType> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSignStatus_to_HandleInterfaceSignType(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSignStatus_to_HandleInterfaceSignType(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SignStatus> to Handle<MoniTool_SignText>
     pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi::HandleMoniToolSignText> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSignStatus_to_HandleMoniToolSignText(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSignStatus_to_HandleMoniToolSignText(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SignStatus> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSignStatus_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSignStatus_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -20012,8 +22414,10 @@ impl SplineToBSpline {
     pub fn new_bool(tryC2: bool) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SplineToBSpline_ctor_bool(tryC2) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -20024,8 +22428,11 @@ impl SplineToBSpline {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SplineToBSpline_option_try_c2(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20049,8 +22456,11 @@ impl SplineToBSpline {
                     newmod,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20071,8 +22481,11 @@ impl SplineToBSpline {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SplineToBSpline_updated(self as *const Self, entfrom, entto)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20084,8 +22497,11 @@ impl SplineToBSpline {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SplineToBSpline_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -20094,8 +22510,11 @@ impl SplineToBSpline {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_SplineToBSpline_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -20103,8 +22522,11 @@ impl SplineToBSpline {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SplineToBSpline_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -20112,67 +22534,67 @@ impl SplineToBSpline {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_SplineToBSpline_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_Transformer
     pub fn as_if_select_transformer(&self) -> &crate::if_select::Transformer {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SplineToBSpline_as_IFSelect_Transformer(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SplineToBSpline_as_IFSelect_Transformer(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Transformer (mutable)
     pub fn as_if_select_transformer_mut(&mut self) -> &mut crate::if_select::Transformer {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SplineToBSpline_as_IFSelect_Transformer_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SplineToBSpline_as_IFSelect_Transformer_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SplineToBSpline_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SplineToBSpline_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_SplineToBSpline_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_SplineToBSpline_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectSplineToBSpline> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_SplineToBSpline_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_SplineToBSpline_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_Transformer.hxx`:84 - `IFSelect_Transformer::ChangeProtocol()`
@@ -20184,8 +22606,11 @@ impl SplineToBSpline {
                     newproto,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20198,8 +22623,11 @@ impl SplineToBSpline {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20212,8 +22640,11 @@ impl SplineToBSpline {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20223,11 +22654,14 @@ impl SplineToBSpline {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SplineToBSpline_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -20238,20 +22672,25 @@ impl SplineToBSpline {
             let __result = unsafe {
                 crate::ffi::IGESSelect_SplineToBSpline_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_SplineToBSpline_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -20263,16 +22702,23 @@ impl SplineToBSpline {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_SplineToBSpline_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_SplineToBSpline_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -20288,48 +22734,48 @@ unsafe impl crate::CppDeletable for HandleIGESSelectSplineToBSpline {
 impl HandleIGESSelectSplineToBSpline {
     /// Dereference this Handle to access the underlying IGESSelect_SplineToBSpline
     pub fn get(&self) -> &crate::ffi::IGESSelect_SplineToBSpline {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSplineToBSpline_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSplineToBSpline_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_SplineToBSpline
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_SplineToBSpline {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectSplineToBSpline_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectSplineToBSpline_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_SplineToBSpline> to Handle<IFSelect_Transformer>
     pub fn to_handle_transformer(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectTransformer> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSplineToBSpline_to_HandleIFSelectTransformer(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSplineToBSpline_to_HandleIFSelectTransformer(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_SplineToBSpline> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectSplineToBSpline_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectSplineToBSpline_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -20357,8 +22803,10 @@ impl UpdateCreationDate {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_UpdateCreationDate_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -20372,7 +22820,7 @@ impl UpdateCreationDate {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateCreationDate_performing(
                     self as *const Self,
                     ctx,
@@ -20380,7 +22828,9 @@ impl UpdateCreationDate {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -20391,8 +22841,11 @@ impl UpdateCreationDate {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_UpdateCreationDate_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -20402,8 +22855,11 @@ impl UpdateCreationDate {
             let __result = unsafe {
                 crate::ffi::IGESSelect_UpdateCreationDate_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -20411,8 +22867,11 @@ impl UpdateCreationDate {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_UpdateCreationDate_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -20421,121 +22880,120 @@ impl UpdateCreationDate {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_UpdateCreationDate_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESSelect_ModelModifier
     pub fn as_model_modifier(&self) -> &ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateCreationDate_as_IGESSelect_ModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateCreationDate_as_IGESSelect_ModelModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESSelect_ModelModifier (mutable)
     pub fn as_model_modifier_mut(&mut self) -> &mut ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateCreationDate_as_IGESSelect_ModelModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateCreationDate_as_IGESSelect_ModelModifier_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier
     pub fn as_if_select_modifier(&self) -> &crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateCreationDate_as_IFSelect_Modifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateCreationDate_as_IFSelect_Modifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier (mutable)
     pub fn as_if_select_modifier_mut(&mut self) -> &mut crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateCreationDate_as_IFSelect_Modifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateCreationDate_as_IFSelect_Modifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier
     pub fn as_if_select_general_modifier(&self) -> &crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateCreationDate_as_IFSelect_GeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateCreationDate_as_IFSelect_GeneralModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier (mutable)
     pub fn as_if_select_general_modifier_mut(&mut self) -> &mut crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateCreationDate_as_IFSelect_GeneralModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateCreationDate_as_IFSelect_GeneralModifier_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateCreationDate_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateCreationDate_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateCreationDate_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateCreationDate_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectUpdateCreationDate> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_UpdateCreationDate_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_UpdateCreationDate_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
@@ -20547,7 +23005,7 @@ impl UpdateCreationDate {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateCreationDate_inherited_Perform(
                     self as *const Self,
                     ctx,
@@ -20556,7 +23014,9 @@ impl UpdateCreationDate {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -20569,7 +23029,7 @@ impl UpdateCreationDate {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateCreationDate_inherited_PerformProtocol(
                     self as *const Self,
                     ctx,
@@ -20578,7 +23038,9 @@ impl UpdateCreationDate {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -20590,21 +23052,26 @@ impl UpdateCreationDate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
     pub fn set_dispatch(&mut self, disp: &crate::ffi::HandleIFSelectDispatch) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateCreationDate_inherited_SetDispatch(
                     self as *mut Self,
                     disp,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -20614,8 +23081,11 @@ impl UpdateCreationDate {
             let __result = unsafe {
                 crate::ffi::IGESSelect_UpdateCreationDate_inherited_Dispatch(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -20628,33 +23098,40 @@ impl UpdateCreationDate {
                     disp,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateCreationDate_inherited_SetSelection(
                     self as *mut Self,
                     sel,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateCreationDate_inherited_ResetSelection(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -20666,8 +23143,11 @@ impl UpdateCreationDate {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20677,8 +23157,11 @@ impl UpdateCreationDate {
             let __result = unsafe {
                 crate::ffi::IGESSelect_UpdateCreationDate_inherited_Selection(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -20691,8 +23174,11 @@ impl UpdateCreationDate {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20705,8 +23191,11 @@ impl UpdateCreationDate {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -20716,11 +23205,14 @@ impl UpdateCreationDate {
             let __result = unsafe {
                 crate::ffi::IGESSelect_UpdateCreationDate_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -20731,20 +23223,25 @@ impl UpdateCreationDate {
             let __result = unsafe {
                 crate::ffi::IGESSelect_UpdateCreationDate_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateCreationDate_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -20756,18 +23253,23 @@ impl UpdateCreationDate {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateCreationDate_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -20783,79 +23285,78 @@ unsafe impl crate::CppDeletable for HandleIGESSelectUpdateCreationDate {
 impl HandleIGESSelectUpdateCreationDate {
     /// Dereference this Handle to access the underlying IGESSelect_UpdateCreationDate
     pub fn get(&self) -> &crate::ffi::IGESSelect_UpdateCreationDate {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectUpdateCreationDate_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectUpdateCreationDate_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_UpdateCreationDate
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_UpdateCreationDate {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectUpdateCreationDate_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectUpdateCreationDate_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_UpdateCreationDate> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectModelModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectUpdateCreationDate_to_HandleIGESSelectModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectUpdateCreationDate_to_HandleIGESSelectModelModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_UpdateCreationDate> to Handle<IFSelect_Modifier>
     pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectUpdateCreationDate_to_HandleIFSelectModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectUpdateCreationDate_to_HandleIFSelectModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_UpdateCreationDate> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectUpdateCreationDate_to_HandleIFSelectGeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectUpdateCreationDate_to_HandleIFSelectGeneralModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_UpdateCreationDate> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectUpdateCreationDate_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectUpdateCreationDate_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -20885,8 +23386,10 @@ impl UpdateFileName {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_UpdateFileName_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -20900,7 +23403,7 @@ impl UpdateFileName {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateFileName_performing(
                     self as *const Self,
                     ctx,
@@ -20908,7 +23411,9 @@ impl UpdateFileName {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -20919,8 +23424,11 @@ impl UpdateFileName {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_UpdateFileName_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -20929,8 +23437,11 @@ impl UpdateFileName {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_UpdateFileName_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -20938,8 +23449,11 @@ impl UpdateFileName {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_UpdateFileName_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -20947,117 +23461,111 @@ impl UpdateFileName {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_UpdateFileName_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESSelect_ModelModifier
     pub fn as_model_modifier(&self) -> &ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateFileName_as_IGESSelect_ModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateFileName_as_IGESSelect_ModelModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESSelect_ModelModifier (mutable)
     pub fn as_model_modifier_mut(&mut self) -> &mut ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateFileName_as_IGESSelect_ModelModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateFileName_as_IGESSelect_ModelModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier
     pub fn as_if_select_modifier(&self) -> &crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateFileName_as_IFSelect_Modifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateFileName_as_IFSelect_Modifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier (mutable)
     pub fn as_if_select_modifier_mut(&mut self) -> &mut crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateFileName_as_IFSelect_Modifier_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateFileName_as_IFSelect_Modifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier
     pub fn as_if_select_general_modifier(&self) -> &crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateFileName_as_IFSelect_GeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateFileName_as_IFSelect_GeneralModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier (mutable)
     pub fn as_if_select_general_modifier_mut(&mut self) -> &mut crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateFileName_as_IFSelect_GeneralModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateFileName_as_IFSelect_GeneralModifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateFileName_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateFileName_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateFileName_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateFileName_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectUpdateFileName> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_UpdateFileName_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_UpdateFileName_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
@@ -21069,7 +23577,7 @@ impl UpdateFileName {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateFileName_inherited_Perform(
                     self as *const Self,
                     ctx,
@@ -21078,7 +23586,9 @@ impl UpdateFileName {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -21091,7 +23601,7 @@ impl UpdateFileName {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateFileName_inherited_PerformProtocol(
                     self as *const Self,
                     ctx,
@@ -21100,7 +23610,9 @@ impl UpdateFileName {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -21110,18 +23622,23 @@ impl UpdateFileName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_UpdateFileName_inherited_MayChangeGraph(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
     pub fn set_dispatch(&mut self, disp: &crate::ffi::HandleIFSelectDispatch) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateFileName_inherited_SetDispatch(self as *mut Self, disp)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -21131,8 +23648,11 @@ impl UpdateFileName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_UpdateFileName_inherited_Dispatch(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -21142,28 +23662,35 @@ impl UpdateFileName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_UpdateFileName_inherited_Applies(self as *const Self, disp)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateFileName_inherited_SetSelection(self as *mut Self, sel)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateFileName_inherited_ResetSelection(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -21173,8 +23700,11 @@ impl UpdateFileName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_UpdateFileName_inherited_HasSelection(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -21184,8 +23714,11 @@ impl UpdateFileName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_UpdateFileName_inherited_Selection(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -21198,8 +23731,11 @@ impl UpdateFileName {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -21209,8 +23745,11 @@ impl UpdateFileName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_UpdateFileName_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -21220,11 +23759,14 @@ impl UpdateFileName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_UpdateFileName_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -21235,20 +23777,25 @@ impl UpdateFileName {
             let __result = unsafe {
                 crate::ffi::IGESSelect_UpdateFileName_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateFileName_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -21260,16 +23807,23 @@ impl UpdateFileName {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_UpdateFileName_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IGESSelect_UpdateFileName_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -21285,78 +23839,78 @@ unsafe impl crate::CppDeletable for HandleIGESSelectUpdateFileName {
 impl HandleIGESSelectUpdateFileName {
     /// Dereference this Handle to access the underlying IGESSelect_UpdateFileName
     pub fn get(&self) -> &crate::ffi::IGESSelect_UpdateFileName {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectUpdateFileName_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectUpdateFileName_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_UpdateFileName
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_UpdateFileName {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectUpdateFileName_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectUpdateFileName_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_UpdateFileName> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectModelModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectUpdateFileName_to_HandleIGESSelectModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectUpdateFileName_to_HandleIGESSelectModelModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_UpdateFileName> to Handle<IFSelect_Modifier>
     pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectUpdateFileName_to_HandleIFSelectModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectUpdateFileName_to_HandleIFSelectModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_UpdateFileName> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectUpdateFileName_to_HandleIFSelectGeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectUpdateFileName_to_HandleIFSelectGeneralModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_UpdateFileName> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectUpdateFileName_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectUpdateFileName_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -21386,8 +23940,10 @@ impl UpdateLastChange {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_UpdateLastChange_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -21402,7 +23958,7 @@ impl UpdateLastChange {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateLastChange_performing(
                     self as *const Self,
                     ctx,
@@ -21410,7 +23966,9 @@ impl UpdateLastChange {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -21421,8 +23979,11 @@ impl UpdateLastChange {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_UpdateLastChange_label(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -21432,8 +23993,11 @@ impl UpdateLastChange {
             let __result = unsafe {
                 crate::ffi::IGESSelect_UpdateLastChange_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -21441,8 +24005,11 @@ impl UpdateLastChange {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_UpdateLastChange_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -21450,117 +24017,115 @@ impl UpdateLastChange {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_UpdateLastChange_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IGESSelect_ModelModifier
     pub fn as_model_modifier(&self) -> &ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateLastChange_as_IGESSelect_ModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateLastChange_as_IGESSelect_ModelModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IGESSelect_ModelModifier (mutable)
     pub fn as_model_modifier_mut(&mut self) -> &mut ModelModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateLastChange_as_IGESSelect_ModelModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateLastChange_as_IGESSelect_ModelModifier_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier
     pub fn as_if_select_modifier(&self) -> &crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateLastChange_as_IFSelect_Modifier(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateLastChange_as_IFSelect_Modifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_Modifier (mutable)
     pub fn as_if_select_modifier_mut(&mut self) -> &mut crate::if_select::Modifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateLastChange_as_IFSelect_Modifier_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateLastChange_as_IFSelect_Modifier_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier
     pub fn as_if_select_general_modifier(&self) -> &crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateLastChange_as_IFSelect_GeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateLastChange_as_IFSelect_GeneralModifier(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_GeneralModifier (mutable)
     pub fn as_if_select_general_modifier_mut(&mut self) -> &mut crate::if_select::GeneralModifier {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateLastChange_as_IFSelect_GeneralModifier_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateLastChange_as_IFSelect_GeneralModifier_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateLastChange_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateLastChange_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_UpdateLastChange_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_UpdateLastChange_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectUpdateLastChange> {
-        {
-            let __result =
-                unsafe { crate::ffi::IGESSelect_UpdateLastChange_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_UpdateLastChange_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IGESSelect_ModelModifier.hxx`:41 - `IGESSelect_ModelModifier::Perform()`
@@ -21572,7 +24137,7 @@ impl UpdateLastChange {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateLastChange_inherited_Perform(
                     self as *const Self,
                     ctx,
@@ -21581,7 +24146,9 @@ impl UpdateLastChange {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -21594,7 +24161,7 @@ impl UpdateLastChange {
         TC: &mut crate::interface::CopyTool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateLastChange_inherited_PerformProtocol(
                     self as *const Self,
                     ctx,
@@ -21603,7 +24170,9 @@ impl UpdateLastChange {
                     TC,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -21615,21 +24184,26 @@ impl UpdateLastChange {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:72 - `IFSelect_GeneralModifier::SetDispatch()`
     pub fn set_dispatch(&mut self, disp: &crate::ffi::HandleIFSelectDispatch) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateLastChange_inherited_SetDispatch(
                     self as *mut Self,
                     disp,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -21639,8 +24213,11 @@ impl UpdateLastChange {
             let __result = unsafe {
                 crate::ffi::IGESSelect_UpdateLastChange_inherited_Dispatch(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -21650,31 +24227,38 @@ impl UpdateLastChange {
             let __result = unsafe {
                 crate::ffi::IGESSelect_UpdateLastChange_inherited_Applies(self as *const Self, disp)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:84 - `IFSelect_GeneralModifier::SetSelection()`
     pub fn set_selection(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateLastChange_inherited_SetSelection(
                     self as *mut Self,
                     sel,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_GeneralModifier.hxx`:87 - `IFSelect_GeneralModifier::ResetSelection()`
     pub fn reset_selection(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateLastChange_inherited_ResetSelection(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -21684,8 +24268,11 @@ impl UpdateLastChange {
             let __result = unsafe {
                 crate::ffi::IGESSelect_UpdateLastChange_inherited_HasSelection(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -21695,8 +24282,11 @@ impl UpdateLastChange {
             let __result = unsafe {
                 crate::ffi::IGESSelect_UpdateLastChange_inherited_Selection(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -21709,8 +24299,11 @@ impl UpdateLastChange {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -21723,8 +24316,11 @@ impl UpdateLastChange {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -21734,11 +24330,14 @@ impl UpdateLastChange {
             let __result = unsafe {
                 crate::ffi::IGESSelect_UpdateLastChange_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -21749,20 +24348,25 @@ impl UpdateLastChange {
             let __result = unsafe {
                 crate::ffi::IGESSelect_UpdateLastChange_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateLastChange_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -21774,18 +24378,23 @@ impl UpdateLastChange {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_UpdateLastChange_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -21801,78 +24410,78 @@ unsafe impl crate::CppDeletable for HandleIGESSelectUpdateLastChange {
 impl HandleIGESSelectUpdateLastChange {
     /// Dereference this Handle to access the underlying IGESSelect_UpdateLastChange
     pub fn get(&self) -> &crate::ffi::IGESSelect_UpdateLastChange {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectUpdateLastChange_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectUpdateLastChange_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_UpdateLastChange
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_UpdateLastChange {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectUpdateLastChange_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectUpdateLastChange_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_UpdateLastChange> to Handle<IGESSelect_ModelModifier>
     pub fn to_handle_model_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectModelModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectUpdateLastChange_to_HandleIGESSelectModelModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectUpdateLastChange_to_HandleIGESSelectModelModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_UpdateLastChange> to Handle<IFSelect_Modifier>
     pub fn to_handle_modifier(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectUpdateLastChange_to_HandleIFSelectModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectUpdateLastChange_to_HandleIFSelectModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_UpdateLastChange> to Handle<IFSelect_GeneralModifier>
     pub fn to_handle_general_modifier(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectUpdateLastChange_to_HandleIFSelectGeneralModifier(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectUpdateLastChange_to_HandleIFSelectGeneralModifier(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_UpdateLastChange> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectUpdateLastChange_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectUpdateLastChange_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -21903,8 +24512,10 @@ impl ViewSorter {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_ViewSorter_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -21912,8 +24523,11 @@ impl ViewSorter {
     /// Sets the Model (for PacketList)
     pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
         {
-            unsafe { crate::ffi::IGESSelect_ViewSorter_set_model(self as *mut Self, model) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_ViewSorter_set_model(self as *mut Self, model) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -21921,8 +24535,10 @@ impl ViewSorter {
     /// Clears recorded data
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::IGESSelect_ViewSorter_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IGESSelect_ViewSorter_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -21931,8 +24547,11 @@ impl ViewSorter {
     pub fn add(&mut self, ent: &crate::ffi::HandleStandardTransient) -> bool {
         {
             let __result = unsafe { crate::ffi::IGESSelect_ViewSorter_add(self as *mut Self, ent) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -21944,8 +24563,11 @@ impl ViewSorter {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_ViewSorter_add_entity(self as *mut Self, igesent) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -21953,8 +24575,11 @@ impl ViewSorter {
     /// Adds a list of entities by adding each of the items
     pub fn add_list(&mut self, list: &crate::ffi::HandleTColStdHSequenceOfTransient) {
         {
-            unsafe { crate::ffi::IGESSelect_ViewSorter_add_list(self as *mut Self, list) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_ViewSorter_add_list(self as *mut Self, list) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -21962,8 +24587,11 @@ impl ViewSorter {
     /// Adds all the entities contained in a Model
     pub fn add_model(&mut self, model: &crate::ffi::HandleInterfaceInterfaceModel) {
         {
-            unsafe { crate::ffi::IGESSelect_ViewSorter_add_model(self as *mut Self, model) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_ViewSorter_add_model(self as *mut Self, model) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -21973,8 +24601,11 @@ impl ViewSorter {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_ViewSorter_nb_entities(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -21988,10 +24619,12 @@ impl ViewSorter {
     /// RemainingList(final = True)
     pub fn sort_single_views(&mut self, alsoframes: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ViewSorter_sort_single_views(self as *mut Self, alsoframes)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -22007,8 +24640,11 @@ impl ViewSorter {
     /// RemainingList(final = True)
     pub fn sort_drawings(&mut self, G: &crate::interface::Graph) {
         {
-            unsafe { crate::ffi::IGESSelect_ViewSorter_sort_drawings(self as *mut Self, G) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_ViewSorter_sort_drawings(self as *mut Self, G) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -22026,8 +24662,11 @@ impl ViewSorter {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_ViewSorter_nb_sets(self as *const Self, final_) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -22044,8 +24683,11 @@ impl ViewSorter {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ViewSorter_set_item(self as *const Self, num, final_)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -22057,8 +24699,11 @@ impl ViewSorter {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_ViewSorter_sets(self as *const Self, final_) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -22067,8 +24712,11 @@ impl ViewSorter {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_ViewSorter_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -22076,8 +24724,11 @@ impl ViewSorter {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_ViewSorter_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -22085,42 +24736,44 @@ impl ViewSorter {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_ViewSorter_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ViewSorter_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::IGESSelect_ViewSorter_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_ViewSorter_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_ViewSorter_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectViewSorter> {
-        {
-            let __result = unsafe { crate::ffi::IGESSelect_ViewSorter_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_ViewSorter_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -22129,8 +24782,11 @@ impl ViewSorter {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ViewSorter_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -22140,8 +24796,11 @@ impl ViewSorter {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ViewSorter_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -22150,11 +24809,14 @@ impl ViewSorter {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_ViewSorter_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -22165,18 +24827,23 @@ impl ViewSorter {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ViewSorter_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_ViewSorter_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -22186,16 +24853,22 @@ impl ViewSorter {
             let __result = unsafe {
                 crate::ffi::IGESSelect_ViewSorter_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_ViewSorter_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_ViewSorter_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -22211,35 +24884,31 @@ unsafe impl crate::CppDeletable for HandleIGESSelectViewSorter {
 impl HandleIGESSelectViewSorter {
     /// Dereference this Handle to access the underlying IGESSelect_ViewSorter
     pub fn get(&self) -> &crate::ffi::IGESSelect_ViewSorter {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectViewSorter_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectViewSorter_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_ViewSorter
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_ViewSorter {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectViewSorter_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectViewSorter_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_ViewSorter> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectViewSorter_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectViewSorter_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -22264,8 +24933,10 @@ impl WorkLibrary {
     pub fn new_bool(modefnes: bool) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_WorkLibrary_ctor_bool(modefnes) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -22296,8 +24967,11 @@ impl WorkLibrary {
                     protocol,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -22308,8 +24982,11 @@ impl WorkLibrary {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_WorkLibrary_write_file(self as *const Self, ctx) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -22325,7 +25002,7 @@ impl WorkLibrary {
         level: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_WorkLibrary_dump_entity(
                     self as *const Self,
                     model,
@@ -22335,7 +25012,9 @@ impl WorkLibrary {
                     level,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -22344,8 +25023,11 @@ impl WorkLibrary {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_WorkLibrary_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -22355,8 +25037,11 @@ impl WorkLibrary {
     pub fn define_protocol() -> crate::OwnedPtr<crate::ffi::HandleIGESDataProtocol> {
         {
             let __result = unsafe { crate::ffi::IGESSelect_WorkLibrary_define_protocol() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -22364,8 +25049,11 @@ impl WorkLibrary {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::IGESSelect_WorkLibrary_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -22373,64 +25061,67 @@ impl WorkLibrary {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::IGESSelect_WorkLibrary_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to IFSelect_WorkLibrary
     pub fn as_if_select_work_library(&self) -> &crate::if_select::WorkLibrary {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_WorkLibrary_as_IFSelect_WorkLibrary(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_WorkLibrary_as_IFSelect_WorkLibrary(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to IFSelect_WorkLibrary (mutable)
     pub fn as_if_select_work_library_mut(&mut self) -> &mut crate::if_select::WorkLibrary {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_WorkLibrary_as_IFSelect_WorkLibrary_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_WorkLibrary_as_IFSelect_WorkLibrary_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_WorkLibrary_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_WorkLibrary_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::IGESSelect_WorkLibrary_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::IGESSelect_WorkLibrary_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleIGESSelectWorkLibrary> {
-        {
-            let __result = unsafe { crate::ffi::IGESSelect_WorkLibrary_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IGESSelect_WorkLibrary_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkLibrary.hxx`:103 - `IFSelect_WorkLibrary::CopyModel()`
@@ -22451,36 +25142,43 @@ impl WorkLibrary {
                     TC,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkLibrary.hxx`:128 - `IFSelect_WorkLibrary::SetDumpLevels()`
     pub fn set_dump_levels(&mut self, def: i32, max: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_WorkLibrary_inherited_SetDumpLevels(
                     self as *mut Self,
                     def,
                     max,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkLibrary.hxx`:132 - `IFSelect_WorkLibrary::DumpLevels()`
     pub fn dump_levels(&self, def: &mut i32, max: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_WorkLibrary_inherited_DumpLevels(
                     self as *const Self,
                     def,
                     max,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -22493,8 +25191,11 @@ impl WorkLibrary {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -22504,8 +25205,11 @@ impl WorkLibrary {
             let __result = unsafe {
                 crate::ffi::IGESSelect_WorkLibrary_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -22514,11 +25218,14 @@ impl WorkLibrary {
         {
             let __result =
                 unsafe { crate::ffi::IGESSelect_WorkLibrary_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -22529,18 +25236,23 @@ impl WorkLibrary {
             let __result = unsafe {
                 crate::ffi::IGESSelect_WorkLibrary_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IGESSelect_WorkLibrary_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -22550,16 +25262,22 @@ impl WorkLibrary {
             let __result = unsafe {
                 crate::ffi::IGESSelect_WorkLibrary_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::IGESSelect_WorkLibrary_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IGESSelect_WorkLibrary_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -22575,47 +25293,44 @@ unsafe impl crate::CppDeletable for HandleIGESSelectWorkLibrary {
 impl HandleIGESSelectWorkLibrary {
     /// Dereference this Handle to access the underlying IGESSelect_WorkLibrary
     pub fn get(&self) -> &crate::ffi::IGESSelect_WorkLibrary {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectWorkLibrary_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleIGESSelectWorkLibrary_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESSelect_WorkLibrary
     pub fn get_mut(&mut self) -> &mut crate::ffi::IGESSelect_WorkLibrary {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleIGESSelectWorkLibrary_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleIGESSelectWorkLibrary_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<IGESSelect_WorkLibrary> to Handle<IFSelect_WorkLibrary>
     pub fn to_handle_work_library(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectWorkLibrary> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectWorkLibrary_to_HandleIFSelectWorkLibrary(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectWorkLibrary_to_HandleIFSelectWorkLibrary(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<IGESSelect_WorkLibrary> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleIGESSelectWorkLibrary_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleIGESSelectWorkLibrary_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

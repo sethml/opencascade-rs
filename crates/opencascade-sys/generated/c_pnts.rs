@@ -32,8 +32,10 @@ impl AbscissaPoint {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::CPnts_AbscissaPoint_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -52,8 +54,10 @@ impl AbscissaPoint {
             let __result = unsafe {
                 crate::ffi::CPnts_AbscissaPoint_ctor_curve_real3(C, Abscissa, U0, Resolution)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -72,8 +76,10 @@ impl AbscissaPoint {
             let __result = unsafe {
                 crate::ffi::CPnts_AbscissaPoint_ctor_curve2d_real3(C, Abscissa, U0, Resolution)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -96,8 +102,10 @@ impl AbscissaPoint {
             let __result = unsafe {
                 crate::ffi::CPnts_AbscissaPoint_ctor_curve_real4(C, Abscissa, U0, Ui, Resolution)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -120,8 +128,10 @@ impl AbscissaPoint {
             let __result = unsafe {
                 crate::ffi::CPnts_AbscissaPoint_ctor_curve2d_real4(C, Abscissa, U0, Ui, Resolution)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -129,8 +139,10 @@ impl AbscissaPoint {
     /// Initializes the resolution function with <C>.
     pub fn init_curve(&mut self, C: &crate::adaptor3d::Curve) {
         {
-            unsafe { crate::ffi::CPnts_AbscissaPoint_init_curve(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::CPnts_AbscissaPoint_init_curve(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -138,8 +150,11 @@ impl AbscissaPoint {
     /// Initializes the resolution function with <C>.
     pub fn init_curve2d(&mut self, C: &crate::adaptor2d::Curve2d) {
         {
-            unsafe { crate::ffi::CPnts_AbscissaPoint_init_curve2d(self as *mut Self, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::CPnts_AbscissaPoint_init_curve2d(self as *mut Self, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -147,8 +162,12 @@ impl AbscissaPoint {
     /// Initializes the resolution function with <C>.
     pub fn init_curve_real(&mut self, C: &crate::adaptor3d::Curve, Tol: f64) {
         {
-            unsafe { crate::ffi::CPnts_AbscissaPoint_init_curve_real(self as *mut Self, C, Tol) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::CPnts_AbscissaPoint_init_curve_real(self as *mut Self, C, Tol)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -156,8 +175,12 @@ impl AbscissaPoint {
     /// Initializes the resolution function with <C>.
     pub fn init_curve2d_real(&mut self, C: &crate::adaptor2d::Curve2d, Tol: f64) {
         {
-            unsafe { crate::ffi::CPnts_AbscissaPoint_init_curve2d_real(self as *mut Self, C, Tol) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::CPnts_AbscissaPoint_init_curve2d_real(self as *mut Self, C, Tol)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -166,10 +189,12 @@ impl AbscissaPoint {
     /// between U1 and U2.
     pub fn init_curve_real2(&mut self, C: &crate::adaptor3d::Curve, U1: f64, U2: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::CPnts_AbscissaPoint_init_curve_real2(self as *mut Self, C, U1, U2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -178,10 +203,12 @@ impl AbscissaPoint {
     /// between U1 and U2.
     pub fn init_curve2d_real2(&mut self, C: &crate::adaptor2d::Curve2d, U1: f64, U2: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::CPnts_AbscissaPoint_init_curve2d_real2(self as *mut Self, C, U1, U2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -190,10 +217,12 @@ impl AbscissaPoint {
     /// between U1 and U2.
     pub fn init_curve_real3(&mut self, C: &crate::adaptor3d::Curve, U1: f64, U2: f64, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::CPnts_AbscissaPoint_init_curve_real3(self as *mut Self, C, U1, U2, Tol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -208,7 +237,7 @@ impl AbscissaPoint {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::CPnts_AbscissaPoint_init_curve2d_real3(
                     self as *mut Self,
                     C,
@@ -217,7 +246,9 @@ impl AbscissaPoint {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -228,7 +259,7 @@ impl AbscissaPoint {
     /// is measured.
     pub fn perform_real3(&mut self, Abscissa: f64, U0: f64, Resolution: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::CPnts_AbscissaPoint_perform_real3(
                     self as *mut Self,
                     Abscissa,
@@ -236,7 +267,9 @@ impl AbscissaPoint {
                     Resolution,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -248,7 +281,7 @@ impl AbscissaPoint {
     /// process (should be close to the final solution).
     pub fn perform_real4(&mut self, Abscissa: f64, U0: f64, Ui: f64, Resolution: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::CPnts_AbscissaPoint_perform_real4(
                     self as *mut Self,
                     Abscissa,
@@ -257,7 +290,9 @@ impl AbscissaPoint {
                     Resolution,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -272,7 +307,7 @@ impl AbscissaPoint {
     /// process (should be close to the final solution).
     pub fn adv_perform(&mut self, Abscissa: f64, U0: f64, Ui: f64, Resolution: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::CPnts_AbscissaPoint_adv_perform(
                     self as *mut Self,
                     Abscissa,
@@ -281,7 +316,9 @@ impl AbscissaPoint {
                     Resolution,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -290,8 +327,11 @@ impl AbscissaPoint {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::CPnts_AbscissaPoint_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -301,8 +341,11 @@ impl AbscissaPoint {
         {
             let __result =
                 unsafe { crate::ffi::CPnts_AbscissaPoint_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -310,8 +353,11 @@ impl AbscissaPoint {
     /// Enforce the solution, used by GCPnts.
     pub fn set_parameter(&mut self, P: f64) {
         {
-            unsafe { crate::ffi::CPnts_AbscissaPoint_set_parameter(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::CPnts_AbscissaPoint_set_parameter(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -320,8 +366,11 @@ impl AbscissaPoint {
     pub fn length_curve(C: &crate::adaptor3d::Curve) -> f64 {
         {
             let __result = unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -330,8 +379,11 @@ impl AbscissaPoint {
     pub fn length_curve2d(C: &crate::adaptor2d::Curve2d) -> f64 {
         {
             let __result = unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve2d(C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -340,8 +392,11 @@ impl AbscissaPoint {
     pub fn length_curve_real(C: &crate::adaptor3d::Curve, Tol: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve_real(C, Tol) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -350,8 +405,11 @@ impl AbscissaPoint {
     pub fn length_curve2d_real(C: &crate::adaptor2d::Curve2d, Tol: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve2d_real(C, Tol) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -360,8 +418,11 @@ impl AbscissaPoint {
     pub fn length_curve_real2(C: &crate::adaptor3d::Curve, U1: f64, U2: f64) -> f64 {
         {
             let __result = unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve_real2(C, U1, U2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -371,8 +432,11 @@ impl AbscissaPoint {
         {
             let __result =
                 unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve2d_real2(C, U1, U2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -382,8 +446,11 @@ impl AbscissaPoint {
         {
             let __result =
                 unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve_real3(C, U1, U2, Tol) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -394,8 +461,11 @@ impl AbscissaPoint {
         {
             let __result =
                 unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve2d_real3(C, U1, U2, Tol) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -419,8 +489,10 @@ impl MyGaussFunction {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::CPnts_MyGaussFunction_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -429,30 +501,32 @@ impl MyGaussFunction {
         {
             let __result =
                 unsafe { crate::ffi::CPnts_MyGaussFunction_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        {
-            let __result =
-                unsafe { crate::ffi::CPnts_MyGaussFunction_as_math_Function(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::CPnts_MyGaussFunction_as_math_Function(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        {
-            let __result = unsafe {
-                crate::ffi::CPnts_MyGaussFunction_as_math_Function_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::CPnts_MyGaussFunction_as_math_Function_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
@@ -461,8 +535,11 @@ impl MyGaussFunction {
             let __result = unsafe {
                 crate::ffi::CPnts_MyGaussFunction_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -496,8 +573,10 @@ impl MyRootFunction {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::CPnts_MyRootFunction_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -505,8 +584,11 @@ impl MyRootFunction {
     /// We want to solve Integral(X0,X,F(X,D)) = L
     pub fn init_real2(&mut self, X0: f64, L: f64) {
         {
-            unsafe { crate::ffi::CPnts_MyRootFunction_init_real2(self as *mut Self, X0, L) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::CPnts_MyRootFunction_init_real2(self as *mut Self, X0, L) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -515,8 +597,12 @@ impl MyRootFunction {
     /// with given tolerance
     pub fn init_real3(&mut self, X0: f64, L: f64, Tol: f64) {
         {
-            unsafe { crate::ffi::CPnts_MyRootFunction_init_real3(self as *mut Self, X0, L, Tol) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::CPnts_MyRootFunction_init_real3(self as *mut Self, X0, L, Tol)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -526,8 +612,11 @@ impl MyRootFunction {
         {
             let __result =
                 unsafe { crate::ffi::CPnts_MyRootFunction_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -537,8 +626,11 @@ impl MyRootFunction {
         {
             let __result =
                 unsafe { crate::ffi::CPnts_MyRootFunction_derivative(self as *mut Self, X, Df) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -547,55 +639,56 @@ impl MyRootFunction {
         {
             let __result =
                 unsafe { crate::ffi::CPnts_MyRootFunction_values(self as *mut Self, X, F, Df) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::CPnts_MyRootFunction_as_math_FunctionWithDerivative(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::CPnts_MyRootFunction_as_math_FunctionWithDerivative(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_math_function_with_derivative_mut(
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::CPnts_MyRootFunction_as_math_FunctionWithDerivative_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::CPnts_MyRootFunction_as_math_FunctionWithDerivative_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
-        {
-            let __result =
-                unsafe { crate::ffi::CPnts_MyRootFunction_as_math_Function(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::CPnts_MyRootFunction_as_math_Function(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
-        {
-            let __result =
-                unsafe { crate::ffi::CPnts_MyRootFunction_as_math_Function_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::CPnts_MyRootFunction_as_math_Function_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
@@ -604,8 +697,11 @@ impl MyRootFunction {
             let __result = unsafe {
                 crate::ffi::CPnts_MyRootFunction_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -661,8 +757,10 @@ impl UniformDeflection {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::CPnts_UniformDeflection_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -696,8 +794,10 @@ impl UniformDeflection {
                     WithControl,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -718,8 +818,10 @@ impl UniformDeflection {
                     WithControl,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -747,8 +849,10 @@ impl UniformDeflection {
                     WithControl,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -773,8 +877,10 @@ impl UniformDeflection {
                     WithControl,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -789,7 +895,7 @@ impl UniformDeflection {
         WithControl: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::CPnts_UniformDeflection_initialize_curve_real2_bool(
                     self as *mut Self,
                     C,
@@ -798,7 +904,9 @@ impl UniformDeflection {
                     WithControl,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -813,7 +921,7 @@ impl UniformDeflection {
         WithControl: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::CPnts_UniformDeflection_initialize_curve2d_real2_bool(
                     self as *mut Self,
                     C,
@@ -822,7 +930,9 @@ impl UniformDeflection {
                     WithControl,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -839,7 +949,7 @@ impl UniformDeflection {
         WithControl: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::CPnts_UniformDeflection_initialize_curve_real4_bool(
                     self as *mut Self,
                     C,
@@ -850,7 +960,9 @@ impl UniformDeflection {
                     WithControl,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -867,7 +979,7 @@ impl UniformDeflection {
         WithControl: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::CPnts_UniformDeflection_initialize_curve2d_real4_bool(
                     self as *mut Self,
                     C,
@@ -878,7 +990,9 @@ impl UniformDeflection {
                     WithControl,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -891,8 +1005,11 @@ impl UniformDeflection {
         {
             let __result =
                 unsafe { crate::ffi::CPnts_UniformDeflection_is_all_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -900,8 +1017,10 @@ impl UniformDeflection {
     /// go to the next Point.
     pub fn next(&mut self) {
         {
-            unsafe { crate::ffi::CPnts_UniformDeflection_next(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::CPnts_UniformDeflection_next(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -910,8 +1029,11 @@ impl UniformDeflection {
     pub fn more(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::CPnts_UniformDeflection_more(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -921,8 +1043,11 @@ impl UniformDeflection {
         {
             let __result =
                 unsafe { crate::ffi::CPnts_UniformDeflection_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -932,8 +1057,11 @@ impl UniformDeflection {
         {
             let __result =
                 unsafe { crate::ffi::CPnts_UniformDeflection_point(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }

@@ -10,8 +10,11 @@
 pub fn gauss_points_max() -> i32 {
     {
         let __result = unsafe { crate::ffi::math_gauss_points_max() };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `math.hxx`:40 - `math::KronrodPointsMax`
@@ -21,8 +24,11 @@ pub fn gauss_points_max() -> i32 {
 pub fn kronrod_points_max() -> i32 {
     {
         let __result = unsafe { crate::ffi::math_kronrod_points_max() };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 
@@ -109,8 +115,10 @@ impl BFGS {
                     ZEPS,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -163,10 +171,12 @@ impl BFGS {
         theRightBorder: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_BFGS_set_boundary(self as *mut Self, theLeftBorder, theRightBorder)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -183,8 +193,11 @@ impl BFGS {
         StartingPoint: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe { crate::ffi::math_BFGS_perform(self as *mut Self, F, StartingPoint) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_BFGS_perform(self as *mut Self, F, StartingPoint) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -197,8 +210,11 @@ impl BFGS {
         {
             let __result =
                 unsafe { crate::ffi::math_BFGS_is_solution_reached(self as *const Self, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -207,8 +223,11 @@ impl BFGS {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::math_BFGS_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -218,8 +237,11 @@ impl BFGS {
     pub fn location(&self) -> &crate::ffi::math_Vector {
         {
             let __result = unsafe { crate::ffi::math_BFGS_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -230,8 +252,10 @@ impl BFGS {
     /// equal to the range of the StartingPoint.
     pub fn location_vector(&self, Loc: &mut crate::ffi::math_Vector) {
         {
-            unsafe { crate::ffi::math_BFGS_location_vector(self as *const Self, Loc) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_BFGS_location_vector(self as *const Self, Loc) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -241,8 +265,11 @@ impl BFGS {
     pub fn minimum(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_BFGS_minimum(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -252,8 +279,11 @@ impl BFGS {
     pub fn gradient(&self) -> &crate::ffi::math_Vector {
         {
             let __result = unsafe { crate::ffi::math_BFGS_gradient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -264,8 +294,10 @@ impl BFGS {
     /// equal to the range of the StartingPoint.
     pub fn gradient_vector(&self, Grad: &mut crate::ffi::math_Vector) {
         {
-            unsafe { crate::ffi::math_BFGS_gradient_vector(self as *const Self, Grad) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_BFGS_gradient_vector(self as *const Self, Grad) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -276,8 +308,11 @@ impl BFGS {
     pub fn nb_iterations(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::math_BFGS_nb_iterations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -287,8 +322,10 @@ impl BFGS {
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_BFGS_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_BFGS_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -316,8 +353,10 @@ impl BissecNewton {
     pub fn new_real(theXTolerance: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::math_BissecNewton_ctor_real(theXTolerance) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -337,7 +376,7 @@ impl BissecNewton {
         NbIterations: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_BissecNewton_perform(
                     self as *mut Self,
                     F,
@@ -346,7 +385,9 @@ impl BissecNewton {
                     NbIterations,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -360,8 +401,11 @@ impl BissecNewton {
             let __result = unsafe {
                 crate::ffi::math_BissecNewton_is_solution_reached(self as *mut Self, theFunction)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -370,8 +414,11 @@ impl BissecNewton {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::math_BissecNewton_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -381,8 +428,11 @@ impl BissecNewton {
     pub fn root(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_BissecNewton_root(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -392,8 +442,11 @@ impl BissecNewton {
     pub fn derivative(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_BissecNewton_derivative(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -403,8 +456,11 @@ impl BissecNewton {
     pub fn value(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_BissecNewton_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -414,8 +470,10 @@ impl BissecNewton {
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_BissecNewton_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_BissecNewton_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -448,8 +506,10 @@ impl BracketMinimum {
     pub fn new_real2(A: f64, B: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::math_BracketMinimum_ctor_real2(A, B) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -462,8 +522,10 @@ impl BracketMinimum {
     pub fn new_function_real2(F: &mut Function, A: f64, B: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::math_BracketMinimum_ctor_function_real2(F, A, B) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -478,8 +540,10 @@ impl BracketMinimum {
         {
             let __result =
                 unsafe { crate::ffi::math_BracketMinimum_ctor_function_real3(F, A, B, FA) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -500,8 +564,10 @@ impl BracketMinimum {
         {
             let __result =
                 unsafe { crate::ffi::math_BracketMinimum_ctor_function_real4(F, A, B, FA, FB) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -511,10 +577,12 @@ impl BracketMinimum {
     /// is in charge of providing A and B to be in limits.
     pub fn set_limits(&mut self, theLeft: f64, theRight: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_BracketMinimum_set_limits(self as *mut Self, theLeft, theRight)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -522,8 +590,11 @@ impl BracketMinimum {
     /// Set function value at A
     pub fn set_fa(&mut self, theValue: f64) {
         {
-            unsafe { crate::ffi::math_BracketMinimum_set_fa(self as *mut Self, theValue) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_BracketMinimum_set_fa(self as *mut Self, theValue) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -531,8 +602,11 @@ impl BracketMinimum {
     /// Set function value at B
     pub fn set_fb(&mut self, theValue: f64) {
         {
-            unsafe { crate::ffi::math_BracketMinimum_set_fb(self as *mut Self, theValue) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_BracketMinimum_set_fb(self as *mut Self, theValue) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -540,8 +614,10 @@ impl BracketMinimum {
     /// The method performing the job. It is called automatically by constructors with the function.
     pub fn perform(&mut self, F: &mut Function) {
         {
-            unsafe { crate::ffi::math_BracketMinimum_perform(self as *mut Self, F) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_BracketMinimum_perform(self as *mut Self, F) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -550,8 +626,11 @@ impl BracketMinimum {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::math_BracketMinimum_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -561,8 +640,11 @@ impl BracketMinimum {
     /// StdFail_NotDone if the algorithm fails (and IsDone returns false).
     pub fn values(&self, A: &mut f64, B: &mut f64, C: &mut f64) {
         {
-            unsafe { crate::ffi::math_BracketMinimum_values(self as *const Self, A, B, C) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_BracketMinimum_values(self as *const Self, A, B, C) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -572,10 +654,12 @@ impl BracketMinimum {
     /// StdFail_NotDone if the algorithm fails (and IsDone returns false).
     pub fn function_values(&self, FA: &mut f64, FB: &mut f64, FC: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_BracketMinimum_function_values(self as *const Self, FA, FB, FC)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -585,8 +669,10 @@ impl BracketMinimum {
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_BracketMinimum_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_BracketMinimum_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -634,8 +720,10 @@ impl BracketedRoot {
                     ZEPS,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -679,8 +767,11 @@ impl BracketedRoot {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::math_BracketedRoot_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -690,8 +781,11 @@ impl BracketedRoot {
     pub fn root(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_BracketedRoot_root(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -701,8 +795,11 @@ impl BracketedRoot {
     pub fn value(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_BracketedRoot_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -714,8 +811,11 @@ impl BracketedRoot {
         {
             let __result =
                 unsafe { crate::ffi::math_BracketedRoot_nb_iterations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -724,8 +824,10 @@ impl BracketedRoot {
     /// of the object.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_BracketedRoot_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_BracketedRoot_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -755,8 +857,10 @@ impl BrentMinimum {
             let __result = unsafe {
                 crate::ffi::math_BrentMinimum_ctor_real_int_real(TolX, NbIterations, ZEPS)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -774,8 +878,10 @@ impl BrentMinimum {
             let __result = unsafe {
                 crate::ffi::math_BrentMinimum_ctor_real2_int_real(TolX, Fbx, NbIterations, ZEPS)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -816,8 +922,11 @@ impl BrentMinimum {
     /// The solution is found when: abs(Xi - Xi-1) <= TolX * abs(Xi) + ZEPS;
     pub fn perform(&mut self, F: &mut Function, Ax: f64, Bx: f64, Cx: f64) {
         {
-            unsafe { crate::ffi::math_BrentMinimum_perform(self as *mut Self, F, Ax, Bx, Cx) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_BrentMinimum_perform(self as *mut Self, F, Ax, Bx, Cx) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -831,8 +940,11 @@ impl BrentMinimum {
             let __result = unsafe {
                 crate::ffi::math_BrentMinimum_is_solution_reached(self as *mut Self, theFunction)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -841,8 +953,11 @@ impl BrentMinimum {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::math_BrentMinimum_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -852,8 +967,11 @@ impl BrentMinimum {
     pub fn location(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_BrentMinimum_location(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -863,8 +981,11 @@ impl BrentMinimum {
     pub fn minimum(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_BrentMinimum_minimum(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -876,8 +997,11 @@ impl BrentMinimum {
         {
             let __result =
                 unsafe { crate::ffi::math_BrentMinimum_nb_iterations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -887,8 +1011,10 @@ impl BrentMinimum {
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_BrentMinimum_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_BrentMinimum_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -913,8 +1039,10 @@ impl BullardGenerator {
     pub fn new_uint(theSeed: u32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::math_BullardGenerator_ctor_uint(theSeed) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -928,8 +1056,11 @@ impl BullardGenerator {
     /// Setup new seed / reset defaults.
     pub fn set_seed(&mut self, theSeed: u32) {
         {
-            unsafe { crate::ffi::math_BullardGenerator_set_seed(self as *mut Self, theSeed) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_BullardGenerator_set_seed(self as *mut Self, theSeed) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -938,8 +1069,11 @@ impl BullardGenerator {
     pub fn next_int(&mut self) -> u32 {
         {
             let __result = unsafe { crate::ffi::math_BullardGenerator_next_int(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -949,8 +1083,11 @@ impl BullardGenerator {
         {
             let __result =
                 unsafe { crate::ffi::math_BullardGenerator_next_real(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -974,8 +1111,10 @@ impl ComputeGaussPointsAndWeights {
         {
             let __result =
                 unsafe { crate::ffi::math_ComputeGaussPointsAndWeights_ctor_int(Number) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -985,8 +1124,11 @@ impl ComputeGaussPointsAndWeights {
             let __result = unsafe {
                 crate::ffi::math_ComputeGaussPointsAndWeights_is_done(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -996,8 +1138,11 @@ impl ComputeGaussPointsAndWeights {
             let __result = unsafe {
                 crate::ffi::math_ComputeGaussPointsAndWeights_points(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1007,8 +1152,11 @@ impl ComputeGaussPointsAndWeights {
             let __result = unsafe {
                 crate::ffi::math_ComputeGaussPointsAndWeights_weights(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -1032,8 +1180,10 @@ impl ComputeKronrodPointsAndWeights {
         {
             let __result =
                 unsafe { crate::ffi::math_ComputeKronrodPointsAndWeights_ctor_int(Number) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1043,8 +1193,11 @@ impl ComputeKronrodPointsAndWeights {
             let __result = unsafe {
                 crate::ffi::math_ComputeKronrodPointsAndWeights_is_done(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1054,8 +1207,11 @@ impl ComputeKronrodPointsAndWeights {
             let __result = unsafe {
                 crate::ffi::math_ComputeKronrodPointsAndWeights_points(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1065,8 +1221,11 @@ impl ComputeKronrodPointsAndWeights {
             let __result = unsafe {
                 crate::ffi::math_ComputeKronrodPointsAndWeights_weights(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -1103,8 +1262,10 @@ impl Crout {
     pub fn new_matrix_real(A: &Matrix, MinPivot: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::math_Crout_ctor_matrix_real(A, MinPivot) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1127,8 +1288,11 @@ impl Crout {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::math_Crout_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1141,8 +1305,10 @@ impl Crout {
     /// not equal to the rowrange of A.
     pub fn solve(&self, B: &crate::ffi::math_Vector, X: &mut crate::ffi::math_Vector) {
         {
-            unsafe { crate::ffi::math_Crout_solve(self as *const Self, B, X) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Crout_solve(self as *const Self, B, X) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1153,8 +1319,11 @@ impl Crout {
     pub fn inverse(&self) -> &Matrix {
         {
             let __result = unsafe { crate::ffi::math_Crout_inverse(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1164,8 +1333,10 @@ impl Crout {
     /// Exception NotDone is raised if NotDone.
     pub fn invert(&self, Inv: &mut Matrix) {
         {
-            unsafe { crate::ffi::math_Crout_invert(self as *const Self, Inv) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Crout_invert(self as *const Self, Inv) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1177,8 +1348,11 @@ impl Crout {
     pub fn determinant(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_Crout_determinant(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1187,8 +1361,10 @@ impl Crout {
     /// of the object.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_Crout_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Crout_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1217,8 +1393,10 @@ impl DirectPolynomialRoots {
         {
             let __result =
                 unsafe { crate::ffi::math_DirectPolynomialRoots_ctor_real5(A, B, C, D, E) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1228,8 +1406,10 @@ impl DirectPolynomialRoots {
     pub fn new_real4(A: f64, B: f64, C: f64, D: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::math_DirectPolynomialRoots_ctor_real4(A, B, C, D) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1239,8 +1419,10 @@ impl DirectPolynomialRoots {
     pub fn new_real3(A: f64, B: f64, C: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::math_DirectPolynomialRoots_ctor_real3(A, B, C) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1249,8 +1431,10 @@ impl DirectPolynomialRoots {
     pub fn new_real2(A: f64, B: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::math_DirectPolynomialRoots_ctor_real2(A, B) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1260,8 +1444,11 @@ impl DirectPolynomialRoots {
         {
             let __result =
                 unsafe { crate::ffi::math_DirectPolynomialRoots_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1272,8 +1459,11 @@ impl DirectPolynomialRoots {
             let __result = unsafe {
                 crate::ffi::math_DirectPolynomialRoots_infinite_roots(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1284,8 +1474,11 @@ impl DirectPolynomialRoots {
         {
             let __result =
                 unsafe { crate::ffi::math_DirectPolynomialRoots_nb_solutions(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1298,8 +1491,11 @@ impl DirectPolynomialRoots {
         {
             let __result =
                 unsafe { crate::ffi::math_DirectPolynomialRoots_value(self as *const Self, Nieme) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1309,8 +1505,11 @@ impl DirectPolynomialRoots {
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_DirectPolynomialRoots_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_DirectPolynomialRoots_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1340,8 +1539,10 @@ impl DoubleTab {
             let __result = unsafe {
                 crate::ffi::math_DoubleTab_ctor_int4(LowerRow, UpperRow, LowerCol, UpperCol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1359,40 +1560,52 @@ impl DoubleTab {
                     Tab, LowerRow, UpperRow, LowerCol, UpperCol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `math_DoubleTab.hxx`:43 - `math_DoubleTab::Init()`
     pub fn init(&mut self, InitValue: f64) {
         {
-            unsafe { crate::ffi::math_DoubleTab_init(self as *mut Self, InitValue) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_DoubleTab_init(self as *mut Self, InitValue) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `math_DoubleTab.hxx`:47 - `math_DoubleTab::Copy()`
     pub fn copy(&self, Other: &mut DoubleTab) {
         {
-            unsafe { crate::ffi::math_DoubleTab_copy(self as *const Self, Other) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_DoubleTab_copy(self as *const Self, Other) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `math_DoubleTab.hxx`:49 - `math_DoubleTab::SetLowerRow()`
     pub fn set_lower_row(&mut self, LowerRow: i32) {
         {
-            unsafe { crate::ffi::math_DoubleTab_set_lower_row(self as *mut Self, LowerRow) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_DoubleTab_set_lower_row(self as *mut Self, LowerRow) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `math_DoubleTab.hxx`:51 - `math_DoubleTab::SetLowerCol()`
     pub fn set_lower_col(&mut self, LowerCol: i32) {
         {
-            unsafe { crate::ffi::math_DoubleTab_set_lower_col(self as *mut Self, LowerCol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_DoubleTab_set_lower_col(self as *mut Self, LowerCol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1401,26 +1614,31 @@ impl DoubleTab {
         {
             let __result =
                 unsafe { crate::ffi::math_DoubleTab_value(self as *mut Self, RowIndex, ColIndex) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// **Source:** `math_DoubleTab.hxx`:60 - `math_DoubleTab::Free()`
     pub fn free(&mut self) {
         {
-            unsafe { crate::ffi::math_DoubleTab_free(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_DoubleTab_free(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::math_DoubleTab_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::math_DoubleTab_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1449,8 +1667,10 @@ impl EigenValuesSearcher {
             let __result = unsafe {
                 crate::ffi::math_EigenValuesSearcher_ctor_array1ofreal2(Diagonal, Subdiagonal)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1461,8 +1681,11 @@ impl EigenValuesSearcher {
         {
             let __result =
                 unsafe { crate::ffi::math_EigenValuesSearcher_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1472,8 +1695,11 @@ impl EigenValuesSearcher {
         {
             let __result =
                 unsafe { crate::ffi::math_EigenValuesSearcher_dimension(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1485,8 +1711,11 @@ impl EigenValuesSearcher {
             let __result = unsafe {
                 crate::ffi::math_EigenValuesSearcher_eigen_value(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1498,8 +1727,11 @@ impl EigenValuesSearcher {
             let __result = unsafe {
                 crate::ffi::math_EigenValuesSearcher_eigen_vector(self as *const Self, Index)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -1539,8 +1771,10 @@ impl FRPR {
                     theZEPS,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1584,10 +1818,12 @@ impl FRPR {
         theStartingPoint: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_FRPR_perform(self as *mut Self, theFunction, theStartingPoint)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1603,8 +1839,11 @@ impl FRPR {
             let __result = unsafe {
                 crate::ffi::math_FRPR_is_solution_reached(self as *mut Self, theFunction)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1613,8 +1852,11 @@ impl FRPR {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::math_FRPR_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1624,8 +1866,11 @@ impl FRPR {
     pub fn location(&self) -> &crate::ffi::math_Vector {
         {
             let __result = unsafe { crate::ffi::math_FRPR_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1636,8 +1881,10 @@ impl FRPR {
     /// equal to the range of the StartingPoint.
     pub fn location_vector(&self, Loc: &mut crate::ffi::math_Vector) {
         {
-            unsafe { crate::ffi::math_FRPR_location_vector(self as *const Self, Loc) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_FRPR_location_vector(self as *const Self, Loc) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1647,8 +1894,11 @@ impl FRPR {
     pub fn minimum(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_FRPR_minimum(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1658,8 +1908,11 @@ impl FRPR {
     pub fn gradient(&self) -> &crate::ffi::math_Vector {
         {
             let __result = unsafe { crate::ffi::math_FRPR_gradient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1670,8 +1923,10 @@ impl FRPR {
     /// equal to the range of the StartingPoint.
     pub fn gradient_vector(&self, Grad: &mut crate::ffi::math_Vector) {
         {
-            unsafe { crate::ffi::math_FRPR_gradient_vector(self as *const Self, Grad) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_FRPR_gradient_vector(self as *const Self, Grad) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1682,8 +1937,11 @@ impl FRPR {
     pub fn nb_iterations(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::math_FRPR_nb_iterations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1693,8 +1951,10 @@ impl FRPR {
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_FRPR_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_FRPR_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1723,8 +1983,11 @@ impl Function {
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         {
             let __result = unsafe { crate::ffi::math_Function_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1746,8 +2009,11 @@ impl Function {
     pub fn get_state_number(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::math_Function_get_state_number(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1793,8 +2059,10 @@ impl FunctionAllRoots {
                     F, S, EpsX, EpsF, EpsNul,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1804,8 +2072,11 @@ impl FunctionAllRoots {
         {
             let __result =
                 unsafe { crate::ffi::math_FunctionAllRoots_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1817,8 +2088,11 @@ impl FunctionAllRoots {
         {
             let __result =
                 unsafe { crate::ffi::math_FunctionAllRoots_nb_intervals(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1828,10 +2102,12 @@ impl FunctionAllRoots {
     /// An exception is raised if Index<=0 or Index >Nbintervals.
     pub fn get_interval(&self, Index: i32, A: &mut f64, B: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_FunctionAllRoots_get_interval(self as *const Self, Index, A, B)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1841,7 +2117,7 @@ impl FunctionAllRoots {
     /// An exception is raised if Index<=0 or Index >Nbintervals.
     pub fn get_interval_state(&self, Index: i32, IFirst: &mut i32, ILast: &mut i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_FunctionAllRoots_get_interval_state(
                     self as *const Self,
                     Index,
@@ -1849,7 +2125,9 @@ impl FunctionAllRoots {
                     ILast,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1860,8 +2138,11 @@ impl FunctionAllRoots {
         {
             let __result =
                 unsafe { crate::ffi::math_FunctionAllRoots_nb_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1873,8 +2154,11 @@ impl FunctionAllRoots {
         {
             let __result =
                 unsafe { crate::ffi::math_FunctionAllRoots_get_point(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1887,8 +2171,11 @@ impl FunctionAllRoots {
             let __result = unsafe {
                 crate::ffi::math_FunctionAllRoots_get_point_state(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1897,8 +2184,10 @@ impl FunctionAllRoots {
     /// of the object.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_FunctionAllRoots_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_FunctionAllRoots_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1943,8 +2232,10 @@ impl FunctionRoot {
                     NbIterations,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1975,8 +2266,10 @@ impl FunctionRoot {
                     NbIterations,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2018,8 +2311,11 @@ impl FunctionRoot {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::math_FunctionRoot_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2029,8 +2325,11 @@ impl FunctionRoot {
     pub fn root(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_FunctionRoot_root(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2040,8 +2339,11 @@ impl FunctionRoot {
     pub fn derivative(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_FunctionRoot_derivative(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2051,8 +2353,11 @@ impl FunctionRoot {
     pub fn value(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_FunctionRoot_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2064,8 +2369,11 @@ impl FunctionRoot {
         {
             let __result =
                 unsafe { crate::ffi::math_FunctionRoot_nb_iterations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2075,8 +2383,10 @@ impl FunctionRoot {
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_FunctionRoot_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_FunctionRoot_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2121,8 +2431,10 @@ impl FunctionRoots {
                     F, A, B, NbSample, EpsX, EpsF, EpsNull, K,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2203,8 +2515,11 @@ impl FunctionRoots {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::math_FunctionRoots_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2216,8 +2531,11 @@ impl FunctionRoots {
         {
             let __result =
                 unsafe { crate::ffi::math_FunctionRoots_is_all_null(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2229,8 +2547,11 @@ impl FunctionRoots {
         {
             let __result =
                 unsafe { crate::ffi::math_FunctionRoots_nb_solutions(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2242,8 +2563,11 @@ impl FunctionRoots {
         {
             let __result =
                 unsafe { crate::ffi::math_FunctionRoots_value(self as *const Self, Nieme) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2255,8 +2579,11 @@ impl FunctionRoots {
         {
             let __result =
                 unsafe { crate::ffi::math_FunctionRoots_state_number(self as *const Self, Nieme) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2265,8 +2592,10 @@ impl FunctionRoots {
     /// of the object.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_FunctionRoots_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_FunctionRoots_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2292,8 +2621,10 @@ impl FunctionSample {
     pub fn new_real2_int(A: f64, B: f64, N: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::math_FunctionSample_ctor_real2_int(A, B, N) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2301,8 +2632,11 @@ impl FunctionSample {
     /// Returns the bounds of parameters.
     pub fn bounds(&self, A: &mut f64, B: &mut f64) {
         {
-            unsafe { crate::ffi::math_FunctionSample_bounds(self as *const Self, A, B) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_FunctionSample_bounds(self as *const Self, A, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2312,8 +2646,11 @@ impl FunctionSample {
         {
             let __result =
                 unsafe { crate::ffi::math_FunctionSample_nb_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2326,8 +2663,11 @@ impl FunctionSample {
             let __result = unsafe {
                 crate::ffi::math_FunctionSample_get_parameter(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2354,8 +2694,11 @@ impl FunctionSet {
         {
             let __result =
                 unsafe { crate::ffi::math_FunctionSet_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2365,8 +2708,11 @@ impl FunctionSet {
         {
             let __result =
                 unsafe { crate::ffi::math_FunctionSet_nb_equations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2378,8 +2724,11 @@ impl FunctionSet {
     pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
         {
             let __result = unsafe { crate::ffi::math_FunctionSet_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2402,8 +2751,11 @@ impl FunctionSet {
         {
             let __result =
                 unsafe { crate::ffi::math_FunctionSet_get_state_number(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2447,8 +2799,10 @@ impl FunctionSetRoot {
                     NbIterations,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2470,8 +2824,10 @@ impl FunctionSetRoot {
                     NbIterations,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2504,8 +2860,12 @@ impl FunctionSetRoot {
     /// Initializes the tolerance values.
     pub fn set_tolerance(&mut self, Tolerance: &crate::ffi::math_Vector) {
         {
-            unsafe { crate::ffi::math_FunctionSetRoot_set_tolerance(self as *mut Self, Tolerance) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::math_FunctionSetRoot_set_tolerance(self as *mut Self, Tolerance)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2520,8 +2880,11 @@ impl FunctionSetRoot {
             let __result = unsafe {
                 crate::ffi::math_FunctionSetRoot_is_solution_reached(self as *mut Self, arg0)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2537,7 +2900,7 @@ impl FunctionSetRoot {
         theStopOnDivergent: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_FunctionSetRoot_perform_functionsetwithderivatives_vector_bool(
                     self as *mut Self,
                     theFunction,
@@ -2545,7 +2908,9 @@ impl FunctionSetRoot {
                     theStopOnDivergent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2563,7 +2928,7 @@ impl FunctionSetRoot {
         theStopOnDivergent: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_FunctionSetRoot_perform_functionsetwithderivatives_vector3_bool(
                     self as *mut Self,
                     theFunction,
@@ -2573,7 +2938,9 @@ impl FunctionSetRoot {
                     theStopOnDivergent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2582,8 +2949,11 @@ impl FunctionSetRoot {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::math_FunctionSetRoot_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2595,8 +2965,11 @@ impl FunctionSetRoot {
         {
             let __result =
                 unsafe { crate::ffi::math_FunctionSetRoot_nb_iterations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2607,8 +2980,11 @@ impl FunctionSetRoot {
         {
             let __result =
                 unsafe { crate::ffi::math_FunctionSetRoot_state_number(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2618,8 +2994,11 @@ impl FunctionSetRoot {
     pub fn root(&self) -> &crate::ffi::math_Vector {
         {
             let __result = unsafe { crate::ffi::math_FunctionSetRoot_root(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2630,8 +3009,11 @@ impl FunctionSetRoot {
     /// is not equal to the range of the StartingPoint.
     pub fn root_vector(&self, Root: &mut crate::ffi::math_Vector) {
         {
-            unsafe { crate::ffi::math_FunctionSetRoot_root_vector(self as *const Self, Root) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_FunctionSetRoot_root_vector(self as *const Self, Root) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2642,8 +3024,11 @@ impl FunctionSetRoot {
         {
             let __result =
                 unsafe { crate::ffi::math_FunctionSetRoot_derivative(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2655,8 +3040,12 @@ impl FunctionSetRoot {
     /// of <Der> is not equal to the range of the startingPoint.
     pub fn derivative_matrix(&self, Der: &mut Matrix) {
         {
-            unsafe { crate::ffi::math_FunctionSetRoot_derivative_matrix(self as *const Self, Der) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::math_FunctionSetRoot_derivative_matrix(self as *const Self, Der)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2669,8 +3058,11 @@ impl FunctionSetRoot {
             let __result = unsafe {
                 crate::ffi::math_FunctionSetRoot_function_set_errors(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2682,13 +3074,15 @@ impl FunctionSetRoot {
     /// is not equal to the range of the StartingPoint.
     pub fn function_set_errors_vector(&self, Err_: &mut crate::ffi::math_Vector) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_FunctionSetRoot_function_set_errors_vector(
                     self as *const Self,
                     Err_,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2698,8 +3092,10 @@ impl FunctionSetRoot {
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_FunctionSetRoot_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_FunctionSetRoot_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2708,8 +3104,11 @@ impl FunctionSetRoot {
         {
             let __result =
                 unsafe { crate::ffi::math_FunctionSetRoot_is_divergent(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2737,8 +3136,11 @@ impl FunctionSetWithDerivatives {
             let __result = unsafe {
                 crate::ffi::math_FunctionSetWithDerivatives_nb_variables(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2749,8 +3151,11 @@ impl FunctionSetWithDerivatives {
             let __result = unsafe {
                 crate::ffi::math_FunctionSetWithDerivatives_nb_equations(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2764,8 +3169,11 @@ impl FunctionSetWithDerivatives {
             let __result = unsafe {
                 crate::ffi::math_FunctionSetWithDerivatives_value(self as *mut Self, X, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2779,8 +3187,11 @@ impl FunctionSetWithDerivatives {
             let __result = unsafe {
                 crate::ffi::math_FunctionSetWithDerivatives_derivatives(self as *mut Self, X, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2799,33 +3210,34 @@ impl FunctionSetWithDerivatives {
             let __result = unsafe {
                 crate::ffi::math_FunctionSetWithDerivatives_values(self as *mut Self, X, F, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_function_set(&self) -> &FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::math_FunctionSetWithDerivatives_as_math_FunctionSet(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::math_FunctionSetWithDerivatives_as_math_FunctionSet(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_function_set_mut(&mut self) -> &mut FunctionSet {
-        {
-            let __result = unsafe {
-                crate::ffi::math_FunctionSetWithDerivatives_as_math_FunctionSet_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::math_FunctionSetWithDerivatives_as_math_FunctionSet_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
@@ -2836,8 +3248,11 @@ impl FunctionSetWithDerivatives {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2867,8 +3282,11 @@ impl FunctionWithDerivative {
         {
             let __result =
                 unsafe { crate::ffi::math_FunctionWithDerivative_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2882,8 +3300,11 @@ impl FunctionWithDerivative {
             let __result = unsafe {
                 crate::ffi::math_FunctionWithDerivative_derivative(self as *mut Self, X, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2897,31 +3318,34 @@ impl FunctionWithDerivative {
             let __result = unsafe {
                 crate::ffi::math_FunctionWithDerivative_values(self as *mut Self, X, F, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_Function
     pub fn as_function(&self) -> &Function {
-        {
-            let __result = unsafe {
-                crate::ffi::math_FunctionWithDerivative_as_math_Function(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::math_FunctionWithDerivative_as_math_Function(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_function_mut(&mut self) -> &mut Function {
-        {
-            let __result = unsafe {
-                crate::ffi::math_FunctionWithDerivative_as_math_Function_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::math_FunctionWithDerivative_as_math_Function_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
@@ -2930,8 +3354,11 @@ impl FunctionWithDerivative {
             let __result = unsafe {
                 crate::ffi::math_FunctionWithDerivative_inherited_GetStateNumber(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -2973,8 +3400,10 @@ impl Gauss {
             let __result = unsafe {
                 crate::ffi::math_Gauss_ctor_matrix_real_progressrange(A, MinPivot, theProgress)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2983,8 +3412,11 @@ impl Gauss {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::math_Gauss_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2997,8 +3429,10 @@ impl Gauss {
     /// equal to the number of rows of A.
     pub fn solve_vector2(&self, B: &crate::ffi::math_Vector, X: &mut crate::ffi::math_Vector) {
         {
-            unsafe { crate::ffi::math_Gauss_solve_vector2(self as *const Self, B, X) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Gauss_solve_vector2(self as *const Self, B, X) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3011,8 +3445,10 @@ impl Gauss {
     /// equal to the number of rows of A.
     pub fn solve_vector(&self, B: &mut crate::ffi::math_Vector) {
         {
-            unsafe { crate::ffi::math_Gauss_solve_vector(self as *const Self, B) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Gauss_solve_vector(self as *const Self, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3024,8 +3460,11 @@ impl Gauss {
     pub fn determinant(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_Gauss_determinant(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3036,8 +3475,10 @@ impl Gauss {
     /// equal to the ranges of A.
     pub fn invert(&self, Inv: &mut Matrix) {
         {
-            unsafe { crate::ffi::math_Gauss_invert(self as *const Self, Inv) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Gauss_invert(self as *const Self, Inv) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3047,8 +3488,10 @@ impl Gauss {
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_Gauss_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Gauss_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3084,8 +3527,10 @@ impl GaussLeastSquare {
         {
             let __result =
                 unsafe { crate::ffi::math_GaussLeastSquare_ctor_matrix_real(A, MinPivot) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3107,8 +3552,11 @@ impl GaussLeastSquare {
         {
             let __result =
                 unsafe { crate::ffi::math_GaussLeastSquare_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3123,8 +3571,11 @@ impl GaussLeastSquare {
     /// not equal to the colrange of A.
     pub fn solve(&self, B: &crate::ffi::math_Vector, X: &mut crate::ffi::math_Vector) {
         {
-            unsafe { crate::ffi::math_GaussLeastSquare_solve(self as *const Self, B, X) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_GaussLeastSquare_solve(self as *const Self, B, X) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3134,8 +3585,10 @@ impl GaussLeastSquare {
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_GaussLeastSquare_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_GaussLeastSquare_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3171,8 +3624,10 @@ impl GaussMultipleIntegration {
             let __result = unsafe {
                 crate::ffi::math_GaussMultipleIntegration_ctor_multiplevarfunction_vector2_integervector(F, Lower, Upper, Order)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3182,8 +3637,11 @@ impl GaussMultipleIntegration {
         {
             let __result =
                 unsafe { crate::ffi::math_GaussMultipleIntegration_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3193,8 +3651,11 @@ impl GaussMultipleIntegration {
         {
             let __result =
                 unsafe { crate::ffi::math_GaussMultipleIntegration_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3202,8 +3663,11 @@ impl GaussMultipleIntegration {
     /// Prints information on the current state of the object.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_GaussMultipleIntegration_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_GaussMultipleIntegration_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3242,8 +3706,10 @@ impl GaussSetIntegration {
                     F, Lower, Upper, Order,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3253,8 +3719,11 @@ impl GaussSetIntegration {
         {
             let __result =
                 unsafe { crate::ffi::math_GaussSetIntegration_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3264,8 +3733,11 @@ impl GaussSetIntegration {
         {
             let __result =
                 unsafe { crate::ffi::math_GaussSetIntegration_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3273,8 +3745,11 @@ impl GaussSetIntegration {
     /// Prints information on the current state of the object.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_GaussSetIntegration_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_GaussSetIntegration_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3300,8 +3775,10 @@ impl GaussSingleIntegration {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::math_GaussSingleIntegration_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3320,8 +3797,10 @@ impl GaussSingleIntegration {
                     F, Lower, Upper, Order,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3342,8 +3821,10 @@ impl GaussSingleIntegration {
                     F, Lower, Upper, Order, Tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3353,8 +3834,11 @@ impl GaussSingleIntegration {
         {
             let __result =
                 unsafe { crate::ffi::math_GaussSingleIntegration_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3364,8 +3848,11 @@ impl GaussSingleIntegration {
         {
             let __result =
                 unsafe { crate::ffi::math_GaussSingleIntegration_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3373,8 +3860,11 @@ impl GaussSingleIntegration {
     /// Prints information on the current state of the object.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_GaussSingleIntegration_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_GaussSingleIntegration_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3446,8 +3936,10 @@ impl GlobOptMin {
                     theSameTol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3540,7 +4032,7 @@ impl GlobOptMin {
         theSameTol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_GlobOptMin_set_global_params(
                     self as *mut Self,
                     theFunc as *mut _,
@@ -3551,7 +4043,9 @@ impl GlobOptMin {
                     theSameTol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3565,14 +4059,16 @@ impl GlobOptMin {
         theLocalB: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_GlobOptMin_set_local_params(
                     self as *mut Self,
                     theLocalA,
                     theLocalB,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3582,14 +4078,16 @@ impl GlobOptMin {
     /// @param theSameTol - functional value space indifference tolerance.
     pub fn set_tol(&mut self, theDiscretizationTol: f64, theSameTol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_GlobOptMin_set_tol(
                     self as *mut Self,
                     theDiscretizationTol,
                     theSameTol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3599,14 +4097,16 @@ impl GlobOptMin {
     /// @param theSameTol - functional value space indifference tolerance.
     pub fn get_tol(&mut self, theDiscretizationTol: &mut f64, theSameTol: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_GlobOptMin_get_tol(
                     self as *mut Self,
                     theDiscretizationTol,
                     theSameTol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3614,8 +4114,12 @@ impl GlobOptMin {
     /// @param isFindSingleSolution - defines whether to find single solution or all solutions.
     pub fn perform(&mut self, isFindSingleSolution: bool) {
         {
-            unsafe { crate::ffi::math_GlobOptMin_perform(self as *mut Self, isFindSingleSolution) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::math_GlobOptMin_perform(self as *mut Self, isFindSingleSolution)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3623,8 +4127,11 @@ impl GlobOptMin {
     /// Return solution theIndex, 1 <= theIndex <= NbExtrema.
     pub fn points(&mut self, theIndex: i32, theSol: &mut crate::ffi::math_Vector) {
         {
-            unsafe { crate::ffi::math_GlobOptMin_points(self as *mut Self, theIndex, theSol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_GlobOptMin_points(self as *mut Self, theIndex, theSol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3632,8 +4139,11 @@ impl GlobOptMin {
     /// Set / Get continuity of local borders splits (0 ~ C0, 1 ~ C1, 2 ~ C2).
     pub fn set_continuity(&mut self, theCont: i32) {
         {
-            unsafe { crate::ffi::math_GlobOptMin_set_continuity(self as *mut Self, theCont) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_GlobOptMin_set_continuity(self as *mut Self, theCont) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3642,8 +4152,11 @@ impl GlobOptMin {
         {
             let __result =
                 unsafe { crate::ffi::math_GlobOptMin_get_continuity(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3651,13 +4164,15 @@ impl GlobOptMin {
     /// Set / Get functional minimal value.
     pub fn set_functional_minimal_value(&mut self, theMinimalValue: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_GlobOptMin_set_functional_minimal_value(
                     self as *mut Self,
                     theMinimalValue,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3667,8 +4182,11 @@ impl GlobOptMin {
             let __result = unsafe {
                 crate::ffi::math_GlobOptMin_get_functional_minimal_value(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3677,8 +4195,12 @@ impl GlobOptMin {
     /// True means that the constant is locked and unlocked otherwise.
     pub fn set_lip_const_state(&mut self, theFlag: bool) {
         {
-            unsafe { crate::ffi::math_GlobOptMin_set_lip_const_state(self as *mut Self, theFlag) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::math_GlobOptMin_set_lip_const_state(self as *mut Self, theFlag)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3687,8 +4209,11 @@ impl GlobOptMin {
         {
             let __result =
                 unsafe { crate::ffi::math_GlobOptMin_get_lip_const_state(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3697,8 +4222,11 @@ impl GlobOptMin {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::math_GlobOptMin_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3707,8 +4235,11 @@ impl GlobOptMin {
     pub fn get_f(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_GlobOptMin_get_f(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3717,8 +4248,11 @@ impl GlobOptMin {
     pub fn nb_extrema(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::math_GlobOptMin_nb_extrema(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3757,8 +4291,10 @@ impl Householder {
     pub fn new_matrix2_real(A: &Matrix, B: &Matrix, EPS: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::math_Householder_ctor_matrix2_real(A, B, EPS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3785,8 +4321,10 @@ impl Householder {
                     A, B, lowerArow, upperArow, lowerAcol, upperAcol, EPS,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3806,8 +4344,10 @@ impl Householder {
         {
             let __result =
                 unsafe { crate::ffi::math_Householder_ctor_matrix_vector_real(A, B, EPS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3859,8 +4399,11 @@ impl Householder {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::math_Householder_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3873,8 +4416,11 @@ impl Householder {
     /// Index is more than the number of columns of B.
     pub fn value(&self, sol: &mut crate::ffi::math_Vector, Index: i32) {
         {
-            unsafe { crate::ffi::math_Householder_value(self as *const Self, sol, Index) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_Householder_value(self as *const Self, sol, Index) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3886,8 +4432,11 @@ impl Householder {
     pub fn all_values(&self) -> &Matrix {
         {
             let __result = unsafe { crate::ffi::math_Householder_all_values(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3895,8 +4444,10 @@ impl Householder {
     /// Prints information on the current state of the object.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_Householder_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Householder_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3926,8 +4477,10 @@ impl Jacobi {
     pub fn new_matrix(A: &Matrix) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::math_Jacobi_ctor_matrix(A) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3936,8 +4489,11 @@ impl Jacobi {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::math_Jacobi_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3947,8 +4503,11 @@ impl Jacobi {
     pub fn values(&self) -> &crate::ffi::math_Vector {
         {
             let __result = unsafe { crate::ffi::math_Jacobi_values(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3959,8 +4518,11 @@ impl Jacobi {
     pub fn value(&self, Num: i32) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_Jacobi_value(self as *const Self, Num) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3970,8 +4532,11 @@ impl Jacobi {
     pub fn vectors(&self) -> &Matrix {
         {
             let __result = unsafe { crate::ffi::math_Jacobi_vectors(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3981,8 +4546,10 @@ impl Jacobi {
     /// Exception NotDone is raised if calculation is not done successfully.
     pub fn vector(&self, Num: i32, V: &mut crate::ffi::math_Vector) {
         {
-            unsafe { crate::ffi::math_Jacobi_vector(self as *const Self, Num, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Jacobi_vector(self as *const Self, Num, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3991,8 +4558,10 @@ impl Jacobi {
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_Jacobi_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Jacobi_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4018,8 +4587,10 @@ impl KronrodSingleIntegration {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::math_KronrodSingleIntegration_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4041,8 +4612,10 @@ impl KronrodSingleIntegration {
                     theNbPnts,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4070,8 +4643,10 @@ impl KronrodSingleIntegration {
                     theMaxNbIter,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4089,7 +4664,7 @@ impl KronrodSingleIntegration {
         theNbPnts: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_KronrodSingleIntegration_perform_function_real2_int(
                     self as *mut Self,
                     theFunction,
@@ -4098,7 +4673,9 @@ impl KronrodSingleIntegration {
                     theNbPnts,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4122,7 +4699,7 @@ impl KronrodSingleIntegration {
         theMaxNbIter: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_KronrodSingleIntegration_perform_function_real2_int_real_int(
                     self as *mut Self,
                     theFunction,
@@ -4133,7 +4710,9 @@ impl KronrodSingleIntegration {
                     theMaxNbIter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4144,8 +4723,11 @@ impl KronrodSingleIntegration {
         {
             let __result =
                 unsafe { crate::ffi::math_KronrodSingleIntegration_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4155,8 +4737,11 @@ impl KronrodSingleIntegration {
         {
             let __result =
                 unsafe { crate::ffi::math_KronrodSingleIntegration_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4167,8 +4752,11 @@ impl KronrodSingleIntegration {
             let __result = unsafe {
                 crate::ffi::math_KronrodSingleIntegration_error_reached(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4179,8 +4767,11 @@ impl KronrodSingleIntegration {
             let __result = unsafe {
                 crate::ffi::math_KronrodSingleIntegration_absolut_error(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4192,8 +4783,11 @@ impl KronrodSingleIntegration {
             let __result = unsafe {
                 crate::ffi::math_KronrodSingleIntegration_order_reached(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4205,8 +4799,11 @@ impl KronrodSingleIntegration {
             let __result = unsafe {
                 crate::ffi::math_KronrodSingleIntegration_nb_iter_reached(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4236,8 +4833,11 @@ impl KronrodSingleIntegration {
                     theError,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -4313,8 +4913,10 @@ impl Matrix {
             let __result = unsafe {
                 crate::ffi::math_Matrix_ctor_int4(LowerRow, UpperRow, LowerCol, UpperCol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4339,8 +4941,10 @@ impl Matrix {
                     InitialValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4361,8 +4965,10 @@ impl Matrix {
                     Tab, LowerRow, UpperRow, LowerCol, UpperCol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4370,8 +4976,10 @@ impl Matrix {
     /// Initialize all the elements of a matrix to InitialValue.
     pub fn init(&mut self, InitialValue: f64) {
         {
-            unsafe { crate::ffi::math_Matrix_init(self as *mut Self, InitialValue) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Matrix_init(self as *mut Self, InitialValue) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4386,8 +4994,11 @@ impl Matrix {
     pub fn row_number(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::math_Matrix_row_number(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4402,8 +5013,11 @@ impl Matrix {
     pub fn col_number(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::math_Matrix_col_number(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4413,8 +5027,11 @@ impl Matrix {
     pub fn lower_row(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::math_Matrix_lower_row(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4424,8 +5041,11 @@ impl Matrix {
     pub fn upper_row(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::math_Matrix_upper_row(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4435,8 +5055,11 @@ impl Matrix {
     pub fn lower_col(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::math_Matrix_lower_col(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4446,8 +5069,11 @@ impl Matrix {
     pub fn upper_col(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::math_Matrix_upper_col(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4457,8 +5083,11 @@ impl Matrix {
     pub fn determinant(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_Matrix_determinant(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4467,8 +5096,10 @@ impl Matrix {
     /// An exception is raised if the matrix is not a square matrix.
     pub fn transpose(&mut self) {
         {
-            unsafe { crate::ffi::math_Matrix_transpose(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Matrix_transpose(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4478,8 +5109,10 @@ impl Matrix {
     /// Exception SingularMatrix is raised if the matrix is singular.
     pub fn invert(&mut self) {
         {
-            unsafe { crate::ffi::math_Matrix_invert(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Matrix_invert(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4503,8 +5136,10 @@ impl Matrix {
     /// the number of columns of this matrix.
     pub fn multiply_real(&mut self, Right: f64) {
         {
-            unsafe { crate::ffi::math_Matrix_multiply_real(self as *mut Self, Right) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Matrix_multiply_real(self as *mut Self, Right) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4515,8 +5150,11 @@ impl Matrix {
         {
             let __result =
                 unsafe { crate::ffi::math_Matrix_multiplied_real(self as *const Self, Right) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4543,8 +5181,11 @@ impl Matrix {
         {
             let __result =
                 unsafe { crate::ffi::math_Matrix_t_multiplied(self as *const Self, Right) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4553,8 +5194,10 @@ impl Matrix {
     /// An exception is raised if <Right> = 0.
     pub fn divide(&mut self, Right: f64) {
         {
-            unsafe { crate::ffi::math_Matrix_divide(self as *mut Self, Right) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Matrix_divide(self as *mut Self, Right) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4564,8 +5207,11 @@ impl Matrix {
     pub fn divided(&self, Right: f64) -> crate::OwnedPtr<Matrix> {
         {
             let __result = unsafe { crate::ffi::math_Matrix_divided(self as *const Self, Right) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4578,8 +5224,10 @@ impl Matrix {
     /// whenever possible.
     pub fn add_matrix(&mut self, Right: &Matrix) {
         {
-            unsafe { crate::ffi::math_Matrix_add_matrix(self as *mut Self, Right) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Matrix_add_matrix(self as *mut Self, Right) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4589,8 +5237,11 @@ impl Matrix {
     pub fn added(&self, Right: &Matrix) -> crate::OwnedPtr<Matrix> {
         {
             let __result = unsafe { crate::ffi::math_Matrix_added(self as *const Self, Right) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4599,8 +5250,11 @@ impl Matrix {
     /// An exception is raised if the dimensions are different.
     pub fn add_matrix2(&mut self, Left: &Matrix, Right: &Matrix) {
         {
-            unsafe { crate::ffi::math_Matrix_add_matrix2(self as *mut Self, Left, Right) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_Matrix_add_matrix2(self as *mut Self, Left, Right) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4613,8 +5267,11 @@ impl Matrix {
     /// Subtract whenever possible.
     pub fn subtract_matrix(&mut self, Right: &Matrix) {
         {
-            unsafe { crate::ffi::math_Matrix_subtract_matrix(self as *mut Self, Right) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_Matrix_subtract_matrix(self as *mut Self, Right) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4625,8 +5282,11 @@ impl Matrix {
         {
             let __result =
                 unsafe { crate::ffi::math_Matrix_subtracted(self as *const Self, Right) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4645,8 +5305,11 @@ impl Matrix {
     /// -   J2 - J1 + 1 is not equal to the number of columns of matrix M.
     pub fn set(&mut self, I1: i32, I2: i32, J1: i32, J2: i32, M: &Matrix) {
         {
-            unsafe { crate::ffi::math_Matrix_set(self as *mut Self, I1, I2, J1, J2, M) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_Matrix_set(self as *mut Self, I1, I2, J1, J2, M) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4657,8 +5320,10 @@ impl Matrix {
     /// row of the matrix or <Row> is superior to the upper row.
     pub fn set_row(&mut self, Row: i32, V: &crate::ffi::math_Vector) {
         {
-            unsafe { crate::ffi::math_Matrix_set_row(self as *mut Self, Row, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Matrix_set_row(self as *mut Self, Row, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4670,8 +5335,10 @@ impl Matrix {
     /// column.
     pub fn set_col(&mut self, Col: i32, V: &crate::ffi::math_Vector) {
         {
-            unsafe { crate::ffi::math_Matrix_set_col(self as *mut Self, Col, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Matrix_set_col(self as *mut Self, Col, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4680,8 +5347,10 @@ impl Matrix {
     /// An exception is raised if the matrix is not square.
     pub fn set_diag(&mut self, Value: f64) {
         {
-            unsafe { crate::ffi::math_Matrix_set_diag(self as *mut Self, Value) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Matrix_set_diag(self as *mut Self, Value) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4690,8 +5359,11 @@ impl Matrix {
     pub fn row(&self, Row: i32) -> crate::OwnedPtr<crate::ffi::math_Vector> {
         {
             let __result = unsafe { crate::ffi::math_Matrix_row(self as *const Self, Row) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4700,8 +5372,11 @@ impl Matrix {
     pub fn col(&self, Col: i32) -> crate::OwnedPtr<crate::ffi::math_Vector> {
         {
             let __result = unsafe { crate::ffi::math_Matrix_col(self as *const Self, Col) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4710,8 +5385,10 @@ impl Matrix {
     /// An exception is raised if <Row1> or <Row2> is out of range.
     pub fn swap_row(&mut self, Row1: i32, Row2: i32) {
         {
-            unsafe { crate::ffi::math_Matrix_swap_row(self as *mut Self, Row1, Row2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Matrix_swap_row(self as *mut Self, Row1, Row2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4720,8 +5397,10 @@ impl Matrix {
     /// An exception is raised if <Col1> or <Col2> is out of range.
     pub fn swap_col(&mut self, Col1: i32, Col2: i32) {
         {
-            unsafe { crate::ffi::math_Matrix_swap_col(self as *mut Self, Col1, Col2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Matrix_swap_col(self as *mut Self, Col1, Col2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4731,8 +5410,11 @@ impl Matrix {
     pub fn transposed(&self) -> crate::OwnedPtr<Matrix> {
         {
             let __result = unsafe { crate::ffi::math_Matrix_transposed(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4743,8 +5425,11 @@ impl Matrix {
     pub fn inverse(&self) -> crate::OwnedPtr<Matrix> {
         {
             let __result = unsafe { crate::ffi::math_Matrix_inverse(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4756,8 +5441,11 @@ impl Matrix {
         {
             let __result =
                 unsafe { crate::ffi::math_Matrix_t_multiply_matrix(self as *const Self, Right) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4771,8 +5459,11 @@ impl Matrix {
         Right: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe { crate::ffi::math_Matrix_multiply_vector2(self as *mut Self, Left, Right) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_Matrix_multiply_vector2(self as *mut Self, Left, Right) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4781,8 +5472,11 @@ impl Matrix {
     /// An exception is raised if the dimensions are different.
     pub fn multiply_matrix2(&mut self, Left: &Matrix, Right: &Matrix) {
         {
-            unsafe { crate::ffi::math_Matrix_multiply_matrix2(self as *mut Self, Left, Right) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_Matrix_multiply_matrix2(self as *mut Self, Left, Right) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4792,8 +5486,12 @@ impl Matrix {
     /// An exception is raised if the dimensions are different.
     pub fn t_multiply_matrix2(&mut self, TLeft: &Matrix, Right: &Matrix) {
         {
-            unsafe { crate::ffi::math_Matrix_t_multiply_matrix2(self as *mut Self, TLeft, Right) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::math_Matrix_t_multiply_matrix2(self as *mut Self, TLeft, Right)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4803,8 +5501,11 @@ impl Matrix {
     /// An exception is raised if the dimensions are different.
     pub fn subtract_matrix2(&mut self, Left: &Matrix, Right: &Matrix) {
         {
-            unsafe { crate::ffi::math_Matrix_subtract_matrix2(self as *mut Self, Left, Right) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_Matrix_subtract_matrix2(self as *mut Self, Left, Right) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4816,8 +5517,11 @@ impl Matrix {
     pub fn value(&mut self, Row: i32, Col: i32) -> &mut f64 {
         {
             let __result = unsafe { crate::ffi::math_Matrix_value(self as *mut Self, Row, Col) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4833,8 +5537,11 @@ impl Matrix {
     pub unsafe fn initialized(&mut self, Other: &Matrix) -> &mut Matrix {
         {
             let __result = unsafe { crate::ffi::math_Matrix_initialized(self as *mut Self, Other) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4843,8 +5550,11 @@ impl Matrix {
     /// An exception is raised if the dimensions are different.
     pub fn multiply_matrix(&mut self, Right: &Matrix) {
         {
-            unsafe { crate::ffi::math_Matrix_multiply_matrix(self as *mut Self, Right) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_Matrix_multiply_matrix(self as *mut Self, Right) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4855,8 +5565,11 @@ impl Matrix {
         {
             let __result =
                 unsafe { crate::ffi::math_Matrix_multiplied_matrix(self as *const Self, Right) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4870,8 +5583,11 @@ impl Matrix {
         {
             let __result =
                 unsafe { crate::ffi::math_Matrix_multiplied_vector(self as *const Self, Right) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4881,8 +5597,11 @@ impl Matrix {
     pub fn opposite(&mut self) -> crate::OwnedPtr<Matrix> {
         {
             let __result = unsafe { crate::ffi::math_Matrix_opposite(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4891,18 +5610,20 @@ impl Matrix {
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_Matrix_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Matrix_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result = unsafe { crate::ffi::math_Matrix_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::math_Matrix_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4927,8 +5648,11 @@ impl MultipleVarFunction {
         {
             let __result =
                 unsafe { crate::ffi::math_MultipleVarFunction_nb_variables(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4941,8 +5665,11 @@ impl MultipleVarFunction {
         {
             let __result =
                 unsafe { crate::ffi::math_MultipleVarFunction_value(self as *mut Self, X, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4965,8 +5692,11 @@ impl MultipleVarFunction {
         {
             let __result =
                 unsafe { crate::ffi::math_MultipleVarFunction_get_state_number(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -4994,8 +5724,11 @@ impl MultipleVarFunctionWithGradient {
             let __result = unsafe {
                 crate::ffi::math_MultipleVarFunctionWithGradient_nb_variables(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5008,8 +5741,11 @@ impl MultipleVarFunctionWithGradient {
             let __result = unsafe {
                 crate::ffi::math_MultipleVarFunctionWithGradient_value(self as *mut Self, X, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5026,8 +5762,11 @@ impl MultipleVarFunctionWithGradient {
             let __result = unsafe {
                 crate::ffi::math_MultipleVarFunctionWithGradient_gradient(self as *mut Self, X, G)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5046,35 +5785,38 @@ impl MultipleVarFunctionWithGradient {
             let __result = unsafe {
                 crate::ffi::math_MultipleVarFunctionWithGradient_values(self as *mut Self, X, F, G)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_multiple_var_function(&self) -> &MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::math_MultipleVarFunctionWithGradient_as_math_MultipleVarFunction(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::math_MultipleVarFunctionWithGradient_as_math_MultipleVarFunction(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_multiple_var_function_mut(&mut self) -> &mut MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::math_MultipleVarFunctionWithGradient_as_math_MultipleVarFunction_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::math_MultipleVarFunctionWithGradient_as_math_MultipleVarFunction_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
@@ -5085,8 +5827,11 @@ impl MultipleVarFunctionWithGradient {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -5112,8 +5857,11 @@ impl MultipleVarFunctionWithHessian {
             let __result = unsafe {
                 crate::ffi::math_MultipleVarFunctionWithHessian_nb_variables(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5127,8 +5875,11 @@ impl MultipleVarFunctionWithHessian {
             let __result = unsafe {
                 crate::ffi::math_MultipleVarFunctionWithHessian_value(self as *mut Self, X, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5146,8 +5897,11 @@ impl MultipleVarFunctionWithHessian {
             let __result = unsafe {
                 crate::ffi::math_MultipleVarFunctionWithHessian_gradient(self as *mut Self, X, G)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5171,8 +5925,11 @@ impl MultipleVarFunctionWithHessian {
                     G,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5198,59 +5955,64 @@ impl MultipleVarFunctionWithHessian {
                     H,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient
     pub fn as_multiple_var_function_with_gradient(&self) -> &MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunctionWithGradient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunctionWithGradient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient (mutable)
     pub fn as_multiple_var_function_with_gradient_mut(
         &mut self,
     ) -> &mut MultipleVarFunctionWithGradient {
-        {
-            let __result = unsafe {
-                crate::ffi::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_multiple_var_function(&self) -> &MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunction(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunction(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_multiple_var_function_mut(&mut self) -> &mut MultipleVarFunction {
-        {
-            let __result = unsafe {
-                crate::ffi::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunction_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunction_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
@@ -5261,8 +6023,11 @@ impl MultipleVarFunctionWithHessian {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -5308,8 +6073,10 @@ impl NewtonFunctionRoot {
                     NbIterations,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5342,8 +6109,10 @@ impl NewtonFunctionRoot {
                     NbIterations,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5361,8 +6130,10 @@ impl NewtonFunctionRoot {
             let __result = unsafe {
                 crate::ffi::math_NewtonFunctionRoot_ctor_real4_int(A, B, EpsX, EpsF, NbIterations)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5412,8 +6183,11 @@ impl NewtonFunctionRoot {
     /// is used internally by the constructors.
     pub fn perform(&mut self, F: &mut FunctionWithDerivative, Guess: f64) {
         {
-            unsafe { crate::ffi::math_NewtonFunctionRoot_perform(self as *mut Self, F, Guess) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_NewtonFunctionRoot_perform(self as *mut Self, F, Guess) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5423,8 +6197,11 @@ impl NewtonFunctionRoot {
         {
             let __result =
                 unsafe { crate::ffi::math_NewtonFunctionRoot_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5434,8 +6211,11 @@ impl NewtonFunctionRoot {
     pub fn root(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_NewtonFunctionRoot_root(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5446,8 +6226,11 @@ impl NewtonFunctionRoot {
         {
             let __result =
                 unsafe { crate::ffi::math_NewtonFunctionRoot_derivative(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5458,8 +6241,11 @@ impl NewtonFunctionRoot {
         {
             let __result =
                 unsafe { crate::ffi::math_NewtonFunctionRoot_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5471,8 +6257,11 @@ impl NewtonFunctionRoot {
         {
             let __result =
                 unsafe { crate::ffi::math_NewtonFunctionRoot_nb_iterations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5480,8 +6269,10 @@ impl NewtonFunctionRoot {
     /// Prints information on the current state of the object.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_NewtonFunctionRoot_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_NewtonFunctionRoot_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5518,8 +6309,10 @@ impl NewtonFunctionSetRoot {
             let __result = unsafe {
                 crate::ffi::math_NewtonFunctionSetRoot_ctor_functionsetwithderivatives_vector_real_int(theFunction, theXTolerance, theFTolerance, tehNbIterations)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5542,8 +6335,10 @@ impl NewtonFunctionSetRoot {
                     theNbIterations,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5581,10 +6376,12 @@ impl NewtonFunctionSetRoot {
     /// Initializes the tolerance values for the unknowns.
     pub fn set_tolerance(&mut self, XTol: &crate::ffi::math_Vector) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_NewtonFunctionSetRoot_set_tolerance(self as *mut Self, XTol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5598,14 +6395,16 @@ impl NewtonFunctionSetRoot {
         theStartingPoint: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_NewtonFunctionSetRoot_perform_functionsetwithderivatives_vector(
                     self as *mut Self,
                     theFunction,
                     theStartingPoint,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5622,7 +6421,7 @@ impl NewtonFunctionSetRoot {
         theSupBound: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_NewtonFunctionSetRoot_perform_functionsetwithderivatives_vector3(
                     self as *mut Self,
                     theFunction,
@@ -5631,7 +6430,9 @@ impl NewtonFunctionSetRoot {
                     theSupBound,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5646,8 +6447,11 @@ impl NewtonFunctionSetRoot {
             let __result = unsafe {
                 crate::ffi::math_NewtonFunctionSetRoot_is_solution_reached(self as *mut Self, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5657,8 +6461,11 @@ impl NewtonFunctionSetRoot {
         {
             let __result =
                 unsafe { crate::ffi::math_NewtonFunctionSetRoot_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5670,8 +6477,11 @@ impl NewtonFunctionSetRoot {
         {
             let __result =
                 unsafe { crate::ffi::math_NewtonFunctionSetRoot_root(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5682,10 +6492,12 @@ impl NewtonFunctionSetRoot {
     /// not equal to the range of the StartingPoint.
     pub fn root_vector(&self, Root: &mut crate::ffi::math_Vector) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_NewtonFunctionSetRoot_root_vector(self as *const Self, Root)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5696,8 +6508,11 @@ impl NewtonFunctionSetRoot {
         {
             let __result =
                 unsafe { crate::ffi::math_NewtonFunctionSetRoot_state_number(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5708,8 +6523,11 @@ impl NewtonFunctionSetRoot {
         {
             let __result =
                 unsafe { crate::ffi::math_NewtonFunctionSetRoot_derivative(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5721,10 +6539,12 @@ impl NewtonFunctionSetRoot {
     /// not equal to the range of the StartingPoint.
     pub fn derivative_matrix(&self, Der: &mut Matrix) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_NewtonFunctionSetRoot_derivative_matrix(self as *const Self, Der)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5737,8 +6557,11 @@ impl NewtonFunctionSetRoot {
             let __result = unsafe {
                 crate::ffi::math_NewtonFunctionSetRoot_function_set_errors(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5750,13 +6573,15 @@ impl NewtonFunctionSetRoot {
     /// not equal to the range of the StartingPoint.
     pub fn function_set_errors_vector(&self, Err_: &mut crate::ffi::math_Vector) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_NewtonFunctionSetRoot_function_set_errors_vector(
                     self as *const Self,
                     Err_,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5769,8 +6594,11 @@ impl NewtonFunctionSetRoot {
             let __result = unsafe {
                 crate::ffi::math_NewtonFunctionSetRoot_nb_iterations(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5779,8 +6607,11 @@ impl NewtonFunctionSetRoot {
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_NewtonFunctionSetRoot_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_NewtonFunctionSetRoot_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5816,8 +6647,10 @@ impl NewtonMinimum {
             let __result = unsafe {
                 crate::ffi::math_NewtonMinimum_ctor_multiplevarfunctionwithhessian_real_int_real_bool(theFunction, theTolerance, theNbIterations, theConvexity, theWithSingularity)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5889,14 +6722,16 @@ impl NewtonMinimum {
         theStartingPoint: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_NewtonMinimum_perform(
                     self as *mut Self,
                     theFunction,
                     theStartingPoint,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5908,8 +6743,11 @@ impl NewtonMinimum {
         {
             let __result =
                 unsafe { crate::ffi::math_NewtonMinimum_is_converged(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5918,8 +6756,11 @@ impl NewtonMinimum {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::math_NewtonMinimum_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5928,8 +6769,11 @@ impl NewtonMinimum {
     pub fn is_convex(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::math_NewtonMinimum_is_convex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5939,8 +6783,11 @@ impl NewtonMinimum {
     pub fn location(&self) -> &crate::ffi::math_Vector {
         {
             let __result = unsafe { crate::ffi::math_NewtonMinimum_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5951,8 +6798,11 @@ impl NewtonMinimum {
     /// equal to the range of the StartingPoint.
     pub fn location_vector(&self, Loc: &mut crate::ffi::math_Vector) {
         {
-            unsafe { crate::ffi::math_NewtonMinimum_location_vector(self as *const Self, Loc) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_NewtonMinimum_location_vector(self as *const Self, Loc) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5964,14 +6814,16 @@ impl NewtonMinimum {
         theRightBorder: &crate::ffi::math_Vector,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_NewtonMinimum_set_boundary(
                     self as *mut Self,
                     theLeftBorder,
                     theRightBorder,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5981,8 +6833,11 @@ impl NewtonMinimum {
     pub fn minimum(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_NewtonMinimum_minimum(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5993,8 +6848,11 @@ impl NewtonMinimum {
     pub fn gradient(&self) -> &crate::ffi::math_Vector {
         {
             let __result = unsafe { crate::ffi::math_NewtonMinimum_gradient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6005,8 +6863,12 @@ impl NewtonMinimum {
     /// equal to the range of the StartingPoint.
     pub fn gradient_vector(&self, Grad: &mut crate::ffi::math_Vector) {
         {
-            unsafe { crate::ffi::math_NewtonMinimum_gradient_vector(self as *const Self, Grad) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::math_NewtonMinimum_gradient_vector(self as *const Self, Grad)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6018,8 +6880,11 @@ impl NewtonMinimum {
         {
             let __result =
                 unsafe { crate::ffi::math_NewtonMinimum_nb_iterations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6030,8 +6895,11 @@ impl NewtonMinimum {
         {
             let __result =
                 unsafe { crate::ffi::math_NewtonMinimum_get_status(self as *const Self) };
-            crate::check_exception();
-            crate::math::Status::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::math::Status::try_from(__val).unwrap()
         }
     }
 
@@ -6041,8 +6909,10 @@ impl NewtonMinimum {
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_NewtonMinimum_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_NewtonMinimum_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6065,8 +6935,10 @@ impl NotSquare {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::math_NotSquare_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6076,8 +6948,10 @@ impl NotSquare {
         {
             let __result =
                 unsafe { crate::ffi::math_NotSquare_ctor_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6092,8 +6966,10 @@ impl NotSquare {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6101,8 +6977,11 @@ impl NotSquare {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::math_NotSquare_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6110,16 +6989,20 @@ impl NotSquare {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::math_NotSquare_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_NotSquare_raise_charptr(c_theMessage.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::math_NotSquare_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_NotSquare_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6131,8 +7014,11 @@ impl NotSquare {
         {
             let __result =
                 unsafe { crate::ffi::math_NotSquare_new_instance_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6150,8 +7036,11 @@ impl NotSquare {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6159,8 +7048,11 @@ impl NotSquare {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::math_NotSquare_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6168,126 +7060,134 @@ impl NotSquare {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::math_NotSquare_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_DimensionError
     pub fn as_standard_dimension_error(&self) -> &crate::standard::DimensionError {
-        {
-            let __result = unsafe {
-                crate::ffi::math_NotSquare_as_Standard_DimensionError(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::math_NotSquare_as_Standard_DimensionError(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_DimensionError (mutable)
     pub fn as_standard_dimension_error_mut(&mut self) -> &mut crate::standard::DimensionError {
-        {
-            let __result = unsafe {
-                crate::ffi::math_NotSquare_as_Standard_DimensionError_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::math_NotSquare_as_Standard_DimensionError_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
-        {
-            let __result =
-                unsafe { crate::ffi::math_NotSquare_as_Standard_DomainError(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::math_NotSquare_as_Standard_DomainError(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
-        {
-            let __result = unsafe {
-                crate::ffi::math_NotSquare_as_Standard_DomainError_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::math_NotSquare_as_Standard_DomainError_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::math_NotSquare_as_Standard_Failure(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::math_NotSquare_as_Standard_Failure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::math_NotSquare_as_Standard_Failure_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::math_NotSquare_as_Standard_Failure_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::math_NotSquare_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::math_NotSquare_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::math_NotSquare_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::math_NotSquare_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlemathNotSquare> {
-        {
-            let __result = unsafe { crate::ffi::math_NotSquare_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::math_NotSquare_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_NotSquare_inherited_Print(self as *const Self, theStream) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::math_NotSquare_inherited_Print(self as *const Self, theStream)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::math_NotSquare_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_NotSquare_inherited_Reraise(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::math_NotSquare_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_NotSquare_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6297,8 +7197,11 @@ impl NotSquare {
             let __result = unsafe {
                 crate::ffi::math_NotSquare_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6308,8 +7211,11 @@ impl NotSquare {
             let __result = unsafe {
                 crate::ffi::math_NotSquare_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6318,11 +7224,14 @@ impl NotSquare {
         {
             let __result =
                 unsafe { crate::ffi::math_NotSquare_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6332,16 +7241,23 @@ impl NotSquare {
         {
             let __result =
                 unsafe { crate::ffi::math_NotSquare_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::math_NotSquare_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::math_NotSquare_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6351,16 +7267,21 @@ impl NotSquare {
             let __result = unsafe {
                 crate::ffi::math_NotSquare_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::math_NotSquare_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_NotSquare_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6376,66 +7297,66 @@ unsafe impl crate::CppDeletable for HandlemathNotSquare {
 impl HandlemathNotSquare {
     /// Dereference this Handle to access the underlying math_NotSquare
     pub fn get(&self) -> &crate::ffi::math_NotSquare {
-        {
-            let __result = unsafe { crate::ffi::HandlemathNotSquare_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlemathNotSquare_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying math_NotSquare
     pub fn get_mut(&mut self) -> &mut crate::ffi::math_NotSquare {
-        {
-            let __result = unsafe { crate::ffi::HandlemathNotSquare_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlemathNotSquare_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<math_NotSquare> to Handle<Standard_DimensionError>
     pub fn to_handle_dimension_error(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStandardDimensionError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlemathNotSquare_to_HandleStandardDimensionError(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlemathNotSquare_to_HandleStandardDimensionError(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<math_NotSquare> to Handle<Standard_DomainError>
     pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlemathNotSquare_to_HandleStandardDomainError(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlemathNotSquare_to_HandleStandardDomainError(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<math_NotSquare> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlemathNotSquare_to_HandleStandardFailure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlemathNotSquare_to_HandleStandardFailure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<math_NotSquare> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlemathNotSquare_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlemathNotSquare_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6514,8 +7435,10 @@ impl PSO {
                     theNbIter,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6586,7 +7509,7 @@ impl PSO {
         theNbIter: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_PSO_perform_vector_real_vector_int(
                     self as *mut Self,
                     theSteps,
@@ -6595,7 +7518,9 @@ impl PSO {
                     theNbIter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6610,7 +7535,7 @@ impl PSO {
         theNbIter: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_PSO_perform_psoparticlespool_int_real_vector_int(
                     self as *mut Self,
                     theParticles,
@@ -6620,7 +7545,9 @@ impl PSO {
                     theNbIter,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6646,8 +7573,10 @@ impl PSO_Particle {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::PSO_Particle_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -6668,8 +7597,10 @@ impl PSOParticlesPool {
             let __result = unsafe {
                 crate::ffi::math_PSOParticlesPool_ctor_int2(theParticlesCount, theDimensionCount)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6679,11 +7610,14 @@ impl PSOParticlesPool {
             let __result = unsafe {
                 crate::ffi::math_PSOParticlesPool_get_particle(self as *mut Self, theIdx)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &mut *__result })
+                Some(unsafe { &mut *__val })
             }
         }
     }
@@ -6693,11 +7627,14 @@ impl PSOParticlesPool {
         {
             let __result =
                 unsafe { crate::ffi::math_PSOParticlesPool_get_best_particle(self as *mut Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &mut *__result })
+                Some(unsafe { &mut *__val })
             }
         }
     }
@@ -6707,11 +7644,14 @@ impl PSOParticlesPool {
         {
             let __result =
                 unsafe { crate::ffi::math_PSOParticlesPool_get_worst_particle(self as *mut Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &mut *__result })
+                Some(unsafe { &mut *__val })
             }
         }
     }
@@ -6750,8 +7690,10 @@ impl Powell {
                     theZEPS,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6792,7 +7734,7 @@ impl Powell {
         theStartingDirections: &Matrix,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_Powell_perform(
                     self as *mut Self,
                     theFunction,
@@ -6800,7 +7742,9 @@ impl Powell {
                     theStartingDirections,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6813,8 +7757,11 @@ impl Powell {
             let __result = unsafe {
                 crate::ffi::math_Powell_is_solution_reached(self as *mut Self, theFunction)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6823,8 +7770,11 @@ impl Powell {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::math_Powell_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6834,8 +7784,11 @@ impl Powell {
     pub fn location(&self) -> &crate::ffi::math_Vector {
         {
             let __result = unsafe { crate::ffi::math_Powell_location(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6846,8 +7799,11 @@ impl Powell {
     /// equal to the range of the StartingPoint.
     pub fn location_vector(&self, Loc: &mut crate::ffi::math_Vector) {
         {
-            unsafe { crate::ffi::math_Powell_location_vector(self as *const Self, Loc) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_Powell_location_vector(self as *const Self, Loc) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6857,8 +7813,11 @@ impl Powell {
     pub fn minimum(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_Powell_minimum(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6869,8 +7828,11 @@ impl Powell {
     pub fn nb_iterations(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::math_Powell_nb_iterations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6879,8 +7841,10 @@ impl Powell {
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_Powell_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Powell_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6910,8 +7874,10 @@ impl SVD {
     pub fn new_matrix(A: &Matrix) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::math_SVD_ctor_matrix(A) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6920,8 +7886,11 @@ impl SVD {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::math_SVD_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6941,8 +7910,10 @@ impl SVD {
         Eps: f64,
     ) {
         {
-            unsafe { crate::ffi::math_SVD_solve(self as *mut Self, B, X, Eps) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_SVD_solve(self as *mut Self, B, X, Eps) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6954,8 +7925,10 @@ impl SVD {
     /// compatible with the ranges of A.
     pub fn pseudo_inverse(&mut self, Inv: &mut Matrix, Eps: f64) {
         {
-            unsafe { crate::ffi::math_SVD_pseudo_inverse(self as *mut Self, Inv, Eps) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_SVD_pseudo_inverse(self as *mut Self, Inv, Eps) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6964,8 +7937,10 @@ impl SVD {
     /// Is used to redefine the operator <<.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_SVD_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_SVD_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6988,8 +7963,10 @@ impl SingularMatrix {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::math_SingularMatrix_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6999,8 +7976,10 @@ impl SingularMatrix {
         {
             let __result =
                 unsafe { crate::ffi::math_SingularMatrix_ctor_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7015,8 +7994,10 @@ impl SingularMatrix {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7025,8 +8006,11 @@ impl SingularMatrix {
         {
             let __result =
                 unsafe { crate::ffi::math_SingularMatrix_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7034,16 +8018,21 @@ impl SingularMatrix {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         {
-            unsafe { crate::ffi::math_SingularMatrix_raise_charptr(c_theMessage.as_ptr()) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_SingularMatrix_raise_charptr(c_theMessage.as_ptr()) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::Raise()`
     pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
         {
-            unsafe { crate::ffi::math_SingularMatrix_raise_sstream(theMessage) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_SingularMatrix_raise_sstream(theMessage) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7056,8 +8045,11 @@ impl SingularMatrix {
             let __result = unsafe {
                 crate::ffi::math_SingularMatrix_new_instance_charptr(c_theMessage.as_ptr())
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7075,8 +8067,11 @@ impl SingularMatrix {
                     c_theStackTrace.as_ptr(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7084,8 +8079,11 @@ impl SingularMatrix {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::math_SingularMatrix_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -7093,88 +8091,96 @@ impl SingularMatrix {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::math_SingularMatrix_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
-        {
-            let __result =
-                unsafe { crate::ffi::math_SingularMatrix_as_Standard_Failure(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::math_SingularMatrix_as_Standard_Failure(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
-        {
-            let __result = unsafe {
-                crate::ffi::math_SingularMatrix_as_Standard_Failure_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::math_SingularMatrix_as_Standard_Failure_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::math_SingularMatrix_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::math_SingularMatrix_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::math_SingularMatrix_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::math_SingularMatrix_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandlemathSingularMatrix> {
-        {
-            let __result = unsafe { crate::ffi::math_SingularMatrix_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::math_SingularMatrix_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
     pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_SingularMatrix_inherited_Print(self as *const Self, theStream)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         {
-            unsafe { crate::ffi::math_SingularMatrix_inherited_Reraise(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_SingularMatrix_inherited_Reraise(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         {
-            unsafe { crate::ffi::math_SingularMatrix_inherited_Jump(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_SingularMatrix_inherited_Jump(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7184,8 +8190,11 @@ impl SingularMatrix {
             let __result = unsafe {
                 crate::ffi::math_SingularMatrix_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7195,8 +8204,11 @@ impl SingularMatrix {
             let __result = unsafe {
                 crate::ffi::math_SingularMatrix_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7205,11 +8217,14 @@ impl SingularMatrix {
         {
             let __result =
                 unsafe { crate::ffi::math_SingularMatrix_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7220,18 +8235,23 @@ impl SingularMatrix {
             let __result = unsafe {
                 crate::ffi::math_SingularMatrix_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::math_SingularMatrix_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7241,16 +8261,22 @@ impl SingularMatrix {
             let __result = unsafe {
                 crate::ffi::math_SingularMatrix_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::math_SingularMatrix_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_SingularMatrix_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7266,43 +8292,42 @@ unsafe impl crate::CppDeletable for HandlemathSingularMatrix {
 impl HandlemathSingularMatrix {
     /// Dereference this Handle to access the underlying math_SingularMatrix
     pub fn get(&self) -> &crate::ffi::math_SingularMatrix {
-        {
-            let __result = unsafe { crate::ffi::HandlemathSingularMatrix_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandlemathSingularMatrix_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying math_SingularMatrix
     pub fn get_mut(&mut self) -> &mut crate::ffi::math_SingularMatrix {
-        {
-            let __result =
-                unsafe { crate::ffi::HandlemathSingularMatrix_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandlemathSingularMatrix_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<math_SingularMatrix> to Handle<Standard_Failure>
     pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlemathSingularMatrix_to_HandleStandardFailure(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlemathSingularMatrix_to_HandleStandardFailure(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<math_SingularMatrix> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandlemathSingularMatrix_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandlemathSingularMatrix_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -7328,8 +8353,10 @@ impl TrigonometricEquationFunction {
         {
             let __result =
                 unsafe { crate::ffi::math_TrigonometricEquationFunction_ctor_real5(A, B, C, D, E) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7339,8 +8366,11 @@ impl TrigonometricEquationFunction {
             let __result = unsafe {
                 crate::ffi::math_TrigonometricEquationFunction_value(self as *mut Self, X, F)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7350,8 +8380,11 @@ impl TrigonometricEquationFunction {
             let __result = unsafe {
                 crate::ffi::math_TrigonometricEquationFunction_derivative(self as *mut Self, X, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7361,59 +8394,60 @@ impl TrigonometricEquationFunction {
             let __result = unsafe {
                 crate::ffi::math_TrigonometricEquationFunction_values(self as *mut Self, X, F, D)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_function_with_derivative(&self) -> &FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::math_TrigonometricEquationFunction_as_math_FunctionWithDerivative(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::math_TrigonometricEquationFunction_as_math_FunctionWithDerivative(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_function_with_derivative_mut(&mut self) -> &mut FunctionWithDerivative {
-        {
-            let __result = unsafe {
-                crate::ffi::math_TrigonometricEquationFunction_as_math_FunctionWithDerivative_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::math_TrigonometricEquationFunction_as_math_FunctionWithDerivative_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to math_Function
     pub fn as_function(&self) -> &Function {
-        {
-            let __result = unsafe {
-                crate::ffi::math_TrigonometricEquationFunction_as_math_Function(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::math_TrigonometricEquationFunction_as_math_Function(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_function_mut(&mut self) -> &mut Function {
-        {
-            let __result = unsafe {
-                crate::ffi::math_TrigonometricEquationFunction_as_math_Function_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::math_TrigonometricEquationFunction_as_math_Function_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
@@ -7424,8 +8458,11 @@ impl TrigonometricEquationFunction {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -7467,8 +8504,10 @@ impl TrigonometricFunctionRoots {
                     A, B, C, D, E, InfBound, SupBound,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7482,8 +8521,10 @@ impl TrigonometricFunctionRoots {
             let __result = unsafe {
                 crate::ffi::math_TrigonometricFunctionRoots_ctor_real4(D, E, InfBound, SupBound)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7503,8 +8544,10 @@ impl TrigonometricFunctionRoots {
             let __result = unsafe {
                 crate::ffi::math_TrigonometricFunctionRoots_ctor_real5(C, D, E, InfBound, SupBound)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7514,8 +8557,11 @@ impl TrigonometricFunctionRoots {
         {
             let __result =
                 unsafe { crate::ffi::math_TrigonometricFunctionRoots_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7526,8 +8572,11 @@ impl TrigonometricFunctionRoots {
             let __result = unsafe {
                 crate::ffi::math_TrigonometricFunctionRoots_infinite_roots(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7541,8 +8590,11 @@ impl TrigonometricFunctionRoots {
             let __result = unsafe {
                 crate::ffi::math_TrigonometricFunctionRoots_value(self as *const Self, Index)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7555,8 +8607,11 @@ impl TrigonometricFunctionRoots {
             let __result = unsafe {
                 crate::ffi::math_TrigonometricFunctionRoots_nb_solutions(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7564,8 +8619,11 @@ impl TrigonometricFunctionRoots {
     /// Prints information on the current state of the object.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_TrigonometricFunctionRoots_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::math_TrigonometricFunctionRoots_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7624,8 +8682,10 @@ impl Uzawa {
                     NbIterations,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7667,8 +8727,10 @@ impl Uzawa {
                     NbIterations,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7842,8 +8904,11 @@ impl Uzawa {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::math_Uzawa_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7853,8 +8918,11 @@ impl Uzawa {
     pub fn value(&self) -> &crate::ffi::math_Vector {
         {
             let __result = unsafe { crate::ffi::math_Uzawa_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7864,8 +8932,11 @@ impl Uzawa {
     pub fn initial_error(&self) -> &crate::ffi::math_Vector {
         {
             let __result = unsafe { crate::ffi::math_Uzawa_initial_error(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7873,8 +8944,10 @@ impl Uzawa {
     /// returns the duale variables V of the systeme.
     pub fn duale(&self, V: &mut crate::ffi::math_Vector) {
         {
-            unsafe { crate::ffi::math_Uzawa_duale(self as *const Self, V) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Uzawa_duale(self as *const Self, V) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7885,8 +8958,11 @@ impl Uzawa {
     pub fn error(&self) -> &crate::ffi::math_Vector {
         {
             let __result = unsafe { crate::ffi::math_Uzawa_error(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7896,8 +8972,11 @@ impl Uzawa {
     pub fn nb_iterations(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::math_Uzawa_nb_iterations(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7908,8 +8987,11 @@ impl Uzawa {
     pub fn inverse_cont(&self) -> &Matrix {
         {
             let __result = unsafe { crate::ffi::math_Uzawa_inverse_cont(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7917,8 +8999,10 @@ impl Uzawa {
     /// Prints information on the current state of the object.
     pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
         {
-            unsafe { crate::ffi::math_Uzawa_dump(self as *const Self, o) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::math_Uzawa_dump(self as *const Self, o) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7942,8 +9026,10 @@ impl ValueAndWeight {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::math_ValueAndWeight_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7952,8 +9038,10 @@ impl ValueAndWeight {
         {
             let __result =
                 unsafe { crate::ffi::math_ValueAndWeight_ctor_real2(theValue, theWeight) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7961,8 +9049,11 @@ impl ValueAndWeight {
     pub fn value(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_ValueAndWeight_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7970,8 +9061,11 @@ impl ValueAndWeight {
     pub fn weight(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::math_ValueAndWeight_weight(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

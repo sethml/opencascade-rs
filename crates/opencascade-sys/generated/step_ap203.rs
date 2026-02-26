@@ -36,8 +36,10 @@ impl ApprovedItem {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_ApprovedItem_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -59,8 +61,11 @@ impl ApprovedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ApprovedItem_case_num(self as *const Self, ent) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -73,8 +78,11 @@ impl ApprovedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ApprovedItem_product_definition_formation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -87,8 +95,11 @@ impl ApprovedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ApprovedItem_product_definition(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -101,8 +112,11 @@ impl ApprovedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ApprovedItem_configuration_effectivity(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -115,8 +129,11 @@ impl ApprovedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ApprovedItem_configuration_item(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -129,8 +146,11 @@ impl ApprovedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ApprovedItem_security_classification(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -140,8 +160,11 @@ impl ApprovedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ApprovedItem_change_request(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -151,8 +174,11 @@ impl ApprovedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ApprovedItem_change(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -162,8 +188,11 @@ impl ApprovedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ApprovedItem_start_request(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -173,8 +202,11 @@ impl ApprovedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ApprovedItem_start_work(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -184,8 +216,11 @@ impl ApprovedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ApprovedItem_certification(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -195,31 +230,34 @@ impl ApprovedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ApprovedItem_contract(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to StepData_SelectType
     pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_ApprovedItem_as_StepData_SelectType(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_ApprovedItem_as_StepData_SelectType(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepData_SelectType (mutable)
     pub fn as_step_data_select_type_mut(&mut self) -> &mut crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_ApprovedItem_as_StepData_SelectType_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_ApprovedItem_as_StepData_SelectType_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
@@ -228,26 +266,34 @@ impl ApprovedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ApprovedItem_inherited_Matches(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
     pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_ApprovedItem_inherited_SetValue(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
     pub fn nullify(&mut self) {
         {
-            unsafe { crate::ffi::StepAP203_ApprovedItem_inherited_Nullify(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StepAP203_ApprovedItem_inherited_Nullify(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -256,8 +302,11 @@ impl ApprovedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ApprovedItem_inherited_Value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -266,8 +315,11 @@ impl ApprovedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ApprovedItem_inherited_IsNull(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -276,8 +328,11 @@ impl ApprovedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ApprovedItem_inherited_Type(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -287,8 +342,11 @@ impl ApprovedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ApprovedItem_inherited_CaseNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -298,8 +356,11 @@ impl ApprovedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ApprovedItem_inherited_Description(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -309,8 +370,11 @@ impl ApprovedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ApprovedItem_inherited_NewMember(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -320,8 +384,11 @@ impl ApprovedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ApprovedItem_inherited_CaseMem(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -331,8 +398,11 @@ impl ApprovedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ApprovedItem_inherited_CaseMember(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -341,8 +411,11 @@ impl ApprovedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ApprovedItem_inherited_Member(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -351,16 +424,23 @@ impl ApprovedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ApprovedItem_inherited_Int(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:131 - `StepData_SelectType::SetInt()`
     pub fn set_int(&mut self, val: i32) {
         {
-            unsafe { crate::ffi::StepAP203_ApprovedItem_inherited_SetInt(self as *mut Self, val) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StepAP203_ApprovedItem_inherited_SetInt(self as *mut Self, val)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -370,8 +450,11 @@ impl ApprovedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ApprovedItem_inherited_Integer(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -381,8 +464,11 @@ impl ApprovedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ApprovedItem_inherited_Boolean(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -392,8 +478,11 @@ impl ApprovedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ApprovedItem_inherited_Logical(self as *const Self)
             };
-            crate::check_exception();
-            crate::step_data::Logical::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::step_data::Logical::try_from(__val).unwrap()
         }
     }
 
@@ -402,8 +491,11 @@ impl ApprovedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ApprovedItem_inherited_Real(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -428,8 +520,10 @@ impl CcDesignApproval {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_CcDesignApproval_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -441,14 +535,16 @@ impl CcDesignApproval {
         aItems: &crate::ffi::HandleStepAP203HArray1OfApprovedItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignApproval_init(
                     self as *mut Self,
                     aApprovalAssignment_AssignedApproval,
                     aItems,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -458,8 +554,11 @@ impl CcDesignApproval {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_CcDesignApproval_items(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -467,8 +566,12 @@ impl CcDesignApproval {
     /// Set field Items
     pub fn set_items(&mut self, Items: &crate::ffi::HandleStepAP203HArray1OfApprovedItem) {
         {
-            unsafe { crate::ffi::StepAP203_CcDesignApproval_set_items(self as *mut Self, Items) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StepAP203_CcDesignApproval_set_items(self as *mut Self, Items)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -477,8 +580,11 @@ impl CcDesignApproval {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_CcDesignApproval_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -486,8 +592,11 @@ impl CcDesignApproval {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StepAP203_CcDesignApproval_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -495,71 +604,73 @@ impl CcDesignApproval {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StepAP203_CcDesignApproval_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to StepBasic_ApprovalAssignment
     pub fn as_step_basic_approval_assignment(&self) -> &crate::step_basic::ApprovalAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignApproval_as_StepBasic_ApprovalAssignment(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignApproval_as_StepBasic_ApprovalAssignment(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepBasic_ApprovalAssignment (mutable)
     pub fn as_step_basic_approval_assignment_mut(
         &mut self,
     ) -> &mut crate::step_basic::ApprovalAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignApproval_as_StepBasic_ApprovalAssignment_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignApproval_as_StepBasic_ApprovalAssignment_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignApproval_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignApproval_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignApproval_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignApproval_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignApproval> {
-        {
-            let __result =
-                unsafe { crate::ffi::StepAP203_CcDesignApproval_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StepAP203_CcDesignApproval_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `StepBasic_ApprovalAssignment.hxx`:35 - `StepBasic_ApprovalAssignment::SetAssignedApproval()`
@@ -568,13 +679,15 @@ impl CcDesignApproval {
         aAssignedApproval: &crate::ffi::HandleStepBasicApproval,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignApproval_inherited_SetAssignedApproval(
                     self as *mut Self,
                     aAssignedApproval,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -586,8 +699,11 @@ impl CcDesignApproval {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -600,8 +716,11 @@ impl CcDesignApproval {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -614,8 +733,11 @@ impl CcDesignApproval {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -625,11 +747,14 @@ impl CcDesignApproval {
             let __result = unsafe {
                 crate::ffi::StepAP203_CcDesignApproval_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -640,20 +765,25 @@ impl CcDesignApproval {
             let __result = unsafe {
                 crate::ffi::StepAP203_CcDesignApproval_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignApproval_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -665,16 +795,23 @@ impl CcDesignApproval {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StepAP203_CcDesignApproval_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StepAP203_CcDesignApproval_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -690,50 +827,50 @@ unsafe impl crate::CppDeletable for HandleStepAP203CcDesignApproval {
 impl HandleStepAP203CcDesignApproval {
     /// Dereference this Handle to access the underlying StepAP203_CcDesignApproval
     pub fn get(&self) -> &crate::ffi::StepAP203_CcDesignApproval {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStepAP203CcDesignApproval_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleStepAP203CcDesignApproval_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP203_CcDesignApproval
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP203_CcDesignApproval {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStepAP203CcDesignApproval_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleStepAP203CcDesignApproval_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP203_CcDesignApproval> to Handle<StepBasic_ApprovalAssignment>
     pub fn to_handle_approval_assignment(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicApprovalAssignment> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignApproval_to_HandleStepBasicApprovalAssignment(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignApproval_to_HandleStepBasicApprovalAssignment(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StepAP203_CcDesignApproval> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignApproval_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignApproval_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -757,8 +894,10 @@ impl CcDesignCertification {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_CcDesignCertification_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -770,14 +909,16 @@ impl CcDesignCertification {
         aItems: &crate::ffi::HandleStepAP203HArray1OfCertifiedItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignCertification_init(
                     self as *mut Self,
                     aCertificationAssignment_AssignedCertification,
                     aItems,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -787,8 +928,11 @@ impl CcDesignCertification {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_CcDesignCertification_items(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -796,10 +940,12 @@ impl CcDesignCertification {
     /// Set field Items
     pub fn set_items(&mut self, Items: &crate::ffi::HandleStepAP203HArray1OfCertifiedItem) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignCertification_set_items(self as *mut Self, Items)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -809,8 +955,11 @@ impl CcDesignCertification {
             let __result = unsafe {
                 crate::ffi::StepAP203_CcDesignCertification_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -818,8 +967,11 @@ impl CcDesignCertification {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StepAP203_CcDesignCertification_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -828,8 +980,11 @@ impl CcDesignCertification {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_CcDesignCertification_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -837,68 +992,64 @@ impl CcDesignCertification {
     pub fn as_step_basic_certification_assignment(
         &self,
     ) -> &crate::step_basic::CertificationAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignCertification_as_StepBasic_CertificationAssignment(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignCertification_as_StepBasic_CertificationAssignment(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepBasic_CertificationAssignment (mutable)
     pub fn as_step_basic_certification_assignment_mut(
         &mut self,
     ) -> &mut crate::step_basic::CertificationAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignCertification_as_StepBasic_CertificationAssignment_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignCertification_as_StepBasic_CertificationAssignment_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignCertification_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignCertification_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignCertification_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignCertification_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignCertification> {
-        {
-            let __result =
-                unsafe { crate::ffi::StepAP203_CcDesignCertification_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::StepAP203_CcDesignCertification_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `StepBasic_CertificationAssignment.hxx`:41 - `StepBasic_CertificationAssignment::AssignedCertification()`
@@ -911,8 +1062,11 @@ impl CcDesignCertification {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -922,13 +1076,15 @@ impl CcDesignCertification {
         AssignedCertification: &crate::ffi::HandleStepBasicCertification,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignCertification_inherited_SetAssignedCertification(
                     self as *mut Self,
                     AssignedCertification,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -941,8 +1097,11 @@ impl CcDesignCertification {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -955,8 +1114,11 @@ impl CcDesignCertification {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -966,11 +1128,14 @@ impl CcDesignCertification {
             let __result = unsafe {
                 crate::ffi::StepAP203_CcDesignCertification_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -983,20 +1148,25 @@ impl CcDesignCertification {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignCertification_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1008,18 +1178,23 @@ impl CcDesignCertification {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignCertification_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1035,50 +1210,48 @@ unsafe impl crate::CppDeletable for HandleStepAP203CcDesignCertification {
 impl HandleStepAP203CcDesignCertification {
     /// Dereference this Handle to access the underlying StepAP203_CcDesignCertification
     pub fn get(&self) -> &crate::ffi::StepAP203_CcDesignCertification {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignCertification_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleStepAP203CcDesignCertification_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP203_CcDesignCertification
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP203_CcDesignCertification {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignCertification_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleStepAP203CcDesignCertification_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP203_CcDesignCertification> to Handle<StepBasic_CertificationAssignment>
     pub fn to_handle_certification_assignment(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicCertificationAssignment> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignCertification_to_HandleStepBasicCertificationAssignment(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignCertification_to_HandleStepBasicCertificationAssignment(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StepAP203_CcDesignCertification> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignCertification_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignCertification_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1102,8 +1275,10 @@ impl CcDesignContract {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_CcDesignContract_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1115,14 +1290,16 @@ impl CcDesignContract {
         aItems: &crate::ffi::HandleStepAP203HArray1OfContractedItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignContract_init(
                     self as *mut Self,
                     aContractAssignment_AssignedContract,
                     aItems,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1132,8 +1309,11 @@ impl CcDesignContract {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_CcDesignContract_items(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1141,8 +1321,12 @@ impl CcDesignContract {
     /// Set field Items
     pub fn set_items(&mut self, Items: &crate::ffi::HandleStepAP203HArray1OfContractedItem) {
         {
-            unsafe { crate::ffi::StepAP203_CcDesignContract_set_items(self as *mut Self, Items) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StepAP203_CcDesignContract_set_items(self as *mut Self, Items)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1151,8 +1335,11 @@ impl CcDesignContract {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_CcDesignContract_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1160,8 +1347,11 @@ impl CcDesignContract {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StepAP203_CcDesignContract_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1169,71 +1359,73 @@ impl CcDesignContract {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StepAP203_CcDesignContract_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to StepBasic_ContractAssignment
     pub fn as_step_basic_contract_assignment(&self) -> &crate::step_basic::ContractAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignContract_as_StepBasic_ContractAssignment(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignContract_as_StepBasic_ContractAssignment(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepBasic_ContractAssignment (mutable)
     pub fn as_step_basic_contract_assignment_mut(
         &mut self,
     ) -> &mut crate::step_basic::ContractAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignContract_as_StepBasic_ContractAssignment_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignContract_as_StepBasic_ContractAssignment_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignContract_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignContract_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignContract_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignContract_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignContract> {
-        {
-            let __result =
-                unsafe { crate::ffi::StepAP203_CcDesignContract_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StepAP203_CcDesignContract_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `StepBasic_ContractAssignment.hxx`:41 - `StepBasic_ContractAssignment::AssignedContract()`
@@ -1244,8 +1436,11 @@ impl CcDesignContract {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1255,13 +1450,15 @@ impl CcDesignContract {
         AssignedContract: &crate::ffi::HandleStepBasicContract,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignContract_inherited_SetAssignedContract(
                     self as *mut Self,
                     AssignedContract,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1274,8 +1471,11 @@ impl CcDesignContract {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1288,8 +1488,11 @@ impl CcDesignContract {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1299,11 +1502,14 @@ impl CcDesignContract {
             let __result = unsafe {
                 crate::ffi::StepAP203_CcDesignContract_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1314,20 +1520,25 @@ impl CcDesignContract {
             let __result = unsafe {
                 crate::ffi::StepAP203_CcDesignContract_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignContract_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1339,16 +1550,23 @@ impl CcDesignContract {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StepAP203_CcDesignContract_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StepAP203_CcDesignContract_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1364,50 +1582,50 @@ unsafe impl crate::CppDeletable for HandleStepAP203CcDesignContract {
 impl HandleStepAP203CcDesignContract {
     /// Dereference this Handle to access the underlying StepAP203_CcDesignContract
     pub fn get(&self) -> &crate::ffi::StepAP203_CcDesignContract {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStepAP203CcDesignContract_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleStepAP203CcDesignContract_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP203_CcDesignContract
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP203_CcDesignContract {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStepAP203CcDesignContract_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleStepAP203CcDesignContract_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP203_CcDesignContract> to Handle<StepBasic_ContractAssignment>
     pub fn to_handle_contract_assignment(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicContractAssignment> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignContract_to_HandleStepBasicContractAssignment(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignContract_to_HandleStepBasicContractAssignment(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StepAP203_CcDesignContract> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignContract_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignContract_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1431,8 +1649,10 @@ impl CcDesignDateAndTimeAssignment {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_CcDesignDateAndTimeAssignment_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1445,7 +1665,7 @@ impl CcDesignDateAndTimeAssignment {
         aItems: &crate::ffi::HandleStepAP203HArray1OfDateTimeItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignDateAndTimeAssignment_init(
                     self as *mut Self,
                     aDateAndTimeAssignment_AssignedDateAndTime,
@@ -1453,7 +1673,9 @@ impl CcDesignDateAndTimeAssignment {
                     aItems,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1464,8 +1686,11 @@ impl CcDesignDateAndTimeAssignment {
             let __result = unsafe {
                 crate::ffi::StepAP203_CcDesignDateAndTimeAssignment_items(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1473,13 +1698,15 @@ impl CcDesignDateAndTimeAssignment {
     /// Set field Items
     pub fn set_items(&mut self, Items: &crate::ffi::HandleStepAP203HArray1OfDateTimeItem) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignDateAndTimeAssignment_set_items(
                     self as *mut Self,
                     Items,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1491,8 +1718,11 @@ impl CcDesignDateAndTimeAssignment {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1501,8 +1731,11 @@ impl CcDesignDateAndTimeAssignment {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_CcDesignDateAndTimeAssignment_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1512,8 +1745,11 @@ impl CcDesignDateAndTimeAssignment {
             let __result = unsafe {
                 crate::ffi::StepAP203_CcDesignDateAndTimeAssignment_get_type_descriptor()
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1521,65 +1757,67 @@ impl CcDesignDateAndTimeAssignment {
     pub fn as_step_basic_date_and_time_assignment(
         &self,
     ) -> &crate::step_basic::DateAndTimeAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignDateAndTimeAssignment_as_StepBasic_DateAndTimeAssignment(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignDateAndTimeAssignment_as_StepBasic_DateAndTimeAssignment(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepBasic_DateAndTimeAssignment (mutable)
     pub fn as_step_basic_date_and_time_assignment_mut(
         &mut self,
     ) -> &mut crate::step_basic::DateAndTimeAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignDateAndTimeAssignment_as_StepBasic_DateAndTimeAssignment_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignDateAndTimeAssignment_as_StepBasic_DateAndTimeAssignment_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignDateAndTimeAssignment_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignDateAndTimeAssignment_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignDateAndTimeAssignment_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignDateAndTimeAssignment_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignDateAndTimeAssignment> {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignDateAndTimeAssignment_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignDateAndTimeAssignment_to_handle(obj.into_raw())
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `StepBasic_DateAndTimeAssignment.hxx`:37 - `StepBasic_DateAndTimeAssignment::SetAssignedDateAndTime()`
@@ -1588,13 +1826,15 @@ impl CcDesignDateAndTimeAssignment {
         aAssignedDateAndTime: &crate::ffi::HandleStepBasicDateAndTime,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignDateAndTimeAssignment_inherited_SetAssignedDateAndTime(
                     self as *mut Self,
                     aAssignedDateAndTime,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1608,21 +1848,26 @@ impl CcDesignDateAndTimeAssignment {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `StepBasic_DateAndTimeAssignment.hxx`:42 - `StepBasic_DateAndTimeAssignment::SetRole()`
     pub fn set_role(&mut self, aRole: &crate::ffi::HandleStepBasicDateTimeRole) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignDateAndTimeAssignment_inherited_SetRole(
                     self as *mut Self,
                     aRole,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1634,8 +1879,11 @@ impl CcDesignDateAndTimeAssignment {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1648,8 +1896,11 @@ impl CcDesignDateAndTimeAssignment {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1662,8 +1913,11 @@ impl CcDesignDateAndTimeAssignment {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1675,11 +1929,14 @@ impl CcDesignDateAndTimeAssignment {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1692,20 +1949,25 @@ impl CcDesignDateAndTimeAssignment {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignDateAndTimeAssignment_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1717,20 +1979,25 @@ impl CcDesignDateAndTimeAssignment {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignDateAndTimeAssignment_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1746,50 +2013,50 @@ unsafe impl crate::CppDeletable for HandleStepAP203CcDesignDateAndTimeAssignment
 impl HandleStepAP203CcDesignDateAndTimeAssignment {
     /// Dereference this Handle to access the underlying StepAP203_CcDesignDateAndTimeAssignment
     pub fn get(&self) -> &crate::ffi::StepAP203_CcDesignDateAndTimeAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignDateAndTimeAssignment_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignDateAndTimeAssignment_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP203_CcDesignDateAndTimeAssignment
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP203_CcDesignDateAndTimeAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignDateAndTimeAssignment_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignDateAndTimeAssignment_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP203_CcDesignDateAndTimeAssignment> to Handle<StepBasic_DateAndTimeAssignment>
     pub fn to_handle_date_and_time_assignment(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicDateAndTimeAssignment> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignDateAndTimeAssignment_to_HandleStepBasicDateAndTimeAssignment(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignDateAndTimeAssignment_to_HandleStepBasicDateAndTimeAssignment(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StepAP203_CcDesignDateAndTimeAssignment> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignDateAndTimeAssignment_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignDateAndTimeAssignment_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1814,8 +2081,10 @@ impl CcDesignPersonAndOrganizationAssignment {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1828,7 +2097,7 @@ impl CcDesignPersonAndOrganizationAssignment {
         aItems: &crate::ffi::HandleStepAP203HArray1OfPersonOrganizationItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_init(
                     self as *mut Self,
                     aPersonAndOrganizationAssignment_AssignedPersonAndOrganization,
@@ -1836,7 +2105,9 @@ impl CcDesignPersonAndOrganizationAssignment {
                     aItems,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1851,8 +2122,11 @@ impl CcDesignPersonAndOrganizationAssignment {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1863,13 +2137,15 @@ impl CcDesignPersonAndOrganizationAssignment {
         Items: &crate::ffi::HandleStepAP203HArray1OfPersonOrganizationItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_set_items(
                     self as *mut Self,
                     Items,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1881,8 +2157,11 @@ impl CcDesignPersonAndOrganizationAssignment {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1892,8 +2171,11 @@ impl CcDesignPersonAndOrganizationAssignment {
             let __result = unsafe {
                 crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_get_type_name()
             };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1903,8 +2185,11 @@ impl CcDesignPersonAndOrganizationAssignment {
             let __result = unsafe {
                 crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_get_type_descriptor()
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1912,65 +2197,65 @@ impl CcDesignPersonAndOrganizationAssignment {
     pub fn as_step_basic_person_and_organization_assignment(
         &self,
     ) -> &crate::step_basic::PersonAndOrganizationAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_as_StepBasic_PersonAndOrganizationAssignment(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_as_StepBasic_PersonAndOrganizationAssignment(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepBasic_PersonAndOrganizationAssignment (mutable)
     pub fn as_step_basic_person_and_organization_assignment_mut(
         &mut self,
     ) -> &mut crate::step_basic::PersonAndOrganizationAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_as_StepBasic_PersonAndOrganizationAssignment_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_as_StepBasic_PersonAndOrganizationAssignment_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignPersonAndOrganizationAssignment> {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_to_handle(
-                    obj.into_raw(),
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_to_handle(obj.into_raw())
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `StepBasic_PersonAndOrganizationAssignment.hxx`:38 - `StepBasic_PersonAndOrganizationAssignment::SetAssignedPersonAndOrganization()`
@@ -1979,10 +2264,12 @@ impl CcDesignPersonAndOrganizationAssignment {
         aAssignedPersonAndOrganization: &crate::ffi::HandleStepBasicPersonAndOrganization,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_inherited_SetAssignedPersonAndOrganization(self as *mut Self, aAssignedPersonAndOrganization)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1994,21 +2281,26 @@ impl CcDesignPersonAndOrganizationAssignment {
             let __result = unsafe {
                 crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_inherited_AssignedPersonAndOrganization(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `StepBasic_PersonAndOrganizationAssignment.hxx`:43 - `StepBasic_PersonAndOrganizationAssignment::SetRole()`
     pub fn set_role(&mut self, aRole: &crate::ffi::HandleStepBasicPersonAndOrganizationRole) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_inherited_SetRole(
                     self as *mut Self,
                     aRole,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2020,8 +2312,11 @@ impl CcDesignPersonAndOrganizationAssignment {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2034,8 +2329,11 @@ impl CcDesignPersonAndOrganizationAssignment {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2048,8 +2346,11 @@ impl CcDesignPersonAndOrganizationAssignment {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2061,11 +2362,14 @@ impl CcDesignPersonAndOrganizationAssignment {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2078,18 +2382,23 @@ impl CcDesignPersonAndOrganizationAssignment {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2099,20 +2408,25 @@ impl CcDesignPersonAndOrganizationAssignment {
             let __result = unsafe {
                 crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2128,54 +2442,54 @@ unsafe impl crate::CppDeletable for HandleStepAP203CcDesignPersonAndOrganization
 impl HandleStepAP203CcDesignPersonAndOrganizationAssignment {
     /// Dereference this Handle to access the underlying StepAP203_CcDesignPersonAndOrganizationAssignment
     pub fn get(&self) -> &crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignPersonAndOrganizationAssignment_get(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignPersonAndOrganizationAssignment_get(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP203_CcDesignPersonAndOrganizationAssignment
     pub fn get_mut(
         &mut self,
     ) -> &mut crate::ffi::StepAP203_CcDesignPersonAndOrganizationAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignPersonAndOrganizationAssignment_get_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignPersonAndOrganizationAssignment_get_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP203_CcDesignPersonAndOrganizationAssignment> to Handle<StepBasic_PersonAndOrganizationAssignment>
     pub fn to_handle_person_and_organization_assignment(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicPersonAndOrganizationAssignment> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignPersonAndOrganizationAssignment_to_HandleStepBasicPersonAndOrganizationAssignment(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignPersonAndOrganizationAssignment_to_HandleStepBasicPersonAndOrganizationAssignment(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StepAP203_CcDesignPersonAndOrganizationAssignment> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignPersonAndOrganizationAssignment_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignPersonAndOrganizationAssignment_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2199,8 +2513,10 @@ impl CcDesignSecurityClassification {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_CcDesignSecurityClassification_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2212,14 +2528,16 @@ impl CcDesignSecurityClassification {
         aItems: &crate::ffi::HandleStepAP203HArray1OfClassifiedItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignSecurityClassification_init(
                     self as *mut Self,
                     aSecurityClassificationAssignment_AssignedSecurityClassification,
                     aItems,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2230,8 +2548,11 @@ impl CcDesignSecurityClassification {
             let __result = unsafe {
                 crate::ffi::StepAP203_CcDesignSecurityClassification_items(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2239,13 +2560,15 @@ impl CcDesignSecurityClassification {
     /// Set field Items
     pub fn set_items(&mut self, Items: &crate::ffi::HandleStepAP203HArray1OfClassifiedItem) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignSecurityClassification_set_items(
                     self as *mut Self,
                     Items,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2257,8 +2580,11 @@ impl CcDesignSecurityClassification {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2267,8 +2593,11 @@ impl CcDesignSecurityClassification {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_CcDesignSecurityClassification_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2278,8 +2607,11 @@ impl CcDesignSecurityClassification {
             let __result = unsafe {
                 crate::ffi::StepAP203_CcDesignSecurityClassification_get_type_descriptor()
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2287,65 +2619,65 @@ impl CcDesignSecurityClassification {
     pub fn as_step_basic_security_classification_assignment(
         &self,
     ) -> &crate::step_basic::SecurityClassificationAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignSecurityClassification_as_StepBasic_SecurityClassificationAssignment(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignSecurityClassification_as_StepBasic_SecurityClassificationAssignment(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepBasic_SecurityClassificationAssignment (mutable)
     pub fn as_step_basic_security_classification_assignment_mut(
         &mut self,
     ) -> &mut crate::step_basic::SecurityClassificationAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignSecurityClassification_as_StepBasic_SecurityClassificationAssignment_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignSecurityClassification_as_StepBasic_SecurityClassificationAssignment_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignSecurityClassification_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignSecurityClassification_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignSecurityClassification_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignSecurityClassification_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignSecurityClassification> {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignSecurityClassification_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignSecurityClassification_to_handle(obj.into_raw())
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `StepBasic_SecurityClassificationAssignment.hxx`:36 - `StepBasic_SecurityClassificationAssignment::SetAssignedSecurityClassification()`
@@ -2354,10 +2686,12 @@ impl CcDesignSecurityClassification {
         aAssignedSecurityClassification: &crate::ffi::HandleStepBasicSecurityClassification,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignSecurityClassification_inherited_SetAssignedSecurityClassification(self as *mut Self, aAssignedSecurityClassification)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2369,8 +2703,11 @@ impl CcDesignSecurityClassification {
             let __result = unsafe {
                 crate::ffi::StepAP203_CcDesignSecurityClassification_inherited_AssignedSecurityClassification(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2383,8 +2720,11 @@ impl CcDesignSecurityClassification {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2397,8 +2737,11 @@ impl CcDesignSecurityClassification {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2410,11 +2753,14 @@ impl CcDesignSecurityClassification {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2427,20 +2773,25 @@ impl CcDesignSecurityClassification {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignSecurityClassification_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2452,20 +2803,25 @@ impl CcDesignSecurityClassification {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignSecurityClassification_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2481,50 +2837,50 @@ unsafe impl crate::CppDeletable for HandleStepAP203CcDesignSecurityClassificatio
 impl HandleStepAP203CcDesignSecurityClassification {
     /// Dereference this Handle to access the underlying StepAP203_CcDesignSecurityClassification
     pub fn get(&self) -> &crate::ffi::StepAP203_CcDesignSecurityClassification {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignSecurityClassification_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignSecurityClassification_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP203_CcDesignSecurityClassification
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP203_CcDesignSecurityClassification {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignSecurityClassification_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignSecurityClassification_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP203_CcDesignSecurityClassification> to Handle<StepBasic_SecurityClassificationAssignment>
     pub fn to_handle_security_classification_assignment(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicSecurityClassificationAssignment> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignSecurityClassification_to_HandleStepBasicSecurityClassificationAssignment(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignSecurityClassification_to_HandleStepBasicSecurityClassificationAssignment(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StepAP203_CcDesignSecurityClassification> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignSecurityClassification_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignSecurityClassification_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2548,8 +2904,10 @@ impl CcDesignSpecificationReference {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_CcDesignSpecificationReference_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2562,7 +2920,7 @@ impl CcDesignSpecificationReference {
         aItems: &crate::ffi::HandleStepAP203HArray1OfSpecifiedItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignSpecificationReference_init(
                     self as *mut Self,
                     aDocumentReference_AssignedDocument,
@@ -2570,7 +2928,9 @@ impl CcDesignSpecificationReference {
                     aItems,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2581,8 +2941,11 @@ impl CcDesignSpecificationReference {
             let __result = unsafe {
                 crate::ffi::StepAP203_CcDesignSpecificationReference_items(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2590,13 +2953,15 @@ impl CcDesignSpecificationReference {
     /// Set field Items
     pub fn set_items(&mut self, Items: &crate::ffi::HandleStepAP203HArray1OfSpecifiedItem) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignSpecificationReference_set_items(
                     self as *mut Self,
                     Items,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2608,8 +2973,11 @@ impl CcDesignSpecificationReference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2618,8 +2986,11 @@ impl CcDesignSpecificationReference {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_CcDesignSpecificationReference_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2629,74 +3000,79 @@ impl CcDesignSpecificationReference {
             let __result = unsafe {
                 crate::ffi::StepAP203_CcDesignSpecificationReference_get_type_descriptor()
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to StepBasic_DocumentReference
     pub fn as_step_basic_document_reference(&self) -> &crate::step_basic::DocumentReference {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignSpecificationReference_as_StepBasic_DocumentReference(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignSpecificationReference_as_StepBasic_DocumentReference(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepBasic_DocumentReference (mutable)
     pub fn as_step_basic_document_reference_mut(
         &mut self,
     ) -> &mut crate::step_basic::DocumentReference {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignSpecificationReference_as_StepBasic_DocumentReference_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignSpecificationReference_as_StepBasic_DocumentReference_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignSpecificationReference_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignSpecificationReference_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignSpecificationReference_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignSpecificationReference_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203CcDesignSpecificationReference> {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CcDesignSpecificationReference_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CcDesignSpecificationReference_to_handle(obj.into_raw())
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `StepBasic_DocumentReference.hxx`:34 - `StepBasic_DocumentReference::Init0()`
@@ -2706,14 +3082,16 @@ impl CcDesignSpecificationReference {
         aSource: &crate::ffi::HandleTCollectionHAsciiString,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignSpecificationReference_inherited_Init0(
                     self as *mut Self,
                     aAssignedDocument,
                     aSource,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2725,8 +3103,11 @@ impl CcDesignSpecificationReference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2736,13 +3117,15 @@ impl CcDesignSpecificationReference {
         aAssignedDocument: &crate::ffi::HandleStepBasicDocument,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignSpecificationReference_inherited_SetAssignedDocument(
                     self as *mut Self,
                     aAssignedDocument,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2754,21 +3137,26 @@ impl CcDesignSpecificationReference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `StepBasic_DocumentReference.hxx`:43 - `StepBasic_DocumentReference::SetSource()`
     pub fn set_source(&mut self, aSource: &crate::ffi::HandleTCollectionHAsciiString) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignSpecificationReference_inherited_SetSource(
                     self as *mut Self,
                     aSource,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2781,8 +3169,11 @@ impl CcDesignSpecificationReference {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2795,8 +3186,11 @@ impl CcDesignSpecificationReference {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2808,11 +3202,14 @@ impl CcDesignSpecificationReference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2825,20 +3222,25 @@ impl CcDesignSpecificationReference {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignSpecificationReference_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2850,20 +3252,25 @@ impl CcDesignSpecificationReference {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CcDesignSpecificationReference_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2879,50 +3286,50 @@ unsafe impl crate::CppDeletable for HandleStepAP203CcDesignSpecificationReferenc
 impl HandleStepAP203CcDesignSpecificationReference {
     /// Dereference this Handle to access the underlying StepAP203_CcDesignSpecificationReference
     pub fn get(&self) -> &crate::ffi::StepAP203_CcDesignSpecificationReference {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignSpecificationReference_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignSpecificationReference_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP203_CcDesignSpecificationReference
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP203_CcDesignSpecificationReference {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignSpecificationReference_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignSpecificationReference_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP203_CcDesignSpecificationReference> to Handle<StepBasic_DocumentReference>
     pub fn to_handle_document_reference(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicDocumentReference> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignSpecificationReference_to_HandleStepBasicDocumentReference(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignSpecificationReference_to_HandleStepBasicDocumentReference(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StepAP203_CcDesignSpecificationReference> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203CcDesignSpecificationReference_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203CcDesignSpecificationReference_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2946,8 +3353,10 @@ impl CertifiedItem {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_CertifiedItem_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2959,8 +3368,11 @@ impl CertifiedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_CertifiedItem_case_num(self as *const Self, ent) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2973,31 +3385,34 @@ impl CertifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_CertifiedItem_supplied_part_relationship(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to StepData_SelectType
     pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CertifiedItem_as_StepData_SelectType(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CertifiedItem_as_StepData_SelectType(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepData_SelectType (mutable)
     pub fn as_step_data_select_type_mut(&mut self) -> &mut crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_CertifiedItem_as_StepData_SelectType_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_CertifiedItem_as_StepData_SelectType_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
@@ -3006,26 +3421,34 @@ impl CertifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_CertifiedItem_inherited_Matches(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
     pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_CertifiedItem_inherited_SetValue(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
     pub fn nullify(&mut self) {
         {
-            unsafe { crate::ffi::StepAP203_CertifiedItem_inherited_Nullify(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StepAP203_CertifiedItem_inherited_Nullify(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3034,8 +3457,11 @@ impl CertifiedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_CertifiedItem_inherited_Value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3045,8 +3471,11 @@ impl CertifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_CertifiedItem_inherited_IsNull(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3055,8 +3484,11 @@ impl CertifiedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_CertifiedItem_inherited_Type(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3066,8 +3498,11 @@ impl CertifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_CertifiedItem_inherited_CaseNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3077,8 +3512,11 @@ impl CertifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_CertifiedItem_inherited_Description(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3088,8 +3526,11 @@ impl CertifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_CertifiedItem_inherited_NewMember(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3099,8 +3540,11 @@ impl CertifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_CertifiedItem_inherited_CaseMem(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3110,8 +3554,11 @@ impl CertifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_CertifiedItem_inherited_CaseMember(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3121,8 +3568,11 @@ impl CertifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_CertifiedItem_inherited_Member(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3131,16 +3581,23 @@ impl CertifiedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_CertifiedItem_inherited_Int(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:131 - `StepData_SelectType::SetInt()`
     pub fn set_int(&mut self, val: i32) {
         {
-            unsafe { crate::ffi::StepAP203_CertifiedItem_inherited_SetInt(self as *mut Self, val) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StepAP203_CertifiedItem_inherited_SetInt(self as *mut Self, val)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3150,8 +3607,11 @@ impl CertifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_CertifiedItem_inherited_Integer(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3161,8 +3621,11 @@ impl CertifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_CertifiedItem_inherited_Boolean(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3172,8 +3635,11 @@ impl CertifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_CertifiedItem_inherited_Logical(self as *const Self)
             };
-            crate::check_exception();
-            crate::step_data::Logical::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::step_data::Logical::try_from(__val).unwrap()
         }
     }
 
@@ -3182,8 +3648,11 @@ impl CertifiedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_CertifiedItem_inherited_Real(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -3208,8 +3677,10 @@ impl Change {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_Change_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3221,14 +3692,16 @@ impl Change {
         aItems: &crate::ffi::HandleStepAP203HArray1OfWorkItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_Change_init(
                     self as *mut Self,
                     aActionAssignment_AssignedAction,
                     aItems,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3237,8 +3710,11 @@ impl Change {
     pub fn items(&self) -> crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfWorkItem> {
         {
             let __result = unsafe { crate::ffi::StepAP203_Change_items(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3246,8 +3722,10 @@ impl Change {
     /// Set field Items
     pub fn set_items(&mut self, Items: &crate::ffi::HandleStepAP203HArray1OfWorkItem) {
         {
-            unsafe { crate::ffi::StepAP203_Change_set_items(self as *mut Self, Items) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::StepAP203_Change_set_items(self as *mut Self, Items) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3256,8 +3734,11 @@ impl Change {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_Change_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3265,8 +3746,11 @@ impl Change {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StepAP203_Change_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3274,65 +3758,67 @@ impl Change {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StepAP203_Change_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to StepBasic_ActionAssignment
     pub fn as_step_basic_action_assignment(&self) -> &crate::step_basic::ActionAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_Change_as_StepBasic_ActionAssignment(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_Change_as_StepBasic_ActionAssignment(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepBasic_ActionAssignment (mutable)
     pub fn as_step_basic_action_assignment_mut(
         &mut self,
     ) -> &mut crate::step_basic::ActionAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_Change_as_StepBasic_ActionAssignment_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_Change_as_StepBasic_ActionAssignment_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::StepAP203_Change_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StepAP203_Change_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_Change_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::StepAP203_Change_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203Change> {
-        {
-            let __result = unsafe { crate::ffi::StepAP203_Change_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StepAP203_Change_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `StepBasic_ActionAssignment.hxx`:41 - `StepBasic_ActionAssignment::AssignedAction()`
@@ -3341,21 +3827,26 @@ impl Change {
             let __result = unsafe {
                 crate::ffi::StepAP203_Change_inherited_AssignedAction(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `StepBasic_ActionAssignment.hxx`:44 - `StepBasic_ActionAssignment::SetAssignedAction()`
     pub fn set_assigned_action(&mut self, AssignedAction: &crate::ffi::HandleStepBasicAction) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_Change_inherited_SetAssignedAction(
                     self as *mut Self,
                     AssignedAction,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3365,8 +3856,11 @@ impl Change {
             let __result = unsafe {
                 crate::ffi::StepAP203_Change_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3376,8 +3870,11 @@ impl Change {
             let __result = unsafe {
                 crate::ffi::StepAP203_Change_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3386,11 +3883,14 @@ impl Change {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_Change_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3400,18 +3900,23 @@ impl Change {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_Change_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_Change_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3421,16 +3926,22 @@ impl Change {
             let __result = unsafe {
                 crate::ffi::StepAP203_Change_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StepAP203_Change_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StepAP203_Change_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3446,46 +3957,46 @@ unsafe impl crate::CppDeletable for HandleStepAP203Change {
 impl HandleStepAP203Change {
     /// Dereference this Handle to access the underlying StepAP203_Change
     pub fn get(&self) -> &crate::ffi::StepAP203_Change {
-        {
-            let __result = unsafe { crate::ffi::HandleStepAP203Change_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleStepAP203Change_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP203_Change
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP203_Change {
-        {
-            let __result = unsafe { crate::ffi::HandleStepAP203Change_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleStepAP203Change_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP203_Change> to Handle<StepBasic_ActionAssignment>
     pub fn to_handle_action_assignment(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicActionAssignment> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203Change_to_HandleStepBasicActionAssignment(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203Change_to_HandleStepBasicActionAssignment(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StepAP203_Change> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203Change_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203Change_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3509,8 +4020,10 @@ impl ChangeRequest {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_ChangeRequest_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3522,14 +4035,16 @@ impl ChangeRequest {
         aItems: &crate::ffi::HandleStepAP203HArray1OfChangeRequestItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_ChangeRequest_init(
                     self as *mut Self,
                     aActionRequestAssignment_AssignedActionRequest,
                     aItems,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3539,8 +4054,11 @@ impl ChangeRequest {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ChangeRequest_items(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3548,8 +4066,11 @@ impl ChangeRequest {
     /// Set field Items
     pub fn set_items(&mut self, Items: &crate::ffi::HandleStepAP203HArray1OfChangeRequestItem) {
         {
-            unsafe { crate::ffi::StepAP203_ChangeRequest_set_items(self as *mut Self, Items) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StepAP203_ChangeRequest_set_items(self as *mut Self, Items) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3558,8 +4079,11 @@ impl ChangeRequest {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ChangeRequest_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3567,8 +4091,11 @@ impl ChangeRequest {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StepAP203_ChangeRequest_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3576,8 +4103,11 @@ impl ChangeRequest {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StepAP203_ChangeRequest_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3585,63 +4115,63 @@ impl ChangeRequest {
     pub fn as_step_basic_action_request_assignment(
         &self,
     ) -> &crate::step_basic::ActionRequestAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_ChangeRequest_as_StepBasic_ActionRequestAssignment(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_ChangeRequest_as_StepBasic_ActionRequestAssignment(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepBasic_ActionRequestAssignment (mutable)
     pub fn as_step_basic_action_request_assignment_mut(
         &mut self,
     ) -> &mut crate::step_basic::ActionRequestAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_ChangeRequest_as_StepBasic_ActionRequestAssignment_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_ChangeRequest_as_StepBasic_ActionRequestAssignment_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_ChangeRequest_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_ChangeRequest_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_ChangeRequest_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_ChangeRequest_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203ChangeRequest> {
-        {
-            let __result = unsafe { crate::ffi::StepAP203_ChangeRequest_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StepAP203_ChangeRequest_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `StepBasic_ActionRequestAssignment.hxx`:41 - `StepBasic_ActionRequestAssignment::AssignedActionRequest()`
@@ -3654,8 +4184,11 @@ impl ChangeRequest {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3665,13 +4198,15 @@ impl ChangeRequest {
         AssignedActionRequest: &crate::ffi::HandleStepBasicVersionedActionRequest,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_ChangeRequest_inherited_SetAssignedActionRequest(
                     self as *mut Self,
                     AssignedActionRequest,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3684,8 +4219,11 @@ impl ChangeRequest {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3695,8 +4233,11 @@ impl ChangeRequest {
             let __result = unsafe {
                 crate::ffi::StepAP203_ChangeRequest_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3705,11 +4246,14 @@ impl ChangeRequest {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ChangeRequest_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3720,18 +4264,23 @@ impl ChangeRequest {
             let __result = unsafe {
                 crate::ffi::StepAP203_ChangeRequest_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_ChangeRequest_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3741,16 +4290,23 @@ impl ChangeRequest {
             let __result = unsafe {
                 crate::ffi::StepAP203_ChangeRequest_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StepAP203_ChangeRequest_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StepAP203_ChangeRequest_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3766,50 +4322,47 @@ unsafe impl crate::CppDeletable for HandleStepAP203ChangeRequest {
 impl HandleStepAP203ChangeRequest {
     /// Dereference this Handle to access the underlying StepAP203_ChangeRequest
     pub fn get(&self) -> &crate::ffi::StepAP203_ChangeRequest {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStepAP203ChangeRequest_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleStepAP203ChangeRequest_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP203_ChangeRequest
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP203_ChangeRequest {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStepAP203ChangeRequest_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleStepAP203ChangeRequest_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP203_ChangeRequest> to Handle<StepBasic_ActionRequestAssignment>
     pub fn to_handle_action_request_assignment(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicActionRequestAssignment> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203ChangeRequest_to_HandleStepBasicActionRequestAssignment(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203ChangeRequest_to_HandleStepBasicActionRequestAssignment(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StepAP203_ChangeRequest> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203ChangeRequest_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203ChangeRequest_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3833,8 +4386,10 @@ impl ChangeRequestItem {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_ChangeRequestItem_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3847,8 +4402,11 @@ impl ChangeRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ChangeRequestItem_case_num(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3863,33 +4421,34 @@ impl ChangeRequestItem {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to StepData_SelectType
     pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_ChangeRequestItem_as_StepData_SelectType(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_ChangeRequestItem_as_StepData_SelectType(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepData_SelectType (mutable)
     pub fn as_step_data_select_type_mut(&mut self) -> &mut crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_ChangeRequestItem_as_StepData_SelectType_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_ChangeRequestItem_as_StepData_SelectType_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
@@ -3898,26 +4457,35 @@ impl ChangeRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ChangeRequestItem_inherited_Matches(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
     pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_ChangeRequestItem_inherited_SetValue(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
     pub fn nullify(&mut self) {
         {
-            unsafe { crate::ffi::StepAP203_ChangeRequestItem_inherited_Nullify(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StepAP203_ChangeRequestItem_inherited_Nullify(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3927,8 +4495,11 @@ impl ChangeRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ChangeRequestItem_inherited_Value(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3938,8 +4509,11 @@ impl ChangeRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ChangeRequestItem_inherited_IsNull(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3949,8 +4523,11 @@ impl ChangeRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ChangeRequestItem_inherited_Type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3960,8 +4537,11 @@ impl ChangeRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ChangeRequestItem_inherited_CaseNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3971,8 +4551,11 @@ impl ChangeRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ChangeRequestItem_inherited_Description(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3982,8 +4565,11 @@ impl ChangeRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ChangeRequestItem_inherited_NewMember(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3993,8 +4579,11 @@ impl ChangeRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ChangeRequestItem_inherited_CaseMem(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4004,8 +4593,11 @@ impl ChangeRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ChangeRequestItem_inherited_CaseMember(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4015,8 +4607,11 @@ impl ChangeRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ChangeRequestItem_inherited_Member(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4026,18 +4621,23 @@ impl ChangeRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ChangeRequestItem_inherited_Int(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:131 - `StepData_SelectType::SetInt()`
     pub fn set_int(&mut self, val: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_ChangeRequestItem_inherited_SetInt(self as *mut Self, val)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4047,8 +4647,11 @@ impl ChangeRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ChangeRequestItem_inherited_Integer(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4058,8 +4661,11 @@ impl ChangeRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ChangeRequestItem_inherited_Boolean(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4069,8 +4675,11 @@ impl ChangeRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ChangeRequestItem_inherited_Logical(self as *const Self)
             };
-            crate::check_exception();
-            crate::step_data::Logical::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::step_data::Logical::try_from(__val).unwrap()
         }
     }
 
@@ -4080,8 +4689,11 @@ impl ChangeRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ChangeRequestItem_inherited_Real(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -4106,8 +4718,10 @@ impl ClassifiedItem {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_ClassifiedItem_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4120,8 +4734,11 @@ impl ClassifiedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ClassifiedItem_case_num(self as *const Self, ent) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4136,8 +4753,11 @@ impl ClassifiedItem {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4150,31 +4770,34 @@ impl ClassifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ClassifiedItem_assembly_component_usage(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to StepData_SelectType
     pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_ClassifiedItem_as_StepData_SelectType(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_ClassifiedItem_as_StepData_SelectType(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepData_SelectType (mutable)
     pub fn as_step_data_select_type_mut(&mut self) -> &mut crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_ClassifiedItem_as_StepData_SelectType_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_ClassifiedItem_as_StepData_SelectType_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
@@ -4183,26 +4806,35 @@ impl ClassifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ClassifiedItem_inherited_Matches(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
     pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_ClassifiedItem_inherited_SetValue(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
     pub fn nullify(&mut self) {
         {
-            unsafe { crate::ffi::StepAP203_ClassifiedItem_inherited_Nullify(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StepAP203_ClassifiedItem_inherited_Nullify(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4212,8 +4844,11 @@ impl ClassifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ClassifiedItem_inherited_Value(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4223,8 +4858,11 @@ impl ClassifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ClassifiedItem_inherited_IsNull(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4233,8 +4871,11 @@ impl ClassifiedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ClassifiedItem_inherited_Type(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4244,8 +4885,11 @@ impl ClassifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ClassifiedItem_inherited_CaseNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4255,8 +4899,11 @@ impl ClassifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ClassifiedItem_inherited_Description(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4266,8 +4913,11 @@ impl ClassifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ClassifiedItem_inherited_NewMember(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4277,8 +4927,11 @@ impl ClassifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ClassifiedItem_inherited_CaseMem(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4288,8 +4941,11 @@ impl ClassifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ClassifiedItem_inherited_CaseMember(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4299,8 +4955,11 @@ impl ClassifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ClassifiedItem_inherited_Member(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4309,18 +4968,23 @@ impl ClassifiedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ClassifiedItem_inherited_Int(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:131 - `StepData_SelectType::SetInt()`
     pub fn set_int(&mut self, val: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_ClassifiedItem_inherited_SetInt(self as *mut Self, val)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4330,8 +4994,11 @@ impl ClassifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ClassifiedItem_inherited_Integer(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4341,8 +5008,11 @@ impl ClassifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ClassifiedItem_inherited_Boolean(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4352,8 +5022,11 @@ impl ClassifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ClassifiedItem_inherited_Logical(self as *const Self)
             };
-            crate::check_exception();
-            crate::step_data::Logical::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::step_data::Logical::try_from(__val).unwrap()
         }
     }
 
@@ -4362,8 +5035,11 @@ impl ClassifiedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ClassifiedItem_inherited_Real(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -4388,8 +5064,10 @@ impl ContractedItem {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_ContractedItem_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4401,8 +5079,11 @@ impl ContractedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ContractedItem_case_num(self as *const Self, ent) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4417,31 +5098,34 @@ impl ContractedItem {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to StepData_SelectType
     pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_ContractedItem_as_StepData_SelectType(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_ContractedItem_as_StepData_SelectType(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepData_SelectType (mutable)
     pub fn as_step_data_select_type_mut(&mut self) -> &mut crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_ContractedItem_as_StepData_SelectType_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_ContractedItem_as_StepData_SelectType_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
@@ -4450,26 +5134,35 @@ impl ContractedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ContractedItem_inherited_Matches(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
     pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_ContractedItem_inherited_SetValue(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
     pub fn nullify(&mut self) {
         {
-            unsafe { crate::ffi::StepAP203_ContractedItem_inherited_Nullify(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StepAP203_ContractedItem_inherited_Nullify(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4479,8 +5172,11 @@ impl ContractedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ContractedItem_inherited_Value(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4490,8 +5186,11 @@ impl ContractedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ContractedItem_inherited_IsNull(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4500,8 +5199,11 @@ impl ContractedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ContractedItem_inherited_Type(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4511,8 +5213,11 @@ impl ContractedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ContractedItem_inherited_CaseNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4522,8 +5227,11 @@ impl ContractedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ContractedItem_inherited_Description(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4533,8 +5241,11 @@ impl ContractedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ContractedItem_inherited_NewMember(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4544,8 +5255,11 @@ impl ContractedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ContractedItem_inherited_CaseMem(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4555,8 +5269,11 @@ impl ContractedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ContractedItem_inherited_CaseMember(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4566,8 +5283,11 @@ impl ContractedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ContractedItem_inherited_Member(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4576,18 +5296,23 @@ impl ContractedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ContractedItem_inherited_Int(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:131 - `StepData_SelectType::SetInt()`
     pub fn set_int(&mut self, val: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_ContractedItem_inherited_SetInt(self as *mut Self, val)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4597,8 +5322,11 @@ impl ContractedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ContractedItem_inherited_Integer(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4608,8 +5336,11 @@ impl ContractedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ContractedItem_inherited_Boolean(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4619,8 +5350,11 @@ impl ContractedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_ContractedItem_inherited_Logical(self as *const Self)
             };
-            crate::check_exception();
-            crate::step_data::Logical::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::step_data::Logical::try_from(__val).unwrap()
         }
     }
 
@@ -4629,8 +5363,11 @@ impl ContractedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_ContractedItem_inherited_Real(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -4655,8 +5392,10 @@ impl DateTimeItem {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_DateTimeItem_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4676,8 +5415,11 @@ impl DateTimeItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_DateTimeItem_case_num(self as *const Self, ent) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4690,8 +5432,11 @@ impl DateTimeItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_DateTimeItem_product_definition(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4701,8 +5446,11 @@ impl DateTimeItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_DateTimeItem_change_request(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4712,8 +5460,11 @@ impl DateTimeItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_DateTimeItem_start_request(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4723,8 +5474,11 @@ impl DateTimeItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_DateTimeItem_change(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4734,8 +5488,11 @@ impl DateTimeItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_DateTimeItem_start_work(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4748,8 +5505,11 @@ impl DateTimeItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_DateTimeItem_approval_person_organization(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4759,8 +5519,11 @@ impl DateTimeItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_DateTimeItem_contract(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4773,8 +5536,11 @@ impl DateTimeItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_DateTimeItem_security_classification(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4784,31 +5550,34 @@ impl DateTimeItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_DateTimeItem_certification(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to StepData_SelectType
     pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_DateTimeItem_as_StepData_SelectType(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_DateTimeItem_as_StepData_SelectType(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepData_SelectType (mutable)
     pub fn as_step_data_select_type_mut(&mut self) -> &mut crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_DateTimeItem_as_StepData_SelectType_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_DateTimeItem_as_StepData_SelectType_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
@@ -4817,26 +5586,34 @@ impl DateTimeItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_DateTimeItem_inherited_Matches(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
     pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_DateTimeItem_inherited_SetValue(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
     pub fn nullify(&mut self) {
         {
-            unsafe { crate::ffi::StepAP203_DateTimeItem_inherited_Nullify(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StepAP203_DateTimeItem_inherited_Nullify(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4845,8 +5622,11 @@ impl DateTimeItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_DateTimeItem_inherited_Value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4855,8 +5635,11 @@ impl DateTimeItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_DateTimeItem_inherited_IsNull(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4865,8 +5648,11 @@ impl DateTimeItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_DateTimeItem_inherited_Type(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4876,8 +5662,11 @@ impl DateTimeItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_DateTimeItem_inherited_CaseNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4887,8 +5676,11 @@ impl DateTimeItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_DateTimeItem_inherited_Description(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4898,8 +5690,11 @@ impl DateTimeItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_DateTimeItem_inherited_NewMember(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4909,8 +5704,11 @@ impl DateTimeItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_DateTimeItem_inherited_CaseMem(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4920,8 +5718,11 @@ impl DateTimeItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_DateTimeItem_inherited_CaseMember(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4930,8 +5731,11 @@ impl DateTimeItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_DateTimeItem_inherited_Member(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4940,16 +5744,23 @@ impl DateTimeItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_DateTimeItem_inherited_Int(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:131 - `StepData_SelectType::SetInt()`
     pub fn set_int(&mut self, val: i32) {
         {
-            unsafe { crate::ffi::StepAP203_DateTimeItem_inherited_SetInt(self as *mut Self, val) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StepAP203_DateTimeItem_inherited_SetInt(self as *mut Self, val)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4959,8 +5770,11 @@ impl DateTimeItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_DateTimeItem_inherited_Integer(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4970,8 +5784,11 @@ impl DateTimeItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_DateTimeItem_inherited_Boolean(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4981,8 +5798,11 @@ impl DateTimeItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_DateTimeItem_inherited_Logical(self as *const Self)
             };
-            crate::check_exception();
-            crate::step_data::Logical::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::step_data::Logical::try_from(__val).unwrap()
         }
     }
 
@@ -4991,8 +5811,11 @@ impl DateTimeItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_DateTimeItem_inherited_Real(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -5015,8 +5838,10 @@ impl HArray1OfApprovedItem {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_HArray1OfApprovedItem_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5026,8 +5851,10 @@ impl HArray1OfApprovedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfApprovedItem_ctor_int2(theLower, theUpper)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5043,8 +5870,10 @@ impl HArray1OfApprovedItem {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5061,8 +5890,10 @@ impl HArray1OfApprovedItem {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5074,8 +5905,10 @@ impl HArray1OfApprovedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfApprovedItem_ctor_array1ofapproveditem(theOther)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5084,8 +5917,11 @@ impl HArray1OfApprovedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_HArray1OfApprovedItem_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5095,8 +5931,11 @@ impl HArray1OfApprovedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfApprovedItem_change_array1(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5106,8 +5945,11 @@ impl HArray1OfApprovedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfApprovedItem_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5115,8 +5957,11 @@ impl HArray1OfApprovedItem {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StepAP203_HArray1OfApprovedItem_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5125,47 +5970,46 @@ impl HArray1OfApprovedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_HArray1OfApprovedItem_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfApprovedItem_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_HArray1OfApprovedItem_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfApprovedItem_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_HArray1OfApprovedItem_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfApprovedItem> {
-        {
-            let __result =
-                unsafe { crate::ffi::StepAP203_HArray1OfApprovedItem_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::StepAP203_HArray1OfApprovedItem_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -5177,8 +6021,11 @@ impl HArray1OfApprovedItem {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5191,8 +6038,11 @@ impl HArray1OfApprovedItem {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5202,11 +6052,14 @@ impl HArray1OfApprovedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfApprovedItem_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5219,20 +6072,25 @@ impl HArray1OfApprovedItem {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_HArray1OfApprovedItem_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5244,18 +6102,23 @@ impl HArray1OfApprovedItem {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_HArray1OfApprovedItem_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5271,37 +6134,35 @@ unsafe impl crate::CppDeletable for HandleStepAP203HArray1OfApprovedItem {
 impl HandleStepAP203HArray1OfApprovedItem {
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfApprovedItem
     pub fn get(&self) -> &crate::ffi::StepAP203_HArray1OfApprovedItem {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfApprovedItem_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleStepAP203HArray1OfApprovedItem_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP203_HArray1OfApprovedItem
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP203_HArray1OfApprovedItem {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfApprovedItem_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleStepAP203HArray1OfApprovedItem_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP203_HArray1OfApprovedItem> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfApprovedItem_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203HArray1OfApprovedItem_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5323,8 +6184,10 @@ impl HArray1OfCertifiedItem {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_HArray1OfCertifiedItem_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5334,8 +6197,10 @@ impl HArray1OfCertifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfCertifiedItem_ctor_int2(theLower, theUpper)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5351,8 +6216,10 @@ impl HArray1OfCertifiedItem {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5369,8 +6236,10 @@ impl HArray1OfCertifiedItem {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5382,8 +6251,10 @@ impl HArray1OfCertifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfCertifiedItem_ctor_array1ofcertifieditem(theOther)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5392,8 +6263,11 @@ impl HArray1OfCertifiedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_HArray1OfCertifiedItem_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5403,8 +6277,11 @@ impl HArray1OfCertifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfCertifiedItem_change_array1(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5414,8 +6291,11 @@ impl HArray1OfCertifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfCertifiedItem_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5423,8 +6303,11 @@ impl HArray1OfCertifiedItem {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StepAP203_HArray1OfCertifiedItem_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5433,47 +6316,48 @@ impl HArray1OfCertifiedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_HArray1OfCertifiedItem_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfCertifiedItem_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_HArray1OfCertifiedItem_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfCertifiedItem_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_HArray1OfCertifiedItem_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfCertifiedItem> {
-        {
-            let __result =
-                unsafe { crate::ffi::StepAP203_HArray1OfCertifiedItem_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::StepAP203_HArray1OfCertifiedItem_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -5485,8 +6369,11 @@ impl HArray1OfCertifiedItem {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5499,8 +6386,11 @@ impl HArray1OfCertifiedItem {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5510,11 +6400,14 @@ impl HArray1OfCertifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfCertifiedItem_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5527,20 +6420,25 @@ impl HArray1OfCertifiedItem {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_HArray1OfCertifiedItem_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5552,18 +6450,23 @@ impl HArray1OfCertifiedItem {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_HArray1OfCertifiedItem_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5579,37 +6482,35 @@ unsafe impl crate::CppDeletable for HandleStepAP203HArray1OfCertifiedItem {
 impl HandleStepAP203HArray1OfCertifiedItem {
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfCertifiedItem
     pub fn get(&self) -> &crate::ffi::StepAP203_HArray1OfCertifiedItem {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfCertifiedItem_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleStepAP203HArray1OfCertifiedItem_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP203_HArray1OfCertifiedItem
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP203_HArray1OfCertifiedItem {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfCertifiedItem_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleStepAP203HArray1OfCertifiedItem_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP203_HArray1OfCertifiedItem> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfCertifiedItem_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203HArray1OfCertifiedItem_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5631,8 +6532,10 @@ impl HArray1OfChangeRequestItem {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_HArray1OfChangeRequestItem_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5642,8 +6545,10 @@ impl HArray1OfChangeRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfChangeRequestItem_ctor_int2(theLower, theUpper)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5659,8 +6564,10 @@ impl HArray1OfChangeRequestItem {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5677,8 +6584,10 @@ impl HArray1OfChangeRequestItem {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5692,8 +6601,10 @@ impl HArray1OfChangeRequestItem {
                     theOther,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5703,8 +6614,11 @@ impl HArray1OfChangeRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfChangeRequestItem_array1(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5714,8 +6628,11 @@ impl HArray1OfChangeRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfChangeRequestItem_change_array1(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5725,8 +6642,11 @@ impl HArray1OfChangeRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfChangeRequestItem_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5735,8 +6655,11 @@ impl HArray1OfChangeRequestItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_HArray1OfChangeRequestItem_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5745,48 +6668,50 @@ impl HArray1OfChangeRequestItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_HArray1OfChangeRequestItem_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfChangeRequestItem_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_HArray1OfChangeRequestItem_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfChangeRequestItem_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_HArray1OfChangeRequestItem_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfChangeRequestItem> {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfChangeRequestItem_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::StepAP203_HArray1OfChangeRequestItem_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -5798,8 +6723,11 @@ impl HArray1OfChangeRequestItem {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5812,8 +6740,11 @@ impl HArray1OfChangeRequestItem {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5823,11 +6754,14 @@ impl HArray1OfChangeRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfChangeRequestItem_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5840,20 +6774,25 @@ impl HArray1OfChangeRequestItem {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_HArray1OfChangeRequestItem_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5865,20 +6804,25 @@ impl HArray1OfChangeRequestItem {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_HArray1OfChangeRequestItem_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5894,37 +6838,37 @@ unsafe impl crate::CppDeletable for HandleStepAP203HArray1OfChangeRequestItem {
 impl HandleStepAP203HArray1OfChangeRequestItem {
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfChangeRequestItem
     pub fn get(&self) -> &crate::ffi::StepAP203_HArray1OfChangeRequestItem {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfChangeRequestItem_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203HArray1OfChangeRequestItem_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP203_HArray1OfChangeRequestItem
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP203_HArray1OfChangeRequestItem {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfChangeRequestItem_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203HArray1OfChangeRequestItem_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP203_HArray1OfChangeRequestItem> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfChangeRequestItem_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203HArray1OfChangeRequestItem_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5946,8 +6890,10 @@ impl HArray1OfClassifiedItem {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_HArray1OfClassifiedItem_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5957,8 +6903,10 @@ impl HArray1OfClassifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfClassifiedItem_ctor_int2(theLower, theUpper)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5974,8 +6922,10 @@ impl HArray1OfClassifiedItem {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5992,8 +6942,10 @@ impl HArray1OfClassifiedItem {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6005,8 +6957,10 @@ impl HArray1OfClassifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfClassifiedItem_ctor_array1ofclassifieditem(theOther)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6016,8 +6970,11 @@ impl HArray1OfClassifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfClassifiedItem_array1(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6027,8 +6984,11 @@ impl HArray1OfClassifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfClassifiedItem_change_array1(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -6038,8 +6998,11 @@ impl HArray1OfClassifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfClassifiedItem_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6047,8 +7010,11 @@ impl HArray1OfClassifiedItem {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StepAP203_HArray1OfClassifiedItem_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6057,47 +7023,48 @@ impl HArray1OfClassifiedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_HArray1OfClassifiedItem_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfClassifiedItem_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_HArray1OfClassifiedItem_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfClassifiedItem_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_HArray1OfClassifiedItem_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfClassifiedItem> {
-        {
-            let __result =
-                unsafe { crate::ffi::StepAP203_HArray1OfClassifiedItem_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::StepAP203_HArray1OfClassifiedItem_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -6109,8 +7076,11 @@ impl HArray1OfClassifiedItem {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6123,8 +7093,11 @@ impl HArray1OfClassifiedItem {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6134,11 +7107,14 @@ impl HArray1OfClassifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfClassifiedItem_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6151,20 +7127,25 @@ impl HArray1OfClassifiedItem {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_HArray1OfClassifiedItem_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6176,18 +7157,23 @@ impl HArray1OfClassifiedItem {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_HArray1OfClassifiedItem_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6203,37 +7189,36 @@ unsafe impl crate::CppDeletable for HandleStepAP203HArray1OfClassifiedItem {
 impl HandleStepAP203HArray1OfClassifiedItem {
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfClassifiedItem
     pub fn get(&self) -> &crate::ffi::StepAP203_HArray1OfClassifiedItem {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfClassifiedItem_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleStepAP203HArray1OfClassifiedItem_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP203_HArray1OfClassifiedItem
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP203_HArray1OfClassifiedItem {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfClassifiedItem_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203HArray1OfClassifiedItem_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP203_HArray1OfClassifiedItem> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfClassifiedItem_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203HArray1OfClassifiedItem_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6255,8 +7240,10 @@ impl HArray1OfContractedItem {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_HArray1OfContractedItem_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6266,8 +7253,10 @@ impl HArray1OfContractedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfContractedItem_ctor_int2(theLower, theUpper)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6283,8 +7272,10 @@ impl HArray1OfContractedItem {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6301,8 +7292,10 @@ impl HArray1OfContractedItem {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6314,8 +7307,10 @@ impl HArray1OfContractedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfContractedItem_ctor_array1ofcontracteditem(theOther)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6325,8 +7320,11 @@ impl HArray1OfContractedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfContractedItem_array1(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6336,8 +7334,11 @@ impl HArray1OfContractedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfContractedItem_change_array1(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -6347,8 +7348,11 @@ impl HArray1OfContractedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfContractedItem_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6356,8 +7360,11 @@ impl HArray1OfContractedItem {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StepAP203_HArray1OfContractedItem_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6366,47 +7373,48 @@ impl HArray1OfContractedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_HArray1OfContractedItem_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfContractedItem_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_HArray1OfContractedItem_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfContractedItem_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_HArray1OfContractedItem_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfContractedItem> {
-        {
-            let __result =
-                unsafe { crate::ffi::StepAP203_HArray1OfContractedItem_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::StepAP203_HArray1OfContractedItem_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -6418,8 +7426,11 @@ impl HArray1OfContractedItem {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6432,8 +7443,11 @@ impl HArray1OfContractedItem {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6443,11 +7457,14 @@ impl HArray1OfContractedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfContractedItem_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6460,20 +7477,25 @@ impl HArray1OfContractedItem {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_HArray1OfContractedItem_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6485,18 +7507,23 @@ impl HArray1OfContractedItem {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_HArray1OfContractedItem_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6512,37 +7539,36 @@ unsafe impl crate::CppDeletable for HandleStepAP203HArray1OfContractedItem {
 impl HandleStepAP203HArray1OfContractedItem {
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfContractedItem
     pub fn get(&self) -> &crate::ffi::StepAP203_HArray1OfContractedItem {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfContractedItem_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleStepAP203HArray1OfContractedItem_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP203_HArray1OfContractedItem
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP203_HArray1OfContractedItem {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfContractedItem_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203HArray1OfContractedItem_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP203_HArray1OfContractedItem> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfContractedItem_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203HArray1OfContractedItem_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6564,8 +7590,10 @@ impl HArray1OfDateTimeItem {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_HArray1OfDateTimeItem_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6575,8 +7603,10 @@ impl HArray1OfDateTimeItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfDateTimeItem_ctor_int2(theLower, theUpper)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6592,8 +7622,10 @@ impl HArray1OfDateTimeItem {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6610,8 +7642,10 @@ impl HArray1OfDateTimeItem {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6623,8 +7657,10 @@ impl HArray1OfDateTimeItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfDateTimeItem_ctor_array1ofdatetimeitem(theOther)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6633,8 +7669,11 @@ impl HArray1OfDateTimeItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_HArray1OfDateTimeItem_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6644,8 +7683,11 @@ impl HArray1OfDateTimeItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfDateTimeItem_change_array1(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -6655,8 +7697,11 @@ impl HArray1OfDateTimeItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfDateTimeItem_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6664,8 +7709,11 @@ impl HArray1OfDateTimeItem {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StepAP203_HArray1OfDateTimeItem_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6674,47 +7722,46 @@ impl HArray1OfDateTimeItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_HArray1OfDateTimeItem_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfDateTimeItem_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_HArray1OfDateTimeItem_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfDateTimeItem_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_HArray1OfDateTimeItem_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfDateTimeItem> {
-        {
-            let __result =
-                unsafe { crate::ffi::StepAP203_HArray1OfDateTimeItem_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::StepAP203_HArray1OfDateTimeItem_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -6726,8 +7773,11 @@ impl HArray1OfDateTimeItem {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6740,8 +7790,11 @@ impl HArray1OfDateTimeItem {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6751,11 +7804,14 @@ impl HArray1OfDateTimeItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfDateTimeItem_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6768,20 +7824,25 @@ impl HArray1OfDateTimeItem {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_HArray1OfDateTimeItem_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6793,18 +7854,23 @@ impl HArray1OfDateTimeItem {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_HArray1OfDateTimeItem_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6820,37 +7886,35 @@ unsafe impl crate::CppDeletable for HandleStepAP203HArray1OfDateTimeItem {
 impl HandleStepAP203HArray1OfDateTimeItem {
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfDateTimeItem
     pub fn get(&self) -> &crate::ffi::StepAP203_HArray1OfDateTimeItem {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfDateTimeItem_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleStepAP203HArray1OfDateTimeItem_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP203_HArray1OfDateTimeItem
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP203_HArray1OfDateTimeItem {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfDateTimeItem_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleStepAP203HArray1OfDateTimeItem_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP203_HArray1OfDateTimeItem> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfDateTimeItem_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203HArray1OfDateTimeItem_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6872,8 +7936,10 @@ impl HArray1OfPersonOrganizationItem {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_HArray1OfPersonOrganizationItem_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6883,8 +7949,10 @@ impl HArray1OfPersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfPersonOrganizationItem_ctor_int2(theLower, theUpper)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6898,8 +7966,10 @@ impl HArray1OfPersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfPersonOrganizationItem_ctor_int2_personorganizationitem(theLower, theUpper, theValue)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6914,8 +7984,10 @@ impl HArray1OfPersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfPersonOrganizationItem_ctor_personorganizationitem_int2_bool(theBegin, theLower, theUpper, arg3)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6927,8 +7999,10 @@ impl HArray1OfPersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfPersonOrganizationItem_ctor_array1ofpersonorganizationitem(theOther)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6938,8 +8012,11 @@ impl HArray1OfPersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfPersonOrganizationItem_array1(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6951,8 +8028,11 @@ impl HArray1OfPersonOrganizationItem {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -6964,8 +8044,11 @@ impl HArray1OfPersonOrganizationItem {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6974,8 +8057,11 @@ impl HArray1OfPersonOrganizationItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_HArray1OfPersonOrganizationItem_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6985,48 +8071,51 @@ impl HArray1OfPersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfPersonOrganizationItem_get_type_descriptor()
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfPersonOrganizationItem_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_HArray1OfPersonOrganizationItem_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfPersonOrganizationItem_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_HArray1OfPersonOrganizationItem_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfPersonOrganizationItem> {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfPersonOrganizationItem_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::StepAP203_HArray1OfPersonOrganizationItem_to_handle(obj.into_raw())
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -7038,8 +8127,11 @@ impl HArray1OfPersonOrganizationItem {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7052,8 +8144,11 @@ impl HArray1OfPersonOrganizationItem {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7065,11 +8160,14 @@ impl HArray1OfPersonOrganizationItem {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7082,20 +8180,25 @@ impl HArray1OfPersonOrganizationItem {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_HArray1OfPersonOrganizationItem_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7107,20 +8210,25 @@ impl HArray1OfPersonOrganizationItem {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_HArray1OfPersonOrganizationItem_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7136,37 +8244,37 @@ unsafe impl crate::CppDeletable for HandleStepAP203HArray1OfPersonOrganizationIt
 impl HandleStepAP203HArray1OfPersonOrganizationItem {
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfPersonOrganizationItem
     pub fn get(&self) -> &crate::ffi::StepAP203_HArray1OfPersonOrganizationItem {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfPersonOrganizationItem_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203HArray1OfPersonOrganizationItem_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP203_HArray1OfPersonOrganizationItem
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP203_HArray1OfPersonOrganizationItem {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfPersonOrganizationItem_get_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203HArray1OfPersonOrganizationItem_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP203_HArray1OfPersonOrganizationItem> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfPersonOrganizationItem_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203HArray1OfPersonOrganizationItem_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -7188,8 +8296,10 @@ impl HArray1OfSpecifiedItem {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_HArray1OfSpecifiedItem_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7199,8 +8309,10 @@ impl HArray1OfSpecifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfSpecifiedItem_ctor_int2(theLower, theUpper)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7216,8 +8328,10 @@ impl HArray1OfSpecifiedItem {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7234,8 +8348,10 @@ impl HArray1OfSpecifiedItem {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7247,8 +8363,10 @@ impl HArray1OfSpecifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfSpecifiedItem_ctor_array1ofspecifieditem(theOther)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7257,8 +8375,11 @@ impl HArray1OfSpecifiedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_HArray1OfSpecifiedItem_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7268,8 +8389,11 @@ impl HArray1OfSpecifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfSpecifiedItem_change_array1(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7279,8 +8403,11 @@ impl HArray1OfSpecifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfSpecifiedItem_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7288,8 +8415,11 @@ impl HArray1OfSpecifiedItem {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StepAP203_HArray1OfSpecifiedItem_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -7298,47 +8428,48 @@ impl HArray1OfSpecifiedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_HArray1OfSpecifiedItem_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfSpecifiedItem_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_HArray1OfSpecifiedItem_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfSpecifiedItem_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_HArray1OfSpecifiedItem_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfSpecifiedItem> {
-        {
-            let __result =
-                unsafe { crate::ffi::StepAP203_HArray1OfSpecifiedItem_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::StepAP203_HArray1OfSpecifiedItem_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -7350,8 +8481,11 @@ impl HArray1OfSpecifiedItem {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7364,8 +8498,11 @@ impl HArray1OfSpecifiedItem {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7375,11 +8512,14 @@ impl HArray1OfSpecifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfSpecifiedItem_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7392,20 +8532,25 @@ impl HArray1OfSpecifiedItem {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_HArray1OfSpecifiedItem_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7417,18 +8562,23 @@ impl HArray1OfSpecifiedItem {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_HArray1OfSpecifiedItem_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7444,37 +8594,35 @@ unsafe impl crate::CppDeletable for HandleStepAP203HArray1OfSpecifiedItem {
 impl HandleStepAP203HArray1OfSpecifiedItem {
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfSpecifiedItem
     pub fn get(&self) -> &crate::ffi::StepAP203_HArray1OfSpecifiedItem {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfSpecifiedItem_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleStepAP203HArray1OfSpecifiedItem_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP203_HArray1OfSpecifiedItem
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP203_HArray1OfSpecifiedItem {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfSpecifiedItem_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleStepAP203HArray1OfSpecifiedItem_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP203_HArray1OfSpecifiedItem> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfSpecifiedItem_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203HArray1OfSpecifiedItem_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -7496,8 +8644,10 @@ impl HArray1OfStartRequestItem {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_HArray1OfStartRequestItem_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7507,8 +8657,10 @@ impl HArray1OfStartRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfStartRequestItem_ctor_int2(theLower, theUpper)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7524,8 +8676,10 @@ impl HArray1OfStartRequestItem {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7542,8 +8696,10 @@ impl HArray1OfStartRequestItem {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7557,8 +8713,10 @@ impl HArray1OfStartRequestItem {
                     theOther,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7568,8 +8726,11 @@ impl HArray1OfStartRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfStartRequestItem_array1(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7579,8 +8740,11 @@ impl HArray1OfStartRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfStartRequestItem_change_array1(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7590,8 +8754,11 @@ impl HArray1OfStartRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfStartRequestItem_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7600,8 +8767,11 @@ impl HArray1OfStartRequestItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_HArray1OfStartRequestItem_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -7610,48 +8780,50 @@ impl HArray1OfStartRequestItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_HArray1OfStartRequestItem_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfStartRequestItem_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_HArray1OfStartRequestItem_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfStartRequestItem_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_HArray1OfStartRequestItem_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfStartRequestItem> {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfStartRequestItem_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::StepAP203_HArray1OfStartRequestItem_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -7663,8 +8835,11 @@ impl HArray1OfStartRequestItem {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7677,8 +8852,11 @@ impl HArray1OfStartRequestItem {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7688,11 +8866,14 @@ impl HArray1OfStartRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfStartRequestItem_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -7705,20 +8886,25 @@ impl HArray1OfStartRequestItem {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_HArray1OfStartRequestItem_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7730,20 +8916,25 @@ impl HArray1OfStartRequestItem {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_HArray1OfStartRequestItem_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7759,37 +8950,37 @@ unsafe impl crate::CppDeletable for HandleStepAP203HArray1OfStartRequestItem {
 impl HandleStepAP203HArray1OfStartRequestItem {
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfStartRequestItem
     pub fn get(&self) -> &crate::ffi::StepAP203_HArray1OfStartRequestItem {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfStartRequestItem_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203HArray1OfStartRequestItem_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP203_HArray1OfStartRequestItem
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP203_HArray1OfStartRequestItem {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfStartRequestItem_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203HArray1OfStartRequestItem_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP203_HArray1OfStartRequestItem> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfStartRequestItem_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203HArray1OfStartRequestItem_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -7811,8 +9002,10 @@ impl HArray1OfWorkItem {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_HArray1OfWorkItem_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7821,8 +9014,10 @@ impl HArray1OfWorkItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_HArray1OfWorkItem_ctor_int2(theLower, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7838,8 +9033,10 @@ impl HArray1OfWorkItem {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7856,8 +9053,10 @@ impl HArray1OfWorkItem {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7868,8 +9067,10 @@ impl HArray1OfWorkItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_HArray1OfWorkItem_ctor_array1ofworkitem(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7878,8 +9079,11 @@ impl HArray1OfWorkItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_HArray1OfWorkItem_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7888,8 +9092,11 @@ impl HArray1OfWorkItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_HArray1OfWorkItem_change_array1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7899,8 +9106,11 @@ impl HArray1OfWorkItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfWorkItem_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7908,8 +9118,11 @@ impl HArray1OfWorkItem {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StepAP203_HArray1OfWorkItem_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -7917,43 +9130,45 @@ impl HArray1OfWorkItem {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StepAP203_HArray1OfWorkItem_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfWorkItem_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_HArray1OfWorkItem_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_HArray1OfWorkItem_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_HArray1OfWorkItem_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfWorkItem> {
-        {
-            let __result =
-                unsafe { crate::ffi::StepAP203_HArray1OfWorkItem_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StepAP203_HArray1OfWorkItem_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -7965,8 +9180,11 @@ impl HArray1OfWorkItem {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7979,8 +9197,11 @@ impl HArray1OfWorkItem {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7990,11 +9211,14 @@ impl HArray1OfWorkItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfWorkItem_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -8005,20 +9229,25 @@ impl HArray1OfWorkItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_HArray1OfWorkItem_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_HArray1OfWorkItem_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8030,18 +9259,23 @@ impl HArray1OfWorkItem {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_HArray1OfWorkItem_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8057,35 +9291,35 @@ unsafe impl crate::CppDeletable for HandleStepAP203HArray1OfWorkItem {
 impl HandleStepAP203HArray1OfWorkItem {
     /// Dereference this Handle to access the underlying StepAP203_HArray1OfWorkItem
     pub fn get(&self) -> &crate::ffi::StepAP203_HArray1OfWorkItem {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStepAP203HArray1OfWorkItem_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleStepAP203HArray1OfWorkItem_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP203_HArray1OfWorkItem
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP203_HArray1OfWorkItem {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStepAP203HArray1OfWorkItem_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleStepAP203HArray1OfWorkItem_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP203_HArray1OfWorkItem> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203HArray1OfWorkItem_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203HArray1OfWorkItem_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -8109,8 +9343,10 @@ impl PersonOrganizationItem {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_PersonOrganizationItem_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8132,8 +9368,11 @@ impl PersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_PersonOrganizationItem_case_num(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8143,8 +9382,11 @@ impl PersonOrganizationItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_PersonOrganizationItem_change(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8155,8 +9397,11 @@ impl PersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_PersonOrganizationItem_start_work(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8167,8 +9412,11 @@ impl PersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_PersonOrganizationItem_change_request(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8179,8 +9427,11 @@ impl PersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_PersonOrganizationItem_start_request(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8193,8 +9444,11 @@ impl PersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_PersonOrganizationItem_configuration_item(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8205,8 +9459,11 @@ impl PersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_PersonOrganizationItem_product(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8221,8 +9478,11 @@ impl PersonOrganizationItem {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8235,8 +9495,11 @@ impl PersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_PersonOrganizationItem_product_definition(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8247,8 +9510,11 @@ impl PersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_PersonOrganizationItem_contract(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8263,35 +9529,36 @@ impl PersonOrganizationItem {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to StepData_SelectType
     pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_PersonOrganizationItem_as_StepData_SelectType(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_PersonOrganizationItem_as_StepData_SelectType(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepData_SelectType (mutable)
     pub fn as_step_data_select_type_mut(&mut self) -> &mut crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_PersonOrganizationItem_as_StepData_SelectType_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_PersonOrganizationItem_as_StepData_SelectType_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
@@ -8303,31 +9570,38 @@ impl PersonOrganizationItem {
                     ent,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
     pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_PersonOrganizationItem_inherited_SetValue(
                     self as *mut Self,
                     ent,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
     pub fn nullify(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_PersonOrganizationItem_inherited_Nullify(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8337,8 +9611,11 @@ impl PersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_PersonOrganizationItem_inherited_Value(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8348,8 +9625,11 @@ impl PersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_PersonOrganizationItem_inherited_IsNull(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8359,8 +9639,11 @@ impl PersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_PersonOrganizationItem_inherited_Type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8372,8 +9655,11 @@ impl PersonOrganizationItem {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8385,8 +9671,11 @@ impl PersonOrganizationItem {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8398,8 +9687,11 @@ impl PersonOrganizationItem {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8412,8 +9704,11 @@ impl PersonOrganizationItem {
                     ent,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8425,8 +9720,11 @@ impl PersonOrganizationItem {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8436,8 +9734,11 @@ impl PersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_PersonOrganizationItem_inherited_Member(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8447,21 +9748,26 @@ impl PersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_PersonOrganizationItem_inherited_Int(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:131 - `StepData_SelectType::SetInt()`
     pub fn set_int(&mut self, val: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_PersonOrganizationItem_inherited_SetInt(
                     self as *mut Self,
                     val,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8471,8 +9777,11 @@ impl PersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_PersonOrganizationItem_inherited_Integer(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8482,8 +9791,11 @@ impl PersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_PersonOrganizationItem_inherited_Boolean(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8493,8 +9805,11 @@ impl PersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_PersonOrganizationItem_inherited_Logical(self as *const Self)
             };
-            crate::check_exception();
-            crate::step_data::Logical::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::step_data::Logical::try_from(__val).unwrap()
         }
     }
 
@@ -8504,8 +9819,11 @@ impl PersonOrganizationItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_PersonOrganizationItem_inherited_Real(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -8530,8 +9848,10 @@ impl SpecifiedItem {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_SpecifiedItem_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8544,8 +9864,11 @@ impl SpecifiedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_SpecifiedItem_case_num(self as *const Self, ent) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8558,8 +9881,11 @@ impl SpecifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_SpecifiedItem_product_definition(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8569,31 +9895,34 @@ impl SpecifiedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_SpecifiedItem_shape_aspect(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to StepData_SelectType
     pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_SpecifiedItem_as_StepData_SelectType(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_SpecifiedItem_as_StepData_SelectType(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepData_SelectType (mutable)
     pub fn as_step_data_select_type_mut(&mut self) -> &mut crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_SpecifiedItem_as_StepData_SelectType_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_SpecifiedItem_as_StepData_SelectType_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
@@ -8602,26 +9931,34 @@ impl SpecifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_SpecifiedItem_inherited_Matches(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
     pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_SpecifiedItem_inherited_SetValue(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
     pub fn nullify(&mut self) {
         {
-            unsafe { crate::ffi::StepAP203_SpecifiedItem_inherited_Nullify(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StepAP203_SpecifiedItem_inherited_Nullify(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8630,8 +9967,11 @@ impl SpecifiedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_SpecifiedItem_inherited_Value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8641,8 +9981,11 @@ impl SpecifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_SpecifiedItem_inherited_IsNull(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8651,8 +9994,11 @@ impl SpecifiedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_SpecifiedItem_inherited_Type(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8662,8 +10008,11 @@ impl SpecifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_SpecifiedItem_inherited_CaseNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8673,8 +10022,11 @@ impl SpecifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_SpecifiedItem_inherited_Description(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8684,8 +10036,11 @@ impl SpecifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_SpecifiedItem_inherited_NewMember(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8695,8 +10050,11 @@ impl SpecifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_SpecifiedItem_inherited_CaseMem(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8706,8 +10064,11 @@ impl SpecifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_SpecifiedItem_inherited_CaseMember(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8717,8 +10078,11 @@ impl SpecifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_SpecifiedItem_inherited_Member(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8727,16 +10091,23 @@ impl SpecifiedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_SpecifiedItem_inherited_Int(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:131 - `StepData_SelectType::SetInt()`
     pub fn set_int(&mut self, val: i32) {
         {
-            unsafe { crate::ffi::StepAP203_SpecifiedItem_inherited_SetInt(self as *mut Self, val) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StepAP203_SpecifiedItem_inherited_SetInt(self as *mut Self, val)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8746,8 +10117,11 @@ impl SpecifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_SpecifiedItem_inherited_Integer(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8757,8 +10131,11 @@ impl SpecifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_SpecifiedItem_inherited_Boolean(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8768,8 +10145,11 @@ impl SpecifiedItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_SpecifiedItem_inherited_Logical(self as *const Self)
             };
-            crate::check_exception();
-            crate::step_data::Logical::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::step_data::Logical::try_from(__val).unwrap()
         }
     }
 
@@ -8778,8 +10158,11 @@ impl SpecifiedItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_SpecifiedItem_inherited_Real(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -8804,8 +10187,10 @@ impl StartRequest {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_StartRequest_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8817,14 +10202,16 @@ impl StartRequest {
         aItems: &crate::ffi::HandleStepAP203HArray1OfStartRequestItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_StartRequest_init(
                     self as *mut Self,
                     aActionRequestAssignment_AssignedActionRequest,
                     aItems,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8833,8 +10220,11 @@ impl StartRequest {
     pub fn items(&self) -> crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfStartRequestItem> {
         {
             let __result = unsafe { crate::ffi::StepAP203_StartRequest_items(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8842,8 +10232,11 @@ impl StartRequest {
     /// Set field Items
     pub fn set_items(&mut self, Items: &crate::ffi::HandleStepAP203HArray1OfStartRequestItem) {
         {
-            unsafe { crate::ffi::StepAP203_StartRequest_set_items(self as *mut Self, Items) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StepAP203_StartRequest_set_items(self as *mut Self, Items) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8852,8 +10245,11 @@ impl StartRequest {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_StartRequest_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8861,8 +10257,11 @@ impl StartRequest {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StepAP203_StartRequest_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8870,8 +10269,11 @@ impl StartRequest {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StepAP203_StartRequest_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8879,63 +10281,63 @@ impl StartRequest {
     pub fn as_step_basic_action_request_assignment(
         &self,
     ) -> &crate::step_basic::ActionRequestAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_StartRequest_as_StepBasic_ActionRequestAssignment(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_StartRequest_as_StepBasic_ActionRequestAssignment(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepBasic_ActionRequestAssignment (mutable)
     pub fn as_step_basic_action_request_assignment_mut(
         &mut self,
     ) -> &mut crate::step_basic::ActionRequestAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_StartRequest_as_StepBasic_ActionRequestAssignment_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_StartRequest_as_StepBasic_ActionRequestAssignment_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_StartRequest_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_StartRequest_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_StartRequest_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_StartRequest_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203StartRequest> {
-        {
-            let __result = unsafe { crate::ffi::StepAP203_StartRequest_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StepAP203_StartRequest_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `StepBasic_ActionRequestAssignment.hxx`:41 - `StepBasic_ActionRequestAssignment::AssignedActionRequest()`
@@ -8948,8 +10350,11 @@ impl StartRequest {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8959,13 +10364,15 @@ impl StartRequest {
         AssignedActionRequest: &crate::ffi::HandleStepBasicVersionedActionRequest,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_StartRequest_inherited_SetAssignedActionRequest(
                     self as *mut Self,
                     AssignedActionRequest,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8978,8 +10385,11 @@ impl StartRequest {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8989,8 +10399,11 @@ impl StartRequest {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartRequest_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8999,11 +10412,14 @@ impl StartRequest {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_StartRequest_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -9014,18 +10430,23 @@ impl StartRequest {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartRequest_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_StartRequest_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9035,16 +10456,22 @@ impl StartRequest {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartRequest_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StepAP203_StartRequest_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StepAP203_StartRequest_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -9060,50 +10487,47 @@ unsafe impl crate::CppDeletable for HandleStepAP203StartRequest {
 impl HandleStepAP203StartRequest {
     /// Dereference this Handle to access the underlying StepAP203_StartRequest
     pub fn get(&self) -> &crate::ffi::StepAP203_StartRequest {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStepAP203StartRequest_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleStepAP203StartRequest_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP203_StartRequest
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP203_StartRequest {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStepAP203StartRequest_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleStepAP203StartRequest_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP203_StartRequest> to Handle<StepBasic_ActionRequestAssignment>
     pub fn to_handle_action_request_assignment(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicActionRequestAssignment> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203StartRequest_to_HandleStepBasicActionRequestAssignment(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203StartRequest_to_HandleStepBasicActionRequestAssignment(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StepAP203_StartRequest> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203StartRequest_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203StartRequest_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -9127,8 +10551,10 @@ impl StartRequestItem {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_StartRequestItem_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9141,8 +10567,11 @@ impl StartRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartRequestItem_case_num(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9157,31 +10586,34 @@ impl StartRequestItem {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to StepData_SelectType
     pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_StartRequestItem_as_StepData_SelectType(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_StartRequestItem_as_StepData_SelectType(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepData_SelectType (mutable)
     pub fn as_step_data_select_type_mut(&mut self) -> &mut crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_StartRequestItem_as_StepData_SelectType_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_StartRequestItem_as_StepData_SelectType_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
@@ -9190,26 +10622,35 @@ impl StartRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartRequestItem_inherited_Matches(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
     pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_StartRequestItem_inherited_SetValue(self as *mut Self, ent)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
     pub fn nullify(&mut self) {
         {
-            unsafe { crate::ffi::StepAP203_StartRequestItem_inherited_Nullify(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StepAP203_StartRequestItem_inherited_Nullify(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9219,8 +10660,11 @@ impl StartRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartRequestItem_inherited_Value(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9230,8 +10674,11 @@ impl StartRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartRequestItem_inherited_IsNull(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9241,8 +10688,11 @@ impl StartRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartRequestItem_inherited_Type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9252,8 +10702,11 @@ impl StartRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartRequestItem_inherited_CaseNumber(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9263,8 +10716,11 @@ impl StartRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartRequestItem_inherited_Description(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9274,8 +10730,11 @@ impl StartRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartRequestItem_inherited_NewMember(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9285,8 +10744,11 @@ impl StartRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartRequestItem_inherited_CaseMem(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9296,8 +10758,11 @@ impl StartRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartRequestItem_inherited_CaseMember(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9307,8 +10772,11 @@ impl StartRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartRequestItem_inherited_Member(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9318,18 +10786,23 @@ impl StartRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartRequestItem_inherited_Int(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:131 - `StepData_SelectType::SetInt()`
     pub fn set_int(&mut self, val: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_StartRequestItem_inherited_SetInt(self as *mut Self, val)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9339,8 +10812,11 @@ impl StartRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartRequestItem_inherited_Integer(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9350,8 +10826,11 @@ impl StartRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartRequestItem_inherited_Boolean(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9361,8 +10840,11 @@ impl StartRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartRequestItem_inherited_Logical(self as *const Self)
             };
-            crate::check_exception();
-            crate::step_data::Logical::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::step_data::Logical::try_from(__val).unwrap()
         }
     }
 
@@ -9372,8 +10854,11 @@ impl StartRequestItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartRequestItem_inherited_Real(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -9398,8 +10883,10 @@ impl StartWork {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_StartWork_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9411,14 +10898,16 @@ impl StartWork {
         aItems: &crate::ffi::HandleStepAP203HArray1OfWorkItem,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_StartWork_init(
                     self as *mut Self,
                     aActionAssignment_AssignedAction,
                     aItems,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9427,8 +10916,11 @@ impl StartWork {
     pub fn items(&self) -> crate::OwnedPtr<crate::ffi::HandleStepAP203HArray1OfWorkItem> {
         {
             let __result = unsafe { crate::ffi::StepAP203_StartWork_items(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9436,8 +10928,11 @@ impl StartWork {
     /// Set field Items
     pub fn set_items(&mut self, Items: &crate::ffi::HandleStepAP203HArray1OfWorkItem) {
         {
-            unsafe { crate::ffi::StepAP203_StartWork_set_items(self as *mut Self, Items) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StepAP203_StartWork_set_items(self as *mut Self, Items) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9446,8 +10941,11 @@ impl StartWork {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_StartWork_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9455,8 +10953,11 @@ impl StartWork {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StepAP203_StartWork_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -9464,66 +10965,67 @@ impl StartWork {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::StepAP203_StartWork_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to StepBasic_ActionAssignment
     pub fn as_step_basic_action_assignment(&self) -> &crate::step_basic::ActionAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_StartWork_as_StepBasic_ActionAssignment(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_StartWork_as_StepBasic_ActionAssignment(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepBasic_ActionAssignment (mutable)
     pub fn as_step_basic_action_assignment_mut(
         &mut self,
     ) -> &mut crate::step_basic::ActionAssignment {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_StartWork_as_StepBasic_ActionAssignment_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StepAP203_StartWork_as_StepBasic_ActionAssignment_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_StartWork_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StepAP203_StartWork_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_StartWork_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::StepAP203_StartWork_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepAP203StartWork> {
-        {
-            let __result = unsafe { crate::ffi::StepAP203_StartWork_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StepAP203_StartWork_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `StepBasic_ActionAssignment.hxx`:41 - `StepBasic_ActionAssignment::AssignedAction()`
@@ -9532,21 +11034,26 @@ impl StartWork {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartWork_inherited_AssignedAction(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `StepBasic_ActionAssignment.hxx`:44 - `StepBasic_ActionAssignment::SetAssignedAction()`
     pub fn set_assigned_action(&mut self, AssignedAction: &crate::ffi::HandleStepBasicAction) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_StartWork_inherited_SetAssignedAction(
                     self as *mut Self,
                     AssignedAction,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9556,8 +11063,11 @@ impl StartWork {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartWork_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9567,8 +11077,11 @@ impl StartWork {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartWork_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9577,11 +11090,14 @@ impl StartWork {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_StartWork_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -9592,18 +11108,23 @@ impl StartWork {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartWork_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StepAP203_StartWork_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9613,16 +11134,22 @@ impl StartWork {
             let __result = unsafe {
                 crate::ffi::StepAP203_StartWork_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StepAP203_StartWork_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StepAP203_StartWork_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -9638,47 +11165,46 @@ unsafe impl crate::CppDeletable for HandleStepAP203StartWork {
 impl HandleStepAP203StartWork {
     /// Dereference this Handle to access the underlying StepAP203_StartWork
     pub fn get(&self) -> &crate::ffi::StepAP203_StartWork {
-        {
-            let __result = unsafe { crate::ffi::HandleStepAP203StartWork_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleStepAP203StartWork_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StepAP203_StartWork
     pub fn get_mut(&mut self) -> &mut crate::ffi::StepAP203_StartWork {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStepAP203StartWork_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleStepAP203StartWork_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StepAP203_StartWork> to Handle<StepBasic_ActionAssignment>
     pub fn to_handle_action_assignment(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleStepBasicActionAssignment> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203StartWork_to_HandleStepBasicActionAssignment(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203StartWork_to_HandleStepBasicActionAssignment(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StepAP203_StartWork> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStepAP203StartWork_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStepAP203StartWork_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -9702,8 +11228,10 @@ impl WorkItem {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StepAP203_WorkItem_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9715,8 +11243,11 @@ impl WorkItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_WorkItem_case_num(self as *const Self, ent) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9729,31 +11260,32 @@ impl WorkItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_WorkItem_product_definition_formation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to StepData_SelectType
     pub fn as_step_data_select_type(&self) -> &crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_WorkItem_as_StepData_SelectType(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::StepAP203_WorkItem_as_StepData_SelectType(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StepData_SelectType (mutable)
     pub fn as_step_data_select_type_mut(&mut self) -> &mut crate::step_data::SelectType {
-        {
-            let __result = unsafe {
-                crate::ffi::StepAP203_WorkItem_as_StepData_SelectType_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::StepAP203_WorkItem_as_StepData_SelectType_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:64 - `StepData_SelectType::Matches()`
@@ -9762,24 +11294,34 @@ impl WorkItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_WorkItem_inherited_Matches(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:69 - `StepData_SelectType::SetValue()`
     pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
         {
-            unsafe { crate::ffi::StepAP203_WorkItem_inherited_SetValue(self as *mut Self, ent) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StepAP203_WorkItem_inherited_SetValue(self as *mut Self, ent)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:72 - `StepData_SelectType::Nullify()`
     pub fn nullify(&mut self) {
         {
-            unsafe { crate::ffi::StepAP203_WorkItem_inherited_Nullify(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StepAP203_WorkItem_inherited_Nullify(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9788,8 +11330,11 @@ impl WorkItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_WorkItem_inherited_Value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9798,8 +11343,11 @@ impl WorkItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_WorkItem_inherited_IsNull(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9808,8 +11356,11 @@ impl WorkItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_WorkItem_inherited_Type(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9818,8 +11369,11 @@ impl WorkItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_WorkItem_inherited_CaseNumber(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9829,8 +11383,11 @@ impl WorkItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_WorkItem_inherited_Description(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9839,8 +11396,11 @@ impl WorkItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_WorkItem_inherited_NewMember(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9850,8 +11410,11 @@ impl WorkItem {
             let __result = unsafe {
                 crate::ffi::StepAP203_WorkItem_inherited_CaseMem(self as *const Self, ent)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9860,8 +11423,11 @@ impl WorkItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_WorkItem_inherited_CaseMember(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9870,8 +11436,11 @@ impl WorkItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_WorkItem_inherited_Member(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9880,16 +11449,22 @@ impl WorkItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_WorkItem_inherited_Int(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectType.hxx`:131 - `StepData_SelectType::SetInt()`
     pub fn set_int(&mut self, val: i32) {
         {
-            unsafe { crate::ffi::StepAP203_WorkItem_inherited_SetInt(self as *mut Self, val) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::StepAP203_WorkItem_inherited_SetInt(self as *mut Self, val) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9898,8 +11473,11 @@ impl WorkItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_WorkItem_inherited_Integer(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9908,8 +11486,11 @@ impl WorkItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_WorkItem_inherited_Boolean(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9918,8 +11499,11 @@ impl WorkItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_WorkItem_inherited_Logical(self as *const Self) };
-            crate::check_exception();
-            crate::step_data::Logical::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::step_data::Logical::try_from(__val).unwrap()
         }
     }
 
@@ -9928,8 +11512,11 @@ impl WorkItem {
         {
             let __result =
                 unsafe { crate::ffi::StepAP203_WorkItem_inherited_Real(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }

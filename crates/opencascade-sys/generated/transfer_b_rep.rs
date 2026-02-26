@@ -15,8 +15,11 @@ pub fn shape_result_handletransferbinder(
     {
         let __result =
             unsafe { crate::ffi::TransferBRep_shape_result_handletransferbinder(binder) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TransferBRep.hxx`:58 - `TransferBRep::ShapeResult`
@@ -31,8 +34,11 @@ pub fn shape_result_handletransfertransientprocess_handlestandardtransient(
         let __result = unsafe {
             crate::ffi::TransferBRep_shape_result_handletransfertransientprocess_handlestandardtransient(TP, ent)
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TransferBRep.hxx`:64 - `TransferBRep::SetShapeResult`
@@ -45,8 +51,10 @@ pub fn set_shape_result(
     result: &crate::topo_ds::Shape,
 ) {
     {
-        unsafe { crate::ffi::TransferBRep_set_shape_result(TP, ent, result) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::TransferBRep_set_shape_result(TP, ent, result) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `TransferBRep.hxx`:71 - `TransferBRep::Shapes`
@@ -61,8 +69,11 @@ pub fn shapes_handletransfertransientprocess_bool(
         let __result = unsafe {
             crate::ffi::TransferBRep_shapes_handletransfertransientprocess_bool(TP, rootsonly)
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TransferBRep.hxx`:78 - `TransferBRep::Shapes`
@@ -77,8 +88,11 @@ pub fn shapes_handletransfertransientprocess_handletcolstdhsequenceoftransient(
         let __result = unsafe {
             crate::ffi::TransferBRep_shapes_handletransfertransientprocess_handletcolstdhsequenceoftransient(TP, list)
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TransferBRep.hxx`:87 - `TransferBRep::ShapeState`
@@ -93,8 +107,11 @@ pub fn shape_state(
 ) -> crate::top_abs::Orientation {
     {
         let __result = unsafe { crate::ffi::TransferBRep_shape_state(FP, shape) };
-        crate::check_exception();
-        crate::top_abs::Orientation::try_from(__result).unwrap()
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        crate::top_abs::Orientation::try_from(__val).unwrap()
     }
 }
 /// **Source:** `TransferBRep.hxx`:92 - `TransferBRep::ResultFromShape`
@@ -106,8 +123,11 @@ pub fn result_from_shape(
 ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
     {
         let __result = unsafe { crate::ffi::TransferBRep_result_from_shape(FP, shape) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TransferBRep.hxx`:98 - `TransferBRep::TransientFromShape`
@@ -119,8 +139,11 @@ pub fn transient_from_shape(
 ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
     {
         let __result = unsafe { crate::ffi::TransferBRep_transient_from_shape(FP, shape) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TransferBRep.hxx`:104 - `TransferBRep::SetTransientFromShape`
@@ -132,8 +155,10 @@ pub fn set_transient_from_shape(
     result: &crate::ffi::HandleStandardTransient,
 ) {
     {
-        unsafe { crate::ffi::TransferBRep_set_transient_from_shape(FP, shape, result) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::TransferBRep_set_transient_from_shape(FP, shape, result) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `TransferBRep.hxx`:112 - `TransferBRep::ShapeMapper`
@@ -147,8 +172,11 @@ pub fn shape_mapper(
 ) -> crate::OwnedPtr<crate::ffi::HandleTransferBRepShapeMapper> {
     {
         let __result = unsafe { crate::ffi::TransferBRep_shape_mapper(FP, shape) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TransferBRep.hxx`:121 - `TransferBRep::TransferResultInfo`
@@ -163,10 +191,12 @@ pub fn transfer_result_info_handletransfertransientprocess_handletcolstdhsequenc
     InfoSeq: &mut crate::ffi::HandleTransferBRepHSequenceOfTransferResultInfo,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::TransferBRep_transfer_result_info_handletransfertransientprocess_handletcolstdhsequenceoftransient_handletransferbrephsequenceoftransferresultinfo(TP, EntityTypes, InfoSeq)
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `TransferBRep.hxx`:130 - `TransferBRep::TransferResultInfo`
@@ -180,10 +210,12 @@ pub fn transfer_result_info_handletransferfinderprocess_handletcolstdhsequenceof
     InfoSeq: &mut crate::ffi::HandleTransferBRepHSequenceOfTransferResultInfo,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::TransferBRep_transfer_result_info_handletransferfinderprocess_handletcolstdhsequenceofinteger_handletransferbrephsequenceoftransferresultinfo(FP, ShapeTypes, InfoSeq)
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `TransferBRep.hxx`:136 - `TransferBRep::PrintResultInfo`
@@ -195,10 +227,12 @@ pub fn print_result_info(
     printEmpty: bool,
 ) {
     {
-        unsafe {
+        let __exc = unsafe {
             crate::ffi::TransferBRep_print_result_info(Printer, Header, ResultInfo, printEmpty)
         };
-        crate::check_exception();
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `TransferBRep.hxx`:151 - `TransferBRep::BRepCheck`
@@ -217,8 +251,11 @@ pub fn b_rep_check(
 ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
     {
         let __result = unsafe { crate::ffi::TransferBRep_b_rep_check(shape, lev) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TransferBRep.hxx`:161 - `TransferBRep::ResultCheckList`
@@ -236,8 +273,11 @@ pub fn result_check_list(
 ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
     {
         let __result = unsafe { crate::ffi::TransferBRep_result_check_list(chl, FP, model) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TransferBRep.hxx`:171 - `TransferBRep::Checked`
@@ -252,8 +292,11 @@ pub fn checked(
 ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
     {
         let __result = unsafe { crate::ffi::TransferBRep_checked(chl, alsoshapes) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TransferBRep.hxx`:177 - `TransferBRep::CheckedShapes`
@@ -264,8 +307,11 @@ pub fn checked_shapes(
 ) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
     {
         let __result = unsafe { crate::ffi::TransferBRep_checked_shapes(chl) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `TransferBRep.hxx`:184 - `TransferBRep::CheckObject`
@@ -279,8 +325,11 @@ pub fn check_object(
 ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
     {
         let __result = unsafe { crate::ffi::TransferBRep_check_object(chl, obj) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 
@@ -316,8 +365,10 @@ impl BinderOfShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TransferBRep_BinderOfShape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -329,8 +380,10 @@ impl BinderOfShape {
     pub fn new_shape(res: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TransferBRep_BinderOfShape_ctor_shape(res) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -341,8 +394,11 @@ impl BinderOfShape {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_BinderOfShape_result_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -353,8 +409,11 @@ impl BinderOfShape {
             let __result = unsafe {
                 crate::ffi::TransferBRep_BinderOfShape_result_type_name(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -362,8 +421,12 @@ impl BinderOfShape {
     /// Defines the Result
     pub fn set_result(&mut self, res: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TransferBRep_BinderOfShape_set_result(self as *mut Self, res) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TransferBRep_BinderOfShape_set_result(self as *mut Self, res)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -373,8 +436,11 @@ impl BinderOfShape {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_BinderOfShape_result(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -387,8 +453,11 @@ impl BinderOfShape {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_BinderOfShape_c_result(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -397,8 +466,11 @@ impl BinderOfShape {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_BinderOfShape_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -406,8 +478,11 @@ impl BinderOfShape {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TransferBRep_BinderOfShape_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -415,74 +490,78 @@ impl BinderOfShape {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TransferBRep_BinderOfShape_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Transfer_Binder
     pub fn as_transfer_binder(&self) -> &crate::transfer::Binder {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_BinderOfShape_as_Transfer_Binder(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TransferBRep_BinderOfShape_as_Transfer_Binder(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Transfer_Binder (mutable)
     pub fn as_transfer_binder_mut(&mut self) -> &mut crate::transfer::Binder {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_BinderOfShape_as_Transfer_Binder_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TransferBRep_BinderOfShape_as_Transfer_Binder_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_BinderOfShape_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TransferBRep_BinderOfShape_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_BinderOfShape_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TransferBRep_BinderOfShape_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBRepBinderOfShape> {
-        {
-            let __result =
-                unsafe { crate::ffi::TransferBRep_BinderOfShape_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TransferBRep_BinderOfShape_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:65 - `Transfer_Binder::Merge()`
     pub fn merge(&mut self, other: &crate::ffi::HandleTransferBinder) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_BinderOfShape_inherited_Merge(self as *mut Self, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -492,18 +571,23 @@ impl BinderOfShape {
             let __result = unsafe {
                 crate::ffi::TransferBRep_BinderOfShape_inherited_IsMultiple(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:81 - `Transfer_Binder::AddResult()`
     pub fn add_result(&mut self, next: &crate::ffi::HandleTransferBinder) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_BinderOfShape_inherited_AddResult(self as *mut Self, next)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -513,8 +597,11 @@ impl BinderOfShape {
             let __result = unsafe {
                 crate::ffi::TransferBRep_BinderOfShape_inherited_NextResult(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -524,18 +611,23 @@ impl BinderOfShape {
             let __result = unsafe {
                 crate::ffi::TransferBRep_BinderOfShape_inherited_HasResult(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:95 - `Transfer_Binder::SetAlreadyUsed()`
     pub fn set_already_used(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_BinderOfShape_inherited_SetAlreadyUsed(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -545,8 +637,11 @@ impl BinderOfShape {
             let __result = unsafe {
                 crate::ffi::TransferBRep_BinderOfShape_inherited_Status(self as *const Self)
             };
-            crate::check_exception();
-            crate::transfer::StatusResult::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::transfer::StatusResult::try_from(__val).unwrap()
         }
     }
 
@@ -556,21 +651,26 @@ impl BinderOfShape {
             let __result = unsafe {
                 crate::ffi::TransferBRep_BinderOfShape_inherited_StatusExec(self as *const Self)
             };
-            crate::check_exception();
-            crate::transfer::StatusExec::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::transfer::StatusExec::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:107 - `Transfer_Binder::SetStatusExec()`
     pub fn set_status_exec(&mut self, stat: crate::transfer::StatusExec) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_BinderOfShape_inherited_SetStatusExec(
                     self as *mut Self,
                     stat.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -580,8 +680,11 @@ impl BinderOfShape {
             let __result = unsafe {
                 crate::ffi::TransferBRep_BinderOfShape_inherited_Check(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -591,8 +694,11 @@ impl BinderOfShape {
             let __result = unsafe {
                 crate::ffi::TransferBRep_BinderOfShape_inherited_CCheck(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -605,8 +711,11 @@ impl BinderOfShape {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -619,8 +728,11 @@ impl BinderOfShape {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -630,11 +742,14 @@ impl BinderOfShape {
             let __result = unsafe {
                 crate::ffi::TransferBRep_BinderOfShape_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -645,20 +760,25 @@ impl BinderOfShape {
             let __result = unsafe {
                 crate::ffi::TransferBRep_BinderOfShape_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_BinderOfShape_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -670,16 +790,23 @@ impl BinderOfShape {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TransferBRep_BinderOfShape_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TransferBRep_BinderOfShape_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -695,48 +822,46 @@ unsafe impl crate::CppDeletable for HandleTransferBRepBinderOfShape {
 impl HandleTransferBRepBinderOfShape {
     /// Dereference this Handle to access the underlying TransferBRep_BinderOfShape
     pub fn get(&self) -> &crate::ffi::TransferBRep_BinderOfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTransferBRepBinderOfShape_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleTransferBRepBinderOfShape_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TransferBRep_BinderOfShape
     pub fn get_mut(&mut self) -> &mut crate::ffi::TransferBRep_BinderOfShape {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTransferBRepBinderOfShape_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTransferBRepBinderOfShape_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TransferBRep_BinderOfShape> to Handle<Transfer_Binder>
     pub fn to_handle_binder(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTransferBRepBinderOfShape_to_HandleTransferBinder(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTransferBRepBinderOfShape_to_HandleTransferBinder(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TransferBRep_BinderOfShape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTransferBRepBinderOfShape_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTransferBRepBinderOfShape_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<TransferBRep_BinderOfShape> to Handle<TransferBRep_ShapeBinder>
@@ -745,16 +870,18 @@ impl HandleTransferBRepBinderOfShape {
     pub fn downcast_to_shape_binder(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferBRepShapeBinder>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleTransferBRepBinderOfShape_downcast_to_HandleTransferBRepShapeBinder(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -777,8 +904,10 @@ impl HSequenceOfTransferResultInfo {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TransferBRep_HSequenceOfTransferResultInfo_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -790,8 +919,10 @@ impl HSequenceOfTransferResultInfo {
             let __result = unsafe {
                 crate::ffi::TransferBRep_HSequenceOfTransferResultInfo_ctor_sequenceoftransferresultinfo(theOther)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -801,8 +932,11 @@ impl HSequenceOfTransferResultInfo {
             let __result = unsafe {
                 crate::ffi::TransferBRep_HSequenceOfTransferResultInfo_sequence(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -812,10 +946,12 @@ impl HSequenceOfTransferResultInfo {
         theItem: &crate::ffi::HandleTransferBRepTransferResultInfo,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_HSequenceOfTransferResultInfo_append_handletransferbreptransferresultinfo(self as *mut Self, theItem)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -825,10 +961,12 @@ impl HSequenceOfTransferResultInfo {
         theSequence: &mut crate::ffi::TransferBRep_SequenceOfTransferResultInfo,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_HSequenceOfTransferResultInfo_append_sequenceoftransferresultinfo(self as *mut Self, theSequence)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -842,8 +980,11 @@ impl HSequenceOfTransferResultInfo {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -855,8 +996,11 @@ impl HSequenceOfTransferResultInfo {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -865,8 +1009,11 @@ impl HSequenceOfTransferResultInfo {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_HSequenceOfTransferResultInfo_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -876,48 +1023,51 @@ impl HSequenceOfTransferResultInfo {
             let __result = unsafe {
                 crate::ffi::TransferBRep_HSequenceOfTransferResultInfo_get_type_descriptor()
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_HSequenceOfTransferResultInfo_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TransferBRep_HSequenceOfTransferResultInfo_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_HSequenceOfTransferResultInfo_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TransferBRep_HSequenceOfTransferResultInfo_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBRepHSequenceOfTransferResultInfo> {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_HSequenceOfTransferResultInfo_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::TransferBRep_HSequenceOfTransferResultInfo_to_handle(obj.into_raw())
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -929,8 +1079,11 @@ impl HSequenceOfTransferResultInfo {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -943,8 +1096,11 @@ impl HSequenceOfTransferResultInfo {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -956,11 +1112,14 @@ impl HSequenceOfTransferResultInfo {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -973,20 +1132,25 @@ impl HSequenceOfTransferResultInfo {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_HSequenceOfTransferResultInfo_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -998,20 +1162,25 @@ impl HSequenceOfTransferResultInfo {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_HSequenceOfTransferResultInfo_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1027,37 +1196,37 @@ unsafe impl crate::CppDeletable for HandleTransferBRepHSequenceOfTransferResultI
 impl HandleTransferBRepHSequenceOfTransferResultInfo {
     /// Dereference this Handle to access the underlying TransferBRep_HSequenceOfTransferResultInfo
     pub fn get(&self) -> &crate::ffi::TransferBRep_HSequenceOfTransferResultInfo {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTransferBRepHSequenceOfTransferResultInfo_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleTransferBRepHSequenceOfTransferResultInfo_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TransferBRep_HSequenceOfTransferResultInfo
     pub fn get_mut(&mut self) -> &mut crate::ffi::TransferBRep_HSequenceOfTransferResultInfo {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTransferBRepHSequenceOfTransferResultInfo_get_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleTransferBRepHSequenceOfTransferResultInfo_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TransferBRep_HSequenceOfTransferResultInfo> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTransferBRepHSequenceOfTransferResultInfo_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTransferBRepHSequenceOfTransferResultInfo_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1087,8 +1256,10 @@ impl Reader {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TransferBRep_Reader_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1096,8 +1267,12 @@ impl Reader {
     /// Records the protocol to be used for read and transfer roots
     pub fn set_protocol(&mut self, protocol: &crate::ffi::HandleInterfaceProtocol) {
         {
-            unsafe { crate::ffi::TransferBRep_Reader_set_protocol(self as *mut Self, protocol) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TransferBRep_Reader_set_protocol(self as *mut Self, protocol)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1106,8 +1281,11 @@ impl Reader {
     pub fn protocol(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
         {
             let __result = unsafe { crate::ffi::TransferBRep_Reader_protocol(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1115,8 +1293,11 @@ impl Reader {
     /// Records the actor to be used for transfers
     pub fn set_actor(&mut self, actor: &crate::ffi::HandleTransferActorOfTransientProcess) {
         {
-            unsafe { crate::ffi::TransferBRep_Reader_set_actor(self as *mut Self, actor) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TransferBRep_Reader_set_actor(self as *mut Self, actor) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1125,8 +1306,11 @@ impl Reader {
     pub fn actor(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess> {
         {
             let __result = unsafe { crate::ffi::TransferBRep_Reader_actor(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1137,8 +1321,12 @@ impl Reader {
     /// > 0 read error, no Model could be created
     pub fn set_file_status(&mut self, status: i32) {
         {
-            unsafe { crate::ffi::TransferBRep_Reader_set_file_status(self as *mut Self, status) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TransferBRep_Reader_set_file_status(self as *mut Self, status)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1148,8 +1336,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_Reader_file_status(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1159,8 +1350,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_Reader_file_not_found(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1171,8 +1365,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_Reader_syntax_error(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1181,8 +1378,11 @@ impl Reader {
     /// Also clears the result and Done status
     pub fn set_model(&mut self, model: &crate::ffi::HandleInterfaceInterfaceModel) {
         {
-            unsafe { crate::ffi::TransferBRep_Reader_set_model(self as *mut Self, model) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TransferBRep_Reader_set_model(self as *mut Self, model) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1191,8 +1391,11 @@ impl Reader {
     pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
         {
             let __result = unsafe { crate::ffi::TransferBRep_Reader_model(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1200,8 +1403,10 @@ impl Reader {
     /// clears the result and Done status. But not the Model.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::TransferBRep_Reader_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TransferBRep_Reader_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1214,8 +1419,11 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::TransferBRep_Reader_check_status_model(self as *const Self, withprint)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1226,8 +1434,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_Reader_check_list_model(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1240,8 +1451,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_Reader_mode_new_transfer(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1253,8 +1467,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_Reader_begin_transfer(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1262,8 +1479,10 @@ impl Reader {
     /// Ebds a Transfer (one, roots or list) by recording its result
     pub fn end_transfer(&mut self) {
         {
-            unsafe { crate::ffi::TransferBRep_Reader_end_transfer(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::TransferBRep_Reader_end_transfer(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1274,8 +1493,11 @@ impl Reader {
     /// by caller. The provided default does nothing.
     pub fn prepare_transfer(&mut self) {
         {
-            unsafe { crate::ffi::TransferBRep_Reader_prepare_transfer(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TransferBRep_Reader_prepare_transfer(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1286,10 +1508,12 @@ impl Reader {
     /// Remark : former result is cleared
     pub fn transfer_roots(&mut self, theProgress: &crate::message::ProgressRange) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_Reader_transfer_roots(self as *mut Self, theProgress)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1302,8 +1526,11 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::TransferBRep_Reader_transfer(self as *mut Self, num, theProgress)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1316,10 +1543,12 @@ impl Reader {
         theProgress: &crate::message::ProgressRange,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_Reader_transfer_list(self as *mut Self, list, theProgress)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1328,8 +1557,11 @@ impl Reader {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::TransferBRep_Reader_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1339,8 +1571,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_Reader_nb_shapes(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1349,8 +1584,11 @@ impl Reader {
     pub fn shapes(&self) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
         {
             let __result = unsafe { crate::ffi::TransferBRep_Reader_shapes(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1360,8 +1598,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_Reader_shape(self as *const Self, num) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1377,8 +1618,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_Reader_shape_result(self as *const Self, ent) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1391,8 +1635,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_Reader_one_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1402,8 +1649,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_Reader_nb_transients(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1413,8 +1663,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_Reader_transients(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1425,8 +1678,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_Reader_transient(self as *const Self, num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1439,8 +1695,11 @@ impl Reader {
             let __result = unsafe {
                 crate::ffi::TransferBRep_Reader_check_status_result(self as *const Self, withprints)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1451,8 +1710,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_Reader_check_list_result(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1464,8 +1726,11 @@ impl Reader {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_Reader_transient_process(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -1491,8 +1756,10 @@ impl ShapeBinder {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TransferBRep_ShapeBinder_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1501,8 +1768,10 @@ impl ShapeBinder {
     pub fn new_shape(res: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TransferBRep_ShapeBinder_ctor_shape(res) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1512,8 +1781,11 @@ impl ShapeBinder {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeBinder_shape_type(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -1522,8 +1794,11 @@ impl ShapeBinder {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeBinder_vertex(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1532,8 +1807,11 @@ impl ShapeBinder {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeBinder_edge(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1542,8 +1820,11 @@ impl ShapeBinder {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeBinder_wire(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1552,8 +1833,11 @@ impl ShapeBinder {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeBinder_face(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1562,8 +1846,11 @@ impl ShapeBinder {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeBinder_shell(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1572,8 +1859,11 @@ impl ShapeBinder {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeBinder_solid(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1582,8 +1872,11 @@ impl ShapeBinder {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeBinder_comp_solid(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1592,8 +1885,11 @@ impl ShapeBinder {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeBinder_compound(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1602,8 +1898,11 @@ impl ShapeBinder {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeBinder_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1611,8 +1910,11 @@ impl ShapeBinder {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TransferBRep_ShapeBinder_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1620,91 +1922,90 @@ impl ShapeBinder {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TransferBRep_ShapeBinder_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to TransferBRep_BinderOfShape
     pub fn as_binder_of_shape(&self) -> &BinderOfShape {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_ShapeBinder_as_TransferBRep_BinderOfShape(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TransferBRep_ShapeBinder_as_TransferBRep_BinderOfShape(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to TransferBRep_BinderOfShape (mutable)
     pub fn as_binder_of_shape_mut(&mut self) -> &mut BinderOfShape {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_ShapeBinder_as_TransferBRep_BinderOfShape_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TransferBRep_ShapeBinder_as_TransferBRep_BinderOfShape_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Transfer_Binder
     pub fn as_transfer_binder(&self) -> &crate::transfer::Binder {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_ShapeBinder_as_Transfer_Binder(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TransferBRep_ShapeBinder_as_Transfer_Binder(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Transfer_Binder (mutable)
     pub fn as_transfer_binder_mut(&mut self) -> &mut crate::transfer::Binder {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_ShapeBinder_as_Transfer_Binder_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TransferBRep_ShapeBinder_as_Transfer_Binder_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_ShapeBinder_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TransferBRep_ShapeBinder_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_ShapeBinder_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TransferBRep_ShapeBinder_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBRepShapeBinder> {
-        {
-            let __result =
-                unsafe { crate::ffi::TransferBRep_ShapeBinder_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TransferBRep_ShapeBinder_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `TransferBRep_BinderOfShape.hxx`:55 - `TransferBRep_BinderOfShape::ResultType()`
@@ -1713,18 +2014,23 @@ impl ShapeBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeBinder_inherited_ResultType(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `TransferBRep_BinderOfShape.hxx`:61 - `TransferBRep_BinderOfShape::SetResult()`
     pub fn set_result(&mut self, res: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_ShapeBinder_inherited_SetResult(self as *mut Self, res)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1734,8 +2040,11 @@ impl ShapeBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeBinder_inherited_Result(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1745,18 +2054,23 @@ impl ShapeBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeBinder_inherited_CResult(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:65 - `Transfer_Binder::Merge()`
     pub fn merge(&mut self, other: &crate::ffi::HandleTransferBinder) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_ShapeBinder_inherited_Merge(self as *mut Self, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1766,18 +2080,23 @@ impl ShapeBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeBinder_inherited_IsMultiple(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:81 - `Transfer_Binder::AddResult()`
     pub fn add_result(&mut self, next: &crate::ffi::HandleTransferBinder) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_ShapeBinder_inherited_AddResult(self as *mut Self, next)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1787,8 +2106,11 @@ impl ShapeBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeBinder_inherited_NextResult(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1798,18 +2120,23 @@ impl ShapeBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeBinder_inherited_HasResult(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:95 - `Transfer_Binder::SetAlreadyUsed()`
     pub fn set_already_used(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_ShapeBinder_inherited_SetAlreadyUsed(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1819,8 +2146,11 @@ impl ShapeBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeBinder_inherited_Status(self as *const Self)
             };
-            crate::check_exception();
-            crate::transfer::StatusResult::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::transfer::StatusResult::try_from(__val).unwrap()
         }
     }
 
@@ -1830,21 +2160,26 @@ impl ShapeBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeBinder_inherited_StatusExec(self as *const Self)
             };
-            crate::check_exception();
-            crate::transfer::StatusExec::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::transfer::StatusExec::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:107 - `Transfer_Binder::SetStatusExec()`
     pub fn set_status_exec(&mut self, stat: crate::transfer::StatusExec) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_ShapeBinder_inherited_SetStatusExec(
                     self as *mut Self,
                     stat.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1854,8 +2189,11 @@ impl ShapeBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeBinder_inherited_Check(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1864,8 +2202,11 @@ impl ShapeBinder {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeBinder_inherited_CCheck(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1878,8 +2219,11 @@ impl ShapeBinder {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1889,8 +2233,11 @@ impl ShapeBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeBinder_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1899,11 +2246,14 @@ impl ShapeBinder {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeBinder_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1914,20 +2264,25 @@ impl ShapeBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeBinder_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_ShapeBinder_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1939,16 +2294,23 @@ impl ShapeBinder {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TransferBRep_ShapeBinder_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TransferBRep_ShapeBinder_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1964,63 +2326,61 @@ unsafe impl crate::CppDeletable for HandleTransferBRepShapeBinder {
 impl HandleTransferBRepShapeBinder {
     /// Dereference this Handle to access the underlying TransferBRep_ShapeBinder
     pub fn get(&self) -> &crate::ffi::TransferBRep_ShapeBinder {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTransferBRepShapeBinder_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleTransferBRepShapeBinder_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TransferBRep_ShapeBinder
     pub fn get_mut(&mut self) -> &mut crate::ffi::TransferBRep_ShapeBinder {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTransferBRepShapeBinder_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTransferBRepShapeBinder_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TransferBRep_ShapeBinder> to Handle<TransferBRep_BinderOfShape>
     pub fn to_handle_binder_of_shape(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBRepBinderOfShape> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTransferBRepShapeBinder_to_HandleTransferBRepBinderOfShape(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTransferBRepShapeBinder_to_HandleTransferBRepBinderOfShape(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TransferBRep_ShapeBinder> to Handle<Transfer_Binder>
     pub fn to_handle_binder(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTransferBRepShapeBinder_to_HandleTransferBinder(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTransferBRepShapeBinder_to_HandleTransferBinder(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TransferBRep_ShapeBinder> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTransferBRepShapeBinder_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTransferBRepShapeBinder_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2045,8 +2405,10 @@ impl ShapeInfo {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TransferBRep_ShapeInfo_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2056,8 +2418,11 @@ impl ShapeInfo {
     pub fn type_(ent: &crate::topo_ds::Shape) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
         {
             let __result = unsafe { crate::ffi::TransferBRep_ShapeInfo_type_(ent) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2067,8 +2432,11 @@ impl ShapeInfo {
     pub fn type_name(ent: &crate::topo_ds::Shape) -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TransferBRep_ShapeInfo_type_name(ent) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 }
@@ -2095,8 +2463,10 @@ impl ShapeListBinder {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TransferBRep_ShapeListBinder_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2108,8 +2478,10 @@ impl ShapeListBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_ctor_handletoptoolshsequenceofshape(list)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2119,8 +2491,11 @@ impl ShapeListBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_is_multiple(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2130,8 +2505,11 @@ impl ShapeListBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_result_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2141,8 +2519,11 @@ impl ShapeListBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_result_type_name(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2150,8 +2531,12 @@ impl ShapeListBinder {
     /// Adds an item to the result list
     pub fn add_result(&mut self, res: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::TransferBRep_ShapeListBinder_add_result(self as *mut Self, res) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TransferBRep_ShapeListBinder_add_result(self as *mut Self, res)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2160,8 +2545,11 @@ impl ShapeListBinder {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeListBinder_result(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2169,10 +2557,12 @@ impl ShapeListBinder {
     /// Changes an already defined sub-result
     pub fn set_result(&mut self, num: i32, res: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_set_result(self as *mut Self, num, res)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2181,8 +2571,11 @@ impl ShapeListBinder {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeListBinder_nb_shapes(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2191,8 +2584,11 @@ impl ShapeListBinder {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeListBinder_shape(self as *const Self, num) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2202,8 +2598,11 @@ impl ShapeListBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_shape_type(self as *const Self, num)
             };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -2213,8 +2612,11 @@ impl ShapeListBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_vertex(self as *const Self, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2223,8 +2625,11 @@ impl ShapeListBinder {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeListBinder_edge(self as *const Self, num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2233,8 +2638,11 @@ impl ShapeListBinder {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeListBinder_wire(self as *const Self, num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2243,8 +2651,11 @@ impl ShapeListBinder {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeListBinder_face(self as *const Self, num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2253,8 +2664,11 @@ impl ShapeListBinder {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeListBinder_shell(self as *const Self, num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2263,8 +2677,11 @@ impl ShapeListBinder {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeListBinder_solid(self as *const Self, num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2274,8 +2691,11 @@ impl ShapeListBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_comp_solid(self as *const Self, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2285,8 +2705,11 @@ impl ShapeListBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_compound(self as *const Self, num)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2296,8 +2719,11 @@ impl ShapeListBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2305,8 +2731,11 @@ impl ShapeListBinder {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TransferBRep_ShapeListBinder_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2315,76 +2744,79 @@ impl ShapeListBinder {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeListBinder_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Transfer_Binder
     pub fn as_transfer_binder(&self) -> &crate::transfer::Binder {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_ShapeListBinder_as_Transfer_Binder(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TransferBRep_ShapeListBinder_as_Transfer_Binder(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Transfer_Binder (mutable)
     pub fn as_transfer_binder_mut(&mut self) -> &mut crate::transfer::Binder {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_ShapeListBinder_as_Transfer_Binder_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TransferBRep_ShapeListBinder_as_Transfer_Binder_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_ShapeListBinder_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TransferBRep_ShapeListBinder_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_ShapeListBinder_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TransferBRep_ShapeListBinder_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBRepShapeListBinder> {
-        {
-            let __result =
-                unsafe { crate::ffi::TransferBRep_ShapeListBinder_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::TransferBRep_ShapeListBinder_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:65 - `Transfer_Binder::Merge()`
     pub fn merge(&mut self, other: &crate::ffi::HandleTransferBinder) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_inherited_Merge(self as *mut Self, other)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2394,8 +2826,11 @@ impl ShapeListBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_inherited_NextResult(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2405,18 +2840,23 @@ impl ShapeListBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_inherited_HasResult(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:95 - `Transfer_Binder::SetAlreadyUsed()`
     pub fn set_already_used(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_inherited_SetAlreadyUsed(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2426,8 +2866,11 @@ impl ShapeListBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_inherited_Status(self as *const Self)
             };
-            crate::check_exception();
-            crate::transfer::StatusResult::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::transfer::StatusResult::try_from(__val).unwrap()
         }
     }
 
@@ -2437,21 +2880,26 @@ impl ShapeListBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_inherited_StatusExec(self as *const Self)
             };
-            crate::check_exception();
-            crate::transfer::StatusExec::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::transfer::StatusExec::try_from(__val).unwrap()
         }
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:107 - `Transfer_Binder::SetStatusExec()`
     pub fn set_status_exec(&mut self, stat: crate::transfer::StatusExec) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_inherited_SetStatusExec(
                     self as *mut Self,
                     stat.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2461,8 +2909,11 @@ impl ShapeListBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_inherited_Check(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2472,8 +2923,11 @@ impl ShapeListBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_inherited_CCheck(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2486,8 +2940,11 @@ impl ShapeListBinder {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2500,8 +2957,11 @@ impl ShapeListBinder {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2511,11 +2971,14 @@ impl ShapeListBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2526,20 +2989,25 @@ impl ShapeListBinder {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2551,18 +3019,23 @@ impl ShapeListBinder {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_ShapeListBinder_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2578,48 +3051,48 @@ unsafe impl crate::CppDeletable for HandleTransferBRepShapeListBinder {
 impl HandleTransferBRepShapeListBinder {
     /// Dereference this Handle to access the underlying TransferBRep_ShapeListBinder
     pub fn get(&self) -> &crate::ffi::TransferBRep_ShapeListBinder {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTransferBRepShapeListBinder_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleTransferBRepShapeListBinder_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TransferBRep_ShapeListBinder
     pub fn get_mut(&mut self) -> &mut crate::ffi::TransferBRep_ShapeListBinder {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTransferBRepShapeListBinder_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTransferBRepShapeListBinder_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TransferBRep_ShapeListBinder> to Handle<Transfer_Binder>
     pub fn to_handle_binder(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTransferBRepShapeListBinder_to_HandleTransferBinder(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTransferBRepShapeListBinder_to_HandleTransferBinder(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TransferBRep_ShapeListBinder> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTransferBRepShapeListBinder_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTransferBRepShapeListBinder_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2644,8 +3117,10 @@ impl ShapeMapper {
     pub fn new_shape(akey: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TransferBRep_ShapeMapper_ctor_shape(akey) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2655,8 +3130,11 @@ impl ShapeMapper {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeMapper_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2668,8 +3146,11 @@ impl ShapeMapper {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeMapper_equates(self as *const Self, other) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2680,8 +3161,11 @@ impl ShapeMapper {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeMapper_value_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2693,8 +3177,11 @@ impl ShapeMapper {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeMapper_value_type_name(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2703,8 +3190,11 @@ impl ShapeMapper {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeMapper_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2712,8 +3202,11 @@ impl ShapeMapper {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TransferBRep_ShapeMapper_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2721,65 +3214,66 @@ impl ShapeMapper {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::TransferBRep_ShapeMapper_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Transfer_Finder
     pub fn as_transfer_finder(&self) -> &crate::transfer::Finder {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_ShapeMapper_as_Transfer_Finder(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::TransferBRep_ShapeMapper_as_Transfer_Finder(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Transfer_Finder (mutable)
     pub fn as_transfer_finder_mut(&mut self) -> &mut crate::transfer::Finder {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_ShapeMapper_as_Transfer_Finder_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TransferBRep_ShapeMapper_as_Transfer_Finder_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_ShapeMapper_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TransferBRep_ShapeMapper_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_ShapeMapper_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TransferBRep_ShapeMapper_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBRepShapeMapper> {
-        {
-            let __result =
-                unsafe { crate::ffi::TransferBRep_ShapeMapper_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::TransferBRep_ShapeMapper_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Transfer_Finder.hxx`:44 - `Transfer_Finder::GetHashCode()`
@@ -2788,8 +3282,11 @@ impl ShapeMapper {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeMapper_inherited_GetHashCode(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2799,21 +3296,26 @@ impl ShapeMapper {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeMapper_inherited_AttrList(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// Inherited: **Source:** `Transfer_Finder.hxx`:132 - `Transfer_Finder::SameAttributes()`
     pub fn same_attributes(&mut self, other: &crate::ffi::HandleTransferFinder) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_ShapeMapper_inherited_SameAttributes(
                     self as *mut Self,
                     other,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2826,8 +3328,11 @@ impl ShapeMapper {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2837,8 +3342,11 @@ impl ShapeMapper {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeMapper_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2847,11 +3355,14 @@ impl ShapeMapper {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_ShapeMapper_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2862,20 +3373,25 @@ impl ShapeMapper {
             let __result = unsafe {
                 crate::ffi::TransferBRep_ShapeMapper_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_ShapeMapper_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2887,16 +3403,23 @@ impl ShapeMapper {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::TransferBRep_ShapeMapper_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::TransferBRep_ShapeMapper_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2912,48 +3435,46 @@ unsafe impl crate::CppDeletable for HandleTransferBRepShapeMapper {
 impl HandleTransferBRepShapeMapper {
     /// Dereference this Handle to access the underlying TransferBRep_ShapeMapper
     pub fn get(&self) -> &crate::ffi::TransferBRep_ShapeMapper {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTransferBRepShapeMapper_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleTransferBRepShapeMapper_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TransferBRep_ShapeMapper
     pub fn get_mut(&mut self) -> &mut crate::ffi::TransferBRep_ShapeMapper {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleTransferBRepShapeMapper_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTransferBRepShapeMapper_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TransferBRep_ShapeMapper> to Handle<Transfer_Finder>
     pub fn to_handle_finder(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferFinder> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTransferBRepShapeMapper_to_HandleTransferFinder(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTransferBRepShapeMapper_to_HandleTransferFinder(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<TransferBRep_ShapeMapper> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTransferBRepShapeMapper_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTransferBRepShapeMapper_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2986,8 +3507,10 @@ impl TransferResultInfo {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::TransferBRep_TransferResultInfo_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2995,8 +3518,11 @@ impl TransferResultInfo {
     /// Resets all the fields.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::TransferBRep_TransferResultInfo_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::TransferBRep_TransferResultInfo_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3005,8 +3531,11 @@ impl TransferResultInfo {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_TransferResultInfo_result(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3016,8 +3545,11 @@ impl TransferResultInfo {
             let __result = unsafe {
                 crate::ffi::TransferBRep_TransferResultInfo_result_warning(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3027,8 +3559,11 @@ impl TransferResultInfo {
             let __result = unsafe {
                 crate::ffi::TransferBRep_TransferResultInfo_result_fail(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3038,8 +3573,11 @@ impl TransferResultInfo {
             let __result = unsafe {
                 crate::ffi::TransferBRep_TransferResultInfo_result_warning_fail(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3048,8 +3586,11 @@ impl TransferResultInfo {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_TransferResultInfo_no_result(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3059,8 +3600,11 @@ impl TransferResultInfo {
             let __result = unsafe {
                 crate::ffi::TransferBRep_TransferResultInfo_no_result_warning(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3070,8 +3614,11 @@ impl TransferResultInfo {
             let __result = unsafe {
                 crate::ffi::TransferBRep_TransferResultInfo_no_result_fail(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3083,8 +3630,11 @@ impl TransferResultInfo {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3094,8 +3644,11 @@ impl TransferResultInfo {
             let __result = unsafe {
                 crate::ffi::TransferBRep_TransferResultInfo_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3103,8 +3656,11 @@ impl TransferResultInfo {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::TransferBRep_TransferResultInfo_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3113,47 +3669,46 @@ impl TransferResultInfo {
         {
             let __result =
                 unsafe { crate::ffi::TransferBRep_TransferResultInfo_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_TransferResultInfo_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::TransferBRep_TransferResultInfo_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::TransferBRep_TransferResultInfo_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::TransferBRep_TransferResultInfo_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleTransferBRepTransferResultInfo> {
-        {
-            let __result =
-                unsafe { crate::ffi::TransferBRep_TransferResultInfo_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::TransferBRep_TransferResultInfo_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3165,8 +3720,11 @@ impl TransferResultInfo {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3179,8 +3737,11 @@ impl TransferResultInfo {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3190,11 +3751,14 @@ impl TransferResultInfo {
             let __result = unsafe {
                 crate::ffi::TransferBRep_TransferResultInfo_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3207,20 +3771,25 @@ impl TransferResultInfo {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_TransferResultInfo_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3232,18 +3801,23 @@ impl TransferResultInfo {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::TransferBRep_TransferResultInfo_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3259,37 +3833,35 @@ unsafe impl crate::CppDeletable for HandleTransferBRepTransferResultInfo {
 impl HandleTransferBRepTransferResultInfo {
     /// Dereference this Handle to access the underlying TransferBRep_TransferResultInfo
     pub fn get(&self) -> &crate::ffi::TransferBRep_TransferResultInfo {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTransferBRepTransferResultInfo_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleTransferBRepTransferResultInfo_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying TransferBRep_TransferResultInfo
     pub fn get_mut(&mut self) -> &mut crate::ffi::TransferBRep_TransferResultInfo {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTransferBRepTransferResultInfo_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleTransferBRepTransferResultInfo_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<TransferBRep_TransferResultInfo> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleTransferBRepTransferResultInfo_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleTransferBRepTransferResultInfo_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

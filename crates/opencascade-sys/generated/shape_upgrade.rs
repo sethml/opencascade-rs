@@ -16,8 +16,11 @@ pub fn c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handlet
         let __result = unsafe {
             crate::ffi::ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomhsequenceofboundedcurve(BS, seqBS)
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `ShapeUpgrade.hxx`:53 - `ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve`
@@ -35,8 +38,11 @@ pub fn c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handl
         let __result = unsafe {
             crate::ffi::ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handletcolgeom2dhsequenceofboundedcurve(BS, seqBS)
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 
@@ -62,8 +68,10 @@ impl ClosedEdgeDivide {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_ClosedEdgeDivide_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -73,8 +81,11 @@ impl ClosedEdgeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedEdgeDivide_compute(self as *mut Self, anEdge)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -84,8 +95,11 @@ impl ClosedEdgeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedEdgeDivide_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -93,8 +107,11 @@ impl ClosedEdgeDivide {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_ClosedEdgeDivide_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -103,112 +120,117 @@ impl ClosedEdgeDivide {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_ClosedEdgeDivide_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeUpgrade_EdgeDivide
     pub fn as_edge_divide(&self) -> &EdgeDivide {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_EdgeDivide(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_EdgeDivide(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_EdgeDivide (mutable)
     pub fn as_edge_divide_mut(&mut self) -> &mut EdgeDivide {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_EdgeDivide_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_EdgeDivide_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_Tool
     pub fn as_tool(&self) -> &Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_Tool(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_Tool(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_Tool (mutable)
     pub fn as_tool_mut(&mut self) -> &mut Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_Tool_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_Tool_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeClosedEdgeDivide> {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeUpgrade_ClosedEdgeDivide_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::ShapeUpgrade_ClosedEdgeDivide_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:39 - `ShapeUpgrade_EdgeDivide::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Clear(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:42 - `ShapeUpgrade_EdgeDivide::SetFace()`
     pub fn set_face(&mut self, F: &crate::topo_ds::Face) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetFace(self as *mut Self, F)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -218,8 +240,11 @@ impl ClosedEdgeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_HasCurve2d(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -229,8 +254,11 @@ impl ClosedEdgeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_HasCurve3d(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -240,8 +268,11 @@ impl ClosedEdgeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Knots2d(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -251,8 +282,11 @@ impl ClosedEdgeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Knots3d(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -262,13 +296,15 @@ impl ClosedEdgeDivide {
         splitCurve2dTool: &crate::ffi::HandleShapeUpgradeSplitCurve2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetSplitCurve2dTool(
                     self as *mut Self,
                     splitCurve2dTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -278,13 +314,15 @@ impl ClosedEdgeDivide {
         splitCurve3dTool: &crate::ffi::HandleShapeUpgradeSplitCurve3d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetSplitCurve3dTool(
                     self as *mut Self,
                     splitCurve3dTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -298,8 +336,11 @@ impl ClosedEdgeDivide {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -313,31 +354,38 @@ impl ClosedEdgeDivide {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Set(self as *mut Self, tool)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetContext(
                     self as *mut Self,
                     context,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -347,21 +395,26 @@ impl ClosedEdgeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Context(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetPrecision(
                     self as *mut Self,
                     preci,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -371,21 +424,26 @@ impl ClosedEdgeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Precision(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetMinTolerance(
                     self as *mut Self,
                     mintol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -397,21 +455,26 @@ impl ClosedEdgeDivide {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetMaxTolerance(
                     self as *mut Self,
                     maxtol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -423,8 +486,11 @@ impl ClosedEdgeDivide {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -437,8 +503,11 @@ impl ClosedEdgeDivide {
                     toler,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -451,8 +520,11 @@ impl ClosedEdgeDivide {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -465,8 +537,11 @@ impl ClosedEdgeDivide {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -476,11 +551,14 @@ impl ClosedEdgeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -491,20 +569,25 @@ impl ClosedEdgeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -516,18 +599,23 @@ impl ClosedEdgeDivide {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -543,64 +631,63 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeClosedEdgeDivide {
 impl HandleShapeUpgradeClosedEdgeDivide {
     /// Dereference this Handle to access the underlying ShapeUpgrade_ClosedEdgeDivide
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_ClosedEdgeDivide {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeClosedEdgeDivide_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeClosedEdgeDivide_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_ClosedEdgeDivide
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_ClosedEdgeDivide {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeClosedEdgeDivide_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeClosedEdgeDivide_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_ClosedEdgeDivide> to Handle<ShapeUpgrade_EdgeDivide>
     pub fn to_handle_edge_divide(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeEdgeDivide> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeClosedEdgeDivide_to_HandleShapeUpgradeEdgeDivide(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeClosedEdgeDivide_to_HandleShapeUpgradeEdgeDivide(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_ClosedEdgeDivide> to Handle<ShapeUpgrade_Tool>
     pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeClosedEdgeDivide_to_HandleShapeUpgradeTool(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeClosedEdgeDivide_to_HandleShapeUpgradeTool(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_ClosedEdgeDivide> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeClosedEdgeDivide_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeClosedEdgeDivide_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -626,8 +713,10 @@ impl ClosedFaceDivide {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_ClosedFaceDivide_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -636,8 +725,10 @@ impl ClosedFaceDivide {
     pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_ClosedFaceDivide_ctor_face(F) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -649,8 +740,11 @@ impl ClosedFaceDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedFaceDivide_split_surface(self as *mut Self, theArea)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -659,13 +753,15 @@ impl ClosedFaceDivide {
     /// The resulting faces will be num+1.
     pub fn set_nb_split_points(&mut self, num: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedFaceDivide_set_nb_split_points(
                     self as *mut Self,
                     num,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -676,8 +772,11 @@ impl ClosedFaceDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedFaceDivide_get_nb_split_points(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -687,8 +786,11 @@ impl ClosedFaceDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedFaceDivide_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -696,8 +798,11 @@ impl ClosedFaceDivide {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_ClosedFaceDivide_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -706,117 +811,120 @@ impl ClosedFaceDivide {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_ClosedFaceDivide_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeUpgrade_FaceDivide
     pub fn as_face_divide(&self) -> &FaceDivide {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_FaceDivide(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_FaceDivide(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_FaceDivide (mutable)
     pub fn as_face_divide_mut(&mut self) -> &mut FaceDivide {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_FaceDivide_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_FaceDivide_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_Tool
     pub fn as_tool(&self) -> &Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_Tool(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_Tool(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_Tool (mutable)
     pub fn as_tool_mut(&mut self) -> &mut Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_Tool_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_Tool_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeClosedFaceDivide> {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeUpgrade_ClosedFaceDivide_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::ShapeUpgrade_ClosedFaceDivide_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:63 - `ShapeUpgrade_FaceDivide::Init()`
     pub fn init(&mut self, F: &crate::topo_ds::Face) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Init(self as *mut Self, F)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:67 - `ShapeUpgrade_FaceDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetSurfaceSegmentMode(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -829,8 +937,11 @@ impl ClosedFaceDivide {
                     theArea,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -840,8 +951,11 @@ impl ClosedFaceDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SplitCurves(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -851,8 +965,11 @@ impl ClosedFaceDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Result(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -865,8 +982,11 @@ impl ClosedFaceDivide {
                     status.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -876,13 +996,15 @@ impl ClosedFaceDivide {
         splitSurfaceTool: &crate::ffi::HandleShapeUpgradeSplitSurface,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetSplitSurfaceTool(
                     self as *mut Self,
                     splitSurfaceTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -892,13 +1014,15 @@ impl ClosedFaceDivide {
         wireDivideTool: &crate::ffi::HandleShapeUpgradeWireDivide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetWireDivideTool(
                     self as *mut Self,
                     wireDivideTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -912,8 +1036,11 @@ impl ClosedFaceDivide {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -927,31 +1054,38 @@ impl ClosedFaceDivide {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Set(self as *mut Self, tool)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetContext(
                     self as *mut Self,
                     context,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -961,21 +1095,26 @@ impl ClosedFaceDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Context(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetPrecision(
                     self as *mut Self,
                     preci,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -985,21 +1124,26 @@ impl ClosedFaceDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Precision(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetMinTolerance(
                     self as *mut Self,
                     mintol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1011,21 +1155,26 @@ impl ClosedFaceDivide {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetMaxTolerance(
                     self as *mut Self,
                     maxtol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1037,8 +1186,11 @@ impl ClosedFaceDivide {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1051,8 +1203,11 @@ impl ClosedFaceDivide {
                     toler,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1065,8 +1220,11 @@ impl ClosedFaceDivide {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1079,8 +1237,11 @@ impl ClosedFaceDivide {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1090,11 +1251,14 @@ impl ClosedFaceDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1105,20 +1269,25 @@ impl ClosedFaceDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1130,18 +1299,23 @@ impl ClosedFaceDivide {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1157,64 +1331,63 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeClosedFaceDivide {
 impl HandleShapeUpgradeClosedFaceDivide {
     /// Dereference this Handle to access the underlying ShapeUpgrade_ClosedFaceDivide
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_ClosedFaceDivide {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeClosedFaceDivide_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeClosedFaceDivide_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_ClosedFaceDivide
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_ClosedFaceDivide {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeClosedFaceDivide_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeClosedFaceDivide_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_ClosedFaceDivide> to Handle<ShapeUpgrade_FaceDivide>
     pub fn to_handle_face_divide(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFaceDivide> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeClosedFaceDivide_to_HandleShapeUpgradeFaceDivide(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeClosedFaceDivide_to_HandleShapeUpgradeFaceDivide(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_ClosedFaceDivide> to Handle<ShapeUpgrade_Tool>
     pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeClosedFaceDivide_to_HandleShapeUpgradeTool(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeClosedFaceDivide_to_HandleShapeUpgradeTool(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_ClosedFaceDivide> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeClosedFaceDivide_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeClosedFaceDivide_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1238,8 +1411,10 @@ impl ConvertCurve2dToBezier {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1248,8 +1423,12 @@ impl ConvertCurve2dToBezier {
     /// splitting parameters on original curve.
     pub fn compute(&mut self) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_compute(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_compute(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1258,10 +1437,12 @@ impl ConvertCurve2dToBezier {
     /// the split values and splitting parameters.
     pub fn build(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_build(self as *mut Self, Segment)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1272,8 +1453,11 @@ impl ConvertCurve2dToBezier {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_split_params(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1283,8 +1467,11 @@ impl ConvertCurve2dToBezier {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1293,8 +1480,11 @@ impl ConvertCurve2dToBezier {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1303,109 +1493,113 @@ impl ConvertCurve2dToBezier {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve2d
     pub fn as_split_curve2d(&self) -> &SplitCurve2d {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_ShapeUpgrade_SplitCurve2d(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_ShapeUpgrade_SplitCurve2d(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve2d (mutable)
     pub fn as_split_curve2d_mut(&mut self) -> &mut SplitCurve2d {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_ShapeUpgrade_SplitCurve2d_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_ShapeUpgrade_SplitCurve2d_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve
     pub fn as_split_curve(&self) -> &SplitCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_ShapeUpgrade_SplitCurve(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_ShapeUpgrade_SplitCurve(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve (mutable)
     pub fn as_split_curve_mut(&mut self) -> &mut SplitCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_ShapeUpgrade_SplitCurve_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_ShapeUpgrade_SplitCurve_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier> {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:39 - `ShapeUpgrade_SplitCurve2d::Init()`
     pub fn init(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_Init(self as *mut Self, C)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1417,21 +1611,26 @@ impl ConvertCurve2dToBezier {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
     pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_SetSplitValues(
                     self as *mut Self,
                     SplitValues,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1443,21 +1642,26 @@ impl ConvertCurve2dToBezier {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:66 - `ShapeUpgrade_SplitCurve::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_Perform(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1470,8 +1674,11 @@ impl ConvertCurve2dToBezier {
                     status.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1484,8 +1691,11 @@ impl ConvertCurve2dToBezier {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1498,8 +1708,11 @@ impl ConvertCurve2dToBezier {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1509,11 +1722,14 @@ impl ConvertCurve2dToBezier {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1526,20 +1742,25 @@ impl ConvertCurve2dToBezier {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1551,20 +1772,25 @@ impl ConvertCurve2dToBezier {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1580,65 +1806,67 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeConvertCurve2dToBezier {
 impl HandleShapeUpgradeConvertCurve2dToBezier {
     /// Dereference this Handle to access the underlying ShapeUpgrade_ConvertCurve2dToBezier
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_ConvertCurve2dToBezier
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_ConvertCurve2dToBezier> to Handle<ShapeUpgrade_SplitCurve2d>
     pub fn to_handle_split_curve2d(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_to_HandleShapeUpgradeSplitCurve2d(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_to_HandleShapeUpgradeSplitCurve2d(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_ConvertCurve2dToBezier> to Handle<ShapeUpgrade_SplitCurve>
     pub fn to_handle_split_curve(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_to_HandleShapeUpgradeSplitCurve(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_to_HandleShapeUpgradeSplitCurve(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_ConvertCurve2dToBezier> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1662,8 +1890,10 @@ impl ConvertCurve3dToBezier {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1671,13 +1901,15 @@ impl ConvertCurve3dToBezier {
     /// Sets mode for conversion Geom_Line to bezier.
     pub fn set_line_mode(&mut self, mode: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_set_line_mode(
                     self as *mut Self,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1688,8 +1920,11 @@ impl ConvertCurve3dToBezier {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_get_line_mode(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1697,13 +1932,15 @@ impl ConvertCurve3dToBezier {
     /// Sets mode for conversion Geom_Circle to bezier.
     pub fn set_circle_mode(&mut self, mode: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_set_circle_mode(
                     self as *mut Self,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1714,8 +1951,11 @@ impl ConvertCurve3dToBezier {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_get_circle_mode(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1723,13 +1963,15 @@ impl ConvertCurve3dToBezier {
     /// Returns the Geom_Conic conversion mode.
     pub fn set_conic_mode(&mut self, mode: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_set_conic_mode(
                     self as *mut Self,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1740,8 +1982,11 @@ impl ConvertCurve3dToBezier {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_get_conic_mode(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1750,8 +1995,12 @@ impl ConvertCurve3dToBezier {
     /// splitting parameters on original curve.
     pub fn compute(&mut self) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_compute(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_compute(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1760,10 +2009,12 @@ impl ConvertCurve3dToBezier {
     /// the split values and splitting parameters.
     pub fn build(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_build(self as *mut Self, Segment)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1774,8 +2025,11 @@ impl ConvertCurve3dToBezier {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_split_params(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1785,8 +2039,11 @@ impl ConvertCurve3dToBezier {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1795,8 +2052,11 @@ impl ConvertCurve3dToBezier {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1805,109 +2065,113 @@ impl ConvertCurve3dToBezier {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve3d
     pub fn as_split_curve3d(&self) -> &SplitCurve3d {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_ShapeUpgrade_SplitCurve3d(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_ShapeUpgrade_SplitCurve3d(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve3d (mutable)
     pub fn as_split_curve3d_mut(&mut self) -> &mut SplitCurve3d {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_ShapeUpgrade_SplitCurve3d_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_ShapeUpgrade_SplitCurve3d_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve
     pub fn as_split_curve(&self) -> &SplitCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_ShapeUpgrade_SplitCurve(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_ShapeUpgrade_SplitCurve(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve (mutable)
     pub fn as_split_curve_mut(&mut self) -> &mut SplitCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_ShapeUpgrade_SplitCurve_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_ShapeUpgrade_SplitCurve_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier> {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:39 - `ShapeUpgrade_SplitCurve3d::Init()`
     pub fn init(&mut self, C: &crate::ffi::HandleGeomCurve) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_Init(self as *mut Self, C)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1919,21 +2183,26 @@ impl ConvertCurve3dToBezier {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
     pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_SetSplitValues(
                     self as *mut Self,
                     SplitValues,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1945,21 +2214,26 @@ impl ConvertCurve3dToBezier {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:66 - `ShapeUpgrade_SplitCurve::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_Perform(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1972,8 +2246,11 @@ impl ConvertCurve3dToBezier {
                     status.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1986,8 +2263,11 @@ impl ConvertCurve3dToBezier {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2000,8 +2280,11 @@ impl ConvertCurve3dToBezier {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2011,11 +2294,14 @@ impl ConvertCurve3dToBezier {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2028,20 +2314,25 @@ impl ConvertCurve3dToBezier {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2053,20 +2344,25 @@ impl ConvertCurve3dToBezier {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2082,65 +2378,67 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeConvertCurve3dToBezier {
 impl HandleShapeUpgradeConvertCurve3dToBezier {
     /// Dereference this Handle to access the underlying ShapeUpgrade_ConvertCurve3dToBezier
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_ConvertCurve3dToBezier
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_ConvertCurve3dToBezier> to Handle<ShapeUpgrade_SplitCurve3d>
     pub fn to_handle_split_curve3d(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3d> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_to_HandleShapeUpgradeSplitCurve3d(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_to_HandleShapeUpgradeSplitCurve3d(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_ConvertCurve3dToBezier> to Handle<ShapeUpgrade_SplitCurve>
     pub fn to_handle_split_curve(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_to_HandleShapeUpgradeSplitCurve(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_to_HandleShapeUpgradeSplitCurve(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_ConvertCurve3dToBezier> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2168,8 +2466,10 @@ impl ConvertSurfaceToBezierBasis {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2178,13 +2478,15 @@ impl ConvertSurfaceToBezierBasis {
     /// the split values and splitting parameters.
     pub fn build(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_build(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2193,13 +2495,15 @@ impl ConvertSurfaceToBezierBasis {
     /// stores this grid.
     pub fn compute(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_compute(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2211,8 +2515,11 @@ impl ConvertSurfaceToBezierBasis {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_segments(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2220,13 +2527,15 @@ impl ConvertSurfaceToBezierBasis {
     /// Sets mode for conversion Geom_Plane to Bezier
     pub fn set_plane_mode(&mut self, mode: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_set_plane_mode(
                     self as *mut Self,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2239,8 +2548,11 @@ impl ConvertSurfaceToBezierBasis {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2248,13 +2560,15 @@ impl ConvertSurfaceToBezierBasis {
     /// Sets mode for conversion Geom_SurfaceOfRevolution to Bezier
     pub fn set_revolution_mode(&mut self, mode: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_set_revolution_mode(
                     self as *mut Self,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2267,8 +2581,11 @@ impl ConvertSurfaceToBezierBasis {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2276,13 +2593,15 @@ impl ConvertSurfaceToBezierBasis {
     /// Sets mode for conversion Geom_SurfaceOfLinearExtrusion to Bezier
     pub fn set_extrusion_mode(&mut self, mode: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_set_extrusion_mode(
                     self as *mut Self,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2295,8 +2614,11 @@ impl ConvertSurfaceToBezierBasis {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2304,13 +2626,15 @@ impl ConvertSurfaceToBezierBasis {
     /// Sets mode for conversion Geom_BSplineSurface to Bezier
     pub fn set_b_spline_mode(&mut self, mode: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_set_b_spline_mode(
                     self as *mut Self,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2323,8 +2647,11 @@ impl ConvertSurfaceToBezierBasis {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2336,8 +2663,11 @@ impl ConvertSurfaceToBezierBasis {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2346,8 +2676,11 @@ impl ConvertSurfaceToBezierBasis {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2357,123 +2690,136 @@ impl ConvertSurfaceToBezierBasis {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_get_type_descriptor()
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitSurface
     pub fn as_split_surface(&self) -> &SplitSurface {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_as_ShapeUpgrade_SplitSurface(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_as_ShapeUpgrade_SplitSurface(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_SplitSurface (mutable)
     pub fn as_split_surface_mut(&mut self) -> &mut SplitSurface {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_as_ShapeUpgrade_SplitSurface_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_as_ShapeUpgrade_SplitSurface_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis> {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_to_handle(obj.into_raw())
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:47 - `ShapeUpgrade_SplitSurface::Init()`
     pub fn init(&mut self, S: &crate::ffi::HandleGeomSurface) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Init(
                     self as *mut Self,
                     S,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:58 - `ShapeUpgrade_SplitSurface::SetUSplitValues()`
     pub fn set_u_split_values(&mut self, UValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_SetUSplitValues(
                     self as *mut Self,
                     UValues,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:61 - `ShapeUpgrade_SplitSurface::SetVSplitValues()`
     pub fn set_v_split_values(&mut self, VValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_SetVSplitValues(
                     self as *mut Self,
                     VValues,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:80 - `ShapeUpgrade_SplitSurface::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Perform(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2485,8 +2831,11 @@ impl ConvertSurfaceToBezierBasis {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2498,8 +2847,11 @@ impl ConvertSurfaceToBezierBasis {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2512,8 +2864,11 @@ impl ConvertSurfaceToBezierBasis {
                     status.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2525,8 +2880,11 @@ impl ConvertSurfaceToBezierBasis {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2539,8 +2897,11 @@ impl ConvertSurfaceToBezierBasis {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2553,8 +2914,11 @@ impl ConvertSurfaceToBezierBasis {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2566,11 +2930,14 @@ impl ConvertSurfaceToBezierBasis {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2583,20 +2950,25 @@ impl ConvertSurfaceToBezierBasis {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2608,20 +2980,25 @@ impl ConvertSurfaceToBezierBasis {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2637,50 +3014,50 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeConvertSurfaceToBezierBasi
 impl HandleShapeUpgradeConvertSurfaceToBezierBasis {
     /// Dereference this Handle to access the underlying ShapeUpgrade_ConvertSurfaceToBezierBasis
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_ConvertSurfaceToBezierBasis
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_ConvertSurfaceToBezierBasis> to Handle<ShapeUpgrade_SplitSurface>
     pub fn to_handle_split_surface(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis_to_HandleShapeUpgradeSplitSurface(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis_to_HandleShapeUpgradeSplitSurface(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_ConvertSurfaceToBezierBasis> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2703,16 +3080,20 @@ impl EdgeDivide {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:39 - `ShapeUpgrade_EdgeDivide::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2720,8 +3101,11 @@ impl EdgeDivide {
     /// Sets supporting surface by face
     pub fn set_face(&mut self, F: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_set_face(self as *mut Self, F) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_set_face(self as *mut Self, F) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2730,8 +3114,11 @@ impl EdgeDivide {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_compute(self as *mut Self, E) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2740,8 +3127,11 @@ impl EdgeDivide {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_has_curve2d(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2750,8 +3140,11 @@ impl EdgeDivide {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_has_curve3d(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2760,8 +3153,11 @@ impl EdgeDivide {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_knots2d(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2770,8 +3166,11 @@ impl EdgeDivide {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_knots3d(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2782,13 +3181,15 @@ impl EdgeDivide {
         splitCurve2dTool: &crate::ffi::HandleShapeUpgradeSplitCurve2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_EdgeDivide_set_split_curve2d_tool(
                     self as *mut Self,
                     splitCurve2dTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2799,13 +3200,15 @@ impl EdgeDivide {
         splitCurve3dTool: &crate::ffi::HandleShapeUpgradeSplitCurve3d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_EdgeDivide_set_split_curve3d_tool(
                     self as *mut Self,
                     splitCurve3dTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2818,8 +3221,11 @@ impl EdgeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_EdgeDivide_get_split_curve2d_tool(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2832,8 +3238,11 @@ impl EdgeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_EdgeDivide_get_split_curve3d_tool(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2842,8 +3251,11 @@ impl EdgeDivide {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2851,8 +3263,11 @@ impl EdgeDivide {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2860,81 +3275,90 @@ impl EdgeDivide {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeUpgrade_Tool
     pub fn as_tool(&self) -> &Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_EdgeDivide_as_ShapeUpgrade_Tool(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_EdgeDivide_as_ShapeUpgrade_Tool(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_Tool (mutable)
     pub fn as_tool_mut(&mut self) -> &mut Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_EdgeDivide_as_ShapeUpgrade_Tool_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_EdgeDivide_as_ShapeUpgrade_Tool_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_EdgeDivide_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_EdgeDivide_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_EdgeDivide_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_EdgeDivide_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeEdgeDivide> {
-        {
-            let __result = unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_inherited_Set(self as *mut Self, tool) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_EdgeDivide_inherited_Set(self as *mut Self, tool)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_EdgeDivide_inherited_SetContext(self as *mut Self, context)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2944,18 +3368,23 @@ impl EdgeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_EdgeDivide_inherited_Context(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_EdgeDivide_inherited_SetPrecision(self as *mut Self, preci)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2965,21 +3394,26 @@ impl EdgeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_EdgeDivide_inherited_Precision(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_EdgeDivide_inherited_SetMinTolerance(
                     self as *mut Self,
                     mintol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2989,21 +3423,26 @@ impl EdgeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_EdgeDivide_inherited_MinTolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_EdgeDivide_inherited_SetMaxTolerance(
                     self as *mut Self,
                     maxtol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3013,8 +3452,11 @@ impl EdgeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_EdgeDivide_inherited_MaxTolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3027,8 +3469,11 @@ impl EdgeDivide {
                     toler,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3041,8 +3486,11 @@ impl EdgeDivide {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3052,8 +3500,11 @@ impl EdgeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_EdgeDivide_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3062,11 +3513,14 @@ impl EdgeDivide {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3077,18 +3531,23 @@ impl EdgeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_EdgeDivide_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_EdgeDivide_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3098,16 +3557,23 @@ impl EdgeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_EdgeDivide_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_EdgeDivide_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_EdgeDivide_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3123,48 +3589,43 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeEdgeDivide {
 impl HandleShapeUpgradeEdgeDivide {
     /// Dereference this Handle to access the underlying ShapeUpgrade_EdgeDivide
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_EdgeDivide {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeEdgeDivide_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleShapeUpgradeEdgeDivide_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_EdgeDivide
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_EdgeDivide {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeEdgeDivide_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeEdgeDivide_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_EdgeDivide> to Handle<ShapeUpgrade_Tool>
     pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeEdgeDivide_to_HandleShapeUpgradeTool(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeEdgeDivide_to_HandleShapeUpgradeTool(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_EdgeDivide> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeEdgeDivide_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeEdgeDivide_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<ShapeUpgrade_EdgeDivide> to Handle<ShapeUpgrade_ClosedEdgeDivide>
@@ -3173,16 +3634,18 @@ impl HandleShapeUpgradeEdgeDivide {
     pub fn downcast_to_closed_edge_divide(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeClosedEdgeDivide>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeEdgeDivide_downcast_to_HandleShapeUpgradeClosedEdgeDivide(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -3220,8 +3683,10 @@ impl FaceDivide {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_FaceDivide_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3230,8 +3695,10 @@ impl FaceDivide {
     pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_FaceDivide_ctor_face(F) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3239,8 +3706,10 @@ impl FaceDivide {
     /// Initialize by a Face.
     pub fn init(&mut self, F: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_FaceDivide_init(self as *mut Self, F) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeUpgrade_FaceDivide_init(self as *mut Self, F) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3249,13 +3718,15 @@ impl FaceDivide {
     /// wire UV bounds.
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivide_set_surface_segment_mode(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3271,8 +3742,11 @@ impl FaceDivide {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_FaceDivide_perform(self as *mut Self, theArea) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3287,8 +3761,11 @@ impl FaceDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivide_split_surface(self as *mut Self, theArea)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3299,8 +3776,11 @@ impl FaceDivide {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_FaceDivide_split_curves(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3310,8 +3790,11 @@ impl FaceDivide {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_FaceDivide_result(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3328,8 +3811,11 @@ impl FaceDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivide_status(self as *const Self, status.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3340,13 +3826,15 @@ impl FaceDivide {
         splitSurfaceTool: &crate::ffi::HandleShapeUpgradeSplitSurface,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivide_set_split_surface_tool(
                     self as *mut Self,
                     splitSurfaceTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3357,13 +3845,15 @@ impl FaceDivide {
         wireDivideTool: &crate::ffi::HandleShapeUpgradeWireDivide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivide_set_wire_divide_tool(
                     self as *mut Self,
                     wireDivideTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3377,8 +3867,11 @@ impl FaceDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivide_get_split_surface_tool(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3392,8 +3885,11 @@ impl FaceDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivide_get_wire_divide_tool(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3402,8 +3898,11 @@ impl FaceDivide {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_FaceDivide_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3411,8 +3910,11 @@ impl FaceDivide {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_FaceDivide_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3420,81 +3922,90 @@ impl FaceDivide {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_FaceDivide_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeUpgrade_Tool
     pub fn as_tool(&self) -> &Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_FaceDivide_as_ShapeUpgrade_Tool(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivide_as_ShapeUpgrade_Tool(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_Tool (mutable)
     pub fn as_tool_mut(&mut self) -> &mut Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_FaceDivide_as_ShapeUpgrade_Tool_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivide_as_ShapeUpgrade_Tool_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_FaceDivide_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivide_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_FaceDivide_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivide_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFaceDivide> {
-        {
-            let __result = unsafe { crate::ffi::ShapeUpgrade_FaceDivide_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeUpgrade_FaceDivide_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_FaceDivide_inherited_Set(self as *mut Self, tool) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_FaceDivide_inherited_Set(self as *mut Self, tool)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivide_inherited_SetContext(self as *mut Self, context)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3504,18 +4015,23 @@ impl FaceDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivide_inherited_Context(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivide_inherited_SetPrecision(self as *mut Self, preci)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3525,21 +4041,26 @@ impl FaceDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivide_inherited_Precision(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivide_inherited_SetMinTolerance(
                     self as *mut Self,
                     mintol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3549,21 +4070,26 @@ impl FaceDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivide_inherited_MinTolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivide_inherited_SetMaxTolerance(
                     self as *mut Self,
                     maxtol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3573,8 +4099,11 @@ impl FaceDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivide_inherited_MaxTolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3587,8 +4116,11 @@ impl FaceDivide {
                     toler,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3601,8 +4133,11 @@ impl FaceDivide {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3612,8 +4147,11 @@ impl FaceDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivide_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3622,11 +4160,14 @@ impl FaceDivide {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_FaceDivide_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3637,18 +4178,23 @@ impl FaceDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivide_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivide_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3658,16 +4204,23 @@ impl FaceDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivide_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_FaceDivide_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_FaceDivide_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3683,48 +4236,43 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeFaceDivide {
 impl HandleShapeUpgradeFaceDivide {
     /// Dereference this Handle to access the underlying ShapeUpgrade_FaceDivide
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_FaceDivide {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeFaceDivide_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleShapeUpgradeFaceDivide_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_FaceDivide
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_FaceDivide {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeFaceDivide_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeFaceDivide_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_FaceDivide> to Handle<ShapeUpgrade_Tool>
     pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeFaceDivide_to_HandleShapeUpgradeTool(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeFaceDivide_to_HandleShapeUpgradeTool(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_FaceDivide> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeFaceDivide_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeFaceDivide_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<ShapeUpgrade_FaceDivide> to Handle<ShapeUpgrade_ClosedFaceDivide>
@@ -3733,16 +4281,18 @@ impl HandleShapeUpgradeFaceDivide {
     pub fn downcast_to_closed_face_divide(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeClosedFaceDivide>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeFaceDivide_downcast_to_HandleShapeUpgradeClosedFaceDivide(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -3752,16 +4302,18 @@ impl HandleShapeUpgradeFaceDivide {
     pub fn downcast_to_face_divide_area(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFaceDivideArea>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeFaceDivide_downcast_to_HandleShapeUpgradeFaceDivideArea(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -3786,8 +4338,10 @@ impl FaceDivideArea {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_FaceDivideArea_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3795,8 +4349,10 @@ impl FaceDivideArea {
     pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_FaceDivideArea_ctor_face(F) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3808,8 +4364,11 @@ impl FaceDivideArea {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_perform(self as *mut Self, theArea)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3819,8 +4378,11 @@ impl FaceDivideArea {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_FaceDivideArea_max_area(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3830,8 +4392,11 @@ impl FaceDivideArea {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_FaceDivideArea_nb_parts(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3840,14 +4405,16 @@ impl FaceDivideArea {
     /// Only for "Splitting By Numbers" mode
     pub fn set_numbers_uv_splits(&mut self, theNbUsplits: i32, theNbVsplits: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_set_numbers_uv_splits(
                     self as *mut Self,
                     theNbUsplits,
                     theNbVsplits,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3858,13 +4425,15 @@ impl FaceDivideArea {
     /// the parts are similar to squares in 2D.
     pub fn set_splitting_by_number(&mut self, theIsSplittingByNumber: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_set_splitting_by_number(
                     self as *mut Self,
                     theIsSplittingByNumber,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3874,8 +4443,11 @@ impl FaceDivideArea {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3883,8 +4455,11 @@ impl FaceDivideArea {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_FaceDivideArea_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3892,111 +4467,117 @@ impl FaceDivideArea {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_FaceDivideArea_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeUpgrade_FaceDivide
     pub fn as_face_divide(&self) -> &FaceDivide {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_FaceDivide(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_FaceDivide(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_FaceDivide (mutable)
     pub fn as_face_divide_mut(&mut self) -> &mut FaceDivide {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_FaceDivide_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_FaceDivide_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_Tool
     pub fn as_tool(&self) -> &Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_Tool(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_Tool(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_Tool (mutable)
     pub fn as_tool_mut(&mut self) -> &mut Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_Tool_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_Tool_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_FaceDivideArea_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivideArea_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_FaceDivideArea_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_FaceDivideArea_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFaceDivideArea> {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeUpgrade_FaceDivideArea_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeUpgrade_FaceDivideArea_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:63 - `ShapeUpgrade_FaceDivide::Init()`
     pub fn init(&mut self, F: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Init(self as *mut Self, F) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Init(self as *mut Self, F)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:67 - `ShapeUpgrade_FaceDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetSurfaceSegmentMode(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4009,8 +4590,11 @@ impl FaceDivideArea {
                     theArea,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4020,8 +4604,11 @@ impl FaceDivideArea {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SplitCurves(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4031,8 +4618,11 @@ impl FaceDivideArea {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Result(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4045,8 +4635,11 @@ impl FaceDivideArea {
                     status.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4056,13 +4649,15 @@ impl FaceDivideArea {
         splitSurfaceTool: &crate::ffi::HandleShapeUpgradeSplitSurface,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetSplitSurfaceTool(
                     self as *mut Self,
                     splitSurfaceTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4072,13 +4667,15 @@ impl FaceDivideArea {
         wireDivideTool: &crate::ffi::HandleShapeUpgradeWireDivide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetWireDivideTool(
                     self as *mut Self,
                     wireDivideTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4092,8 +4689,11 @@ impl FaceDivideArea {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4107,31 +4707,38 @@ impl FaceDivideArea {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Set(self as *mut Self, tool)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetContext(
                     self as *mut Self,
                     context,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4141,21 +4748,26 @@ impl FaceDivideArea {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Context(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetPrecision(
                     self as *mut Self,
                     preci,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4165,21 +4777,26 @@ impl FaceDivideArea {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Precision(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetMinTolerance(
                     self as *mut Self,
                     mintol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4189,21 +4806,26 @@ impl FaceDivideArea {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_MinTolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetMaxTolerance(
                     self as *mut Self,
                     maxtol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4213,8 +4835,11 @@ impl FaceDivideArea {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_MaxTolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4227,8 +4852,11 @@ impl FaceDivideArea {
                     toler,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4241,8 +4869,11 @@ impl FaceDivideArea {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4255,8 +4886,11 @@ impl FaceDivideArea {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4266,11 +4900,14 @@ impl FaceDivideArea {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4281,20 +4918,25 @@ impl FaceDivideArea {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4306,18 +4948,23 @@ impl FaceDivideArea {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4333,63 +4980,63 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeFaceDivideArea {
 impl HandleShapeUpgradeFaceDivideArea {
     /// Dereference this Handle to access the underlying ShapeUpgrade_FaceDivideArea
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_FaceDivideArea {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeFaceDivideArea_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeFaceDivideArea_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_FaceDivideArea
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_FaceDivideArea {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeFaceDivideArea_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeFaceDivideArea_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_FaceDivideArea> to Handle<ShapeUpgrade_FaceDivide>
     pub fn to_handle_face_divide(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFaceDivide> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeFaceDivideArea_to_HandleShapeUpgradeFaceDivide(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeFaceDivideArea_to_HandleShapeUpgradeFaceDivide(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_FaceDivideArea> to Handle<ShapeUpgrade_Tool>
     pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeFaceDivideArea_to_HandleShapeUpgradeTool(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeFaceDivideArea_to_HandleShapeUpgradeTool(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_FaceDivideArea> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeFaceDivideArea_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeFaceDivideArea_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4411,8 +5058,10 @@ impl FixSmallBezierCurves {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_FixSmallBezierCurves_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4436,8 +5085,11 @@ impl FixSmallBezierCurves {
                     Last,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4447,8 +5099,11 @@ impl FixSmallBezierCurves {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallBezierCurves_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4456,8 +5111,11 @@ impl FixSmallBezierCurves {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_FixSmallBezierCurves_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4466,112 +5124,113 @@ impl FixSmallBezierCurves {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_FixSmallBezierCurves_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeUpgrade_FixSmallCurves
     pub fn as_fix_small_curves(&self) -> &FixSmallCurves {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_FixSmallCurves(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_FixSmallCurves(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_FixSmallCurves (mutable)
     pub fn as_fix_small_curves_mut(&mut self) -> &mut FixSmallCurves {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_FixSmallCurves_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_FixSmallCurves_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_Tool
     pub fn as_tool(&self) -> &Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_Tool(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_Tool(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_Tool (mutable)
     pub fn as_tool_mut(&mut self) -> &mut Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_Tool_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_Tool_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFixSmallBezierCurves> {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeUpgrade_FixSmallBezierCurves_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::ShapeUpgrade_FixSmallBezierCurves_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:46 - `ShapeUpgrade_FixSmallCurves::Init()`
     pub fn init(&mut self, theEdge: &crate::topo_ds::Edge, theFace: &crate::topo_ds::Face) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Init(
                     self as *mut Self,
                     theEdge,
                     theFace,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4581,13 +5240,15 @@ impl FixSmallBezierCurves {
         splitCurve3dTool: &crate::ffi::HandleShapeUpgradeSplitCurve3d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_SetSplitCurve3dTool(
                     self as *mut Self,
                     splitCurve3dTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4597,13 +5258,15 @@ impl FixSmallBezierCurves {
         splitCurve2dTool: &crate::ffi::HandleShapeUpgradeSplitCurve2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_SetSplitCurve2dTool(
                     self as *mut Self,
                     splitCurve2dTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4616,31 +5279,38 @@ impl FixSmallBezierCurves {
                     status.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Set(self as *mut Self, tool)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_SetContext(
                     self as *mut Self,
                     context,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4650,21 +5320,26 @@ impl FixSmallBezierCurves {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Context(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_SetPrecision(
                     self as *mut Self,
                     preci,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4676,21 +5351,26 @@ impl FixSmallBezierCurves {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_SetMinTolerance(
                     self as *mut Self,
                     mintol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4702,21 +5382,26 @@ impl FixSmallBezierCurves {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_SetMaxTolerance(
                     self as *mut Self,
                     maxtol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4728,8 +5413,11 @@ impl FixSmallBezierCurves {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4742,8 +5430,11 @@ impl FixSmallBezierCurves {
                     toler,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4756,8 +5447,11 @@ impl FixSmallBezierCurves {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4770,8 +5464,11 @@ impl FixSmallBezierCurves {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4781,11 +5478,14 @@ impl FixSmallBezierCurves {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4798,20 +5498,25 @@ impl FixSmallBezierCurves {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4823,18 +5528,23 @@ impl FixSmallBezierCurves {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4850,63 +5560,64 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeFixSmallBezierCurves {
 impl HandleShapeUpgradeFixSmallBezierCurves {
     /// Dereference this Handle to access the underlying ShapeUpgrade_FixSmallBezierCurves
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_FixSmallBezierCurves {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_FixSmallBezierCurves
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_FixSmallBezierCurves {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_FixSmallBezierCurves> to Handle<ShapeUpgrade_FixSmallCurves>
     pub fn to_handle_fix_small_curves(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFixSmallCurves> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_to_HandleShapeUpgradeFixSmallCurves(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_to_HandleShapeUpgradeFixSmallCurves(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_FixSmallBezierCurves> to Handle<ShapeUpgrade_Tool>
     pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_to_HandleShapeUpgradeTool(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_to_HandleShapeUpgradeTool(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_FixSmallBezierCurves> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4928,18 +5639,22 @@ impl FixSmallCurves {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_FixSmallCurves_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:46 - `ShapeUpgrade_FixSmallCurves::Init()`
     pub fn init(&mut self, theEdge: &crate::topo_ds::Edge, theFace: &crate::topo_ds::Face) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallCurves_init(self as *mut Self, theEdge, theFace)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4963,8 +5678,11 @@ impl FixSmallCurves {
                     Last,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4975,13 +5693,15 @@ impl FixSmallCurves {
         splitCurve3dTool: &crate::ffi::HandleShapeUpgradeSplitCurve3d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallCurves_set_split_curve3d_tool(
                     self as *mut Self,
                     splitCurve3dTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4992,13 +5712,15 @@ impl FixSmallCurves {
         splitCurve2dTool: &crate::ffi::HandleShapeUpgradeSplitCurve2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallCurves_set_split_curve2d_tool(
                     self as *mut Self,
                     splitCurve2dTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5013,8 +5735,11 @@ impl FixSmallCurves {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallCurves_status(self as *const Self, status.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5024,8 +5749,11 @@ impl FixSmallCurves {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallCurves_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5033,8 +5761,11 @@ impl FixSmallCurves {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_FixSmallCurves_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5042,87 +5773,93 @@ impl FixSmallCurves {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_FixSmallCurves_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeUpgrade_Tool
     pub fn as_tool(&self) -> &Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_FixSmallCurves_as_ShapeUpgrade_Tool(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallCurves_as_ShapeUpgrade_Tool(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_Tool (mutable)
     pub fn as_tool_mut(&mut self) -> &mut Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_FixSmallCurves_as_ShapeUpgrade_Tool_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallCurves_as_ShapeUpgrade_Tool_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_FixSmallCurves_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallCurves_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_FixSmallCurves_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_FixSmallCurves_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFixSmallCurves> {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeUpgrade_FixSmallCurves_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeUpgrade_FixSmallCurves_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_Set(self as *mut Self, tool)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_SetContext(
                     self as *mut Self,
                     context,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5132,21 +5869,26 @@ impl FixSmallCurves {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_Context(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_SetPrecision(
                     self as *mut Self,
                     preci,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5156,21 +5898,26 @@ impl FixSmallCurves {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_Precision(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_SetMinTolerance(
                     self as *mut Self,
                     mintol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5180,21 +5927,26 @@ impl FixSmallCurves {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_MinTolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_SetMaxTolerance(
                     self as *mut Self,
                     maxtol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5204,8 +5956,11 @@ impl FixSmallCurves {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_MaxTolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5218,8 +5973,11 @@ impl FixSmallCurves {
                     toler,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5232,8 +5990,11 @@ impl FixSmallCurves {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5246,8 +6007,11 @@ impl FixSmallCurves {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5257,11 +6021,14 @@ impl FixSmallCurves {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5272,20 +6039,25 @@ impl FixSmallCurves {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5297,18 +6069,23 @@ impl FixSmallCurves {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5324,48 +6101,48 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeFixSmallCurves {
 impl HandleShapeUpgradeFixSmallCurves {
     /// Dereference this Handle to access the underlying ShapeUpgrade_FixSmallCurves
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_FixSmallCurves {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeFixSmallCurves_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeFixSmallCurves_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_FixSmallCurves
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_FixSmallCurves {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeFixSmallCurves_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeFixSmallCurves_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_FixSmallCurves> to Handle<ShapeUpgrade_Tool>
     pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeFixSmallCurves_to_HandleShapeUpgradeTool(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeFixSmallCurves_to_HandleShapeUpgradeTool(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_FixSmallCurves> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeFixSmallCurves_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeFixSmallCurves_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<ShapeUpgrade_FixSmallCurves> to Handle<ShapeUpgrade_FixSmallBezierCurves>
@@ -5374,14 +6151,16 @@ impl HandleShapeUpgradeFixSmallCurves {
     pub fn downcast_to_fix_small_bezier_curves(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFixSmallBezierCurves>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeFixSmallCurves_downcast_to_HandleShapeUpgradeFixSmallBezierCurves(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -5406,8 +6185,10 @@ impl RemoveInternalWires {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_RemoveInternalWires_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5416,8 +6197,10 @@ impl RemoveInternalWires {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_RemoveInternalWires_ctor_shape(theShape) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5425,10 +6208,12 @@ impl RemoveInternalWires {
     /// Initialize by a Shape.
     pub fn init(&mut self, theShape: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveInternalWires_init(self as *mut Self, theShape)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5438,8 +6223,11 @@ impl RemoveInternalWires {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_RemoveInternalWires_perform(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5459,8 +6247,11 @@ impl RemoveInternalWires {
                     theSeqShapes,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5471,8 +6262,11 @@ impl RemoveInternalWires {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveInternalWires_get_result(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5482,8 +6276,11 @@ impl RemoveInternalWires {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_RemoveInternalWires_min_area(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5496,8 +6293,11 @@ impl RemoveInternalWires {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveInternalWires_remove_face_mode(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5508,8 +6308,11 @@ impl RemoveInternalWires {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveInternalWires_removed_faces(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5520,8 +6323,11 @@ impl RemoveInternalWires {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveInternalWires_removed_wires(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5540,8 +6346,11 @@ impl RemoveInternalWires {
                     theStatus.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5551,8 +6360,11 @@ impl RemoveInternalWires {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveInternalWires_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5560,8 +6372,11 @@ impl RemoveInternalWires {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_RemoveInternalWires_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5570,95 +6385,96 @@ impl RemoveInternalWires {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_RemoveInternalWires_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeUpgrade_Tool
     pub fn as_tool(&self) -> &Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_RemoveInternalWires_as_ShapeUpgrade_Tool(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_RemoveInternalWires_as_ShapeUpgrade_Tool(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_Tool (mutable)
     pub fn as_tool_mut(&mut self) -> &mut Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_RemoveInternalWires_as_ShapeUpgrade_Tool_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_RemoveInternalWires_as_ShapeUpgrade_Tool_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_RemoveInternalWires_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_RemoveInternalWires_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_RemoveInternalWires_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_RemoveInternalWires_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeRemoveInternalWires> {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeUpgrade_RemoveInternalWires_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::ShapeUpgrade_RemoveInternalWires_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_Set(self as *mut Self, tool)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_SetContext(
                     self as *mut Self,
                     context,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5668,21 +6484,26 @@ impl RemoveInternalWires {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_Context(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_SetPrecision(
                     self as *mut Self,
                     preci,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5694,21 +6515,26 @@ impl RemoveInternalWires {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_SetMinTolerance(
                     self as *mut Self,
                     mintol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5720,21 +6546,26 @@ impl RemoveInternalWires {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_SetMaxTolerance(
                     self as *mut Self,
                     maxtol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5746,8 +6577,11 @@ impl RemoveInternalWires {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5760,8 +6594,11 @@ impl RemoveInternalWires {
                     toler,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5774,8 +6611,11 @@ impl RemoveInternalWires {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5788,8 +6628,11 @@ impl RemoveInternalWires {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5799,11 +6642,14 @@ impl RemoveInternalWires {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5816,20 +6662,25 @@ impl RemoveInternalWires {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5841,18 +6692,23 @@ impl RemoveInternalWires {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5868,50 +6724,48 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeRemoveInternalWires {
 impl HandleShapeUpgradeRemoveInternalWires {
     /// Dereference this Handle to access the underlying ShapeUpgrade_RemoveInternalWires
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_RemoveInternalWires {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeRemoveInternalWires_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeRemoveInternalWires_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_RemoveInternalWires
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_RemoveInternalWires {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeRemoveInternalWires_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeRemoveInternalWires_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_RemoveInternalWires> to Handle<ShapeUpgrade_Tool>
     pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeRemoveInternalWires_to_HandleShapeUpgradeTool(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeRemoveInternalWires_to_HandleShapeUpgradeTool(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_RemoveInternalWires> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeRemoveInternalWires_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeRemoveInternalWires_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5935,8 +6789,10 @@ impl RemoveLocations {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_RemoveLocations_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5947,8 +6803,11 @@ impl RemoveLocations {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveLocations_remove(self as *mut Self, theShape)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5958,8 +6817,11 @@ impl RemoveLocations {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_RemoveLocations_get_result(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5969,13 +6831,15 @@ impl RemoveLocations {
     /// and if specified shape is TopAbs_COMPOUND for sub-shapes of first level.
     pub fn set_remove_level(&mut self, theLevel: crate::top_abs::ShapeEnum) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveLocations_set_remove_level(
                     self as *mut Self,
                     theLevel.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5988,8 +6852,11 @@ impl RemoveLocations {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveLocations_remove_level(self as *const Self)
             };
-            crate::check_exception();
-            crate::top_abs::ShapeEnum::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::ShapeEnum::try_from(__val).unwrap()
         }
     }
 
@@ -6006,8 +6873,11 @@ impl RemoveLocations {
                     theInitShape,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6020,8 +6890,11 @@ impl RemoveLocations {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6031,8 +6904,11 @@ impl RemoveLocations {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveLocations_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6040,8 +6916,11 @@ impl RemoveLocations {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_RemoveLocations_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6050,45 +6929,46 @@ impl RemoveLocations {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_RemoveLocations_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_RemoveLocations_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_RemoveLocations_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_RemoveLocations_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_RemoveLocations_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeRemoveLocations> {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeUpgrade_RemoveLocations_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::ShapeUpgrade_RemoveLocations_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -6100,8 +6980,11 @@ impl RemoveLocations {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6114,8 +6997,11 @@ impl RemoveLocations {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6125,11 +7011,14 @@ impl RemoveLocations {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveLocations_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6140,20 +7029,25 @@ impl RemoveLocations {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveLocations_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveLocations_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6165,18 +7059,23 @@ impl RemoveLocations {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_RemoveLocations_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6192,35 +7091,35 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeRemoveLocations {
 impl HandleShapeUpgradeRemoveLocations {
     /// Dereference this Handle to access the underlying ShapeUpgrade_RemoveLocations
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_RemoveLocations {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeRemoveLocations_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeRemoveLocations_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_RemoveLocations
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_RemoveLocations {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeRemoveLocations_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeRemoveLocations_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_RemoveLocations> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeRemoveLocations_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeRemoveLocations_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6248,8 +7147,10 @@ impl ShapeConvertToBezier {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_ShapeConvertToBezier_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6258,8 +7159,10 @@ impl ShapeConvertToBezier {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_ShapeConvertToBezier_ctor_shape(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6267,13 +7170,15 @@ impl ShapeConvertToBezier {
     /// Sets mode for conversion 2D curves to bezier.
     pub fn set2d_conversion(&mut self, mode: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_set2d_conversion(
                     self as *mut Self,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6284,8 +7189,11 @@ impl ShapeConvertToBezier {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_get2d_conversion(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6293,13 +7201,15 @@ impl ShapeConvertToBezier {
     /// Sets mode for conversion 3d curves to bezier.
     pub fn set3d_conversion(&mut self, mode: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_set3d_conversion(
                     self as *mut Self,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6310,8 +7220,11 @@ impl ShapeConvertToBezier {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_get3d_conversion(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6320,13 +7233,15 @@ impl ShapeConvertToBezier {
     /// bezier basis.
     pub fn set_surface_conversion(&mut self, mode: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_set_surface_conversion(
                     self as *mut Self,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6339,8 +7254,11 @@ impl ShapeConvertToBezier {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6348,13 +7266,15 @@ impl ShapeConvertToBezier {
     /// Sets mode for conversion Geom_Line to bezier.
     pub fn set3d_line_conversion(&mut self, mode: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_set3d_line_conversion(
                     self as *mut Self,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6367,8 +7287,11 @@ impl ShapeConvertToBezier {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6376,13 +7299,15 @@ impl ShapeConvertToBezier {
     /// Sets mode for conversion Geom_Circle to bezier.
     pub fn set3d_circle_conversion(&mut self, mode: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_set3d_circle_conversion(
                     self as *mut Self,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6395,8 +7320,11 @@ impl ShapeConvertToBezier {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6404,13 +7332,15 @@ impl ShapeConvertToBezier {
     /// Sets mode for conversion Geom_Conic to bezier.
     pub fn set3d_conic_conversion(&mut self, mode: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_set3d_conic_conversion(
                     self as *mut Self,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6423,8 +7353,11 @@ impl ShapeConvertToBezier {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6432,13 +7365,15 @@ impl ShapeConvertToBezier {
     /// Sets mode for conversion Geom_Plane to Bezier
     pub fn set_plane_mode(&mut self, mode: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_set_plane_mode(
                     self as *mut Self,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6449,8 +7384,11 @@ impl ShapeConvertToBezier {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_get_plane_mode(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6458,13 +7396,15 @@ impl ShapeConvertToBezier {
     /// Sets mode for conversion Geom_SurfaceOfRevolution to Bezier
     pub fn set_revolution_mode(&mut self, mode: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_set_revolution_mode(
                     self as *mut Self,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6477,8 +7417,11 @@ impl ShapeConvertToBezier {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6486,13 +7429,15 @@ impl ShapeConvertToBezier {
     /// Sets mode for conversion Geom_SurfaceOfLinearExtrusion to Bezier
     pub fn set_extrusion_mode(&mut self, mode: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_set_extrusion_mode(
                     self as *mut Self,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6505,8 +7450,11 @@ impl ShapeConvertToBezier {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6514,13 +7462,15 @@ impl ShapeConvertToBezier {
     /// Sets mode for conversion Geom_BSplineSurface to Bezier
     pub fn set_b_spline_mode(&mut self, mode: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_set_b_spline_mode(
                     self as *mut Self,
                     mode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6531,8 +7481,11 @@ impl ShapeConvertToBezier {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_get_b_spline_mode(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6543,96 +7496,109 @@ impl ShapeConvertToBezier {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_perform(self as *mut Self, newContext)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide
     pub fn as_shape_divide(&self) -> &ShapeDivide {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ShapeConvertToBezier_as_ShapeUpgrade_ShapeDivide(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_as_ShapeUpgrade_ShapeDivide(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide (mutable)
     pub fn as_shape_divide_mut(&mut self) -> &mut ShapeDivide {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ShapeConvertToBezier_as_ShapeUpgrade_ShapeDivide_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_as_ShapeUpgrade_ShapeDivide_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_Init(self as *mut Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:55 - `ShapeUpgrade_ShapeDivide::SetPrecision()`
     pub fn set_precision(&mut self, Prec: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetPrecision(
                     self as *mut Self,
                     Prec,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:58 - `ShapeUpgrade_ShapeDivide::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetMaxTolerance(
                     self as *mut Self,
                     maxtol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:61 - `ShapeUpgrade_ShapeDivide::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetMinTolerance(
                     self as *mut Self,
                     mintol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:65 - `ShapeUpgrade_ShapeDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetSurfaceSegmentMode(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6642,8 +7608,11 @@ impl ShapeConvertToBezier {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_Result(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6655,21 +7624,26 @@ impl ShapeConvertToBezier {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetContext(
                     self as *mut Self,
                     context,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6679,13 +7653,15 @@ impl ShapeConvertToBezier {
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetMsgRegistrator(
                     self as *mut Self,
                     msgreg,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6699,8 +7675,11 @@ impl ShapeConvertToBezier {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6712,7 +7691,7 @@ impl ShapeConvertToBezier {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SendMsg(
                     self as *const Self,
                     shape,
@@ -6720,7 +7699,9 @@ impl ShapeConvertToBezier {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6733,8 +7714,11 @@ impl ShapeConvertToBezier {
                     status.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6744,26 +7728,30 @@ impl ShapeConvertToBezier {
         splitFaceTool: &crate::ffi::HandleShapeUpgradeFaceDivide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetSplitFaceTool(
                     self as *mut Self,
                     splitFaceTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:112 - `ShapeUpgrade_ShapeDivide::SetEdgeMode()`
     pub fn set_edge_mode(&mut self, aEdgeMode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetEdgeMode(
                     self as *mut Self,
                     aEdgeMode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6787,8 +7775,10 @@ impl ShapeDivide {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_ShapeDivide_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6797,8 +7787,10 @@ impl ShapeDivide {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_ShapeDivide_ctor_shape(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6806,8 +7798,10 @@ impl ShapeDivide {
     /// Initialize by a Shape.
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_ShapeDivide_init(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeUpgrade_ShapeDivide_init(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6815,8 +7809,12 @@ impl ShapeDivide {
     /// Defines the spatial precision used for splitting
     pub fn set_precision(&mut self, Prec: f64) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_ShapeDivide_set_precision(self as *mut Self, Prec) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_ShapeDivide_set_precision(self as *mut Self, Prec)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6824,10 +7822,12 @@ impl ShapeDivide {
     /// Sets maximal allowed tolerance
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivide_set_max_tolerance(self as *mut Self, maxtol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6835,10 +7835,12 @@ impl ShapeDivide {
     /// Sets minimal allowed tolerance
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivide_set_min_tolerance(self as *mut Self, mintol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6847,13 +7849,15 @@ impl ShapeDivide {
     /// wire UV bounds.
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivide_set_surface_segment_mode(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6867,8 +7871,11 @@ impl ShapeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivide_perform(self as *mut Self, newContext)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6878,8 +7885,11 @@ impl ShapeDivide {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_ShapeDivide_result(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6890,8 +7900,11 @@ impl ShapeDivide {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_ShapeDivide_get_context(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6900,8 +7913,12 @@ impl ShapeDivide {
     /// during next call(s) to Perform(shape,Standard_False)
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_ShapeDivide_set_context(self as *mut Self, context) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_ShapeDivide_set_context(self as *mut Self, context)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6912,10 +7929,12 @@ impl ShapeDivide {
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivide_set_msg_registrator(self as *mut Self, msgreg)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6928,8 +7947,11 @@ impl ShapeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivide_msg_registrator(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6943,7 +7965,7 @@ impl ShapeDivide {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivide_send_msg(
                     self as *const Self,
                     shape,
@@ -6951,7 +7973,9 @@ impl ShapeDivide {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6966,8 +7990,11 @@ impl ShapeDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivide_status(self as *const Self, status.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6978,13 +8005,15 @@ impl ShapeDivide {
         splitFaceTool: &crate::ffi::HandleShapeUpgradeFaceDivide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivide_set_split_face_tool(
                     self as *mut Self,
                     splitFaceTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6995,10 +8024,12 @@ impl ShapeDivide {
     /// 2 -  all curve 3d.
     pub fn set_edge_mode(&mut self, aEdgeMode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivide_set_edge_mode(self as *mut Self, aEdgeMode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7026,8 +8057,10 @@ impl ShapeDivideAngle {
     pub fn new_real(MaxAngle: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_ShapeDivideAngle_ctor_real(MaxAngle) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7037,8 +8070,10 @@ impl ShapeDivideAngle {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_ShapeDivideAngle_ctor_real_shape(MaxAngle, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7046,10 +8081,12 @@ impl ShapeDivideAngle {
     /// Resets tool for splitting face with given angle
     pub fn init_tool(&mut self, MaxAngle: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideAngle_init_tool(self as *mut Self, MaxAngle)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7057,10 +8094,12 @@ impl ShapeDivideAngle {
     /// Set maximal angle (calls InitTool)
     pub fn set_max_angle(&mut self, MaxAngle: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideAngle_set_max_angle(self as *mut Self, MaxAngle)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7070,96 +8109,109 @@ impl ShapeDivideAngle {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_ShapeDivideAngle_max_angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide
     pub fn as_shape_divide(&self) -> &ShapeDivide {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ShapeDivideAngle_as_ShapeUpgrade_ShapeDivide(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideAngle_as_ShapeUpgrade_ShapeDivide(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide (mutable)
     pub fn as_shape_divide_mut(&mut self) -> &mut ShapeDivide {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ShapeDivideAngle_as_ShapeUpgrade_ShapeDivide_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideAngle_as_ShapeUpgrade_ShapeDivide_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_Init(self as *mut Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:55 - `ShapeUpgrade_ShapeDivide::SetPrecision()`
     pub fn set_precision(&mut self, Prec: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetPrecision(
                     self as *mut Self,
                     Prec,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:58 - `ShapeUpgrade_ShapeDivide::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetMaxTolerance(
                     self as *mut Self,
                     maxtol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:61 - `ShapeUpgrade_ShapeDivide::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetMinTolerance(
                     self as *mut Self,
                     mintol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:65 - `ShapeUpgrade_ShapeDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetSurfaceSegmentMode(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7172,8 +8224,11 @@ impl ShapeDivideAngle {
                     newContext,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7183,8 +8238,11 @@ impl ShapeDivideAngle {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_Result(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7194,21 +8252,26 @@ impl ShapeDivideAngle {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_GetContext(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetContext(
                     self as *mut Self,
                     context,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7218,13 +8281,15 @@ impl ShapeDivideAngle {
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetMsgRegistrator(
                     self as *mut Self,
                     msgreg,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7238,8 +8303,11 @@ impl ShapeDivideAngle {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7251,7 +8319,7 @@ impl ShapeDivideAngle {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SendMsg(
                     self as *const Self,
                     shape,
@@ -7259,7 +8327,9 @@ impl ShapeDivideAngle {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7272,8 +8342,11 @@ impl ShapeDivideAngle {
                     status.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7283,26 +8356,30 @@ impl ShapeDivideAngle {
         splitFaceTool: &crate::ffi::HandleShapeUpgradeFaceDivide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetSplitFaceTool(
                     self as *mut Self,
                     splitFaceTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:112 - `ShapeUpgrade_ShapeDivide::SetEdgeMode()`
     pub fn set_edge_mode(&mut self, aEdgeMode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetEdgeMode(
                     self as *mut Self,
                     aEdgeMode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7326,8 +8403,10 @@ impl ShapeDivideArea {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_ShapeDivideArea_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7336,8 +8415,10 @@ impl ShapeDivideArea {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_ShapeDivideArea_ctor_shape(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7347,8 +8428,11 @@ impl ShapeDivideArea {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_ShapeDivideArea_max_area(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7359,8 +8443,11 @@ impl ShapeDivideArea {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_ShapeDivideArea_nb_parts(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7369,14 +8456,16 @@ impl ShapeDivideArea {
     /// Only for "Splitting By Numbers" mode
     pub fn set_numbers_uv_splits(&mut self, theNbUsplits: i32, theNbVsplits: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideArea_set_numbers_uv_splits(
                     self as *mut Self,
                     theNbUsplits,
                     theNbVsplits,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7387,101 +8476,113 @@ impl ShapeDivideArea {
     /// the parts are similar to squares in 2D.
     pub fn set_splitting_by_number(&mut self, theIsSplittingByNumber: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideArea_set_splitting_by_number(
                     self as *mut Self,
                     theIsSplittingByNumber,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide
     pub fn as_shape_divide(&self) -> &ShapeDivide {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ShapeDivideArea_as_ShapeUpgrade_ShapeDivide(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideArea_as_ShapeUpgrade_ShapeDivide(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide (mutable)
     pub fn as_shape_divide_mut(&mut self) -> &mut ShapeDivide {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ShapeDivideArea_as_ShapeUpgrade_ShapeDivide_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideArea_as_ShapeUpgrade_ShapeDivide_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_Init(self as *mut Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:55 - `ShapeUpgrade_ShapeDivide::SetPrecision()`
     pub fn set_precision(&mut self, Prec: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetPrecision(
                     self as *mut Self,
                     Prec,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:58 - `ShapeUpgrade_ShapeDivide::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetMaxTolerance(
                     self as *mut Self,
                     maxtol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:61 - `ShapeUpgrade_ShapeDivide::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetMinTolerance(
                     self as *mut Self,
                     mintol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:65 - `ShapeUpgrade_ShapeDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetSurfaceSegmentMode(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7494,8 +8595,11 @@ impl ShapeDivideArea {
                     newContext,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7505,8 +8609,11 @@ impl ShapeDivideArea {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_Result(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7516,21 +8623,26 @@ impl ShapeDivideArea {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_GetContext(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetContext(
                     self as *mut Self,
                     context,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7540,13 +8652,15 @@ impl ShapeDivideArea {
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetMsgRegistrator(
                     self as *mut Self,
                     msgreg,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7560,8 +8674,11 @@ impl ShapeDivideArea {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7573,7 +8690,7 @@ impl ShapeDivideArea {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SendMsg(
                     self as *const Self,
                     shape,
@@ -7581,7 +8698,9 @@ impl ShapeDivideArea {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7594,8 +8713,11 @@ impl ShapeDivideArea {
                     status.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7605,26 +8727,30 @@ impl ShapeDivideArea {
         splitFaceTool: &crate::ffi::HandleShapeUpgradeFaceDivide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetSplitFaceTool(
                     self as *mut Self,
                     splitFaceTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:112 - `ShapeUpgrade_ShapeDivide::SetEdgeMode()`
     pub fn set_edge_mode(&mut self, aEdgeMode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetEdgeMode(
                     self as *mut Self,
                     aEdgeMode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7650,8 +8776,10 @@ impl ShapeDivideClosed {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_ShapeDivideClosed_ctor_shape(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7660,101 +8788,113 @@ impl ShapeDivideClosed {
     /// The number of resulting faces will be num+1.
     pub fn set_nb_split_points(&mut self, num: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosed_set_nb_split_points(
                     self as *mut Self,
                     num,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide
     pub fn as_shape_divide(&self) -> &ShapeDivide {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ShapeDivideClosed_as_ShapeUpgrade_ShapeDivide(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideClosed_as_ShapeUpgrade_ShapeDivide(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide (mutable)
     pub fn as_shape_divide_mut(&mut self) -> &mut ShapeDivide {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ShapeDivideClosed_as_ShapeUpgrade_ShapeDivide_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideClosed_as_ShapeUpgrade_ShapeDivide_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_Init(self as *mut Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:55 - `ShapeUpgrade_ShapeDivide::SetPrecision()`
     pub fn set_precision(&mut self, Prec: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetPrecision(
                     self as *mut Self,
                     Prec,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:58 - `ShapeUpgrade_ShapeDivide::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetMaxTolerance(
                     self as *mut Self,
                     maxtol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:61 - `ShapeUpgrade_ShapeDivide::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetMinTolerance(
                     self as *mut Self,
                     mintol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:65 - `ShapeUpgrade_ShapeDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetSurfaceSegmentMode(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7767,8 +8907,11 @@ impl ShapeDivideClosed {
                     newContext,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7778,8 +8921,11 @@ impl ShapeDivideClosed {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_Result(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7789,21 +8935,26 @@ impl ShapeDivideClosed {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_GetContext(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetContext(
                     self as *mut Self,
                     context,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7813,13 +8964,15 @@ impl ShapeDivideClosed {
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetMsgRegistrator(
                     self as *mut Self,
                     msgreg,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7833,8 +8986,11 @@ impl ShapeDivideClosed {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7846,7 +9002,7 @@ impl ShapeDivideClosed {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SendMsg(
                     self as *const Self,
                     shape,
@@ -7854,7 +9010,9 @@ impl ShapeDivideClosed {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7867,8 +9025,11 @@ impl ShapeDivideClosed {
                     status.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7878,26 +9039,30 @@ impl ShapeDivideClosed {
         splitFaceTool: &crate::ffi::HandleShapeUpgradeFaceDivide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetSplitFaceTool(
                     self as *mut Self,
                     splitFaceTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:112 - `ShapeUpgrade_ShapeDivide::SetEdgeMode()`
     pub fn set_edge_mode(&mut self, aEdgeMode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetEdgeMode(
                     self as *mut Self,
                     aEdgeMode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -7921,8 +9086,10 @@ impl ShapeDivideClosedEdges {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_ctor_shape(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7931,101 +9098,113 @@ impl ShapeDivideClosedEdges {
     /// The number of resulting faces will be num+1.
     pub fn set_nb_split_points(&mut self, num: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_set_nb_split_points(
                     self as *mut Self,
                     num,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide
     pub fn as_shape_divide(&self) -> &ShapeDivide {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_as_ShapeUpgrade_ShapeDivide(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_as_ShapeUpgrade_ShapeDivide(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide (mutable)
     pub fn as_shape_divide_mut(&mut self) -> &mut ShapeDivide {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_as_ShapeUpgrade_ShapeDivide_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_as_ShapeUpgrade_ShapeDivide_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_Init(self as *mut Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:55 - `ShapeUpgrade_ShapeDivide::SetPrecision()`
     pub fn set_precision(&mut self, Prec: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetPrecision(
                     self as *mut Self,
                     Prec,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:58 - `ShapeUpgrade_ShapeDivide::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetMaxTolerance(
                     self as *mut Self,
                     maxtol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:61 - `ShapeUpgrade_ShapeDivide::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetMinTolerance(
                     self as *mut Self,
                     mintol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:65 - `ShapeUpgrade_ShapeDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetSurfaceSegmentMode(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8038,8 +9217,11 @@ impl ShapeDivideClosedEdges {
                     newContext,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8051,8 +9233,11 @@ impl ShapeDivideClosedEdges {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8064,21 +9249,26 @@ impl ShapeDivideClosedEdges {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetContext(
                     self as *mut Self,
                     context,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8088,13 +9278,15 @@ impl ShapeDivideClosedEdges {
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetMsgRegistrator(
                     self as *mut Self,
                     msgreg,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8108,8 +9300,11 @@ impl ShapeDivideClosedEdges {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8121,7 +9316,7 @@ impl ShapeDivideClosedEdges {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SendMsg(
                     self as *const Self,
                     shape,
@@ -8129,7 +9324,9 @@ impl ShapeDivideClosedEdges {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8142,8 +9339,11 @@ impl ShapeDivideClosedEdges {
                     status.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8153,26 +9353,30 @@ impl ShapeDivideClosedEdges {
         splitFaceTool: &crate::ffi::HandleShapeUpgradeFaceDivide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetSplitFaceTool(
                     self as *mut Self,
                     splitFaceTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:112 - `ShapeUpgrade_ShapeDivide::SetEdgeMode()`
     pub fn set_edge_mode(&mut self, aEdgeMode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetEdgeMode(
                     self as *mut Self,
                     aEdgeMode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8196,8 +9400,10 @@ impl ShapeDivideContinuity {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_ShapeDivideContinuity_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8206,8 +9412,10 @@ impl ShapeDivideContinuity {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_ShapeDivideContinuity_ctor_shape(S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8215,10 +9423,12 @@ impl ShapeDivideContinuity {
     /// Sets tolerance.
     pub fn set_tolerance(&mut self, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideContinuity_set_tolerance(self as *mut Self, Tol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8226,13 +9436,15 @@ impl ShapeDivideContinuity {
     /// Sets tolerance.
     pub fn set_tolerance2d(&mut self, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideContinuity_set_tolerance2d(
                     self as *mut Self,
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8245,13 +9457,15 @@ impl ShapeDivideContinuity {
     /// and G2 are not authorized.
     pub fn set_boundary_criterion(&mut self, Criterion: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideContinuity_set_boundary_criterion(
                     self as *mut Self,
                     Criterion.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8264,13 +9478,15 @@ impl ShapeDivideContinuity {
     /// and G2 are not authorized.
     pub fn set_p_curve_criterion(&mut self, Criterion: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideContinuity_set_p_curve_criterion(
                     self as *mut Self,
                     Criterion.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8283,101 +9499,113 @@ impl ShapeDivideContinuity {
     /// and G2 are not authorized.
     pub fn set_surface_criterion(&mut self, Criterion: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideContinuity_set_surface_criterion(
                     self as *mut Self,
                     Criterion.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide
     pub fn as_shape_divide(&self) -> &ShapeDivide {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ShapeDivideContinuity_as_ShapeUpgrade_ShapeDivide(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_as_ShapeUpgrade_ShapeDivide(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide (mutable)
     pub fn as_shape_divide_mut(&mut self) -> &mut ShapeDivide {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_ShapeDivideContinuity_as_ShapeUpgrade_ShapeDivide_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_as_ShapeUpgrade_ShapeDivide_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_Init(self as *mut Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:55 - `ShapeUpgrade_ShapeDivide::SetPrecision()`
     pub fn set_precision(&mut self, Prec: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetPrecision(
                     self as *mut Self,
                     Prec,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:58 - `ShapeUpgrade_ShapeDivide::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetMaxTolerance(
                     self as *mut Self,
                     maxtol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:61 - `ShapeUpgrade_ShapeDivide::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetMinTolerance(
                     self as *mut Self,
                     mintol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:65 - `ShapeUpgrade_ShapeDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetSurfaceSegmentMode(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8390,8 +9618,11 @@ impl ShapeDivideContinuity {
                     newContext,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8401,8 +9632,11 @@ impl ShapeDivideContinuity {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_Result(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8414,21 +9648,26 @@ impl ShapeDivideContinuity {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetContext(
                     self as *mut Self,
                     context,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8438,13 +9677,15 @@ impl ShapeDivideContinuity {
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetMsgRegistrator(
                     self as *mut Self,
                     msgreg,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8458,8 +9699,11 @@ impl ShapeDivideContinuity {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8471,7 +9715,7 @@ impl ShapeDivideContinuity {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SendMsg(
                     self as *const Self,
                     shape,
@@ -8479,7 +9723,9 @@ impl ShapeDivideContinuity {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8492,8 +9738,11 @@ impl ShapeDivideContinuity {
                     status.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8503,26 +9752,30 @@ impl ShapeDivideContinuity {
         splitFaceTool: &crate::ffi::HandleShapeUpgradeFaceDivide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetSplitFaceTool(
                     self as *mut Self,
                     splitFaceTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:112 - `ShapeUpgrade_ShapeDivide::SetEdgeMode()`
     pub fn set_edge_mode(&mut self, aEdgeMode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetEdgeMode(
                     self as *mut Self,
                     aEdgeMode,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8549,8 +9802,10 @@ impl ShellSewing {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_ShellSewing_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8572,8 +9827,11 @@ impl ShellSewing {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_ShellSewing_apply_sewing(self as *mut Self, shape, tol)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -8598,8 +9856,10 @@ impl SplitCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_SplitCurve_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8607,8 +9867,11 @@ impl SplitCurve {
     /// Initializes with curve first and last parameters.
     pub fn init(&mut self, First: f64, Last: f64) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_SplitCurve_init(self as *mut Self, First, Last) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeUpgrade_SplitCurve_init(self as *mut Self, First, Last) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8616,10 +9879,12 @@ impl SplitCurve {
     /// Sets the parameters where splitting has to be done.
     pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve_set_split_values(self as *mut Self, SplitValues)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8630,8 +9895,11 @@ impl SplitCurve {
     /// Curves all based on the same complete curve.
     pub fn build(&mut self, Segment: bool) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_SplitCurve_build(self as *mut Self, Segment) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeUpgrade_SplitCurve_build(self as *mut Self, Segment) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8643,8 +9911,11 @@ impl SplitCurve {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_SplitCurve_split_values(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8652,8 +9923,10 @@ impl SplitCurve {
     /// Calculates points for correction/splitting of the curve
     pub fn compute(&mut self) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_SplitCurve_compute(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeUpgrade_SplitCurve_compute(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8662,8 +9935,11 @@ impl SplitCurve {
     /// First defines splitting values by method Compute(), then calls method Build().
     pub fn perform(&mut self, Segment: bool) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_SplitCurve_perform(self as *mut Self, Segment) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeUpgrade_SplitCurve_perform(self as *mut Self, Segment) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8678,8 +9954,11 @@ impl SplitCurve {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve_status(self as *const Self, status.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8688,8 +9967,11 @@ impl SplitCurve {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_SplitCurve_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8697,8 +9979,11 @@ impl SplitCurve {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_SplitCurve_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8706,42 +9991,45 @@ impl SplitCurve {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_SplitCurve_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
-        {
-            let __result = unsafe { crate::ffi::ShapeUpgrade_SplitCurve_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeUpgrade_SplitCurve_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -8753,8 +10041,11 @@ impl SplitCurve {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8764,8 +10055,11 @@ impl SplitCurve {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8774,11 +10068,14 @@ impl SplitCurve {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_SplitCurve_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -8789,18 +10086,23 @@ impl SplitCurve {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8810,16 +10112,23 @@ impl SplitCurve {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_SplitCurve_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_SplitCurve_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8835,35 +10144,32 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitCurve {
 impl HandleShapeUpgradeSplitCurve {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeSplitCurve_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleShapeUpgradeSplitCurve_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitCurve
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitCurve {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeSplitCurve_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeSplitCurve_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitCurve_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<ShapeUpgrade_SplitCurve> to Handle<ShapeUpgrade_ConvertCurve2dToBezier>
@@ -8872,14 +10178,16 @@ impl HandleShapeUpgradeSplitCurve {
     pub fn downcast_to_convert_curve2d_to_bezier(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeConvertCurve2dToBezier(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8889,14 +10197,16 @@ impl HandleShapeUpgradeSplitCurve {
     pub fn downcast_to_convert_curve3d_to_bezier(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeConvertCurve3dToBezier(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8906,16 +10216,18 @@ impl HandleShapeUpgradeSplitCurve {
     pub fn downcast_to_split_curve2d(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2d>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeSplitCurve2d(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8925,14 +10237,16 @@ impl HandleShapeUpgradeSplitCurve {
     pub fn downcast_to_split_curve2d_continuity(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeSplitCurve2dContinuity(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8942,16 +10256,18 @@ impl HandleShapeUpgradeSplitCurve {
     pub fn downcast_to_split_curve3d(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3d>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeSplitCurve3d(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -8961,14 +10277,16 @@ impl HandleShapeUpgradeSplitCurve {
     pub fn downcast_to_split_curve3d_continuity(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeSplitCurve3dContinuity(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -8993,8 +10311,10 @@ impl SplitCurve2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_SplitCurve2d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9002,10 +10322,12 @@ impl SplitCurve2d {
     /// Initializes with pcurve with its first and last parameters.
     pub fn init_handlegeom2dcurve(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve2d_init_handlegeom2dcurve(self as *mut Self, C)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9018,7 +10340,7 @@ impl SplitCurve2d {
         Last: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve2d_init_handlegeom2dcurve_real2(
                     self as *mut Self,
                     C,
@@ -9026,7 +10348,9 @@ impl SplitCurve2d {
                     Last,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9037,8 +10361,11 @@ impl SplitCurve2d {
     /// Curves all based on the same complete curve.
     pub fn build(&mut self, Segment: bool) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_SplitCurve2d_build(self as *mut Self, Segment) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeUpgrade_SplitCurve2d_build(self as *mut Self, Segment) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9047,8 +10374,11 @@ impl SplitCurve2d {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_SplitCurve2d_get_curves(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9057,8 +10387,11 @@ impl SplitCurve2d {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_SplitCurve2d_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9066,8 +10399,11 @@ impl SplitCurve2d {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_SplitCurve2d_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -9075,81 +10411,81 @@ impl SplitCurve2d {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_SplitCurve2d_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve
     pub fn as_split_curve(&self) -> &SplitCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve2d_as_ShapeUpgrade_SplitCurve(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2d_as_ShapeUpgrade_SplitCurve(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve (mutable)
     pub fn as_split_curve_mut(&mut self) -> &mut SplitCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve2d_as_ShapeUpgrade_SplitCurve_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2d_as_ShapeUpgrade_SplitCurve_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve2d_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2d_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve2d_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2d_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2d> {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeUpgrade_SplitCurve2d_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeUpgrade_SplitCurve2d_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
     pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_SetSplitValues(
                     self as *mut Self,
                     SplitValues,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9159,26 +10495,35 @@ impl SplitCurve2d {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_SplitValues(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:62 - `ShapeUpgrade_SplitCurve::Compute()`
     pub fn compute(&mut self) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_Compute(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_Compute(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:66 - `ShapeUpgrade_SplitCurve::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_Perform(self as *mut Self, Segment)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9191,8 +10536,11 @@ impl SplitCurve2d {
                     status.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9205,8 +10553,11 @@ impl SplitCurve2d {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9216,8 +10567,11 @@ impl SplitCurve2d {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9227,11 +10581,14 @@ impl SplitCurve2d {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -9242,20 +10599,25 @@ impl SplitCurve2d {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9267,16 +10629,23 @@ impl SplitCurve2d {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -9292,50 +10661,50 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitCurve2d {
 impl HandleShapeUpgradeSplitCurve2d {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve2d
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitCurve2d {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeSplitCurve2d_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeSplitCurve2d_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitCurve2d
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitCurve2d {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeSplitCurve2d_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeSplitCurve2d_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve2d> to Handle<ShapeUpgrade_SplitCurve>
     pub fn to_handle_split_curve(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitCurve2d_to_HandleShapeUpgradeSplitCurve(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve2d_to_HandleShapeUpgradeSplitCurve(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve2d> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitCurve2d_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve2d_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<ShapeUpgrade_SplitCurve2d> to Handle<ShapeUpgrade_ConvertCurve2dToBezier>
@@ -9344,14 +10713,16 @@ impl HandleShapeUpgradeSplitCurve2d {
     pub fn downcast_to_convert_curve2d_to_bezier(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeSplitCurve2d_downcast_to_HandleShapeUpgradeConvertCurve2dToBezier(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -9361,14 +10732,16 @@ impl HandleShapeUpgradeSplitCurve2d {
     pub fn downcast_to_split_curve2d_continuity(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeSplitCurve2d_downcast_to_HandleShapeUpgradeSplitCurve2dContinuity(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -9396,8 +10769,10 @@ impl SplitCurve2dContinuity {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9405,13 +10780,15 @@ impl SplitCurve2dContinuity {
     /// Sets criterion for splitting.
     pub fn set_criterion(&mut self, Criterion: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_set_criterion(
                     self as *mut Self,
                     Criterion.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9419,13 +10796,15 @@ impl SplitCurve2dContinuity {
     /// Sets tolerance.
     pub fn set_tolerance(&mut self, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_set_tolerance(
                     self as *mut Self,
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9433,8 +10812,12 @@ impl SplitCurve2dContinuity {
     /// Calculates points for correction/splitting of the curve
     pub fn compute(&mut self) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_compute(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_compute(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9444,8 +10827,11 @@ impl SplitCurve2dContinuity {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9454,8 +10840,11 @@ impl SplitCurve2dContinuity {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -9464,122 +10853,128 @@ impl SplitCurve2dContinuity {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve2d
     pub fn as_split_curve2d(&self) -> &SplitCurve2d {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_ShapeUpgrade_SplitCurve2d(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_ShapeUpgrade_SplitCurve2d(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve2d (mutable)
     pub fn as_split_curve2d_mut(&mut self) -> &mut SplitCurve2d {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_ShapeUpgrade_SplitCurve2d_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_ShapeUpgrade_SplitCurve2d_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve
     pub fn as_split_curve(&self) -> &SplitCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_ShapeUpgrade_SplitCurve(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_ShapeUpgrade_SplitCurve(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve (mutable)
     pub fn as_split_curve_mut(&mut self) -> &mut SplitCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_ShapeUpgrade_SplitCurve_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_ShapeUpgrade_SplitCurve_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity> {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:39 - `ShapeUpgrade_SplitCurve2d::Init()`
     pub fn init(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_Init(self as *mut Self, C)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:50 - `ShapeUpgrade_SplitCurve2d::Build()`
     pub fn build(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_Build(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9591,21 +10986,26 @@ impl SplitCurve2dContinuity {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
     pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_SetSplitValues(
                     self as *mut Self,
                     SplitValues,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9617,21 +11017,26 @@ impl SplitCurve2dContinuity {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:66 - `ShapeUpgrade_SplitCurve::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_Perform(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9644,8 +11049,11 @@ impl SplitCurve2dContinuity {
                     status.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9658,8 +11066,11 @@ impl SplitCurve2dContinuity {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9672,8 +11083,11 @@ impl SplitCurve2dContinuity {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9683,11 +11097,14 @@ impl SplitCurve2dContinuity {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -9700,20 +11117,25 @@ impl SplitCurve2dContinuity {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9725,20 +11147,25 @@ impl SplitCurve2dContinuity {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -9754,65 +11181,67 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitCurve2dContinuity {
 impl HandleShapeUpgradeSplitCurve2dContinuity {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve2dContinuity
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitCurve2dContinuity {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitCurve2dContinuity
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitCurve2dContinuity {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve2dContinuity> to Handle<ShapeUpgrade_SplitCurve2d>
     pub fn to_handle_split_curve2d(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2d> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_to_HandleShapeUpgradeSplitCurve2d(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_to_HandleShapeUpgradeSplitCurve2d(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve2dContinuity> to Handle<ShapeUpgrade_SplitCurve>
     pub fn to_handle_split_curve(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_to_HandleShapeUpgradeSplitCurve(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_to_HandleShapeUpgradeSplitCurve(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve2dContinuity> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -9836,8 +11265,10 @@ impl SplitCurve3d {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_SplitCurve3d_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -9845,10 +11276,12 @@ impl SplitCurve3d {
     /// Initializes with curve with its first and last parameters.
     pub fn init_handlegeomcurve(&mut self, C: &crate::ffi::HandleGeomCurve) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve3d_init_handlegeomcurve(self as *mut Self, C)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9861,7 +11294,7 @@ impl SplitCurve3d {
         Last: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve3d_init_handlegeomcurve_real2(
                     self as *mut Self,
                     C,
@@ -9869,7 +11302,9 @@ impl SplitCurve3d {
                     Last,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9880,8 +11315,11 @@ impl SplitCurve3d {
     /// Curves all based on the same complete curve.
     pub fn build(&mut self, Segment: bool) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_SplitCurve3d_build(self as *mut Self, Segment) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeUpgrade_SplitCurve3d_build(self as *mut Self, Segment) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9890,8 +11328,11 @@ impl SplitCurve3d {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_SplitCurve3d_get_curves(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9900,8 +11341,11 @@ impl SplitCurve3d {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_SplitCurve3d_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9909,8 +11353,11 @@ impl SplitCurve3d {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_SplitCurve3d_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -9918,81 +11365,81 @@ impl SplitCurve3d {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_SplitCurve3d_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve
     pub fn as_split_curve(&self) -> &SplitCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve3d_as_ShapeUpgrade_SplitCurve(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3d_as_ShapeUpgrade_SplitCurve(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve (mutable)
     pub fn as_split_curve_mut(&mut self) -> &mut SplitCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve3d_as_ShapeUpgrade_SplitCurve_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3d_as_ShapeUpgrade_SplitCurve_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve3d_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3d_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve3d_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3d_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3d> {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeUpgrade_SplitCurve3d_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeUpgrade_SplitCurve3d_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
     pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_SetSplitValues(
                     self as *mut Self,
                     SplitValues,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10002,26 +11449,35 @@ impl SplitCurve3d {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_SplitValues(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:62 - `ShapeUpgrade_SplitCurve::Compute()`
     pub fn compute(&mut self) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_Compute(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_Compute(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:66 - `ShapeUpgrade_SplitCurve::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_Perform(self as *mut Self, Segment)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10034,8 +11490,11 @@ impl SplitCurve3d {
                     status.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10048,8 +11507,11 @@ impl SplitCurve3d {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10059,8 +11521,11 @@ impl SplitCurve3d {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10070,11 +11535,14 @@ impl SplitCurve3d {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -10085,20 +11553,25 @@ impl SplitCurve3d {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10110,16 +11583,23 @@ impl SplitCurve3d {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -10135,50 +11615,50 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitCurve3d {
 impl HandleShapeUpgradeSplitCurve3d {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve3d
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitCurve3d {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeSplitCurve3d_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeSplitCurve3d_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitCurve3d
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitCurve3d {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeSplitCurve3d_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeSplitCurve3d_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve3d> to Handle<ShapeUpgrade_SplitCurve>
     pub fn to_handle_split_curve(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitCurve3d_to_HandleShapeUpgradeSplitCurve(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve3d_to_HandleShapeUpgradeSplitCurve(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve3d> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitCurve3d_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve3d_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<ShapeUpgrade_SplitCurve3d> to Handle<ShapeUpgrade_ConvertCurve3dToBezier>
@@ -10187,14 +11667,16 @@ impl HandleShapeUpgradeSplitCurve3d {
     pub fn downcast_to_convert_curve3d_to_bezier(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeSplitCurve3d_downcast_to_HandleShapeUpgradeConvertCurve3dToBezier(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -10204,14 +11686,16 @@ impl HandleShapeUpgradeSplitCurve3d {
     pub fn downcast_to_split_curve3d_continuity(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeSplitCurve3d_downcast_to_HandleShapeUpgradeSplitCurve3dContinuity(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -10239,8 +11723,10 @@ impl SplitCurve3dContinuity {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10248,13 +11734,15 @@ impl SplitCurve3dContinuity {
     /// Sets criterion for splitting.
     pub fn set_criterion(&mut self, Criterion: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_set_criterion(
                     self as *mut Self,
                     Criterion.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10262,13 +11750,15 @@ impl SplitCurve3dContinuity {
     /// Sets tolerance.
     pub fn set_tolerance(&mut self, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_set_tolerance(
                     self as *mut Self,
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10276,8 +11766,12 @@ impl SplitCurve3dContinuity {
     /// Calculates points for correction/splitting of the curve
     pub fn compute(&mut self) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_compute(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_compute(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10287,8 +11781,11 @@ impl SplitCurve3dContinuity {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_get_curve(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10298,8 +11795,11 @@ impl SplitCurve3dContinuity {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10308,8 +11808,11 @@ impl SplitCurve3dContinuity {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -10318,122 +11821,128 @@ impl SplitCurve3dContinuity {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve3d
     pub fn as_split_curve3d(&self) -> &SplitCurve3d {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_ShapeUpgrade_SplitCurve3d(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_ShapeUpgrade_SplitCurve3d(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve3d (mutable)
     pub fn as_split_curve3d_mut(&mut self) -> &mut SplitCurve3d {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_ShapeUpgrade_SplitCurve3d_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_ShapeUpgrade_SplitCurve3d_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve
     pub fn as_split_curve(&self) -> &SplitCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_ShapeUpgrade_SplitCurve(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_ShapeUpgrade_SplitCurve(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve (mutable)
     pub fn as_split_curve_mut(&mut self) -> &mut SplitCurve {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_ShapeUpgrade_SplitCurve_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_ShapeUpgrade_SplitCurve_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity> {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:39 - `ShapeUpgrade_SplitCurve3d::Init()`
     pub fn init(&mut self, C: &crate::ffi::HandleGeomCurve) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_Init(self as *mut Self, C)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:50 - `ShapeUpgrade_SplitCurve3d::Build()`
     pub fn build(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_Build(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10445,21 +11954,26 @@ impl SplitCurve3dContinuity {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
     pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_SetSplitValues(
                     self as *mut Self,
                     SplitValues,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10471,21 +11985,26 @@ impl SplitCurve3dContinuity {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:66 - `ShapeUpgrade_SplitCurve::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_Perform(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10498,8 +12017,11 @@ impl SplitCurve3dContinuity {
                     status.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10512,8 +12034,11 @@ impl SplitCurve3dContinuity {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10526,8 +12051,11 @@ impl SplitCurve3dContinuity {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10537,11 +12065,14 @@ impl SplitCurve3dContinuity {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -10554,20 +12085,25 @@ impl SplitCurve3dContinuity {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10579,20 +12115,25 @@ impl SplitCurve3dContinuity {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -10608,65 +12149,67 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitCurve3dContinuity {
 impl HandleShapeUpgradeSplitCurve3dContinuity {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve3dContinuity
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitCurve3dContinuity {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitCurve3dContinuity
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitCurve3dContinuity {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve3dContinuity> to Handle<ShapeUpgrade_SplitCurve3d>
     pub fn to_handle_split_curve3d(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3d> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_to_HandleShapeUpgradeSplitCurve3d(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_to_HandleShapeUpgradeSplitCurve3d(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve3dContinuity> to Handle<ShapeUpgrade_SplitCurve>
     pub fn to_handle_split_curve(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_to_HandleShapeUpgradeSplitCurve(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_to_HandleShapeUpgradeSplitCurve(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve3dContinuity> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -10690,8 +12233,10 @@ impl SplitSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_SplitSurface_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -10699,10 +12244,12 @@ impl SplitSurface {
     /// Initializes with single supporting surface.
     pub fn init_handlegeomsurface(&mut self, S: &crate::ffi::HandleGeomSurface) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurface_init_handlegeomsurface(self as *mut Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10718,7 +12265,7 @@ impl SplitSurface {
         theArea: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurface_init_handlegeomsurface_real5(
                     self as *mut Self,
                     S,
@@ -10729,7 +12276,9 @@ impl SplitSurface {
                     theArea,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10737,10 +12286,12 @@ impl SplitSurface {
     /// Sets U parameters where splitting has to be done
     pub fn set_u_split_values(&mut self, UValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurface_set_u_split_values(self as *mut Self, UValues)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10748,10 +12299,12 @@ impl SplitSurface {
     /// Sets V parameters where splitting has to be done
     pub fn set_v_split_values(&mut self, VValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurface_set_v_split_values(self as *mut Self, VValues)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10768,8 +12321,11 @@ impl SplitSurface {
     /// specify the size of resulting grid of surfaces.
     pub fn build(&mut self, Segment: bool) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_SplitSurface_build(self as *mut Self, Segment) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeUpgrade_SplitSurface_build(self as *mut Self, Segment) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10777,8 +12333,12 @@ impl SplitSurface {
     /// Calculates points for correction/splitting of the surface.
     pub fn compute(&mut self, Segment: bool) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_SplitSurface_compute(self as *mut Self, Segment) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_SplitSurface_compute(self as *mut Self, Segment)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10787,8 +12347,12 @@ impl SplitSurface {
     /// First defines splitting values by method Compute(), then calls method Build().
     pub fn perform(&mut self, Segment: bool) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_SplitSurface_perform(self as *mut Self, Segment) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_SplitSurface_perform(self as *mut Self, Segment)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10800,8 +12364,11 @@ impl SplitSurface {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurface_u_split_values(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10813,8 +12380,11 @@ impl SplitSurface {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurface_v_split_values(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10829,8 +12399,11 @@ impl SplitSurface {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurface_status(self as *const Self, status.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10840,8 +12413,11 @@ impl SplitSurface {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_SplitSurface_res_surfaces(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10850,8 +12426,11 @@ impl SplitSurface {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_SplitSurface_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -10859,8 +12438,11 @@ impl SplitSurface {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_SplitSurface_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -10868,43 +12450,45 @@ impl SplitSurface {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_SplitSurface_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitSurface_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurface_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitSurface_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurface_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeUpgrade_SplitSurface_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeUpgrade_SplitSurface_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -10916,8 +12500,11 @@ impl SplitSurface {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10927,8 +12514,11 @@ impl SplitSurface {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurface_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -10938,11 +12528,14 @@ impl SplitSurface {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurface_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -10953,20 +12546,25 @@ impl SplitSurface {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurface_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurface_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -10978,16 +12576,23 @@ impl SplitSurface {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_SplitSurface_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_SplitSurface_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -11003,35 +12608,35 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitSurface {
 impl HandleShapeUpgradeSplitSurface {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitSurface
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitSurface {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeSplitSurface_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeSplitSurface_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitSurface
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitSurface {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeSplitSurface_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeSplitSurface_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitSurface> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitSurface_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitSurface_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<ShapeUpgrade_SplitSurface> to Handle<ShapeUpgrade_ConvertSurfaceToBezierBasis>
@@ -11040,14 +12645,16 @@ impl HandleShapeUpgradeSplitSurface {
     pub fn downcast_to_convert_surface_to_bezier_basis(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeSplitSurface_downcast_to_HandleShapeUpgradeConvertSurfaceToBezierBasis(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -11057,14 +12664,16 @@ impl HandleShapeUpgradeSplitSurface {
     pub fn downcast_to_split_surface_angle(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurfaceAngle>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeSplitSurface_downcast_to_HandleShapeUpgradeSplitSurfaceAngle(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -11074,14 +12683,16 @@ impl HandleShapeUpgradeSplitSurface {
     pub fn downcast_to_split_surface_area(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurfaceArea>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeSplitSurface_downcast_to_HandleShapeUpgradeSplitSurfaceArea(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -11091,14 +12702,16 @@ impl HandleShapeUpgradeSplitSurface {
     pub fn downcast_to_split_surface_continuity(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeSplitSurface_downcast_to_HandleShapeUpgradeSplitSurfaceContinuity(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -11126,8 +12739,10 @@ impl SplitSurfaceAngle {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_SplitSurfaceAngle_ctor_real(MaxAngle) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11135,13 +12750,15 @@ impl SplitSurfaceAngle {
     /// Set maximal angle
     pub fn set_max_angle(&mut self, MaxAngle: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceAngle_set_max_angle(
                     self as *mut Self,
                     MaxAngle,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11152,8 +12769,11 @@ impl SplitSurfaceAngle {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceAngle_max_angle(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11162,10 +12782,12 @@ impl SplitSurfaceAngle {
     /// First defines splitting values, then calls inherited method.
     pub fn compute(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceAngle_compute(self as *mut Self, Segment)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11175,8 +12797,11 @@ impl SplitSurfaceAngle {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceAngle_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11184,8 +12809,11 @@ impl SplitSurfaceAngle {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_SplitSurfaceAngle_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -11194,134 +12822,143 @@ impl SplitSurfaceAngle {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_SplitSurfaceAngle_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitSurface
     pub fn as_split_surface(&self) -> &SplitSurface {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitSurfaceAngle_as_ShapeUpgrade_SplitSurface(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_as_ShapeUpgrade_SplitSurface(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_SplitSurface (mutable)
     pub fn as_split_surface_mut(&mut self) -> &mut SplitSurface {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitSurfaceAngle_as_ShapeUpgrade_SplitSurface_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_as_ShapeUpgrade_SplitSurface_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitSurfaceAngle_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitSurfaceAngle_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurfaceAngle> {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeUpgrade_SplitSurfaceAngle_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::ShapeUpgrade_SplitSurfaceAngle_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:47 - `ShapeUpgrade_SplitSurface::Init()`
     pub fn init(&mut self, S: &crate::ffi::HandleGeomSurface) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_Init(self as *mut Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:58 - `ShapeUpgrade_SplitSurface::SetUSplitValues()`
     pub fn set_u_split_values(&mut self, UValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_SetUSplitValues(
                     self as *mut Self,
                     UValues,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:61 - `ShapeUpgrade_SplitSurface::SetVSplitValues()`
     pub fn set_v_split_values(&mut self, VValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_SetVSplitValues(
                     self as *mut Self,
                     VValues,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:73 - `ShapeUpgrade_SplitSurface::Build()`
     pub fn build(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_Build(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:80 - `ShapeUpgrade_SplitSurface::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_Perform(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11333,8 +12970,11 @@ impl SplitSurfaceAngle {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11346,8 +12986,11 @@ impl SplitSurfaceAngle {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11360,8 +13003,11 @@ impl SplitSurfaceAngle {
                     status.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11373,8 +13019,11 @@ impl SplitSurfaceAngle {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11387,8 +13036,11 @@ impl SplitSurfaceAngle {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11401,8 +13053,11 @@ impl SplitSurfaceAngle {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11412,11 +13067,14 @@ impl SplitSurfaceAngle {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -11429,20 +13087,25 @@ impl SplitSurfaceAngle {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11454,18 +13117,23 @@ impl SplitSurfaceAngle {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -11481,51 +13149,50 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitSurfaceAngle {
 impl HandleShapeUpgradeSplitSurfaceAngle {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitSurfaceAngle
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitSurfaceAngle {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeSplitSurfaceAngle_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeSplitSurfaceAngle_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitSurfaceAngle
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitSurfaceAngle {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitSurfaceAngle_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeSplitSurfaceAngle_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitSurfaceAngle> to Handle<ShapeUpgrade_SplitSurface>
     pub fn to_handle_split_surface(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitSurfaceAngle_to_HandleShapeUpgradeSplitSurface(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitSurfaceAngle_to_HandleShapeUpgradeSplitSurface(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitSurfaceAngle> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitSurfaceAngle_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitSurfaceAngle_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -11550,8 +13217,10 @@ impl SplitSurfaceArea {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_SplitSurfaceArea_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11561,8 +13230,11 @@ impl SplitSurfaceArea {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_SplitSurfaceArea_nb_parts(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -11573,13 +13245,15 @@ impl SplitSurfaceArea {
     /// the parts are similar to squares in 2D.
     pub fn set_splitting_into_squares(&mut self, theIsSplittingIntoSquares: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceArea_set_splitting_into_squares(
                     self as *mut Self,
                     theIsSplittingIntoSquares,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11588,24 +13262,28 @@ impl SplitSurfaceArea {
     /// Only for "Splitting Into Squares" mode
     pub fn set_numbers_uv_splits(&mut self, theNbUsplits: i32, theNbVsplits: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceArea_set_numbers_uv_splits(
                     self as *mut Self,
                     theNbUsplits,
                     theNbVsplits,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurfaceArea.hxx`:50 - `ShapeUpgrade_SplitSurfaceArea::Compute()`
     pub fn compute(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceArea_compute(self as *mut Self, Segment)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11615,8 +13293,11 @@ impl SplitSurfaceArea {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceArea_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11624,8 +13305,11 @@ impl SplitSurfaceArea {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_SplitSurfaceArea_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -11634,132 +13318,143 @@ impl SplitSurfaceArea {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_SplitSurfaceArea_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitSurface
     pub fn as_split_surface(&self) -> &SplitSurface {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitSurfaceArea_as_ShapeUpgrade_SplitSurface(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceArea_as_ShapeUpgrade_SplitSurface(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_SplitSurface (mutable)
     pub fn as_split_surface_mut(&mut self) -> &mut SplitSurface {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitSurfaceArea_as_ShapeUpgrade_SplitSurface_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceArea_as_ShapeUpgrade_SplitSurface_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitSurfaceArea_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceArea_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitSurfaceArea_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceArea_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurfaceArea> {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeUpgrade_SplitSurfaceArea_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::ShapeUpgrade_SplitSurfaceArea_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:47 - `ShapeUpgrade_SplitSurface::Init()`
     pub fn init(&mut self, S: &crate::ffi::HandleGeomSurface) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_Init(self as *mut Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:58 - `ShapeUpgrade_SplitSurface::SetUSplitValues()`
     pub fn set_u_split_values(&mut self, UValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_SetUSplitValues(
                     self as *mut Self,
                     UValues,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:61 - `ShapeUpgrade_SplitSurface::SetVSplitValues()`
     pub fn set_v_split_values(&mut self, VValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_SetVSplitValues(
                     self as *mut Self,
                     VValues,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:73 - `ShapeUpgrade_SplitSurface::Build()`
     pub fn build(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_Build(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:80 - `ShapeUpgrade_SplitSurface::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_Perform(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11771,8 +13466,11 @@ impl SplitSurfaceArea {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11784,8 +13482,11 @@ impl SplitSurfaceArea {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11798,8 +13499,11 @@ impl SplitSurfaceArea {
                     status.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11809,8 +13513,11 @@ impl SplitSurfaceArea {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_ResSurfaces(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -11823,8 +13530,11 @@ impl SplitSurfaceArea {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11837,8 +13547,11 @@ impl SplitSurfaceArea {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -11848,11 +13561,14 @@ impl SplitSurfaceArea {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -11863,20 +13579,25 @@ impl SplitSurfaceArea {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -11888,18 +13609,23 @@ impl SplitSurfaceArea {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -11915,51 +13641,50 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitSurfaceArea {
 impl HandleShapeUpgradeSplitSurfaceArea {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitSurfaceArea
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitSurfaceArea {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeSplitSurfaceArea_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeSplitSurfaceArea_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitSurfaceArea
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitSurfaceArea {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitSurfaceArea_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeSplitSurfaceArea_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitSurfaceArea> to Handle<ShapeUpgrade_SplitSurface>
     pub fn to_handle_split_surface(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitSurfaceArea_to_HandleShapeUpgradeSplitSurface(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitSurfaceArea_to_HandleShapeUpgradeSplitSurface(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitSurfaceArea> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitSurfaceArea_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitSurfaceArea_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -11987,8 +13712,10 @@ impl SplitSurfaceContinuity {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -11996,13 +13723,15 @@ impl SplitSurfaceContinuity {
     /// Sets criterion for splitting.
     pub fn set_criterion(&mut self, Criterion: crate::geom_abs::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_set_criterion(
                     self as *mut Self,
                     Criterion.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12010,23 +13739,27 @@ impl SplitSurfaceContinuity {
     /// Sets tolerance.
     pub fn set_tolerance(&mut self, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_set_tolerance(
                     self as *mut Self,
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurfaceContinuity.hxx`:48 - `ShapeUpgrade_SplitSurfaceContinuity::Compute()`
     pub fn compute(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_compute(self as *mut Self, Segment)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12036,8 +13769,11 @@ impl SplitSurfaceContinuity {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -12046,8 +13782,11 @@ impl SplitSurfaceContinuity {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -12056,135 +13795,147 @@ impl SplitSurfaceContinuity {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitSurface
     pub fn as_split_surface(&self) -> &SplitSurface {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_as_ShapeUpgrade_SplitSurface(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_as_ShapeUpgrade_SplitSurface(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_SplitSurface (mutable)
     pub fn as_split_surface_mut(&mut self) -> &mut SplitSurface {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_as_ShapeUpgrade_SplitSurface_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_as_ShapeUpgrade_SplitSurface_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_as_Standard_Transient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity> {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_to_handle(obj.into_raw())
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:47 - `ShapeUpgrade_SplitSurface::Init()`
     pub fn init(&mut self, S: &crate::ffi::HandleGeomSurface) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_Init(self as *mut Self, S)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:58 - `ShapeUpgrade_SplitSurface::SetUSplitValues()`
     pub fn set_u_split_values(&mut self, UValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_SetUSplitValues(
                     self as *mut Self,
                     UValues,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:61 - `ShapeUpgrade_SplitSurface::SetVSplitValues()`
     pub fn set_v_split_values(&mut self, VValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_SetVSplitValues(
                     self as *mut Self,
                     VValues,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:73 - `ShapeUpgrade_SplitSurface::Build()`
     pub fn build(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_Build(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:80 - `ShapeUpgrade_SplitSurface::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_Perform(
                     self as *mut Self,
                     Segment,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12196,8 +13947,11 @@ impl SplitSurfaceContinuity {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -12209,8 +13963,11 @@ impl SplitSurfaceContinuity {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -12223,8 +13980,11 @@ impl SplitSurfaceContinuity {
                     status.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12236,8 +13996,11 @@ impl SplitSurfaceContinuity {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -12250,8 +14013,11 @@ impl SplitSurfaceContinuity {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12264,8 +14030,11 @@ impl SplitSurfaceContinuity {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12275,11 +14044,14 @@ impl SplitSurfaceContinuity {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -12292,20 +14064,25 @@ impl SplitSurfaceContinuity {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12317,20 +14094,25 @@ impl SplitSurfaceContinuity {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_Delete(
                     self as *const Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -12346,50 +14128,52 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitSurfaceContinuity {
 impl HandleShapeUpgradeSplitSurfaceContinuity {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitSurfaceContinuity
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitSurfaceContinuity {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity_get(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitSurfaceContinuity
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitSurfaceContinuity {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity_get_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitSurfaceContinuity> to Handle<ShapeUpgrade_SplitSurface>
     pub fn to_handle_split_surface(
         &self,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity_to_HandleShapeUpgradeSplitSurface(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity_to_HandleShapeUpgradeSplitSurface(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitSurfaceContinuity> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -12416,8 +14200,10 @@ impl Tool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_Tool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12425,8 +14211,10 @@ impl Tool {
     /// Copy all fields from another Root object
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_Tool_set(self as *mut Self, tool) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeUpgrade_Tool_set(self as *mut Self, tool) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12434,8 +14222,11 @@ impl Tool {
     /// Sets context
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_Tool_set_context(self as *mut Self, context) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeUpgrade_Tool_set_context(self as *mut Self, context) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12444,8 +14235,11 @@ impl Tool {
     pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_Tool_context(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -12453,8 +14247,11 @@ impl Tool {
     /// Sets basic precision value
     pub fn set_precision(&mut self, preci: f64) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_Tool_set_precision(self as *mut Self, preci) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeUpgrade_Tool_set_precision(self as *mut Self, preci) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12463,8 +14260,11 @@ impl Tool {
     pub fn precision(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_Tool_precision(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12472,8 +14272,12 @@ impl Tool {
     /// Sets minimal allowed tolerance
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_Tool_set_min_tolerance(self as *mut Self, mintol) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_Tool_set_min_tolerance(self as *mut Self, mintol)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12483,8 +14287,11 @@ impl Tool {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_Tool_min_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12492,8 +14299,12 @@ impl Tool {
     /// Sets maximal allowed tolerance
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_Tool_set_max_tolerance(self as *mut Self, maxtol) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_Tool_set_max_tolerance(self as *mut Self, maxtol)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12503,8 +14314,11 @@ impl Tool {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_Tool_max_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12515,8 +14329,11 @@ impl Tool {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_Tool_limit_tolerance(self as *const Self, toler)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12525,8 +14342,11 @@ impl Tool {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_Tool_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -12534,8 +14354,11 @@ impl Tool {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_Tool_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -12543,41 +14366,43 @@ impl Tool {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_Tool_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeUpgrade_Tool_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ShapeUpgrade_Tool_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_Tool_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ShapeUpgrade_Tool_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
-        {
-            let __result = unsafe { crate::ffi::ShapeUpgrade_Tool_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeUpgrade_Tool_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -12586,8 +14411,11 @@ impl Tool {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_Tool_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12597,8 +14425,11 @@ impl Tool {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_Tool_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -12607,11 +14438,14 @@ impl Tool {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_Tool_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -12621,18 +14455,23 @@ impl Tool {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_Tool_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_Tool_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -12642,16 +14481,22 @@ impl Tool {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_Tool_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_Tool_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeUpgrade_Tool_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -12667,31 +14512,31 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeTool {
 impl HandleShapeUpgradeTool {
     /// Dereference this Handle to access the underlying ShapeUpgrade_Tool
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_Tool {
-        {
-            let __result = unsafe { crate::ffi::HandleShapeUpgradeTool_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleShapeUpgradeTool_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_Tool
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_Tool {
-        {
-            let __result = unsafe { crate::ffi::HandleShapeUpgradeTool_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleShapeUpgradeTool_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_Tool> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeTool_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeTool_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<ShapeUpgrade_Tool> to Handle<ShapeUpgrade_ClosedEdgeDivide>
@@ -12700,16 +14545,18 @@ impl HandleShapeUpgradeTool {
     pub fn downcast_to_closed_edge_divide(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeClosedEdgeDivide>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeClosedEdgeDivide(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -12719,16 +14566,18 @@ impl HandleShapeUpgradeTool {
     pub fn downcast_to_closed_face_divide(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeClosedFaceDivide>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeClosedFaceDivide(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -12738,16 +14587,18 @@ impl HandleShapeUpgradeTool {
     pub fn downcast_to_edge_divide(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeEdgeDivide>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeEdgeDivide(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -12757,16 +14608,18 @@ impl HandleShapeUpgradeTool {
     pub fn downcast_to_face_divide(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFaceDivide>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeFaceDivide(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -12776,16 +14629,18 @@ impl HandleShapeUpgradeTool {
     pub fn downcast_to_face_divide_area(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFaceDivideArea>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeFaceDivideArea(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -12795,16 +14650,18 @@ impl HandleShapeUpgradeTool {
     pub fn downcast_to_fix_small_bezier_curves(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFixSmallBezierCurves>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeFixSmallBezierCurves(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -12814,16 +14671,18 @@ impl HandleShapeUpgradeTool {
     pub fn downcast_to_fix_small_curves(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFixSmallCurves>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeFixSmallCurves(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -12833,16 +14692,18 @@ impl HandleShapeUpgradeTool {
     pub fn downcast_to_remove_internal_wires(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeRemoveInternalWires>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeRemoveInternalWires(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -12852,16 +14713,18 @@ impl HandleShapeUpgradeTool {
     pub fn downcast_to_wire_divide(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeWireDivide>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeWireDivide(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -12913,8 +14776,10 @@ impl UnifySameDomain {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_UnifySameDomain_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12936,8 +14801,10 @@ impl UnifySameDomain {
                     ConcatBSplines,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -12982,7 +14849,7 @@ impl UnifySameDomain {
         ConcatBSplines: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_UnifySameDomain_initialize(
                     self as *mut Self,
                     aShape,
@@ -12991,7 +14858,9 @@ impl UnifySameDomain {
                     ConcatBSplines,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13002,13 +14871,15 @@ impl UnifySameDomain {
     /// is forbidden. Default value is false.
     pub fn allow_internal_edges(&mut self, theValue: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_UnifySameDomain_allow_internal_edges(
                     self as *mut Self,
                     theValue,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13020,10 +14891,12 @@ impl UnifySameDomain {
     /// This method can be called several times to keep several shapes.
     pub fn keep_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_UnifySameDomain_keep_shape(self as *mut Self, theShape)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13033,10 +14906,12 @@ impl UnifySameDomain {
     /// the method KeepShape.
     pub fn keep_shapes(&mut self, theShapes: &crate::ffi::TopTools_MapOfShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_UnifySameDomain_keep_shapes(self as *mut Self, theShapes)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13047,13 +14922,15 @@ impl UnifySameDomain {
     /// modified during modification process. Default value is true.
     pub fn set_safe_input_mode(&mut self, theValue: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_UnifySameDomain_set_safe_input_mode(
                     self as *mut Self,
                     theValue,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13062,13 +14939,15 @@ impl UnifySameDomain {
     /// taking decision about merging of shapes. Default value is Precision::Confusion().
     pub fn set_linear_tolerance(&mut self, theValue: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_UnifySameDomain_set_linear_tolerance(
                     self as *mut Self,
                     theValue,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13077,13 +14956,15 @@ impl UnifySameDomain {
     /// this value they will not be merged. Default value is Precision::Angular().
     pub fn set_angular_tolerance(&mut self, theValue: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_UnifySameDomain_set_angular_tolerance(
                     self as *mut Self,
                     theValue,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13091,8 +14972,11 @@ impl UnifySameDomain {
     /// Performs unification and builds the resulting shape.
     pub fn build(&mut self) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_UnifySameDomain_build(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeUpgrade_UnifySameDomain_build(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13102,8 +14986,11 @@ impl UnifySameDomain {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_UnifySameDomain_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13113,8 +15000,11 @@ impl UnifySameDomain {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_UnifySameDomain_history(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13124,8 +15014,11 @@ impl UnifySameDomain {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_UnifySameDomain_history_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -13135,8 +15028,11 @@ impl UnifySameDomain {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_UnifySameDomain_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13144,8 +15040,11 @@ impl UnifySameDomain {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_UnifySameDomain_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -13154,45 +15053,46 @@ impl UnifySameDomain {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_UnifySameDomain_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_UnifySameDomain_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_UnifySameDomain_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_UnifySameDomain_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_UnifySameDomain_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeUnifySameDomain> {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeUpgrade_UnifySameDomain_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::ShapeUpgrade_UnifySameDomain_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -13204,8 +15104,11 @@ impl UnifySameDomain {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13218,8 +15121,11 @@ impl UnifySameDomain {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13229,11 +15135,14 @@ impl UnifySameDomain {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_UnifySameDomain_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -13244,20 +15153,25 @@ impl UnifySameDomain {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_UnifySameDomain_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_UnifySameDomain_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13269,18 +15183,23 @@ impl UnifySameDomain {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_UnifySameDomain_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -13296,35 +15215,35 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeUnifySameDomain {
 impl HandleShapeUpgradeUnifySameDomain {
     /// Dereference this Handle to access the underlying ShapeUpgrade_UnifySameDomain
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_UnifySameDomain {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeUnifySameDomain_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeUnifySameDomain_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_UnifySameDomain
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_UnifySameDomain {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeUnifySameDomain_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeUnifySameDomain_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_UnifySameDomain> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeUnifySameDomain_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeUnifySameDomain_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -13358,8 +15277,10 @@ impl WireDivide {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_WireDivide_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -13367,8 +15288,12 @@ impl WireDivide {
     /// Initializes by wire and face
     pub fn init_wire_face(&mut self, W: &crate::topo_ds::Wire, F: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_WireDivide_init_wire_face(self as *mut Self, W, F) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_WireDivide_init_wire_face(self as *mut Self, W, F)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13380,14 +15305,16 @@ impl WireDivide {
         S: &crate::ffi::HandleGeomSurface,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_init_wire_handlegeomsurface(
                     self as *mut Self,
                     W,
                     S,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13395,8 +15322,11 @@ impl WireDivide {
     /// Loads working wire
     pub fn load_wire(&mut self, W: &crate::topo_ds::Wire) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_WireDivide_load_wire(self as *mut Self, W) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeUpgrade_WireDivide_load_wire(self as *mut Self, W) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13404,8 +15334,11 @@ impl WireDivide {
     /// Creates wire of one edge and calls Load for wire
     pub fn load_edge(&mut self, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_WireDivide_load_edge(self as *mut Self, E) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeUpgrade_WireDivide_load_edge(self as *mut Self, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13413,8 +15346,11 @@ impl WireDivide {
     /// Sets supporting surface by face
     pub fn set_face(&mut self, F: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_WireDivide_set_face(self as *mut Self, F) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeUpgrade_WireDivide_set_face(self as *mut Self, F) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13422,13 +15358,15 @@ impl WireDivide {
     /// Sets supporting surface
     pub fn set_surface_handlegeomsurface(&mut self, S: &crate::ffi::HandleGeomSurface) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_set_surface_handlegeomsurface(
                     self as *mut Self,
                     S,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13440,14 +15378,16 @@ impl WireDivide {
         L: &crate::top_loc::Location,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_set_surface_handlegeomsurface_location(
                     self as *mut Self,
                     S,
                     L,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13461,8 +15401,10 @@ impl WireDivide {
     /// splitting criteria are used.
     pub fn perform(&mut self) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_WireDivide_perform(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeUpgrade_WireDivide_perform(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13472,8 +15414,11 @@ impl WireDivide {
     pub fn wire(&self) -> &crate::topo_ds::Wire {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_WireDivide_wire(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13488,8 +15433,11 @@ impl WireDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_status(self as *const Self, status.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13500,13 +15448,15 @@ impl WireDivide {
         splitCurve3dTool: &crate::ffi::HandleShapeUpgradeSplitCurve3d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_set_split_curve3d_tool(
                     self as *mut Self,
                     splitCurve3dTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13517,13 +15467,15 @@ impl WireDivide {
         splitCurve2dTool: &crate::ffi::HandleShapeUpgradeSplitCurve2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_set_split_curve2d_tool(
                     self as *mut Self,
                     splitCurve2dTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13534,13 +15486,15 @@ impl WireDivide {
         TransferParam: &crate::ffi::HandleShapeAnalysisTransferParameters,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_set_transfer_param_tool(
                     self as *mut Self,
                     TransferParam,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13551,13 +15505,15 @@ impl WireDivide {
         edgeDivideTool: &crate::ffi::HandleShapeUpgradeEdgeDivide,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_set_edge_divide_tool(
                     self as *mut Self,
                     edgeDivideTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13570,8 +15526,11 @@ impl WireDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_get_edge_divide_tool(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13584,8 +15543,11 @@ impl WireDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_get_transfer_param_tool(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13596,10 +15558,12 @@ impl WireDivide {
     /// 2 -  all curve 3d.
     pub fn set_edge_mode(&mut self, EdgeMode: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_set_edge_mode(self as *mut Self, EdgeMode)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13610,13 +15574,15 @@ impl WireDivide {
         FixSmallCurvesTool: &crate::ffi::HandleShapeUpgradeFixSmallCurves,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_set_fix_small_curve_tool(
                     self as *mut Self,
                     FixSmallCurvesTool,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13629,8 +15595,11 @@ impl WireDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_get_fix_small_curve_tool(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -13639,8 +15608,11 @@ impl WireDivide {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_WireDivide_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -13648,8 +15620,11 @@ impl WireDivide {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_WireDivide_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -13657,81 +15632,90 @@ impl WireDivide {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeUpgrade_WireDivide_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeUpgrade_Tool
     pub fn as_tool(&self) -> &Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_WireDivide_as_ShapeUpgrade_Tool(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_WireDivide_as_ShapeUpgrade_Tool(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeUpgrade_Tool (mutable)
     pub fn as_tool_mut(&mut self) -> &mut Tool {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_WireDivide_as_ShapeUpgrade_Tool_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_WireDivide_as_ShapeUpgrade_Tool_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_WireDivide_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_WireDivide_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeUpgrade_WireDivide_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeUpgrade_WireDivide_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeWireDivide> {
-        {
-            let __result = unsafe { crate::ffi::ShapeUpgrade_WireDivide_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeUpgrade_WireDivide_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_WireDivide_inherited_Set(self as *mut Self, tool) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_WireDivide_inherited_Set(self as *mut Self, tool)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_inherited_SetContext(self as *mut Self, context)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13741,18 +15725,23 @@ impl WireDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_inherited_Context(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_inherited_SetPrecision(self as *mut Self, preci)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13762,21 +15751,26 @@ impl WireDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_inherited_Precision(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_inherited_SetMinTolerance(
                     self as *mut Self,
                     mintol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13786,21 +15780,26 @@ impl WireDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_inherited_MinTolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_inherited_SetMaxTolerance(
                     self as *mut Self,
                     maxtol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13810,8 +15809,11 @@ impl WireDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_inherited_MaxTolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13824,8 +15826,11 @@ impl WireDivide {
                     toler,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13838,8 +15843,11 @@ impl WireDivide {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13849,8 +15857,11 @@ impl WireDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -13859,11 +15870,14 @@ impl WireDivide {
         {
             let __result =
                 unsafe { crate::ffi::ShapeUpgrade_WireDivide_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -13874,18 +15888,23 @@ impl WireDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -13895,16 +15914,23 @@ impl WireDivide {
             let __result = unsafe {
                 crate::ffi::ShapeUpgrade_WireDivide_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeUpgrade_WireDivide_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeUpgrade_WireDivide_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -13920,47 +15946,42 @@ unsafe impl crate::CppDeletable for HandleShapeUpgradeWireDivide {
 impl HandleShapeUpgradeWireDivide {
     /// Dereference this Handle to access the underlying ShapeUpgrade_WireDivide
     pub fn get(&self) -> &crate::ffi::ShapeUpgrade_WireDivide {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeWireDivide_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleShapeUpgradeWireDivide_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_WireDivide
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_WireDivide {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeUpgradeWireDivide_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeUpgradeWireDivide_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeUpgrade_WireDivide> to Handle<ShapeUpgrade_Tool>
     pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeWireDivide_to_HandleShapeUpgradeTool(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeWireDivide_to_HandleShapeUpgradeTool(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeUpgrade_WireDivide> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeUpgradeWireDivide_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeUpgradeWireDivide_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

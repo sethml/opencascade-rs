@@ -28,8 +28,10 @@ impl DataXtd {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPersistent_DataXtd_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -49,8 +51,10 @@ impl DataXtd_Geometry {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPersistent_DataXtd_Geometry_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -58,10 +62,12 @@ impl DataXtd_Geometry {
     /// Import transient attribute from the persistent data.
     pub fn import_attribute(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_DataXtd_Geometry_import_attribute(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -81,8 +87,10 @@ impl DataXtd_Position {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPersistent_DataXtd_Position_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -90,10 +98,12 @@ impl DataXtd_Position {
     /// Import transient attribute from the persistent data.
     pub fn import_attribute(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_DataXtd_Position_import_attribute(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -117,8 +127,10 @@ impl DataXtd_Constraint {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPersistent_DataXtd_Constraint_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -126,10 +138,12 @@ impl DataXtd_Constraint {
     /// Read persistent data from a file.
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_DataXtd_Constraint_read(self as *mut Self, theReadData)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -137,13 +151,15 @@ impl DataXtd_Constraint {
     /// Write persistent data to a file.
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_DataXtd_Constraint_write(
                     self as *const Self,
                     theWriteData,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -154,13 +170,15 @@ impl DataXtd_Constraint {
         theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_DataXtd_Constraint_p_children(
                     self as *const Self,
                     theChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -170,8 +188,11 @@ impl DataXtd_Constraint {
         {
             let __result =
                 unsafe { crate::ffi::StdPersistent_DataXtd_Constraint_p_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -179,13 +200,15 @@ impl DataXtd_Constraint {
     /// Import transient attribute from the persistent data.
     pub fn import(&self, theAttribute: &crate::ffi::HandleTDataXtdConstraint) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_DataXtd_Constraint_import(
                     self as *const Self,
                     theAttribute,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -209,8 +232,10 @@ impl DataXtd_PatternStd {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPersistent_DataXtd_PatternStd_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -218,10 +243,12 @@ impl DataXtd_PatternStd {
     /// Read persistent data from a file.
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_DataXtd_PatternStd_read(self as *mut Self, theReadData)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -229,10 +256,12 @@ impl DataXtd_PatternStd {
     /// Write persistent data to a file.
     pub fn write(&mut self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_DataXtd_PatternStd_write(self as *mut Self, theWriteData)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -243,13 +272,15 @@ impl DataXtd_PatternStd {
         theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_DataXtd_PatternStd_p_children(
                     self as *const Self,
                     theChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -259,8 +290,11 @@ impl DataXtd_PatternStd {
         {
             let __result =
                 unsafe { crate::ffi::StdPersistent_DataXtd_PatternStd_p_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -268,13 +302,15 @@ impl DataXtd_PatternStd {
     /// Import transient attribute from the persistent data.
     pub fn import(&self, theAttribute: &crate::ffi::HandleTDataXtdPatternStd) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_DataXtd_PatternStd_import(
                     self as *const Self,
                     theAttribute,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -297,8 +333,10 @@ impl HArray1OfShape1 {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPersistent_HArray1OfShape1_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -307,8 +345,10 @@ impl HArray1OfShape1 {
         {
             let __result =
                 unsafe { crate::ffi::StdPersistent_HArray1OfShape1_ctor_int2(theLower, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -324,8 +364,10 @@ impl HArray1OfShape1 {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -342,8 +384,10 @@ impl HArray1OfShape1 {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -355,8 +399,10 @@ impl HArray1OfShape1 {
             let __result = unsafe {
                 crate::ffi::StdPersistent_HArray1OfShape1_ctor_array1_stdobject_shape(theOther)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -365,8 +411,11 @@ impl HArray1OfShape1 {
         {
             let __result =
                 unsafe { crate::ffi::StdPersistent_HArray1OfShape1_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -376,8 +425,11 @@ impl HArray1OfShape1 {
             let __result = unsafe {
                 crate::ffi::StdPersistent_HArray1OfShape1_change_array1(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -387,8 +439,11 @@ impl HArray1OfShape1 {
             let __result = unsafe {
                 crate::ffi::StdPersistent_HArray1OfShape1_dynamic_type(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -396,8 +451,11 @@ impl HArray1OfShape1 {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::StdPersistent_HArray1OfShape1_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -406,45 +464,46 @@ impl HArray1OfShape1 {
         {
             let __result =
                 unsafe { crate::ffi::StdPersistent_HArray1OfShape1_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdPersistent_HArray1OfShape1_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StdPersistent_HArray1OfShape1_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdPersistent_HArray1OfShape1_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StdPersistent_HArray1OfShape1_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStdPersistentHArray1OfShape1> {
-        {
-            let __result =
-                unsafe { crate::ffi::StdPersistent_HArray1OfShape1_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::StdPersistent_HArray1OfShape1_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -456,8 +515,11 @@ impl HArray1OfShape1 {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -470,8 +532,11 @@ impl HArray1OfShape1 {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -481,11 +546,14 @@ impl HArray1OfShape1 {
             let __result = unsafe {
                 crate::ffi::StdPersistent_HArray1OfShape1_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -496,20 +564,25 @@ impl HArray1OfShape1 {
             let __result = unsafe {
                 crate::ffi::StdPersistent_HArray1OfShape1_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_HArray1OfShape1_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -521,18 +594,23 @@ impl HArray1OfShape1 {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_HArray1OfShape1_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -548,36 +626,35 @@ unsafe impl crate::CppDeletable for HandleStdPersistentHArray1OfShape1 {
 impl HandleStdPersistentHArray1OfShape1 {
     /// Dereference this Handle to access the underlying StdPersistent_HArray1OfShape1
     pub fn get(&self) -> &crate::ffi::StdPersistent_HArray1OfShape1 {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStdPersistentHArray1OfShape1_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleStdPersistentHArray1OfShape1_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StdPersistent_HArray1OfShape1
     pub fn get_mut(&mut self) -> &mut crate::ffi::StdPersistent_HArray1OfShape1 {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdPersistentHArray1OfShape1_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleStdPersistentHArray1OfShape1_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StdPersistent_HArray1OfShape1> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdPersistentHArray1OfShape1_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdPersistentHArray1OfShape1_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -600,8 +677,10 @@ impl Naming {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPersistent_Naming_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -621,8 +700,10 @@ impl Naming_NamedShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPersistent_Naming_NamedShape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -630,10 +711,12 @@ impl Naming_NamedShape {
     /// Read persistent data from a file.
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_Naming_NamedShape_read(self as *mut Self, theReadData)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -641,10 +724,12 @@ impl Naming_NamedShape {
     /// Read persistent data from a file.
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_Naming_NamedShape_write(self as *const Self, theWriteData)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -655,13 +740,15 @@ impl Naming_NamedShape {
         theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_Naming_NamedShape_p_children(
                     self as *const Self,
                     theChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -671,8 +758,11 @@ impl Naming_NamedShape {
         {
             let __result =
                 unsafe { crate::ffi::StdPersistent_Naming_NamedShape_p_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -680,13 +770,15 @@ impl Naming_NamedShape {
     /// Import transient attribute from the persistent data.
     pub fn import(&self, theAttribute: &crate::ffi::HandleTNamingNamedShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_Naming_NamedShape_import(
                     self as *const Self,
                     theAttribute,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -706,8 +798,10 @@ impl Naming_Name {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPersistent_Naming_Name_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -715,8 +809,12 @@ impl Naming_Name {
     /// Read persistent data from a file.
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         {
-            unsafe { crate::ffi::StdPersistent_Naming_Name_read(self as *mut Self, theReadData) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdPersistent_Naming_Name_read(self as *mut Self, theReadData)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -724,10 +822,12 @@ impl Naming_Name {
     /// Read persistent data from a file.
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_write(self as *const Self, theWriteData)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -738,10 +838,12 @@ impl Naming_Name {
         theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_p_children(self as *const Self, theChildren)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -751,8 +853,11 @@ impl Naming_Name {
         {
             let __result =
                 unsafe { crate::ffi::StdPersistent_Naming_Name_p_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -760,79 +865,82 @@ impl Naming_Name {
     /// Import transient object from the persistent data.
     pub fn import(&self, theName: &mut crate::t_naming::Name, theDF: &crate::ffi::HandleTDFData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_import(self as *const Self, theName, theDF)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Upcast to StdObjMgt_Persistent
     pub fn as_std_obj_mgt_persistent(&self) -> &crate::std_obj_mgt::Persistent {
-        {
-            let __result = unsafe {
-                crate::ffi::StdPersistent_Naming_Name_as_StdObjMgt_Persistent(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StdPersistent_Naming_Name_as_StdObjMgt_Persistent(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StdObjMgt_Persistent (mutable)
     pub fn as_std_obj_mgt_persistent_mut(&mut self) -> &mut crate::std_obj_mgt::Persistent {
-        {
-            let __result = unsafe {
-                crate::ffi::StdPersistent_Naming_Name_as_StdObjMgt_Persistent_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StdPersistent_Naming_Name_as_StdObjMgt_Persistent_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdPersistent_Naming_Name_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StdPersistent_Naming_Name_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdPersistent_Naming_Name_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StdPersistent_Naming_Name_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStdPersistentNamingName> {
-        {
-            let __result =
-                unsafe { crate::ffi::StdPersistent_Naming_Name_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::StdPersistent_Naming_Name_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:66 - `StdObjMgt_Persistent::ImportDocument()`
     pub fn import_document(&self, theDocument: &crate::ffi::HandleTDocStdDocument) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_inherited_ImportDocument(
                     self as *const Self,
                     theDocument,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -842,8 +950,11 @@ impl Naming_Name {
             let __result = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_inherited_CreateAttribute(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -853,18 +964,23 @@ impl Naming_Name {
             let __result = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_inherited_GetAttribute(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:81 - `StdObjMgt_Persistent::ImportAttribute()`
     pub fn import_attribute(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_inherited_ImportAttribute(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -874,8 +990,11 @@ impl Naming_Name {
             let __result = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_inherited_AsciiString(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -885,8 +1004,11 @@ impl Naming_Name {
             let __result = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_inherited_ExtString(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -896,8 +1018,11 @@ impl Naming_Name {
             let __result = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_inherited_Label(self as *const Self, theDF)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -907,8 +1032,11 @@ impl Naming_Name {
             let __result = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_inherited_TypeNum(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -918,8 +1046,11 @@ impl Naming_Name {
             let __result = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_inherited_RefNum(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -929,8 +1060,11 @@ impl Naming_Name {
             let __result = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_inherited_DynamicType(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -943,8 +1077,11 @@ impl Naming_Name {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -954,8 +1091,11 @@ impl Naming_Name {
             let __result = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -965,11 +1105,14 @@ impl Naming_Name {
             let __result = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -980,20 +1123,25 @@ impl Naming_Name {
             let __result = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1005,16 +1153,23 @@ impl Naming_Name {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::StdPersistent_Naming_Name_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdPersistent_Naming_Name_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1030,48 +1185,48 @@ unsafe impl crate::CppDeletable for HandleStdPersistentNamingName {
 impl HandleStdPersistentNamingName {
     /// Dereference this Handle to access the underlying StdPersistent_Naming_Name
     pub fn get(&self) -> &crate::ffi::StdPersistent_Naming_Name {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStdPersistentNamingName_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleStdPersistentNamingName_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StdPersistent_Naming_Name
     pub fn get_mut(&mut self) -> &mut crate::ffi::StdPersistent_Naming_Name {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStdPersistentNamingName_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleStdPersistentNamingName_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StdPersistent_Naming_Name> to Handle<StdObjMgt_Persistent>
     pub fn to_handle_persistent(&self) -> crate::OwnedPtr<crate::ffi::HandleStdObjMgtPersistent> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdPersistentNamingName_to_HandleStdObjMgtPersistent(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdPersistentNamingName_to_HandleStdObjMgtPersistent(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StdPersistent_Naming_Name> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdPersistentNamingName_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdPersistentNamingName_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1090,8 +1245,10 @@ impl Naming_Name_1 {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPersistent_Naming_Name_1_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1099,8 +1256,12 @@ impl Naming_Name_1 {
     /// Read persistent data from a file.
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         {
-            unsafe { crate::ffi::StdPersistent_Naming_Name_1_read(self as *mut Self, theReadData) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdPersistent_Naming_Name_1_read(self as *mut Self, theReadData)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1108,10 +1269,12 @@ impl Naming_Name_1 {
     /// Read persistent data from a file.
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_1_write(self as *const Self, theWriteData)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1122,10 +1285,12 @@ impl Naming_Name_1 {
         theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_1_p_children(self as *const Self, theChildren)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1135,8 +1300,11 @@ impl Naming_Name_1 {
         {
             let __result =
                 unsafe { crate::ffi::StdPersistent_Naming_Name_1_p_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1144,10 +1312,12 @@ impl Naming_Name_1 {
     /// Import transient object from the persistent data.
     pub fn import(&self, theName: &mut crate::t_naming::Name, theDF: &crate::ffi::HandleTDFData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_1_import(self as *const Self, theName, theDF)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1167,8 +1337,10 @@ impl Naming_Name_2 {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPersistent_Naming_Name_2_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1176,8 +1348,12 @@ impl Naming_Name_2 {
     /// Read persistent data from a file.
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         {
-            unsafe { crate::ffi::StdPersistent_Naming_Name_2_read(self as *mut Self, theReadData) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdPersistent_Naming_Name_2_read(self as *mut Self, theReadData)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1185,10 +1361,12 @@ impl Naming_Name_2 {
     /// Read persistent data from a file.
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_2_write(self as *const Self, theWriteData)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1199,10 +1377,12 @@ impl Naming_Name_2 {
         theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_2_p_children(self as *const Self, theChildren)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1212,8 +1392,11 @@ impl Naming_Name_2 {
         {
             let __result =
                 unsafe { crate::ffi::StdPersistent_Naming_Name_2_p_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1221,10 +1404,12 @@ impl Naming_Name_2 {
     /// Import transient object from the persistent data.
     pub fn import(&self, theName: &mut crate::t_naming::Name, theDF: &crate::ffi::HandleTDFData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_Naming_Name_2_import(self as *const Self, theName, theDF)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1244,8 +1429,10 @@ impl Naming_Naming {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPersistent_Naming_Naming_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1253,8 +1440,12 @@ impl Naming_Naming {
     /// Import transient attribute from the persistent data.
     pub fn import_attribute(&mut self) {
         {
-            unsafe { crate::ffi::StdPersistent_Naming_Naming_import_attribute(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::StdPersistent_Naming_Naming_import_attribute(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1274,8 +1465,10 @@ impl Naming_Naming_1 {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPersistent_Naming_Naming_1_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1283,10 +1476,12 @@ impl Naming_Naming_1 {
     /// Import transient attribute from the persistent data.
     pub fn import_attribute(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_Naming_Naming_1_import_attribute(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1310,8 +1505,10 @@ impl PPrsStd {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPersistent_PPrsStd_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -1331,8 +1528,10 @@ impl PPrsStd_AISPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPersistent_PPrsStd_AISPresentation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1340,13 +1539,15 @@ impl PPrsStd_AISPresentation {
     /// Read persistent data from a file.
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_PPrsStd_AISPresentation_read(
                     self as *mut Self,
                     theReadData,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1354,13 +1555,15 @@ impl PPrsStd_AISPresentation {
     /// Write persistent data to a file.
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_PPrsStd_AISPresentation_write(
                     self as *const Self,
                     theWriteData,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1371,13 +1574,15 @@ impl PPrsStd_AISPresentation {
         theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_PPrsStd_AISPresentation_p_children(
                     self as *const Self,
                     theChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1388,8 +1593,11 @@ impl PPrsStd_AISPresentation {
             let __result = unsafe {
                 crate::ffi::StdPersistent_PPrsStd_AISPresentation_p_name(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1397,13 +1605,15 @@ impl PPrsStd_AISPresentation {
     /// Import transient attribute from the persistent data.
     pub fn import(&self, theAttribute: &crate::ffi::HandleTDataXtdPresentation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_PPrsStd_AISPresentation_import(
                     self as *const Self,
                     theAttribute,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1423,8 +1633,10 @@ impl PPrsStd_AISPresentation_1 {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPersistent_PPrsStd_AISPresentation_1_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1432,13 +1644,15 @@ impl PPrsStd_AISPresentation_1 {
     /// Read persistent data from a file.
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_PPrsStd_AISPresentation_1_read(
                     self as *mut Self,
                     theReadData,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1446,13 +1660,15 @@ impl PPrsStd_AISPresentation_1 {
     /// Write persistent data to a file.
     pub fn write(&mut self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_PPrsStd_AISPresentation_1_write(
                     self as *mut Self,
                     theWriteData,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1463,8 +1679,11 @@ impl PPrsStd_AISPresentation_1 {
             let __result = unsafe {
                 crate::ffi::StdPersistent_PPrsStd_AISPresentation_1_p_name(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1472,13 +1691,15 @@ impl PPrsStd_AISPresentation_1 {
     /// Import transient attribute from the persistent data.
     pub fn import(&self, theAttribute: &crate::ffi::HandleTDataXtdPresentation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_PPrsStd_AISPresentation_1_import(
                     self as *const Self,
                     theAttribute,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1502,8 +1723,10 @@ impl TopLoc {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPersistent_TopLoc_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1518,8 +1741,11 @@ impl TopLoc {
                     theLoc, theMap,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1532,8 +1758,11 @@ impl TopLoc {
             let __result = unsafe {
                 crate::ffi::StdPersistent_TopLoc_translate_handletoplocdatum3d_transientpersistentmap(theDatum, theMap)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -1553,8 +1782,10 @@ impl TopLoc_Datum3D {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPersistent_TopLoc_Datum3D_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1562,10 +1793,12 @@ impl TopLoc_Datum3D {
     /// Read persistent data from a file.
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_TopLoc_Datum3D_read(self as *mut Self, theReadData)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1573,10 +1806,12 @@ impl TopLoc_Datum3D {
     /// Write persistent data to a file.
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_TopLoc_Datum3D_write(self as *const Self, theWriteData)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1584,10 +1819,12 @@ impl TopLoc_Datum3D {
     /// Gets persistent child objects
     pub fn p_children(&self, arg0: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_TopLoc_Datum3D_p_children(self as *const Self, arg0)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1597,8 +1834,11 @@ impl TopLoc_Datum3D {
         {
             let __result =
                 unsafe { crate::ffi::StdPersistent_TopLoc_Datum3D_p_name(self as *const Self) };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1606,12 +1846,12 @@ impl TopLoc_Datum3D {
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStdPersistentTopLocDatum3D> {
-        {
-            let __result =
-                unsafe { crate::ffi::StdPersistent_TopLoc_Datum3D_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::StdPersistent_TopLoc_Datum3D_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1626,22 +1866,22 @@ unsafe impl crate::CppDeletable for HandleStdPersistentTopLocDatum3D {
 impl HandleStdPersistentTopLocDatum3D {
     /// Dereference this Handle to access the underlying StdPersistent_TopLoc_Datum3D
     pub fn get(&self) -> &crate::ffi::StdPersistent_TopLoc_Datum3D {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStdPersistentTopLocDatum3D_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleStdPersistentTopLocDatum3D_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StdPersistent_TopLoc_Datum3D
     pub fn get_mut(&mut self) -> &mut crate::ffi::StdPersistent_TopLoc_Datum3D {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleStdPersistentTopLocDatum3D_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleStdPersistentTopLocDatum3D_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 }
 
@@ -1660,8 +1900,10 @@ impl TopLoc_ItemLocation {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::StdPersistent_TopLoc_ItemLocation_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1669,10 +1911,12 @@ impl TopLoc_ItemLocation {
     /// Read persistent data from a file.
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_TopLoc_ItemLocation_read(self as *mut Self, theReadData)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1680,13 +1924,15 @@ impl TopLoc_ItemLocation {
     /// Write persistent data to a file.
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_TopLoc_ItemLocation_write(
                     self as *const Self,
                     theWriteData,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1697,13 +1943,15 @@ impl TopLoc_ItemLocation {
         theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_TopLoc_ItemLocation_p_children(
                     self as *const Self,
                     theChildren,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1714,8 +1962,11 @@ impl TopLoc_ItemLocation {
             let __result = unsafe {
                 crate::ffi::StdPersistent_TopLoc_ItemLocation_p_name(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1726,85 +1977,88 @@ impl TopLoc_ItemLocation {
             let __result = unsafe {
                 crate::ffi::StdPersistent_TopLoc_ItemLocation_import(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Upcast to StdObjMgt_Persistent
     pub fn as_std_obj_mgt_persistent(&self) -> &crate::std_obj_mgt::Persistent {
-        {
-            let __result = unsafe {
-                crate::ffi::StdPersistent_TopLoc_ItemLocation_as_StdObjMgt_Persistent(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StdPersistent_TopLoc_ItemLocation_as_StdObjMgt_Persistent(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to StdObjMgt_Persistent (mutable)
     pub fn as_std_obj_mgt_persistent_mut(&mut self) -> &mut crate::std_obj_mgt::Persistent {
-        {
-            let __result = unsafe {
-                crate::ffi::StdPersistent_TopLoc_ItemLocation_as_StdObjMgt_Persistent_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StdPersistent_TopLoc_ItemLocation_as_StdObjMgt_Persistent_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdPersistent_TopLoc_ItemLocation_as_Standard_Transient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::StdPersistent_TopLoc_ItemLocation_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::StdPersistent_TopLoc_ItemLocation_as_Standard_Transient_mut(
-                    self as *mut Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::StdPersistent_TopLoc_ItemLocation_as_Standard_Transient_mut(
+                self as *mut Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleStdPersistentTopLocItemLocation> {
-        {
-            let __result =
-                unsafe { crate::ffi::StdPersistent_TopLoc_ItemLocation_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::StdPersistent_TopLoc_ItemLocation_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:66 - `StdObjMgt_Persistent::ImportDocument()`
     pub fn import_document(&self, theDocument: &crate::ffi::HandleTDocStdDocument) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_TopLoc_ItemLocation_inherited_ImportDocument(
                     self as *const Self,
                     theDocument,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1816,8 +2070,11 @@ impl TopLoc_ItemLocation {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1829,20 +2086,25 @@ impl TopLoc_ItemLocation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:81 - `StdObjMgt_Persistent::ImportAttribute()`
     pub fn import_attribute(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_TopLoc_ItemLocation_inherited_ImportAttribute(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1854,8 +2116,11 @@ impl TopLoc_ItemLocation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1867,8 +2132,11 @@ impl TopLoc_ItemLocation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1881,8 +2149,11 @@ impl TopLoc_ItemLocation {
                     theDF,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1892,8 +2163,11 @@ impl TopLoc_ItemLocation {
             let __result = unsafe {
                 crate::ffi::StdPersistent_TopLoc_ItemLocation_inherited_TypeNum(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1903,8 +2177,11 @@ impl TopLoc_ItemLocation {
             let __result = unsafe {
                 crate::ffi::StdPersistent_TopLoc_ItemLocation_inherited_RefNum(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1916,8 +2193,11 @@ impl TopLoc_ItemLocation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1930,8 +2210,11 @@ impl TopLoc_ItemLocation {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1944,8 +2227,11 @@ impl TopLoc_ItemLocation {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1955,11 +2241,14 @@ impl TopLoc_ItemLocation {
             let __result = unsafe {
                 crate::ffi::StdPersistent_TopLoc_ItemLocation_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1972,20 +2261,25 @@ impl TopLoc_ItemLocation {
                     self as *const Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_TopLoc_ItemLocation_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1997,18 +2291,23 @@ impl TopLoc_ItemLocation {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::StdPersistent_TopLoc_ItemLocation_inherited_Delete(self as *const Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2024,49 +2323,47 @@ unsafe impl crate::CppDeletable for HandleStdPersistentTopLocItemLocation {
 impl HandleStdPersistentTopLocItemLocation {
     /// Dereference this Handle to access the underlying StdPersistent_TopLoc_ItemLocation
     pub fn get(&self) -> &crate::ffi::StdPersistent_TopLoc_ItemLocation {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdPersistentTopLocItemLocation_get(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleStdPersistentTopLocItemLocation_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying StdPersistent_TopLoc_ItemLocation
     pub fn get_mut(&mut self) -> &mut crate::ffi::StdPersistent_TopLoc_ItemLocation {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdPersistentTopLocItemLocation_get_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleStdPersistentTopLocItemLocation_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<StdPersistent_TopLoc_ItemLocation> to Handle<StdObjMgt_Persistent>
     pub fn to_handle_persistent(&self) -> crate::OwnedPtr<crate::ffi::HandleStdObjMgtPersistent> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdPersistentTopLocItemLocation_to_HandleStdObjMgtPersistent(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdPersistentTopLocItemLocation_to_HandleStdObjMgtPersistent(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<StdPersistent_TopLoc_ItemLocation> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleStdPersistentTopLocItemLocation_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleStdPersistentTopLocItemLocation_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }

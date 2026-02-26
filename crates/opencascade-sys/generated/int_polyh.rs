@@ -27,8 +27,10 @@ impl PointNormal {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntPolyh_PointNormal_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -56,8 +58,10 @@ impl Couple {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Couple_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -72,8 +76,10 @@ impl Couple {
             let __result = unsafe {
                 crate::ffi::IntPolyh_Couple_ctor_int2_real(theTriangle1, theTriangle2, theAngle)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -88,8 +94,11 @@ impl Couple {
     pub fn first_value(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Couple_first_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -98,8 +107,11 @@ impl Couple {
     pub fn second_value(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Couple_second_value(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -108,8 +120,11 @@ impl Couple {
     pub fn is_analyzed(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Couple_is_analyzed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -118,8 +133,11 @@ impl Couple {
     pub fn angle(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Couple_angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -127,10 +145,12 @@ impl Couple {
     /// Sets the triangles
     pub fn set_couple_value(&mut self, theInd1: i32, theInd2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_Couple_set_couple_value(self as *mut Self, theInd1, theInd2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -138,8 +158,11 @@ impl Couple {
     /// Sets the analyzed flag
     pub fn set_analyzed(&mut self, theAnalyzed: bool) {
         {
-            unsafe { crate::ffi::IntPolyh_Couple_set_analyzed(self as *mut Self, theAnalyzed) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntPolyh_Couple_set_analyzed(self as *mut Self, theAnalyzed) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -147,8 +170,11 @@ impl Couple {
     /// Sets the angle
     pub fn set_angle(&mut self, theAngle: f64) {
         {
-            unsafe { crate::ffi::IntPolyh_Couple_set_angle(self as *mut Self, theAngle) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntPolyh_Couple_set_angle(self as *mut Self, theAngle) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -158,16 +184,21 @@ impl Couple {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_Couple_is_equal(self as *const Self, theOther) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `IntPolyh_Couple.hxx`:93 - `IntPolyh_Couple::Dump()`
     pub fn dump(&self, v: i32) {
         {
-            unsafe { crate::ffi::IntPolyh_Couple_dump(self as *const Self, v) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntPolyh_Couple_dump(self as *const Self, v) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -193,8 +224,10 @@ impl Edge {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Edge_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -215,8 +248,10 @@ impl Edge {
                     theTriangle2,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -225,8 +260,11 @@ impl Edge {
     pub fn first_point(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Edge_first_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -235,8 +273,11 @@ impl Edge {
     pub fn second_point(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Edge_second_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -245,8 +286,11 @@ impl Edge {
     pub fn first_triangle(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Edge_first_triangle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -256,8 +300,11 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_Edge_second_triangle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -265,8 +312,11 @@ impl Edge {
     /// Sets the first point
     pub fn set_first_point(&mut self, thePoint: i32) {
         {
-            unsafe { crate::ffi::IntPolyh_Edge_set_first_point(self as *mut Self, thePoint) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntPolyh_Edge_set_first_point(self as *mut Self, thePoint) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -274,8 +324,11 @@ impl Edge {
     /// Sets the second point
     pub fn set_second_point(&mut self, thePoint: i32) {
         {
-            unsafe { crate::ffi::IntPolyh_Edge_set_second_point(self as *mut Self, thePoint) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntPolyh_Edge_set_second_point(self as *mut Self, thePoint) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -283,8 +336,12 @@ impl Edge {
     /// Sets the first triangle
     pub fn set_first_triangle(&mut self, theTriangle: i32) {
         {
-            unsafe { crate::ffi::IntPolyh_Edge_set_first_triangle(self as *mut Self, theTriangle) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntPolyh_Edge_set_first_triangle(self as *mut Self, theTriangle)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -292,18 +349,22 @@ impl Edge {
     /// Sets the second triangle
     pub fn set_second_triangle(&mut self, theTriangle: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_Edge_set_second_triangle(self as *mut Self, theTriangle)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntPolyh_Edge.hxx`:76 - `IntPolyh_Edge::Dump()`
     pub fn dump(&self, v: i32) {
         {
-            unsafe { crate::ffi::IntPolyh_Edge_dump(self as *const Self, v) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntPolyh_Edge_dump(self as *const Self, v) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -349,8 +410,10 @@ impl Intersection {
             let __result = unsafe {
                 crate::ffi::IntPolyh_Intersection_ctor_handleadaptor3dsurface2(theS1, theS2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -372,8 +435,10 @@ impl Intersection {
             let __result = unsafe {
                 crate::ffi::IntPolyh_Intersection_ctor_handleadaptor3dsurface_int2_handleadaptor3dsurface_int2(theS1, theNbSU1, theNbSV1, theS2, theNbSU2, theNbSV2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -392,8 +457,10 @@ impl Intersection {
             let __result = unsafe {
                 crate::ffi::IntPolyh_Intersection_ctor_handleadaptor3dsurface_array1ofreal2_handleadaptor3dsurface_array1ofreal2(theS1, theUPars1, theVPars1, theS2, theUPars2, theVPars2)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -404,8 +471,11 @@ impl Intersection {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_Intersection_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -415,8 +485,11 @@ impl Intersection {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_Intersection_is_parallel(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -426,8 +499,11 @@ impl Intersection {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_Intersection_nb_section_lines(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -438,8 +514,11 @@ impl Intersection {
             let __result = unsafe {
                 crate::ffi::IntPolyh_Intersection_nb_points_in_line(self as *const Self, IndexLine)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -448,8 +527,11 @@ impl Intersection {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_Intersection_nb_tangent_zones(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -463,8 +545,11 @@ impl Intersection {
                     arg0,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -484,7 +569,7 @@ impl Intersection {
         incidence: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_Intersection_get_line_point(
                     self as *const Self,
                     IndexLine,
@@ -499,7 +584,9 @@ impl Intersection {
                     incidence,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -518,7 +605,7 @@ impl Intersection {
         v2: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_Intersection_get_tangent_zone_point(
                     self as *const Self,
                     IndexLine,
@@ -532,7 +619,9 @@ impl Intersection {
                     v2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -567,8 +656,10 @@ impl MaillageAffinage {
             let __result = unsafe {
                 crate::ffi::IntPolyh_MaillageAffinage_ctor_handleadaptor3dsurface_int2_handleadaptor3dsurface_int3(S1, NbSU1, NbSV1, S2, NbSU2, NbSV2, PRINT)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -584,8 +675,10 @@ impl MaillageAffinage {
                     S1, S2, PRINT,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -599,7 +692,7 @@ impl MaillageAffinage {
         theVPars: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_MaillageAffinage_make_sampling(
                     self as *mut Self,
                     SurfID,
@@ -607,7 +700,9 @@ impl MaillageAffinage {
                     theVPars,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -616,13 +711,15 @@ impl MaillageAffinage {
     /// standard (default) method
     pub fn fill_array_of_pnt_int(&mut self, SurfID: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_MaillageAffinage_fill_array_of_pnt_int(
                     self as *mut Self,
                     SurfID,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -636,14 +733,16 @@ impl MaillageAffinage {
     /// advanced method
     pub fn fill_array_of_pnt_int_bool(&mut self, SurfID: i32, isShiftFwd: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_MaillageAffinage_fill_array_of_pnt_int_bool(
                     self as *mut Self,
                     SurfID,
                     isShiftFwd,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -659,7 +758,7 @@ impl MaillageAffinage {
         theDeflTol: Option<&f64>,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_MaillageAffinage_fill_array_of_pnt_int_array1ofreal2_realptr(
                     self as *mut Self,
                     SurfID,
@@ -668,7 +767,9 @@ impl MaillageAffinage {
                     theDeflTol.map_or(std::ptr::null(), |r| r as *const _),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -690,10 +791,12 @@ impl MaillageAffinage {
         theDeflTol: Option<&f64>,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_MaillageAffinage_fill_array_of_pnt_int_bool_array1ofreal2_realptr(self as *mut Self, SurfID, isShiftFwd, Upars, Vpars, theDeflTol.map_or(std::ptr::null(), |r| r as *const _))
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -709,10 +812,12 @@ impl MaillageAffinage {
         theDeflTol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_MaillageAffinage_fill_array_of_pnt_int_bool_arrayofpointnormal_array1ofreal2_real(self as *mut Self, SurfID, isShiftFwd, thePoints, theUPars, theVPars, theDeflTol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -721,8 +826,11 @@ impl MaillageAffinage {
     /// of the surfaces inside that common box for possible intersection
     pub fn common_box(&mut self) {
         {
-            unsafe { crate::ffi::IntPolyh_MaillageAffinage_common_box(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntPolyh_MaillageAffinage_common_box(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -742,7 +850,7 @@ impl MaillageAffinage {
         zMax: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_MaillageAffinage_common_box_box2_real6(
                     self as *mut Self,
                     B1,
@@ -755,7 +863,9 @@ impl MaillageAffinage {
                     zMax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -763,10 +873,12 @@ impl MaillageAffinage {
     /// Compute edges from the array of points
     pub fn fill_array_of_edges(&mut self, SurfID: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_MaillageAffinage_fill_array_of_edges(self as *mut Self, SurfID)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -776,13 +888,15 @@ impl MaillageAffinage {
     /// CommonBox function.
     pub fn fill_array_of_triangles(&mut self, SurfID: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_MaillageAffinage_fill_array_of_triangles(
                     self as *mut Self,
                     SurfID,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -790,10 +904,12 @@ impl MaillageAffinage {
     /// Refine systematicaly all marked triangles of both surfaces
     pub fn common_part_refinement(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_MaillageAffinage_common_part_refinement(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -801,13 +917,15 @@ impl MaillageAffinage {
     /// Refine systematicaly all marked triangles of ONE surface
     pub fn local_surface_refinement(&mut self, SurfId: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_MaillageAffinage_local_surface_refinement(
                     self as *mut Self,
                     SurfId,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -816,10 +934,12 @@ impl MaillageAffinage {
     /// surface,and sort min and max of deflections
     pub fn compute_deflections(&mut self, SurfID: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_MaillageAffinage_compute_deflections(self as *mut Self, SurfID)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -831,12 +951,14 @@ impl MaillageAffinage {
     /// compared to the other)
     pub fn triangles_deflections_refinement_bsb(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_MaillageAffinage_triangles_deflections_refinement_bsb(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -866,8 +988,11 @@ impl MaillageAffinage {
                     Angle,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -913,8 +1038,11 @@ impl MaillageAffinage {
                     SP2,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -939,8 +1067,11 @@ impl MaillageAffinage {
                     SP2,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -965,8 +1096,11 @@ impl MaillageAffinage {
                     SPNext,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -979,8 +1113,11 @@ impl MaillageAffinage {
             let __result = unsafe {
                 crate::ffi::IntPolyh_MaillageAffinage_triangle_compare(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1002,8 +1139,11 @@ impl MaillageAffinage {
                     TTangentZones,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1029,8 +1169,11 @@ impl MaillageAffinage {
                     Prepend,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1043,8 +1186,11 @@ impl MaillageAffinage {
                     SurfID,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1057,8 +1203,11 @@ impl MaillageAffinage {
                     SurfID,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1071,8 +1220,11 @@ impl MaillageAffinage {
                     SurfID,
                 )
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1082,8 +1234,11 @@ impl MaillageAffinage {
             let __result = unsafe {
                 crate::ffi::IntPolyh_MaillageAffinage_get_fin_te(self as *const Self, SurfID)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1093,8 +1248,11 @@ impl MaillageAffinage {
             let __result = unsafe {
                 crate::ffi::IntPolyh_MaillageAffinage_get_fin_tt(self as *const Self, SurfID)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1104,8 +1262,11 @@ impl MaillageAffinage {
             let __result = unsafe {
                 crate::ffi::IntPolyh_MaillageAffinage_get_box(self as *const Self, SurfID)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1115,21 +1276,26 @@ impl MaillageAffinage {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_MaillageAffinage_get_couples(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// **Source:** `IntPolyh_MaillageAffinage.hxx`:224 - `IntPolyh_MaillageAffinage::SetEnlargeZone()`
     pub fn set_enlarge_zone(&mut self, EnlargeZone: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_MaillageAffinage_set_enlarge_zone(
                     self as *mut Self,
                     EnlargeZone,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1139,8 +1305,11 @@ impl MaillageAffinage {
             let __result = unsafe {
                 crate::ffi::IntPolyh_MaillageAffinage_get_enlarge_zone(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1154,8 +1323,11 @@ impl MaillageAffinage {
                     SurfID,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1169,8 +1341,11 @@ impl MaillageAffinage {
                     SurfID,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1196,8 +1371,10 @@ impl Point {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Point_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1206,8 +1383,10 @@ impl Point {
     pub fn new_real5(x: f64, y: f64, z: f64, u: f64, v: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Point_ctor_real5(x, y, z, u, v) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1216,8 +1395,11 @@ impl Point {
     pub fn x(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Point_x(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1226,8 +1408,11 @@ impl Point {
     pub fn y(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Point_y(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1236,8 +1421,11 @@ impl Point {
     pub fn z(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Point_z(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1246,8 +1434,11 @@ impl Point {
     pub fn u(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Point_u(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1256,8 +1447,11 @@ impl Point {
     pub fn v(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Point_v(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1267,8 +1461,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_Point_part_of_common(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1276,8 +1473,11 @@ impl Point {
     /// Sets the point
     pub fn set(&mut self, x: f64, y: f64, z: f64, u: f64, v: f64, II: i32) {
         {
-            unsafe { crate::ffi::IntPolyh_Point_set(self as *mut Self, x, y, z, u, v, II) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntPolyh_Point_set(self as *mut Self, x, y, z, u, v, II) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1285,8 +1485,10 @@ impl Point {
     /// Sets the X coordinate for the 3D point
     pub fn set_x(&mut self, x: f64) {
         {
-            unsafe { crate::ffi::IntPolyh_Point_set_x(self as *mut Self, x) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntPolyh_Point_set_x(self as *mut Self, x) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1294,8 +1496,10 @@ impl Point {
     /// Sets the Y coordinate for the 3D point
     pub fn set_y(&mut self, y: f64) {
         {
-            unsafe { crate::ffi::IntPolyh_Point_set_y(self as *mut Self, y) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntPolyh_Point_set_y(self as *mut Self, y) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1303,8 +1507,10 @@ impl Point {
     /// Sets the Z coordinate for the 3D point
     pub fn set_z(&mut self, z: f64) {
         {
-            unsafe { crate::ffi::IntPolyh_Point_set_z(self as *mut Self, z) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntPolyh_Point_set_z(self as *mut Self, z) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1312,8 +1518,10 @@ impl Point {
     /// Sets the U coordinate for the 2D point
     pub fn set_u(&mut self, u: f64) {
         {
-            unsafe { crate::ffi::IntPolyh_Point_set_u(self as *mut Self, u) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntPolyh_Point_set_u(self as *mut Self, u) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1321,8 +1529,10 @@ impl Point {
     /// Sets the V coordinate for the 2D point
     pub fn set_v(&mut self, v: f64) {
         {
-            unsafe { crate::ffi::IntPolyh_Point_set_v(self as *mut Self, v) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntPolyh_Point_set_v(self as *mut Self, v) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1330,8 +1540,11 @@ impl Point {
     /// Sets the part of common
     pub fn set_part_of_common(&mut self, ii: i32) {
         {
-            unsafe { crate::ffi::IntPolyh_Point_set_part_of_common(self as *mut Self, ii) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntPolyh_Point_set_part_of_common(self as *mut Self, ii) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1344,8 +1557,11 @@ impl Point {
         P2: &Point,
     ) {
         {
-            unsafe { crate::ffi::IntPolyh_Point_middle(self as *mut Self, MySurface, P1, P2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntPolyh_Point_middle(self as *mut Self, MySurface, P1, P2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1354,8 +1570,11 @@ impl Point {
     pub fn add(&self, P1: &Point) -> crate::OwnedPtr<Point> {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Point_add(self as *const Self, P1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1364,8 +1583,11 @@ impl Point {
     pub fn sub(&self, P1: &Point) -> crate::OwnedPtr<Point> {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Point_sub(self as *const Self, P1) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1374,8 +1596,11 @@ impl Point {
     pub fn divide(&self, rr: f64) -> crate::OwnedPtr<Point> {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Point_divide(self as *const Self, rr) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1385,8 +1610,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_Point_multiplication(self as *const Self, rr) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1396,8 +1624,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_Point_square_modulus(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1407,8 +1638,11 @@ impl Point {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_Point_square_distance(self as *const Self, P2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1417,8 +1651,11 @@ impl Point {
     pub fn dot(&self, P2: &Point) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Point_dot(self as *const Self, P2) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1426,8 +1663,10 @@ impl Point {
     /// Cross
     pub fn cross(&mut self, P1: &Point, P2: &Point) {
         {
-            unsafe { crate::ffi::IntPolyh_Point_cross(self as *mut Self, P1, P2) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntPolyh_Point_cross(self as *mut Self, P1, P2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1435,8 +1674,10 @@ impl Point {
     /// Dump
     pub fn dump(&self) {
         {
-            unsafe { crate::ffi::IntPolyh_Point_dump(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntPolyh_Point_dump(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1444,8 +1685,10 @@ impl Point {
     /// Dump
     pub fn dump_int(&self, i: i32) {
         {
-            unsafe { crate::ffi::IntPolyh_Point_dump_int(self as *const Self, i) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntPolyh_Point_dump_int(self as *const Self, i) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1453,8 +1696,11 @@ impl Point {
     /// Sets the degenerated flag
     pub fn set_degenerated(&mut self, theFlag: bool) {
         {
-            unsafe { crate::ffi::IntPolyh_Point_set_degenerated(self as *mut Self, theFlag) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntPolyh_Point_set_degenerated(self as *mut Self, theFlag) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1463,8 +1709,11 @@ impl Point {
     pub fn degenerated(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Point_degenerated(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1487,8 +1736,10 @@ impl SectionLine {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntPolyh_SectionLine_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1496,16 +1747,20 @@ impl SectionLine {
     pub fn new_int(nn: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntPolyh_SectionLine_ctor_int(nn) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `IntPolyh_SectionLine.hxx`:38 - `IntPolyh_SectionLine::Init()`
     pub fn init(&mut self, nn: i32) {
         {
-            unsafe { crate::ffi::IntPolyh_SectionLine_init(self as *mut Self, nn) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntPolyh_SectionLine_init(self as *mut Self, nn) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1514,8 +1769,11 @@ impl SectionLine {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_SectionLine_value(self as *const Self, nn) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1524,8 +1782,11 @@ impl SectionLine {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_SectionLine_change_value(self as *mut Self, nn) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1540,8 +1801,11 @@ impl SectionLine {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_SectionLine_copy(self as *mut Self, Other) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1549,8 +1813,11 @@ impl SectionLine {
     pub fn get_n(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_SectionLine_get_n(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1559,53 +1826,63 @@ impl SectionLine {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_SectionLine_nb_start_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `IntPolyh_SectionLine.hxx`:56 - `IntPolyh_SectionLine::IncrementNbStartPoints()`
     pub fn increment_nb_start_points(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_SectionLine_increment_nb_start_points(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntPolyh_SectionLine.hxx`:58 - `IntPolyh_SectionLine::Destroy()`
     pub fn destroy(&mut self) {
         {
-            unsafe { crate::ffi::IntPolyh_SectionLine_destroy(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntPolyh_SectionLine_destroy(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntPolyh_SectionLine.hxx`:62 - `IntPolyh_SectionLine::Dump()`
     pub fn dump(&self) {
         {
-            unsafe { crate::ffi::IntPolyh_SectionLine_dump(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntPolyh_SectionLine_dump(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntPolyh_SectionLine.hxx`:64 - `IntPolyh_SectionLine::Prepend()`
     pub fn prepend(&mut self, SP: &StartPoint) {
         {
-            unsafe { crate::ffi::IntPolyh_SectionLine_prepend(self as *mut Self, SP) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntPolyh_SectionLine_prepend(self as *mut Self, SP) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
-        {
-            let __result =
-                unsafe { crate::ffi::IntPolyh_SectionLine_to_owned(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::IntPolyh_SectionLine_to_owned(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1627,8 +1904,10 @@ impl StartPoint {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntPolyh_StartPoint_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1655,8 +1934,10 @@ impl StartPoint {
                     xx, yy, zz, uu1, vv1, uu2, vv2, T1, E1, LAM1, T2, E2, LAM2, List,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1664,8 +1945,11 @@ impl StartPoint {
     pub fn x(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_StartPoint_x(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1673,8 +1957,11 @@ impl StartPoint {
     pub fn y(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_StartPoint_y(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1682,8 +1969,11 @@ impl StartPoint {
     pub fn z(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_StartPoint_z(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1691,8 +1981,11 @@ impl StartPoint {
     pub fn u1(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_StartPoint_u1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1700,8 +1993,11 @@ impl StartPoint {
     pub fn v1(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_StartPoint_v1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1709,8 +2005,11 @@ impl StartPoint {
     pub fn u2(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_StartPoint_u2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1718,8 +2017,11 @@ impl StartPoint {
     pub fn v2(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_StartPoint_v2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1727,8 +2029,11 @@ impl StartPoint {
     pub fn t1(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_StartPoint_t1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1736,8 +2041,11 @@ impl StartPoint {
     pub fn e1(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_StartPoint_e1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1745,8 +2053,11 @@ impl StartPoint {
     pub fn lambda1(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_StartPoint_lambda1(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1754,8 +2065,11 @@ impl StartPoint {
     pub fn t2(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_StartPoint_t2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1763,8 +2077,11 @@ impl StartPoint {
     pub fn e2(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_StartPoint_e2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1772,8 +2089,11 @@ impl StartPoint {
     pub fn lambda2(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_StartPoint_lambda2(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1782,8 +2102,11 @@ impl StartPoint {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_StartPoint_get_angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1792,8 +2115,11 @@ impl StartPoint {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_StartPoint_chain_list(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1815,90 +2141,123 @@ impl StartPoint {
                     LastPoint,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `IntPolyh_StartPoint.hxx`:81 - `IntPolyh_StartPoint::SetXYZ()`
     pub fn set_xyz(&mut self, XX: f64, YY: f64, ZZ: f64) {
         {
-            unsafe { crate::ffi::IntPolyh_StartPoint_set_xyz(self as *mut Self, XX, YY, ZZ) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntPolyh_StartPoint_set_xyz(self as *mut Self, XX, YY, ZZ) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntPolyh_StartPoint.hxx`:85 - `IntPolyh_StartPoint::SetUV1()`
     pub fn set_uv1(&mut self, UU1: f64, VV1: f64) {
         {
-            unsafe { crate::ffi::IntPolyh_StartPoint_set_uv1(self as *mut Self, UU1, VV1) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntPolyh_StartPoint_set_uv1(self as *mut Self, UU1, VV1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntPolyh_StartPoint.hxx`:87 - `IntPolyh_StartPoint::SetUV2()`
     pub fn set_uv2(&mut self, UU2: f64, VV2: f64) {
         {
-            unsafe { crate::ffi::IntPolyh_StartPoint_set_uv2(self as *mut Self, UU2, VV2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntPolyh_StartPoint_set_uv2(self as *mut Self, UU2, VV2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntPolyh_StartPoint.hxx`:89 - `IntPolyh_StartPoint::SetEdge1()`
     pub fn set_edge1(&mut self, IE1: i32) {
         {
-            unsafe { crate::ffi::IntPolyh_StartPoint_set_edge1(self as *mut Self, IE1) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntPolyh_StartPoint_set_edge1(self as *mut Self, IE1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntPolyh_StartPoint.hxx`:91 - `IntPolyh_StartPoint::SetLambda1()`
     pub fn set_lambda1(&mut self, LAM1: f64) {
         {
-            unsafe { crate::ffi::IntPolyh_StartPoint_set_lambda1(self as *mut Self, LAM1) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntPolyh_StartPoint_set_lambda1(self as *mut Self, LAM1) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntPolyh_StartPoint.hxx`:93 - `IntPolyh_StartPoint::SetEdge2()`
     pub fn set_edge2(&mut self, IE2: i32) {
         {
-            unsafe { crate::ffi::IntPolyh_StartPoint_set_edge2(self as *mut Self, IE2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntPolyh_StartPoint_set_edge2(self as *mut Self, IE2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntPolyh_StartPoint.hxx`:95 - `IntPolyh_StartPoint::SetLambda2()`
     pub fn set_lambda2(&mut self, LAM2: f64) {
         {
-            unsafe { crate::ffi::IntPolyh_StartPoint_set_lambda2(self as *mut Self, LAM2) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntPolyh_StartPoint_set_lambda2(self as *mut Self, LAM2) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntPolyh_StartPoint.hxx`:97 - `IntPolyh_StartPoint::SetCoupleValue()`
     pub fn set_couple_value(&mut self, IT1: i32, IT2: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_StartPoint_set_couple_value(self as *mut Self, IT1, IT2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntPolyh_StartPoint.hxx`:99 - `IntPolyh_StartPoint::SetAngle()`
     pub fn set_angle(&mut self, ang: f64) {
         {
-            unsafe { crate::ffi::IntPolyh_StartPoint_set_angle(self as *mut Self, ang) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntPolyh_StartPoint_set_angle(self as *mut Self, ang) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntPolyh_StartPoint.hxx`:101 - `IntPolyh_StartPoint::SetChainList()`
     pub fn set_chain_list(&mut self, ChList: i32) {
         {
-            unsafe { crate::ffi::IntPolyh_StartPoint_set_chain_list(self as *mut Self, ChList) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntPolyh_StartPoint_set_chain_list(self as *mut Self, ChList)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1907,24 +2266,31 @@ impl StartPoint {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_StartPoint_check_same_sp(self as *const Self, SP) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `IntPolyh_StartPoint.hxx`:105 - `IntPolyh_StartPoint::Dump()`
     pub fn dump(&self) {
         {
-            unsafe { crate::ffi::IntPolyh_StartPoint_dump(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntPolyh_StartPoint_dump(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `IntPolyh_StartPoint.hxx`:107 - `IntPolyh_StartPoint::Dump()`
     pub fn dump_int(&self, i: i32) {
         {
-            unsafe { crate::ffi::IntPolyh_StartPoint_dump_int(self as *const Self, i) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntPolyh_StartPoint_dump_int(self as *const Self, i) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1949,8 +2315,10 @@ impl Tools {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Tools_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1962,10 +2330,12 @@ impl Tools {
         theVEnlarge: &mut bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_Tools_is_enlarge_possible(theSurf, theUEnlarge, theVEnlarge)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1985,7 +2355,7 @@ impl Tools {
         theVPars: &mut crate::ffi::TColStd_Array1OfReal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_Tools_make_sampling(
                     theSurf,
                     theNbSU,
@@ -1995,7 +2365,9 @@ impl Tools {
                     theVPars,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2010,8 +2382,11 @@ impl Tools {
             let __result = unsafe {
                 crate::ffi::IntPolyh_Tools_compute_deflection(theSurf, theUPars, theVPars)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2025,12 +2400,14 @@ impl Tools {
         thePoints: &mut crate::ffi::IntPolyh_ArrayOfPointNormal,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_Tools_fill_array_of_point_normal(
                     theSurf, theUPars, theVPars, thePoints,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2056,8 +2433,10 @@ impl Triangle {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Triangle_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2067,8 +2446,10 @@ impl Triangle {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_Triangle_ctor_int3(thePoint1, thePoint2, thePoint3) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2078,8 +2459,11 @@ impl Triangle {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_Triangle_first_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2089,8 +2473,11 @@ impl Triangle {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_Triangle_second_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2100,8 +2487,11 @@ impl Triangle {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_Triangle_third_point(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2110,8 +2500,11 @@ impl Triangle {
     pub fn first_edge(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Triangle_first_edge(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2122,8 +2515,11 @@ impl Triangle {
             let __result = unsafe {
                 crate::ffi::IntPolyh_Triangle_first_edge_orientation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2133,8 +2529,11 @@ impl Triangle {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_Triangle_second_edge(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2145,8 +2544,11 @@ impl Triangle {
             let __result = unsafe {
                 crate::ffi::IntPolyh_Triangle_second_edge_orientation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2155,8 +2557,11 @@ impl Triangle {
     pub fn third_edge(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Triangle_third_edge(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2167,8 +2572,11 @@ impl Triangle {
             let __result = unsafe {
                 crate::ffi::IntPolyh_Triangle_third_edge_orientation(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2177,8 +2585,11 @@ impl Triangle {
     pub fn deflection(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::IntPolyh_Triangle_deflection(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2189,8 +2600,11 @@ impl Triangle {
             let __result = unsafe {
                 crate::ffi::IntPolyh_Triangle_is_intersection_possible(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2200,8 +2614,11 @@ impl Triangle {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_Triangle_has_intersection(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2211,8 +2628,11 @@ impl Triangle {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_Triangle_is_degenerated(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2220,8 +2640,12 @@ impl Triangle {
     /// Sets the first point
     pub fn set_first_point(&mut self, thePoint: i32) {
         {
-            unsafe { crate::ffi::IntPolyh_Triangle_set_first_point(self as *mut Self, thePoint) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntPolyh_Triangle_set_first_point(self as *mut Self, thePoint)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2229,8 +2653,12 @@ impl Triangle {
     /// Sets the second point
     pub fn set_second_point(&mut self, thePoint: i32) {
         {
-            unsafe { crate::ffi::IntPolyh_Triangle_set_second_point(self as *mut Self, thePoint) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntPolyh_Triangle_set_second_point(self as *mut Self, thePoint)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2238,8 +2666,12 @@ impl Triangle {
     /// Sets the third point
     pub fn set_third_point(&mut self, thePoint: i32) {
         {
-            unsafe { crate::ffi::IntPolyh_Triangle_set_third_point(self as *mut Self, thePoint) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntPolyh_Triangle_set_third_point(self as *mut Self, thePoint)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2247,14 +2679,16 @@ impl Triangle {
     /// Sets the first edge
     pub fn set_first_edge(&mut self, theEdge: i32, theEdgeOrientation: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_Triangle_set_first_edge(
                     self as *mut Self,
                     theEdge,
                     theEdgeOrientation,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2262,14 +2696,16 @@ impl Triangle {
     /// Sets the second edge
     pub fn set_second_edge(&mut self, theEdge: i32, theEdgeOrientation: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_Triangle_set_second_edge(
                     self as *mut Self,
                     theEdge,
                     theEdgeOrientation,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2277,14 +2713,16 @@ impl Triangle {
     /// Sets the third edge
     pub fn set_third_edge(&mut self, theEdge: i32, theEdgeOrientation: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_Triangle_set_third_edge(
                     self as *mut Self,
                     theEdge,
                     theEdgeOrientation,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2292,10 +2730,12 @@ impl Triangle {
     /// Sets the deflection
     pub fn set_deflection(&mut self, theDeflection: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_Triangle_set_deflection(self as *mut Self, theDeflection)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2303,10 +2743,12 @@ impl Triangle {
     /// Sets the flag of possibility of intersection
     pub fn set_intersection_possible(&mut self, theIP: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_Triangle_set_intersection_possible(self as *mut Self, theIP)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2314,8 +2756,12 @@ impl Triangle {
     /// Sets the flag of intersection
     pub fn set_intersection(&mut self, theInt: bool) {
         {
-            unsafe { crate::ffi::IntPolyh_Triangle_set_intersection(self as *mut Self, theInt) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntPolyh_Triangle_set_intersection(self as *mut Self, theInt)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2323,8 +2769,12 @@ impl Triangle {
     /// Sets the degenerated flag
     pub fn set_degenerated(&mut self, theDegFlag: bool) {
         {
-            unsafe { crate::ffi::IntPolyh_Triangle_set_degenerated(self as *mut Self, theDegFlag) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntPolyh_Triangle_set_degenerated(self as *mut Self, theDegFlag)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2335,8 +2785,11 @@ impl Triangle {
             let __result = unsafe {
                 crate::ffi::IntPolyh_Triangle_get_edge_number(self as *const Self, theEdgeIndex)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2344,14 +2797,16 @@ impl Triangle {
     /// Sets the edge by the index
     pub fn set_edge(&mut self, theEdgeIndex: i32, theEdgeNumber: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_Triangle_set_edge(
                     self as *mut Self,
                     theEdgeIndex,
                     theEdgeNumber,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2365,8 +2820,11 @@ impl Triangle {
                     theEdgeIndex,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2374,14 +2832,16 @@ impl Triangle {
     /// Sets the edges orientation by the index
     pub fn set_edge_orientation(&mut self, theEdgeIndex: i32, theEdgeOrientation: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_Triangle_set_edge_orientation(
                     self as *mut Self,
                     theEdgeIndex,
                     theEdgeOrientation,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2400,8 +2860,11 @@ impl Triangle {
                     thePoints,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2422,8 +2885,11 @@ impl Triangle {
                     TEdges,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2438,7 +2904,7 @@ impl Triangle {
         TEdges: &mut crate::ffi::IntPolyh_ArrayOfEdges,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_Triangle_middle_refinement(
                     self as *mut Self,
                     theTriangleNumber,
@@ -2448,7 +2914,9 @@ impl Triangle {
                     TEdges,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2466,7 +2934,7 @@ impl Triangle {
         TEdges: &mut crate::ffi::IntPolyh_ArrayOfEdges,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_Triangle_multiple_middle_refinement(
                     self as *mut Self,
                     theRefineCriterion,
@@ -2478,7 +2946,9 @@ impl Triangle {
                     TEdges,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2492,7 +2962,7 @@ impl Triangle {
         theEdge3: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_Triangle_link_edges2_triangle(
                     self as *mut Self,
                     TEdges,
@@ -2501,7 +2971,9 @@ impl Triangle {
                     theEdge3,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2509,14 +2981,16 @@ impl Triangle {
     /// Sets the appropriate edge and orientation for the triangle.
     pub fn set_edge_and_orientation(&mut self, theEdge: &Edge, theEdgeIndex: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntPolyh_Triangle_set_edge_and_orientation(
                     self as *mut Self,
                     theEdge,
                     theEdgeIndex,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2535,8 +3009,11 @@ impl Triangle {
         {
             let __result =
                 unsafe { crate::ffi::IntPolyh_Triangle_bounding_box(self as *mut Self, thePoints) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2544,8 +3021,10 @@ impl Triangle {
     /// Dumps the contents of the triangle.
     pub fn dump(&self, v: i32) {
         {
-            unsafe { crate::ffi::IntPolyh_Triangle_dump(self as *const Self, v) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntPolyh_Triangle_dump(self as *const Self, v) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }

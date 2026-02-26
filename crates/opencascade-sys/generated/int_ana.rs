@@ -69,8 +69,10 @@ impl Curve {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna_Curve_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -97,7 +99,7 @@ impl Curve {
         ZIsPositive: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_Curve_set_cylinder_quad_values(
                     self as *mut Self,
                     Cylinder,
@@ -118,7 +120,9 @@ impl Curve {
                     ZIsPositive,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -145,7 +149,7 @@ impl Curve {
         ZIsPositive: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_Curve_set_cone_quad_values(
                     self as *mut Self,
                     Cone,
@@ -166,7 +170,9 @@ impl Curve {
                     ZIsPositive,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -176,8 +182,11 @@ impl Curve {
     pub fn is_open(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::IntAna_Curve_is_open(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -185,8 +194,11 @@ impl Curve {
     /// Returns the parametric domain of the curve.
     pub fn domain(&self, theFirst: &mut f64, theLast: &mut f64) {
         {
-            unsafe { crate::ffi::IntAna_Curve_domain(self as *const Self, theFirst, theLast) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntAna_Curve_domain(self as *const Self, theFirst, theLast) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -195,8 +207,11 @@ impl Curve {
     pub fn is_constant(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::IntAna_Curve_is_constant(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -205,8 +220,11 @@ impl Curve {
     pub fn is_first_open(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::IntAna_Curve_is_first_open(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -215,8 +233,11 @@ impl Curve {
     pub fn is_last_open(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::IntAna_Curve_is_last_open(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -225,8 +246,11 @@ impl Curve {
     pub fn value(&mut self, Theta: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         {
             let __result = unsafe { crate::ffi::IntAna_Curve_value(self as *mut Self, Theta) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -236,8 +260,11 @@ impl Curve {
     pub fn d1u(&mut self, Theta: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) -> bool {
         {
             let __result = unsafe { crate::ffi::IntAna_Curve_d1u(self as *mut Self, Theta, P, V) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -253,8 +280,12 @@ impl Curve {
         theParams: &mut crate::ffi::TColStd_ListOfReal,
     ) {
         {
-            unsafe { crate::ffi::IntAna_Curve_find_parameter(self as *const Self, P, theParams) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntAna_Curve_find_parameter(self as *const Self, P, theParams)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -263,8 +294,11 @@ impl Curve {
     /// first parameter of its domain.
     pub fn set_is_first_open(&mut self, Flag: bool) {
         {
-            unsafe { crate::ffi::IntAna_Curve_set_is_first_open(self as *mut Self, Flag) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntAna_Curve_set_is_first_open(self as *mut Self, Flag) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -273,8 +307,11 @@ impl Curve {
     /// first parameter of its domain.
     pub fn set_is_last_open(&mut self, Flag: bool) {
         {
-            unsafe { crate::ffi::IntAna_Curve_set_is_last_open(self as *mut Self, Flag) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntAna_Curve_set_is_last_open(self as *mut Self, Flag) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -282,8 +319,12 @@ impl Curve {
     /// Trims this curve
     pub fn set_domain(&mut self, theFirst: f64, theLast: f64) {
         {
-            unsafe { crate::ffi::IntAna_Curve_set_domain(self as *mut Self, theFirst, theLast) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntAna_Curve_set_domain(self as *mut Self, theFirst, theLast)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -309,8 +350,10 @@ impl Int3Pln {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna_Int3Pln_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -324,8 +367,10 @@ impl Int3Pln {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna_Int3Pln_ctor_pln3(P1, P2, P3) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -334,8 +379,11 @@ impl Int3Pln {
     /// 3 planes.
     pub fn perform(&mut self, P1: &crate::gp::Pln, P2: &crate::gp::Pln, P3: &crate::gp::Pln) {
         {
-            unsafe { crate::ffi::IntAna_Int3Pln_perform(self as *mut Self, P1, P2, P3) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntAna_Int3Pln_perform(self as *mut Self, P1, P2, P3) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -344,8 +392,11 @@ impl Int3Pln {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::IntAna_Int3Pln_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -356,8 +407,11 @@ impl Int3Pln {
     pub fn is_empty(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::IntAna_Int3Pln_is_empty(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -366,8 +420,11 @@ impl Int3Pln {
     pub fn value(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::IntAna_Int3Pln_value(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -407,8 +464,10 @@ impl IntConicQuad {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna_IntConicQuad_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -417,8 +476,10 @@ impl IntConicQuad {
     pub fn new_lin_quadric(L: &crate::gp::Lin, Q: &Quadric) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna_IntConicQuad_ctor_lin_quadric(L, Q) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -427,8 +488,10 @@ impl IntConicQuad {
     pub fn new_circ_quadric(C: &crate::gp::Circ, Q: &Quadric) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna_IntConicQuad_ctor_circ_quadric(C, Q) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -437,8 +500,10 @@ impl IntConicQuad {
     pub fn new_elips_quadric(E: &crate::gp::Elips, Q: &Quadric) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna_IntConicQuad_ctor_elips_quadric(E, Q) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -447,8 +512,10 @@ impl IntConicQuad {
     pub fn new_parab_quadric(P: &crate::gp::Parab, Q: &Quadric) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna_IntConicQuad_ctor_parab_quadric(P, Q) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -458,8 +525,10 @@ impl IntConicQuad {
     pub fn new_hypr_quadric(H: &crate::gp::Hypr, Q: &Quadric) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna_IntConicQuad_ctor_hypr_quadric(H, Q) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -480,8 +549,10 @@ impl IntConicQuad {
             let __result = unsafe {
                 crate::ffi::IntAna_IntConicQuad_ctor_lin_pln_real3(L, P, Tolang, Tol, Len)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -499,8 +570,10 @@ impl IntConicQuad {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_IntConicQuad_ctor_circ_pln_real2(C, P, Tolang, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -518,8 +591,10 @@ impl IntConicQuad {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_IntConicQuad_ctor_elips_pln_real2(E, P, Tolang, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -535,8 +610,10 @@ impl IntConicQuad {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_IntConicQuad_ctor_parab_pln_real(Pb, P, Tolang) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -552,8 +629,10 @@ impl IntConicQuad {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_IntConicQuad_ctor_hypr_pln_real(H, P, Tolang) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -590,8 +669,12 @@ impl IntConicQuad {
     /// Intersects a line and a quadric.
     pub fn perform_lin_quadric(&mut self, L: &crate::gp::Lin, Q: &Quadric) {
         {
-            unsafe { crate::ffi::IntAna_IntConicQuad_perform_lin_quadric(self as *mut Self, L, Q) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntAna_IntConicQuad_perform_lin_quadric(self as *mut Self, L, Q)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -599,10 +682,12 @@ impl IntConicQuad {
     /// Intersects a circle and a quadric.
     pub fn perform_circ_quadric(&mut self, C: &crate::gp::Circ, Q: &Quadric) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_IntConicQuad_perform_circ_quadric(self as *mut Self, C, Q)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -610,10 +695,12 @@ impl IntConicQuad {
     /// Intersects an ellipse and a quadric.
     pub fn perform_elips_quadric(&mut self, E: &crate::gp::Elips, Q: &Quadric) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_IntConicQuad_perform_elips_quadric(self as *mut Self, E, Q)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -621,10 +708,12 @@ impl IntConicQuad {
     /// Intersects a parabola and a quadric.
     pub fn perform_parab_quadric(&mut self, P: &crate::gp::Parab, Q: &Quadric) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_IntConicQuad_perform_parab_quadric(self as *mut Self, P, Q)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -632,10 +721,12 @@ impl IntConicQuad {
     /// Intersects an hyperbola and a quadric.
     pub fn perform_hypr_quadric(&mut self, H: &crate::gp::Hypr, Q: &Quadric) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_IntConicQuad_perform_hypr_quadric(self as *mut Self, H, Q)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -654,7 +745,7 @@ impl IntConicQuad {
         Len: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_IntConicQuad_perform_lin_pln_real3(
                     self as *mut Self,
                     L,
@@ -664,7 +755,9 @@ impl IntConicQuad {
                     Len,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -681,7 +774,7 @@ impl IntConicQuad {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_IntConicQuad_perform_circ_pln_real2(
                     self as *mut Self,
                     C,
@@ -690,7 +783,9 @@ impl IntConicQuad {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -707,7 +802,7 @@ impl IntConicQuad {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_IntConicQuad_perform_elips_pln_real2(
                     self as *mut Self,
                     E,
@@ -716,7 +811,9 @@ impl IntConicQuad {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -731,7 +828,7 @@ impl IntConicQuad {
         Tolang: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_IntConicQuad_perform_parab_pln_real(
                     self as *mut Self,
                     Pb,
@@ -739,7 +836,9 @@ impl IntConicQuad {
                     Tolang,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -749,7 +848,7 @@ impl IntConicQuad {
     /// vectors is null.
     pub fn perform_hypr_pln_real(&mut self, H: &crate::gp::Hypr, P: &crate::gp::Pln, Tolang: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_IntConicQuad_perform_hypr_pln_real(
                     self as *mut Self,
                     H,
@@ -757,7 +856,9 @@ impl IntConicQuad {
                     Tolang,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -766,8 +867,11 @@ impl IntConicQuad {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::IntAna_IntConicQuad_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -777,8 +881,11 @@ impl IntConicQuad {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_IntConicQuad_is_in_quadric(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -789,8 +896,11 @@ impl IntConicQuad {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_IntConicQuad_is_parallel(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -800,8 +910,11 @@ impl IntConicQuad {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_IntConicQuad_nb_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -810,8 +923,11 @@ impl IntConicQuad {
     pub fn point(&self, N: i32) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::IntAna_IntConicQuad_point(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -822,8 +938,11 @@ impl IntConicQuad {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_IntConicQuad_param_on_conic(self as *const Self, N) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -847,8 +966,10 @@ impl IntLinTorus {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna_IntLinTorus_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -857,8 +978,10 @@ impl IntLinTorus {
     pub fn new_lin_torus(L: &crate::gp::Lin, T: &crate::gp::Torus) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna_IntLinTorus_ctor_lin_torus(L, T) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -866,8 +989,10 @@ impl IntLinTorus {
     /// Intersects a line and a torus.
     pub fn perform(&mut self, L: &crate::gp::Lin, T: &crate::gp::Torus) {
         {
-            unsafe { crate::ffi::IntAna_IntLinTorus_perform(self as *mut Self, L, T) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntAna_IntLinTorus_perform(self as *mut Self, L, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -876,8 +1001,11 @@ impl IntLinTorus {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::IntAna_IntLinTorus_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -886,8 +1014,11 @@ impl IntLinTorus {
     pub fn nb_points(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntAna_IntLinTorus_nb_points(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -897,8 +1028,11 @@ impl IntLinTorus {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_IntLinTorus_value(self as *const Self, Index) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -909,8 +1043,11 @@ impl IntLinTorus {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_IntLinTorus_param_on_line(self as *const Self, Index) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -919,10 +1056,12 @@ impl IntLinTorus {
     /// point of range Index.
     pub fn param_on_torus(&self, Index: i32, FI: &mut f64, THETA: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_IntLinTorus_param_on_torus(self as *const Self, Index, FI, THETA)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -955,8 +1094,10 @@ impl IntQuadQuad {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna_IntQuadQuad_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -971,8 +1112,10 @@ impl IntQuadQuad {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_IntQuadQuad_ctor_cylinder_quadric_real(C, Q, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -987,8 +1130,10 @@ impl IntQuadQuad {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_IntQuadQuad_ctor_cone_quadric_real(C, Q, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1002,7 +1147,7 @@ impl IntQuadQuad {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_IntQuadQuad_perform_cylinder_quadric_real(
                     self as *mut Self,
                     C,
@@ -1010,7 +1155,9 @@ impl IntQuadQuad {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1019,7 +1166,7 @@ impl IntQuadQuad {
     /// Tol est a definir plus precisemment.
     pub fn perform_cone_quadric_real(&mut self, C: &crate::gp::Cone, Q: &Quadric, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_IntQuadQuad_perform_cone_quadric_real(
                     self as *mut Self,
                     C,
@@ -1027,7 +1174,9 @@ impl IntQuadQuad {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1036,8 +1185,11 @@ impl IntQuadQuad {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::IntAna_IntQuadQuad_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1048,8 +1200,11 @@ impl IntQuadQuad {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_IntQuadQuad_identical_elements(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1058,8 +1213,11 @@ impl IntQuadQuad {
     pub fn nb_curve(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntAna_IntQuadQuad_nb_curve(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1068,8 +1226,11 @@ impl IntQuadQuad {
     pub fn curve(&self, N: i32) -> &Curve {
         {
             let __result = unsafe { crate::ffi::IntAna_IntQuadQuad_curve(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1078,8 +1239,11 @@ impl IntQuadQuad {
     pub fn nb_pnt(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::IntAna_IntQuadQuad_nb_pnt(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1088,8 +1252,11 @@ impl IntQuadQuad {
     pub fn point(&self, N: i32) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::IntAna_IntQuadQuad_point(self as *const Self, N) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1099,8 +1266,12 @@ impl IntQuadQuad {
     /// range N.
     pub fn parameters(&self, N: i32, U1: &mut f64, U2: &mut f64) {
         {
-            unsafe { crate::ffi::IntAna_IntQuadQuad_parameters(self as *const Self, N, U1, U2) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntAna_IntQuadQuad_parameters(self as *const Self, N, U1, U2)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1111,8 +1282,11 @@ impl IntQuadQuad {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_IntQuadQuad_has_next_curve(self as *const Self, I) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1130,8 +1304,11 @@ impl IntQuadQuad {
             let __result = unsafe {
                 crate::ffi::IntAna_IntQuadQuad_next_curve(self as *const Self, I, theOpposite)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1143,8 +1320,11 @@ impl IntQuadQuad {
             let __result = unsafe {
                 crate::ffi::IntAna_IntQuadQuad_has_previous_curve(self as *const Self, I)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1162,8 +1342,11 @@ impl IntQuadQuad {
             let __result = unsafe {
                 crate::ffi::IntAna_IntQuadQuad_previous_curve(self as *const Self, I, theOpposite)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -1202,8 +1385,10 @@ impl QuadQuadGeo {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna_QuadQuadGeo_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1222,8 +1407,10 @@ impl QuadQuadGeo {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_QuadQuadGeo_ctor_pln2_real2(P1, P2, TolAng, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1248,8 +1435,10 @@ impl QuadQuadGeo {
             let __result = unsafe {
                 crate::ffi::IntAna_QuadQuadGeo_ctor_pln_cylinder_real3(P, C, Tolang, Tol, H)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1258,8 +1447,10 @@ impl QuadQuadGeo {
     pub fn new_pln_sphere(P: &crate::gp::Pln, S: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna_QuadQuadGeo_ctor_pln_sphere(P, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1280,8 +1471,10 @@ impl QuadQuadGeo {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_QuadQuadGeo_ctor_pln_cone_real2(P, C, Tolang, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1295,8 +1488,10 @@ impl QuadQuadGeo {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_QuadQuadGeo_ctor_cylinder2_real(Cyl1, Cyl2, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1310,8 +1505,10 @@ impl QuadQuadGeo {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_QuadQuadGeo_ctor_cylinder_sphere_real(Cyl, Sph, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1325,8 +1522,10 @@ impl QuadQuadGeo {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_QuadQuadGeo_ctor_cylinder_cone_real(Cyl, Con, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1340,8 +1539,10 @@ impl QuadQuadGeo {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_QuadQuadGeo_ctor_sphere2_real(Sph1, Sph2, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1355,8 +1556,10 @@ impl QuadQuadGeo {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_QuadQuadGeo_ctor_sphere_cone_real(Sph, Con, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1370,8 +1573,10 @@ impl QuadQuadGeo {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_QuadQuadGeo_ctor_cone2_real(Con1, Con2, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1385,8 +1590,10 @@ impl QuadQuadGeo {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_QuadQuadGeo_ctor_pln_torus_real(Pln, Tor, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1400,8 +1607,10 @@ impl QuadQuadGeo {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_QuadQuadGeo_ctor_cylinder_torus_real(Cyl, Tor, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1415,8 +1624,10 @@ impl QuadQuadGeo {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_QuadQuadGeo_ctor_cone_torus_real(Con, Tor, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1430,8 +1641,10 @@ impl QuadQuadGeo {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_QuadQuadGeo_ctor_sphere_torus_real(Sph, Tor, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1445,8 +1658,10 @@ impl QuadQuadGeo {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_QuadQuadGeo_ctor_torus2_real(Tor1, Tor2, Tol) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1483,7 +1698,7 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_QuadQuadGeo_perform_pln2_real2(
                     self as *mut Self,
                     P1,
@@ -1492,7 +1707,9 @@ impl QuadQuadGeo {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1515,7 +1732,7 @@ impl QuadQuadGeo {
         H: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_QuadQuadGeo_perform_pln_cylinder_real3(
                     self as *mut Self,
                     P,
@@ -1525,7 +1742,9 @@ impl QuadQuadGeo {
                     H,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1533,8 +1752,12 @@ impl QuadQuadGeo {
     /// Intersects a plane and a sphere.
     pub fn perform_pln_sphere(&mut self, P: &crate::gp::Pln, S: &crate::gp::Sphere) {
         {
-            unsafe { crate::ffi::IntAna_QuadQuadGeo_perform_pln_sphere(self as *mut Self, P, S) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::IntAna_QuadQuadGeo_perform_pln_sphere(self as *mut Self, P, S)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1554,7 +1777,7 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_QuadQuadGeo_perform_pln_cone_real2(
                     self as *mut Self,
                     P,
@@ -1563,7 +1786,9 @@ impl QuadQuadGeo {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1576,7 +1801,7 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_QuadQuadGeo_perform_cylinder2_real(
                     self as *mut Self,
                     Cyl1,
@@ -1584,7 +1809,9 @@ impl QuadQuadGeo {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1597,7 +1824,7 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_QuadQuadGeo_perform_cylinder_sphere_real(
                     self as *mut Self,
                     Cyl,
@@ -1605,7 +1832,9 @@ impl QuadQuadGeo {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1618,7 +1847,7 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_QuadQuadGeo_perform_cylinder_cone_real(
                     self as *mut Self,
                     Cyl,
@@ -1626,7 +1855,9 @@ impl QuadQuadGeo {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1639,7 +1870,7 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_QuadQuadGeo_perform_sphere2_real(
                     self as *mut Self,
                     Sph1,
@@ -1647,7 +1878,9 @@ impl QuadQuadGeo {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1660,7 +1893,7 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_QuadQuadGeo_perform_sphere_cone_real(
                     self as *mut Self,
                     Sph,
@@ -1668,7 +1901,9 @@ impl QuadQuadGeo {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1676,7 +1911,7 @@ impl QuadQuadGeo {
     /// Intersects two cones.
     pub fn perform_cone2_real(&mut self, Con1: &crate::gp::Cone, Con2: &crate::gp::Cone, Tol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_QuadQuadGeo_perform_cone2_real(
                     self as *mut Self,
                     Con1,
@@ -1684,7 +1919,9 @@ impl QuadQuadGeo {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1697,7 +1934,7 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_QuadQuadGeo_perform_pln_torus_real(
                     self as *mut Self,
                     Pln,
@@ -1705,7 +1942,9 @@ impl QuadQuadGeo {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1718,7 +1957,7 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_QuadQuadGeo_perform_cylinder_torus_real(
                     self as *mut Self,
                     Cyl,
@@ -1726,7 +1965,9 @@ impl QuadQuadGeo {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1739,7 +1980,7 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_QuadQuadGeo_perform_cone_torus_real(
                     self as *mut Self,
                     Con,
@@ -1747,7 +1988,9 @@ impl QuadQuadGeo {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1760,7 +2003,7 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_QuadQuadGeo_perform_sphere_torus_real(
                     self as *mut Self,
                     Sph,
@@ -1768,7 +2011,9 @@ impl QuadQuadGeo {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1781,7 +2026,7 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_QuadQuadGeo_perform_torus2_real(
                     self as *mut Self,
                     Tor1,
@@ -1789,7 +2034,9 @@ impl QuadQuadGeo {
                     Tol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1798,8 +2045,11 @@ impl QuadQuadGeo {
     pub fn is_done(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::IntAna_QuadQuadGeo_is_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1809,8 +2059,11 @@ impl QuadQuadGeo {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_QuadQuadGeo_type_inter(self as *const Self) };
-            crate::check_exception();
-            crate::int_ana::ResultType::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::int_ana::ResultType::try_from(__val).unwrap()
         }
     }
 
@@ -1828,8 +2081,11 @@ impl QuadQuadGeo {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_QuadQuadGeo_nb_solutions(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1839,8 +2095,11 @@ impl QuadQuadGeo {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_QuadQuadGeo_point(self as *const Self, Num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1849,8 +2108,11 @@ impl QuadQuadGeo {
     pub fn line(&self, Num: i32) -> crate::OwnedPtr<crate::gp::Lin> {
         {
             let __result = unsafe { crate::ffi::IntAna_QuadQuadGeo_line(self as *const Self, Num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1860,8 +2122,11 @@ impl QuadQuadGeo {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_QuadQuadGeo_circle(self as *const Self, Num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1871,8 +2136,11 @@ impl QuadQuadGeo {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_QuadQuadGeo_ellipse(self as *const Self, Num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1882,8 +2150,11 @@ impl QuadQuadGeo {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_QuadQuadGeo_parabola(self as *const Self, Num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1893,8 +2164,11 @@ impl QuadQuadGeo {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_QuadQuadGeo_hyperbola(self as *const Self, Num) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1903,8 +2177,11 @@ impl QuadQuadGeo {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_QuadQuadGeo_has_common_gen(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1912,8 +2189,11 @@ impl QuadQuadGeo {
     pub fn p_char(&self) -> &crate::gp::Pnt {
         {
             let __result = unsafe { crate::ffi::IntAna_QuadQuadGeo_p_char(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -1939,8 +2219,10 @@ impl Quadric {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna_Quadric_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1949,8 +2231,10 @@ impl Quadric {
     pub fn new_pln(P: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna_Quadric_ctor_pln(P) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1959,8 +2243,10 @@ impl Quadric {
     pub fn new_sphere(Sph: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna_Quadric_ctor_sphere(Sph) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1969,8 +2255,10 @@ impl Quadric {
     pub fn new_cylinder(Cyl: &crate::gp::Cylinder) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna_Quadric_ctor_cylinder(Cyl) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1979,8 +2267,10 @@ impl Quadric {
     pub fn new_cone(Cone: &crate::gp::Cone) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::IntAna_Quadric_ctor_cone(Cone) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1988,8 +2278,10 @@ impl Quadric {
     /// Initializes the quadric with a Pln
     pub fn set_quadric_pln(&mut self, P: &crate::gp::Pln) {
         {
-            unsafe { crate::ffi::IntAna_Quadric_set_quadric_pln(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::IntAna_Quadric_set_quadric_pln(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1997,8 +2289,11 @@ impl Quadric {
     /// Initialize the quadric with a Sphere
     pub fn set_quadric_sphere(&mut self, Sph: &crate::gp::Sphere) {
         {
-            unsafe { crate::ffi::IntAna_Quadric_set_quadric_sphere(self as *mut Self, Sph) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntAna_Quadric_set_quadric_sphere(self as *mut Self, Sph) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2006,8 +2301,11 @@ impl Quadric {
     /// Initializes the quadric with a Cone
     pub fn set_quadric_cone(&mut self, Con: &crate::gp::Cone) {
         {
-            unsafe { crate::ffi::IntAna_Quadric_set_quadric_cone(self as *mut Self, Con) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntAna_Quadric_set_quadric_cone(self as *mut Self, Con) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2015,8 +2313,11 @@ impl Quadric {
     /// Initializes the quadric with a Cylinder
     pub fn set_quadric_cylinder(&mut self, Cyl: &crate::gp::Cylinder) {
         {
-            unsafe { crate::ffi::IntAna_Quadric_set_quadric_cylinder(self as *mut Self, Cyl) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::IntAna_Quadric_set_quadric_cylinder(self as *mut Self, Cyl) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2041,7 +2342,7 @@ impl Quadric {
         xCCte: &mut f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_Quadric_coefficients(
                     self as *const Self,
                     xCXX,
@@ -2056,7 +2357,9 @@ impl Quadric {
                     xCCte,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2079,7 +2382,7 @@ impl Quadric {
         Axis: &crate::gp::Ax3,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::IntAna_Quadric_new_coefficients(
                     self as *const Self,
                     xCXX,
@@ -2095,7 +2398,9 @@ impl Quadric {
                     Axis,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2105,8 +2410,11 @@ impl Quadric {
         {
             let __result =
                 unsafe { crate::ffi::IntAna_Quadric_special_points(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }

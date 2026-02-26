@@ -33,8 +33,11 @@ pub fn curve2d_handlegeomcurve_real2_handlegeomsurface_real5(
                 C, First, Last, S, UFirst, ULast, VFirst, VLast, Tolerance,
             )
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `GeomProjLib.hxx`:66 - `GeomProjLib::Curve2d`
@@ -60,8 +63,11 @@ pub fn curve2d_handlegeomcurve_real2_handlegeomsurface_real(
                 C, First, Last, S, Tolerance,
             )
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `GeomProjLib.hxx`:80 - `GeomProjLib::Curve2d`
@@ -85,8 +91,11 @@ pub fn curve2d_handlegeomcurve_real2_handlegeomsurface(
                 C, First, Last, S,
             )
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `GeomProjLib.hxx`:91 - `GeomProjLib::Curve2d`
@@ -103,8 +112,11 @@ pub fn curve2d_handlegeomcurve_handlegeomsurface(
     {
         let __result =
             unsafe { crate::ffi::GeomProjLib_curve2d_handlegeomcurve_handlegeomsurface(C, S) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `GeomProjLib.hxx`:101 - `GeomProjLib::Curve2d`
@@ -129,8 +141,11 @@ pub fn curve2d_handlegeomcurve_handlegeomsurface_real4(
                 C, S, UDeb, UFin, VDeb, VFin,
             )
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `GeomProjLib.hxx`:115 - `GeomProjLib::Curve2d`
@@ -156,8 +171,11 @@ pub fn curve2d_handlegeomcurve_handlegeomsurface_real5(
                 C, S, UDeb, UFin, VDeb, VFin, Tolerance,
             )
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `GeomProjLib.hxx`:127 - `GeomProjLib::Project`
@@ -172,8 +190,11 @@ pub fn project_handlegeomcurve_handlegeomsurface(
     {
         let __result =
             unsafe { crate::ffi::GeomProjLib_project_handlegeomcurve_handlegeomsurface(C, S) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `GeomProjLib.hxx`:138 - `GeomProjLib::ProjectOnPlane`
@@ -195,7 +216,10 @@ pub fn project_on_plane(
         let __result = unsafe {
             crate::ffi::GeomProjLib_project_on_plane(Curve, Plane, Dir, KeepParametrization)
         };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }

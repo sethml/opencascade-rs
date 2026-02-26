@@ -28,8 +28,11 @@ pub fn same_parameter_shape_bool_real_progressrange_handleshapeextendbasicmsgreg
         let __result = unsafe {
             crate::ffi::ShapeFix_same_parameter_shape_bool_real_progressrange_handleshapeextendbasicmsgregistrator(shape, enforce, preci, theProgress, theMsgReg)
         };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `ShapeFix.hxx`:65 - `ShapeFix::EncodeRegularity`
@@ -38,8 +41,10 @@ pub fn same_parameter_shape_bool_real_progressrange_handleshapeextendbasicmsgreg
 /// is processed only once
 pub fn encode_regularity_shape_real_2(shape: &crate::topo_ds::Shape, tolang: f64) {
     {
-        unsafe { crate::ffi::ShapeFix_encode_regularity_shape_real_2(shape, tolang) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::ShapeFix_encode_regularity_shape_real_2(shape, tolang) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `ShapeFix.hxx`:70 - `ShapeFix::RemoveSmallEdges`
@@ -53,8 +58,11 @@ pub fn remove_small_edges(
     {
         let __result =
             unsafe { crate::ffi::ShapeFix_remove_small_edges(shape, Tolerance, context) };
-        crate::check_exception();
-        unsafe { crate::OwnedPtr::from_raw(__result) }
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        unsafe { crate::OwnedPtr::from_raw(__val) }
     }
 }
 /// **Source:** `ShapeFix.hxx`:75 - `ShapeFix::FixVertexPosition`
@@ -67,8 +75,11 @@ pub fn fix_vertex_position(
     {
         let __result =
             unsafe { crate::ffi::ShapeFix_fix_vertex_position(theshape, theTolerance, thecontext) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `ShapeFix.hxx`:81 - `ShapeFix::LeastEdgeSize`
@@ -76,8 +87,11 @@ pub fn fix_vertex_position(
 pub fn least_edge_size(theshape: &mut crate::topo_ds::Shape) -> f64 {
     {
         let __result = unsafe { crate::ffi::ShapeFix_least_edge_size(theshape) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 
@@ -140,8 +154,10 @@ impl ComposeShell {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_ComposeShell_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -158,10 +174,12 @@ impl ComposeShell {
         Prec: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_init(self as *mut Self, Grid, L, Face, Prec)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -176,8 +194,11 @@ impl ComposeShell {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_ComposeShell_closed_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -186,8 +207,11 @@ impl ComposeShell {
     pub fn perform(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::ShapeFix_ComposeShell_perform(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -202,8 +226,10 @@ impl ComposeShell {
     /// of the edge.
     pub fn split_edges(&mut self) {
         {
-            unsafe { crate::ffi::ShapeFix_ComposeShell_split_edges(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_ComposeShell_split_edges(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -212,8 +238,11 @@ impl ComposeShell {
     pub fn result(&self) -> &crate::topo_ds::Shape {
         {
             let __result = unsafe { crate::ffi::ShapeFix_ComposeShell_result(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -231,8 +260,11 @@ impl ComposeShell {
             let __result = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_status(self as *const Self, status.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -248,10 +280,12 @@ impl ComposeShell {
         wires: &mut crate::ffi::ShapeFix_SequenceOfWireSegment,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_dispatch_wires(self as *const Self, faces, wires)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -262,13 +296,15 @@ impl ComposeShell {
         TransferParam: &crate::ffi::HandleShapeAnalysisTransferParameters,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_set_transfer_param_tool(
                     self as *mut Self,
                     TransferParam,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -281,8 +317,11 @@ impl ComposeShell {
             let __result = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_get_transfer_param_tool(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -291,8 +330,11 @@ impl ComposeShell {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_ComposeShell_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -300,8 +342,11 @@ impl ComposeShell {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeFix_ComposeShell_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -309,80 +354,86 @@ impl ComposeShell {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeFix_ComposeShell_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeFix_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_ComposeShell_as_ShapeFix_Root(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_ComposeShell_as_ShapeFix_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeFix_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeFix_ComposeShell_as_ShapeFix_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_ComposeShell_as_ShapeFix_Root_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeFix_ComposeShell_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_ComposeShell_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeFix_ComposeShell_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeFix_ComposeShell_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixComposeShell> {
-        {
-            let __result = unsafe { crate::ffi::ShapeFix_ComposeShell_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeFix_ComposeShell_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         {
-            unsafe { crate::ffi::ShapeFix_ComposeShell_inherited_Set(self as *mut Self, Root) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_ComposeShell_inherited_Set(self as *mut Self, Root) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_inherited_SetContext(self as *mut Self, context)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -391,8 +442,11 @@ impl ComposeShell {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_ComposeShell_inherited_Context(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -402,13 +456,15 @@ impl ComposeShell {
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_inherited_SetMsgRegistrator(
                     self as *mut Self,
                     msgreg,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -420,18 +476,23 @@ impl ComposeShell {
             let __result = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_inherited_MsgRegistrator(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:66 - `ShapeFix_Root::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_inherited_SetPrecision(self as *mut Self, preci)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -441,21 +502,26 @@ impl ComposeShell {
             let __result = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_inherited_Precision(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:72 - `ShapeFix_Root::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_inherited_SetMinTolerance(
                     self as *mut Self,
                     mintol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -465,21 +531,26 @@ impl ComposeShell {
             let __result = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_inherited_MinTolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:78 - `ShapeFix_Root::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_inherited_SetMaxTolerance(
                     self as *mut Self,
                     maxtol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -489,8 +560,11 @@ impl ComposeShell {
             let __result = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_inherited_MaxTolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -503,8 +577,11 @@ impl ComposeShell {
                     toler,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -516,7 +593,7 @@ impl ComposeShell {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_inherited_SendMsg(
                     self as *const Self,
                     shape,
@@ -524,35 +601,41 @@ impl ComposeShell {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
     pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_inherited_SendWarning(
                     self as *const Self,
                     shape,
                     message,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
     pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_inherited_SendFail(
                     self as *const Self,
                     shape,
                     message,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -562,8 +645,11 @@ impl ComposeShell {
             let __result = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -573,8 +659,11 @@ impl ComposeShell {
             let __result = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -583,11 +672,14 @@ impl ComposeShell {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_ComposeShell_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -598,18 +690,23 @@ impl ComposeShell {
             let __result = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -619,16 +716,22 @@ impl ComposeShell {
             let __result = unsafe {
                 crate::ffi::ShapeFix_ComposeShell_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeFix_ComposeShell_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_ComposeShell_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -644,46 +747,42 @@ unsafe impl crate::CppDeletable for HandleShapeFixComposeShell {
 impl HandleShapeFixComposeShell {
     /// Dereference this Handle to access the underlying ShapeFix_ComposeShell
     pub fn get(&self) -> &crate::ffi::ShapeFix_ComposeShell {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeFixComposeShell_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixComposeShell_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeFix_ComposeShell
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_ComposeShell {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeFixComposeShell_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixComposeShell_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeFix_ComposeShell> to Handle<ShapeFix_Root>
     pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixComposeShell_to_HandleShapeFixRoot(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeFixComposeShell_to_HandleShapeFixRoot(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeFix_ComposeShell> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixComposeShell_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeFixComposeShell_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -713,8 +812,10 @@ impl Edge {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Edge_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -726,8 +827,11 @@ impl Edge {
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeConstructProjectCurveOnSurface> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Edge_projector(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -745,8 +849,11 @@ impl Edge {
                     face,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -774,8 +881,11 @@ impl Edge {
                     location,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -788,8 +898,11 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Edge_fix_remove_curve3d(self as *mut Self, edge) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -812,8 +925,11 @@ impl Edge {
                     prec,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -838,8 +954,11 @@ impl Edge {
                     prec,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -857,8 +976,11 @@ impl Edge {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Edge_fix_add_p_curve_edge_face_bool_handleshapeanalysissurface_real(self as *mut Self, edge, face, isSeam, surfana, prec)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -893,8 +1015,11 @@ impl Edge {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Edge_fix_add_p_curve_edge_handlegeomsurface_location_bool_handleshapeanalysissurface_real(self as *mut Self, edge, surface, location, isSeam, surfana, prec)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -911,8 +1036,11 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Edge_fix_add_curve3d(self as *mut Self, edge) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -930,8 +1058,11 @@ impl Edge {
                     face,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -949,8 +1080,11 @@ impl Edge {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Edge_fix_vertex_tolerance_edge(self as *mut Self, edge)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -964,8 +1098,11 @@ impl Edge {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Edge_fix_reversed2d_edge_face(self as *mut Self, edge, face)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -996,8 +1133,11 @@ impl Edge {
                     location,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1048,8 +1188,11 @@ impl Edge {
                     tolerance,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1102,8 +1245,11 @@ impl Edge {
                     tolerance,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1113,8 +1259,11 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Edge_status(self as *const Self, status.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1122,8 +1271,11 @@ impl Edge {
     /// Sets context
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe { crate::ffi::ShapeFix_Edge_set_context(self as *mut Self, context) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Edge_set_context(self as *mut Self, context) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1132,8 +1284,11 @@ impl Edge {
     pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Edge_context(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1141,8 +1296,11 @@ impl Edge {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Edge_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1150,8 +1308,11 @@ impl Edge {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Edge_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1159,40 +1320,43 @@ impl Edge {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Edge_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Edge_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_Edge_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Edge_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_Edge_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixEdge> {
-        {
-            let __result = unsafe { crate::ffi::ShapeFix_Edge_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeFix_Edge_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1201,8 +1365,11 @@ impl Edge {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Edge_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1211,8 +1378,11 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Edge_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1220,11 +1390,14 @@ impl Edge {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Edge_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1234,16 +1407,23 @@ impl Edge {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Edge_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::ShapeFix_Edge_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_Edge_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1253,16 +1433,21 @@ impl Edge {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Edge_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeFix_Edge_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Edge_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1278,31 +1463,31 @@ unsafe impl crate::CppDeletable for HandleShapeFixEdge {
 impl HandleShapeFixEdge {
     /// Dereference this Handle to access the underlying ShapeFix_Edge
     pub fn get(&self) -> &crate::ffi::ShapeFix_Edge {
-        {
-            let __result = unsafe { crate::ffi::HandleShapeFixEdge_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixEdge_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeFix_Edge
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Edge {
-        {
-            let __result = unsafe { crate::ffi::HandleShapeFixEdge_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixEdge_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeFix_Edge> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixEdge_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeFixEdge_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1328,8 +1513,10 @@ impl EdgeConnect {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_EdgeConnect_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1339,10 +1526,12 @@ impl EdgeConnect {
     /// taking edges orientation into account
     pub fn add_edge2(&mut self, aFirst: &crate::topo_ds::Edge, aSecond: &crate::topo_ds::Edge) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_EdgeConnect_add_edge2(self as *mut Self, aFirst, aSecond)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1352,8 +1541,11 @@ impl EdgeConnect {
     /// Note: flag Closed should be set for closed wires
     pub fn add_shape(&mut self, aShape: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::ShapeFix_EdgeConnect_add_shape(self as *mut Self, aShape) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_EdgeConnect_add_shape(self as *mut Self, aShape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1361,8 +1553,10 @@ impl EdgeConnect {
     /// Builds shared vertices, updates their positions and tolerances
     pub fn build(&mut self) {
         {
-            unsafe { crate::ffi::ShapeFix_EdgeConnect_build(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_EdgeConnect_build(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1370,8 +1564,10 @@ impl EdgeConnect {
     /// Clears internal data structure
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::ShapeFix_EdgeConnect_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_EdgeConnect_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1396,8 +1592,10 @@ impl EdgeProjAux {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_EdgeProjAux_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1408,24 +1606,31 @@ impl EdgeProjAux {
     ) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_EdgeProjAux_ctor_face_edge(F, E) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `ShapeFix_EdgeProjAux.hxx`:41 - `ShapeFix_EdgeProjAux::Init()`
     pub fn init(&mut self, F: &crate::topo_ds::Face, E: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ShapeFix_EdgeProjAux_init(self as *mut Self, F, E) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_EdgeProjAux_init(self as *mut Self, F, E) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ShapeFix_EdgeProjAux.hxx`:43 - `ShapeFix_EdgeProjAux::Compute()`
     pub fn compute(&mut self, preci: f64) {
         {
-            unsafe { crate::ffi::ShapeFix_EdgeProjAux_compute(self as *mut Self, preci) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_EdgeProjAux_compute(self as *mut Self, preci) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1434,8 +1639,11 @@ impl EdgeProjAux {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_EdgeProjAux_is_first_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1444,8 +1652,11 @@ impl EdgeProjAux {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_EdgeProjAux_is_last_done(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1454,8 +1665,11 @@ impl EdgeProjAux {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_EdgeProjAux_first_param(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1464,8 +1678,11 @@ impl EdgeProjAux {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_EdgeProjAux_last_param(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1473,8 +1690,11 @@ impl EdgeProjAux {
     pub fn is_iso(&mut self, C: &crate::ffi::HandleGeom2dCurve) -> bool {
         {
             let __result = unsafe { crate::ffi::ShapeFix_EdgeProjAux_is_iso(self as *mut Self, C) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1483,8 +1703,11 @@ impl EdgeProjAux {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_EdgeProjAux_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1492,8 +1715,11 @@ impl EdgeProjAux {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeFix_EdgeProjAux_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1501,42 +1727,44 @@ impl EdgeProjAux {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeFix_EdgeProjAux_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeFix_EdgeProjAux_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_EdgeProjAux_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeFix_EdgeProjAux_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeFix_EdgeProjAux_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixEdgeProjAux> {
-        {
-            let __result = unsafe { crate::ffi::ShapeFix_EdgeProjAux_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeFix_EdgeProjAux_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1545,8 +1773,11 @@ impl EdgeProjAux {
             let __result = unsafe {
                 crate::ffi::ShapeFix_EdgeProjAux_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1556,8 +1787,11 @@ impl EdgeProjAux {
             let __result = unsafe {
                 crate::ffi::ShapeFix_EdgeProjAux_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1566,11 +1800,14 @@ impl EdgeProjAux {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_EdgeProjAux_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1581,18 +1818,23 @@ impl EdgeProjAux {
             let __result = unsafe {
                 crate::ffi::ShapeFix_EdgeProjAux_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_EdgeProjAux_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1602,16 +1844,22 @@ impl EdgeProjAux {
             let __result = unsafe {
                 crate::ffi::ShapeFix_EdgeProjAux_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeFix_EdgeProjAux_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_EdgeProjAux_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1627,35 +1875,31 @@ unsafe impl crate::CppDeletable for HandleShapeFixEdgeProjAux {
 impl HandleShapeFixEdgeProjAux {
     /// Dereference this Handle to access the underlying ShapeFix_EdgeProjAux
     pub fn get(&self) -> &crate::ffi::ShapeFix_EdgeProjAux {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeFixEdgeProjAux_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixEdgeProjAux_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeFix_EdgeProjAux
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_EdgeProjAux {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeFixEdgeProjAux_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixEdgeProjAux_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeFix_EdgeProjAux> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixEdgeProjAux_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeFixEdgeProjAux_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1683,8 +1927,10 @@ impl Face {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Face_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1693,8 +1939,10 @@ impl Face {
     pub fn new_face(face: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Face_ctor_face(face) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1702,8 +1950,10 @@ impl Face {
     /// Sets all modes to default
     pub fn clear_modes(&mut self) {
         {
-            unsafe { crate::ffi::ShapeFix_Face_clear_modes(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Face_clear_modes(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1712,8 +1962,10 @@ impl Face {
     /// location
     pub fn init_face(&mut self, face: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::ShapeFix_Face_init_face(self as *mut Self, face) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Face_init_face(self as *mut Self, face) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1727,7 +1979,7 @@ impl Face {
         fwd: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Face_init_handlegeomsurface_real_bool(
                     self as *mut Self,
                     surf,
@@ -1735,7 +1987,9 @@ impl Face {
                     fwd,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1749,7 +2003,7 @@ impl Face {
         fwd: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Face_init_handleshapeanalysissurface_real_bool(
                     self as *mut Self,
                     surf,
@@ -1757,7 +2011,9 @@ impl Face {
                     fwd,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1768,8 +2024,11 @@ impl Face {
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
         {
-            unsafe { crate::ffi::ShapeFix_Face_set_msg_registrator(self as *mut Self, msgreg) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Face_set_msg_registrator(self as *mut Self, msgreg) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1777,8 +2036,11 @@ impl Face {
     /// Sets basic precision value (also to FixWireTool)
     pub fn set_precision(&mut self, preci: f64) {
         {
-            unsafe { crate::ffi::ShapeFix_Face_set_precision(self as *mut Self, preci) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Face_set_precision(self as *mut Self, preci) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1786,8 +2048,11 @@ impl Face {
     /// Sets minimal allowed tolerance (also to FixWireTool)
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe { crate::ffi::ShapeFix_Face_set_min_tolerance(self as *mut Self, mintol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Face_set_min_tolerance(self as *mut Self, mintol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1795,8 +2060,11 @@ impl Face {
     /// Sets maximal allowed tolerance (also to FixWireTool)
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe { crate::ffi::ShapeFix_Face_set_max_tolerance(self as *mut Self, maxtol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Face_set_max_tolerance(self as *mut Self, maxtol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1806,8 +2074,11 @@ impl Face {
     pub fn fix_wire_mode(&mut self) -> &mut i32 {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Face_fix_wire_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1818,8 +2089,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_fix_orientation_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1832,8 +2106,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_fix_add_natural_bound_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1844,8 +2121,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_fix_missing_seam_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1856,8 +2136,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_fix_small_area_wire_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1868,8 +2151,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_remove_small_area_face_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1880,8 +2166,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_fix_intersecting_wires_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1892,8 +2181,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_fix_loop_wires_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1904,8 +2196,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_fix_split_face_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1916,8 +2211,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_auto_correct_precision_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1929,8 +2227,11 @@ impl Face {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Face_fix_periodic_degenerated_mode(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1941,8 +2242,11 @@ impl Face {
     pub fn face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Face_face(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1952,8 +2256,11 @@ impl Face {
     pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Face_result(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -1963,8 +2270,10 @@ impl Face {
     /// (as if face were FORWARD).
     pub fn add(&mut self, wire: &crate::topo_ds::Wire) {
         {
-            unsafe { crate::ffi::ShapeFix_Face_add(self as *mut Self, wire) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Face_add(self as *mut Self, wire) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1984,8 +2293,11 @@ impl Face {
     pub fn perform(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Face_perform(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2000,8 +2312,11 @@ impl Face {
     pub fn fix_orientation(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Face_fix_orientation(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2026,8 +2341,11 @@ impl Face {
                     MapWires,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2042,8 +2360,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_fix_add_natural_bound(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2056,8 +2377,11 @@ impl Face {
     pub fn fix_missing_seam(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Face_fix_missing_seam(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2074,8 +2398,11 @@ impl Face {
                     theIsRemoveSmallFace,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2086,8 +2413,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_fix_loop_wire(self as *mut Self, aResWires) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2098,8 +2428,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_fix_intersecting_wires(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2110,8 +2443,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_fix_wires_two_coinc_edges(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2125,8 +2461,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_fix_split_face(self as *mut Self, MapWires) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2140,8 +2479,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_fix_periodic_degenerated(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2162,8 +2504,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_status(self as *const Self, status.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2172,8 +2517,11 @@ impl Face {
     pub fn fix_wire_tool(&mut self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixWire> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Face_fix_wire_tool(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2181,8 +2529,11 @@ impl Face {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Face_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2190,8 +2541,11 @@ impl Face {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Face_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2199,75 +2553,82 @@ impl Face {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Face_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeFix_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Face_as_ShapeFix_Root(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::ShapeFix_Face_as_ShapeFix_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeFix_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Face_as_ShapeFix_Root_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::ShapeFix_Face_as_ShapeFix_Root_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Face_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_Face_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Face_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_Face_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixFace> {
-        {
-            let __result = unsafe { crate::ffi::ShapeFix_Face_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeFix_Face_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         {
-            unsafe { crate::ffi::ShapeFix_Face_inherited_Set(self as *mut Self, Root) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Face_inherited_Set(self as *mut Self, Root) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe { crate::ffi::ShapeFix_Face_inherited_SetContext(self as *mut Self, context) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_Face_inherited_SetContext(self as *mut Self, context)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2276,8 +2637,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_inherited_Context(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2288,8 +2652,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_inherited_MsgRegistrator(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2298,8 +2665,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_inherited_Precision(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2308,8 +2678,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_inherited_MinTolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2318,8 +2691,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_inherited_MaxTolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2329,8 +2705,11 @@ impl Face {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Face_inherited_LimitTolerance(self as *const Self, toler)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2342,7 +2721,7 @@ impl Face {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Face_inherited_SendMsg(
                     self as *const Self,
                     shape,
@@ -2350,27 +2729,33 @@ impl Face {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
     pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Face_inherited_SendWarning(self as *const Self, shape, message)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
     pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Face_inherited_SendFail(self as *const Self, shape, message)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2380,8 +2765,11 @@ impl Face {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Face_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2390,8 +2778,11 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2399,11 +2790,14 @@ impl Face {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Face_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2413,16 +2807,23 @@ impl Face {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Face_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::ShapeFix_Face_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_Face_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2432,16 +2833,21 @@ impl Face {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Face_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeFix_Face_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Face_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2457,42 +2863,41 @@ unsafe impl crate::CppDeletable for HandleShapeFixFace {
 impl HandleShapeFixFace {
     /// Dereference this Handle to access the underlying ShapeFix_Face
     pub fn get(&self) -> &crate::ffi::ShapeFix_Face {
-        {
-            let __result = unsafe { crate::ffi::HandleShapeFixFace_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixFace_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeFix_Face
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Face {
-        {
-            let __result = unsafe { crate::ffi::HandleShapeFixFace_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixFace_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeFix_Face> to Handle<ShapeFix_Root>
     pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixFace_to_HandleShapeFixRoot(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleShapeFixFace_to_HandleShapeFixRoot(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeFix_Face> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixFace_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeFixFace_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2515,8 +2920,10 @@ impl FaceConnect {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_FaceConnect_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2525,8 +2932,11 @@ impl FaceConnect {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_FaceConnect_add(self as *mut Self, aFirst, aSecond) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2541,8 +2951,11 @@ impl FaceConnect {
             let __result = unsafe {
                 crate::ffi::ShapeFix_FaceConnect_build(self as *mut Self, shell, sewtoler, fixtoler)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2550,8 +2963,10 @@ impl FaceConnect {
     /// Clears internal data structure
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::ShapeFix_FaceConnect_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_FaceConnect_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2575,16 +2990,20 @@ impl FixSmallFace {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_FixSmallFace_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `ShapeFix_FixSmallFace.hxx`:41 - `ShapeFix_FixSmallFace::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::ShapeFix_FixSmallFace_init(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_FixSmallFace_init(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2592,8 +3011,10 @@ impl FixSmallFace {
     /// Fixing case of spot face
     pub fn perform(&mut self) {
         {
-            unsafe { crate::ffi::ShapeFix_FixSmallFace_perform(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_FixSmallFace_perform(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2603,8 +3024,11 @@ impl FixSmallFace {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_FixSmallFace_fix_spot_face(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2619,8 +3043,11 @@ impl FixSmallFace {
                     tol,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2634,8 +3061,11 @@ impl FixSmallFace {
                     F,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2646,8 +3076,11 @@ impl FixSmallFace {
             let __result = unsafe {
                 crate::ffi::ShapeFix_FixSmallFace_fix_strip_face(self as *mut Self, wasdone)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2670,8 +3103,11 @@ impl FixSmallFace {
                     tol,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2685,8 +3121,11 @@ impl FixSmallFace {
                     F,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2711,8 +3150,11 @@ impl FixSmallFace {
                     tol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2724,8 +3166,11 @@ impl FixSmallFace {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_FixSmallFace_fix_split_face(self as *mut Self, S) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2744,8 +3189,11 @@ impl FixSmallFace {
                     theSplittedFaces,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2754,8 +3202,11 @@ impl FixSmallFace {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_FixSmallFace_fix_face(self as *mut Self, F) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2764,8 +3215,11 @@ impl FixSmallFace {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_FixSmallFace_fix_shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2773,8 +3227,11 @@ impl FixSmallFace {
     pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_FixSmallFace_shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2783,8 +3240,11 @@ impl FixSmallFace {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_FixSmallFace_fix_pin_face(self as *mut Self, F) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2793,8 +3253,11 @@ impl FixSmallFace {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_FixSmallFace_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2802,8 +3265,11 @@ impl FixSmallFace {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeFix_FixSmallFace_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2811,80 +3277,86 @@ impl FixSmallFace {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeFix_FixSmallFace_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeFix_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_FixSmallFace_as_ShapeFix_Root(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_FixSmallFace_as_ShapeFix_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeFix_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeFix_FixSmallFace_as_ShapeFix_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_FixSmallFace_as_ShapeFix_Root_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeFix_FixSmallFace_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_FixSmallFace_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeFix_FixSmallFace_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeFix_FixSmallFace_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixFixSmallFace> {
-        {
-            let __result = unsafe { crate::ffi::ShapeFix_FixSmallFace_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeFix_FixSmallFace_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         {
-            unsafe { crate::ffi::ShapeFix_FixSmallFace_inherited_Set(self as *mut Self, Root) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_FixSmallFace_inherited_Set(self as *mut Self, Root) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_FixSmallFace_inherited_SetContext(self as *mut Self, context)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2893,8 +3365,11 @@ impl FixSmallFace {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_FixSmallFace_inherited_Context(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -2904,13 +3379,15 @@ impl FixSmallFace {
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_FixSmallFace_inherited_SetMsgRegistrator(
                     self as *mut Self,
                     msgreg,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2922,18 +3399,23 @@ impl FixSmallFace {
             let __result = unsafe {
                 crate::ffi::ShapeFix_FixSmallFace_inherited_MsgRegistrator(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:66 - `ShapeFix_Root::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_FixSmallFace_inherited_SetPrecision(self as *mut Self, preci)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2943,21 +3425,26 @@ impl FixSmallFace {
             let __result = unsafe {
                 crate::ffi::ShapeFix_FixSmallFace_inherited_Precision(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:72 - `ShapeFix_Root::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_FixSmallFace_inherited_SetMinTolerance(
                     self as *mut Self,
                     mintol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2967,21 +3454,26 @@ impl FixSmallFace {
             let __result = unsafe {
                 crate::ffi::ShapeFix_FixSmallFace_inherited_MinTolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:78 - `ShapeFix_Root::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_FixSmallFace_inherited_SetMaxTolerance(
                     self as *mut Self,
                     maxtol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2991,8 +3483,11 @@ impl FixSmallFace {
             let __result = unsafe {
                 crate::ffi::ShapeFix_FixSmallFace_inherited_MaxTolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3005,8 +3500,11 @@ impl FixSmallFace {
                     toler,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3018,7 +3516,7 @@ impl FixSmallFace {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_FixSmallFace_inherited_SendMsg(
                     self as *const Self,
                     shape,
@@ -3026,35 +3524,41 @@ impl FixSmallFace {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
     pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_FixSmallFace_inherited_SendWarning(
                     self as *const Self,
                     shape,
                     message,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
     pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_FixSmallFace_inherited_SendFail(
                     self as *const Self,
                     shape,
                     message,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3064,8 +3568,11 @@ impl FixSmallFace {
             let __result = unsafe {
                 crate::ffi::ShapeFix_FixSmallFace_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3075,8 +3582,11 @@ impl FixSmallFace {
             let __result = unsafe {
                 crate::ffi::ShapeFix_FixSmallFace_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3085,11 +3595,14 @@ impl FixSmallFace {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_FixSmallFace_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3100,18 +3613,23 @@ impl FixSmallFace {
             let __result = unsafe {
                 crate::ffi::ShapeFix_FixSmallFace_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_FixSmallFace_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3121,16 +3639,22 @@ impl FixSmallFace {
             let __result = unsafe {
                 crate::ffi::ShapeFix_FixSmallFace_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeFix_FixSmallFace_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_FixSmallFace_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3146,46 +3670,42 @@ unsafe impl crate::CppDeletable for HandleShapeFixFixSmallFace {
 impl HandleShapeFixFixSmallFace {
     /// Dereference this Handle to access the underlying ShapeFix_FixSmallFace
     pub fn get(&self) -> &crate::ffi::ShapeFix_FixSmallFace {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeFixFixSmallFace_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixFixSmallFace_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeFix_FixSmallFace
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_FixSmallFace {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeFixFixSmallFace_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixFixSmallFace_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeFix_FixSmallFace> to Handle<ShapeFix_Root>
     pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixFixSmallFace_to_HandleShapeFixRoot(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeFixFixSmallFace_to_HandleShapeFixRoot(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeFix_FixSmallFace> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixFixSmallFace_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeFixFixSmallFace_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3209,8 +3729,10 @@ impl FixSmallSolid {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_FixSmallSolid_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3221,8 +3743,12 @@ impl FixSmallSolid {
     /// - theMode = 2 use only VolumeThreshold parameter
     pub fn set_fix_mode(&mut self, theMode: i32) {
         {
-            unsafe { crate::ffi::ShapeFix_FixSmallSolid_set_fix_mode(self as *mut Self, theMode) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_FixSmallSolid_set_fix_mode(self as *mut Self, theMode)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3230,13 +3756,15 @@ impl FixSmallSolid {
     /// Set or clear volume threshold for small solids
     pub fn set_volume_threshold(&mut self, theThreshold: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_FixSmallSolid_set_volume_threshold(
                     self as *mut Self,
                     theThreshold,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3244,13 +3772,15 @@ impl FixSmallSolid {
     /// Set or clear width factor threshold for small solids
     pub fn set_width_factor_threshold(&mut self, theThreshold: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_FixSmallSolid_set_width_factor_threshold(
                     self as *mut Self,
                     theThreshold,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3265,8 +3795,11 @@ impl FixSmallSolid {
             let __result = unsafe {
                 crate::ffi::ShapeFix_FixSmallSolid_remove(self as *const Self, theShape, theContext)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3281,8 +3814,11 @@ impl FixSmallSolid {
             let __result = unsafe {
                 crate::ffi::ShapeFix_FixSmallSolid_merge(self as *const Self, theShape, theContext)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3291,8 +3827,11 @@ impl FixSmallSolid {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_FixSmallSolid_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3300,8 +3839,11 @@ impl FixSmallSolid {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeFix_FixSmallSolid_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3309,80 +3851,88 @@ impl FixSmallSolid {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeFix_FixSmallSolid_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeFix_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_FixSmallSolid_as_ShapeFix_Root(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_FixSmallSolid_as_ShapeFix_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeFix_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeFix_FixSmallSolid_as_ShapeFix_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_FixSmallSolid_as_ShapeFix_Root_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeFix_FixSmallSolid_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeFix_FixSmallSolid_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeFix_FixSmallSolid_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeFix_FixSmallSolid_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixFixSmallSolid> {
-        {
-            let __result = unsafe { crate::ffi::ShapeFix_FixSmallSolid_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeFix_FixSmallSolid_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         {
-            unsafe { crate::ffi::ShapeFix_FixSmallSolid_inherited_Set(self as *mut Self, Root) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_FixSmallSolid_inherited_Set(self as *mut Self, Root)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_FixSmallSolid_inherited_SetContext(self as *mut Self, context)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3392,8 +3942,11 @@ impl FixSmallSolid {
             let __result = unsafe {
                 crate::ffi::ShapeFix_FixSmallSolid_inherited_Context(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3403,13 +3956,15 @@ impl FixSmallSolid {
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_FixSmallSolid_inherited_SetMsgRegistrator(
                     self as *mut Self,
                     msgreg,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3421,18 +3976,23 @@ impl FixSmallSolid {
             let __result = unsafe {
                 crate::ffi::ShapeFix_FixSmallSolid_inherited_MsgRegistrator(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:66 - `ShapeFix_Root::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_FixSmallSolid_inherited_SetPrecision(self as *mut Self, preci)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3442,21 +4002,26 @@ impl FixSmallSolid {
             let __result = unsafe {
                 crate::ffi::ShapeFix_FixSmallSolid_inherited_Precision(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:72 - `ShapeFix_Root::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_FixSmallSolid_inherited_SetMinTolerance(
                     self as *mut Self,
                     mintol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3466,21 +4031,26 @@ impl FixSmallSolid {
             let __result = unsafe {
                 crate::ffi::ShapeFix_FixSmallSolid_inherited_MinTolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:78 - `ShapeFix_Root::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_FixSmallSolid_inherited_SetMaxTolerance(
                     self as *mut Self,
                     maxtol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3490,8 +4060,11 @@ impl FixSmallSolid {
             let __result = unsafe {
                 crate::ffi::ShapeFix_FixSmallSolid_inherited_MaxTolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3504,8 +4077,11 @@ impl FixSmallSolid {
                     toler,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3517,7 +4093,7 @@ impl FixSmallSolid {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_FixSmallSolid_inherited_SendMsg(
                     self as *const Self,
                     shape,
@@ -3525,35 +4101,41 @@ impl FixSmallSolid {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
     pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_FixSmallSolid_inherited_SendWarning(
                     self as *const Self,
                     shape,
                     message,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
     pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_FixSmallSolid_inherited_SendFail(
                     self as *const Self,
                     shape,
                     message,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3566,8 +4148,11 @@ impl FixSmallSolid {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3577,8 +4162,11 @@ impl FixSmallSolid {
             let __result = unsafe {
                 crate::ffi::ShapeFix_FixSmallSolid_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3587,11 +4175,14 @@ impl FixSmallSolid {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_FixSmallSolid_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3602,18 +4193,23 @@ impl FixSmallSolid {
             let __result = unsafe {
                 crate::ffi::ShapeFix_FixSmallSolid_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_FixSmallSolid_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3623,16 +4219,22 @@ impl FixSmallSolid {
             let __result = unsafe {
                 crate::ffi::ShapeFix_FixSmallSolid_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeFix_FixSmallSolid_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_FixSmallSolid_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3648,46 +4250,43 @@ unsafe impl crate::CppDeletable for HandleShapeFixFixSmallSolid {
 impl HandleShapeFixFixSmallSolid {
     /// Dereference this Handle to access the underlying ShapeFix_FixSmallSolid
     pub fn get(&self) -> &crate::ffi::ShapeFix_FixSmallSolid {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeFixFixSmallSolid_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixFixSmallSolid_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeFix_FixSmallSolid
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_FixSmallSolid {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeFixFixSmallSolid_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeFixFixSmallSolid_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeFix_FixSmallSolid> to Handle<ShapeFix_Root>
     pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixFixSmallSolid_to_HandleShapeFixRoot(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeFixFixSmallSolid_to_HandleShapeFixRoot(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeFix_FixSmallSolid> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixFixSmallSolid_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeFixFixSmallSolid_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3733,8 +4332,10 @@ impl FreeBounds {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_FreeBounds_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3762,8 +4363,10 @@ impl FreeBounds {
                     splitopen,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3786,8 +4389,10 @@ impl FreeBounds {
                     splitopen,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3797,8 +4402,11 @@ impl FreeBounds {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_FreeBounds_get_closed_wires(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3808,8 +4416,11 @@ impl FreeBounds {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_FreeBounds_get_open_wires(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3819,8 +4430,11 @@ impl FreeBounds {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_FreeBounds_get_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 }
@@ -3854,8 +4468,10 @@ impl IntersectionTool {
                     context, preci, maxtol,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3874,8 +4490,11 @@ impl IntersectionTool {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_IntersectionTool_context(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -3906,8 +4525,11 @@ impl IntersectionTool {
                     preci,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3932,8 +4554,11 @@ impl IntersectionTool {
                     iscutline,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3957,8 +4582,11 @@ impl IntersectionTool {
                     NbRemoved,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3971,8 +4599,11 @@ impl IntersectionTool {
                     face,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -4001,8 +4632,10 @@ impl Root {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Root_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4010,8 +4643,10 @@ impl Root {
     /// Copy all fields from another Root object
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         {
-            unsafe { crate::ffi::ShapeFix_Root_set(self as *mut Self, Root) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Root_set(self as *mut Self, Root) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4019,8 +4654,11 @@ impl Root {
     /// Sets context
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe { crate::ffi::ShapeFix_Root_set_context(self as *mut Self, context) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Root_set_context(self as *mut Self, context) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4029,8 +4667,11 @@ impl Root {
     pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Root_context(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4041,8 +4682,11 @@ impl Root {
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
         {
-            unsafe { crate::ffi::ShapeFix_Root_set_msg_registrator(self as *mut Self, msgreg) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Root_set_msg_registrator(self as *mut Self, msgreg) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4054,8 +4698,11 @@ impl Root {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Root_msg_registrator(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4063,8 +4710,11 @@ impl Root {
     /// Sets basic precision value
     pub fn set_precision(&mut self, preci: f64) {
         {
-            unsafe { crate::ffi::ShapeFix_Root_set_precision(self as *mut Self, preci) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Root_set_precision(self as *mut Self, preci) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4073,8 +4723,11 @@ impl Root {
     pub fn precision(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Root_precision(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4082,8 +4735,11 @@ impl Root {
     /// Sets minimal allowed tolerance
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe { crate::ffi::ShapeFix_Root_set_min_tolerance(self as *mut Self, mintol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Root_set_min_tolerance(self as *mut Self, mintol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4092,8 +4748,11 @@ impl Root {
     pub fn min_tolerance(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Root_min_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4101,8 +4760,11 @@ impl Root {
     /// Sets maximal allowed tolerance
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe { crate::ffi::ShapeFix_Root_set_max_tolerance(self as *mut Self, maxtol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Root_set_max_tolerance(self as *mut Self, maxtol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4111,8 +4773,11 @@ impl Root {
     pub fn max_tolerance(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Root_max_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4122,8 +4787,11 @@ impl Root {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Root_limit_tolerance(self as *const Self, toler) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4137,7 +4805,7 @@ impl Root {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Root_send_msg_shape_msg_gravity(
                     self as *const Self,
                     shape,
@@ -4145,7 +4813,9 @@ impl Root {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4158,14 +4828,16 @@ impl Root {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Root_send_msg_msg_gravity(
                     self as *const Self,
                     message,
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4178,14 +4850,16 @@ impl Root {
         message: &crate::message::Msg,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Root_send_warning_shape_msg(
                     self as *const Self,
                     shape,
                     message,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4193,8 +4867,11 @@ impl Root {
     /// Calls previous method for myShape.
     pub fn send_warning_msg(&self, message: &crate::message::Msg) {
         {
-            unsafe { crate::ffi::ShapeFix_Root_send_warning_msg(self as *const Self, message) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Root_send_warning_msg(self as *const Self, message) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4207,10 +4884,12 @@ impl Root {
         message: &crate::message::Msg,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Root_send_fail_shape_msg(self as *const Self, shape, message)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4218,8 +4897,11 @@ impl Root {
     /// Calls previous method for myShape.
     pub fn send_fail_msg(&self, message: &crate::message::Msg) {
         {
-            unsafe { crate::ffi::ShapeFix_Root_send_fail_msg(self as *const Self, message) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Root_send_fail_msg(self as *const Self, message) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4227,8 +4909,11 @@ impl Root {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Root_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4236,8 +4921,11 @@ impl Root {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Root_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4245,40 +4933,43 @@ impl Root {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Root_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Root_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_Root_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Root_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_Root_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
-        {
-            let __result = unsafe { crate::ffi::ShapeFix_Root_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeFix_Root_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -4287,8 +4978,11 @@ impl Root {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Root_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4297,8 +4991,11 @@ impl Root {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Root_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4306,11 +5003,14 @@ impl Root {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Root_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4320,16 +5020,23 @@ impl Root {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Root_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::ShapeFix_Root_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_Root_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4339,16 +5046,21 @@ impl Root {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Root_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeFix_Root_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Root_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4364,31 +5076,31 @@ unsafe impl crate::CppDeletable for HandleShapeFixRoot {
 impl HandleShapeFixRoot {
     /// Dereference this Handle to access the underlying ShapeFix_Root
     pub fn get(&self) -> &crate::ffi::ShapeFix_Root {
-        {
-            let __result = unsafe { crate::ffi::HandleShapeFixRoot_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixRoot_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeFix_Root
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Root {
-        {
-            let __result = unsafe { crate::ffi::HandleShapeFixRoot_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixRoot_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeFix_Root> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixRoot_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeFixRoot_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Downcast Handle<ShapeFix_Root> to Handle<ShapeFix_ComposeShell>
@@ -4397,16 +5109,18 @@ impl HandleShapeFixRoot {
     pub fn downcast_to_compose_shell(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixComposeShell>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixComposeShell(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4414,14 +5128,16 @@ impl HandleShapeFixRoot {
     ///
     /// Returns `None` if the handle does not point to a `ShapeFix_Face` (or subclass).
     pub fn downcast_to_face(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixFace>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixFace(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4431,16 +5147,18 @@ impl HandleShapeFixRoot {
     pub fn downcast_to_fix_small_face(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixFixSmallFace>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixFixSmallFace(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4450,16 +5168,18 @@ impl HandleShapeFixRoot {
     pub fn downcast_to_fix_small_solid(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixFixSmallSolid>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixFixSmallSolid(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4467,14 +5187,16 @@ impl HandleShapeFixRoot {
     ///
     /// Returns `None` if the handle does not point to a `ShapeFix_Shape` (or subclass).
     pub fn downcast_to_shape(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixShape>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixShape(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4482,14 +5204,16 @@ impl HandleShapeFixRoot {
     ///
     /// Returns `None` if the handle does not point to a `ShapeFix_Shell` (or subclass).
     pub fn downcast_to_shell(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixShell>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixShell(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4497,14 +5221,16 @@ impl HandleShapeFixRoot {
     ///
     /// Returns `None` if the handle does not point to a `ShapeFix_Solid` (or subclass).
     pub fn downcast_to_solid(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixSolid>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixSolid(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4514,16 +5240,18 @@ impl HandleShapeFixRoot {
     pub fn downcast_to_split_common_vertex(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixSplitCommonVertex>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixSplitCommonVertex(
                 self as *const Self,
             )
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4531,14 +5259,16 @@ impl HandleShapeFixRoot {
     ///
     /// Returns `None` if the handle does not point to a `ShapeFix_Wire` (or subclass).
     pub fn downcast_to_wire(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixWire>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixWire(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 
@@ -4548,14 +5278,16 @@ impl HandleShapeFixRoot {
     pub fn downcast_to_wireframe(
         &self,
     ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixWireframe>> {
-        let ptr = unsafe {
+        let __result = unsafe {
             crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixWireframe(self as *const Self)
         };
-        crate::check_exception();
-        if ptr.is_null() {
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        if __result.ret.is_null() {
             None
         } else {
-            Some(unsafe { crate::OwnedPtr::from_raw(ptr) })
+            Some(unsafe { crate::OwnedPtr::from_raw(__result.ret) })
         }
     }
 }
@@ -4580,8 +5312,10 @@ impl Shape {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Shape_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4590,8 +5324,10 @@ impl Shape {
     pub fn new_shape(shape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Shape_ctor_shape(shape) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4599,8 +5335,10 @@ impl Shape {
     /// Initislises by shape.
     pub fn init(&mut self, shape: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::ShapeFix_Shape_init(self as *mut Self, shape) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Shape_init(self as *mut Self, shape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4610,8 +5348,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shape_perform(self as *mut Self, theProgress) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4620,8 +5361,11 @@ impl Shape {
     pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Shape_shape(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4631,8 +5375,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shape_fix_solid_tool(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4642,8 +5389,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shape_fix_shell_tool(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4652,8 +5402,11 @@ impl Shape {
     pub fn fix_face_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixFace> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Shape_fix_face_tool(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4662,8 +5415,11 @@ impl Shape {
     pub fn fix_wire_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixWire> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Shape_fix_wire_tool(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4672,8 +5428,11 @@ impl Shape {
     pub fn fix_edge_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixEdge> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Shape_fix_edge_tool(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4690,8 +5449,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shape_status(self as *const Self, status.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4702,8 +5464,12 @@ impl Shape {
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
         {
-            unsafe { crate::ffi::ShapeFix_Shape_set_msg_registrator(self as *mut Self, msgreg) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_Shape_set_msg_registrator(self as *mut Self, msgreg)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4711,8 +5477,11 @@ impl Shape {
     /// Sets basic precision value (also to FixSolidTool)
     pub fn set_precision(&mut self, preci: f64) {
         {
-            unsafe { crate::ffi::ShapeFix_Shape_set_precision(self as *mut Self, preci) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Shape_set_precision(self as *mut Self, preci) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4720,8 +5489,11 @@ impl Shape {
     /// Sets minimal allowed tolerance (also to FixSolidTool)
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe { crate::ffi::ShapeFix_Shape_set_min_tolerance(self as *mut Self, mintol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Shape_set_min_tolerance(self as *mut Self, mintol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4729,8 +5501,11 @@ impl Shape {
     /// Sets maximal allowed tolerance (also to FixSolidTool)
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe { crate::ffi::ShapeFix_Shape_set_max_tolerance(self as *mut Self, maxtol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Shape_set_max_tolerance(self as *mut Self, maxtol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4740,8 +5515,11 @@ impl Shape {
     pub fn fix_solid_mode(&mut self) -> &mut i32 {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Shape_fix_solid_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4752,8 +5530,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shape_fix_free_shell_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4764,8 +5545,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shape_fix_free_face_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4776,8 +5560,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shape_fix_free_wire_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4788,8 +5575,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shape_fix_same_parameter_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4800,8 +5590,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shape_fix_vertex_position_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4812,8 +5605,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shape_fix_vertex_tol_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4821,8 +5617,11 @@ impl Shape {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Shape_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4830,8 +5629,11 @@ impl Shape {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Shape_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4839,75 +5641,84 @@ impl Shape {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Shape_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeFix_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Shape_as_ShapeFix_Root(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::ShapeFix_Shape_as_ShapeFix_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeFix_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Shape_as_ShapeFix_Root_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_Shape_as_ShapeFix_Root_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Shape_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_Shape_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Shape_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_Shape_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixShape> {
-        {
-            let __result = unsafe { crate::ffi::ShapeFix_Shape_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeFix_Shape_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         {
-            unsafe { crate::ffi::ShapeFix_Shape_inherited_Set(self as *mut Self, Root) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Shape_inherited_Set(self as *mut Self, Root) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe { crate::ffi::ShapeFix_Shape_inherited_SetContext(self as *mut Self, context) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_Shape_inherited_SetContext(self as *mut Self, context)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4916,8 +5727,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shape_inherited_Context(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4928,8 +5742,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shape_inherited_MsgRegistrator(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -4938,8 +5755,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shape_inherited_Precision(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4948,8 +5768,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shape_inherited_MinTolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4958,8 +5781,11 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shape_inherited_MaxTolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4969,8 +5795,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Shape_inherited_LimitTolerance(self as *const Self, toler)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4982,7 +5811,7 @@ impl Shape {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Shape_inherited_SendMsg(
                     self as *const Self,
                     shape,
@@ -4990,31 +5819,37 @@ impl Shape {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
     pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Shape_inherited_SendWarning(
                     self as *const Self,
                     shape,
                     message,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
     pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Shape_inherited_SendFail(self as *const Self, shape, message)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5024,8 +5859,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Shape_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5035,8 +5873,11 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Shape_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5045,11 +5886,14 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shape_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5059,16 +5903,23 @@ impl Shape {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shape_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::ShapeFix_Shape_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_Shape_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5078,16 +5929,21 @@ impl Shape {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Shape_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeFix_Shape_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Shape_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5103,42 +5959,41 @@ unsafe impl crate::CppDeletable for HandleShapeFixShape {
 impl HandleShapeFixShape {
     /// Dereference this Handle to access the underlying ShapeFix_Shape
     pub fn get(&self) -> &crate::ffi::ShapeFix_Shape {
-        {
-            let __result = unsafe { crate::ffi::HandleShapeFixShape_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixShape_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeFix_Shape
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Shape {
-        {
-            let __result = unsafe { crate::ffi::HandleShapeFixShape_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixShape_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeFix_Shape> to Handle<ShapeFix_Root>
     pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixShape_to_HandleShapeFixRoot(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleShapeFixShape_to_HandleShapeFixRoot(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeFix_Shape> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixShape_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeFixShape_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5161,8 +6016,10 @@ impl ShapeTolerance {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_ShapeTolerance_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5197,8 +6054,11 @@ impl ShapeTolerance {
                     styp.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5216,7 +6076,7 @@ impl ShapeTolerance {
         styp: crate::top_abs::ShapeEnum,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_ShapeTolerance_set_tolerance(
                     self as *const Self,
                     shape,
@@ -5224,7 +6084,9 @@ impl ShapeTolerance {
                     styp.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5249,8 +6111,10 @@ impl Shell {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Shell_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5259,8 +6123,10 @@ impl Shell {
     pub fn new_shell(shape: &crate::topo_ds::Shell) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Shell_ctor_shell(shape) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5268,8 +6134,10 @@ impl Shell {
     /// Initializes by shell.
     pub fn init(&mut self, shell: &crate::topo_ds::Shell) {
         {
-            unsafe { crate::ffi::ShapeFix_Shell_init(self as *mut Self, shell) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Shell_init(self as *mut Self, shell) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5283,8 +6151,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shell_perform(self as *mut Self, theProgress) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5318,8 +6189,11 @@ impl Shell {
                     NonManifold,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5328,8 +6202,11 @@ impl Shell {
     pub fn shell(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shell> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Shell_shell(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5339,8 +6216,11 @@ impl Shell {
     pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Shell_shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5349,8 +6229,11 @@ impl Shell {
     pub fn nb_shells(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Shell_nb_shells(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5359,8 +6242,11 @@ impl Shell {
     pub fn error_faces(&self) -> crate::OwnedPtr<crate::topo_ds::Compound> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Shell_error_faces(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5370,8 +6256,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shell_status(self as *const Self, status.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5380,8 +6269,11 @@ impl Shell {
     pub fn fix_face_tool(&mut self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixFace> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Shell_fix_face_tool(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5392,8 +6284,12 @@ impl Shell {
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
         {
-            unsafe { crate::ffi::ShapeFix_Shell_set_msg_registrator(self as *mut Self, msgreg) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_Shell_set_msg_registrator(self as *mut Self, msgreg)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5401,8 +6297,11 @@ impl Shell {
     /// Sets basic precision value (also to FixWireTool)
     pub fn set_precision(&mut self, preci: f64) {
         {
-            unsafe { crate::ffi::ShapeFix_Shell_set_precision(self as *mut Self, preci) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Shell_set_precision(self as *mut Self, preci) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5410,8 +6309,11 @@ impl Shell {
     /// Sets minimal allowed tolerance (also to FixWireTool)
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe { crate::ffi::ShapeFix_Shell_set_min_tolerance(self as *mut Self, mintol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Shell_set_min_tolerance(self as *mut Self, mintol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5419,8 +6321,11 @@ impl Shell {
     /// Sets maximal allowed tolerance (also to FixWireTool)
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe { crate::ffi::ShapeFix_Shell_set_max_tolerance(self as *mut Self, maxtol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Shell_set_max_tolerance(self as *mut Self, maxtol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5430,8 +6335,11 @@ impl Shell {
     pub fn fix_face_mode(&mut self) -> &mut i32 {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Shell_fix_face_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5442,8 +6350,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shell_fix_orientation_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5451,10 +6362,12 @@ impl Shell {
     /// Sets NonManifold flag
     pub fn set_non_manifold_flag(&mut self, isNonManifold: bool) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Shell_set_non_manifold_flag(self as *mut Self, isNonManifold)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5462,8 +6375,11 @@ impl Shell {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Shell_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5471,8 +6387,11 @@ impl Shell {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Shell_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5480,75 +6399,84 @@ impl Shell {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Shell_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeFix_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Shell_as_ShapeFix_Root(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::ShapeFix_Shell_as_ShapeFix_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeFix_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Shell_as_ShapeFix_Root_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_Shell_as_ShapeFix_Root_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Shell_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_Shell_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Shell_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_Shell_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixShell> {
-        {
-            let __result = unsafe { crate::ffi::ShapeFix_Shell_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeFix_Shell_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         {
-            unsafe { crate::ffi::ShapeFix_Shell_inherited_Set(self as *mut Self, Root) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Shell_inherited_Set(self as *mut Self, Root) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe { crate::ffi::ShapeFix_Shell_inherited_SetContext(self as *mut Self, context) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_Shell_inherited_SetContext(self as *mut Self, context)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5557,8 +6485,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shell_inherited_Context(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5569,8 +6500,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shell_inherited_MsgRegistrator(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5579,8 +6513,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shell_inherited_Precision(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5589,8 +6526,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shell_inherited_MinTolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5599,8 +6539,11 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shell_inherited_MaxTolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5610,8 +6553,11 @@ impl Shell {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Shell_inherited_LimitTolerance(self as *const Self, toler)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5623,7 +6569,7 @@ impl Shell {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Shell_inherited_SendMsg(
                     self as *const Self,
                     shape,
@@ -5631,31 +6577,37 @@ impl Shell {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
     pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Shell_inherited_SendWarning(
                     self as *const Self,
                     shape,
                     message,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
     pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Shell_inherited_SendFail(self as *const Self, shape, message)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5665,8 +6617,11 @@ impl Shell {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Shell_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5676,8 +6631,11 @@ impl Shell {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Shell_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5686,11 +6644,14 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shell_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5700,16 +6661,23 @@ impl Shell {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Shell_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::ShapeFix_Shell_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_Shell_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5719,16 +6687,21 @@ impl Shell {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Shell_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeFix_Shell_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Shell_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5744,42 +6717,41 @@ unsafe impl crate::CppDeletable for HandleShapeFixShell {
 impl HandleShapeFixShell {
     /// Dereference this Handle to access the underlying ShapeFix_Shell
     pub fn get(&self) -> &crate::ffi::ShapeFix_Shell {
-        {
-            let __result = unsafe { crate::ffi::HandleShapeFixShell_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixShell_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeFix_Shell
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Shell {
-        {
-            let __result = unsafe { crate::ffi::HandleShapeFixShell_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixShell_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeFix_Shell> to Handle<ShapeFix_Root>
     pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixShell_to_HandleShapeFixRoot(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleShapeFixShell_to_HandleShapeFixRoot(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeFix_Shell> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixShell_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeFixShell_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -5804,8 +6776,10 @@ impl Solid {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Solid_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5814,8 +6788,10 @@ impl Solid {
     pub fn new_solid(solid: &crate::topo_ds::Solid) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Solid_ctor_solid(solid) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -5823,8 +6799,10 @@ impl Solid {
     /// Initializes by solid .
     pub fn init(&mut self, solid: &crate::topo_ds::Solid) {
         {
-            unsafe { crate::ffi::ShapeFix_Solid_init(self as *mut Self, solid) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Solid_init(self as *mut Self, solid) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5837,8 +6815,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Solid_perform(self as *mut Self, theProgress) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5851,8 +6832,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Solid_solid_from_shell(self as *mut Self, shell) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5862,8 +6846,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Solid_status(self as *const Self, status.into()) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5872,8 +6859,11 @@ impl Solid {
     pub fn solid(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Solid_solid(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5883,8 +6873,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Solid_fix_shell_tool(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5895,8 +6888,12 @@ impl Solid {
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
         {
-            unsafe { crate::ffi::ShapeFix_Solid_set_msg_registrator(self as *mut Self, msgreg) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_Solid_set_msg_registrator(self as *mut Self, msgreg)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5904,8 +6901,11 @@ impl Solid {
     /// Sets basic precision value (also to FixShellTool)
     pub fn set_precision(&mut self, preci: f64) {
         {
-            unsafe { crate::ffi::ShapeFix_Solid_set_precision(self as *mut Self, preci) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Solid_set_precision(self as *mut Self, preci) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5913,8 +6913,11 @@ impl Solid {
     /// Sets minimal allowed tolerance (also to FixShellTool)
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe { crate::ffi::ShapeFix_Solid_set_min_tolerance(self as *mut Self, mintol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Solid_set_min_tolerance(self as *mut Self, mintol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5922,8 +6925,11 @@ impl Solid {
     /// Sets maximal allowed tolerance (also to FixShellTool)
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe { crate::ffi::ShapeFix_Solid_set_max_tolerance(self as *mut Self, maxtol) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Solid_set_max_tolerance(self as *mut Self, maxtol) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5933,8 +6939,11 @@ impl Solid {
     pub fn fix_shell_mode(&mut self) -> &mut i32 {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Solid_fix_shell_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5945,8 +6954,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Solid_fix_shell_orientation_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5960,8 +6972,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Solid_create_open_solid_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -5971,8 +6986,11 @@ impl Solid {
     pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Solid_shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -5980,8 +6998,11 @@ impl Solid {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Solid_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -5989,8 +7010,11 @@ impl Solid {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Solid_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -5998,75 +7022,84 @@ impl Solid {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Solid_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeFix_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Solid_as_ShapeFix_Root(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::ShapeFix_Solid_as_ShapeFix_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeFix_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Solid_as_ShapeFix_Root_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_Solid_as_ShapeFix_Root_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Solid_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_Solid_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Solid_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_Solid_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixSolid> {
-        {
-            let __result = unsafe { crate::ffi::ShapeFix_Solid_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeFix_Solid_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         {
-            unsafe { crate::ffi::ShapeFix_Solid_inherited_Set(self as *mut Self, Root) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Solid_inherited_Set(self as *mut Self, Root) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe { crate::ffi::ShapeFix_Solid_inherited_SetContext(self as *mut Self, context) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_Solid_inherited_SetContext(self as *mut Self, context)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6075,8 +7108,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Solid_inherited_Context(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6087,8 +7123,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Solid_inherited_MsgRegistrator(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6097,8 +7136,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Solid_inherited_Precision(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6107,8 +7149,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Solid_inherited_MinTolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6117,8 +7162,11 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Solid_inherited_MaxTolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6128,8 +7176,11 @@ impl Solid {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Solid_inherited_LimitTolerance(self as *const Self, toler)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6141,7 +7192,7 @@ impl Solid {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Solid_inherited_SendMsg(
                     self as *const Self,
                     shape,
@@ -6149,31 +7200,37 @@ impl Solid {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
     pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Solid_inherited_SendWarning(
                     self as *const Self,
                     shape,
                     message,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
     pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Solid_inherited_SendFail(self as *const Self, shape, message)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6183,8 +7240,11 @@ impl Solid {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Solid_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6194,8 +7254,11 @@ impl Solid {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Solid_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6204,11 +7267,14 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Solid_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6218,16 +7284,23 @@ impl Solid {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Solid_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::ShapeFix_Solid_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_Solid_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6237,16 +7310,21 @@ impl Solid {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Solid_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeFix_Solid_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Solid_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6262,42 +7340,41 @@ unsafe impl crate::CppDeletable for HandleShapeFixSolid {
 impl HandleShapeFixSolid {
     /// Dereference this Handle to access the underlying ShapeFix_Solid
     pub fn get(&self) -> &crate::ffi::ShapeFix_Solid {
-        {
-            let __result = unsafe { crate::ffi::HandleShapeFixSolid_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixSolid_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeFix_Solid
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Solid {
-        {
-            let __result = unsafe { crate::ffi::HandleShapeFixSolid_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixSolid_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeFix_Solid> to Handle<ShapeFix_Root>
     pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixSolid_to_HandleShapeFixRoot(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleShapeFixSolid_to_HandleShapeFixRoot(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeFix_Solid> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixSolid_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeFixSolid_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6322,24 +7399,32 @@ impl SplitCommonVertex {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_SplitCommonVertex_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `ShapeFix_SplitCommonVertex.hxx`:38 - `ShapeFix_SplitCommonVertex::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::ShapeFix_SplitCommonVertex_init(self as *mut Self, S) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_SplitCommonVertex_init(self as *mut Self, S) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ShapeFix_SplitCommonVertex.hxx`:40 - `ShapeFix_SplitCommonVertex::Perform()`
     pub fn perform(&mut self) {
         {
-            unsafe { crate::ffi::ShapeFix_SplitCommonVertex_perform(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_SplitCommonVertex_perform(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6348,8 +7433,11 @@ impl SplitCommonVertex {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_SplitCommonVertex_shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6358,8 +7446,11 @@ impl SplitCommonVertex {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_SplitCommonVertex_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -6367,8 +7458,11 @@ impl SplitCommonVertex {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeFix_SplitCommonVertex_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -6376,87 +7470,92 @@ impl SplitCommonVertex {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeFix_SplitCommonVertex_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeFix_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeFix_SplitCommonVertex_as_ShapeFix_Root(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_SplitCommonVertex_as_ShapeFix_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeFix_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeFix_SplitCommonVertex_as_ShapeFix_Root_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeFix_SplitCommonVertex_as_ShapeFix_Root_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeFix_SplitCommonVertex_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::ShapeFix_SplitCommonVertex_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeFix_SplitCommonVertex_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::ShapeFix_SplitCommonVertex_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixSplitCommonVertex> {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_SplitCommonVertex_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeFix_SplitCommonVertex_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_SplitCommonVertex_inherited_Set(self as *mut Self, Root)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_SplitCommonVertex_inherited_SetContext(
                     self as *mut Self,
                     context,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6466,8 +7565,11 @@ impl SplitCommonVertex {
             let __result = unsafe {
                 crate::ffi::ShapeFix_SplitCommonVertex_inherited_Context(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -6477,13 +7579,15 @@ impl SplitCommonVertex {
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_SplitCommonVertex_inherited_SetMsgRegistrator(
                     self as *mut Self,
                     msgreg,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6495,21 +7599,26 @@ impl SplitCommonVertex {
             let __result = unsafe {
                 crate::ffi::ShapeFix_SplitCommonVertex_inherited_MsgRegistrator(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:66 - `ShapeFix_Root::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_SplitCommonVertex_inherited_SetPrecision(
                     self as *mut Self,
                     preci,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6519,21 +7628,26 @@ impl SplitCommonVertex {
             let __result = unsafe {
                 crate::ffi::ShapeFix_SplitCommonVertex_inherited_Precision(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:72 - `ShapeFix_Root::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_SplitCommonVertex_inherited_SetMinTolerance(
                     self as *mut Self,
                     mintol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6543,21 +7657,26 @@ impl SplitCommonVertex {
             let __result = unsafe {
                 crate::ffi::ShapeFix_SplitCommonVertex_inherited_MinTolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:78 - `ShapeFix_Root::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_SplitCommonVertex_inherited_SetMaxTolerance(
                     self as *mut Self,
                     maxtol,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6567,8 +7686,11 @@ impl SplitCommonVertex {
             let __result = unsafe {
                 crate::ffi::ShapeFix_SplitCommonVertex_inherited_MaxTolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6581,8 +7703,11 @@ impl SplitCommonVertex {
                     toler,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6594,7 +7719,7 @@ impl SplitCommonVertex {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_SplitCommonVertex_inherited_SendMsg(
                     self as *const Self,
                     shape,
@@ -6602,35 +7727,41 @@ impl SplitCommonVertex {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
     pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_SplitCommonVertex_inherited_SendWarning(
                     self as *const Self,
                     shape,
                     message,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
     pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_SplitCommonVertex_inherited_SendFail(
                     self as *const Self,
                     shape,
                     message,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6643,8 +7774,11 @@ impl SplitCommonVertex {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6657,8 +7791,11 @@ impl SplitCommonVertex {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6668,11 +7805,14 @@ impl SplitCommonVertex {
             let __result = unsafe {
                 crate::ffi::ShapeFix_SplitCommonVertex_inherited_This(self as *const Self)
             };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -6683,20 +7823,25 @@ impl SplitCommonVertex {
             let __result = unsafe {
                 crate::ffi::ShapeFix_SplitCommonVertex_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_SplitCommonVertex_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -6708,16 +7853,23 @@ impl SplitCommonVertex {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeFix_SplitCommonVertex_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_SplitCommonVertex_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -6733,48 +7885,46 @@ unsafe impl crate::CppDeletable for HandleShapeFixSplitCommonVertex {
 impl HandleShapeFixSplitCommonVertex {
     /// Dereference this Handle to access the underlying ShapeFix_SplitCommonVertex
     pub fn get(&self) -> &crate::ffi::ShapeFix_SplitCommonVertex {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeFixSplitCommonVertex_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeFixSplitCommonVertex_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeFix_SplitCommonVertex
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_SplitCommonVertex {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeFixSplitCommonVertex_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleShapeFixSplitCommonVertex_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeFix_SplitCommonVertex> to Handle<ShapeFix_Root>
     pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixSplitCommonVertex_to_HandleShapeFixRoot(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeFixSplitCommonVertex_to_HandleShapeFixRoot(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeFix_SplitCommonVertex> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixSplitCommonVertex_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeFixSplitCommonVertex_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -6799,8 +7949,10 @@ impl SplitTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_SplitTool_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -6833,8 +7985,11 @@ impl SplitTool {
                     tol2d,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6869,8 +8024,11 @@ impl SplitTool {
                     tol2d,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6895,8 +8053,11 @@ impl SplitTool {
                     iscutline,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -6923,8 +8084,11 @@ impl SplitTool {
             let __result = unsafe {
                 crate::ffi::ShapeFix_SplitTool_split_edge_edge_real_vertex_real_vertex_face_sequenceofshape_int_handleshapebuildreshape_real2(self as *const Self, edge, fp, V1, lp, V2, face, SeqE, aNum, context, tol3d, tol2d)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -6996,8 +8160,10 @@ impl Wire {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7012,8 +8178,10 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_ctor_wire_face_real(wire, face, prec) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -7021,8 +8189,10 @@ impl Wire {
     /// Sets all modes to default
     pub fn clear_modes(&mut self) {
         {
-            unsafe { crate::ffi::ShapeFix_Wire_clear_modes(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Wire_clear_modes(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7030,8 +8200,10 @@ impl Wire {
     /// Clears all statuses
     pub fn clear_statuses(&mut self) {
         {
-            unsafe { crate::ffi::ShapeFix_Wire_clear_statuses(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Wire_clear_statuses(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7045,10 +8217,12 @@ impl Wire {
         prec: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wire_init_wire_face_real(self as *mut Self, wire, face, prec)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7059,10 +8233,12 @@ impl Wire {
     /// by SetFace or SetSurface
     pub fn init_handleshapeanalysiswire(&mut self, saw: &crate::ffi::HandleShapeAnalysisWire) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wire_init_handleshapeanalysiswire(self as *mut Self, saw)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7070,8 +8246,10 @@ impl Wire {
     /// Load data for the wire, and drops all fixing statuses
     pub fn load_wire(&mut self, wire: &crate::topo_ds::Wire) {
         {
-            unsafe { crate::ffi::ShapeFix_Wire_load_wire(self as *mut Self, wire) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Wire_load_wire(self as *mut Self, wire) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7079,10 +8257,12 @@ impl Wire {
     /// Load data for the wire, and drops all fixing statuses
     pub fn load_handleshapeextendwiredata(&mut self, sbwd: &crate::ffi::HandleShapeExtendWireData) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wire_load_handleshapeextendwiredata(self as *mut Self, sbwd)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7090,8 +8270,10 @@ impl Wire {
     /// Set working face for the wire
     pub fn set_face(&mut self, face: &crate::topo_ds::Face) {
         {
-            unsafe { crate::ffi::ShapeFix_Wire_set_face(self as *mut Self, face) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Wire_set_face(self as *mut Self, face) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7099,10 +8281,12 @@ impl Wire {
     /// Set surface for the wire
     pub fn set_surface_handlegeomsurface(&mut self, surf: &crate::ffi::HandleGeomSurface) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wire_set_surface_handlegeomsurface(self as *mut Self, surf)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7114,14 +8298,16 @@ impl Wire {
         loc: &crate::top_loc::Location,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wire_set_surface_handlegeomsurface_location(
                     self as *mut Self,
                     surf,
                     loc,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7129,8 +8315,10 @@ impl Wire {
     /// Set working precision (to root and to analyzer)
     pub fn set_precision(&mut self, prec: f64) {
         {
-            unsafe { crate::ffi::ShapeFix_Wire_set_precision(self as *mut Self, prec) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Wire_set_precision(self as *mut Self, prec) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7138,10 +8326,12 @@ impl Wire {
     /// Sets the maximal allowed angle of the tails in radians.
     pub fn set_max_tail_angle(&mut self, theMaxTailAngle: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wire_set_max_tail_angle(self as *mut Self, theMaxTailAngle)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7149,10 +8339,12 @@ impl Wire {
     /// Sets the maximal allowed width of the tails.
     pub fn set_max_tail_width(&mut self, theMaxTailWidth: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wire_set_max_tail_width(self as *mut Self, theMaxTailWidth)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -7161,8 +8353,11 @@ impl Wire {
     pub fn is_loaded(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_is_loaded(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7171,8 +8366,11 @@ impl Wire {
     pub fn is_ready(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_is_ready(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7181,8 +8379,11 @@ impl Wire {
     pub fn nb_edges(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_nb_edges(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7191,8 +8392,11 @@ impl Wire {
     pub fn wire(&self) -> crate::OwnedPtr<crate::topo_ds::Wire> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_wire(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7201,8 +8405,11 @@ impl Wire {
     pub fn wire_api_make(&self) -> crate::OwnedPtr<crate::topo_ds::Wire> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_wire_api_make(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7211,8 +8418,11 @@ impl Wire {
     pub fn analyzer(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeAnalysisWire> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_analyzer(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -7221,8 +8431,11 @@ impl Wire {
     pub fn wire_data(&self) -> &crate::ffi::HandleShapeExtendWireData {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_wire_data(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7231,8 +8444,11 @@ impl Wire {
     pub fn face(&self) -> &crate::topo_ds::Face {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_face(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -7244,8 +8460,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_modify_topology_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7256,8 +8475,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_modify_geometry_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7268,8 +8490,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_modify_remove_loop_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7280,8 +8505,11 @@ impl Wire {
     pub fn closed_wire_mode(&mut self) -> &mut bool {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_closed_wire_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7293,8 +8521,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_preference_p_curve_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7306,8 +8537,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_gaps_by_ranges_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7315,8 +8549,11 @@ impl Wire {
     pub fn fix_reorder_mode(&mut self) -> &mut i32 {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_fix_reorder_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7324,8 +8561,11 @@ impl Wire {
     pub fn fix_small_mode(&mut self) -> &mut i32 {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_fix_small_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7334,8 +8574,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_connected_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7344,8 +8587,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_edge_curves_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7354,8 +8600,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_degenerated_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7364,8 +8613,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_self_intersection_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7373,8 +8625,11 @@ impl Wire {
     pub fn fix_lacking_mode(&mut self) -> &mut i32 {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_fix_lacking_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7382,8 +8637,11 @@ impl Wire {
     pub fn fix_gaps3d_mode(&mut self) -> &mut i32 {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_fix_gaps3d_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7397,8 +8655,11 @@ impl Wire {
     pub fn fix_gaps2d_mode(&mut self) -> &mut i32 {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_fix_gaps2d_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7407,8 +8668,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_reversed2d_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7417,8 +8681,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_remove_p_curve_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7427,8 +8694,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_add_p_curve_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7437,8 +8707,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_remove_curve3d_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7447,8 +8720,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_add_curve3d_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7456,8 +8732,11 @@ impl Wire {
     pub fn fix_seam_mode(&mut self) -> &mut i32 {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_fix_seam_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7465,8 +8744,11 @@ impl Wire {
     pub fn fix_shifted_mode(&mut self) -> &mut i32 {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_fix_shifted_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7475,8 +8757,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_same_parameter_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7485,8 +8770,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_vertex_tolerance_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7495,8 +8783,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_notched_edges_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7506,8 +8797,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wire_fix_self_intersecting_edge_mode(self as *mut Self)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7516,8 +8810,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_intersecting_edges_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7535,8 +8832,11 @@ impl Wire {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7544,8 +8844,11 @@ impl Wire {
     pub fn fix_tail_mode(&mut self) -> &mut i32 {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_fix_tail_mode(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -7568,8 +8871,11 @@ impl Wire {
     pub fn perform(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_perform(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7581,8 +8887,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wire_fix_reorder_bool(self as *mut Self, theModeBoth)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7593,8 +8902,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wire_fix_small_bool_real(self as *mut Self, lockvtx, precsmall)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7607,8 +8919,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_connected_real(self as *mut Self, prec) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7626,8 +8941,11 @@ impl Wire {
     pub fn fix_edge_curves(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_fix_edge_curves(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7638,8 +8956,11 @@ impl Wire {
     pub fn fix_degenerated(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_fix_degenerated(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7653,8 +8974,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_self_intersection(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7671,8 +8995,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_lacking_bool(self as *mut Self, force) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7685,8 +9012,11 @@ impl Wire {
     pub fn fix_closed(&mut self, prec: f64) -> bool {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_fix_closed(self as *mut Self, prec) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7696,8 +9026,11 @@ impl Wire {
     pub fn fix_gaps3d(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_fix_gaps3d(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7707,8 +9040,11 @@ impl Wire {
     pub fn fix_gaps2d(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_fix_gaps2d(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7719,8 +9055,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_reorder_wireorder(self as *mut Self, wi) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7742,8 +9081,11 @@ impl Wire {
                     precsmall,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7758,8 +9100,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wire_fix_connected_int_real(self as *mut Self, num, prec)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7781,8 +9126,11 @@ impl Wire {
     pub fn fix_seam(&mut self, num: i32) -> bool {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_fix_seam(self as *mut Self, num) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7802,8 +9150,11 @@ impl Wire {
     pub fn fix_shifted(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_fix_shifted(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7817,8 +9168,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_degenerated_int(self as *mut Self, num) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7834,8 +9188,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wire_fix_lacking_int_bool(self as *mut Self, num, force)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7844,8 +9201,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_notched_edges(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7857,8 +9217,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_gap3d(self as *mut Self, num, convert) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7870,8 +9233,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_fix_gap2d(self as *mut Self, num, convert) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7879,8 +9245,11 @@ impl Wire {
     pub fn fix_tails(&mut self) -> bool {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_fix_tails(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7890,8 +9259,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wire_status_reorder(self as *const Self, status.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7901,8 +9273,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wire_status_small(self as *const Self, status.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7912,8 +9287,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wire_status_connected(self as *const Self, status.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7923,8 +9301,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wire_status_edge_curves(self as *const Self, status.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7934,8 +9315,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wire_status_degenerated(self as *const Self, status.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7948,8 +9332,11 @@ impl Wire {
                     status.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7959,8 +9346,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wire_status_lacking(self as *const Self, status.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7970,8 +9360,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wire_status_closed(self as *const Self, status.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7981,8 +9374,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wire_status_gaps3d(self as *const Self, status.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -7992,8 +9388,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wire_status_gaps2d(self as *const Self, status.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8003,8 +9402,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wire_status_notches(self as *const Self, status.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8019,8 +9421,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_status_removed_segment(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8030,8 +9435,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wire_status_fix_tails(self as *const Self, status.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8047,8 +9455,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wire_last_fix_status(self as *const Self, status.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8057,8 +9468,11 @@ impl Wire {
     pub fn fix_edge_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixEdge> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_fix_edge_tool(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8066,8 +9480,11 @@ impl Wire {
     pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8075,8 +9492,11 @@ impl Wire {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -8084,75 +9504,82 @@ impl Wire {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeFix_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Wire_as_ShapeFix_Root(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::ShapeFix_Wire_as_ShapeFix_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeFix_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Wire_as_ShapeFix_Root_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::ShapeFix_Wire_as_ShapeFix_Root_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Wire_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_Wire_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Wire_as_Standard_Transient_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_Wire_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixWire> {
-        {
-            let __result = unsafe { crate::ffi::ShapeFix_Wire_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeFix_Wire_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         {
-            unsafe { crate::ffi::ShapeFix_Wire_inherited_Set(self as *mut Self, Root) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Wire_inherited_Set(self as *mut Self, Root) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe { crate::ffi::ShapeFix_Wire_inherited_SetContext(self as *mut Self, context) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_Wire_inherited_SetContext(self as *mut Self, context)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8161,8 +9588,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_inherited_Context(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8172,10 +9602,12 @@ impl Wire {
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wire_inherited_SetMsgRegistrator(self as *mut Self, msgreg)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8186,8 +9618,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_inherited_MsgRegistrator(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8196,18 +9631,23 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_inherited_Precision(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:72 - `ShapeFix_Root::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wire_inherited_SetMinTolerance(self as *mut Self, mintol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8216,18 +9656,23 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_inherited_MinTolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:78 - `ShapeFix_Root::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wire_inherited_SetMaxTolerance(self as *mut Self, maxtol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8236,8 +9681,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_inherited_MaxTolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8247,8 +9695,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wire_inherited_LimitTolerance(self as *const Self, toler)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8260,7 +9711,7 @@ impl Wire {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wire_inherited_SendMsg(
                     self as *const Self,
                     shape,
@@ -8268,27 +9719,33 @@ impl Wire {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
     pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wire_inherited_SendWarning(self as *const Self, shape, message)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
     pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wire_inherited_SendFail(self as *const Self, shape, message)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8298,8 +9755,11 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wire_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8308,8 +9768,11 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_inherited_IsKind(self as *const Self, theType) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8317,11 +9780,14 @@ impl Wire {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wire_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -8331,16 +9797,23 @@ impl Wire {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wire_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe { crate::ffi::ShapeFix_Wire_inherited_IncrementRefCounter(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_Wire_inherited_IncrementRefCounter(self as *mut Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8350,16 +9823,21 @@ impl Wire {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wire_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeFix_Wire_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Wire_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -8375,42 +9853,41 @@ unsafe impl crate::CppDeletable for HandleShapeFixWire {
 impl HandleShapeFixWire {
     /// Dereference this Handle to access the underlying ShapeFix_Wire
     pub fn get(&self) -> &crate::ffi::ShapeFix_Wire {
-        {
-            let __result = unsafe { crate::ffi::HandleShapeFixWire_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixWire_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeFix_Wire
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Wire {
-        {
-            let __result = unsafe { crate::ffi::HandleShapeFixWire_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixWire_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeFix_Wire> to Handle<ShapeFix_Root>
     pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixWire_to_HandleShapeFixRoot(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result =
+            unsafe { crate::ffi::HandleShapeFixWire_to_HandleShapeFixRoot(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeFix_Wire> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixWire_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeFixWire_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -8456,8 +9933,10 @@ impl WireSegment {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_WireSegment_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8474,8 +9953,10 @@ impl WireSegment {
                     ori.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8488,8 +9969,10 @@ impl WireSegment {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_WireSegment_ctor_wire_orientation(wire, ori.into()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8497,8 +9980,10 @@ impl WireSegment {
     /// Clears all fields.
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::ShapeFix_WireSegment_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_WireSegment_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8506,8 +9991,10 @@ impl WireSegment {
     /// Loads wire.
     pub fn load(&mut self, wire: &crate::ffi::HandleShapeExtendWireData) {
         {
-            unsafe { crate::ffi::ShapeFix_WireSegment_load(self as *mut Self, wire) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_WireSegment_load(self as *mut Self, wire) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8517,8 +10004,11 @@ impl WireSegment {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_WireSegment_wire_data(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8526,13 +10016,15 @@ impl WireSegment {
     /// Sets orientation flag.
     pub fn orientation_orientation(&mut self, ori: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_WireSegment_orientation_orientation(
                     self as *mut Self,
                     ori.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8542,8 +10034,11 @@ impl WireSegment {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_WireSegment_orientation(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -8554,8 +10049,11 @@ impl WireSegment {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_WireSegment_first_vertex(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8566,8 +10064,11 @@ impl WireSegment {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_WireSegment_last_vertex(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8577,8 +10078,11 @@ impl WireSegment {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_WireSegment_is_closed(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8588,8 +10092,11 @@ impl WireSegment {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_WireSegment_nb_edges(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8598,8 +10105,11 @@ impl WireSegment {
     pub fn edge(&self, i: i32) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_WireSegment_edge(self as *const Self, i) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8607,8 +10117,11 @@ impl WireSegment {
     /// Replaces edge at index i by new one.
     pub fn set_edge(&mut self, i: i32, edge: &crate::topo_ds::Edge) {
         {
-            unsafe { crate::ffi::ShapeFix_WireSegment_set_edge(self as *mut Self, i, edge) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_WireSegment_set_edge(self as *mut Self, i, edge) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8618,10 +10131,12 @@ impl WireSegment {
     /// If i==0, edge is inserted at end of wire.
     pub fn add_edge_int_edge(&mut self, i: i32, edge: &crate::topo_ds::Edge) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_WireSegment_add_edge_int_edge(self as *mut Self, i, edge)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8638,7 +10153,7 @@ impl WireSegment {
         ivmax: i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_WireSegment_add_edge_int_edge_int4(
                     self as *mut Self,
                     i,
@@ -8649,7 +10164,9 @@ impl WireSegment {
                     ivmax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8657,7 +10174,7 @@ impl WireSegment {
     /// Set patch indices for edge i.
     pub fn set_patch_index(&mut self, i: i32, iumin: i32, iumax: i32, ivmin: i32, ivmax: i32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_WireSegment_set_patch_index(
                     self as *mut Self,
                     i,
@@ -8667,31 +10184,45 @@ impl WireSegment {
                     ivmax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ShapeFix_WireSegment.hxx`:127 - `ShapeFix_WireSegment::DefineIUMin()`
     pub fn define_iu_min(&mut self, i: i32, iumin: i32) {
         {
-            unsafe { crate::ffi::ShapeFix_WireSegment_define_iu_min(self as *mut Self, i, iumin) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_WireSegment_define_iu_min(self as *mut Self, i, iumin)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ShapeFix_WireSegment.hxx`:129 - `ShapeFix_WireSegment::DefineIUMax()`
     pub fn define_iu_max(&mut self, i: i32, iumax: i32) {
         {
-            unsafe { crate::ffi::ShapeFix_WireSegment_define_iu_max(self as *mut Self, i, iumax) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_WireSegment_define_iu_max(self as *mut Self, i, iumax)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `ShapeFix_WireSegment.hxx`:131 - `ShapeFix_WireSegment::DefineIVMin()`
     pub fn define_iv_min(&mut self, i: i32, ivmin: i32) {
         {
-            unsafe { crate::ffi::ShapeFix_WireSegment_define_iv_min(self as *mut Self, i, ivmin) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_WireSegment_define_iv_min(self as *mut Self, i, ivmin)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8701,8 +10232,12 @@ impl WireSegment {
     /// as to satisfy eq. iumin <= myIUMin(i) <= myIUMax(i) <= iumax
     pub fn define_iv_max(&mut self, i: i32, ivmax: i32) {
         {
-            unsafe { crate::ffi::ShapeFix_WireSegment_define_iv_max(self as *mut Self, i, ivmax) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_WireSegment_define_iv_max(self as *mut Self, i, ivmax)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8717,7 +10252,7 @@ impl WireSegment {
         ivmax: &mut i32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_WireSegment_get_patch_index(
                     self as *const Self,
                     i,
@@ -8727,7 +10262,9 @@ impl WireSegment {
                     ivmax,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8739,16 +10276,23 @@ impl WireSegment {
             let __result = unsafe {
                 crate::ffi::ShapeFix_WireSegment_check_patch_index(self as *const Self, i)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `ShapeFix_WireSegment.hxx`:149 - `ShapeFix_WireSegment::SetVertex()`
     pub fn set_vertex(&mut self, theVertex: &crate::topo_ds::Vertex) {
         {
-            unsafe { crate::ffi::ShapeFix_WireSegment_set_vertex(self as *mut Self, theVertex) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::ShapeFix_WireSegment_set_vertex(self as *mut Self, theVertex)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8757,8 +10301,11 @@ impl WireSegment {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_WireSegment_get_vertex(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8767,8 +10314,11 @@ impl WireSegment {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_WireSegment_is_vertex(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -8795,8 +10345,10 @@ impl WireVertex {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_WireVertex_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8806,10 +10358,12 @@ impl WireVertex {
     /// and performs analysis
     pub fn init_wire_real(&mut self, wire: &crate::topo_ds::Wire, preci: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_WireVertex_init_wire_real(self as *mut Self, wire, preci)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8823,14 +10377,16 @@ impl WireVertex {
         preci: f64,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_WireVertex_init_handleshapeextendwiredata_real(
                     self as *mut Self,
                     sbwd,
                     preci,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8839,8 +10395,11 @@ impl WireVertex {
     /// ShapeAnalysis_WireVertex
     pub fn init_wirevertex(&mut self, sawv: &crate::shape_analysis::WireVertex) {
         {
-            unsafe { crate::ffi::ShapeFix_WireVertex_init_wirevertex(self as *mut Self, sawv) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_WireVertex_init_wirevertex(self as *mut Self, sawv) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8849,8 +10408,11 @@ impl WireVertex {
     pub fn analyzer(&self) -> &crate::shape_analysis::WireVertex {
         {
             let __result = unsafe { crate::ffi::ShapeFix_WireVertex_analyzer(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8860,8 +10422,11 @@ impl WireVertex {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_WireVertex_wire_data(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -8870,8 +10435,11 @@ impl WireVertex {
     pub fn wire(&self) -> crate::OwnedPtr<crate::topo_ds::Wire> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_WireVertex_wire(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -8882,8 +10450,11 @@ impl WireVertex {
     pub fn fix_same(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ShapeFix_WireVertex_fix_same(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8894,8 +10465,11 @@ impl WireVertex {
     pub fn fix(&mut self) -> i32 {
         {
             let __result = unsafe { crate::ffi::ShapeFix_WireVertex_fix(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 }
@@ -8919,8 +10493,10 @@ impl Wireframe {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wireframe_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8928,8 +10504,10 @@ impl Wireframe {
     pub fn new_shape(shape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wireframe_ctor_shape(shape) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -8937,8 +10515,10 @@ impl Wireframe {
     /// Clears all statuses
     pub fn clear_statuses(&mut self) {
         {
-            unsafe { crate::ffi::ShapeFix_Wireframe_clear_statuses(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Wireframe_clear_statuses(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8946,8 +10526,10 @@ impl Wireframe {
     /// Loads a shape, resets statuses
     pub fn load(&mut self, shape: &crate::topo_ds::Shape) {
         {
-            unsafe { crate::ffi::ShapeFix_Wireframe_load(self as *mut Self, shape) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::ShapeFix_Wireframe_load(self as *mut Self, shape) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -8959,8 +10541,11 @@ impl Wireframe {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wireframe_fix_wire_gaps(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8971,8 +10556,11 @@ impl Wireframe {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wireframe_fix_small_edges(self as *mut Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -8996,8 +10584,11 @@ impl Wireframe {
                     theMultyEdges,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9030,8 +10621,11 @@ impl Wireframe {
                     theLimitAngle,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9047,8 +10641,11 @@ impl Wireframe {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wireframe_status_wire_gaps(self as *const Self, status.into())
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9065,8 +10662,11 @@ impl Wireframe {
                     status.into(),
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9074,8 +10674,11 @@ impl Wireframe {
     pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wireframe_shape(self as *mut Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9085,8 +10688,11 @@ impl Wireframe {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wireframe_mode_drop_small_edges(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -9094,10 +10700,12 @@ impl Wireframe {
     /// Set limit angle for merging edges.
     pub fn set_limit_angle(&mut self, theLimitAngle: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wireframe_set_limit_angle(self as *mut Self, theLimitAngle)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9107,8 +10715,11 @@ impl Wireframe {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wireframe_limit_angle(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9117,8 +10728,11 @@ impl Wireframe {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wireframe_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -9126,8 +10740,11 @@ impl Wireframe {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wireframe_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -9135,79 +10752,85 @@ impl Wireframe {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::ShapeFix_Wireframe_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to ShapeFix_Root
     pub fn as_root(&self) -> &Root {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Wireframe_as_ShapeFix_Root(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_Wireframe_as_ShapeFix_Root(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to ShapeFix_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
-        {
-            let __result =
-                unsafe { crate::ffi::ShapeFix_Wireframe_as_ShapeFix_Root_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_Wireframe_as_ShapeFix_Root_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeFix_Wireframe_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_Wireframe_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::ShapeFix_Wireframe_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::ShapeFix_Wireframe_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixWireframe> {
-        {
-            let __result = unsafe { crate::ffi::ShapeFix_Wireframe_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::ShapeFix_Wireframe_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
     pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
         {
-            unsafe { crate::ffi::ShapeFix_Wireframe_inherited_Set(self as *mut Self, Root) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Wireframe_inherited_Set(self as *mut Self, Root) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
     pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wireframe_inherited_SetContext(self as *mut Self, context)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9216,8 +10839,11 @@ impl Wireframe {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wireframe_inherited_Context(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -9227,13 +10853,15 @@ impl Wireframe {
         msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wireframe_inherited_SetMsgRegistrator(
                     self as *mut Self,
                     msgreg,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9245,18 +10873,23 @@ impl Wireframe {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wireframe_inherited_MsgRegistrator(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:66 - `ShapeFix_Root::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wireframe_inherited_SetPrecision(self as *mut Self, preci)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9265,18 +10898,23 @@ impl Wireframe {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wireframe_inherited_Precision(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:72 - `ShapeFix_Root::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wireframe_inherited_SetMinTolerance(self as *mut Self, mintol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9286,18 +10924,23 @@ impl Wireframe {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wireframe_inherited_MinTolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:78 - `ShapeFix_Root::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wireframe_inherited_SetMaxTolerance(self as *mut Self, maxtol)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9307,8 +10950,11 @@ impl Wireframe {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wireframe_inherited_MaxTolerance(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9318,8 +10964,11 @@ impl Wireframe {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wireframe_inherited_LimitTolerance(self as *const Self, toler)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9331,7 +10980,7 @@ impl Wireframe {
         gravity: crate::message::Gravity,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wireframe_inherited_SendMsg(
                     self as *const Self,
                     shape,
@@ -9339,35 +10988,41 @@ impl Wireframe {
                     gravity.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
     pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wireframe_inherited_SendWarning(
                     self as *const Self,
                     shape,
                     message,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
     pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wireframe_inherited_SendFail(
                     self as *const Self,
                     shape,
                     message,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9377,8 +11032,11 @@ impl Wireframe {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wireframe_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9388,8 +11046,11 @@ impl Wireframe {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wireframe_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -9398,11 +11059,14 @@ impl Wireframe {
         {
             let __result =
                 unsafe { crate::ffi::ShapeFix_Wireframe_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -9413,18 +11077,23 @@ impl Wireframe {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wireframe_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::ShapeFix_Wireframe_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -9434,16 +11103,22 @@ impl Wireframe {
             let __result = unsafe {
                 crate::ffi::ShapeFix_Wireframe_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::ShapeFix_Wireframe_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::ShapeFix_Wireframe_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -9459,43 +11134,42 @@ unsafe impl crate::CppDeletable for HandleShapeFixWireframe {
 impl HandleShapeFixWireframe {
     /// Dereference this Handle to access the underlying ShapeFix_Wireframe
     pub fn get(&self) -> &crate::ffi::ShapeFix_Wireframe {
-        {
-            let __result = unsafe { crate::ffi::HandleShapeFixWireframe_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixWireframe_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeFix_Wireframe
     pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Wireframe {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleShapeFixWireframe_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleShapeFixWireframe_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<ShapeFix_Wireframe> to Handle<ShapeFix_Root>
     pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixWireframe_to_HandleShapeFixRoot(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeFixWireframe_to_HandleShapeFixRoot(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Upcast Handle<ShapeFix_Wireframe> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleShapeFixWireframe_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleShapeFixWireframe_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 

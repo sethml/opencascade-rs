@@ -16,7 +16,10 @@ pub unsafe fn discret(
     {
         let __result =
             unsafe { crate::ffi::XBRepMesh_discret(theShape, theDeflection, theAngle, theAlgo) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }

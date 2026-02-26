@@ -11,22 +11,32 @@
 /// EdgeStatus.
 pub fn update_min_max(x: f64, y: f64, z: f64, Min: &mut [f64; 16], Max: &mut [f64; 16]) {
     {
-        unsafe { crate::ffi::HLRAlgo_update_min_max(x, y, z, Min.as_mut_ptr(), Max.as_mut_ptr()) };
-        crate::check_exception();
+        let __exc = unsafe {
+            crate::ffi::HLRAlgo_update_min_max(x, y, z, Min.as_mut_ptr(), Max.as_mut_ptr())
+        };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `HLRAlgo.hxx`:57 - `HLRAlgo::EnlargeMinMax`
 pub fn enlarge_min_max(tol: f64, Min: &mut [f64; 16], Max: &mut [f64; 16]) {
     {
-        unsafe { crate::ffi::HLRAlgo_enlarge_min_max(tol, Min.as_mut_ptr(), Max.as_mut_ptr()) };
-        crate::check_exception();
+        let __exc =
+            unsafe { crate::ffi::HLRAlgo_enlarge_min_max(tol, Min.as_mut_ptr(), Max.as_mut_ptr()) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `HLRAlgo.hxx`:61 - `HLRAlgo::InitMinMax`
 pub fn init_min_max(Big: f64, Min: &mut [f64; 16], Max: &mut [f64; 16]) {
     {
-        unsafe { crate::ffi::HLRAlgo_init_min_max(Big, Min.as_mut_ptr(), Max.as_mut_ptr()) };
-        crate::check_exception();
+        let __exc =
+            unsafe { crate::ffi::HLRAlgo_init_min_max(Big, Min.as_mut_ptr(), Max.as_mut_ptr()) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `HLRAlgo.hxx`:65 - `HLRAlgo::EncodeMinMax`
@@ -36,16 +46,21 @@ pub fn encode_min_max(
     MinMax: &mut EdgesBlock_MinMaxIndices,
 ) {
     {
-        unsafe { crate::ffi::HLRAlgo_encode_min_max(Min, Max, MinMax) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::HLRAlgo_encode_min_max(Min, Max, MinMax) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `HLRAlgo.hxx`:69 - `HLRAlgo::SizeBox`
 pub fn size_box(Min: &mut EdgesBlock_MinMaxIndices, Max: &mut EdgesBlock_MinMaxIndices) -> f64 {
     {
         let __result = unsafe { crate::ffi::HLRAlgo_size_box(Min, Max) };
-        crate::check_exception();
-        __result
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
+        }
+        let __val = __result.ret;
+        __val
     }
 }
 /// **Source:** `HLRAlgo.hxx`:72 - `HLRAlgo::DecodeMinMax`
@@ -55,8 +70,10 @@ pub fn decode_min_max(
     Max: &mut EdgesBlock_MinMaxIndices,
 ) {
     {
-        unsafe { crate::ffi::HLRAlgo_decode_min_max(MinMax, Min, Max) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::HLRAlgo_decode_min_max(MinMax, Min, Max) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `HLRAlgo.hxx`:76 - `HLRAlgo::CopyMinMax`
@@ -67,8 +84,10 @@ pub fn copy_min_max(
     OMax: &mut EdgesBlock_MinMaxIndices,
 ) {
     {
-        unsafe { crate::ffi::HLRAlgo_copy_min_max(IMin, IMax, OMin, OMax) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::HLRAlgo_copy_min_max(IMin, IMax, OMin, OMax) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 /// **Source:** `HLRAlgo.hxx`:85 - `HLRAlgo::AddMinMax`
@@ -79,8 +98,10 @@ pub fn add_min_max(
     OMax: &mut EdgesBlock_MinMaxIndices,
 ) {
     {
-        unsafe { crate::ffi::HLRAlgo_add_min_max(IMin, IMax, OMin, OMax) };
-        crate::check_exception();
+        let __exc = unsafe { crate::ffi::HLRAlgo_add_min_max(IMin, IMax, OMin, OMax) };
+        if !__exc.is_null() {
+            crate::wrapper_threw_exception(__exc);
+        }
     }
 }
 
@@ -153,8 +174,10 @@ impl BiPoint {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_BiPoint_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -185,8 +208,10 @@ impl BiPoint {
                     intl,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -213,8 +238,10 @@ impl BiPoint {
                     X1, Y1, Z1, X2, Y2, Z2, XT1, YT1, ZT1, XT2, YT2, ZT2, Index, flag,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -248,8 +275,10 @@ impl BiPoint {
                     reg1, regn, outl, intl,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -280,8 +309,10 @@ impl BiPoint {
                     flag,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -318,8 +349,10 @@ impl BiPoint {
                     i2, i2p1, i2p2, reg1, regn, outl, intl,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -353,8 +386,10 @@ impl BiPoint {
                     i2, i2p1, i2p2, flag,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -362,16 +397,21 @@ impl BiPoint {
     pub fn rg1_line(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_BiPoint_rg1_line(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_BiPoint.hxx`:195 - `HLRAlgo_BiPoint::Rg1Line()`
     pub fn rg1_line_bool(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::HLRAlgo_BiPoint_rg1_line_bool(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAlgo_BiPoint_rg1_line_bool(self as *mut Self, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -379,16 +419,21 @@ impl BiPoint {
     pub fn rg_n_line(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_BiPoint_rg_n_line(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_BiPoint.hxx`:205 - `HLRAlgo_BiPoint::RgNLine()`
     pub fn rg_n_line_bool(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::HLRAlgo_BiPoint_rg_n_line_bool(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAlgo_BiPoint_rg_n_line_bool(self as *mut Self, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -396,16 +441,21 @@ impl BiPoint {
     pub fn out_line(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_BiPoint_out_line(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_BiPoint.hxx`:215 - `HLRAlgo_BiPoint::OutLine()`
     pub fn out_line_bool(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::HLRAlgo_BiPoint_out_line_bool(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAlgo_BiPoint_out_line_bool(self as *mut Self, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -413,16 +463,21 @@ impl BiPoint {
     pub fn int_line(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_BiPoint_int_line(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_BiPoint.hxx`:225 - `HLRAlgo_BiPoint::IntLine()`
     pub fn int_line_bool(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::HLRAlgo_BiPoint_int_line_bool(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAlgo_BiPoint_int_line_bool(self as *mut Self, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -430,16 +485,21 @@ impl BiPoint {
     pub fn hidden(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_BiPoint_hidden(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_BiPoint.hxx`:235 - `HLRAlgo_BiPoint::Hidden()`
     pub fn hidden_bool(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::HLRAlgo_BiPoint_hidden_bool(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAlgo_BiPoint_hidden_bool(self as *mut Self, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -447,8 +507,11 @@ impl BiPoint {
     pub fn indices(&mut self) -> &mut BiPoint_IndicesT {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_BiPoint_indices(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -456,8 +519,11 @@ impl BiPoint {
     pub fn points(&mut self) -> &mut BiPoint_PointsT {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_BiPoint_points(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 }
@@ -486,8 +552,10 @@ impl BiPoint_PointsT {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_BiPoint_PointsT_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -496,8 +564,11 @@ impl BiPoint_PointsT {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_BiPoint_PointsT_pnt_p12d(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 
@@ -506,8 +577,11 @@ impl BiPoint_PointsT {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_BiPoint_PointsT_pnt_p22d(self as *const Self) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -542,38 +616,48 @@ impl Coincidence {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_Coincidence_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `HLRAlgo_Coincidence.hxx`:51 - `HLRAlgo_Coincidence::Set2D()`
     pub fn set2_d(&mut self, FE: i32, Param: f64) {
         {
-            unsafe { crate::ffi::HLRAlgo_Coincidence_set2_d(self as *mut Self, FE, Param) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_Coincidence_set2_d(self as *mut Self, FE, Param) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `HLRAlgo_Coincidence.hxx`:57 - `HLRAlgo_Coincidence::SetState3D()`
     pub fn set_state3_d(&mut self, stbef: crate::top_abs::State, staft: crate::top_abs::State) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_Coincidence_set_state3_d(
                     self as *mut Self,
                     stbef.into(),
                     staft.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `HLRAlgo_Coincidence.hxx`:63 - `HLRAlgo_Coincidence::Value2D()`
     pub fn value2_d(&self, FE: &mut i32, Param: &mut f64) {
         {
-            unsafe { crate::ffi::HLRAlgo_Coincidence_value2_d(self as *const Self, FE, Param) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_Coincidence_value2_d(self as *const Self, FE, Param) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -582,14 +666,16 @@ impl Coincidence {
         let mut stbef_i32_: i32 = (*stbef).into();
         let mut staft_i32_: i32 = (*staft).into();
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_Coincidence_state3_d(
                     self as *const Self,
                     &mut stbef_i32_,
                     &mut staft_i32_,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         };
         *stbef = crate::top_abs::State::try_from(stbef_i32_).unwrap();
         *staft = crate::top_abs::State::try_from(staft_i32_).unwrap();
@@ -616,16 +702,21 @@ impl EdgeIterator {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_EdgeIterator_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `HLRAlgo_EdgeIterator.hxx`:35 - `HLRAlgo_EdgeIterator::InitHidden()`
     pub fn init_hidden(&mut self, status: &mut EdgeStatus) {
         {
-            unsafe { crate::ffi::HLRAlgo_EdgeIterator_init_hidden(self as *mut Self, status) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_EdgeIterator_init_hidden(self as *mut Self, status) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -634,16 +725,21 @@ impl EdgeIterator {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_EdgeIterator_more_hidden(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_EdgeIterator.hxx`:39 - `HLRAlgo_EdgeIterator::NextHidden()`
     pub fn next_hidden(&mut self) {
         {
-            unsafe { crate::ffi::HLRAlgo_EdgeIterator_next_hidden(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAlgo_EdgeIterator_next_hidden(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -652,7 +748,7 @@ impl EdgeIterator {
     /// of the current Hidden Interval
     pub fn hidden(&self, Start: &mut f64, TolStart: &mut f32, End: &mut f64, TolEnd: &mut f32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_EdgeIterator_hidden(
                     self as *const Self,
                     Start,
@@ -661,15 +757,20 @@ impl EdgeIterator {
                     TolEnd,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `HLRAlgo_EdgeIterator.hxx`:48 - `HLRAlgo_EdgeIterator::InitVisible()`
     pub fn init_visible(&mut self, status: &mut EdgeStatus) {
         {
-            unsafe { crate::ffi::HLRAlgo_EdgeIterator_init_visible(self as *mut Self, status) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_EdgeIterator_init_visible(self as *mut Self, status) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -678,16 +779,21 @@ impl EdgeIterator {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_EdgeIterator_more_visible(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_EdgeIterator.hxx`:52 - `HLRAlgo_EdgeIterator::NextVisible()`
     pub fn next_visible(&mut self) {
         {
-            unsafe { crate::ffi::HLRAlgo_EdgeIterator_next_visible(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAlgo_EdgeIterator_next_visible(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -702,7 +808,7 @@ impl EdgeIterator {
         TolEnd: &mut f32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_EdgeIterator_visible(
                     self as *mut Self,
                     Start,
@@ -711,7 +817,9 @@ impl EdgeIterator {
                     TolEnd,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -743,8 +851,10 @@ impl EdgeStatus {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_EdgeStatus_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -764,8 +874,10 @@ impl EdgeStatus {
                     Start, TolStart, End, TolEnd,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -775,7 +887,7 @@ impl EdgeStatus {
     /// with the tolerances <TolStart>, <TolEnd>.
     pub fn initialize(&mut self, Start: f64, TolStart: f32, End: f64, TolEnd: f32) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_EdgeStatus_initialize(
                     self as *mut Self,
                     Start,
@@ -784,7 +896,9 @@ impl EdgeStatus {
                     TolEnd,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -797,7 +911,7 @@ impl EdgeStatus {
         theTolEnd: &mut f32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_EdgeStatus_bounds(
                     self as *const Self,
                     theStart,
@@ -806,7 +920,9 @@ impl EdgeStatus {
                     theTolEnd,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -815,8 +931,11 @@ impl EdgeStatus {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_EdgeStatus_nb_visible_part(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -830,7 +949,7 @@ impl EdgeStatus {
         TolEnd: &mut f32,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_EdgeStatus_visible_part(
                     self as *const Self,
                     Index,
@@ -840,7 +959,9 @@ impl EdgeStatus {
                     TolEnd,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -862,7 +983,7 @@ impl EdgeStatus {
         OnBoundary: bool,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_EdgeStatus_hide(
                     self as *mut Self,
                     Start,
@@ -873,7 +994,9 @@ impl EdgeStatus {
                     OnBoundary,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -881,8 +1004,10 @@ impl EdgeStatus {
     /// Hide the whole Edge.
     pub fn hide_all(&mut self) {
         {
-            unsafe { crate::ffi::HLRAlgo_EdgeStatus_hide_all(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAlgo_EdgeStatus_hide_all(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -890,8 +1015,10 @@ impl EdgeStatus {
     /// Show the whole Edge.
     pub fn show_all(&mut self) {
         {
-            unsafe { crate::ffi::HLRAlgo_EdgeStatus_show_all(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAlgo_EdgeStatus_show_all(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -900,16 +1027,22 @@ impl EdgeStatus {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_EdgeStatus_all_hidden(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_EdgeStatus.hxx`:107 - `HLRAlgo_EdgeStatus::AllHidden()`
     pub fn all_hidden_bool(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::HLRAlgo_EdgeStatus_all_hidden_bool(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_EdgeStatus_all_hidden_bool(self as *mut Self, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -918,16 +1051,22 @@ impl EdgeStatus {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_EdgeStatus_all_visible(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_EdgeStatus.hxx`:111 - `HLRAlgo_EdgeStatus::AllVisible()`
     pub fn all_visible_bool(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::HLRAlgo_EdgeStatus_all_visible_bool(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_EdgeStatus_all_visible_bool(self as *mut Self, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -963,8 +1102,10 @@ impl EdgesBlock {
     pub fn new_int(NbEdges: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_EdgesBlock_ctor_int(NbEdges) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -972,16 +1113,22 @@ impl EdgesBlock {
     pub fn nb_edges(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_EdgesBlock_nb_edges(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_EdgesBlock.hxx`:90 - `HLRAlgo_EdgesBlock::Edge()`
     pub fn edge_int2(&mut self, I: i32, EI: i32) {
         {
-            unsafe { crate::ffi::HLRAlgo_EdgesBlock_edge_int2(self as *mut Self, I, EI) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_EdgesBlock_edge_int2(self as *mut Self, I, EI) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -990,22 +1137,27 @@ impl EdgesBlock {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_EdgesBlock_edge_int(self as *const Self, I) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_EdgesBlock.hxx`:94 - `HLRAlgo_EdgesBlock::Orientation()`
     pub fn orientation_int_orientation(&mut self, I: i32, Or: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_EdgesBlock_orientation_int_orientation(
                     self as *mut Self,
                     I,
                     Or.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1014,8 +1166,11 @@ impl EdgesBlock {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_EdgesBlock_orientation_int(self as *const Self, I) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -1024,16 +1179,23 @@ impl EdgesBlock {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_EdgesBlock_out_line_int(self as *const Self, I) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_EdgesBlock.hxx`:110 - `HLRAlgo_EdgesBlock::OutLine()`
     pub fn out_line_int_bool(&mut self, I: i32, B: bool) {
         {
-            unsafe { crate::ffi::HLRAlgo_EdgesBlock_out_line_int_bool(self as *mut Self, I, B) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::HLRAlgo_EdgesBlock_out_line_int_bool(self as *mut Self, I, B)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1042,16 +1204,23 @@ impl EdgesBlock {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_EdgesBlock_internal_int(self as *const Self, I) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_EdgesBlock.hxx`:123 - `HLRAlgo_EdgesBlock::Internal()`
     pub fn internal_int_bool(&mut self, I: i32, B: bool) {
         {
-            unsafe { crate::ffi::HLRAlgo_EdgesBlock_internal_int_bool(self as *mut Self, I, B) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::HLRAlgo_EdgesBlock_internal_int_bool(self as *mut Self, I, B)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1060,16 +1229,22 @@ impl EdgesBlock {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_EdgesBlock_double_int(self as *const Self, I) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_EdgesBlock.hxx`:136 - `HLRAlgo_EdgesBlock::Double()`
     pub fn double_int_bool(&mut self, I: i32, B: bool) {
         {
-            unsafe { crate::ffi::HLRAlgo_EdgesBlock_double_int_bool(self as *mut Self, I, B) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_EdgesBlock_double_int_bool(self as *mut Self, I, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1078,24 +1253,35 @@ impl EdgesBlock {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_EdgesBlock_iso_line_int(self as *const Self, I) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_EdgesBlock.hxx`:149 - `HLRAlgo_EdgesBlock::IsoLine()`
     pub fn iso_line_int_bool(&mut self, I: i32, B: bool) {
         {
-            unsafe { crate::ffi::HLRAlgo_EdgesBlock_iso_line_int_bool(self as *mut Self, I, B) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::HLRAlgo_EdgesBlock_iso_line_int_bool(self as *mut Self, I, B)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `HLRAlgo_EdgesBlock.hxx`:157 - `HLRAlgo_EdgesBlock::UpdateMinMax()`
     pub fn update_min_max(&mut self, TotMinMax: &EdgesBlock_MinMaxIndices) {
         {
-            unsafe { crate::ffi::HLRAlgo_EdgesBlock_update_min_max(self as *mut Self, TotMinMax) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::HLRAlgo_EdgesBlock_update_min_max(self as *mut Self, TotMinMax)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1103,8 +1289,11 @@ impl EdgesBlock {
     pub fn min_max(&mut self) -> &mut EdgesBlock_MinMaxIndices {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_EdgesBlock_min_max(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1113,8 +1302,11 @@ impl EdgesBlock {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_EdgesBlock_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1122,8 +1314,11 @@ impl EdgesBlock {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_EdgesBlock_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1131,42 +1326,43 @@ impl EdgesBlock {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_EdgesBlock_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRAlgo_EdgesBlock_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HLRAlgo_EdgesBlock_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRAlgo_EdgesBlock_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HLRAlgo_EdgesBlock_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleHLRAlgoEdgesBlock> {
-        {
-            let __result = unsafe { crate::ffi::HLRAlgo_EdgesBlock_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::HLRAlgo_EdgesBlock_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1175,8 +1371,11 @@ impl EdgesBlock {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_EdgesBlock_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1186,8 +1385,11 @@ impl EdgesBlock {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_EdgesBlock_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1196,11 +1398,14 @@ impl EdgesBlock {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_EdgesBlock_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1211,18 +1416,23 @@ impl EdgesBlock {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_EdgesBlock_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_EdgesBlock_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1232,16 +1442,22 @@ impl EdgesBlock {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_EdgesBlock_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::HLRAlgo_EdgesBlock_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_EdgesBlock_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1257,32 +1473,31 @@ unsafe impl crate::CppDeletable for HandleHLRAlgoEdgesBlock {
 impl HandleHLRAlgoEdgesBlock {
     /// Dereference this Handle to access the underlying HLRAlgo_EdgesBlock
     pub fn get(&self) -> &crate::ffi::HLRAlgo_EdgesBlock {
-        {
-            let __result = unsafe { crate::ffi::HandleHLRAlgoEdgesBlock_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleHLRAlgoEdgesBlock_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRAlgo_EdgesBlock
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_EdgesBlock {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleHLRAlgoEdgesBlock_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleHLRAlgoEdgesBlock_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<HLRAlgo_EdgesBlock> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleHLRAlgoEdgesBlock_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleHLRAlgoEdgesBlock_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1313,8 +1528,10 @@ impl HArray1OfPHDat {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_HArray1OfPHDat_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1323,8 +1540,10 @@ impl HArray1OfPHDat {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfPHDat_ctor_int2(theLower, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1340,8 +1559,10 @@ impl HArray1OfPHDat {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1358,8 +1579,10 @@ impl HArray1OfPHDat {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1370,8 +1593,10 @@ impl HArray1OfPHDat {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfPHDat_ctor_array1ofphdat(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1380,8 +1605,11 @@ impl HArray1OfPHDat {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfPHDat_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1390,8 +1618,11 @@ impl HArray1OfPHDat {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfPHDat_change_array1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1400,8 +1631,11 @@ impl HArray1OfPHDat {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfPHDat_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1409,8 +1643,11 @@ impl HArray1OfPHDat {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_HArray1OfPHDat_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1418,42 +1655,45 @@ impl HArray1OfPHDat {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_HArray1OfPHDat_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRAlgo_HArray1OfPHDat_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HLRAlgo_HArray1OfPHDat_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRAlgo_HArray1OfPHDat_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HLRAlgo_HArray1OfPHDat_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleHLRAlgoHArray1OfPHDat> {
-        {
-            let __result = unsafe { crate::ffi::HLRAlgo_HArray1OfPHDat_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::HLRAlgo_HArray1OfPHDat_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1465,8 +1705,11 @@ impl HArray1OfPHDat {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1476,8 +1719,11 @@ impl HArray1OfPHDat {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_HArray1OfPHDat_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1486,11 +1732,14 @@ impl HArray1OfPHDat {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfPHDat_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1501,18 +1750,23 @@ impl HArray1OfPHDat {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_HArray1OfPHDat_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_HArray1OfPHDat_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1522,16 +1776,22 @@ impl HArray1OfPHDat {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_HArray1OfPHDat_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::HLRAlgo_HArray1OfPHDat_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_HArray1OfPHDat_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1547,35 +1807,32 @@ unsafe impl crate::CppDeletable for HandleHLRAlgoHArray1OfPHDat {
 impl HandleHLRAlgoHArray1OfPHDat {
     /// Dereference this Handle to access the underlying HLRAlgo_HArray1OfPHDat
     pub fn get(&self) -> &crate::ffi::HLRAlgo_HArray1OfPHDat {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleHLRAlgoHArray1OfPHDat_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleHLRAlgoHArray1OfPHDat_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRAlgo_HArray1OfPHDat
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_HArray1OfPHDat {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleHLRAlgoHArray1OfPHDat_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleHLRAlgoHArray1OfPHDat_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<HLRAlgo_HArray1OfPHDat> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleHLRAlgoHArray1OfPHDat_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleHLRAlgoHArray1OfPHDat_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1597,8 +1854,10 @@ impl HArray1OfPINod {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_HArray1OfPINod_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1607,8 +1866,10 @@ impl HArray1OfPINod {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfPINod_ctor_int2(theLower, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1624,8 +1885,10 @@ impl HArray1OfPINod {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1642,8 +1905,10 @@ impl HArray1OfPINod {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1654,8 +1919,10 @@ impl HArray1OfPINod {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfPINod_ctor_array1ofpinod(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1664,8 +1931,11 @@ impl HArray1OfPINod {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfPINod_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1674,8 +1944,11 @@ impl HArray1OfPINod {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfPINod_change_array1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1684,8 +1957,11 @@ impl HArray1OfPINod {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfPINod_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1693,8 +1969,11 @@ impl HArray1OfPINod {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_HArray1OfPINod_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1702,42 +1981,45 @@ impl HArray1OfPINod {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_HArray1OfPINod_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRAlgo_HArray1OfPINod_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HLRAlgo_HArray1OfPINod_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRAlgo_HArray1OfPINod_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HLRAlgo_HArray1OfPINod_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleHLRAlgoHArray1OfPINod> {
-        {
-            let __result = unsafe { crate::ffi::HLRAlgo_HArray1OfPINod_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::HLRAlgo_HArray1OfPINod_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -1749,8 +2031,11 @@ impl HArray1OfPINod {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1760,8 +2045,11 @@ impl HArray1OfPINod {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_HArray1OfPINod_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -1770,11 +2058,14 @@ impl HArray1OfPINod {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfPINod_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -1785,18 +2076,23 @@ impl HArray1OfPINod {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_HArray1OfPINod_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_HArray1OfPINod_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -1806,16 +2102,22 @@ impl HArray1OfPINod {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_HArray1OfPINod_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::HLRAlgo_HArray1OfPINod_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_HArray1OfPINod_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -1831,35 +2133,32 @@ unsafe impl crate::CppDeletable for HandleHLRAlgoHArray1OfPINod {
 impl HandleHLRAlgoHArray1OfPINod {
     /// Dereference this Handle to access the underlying HLRAlgo_HArray1OfPINod
     pub fn get(&self) -> &crate::ffi::HLRAlgo_HArray1OfPINod {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleHLRAlgoHArray1OfPINod_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleHLRAlgoHArray1OfPINod_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRAlgo_HArray1OfPINod
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_HArray1OfPINod {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleHLRAlgoHArray1OfPINod_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleHLRAlgoHArray1OfPINod_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<HLRAlgo_HArray1OfPINod> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleHLRAlgoHArray1OfPINod_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleHLRAlgoHArray1OfPINod_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -1881,8 +2180,10 @@ impl HArray1OfPISeg {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_HArray1OfPISeg_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1891,8 +2192,10 @@ impl HArray1OfPISeg {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfPISeg_ctor_int2(theLower, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1908,8 +2211,10 @@ impl HArray1OfPISeg {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1926,8 +2231,10 @@ impl HArray1OfPISeg {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1938,8 +2245,10 @@ impl HArray1OfPISeg {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfPISeg_ctor_array1ofpiseg(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -1948,8 +2257,11 @@ impl HArray1OfPISeg {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfPISeg_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1958,8 +2270,11 @@ impl HArray1OfPISeg {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfPISeg_change_array1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -1968,8 +2283,11 @@ impl HArray1OfPISeg {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfPISeg_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -1977,8 +2295,11 @@ impl HArray1OfPISeg {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_HArray1OfPISeg_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -1986,42 +2307,45 @@ impl HArray1OfPISeg {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_HArray1OfPISeg_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRAlgo_HArray1OfPISeg_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HLRAlgo_HArray1OfPISeg_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRAlgo_HArray1OfPISeg_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HLRAlgo_HArray1OfPISeg_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleHLRAlgoHArray1OfPISeg> {
-        {
-            let __result = unsafe { crate::ffi::HLRAlgo_HArray1OfPISeg_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::HLRAlgo_HArray1OfPISeg_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2033,8 +2357,11 @@ impl HArray1OfPISeg {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2044,8 +2371,11 @@ impl HArray1OfPISeg {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_HArray1OfPISeg_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2054,11 +2384,14 @@ impl HArray1OfPISeg {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfPISeg_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2069,18 +2402,23 @@ impl HArray1OfPISeg {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_HArray1OfPISeg_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_HArray1OfPISeg_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2090,16 +2428,22 @@ impl HArray1OfPISeg {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_HArray1OfPISeg_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::HLRAlgo_HArray1OfPISeg_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_HArray1OfPISeg_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2115,35 +2459,32 @@ unsafe impl crate::CppDeletable for HandleHLRAlgoHArray1OfPISeg {
 impl HandleHLRAlgoHArray1OfPISeg {
     /// Dereference this Handle to access the underlying HLRAlgo_HArray1OfPISeg
     pub fn get(&self) -> &crate::ffi::HLRAlgo_HArray1OfPISeg {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleHLRAlgoHArray1OfPISeg_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleHLRAlgoHArray1OfPISeg_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRAlgo_HArray1OfPISeg
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_HArray1OfPISeg {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleHLRAlgoHArray1OfPISeg_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleHLRAlgoHArray1OfPISeg_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<HLRAlgo_HArray1OfPISeg> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleHLRAlgoHArray1OfPISeg_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleHLRAlgoHArray1OfPISeg_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2165,8 +2506,10 @@ impl HArray1OfTData {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_HArray1OfTData_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2175,8 +2518,10 @@ impl HArray1OfTData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfTData_ctor_int2(theLower, theUpper) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2192,8 +2537,10 @@ impl HArray1OfTData {
                     theLower, theUpper, theValue,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2210,8 +2557,10 @@ impl HArray1OfTData {
                     theBegin, theLower, theUpper, arg3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2222,8 +2571,10 @@ impl HArray1OfTData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfTData_ctor_array1oftdata(theOther) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2232,8 +2583,11 @@ impl HArray1OfTData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfTData_array1(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2242,8 +2596,11 @@ impl HArray1OfTData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfTData_change_array1(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2252,8 +2609,11 @@ impl HArray1OfTData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfTData_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2261,8 +2621,11 @@ impl HArray1OfTData {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_HArray1OfTData_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2270,42 +2633,45 @@ impl HArray1OfTData {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_HArray1OfTData_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRAlgo_HArray1OfTData_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HLRAlgo_HArray1OfTData_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRAlgo_HArray1OfTData_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HLRAlgo_HArray1OfTData_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleHLRAlgoHArray1OfTData> {
-        {
-            let __result = unsafe { crate::ffi::HLRAlgo_HArray1OfTData_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::HLRAlgo_HArray1OfTData_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -2317,8 +2683,11 @@ impl HArray1OfTData {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2328,8 +2697,11 @@ impl HArray1OfTData {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_HArray1OfTData_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -2338,11 +2710,14 @@ impl HArray1OfTData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_HArray1OfTData_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -2353,18 +2728,23 @@ impl HArray1OfTData {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_HArray1OfTData_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_HArray1OfTData_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2374,16 +2754,22 @@ impl HArray1OfTData {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_HArray1OfTData_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::HLRAlgo_HArray1OfTData_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_HArray1OfTData_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -2399,35 +2785,32 @@ unsafe impl crate::CppDeletable for HandleHLRAlgoHArray1OfTData {
 impl HandleHLRAlgoHArray1OfTData {
     /// Dereference this Handle to access the underlying HLRAlgo_HArray1OfTData
     pub fn get(&self) -> &crate::ffi::HLRAlgo_HArray1OfTData {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleHLRAlgoHArray1OfTData_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleHLRAlgoHArray1OfTData_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRAlgo_HArray1OfTData
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_HArray1OfTData {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleHLRAlgoHArray1OfTData_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleHLRAlgoHArray1OfTData_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<HLRAlgo_HArray1OfTData> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleHLRAlgoHArray1OfTData_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleHLRAlgoHArray1OfTData_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -2449,8 +2832,10 @@ impl Interference {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_Interference_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2472,65 +2857,79 @@ impl Interference {
                     BTrans.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `HLRAlgo_Interference.hxx`:42 - `HLRAlgo_Interference::Intersection()`
     pub fn intersection_intersection(&mut self, I: &Intersection) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_Interference_intersection_intersection(self as *mut Self, I)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `HLRAlgo_Interference.hxx`:44 - `HLRAlgo_Interference::Boundary()`
     pub fn boundary_coincidence(&mut self, B: &Coincidence) {
         {
-            unsafe { crate::ffi::HLRAlgo_Interference_boundary_coincidence(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::HLRAlgo_Interference_boundary_coincidence(self as *mut Self, B)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `HLRAlgo_Interference.hxx`:46 - `HLRAlgo_Interference::Orientation()`
     pub fn orientation_orientation(&mut self, O: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_Interference_orientation_orientation(
                     self as *mut Self,
                     O.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `HLRAlgo_Interference.hxx`:48 - `HLRAlgo_Interference::Transition()`
     pub fn transition_orientation(&mut self, Tr: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_Interference_transition_orientation(
                     self as *mut Self,
                     Tr.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `HLRAlgo_Interference.hxx`:50 - `HLRAlgo_Interference::BoundaryTransition()`
     pub fn boundary_transition_orientation(&mut self, BTr: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_Interference_boundary_transition_orientation(
                     self as *mut Self,
                     BTr.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2539,8 +2938,11 @@ impl Interference {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_Interference_intersection(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2549,8 +2951,11 @@ impl Interference {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_Interference_change_intersection(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2559,8 +2964,11 @@ impl Interference {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_Interference_boundary(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2569,8 +2977,11 @@ impl Interference {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_Interference_change_boundary(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2579,8 +2990,11 @@ impl Interference {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_Interference_orientation(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -2589,8 +3003,11 @@ impl Interference {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_Interference_transition(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
@@ -2600,8 +3017,11 @@ impl Interference {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_Interference_boundary_transition(self as *const Self)
             };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 }
@@ -2627,8 +3047,10 @@ impl Intersection {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_Intersection_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -2654,21 +3076,25 @@ impl Intersection {
                     S.into(),
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `HLRAlgo_Intersection.hxx`:46 - `HLRAlgo_Intersection::Orientation()`
     pub fn orientation_orientation(&mut self, Ori: crate::top_abs::Orientation) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_Intersection_orientation_orientation(
                     self as *mut Self,
                     Ori.into(),
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2677,16 +3103,22 @@ impl Intersection {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_Intersection_orientation(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::Orientation::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::Orientation::try_from(__val).unwrap()
         }
     }
 
     /// **Source:** `HLRAlgo_Intersection.hxx`:50 - `HLRAlgo_Intersection::Level()`
     pub fn level_int(&mut self, Lev: i32) {
         {
-            unsafe { crate::ffi::HLRAlgo_Intersection_level_int(self as *mut Self, Lev) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_Intersection_level_int(self as *mut Self, Lev) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2694,16 +3126,23 @@ impl Intersection {
     pub fn level(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_Intersection_level(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_Intersection.hxx`:54 - `HLRAlgo_Intersection::SegIndex()`
     pub fn seg_index_int(&mut self, SegInd: i32) {
         {
-            unsafe { crate::ffi::HLRAlgo_Intersection_seg_index_int(self as *mut Self, SegInd) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::HLRAlgo_Intersection_seg_index_int(self as *mut Self, SegInd)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2712,16 +3151,22 @@ impl Intersection {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_Intersection_seg_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_Intersection.hxx`:58 - `HLRAlgo_Intersection::Index()`
     pub fn index_int(&mut self, Ind: i32) {
         {
-            unsafe { crate::ffi::HLRAlgo_Intersection_index_int(self as *mut Self, Ind) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_Intersection_index_int(self as *mut Self, Ind) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2729,16 +3174,22 @@ impl Intersection {
     pub fn index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_Intersection_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_Intersection.hxx`:62 - `HLRAlgo_Intersection::Parameter()`
     pub fn parameter_real(&mut self, P: f64) {
         {
-            unsafe { crate::ffi::HLRAlgo_Intersection_parameter_real(self as *mut Self, P) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_Intersection_parameter_real(self as *mut Self, P) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2747,16 +3198,22 @@ impl Intersection {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_Intersection_parameter(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_Intersection.hxx`:66 - `HLRAlgo_Intersection::Tolerance()`
     pub fn tolerance_float(&mut self, T: f32) {
         {
-            unsafe { crate::ffi::HLRAlgo_Intersection_tolerance_float(self as *mut Self, T) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_Intersection_tolerance_float(self as *mut Self, T) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2765,16 +3222,23 @@ impl Intersection {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_Intersection_tolerance(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_Intersection.hxx`:70 - `HLRAlgo_Intersection::State()`
     pub fn state_state(&mut self, S: crate::top_abs::State) {
         {
-            unsafe { crate::ffi::HLRAlgo_Intersection_state_state(self as *mut Self, S.into()) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::HLRAlgo_Intersection_state_state(self as *mut Self, S.into())
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2782,8 +3246,11 @@ impl Intersection {
     pub fn state(&self) -> crate::top_abs::State {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_Intersection_state(self as *const Self) };
-            crate::check_exception();
-            crate::top_abs::State::try_from(__result).unwrap()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            crate::top_abs::State::try_from(__val).unwrap()
         }
     }
 }
@@ -2807,16 +3274,21 @@ impl PolyAlgo {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyAlgo_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `HLRAlgo_PolyAlgo.hxx`:36 - `HLRAlgo_PolyAlgo::Init()`
     pub fn init(&mut self, theNbShells: i32) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyAlgo_init(self as *mut Self, theNbShells) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_PolyAlgo_init(self as *mut Self, theNbShells) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2826,8 +3298,11 @@ impl PolyAlgo {
     ) -> &crate::ffi::NCollection_Array1_opencascade_handle_HLRAlgo_PolyShellData {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyAlgo_poly_shell(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2838,16 +3313,21 @@ impl PolyAlgo {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyAlgo_change_poly_shell(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// **Source:** `HLRAlgo_PolyAlgo.hxx`:42 - `HLRAlgo_PolyAlgo::Clear()`
     pub fn clear(&mut self) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyAlgo_clear(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAlgo_PolyAlgo_clear(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2855,16 +3335,20 @@ impl PolyAlgo {
     /// Prepare all the data to process the algo.
     pub fn update(&mut self) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyAlgo_update(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAlgo_PolyAlgo_update(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `HLRAlgo_PolyAlgo.hxx`:47 - `HLRAlgo_PolyAlgo::InitHide()`
     pub fn init_hide(&mut self) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyAlgo_init_hide(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAlgo_PolyAlgo_init_hide(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2872,16 +3356,21 @@ impl PolyAlgo {
     pub fn more_hide(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyAlgo_more_hide(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_PolyAlgo.hxx`:55 - `HLRAlgo_PolyAlgo::NextHide()`
     pub fn next_hide(&mut self) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyAlgo_next_hide(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAlgo_PolyAlgo_next_hide(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2914,16 +3403,21 @@ impl PolyAlgo {
                     intl,
                 )
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// **Source:** `HLRAlgo_PolyAlgo.hxx`:65 - `HLRAlgo_PolyAlgo::InitShow()`
     pub fn init_show(&mut self) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyAlgo_init_show(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAlgo_PolyAlgo_init_show(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2931,16 +3425,21 @@ impl PolyAlgo {
     pub fn more_show(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyAlgo_more_show(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_PolyAlgo.hxx`:73 - `HLRAlgo_PolyAlgo::NextShow()`
     pub fn next_show(&mut self) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyAlgo_next_show(self as *mut Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAlgo_PolyAlgo_next_show(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -2964,8 +3463,11 @@ impl PolyAlgo {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_PolyAlgo_show(self as *mut Self, Index, reg1, regn, outl, intl)
             };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -2974,8 +3476,11 @@ impl PolyAlgo {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyAlgo_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -2983,8 +3488,11 @@ impl PolyAlgo {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyAlgo_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -2992,41 +3500,43 @@ impl PolyAlgo {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyAlgo_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRAlgo_PolyAlgo_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HLRAlgo_PolyAlgo_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRAlgo_PolyAlgo_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HLRAlgo_PolyAlgo_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleHLRAlgoPolyAlgo> {
-        {
-            let __result = unsafe { crate::ffi::HLRAlgo_PolyAlgo_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::HLRAlgo_PolyAlgo_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3035,8 +3545,11 @@ impl PolyAlgo {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_PolyAlgo_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3046,8 +3559,11 @@ impl PolyAlgo {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_PolyAlgo_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3056,11 +3572,14 @@ impl PolyAlgo {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyAlgo_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3070,18 +3589,23 @@ impl PolyAlgo {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyAlgo_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_PolyAlgo_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3091,16 +3615,22 @@ impl PolyAlgo {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_PolyAlgo_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyAlgo_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_PolyAlgo_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3116,31 +3646,31 @@ unsafe impl crate::CppDeletable for HandleHLRAlgoPolyAlgo {
 impl HandleHLRAlgoPolyAlgo {
     /// Dereference this Handle to access the underlying HLRAlgo_PolyAlgo
     pub fn get(&self) -> &crate::ffi::HLRAlgo_PolyAlgo {
-        {
-            let __result = unsafe { crate::ffi::HandleHLRAlgoPolyAlgo_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleHLRAlgoPolyAlgo_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRAlgo_PolyAlgo
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_PolyAlgo {
-        {
-            let __result = unsafe { crate::ffi::HandleHLRAlgoPolyAlgo_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleHLRAlgoPolyAlgo_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<HLRAlgo_PolyAlgo> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleHLRAlgoPolyAlgo_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleHLRAlgoPolyAlgo_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3163,40 +3693,51 @@ impl PolyData {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyData_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `HLRAlgo_PolyData.hxx`:94 - `HLRAlgo_PolyData::HNodes()`
     pub fn h_nodes(&mut self, HNodes: &crate::ffi::HandleTColgpHArray1OfXYZ) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyData_h_nodes(self as *mut Self, HNodes) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAlgo_PolyData_h_nodes(self as *mut Self, HNodes) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `HLRAlgo_PolyData.hxx`:96 - `HLRAlgo_PolyData::HTData()`
     pub fn ht_data(&mut self, HTData: &crate::ffi::HandleHLRAlgoHArray1OfTData) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyData_ht_data(self as *mut Self, HTData) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAlgo_PolyData_ht_data(self as *mut Self, HTData) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `HLRAlgo_PolyData.hxx`:98 - `HLRAlgo_PolyData::HPHDat()`
     pub fn hph_dat(&mut self, HPHDat: &crate::ffi::HandleHLRAlgoHArray1OfPHDat) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyData_hph_dat(self as *mut Self, HPHDat) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAlgo_PolyData_hph_dat(self as *mut Self, HPHDat) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `HLRAlgo_PolyData.hxx`:100 - `HLRAlgo_PolyData::FaceIndex()`
     pub fn face_index_int(&mut self, I: i32) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyData_face_index_int(self as *mut Self, I) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_PolyData_face_index_int(self as *mut Self, I) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3204,8 +3745,11 @@ impl PolyData {
     pub fn face_index(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyData_face_index(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3213,8 +3757,11 @@ impl PolyData {
     pub fn nodes(&mut self) -> &mut crate::ffi::TColgp_Array1OfXYZ {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyData_nodes(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3222,8 +3769,11 @@ impl PolyData {
     pub fn t_data(&mut self) -> &mut crate::ffi::HLRAlgo_Array1OfTData {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyData_t_data(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3231,18 +3781,23 @@ impl PolyData {
     pub fn ph_dat(&mut self) -> &mut crate::ffi::HLRAlgo_Array1OfPHDat {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyData_ph_dat(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// **Source:** `HLRAlgo_PolyData.hxx`:110 - `HLRAlgo_PolyData::UpdateGlobalMinMax()`
     pub fn update_global_min_max(&mut self, theBox: &mut PolyData_Box) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_PolyData_update_global_min_max(self as *mut Self, theBox)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3250,8 +3805,11 @@ impl PolyData {
     pub fn hiding(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyData_hiding(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3266,7 +3824,7 @@ impl PolyData {
         status: &mut EdgeStatus,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_PolyData_hide_by_poly_data(
                     self as *mut Self,
                     thePoints,
@@ -3276,7 +3834,9 @@ impl PolyData {
                     status,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3284,8 +3844,11 @@ impl PolyData {
     pub fn indices(&mut self) -> &mut PolyData_FaceIndices {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyData_indices(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3294,8 +3857,11 @@ impl PolyData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyData_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3303,8 +3869,11 @@ impl PolyData {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyData_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3312,41 +3881,43 @@ impl PolyData {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyData_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRAlgo_PolyData_as_Standard_Transient(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HLRAlgo_PolyData_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRAlgo_PolyData_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HLRAlgo_PolyData_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleHLRAlgoPolyData> {
-        {
-            let __result = unsafe { crate::ffi::HLRAlgo_PolyData_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::HLRAlgo_PolyData_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3355,8 +3926,11 @@ impl PolyData {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_PolyData_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3366,8 +3940,11 @@ impl PolyData {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_PolyData_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3376,11 +3953,14 @@ impl PolyData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyData_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3390,18 +3970,23 @@ impl PolyData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyData_inherited_GetRefCount(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_PolyData_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3411,16 +3996,22 @@ impl PolyData {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_PolyData_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyData_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_PolyData_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -3436,31 +4027,31 @@ unsafe impl crate::CppDeletable for HandleHLRAlgoPolyData {
 impl HandleHLRAlgoPolyData {
     /// Dereference this Handle to access the underlying HLRAlgo_PolyData
     pub fn get(&self) -> &crate::ffi::HLRAlgo_PolyData {
-        {
-            let __result = unsafe { crate::ffi::HandleHLRAlgoPolyData_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleHLRAlgoPolyData_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRAlgo_PolyData
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_PolyData {
-        {
-            let __result = unsafe { crate::ffi::HandleHLRAlgoPolyData_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleHLRAlgoPolyData_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<HLRAlgo_PolyData> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleHLRAlgoPolyData_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleHLRAlgoPolyData_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -3488,8 +4079,10 @@ impl PolyData_Triangle {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyData_Triangle_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -3522,15 +4115,17 @@ impl PolyHidingData {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyHidingData_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `HLRAlgo_PolyHidingData.hxx`:49 - `HLRAlgo_PolyHidingData::Set()`
     pub fn set(&mut self, Index: i32, Minim: i32, Maxim: i32, A: f64, B: f64, C: f64, D: f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_PolyHidingData_set(
                     self as *mut Self,
                     Index,
@@ -3542,7 +4137,9 @@ impl PolyHidingData {
                     D,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3550,8 +4147,11 @@ impl PolyHidingData {
     pub fn indices(&mut self) -> &mut PolyHidingData_TriangleIndices {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyHidingData_indices(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3559,8 +4159,11 @@ impl PolyHidingData {
     pub fn plane(&mut self) -> &mut PolyHidingData_PlaneT {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyHidingData_plane(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 }
@@ -3588,8 +4191,10 @@ impl PolyHidingData_PlaneT {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyHidingData_PlaneT_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -3613,8 +4218,10 @@ impl PolyInternalData {
     pub fn new_int2(nbNod: i32, nbTri: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyInternalData_ctor_int2(nbNod, nbTri) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -3626,10 +4233,12 @@ impl PolyInternalData {
         thePINod: &mut crate::ffi::HLRAlgo_Array1OfPINod,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_PolyInternalData_update_links_array1oftdata_array1ofpiseg_array1ofpinod(self as *mut Self, theTData, thePISeg, thePINod)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3659,8 +4268,11 @@ impl PolyInternalData {
                     theZ3,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3678,18 +4290,22 @@ impl PolyInternalData {
         thePINod2: &mut *mut crate::ffi::HLRAlgo_Array1OfPINod,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_PolyInternalData_update_links_int3_array1oftdataptr2_array1ofpisegptr2_array1ofpinodptr2(self as *mut Self, theIp1, theIp2, theIp3, theTData1, theTData2, thePISeg1, thePISeg2, thePINod1, thePINod2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `HLRAlgo_PolyInternalData.hxx`:62 - `HLRAlgo_PolyInternalData::Dump()`
     pub fn dump(&self) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyInternalData_dump(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAlgo_PolyInternalData_dump(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3700,10 +4316,12 @@ impl PolyInternalData {
         TData2: &mut *mut crate::ffi::HLRAlgo_Array1OfTData,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_PolyInternalData_inc_t_data(self as *mut Self, TData1, TData2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3714,10 +4332,12 @@ impl PolyInternalData {
         PISeg2: &mut *mut crate::ffi::HLRAlgo_Array1OfPISeg,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_PolyInternalData_inc_pi_seg(self as *mut Self, PISeg1, PISeg2)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3728,38 +4348,49 @@ impl PolyInternalData {
         thePINod2: &mut *mut crate::ffi::HLRAlgo_Array1OfPINod,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_PolyInternalData_inc_pi_nod(
                     self as *mut Self,
                     thePINod1,
                     thePINod2,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `HLRAlgo_PolyInternalData.hxx`:71 - `HLRAlgo_PolyInternalData::DecTData()`
     pub fn dec_t_data(&mut self) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyInternalData_dec_t_data(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_PolyInternalData_dec_t_data(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `HLRAlgo_PolyInternalData.hxx`:73 - `HLRAlgo_PolyInternalData::DecPISeg()`
     pub fn dec_pi_seg(&mut self) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyInternalData_dec_pi_seg(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_PolyInternalData_dec_pi_seg(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `HLRAlgo_PolyInternalData.hxx`:75 - `HLRAlgo_PolyInternalData::DecPINod()`
     pub fn dec_pi_nod(&mut self) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyInternalData_dec_pi_nod(self as *mut Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_PolyInternalData_dec_pi_nod(self as *mut Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3768,8 +4399,11 @@ impl PolyInternalData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyInternalData_nb_t_data(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3778,8 +4412,11 @@ impl PolyInternalData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyInternalData_nb_pi_seg(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3788,8 +4425,11 @@ impl PolyInternalData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyInternalData_nb_pi_nod(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3798,16 +4438,22 @@ impl PolyInternalData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyInternalData_planar(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_PolyInternalData.hxx`:85 - `HLRAlgo_PolyInternalData::Planar()`
     pub fn planar_bool(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyInternalData_planar_bool(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_PolyInternalData_planar_bool(self as *mut Self, B) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3816,16 +4462,23 @@ impl PolyInternalData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyInternalData_int_out_l(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_PolyInternalData.hxx`:89 - `HLRAlgo_PolyInternalData::IntOutL()`
     pub fn int_out_l_bool(&mut self, B: bool) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyInternalData_int_out_l_bool(self as *mut Self, B) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::HLRAlgo_PolyInternalData_int_out_l_bool(self as *mut Self, B)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3834,8 +4487,11 @@ impl PolyInternalData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyInternalData_t_data(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3844,8 +4500,11 @@ impl PolyInternalData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyInternalData_pi_seg(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3854,8 +4513,11 @@ impl PolyInternalData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyInternalData_pi_nod(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -3864,8 +4526,11 @@ impl PolyInternalData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyInternalData_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -3873,8 +4538,11 @@ impl PolyInternalData {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyInternalData_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -3882,43 +4550,45 @@ impl PolyInternalData {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyInternalData_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRAlgo_PolyInternalData_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HLRAlgo_PolyInternalData_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRAlgo_PolyInternalData_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HLRAlgo_PolyInternalData_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleHLRAlgoPolyInternalData> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRAlgo_PolyInternalData_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::HLRAlgo_PolyInternalData_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -3930,8 +4600,11 @@ impl PolyInternalData {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3941,8 +4614,11 @@ impl PolyInternalData {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_PolyInternalData_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -3951,11 +4627,14 @@ impl PolyInternalData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyInternalData_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -3966,20 +4645,25 @@ impl PolyInternalData {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_PolyInternalData_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_PolyInternalData_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -3991,16 +4675,23 @@ impl PolyInternalData {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyInternalData_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::HLRAlgo_PolyInternalData_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4016,35 +4707,35 @@ unsafe impl crate::CppDeletable for HandleHLRAlgoPolyInternalData {
 impl HandleHLRAlgoPolyInternalData {
     /// Dereference this Handle to access the underlying HLRAlgo_PolyInternalData
     pub fn get(&self) -> &crate::ffi::HLRAlgo_PolyInternalData {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleHLRAlgoPolyInternalData_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleHLRAlgoPolyInternalData_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRAlgo_PolyInternalData
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_PolyInternalData {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleHLRAlgoPolyInternalData_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleHLRAlgoPolyInternalData_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<HLRAlgo_PolyInternalData> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleHLRAlgoPolyInternalData_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleHLRAlgoPolyInternalData_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4067,8 +4758,10 @@ impl PolyInternalNode {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyInternalNode_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4077,8 +4770,11 @@ impl PolyInternalNode {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyInternalNode_indices(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4086,8 +4782,11 @@ impl PolyInternalNode {
     pub fn data(&mut self) -> &mut PolyInternalNode_NodeData {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyInternalNode_data(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4096,8 +4795,11 @@ impl PolyInternalNode {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyInternalNode_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4105,8 +4807,11 @@ impl PolyInternalNode {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyInternalNode_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4114,43 +4819,45 @@ impl PolyInternalNode {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyInternalNode_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRAlgo_PolyInternalNode_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe {
+            crate::ffi::HLRAlgo_PolyInternalNode_as_Standard_Transient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRAlgo_PolyInternalNode_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HLRAlgo_PolyInternalNode_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleHLRAlgoPolyInternalNode> {
-        {
-            let __result =
-                unsafe { crate::ffi::HLRAlgo_PolyInternalNode_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::HLRAlgo_PolyInternalNode_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -4162,8 +4869,11 @@ impl PolyInternalNode {
                     theType,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4173,8 +4883,11 @@ impl PolyInternalNode {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_PolyInternalNode_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4183,11 +4896,14 @@ impl PolyInternalNode {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyInternalNode_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4198,20 +4914,25 @@ impl PolyInternalNode {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_PolyInternalNode_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_PolyInternalNode_inherited_IncrementRefCounter(
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4223,16 +4944,23 @@ impl PolyInternalNode {
                     self as *mut Self,
                 )
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyInternalNode_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::HLRAlgo_PolyInternalNode_inherited_Delete(self as *const Self)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4248,35 +4976,35 @@ unsafe impl crate::CppDeletable for HandleHLRAlgoPolyInternalNode {
 impl HandleHLRAlgoPolyInternalNode {
     /// Dereference this Handle to access the underlying HLRAlgo_PolyInternalNode
     pub fn get(&self) -> &crate::ffi::HLRAlgo_PolyInternalNode {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleHLRAlgoPolyInternalNode_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HandleHLRAlgoPolyInternalNode_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRAlgo_PolyInternalNode
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_PolyInternalNode {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleHLRAlgoPolyInternalNode_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HandleHLRAlgoPolyInternalNode_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<HLRAlgo_PolyInternalNode> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleHLRAlgoPolyInternalNode_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleHLRAlgoPolyInternalNode_to_HandleStandardTransient(
+                self as *const Self,
+            )
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4303,8 +5031,10 @@ impl PolyInternalNode_NodeData {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyInternalNode_NodeData_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 }
@@ -4342,26 +5072,34 @@ impl PolyShellData {
     pub fn new_int(nbFace: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyShellData_ctor_int(nbFace) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `HLRAlgo_PolyShellData.hxx`:40 - `HLRAlgo_PolyShellData::UpdateGlobalMinMax()`
     pub fn update_global_min_max(&mut self, theBox: &mut PolyData_Box) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_PolyShellData_update_global_min_max(self as *mut Self, theBox)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `HLRAlgo_PolyShellData.hxx`:42 - `HLRAlgo_PolyShellData::UpdateHiding()`
     pub fn update_hiding(&mut self, nbHiding: i32) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyShellData_update_hiding(self as *mut Self, nbHiding) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::HLRAlgo_PolyShellData_update_hiding(self as *mut Self, nbHiding)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4369,8 +5107,11 @@ impl PolyShellData {
     pub fn hiding(&self) -> bool {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyShellData_hiding(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4381,8 +5122,11 @@ impl PolyShellData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyShellData_poly_data(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4393,8 +5137,11 @@ impl PolyShellData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyShellData_hiding_poly_data(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4402,8 +5149,11 @@ impl PolyShellData {
     pub fn edges(&mut self) -> &mut crate::ffi::HLRAlgo_ListOfBPoint {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyShellData_edges(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4411,8 +5161,11 @@ impl PolyShellData {
     pub fn indices(&mut self) -> &mut PolyShellData_ShellIndices {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyShellData_indices(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4421,8 +5174,11 @@ impl PolyShellData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyShellData_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4430,8 +5186,11 @@ impl PolyShellData {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyShellData_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4439,42 +5198,44 @@ impl PolyShellData {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_PolyShellData_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRAlgo_PolyShellData_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HLRAlgo_PolyShellData_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRAlgo_PolyShellData_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe {
+            crate::ffi::HLRAlgo_PolyShellData_as_Standard_Transient_mut(self as *mut Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleHLRAlgoPolyShellData> {
-        {
-            let __result = unsafe { crate::ffi::HLRAlgo_PolyShellData_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::HLRAlgo_PolyShellData_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -4483,8 +5244,11 @@ impl PolyShellData {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_PolyShellData_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4494,8 +5258,11 @@ impl PolyShellData {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_PolyShellData_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4504,11 +5271,14 @@ impl PolyShellData {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_PolyShellData_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -4519,18 +5289,23 @@ impl PolyShellData {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_PolyShellData_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_PolyShellData_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4540,16 +5315,22 @@ impl PolyShellData {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_PolyShellData_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::HLRAlgo_PolyShellData_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_PolyShellData_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -4565,35 +5346,31 @@ unsafe impl crate::CppDeletable for HandleHLRAlgoPolyShellData {
 impl HandleHLRAlgoPolyShellData {
     /// Dereference this Handle to access the underlying HLRAlgo_PolyShellData
     pub fn get(&self) -> &crate::ffi::HLRAlgo_PolyShellData {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleHLRAlgoPolyShellData_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleHLRAlgoPolyShellData_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRAlgo_PolyShellData
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_PolyShellData {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleHLRAlgoPolyShellData_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleHLRAlgoPolyShellData_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<HLRAlgo_PolyShellData> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleHLRAlgoPolyShellData_to_HandleStandardTransient(
-                    self as *const Self,
-                )
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleHLRAlgoPolyShellData_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
@@ -4636,8 +5413,10 @@ impl Projector {
     pub fn new() -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_Projector_ctor() };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4647,8 +5426,10 @@ impl Projector {
     pub fn new_ax2(CS: &crate::gp::Ax2) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_Projector_ctor_ax2(CS) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4658,8 +5439,10 @@ impl Projector {
     pub fn new_ax2_real(CS: &crate::gp::Ax2, Focus: f64) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_Projector_ctor_ax2_real(CS, Focus) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4673,8 +5456,10 @@ impl Projector {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_Projector_ctor_trsf_bool_real(T, Persp, Focus) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4694,16 +5479,21 @@ impl Projector {
                     T, Persp, Focus, v1, v2, v3,
                 )
             };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
     /// **Source:** `HLRAlgo_Projector.hxx`:72 - `HLRAlgo_Projector::Set()`
     pub fn set(&mut self, T: &crate::gp::Trsf, Persp: bool, Focus: f64) {
         {
-            unsafe { crate::ffi::HLRAlgo_Projector_set(self as *mut Self, T, Persp, Focus) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_Projector_set(self as *mut Self, T, Persp, Focus) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4715,8 +5505,12 @@ impl Projector {
         D3: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe { crate::ffi::HLRAlgo_Projector_directions(self as *const Self, D1, D2, D3) };
-            crate::check_exception();
+            let __exc = unsafe {
+                crate::ffi::HLRAlgo_Projector_directions(self as *const Self, D1, D2, D3)
+            };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4724,8 +5518,10 @@ impl Projector {
     /// to compute with the given scale and translation.
     pub fn scaled(&mut self, On: bool) {
         {
-            unsafe { crate::ffi::HLRAlgo_Projector_scaled(self as *mut Self, On) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAlgo_Projector_scaled(self as *mut Self, On) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4735,8 +5531,11 @@ impl Projector {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_Projector_perspective(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -4746,8 +5545,11 @@ impl Projector {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_Projector_transformation(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4758,8 +5560,11 @@ impl Projector {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_Projector_inverted_transformation(self as *const Self)
             };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4769,8 +5574,11 @@ impl Projector {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_Projector_full_transformation(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4779,24 +5587,33 @@ impl Projector {
     pub fn focus(&self) -> f64 {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_Projector_focus(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_Projector.hxx`:96 - `HLRAlgo_Projector::Transform()`
     pub fn transform_vec(&self, D: &mut crate::gp::Vec) {
         {
-            unsafe { crate::ffi::HLRAlgo_Projector_transform_vec(self as *const Self, D) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_Projector_transform_vec(self as *const Self, D) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
     /// **Source:** `HLRAlgo_Projector.hxx`:98 - `HLRAlgo_Projector::Transform()`
     pub fn transform_pnt(&self, Pnt: &mut crate::gp::Pnt) {
         {
-            unsafe { crate::ffi::HLRAlgo_Projector_transform_pnt(self as *const Self, Pnt) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_Projector_transform_pnt(self as *const Self, Pnt) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4804,10 +5621,12 @@ impl Projector {
     /// Transform and apply perspective if needed.
     pub fn project_pnt_pnt2d(&self, P: &crate::gp::Pnt, Pout: &mut crate::gp::Pnt2d) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_Projector_project_pnt_pnt2d(self as *const Self, P, Pout)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4815,10 +5634,12 @@ impl Projector {
     /// Transform and apply perspective if needed.
     pub fn project_pnt_real3(&self, P: &crate::gp::Pnt, X: &mut f64, Y: &mut f64, Z: &mut f64) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_Projector_project_pnt_real3(self as *const Self, P, X, Y, Z)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4832,7 +5653,7 @@ impl Projector {
         D1out: &mut crate::gp::Vec2d,
     ) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_Projector_project_pnt_vec_pnt2d_vec2d(
                     self as *const Self,
                     P,
@@ -4841,7 +5662,9 @@ impl Projector {
                     D1out,
                 )
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4852,8 +5675,11 @@ impl Projector {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_Projector_shoot(self as *const Self, X, Y) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { crate::OwnedPtr::from_raw(__val) }
         }
     }
 }
@@ -4897,8 +5723,10 @@ impl WiresBlock {
     pub fn new_int(NbWires: i32) -> crate::OwnedPtr<Self> {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_WiresBlock_ctor_int(NbWires) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            unsafe { crate::OwnedPtr::from_raw(__result.ret) }
         }
     }
 
@@ -4906,16 +5734,21 @@ impl WiresBlock {
     pub fn nb_wires(&self) -> i32 {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_WiresBlock_nb_wires(self as *const Self) };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// **Source:** `HLRAlgo_WiresBlock.hxx`:49 - `HLRAlgo_WiresBlock::Set()`
     pub fn set(&mut self, I: i32, W: &crate::ffi::HandleHLRAlgoEdgesBlock) {
         {
-            unsafe { crate::ffi::HLRAlgo_WiresBlock_set(self as *mut Self, I, W) };
-            crate::check_exception();
+            let __exc = unsafe { crate::ffi::HLRAlgo_WiresBlock_set(self as *mut Self, I, W) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4923,18 +5756,23 @@ impl WiresBlock {
     pub fn wire(&mut self, I: i32) -> &mut crate::ffi::HandleHLRAlgoEdgesBlock {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_WiresBlock_wire(self as *mut Self, I) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
     /// **Source:** `HLRAlgo_WiresBlock.hxx`:56 - `HLRAlgo_WiresBlock::UpdateMinMax()`
     pub fn update_min_max(&mut self, theMinMaxes: &EdgesBlock_MinMaxIndices) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_WiresBlock_update_min_max(self as *mut Self, theMinMaxes)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -4942,8 +5780,11 @@ impl WiresBlock {
     pub fn min_max(&mut self) -> &mut EdgesBlock_MinMaxIndices {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_WiresBlock_min_max(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &mut *(__val) }
         }
     }
 
@@ -4952,8 +5793,11 @@ impl WiresBlock {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_WiresBlock_dynamic_type(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
@@ -4961,8 +5805,11 @@ impl WiresBlock {
     pub fn get_type_name() -> std::string::String {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_WiresBlock_get_type_name() };
-            crate::check_exception();
-            unsafe { std::ffi::CStr::from_ptr(__result) }.to_string_lossy().into_owned()
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { std::ffi::CStr::from_ptr(__val) }.to_string_lossy().into_owned()
         }
     }
 
@@ -4970,42 +5817,43 @@ impl WiresBlock {
     pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
         {
             let __result = unsafe { crate::ffi::HLRAlgo_WiresBlock_get_type_descriptor() };
-            crate::check_exception();
-            unsafe { &*(__result) }
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            unsafe { &*(__val) }
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRAlgo_WiresBlock_as_Standard_Transient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result =
+            unsafe { crate::ffi::HLRAlgo_WiresBlock_as_Standard_Transient(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        {
-            let __result = unsafe {
-                crate::ffi::HLRAlgo_WiresBlock_as_Standard_Transient_mut(self as *mut Self)
-            };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result =
+            unsafe { crate::ffi::HLRAlgo_WiresBlock_as_Standard_Transient_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
     ) -> crate::OwnedPtr<crate::ffi::HandleHLRAlgoWiresBlock> {
-        {
-            let __result = unsafe { crate::ffi::HLRAlgo_WiresBlock_to_handle(obj.into_raw()) };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe { crate::ffi::HLRAlgo_WiresBlock_to_handle(obj.into_raw()) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
@@ -5014,8 +5862,11 @@ impl WiresBlock {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_WiresBlock_inherited_IsInstance(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5025,8 +5876,11 @@ impl WiresBlock {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_WiresBlock_inherited_IsKind(self as *const Self, theType)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
@@ -5035,11 +5889,14 @@ impl WiresBlock {
         {
             let __result =
                 unsafe { crate::ffi::HLRAlgo_WiresBlock_inherited_This(self as *const Self) };
-            crate::check_exception();
-            if __result.is_null() {
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            if __val.is_null() {
                 None
             } else {
-                Some(unsafe { &*__result })
+                Some(unsafe { &*__val })
             }
         }
     }
@@ -5050,18 +5907,23 @@ impl WiresBlock {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_WiresBlock_inherited_GetRefCount(self as *const Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         {
-            unsafe {
+            let __exc = unsafe {
                 crate::ffi::HLRAlgo_WiresBlock_inherited_IncrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 
@@ -5071,16 +5933,22 @@ impl WiresBlock {
             let __result = unsafe {
                 crate::ffi::HLRAlgo_WiresBlock_inherited_DecrementRefCounter(self as *mut Self)
             };
-            crate::check_exception();
-            __result
+            if !__result.exc.is_null() {
+                crate::wrapper_threw_exception(__result.exc);
+            }
+            let __val = __result.ret;
+            __val
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         {
-            unsafe { crate::ffi::HLRAlgo_WiresBlock_inherited_Delete(self as *const Self) };
-            crate::check_exception();
+            let __exc =
+                unsafe { crate::ffi::HLRAlgo_WiresBlock_inherited_Delete(self as *const Self) };
+            if !__exc.is_null() {
+                crate::wrapper_threw_exception(__exc);
+            }
         }
     }
 }
@@ -5096,32 +5964,31 @@ unsafe impl crate::CppDeletable for HandleHLRAlgoWiresBlock {
 impl HandleHLRAlgoWiresBlock {
     /// Dereference this Handle to access the underlying HLRAlgo_WiresBlock
     pub fn get(&self) -> &crate::ffi::HLRAlgo_WiresBlock {
-        {
-            let __result = unsafe { crate::ffi::HandleHLRAlgoWiresBlock_get(self as *const Self) };
-            crate::check_exception();
-            unsafe { &*__result }
+        let __result = unsafe { crate::ffi::HandleHLRAlgoWiresBlock_get(self as *const Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &*__result.ret }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRAlgo_WiresBlock
     pub fn get_mut(&mut self) -> &mut crate::ffi::HLRAlgo_WiresBlock {
-        {
-            let __result =
-                unsafe { crate::ffi::HandleHLRAlgoWiresBlock_get_mut(self as *mut Self) };
-            crate::check_exception();
-            unsafe { &mut *__result }
+        let __result = unsafe { crate::ffi::HandleHLRAlgoWiresBlock_get_mut(self as *mut Self) };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { &mut *__result.ret }
     }
 
     /// Upcast Handle<HLRAlgo_WiresBlock> to Handle<Standard_Transient>
     pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        {
-            let __result = unsafe {
-                crate::ffi::HandleHLRAlgoWiresBlock_to_HandleStandardTransient(self as *const Self)
-            };
-            crate::check_exception();
-            unsafe { crate::OwnedPtr::from_raw(__result) }
+        let __result = unsafe {
+            crate::ffi::HandleHLRAlgoWiresBlock_to_HandleStandardTransient(self as *const Self)
+        };
+        if !__result.exc.is_null() {
+            crate::wrapper_threw_exception(__result.exc);
         }
+        unsafe { crate::OwnedPtr::from_raw(__result.ret) }
     }
 }
 
